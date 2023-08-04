@@ -7,10 +7,10 @@ import PyAp
 import PyEd
 
 class GsManager:
-    def __init__ (self: GsManager)-> None :
+    def __init__ (self: GsManager)-> None:
       '''                             '''
     ...
-    def className ()-> str :
+    def className ()-> str:
       '''                             '''
     ...
 

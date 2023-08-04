@@ -129,36 +129,36 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Application:
-    def __init__ (self, *args, **kwargs)-> None :
+    def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def applyHostIcon (wnd : int)-> None :
+    def applyHostIcon (wnd : int)-> None:
       '''                             '''
     ...
-    def className ()-> str :
+    def className ()-> str:
       '''                             '''
     ...
-    def docManager ()-> DocManager :
+    def docManager ()-> PyAp.DocManager:
       '''                             '''
     ...
-    def mainWnd ()-> int :
+    def mainWnd ()-> int:
       '''                             '''
     ...
-    def setTitleThemeDark (wnd : int)-> None :
+    def setTitleThemeDark (wnd : int)-> None:
       '''                             '''
     ...
 
 class AutoDocLock:
-    def __init__ (self, *args, **kwargs)-> None :
+    def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def className (self, *args, **kwargs)-> str :
+    def className (self, *args, **kwargs)-> str:
       '''className() -> str :
 
     C++ signature :
@@ -178,8 +178,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -207,8 +206,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -236,8 +234,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -265,8 +262,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -294,8 +290,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -323,8 +318,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -352,8 +346,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -381,8 +374,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -410,8 +402,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -439,8 +430,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -468,8 +458,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -497,8 +486,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -526,8 +514,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -555,8 +542,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -584,8 +570,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -613,8 +598,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -642,8 +626,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -671,8 +654,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -700,8 +682,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -729,8 +710,7 @@ bytes, or bytearray instance representing an integer literal in the
 given base.  The literal can be preceded by '+' or '-' and be surrounded
 by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
 Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-:
+>>> int('0b100', base=0):
       '''int([x]) -> integer
 int(x, base=10) -> integer
 
@@ -746,7 +726,7 @@ Base 0 means to interpret the base from the string as an integer literal.
 >>> int('0b100', base=0)
 4'''
     ...
-    def __init__ (self, *args, **kwargs)-> None :
+    def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
     C++ signature :
@@ -891,13 +871,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DocManager:
-    def __init__ (self, *args, **kwargs)-> None :
+    def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def activateDocument (self, *args, **kwargs)-> None :
+    def activateDocument (self, *args, **kwargs)-> None:
       '''activateDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
@@ -908,118 +888,118 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     C++ signature :
         void activateDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},bool)'''
     ...
-    def appContextCloseDocument (self, *args, **kwargs)-> None :
+    def appContextCloseDocument (self, *args, **kwargs)-> None:
       '''appContextCloseDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void appContextCloseDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
-    def appContextNewDocument (self, *args, **kwargs)-> None :
+    def appContextNewDocument (self, *args, **kwargs)-> None:
       '''appContextNewDocument( (DocManager)arg1, (str)arg2) -> None :
 
     C++ signature :
         void appContextNewDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def appContextOpenDocument (self, *args, **kwargs)-> None :
+    def appContextOpenDocument (self, *args, **kwargs)-> None:
       '''appContextOpenDocument( (DocManager)arg1, (str)arg2) -> None :
 
     C++ signature :
         void appContextOpenDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def appContextPromptOpenDocument (self, *args, **kwargs)-> None :
+    def appContextPromptOpenDocument (self, *args, **kwargs)-> None:
       '''appContextPromptOpenDocument( (DocManager)arg1) -> None :
 
     C++ signature :
         void appContextPromptOpenDocument(class PyApDocManager {lvalue})'''
     ...
-    def appContextRecoverDocument (self, *args, **kwargs)-> None :
+    def appContextRecoverDocument (self, *args, **kwargs)-> None:
       '''appContextRecoverDocument( (DocManager)arg1, (str)arg2) -> None :
 
     C++ signature :
         void appContextRecoverDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def autoLock (self, *args, **kwargs)-> AutoDocLock :
+    def autoLock (self, *args, **kwargs)-> PyAp.AutoDocLock:
       '''autoLock() -> AutoDocLock :
 
     C++ signature :
         class PyAutoDocLock autoLock()'''
     ...
-    def className (self, *args, **kwargs)-> str :
+    def className (self, *args, **kwargs)-> str:
       '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closeDocument (self, *args, **kwargs)-> None :
+    def closeDocument (self, *args, **kwargs)-> None:
       '''closeDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void closeDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
-    def curDocument (self, *args, **kwargs)-> Document :
+    def curDocument (self, *args, **kwargs)-> PyAp.Document:
       '''curDocument( (DocManager)arg1) -> Document :
 
     C++ signature :
         class PyApDocument curDocument(class PyApDocManager {lvalue})'''
     ...
-    def defaultFormatForSave (self, *args, **kwargs)-> SaveFormat :
+    def defaultFormatForSave (self, *args, **kwargs)-> PyAp.SaveFormat:
       '''defaultFormatForSave( (DocManager)arg1) -> SaveFormat :
 
     C++ signature :
         enum AcApDocument::SaveFormat defaultFormatForSave(class PyApDocManager {lvalue})'''
     ...
-    def disableDocumentActivation (self, *args, **kwargs)-> None :
+    def disableDocumentActivation (self, *args, **kwargs)-> None:
       '''disableDocumentActivation( (DocManager)arg1) -> None :
 
     C++ signature :
         void disableDocumentActivation(class PyApDocManager {lvalue})'''
     ...
-    def document (self, *args, **kwargs)-> Document :
+    def document (self, *args, **kwargs)-> PyAp.Document:
       '''document( (DocManager)arg1, (Database)arg2) -> Document :
 
     C++ signature :
         class PyApDocument document(class PyApDocManager {lvalue},class PyDbDatabase)'''
     ...
-    def documentCount (self, *args, **kwargs)-> int :
+    def documentCount (self, *args, **kwargs)-> int:
       '''documentCount( (DocManager)arg1) -> int :
 
     C++ signature :
         int documentCount(class PyApDocManager {lvalue})'''
     ...
-    def enableDocumentActivation (self, *args, **kwargs)-> None :
+    def enableDocumentActivation (self, *args, **kwargs)-> None:
       '''enableDocumentActivation( (DocManager)arg1) -> None :
 
     C++ signature :
         void enableDocumentActivation(class PyApDocManager {lvalue})'''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inputPending (self, *args, **kwargs)-> int :
+    def inputPending (self, *args, **kwargs)-> int:
       '''inputPending( (DocManager)arg1, (Document)arg2) -> int :
 
     C++ signature :
         int inputPending(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
-    def isA (self: RxObject)-> RxClass :
+    def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isApplicationContext (self, *args, **kwargs)-> bool :
+    def isApplicationContext (self, *args, **kwargs)-> bool:
       '''isApplicationContext( (DocManager)arg1) -> bool :
 
     C++ signature :
         bool isApplicationContext(class PyApDocManager {lvalue})'''
     ...
-    def isDocumentActivationEnabled (self, *args, **kwargs)-> bool :
+    def isDocumentActivationEnabled (self, *args, **kwargs)-> bool:
       '''isDocumentActivationEnabled( (DocManager)arg1) -> bool :
 
     C++ signature :
         bool isDocumentActivationEnabled(class PyApDocManager {lvalue})'''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
-    def lockDocument (self, *args, **kwargs)-> None :
+    def lockDocument (self, *args, **kwargs)-> None:
       '''lockDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
@@ -1035,52 +1015,52 @@ lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (s
     C++ signature :
         void lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
     ...
-    def mdiActiveDocument (self, *args, **kwargs)-> Document :
+    def mdiActiveDocument (self, *args, **kwargs)-> PyAp.Document:
       '''mdiActiveDocument( (DocManager)arg1) -> Document :
 
     C++ signature :
         class PyApDocument mdiActiveDocument(class PyApDocManager {lvalue})'''
     ...
-    def newAcApDocumentIterator (self, *args, **kwargs)-> list :
+    def newAcApDocumentIterator (self, *args, **kwargs)-> list:
       '''newAcApDocumentIterator( (DocManager)arg1) -> list :
 
     C++ signature :
         class boost::python::list newAcApDocumentIterator(class PyApDocManager {lvalue})'''
     ...
-    def newDocument (self, *args, **kwargs)-> None :
+    def newDocument (self, *args, **kwargs)-> None:
       '''newDocument( (DocManager)arg1) -> None :
 
     C++ signature :
         void newDocument(class PyApDocManager {lvalue})'''
     ...
-    def openDocument (self, *args, **kwargs)-> None :
+    def openDocument (self, *args, **kwargs)-> None:
       '''openDocument( (DocManager)arg1) -> None :
 
     C++ signature :
         void openDocument(class PyApDocManager {lvalue})'''
     ...
-    def popResourceHandle (self, *args, **kwargs)-> None :
+    def popResourceHandle (self, *args, **kwargs)-> None:
       '''popResourceHandle( (DocManager)arg1) -> None :
 
     C++ signature :
         void popResourceHandle(class PyApDocManager {lvalue})'''
     ...
-    def pushAcadResourceHandle (self, *args, **kwargs)-> None :
+    def pushAcadResourceHandle (self, *args, **kwargs)-> None:
       '''pushAcadResourceHandle( (DocManager)arg1) -> None :
 
     C++ signature :
         void pushAcadResourceHandle(class PyApDocManager {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
-    def sendModelessInterrupt (self, *args, **kwargs)-> None :
+    def sendModelessInterrupt (self, *args, **kwargs)-> None:
       '''sendModelessInterrupt( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void sendModelessInterrupt(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
-    def sendStringToExecute (self, *args, **kwargs)-> None :
+    def sendStringToExecute (self, *args, **kwargs)-> None:
       '''sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3) -> None :
 
     C++ signature :
@@ -1091,7 +1071,7 @@ sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3, (bool)arg4, (b
     C++ signature :
         void sendStringToExecute(class PyApDocManager {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,bool)'''
     ...
-    def setCurDocument (self, *args, **kwargs)-> None :
+    def setCurDocument (self, *args, **kwargs)-> None:
       '''setCurDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
@@ -1102,13 +1082,13 @@ setCurDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (bool)arg4)
     C++ signature :
         void setCurDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,bool)'''
     ...
-    def setDefaultFormatForSave (self, *args, **kwargs)-> None :
+    def setDefaultFormatForSave (self, *args, **kwargs)-> None:
       '''setDefaultFormatForSave( (DocManager)arg1, (SaveFormat)arg2) -> None :
 
     C++ signature :
         void setDefaultFormatForSave(class PyApDocManager {lvalue},enum AcApDocument::SaveFormat)'''
     ...
-    def unlockDocument (self, *args, **kwargs)-> None :
+    def unlockDocument (self, *args, **kwargs)-> None:
       '''unlockDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
@@ -1116,55 +1096,55 @@ setCurDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (bool)arg4)
     ...
 
 class DocManagerReactor:
-    def __init__ (self, *args, **kwargs)-> None :
+    def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def addReactor (self: DocManagerReactor)-> None :
+    def addReactor (self: DocManagerReactor)-> None:
       '''                             '''
     ...
-    def documentActivated (self: DocManagerReactor,val : Document)-> None :
+    def documentActivated (self: DocManagerReactor,val : Document)-> None:
       '''                             '''
     ...
-    def documentActivationModified (self: DocManagerReactor,val : bool)-> None :
+    def documentActivationModified (self: DocManagerReactor,val : bool)-> None:
       '''                             '''
     ...
-    def documentBecameCurrent (self: DocManagerReactor,val : Document)-> None :
+    def documentBecameCurrent (self: DocManagerReactor,val : Document)-> None:
       '''                             '''
     ...
-    def documentCreateCanceled (self: DocManagerReactor,val : Document)-> None :
+    def documentCreateCanceled (self: DocManagerReactor,val : Document)-> None:
       '''                             '''
     ...
-    def documentCreateStarted (self: DocManagerReactor,val : Document)-> None :
+    def documentCreateStarted (self: DocManagerReactor,val : Document)-> None:
       '''                             '''
     ...
-    def documentCreated (self: DocManagerReactor,val : Document)-> None :
+    def documentCreated (self: DocManagerReactor,val : Document)-> None:
       '''                             '''
     ...
-    def documentDestroyed (self: DocManagerReactor,val : str)-> None :
+    def documentDestroyed (self: DocManagerReactor,val : str)-> None:
       '''                             '''
     ...
-    def documentLockModeChangeVetoed (self: DocManagerReactor,doc : Document,globalCmdName : str)-> None :
+    def documentLockModeChangeVetoed (self: DocManagerReactor,doc : Document,globalCmdName : str)-> None:
       '''                             '''
     ...
-    def documentLockModeChanged (self: DocManagerReactor,doc : Document,myPrevMode : DocLockMode,myCurMode : DocLockMode,currentMode : DocLockMode,globalCmdName : str)-> None :
+    def documentLockModeChanged (self: DocManagerReactor,doc : Document,myPrevMode : DocLockMode,myCurMode : DocLockMode,currentMode : DocLockMode,globalCmdName : str)-> None:
       '''                             '''
     ...
-    def documentLockModeWillChange (self: DocManagerReactor,myCurMode : DocLockMode,myNewMode : DocLockMode,curMode : DocLockMode,globalCmdName : str)-> None :
+    def documentLockModeWillChange (self: DocManagerReactor,myCurMode : DocLockMode,myNewMode : DocLockMode,curMode : DocLockMode,globalCmdName : str)-> None:
       '''                             '''
     ...
-    def documentToBeActivated (self: DocManagerReactor,val : Document)-> None :
+    def documentToBeActivated (self: DocManagerReactor,val : Document)-> None:
       '''                             '''
     ...
-    def documentToBeDeactivated (self: DocManagerReactor,val : Document)-> None :
+    def documentToBeDeactivated (self: DocManagerReactor,val : Document)-> None:
       '''                             '''
     ...
-    def documentToBeDestroyed (self: DocManagerReactor,val : Document)-> None :
+    def documentToBeDestroyed (self: DocManagerReactor,val : Document)-> None:
       '''                             '''
     ...
-    def removeReactor (self: DocManagerReactor)-> None :
+    def removeReactor (self: DocManagerReactor)-> None:
       '''                             '''
     ...
 
@@ -1173,96 +1153,96 @@ class Document:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def className ()-> str :
+    def className ()-> str:
       '''                             '''
     ...
-    def database (self: Document)-> Database :
+    def database (self: Document)-> PyDb.Database:
       '''                             '''
     ...
-    def docTitle (self: Document)-> str :
+    def docTitle (self: Document)-> str:
       '''                             '''
     ...
-    def docWnd ()-> int :
+    def docWnd ()-> int:
       '''                             '''
     ...
-    def downgradeDocOpen (self: Document,promptForSave : bool)-> None :
+    def downgradeDocOpen (self: Document,promptForSave : bool)-> None:
       '''                             '''
     ...
-    def editor (self: Document)-> Editor :
+    def editor (self: Document)-> PyEd.Editor:
       '''                             '''
     ...
-    def fileName (self: Document)-> str :
+    def fileName (self: Document)-> str:
       '''                             '''
     ...
-    def formatForSave (self: Document)-> SaveFormat :
+    def formatForSave (self: Document)-> PyAp.SaveFormat:
       '''                             '''
     ...
-    def getCountOfLispList (self: Document)-> int :
+    def getCountOfLispList (self: Document)-> int:
       '''                             '''
     ...
-    def getItemOfLispList (self: Document,index : int)-> tuple :
+    def getItemOfLispList (self: Document,index : int)-> tuple:
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inputPointManager (self: Document)-> InputPointManager :
+    def inputPointManager (self: Document)-> PyEd.InputPointManager:
       '''                             '''
     ...
-    def isA (self: RxObject)-> RxClass :
+    def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isCommandInputInactive (self: Document)-> bool :
+    def isCommandInputInactive (self: Document)-> bool:
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
-    def isQuiescent (self: Document)-> bool :
+    def isQuiescent (self: Document)-> bool:
       '''                             '''
     ...
-    def lockMode (self: Document,bIncludeMyLocks : bool=False)-> DocLockMode :
+    def lockMode (self: Document,bIncludeMyLocks : bool=False)-> PyAp.DocLockMode:
       '''                             '''
     ...
-    def myLockMode (self: Document)-> DocLockMode :
+    def myLockMode (self: Document)-> PyAp.DocLockMode:
       '''                             '''
     ...
-    def popDbmod (self: Document)-> None :
+    def popDbmod (self: Document)-> None:
       '''                             '''
     ...
-    def pushDbmod (self: Document)-> None :
+    def pushDbmod (self: Document)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
-    def setDocTitle (self: Document,title : str)-> None :
+    def setDocTitle (self: Document,title : str)-> None:
       '''                             '''
     ...
-    def transactionManager (self: Document)-> TransactionManager :
+    def transactionManager (self: Document)-> PyAp.TransactionManager:
       '''                             '''
     ...
-    def upgradeDocOpen (self: Document)-> None :
+    def upgradeDocOpen (self: Document)-> None:
       '''                             '''
     ...
 
 class LayoutManager:
-    def __init__ (self, *args, **kwargs)-> None :
+    def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def className ()-> str :
+    def className ()-> str:
       '''                             '''
     ...
-    def clearSetupForLayouts (self, *args, **kwargs)-> None :
+    def clearSetupForLayouts (self, *args, **kwargs)-> None:
       '''clearSetupForLayouts( (int)arg1) -> None :
 
     C++ signature :
         void clearSetupForLayouts(unsigned __int64)'''
     ...
-    def cloneLayout (self, *args, **kwargs)-> None :
+    def cloneLayout (self, *args, **kwargs)-> None:
       '''cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3) -> None :
 
     C++ signature :
@@ -1273,7 +1253,7 @@ cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)
     C++ signature :
         void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
     ...
-    def copyLayout (self, *args, **kwargs)-> None :
+    def copyLayout (self, *args, **kwargs)-> None:
       '''copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
 
     C++ signature :
@@ -1284,7 +1264,7 @@ copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> None :
     C++ signature :
         void copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def countLayouts (self, *args, **kwargs)-> int :
+    def countLayouts (self, *args, **kwargs)-> int:
       '''countLayouts( (LayoutManager)arg1) -> int :
 
     C++ signature :
@@ -1295,7 +1275,7 @@ countLayouts( (LayoutManager)arg1, (Database)arg2) -> int :
     C++ signature :
         int countLayouts(class PyDbLayoutManager {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def createLayout (self, *args, **kwargs)-> None :
+    def createLayout (self, *args, **kwargs)-> None:
       '''createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4) -> None :
 
     C++ signature :
@@ -1306,13 +1286,13 @@ createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (D
     C++ signature :
         void createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def createLayoutFromTemplate (self: LayoutManager,newLayoutName : str,templatePath : str,layoutName : str,db : PyDb.Database=current)-> ObjectId :
+    def createLayoutFromTemplate (self: LayoutManager,newLayoutName : str,templatePath : str,layoutName : str,db : PyDb.Database=current)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def createViewports (self: LayoutManager)-> bool :
+    def createViewports (self: LayoutManager)-> bool:
       '''                             '''
     ...
-    def deleteLayout (self, *args, **kwargs)-> None :
+    def deleteLayout (self, *args, **kwargs)-> None:
       '''deleteLayout( (LayoutManager)arg1, (str)arg2) -> None :
 
     C++ signature :
@@ -1323,10 +1303,10 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     C++ signature :
         void deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def desc ()-> RxClass :
+    def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
-    def findLayoutNamed (self, *args, **kwargs)-> ObjectId :
+    def findLayoutNamed (self, *args, **kwargs)-> PyDb.ObjectId:
       '''findLayoutNamed( (LayoutManager)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
@@ -1337,10 +1317,10 @@ findLayoutNamed( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ObjectId :
     C++ signature :
         class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def generateNextNewLayoutName (self: LayoutManager,val : PyDb.Database=current)-> str :
+    def generateNextNewLayoutName (self: LayoutManager,val : PyDb.Database=current)-> str:
       '''                             '''
     ...
-    def getActiveLayoutBTRId (self, *args, **kwargs)-> ObjectId :
+    def getActiveLayoutBTRId (self, *args, **kwargs)-> PyDb.ObjectId:
       '''getActiveLayoutBTRId( (LayoutManager)arg1) -> ObjectId :
 
     C++ signature :
@@ -1351,7 +1331,7 @@ getActiveLayoutBTRId( (LayoutManager)arg1, (Database)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId getActiveLayoutBTRId(class PyDbLayoutManager {lvalue},class PyDbDatabase)'''
     ...
-    def getActiveLayoutName (self, *args, **kwargs)-> str :
+    def getActiveLayoutName (self, *args, **kwargs)-> str:
       '''getActiveLayoutName( (LayoutManager)arg1, (bool)arg2) -> str :
 
     C++ signature :
@@ -1362,28 +1342,28 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool,class PyDbDatabase {lvalue})'''
     ...
-    def getActiveTab (self: LayoutManager)-> str :
+    def getActiveTab (self: LayoutManager)-> str:
       '''                             '''
     ...
-    def getClipBoundaryElabration (self: LayoutManager,val : PyDb.ObjectId)-> list :
+    def getClipBoundaryElabration (self: LayoutManager,val : PyDb.ObjectId)-> list:
       '''                             '''
     ...
-    def getNonRectVPIdFromClipId (self, *args, **kwargs)-> ObjectId :
+    def getNonRectVPIdFromClipId (self, *args, **kwargs)-> PyDb.ObjectId:
       '''getNonRectVPIdFromClipId( (LayoutManager)arg1, (ObjectId)arg2) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId getNonRectVPIdFromClipId(class PyDbLayoutManager {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def isA (self: RxObject)-> RxClass :
+    def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
-    def isVpnumClipped (self, *args, **kwargs)-> bool :
+    def isVpnumClipped (self, *args, **kwargs)-> bool:
       '''isVpnumClipped( (LayoutManager)arg1, (int)arg2) -> bool :
 
     C++ signature :
@@ -1394,7 +1374,7 @@ isVpnumClipped( (LayoutManager)arg1, (int)arg2, (Database)arg3) -> bool :
     C++ signature :
         bool isVpnumClipped(class PyDbLayoutManager {lvalue},int,class PyDbDatabase)'''
     ...
-    def layoutExists (self, *args, **kwargs)-> bool :
+    def layoutExists (self, *args, **kwargs)-> bool:
       '''layoutExists( (LayoutManager)arg1, (str)arg2) -> bool :
 
     C++ signature :
@@ -1405,16 +1385,16 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
     C++ signature :
         bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def pageSetup (self: LayoutManager,layoutBTRId : PyDb.ObjectId=kNull,parent : int=kNull,isPageSetupDlg : bool=True)-> int :
+    def pageSetup (self: LayoutManager,layoutBTRId : PyDb.ObjectId=kNull,parent : int=kNull,isPageSetupDlg : bool=True)-> int:
       '''                             '''
     ...
-    def pointInViewports (self: LayoutManager,val : PyGe.Point3d)-> list :
+    def pointInViewports (self: LayoutManager,val : PyGe.Point3d)-> list:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
-    def renameLayout (self, *args, **kwargs)-> None :
+    def renameLayout (self, *args, **kwargs)-> None:
       '''renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
 
     C++ signature :
@@ -1425,13 +1405,13 @@ renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> None
     C++ signature :
         void renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def setCaptureOnLayoutSwitch (self: LayoutManager,val : bool)-> None :
+    def setCaptureOnLayoutSwitch (self: LayoutManager,val : bool)-> None:
       '''                             '''
     ...
-    def setCreateViewports (self: LayoutManager,val : bool)-> None :
+    def setCreateViewports (self: LayoutManager,val : bool)-> None:
       '''                             '''
     ...
-    def setCurrentLayout (self, *args, **kwargs)-> None :
+    def setCurrentLayout (self, *args, **kwargs)-> None:
       '''setCurrentLayout( (LayoutManager)arg1, (str)arg2) -> None :
 
     C++ signature :
@@ -1442,173 +1422,173 @@ setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     C++ signature :
         void setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def setCurrentLayoutId (self, *args, **kwargs)-> None :
+    def setCurrentLayoutId (self, *args, **kwargs)-> None:
       '''setCurrentLayoutId( (LayoutManager)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void setCurrentLayoutId(class PyDbLayoutManager {lvalue},class PyDbObjectId)'''
     ...
-    def setDefaultPlotConfig (self: LayoutManager,val : PyDb.ObjectId)-> None :
+    def setDefaultPlotConfig (self: LayoutManager,val : PyDb.ObjectId)-> None:
       '''                             '''
     ...
-    def setShowPageSetup (self: LayoutManager,val : bool)-> None :
+    def setShowPageSetup (self: LayoutManager,val : bool)-> None:
       '''                             '''
     ...
-    def setShowPaperBackground (self: LayoutManager,val : bool)-> None :
+    def setShowPaperBackground (self: LayoutManager,val : bool)-> None:
       '''                             '''
     ...
-    def setShowPaperMargins (self: LayoutManager,val : bool)-> None :
+    def setShowPaperMargins (self: LayoutManager,val : bool)-> None:
       '''                             '''
     ...
-    def setShowPrintBorder (self: LayoutManager,val : bool)-> None :
+    def setShowPrintBorder (self: LayoutManager,val : bool)-> None:
       '''                             '''
     ...
-    def setShowTabs (self: LayoutManager,val : bool)-> None :
+    def setShowTabs (self: LayoutManager,val : bool)-> None:
       '''                             '''
     ...
-    def setupForLayouts (self, *args, **kwargs)-> int :
+    def setupForLayouts (self, *args, **kwargs)-> int:
       '''setupForLayouts( (Database)arg1) -> int :
 
     C++ signature :
         unsigned __int64 setupForLayouts(class PyDbDatabase {lvalue})'''
     ...
-    def showPageSetup (self: LayoutManager)-> bool :
+    def showPageSetup (self: LayoutManager)-> bool:
       '''                             '''
     ...
-    def showPaperBackground (self: LayoutManager)-> bool :
+    def showPaperBackground (self: LayoutManager)-> bool:
       '''                             '''
     ...
-    def showPaperMargins (self: LayoutManager)-> bool :
+    def showPaperMargins (self: LayoutManager)-> bool:
       '''                             '''
     ...
-    def showPrintBorder (self: LayoutManager)-> bool :
+    def showPrintBorder (self: LayoutManager)-> bool:
       '''                             '''
     ...
-    def showTabs (self: LayoutManager)-> bool :
+    def showTabs (self: LayoutManager)-> bool:
       '''                             '''
     ...
-    def updateCurrentPaper (self: LayoutManager,zoomToPaper : bool=False)-> None :
+    def updateCurrentPaper (self: LayoutManager,zoomToPaper : bool=False)-> None:
       '''                             '''
     ...
-    def updateLayoutTabs (self: LayoutManager)-> None :
+    def updateLayoutTabs (self: LayoutManager)-> None:
       '''                             '''
     ...
 
 class PaletteSet:
-    def __init__ (self: PaletteSet,name : str,guid : str=None)-> None :
+    def __init__ (self: PaletteSet,name : str,guid : str=None)-> None:
       '''                             '''
     ...
-    def add (self: PaletteSet,name : str)-> int :
+    def add (self: PaletteSet,name : str)-> int:
       '''                             '''
     ...
-    def autoRollupStyle (self: PaletteSet)-> bool :
+    def autoRollupStyle (self: PaletteSet)-> bool:
       '''                             '''
     ...
-    def closeButtonStyle (self: PaletteSet)-> bool :
+    def closeButtonStyle (self: PaletteSet)-> bool:
       '''                             '''
     ...
-    def editNameStyle (self: PaletteSet)-> bool :
+    def editNameStyle (self: PaletteSet)-> bool:
       '''                             '''
     ...
-    def getActivePaletteTabIndex (self: PaletteSet)-> int :
+    def getActivePaletteTabIndex (self: PaletteSet)-> int:
       '''                             '''
     ...
-    def getAutoRollup (self: PaletteSet)-> bool :
+    def getAutoRollup (self: PaletteSet)-> bool:
       '''                             '''
     ...
-    def getFullRect (self: PaletteSet)-> object :
+    def getFullRect (self: PaletteSet)-> object:
       '''                             '''
     ...
-    def getName (self: PaletteSet)-> str :
+    def getName (self: PaletteSet)-> str:
       '''                             '''
     ...
-    def getOpacity (self: PaletteSet)-> int :
+    def getOpacity (self: PaletteSet)-> int:
       '''                             '''
     ...
-    def getPaletteCount (self: PaletteSet)-> int :
+    def getPaletteCount (self: PaletteSet)-> int:
       '''                             '''
     ...
-    def getPaletteSetStyle (self: PaletteSet)-> int :
+    def getPaletteSetStyle (self: PaletteSet)-> int:
       '''                             '''
     ...
-    def getRolloverOpacity (self: PaletteSet)-> int :
+    def getRolloverOpacity (self: PaletteSet)-> int:
       '''                             '''
     ...
-    def paletteBackgroundColor (self: PaletteSet)-> int :
+    def paletteBackgroundColor (self: PaletteSet)-> int:
       '''                             '''
     ...
-    def paletteTabTextColor (self: PaletteSet)-> int :
+    def paletteTabTextColor (self: PaletteSet)-> int:
       '''                             '''
     ...
-    def propertiesMenuStyle (self: PaletteSet)-> bool :
+    def propertiesMenuStyle (self: PaletteSet)-> bool:
       '''                             '''
     ...
-    def removePalette (self: PaletteSet,val : int)-> bool :
+    def removePalette (self: PaletteSet,val : int)-> bool:
       '''                             '''
     ...
-    def rollOut (self: PaletteSet,delay : bool=False)-> None :
+    def rollOut (self: PaletteSet,delay : bool=False)-> None:
       '''                             '''
     ...
-    def rollUp (self: PaletteSet)-> None :
+    def rollUp (self: PaletteSet)-> None:
       '''                             '''
     ...
-    def rolledUp (self: PaletteSet)-> bool :
+    def rolledUp (self: PaletteSet)-> bool:
       '''                             '''
     ...
-    def setActivePalette (self: PaletteSet,val : int)-> bool :
+    def setActivePalette (self: PaletteSet,val : int)-> bool:
       '''                             '''
     ...
-    def setAutoRollup (self: PaletteSet,val : bool)-> bool :
+    def setAutoRollup (self: PaletteSet,val : bool)-> bool:
       '''                             '''
     ...
-    def setName (self: PaletteSet,val : str)-> bool :
+    def setName (self: PaletteSet,val : str)-> bool:
       '''                             '''
     ...
-    def setOpacity (self: PaletteSet,val : int)-> bool :
+    def setOpacity (self: PaletteSet,val : int)-> bool:
       '''                             '''
     ...
-    def setPaletteSetStyle (self: PaletteSet,val : int)-> None :
+    def setPaletteSetStyle (self: PaletteSet,val : int)-> None:
       '''                             '''
     ...
-    def setRolloverOpacity (self: PaletteSet,val : int)-> bool :
+    def setRolloverOpacity (self: PaletteSet,val : int)-> bool:
       '''                             '''
     ...
-    def setTitleBarLocation (self: PaletteSet,val : AdUiTitleBarLocation)-> None :
+    def setTitleBarLocation (self: PaletteSet,val : AdUiTitleBarLocation)-> None:
       '''                             '''
     ...
-    def setVisible (self: PaletteSet,val : bool)-> None :
+    def setVisible (self: PaletteSet,val : bool)-> None:
       '''                             '''
     ...
-    def showIconStyle (self: PaletteSet)-> bool :
+    def showIconStyle (self: PaletteSet)-> bool:
       '''                             '''
     ...
-    def showRollupButtonStyle (self: PaletteSet)-> bool :
+    def showRollupButtonStyle (self: PaletteSet)-> bool:
       '''                             '''
     ...
-    def singlePaletteTabStyle (self: PaletteSet)-> bool :
+    def singlePaletteTabStyle (self: PaletteSet)-> bool:
       '''                             '''
     ...
-    def snapStyle (self: PaletteSet)-> bool :
+    def snapStyle (self: PaletteSet)-> bool:
       '''                             '''
     ...
-    def titleBarLocation (self: PaletteSet)-> AdUiTitleBarLocation :
+    def titleBarLocation (self: PaletteSet)-> PyAp.AdUiTitleBarLocation:
       '''                             '''
     ...
-    def updateTabs (self: PaletteSet)-> None :
+    def updateTabs (self: PaletteSet)-> None:
       '''                             '''
     ...
-    def useSinglePaletteTabNameStyle (self: PaletteSet)-> bool :
+    def useSinglePaletteTabNameStyle (self: PaletteSet)-> bool:
       '''                             '''
     ...
 
 class ResourceOverride:
-    def __init__ (self, *args, **kwargs)-> None :
+    def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def className (self, *args, **kwargs)-> str :
+    def className (self, *args, **kwargs)-> str:
       '''className() -> str :
 
     C++ signature :
@@ -1831,76 +1811,76 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class TransactionManager:
-    def __init__ (self, *args, **kwargs)-> None :
+    def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def abortTransaction (self: TransactionManager)-> None :
+    def abortTransaction (self: TransactionManager)-> None:
       '''                             '''
     ...
-    def addNewlyCreatedDBRObject (self: TransactionManager,obj: DbObject,add: bool=True)-> None :
+    def addNewlyCreatedDBRObject (self: TransactionManager,obj: DbObject,add: bool=True)-> None:
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
+    def className (self, *args, **kwargs)-> str:
       '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
+    def desc (self, *args, **kwargs)-> PyRx.RxClass:
       '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def enableGraphicsFlush (self, *args, **kwargs)-> None :
+    def enableGraphicsFlush (self, *args, **kwargs)-> None:
       '''enableGraphicsFlush( (TransactionManager)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void enableGraphicsFlush(class PyTransactionManager {lvalue},bool)'''
     ...
-    def endTransaction (self: TransactionManager)-> None :
+    def endTransaction (self: TransactionManager)-> None:
       '''                             '''
     ...
-    def flushGraphics (self, *args, **kwargs)-> None :
+    def flushGraphics (self, *args, **kwargs)-> None:
       '''flushGraphics( (TransactionManager)arg1) -> None :
 
     C++ signature :
         void flushGraphics(class PyTransactionManager {lvalue})'''
     ...
-    def getAllObjects (self: TransactionManager)-> list :
+    def getAllObjects (self: TransactionManager)-> list:
       '''                             '''
     ...
-    def getObject (self: TransactionManager,id: ObjectId,mode: OpenMode=OpenMode.kForRead,openErasedObject: bool=False)-> DbObject :
+    def getObject (self: TransactionManager,id: ObjectId,mode: OpenMode=OpenMode.kForRead,openErasedObject: bool=False)-> PyDb.DbObject:
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def isA (self: RxObject)-> RxClass :
+    def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
-    def numActiveTransactions (self: TransactionManager)-> int :
+    def numActiveTransactions (self: TransactionManager)-> int:
       '''                             '''
     ...
-    def numOpenedObjects (self: TransactionManager)-> int :
+    def numOpenedObjects (self: TransactionManager)-> int:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
-    def queueForGraphicsFlush (self: TransactionManager)-> None :
+    def queueForGraphicsFlush (self: TransactionManager)-> None:
       '''                             '''
     ...
-    def startTransaction (self: TransactionManager)-> Transaction :
+    def startTransaction (self: TransactionManager)-> PyDb.Transaction:
       '''                             '''
     ...
-    def topTransaction (self: TransactionManager)-> Transaction :
+    def topTransaction (self: TransactionManager)-> PyDb.Transaction:
       '''                             '''
     ...
 
@@ -1972,7 +1952,7 @@ errors defaults to 'strict'.'''
     ...
 
 function curDoc:
-    def curDoc (*args, **kwargs)-> Document :
+    def curDoc (*args, **kwargs)-> PyAp.Document:
       '''curDoc() -> Document :
 
     C++ signature :

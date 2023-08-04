@@ -451,6 +451,8 @@ std::string AcGeScale3dToStringRepr(const AcGeScale3d& s)
 void makePyGeScale3dWrapper()
 {
     class_<AcGeScale3d>("Scale3d")
+        .def(init<double>())
+        .def(init<double, double, double>())
         .def_readwrite("sx", &AcGeScale3d::sx)
         .def_readwrite("sy", &AcGeScale3d::sy)
         .def_readwrite("sz", &AcGeScale3d::sz)

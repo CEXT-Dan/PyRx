@@ -175,61 +175,61 @@ class Overrule:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def addOverrule (self, *args, **kwargs)-> None :
+    def addOverrule (self, *args, **kwargs)-> None:
       '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
     C++ signature :
         void addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
-    def addOverruleLast (self, *args, **kwargs)-> None :
+    def addOverruleLast (self, *args, **kwargs)-> None:
       '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
-    def className (self, *args, **kwargs)-> str :
+    def className (self, *args, **kwargs)-> str:
       '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
+    def desc (self, *args, **kwargs)-> PyRx.RxClass:
       '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def hasOverrule (self, *args, **kwargs)-> bool :
+    def hasOverrule (self, *args, **kwargs)-> bool:
       '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
         bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def isA (self: RxObject)-> RxClass :
+    def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
-    def isOverruling (self, *args, **kwargs)-> bool :
+    def isOverruling (self, *args, **kwargs)-> bool:
       '''isOverruling() -> bool :
 
     C++ signature :
         bool isOverruling()'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
-    def removeOverrule (self, *args, **kwargs)-> None :
+    def removeOverrule (self, *args, **kwargs)-> None:
       '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
     C++ signature :
         void removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
-    def setIsOverruling (self, *args, **kwargs)-> None :
+    def setIsOverruling (self, *args, **kwargs)-> None:
       '''setIsOverruling( (bool)arg1) -> None :
 
     C++ signature :
@@ -241,34 +241,34 @@ class RxClass:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def appName (self: RxClass)-> str :
+    def appName (self: RxClass)-> str:
       '''                             '''
     ...
-    def className ()-> str :
+    def className ()-> str:
       '''                             '''
     ...
-    def desc ()-> RxClass :
+    def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
-    def dxfName (self: RxClass)-> str :
+    def dxfName (self: RxClass)-> str:
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def isA (self: RxObject)-> RxClass :
+    def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isDerivedFrom (self: RxClass,other : PyRx.RxClass)-> bool :
+    def isDerivedFrom (self: RxClass,other : PyRx.RxClass)-> bool:
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
-    def name (self: RxClass)-> str :
+    def name (self: RxClass)-> str:
       '''                             '''
     ...
-    def queryX (self: RxClass,rhs :  PyRx.RxClass)-> RxObject :
+    def queryX (self: RxClass,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
 
@@ -277,19 +277,19 @@ class RxObject:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def className ()-> str :
+    def className ()-> str:
       '''                             '''
     ...
-    def implRefCount (self: RxObject)-> int :
+    def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def isA (self: RxObject)-> RxClass :
+    def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isNullObj (self: RxObject)-> bool :
+    def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
 
@@ -361,7 +361,7 @@ errors defaults to 'strict'.'''
     ...
 
 class stderr:
-    def __init__ (self, *args, **kwargs)-> None :
+    def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
     C++ signature :
@@ -372,13 +372,13 @@ __init__( (object)arg1) -> object :
     C++ signature :
         void * __ptr64 __init__(class boost::python::api::object)'''
     ...
-    def flush (self, *args, **kwargs)-> None :
+    def flush (self, *args, **kwargs)-> None:
       '''flush( (stderr)arg1) -> None :
 
     C++ signature :
         void flush(class py_redirector<2> {lvalue})'''
     ...
-    def write (self, *args, **kwargs)-> None :
+    def write (self, *args, **kwargs)-> None:
       '''write( (stderr)arg1, (str)arg2) -> None :
 
     C++ signature :
@@ -386,7 +386,7 @@ __init__( (object)arg1) -> object :
     ...
 
 class stdout:
-    def __init__ (self, *args, **kwargs)-> None :
+    def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
     C++ signature :
@@ -397,13 +397,13 @@ __init__( (object)arg1) -> object :
     C++ signature :
         void * __ptr64 __init__(class boost::python::api::object)'''
     ...
-    def flush (self, *args, **kwargs)-> None :
+    def flush (self, *args, **kwargs)-> None:
       '''flush( (stdout)arg1) -> None :
 
     C++ signature :
         void flush(class py_redirector<1> {lvalue})'''
     ...
-    def write (self, *args, **kwargs)-> None :
+    def write (self, *args, **kwargs)-> None:
       '''write( (stdout)arg1, (str)arg2) -> None :
 
     C++ signature :
