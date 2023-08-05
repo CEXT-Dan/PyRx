@@ -1040,65 +1040,35 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def altSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def alternatePrefix (self, *args, **kwargs)-> str:
-      '''alternatePrefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternatePrefix(class PyDbDimension {lvalue})'''
+    def alternatePrefix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def alternateSuffix (self, *args, **kwargs)-> str:
-      '''alternateSuffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternateSuffix(class PyDbDimension {lvalue})'''
+    def alternateSuffix (self: Dimension)-> str:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -1112,11 +1082,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def blockId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''blockTransform( (Dimension)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    def blockTransform (self: Dimension)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -1133,11 +1100,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def castShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def centerMarkSize (self, *args, **kwargs)-> float:
-      '''centerMarkSize( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double centerMarkSize(class PyDbDimension {lvalue})'''
+    def centerMarkSize (self: Dimension)-> float:
+      '''                             '''
     ...
     def className (self, *args, **kwargs)-> str:
       '''className() -> str :
@@ -1175,35 +1139,20 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimBlockId( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimBlockId(class PyDbDimension {lvalue})'''
+    def dimBlockId (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimBlockPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''dimBlockPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimBlockPosition(class PyDbDimension {lvalue})'''
+    def dimBlockPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def dimExt1Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt1Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt1Linetype(class PyDbDimension {lvalue})'''
+    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimExt2Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt2Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt2Linetype(class PyDbDimension {lvalue})'''
+    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimLineLinetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimLineLinetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimLineLinetype(class PyDbDimension {lvalue})'''
+    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def dimLinePoint (self, *args, **kwargs)-> PyGe.Point3d:
       '''dimLinePoint( (AlignedDimension)arg1) -> Point3d :
@@ -1211,17 +1160,11 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     C++ signature :
         class AcGePoint3d dimLinePoint(class PyDbAlignedDimension {lvalue})'''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimensionStyle( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimensionStyle(class PyDbDimension {lvalue})'''
+    def dimensionStyle (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionText (self, *args, **kwargs)-> str:
-      '''dimensionText( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimensionText(class PyDbDimension {lvalue})'''
+    def dimensionText (self: Dimension)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -1238,11 +1181,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbDimension {lvalue})'''
+    def elevation (self: Dimension)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -1279,32 +1219,20 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self, *args, **kwargs)-> None:
-      '''generateLayout( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbDimension {lvalue})'''
+    def generateLayout (self: Dimension)-> None:
+      '''                             '''
     ...
-    def getArrowFirstIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowFirstIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowFirstIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowFirstIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def getArrowSecondIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowSecondIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowSecondIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Dimension)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
+    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -1339,11 +1267,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def horizontalRotation (self, *args, **kwargs)-> float:
-      '''horizontalRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double horizontalRotation(class PyDbDimension {lvalue})'''
+    def horizontalRotation (self: Dimension)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -1351,23 +1276,14 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inspection (self, *args, **kwargs)-> bool:
-      '''inspection( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool inspection(class PyDbDimension {lvalue})'''
+    def inspection (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def inspectionFrame (self, *args, **kwargs)-> int:
-      '''inspectionFrame( (Dimension)arg1) -> int :
-
-    C++ signature :
-        int inspectionFrame(class PyDbDimension {lvalue})'''
+    def inspectionFrame (self: Dimension)-> int:
+      '''                             '''
     ...
-    def inspectionLabel (self, *args, **kwargs)-> str:
-      '''inspectionLabel( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    def inspectionLabel (self: Dimension)-> str:
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -1399,23 +1315,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isConstraintDynamic (self, *args, **kwargs)-> bool:
-      '''isConstraintDynamic( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isConstraintDynamic(class PyDbDimension {lvalue})'''
+    def isConstraintDynamic (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def isConstraintObject (self, *args, **kwargs)-> tuple:
-      '''isConstraintObject( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isConstraintObject(class PyDbDimension {lvalue})'''
+    def isConstraintObject (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def isDynamicDimension (self, *args, **kwargs)-> bool:
-      '''isDynamicDimension( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicDimension(class PyDbDimension {lvalue})'''
+    def isDynamicDimension (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -1423,11 +1330,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self, *args, **kwargs)-> bool:
-      '''isHorizontalRefTextRotation( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isHorizontalRefTextRotation(class PyDbDimension {lvalue})'''
+    def isHorizontalRefTextRotation (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -1471,11 +1375,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self, *args, **kwargs)-> bool:
-      '''isUsingDefaultTextPosition( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def isUsingDefaultTextPosition (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -1519,17 +1420,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> float:
-      '''measurement( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double measurement(class PyDbDimension {lvalue})'''
+    def measurement (self: Dimension)-> float:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Dimension)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbDimension {lvalue})'''
+    def normal (self: Dimension)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -1546,11 +1441,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def prefix (self, *args, **kwargs)-> str:
-      '''prefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    def prefix (self: Dimension)-> str:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -1558,16 +1450,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def recomputeDimBlock (self, *args, **kwargs)-> None:
-      '''recomputeDimBlock( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue})
-
-recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue},bool)'''
+    def recomputeDimBlock (self: Dimension)-> None:
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None:
       '''                             '''
@@ -1584,11 +1468,8 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeTextField (self, *args, **kwargs)-> None:
-      '''removeTextField( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void removeTextField(class PyDbDimension {lvalue})'''
+    def removeTextField (self: Dimension)-> None:
+      '''                             '''
     ...
     def resetTextDefinedSize (self, *args, **kwargs)-> None:
       '''resetTextDefinedSize( (Dimension)arg1) -> None :
@@ -1992,119 +1873,65 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setXLine2Point(class PyDbAlignedDimension {lvalue},class AcGePoint3d)'''
     ...
-    def shouldParticipateInOPM (self, *args, **kwargs)-> bool:
-      '''shouldParticipateInOPM( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
+    def shouldParticipateInOPM (self: Dimension)-> bool:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def suffix (self, *args, **kwargs)-> str:
-      '''suffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suffix(class PyDbDimension {lvalue})'''
+    def suffix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def suppressAngularLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressAngularTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''suppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroFeet(class PyDbDimension {lvalue})'''
+    def suppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroInches (self, *args, **kwargs)-> bool:
-      '''suppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroInches(class PyDbDimension {lvalue})'''
+    def suppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textAttachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint:
-      '''textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint:
+      '''                             '''
     ...
-    def textDefinedSize (self, *args, **kwargs)-> tuple:
-      '''textDefinedSize( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple textDefinedSize(class PyDbDimension {lvalue})'''
+    def textDefinedSize (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def textLineSpacingFactor (self, *args, **kwargs)-> float:
-      '''textLineSpacingFactor( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textLineSpacingFactor(class PyDbDimension {lvalue})'''
+    def textLineSpacingFactor (self: Dimension)-> float:
+      '''                             '''
     ...
-    def textLineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle:
-      '''textLineSpacingStyle( (Dimension)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle textLineSpacingStyle(class PyDbDimension {lvalue})'''
+    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle:
+      '''                             '''
     ...
-    def textPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''textPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d textPosition(class PyDbDimension {lvalue})'''
+    def textPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def textRotation (self, *args, **kwargs)-> float:
-      '''textRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textRotation(class PyDbDimension {lvalue})'''
+    def textRotation (self: Dimension)-> float:
+      '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -2115,17 +1942,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def useDefaultTextPosition (self, *args, **kwargs)-> None:
-      '''useDefaultTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def useDefaultTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
-    def useSetTextPosition (self, *args, **kwargs)-> None:
-      '''useSetTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useSetTextPosition(class PyDbDimension {lvalue})'''
+    def useSetTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -3011,65 +2832,35 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def altSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def alternatePrefix (self, *args, **kwargs)-> str:
-      '''alternatePrefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternatePrefix(class PyDbDimension {lvalue})'''
+    def alternatePrefix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def alternateSuffix (self, *args, **kwargs)-> str:
-      '''alternateSuffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternateSuffix(class PyDbDimension {lvalue})'''
+    def alternateSuffix (self: Dimension)-> str:
+      '''                             '''
     ...
     def arcEndParam (self, *args, **kwargs)-> float:
       '''arcEndParam( (ArcDimension)arg1) -> float :
@@ -3107,11 +2898,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def blockId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''blockTransform( (Dimension)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    def blockTransform (self: Dimension)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -3128,11 +2916,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def castShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def centerMarkSize (self, *args, **kwargs)-> float:
-      '''centerMarkSize( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double centerMarkSize(class PyDbDimension {lvalue})'''
+    def centerMarkSize (self: Dimension)-> float:
+      '''                             '''
     ...
     def centerPoint (self, *args, **kwargs)-> PyGe.Point3d:
       '''centerPoint( (ArcDimension)arg1) -> Point3d :
@@ -3176,47 +2961,26 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimBlockId( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimBlockId(class PyDbDimension {lvalue})'''
+    def dimBlockId (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimBlockPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''dimBlockPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimBlockPosition(class PyDbDimension {lvalue})'''
+    def dimBlockPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def dimExt1Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt1Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt1Linetype(class PyDbDimension {lvalue})'''
+    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimExt2Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt2Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt2Linetype(class PyDbDimension {lvalue})'''
+    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimLineLinetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimLineLinetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimLineLinetype(class PyDbDimension {lvalue})'''
+    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimensionStyle( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimensionStyle(class PyDbDimension {lvalue})'''
+    def dimensionStyle (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionText (self, *args, **kwargs)-> str:
-      '''dimensionText( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimensionText(class PyDbDimension {lvalue})'''
+    def dimensionText (self: Dimension)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -3233,11 +2997,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbDimension {lvalue})'''
+    def elevation (self: Dimension)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -3274,32 +3035,20 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self, *args, **kwargs)-> None:
-      '''generateLayout( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbDimension {lvalue})'''
+    def generateLayout (self: Dimension)-> None:
+      '''                             '''
     ...
-    def getArrowFirstIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowFirstIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowFirstIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowFirstIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def getArrowSecondIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowSecondIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowSecondIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Dimension)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
+    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -3340,11 +3089,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def horizontalRotation (self, *args, **kwargs)-> float:
-      '''horizontalRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double horizontalRotation(class PyDbDimension {lvalue})'''
+    def horizontalRotation (self: Dimension)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -3352,23 +3098,14 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inspection (self, *args, **kwargs)-> bool:
-      '''inspection( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool inspection(class PyDbDimension {lvalue})'''
+    def inspection (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def inspectionFrame (self, *args, **kwargs)-> int:
-      '''inspectionFrame( (Dimension)arg1) -> int :
-
-    C++ signature :
-        int inspectionFrame(class PyDbDimension {lvalue})'''
+    def inspectionFrame (self: Dimension)-> int:
+      '''                             '''
     ...
-    def inspectionLabel (self, *args, **kwargs)-> str:
-      '''inspectionLabel( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    def inspectionLabel (self: Dimension)-> str:
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -3400,23 +3137,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isConstraintDynamic (self, *args, **kwargs)-> bool:
-      '''isConstraintDynamic( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isConstraintDynamic(class PyDbDimension {lvalue})'''
+    def isConstraintDynamic (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def isConstraintObject (self, *args, **kwargs)-> tuple:
-      '''isConstraintObject( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isConstraintObject(class PyDbDimension {lvalue})'''
+    def isConstraintObject (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def isDynamicDimension (self, *args, **kwargs)-> bool:
-      '''isDynamicDimension( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicDimension(class PyDbDimension {lvalue})'''
+    def isDynamicDimension (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -3424,11 +3152,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self, *args, **kwargs)-> bool:
-      '''isHorizontalRefTextRotation( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isHorizontalRefTextRotation(class PyDbDimension {lvalue})'''
+    def isHorizontalRefTextRotation (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -3478,11 +3203,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self, *args, **kwargs)-> bool:
-      '''isUsingDefaultTextPosition( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def isUsingDefaultTextPosition (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -3526,17 +3248,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> float:
-      '''measurement( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double measurement(class PyDbDimension {lvalue})'''
+    def measurement (self: Dimension)-> float:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Dimension)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbDimension {lvalue})'''
+    def normal (self: Dimension)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -3547,11 +3263,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def prefix (self, *args, **kwargs)-> str:
-      '''prefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    def prefix (self: Dimension)-> str:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -3559,16 +3272,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def recomputeDimBlock (self, *args, **kwargs)-> None:
-      '''recomputeDimBlock( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue})
-
-recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue},bool)'''
+    def recomputeDimBlock (self: Dimension)-> None:
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None:
       '''                             '''
@@ -3585,11 +3290,8 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeTextField (self, *args, **kwargs)-> None:
-      '''removeTextField( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void removeTextField(class PyDbDimension {lvalue})'''
+    def removeTextField (self: Dimension)-> None:
+      '''                             '''
     ...
     def resetTextDefinedSize (self, *args, **kwargs)-> None:
       '''resetTextDefinedSize( (Dimension)arg1) -> None :
@@ -4023,119 +3725,65 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setXLine2Point(class PyDbArcDimension {lvalue},class AcGePoint3d)'''
     ...
-    def shouldParticipateInOPM (self, *args, **kwargs)-> bool:
-      '''shouldParticipateInOPM( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
+    def shouldParticipateInOPM (self: Dimension)-> bool:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def suffix (self, *args, **kwargs)-> str:
-      '''suffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suffix(class PyDbDimension {lvalue})'''
+    def suffix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def suppressAngularLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressAngularTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''suppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroFeet(class PyDbDimension {lvalue})'''
+    def suppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroInches (self, *args, **kwargs)-> bool:
-      '''suppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroInches(class PyDbDimension {lvalue})'''
+    def suppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textAttachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint:
-      '''textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint:
+      '''                             '''
     ...
-    def textDefinedSize (self, *args, **kwargs)-> tuple:
-      '''textDefinedSize( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple textDefinedSize(class PyDbDimension {lvalue})'''
+    def textDefinedSize (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def textLineSpacingFactor (self, *args, **kwargs)-> float:
-      '''textLineSpacingFactor( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textLineSpacingFactor(class PyDbDimension {lvalue})'''
+    def textLineSpacingFactor (self: Dimension)-> float:
+      '''                             '''
     ...
-    def textLineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle:
-      '''textLineSpacingStyle( (Dimension)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle textLineSpacingStyle(class PyDbDimension {lvalue})'''
+    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle:
+      '''                             '''
     ...
-    def textPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''textPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d textPosition(class PyDbDimension {lvalue})'''
+    def textPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def textRotation (self, *args, **kwargs)-> float:
-      '''textRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textRotation(class PyDbDimension {lvalue})'''
+    def textRotation (self: Dimension)-> float:
+      '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -4146,17 +3794,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def useDefaultTextPosition (self, *args, **kwargs)-> None:
-      '''useDefaultTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def useDefaultTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
-    def useSetTextPosition (self, *args, **kwargs)-> None:
-      '''useSetTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useSetTextPosition(class PyDbDimension {lvalue})'''
+    def useSetTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -13077,65 +12719,35 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def altSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def alternatePrefix (self, *args, **kwargs)-> str:
-      '''alternatePrefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternatePrefix(class PyDbDimension {lvalue})'''
+    def alternatePrefix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def alternateSuffix (self, *args, **kwargs)-> str:
-      '''alternateSuffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternateSuffix(class PyDbDimension {lvalue})'''
+    def alternateSuffix (self: Dimension)-> str:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -13149,11 +12761,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def blockId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''blockTransform( (Dimension)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    def blockTransform (self: Dimension)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -13170,11 +12779,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def castShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def centerMarkSize (self, *args, **kwargs)-> float:
-      '''centerMarkSize( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double centerMarkSize(class PyDbDimension {lvalue})'''
+    def centerMarkSize (self: Dimension)-> float:
+      '''                             '''
     ...
     def chordPoint (self, *args, **kwargs)-> PyGe.Point3d:
       '''chordPoint( (DiametricDimension)arg1) -> Point3d :
@@ -13218,47 +12824,26 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimBlockId( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimBlockId(class PyDbDimension {lvalue})'''
+    def dimBlockId (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimBlockPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''dimBlockPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimBlockPosition(class PyDbDimension {lvalue})'''
+    def dimBlockPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def dimExt1Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt1Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt1Linetype(class PyDbDimension {lvalue})'''
+    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimExt2Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt2Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt2Linetype(class PyDbDimension {lvalue})'''
+    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimLineLinetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimLineLinetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimLineLinetype(class PyDbDimension {lvalue})'''
+    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimensionStyle( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimensionStyle(class PyDbDimension {lvalue})'''
+    def dimensionStyle (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionText (self, *args, **kwargs)-> str:
-      '''dimensionText( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimensionText(class PyDbDimension {lvalue})'''
+    def dimensionText (self: Dimension)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -13275,11 +12860,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbDimension {lvalue})'''
+    def elevation (self: Dimension)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -13334,32 +12916,20 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self, *args, **kwargs)-> None:
-      '''generateLayout( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbDimension {lvalue})'''
+    def generateLayout (self: Dimension)-> None:
+      '''                             '''
     ...
-    def getArrowFirstIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowFirstIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowFirstIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowFirstIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def getArrowSecondIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowSecondIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowSecondIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Dimension)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
+    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -13394,11 +12964,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def horizontalRotation (self, *args, **kwargs)-> float:
-      '''horizontalRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double horizontalRotation(class PyDbDimension {lvalue})'''
+    def horizontalRotation (self: Dimension)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -13406,23 +12973,14 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inspection (self, *args, **kwargs)-> bool:
-      '''inspection( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool inspection(class PyDbDimension {lvalue})'''
+    def inspection (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def inspectionFrame (self, *args, **kwargs)-> int:
-      '''inspectionFrame( (Dimension)arg1) -> int :
-
-    C++ signature :
-        int inspectionFrame(class PyDbDimension {lvalue})'''
+    def inspectionFrame (self: Dimension)-> int:
+      '''                             '''
     ...
-    def inspectionLabel (self, *args, **kwargs)-> str:
-      '''inspectionLabel( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    def inspectionLabel (self: Dimension)-> str:
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -13454,23 +13012,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isConstraintDynamic (self, *args, **kwargs)-> bool:
-      '''isConstraintDynamic( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isConstraintDynamic(class PyDbDimension {lvalue})'''
+    def isConstraintDynamic (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def isConstraintObject (self, *args, **kwargs)-> tuple:
-      '''isConstraintObject( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isConstraintObject(class PyDbDimension {lvalue})'''
+    def isConstraintObject (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def isDynamicDimension (self, *args, **kwargs)-> bool:
-      '''isDynamicDimension( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicDimension(class PyDbDimension {lvalue})'''
+    def isDynamicDimension (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -13478,11 +13027,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self, *args, **kwargs)-> bool:
-      '''isHorizontalRefTextRotation( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isHorizontalRefTextRotation(class PyDbDimension {lvalue})'''
+    def isHorizontalRefTextRotation (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -13526,11 +13072,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self, *args, **kwargs)-> bool:
-      '''isUsingDefaultTextPosition( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def isUsingDefaultTextPosition (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -13568,17 +13111,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> float:
-      '''measurement( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double measurement(class PyDbDimension {lvalue})'''
+    def measurement (self: Dimension)-> float:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Dimension)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbDimension {lvalue})'''
+    def normal (self: Dimension)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -13589,11 +13126,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def prefix (self, *args, **kwargs)-> str:
-      '''prefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    def prefix (self: Dimension)-> str:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -13601,16 +13135,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def recomputeDimBlock (self, *args, **kwargs)-> None:
-      '''recomputeDimBlock( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue})
-
-recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue},bool)'''
+    def recomputeDimBlock (self: Dimension)-> None:
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None:
       '''                             '''
@@ -13627,11 +13153,8 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeTextField (self, *args, **kwargs)-> None:
-      '''removeTextField( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void removeTextField(class PyDbDimension {lvalue})'''
+    def removeTextField (self: Dimension)-> None:
+      '''                             '''
     ...
     def resetTextDefinedSize (self, *args, **kwargs)-> None:
       '''resetTextDefinedSize( (Dimension)arg1) -> None :
@@ -14029,119 +13552,65 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
     ...
-    def shouldParticipateInOPM (self, *args, **kwargs)-> bool:
-      '''shouldParticipateInOPM( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
+    def shouldParticipateInOPM (self: Dimension)-> bool:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def suffix (self, *args, **kwargs)-> str:
-      '''suffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suffix(class PyDbDimension {lvalue})'''
+    def suffix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def suppressAngularLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressAngularTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''suppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroFeet(class PyDbDimension {lvalue})'''
+    def suppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroInches (self, *args, **kwargs)-> bool:
-      '''suppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroInches(class PyDbDimension {lvalue})'''
+    def suppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textAttachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint:
-      '''textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint:
+      '''                             '''
     ...
-    def textDefinedSize (self, *args, **kwargs)-> tuple:
-      '''textDefinedSize( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple textDefinedSize(class PyDbDimension {lvalue})'''
+    def textDefinedSize (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def textLineSpacingFactor (self, *args, **kwargs)-> float:
-      '''textLineSpacingFactor( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textLineSpacingFactor(class PyDbDimension {lvalue})'''
+    def textLineSpacingFactor (self: Dimension)-> float:
+      '''                             '''
     ...
-    def textLineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle:
-      '''textLineSpacingStyle( (Dimension)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle textLineSpacingStyle(class PyDbDimension {lvalue})'''
+    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle:
+      '''                             '''
     ...
-    def textPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''textPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d textPosition(class PyDbDimension {lvalue})'''
+    def textPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def textRotation (self, *args, **kwargs)-> float:
-      '''textRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textRotation(class PyDbDimension {lvalue})'''
+    def textRotation (self: Dimension)-> float:
+      '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -14152,17 +13621,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def useDefaultTextPosition (self, *args, **kwargs)-> None:
-      '''useDefaultTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def useDefaultTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
-    def useSetTextPosition (self, *args, **kwargs)-> None:
-      '''useSetTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useSetTextPosition(class PyDbDimension {lvalue})'''
+    def useSetTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -15155,65 +14618,35 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def altSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def alternatePrefix (self, *args, **kwargs)-> str:
-      '''alternatePrefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternatePrefix(class PyDbDimension {lvalue})'''
+    def alternatePrefix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def alternateSuffix (self, *args, **kwargs)-> str:
-      '''alternateSuffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternateSuffix(class PyDbDimension {lvalue})'''
+    def alternateSuffix (self: Dimension)-> str:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -15227,11 +14660,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def blockId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''blockTransform( (Dimension)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    def blockTransform (self: Dimension)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -15248,11 +14678,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def castShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def centerMarkSize (self, *args, **kwargs)-> float:
-      '''centerMarkSize( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double centerMarkSize(class PyDbDimension {lvalue})'''
+    def centerMarkSize (self: Dimension)-> float:
+      '''                             '''
     ...
     def className (self, *args, **kwargs)-> str:
       '''className() -> str :
@@ -15290,47 +14717,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimBlockId( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimBlockId(class PyDbDimension {lvalue})'''
+    def dimBlockId (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimBlockPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''dimBlockPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimBlockPosition(class PyDbDimension {lvalue})'''
+    def dimBlockPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def dimExt1Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt1Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt1Linetype(class PyDbDimension {lvalue})'''
+    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimExt2Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt2Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt2Linetype(class PyDbDimension {lvalue})'''
+    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimLineLinetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimLineLinetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimLineLinetype(class PyDbDimension {lvalue})'''
+    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimensionStyle( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimensionStyle(class PyDbDimension {lvalue})'''
+    def dimensionStyle (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionText (self, *args, **kwargs)-> str:
-      '''dimensionText( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimensionText(class PyDbDimension {lvalue})'''
+    def dimensionText (self: Dimension)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -15347,11 +14753,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbDimension {lvalue})'''
+    def elevation (self: Dimension)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -15388,32 +14791,20 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self, *args, **kwargs)-> None:
-      '''generateLayout( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbDimension {lvalue})'''
+    def generateLayout (self: Dimension)-> None:
+      '''                             '''
     ...
-    def getArrowFirstIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowFirstIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowFirstIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowFirstIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def getArrowSecondIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowSecondIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowSecondIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Dimension)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
+    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -15448,11 +14839,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def horizontalRotation (self, *args, **kwargs)-> float:
-      '''horizontalRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double horizontalRotation(class PyDbDimension {lvalue})'''
+    def horizontalRotation (self: Dimension)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -15460,23 +14848,14 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inspection (self, *args, **kwargs)-> bool:
-      '''inspection( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool inspection(class PyDbDimension {lvalue})'''
+    def inspection (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def inspectionFrame (self, *args, **kwargs)-> int:
-      '''inspectionFrame( (Dimension)arg1) -> int :
-
-    C++ signature :
-        int inspectionFrame(class PyDbDimension {lvalue})'''
+    def inspectionFrame (self: Dimension)-> int:
+      '''                             '''
     ...
-    def inspectionLabel (self, *args, **kwargs)-> str:
-      '''inspectionLabel( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    def inspectionLabel (self: Dimension)-> str:
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -15508,23 +14887,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isConstraintDynamic (self, *args, **kwargs)-> bool:
-      '''isConstraintDynamic( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isConstraintDynamic(class PyDbDimension {lvalue})'''
+    def isConstraintDynamic (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def isConstraintObject (self, *args, **kwargs)-> tuple:
-      '''isConstraintObject( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isConstraintObject(class PyDbDimension {lvalue})'''
+    def isConstraintObject (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def isDynamicDimension (self, *args, **kwargs)-> bool:
-      '''isDynamicDimension( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicDimension(class PyDbDimension {lvalue})'''
+    def isDynamicDimension (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -15532,11 +14902,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self, *args, **kwargs)-> bool:
-      '''isHorizontalRefTextRotation( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isHorizontalRefTextRotation(class PyDbDimension {lvalue})'''
+    def isHorizontalRefTextRotation (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -15580,11 +14947,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self, *args, **kwargs)-> bool:
-      '''isUsingDefaultTextPosition( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def isUsingDefaultTextPosition (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -15616,17 +14980,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> float:
-      '''measurement( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double measurement(class PyDbDimension {lvalue})'''
+    def measurement (self: Dimension)-> float:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Dimension)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbDimension {lvalue})'''
+    def normal (self: Dimension)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -15637,11 +14995,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def prefix (self, *args, **kwargs)-> str:
-      '''prefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    def prefix (self: Dimension)-> str:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -15649,16 +15004,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def recomputeDimBlock (self, *args, **kwargs)-> None:
-      '''recomputeDimBlock( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue})
-
-recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue},bool)'''
+    def recomputeDimBlock (self: Dimension)-> None:
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None:
       '''                             '''
@@ -15675,11 +15022,8 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeTextField (self, *args, **kwargs)-> None:
-      '''removeTextField( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void removeTextField(class PyDbDimension {lvalue})'''
+    def removeTextField (self: Dimension)-> None:
+      '''                             '''
     ...
     def resetTextDefinedSize (self, *args, **kwargs)-> None:
       '''resetTextDefinedSize( (Dimension)arg1) -> None :
@@ -16047,119 +15391,65 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
     ...
-    def shouldParticipateInOPM (self, *args, **kwargs)-> bool:
-      '''shouldParticipateInOPM( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
+    def shouldParticipateInOPM (self: Dimension)-> bool:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def suffix (self, *args, **kwargs)-> str:
-      '''suffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suffix(class PyDbDimension {lvalue})'''
+    def suffix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def suppressAngularLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressAngularTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''suppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroFeet(class PyDbDimension {lvalue})'''
+    def suppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroInches (self, *args, **kwargs)-> bool:
-      '''suppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroInches(class PyDbDimension {lvalue})'''
+    def suppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textAttachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint:
-      '''textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint:
+      '''                             '''
     ...
-    def textDefinedSize (self, *args, **kwargs)-> tuple:
-      '''textDefinedSize( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple textDefinedSize(class PyDbDimension {lvalue})'''
+    def textDefinedSize (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def textLineSpacingFactor (self, *args, **kwargs)-> float:
-      '''textLineSpacingFactor( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textLineSpacingFactor(class PyDbDimension {lvalue})'''
+    def textLineSpacingFactor (self: Dimension)-> float:
+      '''                             '''
     ...
-    def textLineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle:
-      '''textLineSpacingStyle( (Dimension)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle textLineSpacingStyle(class PyDbDimension {lvalue})'''
+    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle:
+      '''                             '''
     ...
-    def textPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''textPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d textPosition(class PyDbDimension {lvalue})'''
+    def textPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def textRotation (self, *args, **kwargs)-> float:
-      '''textRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textRotation(class PyDbDimension {lvalue})'''
+    def textRotation (self: Dimension)-> float:
+      '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -16170,17 +15460,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def useDefaultTextPosition (self, *args, **kwargs)-> None:
-      '''useDefaultTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def useDefaultTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
-    def useSetTextPosition (self, *args, **kwargs)-> None:
-      '''useSetTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useSetTextPosition(class PyDbDimension {lvalue})'''
+    def useSetTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -29847,65 +29131,35 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def altSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def alternatePrefix (self, *args, **kwargs)-> str:
-      '''alternatePrefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternatePrefix(class PyDbDimension {lvalue})'''
+    def alternatePrefix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def alternateSuffix (self, *args, **kwargs)-> str:
-      '''alternateSuffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternateSuffix(class PyDbDimension {lvalue})'''
+    def alternateSuffix (self: Dimension)-> str:
+      '''                             '''
     ...
     def arcPoint (self, *args, **kwargs)-> PyGe.Point3d:
       '''arcPoint( (LineAngularDimension2)arg1) -> Point3d :
@@ -29925,11 +29179,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def blockId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''blockTransform( (Dimension)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    def blockTransform (self: Dimension)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -29946,11 +29197,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def castShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def centerMarkSize (self, *args, **kwargs)-> float:
-      '''centerMarkSize( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double centerMarkSize(class PyDbDimension {lvalue})'''
+    def centerMarkSize (self: Dimension)-> float:
+      '''                             '''
     ...
     def className (self, *args, **kwargs)-> str:
       '''className() -> str :
@@ -29988,47 +29236,26 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimBlockId( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimBlockId(class PyDbDimension {lvalue})'''
+    def dimBlockId (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimBlockPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''dimBlockPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimBlockPosition(class PyDbDimension {lvalue})'''
+    def dimBlockPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def dimExt1Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt1Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt1Linetype(class PyDbDimension {lvalue})'''
+    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimExt2Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt2Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt2Linetype(class PyDbDimension {lvalue})'''
+    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimLineLinetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimLineLinetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimLineLinetype(class PyDbDimension {lvalue})'''
+    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimensionStyle( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimensionStyle(class PyDbDimension {lvalue})'''
+    def dimensionStyle (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionText (self, *args, **kwargs)-> str:
-      '''dimensionText( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimensionText(class PyDbDimension {lvalue})'''
+    def dimensionText (self: Dimension)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -30045,11 +29272,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbDimension {lvalue})'''
+    def elevation (self: Dimension)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -30092,32 +29316,20 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self, *args, **kwargs)-> None:
-      '''generateLayout( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbDimension {lvalue})'''
+    def generateLayout (self: Dimension)-> None:
+      '''                             '''
     ...
-    def getArrowFirstIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowFirstIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowFirstIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowFirstIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def getArrowSecondIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowSecondIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowSecondIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Dimension)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
+    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -30152,11 +29364,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def horizontalRotation (self, *args, **kwargs)-> float:
-      '''horizontalRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double horizontalRotation(class PyDbDimension {lvalue})'''
+    def horizontalRotation (self: Dimension)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -30164,23 +29373,14 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inspection (self, *args, **kwargs)-> bool:
-      '''inspection( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool inspection(class PyDbDimension {lvalue})'''
+    def inspection (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def inspectionFrame (self, *args, **kwargs)-> int:
-      '''inspectionFrame( (Dimension)arg1) -> int :
-
-    C++ signature :
-        int inspectionFrame(class PyDbDimension {lvalue})'''
+    def inspectionFrame (self: Dimension)-> int:
+      '''                             '''
     ...
-    def inspectionLabel (self, *args, **kwargs)-> str:
-      '''inspectionLabel( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    def inspectionLabel (self: Dimension)-> str:
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -30212,23 +29412,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isConstraintDynamic (self, *args, **kwargs)-> bool:
-      '''isConstraintDynamic( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isConstraintDynamic(class PyDbDimension {lvalue})'''
+    def isConstraintDynamic (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def isConstraintObject (self, *args, **kwargs)-> tuple:
-      '''isConstraintObject( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isConstraintObject(class PyDbDimension {lvalue})'''
+    def isConstraintObject (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def isDynamicDimension (self, *args, **kwargs)-> bool:
-      '''isDynamicDimension( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicDimension(class PyDbDimension {lvalue})'''
+    def isDynamicDimension (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -30236,11 +29427,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self, *args, **kwargs)-> bool:
-      '''isHorizontalRefTextRotation( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isHorizontalRefTextRotation(class PyDbDimension {lvalue})'''
+    def isHorizontalRefTextRotation (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -30284,11 +29472,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self, *args, **kwargs)-> bool:
-      '''isUsingDefaultTextPosition( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def isUsingDefaultTextPosition (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -30320,17 +29505,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> float:
-      '''measurement( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double measurement(class PyDbDimension {lvalue})'''
+    def measurement (self: Dimension)-> float:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Dimension)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbDimension {lvalue})'''
+    def normal (self: Dimension)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -30341,11 +29520,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def prefix (self, *args, **kwargs)-> str:
-      '''prefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    def prefix (self: Dimension)-> str:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -30353,16 +29529,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def recomputeDimBlock (self, *args, **kwargs)-> None:
-      '''recomputeDimBlock( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue})
-
-recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue},bool)'''
+    def recomputeDimBlock (self: Dimension)-> None:
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None:
       '''                             '''
@@ -30379,11 +29547,8 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeTextField (self, *args, **kwargs)-> None:
-      '''removeTextField( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void removeTextField(class PyDbDimension {lvalue})'''
+    def removeTextField (self: Dimension)-> None:
+      '''                             '''
     ...
     def resetTextDefinedSize (self, *args, **kwargs)-> None:
       '''resetTextDefinedSize( (Dimension)arg1) -> None :
@@ -30787,119 +29952,65 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setXLine2Start(class PyDb2LineAngularDimension {lvalue},class AcGePoint3d)'''
     ...
-    def shouldParticipateInOPM (self, *args, **kwargs)-> bool:
-      '''shouldParticipateInOPM( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
+    def shouldParticipateInOPM (self: Dimension)-> bool:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def suffix (self, *args, **kwargs)-> str:
-      '''suffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suffix(class PyDbDimension {lvalue})'''
+    def suffix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def suppressAngularLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressAngularTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''suppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroFeet(class PyDbDimension {lvalue})'''
+    def suppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroInches (self, *args, **kwargs)-> bool:
-      '''suppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroInches(class PyDbDimension {lvalue})'''
+    def suppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textAttachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint:
-      '''textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint:
+      '''                             '''
     ...
-    def textDefinedSize (self, *args, **kwargs)-> tuple:
-      '''textDefinedSize( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple textDefinedSize(class PyDbDimension {lvalue})'''
+    def textDefinedSize (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def textLineSpacingFactor (self, *args, **kwargs)-> float:
-      '''textLineSpacingFactor( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textLineSpacingFactor(class PyDbDimension {lvalue})'''
+    def textLineSpacingFactor (self: Dimension)-> float:
+      '''                             '''
     ...
-    def textLineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle:
-      '''textLineSpacingStyle( (Dimension)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle textLineSpacingStyle(class PyDbDimension {lvalue})'''
+    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle:
+      '''                             '''
     ...
-    def textPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''textPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d textPosition(class PyDbDimension {lvalue})'''
+    def textPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def textRotation (self, *args, **kwargs)-> float:
-      '''textRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textRotation(class PyDbDimension {lvalue})'''
+    def textRotation (self: Dimension)-> float:
+      '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -30910,17 +30021,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def useDefaultTextPosition (self, *args, **kwargs)-> None:
-      '''useDefaultTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def useDefaultTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
-    def useSetTextPosition (self, *args, **kwargs)-> None:
-      '''useSetTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useSetTextPosition(class PyDbDimension {lvalue})'''
+    def useSetTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -39654,65 +38759,35 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def altSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def alternatePrefix (self, *args, **kwargs)-> str:
-      '''alternatePrefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternatePrefix(class PyDbDimension {lvalue})'''
+    def alternatePrefix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def alternateSuffix (self, *args, **kwargs)-> str:
-      '''alternateSuffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternateSuffix(class PyDbDimension {lvalue})'''
+    def alternateSuffix (self: Dimension)-> str:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -39726,11 +38801,8 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def blockId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''blockTransform( (Dimension)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    def blockTransform (self: Dimension)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -39747,11 +38819,8 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def castShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def centerMarkSize (self, *args, **kwargs)-> float:
-      '''centerMarkSize( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double centerMarkSize(class PyDbDimension {lvalue})'''
+    def centerMarkSize (self: Dimension)-> float:
+      '''                             '''
     ...
     def className (self, *args, **kwargs)-> str:
       '''className() -> str :
@@ -39795,47 +38864,26 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimBlockId( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimBlockId(class PyDbDimension {lvalue})'''
+    def dimBlockId (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimBlockPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''dimBlockPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimBlockPosition(class PyDbDimension {lvalue})'''
+    def dimBlockPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def dimExt1Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt1Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt1Linetype(class PyDbDimension {lvalue})'''
+    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimExt2Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt2Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt2Linetype(class PyDbDimension {lvalue})'''
+    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimLineLinetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimLineLinetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimLineLinetype(class PyDbDimension {lvalue})'''
+    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimensionStyle( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimensionStyle(class PyDbDimension {lvalue})'''
+    def dimensionStyle (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionText (self, *args, **kwargs)-> str:
-      '''dimensionText( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimensionText(class PyDbDimension {lvalue})'''
+    def dimensionText (self: Dimension)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -39852,11 +38900,8 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbDimension {lvalue})'''
+    def elevation (self: Dimension)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -39893,32 +38938,20 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self, *args, **kwargs)-> None:
-      '''generateLayout( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbDimension {lvalue})'''
+    def generateLayout (self: Dimension)-> None:
+      '''                             '''
     ...
-    def getArrowFirstIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowFirstIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowFirstIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowFirstIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def getArrowSecondIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowSecondIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowSecondIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Dimension)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
+    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -39953,11 +38986,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def horizontalRotation (self, *args, **kwargs)-> float:
-      '''horizontalRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double horizontalRotation(class PyDbDimension {lvalue})'''
+    def horizontalRotation (self: Dimension)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -39965,23 +38995,14 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inspection (self, *args, **kwargs)-> bool:
-      '''inspection( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool inspection(class PyDbDimension {lvalue})'''
+    def inspection (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def inspectionFrame (self, *args, **kwargs)-> int:
-      '''inspectionFrame( (Dimension)arg1) -> int :
-
-    C++ signature :
-        int inspectionFrame(class PyDbDimension {lvalue})'''
+    def inspectionFrame (self: Dimension)-> int:
+      '''                             '''
     ...
-    def inspectionLabel (self, *args, **kwargs)-> str:
-      '''inspectionLabel( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    def inspectionLabel (self: Dimension)-> str:
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -40013,23 +39034,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isConstraintDynamic (self, *args, **kwargs)-> bool:
-      '''isConstraintDynamic( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isConstraintDynamic(class PyDbDimension {lvalue})'''
+    def isConstraintDynamic (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def isConstraintObject (self, *args, **kwargs)-> tuple:
-      '''isConstraintObject( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isConstraintObject(class PyDbDimension {lvalue})'''
+    def isConstraintObject (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def isDynamicDimension (self, *args, **kwargs)-> bool:
-      '''isDynamicDimension( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicDimension(class PyDbDimension {lvalue})'''
+    def isDynamicDimension (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -40037,11 +39049,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self, *args, **kwargs)-> bool:
-      '''isHorizontalRefTextRotation( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isHorizontalRefTextRotation(class PyDbDimension {lvalue})'''
+    def isHorizontalRefTextRotation (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -40085,11 +39094,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self, *args, **kwargs)-> bool:
-      '''isUsingDefaultTextPosition( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def isUsingDefaultTextPosition (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isUsingXAxis (self, *args, **kwargs)-> bool:
       '''isUsingXAxis( (OrdinateDimension)arg1) -> bool :
@@ -40139,17 +39145,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> float:
-      '''measurement( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double measurement(class PyDbDimension {lvalue})'''
+    def measurement (self: Dimension)-> float:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Dimension)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbDimension {lvalue})'''
+    def normal (self: Dimension)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -40166,11 +39166,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def prefix (self, *args, **kwargs)-> str:
-      '''prefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    def prefix (self: Dimension)-> str:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -40178,16 +39175,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def recomputeDimBlock (self, *args, **kwargs)-> None:
-      '''recomputeDimBlock( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue})
-
-recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue},bool)'''
+    def recomputeDimBlock (self: Dimension)-> None:
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None:
       '''                             '''
@@ -40204,11 +39193,8 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeTextField (self, *args, **kwargs)-> None:
-      '''removeTextField( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void removeTextField(class PyDbDimension {lvalue})'''
+    def removeTextField (self: Dimension)-> None:
+      '''                             '''
     ...
     def resetTextDefinedSize (self, *args, **kwargs)-> None:
       '''resetTextDefinedSize( (Dimension)arg1) -> None :
@@ -40606,119 +39592,65 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
     ...
-    def shouldParticipateInOPM (self, *args, **kwargs)-> bool:
-      '''shouldParticipateInOPM( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
+    def shouldParticipateInOPM (self: Dimension)-> bool:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def suffix (self, *args, **kwargs)-> str:
-      '''suffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suffix(class PyDbDimension {lvalue})'''
+    def suffix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def suppressAngularLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressAngularTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''suppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroFeet(class PyDbDimension {lvalue})'''
+    def suppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroInches (self, *args, **kwargs)-> bool:
-      '''suppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroInches(class PyDbDimension {lvalue})'''
+    def suppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textAttachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint:
-      '''textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint:
+      '''                             '''
     ...
-    def textDefinedSize (self, *args, **kwargs)-> tuple:
-      '''textDefinedSize( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple textDefinedSize(class PyDbDimension {lvalue})'''
+    def textDefinedSize (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def textLineSpacingFactor (self, *args, **kwargs)-> float:
-      '''textLineSpacingFactor( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textLineSpacingFactor(class PyDbDimension {lvalue})'''
+    def textLineSpacingFactor (self: Dimension)-> float:
+      '''                             '''
     ...
-    def textLineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle:
-      '''textLineSpacingStyle( (Dimension)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle textLineSpacingStyle(class PyDbDimension {lvalue})'''
+    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle:
+      '''                             '''
     ...
-    def textPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''textPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d textPosition(class PyDbDimension {lvalue})'''
+    def textPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def textRotation (self, *args, **kwargs)-> float:
-      '''textRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textRotation(class PyDbDimension {lvalue})'''
+    def textRotation (self: Dimension)-> float:
+      '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -40729,17 +39661,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def useDefaultTextPosition (self, *args, **kwargs)-> None:
-      '''useDefaultTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def useDefaultTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
-    def useSetTextPosition (self, *args, **kwargs)-> None:
-      '''useSetTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useSetTextPosition(class PyDbDimension {lvalue})'''
+    def useSetTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
     def useXAxis (self, *args, **kwargs)-> None:
       '''useXAxis( (OrdinateDimension)arg1) -> None :
@@ -44200,65 +43126,35 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def altSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def alternatePrefix (self, *args, **kwargs)-> str:
-      '''alternatePrefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternatePrefix(class PyDbDimension {lvalue})'''
+    def alternatePrefix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def alternateSuffix (self, *args, **kwargs)-> str:
-      '''alternateSuffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternateSuffix(class PyDbDimension {lvalue})'''
+    def alternateSuffix (self: Dimension)-> str:
+      '''                             '''
     ...
     def arcPoint (self, *args, **kwargs)-> PyGe.Point3d:
       '''arcPoint( (Point3AngularDimension)arg1) -> Point3d :
@@ -44278,11 +43174,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def blockId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''blockTransform( (Dimension)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    def blockTransform (self: Dimension)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -44299,11 +43192,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def castShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def centerMarkSize (self, *args, **kwargs)-> float:
-      '''centerMarkSize( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double centerMarkSize(class PyDbDimension {lvalue})'''
+    def centerMarkSize (self: Dimension)-> float:
+      '''                             '''
     ...
     def centerPoint (self, *args, **kwargs)-> PyGe.Point3d:
       '''centerPoint( (Point3AngularDimension)arg1) -> Point3d :
@@ -44347,47 +43237,26 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimBlockId( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimBlockId(class PyDbDimension {lvalue})'''
+    def dimBlockId (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimBlockPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''dimBlockPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimBlockPosition(class PyDbDimension {lvalue})'''
+    def dimBlockPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def dimExt1Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt1Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt1Linetype(class PyDbDimension {lvalue})'''
+    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimExt2Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt2Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt2Linetype(class PyDbDimension {lvalue})'''
+    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimLineLinetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimLineLinetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimLineLinetype(class PyDbDimension {lvalue})'''
+    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimensionStyle( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimensionStyle(class PyDbDimension {lvalue})'''
+    def dimensionStyle (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionText (self, *args, **kwargs)-> str:
-      '''dimensionText( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimensionText(class PyDbDimension {lvalue})'''
+    def dimensionText (self: Dimension)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -44404,11 +43273,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbDimension {lvalue})'''
+    def elevation (self: Dimension)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -44451,32 +43317,20 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self, *args, **kwargs)-> None:
-      '''generateLayout( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbDimension {lvalue})'''
+    def generateLayout (self: Dimension)-> None:
+      '''                             '''
     ...
-    def getArrowFirstIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowFirstIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowFirstIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowFirstIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def getArrowSecondIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowSecondIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowSecondIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Dimension)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
+    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -44511,11 +43365,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def horizontalRotation (self, *args, **kwargs)-> float:
-      '''horizontalRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double horizontalRotation(class PyDbDimension {lvalue})'''
+    def horizontalRotation (self: Dimension)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -44523,23 +43374,14 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inspection (self, *args, **kwargs)-> bool:
-      '''inspection( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool inspection(class PyDbDimension {lvalue})'''
+    def inspection (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def inspectionFrame (self, *args, **kwargs)-> int:
-      '''inspectionFrame( (Dimension)arg1) -> int :
-
-    C++ signature :
-        int inspectionFrame(class PyDbDimension {lvalue})'''
+    def inspectionFrame (self: Dimension)-> int:
+      '''                             '''
     ...
-    def inspectionLabel (self, *args, **kwargs)-> str:
-      '''inspectionLabel( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    def inspectionLabel (self: Dimension)-> str:
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -44571,23 +43413,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isConstraintDynamic (self, *args, **kwargs)-> bool:
-      '''isConstraintDynamic( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isConstraintDynamic(class PyDbDimension {lvalue})'''
+    def isConstraintDynamic (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def isConstraintObject (self, *args, **kwargs)-> tuple:
-      '''isConstraintObject( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isConstraintObject(class PyDbDimension {lvalue})'''
+    def isConstraintObject (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def isDynamicDimension (self, *args, **kwargs)-> bool:
-      '''isDynamicDimension( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicDimension(class PyDbDimension {lvalue})'''
+    def isDynamicDimension (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -44595,11 +43428,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self, *args, **kwargs)-> bool:
-      '''isHorizontalRefTextRotation( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isHorizontalRefTextRotation(class PyDbDimension {lvalue})'''
+    def isHorizontalRefTextRotation (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -44643,11 +43473,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self, *args, **kwargs)-> bool:
-      '''isUsingDefaultTextPosition( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def isUsingDefaultTextPosition (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -44679,17 +43506,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> float:
-      '''measurement( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double measurement(class PyDbDimension {lvalue})'''
+    def measurement (self: Dimension)-> float:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Dimension)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbDimension {lvalue})'''
+    def normal (self: Dimension)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -44700,11 +43521,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def prefix (self, *args, **kwargs)-> str:
-      '''prefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    def prefix (self: Dimension)-> str:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -44712,16 +43530,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def recomputeDimBlock (self, *args, **kwargs)-> None:
-      '''recomputeDimBlock( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue})
-
-recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue},bool)'''
+    def recomputeDimBlock (self: Dimension)-> None:
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None:
       '''                             '''
@@ -44738,11 +43548,8 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeTextField (self, *args, **kwargs)-> None:
-      '''removeTextField( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void removeTextField(class PyDbDimension {lvalue})'''
+    def removeTextField (self: Dimension)-> None:
+      '''                             '''
     ...
     def resetTextDefinedSize (self, *args, **kwargs)-> None:
       '''resetTextDefinedSize( (Dimension)arg1) -> None :
@@ -45140,119 +43947,65 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setXLine2Point(class PyDb3PointAngularDimension {lvalue},class AcGePoint3d)'''
     ...
-    def shouldParticipateInOPM (self, *args, **kwargs)-> bool:
-      '''shouldParticipateInOPM( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
+    def shouldParticipateInOPM (self: Dimension)-> bool:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def suffix (self, *args, **kwargs)-> str:
-      '''suffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suffix(class PyDbDimension {lvalue})'''
+    def suffix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def suppressAngularLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressAngularTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''suppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroFeet(class PyDbDimension {lvalue})'''
+    def suppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroInches (self, *args, **kwargs)-> bool:
-      '''suppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroInches(class PyDbDimension {lvalue})'''
+    def suppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textAttachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint:
-      '''textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint:
+      '''                             '''
     ...
-    def textDefinedSize (self, *args, **kwargs)-> tuple:
-      '''textDefinedSize( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple textDefinedSize(class PyDbDimension {lvalue})'''
+    def textDefinedSize (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def textLineSpacingFactor (self, *args, **kwargs)-> float:
-      '''textLineSpacingFactor( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textLineSpacingFactor(class PyDbDimension {lvalue})'''
+    def textLineSpacingFactor (self: Dimension)-> float:
+      '''                             '''
     ...
-    def textLineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle:
-      '''textLineSpacingStyle( (Dimension)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle textLineSpacingStyle(class PyDbDimension {lvalue})'''
+    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle:
+      '''                             '''
     ...
-    def textPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''textPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d textPosition(class PyDbDimension {lvalue})'''
+    def textPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def textRotation (self, *args, **kwargs)-> float:
-      '''textRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textRotation(class PyDbDimension {lvalue})'''
+    def textRotation (self: Dimension)-> float:
+      '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -45263,17 +44016,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def useDefaultTextPosition (self, *args, **kwargs)-> None:
-      '''useDefaultTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def useDefaultTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
-    def useSetTextPosition (self, *args, **kwargs)-> None:
-      '''useSetTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useSetTextPosition(class PyDbDimension {lvalue})'''
+    def useSetTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -48783,65 +47530,35 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def altSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def alternatePrefix (self, *args, **kwargs)-> str:
-      '''alternatePrefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternatePrefix(class PyDbDimension {lvalue})'''
+    def alternatePrefix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def alternateSuffix (self, *args, **kwargs)-> str:
-      '''alternateSuffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternateSuffix(class PyDbDimension {lvalue})'''
+    def alternateSuffix (self: Dimension)-> str:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -48855,11 +47572,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def blockId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''blockTransform( (Dimension)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    def blockTransform (self: Dimension)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -48882,11 +47596,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         class AcGePoint3d center(class PyDbRadialDimension {lvalue})'''
     ...
-    def centerMarkSize (self, *args, **kwargs)-> float:
-      '''centerMarkSize( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double centerMarkSize(class PyDbDimension {lvalue})'''
+    def centerMarkSize (self: Dimension)-> float:
+      '''                             '''
     ...
     def chordPoint (self, *args, **kwargs)-> PyGe.Point3d:
       '''chordPoint( (RadialDimension)arg1) -> Point3d :
@@ -48930,47 +47641,26 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimBlockId( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimBlockId(class PyDbDimension {lvalue})'''
+    def dimBlockId (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimBlockPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''dimBlockPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimBlockPosition(class PyDbDimension {lvalue})'''
+    def dimBlockPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def dimExt1Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt1Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt1Linetype(class PyDbDimension {lvalue})'''
+    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimExt2Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt2Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt2Linetype(class PyDbDimension {lvalue})'''
+    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimLineLinetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimLineLinetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimLineLinetype(class PyDbDimension {lvalue})'''
+    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimensionStyle( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimensionStyle(class PyDbDimension {lvalue})'''
+    def dimensionStyle (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionText (self, *args, **kwargs)-> str:
-      '''dimensionText( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimensionText(class PyDbDimension {lvalue})'''
+    def dimensionText (self: Dimension)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -48987,11 +47677,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbDimension {lvalue})'''
+    def elevation (self: Dimension)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -49040,32 +47727,20 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self, *args, **kwargs)-> None:
-      '''generateLayout( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbDimension {lvalue})'''
+    def generateLayout (self: Dimension)-> None:
+      '''                             '''
     ...
-    def getArrowFirstIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowFirstIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowFirstIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowFirstIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def getArrowSecondIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowSecondIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowSecondIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Dimension)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
+    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -49100,11 +47775,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def horizontalRotation (self, *args, **kwargs)-> float:
-      '''horizontalRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double horizontalRotation(class PyDbDimension {lvalue})'''
+    def horizontalRotation (self: Dimension)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -49112,23 +47784,14 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inspection (self, *args, **kwargs)-> bool:
-      '''inspection( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool inspection(class PyDbDimension {lvalue})'''
+    def inspection (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def inspectionFrame (self, *args, **kwargs)-> int:
-      '''inspectionFrame( (Dimension)arg1) -> int :
-
-    C++ signature :
-        int inspectionFrame(class PyDbDimension {lvalue})'''
+    def inspectionFrame (self: Dimension)-> int:
+      '''                             '''
     ...
-    def inspectionLabel (self, *args, **kwargs)-> str:
-      '''inspectionLabel( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    def inspectionLabel (self: Dimension)-> str:
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -49160,23 +47823,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isConstraintDynamic (self, *args, **kwargs)-> bool:
-      '''isConstraintDynamic( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isConstraintDynamic(class PyDbDimension {lvalue})'''
+    def isConstraintDynamic (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def isConstraintObject (self, *args, **kwargs)-> tuple:
-      '''isConstraintObject( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isConstraintObject(class PyDbDimension {lvalue})'''
+    def isConstraintObject (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def isDynamicDimension (self, *args, **kwargs)-> bool:
-      '''isDynamicDimension( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicDimension(class PyDbDimension {lvalue})'''
+    def isDynamicDimension (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -49184,11 +47838,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self, *args, **kwargs)-> bool:
-      '''isHorizontalRefTextRotation( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isHorizontalRefTextRotation(class PyDbDimension {lvalue})'''
+    def isHorizontalRefTextRotation (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -49232,11 +47883,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self, *args, **kwargs)-> bool:
-      '''isUsingDefaultTextPosition( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def isUsingDefaultTextPosition (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -49274,17 +47922,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> float:
-      '''measurement( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double measurement(class PyDbDimension {lvalue})'''
+    def measurement (self: Dimension)-> float:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Dimension)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbDimension {lvalue})'''
+    def normal (self: Dimension)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -49295,11 +47937,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def prefix (self, *args, **kwargs)-> str:
-      '''prefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    def prefix (self: Dimension)-> str:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -49307,16 +47946,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def recomputeDimBlock (self, *args, **kwargs)-> None:
-      '''recomputeDimBlock( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue})
-
-recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue},bool)'''
+    def recomputeDimBlock (self: Dimension)-> None:
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None:
       '''                             '''
@@ -49333,11 +47964,8 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeTextField (self, *args, **kwargs)-> None:
-      '''removeTextField( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void removeTextField(class PyDbDimension {lvalue})'''
+    def removeTextField (self: Dimension)-> None:
+      '''                             '''
     ...
     def resetTextDefinedSize (self, *args, **kwargs)-> None:
       '''resetTextDefinedSize( (Dimension)arg1) -> None :
@@ -49735,119 +48363,65 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
     ...
-    def shouldParticipateInOPM (self, *args, **kwargs)-> bool:
-      '''shouldParticipateInOPM( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
+    def shouldParticipateInOPM (self: Dimension)-> bool:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def suffix (self, *args, **kwargs)-> str:
-      '''suffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suffix(class PyDbDimension {lvalue})'''
+    def suffix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def suppressAngularLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressAngularTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''suppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroFeet(class PyDbDimension {lvalue})'''
+    def suppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroInches (self, *args, **kwargs)-> bool:
-      '''suppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroInches(class PyDbDimension {lvalue})'''
+    def suppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textAttachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint:
-      '''textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint:
+      '''                             '''
     ...
-    def textDefinedSize (self, *args, **kwargs)-> tuple:
-      '''textDefinedSize( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple textDefinedSize(class PyDbDimension {lvalue})'''
+    def textDefinedSize (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def textLineSpacingFactor (self, *args, **kwargs)-> float:
-      '''textLineSpacingFactor( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textLineSpacingFactor(class PyDbDimension {lvalue})'''
+    def textLineSpacingFactor (self: Dimension)-> float:
+      '''                             '''
     ...
-    def textLineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle:
-      '''textLineSpacingStyle( (Dimension)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle textLineSpacingStyle(class PyDbDimension {lvalue})'''
+    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle:
+      '''                             '''
     ...
-    def textPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''textPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d textPosition(class PyDbDimension {lvalue})'''
+    def textPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def textRotation (self, *args, **kwargs)-> float:
-      '''textRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textRotation(class PyDbDimension {lvalue})'''
+    def textRotation (self: Dimension)-> float:
+      '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -49858,17 +48432,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def useDefaultTextPosition (self, *args, **kwargs)-> None:
-      '''useDefaultTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def useDefaultTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
-    def useSetTextPosition (self, *args, **kwargs)-> None:
-      '''useSetTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useSetTextPosition(class PyDbDimension {lvalue})'''
+    def useSetTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -49932,65 +48500,35 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def altSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def alternatePrefix (self, *args, **kwargs)-> str:
-      '''alternatePrefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternatePrefix(class PyDbDimension {lvalue})'''
+    def alternatePrefix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def alternateSuffix (self, *args, **kwargs)-> str:
-      '''alternateSuffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternateSuffix(class PyDbDimension {lvalue})'''
+    def alternateSuffix (self: Dimension)-> str:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -50004,11 +48542,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def blockId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''blockTransform( (Dimension)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    def blockTransform (self: Dimension)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -50031,11 +48566,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class AcGePoint3d center(class PyDbRadialDimensionLarge {lvalue})'''
     ...
-    def centerMarkSize (self, *args, **kwargs)-> float:
-      '''centerMarkSize( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double centerMarkSize(class PyDbDimension {lvalue})'''
+    def centerMarkSize (self: Dimension)-> float:
+      '''                             '''
     ...
     def chordPoint (self, *args, **kwargs)-> PyGe.Point3d:
       '''chordPoint( (RadialDimensionLarge)arg1) -> Point3d :
@@ -50079,47 +48611,26 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimBlockId( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimBlockId(class PyDbDimension {lvalue})'''
+    def dimBlockId (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimBlockPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''dimBlockPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimBlockPosition(class PyDbDimension {lvalue})'''
+    def dimBlockPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def dimExt1Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt1Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt1Linetype(class PyDbDimension {lvalue})'''
+    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimExt2Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt2Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt2Linetype(class PyDbDimension {lvalue})'''
+    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimLineLinetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimLineLinetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimLineLinetype(class PyDbDimension {lvalue})'''
+    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimensionStyle( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimensionStyle(class PyDbDimension {lvalue})'''
+    def dimensionStyle (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionText (self, *args, **kwargs)-> str:
-      '''dimensionText( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimensionText(class PyDbDimension {lvalue})'''
+    def dimensionText (self: Dimension)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -50136,11 +48647,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbDimension {lvalue})'''
+    def elevation (self: Dimension)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -50189,32 +48697,20 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self, *args, **kwargs)-> None:
-      '''generateLayout( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbDimension {lvalue})'''
+    def generateLayout (self: Dimension)-> None:
+      '''                             '''
     ...
-    def getArrowFirstIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowFirstIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowFirstIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowFirstIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def getArrowSecondIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowSecondIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowSecondIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Dimension)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
+    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -50249,11 +48745,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def horizontalRotation (self, *args, **kwargs)-> float:
-      '''horizontalRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double horizontalRotation(class PyDbDimension {lvalue})'''
+    def horizontalRotation (self: Dimension)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -50261,23 +48754,14 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inspection (self, *args, **kwargs)-> bool:
-      '''inspection( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool inspection(class PyDbDimension {lvalue})'''
+    def inspection (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def inspectionFrame (self, *args, **kwargs)-> int:
-      '''inspectionFrame( (Dimension)arg1) -> int :
-
-    C++ signature :
-        int inspectionFrame(class PyDbDimension {lvalue})'''
+    def inspectionFrame (self: Dimension)-> int:
+      '''                             '''
     ...
-    def inspectionLabel (self, *args, **kwargs)-> str:
-      '''inspectionLabel( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    def inspectionLabel (self: Dimension)-> str:
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -50309,23 +48793,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isConstraintDynamic (self, *args, **kwargs)-> bool:
-      '''isConstraintDynamic( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isConstraintDynamic(class PyDbDimension {lvalue})'''
+    def isConstraintDynamic (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def isConstraintObject (self, *args, **kwargs)-> tuple:
-      '''isConstraintObject( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isConstraintObject(class PyDbDimension {lvalue})'''
+    def isConstraintObject (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def isDynamicDimension (self, *args, **kwargs)-> bool:
-      '''isDynamicDimension( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicDimension(class PyDbDimension {lvalue})'''
+    def isDynamicDimension (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -50333,11 +48808,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self, *args, **kwargs)-> bool:
-      '''isHorizontalRefTextRotation( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isHorizontalRefTextRotation(class PyDbDimension {lvalue})'''
+    def isHorizontalRefTextRotation (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -50381,11 +48853,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self, *args, **kwargs)-> bool:
-      '''isUsingDefaultTextPosition( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def isUsingDefaultTextPosition (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -50429,17 +48898,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> float:
-      '''measurement( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double measurement(class PyDbDimension {lvalue})'''
+    def measurement (self: Dimension)-> float:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Dimension)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbDimension {lvalue})'''
+    def normal (self: Dimension)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -50456,11 +48919,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def prefix (self, *args, **kwargs)-> str:
-      '''prefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    def prefix (self: Dimension)-> str:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -50468,16 +48928,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def recomputeDimBlock (self, *args, **kwargs)-> None:
-      '''recomputeDimBlock( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue})
-
-recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue},bool)'''
+    def recomputeDimBlock (self: Dimension)-> None:
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None:
       '''                             '''
@@ -50494,11 +48946,8 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeTextField (self, *args, **kwargs)-> None:
-      '''removeTextField( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void removeTextField(class PyDbDimension {lvalue})'''
+    def removeTextField (self: Dimension)-> None:
+      '''                             '''
     ...
     def resetTextDefinedSize (self, *args, **kwargs)-> None:
       '''resetTextDefinedSize( (Dimension)arg1) -> None :
@@ -50926,119 +49375,65 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
     ...
-    def shouldParticipateInOPM (self, *args, **kwargs)-> bool:
-      '''shouldParticipateInOPM( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
+    def shouldParticipateInOPM (self: Dimension)-> bool:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def suffix (self, *args, **kwargs)-> str:
-      '''suffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suffix(class PyDbDimension {lvalue})'''
+    def suffix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def suppressAngularLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressAngularTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''suppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroFeet(class PyDbDimension {lvalue})'''
+    def suppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroInches (self, *args, **kwargs)-> bool:
-      '''suppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroInches(class PyDbDimension {lvalue})'''
+    def suppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textAttachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint:
-      '''textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint:
+      '''                             '''
     ...
-    def textDefinedSize (self, *args, **kwargs)-> tuple:
-      '''textDefinedSize( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple textDefinedSize(class PyDbDimension {lvalue})'''
+    def textDefinedSize (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def textLineSpacingFactor (self, *args, **kwargs)-> float:
-      '''textLineSpacingFactor( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textLineSpacingFactor(class PyDbDimension {lvalue})'''
+    def textLineSpacingFactor (self: Dimension)-> float:
+      '''                             '''
     ...
-    def textLineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle:
-      '''textLineSpacingStyle( (Dimension)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle textLineSpacingStyle(class PyDbDimension {lvalue})'''
+    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle:
+      '''                             '''
     ...
-    def textPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''textPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d textPosition(class PyDbDimension {lvalue})'''
+    def textPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def textRotation (self, *args, **kwargs)-> float:
-      '''textRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textRotation(class PyDbDimension {lvalue})'''
+    def textRotation (self: Dimension)-> float:
+      '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -51049,17 +49444,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def useDefaultTextPosition (self, *args, **kwargs)-> None:
-      '''useDefaultTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def useDefaultTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
-    def useSetTextPosition (self, *args, **kwargs)-> None:
-      '''useSetTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useSetTextPosition(class PyDbDimension {lvalue})'''
+    def useSetTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -54086,65 +52475,35 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def altSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def altToleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''altToleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool altToleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def altToleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def alternatePrefix (self, *args, **kwargs)-> str:
-      '''alternatePrefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternatePrefix(class PyDbDimension {lvalue})'''
+    def alternatePrefix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def alternateSuffix (self, *args, **kwargs)-> str:
-      '''alternateSuffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > alternateSuffix(class PyDbDimension {lvalue})'''
+    def alternateSuffix (self: Dimension)-> str:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -54158,11 +52517,8 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def blockId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''blockTransform( (Dimension)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    def blockTransform (self: Dimension)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -54179,11 +52535,8 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def castShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def centerMarkSize (self, *args, **kwargs)-> float:
-      '''centerMarkSize( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double centerMarkSize(class PyDbDimension {lvalue})'''
+    def centerMarkSize (self: Dimension)-> float:
+      '''                             '''
     ...
     def className (self, *args, **kwargs)-> str:
       '''className() -> str :
@@ -54221,35 +52574,20 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dimBlockId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimBlockId( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimBlockId(class PyDbDimension {lvalue})'''
+    def dimBlockId (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimBlockPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''dimBlockPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d dimBlockPosition(class PyDbDimension {lvalue})'''
+    def dimBlockPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def dimExt1Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt1Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt1Linetype(class PyDbDimension {lvalue})'''
+    def dimExt1Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimExt2Linetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimExt2Linetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimExt2Linetype(class PyDbDimension {lvalue})'''
+    def dimExt2Linetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimLineLinetype (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimLineLinetype( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimLineLinetype(class PyDbDimension {lvalue})'''
+    def dimLineLinetype (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def dimLinePoint (self, *args, **kwargs)-> PyGe.Point3d:
       '''dimLinePoint( (RotatedDimension)arg1) -> Point3d :
@@ -54257,17 +52595,11 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     C++ signature :
         class AcGePoint3d dimLinePoint(class PyDbRotatedDimension {lvalue})'''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimensionStyle( (Dimension)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimensionStyle(class PyDbDimension {lvalue})'''
+    def dimensionStyle (self: Dimension)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimensionText (self, *args, **kwargs)-> str:
-      '''dimensionText( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimensionText(class PyDbDimension {lvalue})'''
+    def dimensionText (self: Dimension)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -54284,11 +52616,8 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbDimension {lvalue})'''
+    def elevation (self: Dimension)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -54325,32 +52654,20 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > formatMeasurement(class PyDbDimension {lvalue},double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def generateLayout (self, *args, **kwargs)-> None:
-      '''generateLayout( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbDimension {lvalue})'''
+    def generateLayout (self: Dimension)-> None:
+      '''                             '''
     ...
-    def getArrowFirstIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowFirstIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowFirstIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowFirstIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def getArrowSecondIsFlipped (self, *args, **kwargs)-> bool:
-      '''getArrowSecondIsFlipped( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
+    def getArrowSecondIsFlipped (self: Dimension)-> bool:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Dimension)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
+    def getDimstyleData (self: Dimension)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -54385,11 +52702,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def horizontalRotation (self, *args, **kwargs)-> float:
-      '''horizontalRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double horizontalRotation(class PyDbDimension {lvalue})'''
+    def horizontalRotation (self: Dimension)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -54397,23 +52711,14 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
-    def inspection (self, *args, **kwargs)-> bool:
-      '''inspection( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool inspection(class PyDbDimension {lvalue})'''
+    def inspection (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def inspectionFrame (self, *args, **kwargs)-> int:
-      '''inspectionFrame( (Dimension)arg1) -> int :
-
-    C++ signature :
-        int inspectionFrame(class PyDbDimension {lvalue})'''
+    def inspectionFrame (self: Dimension)-> int:
+      '''                             '''
     ...
-    def inspectionLabel (self, *args, **kwargs)-> str:
-      '''inspectionLabel( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    def inspectionLabel (self: Dimension)-> str:
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -54445,23 +52750,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isConstraintDynamic (self, *args, **kwargs)-> bool:
-      '''isConstraintDynamic( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isConstraintDynamic(class PyDbDimension {lvalue})'''
+    def isConstraintDynamic (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def isConstraintObject (self, *args, **kwargs)-> tuple:
-      '''isConstraintObject( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isConstraintObject(class PyDbDimension {lvalue})'''
+    def isConstraintObject (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def isDynamicDimension (self, *args, **kwargs)-> bool:
-      '''isDynamicDimension( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicDimension(class PyDbDimension {lvalue})'''
+    def isDynamicDimension (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -54469,11 +52765,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isHorizontalRefTextRotation (self, *args, **kwargs)-> bool:
-      '''isHorizontalRefTextRotation( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isHorizontalRefTextRotation(class PyDbDimension {lvalue})'''
+    def isHorizontalRefTextRotation (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -54517,11 +52810,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUsingDefaultTextPosition (self, *args, **kwargs)-> bool:
-      '''isUsingDefaultTextPosition( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool isUsingDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def isUsingDefaultTextPosition (self: Dimension)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -54565,17 +52855,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> float:
-      '''measurement( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double measurement(class PyDbDimension {lvalue})'''
+    def measurement (self: Dimension)-> float:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Dimension)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbDimension {lvalue})'''
+    def normal (self: Dimension)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -54592,11 +52876,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def prefix (self, *args, **kwargs)-> str:
-      '''prefix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    def prefix (self: Dimension)-> str:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -54604,16 +52885,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def recomputeDimBlock (self, *args, **kwargs)-> None:
-      '''recomputeDimBlock( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue})
-
-recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeDimBlock(class PyDbDimension {lvalue},bool)'''
+    def recomputeDimBlock (self: Dimension)-> None:
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None:
       '''                             '''
@@ -54630,11 +52903,8 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeTextField (self, *args, **kwargs)-> None:
-      '''removeTextField( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void removeTextField(class PyDbDimension {lvalue})'''
+    def removeTextField (self: Dimension)-> None:
+      '''                             '''
     ...
     def resetTextDefinedSize (self, *args, **kwargs)-> None:
       '''resetTextDefinedSize( (Dimension)arg1) -> None :
@@ -55050,119 +53320,65 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setXLine2Point(class PyDbRotatedDimension {lvalue},class AcGePoint3d)'''
     ...
-    def shouldParticipateInOPM (self, *args, **kwargs)-> bool:
-      '''shouldParticipateInOPM( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
+    def shouldParticipateInOPM (self: Dimension)-> bool:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def suffix (self, *args, **kwargs)-> str:
-      '''suffix( (Dimension)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suffix(class PyDbDimension {lvalue})'''
+    def suffix (self: Dimension)-> str:
+      '''                             '''
     ...
-    def suppressAngularLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressAngularTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressAngularTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressAngularTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressAngularTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''suppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def suppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''suppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def suppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''suppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroFeet(class PyDbDimension {lvalue})'''
+    def suppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def suppressZeroInches (self, *args, **kwargs)-> bool:
-      '''suppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool suppressZeroInches(class PyDbDimension {lvalue})'''
+    def suppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textAttachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint:
-      '''textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+    def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint:
+      '''                             '''
     ...
-    def textDefinedSize (self, *args, **kwargs)-> tuple:
-      '''textDefinedSize( (Dimension)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple textDefinedSize(class PyDbDimension {lvalue})'''
+    def textDefinedSize (self: Dimension)-> tuple:
+      '''                             '''
     ...
-    def textLineSpacingFactor (self, *args, **kwargs)-> float:
-      '''textLineSpacingFactor( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textLineSpacingFactor(class PyDbDimension {lvalue})'''
+    def textLineSpacingFactor (self: Dimension)-> float:
+      '''                             '''
     ...
-    def textLineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle:
-      '''textLineSpacingStyle( (Dimension)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle textLineSpacingStyle(class PyDbDimension {lvalue})'''
+    def textLineSpacingStyle (self: Dimension)-> PyDb.LineSpacingStyle:
+      '''                             '''
     ...
-    def textPosition (self, *args, **kwargs)-> PyGe.Point3d:
-      '''textPosition( (Dimension)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d textPosition(class PyDbDimension {lvalue})'''
+    def textPosition (self: Dimension)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def textRotation (self, *args, **kwargs)-> float:
-      '''textRotation( (Dimension)arg1) -> float :
-
-    C++ signature :
-        double textRotation(class PyDbDimension {lvalue})'''
+    def textRotation (self: Dimension)-> float:
+      '''                             '''
     ...
-    def toleranceSuppressLeadingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressLeadingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressLeadingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressLeadingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressTrailingZeros (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressTrailingZeros( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressTrailingZeros(class PyDbDimension {lvalue})'''
+    def toleranceSuppressTrailingZeros (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroFeet (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroFeet( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroFeet(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroFeet (self: Dimension)-> bool:
+      '''                             '''
     ...
-    def toleranceSuppressZeroInches (self, *args, **kwargs)-> bool:
-      '''toleranceSuppressZeroInches( (Dimension)arg1) -> bool :
-
-    C++ signature :
-        bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
+    def toleranceSuppressZeroInches (self: Dimension)-> bool:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -55173,17 +53389,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def useDefaultTextPosition (self, *args, **kwargs)-> None:
-      '''useDefaultTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useDefaultTextPosition(class PyDbDimension {lvalue})'''
+    def useDefaultTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
-    def useSetTextPosition (self, *args, **kwargs)-> None:
-      '''useSetTextPosition( (Dimension)arg1) -> None :
-
-    C++ signature :
-        void useSetTextPosition(class PyDbDimension {lvalue})'''
+    def useSetTextPosition (self: Dimension)-> None:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
