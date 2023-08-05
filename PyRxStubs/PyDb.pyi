@@ -6657,6 +6657,12 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def getName (self: SymbolTableRecord)-> str:
       '''                             '''
     ...
+    def getPreviewIcon (self, *args, **kwargs)-> object:
+      '''getPreviewIcon( (BlockTableRecord)arg1) -> object :
+
+    C++ signature :
+        class boost::python::api::object getPreviewIcon(class PyDbBlockTableRecord {lvalue})'''
+    ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None:
       '''                             '''
     ...
@@ -6671,6 +6677,12 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
+    ...
+    def hasPreviewIcon (self, *args, **kwargs)-> bool:
+      '''hasPreviewIcon( (BlockTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool hasPreviewIcon(class PyDbBlockTableRecord {lvalue})'''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
