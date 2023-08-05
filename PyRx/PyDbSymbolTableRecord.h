@@ -275,6 +275,8 @@ public:
     void                openBlockBegin(PyDbBlockBegin& pBlockBegin, AcDb::OpenMode openMode);
     void                openBlockEnd(PyDbBlockEnd& pBlockBegin, AcDb::OpenMode openMode);
     bool                hasAttributeDefinitions() const;
+    bool                  hasPreviewIcon() const;
+    boost::python::object getPreviewIcon() const;
     bool                isAnonymous() const;
     bool                isFromExternalReference() const;
     bool                isFromOverlayReference() const;

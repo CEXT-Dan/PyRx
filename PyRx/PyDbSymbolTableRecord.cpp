@@ -3,7 +3,7 @@
 #include "PyDbObjectId.h"
 #include "PyDbEntity.h"
 #include "PyDbObjectContext.h"
-
+#include <wx/rawbmp.h>
 using namespace boost::python;
 //---------------------------------------------------------------------------------------- -
 // PyDbSymbolTableRecord  wrapper
@@ -1294,6 +1294,8 @@ void makePyDbBlockTableRecordWrapper()
         .def("openBlockBegin", &PyDbBlockTableRecord::openBlockBegin)
         .def("openBlockEnd", &PyDbBlockTableRecord::openBlockEnd)
         .def("hasAttributeDefinitions", &PyDbBlockTableRecord::hasAttributeDefinitions)
+        .def("hasPreviewIcon", &PyDbBlockTableRecord::hasPreviewIcon)
+        .def("getPreviewIcon", &PyDbBlockTableRecord::getPreviewIcon)
         .def("isAnonymous", &PyDbBlockTableRecord::isAnonymous)
         .def("isFromExternalReference", &PyDbBlockTableRecord::isFromExternalReference)
         .def("isFromOverlayReference", &PyDbBlockTableRecord::isFromOverlayReference)
@@ -1435,6 +1437,29 @@ void PyDbBlockTableRecord::openBlockEnd(PyDbBlockEnd& pBlockBegin, AcDb::OpenMod
 bool PyDbBlockTableRecord::hasAttributeDefinitions() const
 {
     return impObj()->hasAttributeDefinitions();
+}
+
+bool PyDbBlockTableRecord::hasPreviewIcon() const
+{
+    return impObj()->hasPreviewIcon();
+}
+
+boost::python::object PyDbBlockTableRecord::getPreviewIcon() const
+{
+    PyThrowBadEs(Acad::eInvalidPreviewImage);
+    return boost::python::object();
+#ifdef NEVER
+    //TODO Test
+    PyAutoLockGIL lock;
+    AcArray<Adesk::UInt8> previewIcon;
+    PyThrowBadEs(impObj()->getPreviewIcon(previewIcon));
+    wxImage img;
+    img.SetData(previewIcon.asArrayPtr());
+    wxBitmap bmp(img);
+    if (!bmp.IsOk())
+        PyThrowBadEs(Acad::eInvalidPreviewImage);
+    return boost::python::object(boost::python::handle<>(wxPyConstructObject(new wxBitmap(bmp), "wxBitmap", true)));
+#endif
 }
 
 bool PyDbBlockTableRecord::isAnonymous() const
