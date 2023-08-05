@@ -277,6 +277,7 @@ public:
     bool                hasAttributeDefinitions() const;
     bool                  hasPreviewIcon() const;
     boost::python::object getPreviewIcon() const;
+    void                clearPreviewIcon() const;
     bool                isAnonymous() const;
     bool                isFromExternalReference() const;
     bool                isFromOverlayReference() const;
