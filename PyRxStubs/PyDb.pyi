@@ -2278,11 +2278,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def castShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def center (self, *args, **kwargs)-> PyGe.Point3d:
-      '''center( (Arc)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d center(class PyDbArc {lvalue})'''
+    def center (self: Arc)-> PyGe.Point3d:
+      '''                             '''
     ...
     def className ()-> str:
       '''                             '''
@@ -2329,11 +2326,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def endAngle (self, *args, **kwargs)-> float:
-      '''endAngle( (Arc)arg1) -> float :
-
-    C++ signature :
-        double endAngle(class PyDbArc {lvalue})'''
+    def endAngle (self: Arc)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -2559,11 +2553,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def layerId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def length (self, *args, **kwargs)-> float:
-      '''length( (Arc)arg1) -> float :
-
-    C++ signature :
-        double length(class PyDbArc {lvalue})'''
+    def length (self: Arc)-> float:
+      '''                             '''
     ...
     def lineWeight (self: Entity)-> PyDb.LineWeight:
       '''                             '''
@@ -2586,11 +2577,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Arc)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbArc {lvalue})'''
+    def normal (self: Arc)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -2604,11 +2592,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
-    def radius (self, *args, **kwargs)-> float:
-      '''radius( (Arc)arg1) -> float :
-
-    C++ signature :
-        double radius(class PyDbArc {lvalue})'''
+    def radius (self: Arc)-> float:
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
@@ -2640,11 +2625,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setCastShadows (self: Entity,val: bool)-> None:
       '''                             '''
     ...
-    def setCenter (self, *args, **kwargs)-> None:
-      '''setCenter( (Arc)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setCenter(class PyDbArc {lvalue},class AcGePoint3d)'''
+    def setCenter (self: Arc,val:PyGe.Point3d)-> None:
+      '''                             '''
     ...
     def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None:
       '''                             '''
@@ -2655,11 +2637,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None:
       '''                             '''
     ...
-    def setEndAngle (self, *args, **kwargs)-> None:
-      '''setEndAngle( (Arc)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setEndAngle(class PyDbArc {lvalue},double)'''
+    def setEndAngle (self: Arc,val:float)-> None:
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId:
       '''                             '''
@@ -2682,11 +2661,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None:
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None:
-      '''setNormal( (Arc)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbArc {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Arc,val:PyGe.Vector3d)-> None:
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None:
       '''                             '''
@@ -2710,26 +2686,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None:
       '''                             '''
     ...
-    def setRadius (self, *args, **kwargs)-> None:
-      '''setRadius( (Arc)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRadius(class PyDbArc {lvalue},double)'''
+    def setRadius (self: Arc,val:float)-> None:
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None:
       '''                             '''
     ...
-    def setStartAngle (self, *args, **kwargs)-> None:
-      '''setStartAngle( (Arc)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setStartAngle(class PyDbArc {lvalue},double)'''
+    def setStartAngle (self: Arc,val:float)-> None:
+      '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None:
-      '''setThickness( (Arc)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyDbArc {lvalue},double)'''
+    def setThickness (self: Arc,val:float)-> None:
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None:
       '''                             '''
@@ -2740,26 +2707,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def startAngle (self, *args, **kwargs)-> float:
-      '''startAngle( (Arc)arg1) -> float :
-
-    C++ signature :
-        double startAngle(class PyDbArc {lvalue})'''
+    def startAngle (self: Arc)-> float:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float:
-      '''thickness( (Arc)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDbArc {lvalue})'''
+    def thickness (self: Arc)-> float:
+      '''                             '''
     ...
-    def totalAngle (self, *args, **kwargs)-> float:
-      '''totalAngle( (Arc)arg1) -> float :
-
-    C++ signature :
-        double totalAngle(class PyDbArc {lvalue})'''
+    def totalAngle (self: Arc)-> float:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -8842,17 +8800,11 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def castShadows (self: Entity)-> bool:
       '''                             '''
     ...
-    def center (self, *args, **kwargs)-> PyGe.Point3d:
-      '''center( (Circle)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d center(class PyDbCircle {lvalue})'''
+    def center (self: Circle)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def circumference (self, *args, **kwargs)-> float:
-      '''circumference( (Circle)arg1) -> float :
-
-    C++ signature :
-        double circumference(class PyDbCircle {lvalue})'''
+    def circumference (self: Circle)-> float:
+      '''                             '''
     ...
     def className ()-> str:
       '''                             '''
@@ -8884,11 +8836,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
-    def diameter (self, *args, **kwargs)-> float:
-      '''diameter( (Circle)arg1) -> float :
-
-    C++ signature :
-        double diameter(class PyDbCircle {lvalue})'''
+    def diameter (self: Circle)-> float:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -9150,11 +9099,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Circle)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbCircle {lvalue})'''
+    def normal (self: Circle)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -9168,11 +9114,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
-    def radius (self, *args, **kwargs)-> float:
-      '''radius( (Circle)arg1) -> float :
-
-    C++ signature :
-        double radius(class PyDbCircle {lvalue})'''
+    def radius (self: Circle)-> float:
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
@@ -9204,17 +9147,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setCastShadows (self: Entity,val: bool)-> None:
       '''                             '''
     ...
-    def setCenter (self, *args, **kwargs)-> None:
-      '''setCenter( (Circle)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setCenter(class PyDbCircle {lvalue},class AcGePoint3d)'''
+    def setCenter (self: Circle,val:PyGe.Point3d)-> None:
+      '''                             '''
     ...
-    def setCircumference (self, *args, **kwargs)-> None:
-      '''setCircumference( (Circle)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setCircumference(class PyDbCircle {lvalue},double)'''
+    def setCircumference (self: Circle,val:float)-> None:
+      '''                             '''
     ...
     def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None:
       '''                             '''
@@ -9225,11 +9162,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None:
       '''                             '''
     ...
-    def setDiameter (self, *args, **kwargs)-> None:
-      '''setDiameter( (Circle)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDiameter(class PyDbCircle {lvalue},double)'''
+    def setDiameter (self: Circle,val:float)-> None:
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId:
       '''                             '''
@@ -9252,11 +9186,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None:
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None:
-      '''setNormal( (Circle)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbCircle {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Circle,val:PyGe.Vector3d)-> None:
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None:
       '''                             '''
@@ -9280,20 +9211,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None:
       '''                             '''
     ...
-    def setRadius (self, *args, **kwargs)-> None:
-      '''setRadius( (Circle)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRadius(class PyDbCircle {lvalue},double)'''
+    def setRadius (self: Circle,val:float)-> None:
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None:
       '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None:
-      '''setThickness( (Circle)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyDbCircle {lvalue},double)'''
+    def setThickness (self: Circle,val:float)-> None:
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None:
       '''                             '''
@@ -9307,11 +9232,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float:
-      '''thickness( (Circle)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDbCircle {lvalue})'''
+    def thickness (self: Circle)-> float:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -28655,11 +28577,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def endPoint (self, *args, **kwargs)-> PyGe.Point3d:
-      '''endPoint( (Line)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d endPoint(class PyDbLine {lvalue})'''
+    def endPoint (self: Line)-> PyGe.Point3d:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -28729,11 +28648,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getOffsetCurves (self: Curve,dist: float)-> list:
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list:
-      '''getOffsetCurvesGivenPlaneNormal( (Line)arg1, (Vector3d)arg2, (float)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbLine {lvalue},class AcGeVector3d,double)'''
+    def getOffsetCurvesGivenPlaneNormal (self: Line,val:PyGe.Vector3d,offset:float)-> list:
+      '''                             '''
     ...
     def getParamAtDist (self: Curve,dist: float)-> float:
       '''                             '''
@@ -28909,11 +28825,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Line)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbLine {lvalue})'''
+    def normal (self: Line)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -28966,11 +28879,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None:
       '''                             '''
     ...
-    def setEndPoint (self, *args, **kwargs)-> None:
-      '''setEndPoint( (Line)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setEndPoint(class PyDbLine {lvalue},class AcGePoint3d)'''
+    def setEndPoint (self: Line,val:PyGe.Point3d)-> None:
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId:
       '''                             '''
@@ -28993,11 +28903,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None:
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None:
-      '''setNormal( (Line)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbLine {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Line,val:PyGe.Vector3d)-> None:
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None:
       '''                             '''
@@ -29024,17 +28931,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None:
       '''                             '''
     ...
-    def setStartPoint (self, *args, **kwargs)-> None:
-      '''setStartPoint( (Line)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setStartPoint(class PyDbLine {lvalue},class AcGePoint3d)'''
+    def setStartPoint (self: Line,val:PyGe.Point3d)-> None:
+      '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None:
-      '''setThickness( (Line)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyDbLine {lvalue},double)'''
+    def setThickness (self: Line,val:float)-> None:
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None:
       '''                             '''
@@ -29045,20 +28946,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point3d:
-      '''startPoint( (Line)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d startPoint(class PyDbLine {lvalue})'''
+    def startPoint (self: Line)-> PyGe.Point3d:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float:
-      '''thickness( (Line)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDbLine {lvalue})'''
+    def thickness (self: Line)-> float:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
