@@ -3,7 +3,7 @@
 #include "PyDbObjectId.h"
 #include "PyDbEntity.h"
 #include "PyDbObjectContext.h"
-#include <wx/rawbmp.h>
+#include <wx/mstream.h>
 using namespace boost::python;
 //---------------------------------------------------------------------------------------- -
 // PyDbSymbolTableRecord  wrapper
@@ -1444,22 +1444,38 @@ bool PyDbBlockTableRecord::hasPreviewIcon() const
     return impObj()->hasPreviewIcon();
 }
 
+//TODO remove hack
+static void addBITMAPFILEHEADER(AcDbBlockTableRecord::PreviewIcon& ico)
+{
+    //BITMAPFILEHEADER
+    ico.insertAt(0, 0x0);
+    ico.insertAt(0, 0x0);
+    ico.insertAt(0, 0x0);
+    ico.insertAt(0, 0x36);//offset BITMAPFILEHEADER + BITMAPINFO
+    ico.insertAt(0, 0x0);
+    ico.insertAt(0, 0x0);
+    ico.insertAt(0, 0x0);
+    ico.insertAt(0, 0x0);
+    ico.insertAt(0, 0x0);
+    ico.insertAt(0, 0x0);
+    ico.insertAt(0, 0x0);//0 file size? ico.length()ok
+    ico.insertAt(0, 0x0);
+    ico.insertAt(0, 0x4D);
+    ico.insertAt(0, 0x42);//BM0
+}
+
 boost::python::object PyDbBlockTableRecord::getPreviewIcon() const
 {
-    PyThrowBadEs(Acad::eInvalidPreviewImage);
-    return boost::python::object();
-#ifdef NEVER
-    //TODO Test
     PyAutoLockGIL lock;
     AcArray<Adesk::UInt8> previewIcon;
     PyThrowBadEs(impObj()->getPreviewIcon(previewIcon));
-    wxImage img;
-    img.SetData(previewIcon.asArrayPtr());
+    addBITMAPFILEHEADER(previewIcon);
+    wxMemoryInputStream stream(previewIcon.asArrayPtr(), previewIcon.length());
+    wxImage img(stream);
     wxBitmap bmp(img);
     if (!bmp.IsOk())
         PyThrowBadEs(Acad::eInvalidPreviewImage);
     return boost::python::object(boost::python::handle<>(wxPyConstructObject(new wxBitmap(bmp), "wxBitmap", true)));
-#endif
 }
 
 bool PyDbBlockTableRecord::isAnonymous() const
