@@ -1296,6 +1296,7 @@ void makePyDbBlockTableRecordWrapper()
         .def("hasAttributeDefinitions", &PyDbBlockTableRecord::hasAttributeDefinitions)
         .def("hasPreviewIcon", &PyDbBlockTableRecord::hasPreviewIcon)
         .def("getPreviewIcon", &PyDbBlockTableRecord::getPreviewIcon)
+        .def("clearPreviewIcon", &PyDbBlockTableRecord::clearPreviewIcon)
         .def("isAnonymous", &PyDbBlockTableRecord::isAnonymous)
         .def("isFromExternalReference", &PyDbBlockTableRecord::isFromExternalReference)
         .def("isFromOverlayReference", &PyDbBlockTableRecord::isFromOverlayReference)
@@ -1468,14 +1469,21 @@ boost::python::object PyDbBlockTableRecord::getPreviewIcon() const
 {
     PyAutoLockGIL lock;
     AcArray<Adesk::UInt8> previewIcon;
+    previewIcon.setLogicalLength(2048);
     PyThrowBadEs(impObj()->getPreviewIcon(previewIcon));
     addBITMAPFILEHEADER(previewIcon);
     wxMemoryInputStream stream(previewIcon.asArrayPtr(), previewIcon.length());
     wxImage img(stream);
-    wxBitmap bmp(img);
-    if (!bmp.IsOk())
+    wxBitmap *bmp = new wxBitmap(img);
+    if (!bmp->IsOk())
         PyThrowBadEs(Acad::eInvalidPreviewImage);
-    return boost::python::object(boost::python::handle<>(wxPyConstructObject(new wxBitmap(bmp), "wxBitmap", true)));
+    return boost::python::object(boost::python::handle<>(wxPyConstructObject(bmp, "wxBitmap", true)));
+}
+
+void PyDbBlockTableRecord::clearPreviewIcon() const
+{
+    static AcArray<Adesk::UInt8> previewIcon;
+    PyThrowBadEs(impObj()->setPreviewIcon(previewIcon));
 }
 
 bool PyDbBlockTableRecord::isAnonymous() const
