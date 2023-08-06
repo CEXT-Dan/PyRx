@@ -59,6 +59,8 @@ void makeAcRxObjectWrapper();
 
 class PyRxObject
 {
+protected:
+    inline PyRxObject() = default;
 public:
     PyRxObject(const AcRxObject* ptr);
     PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbObject);

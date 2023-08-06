@@ -8,6 +8,8 @@ class PyGePlane;
 void makePyDbEntityWrapper();
 class PyDbEntity : public PyDbObject
 {
+protected:
+    inline PyDbEntity() = default;
 public:
     PyDbEntity(AcDbEntity* ptr, bool autoDelete);
     PyDbEntity(const PyDbObjectId& id);

@@ -8,6 +8,8 @@ class PyGeCurve3d;
 void makePyDbCurveWrapper();
 class PyDbCurve : public PyDbEntity
 {
+protected:
+    inline PyDbCurve() = default;
 public:
     PyDbCurve(AcDbCurve* ptr, bool autoDelete);
     PyDbCurve(const PyDbObjectId& id);

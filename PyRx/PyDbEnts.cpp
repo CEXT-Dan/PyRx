@@ -103,7 +103,6 @@ PyDbText::PyDbText(AcDbText* ptr, bool autoDelete)
 }
 
 PyDbText::PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
 {
     AcDbText* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbText>(pobj, id.m_id, mode); es != eOk)
@@ -355,7 +354,7 @@ PyDbText PyDbText::cast(const PyRxObject& src)
 
 AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbText*>(m_pyImp.get());
 }
@@ -568,7 +567,7 @@ PyDbAttributeDefinition PyDbAttributeDefinition::cast(const PyRxObject& src)
 
 AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbAttributeDefinition*>(m_pyImp.get());
 }
@@ -764,7 +763,7 @@ PyDbAttribute PyDbAttribute::cast(const PyRxObject& src)
 
 AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbAttribute*>(m_pyImp.get());
 }
@@ -827,7 +826,6 @@ PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id)
 }
 
 PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
 {
     AcDbBlockReference* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbBlockReference>(pobj, id.m_id, mode); es != eOk)
@@ -973,7 +971,7 @@ PyDbBlockReference PyDbBlockReference::cast(const PyRxObject& src)
 
 AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbBlockReference*>(m_pyImp.get());
 }
@@ -1069,7 +1067,7 @@ std::string PyDbDynBlockReference::className()
 
 AcDbDynBlockReference* PyDbDynBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbDynBlockReference*>(m_imp.get());
 }
@@ -1195,7 +1193,7 @@ PyDbMInsertBlock PyDbMInsertBlock::cast(const PyRxObject& src)
 
 AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbMInsertBlock*>(m_pyImp.get());
 }
@@ -1227,7 +1225,6 @@ PyDbVertex::PyDbVertex(AcDbVertex* ptr, bool autoDelete)
 }
 
 PyDbVertex::PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
 {
     AcDbVertex* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbVertex>(pobj, id.m_id, mode); es != eOk)
@@ -1267,7 +1264,7 @@ PyDbVertex PyDbVertex::cast(const PyRxObject& src)
 
 AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbVertex*>(m_pyImp.get());
 }
@@ -1470,7 +1467,7 @@ PyDb2dVertex PyDb2dVertex::cast(const PyRxObject& src)
 
 AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDb2dVertex*>(m_pyImp.get());
 }
@@ -1566,9 +1563,8 @@ PyDb3dPolylineVertex PyDb3dPolylineVertex::cast(const PyRxObject& src)
 
 AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-
     return static_cast<AcDb3dPolylineVertex*>(m_pyImp.get());
 }
 
@@ -1663,7 +1659,7 @@ PyDbPolygonMeshVertex PyDbPolygonMeshVertex::cast(const PyRxObject& src)
 
 AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbPolygonMeshVertex*>(m_pyImp.get());
 }
@@ -1753,7 +1749,7 @@ PyDbPolyFaceMeshVertex PyDbPolyFaceMeshVertex::cast(const PyRxObject& src)
 
 AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbPolyFaceMeshVertex*>(m_pyImp.get());
 }
@@ -1867,7 +1863,7 @@ PyDbFaceRecord PyDbFaceRecord::cast(const PyRxObject& src)
 
 AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbFaceRecord*>(m_pyImp.get());
 }
@@ -1908,7 +1904,6 @@ PyDbPoint::PyDbPoint(const AcGePoint3d& point)
 }
 
 PyDbPoint::PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
 {
     AcDbPoint* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbPoint>(pobj, id.m_id, mode); es != eOk)
@@ -1993,7 +1988,7 @@ PyDbPoint PyDbPoint::cast(const PyRxObject& src)
 
 AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbPoint*>(m_pyImp.get());
 }
@@ -2072,7 +2067,6 @@ PyDb2dPolyline::PyDb2dPolyline(AcDb2dPolyline* ptr, bool autoDelete)
 }
 
 PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(nullptr, false)
 {
     AcDb2dPolyline* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDb2dPolyline>(pobj, id.m_id, mode); es != eOk)
@@ -2303,7 +2297,7 @@ PyDb2dPolyline PyDb2dPolyline::cast(const PyRxObject& src)
 
 AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDb2dPolyline*>(m_pyImp.get());
 }
@@ -2353,7 +2347,6 @@ PyDb3dPolyline::PyDb3dPolyline(AcDb3dPolyline* ptr, bool autoDelete)
 }
 
 PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(nullptr, false)
 {
     AcDb3dPolyline* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDb3dPolyline>(pobj, id.m_id, mode); es != eOk)
@@ -2492,7 +2485,7 @@ PyDb3dPolyline PyDb3dPolyline::cast(const PyRxObject& src)
 
 AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDb3dPolyline*>(m_pyImp.get());
 }
@@ -2540,7 +2533,6 @@ PyDbArc::PyDbArc(AcDbArc* ptr, bool autoDelete)
 }
 
 PyDbArc::PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(nullptr, false)
 {
     AcDbArc* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbArc>(pobj, id.m_id, mode); es != eOk)
@@ -2660,7 +2652,7 @@ PyDbArc PyDbArc::cast(const PyRxObject& src)
 
 AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbArc*>(m_pyImp.get());
 }
@@ -2705,7 +2697,6 @@ PyDbCircle::PyDbCircle(AcDbCircle* ptr, bool autoDelete)
 }
 
 PyDbCircle::PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(nullptr, false)
 {
     AcDbCircle* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbCircle>(pobj, id.m_id, mode); es != eOk)
@@ -2826,7 +2817,7 @@ PyDbCircle PyDbCircle::cast(const PyRxObject& src)
 
 AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbCircle*>(m_pyImp.get());
 }
@@ -2868,7 +2859,6 @@ PyDbLine::PyDbLine(AcDbLine* ptr, bool autoDelete)
 }
 
 PyDbLine::PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(nullptr, false)
 {
     AcDbLine* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbLine>(pobj, id.m_id, mode); es != eOk)
@@ -2953,7 +2943,7 @@ PyDbLine PyDbLine::cast(const PyRxObject& src)
 
 AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbLine*>(m_pyImp.get());
 }
@@ -3037,7 +3027,6 @@ PyDbPolyline::PyDbPolyline(AcDbPolyline* ptr, bool autoDelete)
 }
 
 PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(nullptr, false)
 {
     AcDbPolyline* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbPolyline>(pobj, id.m_id, mode); es != eOk)
@@ -3297,7 +3286,7 @@ PyDbPolyline PyDbPolyline::cast(const PyRxObject& src)
 
 AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbPolyline*>(m_pyImp.get());
 }
@@ -3338,7 +3327,6 @@ PyDbFace::PyDbFace(const PyDbObjectId& id)
 }
 
 PyDbFace::PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
 {
     AcDbFace* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbFace>(pobj, id.m_id, mode); es != eOk)
@@ -3429,7 +3417,7 @@ PyDbFace PyDbFace::cast(const PyRxObject& src)
 
 AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbFace*>(m_pyImp.get());
 }
@@ -3489,7 +3477,6 @@ PyDbFcf::PyDbFcf(AcDbFcf* ptr, bool autoDelete)
 }
 
 PyDbFcf::PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
 {
     AcDbFcf* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbFcf>(pobj, id.m_id, mode); es != eOk)
@@ -3689,7 +3676,7 @@ PyDbFcf PyDbFcf::cast(const PyRxObject& src)
 
 AcDbFcf* PyDbFcf::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbFcf*>(m_pyImp.get());
 }
