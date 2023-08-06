@@ -88,8 +88,7 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(Db.Handle("296") == Db.Handle("296"),True)
         self.assertEqual(Db.Handle("296") != Db.Handle("296"),False)
     
-    @staticmethod
-    def test_putSummaryInfo():
+    def putSummaryInfo():
         db = Db.curDb()
         customDict = {"Ford" : "Mustang", "Chevy" : "Camaro", "VW" : " Bug"}
         info = Db.Core.getSummaryInfo(db)
@@ -105,7 +104,7 @@ class TestDatabase(unittest.TestCase):
         Db.Core.putSummaryInfo(info, db)
         
     def test_getSummaryInfo(self):
-        TestDatabase.test_putSummaryInfo()
+        TestDatabase.putSummaryInfo()
         customDict = {"Ford" : "Mustang", "Chevy" : "Camaro", "VW" : " Bug"}
         db = Db.curDb()
         info = Db.Core.getSummaryInfo(db)
