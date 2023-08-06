@@ -21,6 +21,8 @@ def OnPyLoadDwg():
 
 def OnPyUnloadDwg():
    print.Printf("\nOnPyUnloadDwg")
+   
+print("added command pydelaunator")
 
 
 def do_select():
@@ -43,7 +45,7 @@ def get_2dpointd(pnt3ds):
         pnts.append([p.x, p.y])
     return pnts
 
-def PyRxCmd_pydoit():
+def PyRxCmd_pydelaunator():
     try:
         ss = do_select()
         t1_start = perf_counter()
