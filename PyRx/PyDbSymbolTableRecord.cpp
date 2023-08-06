@@ -21,7 +21,7 @@ void makePyDbSymbolTableRecordWrapper()
         .def("className", &PyDbSymbolTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSymbolTableRecord::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbSymbolTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbSymbolTableRecord::cast,DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("cast", &PyDbSymbolTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1364,7 +1364,7 @@ PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
 boost::python::list PyDbBlockTableRecord::objectIds()
 {
     PyAutoLockGIL lock;
-    boost::python::list pyList;
+    boost::python::list pyList; 
     auto [es, iter] = makeBlockTableRecordIterator(*impObj());
     if (es == eOk)
     {
@@ -1474,7 +1474,7 @@ boost::python::object PyDbBlockTableRecord::getPreviewIcon() const
     addBITMAPFILEHEADER(previewIcon);
     wxMemoryInputStream stream(previewIcon.asArrayPtr(), previewIcon.length());
     wxImage img(stream);
-    wxBitmap *bmp = new wxBitmap(img);
+    wxBitmap* bmp = new wxBitmap(img);
     if (!bmp->IsOk())
         PyThrowBadEs(Acad::eInvalidPreviewImage);
     return boost::python::object(boost::python::handle<>(wxPyConstructObject(bmp, "wxBitmap", true)));
