@@ -14,6 +14,8 @@ class PyDbSnoopDwgFiler;
 void makePyDbObjectWrapper();
 class PyDbObject : public PyGiDrawable
 {
+protected:
+    inline PyDbObject() = default;
 public:
     PyDbObject(AcDbObject* ptr, bool autoDelete);
     PyDbObject(const PyDbObjectId&);

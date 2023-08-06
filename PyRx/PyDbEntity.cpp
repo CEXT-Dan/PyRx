@@ -61,7 +61,7 @@ void makePyDbEntityWrapper()
         .def("receiveShadows", &PyDbEntity::receiveShadows, DS.ARGS())
         .def("setReceiveShadows", &PyDbEntity::setReceiveShadows, DS.ARGS({ "val: bool" }))
         .def("setPropertiesFrom", &PyDbEntity::setPropertiesFrom1)
-        .def("setPropertiesFrom", &PyDbEntity::setPropertiesFrom2,  DS.ARGS({ "ent: Entity",  "dosubents : bool=True" }))
+        .def("setPropertiesFrom", &PyDbEntity::setPropertiesFrom2, DS.ARGS({ "ent: Entity",  "dosubents : bool=True" }))
         .def("isPlanar", &PyDbEntity::isPlanar, DS.ARGS())
         .def("getPlane", &PyDbEntity::getPlane, DS.ARGS())
         .def("getEcs", &PyDbEntity::getEcs, DS.ARGS())
@@ -96,7 +96,6 @@ PyDbEntity::PyDbEntity(AcDbEntity* ptr, bool autoDelete)
 }
 
 PyDbEntity::PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(nullptr, false)
 {
     AcDbEntity* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbEntity>(pobj, id.m_id, mode); es != eOk)
@@ -269,12 +268,12 @@ void PyDbEntity::setLinetype4(const PyDbObjectId& newVal, Adesk::Boolean doSuben
 
 std::string PyDbEntity::material() const
 {
-    return  wstr_to_utf8(impObj()->material());
+    return wstr_to_utf8(impObj()->material());
 }
 
 PyDbObjectId PyDbEntity::materialId() const
 {
-    return  PyDbObjectId(impObj()->materialId());
+    return PyDbObjectId(impObj()->materialId());
 }
 
 void PyDbEntity::setMaterial1(const std::string& newVal)
@@ -299,32 +298,32 @@ void PyDbEntity::setMaterial4(const PyDbObjectId& newVal, Adesk::Boolean doSuben
 
 double PyDbEntity::linetypeScale() const
 {
-    return  impObj()->linetypeScale();
+    return impObj()->linetypeScale();
 }
 
 void PyDbEntity::setLinetypeScale1(double newval)
 {
-    return  PyThrowBadEs(impObj()->setLinetypeScale(newval));
+    return PyThrowBadEs(impObj()->setLinetypeScale(newval));
 }
 
 void PyDbEntity::setLinetypeScale2(double newval, Adesk::Boolean doSubents)
 {
-    return  PyThrowBadEs(impObj()->setLinetypeScale(newval, doSubents));
+    return PyThrowBadEs(impObj()->setLinetypeScale(newval, doSubents));
 }
 
 AcDb::Visibility PyDbEntity::visibility() const
 {
-    return  impObj()->visibility();
+    return impObj()->visibility();
 }
 
 void PyDbEntity::setVisibility1(AcDb::Visibility newVal)
 {
-    return  PyThrowBadEs(impObj()->setVisibility(newVal));
+    return PyThrowBadEs(impObj()->setVisibility(newVal));
 }
 
 void PyDbEntity::setVisibility2(AcDb::Visibility newVal, Adesk::Boolean doSubents /*= true*/)
 {
-    return  PyThrowBadEs(impObj()->setVisibility(newVal, doSubents));
+    return PyThrowBadEs(impObj()->setVisibility(newVal, doSubents));
 }
 
 AcDb::LineWeight PyDbEntity::lineWeight() const
@@ -334,7 +333,7 @@ AcDb::LineWeight PyDbEntity::lineWeight() const
 
 void PyDbEntity::setLineWeight1(AcDb::LineWeight newVal)
 {
-    return  PyThrowBadEs(impObj()->setLineWeight(newVal));
+    return PyThrowBadEs(impObj()->setLineWeight(newVal));
 }
 
 void PyDbEntity::setLineWeight2(AcDb::LineWeight newVal, Adesk::Boolean doSubents)
@@ -490,7 +489,7 @@ boost::python::list PyDbEntity::explode() const
 PyDbEntity PyDbEntity::getTransformedCopy(const AcGeMatrix3d& xform) const
 {
     AcDbEntity* pEnt = nullptr;
-    PyThrowBadEs(impObj()->getTransformedCopy(xform,pEnt));
+    PyThrowBadEs(impObj()->getTransformedCopy(xform, pEnt));
     return PyDbEntity(pEnt, true);
 }
 
@@ -539,7 +538,7 @@ PyDbEntity PyDbEntity::cast(const PyRxObject& src)
 
 AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbEntity*>(m_pyImp.get());
 }
