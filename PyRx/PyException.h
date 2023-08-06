@@ -131,12 +131,12 @@ struct PyNotimplementedByHost
 
 inline void PyThrowBadEs(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current())
 {
-    if (es != eOk)
+    if (es != eOk) [[unlikely]]
         throw PyAcadErrorStatus(es, src);
 }
 
 inline void PyThrowBadRt(int es, const std::source_location& src = std::source_location::current())
 {
-    if (es != RTNORM)
+    if (es != RTNORM) [[unlikely]]
         throw PyAcadErrorStatus(eInvalidInput, src);
 }
