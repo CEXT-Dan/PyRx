@@ -6571,6 +6571,12 @@ class BlockTableRecord:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def clearPreviewIcon (self, *args, **kwargs)-> None:
+      '''clearPreviewIcon( (BlockTableRecord)arg1) -> None :
+
+    C++ signature :
+        void clearPreviewIcon(class PyDbBlockTableRecord {lvalue})'''
+    ...
     def cloneFrom (self, *args, **kwargs)-> PyDb.BlockTableRecord:
       '''cloneFrom( (RxObject)arg1) -> BlockTableRecord :
 
@@ -20178,11 +20184,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
-    def getVertexAt (self, *args, **kwargs)-> PyGe.Point3d:
-      '''getVertexAt( (Face)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getVertexAt(class PyDbFace {lvalue},unsigned short)'''
+    def getVertexAt (self: Face,vIndex:int)-> PyGe.Point3d:
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None:
       '''                             '''
@@ -20229,11 +20232,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isEdgeVisibleAt (self, *args, **kwargs)-> bool:
-      '''isEdgeVisibleAt( (Face)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool isEdgeVisibleAt(class PyDbFace {lvalue},unsigned short)'''
+    def isEdgeVisibleAt (self: Face,vIndex:int)-> bool:
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool:
       '''                             '''
@@ -20307,17 +20307,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None:
       '''                             '''
     ...
-    def makeEdgeInvisibleAt (self, *args, **kwargs)-> None:
-      '''makeEdgeInvisibleAt( (Face)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void makeEdgeInvisibleAt(class PyDbFace {lvalue},unsigned short)'''
+    def makeEdgeInvisibleAt (self: Face,vIndex:int)-> None:
+      '''                             '''
     ...
-    def makeEdgeVisibleAt (self, *args, **kwargs)-> None:
-      '''makeEdgeVisibleAt( (Face)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void makeEdgeVisibleAt(class PyDbFace {lvalue},unsigned short)'''
+    def makeEdgeVisibleAt (self: Face,vIndex:int)-> None:
+      '''                             '''
     ...
     def material (self: Entity)-> str:
       '''                             '''
@@ -20416,16 +20410,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None:
       '''                             '''
     ...
-    def setVertexAt (self, *args, **kwargs)-> None:
-      '''setVertexAt( (Face)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void setVertexAt(class PyDbFace {lvalue},unsigned short,class AcGePoint3d)
-
-setVertexAt( (Face)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void setVertexAt(class PyDbFace {lvalue},unsigned short,class AcGePoint3d)'''
+    def setVertexAt (self: Face,vIndex:int,pnt:PyGe.Point3d)-> None:
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None:
       '''                             '''
@@ -20958,53 +20944,29 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
-    def dimclrd (self, *args, **kwargs)-> PyDb.Color:
-      '''dimclrd( (Fcf)arg1) -> Color :
-
-    C++ signature :
-        class AcCmColor dimclrd(class PyDbFcf {lvalue})'''
+    def dimclrd (self: Fcf)-> PyDb.Color:
+      '''                             '''
     ...
-    def dimclrt (self, *args, **kwargs)-> PyDb.Color:
-      '''dimclrt( (Fcf)arg1) -> Color :
-
-    C++ signature :
-        class AcCmColor dimclrt(class PyDbFcf {lvalue})'''
+    def dimclrt (self: Fcf)-> PyDb.Color:
+      '''                             '''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> PyDb.HardPointerId:
-      '''dimensionStyle( (Fcf)arg1) -> HardPointerId :
-
-    C++ signature :
-        class PyDbHardPointerId dimensionStyle(class PyDbFcf {lvalue})'''
+    def dimensionStyle (self: Fcf)-> PyDb.HardPointerId:
+      '''                             '''
     ...
-    def dimgap (self, *args, **kwargs)-> float:
-      '''dimgap( (Fcf)arg1) -> float :
-
-    C++ signature :
-        double dimgap(class PyDbFcf {lvalue})'''
+    def dimgap (self: Fcf)-> float:
+      '''                             '''
     ...
-    def dimscale (self, *args, **kwargs)-> float:
-      '''dimscale( (Fcf)arg1) -> float :
-
-    C++ signature :
-        double dimscale(class PyDbFcf {lvalue})'''
+    def dimscale (self: Fcf)-> float:
+      '''                             '''
     ...
-    def dimtxsty (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''dimtxsty( (Fcf)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dimtxsty(class PyDbFcf {lvalue})'''
+    def dimtxsty (self: Fcf)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def dimtxt (self, *args, **kwargs)-> float:
-      '''dimtxt( (Fcf)arg1) -> float :
-
-    C++ signature :
-        double dimtxt(class PyDbFcf {lvalue})'''
+    def dimtxt (self: Fcf)-> float:
+      '''                             '''
     ...
-    def direction (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''direction( (Fcf)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d direction(class PyDbFcf {lvalue})'''
+    def direction (self: Fcf)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -21033,26 +20995,17 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def getBoundingPline (self, *args, **kwargs)-> list:
-      '''getBoundingPline( (Fcf)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getBoundingPline(class PyDbFcf {lvalue})'''
+    def getBoundingPline (self: Fcf)-> list:
+      '''                             '''
     ...
-    def getBoundingPoints (self, *args, **kwargs)-> list:
-      '''getBoundingPoints( (Fcf)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getBoundingPoints(class PyDbFcf {lvalue})'''
+    def getBoundingPoints (self: Fcf)-> list:
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getDimstyleData (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''getDimstyleData( (Fcf)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord getDimstyleData(class PyDbFcf {lvalue})'''
+    def getDimstyleData (self: Fcf)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
@@ -21195,11 +21148,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None:
       '''                             '''
     ...
-    def location (self, *args, **kwargs)-> PyGe.Point3d:
-      '''location( (Fcf)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d location(class PyDbFcf {lvalue})'''
+    def location (self: Fcf)-> PyGe.Point3d:
+      '''                             '''
     ...
     def material (self: Entity)-> str:
       '''                             '''
@@ -21207,11 +21157,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Fcf)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbFcf {lvalue})'''
+    def normal (self: Fcf)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -21261,52 +21208,26 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None:
       '''                             '''
     ...
-    def setDimVars (self, *args, **kwargs)-> None:
-      '''setDimVars( (Fcf)arg1) -> None :
-
-    C++ signature :
-        void setDimVars(class PyDbFcf {lvalue})'''
+    def setDimVars (self: Fcf)-> None:
+      '''                             '''
     ...
-    def setDimclrd (self, *args, **kwargs)-> None:
-      '''setDimclrd( (Fcf)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setDimclrd(class PyDbFcf {lvalue},class AcCmColor {lvalue})'''
+    def setDimclrd (self: Fcf,val:Color)-> None:
+      '''                             '''
     ...
-    def setDimclrt (self, *args, **kwargs)-> None:
-      '''setDimclrt( (Fcf)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setDimclrt(class PyDbFcf {lvalue},class AcCmColor {lvalue})'''
+    def setDimclrt (self: Fcf,val:Color)-> None:
+      '''                             '''
     ...
-    def setDimensionStyle (self, *args, **kwargs)-> None:
-      '''setDimensionStyle( (Fcf)arg1, (HardPointerId)arg2) -> None :
-
-    C++ signature :
-        void setDimensionStyle(class PyDbFcf {lvalue},class PyDbHardPointerId)'''
+    def setDimensionStyle (self: Fcf,val:PyDb.ObjectId)-> None:
+      '''                             '''
     ...
-    def setDimgap (self, *args, **kwargs)-> None:
-      '''setDimgap( (Fcf)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDimgap(class PyDbFcf {lvalue},double)'''
+    def setDimgap (self: Fcf,val:float)-> None:
+      '''                             '''
     ...
-    def setDimscale (self, *args, **kwargs)-> None:
-      '''setDimscale( (Fcf)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDimscale(class PyDbFcf {lvalue},double)'''
+    def setDimscale (self: Fcf,val:float)-> None:
+      '''                             '''
     ...
-    def setDimstyleData (self, *args, **kwargs)-> None:
-      '''setDimstyleData( (Fcf)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbFcf {lvalue},class PyDbDimStyleTableRecord)
-
-setDimstyleData( (Fcf)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbFcf {lvalue},class PyDbObjectId)'''
+    def setDimstyleData (self: Fcf,val:PyDb.DimStyleTableRecord)-> None:
+      '''                             '''
     ...
     def setDimtxsty (self, *args, **kwargs)-> None:
       '''setDimtxsty( (Fcf)arg1, (ObjectId)arg2) -> None :
@@ -21314,11 +21235,8 @@ setDimstyleData( (Fcf)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setDimtxsty(class PyDbFcf {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def setDimtxt (self, *args, **kwargs)-> None:
-      '''setDimtxt( (Fcf)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setDimtxt(class PyDbFcf {lvalue},double)'''
+    def setDimtxt (self: Fcf,val:float)-> None:
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId:
       '''                             '''
@@ -21335,20 +21253,14 @@ setDimstyleData( (Fcf)arg1, (ObjectId)arg2) -> None :
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None:
       '''                             '''
     ...
-    def setLocation (self, *args, **kwargs)-> None:
-      '''setLocation( (Fcf)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setLocation(class PyDbFcf {lvalue},class AcGePoint3d)'''
+    def setLocation (self: Fcf,val:PyGe.Point3d)-> None:
+      '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None:
       '''                             '''
     ...
-    def setOrientation (self, *args, **kwargs)-> None:
-      '''setOrientation( (Fcf)arg1, (Vector3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setOrientation(class PyDbFcf {lvalue},class AcGeVector3d,class AcGeVector3d)'''
+    def setOrientation (self: Fcf,normal:PyGe.Vector3d,direction:PyGe.Vector3d)-> None:
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None:
       '''                             '''
@@ -21375,11 +21287,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None:
       '''                             '''
     ...
-    def setText (self, *args, **kwargs)-> None:
-      '''setText( (Fcf)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setText(class PyDbFcf {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setText (self: Fcf,val:str)-> None:
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None:
       '''                             '''
@@ -21393,17 +21302,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def text (self, *args, **kwargs)-> str:
-      '''text( (Fcf)arg1, (int)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > text(class PyDbFcf {lvalue},int)'''
+    def text (self: Fcf)-> str:
+      '''                             '''
     ...
-    def textAll (self, *args, **kwargs)-> str:
-      '''textAll( (Fcf)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textAll(class PyDbFcf {lvalue})'''
+    def textAll (self: Fcf)-> str:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
@@ -45045,16 +44948,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def addVertexAt (self, *args, **kwargs)-> None:
-      '''addVertexAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void addVertexAt(class PyDbPolyline {lvalue},unsigned int,class AcGePoint2d)
-
-addVertexAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3, (float)arg4, (float)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void addVertexAt(class PyDbPolyline {lvalue},unsigned int,class AcGePoint2d,double,double,double)'''
+    def addVertexAt (self: Polyline,idx:int,pt2d:PyGe.Point2d,bulge:float=0.0,startWidth:float=0.0,endWidth:float=0.0)-> None:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -45125,11 +45020,8 @@ addVertexAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3, (float)arg4, (floa
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (Polyline)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbPolyline {lvalue})'''
+    def elevation (self: Polyline)-> float:
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -45157,26 +45049,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d:
       '''                             '''
     ...
-    def getArcSeg2dAt (self, *args, **kwargs)-> PyGe.CircArc2d:
-      '''getArcSeg2dAt( (Polyline)arg1, (SubentType)arg2) -> CircArc2d :
-
-    C++ signature :
-        class PyGeCircArc2d getArcSeg2dAt(class PyDbPolyline {lvalue},unsigned int)'''
+    def getArcSeg2dAt (self: Polyline,idx:int)-> PyGe.CircArc2d:
+      '''                             '''
     ...
-    def getArcSeg3dAt (self, *args, **kwargs)-> PyGe.CircArc3d:
-      '''getArcSeg3dAt( (Polyline)arg1, (SubentType)arg2) -> CircArc3d :
-
-    C++ signature :
-        class PyGeCircArc3d getArcSeg3dAt(class PyDbPolyline {lvalue},unsigned int)'''
+    def getArcSeg3dAt (self: Polyline,idx:int)-> PyGe.CircArc3d:
+      '''                             '''
     ...
     def getArea (self: Curve)-> float:
       '''                             '''
     ...
-    def getBulgeAt (self, *args, **kwargs)-> float:
-      '''getBulgeAt( (Polyline)arg1, (SubentType)arg2) -> float :
-
-    C++ signature :
-        double getBulgeAt(class PyDbPolyline {lvalue},unsigned int)'''
+    def getBulgeAt (self: Polyline,idx:int)-> float:
+      '''                             '''
     ...
     def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d:
       '''                             '''
@@ -45184,11 +45067,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def getConstantWidth (self, *args, **kwargs)-> float:
-      '''getConstantWidth( (Polyline)arg1) -> float :
-
-    C++ signature :
-        double getConstantWidth(class PyDbPolyline {lvalue})'''
+    def getConstantWidth (self: Polyline)-> float:
+      '''                             '''
     ...
     def getDistAtParam (self: Curve,param: float)-> float:
       '''                             '''
@@ -45196,16 +45076,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float:
       '''                             '''
     ...
-    def getEcs (self, *args, **kwargs)-> PyGe.Matrix3d:
-      '''getEcs( (Polyline)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d getEcs(class PyDbPolyline {lvalue})
-
-getEcs( (Polyline)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d getEcs(class PyDbPolyline {lvalue})'''
+    def getEcs (self: Polyline)-> PyGe.Matrix3d:
+      '''                             '''
     ...
     def getEndParam (self: Curve)-> float:
       '''                             '''
@@ -45213,11 +45085,8 @@ getEcs( (Polyline)arg1) -> Matrix3d :
     def getEndPoint (self: Curve)-> PyGe.Point3d:
       '''                             '''
     ...
-    def getEndWidthAt (self, *args, **kwargs)-> float:
-      '''getEndWidthAt( (Polyline)arg1, (SubentType)arg2) -> float :
-
-    C++ signature :
-        double getEndWidthAt(class PyDbPolyline {lvalue},unsigned int)'''
+    def getEndWidthAt (self: Polyline,idx:int)-> float:
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId:
       '''                             '''
@@ -45234,17 +45103,11 @@ getEcs( (Polyline)arg1) -> Matrix3d :
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
-    def getLineSeg2dAt (self, *args, **kwargs)-> PyGe.LineSeg2d:
-      '''getLineSeg2dAt( (Polyline)arg1, (SubentType)arg2) -> LineSeg2d :
-
-    C++ signature :
-        class PyGeLineSeg2d getLineSeg2dAt(class PyDbPolyline {lvalue},unsigned int)'''
+    def getLineSeg2dAt (self: Polyline,idx:int)-> PyGe.LineSeg2d:
+      '''                             '''
     ...
-    def getLineSeg3dAt (self, *args, **kwargs)-> PyGe.LineSeg3d:
-      '''getLineSeg3dAt( (Polyline)arg1, (SubentType)arg2) -> LineSeg3d :
-
-    C++ signature :
-        class PyGeLineSeg3d getLineSeg3dAt(class PyDbPolyline {lvalue},unsigned int)'''
+    def getLineSeg3dAt (self: Polyline,idx:int)-> PyGe.LineSeg3d:
+      '''                             '''
     ...
     def getOffsetCurves (self: Curve,dist: float)-> list:
       '''                             '''
@@ -45264,17 +45127,11 @@ getEcs( (Polyline)arg1) -> Matrix3d :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def getPoint2dAt (self, *args, **kwargs)-> PyGe.Point2d:
-      '''getPoint2dAt( (Polyline)arg1, (SubentType)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d getPoint2dAt(class PyDbPolyline {lvalue},unsigned int)'''
+    def getPoint2dAt (self: Polyline,idx:int)-> PyGe.Point2d:
+      '''                             '''
     ...
-    def getPoint3dAt (self, *args, **kwargs)-> PyGe.Point3d:
-      '''getPoint3dAt( (Polyline)arg1, (SubentType)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPoint3dAt(class PyDbPolyline {lvalue},unsigned int)'''
+    def getPoint3dAt (self: Polyline,idx:int)-> PyGe.Point3d:
+      '''                             '''
     ...
     def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d:
       '''                             '''
@@ -45306,11 +45163,8 @@ getEcs( (Polyline)arg1) -> Matrix3d :
     def getStartPoint (self: Curve)-> PyGe.Point3d:
       '''                             '''
     ...
-    def getStartWidthAt (self, *args, **kwargs)-> float:
-      '''getStartWidthAt( (Polyline)arg1, (SubentType)arg2) -> float :
-
-    C++ signature :
-        double getStartWidthAt(class PyDbPolyline {lvalue},unsigned int)'''
+    def getStartWidthAt (self: Polyline,idx:int)-> float:
+      '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
@@ -45318,11 +45172,8 @@ getEcs( (Polyline)arg1) -> Matrix3d :
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None:
       '''                             '''
     ...
-    def hasBulges (self, *args, **kwargs)-> bool:
-      '''hasBulges( (Polyline)arg1) -> bool :
-
-    C++ signature :
-        bool hasBulges(class PyDbPolyline {lvalue})'''
+    def hasBulges (self: Polyline)-> bool:
+      '''                             '''
     ...
     def hasFields (self: DbObject)-> bool:
       '''                             '''
@@ -45330,23 +45181,14 @@ getEcs( (Polyline)arg1) -> Matrix3d :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def hasPlinegen (self, *args, **kwargs)-> bool:
-      '''hasPlinegen( (Polyline)arg1) -> bool :
-
-    C++ signature :
-        bool hasPlinegen(class PyDbPolyline {lvalue})'''
+    def hasPlinegen (self: Polyline)-> bool:
+      '''                             '''
     ...
-    def hasVertexIdentifiers (self, *args, **kwargs)-> bool:
-      '''hasVertexIdentifiers( (Polyline)arg1) -> bool :
-
-    C++ signature :
-        bool hasVertexIdentifiers(class PyDbPolyline {lvalue})'''
+    def hasVertexIdentifiers (self: Polyline)-> bool:
+      '''                             '''
     ...
-    def hasWidth (self, *args, **kwargs)-> bool:
-      '''hasWidth( (Polyline)arg1) -> bool :
-
-    C++ signature :
-        bool hasWidth(class PyDbPolyline {lvalue})'''
+    def hasWidth (self: Polyline)-> bool:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -45414,11 +45256,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
-    def isOnlyLines (self, *args, **kwargs)-> bool:
-      '''isOnlyLines( (Polyline)arg1) -> bool :
-
-    C++ signature :
-        bool isOnlyLines(class PyDbPolyline {lvalue})'''
+    def isOnlyLines (self: Polyline)-> bool:
+      '''                             '''
     ...
     def isPeriodic (self: Curve)-> bool:
       '''                             '''
@@ -45468,11 +45307,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None:
       '''                             '''
     ...
-    def makeClosedIfStartAndEndVertexCoincide (self, *args, **kwargs)-> None:
-      '''makeClosedIfStartAndEndVertexCoincide( (Polyline)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void makeClosedIfStartAndEndVertexCoincide(class PyDbPolyline {lvalue},double)'''
+    def makeClosedIfStartAndEndVertexCoincide (self: Polyline,distTol:float)-> None:
+      '''                             '''
     ...
     def material (self: Entity)-> str:
       '''                             '''
@@ -45480,38 +45316,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def maximizeMemory (self, *args, **kwargs)-> None:
-      '''maximizeMemory( (Polyline)arg1) -> None :
-
-    C++ signature :
-        void maximizeMemory(class PyDbPolyline {lvalue})'''
+    def maximizeMemory (self: Polyline)-> None:
+      '''                             '''
     ...
-    def minimizeMemory (self, *args, **kwargs)-> None:
-      '''minimizeMemory( (Polyline)arg1) -> None :
-
-    C++ signature :
-        void minimizeMemory(class PyDbPolyline {lvalue})'''
+    def minimizeMemory (self: Polyline)-> None:
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''normal( (Polyline)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbPolyline {lvalue})'''
+    def normal (self: Polyline)-> PyGe.Vector3d:
+      '''                             '''
     ...
-    def numVerts (self, *args, **kwargs)-> int:
-      '''numVerts( (Polyline)arg1) -> int :
-
-    C++ signature :
-        unsigned int numVerts(class PyDbPolyline {lvalue})'''
+    def numVerts (self: Polyline)-> int:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def onSegAt (self, *args, **kwargs)-> bool:
-      '''onSegAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3, (float)arg4) -> bool :
-
-    C++ signature :
-        bool onSegAt(class PyDbPolyline {lvalue},unsigned int,class AcGePoint2d,double)'''
+    def onSegAt (self: Polyline,idx:int,pt2d:PyGe.Point2d,param:float)-> bool:
+      '''                             '''
     ...
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -45540,17 +45361,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeReactor (self: Entity,reactor: EntityReactor)-> None:
       '''                             '''
     ...
-    def removeVertexAt (self, *args, **kwargs)-> None:
-      '''removeVertexAt( (Polyline)arg1, (SubentType)arg2) -> None :
-
-    C++ signature :
-        void removeVertexAt(class PyDbPolyline {lvalue},unsigned int)'''
+    def removeVertexAt (self: Polyline,idx:int)-> None:
+      '''                             '''
     ...
-    def reset (self, *args, **kwargs)-> None:
-      '''reset( (Polyline)arg1, (bool)arg2, (SubentType)arg3) -> None :
-
-    C++ signature :
-        void reset(class PyDbPolyline {lvalue},bool,unsigned int)'''
+    def reset (self: Polyline,reuse:bool,numVerts:int)-> None:
+      '''                             '''
     ...
     def reverseCurve (self: Curve)-> None:
       '''                             '''
@@ -45558,29 +45373,20 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool:
       '''                             '''
     ...
-    def segType (self, *args, **kwargs)-> PyDb.SegType:
-      '''segType( (Polyline)arg1, (SubentType)arg2) -> SegType :
-
-    C++ signature :
-        enum AcDbPolyline::SegType segType(class PyDbPolyline {lvalue},unsigned int)'''
+    def segType (self: Polyline,idx:int)-> PyDb.SegType:
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int:
       '''                             '''
     ...
-    def setBulgeAt (self, *args, **kwargs)-> None:
-      '''setBulgeAt( (Polyline)arg1, (SubentType)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setBulgeAt(class PyDbPolyline {lvalue},unsigned int,double)'''
+    def setBulgeAt (self: Polyline,idx:int,bulge:float)-> None:
+      '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None:
       '''                             '''
     ...
-    def setClosed (self, *args, **kwargs)-> None:
-      '''setClosed( (Polyline)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setClosed(class PyDbPolyline {lvalue},bool)'''
+    def setClosed (self: Polyline,val:bool)-> None:
+      '''                             '''
     ...
     def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None:
       '''                             '''
@@ -45588,20 +45394,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None:
       '''                             '''
     ...
-    def setConstantWidth (self, *args, **kwargs)-> None:
-      '''setConstantWidth( (Polyline)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setConstantWidth(class PyDbPolyline {lvalue},double)'''
+    def setConstantWidth (self: Polyline,width:float)-> None:
+      '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None:
       '''                             '''
     ...
-    def setElevation (self, *args, **kwargs)-> None:
-      '''setElevation( (Polyline)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setElevation(class PyDbPolyline {lvalue},double)'''
+    def setElevation (self: Polyline,elev:float)-> None:
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId:
       '''                             '''
@@ -45624,20 +45424,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None:
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None:
-      '''setNormal( (Polyline)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbPolyline {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Polyline,val:PyGe.Vector3d)-> None:
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None:
       '''                             '''
     ...
-    def setPlinegen (self, *args, **kwargs)-> None:
-      '''setPlinegen( (Polyline)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlinegen(class PyDbPolyline {lvalue},bool)'''
+    def setPlinegen (self: Polyline,val:bool)-> None:
+      '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None:
       '''setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> None :
@@ -45655,11 +45449,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPointAt (self, *args, **kwargs)-> None:
-      '''setPointAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void setPointAt(class PyDbPolyline {lvalue},unsigned int,class AcGePoint2d)'''
+    def setPointAt (self: Polyline,idx:int,pt2d:PyGe.Point2d)-> None:
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None:
       '''                             '''
@@ -45667,20 +45458,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None:
       '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None:
-      '''setThickness( (Polyline)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyDbPolyline {lvalue},double)'''
+    def setThickness (self: Polyline,val:float)-> None:
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None:
       '''                             '''
     ...
-    def setWidthsAt (self, *args, **kwargs)-> None:
-      '''setWidthsAt( (Polyline)arg1, (SubentType)arg2, (float)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void setWidthsAt(class PyDbPolyline {lvalue},unsigned int,double,double)'''
+    def setWidthsAt (self: Polyline,idx:int,startWidth:float,endWidth:float)-> None:
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
@@ -45691,11 +45476,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float:
-      '''thickness( (Polyline)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDbPolyline {lvalue})'''
+    def thickness (self: Polyline)-> float:
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
