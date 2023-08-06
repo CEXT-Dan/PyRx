@@ -21,7 +21,7 @@ struct PyRxObjectDeleter
         {
             return false;
         }
-        else if (p->isA()->isDerivedFrom(AcDbObject::desc()))
+        else if (p->isA()->isDerivedFrom(AcDbObject::desc()))//very negligible impact on performance .01 @ 50,000 entities  
         {
             auto dbo = static_cast<AcDbObject*>(p);
             if (!dbo->objectId().isNull())
@@ -36,9 +36,9 @@ struct PyRxObjectDeleter
 
     inline void operator()(AcRxObject* p) const
     {
-        if (p == nullptr)
+        if (p == nullptr)[[unlikely]]
             return;
-        else if (m_forceKeepAlive)
+        else if (m_forceKeepAlive) [[unlikely]]
             return;
         else if (isDbroThenClose(p))
             return;
