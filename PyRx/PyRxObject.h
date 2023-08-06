@@ -23,7 +23,7 @@ struct PyRxObjectDeleter
         }
         else if (p->isA()->isDerivedFrom(AcDbObject::desc()))
         {
-            const auto dbo = static_cast<AcDbObject*>(p);
+            auto dbo = static_cast<AcDbObject*>(p);
             if (!dbo->objectId().isNull())
             {
                 if (auto es = dbo->close(); es != eOk)
@@ -62,7 +62,7 @@ class PyRxObject
 public:
     PyRxObject(const AcRxObject* ptr);
     PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbObject);
-    virtual ~PyRxObject();
+    inline virtual ~PyRxObject() = default;
     bool operator==(const PyRxObject& rhs) const;
     bool operator!=(const PyRxObject& rhs) const;
     PyRxClass           isA() const;
