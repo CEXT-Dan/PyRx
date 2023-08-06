@@ -60,6 +60,8 @@ void makeAcRxObjectWrapper();
 class PyRxObject
 {
 protected:
+    //this is here so we don't need to create the custom deleter twice
+    //for objects that are opened with an AcDbObjectId
     inline PyRxObject() = default;
 public:
     PyRxObject(const AcRxObject* ptr);
