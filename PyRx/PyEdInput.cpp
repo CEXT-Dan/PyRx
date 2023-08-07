@@ -106,7 +106,7 @@ void PyEdInputPointManager::enableMultiSubentPathSelection(bool bEnable)
 
 AcEdInputPointManager* PyEdInputPointManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return m_pyImp;
 }
@@ -129,7 +129,7 @@ Acad::ErrorStatus PyEdInputPointFilterImpl::processInputPoint(const AcEdInputPoi
 
 PyEdInputPointFilter* PyEdInputPointFilterImpl::backPtr(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_bckPtr == nullptr)
+    if (m_bckPtr == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return m_bckPtr;
 }
@@ -152,7 +152,7 @@ Acad::ErrorStatus PyEdInputPointMonitorImpl::monitorInputPoint(const AcEdInputPo
 
 PyEdInputPointMonitor* PyEdInputPointMonitorImpl::backPtr(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_bckPtr == nullptr)
+    if (m_bckPtr == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return m_bckPtr;
 }

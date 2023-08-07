@@ -31,7 +31,7 @@ std::string PyGePointEnt2d::className()
 
 AcGePointEnt2d* PyGePointEnt2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGePointEnt2d*>(m_imp.get());
 }
@@ -199,7 +199,7 @@ std::string PyGePointOnCurve2d::className()
 
 AcGePointOnCurve2d* PyGePointOnCurve2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGePointOnCurve2d*>(m_imp.get());
 }

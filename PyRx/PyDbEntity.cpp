@@ -611,7 +611,7 @@ PyDbBlockBegin PyDbBlockBegin::cast(const PyRxObject& src)
 
 AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbBlockBegin*>(m_pyImp.get());
 }
@@ -680,7 +680,7 @@ PyDbBlockEnd PyDbBlockEnd::cast(const PyRxObject& src)
 
 AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbBlockEnd*>(m_pyImp.get());
 }
@@ -751,7 +751,7 @@ PyDbSequenceEnd PyDbSequenceEnd::cast(const PyRxObject& src)
 
 AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbSequenceEnd*>(m_pyImp.get());
 }
@@ -839,7 +839,7 @@ bool PyDbSubentId::operator==(const PyDbSubentId& id) const
 
 AcDbSubentId* PyDbSubentId::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbSubentId*>(m_pyImp.get());
 }

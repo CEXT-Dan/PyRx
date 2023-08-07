@@ -80,7 +80,7 @@ PyDbSurface PyDbSurface::cast(const PyRxObject& src)
 
 AcDbSurface* PyDbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbSurface*>(m_pyImp.get());
 }
@@ -236,7 +236,7 @@ PyDbLoftedSurface PyDbLoftedSurface::cast(const PyRxObject& src)
 
 AcDbLoftedSurface* PyDbLoftedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbLoftedSurface*>(m_pyImp.get());
 }
@@ -320,7 +320,7 @@ PyDbNurbSurface PyDbNurbSurface::cast(const PyRxObject& src)
 
 AcDbNurbSurface* PyDbNurbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbNurbSurface*>(m_pyImp.get());
 }
@@ -401,7 +401,7 @@ PyDbPlaneSurface PyDbPlaneSurface::cast(const PyRxObject& src)
 
 AcDbPlaneSurface* PyDbPlaneSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbPlaneSurface*>(m_pyImp.get());
 }
@@ -483,7 +483,7 @@ PyDbRevolvedSurface PyDbRevolvedSurface::cast(const PyRxObject& src)
 
 AcDbRevolvedSurface* PyDbRevolvedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbRevolvedSurface*>(m_pyImp.get());
 }
@@ -564,7 +564,7 @@ PyDbSweptSurface PyDbSweptSurface::cast(const PyRxObject& src)
 
 AcDbSweptSurface* PyDbSweptSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbSweptSurface*>(m_pyImp.get());
 }

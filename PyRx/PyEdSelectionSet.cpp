@@ -157,7 +157,7 @@ boost::python::list PyEdSelectionSet::objectIds()
 
 PySSName* PyEdSelectionSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pSet == nullptr)
+    if (m_pSet == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return m_pSet.get();
 }

@@ -140,7 +140,7 @@ std::string PyGeSplineEnt2d::className()
 
 AcGeSplineEnt2d* PyGeSplineEnt2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGeSplineEnt2d*>(m_imp.get());
 }
@@ -276,7 +276,7 @@ std::string PyGePolyline2d::className()
 
 AcGePolyline2d* PyGePolyline2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGePolyline2d*>(m_imp.get());
 }

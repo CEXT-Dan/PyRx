@@ -130,7 +130,7 @@ PyRxClass PyGiDrawable::desc()
 
 AcGiDrawable* PyGiDrawable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGiDrawable*>(m_pyImp.get());
 }
@@ -333,7 +333,7 @@ PyRxClass PyGiDrawableOverrule::desc()
 
 AcGiDrawableOverrule* PyGiDrawableOverrule::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGiDrawableOverrule*>(m_pyImp.get());
 }

@@ -725,7 +725,7 @@ std::string PyDbDatabaseSummaryInfo::className()
 
 AcDbDatabaseSummaryInfo* PyDbDatabaseSummaryInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbDatabaseSummaryInfo*>(m_pyImp.get());
 }

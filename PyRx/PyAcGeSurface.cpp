@@ -182,7 +182,7 @@ std::string PyAcGeSurface::className()
 
 AcGeSurface* PyAcGeSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGeSurface*>(m_imp.get());
 }

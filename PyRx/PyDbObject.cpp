@@ -600,7 +600,7 @@ void PyDbObjectReactorImpl::objectClosed(const AcDbObjectId id)
 
 PyDbObjectReactor* PyDbObjectReactorImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_backPtr == nullptr)
+    if (m_backPtr == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return m_backPtr;
 }
@@ -850,7 +850,7 @@ std::string PyDbObjectReactor::className()
 
 AcDbObjectReactor* PyDbObjectReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbObjectReactor*>(m_pyImp.get());
 }
@@ -1036,7 +1036,7 @@ void AcDbEntityReactorImpl::dragCloneToBeDeleted(const AcDbEntity* pOriginalObj,
 
 PyDbEntityReactor* AcDbEntityReactorImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_backPtr == nullptr)
+    if (m_backPtr == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return m_backPtr;
 }
@@ -1322,7 +1322,7 @@ std::string PyDbEntityReactor::className()
 
 AcDbEntityReactor* PyDbEntityReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbEntityReactor*>(m_pyImp.get());
 }
