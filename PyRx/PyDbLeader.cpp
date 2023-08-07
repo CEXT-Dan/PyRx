@@ -86,7 +86,7 @@ void makePyDbLeaderWrapper()
         ;
 }
 
-static AcDbLeader* createAcDbLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbLeader* openAcDbLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbLeader* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbLeader>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -105,7 +105,7 @@ PyDbLeader::PyDbLeader(AcDbLeader* ptr, bool autoDelete)
 }
 
 PyDbLeader::PyDbLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(createAcDbLeader(id,mode), false)
+    : PyDbCurve(openAcDbLeader(id,mode), false)
 {
 }
 
@@ -646,7 +646,7 @@ void makePyDbMLeaderWrapper()
         ;
 }
 
-static AcDbMLeader* createAcDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbMLeader* openAcDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbMLeader* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbMLeader>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -665,7 +665,7 @@ PyDbMLeader::PyDbMLeader(AcDbMLeader* ptr, bool autoDelete)
 }
 
 PyDbMLeader::PyDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(createAcDbMLeader(id,mode), false)
+    : PyDbEntity(openAcDbMLeader(id,mode), false)
 {
 }
 
@@ -1709,7 +1709,7 @@ void makePyDbMLeaderStyleWrapper()
         ;
 }
 
-static AcDbMLeaderStyle* createAcDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbMLeaderStyle* openAcDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbMLeaderStyle* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbMLeaderStyle>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -1728,7 +1728,7 @@ PyDbMLeaderStyle::PyDbMLeaderStyle(AcDbMLeaderStyle* ptr, bool autoDelete)
 }
 
 PyDbMLeaderStyle::PyDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(createAcDbMLeaderStyle(id, mode), false)
+    : PyDbObject(openAcDbMLeaderStyle(id, mode), false)
 {
 }
 

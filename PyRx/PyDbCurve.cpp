@@ -56,7 +56,7 @@ void makePyDbCurveWrapper()
         ;
 }
 
-static AcDbCurve* createAcDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbCurve* openAcDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbCurve* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbCurve>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -70,7 +70,7 @@ PyDbCurve::PyDbCurve(AcDbCurve* ptr, bool autoDelete)
 }
 
 PyDbCurve::PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(createAcDbCurve(id, mode), false)
+    : PyDbEntity(openAcDbCurve(id, mode), false)
 {
 }
 

@@ -105,7 +105,7 @@ void makePyDbTableStyleWrapper()
         ;
 }
 
-static AcDbTableStyle* createAcDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbTableStyle* openAcDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbTableStyle* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbTableStyle>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -124,7 +124,7 @@ PyDbTableStyle::PyDbTableStyle(AcDbObject* ptr, bool autoDelete)
 }
 
 PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(createAcDbTableStyle(id,mode), false)
+    : PyDbObject(openAcDbTableStyle(id,mode), false)
 {
 }
 

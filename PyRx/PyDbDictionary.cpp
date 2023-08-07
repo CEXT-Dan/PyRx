@@ -32,7 +32,7 @@ void makePyDbDictionaryWrapper()
 
 //---------------------------------------------------------------------------------------- -
 //PyDbDictionary
-static AcDbDictionary* createAcDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbDictionary* openAcDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbDictionary* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbDictionary>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -51,7 +51,7 @@ PyDbDictionary::PyDbDictionary(AcDbDictionary* ptr, bool autoDelete)
 }
 
 PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(createAcDbDictionary(id,mode), true)
+    : PyDbObject(openAcDbDictionary(id,mode), true)
 {
 }
 

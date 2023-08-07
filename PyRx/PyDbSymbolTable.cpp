@@ -29,7 +29,7 @@ void makePyDbSymbolTableWrapper()
 
 //---------------------------------------------------------------------------------------- -
 //PyDbSymbolTable
-static AcDbSymbolTable* createAcDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbSymbolTable* openAcDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbSymbolTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbSymbolTable>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -48,7 +48,7 @@ PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id)
 }
 
 PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(createAcDbSymbolTable(id,mode), true)
+    : PyDbObject(openAcDbSymbolTable(id,mode), true)
 {
 }
 
@@ -171,7 +171,7 @@ void makePyDbDimStyleTableWrapper()
         ;
 }
 
-static AcDbDimStyleTable* createAcDbDimStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbDimStyleTable* openAcDbDimStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbDimStyleTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbDimStyleTable>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -185,7 +185,7 @@ PyDbDimStyleTable::PyDbDimStyleTable(AcDbDimStyleTable* ptr, bool autoDelete)
 }
 
 PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(createAcDbDimStyleTable(id,mode), false)
+    : PyDbSymbolTable(openAcDbDimStyleTable(id,mode), false)
 {
 }
 
@@ -251,7 +251,7 @@ void makePyDbBlockTableWrapper()
         ;
 }
 
-static AcDbBlockTable* createAcDbBlockTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbBlockTable* openAcDblockTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbBlockTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbBlockTable>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -265,7 +265,7 @@ PyDbBlockTable::PyDbBlockTable(AcDbBlockTable* ptr, bool autoDelete)
 }
 
 PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(createAcDbBlockTable(id,mode), false)
+    : PyDbSymbolTable(openAcDblockTable(id,mode), false)
 {
 }
 
@@ -329,7 +329,7 @@ void makePyDbTextStyleTableWrapper()
         ;
 }
 
-static AcDbTextStyleTable* createAcDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbTextStyleTable* openAcDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbTextStyleTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbTextStyleTable>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -348,7 +348,7 @@ PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id)
 }
 
 PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(createAcDbTextStyleTable(id,mode), false)
+    : PyDbSymbolTable(openAcDbTextStyleTable(id,mode), false)
 {
 }
 
@@ -407,7 +407,7 @@ void makePyDbLinetypeTableWrapper()
         ;
 }
 
-static AcDbLinetypeTable* createAcDbLinetypeTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbLinetypeTable* openAcDbLinetypeTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbLinetypeTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbLinetypeTable>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -426,7 +426,7 @@ PyDbLinetypeTable::PyDbLinetypeTable(const PyDbObjectId& id)
 }
 
 PyDbLinetypeTable::PyDbLinetypeTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(createAcDbLinetypeTable(id,mode), false)
+    : PyDbSymbolTable(openAcDbLinetypeTable(id,mode), false)
 {
 }
 
@@ -485,7 +485,7 @@ void makePyDbRegAppTableWrapper()
         ;
 }
 
-static AcDbRegAppTable* createAcDbRegAppTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbRegAppTable* openAcDbRegAppTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbRegAppTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbRegAppTable>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -504,7 +504,7 @@ PyDbRegAppTable::PyDbRegAppTable(const PyDbObjectId& id)
 }
 
 PyDbRegAppTable::PyDbRegAppTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(createAcDbRegAppTable(id,mode), false)
+    : PyDbSymbolTable(openAcDbRegAppTable(id,mode), false)
 {
 }
 
@@ -563,7 +563,7 @@ void makePyDbUCSTableWrapper()
         ;
 }
 
-static AcDbUCSTable* createAcDbUCSTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbUCSTable* openAcDbUCSTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbUCSTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbUCSTable>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -582,7 +582,7 @@ PyDbUCSTable::PyDbUCSTable(const PyDbObjectId& id)
 }
 
 PyDbUCSTable::PyDbUCSTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(createAcDbUCSTable(id,mode), false)
+    : PyDbSymbolTable(openAcDbUCSTable(id,mode), false)
 {
 }
 
@@ -641,7 +641,7 @@ void makePyDbLayerTableWrapper()
         ;
 }
 
-static AcDbLayerTable* createAcDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbLayerTable* openAcDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbLayerTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbLayerTable>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -660,7 +660,7 @@ PyDbLayerTable::PyDbLayerTable(const PyDbObjectId& id)
 }
 
 PyDbLayerTable::PyDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(createAcDbLayerTable(id,mode), false)
+    : PyDbSymbolTable(openAcDbLayerTable(id,mode), false)
 {
 }
 
@@ -719,7 +719,7 @@ void makePyDbAbstractViewTableWrapper()
         ;
 }
 
-static AcDbAbstractViewTable* createAcDbAbstractViewTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbAbstractViewTable* openAcDbAbstractViewTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbAbstractViewTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbAbstractViewTable>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -738,7 +738,7 @@ PyDbAbstractViewTable::PyDbAbstractViewTable(const PyDbObjectId& id)
 }
 
 PyDbAbstractViewTable::PyDbAbstractViewTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(createAcDbAbstractViewTable(id,mode), false)
+    : PyDbSymbolTable(openAcDbAbstractViewTable(id,mode), false)
 {
 }
 

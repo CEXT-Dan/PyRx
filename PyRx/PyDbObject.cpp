@@ -81,7 +81,7 @@ void makePyDbObjectWrapper()
         ;
 }
 
-static AcDbObject* createAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbObject* openAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbObject* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbObject>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -102,7 +102,7 @@ PyDbObject::PyDbObject(const PyDbObjectId& id)
 }
 
 PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyGiDrawable(createAcDbObject(id, mode), false, true)
+    : PyGiDrawable(openAcDbObject(id, mode), false, true)
 {
 }
 

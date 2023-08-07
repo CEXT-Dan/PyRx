@@ -141,7 +141,7 @@ void makePyDbHatchWrapper()
         ;
 }
 
-static AcDbHatch* createAcDbHatch(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbHatch* openAcDbHatch(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbHatch* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbHatch>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -160,7 +160,7 @@ PyDbHatch::PyDbHatch(AcDbHatch* ptr, bool autoDelete)
 }
 
 PyDbHatch::PyDbHatch(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(createAcDbHatch(id,mode), false)
+    : PyDbEntity(openAcDbHatch(id,mode), false)
 {
 }
 

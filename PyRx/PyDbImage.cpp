@@ -19,7 +19,7 @@ void makePyDbImageWrapper()
         ;
 }
 
-static AcDbImage* createAcDbImage(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbImage* openAcDbImage(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbImage* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbImage>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -33,7 +33,7 @@ PyDbImage::PyDbImage(AcDbImage* ptr, bool autoDelete)
 }
 
 PyDbImage::PyDbImage(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(createAcDbImage(id,mode), false)
+    : PyDbEntity(openAcDbImage(id,mode), false)
 {
 }
 
@@ -137,7 +137,7 @@ void makePyDbRasterImageDefWrapper()
         ;
 }
 
-static AcDbRasterImageDef* createAcDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbRasterImageDef* openAcDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbRasterImageDef* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbRasterImageDef>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -156,7 +156,7 @@ PyDbRasterImageDef::PyDbRasterImageDef(AcDbRasterImageDef* ptr, bool autoDelete)
 }
 
 PyDbRasterImageDef::PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(createAcDbRasterImageDef(id,mode), false)
+    : PyDbObject(openAcDbRasterImageDef(id,mode), false)
 {
 }
 
@@ -332,7 +332,7 @@ void makePyDbRasterImageDefReactorWrapper()
         ;
 }
 
-static AcDbRasterImageDefReactor* createAcDbRasterImageDefReactor(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbRasterImageDefReactor* openAcDbRasterImageDefReactor(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbRasterImageDefReactor* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbRasterImageDefReactor>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -351,7 +351,7 @@ PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(AcDbRasterImageDefReactor* 
 }
 
 PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(createAcDbRasterImageDefReactor(id,mode), false)
+    : PyDbObject(openAcDbRasterImageDefReactor(id,mode), false)
 {
 }
 
@@ -465,7 +465,7 @@ void makePyDbRasterImageWrapper()
         ;
 }
 
-static AcDbRasterImage* createAcDbRasterImage(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbRasterImage* openAcDbRasterImage(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbRasterImage* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbRasterImage>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -484,7 +484,7 @@ PyDbRasterImage::PyDbRasterImage(AcDbRasterImage* ptr, bool autoDelete)
 }
 
 PyDbRasterImage::PyDbRasterImage(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbImage(createAcDbRasterImage(id,mode), false)
+    : PyDbImage(openAcDbRasterImage(id,mode), false)
 {
 }
 
