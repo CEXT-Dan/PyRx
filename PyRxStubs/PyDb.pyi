@@ -6795,11 +6795,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def objectIds (self, *args, **kwargs)-> list:
-      '''objectIds( (BlockTableRecord)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list objectIds(class PyDbBlockTableRecord {lvalue})'''
+    def objectIds (self: BlockTableRecord,desc:PyRx.RxClass=AcDbEntity)-> list:
+      '''                             '''
     ...
     def openBlockBegin (self, *args, **kwargs)-> None:
       '''openBlockBegin( (BlockTableRecord)arg1, (BlockBegin)arg2, (OpenMode)arg3) -> None :

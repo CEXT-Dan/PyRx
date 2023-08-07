@@ -1285,6 +1285,7 @@ void makePyDbBlockTableRecordWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId=kNull", "mode: OpenMode=kForRead" })))
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity)
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
+        .def("objectIds", &PyDbBlockTableRecord::objectIdsOfType, DS.ARGS({"desc:PyRx.RxClass=AcDbEntity"}))
         .def("comments", &PyDbBlockTableRecord::comments)
         .def("setComments", &PyDbBlockTableRecord::setComments)
         .def("pathName", &PyDbBlockTableRecord::pathName)
@@ -1364,15 +1365,36 @@ PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
 boost::python::list PyDbBlockTableRecord::objectIds()
 {
     PyAutoLockGIL lock;
-    boost::python::list pyList; 
+    boost::python::list pyList;
     auto [es, iter] = makeBlockTableRecordIterator(*impObj());
     if (es == eOk)
     {
+        PyDbObjectId id;
         for (iter->start(); !iter->done(); iter->step())
         {
-            PyDbObjectId id;
             if (iter->getEntityId(id.m_id) == eOk)
                 pyList.append(id);
+        }
+    }
+    return pyList;
+}
+
+boost::python::list PyDbBlockTableRecord::objectIdsOfType(const PyRxClass& _class)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const auto _desc = _class.impObj();
+    auto [es, iter] = makeBlockTableRecordIterator(*impObj());
+    if (es == eOk)
+    {
+        PyDbObjectId id;
+        for (iter->start(); !iter->done(); iter->step())
+        {
+            if (iter->getEntityId(id.m_id) == eOk)
+            {
+                if (id.m_id.objectClass()->isDerivedFrom(_desc))
+                    pyList.append(id);
+            }
         }
     }
     return pyList;

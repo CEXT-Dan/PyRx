@@ -266,6 +266,7 @@ public:
     virtual ~PyDbBlockTableRecord() override = default;
     PyDbObjectId        appendAcDbEntity(const PyDbEntity& ent);
     boost::python::list objectIds();
+    boost::python::list objectIdsOfType(const PyRxClass& _class);
     std::string         comments();
     void                setComments(const std::string& pString);
     std::string         pathName();
