@@ -86,6 +86,14 @@ void makePyDbLeaderWrapper()
         ;
 }
 
+static AcDbLeader* createAcDbLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbLeader* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbLeader>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbLeader::PyDbLeader()
     : PyDbCurve(new AcDbLeader(), true)
 {
@@ -97,12 +105,8 @@ PyDbLeader::PyDbLeader(AcDbLeader* ptr, bool autoDelete)
 }
 
 PyDbLeader::PyDbLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(nullptr, false)
+    : PyDbCurve(createAcDbLeader(id,mode), false)
 {
-    AcDbLeader* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbLeader>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 void PyDbLeader::setPlane(const PyGePlane& plane)
@@ -642,6 +646,14 @@ void makePyDbMLeaderWrapper()
         ;
 }
 
+static AcDbMLeader* createAcDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbMLeader* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbMLeader>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbMLeader::PyDbMLeader()
     : PyDbEntity(new AcDbMLeader(), true)
 {
@@ -653,12 +665,8 @@ PyDbMLeader::PyDbMLeader(AcDbMLeader* ptr, bool autoDelete)
 }
 
 PyDbMLeader::PyDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
+    : PyDbEntity(createAcDbMLeader(id,mode), false)
 {
-    AcDbMLeader* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbMLeader>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 void PyDbMLeader::objectClosed(const PyDbObjectId& dbObjId)
@@ -1701,6 +1709,14 @@ void makePyDbMLeaderStyleWrapper()
         ;
 }
 
+static AcDbMLeaderStyle* createAcDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbMLeaderStyle* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbMLeaderStyle>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbMLeaderStyle::PyDbMLeaderStyle()
     : PyDbObject(new AcDbMLeaderStyle(), true)
 {
@@ -1712,12 +1728,8 @@ PyDbMLeaderStyle::PyDbMLeaderStyle(AcDbMLeaderStyle* ptr, bool autoDelete)
 }
 
 PyDbMLeaderStyle::PyDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(nullptr, false)
+    : PyDbObject(createAcDbMLeaderStyle(id, mode), false)
 {
-    AcDbMLeaderStyle* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbMLeaderStyle>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 std::string PyDbMLeaderStyle::getName() const

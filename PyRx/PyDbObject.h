@@ -14,13 +14,11 @@ class PyDbSnoopDwgFiler;
 void makePyDbObjectWrapper();
 class PyDbObject : public PyGiDrawable
 {
-protected:
-    inline PyDbObject() = default;
 public:
     PyDbObject(AcDbObject* ptr, bool autoDelete);
     PyDbObject(const PyDbObjectId&);
     PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
-    inline virtual ~PyDbObject() override;
+    inline virtual ~PyDbObject() override = default;
     PyDbObjectId        objectId() const;
     PyDbObjectId        ownerId() const;
     void                setOwnerId(const PyDbObjectId& objId);

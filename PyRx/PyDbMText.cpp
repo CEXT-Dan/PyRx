@@ -121,6 +121,14 @@ void makePyDbMTextWrapper()
         ;
 }
 
+static AcDbMText* createAcDbMText(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbMText* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbMText>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbMText::PyDbMText()
     : PyDbMText::PyDbMText(new AcDbMText(), true)
 {
@@ -132,12 +140,8 @@ PyDbMText::PyDbMText(AcDbMText* ptr, bool autoDelete)
 }
 
 PyDbMText::PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
+    : PyDbEntity(createAcDbMText(id,mode), false)
 {
-    AcDbMText* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbMText>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbMText::PyDbMText(const PyDbObjectId& id)

@@ -135,7 +135,7 @@ class PyDbPdfDefinition : public PyDbUnderlayDefinition
 {
 public:
     PyDbPdfDefinition();
-    PyDbPdfDefinition(AcDbUnderlayDefinition* ptr, bool autoDelete);
+    PyDbPdfDefinition(AcDbPdfDefinition* ptr, bool autoDelete);
     PyDbPdfDefinition(const PyDbObjectId& id);
     PyDbPdfDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbPdfDefinition() override = default;

@@ -21,6 +21,10 @@ struct PyRxObjectDeleter
         {
             return false;
         }
+        else if (m_forceKeepAlive) [[unlikely]]
+        {
+            return true;
+        }
         else if (p->isA()->isDerivedFrom(AcDbObject::desc()))//very negligible impact on performance .01 @ 50,000 entities  
         {
             auto dbo = static_cast<AcDbObject*>(p);
@@ -37,8 +41,6 @@ struct PyRxObjectDeleter
     inline void operator()(AcRxObject* p) const
     {
         if (p == nullptr)[[unlikely]]
-            return;
-        else if (m_forceKeepAlive) [[unlikely]]
             return;
         else if (isDbroThenClose(p))
             return;
@@ -59,10 +61,6 @@ void makeAcRxObjectWrapper();
 
 class PyRxObject
 {
-protected:
-    //this is here so we don't need to create the custom deleter twice
-    //for objects that are opened with an AcDbObjectId
-    inline PyRxObject() = default;
 public:
     PyRxObject(const AcRxObject* ptr);
     PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbObject);
@@ -70,7 +68,6 @@ public:
     bool operator==(const PyRxObject& rhs) const;
     bool operator!=(const PyRxObject& rhs) const;
     PyRxClass           isA() const;
-    void                resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject);
     void                forceKeepAlive(bool flag);
     bool                isNullObj();
     int                 implRefCount();

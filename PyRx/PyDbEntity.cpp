@@ -88,6 +88,14 @@ void makePyDbEntityWrapper()
         ;
 }
 
+static AcDbEntity* createAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbEntity* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbEntity>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 //----------------------------------------------------------------------------------------------------
 //PyDbEntity
 PyDbEntity::PyDbEntity(AcDbEntity* ptr, bool autoDelete)
@@ -96,11 +104,8 @@ PyDbEntity::PyDbEntity(AcDbEntity* ptr, bool autoDelete)
 }
 
 PyDbEntity::PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
+  : PyDbObject(createAcDbObject(id, mode),false)
 {
-    AcDbEntity* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbEntity>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbEntity::PyDbEntity(const PyDbObjectId& id)
@@ -385,8 +390,7 @@ PyGePlane PyDbEntity::getPlane() const
 {
     AcGePlane plane;
     AcDb::Planarity val;
-    if (auto es = impObj()->getPlane(plane, val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPlane(plane, val));
     if (val == AcDb::kNonPlanar)
         throw PyAcadErrorStatus(Acad::eNotApplicable);
     return PyGePlane(plane);
@@ -557,18 +561,22 @@ void makePyDbBlockBeginWrapper()
         ;
 }
 
+static AcDbBlockBegin* createAcDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbBlockBegin* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbBlockBegin>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbBlockBegin::PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
 
 PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
+    : PyDbEntity(createAcDbBlockBegin(id,mode), false)
 {
-    AcDbBlockBegin* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbBlockBegin>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id)
@@ -622,18 +630,22 @@ void makePyDbBlockEndWrapper()
         ;
 }
 
+static AcDbBlockEnd* createAcDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbBlockEnd* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbBlockEnd>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbBlockEnd::PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
 
 PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
+    : PyDbEntity(createAcDbBlockEnd(id,mode), false)
 {
-    AcDbBlockEnd* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbBlockEnd>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id)
@@ -689,18 +701,22 @@ void makePyDbSequenceEndWrapper()
         ;
 }
 
+static AcDbSequenceEnd* createAcDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbSequenceEnd* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbSequenceEnd>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbSequenceEnd::PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
 
 PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
+    : PyDbEntity(createAcDbSequenceEnd(id,mode), false)
 {
-    AcDbSequenceEnd* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbSequenceEnd>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id)

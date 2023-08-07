@@ -252,6 +252,14 @@ void makePyDbViewportWrapper()
         ;
 }
 
+static AcDbViewport* createAcDbViewport(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbViewport* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbViewport>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbViewport::PyDbViewport()
     : PyDbViewport(new AcDbViewport(), true)
 {
@@ -263,12 +271,8 @@ PyDbViewport::PyDbViewport(AcDbViewport* ptr, bool autoDelete)
 }
 
 PyDbViewport::PyDbViewport(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
+    : PyDbEntity(createAcDbViewport(id, mode), false)
 {
-    AcDbViewport* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbViewport>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbViewport::PyDbViewport(const PyDbObjectId& id)

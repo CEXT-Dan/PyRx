@@ -12,8 +12,6 @@ void makePyGiObjectWrapper();
 
 class PyGiDrawable : public PyRxObject
 {
-protected:
-	inline PyGiDrawable() = default;
 public:
     PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject);
     inline virtual ~PyGiDrawable() override = default;
