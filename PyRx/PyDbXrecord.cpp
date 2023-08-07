@@ -26,6 +26,14 @@ void makePyDbXrecordWrapper()
         ;
 }
 
+static AcDbXrecord* createAcDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbXrecord* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbXrecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbXrecord::PyDbXrecord()
     : PyDbObject(new AcDbXrecord(), true)
 {
@@ -37,12 +45,8 @@ PyDbXrecord::PyDbXrecord(AcDbObject* ptr, bool autoDelete)
 }
 
 PyDbXrecord::PyDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(nullptr, false)
+    : PyDbObject(createAcDbXrecord(id,mode), false)
 {
-    AcDbXrecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbXrecord>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbXrecord::PyDbXrecord(const PyDbObjectId& id)

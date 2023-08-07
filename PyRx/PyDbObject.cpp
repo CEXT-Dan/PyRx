@@ -81,6 +81,14 @@ void makePyDbObjectWrapper()
         ;
 }
 
+static AcDbObject* createAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbObject* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbObject>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 //-----------------------------------------------------------------------------------------
 //PyDbObject
 PyDbObject::PyDbObject(AcDbObject* ptr, bool autoDelete)
@@ -94,15 +102,7 @@ PyDbObject::PyDbObject(const PyDbObjectId& id)
 }
 
 PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyGiDrawable(nullptr, true, true)
-{
-    AcDbObject* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbObject>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
-}
-
-PyDbObject::~PyDbObject()
+    : PyGiDrawable(createAcDbObject(id, mode), false, true)
 {
 }
 
@@ -438,7 +438,7 @@ PyDbObject PyDbObject::cast(const PyRxObject& src)
 
 AcDbObject* PyDbObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbObject*>(m_pyImp.get());
 }

@@ -156,9 +156,9 @@ void makePyGiDrawableOverruleWrapper()
 }
 
 PyGiDrawableOverrule::PyGiDrawableOverrule()
-    : PyRxOverrule(nullptr, this)
+    : PyRxOverrule(this, false)
 {
-    this->resetImp(this, false, false);
+    //this->resetImp(this, false, false);
 }
 
 PyGiDrawableOverrule::PyGiDrawableOverrule(AcGiDrawableOverrule* ptr, bool autoDelete)

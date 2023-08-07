@@ -19,18 +19,22 @@ void makePyDbImageWrapper()
         ;
 }
 
+static AcDbImage* createAcDbImage(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbImage* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbImage>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbImage::PyDbImage(AcDbImage* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
 
 PyDbImage::PyDbImage(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
+    : PyDbEntity(createAcDbImage(id,mode), false)
 {
-    AcDbImage* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbImage>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbImage::PyDbImage(const PyDbObjectId& id)
@@ -133,6 +137,14 @@ void makePyDbRasterImageDefWrapper()
         ;
 }
 
+static AcDbRasterImageDef* createAcDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbRasterImageDef* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbRasterImageDef>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbRasterImageDef::PyDbRasterImageDef()
     : PyDbObject(new AcDbRasterImageDef(), true)
 {
@@ -144,12 +156,8 @@ PyDbRasterImageDef::PyDbRasterImageDef(AcDbRasterImageDef* ptr, bool autoDelete)
 }
 
 PyDbRasterImageDef::PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(nullptr, false)
+    : PyDbObject(createAcDbRasterImageDef(id,mode), false)
 {
-    AcDbRasterImageDef* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbRasterImageDef>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbRasterImageDef::PyDbRasterImageDef(const PyDbObjectId& id)
@@ -324,6 +332,14 @@ void makePyDbRasterImageDefReactorWrapper()
         ;
 }
 
+static AcDbRasterImageDefReactor* createAcDbRasterImageDefReactor(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbRasterImageDefReactor* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbRasterImageDefReactor>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbRasterImageDefReactor::PyDbRasterImageDefReactor()
     : PyDbObject(new AcDbRasterImageDefReactor(), true)
 {
@@ -335,12 +351,8 @@ PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(AcDbRasterImageDefReactor* 
 }
 
 PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(nullptr, false)
+    : PyDbObject(createAcDbRasterImageDefReactor(id,mode), false)
 {
-    AcDbRasterImageDefReactor* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbRasterImageDefReactor>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(const PyDbObjectId& id)
@@ -453,6 +465,14 @@ void makePyDbRasterImageWrapper()
         ;
 }
 
+static AcDbRasterImage* createAcDbRasterImage(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbRasterImage* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbRasterImage>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbRasterImage::PyDbRasterImage()
   : PyDbImage(new AcDbRasterImage(), true)
 {
@@ -464,12 +484,8 @@ PyDbRasterImage::PyDbRasterImage(AcDbRasterImage* ptr, bool autoDelete)
 }
 
 PyDbRasterImage::PyDbRasterImage(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbImage(nullptr, false)
+    : PyDbImage(createAcDbRasterImage(id,mode), false)
 {
-    AcDbRasterImage* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbRasterImage>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbRasterImage::PyDbRasterImage(const PyDbObjectId& id)

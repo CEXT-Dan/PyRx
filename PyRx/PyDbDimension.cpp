@@ -156,18 +156,22 @@ void makePyDbDimensionWrapper()
 #endif
 }
 
+static AcDbDimension* createAcDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbDimension* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbDimension::PyDbDimension(AcDbDimension* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
 
 PyDbDimension::PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
+    : PyDbEntity(createAcDbDimension(id,mode), false)
 {
-    AcDbDimension* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbDimension>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbDimension::PyDbDimension(const PyDbObjectId& id)
@@ -1098,6 +1102,14 @@ void makePyDb2LineAngularDimensionWrapper()
         ;
 }
 
+static AcDb2LineAngularDimension* createAcDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDb2LineAngularDimension* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDb2LineAngularDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDb2LineAngularDimension::PyDb2LineAngularDimension()
     : PyDbDimension(new AcDb2LineAngularDimension(), true)
 {
@@ -1114,12 +1126,8 @@ PyDb2LineAngularDimension::PyDb2LineAngularDimension(const PyDbObjectId& id)
 }
 
 PyDb2LineAngularDimension::PyDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(nullptr, false)
+    : PyDbDimension(createAcDb2LineAngularDimension(id,mode), false)
 {
-    AcDb2LineAngularDimension* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDb2LineAngularDimension>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDb2LineAngularDimension::PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start,
@@ -1269,6 +1277,14 @@ void makePyDb3PointAngularDimensionWrapper()
         ;
 }
 
+static AcDb3PointAngularDimension* createAcDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDb3PointAngularDimension* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDb3PointAngularDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDb3PointAngularDimension::PyDb3PointAngularDimension()
     : PyDbDimension(new AcDb3PointAngularDimension(), true)
 {
@@ -1285,12 +1301,8 @@ PyDb3PointAngularDimension::PyDb3PointAngularDimension(const PyDbObjectId& id)
 }
 
 PyDb3PointAngularDimension::PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(nullptr, false)
+    : PyDbDimension(createAcDb3PointAngularDimension(id,mode), false)
 {
-    AcDb3PointAngularDimension* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDb3PointAngularDimension>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDb3PointAngularDimension::PyDb3PointAngularDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint)
@@ -1428,6 +1440,14 @@ void makePyDbAlignedDimensionWrapper()
         ;
 }
 
+static AcDbAlignedDimension* createAcDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbAlignedDimension* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbAlignedDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbAlignedDimension::PyDbAlignedDimension()
     : PyDbDimension(new AcDbAlignedDimension(), true)
 {
@@ -1444,12 +1464,8 @@ PyDbAlignedDimension::PyDbAlignedDimension(const PyDbObjectId& id)
 }
 
 PyDbAlignedDimension::PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(nullptr, false)
+    : PyDbDimension(createAcDbAlignedDimension(id,mode), false)
 {
-    AcDbAlignedDimension* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbAlignedDimension>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbAlignedDimension::PyDbAlignedDimension(const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint)
@@ -1616,6 +1632,14 @@ void makePyDbArcDimensionWrapper()
         ;
 }
 
+static AcDbArcDimension* createAcDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbArcDimension* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbArcDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbArcDimension::PyDbArcDimension()
     : PyDbDimension(new AcDbArcDimension(), true)
 {
@@ -1632,12 +1656,8 @@ PyDbArcDimension::PyDbArcDimension(const PyDbObjectId& id)
 }
 
 PyDbArcDimension::PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(nullptr, false)
+    : PyDbDimension(createAcDbArcDimension(id,mode), false)
 {
-    AcDbArcDimension* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbArcDimension>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbArcDimension::PyDbArcDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint)
@@ -1833,6 +1853,14 @@ void makePyDbDiametricDimensionWrapper()
         ;
 }
 
+static AcDbDiametricDimension* createAcDbDiametricDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbDiametricDimension* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbDiametricDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbDiametricDimension::PyDbDiametricDimension()
     : PyDbDimension(new AcDbDiametricDimension(), true)
 {
@@ -1849,12 +1877,8 @@ PyDbDiametricDimension::PyDbDiametricDimension(const PyDbObjectId& id)
 }
 
 PyDbDiametricDimension::PyDbDiametricDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(nullptr, false)
+    : PyDbDimension(createAcDbDiametricDimension(id,mode), false)
 {
-    AcDbDiametricDimension* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbDiametricDimension>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbDiametricDimension::PyDbDiametricDimension(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength)
@@ -2000,6 +2024,14 @@ void makePyDbOrdinateDimensionWrapper()
         ;
 }
 
+static AcDbOrdinateDimension* createAcDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbOrdinateDimension* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbOrdinateDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbOrdinateDimension::PyDbOrdinateDimension()
     : PyDbDimension(new AcDbOrdinateDimension(), true)
 {
@@ -2016,12 +2048,8 @@ PyDbOrdinateDimension::PyDbOrdinateDimension(const PyDbObjectId& id)
 }
 
 PyDbOrdinateDimension::PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(nullptr, false)
+    : PyDbDimension(createAcDbOrdinateDimension(id,mode), false)
 {
-    AcDbOrdinateDimension* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbOrdinateDimension>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbOrdinateDimension::PyDbOrdinateDimension(Adesk::Boolean useXAxis, const AcGePoint3d& definingPoint, const AcGePoint3d& leaderEndPoint)
@@ -2167,6 +2195,14 @@ void makePyDbRadialDimensionWrapper()
         ;
 }
 
+static AcDbRadialDimension* createAcDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbRadialDimension* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbRadialDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbRadialDimension::PyDbRadialDimension()
     : PyDbDimension(new AcDbRadialDimension(), true)
 {
@@ -2183,12 +2219,8 @@ PyDbRadialDimension::PyDbRadialDimension(const PyDbObjectId& id)
 }
 
 PyDbRadialDimension::PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(nullptr, false)
+    : PyDbDimension(createAcDbRadialDimension(id,mode), false)
 {
-    AcDbRadialDimension* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbRadialDimension>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbRadialDimension::PyDbRadialDimension(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength)
@@ -2323,6 +2355,14 @@ void makePyDbRadialDimensionLargeWrapper()
         ;
 }
 
+static AcDbRadialDimensionLarge* createAcDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbRadialDimensionLarge* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbRadialDimensionLarge>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbRadialDimensionLarge::PyDbRadialDimensionLarge()
     : PyDbDimension(new AcDbRadialDimensionLarge(), true)
 {
@@ -2339,12 +2379,8 @@ PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const PyDbObjectId& id)
 }
 
 PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(nullptr, false)
+    : PyDbDimension(createAcDbRadialDimensionLarge(id,mode), false)
 {
-    AcDbRadialDimensionLarge* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbRadialDimensionLarge>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle)
@@ -2539,6 +2575,14 @@ void makePyDbRotatedDimensionWrapper()
         ;
 }
 
+static AcDbRotatedDimension* createAcDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    AcDbRotatedDimension* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbRotatedDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
+        throw PyAcadErrorStatus(es);
+    return pobj;
+}
+
 PyDbRotatedDimension::PyDbRotatedDimension()
     : PyDbDimension(new AcDbRotatedDimension(), true)
 {
@@ -2555,12 +2599,8 @@ PyDbRotatedDimension::PyDbRotatedDimension(const PyDbObjectId& id)
 }
 
 PyDbRotatedDimension::PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(nullptr, false)
+    : PyDbDimension(createAcDbRotatedDimension(id,mode), false)
 {
-    AcDbRotatedDimension* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbRotatedDimension>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
 }
 
 PyDbRotatedDimension::PyDbRotatedDimension(double rotation, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint)

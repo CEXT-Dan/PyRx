@@ -46,11 +46,6 @@ PyRxClass PyRxObject::isA() const
     return PyRxClass(m_pyImp->isA(), false);
 }
 
-void PyRxObject::resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject)
-{
-    m_pyImp.reset(ptr, PyRxObjectDeleter(autoDelete, isDbObject));
-}
-
 void PyRxObject::forceKeepAlive(bool flag)
 {
     auto del_p = std::get_deleter<PyRxObjectDeleter>(m_pyImp);
