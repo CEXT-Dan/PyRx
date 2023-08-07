@@ -487,7 +487,7 @@ std::string PyGeCurve2d::className()
 
 AcGeCurve2d* PyGeCurve2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGeCurve2d*>(m_imp.get());
 }
@@ -785,7 +785,7 @@ std::string PyGeCircArc2d::className()
 
 AcGeCircArc2d* PyGeCircArc2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGeCircArc2d*>(m_imp.get());
 }
@@ -1029,7 +1029,7 @@ std::string PyGeEllipArc2d::className()
 
 AcGeEllipArc2d* PyGeEllipArc2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGeEllipArc2d*>(m_imp.get());
 }
@@ -1055,7 +1055,7 @@ std::string PyGeExternalCurve2d::className()
 
 AcGeExternalCurve2d* PyGeExternalCurve2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGeExternalCurve2d*>(m_imp.get());
 }
@@ -1087,7 +1087,7 @@ std::string PyGeOffsetCurve2d::className()
 
 AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGeOffsetCurve2d*>(m_imp.get());
 }
@@ -1118,7 +1118,7 @@ std::string PyGeCompositeCurve2d::className()
 
 AcGeCompositeCurve2d* PyGeCompositeCurve2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGeCompositeCurve2d*>(m_imp.get());
 }

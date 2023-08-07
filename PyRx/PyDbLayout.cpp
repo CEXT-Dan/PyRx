@@ -499,7 +499,7 @@ PyDbPlotSettings PyDbPlotSettings::cast(const PyRxObject& src)
 
 AcDbPlotSettings* PyDbPlotSettings::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbPlotSettings*>(m_pyImp.get());
 }
@@ -691,7 +691,7 @@ PyDbLayout PyDbLayout::cast(const PyRxObject& src)
 
 AcDbLayout* PyDbLayout::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbLayout*>(m_pyImp.get());
 }
@@ -913,7 +913,7 @@ std::string PyDbLayoutManager::className()
 
 AcDbLayoutManager* PyDbLayoutManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbLayoutManager*>(m_pyImp.get());
 }

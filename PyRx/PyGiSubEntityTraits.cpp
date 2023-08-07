@@ -277,7 +277,7 @@ PyRxClass PyGiSubEntityTraits::desc()
 
 AcGiSubEntityTraits* PyGiSubEntityTraits::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGiSubEntityTraits*>(m_pyImp.get());
 }
@@ -309,7 +309,7 @@ PyRxClass PyGiDrawableTraits::desc()
 
 AcGiDrawableTraits* PyGiDrawableTraits::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGiDrawableTraits*>(m_pyImp.get());
 }

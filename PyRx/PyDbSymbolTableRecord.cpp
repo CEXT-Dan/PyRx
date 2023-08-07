@@ -108,7 +108,7 @@ PyDbSymbolTableRecord PyDbSymbolTableRecord::cast(const PyRxObject& src)
 
 AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbSymbolTableRecord*>(m_pyImp.get());
 }
@@ -184,7 +184,7 @@ PyDbDimStyleTableRecord PyDbDimStyleTableRecord::cast(const PyRxObject& src)
 
 AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbDimStyleTableRecord*>(m_pyImp.get());
 }
@@ -595,7 +595,7 @@ PyDbAbstractViewTableRecord PyDbAbstractViewTableRecord::cast(const PyRxObject& 
 
 AcDbAbstractViewTableRecord* PyDbAbstractViewTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbAbstractViewTableRecord*>(m_pyImp.get());
 }
@@ -1025,7 +1025,7 @@ PyDbViewportTableRecord PyDbViewportTableRecord::cast(const PyRxObject& src)
 
 AcDbViewportTableRecord* PyDbViewportTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbViewportTableRecord*>(m_pyImp.get());
 }
@@ -1290,7 +1290,7 @@ PyDbViewTableRecord PyDbViewTableRecord::cast(const PyRxObject& src)
 
 AcDbViewTableRecord* PyDbViewTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbViewTableRecord*>(m_pyImp.get());
 }
@@ -1712,7 +1712,7 @@ PyDbBlockTableRecord PyDbBlockTableRecord::cast(const PyRxObject& src)
 
 AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbBlockTableRecord*>(m_pyImp.get());
 }
@@ -2118,7 +2118,7 @@ PyDbLayerTableRecord PyDbLayerTableRecord::cast(const PyRxObject& src)
 
 AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbLayerTableRecord*>(m_pyImp.get());
 }
@@ -2344,7 +2344,7 @@ PyDbTextStyleTableRecord PyDbTextStyleTableRecord::cast(const PyRxObject& src)
 
 AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbTextStyleTableRecord*>(m_pyImp.get());
 }
@@ -2476,7 +2476,7 @@ PyDbUCSTableRecord PyDbUCSTableRecord::cast(const PyRxObject& src)
 
 AcDbUCSTableRecord* PyDbUCSTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbUCSTableRecord*>(m_pyImp.get());
 }
@@ -2552,7 +2552,7 @@ PyDbRegAppTableRecord PyDbRegAppTableRecord::cast(const PyRxObject& src)
 
 AcDbRegAppTableRecord* PyDbRegAppTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbRegAppTableRecord*>(m_pyImp.get());
 }
@@ -2790,7 +2790,7 @@ PyDbLinetypeTableRecord PyDbLinetypeTableRecord::cast(const PyRxObject& src)
 
 AcDbLinetypeTableRecord* PyDbLinetypeTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbLinetypeTableRecord*>(m_pyImp.get());
 }
