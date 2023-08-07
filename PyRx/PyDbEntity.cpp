@@ -88,7 +88,7 @@ void makePyDbEntityWrapper()
         ;
 }
 
-static AcDbEntity* createAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbEntity* openAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbEntity* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbEntity>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -104,7 +104,7 @@ PyDbEntity::PyDbEntity(AcDbEntity* ptr, bool autoDelete)
 }
 
 PyDbEntity::PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
-  : PyDbObject(createAcDbObject(id, mode),false)
+  : PyDbObject(openAcDbObject(id, mode),false)
 {
 }
 
@@ -561,7 +561,7 @@ void makePyDbBlockBeginWrapper()
         ;
 }
 
-static AcDbBlockBegin* createAcDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbBlockBegin* openAcDblockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbBlockBegin* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbBlockBegin>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -575,7 +575,7 @@ PyDbBlockBegin::PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete)
 }
 
 PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(createAcDbBlockBegin(id,mode), false)
+    : PyDbEntity(openAcDblockBegin(id,mode), false)
 {
 }
 
@@ -630,7 +630,7 @@ void makePyDbBlockEndWrapper()
         ;
 }
 
-static AcDbBlockEnd* createAcDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbBlockEnd* openAcDblockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbBlockEnd* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbBlockEnd>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -644,7 +644,7 @@ PyDbBlockEnd::PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete)
 }
 
 PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(createAcDbBlockEnd(id,mode), false)
+    : PyDbEntity(openAcDblockEnd(id,mode), false)
 {
 }
 
@@ -701,7 +701,7 @@ void makePyDbSequenceEndWrapper()
         ;
 }
 
-static AcDbSequenceEnd* createAcDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbSequenceEnd* openAcDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbSequenceEnd* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbSequenceEnd>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -715,7 +715,7 @@ PyDbSequenceEnd::PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete)
 }
 
 PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(createAcDbSequenceEnd(id,mode), false)
+    : PyDbEntity(openAcDbSequenceEnd(id,mode), false)
 {
 }
 

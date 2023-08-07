@@ -156,7 +156,7 @@ void makePyDbDimensionWrapper()
 #endif
 }
 
-static AcDbDimension* createAcDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbDimension* openAcDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbDimension* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -170,7 +170,7 @@ PyDbDimension::PyDbDimension(AcDbDimension* ptr, bool autoDelete)
 }
 
 PyDbDimension::PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(createAcDbDimension(id,mode), false)
+    : PyDbEntity(openAcDbDimension(id,mode), false)
 {
 }
 
@@ -1102,7 +1102,7 @@ void makePyDb2LineAngularDimensionWrapper()
         ;
 }
 
-static AcDb2LineAngularDimension* createAcDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDb2LineAngularDimension* openAcDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDb2LineAngularDimension* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDb2LineAngularDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -1126,7 +1126,7 @@ PyDb2LineAngularDimension::PyDb2LineAngularDimension(const PyDbObjectId& id)
 }
 
 PyDb2LineAngularDimension::PyDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(createAcDb2LineAngularDimension(id,mode), false)
+    : PyDbDimension(openAcDb2LineAngularDimension(id,mode), false)
 {
 }
 
@@ -1277,7 +1277,7 @@ void makePyDb3PointAngularDimensionWrapper()
         ;
 }
 
-static AcDb3PointAngularDimension* createAcDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDb3PointAngularDimension* openAcDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDb3PointAngularDimension* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDb3PointAngularDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -1301,7 +1301,7 @@ PyDb3PointAngularDimension::PyDb3PointAngularDimension(const PyDbObjectId& id)
 }
 
 PyDb3PointAngularDimension::PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(createAcDb3PointAngularDimension(id,mode), false)
+    : PyDbDimension(openAcDb3PointAngularDimension(id,mode), false)
 {
 }
 
@@ -1440,7 +1440,7 @@ void makePyDbAlignedDimensionWrapper()
         ;
 }
 
-static AcDbAlignedDimension* createAcDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbAlignedDimension* openAcDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbAlignedDimension* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbAlignedDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -1464,7 +1464,7 @@ PyDbAlignedDimension::PyDbAlignedDimension(const PyDbObjectId& id)
 }
 
 PyDbAlignedDimension::PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(createAcDbAlignedDimension(id,mode), false)
+    : PyDbDimension(openAcDbAlignedDimension(id,mode), false)
 {
 }
 
@@ -1632,7 +1632,7 @@ void makePyDbArcDimensionWrapper()
         ;
 }
 
-static AcDbArcDimension* createAcDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbArcDimension* openAcDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbArcDimension* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbArcDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -1656,7 +1656,7 @@ PyDbArcDimension::PyDbArcDimension(const PyDbObjectId& id)
 }
 
 PyDbArcDimension::PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(createAcDbArcDimension(id,mode), false)
+    : PyDbDimension(openAcDbArcDimension(id,mode), false)
 {
 }
 
@@ -1853,7 +1853,7 @@ void makePyDbDiametricDimensionWrapper()
         ;
 }
 
-static AcDbDiametricDimension* createAcDbDiametricDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbDiametricDimension* openAcDbDiametricDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbDiametricDimension* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbDiametricDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -1877,7 +1877,7 @@ PyDbDiametricDimension::PyDbDiametricDimension(const PyDbObjectId& id)
 }
 
 PyDbDiametricDimension::PyDbDiametricDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(createAcDbDiametricDimension(id,mode), false)
+    : PyDbDimension(openAcDbDiametricDimension(id,mode), false)
 {
 }
 
@@ -2024,7 +2024,7 @@ void makePyDbOrdinateDimensionWrapper()
         ;
 }
 
-static AcDbOrdinateDimension* createAcDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbOrdinateDimension* openAcDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbOrdinateDimension* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbOrdinateDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -2048,7 +2048,7 @@ PyDbOrdinateDimension::PyDbOrdinateDimension(const PyDbObjectId& id)
 }
 
 PyDbOrdinateDimension::PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(createAcDbOrdinateDimension(id,mode), false)
+    : PyDbDimension(openAcDbOrdinateDimension(id,mode), false)
 {
 }
 
@@ -2195,7 +2195,7 @@ void makePyDbRadialDimensionWrapper()
         ;
 }
 
-static AcDbRadialDimension* createAcDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbRadialDimension* openAcDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbRadialDimension* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbRadialDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -2219,7 +2219,7 @@ PyDbRadialDimension::PyDbRadialDimension(const PyDbObjectId& id)
 }
 
 PyDbRadialDimension::PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(createAcDbRadialDimension(id,mode), false)
+    : PyDbDimension(openAcDbRadialDimension(id,mode), false)
 {
 }
 
@@ -2355,7 +2355,7 @@ void makePyDbRadialDimensionLargeWrapper()
         ;
 }
 
-static AcDbRadialDimensionLarge* createAcDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbRadialDimensionLarge* openAcDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbRadialDimensionLarge* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbRadialDimensionLarge>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -2379,7 +2379,7 @@ PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const PyDbObjectId& id)
 }
 
 PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(createAcDbRadialDimensionLarge(id,mode), false)
+    : PyDbDimension(openAcDbRadialDimensionLarge(id,mode), false)
 {
 }
 
@@ -2575,7 +2575,7 @@ void makePyDbRotatedDimensionWrapper()
         ;
 }
 
-static AcDbRotatedDimension* createAcDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbRotatedDimension* openAcDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbRotatedDimension* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbRotatedDimension>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -2599,7 +2599,7 @@ PyDbRotatedDimension::PyDbRotatedDimension(const PyDbObjectId& id)
 }
 
 PyDbRotatedDimension::PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbDimension(createAcDbRotatedDimension(id,mode), false)
+    : PyDbDimension(openAcDbRotatedDimension(id,mode), false)
 {
 }
 

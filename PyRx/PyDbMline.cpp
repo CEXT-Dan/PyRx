@@ -55,7 +55,7 @@ void makePyDbMlineWrapper()
         ;
 }
 
-static AcDbMline* createAcDbMline(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbMline* openAcDbMline(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbMline* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbMline>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -74,7 +74,7 @@ PyDbMline::PyDbMline(AcDbMline* ptr, bool autoDelete)
 }
 
 PyDbMline::PyDbMline(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(createAcDbMline(id,mode), false)
+    : PyDbEntity(openAcDbMline(id,mode), false)
 {
 }
 
@@ -340,7 +340,7 @@ void makePyDbMlineStyleWrapper()
         ;
 }
 
-static AcDbMlineStyle* createAcDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbMlineStyle* openAcDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbMlineStyle* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbMlineStyle>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -359,7 +359,7 @@ PyDbMlineStyle::PyDbMlineStyle(AcDbMlineStyle* ptr, bool autoDelete)
 }
 
 PyDbMlineStyle::PyDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(createAcDbMlineStyle(id,mode), false)
+    : PyDbObject(openAcDbMlineStyle(id,mode), false)
 {
 }
 

@@ -98,7 +98,7 @@ void makePyDbFieldtWrapper()
         ;
 }
 
-static AcDbField* createAcDbField(const PyDbObjectId& id, AcDb::OpenMode mode)
+static AcDbField* openAcDbField(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbField* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbField>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
@@ -127,7 +127,7 @@ PyDbField::PyDbField(AcDbField* ptr, bool autoDelete)
 }
 
 PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(createAcDbField(id,mode), false)
+    : PyDbObject(openAcDbField(id,mode), false)
 {
 }
 
