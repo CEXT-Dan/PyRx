@@ -128,7 +128,6 @@ struct PyNotimplementedByHost
     }
 };
 
-
 inline void PyThrowBadEs(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current())
 {
     if (es != eOk) [[unlikely]]
