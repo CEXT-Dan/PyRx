@@ -61,24 +61,21 @@ void PyDbHostApplicationServices::setWorkingDatabase(PyDbDatabase& pDatabase)
 std::string PyDbHostApplicationServices::findFile1(const std::string& fileName)
 {
     AcString fileOut;
-    if (auto es = pDbHostApp->findFile(fileOut, utf8_to_wstr(fileName).c_str()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(pDbHostApp->findFile(fileOut, utf8_to_wstr(fileName).c_str()));
     return wstr_to_utf8(fileOut);
 }
 
 std::string PyDbHostApplicationServices::findFile2(const std::string& fileName, const PyDbDatabase& db)
 {
     AcString fileOut;
-    if (auto es = pDbHostApp->findFile(fileOut, utf8_to_wstr(fileName).c_str(), db.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(pDbHostApp->findFile(fileOut, utf8_to_wstr(fileName).c_str(), db.impObj()));
     return wstr_to_utf8(fileOut);
 }
 
 std::string PyDbHostApplicationServices::findFile3(const std::string& fileName, const PyDbDatabase& db, AcDbHostApplicationServices::FindFileHint hint)
 {
     AcString fileOut;
-    if (auto es = pDbHostApp->findFile(fileOut, utf8_to_wstr(fileName).c_str(), db.impObj(), hint); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(pDbHostApp->findFile(fileOut, utf8_to_wstr(fileName).c_str(), db.impObj(), hint));
     return wstr_to_utf8(fileOut);
 }
 
@@ -318,8 +315,7 @@ bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
 std::string PyDbSymUtilServices::makeDependentName(const std::string& dwgName, const std::string& symbolName) const
 {
     ACHAR* pNewName = nullptr;
-    if (auto es = imp->makeDependentName(pNewName, utf8_to_wstr(dwgName).c_str(), utf8_to_wstr(symbolName).c_str()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(imp->makeDependentName(pNewName, utf8_to_wstr(dwgName).c_str(), utf8_to_wstr(symbolName).c_str()));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -328,8 +324,7 @@ std::string PyDbSymUtilServices::makeDependentName(const std::string& dwgName, c
 std::string PyDbSymUtilServices::repairPreExtendedSymbolName(const std::string& oldName, bool allowVerticalBar) const
 {
     ACHAR* pNewName = nullptr;
-    if (auto es = imp->repairPreExtendedSymbolName(pNewName, utf8_to_wstr(oldName).c_str(), allowVerticalBar); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(imp->repairPreExtendedSymbolName(pNewName, utf8_to_wstr(oldName).c_str(), allowVerticalBar));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -338,8 +333,7 @@ std::string PyDbSymUtilServices::repairPreExtendedSymbolName(const std::string& 
 std::string PyDbSymUtilServices::repairSymbolName(const std::string& oldName, bool allowVerticalBar) const
 {
     ACHAR* pNewName = nullptr;
-    if (auto es = imp->repairSymbolName(pNewName, utf8_to_wstr(oldName).c_str(), allowVerticalBar); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(imp->repairSymbolName(pNewName, utf8_to_wstr(oldName).c_str(), allowVerticalBar));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -363,8 +357,7 @@ bool PyDbSymUtilServices::compatibilityMode(PyDbDatabase& pDb) const
 std::string PyDbSymUtilServices::getBlockNameFromInsertPathName(const std::string& pathName) const
 {
     ACHAR* pNewName = nullptr;
-    if (auto es = imp->getBlockNameFromInsertPathName(pNewName, utf8_to_wstr(pathName).c_str()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(imp->getBlockNameFromInsertPathName(pNewName, utf8_to_wstr(pathName).c_str()));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -373,8 +366,7 @@ std::string PyDbSymUtilServices::getBlockNameFromInsertPathName(const std::strin
 std::string PyDbSymUtilServices::getInsertPathNameFromBlockName(const std::string& pathName) const
 {
     ACHAR* pNewName = nullptr;
-    if (auto es = imp->getInsertPathNameFromBlockName(pNewName, utf8_to_wstr(pathName).c_str()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(imp->getInsertPathNameFromBlockName(pNewName, utf8_to_wstr(pathName).c_str()));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -383,8 +375,7 @@ std::string PyDbSymUtilServices::getInsertPathNameFromBlockName(const std::strin
 std::string PyDbSymUtilServices::getPathNameFromSymbolName(const std::string& symbolName, const std::string& extensions) const
 {
     ACHAR* pNewName = nullptr;
-    if (auto es = imp->getPathNameFromSymbolName(pNewName, utf8_to_wstr(symbolName).c_str(), utf8_to_wstr(extensions).c_str()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(imp->getPathNameFromSymbolName(pNewName, utf8_to_wstr(symbolName).c_str(), utf8_to_wstr(extensions).c_str()));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;
@@ -393,8 +384,7 @@ std::string PyDbSymUtilServices::getPathNameFromSymbolName(const std::string& sy
 std::string PyDbSymUtilServices::getSymbolNameFromPathName(const std::string& symbolName, const std::string& extensions) const
 {
     ACHAR* pNewName = nullptr;
-    if (auto es = imp->getSymbolNameFromPathName(pNewName, utf8_to_wstr(symbolName).c_str(), utf8_to_wstr(extensions).c_str()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(imp->getSymbolNameFromPathName(pNewName, utf8_to_wstr(symbolName).c_str(), utf8_to_wstr(extensions).c_str()));
     std::string val = wstr_to_utf8(pNewName);
     acutDelString(pNewName);
     return val;

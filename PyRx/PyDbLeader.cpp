@@ -97,7 +97,7 @@ PyDbLeader::PyDbLeader(AcDbLeader* ptr, bool autoDelete)
 }
 
 PyDbLeader::PyDbLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDbObject<AcDbLeader>(id,mode), false)
+    : PyDbCurve(openAcDbObject<AcDbLeader>(id, mode), false)
 {
 }
 
@@ -437,7 +437,7 @@ AcDbLeader* PyDbLeader::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbLeader*>(m_pyImp.get());
+        return static_cast<AcDbLeader*>(m_pyImp.get());
 }
 
 
@@ -649,7 +649,7 @@ PyDbMLeader::PyDbMLeader(AcDbMLeader* ptr, bool autoDelete)
 }
 
 PyDbMLeader::PyDbMLeader(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbMLeader>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbMLeader>(id, mode), false)
 {
 }
 
@@ -694,8 +694,7 @@ PyDbAttribute PyDbMLeader::getBlockAttributeValue1(const PyDbObjectId& attdefId)
     throw PyNotimplementedByHost();
 #else
     AcDbAttribute* patt = nullptr;
-    if (auto es = impObj()->getBlockAttributeValue(attdefId.m_id, patt); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getBlockAttributeValue(attdefId.m_id, patt));
     return PyDbAttribute(patt, true);
 #endif
 }
@@ -711,8 +710,7 @@ std::string PyDbMLeader::getBlockAttributeValue2(const PyDbObjectId& attdefId) c
     throw PyNotimplementedByHost();
 #else
     ACHAR* patt = nullptr;
-    if (auto es = impObj()->getBlockAttributeValue(attdefId.m_id, patt); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getBlockAttributeValue(attdefId.m_id, patt));
     auto str = wstr_to_utf8(patt);
     acutDelString(patt);
     return str;
@@ -724,7 +722,7 @@ void PyDbMLeader::setBlockAttributeValue2(const PyDbObjectId& attdefId, const st
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
-    return  PyThrowBadEs(impObj()->setBlockAttributeValue(attdefId.m_id, utf8_to_wstr(pAtt).c_str()));
+    return PyThrowBadEs(impObj()->setBlockAttributeValue(attdefId.m_id, utf8_to_wstr(pAtt).c_str()));
 #endif
 }
 
@@ -759,8 +757,7 @@ AcDbExtents PyDbMLeader::getContentGeomExtents() const
     throw PyNotimplementedByHost();
 #else
     AcDbExtents ext;
-    if (auto es = impObj()->getContentGeomExtents(ext); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getContentGeomExtents(ext));
     return ext;
 #endif
 }
@@ -774,8 +771,7 @@ boost::python::list PyDbMLeader::getLeaderIndexes() const
 {
     boost::python::list _list;
     AcArray<int> leaderIndexes;
-    if (auto es = impObj()->getLeaderIndexes(leaderIndexes); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLeaderIndexes(leaderIndexes));
     for (auto item : leaderIndexes)
         _list.append(item);
     return _list;
@@ -784,24 +780,21 @@ boost::python::list PyDbMLeader::getLeaderIndexes() const
 int PyDbMLeader::addLeader()
 {
     int leaderIndex = 0;
-    if (auto es = impObj()->addLeader(leaderIndex); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->addLeader(leaderIndex));
     return leaderIndex;
 }
 
 int PyDbMLeader::addLeaderLine1(int leaderIndex)
 {
     int leaderLineIndex = 0;
-    if (auto es = impObj()->addLeaderLine(leaderIndex, leaderLineIndex); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->addLeaderLine(leaderIndex, leaderLineIndex));
     return leaderLineIndex;
 }
 
 int PyDbMLeader::addLeaderLine2(const AcGePoint3d& point)
 {
     int leaderLineIndex = 0;
-    if (auto es = impObj()->addLeaderLine(point, leaderLineIndex); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->addLeaderLine(point, leaderLineIndex));
     return leaderLineIndex;
 }
 
@@ -827,8 +820,7 @@ void PyDbMLeader::removeFirstVertex(int leaderLineIndex)
 AcGePoint3d PyDbMLeader::getFirstVertex(int leaderLineIndex) const
 {
     AcGePoint3d point;
-    if (auto es = impObj()->getFirstVertex(leaderLineIndex, point); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getFirstVertex(leaderLineIndex, point));
     return point;
 }
 
@@ -865,8 +857,7 @@ boost::python::list PyDbMLeader::getLeaderLineIndexes1() const
 {
     boost::python::list _list;
     AcArray<int> leaderIndexes;
-    if (auto es = impObj()->getLeaderLineIndexes(leaderIndexes); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLeaderLineIndexes(leaderIndexes));
     for (auto item : leaderIndexes)
         _list.append(item);
     return _list;
@@ -876,8 +867,7 @@ boost::python::list PyDbMLeader::getLeaderLineIndexes2(int leaderIndex) const
 {
     boost::python::list _list;
     AcArray<int> leaderIndexes;
-    if (auto es = impObj()->getLeaderLineIndexes(leaderIndexes); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLeaderLineIndexes(leaderIndexes));
     for (auto item : leaderIndexes)
         _list.append(item);
     return _list;
@@ -886,8 +876,7 @@ boost::python::list PyDbMLeader::getLeaderLineIndexes2(int leaderIndex) const
 AcGePoint3d PyDbMLeader::getLastVertex(int leaderLineIndex) const
 {
     AcGePoint3d point;
-    if (auto es = impObj()->getLastVertex(leaderLineIndex, point); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLastVertex(leaderLineIndex, point));
     return point;
 }
 
@@ -899,8 +888,7 @@ void PyDbMLeader::setLastVertex(int leaderLineIndex, const AcGePoint3d& point)
 int PyDbMLeader::numVertices(int leaderLineIndex) const
 {
     int cnt;
-    if (auto es = impObj()->numVertices(leaderLineIndex, cnt); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->numVertices(leaderLineIndex, cnt));
     return cnt;
 }
 
@@ -912,16 +900,14 @@ void PyDbMLeader::setVertex(int leaderLineIndex, int index, const AcGePoint3d& p
 AcGePoint3d PyDbMLeader::getVertex(int leaderLineIndex, int index) const
 {
     AcGePoint3d point;
-    if (auto es = impObj()->getVertex(leaderLineIndex, index, point); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getVertex(leaderLineIndex, index, point));
     return point;
 }
 
 int PyDbMLeader::getLeaderIndex(int leaderLineIndex) const
 {
     int cnt;
-    if (auto es = impObj()->getLeaderIndex(leaderLineIndex, cnt); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLeaderIndex(leaderLineIndex, cnt));
     return cnt;
 }
 
@@ -933,8 +919,7 @@ void PyDbMLeader::setDoglegDirection(int leaderIndex, const AcGeVector3d& vector
 AcGeVector3d PyDbMLeader::getDoglegDirection(int leaderIndex) const
 {
     AcGeVector3d point;
-    if (auto es = impObj()->getDoglegDirection(leaderIndex, point); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getDoglegDirection(leaderIndex, point));
     return point;
 }
 
@@ -951,8 +936,7 @@ void PyDbMLeader::setLeaderLineType2(int leaderLineIndex, AcDbMLeaderStyle::Lead
 AcDbMLeaderStyle::LeaderType PyDbMLeader::getLeaderLineType(int leaderLineIndex) const
 {
     AcDbMLeaderStyle::LeaderType leaderLineType = AcDbMLeaderStyle::kInVisibleLeader;
-    if (auto es = impObj()->getLeaderLineType(leaderLineIndex, leaderLineType); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLeaderLineType(leaderLineIndex, leaderLineType));
     return leaderLineType;
 }
 
@@ -981,8 +965,7 @@ AcCmColor PyDbMLeader::getLeaderLineColor(int leaderLineIndex) const
     throw PyNotimplementedByHost();
 #else
     AcCmColor leaderLineColor;
-    if (auto es = impObj()->getLeaderLineColor(leaderLineIndex, leaderLineColor); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLeaderLineColor(leaderLineIndex, leaderLineColor));
     return leaderLineColor;
 #endif
 }
@@ -1025,8 +1008,7 @@ PyDbObjectId PyDbMLeader::getLeaderLineTypeId(int leaderLineIndex) const
     throw PyNotimplementedByHost();
 #else
     AcDbObjectId id;
-    if (auto es = impObj()->getLeaderLineTypeId(leaderLineIndex, id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLeaderLineTypeId(leaderLineIndex, id));
     return PyDbObjectId(id);
 #endif
 }
@@ -1064,8 +1046,7 @@ AcDb::LineWeight PyDbMLeader::getLeaderLineWeight(int leaderLineIndex) const
     throw PyNotimplementedByHost();
 #else
     AcDb::LineWeight wt;
-    if (auto es = impObj()->getLeaderLineWeight(leaderLineIndex, wt); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLeaderLineWeight(leaderLineIndex, wt));
     return wt;
 #endif
 }
@@ -1118,8 +1099,7 @@ void PyDbMLeader::setDoglegLength2(int leaderIndex, double doglegLength)
 double PyDbMLeader::getDoglegLength(int leaderIndex) const
 {
     double val;
-    if (auto es = impObj()->doglegLength(leaderIndex, val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->doglegLength(leaderIndex, val));
     return val;
 }
 
@@ -1141,8 +1121,7 @@ void PyDbMLeader::setArrowSymbolId2(int leaderLineIndex, const PyDbObjectId& arr
 PyDbObjectId PyDbMLeader::getArrowSymbolId(int leaderLineIndex) const
 {
     AcDbObjectId val;
-    if (auto es = impObj()->getArrowSymbolId(leaderLineIndex, val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getArrowSymbolId(leaderLineIndex, val));
     return PyDbObjectId(val);
 }
 
@@ -1355,8 +1334,7 @@ void PyDbMLeader::setBlockPosition(const AcGePoint3d& position)
 AcGePoint3d PyDbMLeader::getBlockPosition() const
 {
     AcGePoint3d val;
-    if (auto es = impObj()->getBlockPosition(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getBlockPosition(val));
     return val;
 }
 
@@ -1368,8 +1346,7 @@ void PyDbMLeader::setTextLocation(const AcGePoint3d& location)
 AcGePoint3d PyDbMLeader::getTextLocation() const
 {
     AcGePoint3d val;
-    if (auto es = impObj()->getTextLocation(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getTextLocation(val));
     return val;
 }
 
@@ -1388,8 +1365,7 @@ AcGePoint3d PyDbMLeader::getToleranceLocation() const
     throw PyNotimplementedByHost();
 #else
     AcGePoint3d val;
-    if (auto es = impObj()->getToleranceLocation(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getToleranceLocation(val));
     return val;
 #endif
 }
@@ -1402,8 +1378,7 @@ bool PyDbMLeader::hasContent() const
 AcGePoint3d PyDbMLeader::connectionPoint1(const AcGeVector3d& vect) const
 {
     AcGePoint3d val;
-    if (auto es = impObj()->connectionPoint(vect, val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->connectionPoint(vect, val));
     return val;
 }
 
@@ -1413,8 +1388,7 @@ AcGePoint3d PyDbMLeader::connectionPoint2(const AcGeVector3d& vect, AcDbMLeaderS
     throw PyNotimplementedByHost();
 #else
     AcGePoint3d val;
-    if (auto es = impObj()->connectionPoint(vect, val, textAttachmentDirection); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->connectionPoint(vect, val, textAttachmentDirection));
     return val;
 #endif
 }
@@ -1508,7 +1482,7 @@ AcDbMLeader* PyDbMLeader::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbMLeader*>(m_pyImp.get());
+        return static_cast<AcDbMLeader*>(m_pyImp.get());
 }
 
 //----------------------------------------------------------------------------------
@@ -2249,8 +2223,7 @@ bool PyDbMLeaderStyle::overwritePropChanged() const
 PyDbObjectId PyDbMLeaderStyle::postMLeaderStyleToDb(PyDbDatabase& pDb, const std::string& styleName)
 {
     AcDbObjectId id;
-    if (auto es = impObj()->postMLeaderStyleToDb(pDb.impObj(), utf8_to_wstr(styleName).c_str(), id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->postMLeaderStyleToDb(pDb.impObj(), utf8_to_wstr(styleName).c_str(), id));
     return PyDbObjectId(id);
 }
 
@@ -2324,5 +2297,5 @@ AcDbMLeaderStyle* PyDbMLeaderStyle::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbMLeaderStyle*>(m_pyImp.get());
+        return static_cast<AcDbMLeaderStyle*>(m_pyImp.get());
 }

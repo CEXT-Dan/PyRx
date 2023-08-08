@@ -351,8 +351,7 @@ boost::python::tuple PyDbTableStyle::getDataType(AcDb::RowType type) const
     PyAutoLockGIL lock;
     AcValue::DataType nDataType = AcValue::kUnknown;
     AcValue::UnitType nUnitType = AcValue::kUnitless;
-    if (auto es = impObj()->getDataType(nDataType, nUnitType, type); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getDataType(nDataType, nUnitType, type));
     return boost::python::make_tuple(nDataType, nUnitType);
 }
 
@@ -364,8 +363,7 @@ boost::python::tuple PyDbTableStyle::getDataType2(const std::string& pszCellStyl
     PyAutoLockGIL lock;
     AcValue::DataType nDataType = AcValue::kUnknown;
     AcValue::UnitType nUnitType = AcValue::kUnitless;
-    if (auto es = impObj()->getDataType(nDataType, nUnitType, utf8_to_wstr(pszCellStyle).c_str()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getDataType(nDataType, nUnitType, utf8_to_wstr(pszCellStyle).c_str()));
     return boost::python::make_tuple(nDataType, nUnitType);
 #endif
 }
@@ -514,8 +512,7 @@ void PyDbTableStyle::setGridVisibility2(AcDb::Visibility visible, AcDb::GridLine
 PyDbObjectId PyDbTableStyle::postTableStyleToDb(PyDbDatabase& pDb, const std::string& styleName)
 {
     AcDbObjectId id;
-    if (auto es = impObj()->postTableStyleToDb(pDb.impObj(), utf8_to_wstr(styleName).c_str(), id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->postTableStyleToDb(pDb.impObj(), utf8_to_wstr(styleName).c_str(), id));
     return PyDbObjectId(id);
 }
 
@@ -726,8 +723,7 @@ AcGridProperty PyDbTableStyle::getGridProperty(AcDb::GridLineType nGridLineTypes
     throw PyNotimplementedByHost();
 #else
     AcGridProperty prop;
-    if (auto es = impObj()->getGridProperty(prop, nGridLineTypes, utf8_to_wstr(pszCellStyle).c_str()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getGridProperty(prop, nGridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
     return prop;
 #endif
 }

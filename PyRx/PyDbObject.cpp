@@ -329,32 +329,28 @@ bool PyDbObject::hasFields(void) const
 PyDbObjectId PyDbObject::getField1()
 {
     AcDbObjectId id;
-    if (auto es = impObj()->getField(L"TEXT", id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getField(L"TEXT", id));
     return PyDbObjectId(id);
 }
 
 PyDbObjectId PyDbObject::getField2(const std::string& propName)
 {
     AcDbObjectId id;
-    if (auto es = impObj()->getField(utf8_to_wstr(propName).c_str(), id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getField(utf8_to_wstr(propName).c_str(), id));
     return PyDbObjectId(id);
 }
 
 PyDbObjectId PyDbObject::setField1(PyDbField& pField)
 {
     AcDbObjectId id;
-    if (auto es = impObj()->setField(L"TEXT", pField.impObj(), id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->setField(L"TEXT", pField.impObj(), id));
     return PyDbObjectId(id);
 }
 
 PyDbObjectId PyDbObject::setField2(const std::string& propName, PyDbField& pField)
 {
     AcDbObjectId id;
-    if (auto es = impObj()->setField(utf8_to_wstr(propName).c_str(), pField.impObj(), id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->setField(utf8_to_wstr(propName).c_str(), pField.impObj(), id));
     return PyDbObjectId(id);
 }
 

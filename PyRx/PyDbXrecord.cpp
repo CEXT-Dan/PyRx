@@ -50,8 +50,7 @@ boost::python::list PyDbXrecord::rbChain1() const
 {
     PyAutoLockGIL lock;
     resbuf* pRb = nullptr;
-    if (auto es = impObj()->rbChain(&pRb); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->rbChain(&pRb));
     AcResBufPtr rb(pRb);
     return resbufToList(pRb);
 }
@@ -60,8 +59,7 @@ boost::python::list PyDbXrecord::rbChain2(PyDbDatabase& auxDb) const
 {
     PyAutoLockGIL lock;
     resbuf* pRb = nullptr;
-    if (auto es = impObj()->rbChain(&pRb, auxDb.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->rbChain(&pRb, auxDb.impObj()));
     AcResBufPtr rb(pRb);
     return resbufToList(pRb);
 }

@@ -166,16 +166,14 @@ void makePyAdsNameWrapper()
 PyDbObjectId AdsName::toObjectId() const
 {
     AcDbObjectId id;
-    if (auto es = acdbGetObjectId(id, m_data.data()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(acdbGetObjectId(id, m_data.data()));
     return PyDbObjectId(id);
 }
 
 void AdsName::fromObjectId(const PyDbObjectId& id)
 {
     ads_name name = { 0L };
-    if (auto es = acdbGetAdsName(name, id.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(acdbGetAdsName(name, id.m_id));
     m_data[0] = name[0];
     m_data[1] = name[1];
 }

@@ -202,8 +202,7 @@ AcGePoint3d PyDbMline::getClosestPointTo1(const AcGePoint3d& givenPoint, bool ex
     throw PyNotimplementedByHost();
 #else
     AcGePoint3d pnt;
-    if (auto es = impObj()->getClosestPointTo(givenPoint, pnt, extend); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getClosestPointTo(givenPoint, pnt, extend));
     return pnt;
 #endif
 }
@@ -214,8 +213,7 @@ AcGePoint3d PyDbMline::getClosestPointTo2(const AcGePoint3d& givenPoint, bool ex
     throw PyNotimplementedByHost();
 #else
     AcGePoint3d pnt;
-    if (auto es = impObj()->getClosestPointTo(givenPoint, pnt, extend, excludeCaps); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getClosestPointTo(givenPoint, pnt, extend, excludeCaps));
     return pnt;
 #endif
 }
@@ -226,8 +224,7 @@ AcGePoint3d PyDbMline::getClosestPointTo3(const AcGePoint3d& givenPoint, const A
     throw PyNotimplementedByHost();
 #else
     AcGePoint3d pnt;
-    if (auto es = impObj()->getClosestPointTo(givenPoint, normal, pnt, extend); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getClosestPointTo(givenPoint, normal, pnt, extend));
     return pnt;
 #endif
 }
@@ -238,8 +235,7 @@ AcGePoint3d PyDbMline::getClosestPointTo4(const AcGePoint3d& givenPoint, const A
     throw PyNotimplementedByHost();
 #else
     AcGePoint3d pnt;
-    if (auto es = impObj()->getClosestPointTo(givenPoint, normal, pnt, extend, excludeCaps); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getClosestPointTo(givenPoint, normal, pnt, extend, excludeCaps));
     return pnt;
 #endif
 }

@@ -201,8 +201,7 @@ boost::python::tuple PyDbHatch::getLoopEdgesAt(int loopIndex)
     Adesk::Int32 loopType;
     AcGeVoidPointerArray edgePtrs;
     AcGeIntArray edgeTypes;
-    if (auto es = impObj()->getLoopAt(loopIndex, loopType, edgePtrs, edgeTypes); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLoopAt(loopIndex, loopType, edgePtrs, edgeTypes));
     PyAutoLockGIL lock;
     boost::python::list edgePtrsList;
     for (auto ep : edgePtrs)
@@ -218,8 +217,7 @@ boost::python::tuple PyDbHatch::getLoopBulgesAt(int loopIndex)
     Adesk::Int32 loopType;
     AcGePoint2dArray vertices;
     AcGeDoubleArray bulges;
-    if (auto es = impObj()->getLoopAt(loopIndex, loopType, vertices, bulges); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLoopAt(loopIndex, loopType, vertices, bulges));
     PyAutoLockGIL lock;
     boost::python::list verticesList;
     for (auto p : vertices)
@@ -296,8 +294,7 @@ boost::python::list PyDbHatch::getAssocObjIdsAt(int loopIndex) const
     PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
     boost::python::list idsList;
-    if (auto es = impObj()->getAssocObjIdsAt(loopIndex, ids); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getAssocObjIdsAt(loopIndex, ids));
     for (const auto& id : ids)
         idsList.append(PyDbObjectId(id));
     return idsList;
@@ -308,8 +305,7 @@ boost::python::list PyDbHatch::getAssocObjIds() const
     PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
     boost::python::list idsList;
-    if (auto es = impObj()->getAssocObjIds(ids); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getAssocObjIds(ids));
     for (const auto& id : ids)
         idsList.append(PyDbObjectId(id));
     return idsList;
@@ -371,8 +367,7 @@ boost::python::tuple PyDbHatch::getGradientColors()
     unsigned int count = 0;
     float* values = nullptr;
     AcCmColor* clrs = nullptr;
-    if (auto es = impObj()->getGradientColors(count, clrs, values); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getGradientColors(count, clrs, values));
     boost::python::list colorList;
     boost::python::list valueList;
     for (unsigned int idx = 0; idx < count; idx++)
@@ -434,8 +429,7 @@ AcCmColor PyDbHatch::evaluateGradientColorAt(float value)
     throw PyNotimplementedByHost();
 #else
     AcCmColor clr;
-    if (auto es = impObj()->evaluateGradientColorAt(value, clr); es != eOk)
-        throw	PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->evaluateGradientColorAt(value, clr));
     return clr;
 #endif
 }
@@ -509,8 +503,7 @@ boost::python::tuple PyDbHatch::getPatternDefinitionAt(int index)
     double offsetX;
     double offsetY;
     AcGeDoubleArray dashes;
-    if (auto es = impObj()->getPatternDefinitionAt(index, angle, baseX, baseY, offsetX, offsetY, dashes); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPatternDefinitionAt(index, angle, baseX, baseY, offsetX, offsetY, dashes));
     boost::python::list _dashes;
     for (auto d : dashes)
         _dashes.append(d);
@@ -588,8 +581,7 @@ boost::python::tuple PyDbHatch::getHatchLineDataAt(int index) const
     PyAutoLockGIL lock;
     AcGePoint2d startPt;
     AcGePoint2d endPt;
-    if (auto es = impObj()->getHatchLineDataAt(index, startPt, endPt); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getHatchLineDataAt(index, startPt, endPt));
     return boost::python::make_tuple(startPt, endPt);
 }
 
@@ -598,8 +590,7 @@ boost::python::tuple PyDbHatch::getHatchLinesData() const
     PyAutoLockGIL lock;
     AcGePoint2dArray startPts;
     AcGePoint2dArray endPts;
-    if (auto es = impObj()->getHatchLinesData(startPts, endPts); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getHatchLinesData(startPts, endPts));
     boost::python::list _startPts;
     for (auto p : startPts)
         _startPts.append(p);
@@ -612,8 +603,7 @@ boost::python::tuple PyDbHatch::getHatchLinesData() const
 double PyDbHatch::getArea() const
 {
     double a = 0.0;
-    if (auto es = impObj()->getArea(a); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getArea(a));
     return a;
 }
 

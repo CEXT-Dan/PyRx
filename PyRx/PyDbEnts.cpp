@@ -1197,8 +1197,8 @@ void makePyDbVertexWrapper()
 PyDbVertex::PyDbVertex()
     : PyDbEntity(new AcDbVertex(), true)
 {
-
 }
+
 PyDbVertex::PyDbVertex(AcDbVertex* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
@@ -1765,8 +1765,7 @@ PyDbFaceRecord::PyDbFaceRecord(const PyDbObjectId& id)
 Adesk::Int16 PyDbFaceRecord::getVertexAt(Adesk::UInt16 faceIdx) const
 {
     Adesk::Int16 vtxIdx = 0;
-    if (auto es = impObj()->getVertexAt(faceIdx, vtxIdx); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getVertexAt(faceIdx, vtxIdx));
     return vtxIdx;
 }
 
@@ -1778,8 +1777,7 @@ void PyDbFaceRecord::setVertexAt(Adesk::UInt16 faceIdx, Adesk::Int16 vtxIdx)
 Adesk::Boolean PyDbFaceRecord::isEdgeVisibleAt(Adesk::UInt16 faceIndex) const
 {
     Adesk::Boolean flag = false;
-    if (auto es = impObj()->isEdgeVisibleAt(faceIndex, flag); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->isEdgeVisibleAt(faceIndex, flag));
     return flag;
 }
 
@@ -2068,8 +2066,7 @@ void PyDb2dPolyline::setClosed(Adesk::Boolean val)
 double PyDb2dPolyline::constantWidth() const
 {
     double val;
-    if (auto es = impObj()->constantWidth(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->constantWidth(val));
     return val;
 }
 
@@ -2081,8 +2078,7 @@ void PyDb2dPolyline::setConstantWidth(double val)
 double PyDb2dPolyline::length() const
 {
     double val;
-    if (auto es = impObj()->length(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->length(val));
     return val;
 }
 
@@ -2315,8 +2311,7 @@ PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id)
 double PyDb3dPolyline::length() const
 {
     double val;
-    if (auto es = impObj()->length(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->length(val));
     return val;
 }
 
@@ -3120,24 +3115,21 @@ unsigned int PyDbPolyline::numVerts() const
 double PyDbPolyline::getBulgeAt(unsigned int index) const
 {
     double w;
-    if (auto es = impObj()->getBulgeAt(index, w); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getBulgeAt(index, w));
     return w;
 }
 
 double PyDbPolyline::getStartWidthAt(unsigned int index) const
 {
     double s, e;
-    if (auto es = impObj()->getWidthsAt(index, s, e); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getWidthsAt(index, s, e));
     return s;
 }
 
 double PyDbPolyline::getEndWidthAt(unsigned int index) const
 {
     double s, e;
-    if (auto es = impObj()->getWidthsAt(index, s, e); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getWidthsAt(index, s, e));
     return e;
 }
 
@@ -3295,8 +3287,7 @@ PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoi
 AcGePoint3d PyDbFace::getVertexAt(Adesk::UInt16 val) const
 {
     AcGePoint3d rPoint;
-    if (auto es = impObj()->getVertexAt(val, rPoint); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getVertexAt(val, rPoint));
     return rPoint;
 }
 
@@ -3308,8 +3299,7 @@ void PyDbFace::setVertexAt(Adesk::UInt16 val, const AcGePoint3d& pnt)
 Adesk::Boolean PyDbFace::isEdgeVisibleAt(Adesk::UInt16 val) const
 {
     Adesk::Boolean rval;
-    if (auto es = impObj()->isEdgeVisibleAt(val, rval); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->isEdgeVisibleAt(val, rval));
     return rval;
 }
 
@@ -3500,8 +3490,7 @@ PyDbHardPointerId PyDbFcf::dimensionStyle() const
 PyDbDimStyleTableRecord PyDbFcf::getDimstyleData() const
 {
     AcDbDimStyleTableRecord* pSyle = nullptr;
-    if (auto es = impObj()->getDimstyleData(pSyle); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getDimstyleData(pSyle));
     return PyDbDimStyleTableRecord(pSyle, true);
 }
 

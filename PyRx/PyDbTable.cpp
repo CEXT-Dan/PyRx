@@ -452,7 +452,7 @@ PyDbTable::PyDbTable(const PyDbObjectId& id)
 }
 
 PyDbTable::PyDbTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbBlockReference(openAcDbObject<AcDbTable>(id,mode), false)
+    : PyDbBlockReference(openAcDbObject<AcDbTable>(id, mode), false)
 {
 }
 
@@ -735,8 +735,7 @@ boost::python::tuple PyDbTable::getDataType(AcDb::RowType type) const
     PyAutoLockGIL lock;
     AcValue::DataType nDataType = AcValue::kUnknown;
     AcValue::UnitType nUnitType = AcValue::kUnitless;
-    if (auto es = impObj()->getDataType(nDataType, nUnitType, type); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getDataType(nDataType, nUnitType, type));
     return boost::python::make_tuple(nDataType, nUnitType);
 }
 
@@ -745,8 +744,7 @@ boost::python::tuple PyDbTable::getDataType2(int row, int col) const
     PyAutoLockGIL lock;
     AcValue::DataType nDataType;
     AcValue::UnitType nUnitType;
-    if (auto es = impObj()->getDataType(row, col, nDataType, nUnitType); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getDataType(row, col, nDataType, nUnitType));
     return boost::python::make_tuple(nDataType, nUnitType);
 }
 
@@ -755,8 +753,7 @@ boost::python::tuple PyDbTable::getDataType3(int row, int col, int nContent) con
     PyAutoLockGIL lock;
     AcValue::DataType nDataType;
     AcValue::UnitType nUnitType;
-    if (auto es = impObj()->getDataType(row, col, nContent, nDataType, nUnitType); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getDataType(row, col, nContent, nDataType, nUnitType));
     return boost::python::make_tuple(nDataType, nUnitType);
 }
 
@@ -806,8 +803,7 @@ std::string PyDbTable::textString2(int row, int col, int nContent) const
 std::string PyDbTable::textString3(int row, int col, AcValue::FormatOption nOption) const
 {
     AcString str;
-    if (auto es = impObj()->textString(row, col, nOption, str); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->textString(row, col, nOption, str));
     return wstr_to_utf8(str);
 }
 
@@ -817,8 +813,7 @@ std::string PyDbTable::textString4(int row, int col, int nContent, AcValue::Form
     throw PyNotimplementedByHost();
 #else
     AcString str;
-    if (auto es = impObj()->textString(row, col, nContent, nOption, str); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->textString(row, col, nContent, nOption, str));
     return wstr_to_utf8(str);
 #endif
 }
@@ -1038,8 +1033,7 @@ boost::python::list PyDbTable::getCellExtents(int row, int col, bool isOuterCell
     PyAutoLockGIL lock;
     AcGePoint3dArray pts;
     boost::python::list l;
-    if (auto es = impObj()->getCellExtents(row, col, isOuterCell, pts); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getCellExtents(row, col, isOuterCell, pts));
     for (const auto& item : pts)
         l.append(item);
     return l;
@@ -1525,8 +1519,7 @@ void PyDbTable::setFormula(int nRow, int nCol, int nContent, const std::string& 
 std::string PyDbTable::getBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId) const
 {
     ACHAR* val = nullptr;
-    if (auto es = impObj()->getBlockAttributeValue(row, col, attdefId.m_id, val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getBlockAttributeValue(row, col, attdefId.m_id, val));
     std::string sval = wstr_to_utf8(val);
     acutDelString(val);
     return sval;
@@ -1538,8 +1531,7 @@ std::string PyDbTable::getBlockAttributeValue2(int row, int col, int nContent, c
     throw PyNotimplementedByHost();
 #else
     ACHAR* val = nullptr;
-    if (auto es = impObj()->getBlockAttributeValue(row, col, nContent, attdefId.m_id, val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getBlockAttributeValue(row, col, nContent, attdefId.m_id, val));
     std::string sval = wstr_to_utf8(val);
     acutDelString(val);
     return sval;
@@ -1751,8 +1743,7 @@ AcGridProperty PyDbTable::getGridProperty(int nRow, int nCol, AcDb::GridLineType
     throw PyNotimplementedByHost();
 #else
     AcGridProperty prop;
-    if (auto es = impObj()->getGridProperty(nRow, nCol, nGridLineType, prop); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getGridProperty(nRow, nCol, nGridLineType, prop));
     return prop;
 #endif
 }
@@ -1977,6 +1968,6 @@ AcDbTable* PyDbTable::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbTable*>(m_pyImp.get());
+        return static_cast<AcDbTable*>(m_pyImp.get());
 }
 

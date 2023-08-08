@@ -25,7 +25,7 @@ PyDbImage::PyDbImage(AcDbImage* ptr, bool autoDelete)
 }
 
 PyDbImage::PyDbImage(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbImage>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbImage>(id, mode), false)
 {
 }
 
@@ -63,7 +63,7 @@ AcDbImage* PyDbImage::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbImage*>(m_pyImp.get());
+        return static_cast<AcDbImage*>(m_pyImp.get());
 }
 
 
@@ -140,7 +140,7 @@ PyDbRasterImageDef::PyDbRasterImageDef(AcDbRasterImageDef* ptr, bool autoDelete)
 }
 
 PyDbRasterImageDef::PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbObject<AcDbRasterImageDef>(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbRasterImageDef>(id, mode), false)
 {
 }
 
@@ -247,14 +247,13 @@ AcDbRasterImageDef::Units PyDbRasterImageDef::resolutionUnits() const
 PyDbObjectId PyDbRasterImageDef::createImageDictionary(PyDbDatabase& pDb)
 {
     PyDbObjectId id;
-    if (auto es = AcDbRasterImageDef::createImageDictionary(pDb.impObj(), id.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(AcDbRasterImageDef::createImageDictionary(pDb.impObj(), id.m_id));
     return id;
 }
 
 PyDbObjectId PyDbRasterImageDef::imageDictionary(PyDbDatabase& pDb)
 {
-   return PyDbObjectId(AcDbRasterImageDef::imageDictionary(pDb.impObj()));
+    return PyDbObjectId(AcDbRasterImageDef::imageDictionary(pDb.impObj()));
 }
 
 std::string PyDbRasterImageDef::suggestName(PyDbDictionary& dict, const std::string& pPathName)
@@ -297,7 +296,7 @@ AcDbRasterImageDef* PyDbRasterImageDef::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbRasterImageDef*>(m_pyImp.get());
+        return static_cast<AcDbRasterImageDef*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -327,7 +326,7 @@ PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(AcDbRasterImageDefReactor* 
 }
 
 PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbObject<AcDbRasterImageDefReactor>(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbRasterImageDefReactor>(id, mode), false)
 {
 }
 
@@ -370,7 +369,7 @@ AcDbRasterImageDefReactor* PyDbRasterImageDefReactor::impObj(const std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbRasterImageDefReactor*>(m_pyImp.get());
+        return static_cast<AcDbRasterImageDefReactor*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -442,7 +441,7 @@ void makePyDbRasterImageWrapper()
 }
 
 PyDbRasterImage::PyDbRasterImage()
-  : PyDbImage(new AcDbRasterImage(), true)
+    : PyDbImage(new AcDbRasterImage(), true)
 {
 }
 
@@ -452,7 +451,7 @@ PyDbRasterImage::PyDbRasterImage(AcDbRasterImage* ptr, bool autoDelete)
 }
 
 PyDbRasterImage::PyDbRasterImage(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbImage(openAcDbObject<AcDbRasterImage>(id,mode), false)
+    : PyDbImage(openAcDbObject<AcDbRasterImage>(id, mode), false)
 {
 }
 
@@ -536,8 +535,7 @@ boost::python::list PyDbRasterImage::getVertices() const
     PyAutoLockGIL lock;
     AcGePoint3dArray verts;
     boost::python::list boundry;
-    if (auto es = impObj()->getVertices(verts); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getVertices(verts));
     for (auto& item : verts)
         boundry.append(item);
     return boundry;
@@ -546,8 +544,7 @@ boost::python::list PyDbRasterImage::getVertices() const
 AcGeMatrix3d PyDbRasterImage::getPixelToModelTransform() const
 {
     AcGeMatrix3d x;
-    if (auto es = impObj()->getPixelToModelTransform(x); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPixelToModelTransform(x));
     return x;
 }
 
@@ -705,5 +702,5 @@ AcDbRasterImage* PyDbRasterImage::impObj(const std::source_location& src /*= std
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbRasterImage*>(m_pyImp.get());
+        return static_cast<AcDbRasterImage*>(m_pyImp.get());
 }

@@ -287,8 +287,7 @@ PyDbXrefObjectId PyDbViewport::getModelView() const
     throw PyNotimplementedByHost();
 #else
     PyDbXrefObjectId id;
-    if (auto es = impObj()->getModelView(id.m_imp); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getModelView(id.m_imp));
     return id;
 #endif
 }
@@ -317,8 +316,7 @@ PyDbObjectId PyDbViewport::getSheetView() const
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
-    if (auto es = impObj()->getSheetView(id.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getSheetView(id.m_id));
     return id;
 #endif
 }
@@ -347,8 +345,7 @@ PyDbObjectId PyDbViewport::getLabelBlock() const
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
-    if (auto es = impObj()->getLabelBlock(id.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLabelBlock(id.m_id));
     return id;
 #endif
 }
@@ -1046,8 +1043,7 @@ boost::python::list PyDbViewport::getFrozenLayerList() const
     PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
     boost::python::list pyids;
-    if (auto es = impObj()->getFrozenLayerList(ids); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getFrozenLayerList(ids));
     for (auto& id : ids)
         pyids.append(PyDbObjectId(id));
     return pyids;
@@ -1290,16 +1286,14 @@ void PyDbViewport::setStandardScale(const AcDbViewport::StandardScaleType val)
 std::string PyDbViewport::plotStyleSheet() const
 {
     const ACHAR* val = nullptr;
-    if (auto es = impObj()->plotStyleSheet(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->plotStyleSheet(val));
     return wstr_to_utf8(val);
 }
 
 std::string PyDbViewport::effectivePlotStyleSheet()
 {
     const ACHAR* val = nullptr;
-    if (auto es = impObj()->effectivePlotStyleSheet(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->effectivePlotStyleSheet(val));
     return wstr_to_utf8(val);
 }
 
