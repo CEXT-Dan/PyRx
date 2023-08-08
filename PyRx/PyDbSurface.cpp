@@ -18,6 +18,7 @@ void makePyDbSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("projectOnToSurface", &PyDbSurface::projectOnToSurface)
         .def("className", &PyDbSurface::className).staticmethod("className")
         .def("desc", &PyDbSurface::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbSurface::cloneFrom).staticmethod("cloneFrom")
@@ -51,6 +52,17 @@ PyDbSurface::PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbSurface::PyDbSurface(const PyDbObjectId& id)
     : PyDbSurface(id, AcDb::OpenMode::kForRead)
 {
+}
+
+boost::python::list PyDbSurface::projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection)
+{
+    PyAutoLockGIL lock;
+    AcArray<AcDbEntity*> projectedEntities;
+    PyThrowBadEs(impObj()->projectOnToSurface(ent.impObj(), projectionDirection, projectedEntities));
+    boost::python::list pyList;
+    for (auto item : projectedEntities)
+        pyList.append(PyDbEntity(item, true));
+    return pyList;
 }
 
 std::string PyDbSurface::className()
