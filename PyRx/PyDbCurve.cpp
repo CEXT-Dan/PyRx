@@ -99,128 +99,112 @@ double PyDbCurve::getStartParam() const
 double PyDbCurve::getEndParam() const
 {
     double param = 0;
-    if (auto es = impObj()->getEndParam(param); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getEndParam(param));
     return param;
 }
 
 AcGePoint3d PyDbCurve::getStartPoint() const
 {
     AcGePoint3d val;
-    if (auto es = impObj()->getStartPoint(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getStartPoint(val));
     return val;
 }
 
 AcGePoint3d PyDbCurve::getEndPoint() const
 {
     AcGePoint3d val;
-    if (auto es = impObj()->getEndPoint(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getEndPoint(val));
     return val;
 }
 
 AcGePoint3d PyDbCurve::getPointAtParam(double val) const
 {
     AcGePoint3d p;
-    if (auto es = impObj()->getPointAtParam(val, p); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPointAtParam(val, p));
     return p;
 }
 
 double PyDbCurve::getParamAtPoint(const AcGePoint3d& pnt) const
 {
     double param = 0;
-    if (auto es = impObj()->getParamAtPoint(pnt, param); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getParamAtPoint(pnt, param));
     return param;
 }
 
 double PyDbCurve::getDistAtParam(double param) const
 {
     double dist = 0;
-    if (auto es = impObj()->getDistAtParam(param, dist); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getDistAtParam(param, dist));
     return param;
 }
 
 double PyDbCurve::getParamAtDist(double dist) const
 {
     double param = 0;
-    if (auto es = impObj()->getParamAtDist(dist, param); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getParamAtDist(dist, param));
     return param;
 }
 
 double PyDbCurve::getDistAtPoint(const AcGePoint3d& pnt) const
 {
     double dist = 0;
-    if (auto es = impObj()->getDistAtPoint(pnt, dist); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getDistAtPoint(pnt, dist)); 
     return dist;
 }
 
 AcGePoint3d PyDbCurve::getPointAtDist(double dist) const
 {
     AcGePoint3d p;
-    if (auto es = impObj()->getPointAtDist(dist, p); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPointAtDist(dist, p));
     return p;
 }
 
 AcGeVector3d PyDbCurve::getFirstDeriv1(double param) const
 {
     AcGeVector3d p;
-    if (auto es = impObj()->getFirstDeriv(param, p); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getFirstDeriv(param, p));
     return p;
 }
 
 AcGeVector3d PyDbCurve::getFirstDeriv2(const AcGePoint3d& pnt) const
 {
     AcGeVector3d p;
-    if (auto es = impObj()->getFirstDeriv(pnt, p); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getFirstDeriv(pnt, p));
     return p;
 }
 
 AcGeVector3d PyDbCurve::getSecondDeriv1(double param) const
 {
     AcGeVector3d p;
-    if (auto es = impObj()->getSecondDeriv(param, p); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getSecondDeriv(param, p));
     return p;
 }
 
 AcGeVector3d PyDbCurve::getSecondDeriv2(const AcGePoint3d& pnt) const
 {
     AcGeVector3d p;
-    if (auto es = impObj()->getSecondDeriv(pnt, p); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getSecondDeriv(pnt, p));
     return p;
 }
 
 AcGePoint3d PyDbCurve::getClosestPointTo1(const AcGePoint3d& givenPnt) const
 {
     AcGePoint3d p;
-    if (auto es = impObj()->getClosestPointTo(givenPnt, p); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getClosestPointTo(givenPnt, p));
     return p;
 }
 
 AcGePoint3d PyDbCurve::getClosestPointTo2(const AcGePoint3d& givenPnt, Adesk::Boolean extend) const
 {
     AcGePoint3d p;
-    if (auto es = impObj()->getClosestPointTo(givenPnt, p, extend); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getClosestPointTo(givenPnt, p, extend));
     return p;
 }
 
 AcGePoint3d PyDbCurve::getClosestPointTo3(const AcGePoint3d& givenPnt, const AcGeVector3d& direction, Adesk::Boolean extend) const
 {
     AcGePoint3d p;
-    if (auto es = impObj()->getClosestPointTo(givenPnt, direction, p, extend); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getClosestPointTo(givenPnt, direction, p, extend));
     return p;
 }
 
@@ -229,8 +213,7 @@ boost::python::list PyDbCurve::getOffsetCurves(double offsetDist) const
     PyAutoLockGIL lock;
     boost::python::list curves;
     AcDbVoidPtrArray offsetCurves;
-    if (auto es = impObj()->getOffsetCurves(offsetDist, offsetCurves); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getOffsetCurves(offsetDist, offsetCurves));
     for (auto ptr : offsetCurves)
         curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
     return curves;
@@ -241,8 +224,7 @@ boost::python::list PyDbCurve::getOffsetCurvesGivenPlaneNormal(const AcGeVector3
     PyAutoLockGIL lock;
     boost::python::list curves;
     AcDbVoidPtrArray offsetCurves;
-    if (auto es = impObj()->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves));
     for (auto ptr : offsetCurves)
         curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
     return curves;
@@ -278,8 +260,7 @@ boost::python::list PyDbCurve::getSplitCurvesAtParam(double param) const
         doublesArray.append(param);
         boost::python::list curves;
         AcDbVoidPtrArray offsetCurves;
-        if (auto es = impObj()->getSplitCurves(doublesArray, offsetCurves); es != eOk)
-            throw PyAcadErrorStatus(es);
+        PyThrowBadEs(impObj()->getSplitCurves(doublesArray, offsetCurves));
         for (auto ptr : offsetCurves)
             curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
         return curves;
@@ -301,8 +282,7 @@ boost::python::list PyDbCurve::getSplitCurvesAtParams(const boost::python::list&
             doublesArray.append(item);
         boost::python::list curves;
         AcDbVoidPtrArray offsetCurves;
-        if (auto es = impObj()->getSplitCurves(doublesArray, offsetCurves); es != eOk)
-            throw PyAcadErrorStatus(es);
+        PyThrowBadEs(impObj()->getSplitCurves(doublesArray, offsetCurves));
         for (auto ptr : offsetCurves)
             curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
         return curves;
@@ -322,8 +302,7 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoint(const AcGePoint3d& givenPnt
         pointsArray.append(givenPnt);
         boost::python::list curves;
         AcDbVoidPtrArray offsetCurves;
-        if (auto es = impObj()->getSplitCurves(pointsArray, offsetCurves); es != eOk)
-            throw PyAcadErrorStatus(es);
+        PyThrowBadEs(impObj()->getSplitCurves(pointsArray, offsetCurves));
         for (auto ptr : offsetCurves)
             curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
         return curves;
@@ -346,8 +325,7 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::list&
 
         boost::python::list curves;
         AcDbVoidPtrArray offsetCurves;
-        if (auto es = impObj()->getSplitCurves(pointsArray, offsetCurves); es != eOk)
-            throw PyAcadErrorStatus(es);
+        PyThrowBadEs(impObj()->getSplitCurves(pointsArray, offsetCurves));
         for (auto ptr : offsetCurves)
             curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
         return curves;
@@ -371,8 +349,7 @@ void PyDbCurve::extend2(Adesk::Boolean extendStart, const AcGePoint3d& toPoint)
 double PyDbCurve::getArea() const
 {
     double area = 0;
-    if (auto es = impObj()->getArea(area); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getArea(area));
     return area;
 }
 
