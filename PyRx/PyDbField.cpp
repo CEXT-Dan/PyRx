@@ -127,7 +127,7 @@ PyDbField::PyDbField(AcDbField* ptr, bool autoDelete)
 }
 
 PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbField(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbField>(id,mode), false)
 {
 }
 

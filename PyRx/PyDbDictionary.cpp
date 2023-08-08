@@ -32,12 +32,6 @@ void makePyDbDictionaryWrapper()
 
 //---------------------------------------------------------------------------------------- -
 //PyDbDictionary
-static AcDbDictionary* openAcDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbDictionary* pobj = nullptr;
-    PyThrowBadEs(acdbOpenObject<AcDbDictionary>(pobj, id.m_id, mode));
-    return pobj;
-}
 
 PyDbDictionary::PyDbDictionary()
     : PyDbObject(new AcDbDictionary(), true)
@@ -50,7 +44,7 @@ PyDbDictionary::PyDbDictionary(AcDbDictionary* ptr, bool autoDelete)
 }
 
 PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbDictionary(id,mode), true)
+    : PyDbObject(openAcDbObject<AcDbDictionary>(id,mode), true)
 {
 }
 

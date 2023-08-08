@@ -27,21 +27,13 @@ void makePyDbSymbolTableRecordWrapper()
 
 //---------------------------------------------------------------------------------------- -
 // PyDbSymbolTableRecord 
-static AcDbSymbolTableRecord* openAcDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbSymbolTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbSymbolTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbSymbolTableRecord::PyDbSymbolTableRecord(AcDbSymbolTableRecord* ptr, bool autoDelete)
     : PyDbObject(ptr, autoDelete)
 {
 }
 
 PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbSymbolTableRecord(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbSymbolTableRecord>(id,mode), false)
 {
 }
 
@@ -129,14 +121,6 @@ void makePyDbDimStyleTableRecordWrapper()
         ;
 }
 
-static AcDbDimStyleTableRecord* openAcDbDimStyleTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbDimStyleTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbDimStyleTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbDimStyleTableRecord::PyDbDimStyleTableRecord()
     : PyDbSymbolTableRecord(new AcDbDimStyleTableRecord(), true)
 {
@@ -148,7 +132,7 @@ PyDbDimStyleTableRecord::PyDbDimStyleTableRecord(AcDbDimStyleTableRecord* ptr, b
 }
 
 PyDbDimStyleTableRecord::PyDbDimStyleTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbDimStyleTableRecord(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbDimStyleTableRecord>(id,mode), false)
 {
 }
 
@@ -258,14 +242,6 @@ void makePyDbAbstractViewTableRecordWrapper()
         ;
 }
 
-static AcDbAbstractViewTableRecord* openAcDbAbstractViewTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbAbstractViewTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbAbstractViewTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 #ifdef NEVER
 PyDbAbstractViewTableRecord::PyDbAbstractViewTableRecord()
     : PyDbSymbolTableRecord(new AcDbAbstractViewTableRecord(), true)
@@ -279,7 +255,7 @@ PyDbAbstractViewTableRecord::PyDbAbstractViewTableRecord(AcDbAbstractViewTableRe
 }
 
 PyDbAbstractViewTableRecord::PyDbAbstractViewTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbAbstractViewTableRecord(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbAbstractViewTableRecord>(id,mode), false)
 {
 }
 
@@ -665,14 +641,6 @@ void makePyDbViewportTableRecordWrapper()
         ;
 }
 
-static AcDbViewportTableRecord* openAcDbViewportTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbViewportTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbViewportTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbViewportTableRecord::PyDbViewportTableRecord()
     : PyDbAbstractViewTableRecord(new AcDbViewportTableRecord(), true)
 {
@@ -684,7 +652,7 @@ PyDbViewportTableRecord::PyDbViewportTableRecord(AcDbViewportTableRecord* ptr, b
 }
 
 PyDbViewportTableRecord::PyDbViewportTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbAbstractViewTableRecord(openAcDbViewportTableRecord(id,mode), false)
+    : PyDbAbstractViewTableRecord(openAcDbObject<AcDbViewportTableRecord>(id,mode), false)
 {
 }
 
@@ -1070,14 +1038,6 @@ void makePyDbViewTableRecordWrapper()
         ;
 }
 
-static AcDbViewTableRecord* openAcDbViewTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbViewTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbViewTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbViewTableRecord::PyDbViewTableRecord()
     : PyDbAbstractViewTableRecord(new AcDbViewTableRecord(), true)
 {
@@ -1089,7 +1049,7 @@ PyDbViewTableRecord::PyDbViewTableRecord(AcDbViewTableRecord* ptr, bool autoDele
 }
 
 PyDbViewTableRecord::PyDbViewTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbAbstractViewTableRecord(openAcDbViewTableRecord(id,mode), false)
+    : PyDbAbstractViewTableRecord(openAcDbObject<AcDbViewTableRecord>(id,mode), false)
 {
 }
 
@@ -1351,14 +1311,6 @@ void makePyDbBlockTableRecordWrapper()
 
 //---------------------------------------------------------------------------------------- -
 //PyDbBlockTableRecord
-static AcDbBlockTableRecord* openAcDblockTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbBlockTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbBlockTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbBlockTableRecord::PyDbBlockTableRecord()
     : PyDbSymbolTableRecord(new AcDbBlockTableRecord(), true)
 {
@@ -1370,7 +1322,7 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(AcDbBlockTableRecord* ptr, bool autoD
 }
 
 PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDblockTableRecord(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbBlockTableRecord>(id,mode), false)
 {
 }
 
@@ -1788,14 +1740,6 @@ void makePyDbLayerTableRecordWrapper()
 
 //---------------------------------------------------------------------------------------- -
 //AcDbLayerTableRecord wrapper
-static AcDbLayerTableRecord* openAcDbLayerTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbLayerTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbLayerTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbLayerTableRecord::PyDbLayerTableRecord()
     :PyDbSymbolTableRecord(new AcDbLayerTableRecord(), true)
 {
@@ -1807,7 +1751,7 @@ PyDbLayerTableRecord::PyDbLayerTableRecord(AcDbLayerTableRecord* ptr, bool autoD
 }
 
 PyDbLayerTableRecord::PyDbLayerTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbLayerTableRecord(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbLayerTableRecord>(id,mode), false)
 {
 }
 
@@ -2159,14 +2103,6 @@ void makePyDbTextStyleTableRecordWrapper()
         ;
 }
 
-static AcDbTextStyleTableRecord* openAcDbTextStyleTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbTextStyleTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbTextStyleTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbTextStyleTableRecord::PyDbTextStyleTableRecord()
     : PyDbSymbolTableRecord(new AcDbTextStyleTableRecord(), true)
 {
@@ -2178,7 +2114,7 @@ PyDbTextStyleTableRecord::PyDbTextStyleTableRecord(AcDbTextStyleTableRecord* ptr
 }
 
 PyDbTextStyleTableRecord::PyDbTextStyleTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbTextStyleTableRecord(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbTextStyleTableRecord>(id,mode), false)
 {
 }
 
@@ -2373,14 +2309,6 @@ void makePyDbUCSTableRecordWrapper()
         ;
 }
 
-static AcDbUCSTableRecord* openAcDbUCSTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbUCSTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbUCSTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbUCSTableRecord::PyDbUCSTableRecord()
     : PyDbSymbolTableRecord(new AcDbUCSTableRecord(), true)
 {
@@ -2392,7 +2320,7 @@ PyDbUCSTableRecord::PyDbUCSTableRecord(AcDbUCSTableRecord* ptr, bool autoDelete)
 }
 
 PyDbUCSTableRecord::PyDbUCSTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbUCSTableRecord(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbUCSTableRecord>(id,mode), false)
 {
 }
 
@@ -2497,14 +2425,6 @@ void makePyDbRegAppTableRecordWrapper()
         ;
 }
 
-static AcDbRegAppTableRecord* openAcDbRegAppTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbRegAppTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbRegAppTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbRegAppTableRecord::PyDbRegAppTableRecord()
     : PyDbSymbolTableRecord(new AcDbRegAppTableRecord(), true)
 {
@@ -2516,7 +2436,7 @@ PyDbRegAppTableRecord::PyDbRegAppTableRecord(AcDbRegAppTableRecord* ptr, bool au
 }
 
 PyDbRegAppTableRecord::PyDbRegAppTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbRegAppTableRecord(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbRegAppTableRecord>(id,mode), false)
 {
 }
 
@@ -2599,14 +2519,6 @@ void makePyDbLinetypeTableRecordWrapper()
         ;
 }
 
-static AcDbLinetypeTableRecord* openAcDbLinetypeTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbLinetypeTableRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbLinetypeTableRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbLinetypeTableRecord::PyDbLinetypeTableRecord()
     : PyDbSymbolTableRecord(new AcDbLinetypeTableRecord(), true)
 {
@@ -2618,7 +2530,7 @@ PyDbLinetypeTableRecord::PyDbLinetypeTableRecord(AcDbLinetypeTableRecord* ptr, b
 }
 
 PyDbLinetypeTableRecord::PyDbLinetypeTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbLinetypeTableRecord(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbLinetypeTableRecord>(id,mode), false)
 {
 }
 

@@ -82,13 +82,6 @@ void makePyDbTextWrapper()
         ;
 }
 
-static AcDbText* openAcDbText(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbText* pobj = nullptr;
-    PyThrowBadEs(acdbOpenObject<AcDbText>(pobj, id.m_id, mode));
-    return pobj;
-}
-
 PyDbText::PyDbText()
     : PyDbText::PyDbText(new AcDbText(), true)
 {
@@ -110,7 +103,7 @@ PyDbText::PyDbText(AcDbText* ptr, bool autoDelete)
 }
 
 PyDbText::PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbText(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbText>(id,mode), false)
 {
 }
 
@@ -402,14 +395,6 @@ void makePyDbAttributeDefinitionWrapper()
         ;
 }
 
-static AcDbAttributeDefinition* openAcDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbAttributeDefinition* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbAttributeDefinition>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbAttributeDefinition::PyDbAttributeDefinition()
     : PyDbText(new AcDbAttributeDefinition(), true)
 {
@@ -426,7 +411,7 @@ PyDbAttributeDefinition::PyDbAttributeDefinition(AcDbAttributeDefinition* ptr, b
 }
 
 PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbText(openAcDbAttributeDefinition(id,mode), false)
+    : PyDbText(openAcDbObject<AcDbAttributeDefinition>(id,mode), false)
 {
 }
 
@@ -616,14 +601,6 @@ void makePyDbAttributeWrapper()
         ;
 }
 
-static AcDbAttribute* openAcDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbAttribute* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbAttribute>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbAttribute::PyDbAttribute()
     : PyDbText(new AcDbAttribute(), true)
 {
@@ -640,7 +617,7 @@ PyDbAttribute::PyDbAttribute(AcDbAttribute* ptr, bool autoDelete)
 }
 
 PyDbAttribute::PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbText(openAcDbAttribute(id,mode), false)
+    : PyDbText(openAcDbObject<AcDbAttribute>(id,mode), false)
 {
 }
 
@@ -817,14 +794,6 @@ void makePyDbBlockReferenceWrapper()
         ;
 }
 
-static AcDbBlockReference* openAcDblockReference(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbBlockReference* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbBlockReference>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbBlockReference::PyDbBlockReference()
     : PyDbBlockReference(new AcDbBlockReference(), true)
 {
@@ -846,7 +815,7 @@ PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id)
 }
 
 PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDblockReference(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbBlockReference>(id,mode), false)
 {
 }
 
@@ -1112,14 +1081,6 @@ void makePyDbMInsertBlockeWrapper()
         ;
 }
 
-static AcDbMInsertBlock* openAcDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbMInsertBlock* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbMInsertBlock>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbMInsertBlock::PyDbMInsertBlock()
     : PyDbMInsertBlock(new AcDbMInsertBlock(), true)
 {
@@ -1136,7 +1097,7 @@ PyDbMInsertBlock::PyDbMInsertBlock(AcDbMInsertBlock* ptr, bool autoDelete)
 }
 
 PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbBlockReference(openAcDbMInsertBlock(id,mode), false)
+    : PyDbBlockReference(openAcDbObject<AcDbMInsertBlock>(id,mode), false)
 {
 }
 
@@ -1233,14 +1194,6 @@ void makePyDbVertexWrapper()
         ;
 }
 
-static AcDbVertex* openAcDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbVertex* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbVertex>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbVertex::PyDbVertex()
     : PyDbEntity(new AcDbVertex(), true)
 {
@@ -1252,7 +1205,7 @@ PyDbVertex::PyDbVertex(AcDbVertex* ptr, bool autoDelete)
 }
 
 PyDbVertex::PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbVertex(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbVertex>(id,mode), false)
 {
 }
 
@@ -1330,14 +1283,6 @@ void makePyDb2dVertexWrapper()
         ;
 }
 
-static AcDb2dVertex* openAcDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDb2dVertex* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDb2dVertex>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDb2dVertex::PyDb2dVertex()
     : PyDb2dVertex(new AcDb2dVertex(), true)
 {
@@ -1361,7 +1306,7 @@ PyDb2dVertex::PyDb2dVertex(AcDb2dVertex* ptr, bool autoDelete)
 }
 
 PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbVertex(openAcDb2dVertex(id, mode), false)
+    : PyDbVertex(openAcDbObject<AcDb2dVertex>(id, mode), false)
 {
 }
 
@@ -1520,14 +1465,6 @@ void makePyAcDb3dPolylineVertexWrapper()
         ;
 }
 
-static AcDb3dPolylineVertex* openAcDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDb3dPolylineVertex* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDb3dPolylineVertex>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDb3dPolylineVertex::PyDb3dPolylineVertex()
     : PyDb3dPolylineVertex(new AcDb3dPolylineVertex(), true)
 {
@@ -1544,7 +1481,7 @@ PyDb3dPolylineVertex::PyDb3dPolylineVertex(AcDb3dPolylineVertex* ptr, bool autoD
 }
 
 PyDb3dPolylineVertex::PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbVertex(openAcDb3dPolylineVertex(id, mode), false)
+    : PyDbVertex(openAcDbObject<AcDb3dPolylineVertex>(id, mode), false)
 {
 }
 
@@ -1620,14 +1557,6 @@ void makePyAcDbPolygonMeshVertexWrapper()
         ;
 }
 
-static AcDbPolygonMeshVertex* openAcDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbPolygonMeshVertex* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbPolygonMeshVertex>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbPolygonMeshVertex::PyDbPolygonMeshVertex()
     : PyDbPolygonMeshVertex(new AcDbPolygonMeshVertex(), true)
 {
@@ -1644,7 +1573,7 @@ PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(AcDbPolygonMeshVertex* ptr, bool au
 }
 
 PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbVertex(openAcDbPolygonMeshVertex(id, mode), false)
+    : PyDbVertex(openAcDbObject<AcDbPolygonMeshVertex>(id, mode), false)
 {
 }
 
@@ -1719,14 +1648,6 @@ void makePyDbPolyFaceMeshVertexWrapper()
         ;
 }
 
-static AcDbPolyFaceMeshVertex* openAcDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbPolyFaceMeshVertex* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbPolyFaceMeshVertex>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex()
     : PyDbPolyFaceMeshVertex(new AcDbPolyFaceMeshVertex(), true)
 {
@@ -1743,7 +1664,7 @@ PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(AcDbPolyFaceMeshVertex* ptr, bool
 }
 
 PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbVertex(openAcDbPolyFaceMeshVertex(id, mode), false)
+    : PyDbVertex(openAcDbObject<AcDbPolyFaceMeshVertex>(id, mode), false)
 {
 }
 
@@ -1816,14 +1737,6 @@ void makePyAcDbFaceRecordWrapper()
         ;
 }
 
-static AcDbFaceRecord* openAcDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbFaceRecord* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbFaceRecord>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbFaceRecord::PyDbFaceRecord()
     :PyDbFaceRecord(new AcDbFaceRecord(), true)
 {
@@ -1840,7 +1753,7 @@ PyDbFaceRecord::PyDbFaceRecord(AcDbFaceRecord* ptr, bool autoDelete)
 }
 
 PyDbFaceRecord::PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbVertex(openAcDbFaceRecord(id, mode), false)
+    : PyDbVertex(openAcDbObject<AcDbFaceRecord>(id, mode), false)
 {
 }
 
@@ -1937,14 +1850,6 @@ void makePyDbPointWrapper()
         ;
 }
 
-static AcDbPoint* openAcDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbPoint* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbPoint>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbPoint::PyDbPoint()
     : PyDbPoint::PyDbPoint(new AcDbPoint(), true)
 {
@@ -1956,7 +1861,7 @@ PyDbPoint::PyDbPoint(const AcGePoint3d& point)
 }
 
 PyDbPoint::PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbPoint::PyDbPoint(openAcDbPoint(id, mode), false)
+    : PyDbPoint::PyDbPoint(openAcDbObject<AcDbPoint>(id, mode), false)
 {
 }
 
@@ -2105,14 +2010,6 @@ void makePyDb2dPolylineWrapper()
         ;
 }
 
-static AcDb2dPolyline* openAcDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDb2dPolyline* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDb2dPolyline>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDb2dPolyline::PyDb2dPolyline()
     : PyDbCurve(new AcDb2dPolyline(), true)
 {
@@ -2124,7 +2021,7 @@ PyDb2dPolyline::PyDb2dPolyline(AcDb2dPolyline* ptr, bool autoDelete)
 }
 
 PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDb2dPolyline(id, mode), false)
+    : PyDbCurve(openAcDbObject<AcDb2dPolyline>(id, mode), false)
 {
 }
 
@@ -2390,14 +2287,6 @@ void makePyDb3dPolylineWrapper()
         ;
 }
 
-static AcDb3dPolyline* openAcDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDb3dPolyline* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDb3dPolyline>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDb3dPolyline::PyDb3dPolyline()
     : PyDbCurve(new AcDb3dPolyline(), true)
 {
@@ -2409,7 +2298,7 @@ PyDb3dPolyline::PyDb3dPolyline(AcDb3dPolyline* ptr, bool autoDelete)
 }
 
 PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDb3dPolyline(id, mode), false)
+    : PyDbCurve(openAcDbObject<AcDb3dPolyline>(id, mode), false)
 {
 }
 
@@ -2581,14 +2470,6 @@ void makePyDbArcWrapper()
         ;
 }
 
-static AcDbArc* openAcDbArc(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbArc* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbArc>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbArc::PyDbArc()
     : PyDbCurve(new AcDbArc(), true)
 {
@@ -2600,7 +2481,7 @@ PyDbArc::PyDbArc(AcDbArc* ptr, bool autoDelete)
 }
 
 PyDbArc::PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDbArc(id, mode), false)
+    : PyDbCurve(openAcDbObject<AcDbArc>(id, mode), false)
 {
 }
 
@@ -2750,14 +2631,6 @@ void makePyDbCircleWrapper()
         ;
 }
 
-static AcDbCircle* openAcDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbCircle* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbCircle>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbCircle::PyDbCircle()
     : PyDbCurve(new AcDbCircle(), true)
 {
@@ -2769,7 +2642,7 @@ PyDbCircle::PyDbCircle(AcDbCircle* ptr, bool autoDelete)
 }
 
 PyDbCircle::PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDbCircle(id, mode), false)
+    : PyDbCurve(openAcDbObject<AcDbCircle>(id, mode), false)
 {
 }
 
@@ -2917,14 +2790,6 @@ void makePyDbLineWrapper()
         ;
 }
 
-static AcDbLine* openAcDbLine(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbLine* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbLine>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbLine::PyDbLine()
     : PyDbCurve(new AcDbLine(), true)
 {
@@ -2936,7 +2801,7 @@ PyDbLine::PyDbLine(AcDbLine* ptr, bool autoDelete)
 }
 
 PyDbLine::PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDbLine(id,mode), false)
+    : PyDbCurve(openAcDbObject<AcDbLine>(id,mode), false)
 {
 }
 
@@ -3085,14 +2950,6 @@ void makePyDbPolylineWrapper()
         ;
 }
 
-static AcDbPolyline* openAcDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbPolyline* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbPolyline>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbPolyline::PyDbPolyline()
     : PyDbCurve(new AcDbPolyline(), true)
 {
@@ -3109,7 +2966,7 @@ PyDbPolyline::PyDbPolyline(AcDbPolyline* ptr, bool autoDelete)
 }
 
 PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDbPolyline(id,mode), false)
+    : PyDbCurve(openAcDbObject<AcDbPolyline>(id,mode), false)
 {
 }
 
@@ -3395,14 +3252,6 @@ void makePyDbFaceWrapper()
         ;
 }
 
-static AcDbFace* openAcDbFace(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbFace* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbFace>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbFace::PyDbFace()
     : PyDbEntity(new AcDbFace(), true)
 {
@@ -3414,7 +3263,7 @@ PyDbFace::PyDbFace(const PyDbObjectId& id)
 }
 
 PyDbFace::PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbFace(id, mode), false)
+    : PyDbEntity(openAcDbObject<AcDbFace>(id, mode), false)
 {
 }
 
@@ -3551,14 +3400,6 @@ void makePyDbFcfWrapper()
         ;
 }
 
-static AcDbFcf* openAcDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbFcf* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbFcf>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbFcf::PyDbFcf()
     : PyDbEntity(new AcDbFcf(), true)
 {
@@ -3570,7 +3411,7 @@ PyDbFcf::PyDbFcf(AcDbFcf* ptr, bool autoDelete)
 }
 
 PyDbFcf::PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbFcf(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbFcf>(id,mode), false)
 {
 }
 

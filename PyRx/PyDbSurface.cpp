@@ -26,14 +26,6 @@ void makePyDbSurfaceWrapper()
         ;
 }
 
-static AcDbSurface* openAcDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbSurface* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbSurface>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbSurface::PyDbSurface()
     : PyDbEntity(new AcDbSurface(), true)
 {
@@ -45,7 +37,7 @@ PyDbSurface::PyDbSurface(AcDbSurface* ptr, bool autoDelete)
 }
 
 PyDbSurface::PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbSurface(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbSurface>(id,mode), false)
 {
 }
 
@@ -112,14 +104,6 @@ void makePyDbExtrudedSurfaceWrapper()
         ;
 }
 
-static AcDbExtrudedSurface* openAcDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbExtrudedSurface* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbExtrudedSurface>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbExtrudedSurface::PyDbExtrudedSurface()
     : PyDbSurface(new AcDbSurface(), true)
 {
@@ -131,7 +115,7 @@ PyDbExtrudedSurface::PyDbExtrudedSurface(AcDbExtrudedSurface* ptr, bool autoDele
 }
 
 PyDbExtrudedSurface::PyDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbExtrudedSurface(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbExtrudedSurface>(id,mode), false)
 {
 }
 
@@ -192,15 +176,6 @@ void makePyDbLoftedSurfaceWrapper()
 
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
-
-static AcDbLoftedSurface* openAcDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbLoftedSurface* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbLoftedSurface>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbLoftedSurface::PyDbLoftedSurface()
     : PyDbSurface(new AcDbLoftedSurface(), true)
 {
@@ -212,7 +187,7 @@ PyDbLoftedSurface::PyDbLoftedSurface(AcDbLoftedSurface* ptr, bool autoDelete)
 }
 
 PyDbLoftedSurface::PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbLoftedSurface(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbLoftedSurface>(id,mode), false)
 {
 }
 
@@ -276,15 +251,6 @@ void makePyDbNurbSurfaceWrapper()
 
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
-
-static AcDbNurbSurface* openAcDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbNurbSurface* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbNurbSurface>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbNurbSurface::PyDbNurbSurface()
     : PyDbSurface(new AcDbNurbSurface(), true)
 {
@@ -296,7 +262,7 @@ PyDbNurbSurface::PyDbNurbSurface(AcDbNurbSurface* ptr, bool autoDelete)
 }
 
 PyDbNurbSurface::PyDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbNurbSurface(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbNurbSurface>(id,mode), false)
 {
 }
 
@@ -358,14 +324,6 @@ void makePyDbPlaneSurfaceWrapper()
 
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
-static AcDbPlaneSurface* openAcDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbPlaneSurface* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbPlaneSurface>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbPlaneSurface::PyDbPlaneSurface()
     : PyDbSurface(new AcDbPlaneSurface(), true)
 {
@@ -377,7 +335,7 @@ PyDbPlaneSurface::PyDbPlaneSurface(AcDbPlaneSurface* ptr, bool autoDelete)
 }
 
 PyDbPlaneSurface::PyDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbPlaneSurface(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbPlaneSurface>(id,mode), false)
 {
 }
 
@@ -440,16 +398,8 @@ void makePyDbRevolvedSurfaceWrapper()
 
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
-static AcDbRevolvedSurface* openAcDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbRevolvedSurface* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbRevolvedSurface>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbRevolvedSurface::PyDbRevolvedSurface()
-    : PyDbSurface(new AcDbPlaneSurface(), true)
+    : PyDbSurface(new AcDbRevolvedSurface(), true)
 {
 }
 
@@ -459,7 +409,7 @@ PyDbRevolvedSurface::PyDbRevolvedSurface(AcDbRevolvedSurface* ptr, bool autoDele
 }
 
 PyDbRevolvedSurface::PyDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbRevolvedSurface(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbRevolvedSurface>(id,mode), false)
 {
 }
 
@@ -521,14 +471,6 @@ void makePyDbSweptSurfaceWrapper()
 
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
-static AcDbSweptSurface* openAcDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbSweptSurface* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbSweptSurface>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbSweptSurface::PyDbSweptSurface()
     : PyDbSurface(new AcDbPlaneSurface(), true)
 {
@@ -540,7 +482,7 @@ PyDbSweptSurface::PyDbSweptSurface(AcDbSweptSurface* ptr, bool autoDelete)
 }
 
 PyDbSweptSurface::PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbSweptSurface(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbSweptSurface>(id,mode), false)
 {
 }
 

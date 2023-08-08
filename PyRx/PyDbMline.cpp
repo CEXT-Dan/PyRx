@@ -55,14 +55,6 @@ void makePyDbMlineWrapper()
         ;
 }
 
-static AcDbMline* openAcDbMline(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbMline* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbMline>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbMline::PyDbMline()
     : PyDbEntity(new AcDbMline(), true)
 {
@@ -74,7 +66,7 @@ PyDbMline::PyDbMline(AcDbMline* ptr, bool autoDelete)
 }
 
 PyDbMline::PyDbMline(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbMline(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbMline>(id, mode), false)
 {
 }
 
@@ -340,14 +332,6 @@ void makePyDbMlineStyleWrapper()
         ;
 }
 
-static AcDbMlineStyle* openAcDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbMlineStyle* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbMlineStyle>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbMlineStyle::PyDbMlineStyle()
     : PyDbObject(new AcDbMlineStyle(), true)
 {
@@ -359,7 +343,7 @@ PyDbMlineStyle::PyDbMlineStyle(AcDbMlineStyle* ptr, bool autoDelete)
 }
 
 PyDbMlineStyle::PyDbMlineStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbMlineStyle(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbMlineStyle>(id, mode), false)
 {
 }
 
@@ -511,16 +495,14 @@ double PyDbMlineStyle::endAngle() const
 int PyDbMlineStyle::addElement1(double offset, const AcCmColor& color, PyDbObjectId& linetypeId)
 {
     int idx = 0;
-    if (auto es = impObj()->addElement(idx, offset, color, linetypeId.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->addElement(idx, offset, color, linetypeId.m_id));
     return idx;
 }
 
 int PyDbMlineStyle::addElement2(double offset, const AcCmColor& color, PyDbObjectId& linetypeId, bool checkIfReferenced)
 {
     int idx = 0;
-    if (auto es = impObj()->addElement(idx, offset, color, linetypeId.m_id, checkIfReferenced); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->addElement(idx, offset, color, linetypeId.m_id, checkIfReferenced));
     return idx;
 }
 
@@ -537,8 +519,7 @@ int PyDbMlineStyle::numElements() const
 int PyDbMlineStyle::setElement(double offset, const AcCmColor& color, PyDbObjectId& linetypeId)
 {
     int idx = 0;
-    if (auto es = impObj()->setElement(idx, offset, color, linetypeId.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->setElement(idx, offset, color, linetypeId.m_id));
     return idx;
 }
 
@@ -547,8 +528,7 @@ boost::python::tuple PyDbMlineStyle::getElementAt(int elem) const
     double offset;
     AcCmColor color;
     AcDbObjectId linetypeId;
-    if (auto es = impObj()->getElementAt(elem, offset, color, linetypeId); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getElementAt(elem, offset, color, linetypeId));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(offset, color, PyDbObjectId(linetypeId));
 }

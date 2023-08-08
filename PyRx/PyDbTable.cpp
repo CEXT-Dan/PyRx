@@ -436,14 +436,6 @@ void makePyDbTableWrapper()
         ;
 }
 
-static AcDbTable* openAcDbTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbTable* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbTable>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbTable::PyDbTable()
     : PyDbTable(new AcDbTable(), true)
 {
@@ -460,7 +452,7 @@ PyDbTable::PyDbTable(const PyDbObjectId& id)
 }
 
 PyDbTable::PyDbTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbBlockReference(openAcDbTable(id,mode), false)
+    : PyDbBlockReference(openAcDbObject<AcDbTable>(id,mode), false)
 {
 }
 
