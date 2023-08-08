@@ -17,6 +17,8 @@ public:
     PyDbSurface(AcDbSurface* ptr, bool autoDelete);
     PyDbSurface(const PyDbObjectId& id);
     PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    boost::python::list     projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection);
     static std::string      className();
     static PyRxClass        desc();
     static PyDbSurface		cloneFrom(const PyRxObject& src);
