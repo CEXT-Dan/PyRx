@@ -52,6 +52,14 @@ inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iter
     return arr;
 }
 
+template<typename T>
+inline T* openAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
+{
+    T* pobj = nullptr;
+    PyThrowBadEs(acdbOpenObject<T>(pobj, id.m_id, mode));
+    return pobj;
+}
+
 //-----------------------------------------------------------------------------------------
 //AdsName
 void makePyAdsNameWrapper();

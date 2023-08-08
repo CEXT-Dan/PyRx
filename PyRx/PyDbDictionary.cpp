@@ -35,8 +35,7 @@ void makePyDbDictionaryWrapper()
 static AcDbDictionary* openAcDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbDictionary* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbDictionary>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(acdbOpenObject<AcDbDictionary>(pobj, id.m_id, mode));
     return pobj;
 }
 

@@ -85,8 +85,7 @@ void makePyDbTextWrapper()
 static AcDbText* openAcDbText(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbText* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbText>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(acdbOpenObject<AcDbText>(pobj, id.m_id, mode));
     return pobj;
 }
 
@@ -924,8 +923,7 @@ void PyDbBlockReference::setBlockTransform(const AcGeMatrix3d& val)
 PyDbObjectId PyDbBlockReference::appendAttribute(PyDbAttribute& att)
 {
     AcDbObjectId id;
-    if (auto es = impObj()->appendAttribute(id, att.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->appendAttribute(id, att.impObj()));
     return PyDbObjectId(id);
 }
 
@@ -952,8 +950,7 @@ AcDbExtents PyDbBlockReference::geomExtentsBestFit1() const
 AcDbExtents PyDbBlockReference::geomExtentsBestFit2(const AcGeMatrix3d& parentXform) const
 {
     AcDbExtents ex;
-    if (auto es = impObj()->geomExtentsBestFit(ex, parentXform); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->geomExtentsBestFit(ex, parentXform));
     return ex;
 }
 

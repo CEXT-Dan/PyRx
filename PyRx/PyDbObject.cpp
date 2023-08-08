@@ -84,8 +84,7 @@ void makePyDbObjectWrapper()
 static AcDbObject* openAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbObject* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbObject>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(acdbOpenObject<AcDbObject>(pobj, id.m_id, mode));
     return pobj;
 }
 
