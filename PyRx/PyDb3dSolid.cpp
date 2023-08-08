@@ -76,14 +76,6 @@ void makePyDb3dSolidWrapper()
         ;
 }
 
-static AcDb3dSolid* openAcDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDb3dSolid* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDb3dSolid>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDb3dSolid::PyDb3dSolid(AcDb3dSolid* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
@@ -95,7 +87,7 @@ PyDb3dSolid::PyDb3dSolid()
 }
 
 PyDb3dSolid::PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDb3dSolid(id, mode), false)
+    : PyDbEntity(openAcDbObject<AcDb3dSolid>(id, mode), false)
 {
 }
 
@@ -541,14 +533,6 @@ void makePyDbRegionWrapper()
         ;
 }
 
-static AcDbRegion* openAcDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbRegion* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbRegion>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbRegion::PyDbRegion()
     : PyDbEntity(new AcDbRegion(), true)
 {
@@ -560,7 +544,7 @@ PyDbRegion::PyDbRegion(AcDbRegion* ptr, bool autoDelete)
 }
 
 PyDbRegion::PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbRegion(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbRegion>(id,mode), false)
 {
 }
 
@@ -650,14 +634,6 @@ void makePyDbBodyWrapper()
         ;
 }
 
-static AcDbBody* openAcDbody(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbBody* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbBody>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbBody::PyDbBody()
     : PyDbEntity(new AcDbBody(), true)
 {
@@ -669,7 +645,7 @@ PyDbBody::PyDbBody(AcDbBody* ptr, bool autoDelete)
 }
 
 PyDbBody::PyDbBody(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbody(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbBody>(id,mode), false)
 {
 }
 

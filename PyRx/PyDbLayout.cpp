@@ -142,14 +142,6 @@ void makePyDbPlotSettingsWrapper()
         ;
 }
 
-static AcDbPlotSettings* openAcDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbPlotSettings* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbPlotSettings>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbPlotSettings::PyDbPlotSettings()
     : PyDbObject(new AcDbPlotSettings(), true)
 {
@@ -166,7 +158,7 @@ PyDbPlotSettings::PyDbPlotSettings(AcDbPlotSettings* ptr, bool autoDelete)
 }
 
 PyDbPlotSettings::PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbPlotSettings(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbPlotSettings>(id,mode), false)
 {
 }
 
@@ -535,14 +527,6 @@ void makePyDbLayoutWrapper()
         ;
 }
 
-static AcDbLayout* openAcDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbLayout* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbLayout>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbLayout::PyDbLayout()
     :PyDbPlotSettings(new AcDbLayout(), true)
 {
@@ -554,7 +538,7 @@ PyDbLayout::PyDbLayout(AcDbLayout* ptr, bool autoDelete)
 }
 
 PyDbLayout::PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbPlotSettings(openAcDbLayout(id,mode), false)
+    : PyDbPlotSettings(openAcDbObject<AcDbLayout>(id,mode), false)
 {
 }
 

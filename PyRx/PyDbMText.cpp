@@ -121,14 +121,6 @@ void makePyDbMTextWrapper()
         ;
 }
 
-static AcDbMText* openAcDbMText(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbMText* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbMText>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbMText::PyDbMText()
     : PyDbMText::PyDbMText(new AcDbMText(), true)
 {
@@ -140,7 +132,7 @@ PyDbMText::PyDbMText(AcDbMText* ptr, bool autoDelete)
 }
 
 PyDbMText::PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbMText(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbMText>(id, mode), false)
 {
 }
 
@@ -257,8 +249,7 @@ void PyDbMText::setFlowDirection(AcDbMText::FlowDirection val)
 std::string PyDbMText::contents() const
 {
     AcString str;
-    if (auto es = impObj()->contents(str); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->contents(str));
     return wstr_to_utf8(str);
 }
 
@@ -270,8 +261,7 @@ int PyDbMText::setContents(const std::string& str)
 std::string PyDbMText::contentsRTF() const
 {
     AcString str;
-    if (auto es = impObj()->contentsRTF(str); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->contentsRTF(str));
     return wstr_to_utf8(str);
 }
 
@@ -283,8 +273,7 @@ int PyDbMText::setContentsRTF(const std::string& str)
 std::string PyDbMText::text() const
 {
     AcString str;
-    if (auto es = impObj()->text(str); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->text(str));
     return wstr_to_utf8(str);
 }
 
@@ -360,8 +349,7 @@ void PyDbMText::setBackgroundFill(bool enable)
 AcCmColor PyDbMText::getBackgroundFillColor() const
 {
     AcCmColor clr;
-    if (auto es = impObj()->getBackgroundFillColor(clr); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getBackgroundFillColor(clr));
     return clr;
 }
 
@@ -373,8 +361,7 @@ void PyDbMText::setBackgroundFillColor(const AcCmColor& color)
 double PyDbMText::getBackgroundScaleFactor() const
 {
     double val;
-    if (auto es = impObj()->getBackgroundScaleFactor(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getBackgroundScaleFactor(val));
     return val;
 }
 
@@ -386,8 +373,7 @@ void PyDbMText::setBackgroundScaleFactor(const double scale)
 AcCmTransparency PyDbMText::getBackgroundTransparency() const
 {
     AcCmTransparency val;
-    if (auto es = impObj()->getBackgroundTransparency(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getBackgroundTransparency(val));
     return val;
 }
 
@@ -419,8 +405,7 @@ void PyDbMText::setStaticColumns(double width, double gutter, int count)
 AcDbMText::ColumnType PyDbMText::getColumnType() const
 {
     AcDbMText::ColumnType  val;
-    if (auto es = impObj()->getColumnType(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getColumnType(val));
     return val;
 }
 
@@ -432,8 +417,7 @@ void PyDbMText::setColumnType(AcDbMText::ColumnType val)
 bool PyDbMText::getColumnAutoHeight() const
 {
     bool  val;
-    if (auto es = impObj()->getColumnAutoHeight(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getColumnAutoHeight(val));
     return val;
 }
 
@@ -445,8 +429,7 @@ void PyDbMText::setColumnAutoHeight(bool val)
 int PyDbMText::getColumnCount() const
 {
     int  val;
-    if (auto es = impObj()->getColumnCount(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getColumnCount(val));
     return val;
 }
 
@@ -458,8 +441,7 @@ void PyDbMText::setColumnCount(int val)
 double PyDbMText::getColumnWidth() const
 {
     double  val;
-    if (auto es = impObj()->getColumnWidth(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getColumnWidth(val));
     return val;
 }
 
@@ -471,8 +453,7 @@ void PyDbMText::setColumnWidth(double val)
 double PyDbMText::getColumnGutterWidth() const
 {
     double  val;
-    if (auto es = impObj()->getColumnGutterWidth(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getColumnGutterWidth(val));
     return val;
 }
 
@@ -484,8 +465,7 @@ void PyDbMText::setColumnGutterWidth(double val)
 bool PyDbMText::getColumnFlowReversed() const
 {
     bool  val;
-    if (auto es = impObj()->getColumnFlowReversed(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getColumnFlowReversed(val));
     return val;
 }
 
@@ -497,8 +477,7 @@ void PyDbMText::setColumnFlowReversed(bool val)
 double PyDbMText::getColumnHeight(int idx) const
 {
     double  val;
-    if (auto es = impObj()->getColumnHeight(idx, val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getColumnHeight(idx, val));
     return val;
 }
 

@@ -73,21 +73,13 @@ void makePyDbUnderlayDefinitionWrapper()
         ;
 }
 
-static AcDbUnderlayDefinition* openAcDbUnderlayDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbUnderlayDefinition* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbUnderlayDefinition>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbUnderlayDefinition::PyDbUnderlayDefinition(AcDbUnderlayDefinition* ptr, bool autoDelete)
     : PyDbObject(ptr, autoDelete)
 {
 }
 
 PyDbUnderlayDefinition::PyDbUnderlayDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbUnderlayDefinition(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbUnderlayDefinition>(id,mode), false)
 {
 }
 
@@ -238,21 +230,13 @@ void makePyDbUnderlayReferenceWrapper()
         ;
 }
 
-static AcDbUnderlayReference* openAcDbUnderlayReference(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbUnderlayReference* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbUnderlayReference>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbUnderlayReference::PyDbUnderlayReference(AcDbUnderlayReference* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
 
 PyDbUnderlayReference::PyDbUnderlayReference(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbUnderlayReference(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbUnderlayReference>(id,mode), false)
 {
 }
 
@@ -604,7 +588,7 @@ PyDbPdfDefinition::PyDbPdfDefinition(AcDbPdfDefinition* ptr, bool autoDelete)
 }
 
 PyDbPdfDefinition::PyDbPdfDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbUnderlayDefinition(openAcDbPdfDefinition(id,mode), false)
+    : PyDbUnderlayDefinition(openAcDbObject<AcDbPdfDefinition>(id,mode), false)
 {
 }
 
@@ -660,14 +644,6 @@ void makePyDbPdfReferenceWrapper()
         ;
 }
 
-static AcDbPdfReference* openAcDbPdfReference(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbPdfReference* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbPdfReference>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbPdfReference::PyDbPdfReference()
     : PyDbUnderlayReference(new AcDbPdfReference(), true)
 {
@@ -679,7 +655,7 @@ PyDbPdfReference::PyDbPdfReference(AcDbPdfReference* ptr, bool autoDelete)
 }
 
 PyDbPdfReference::PyDbPdfReference(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbUnderlayReference(openAcDbPdfReference(id,mode), false)
+    : PyDbUnderlayReference(openAcDbObject<AcDbPdfReference>(id,mode), false)
 {
 }
 

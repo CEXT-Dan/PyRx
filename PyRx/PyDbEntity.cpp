@@ -553,20 +553,13 @@ void makePyDbBlockBeginWrapper()
         ;
 }
 
-static AcDbBlockBegin* openAcDblockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbBlockBegin* pobj = nullptr;
-    PyThrowBadEs(acdbOpenObject<AcDbBlockBegin>(pobj, id.m_id, mode));
-    return pobj;
-}
-
 PyDbBlockBegin::PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
 
 PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDblockBegin(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbBlockBegin>(id,mode), false)
 {
 }
 
@@ -621,20 +614,13 @@ void makePyDbBlockEndWrapper()
         ;
 }
 
-static AcDbBlockEnd* openAcDblockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbBlockEnd* pobj = nullptr;
-    PyThrowBadEs(acdbOpenObject<AcDbBlockEnd>(pobj, id.m_id, mode));
-    return pobj;
-}
-
 PyDbBlockEnd::PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
 
 PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDblockEnd(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbBlockEnd>(id,mode), false)
 {
 }
 
@@ -691,20 +677,13 @@ void makePyDbSequenceEndWrapper()
         ;
 }
 
-static AcDbSequenceEnd* openAcDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbSequenceEnd* pobj = nullptr;
-    PyThrowBadEs(acdbOpenObject<AcDbSequenceEnd>(pobj, id.m_id, mode));
-    return pobj;
-}
-
 PyDbSequenceEnd::PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
 
 PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbSequenceEnd(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbSequenceEnd>(id,mode), false)
 {
 }
 

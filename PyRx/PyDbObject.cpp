@@ -81,13 +81,6 @@ void makePyDbObjectWrapper()
         ;
 }
 
-static AcDbObject* openAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbObject* pobj = nullptr;
-    PyThrowBadEs(acdbOpenObject<AcDbObject>(pobj, id.m_id, mode));
-    return pobj;
-}
-
 //-----------------------------------------------------------------------------------------
 //PyDbObject
 PyDbObject::PyDbObject(AcDbObject* ptr, bool autoDelete)
@@ -101,7 +94,7 @@ PyDbObject::PyDbObject(const PyDbObjectId& id)
 }
 
 PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyGiDrawable(openAcDbObject(id, mode), false, true)
+    : PyGiDrawable(openAcDbObject<AcDbObject>(id, mode), false, true)
 {
 }
 
