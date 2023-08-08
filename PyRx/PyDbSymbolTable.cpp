@@ -47,8 +47,7 @@ PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbObjectId PyDbSymbolTable::getAt(const std::string& entryName)
 {
     AcDbObjectId id;
-    if (auto es = impObj()->getAt(utf8_to_wstr(entryName).c_str(), id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getAt(utf8_to_wstr(entryName).c_str(), id));
     return PyDbObjectId(id);
 }
 
@@ -65,8 +64,7 @@ bool PyDbSymbolTable::has2(const PyDbObjectId& entryid)
 PyDbObjectId PyDbSymbolTable::add(const PyDbSymbolTableRecord& pRecord)
 {
     PyDbObjectId id;
-    if (auto es = impObj()->add(id.m_id, pRecord.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->add(id.m_id, pRecord.impObj()));
     return id;
 }
 
@@ -74,9 +72,7 @@ boost::python::list PyDbSymbolTable::recordIds()
 {
     PyAutoLockGIL lock;
     AcDbSymbolTableIterator* pIter = nullptr;
-    if (impObj()->newIterator(pIter) != eOk)
-        throw PyAcadErrorStatus(eOutOfMemory);
-
+    PyThrowBadEs(impObj()->newIterator(pIter));
     boost::python::list _items;
     for (std::unique_ptr<AcDbSymbolTableIterator> iter(pIter); !iter->done(); iter->step())
     {
@@ -92,9 +88,7 @@ boost::python::dict PyDbSymbolTable::toDict()
     PyAutoLockGIL lock;
 
     AcDbSymbolTableIterator* pIter = nullptr;
-    if (impObj()->newIterator(pIter) != eOk)
-        throw PyAcadErrorStatus(eOutOfMemory);
-
+    PyThrowBadEs(impObj()->newIterator(pIter)); 
     boost::python::dict _items;
     for (std::unique_ptr<AcDbSymbolTableIterator> iter(pIter); !iter->done(); iter->step())
     {
@@ -181,8 +175,7 @@ PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id)
 PyDbObjectId PyDbDimStyleTable::add(const PyDbDimStyleTableRecord& entry)
 {
     PyDbObjectId id;
-    if (auto es = impObj()->add(id.m_id, entry.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
 
@@ -323,8 +316,7 @@ PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mo
 PyDbObjectId PyDbTextStyleTable::add(const PyDbTextStyleTableRecord& entry)
 {
     PyDbObjectId id;
-    if (auto es = impObj()->add(id.m_id, entry.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
 
@@ -393,8 +385,7 @@ PyDbLinetypeTable::PyDbLinetypeTable(const PyDbObjectId& id, AcDb::OpenMode mode
 PyDbObjectId PyDbLinetypeTable::add(const PyDbLinetypeTableRecord& entry)
 {
     PyDbObjectId id;
-    if (auto es = impObj()->add(id.m_id, entry.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
 
@@ -463,8 +454,7 @@ PyDbRegAppTable::PyDbRegAppTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbObjectId PyDbRegAppTable::add(const PyDbRegAppTableRecord& entry)
 {
     PyDbObjectId id;
-    if (auto es = impObj()->add(id.m_id, entry.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
 
@@ -533,8 +523,7 @@ PyDbUCSTable::PyDbUCSTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbObjectId PyDbUCSTable::add(const PyDbUCSTableRecord& entry)
 {
     PyDbObjectId id;
-    if (auto es = impObj()->add(id.m_id, entry.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
 
@@ -603,8 +592,7 @@ PyDbLayerTable::PyDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbObjectId PyDbLayerTable::add(const PyDbLayerTableRecord& entry)
 {
     PyDbObjectId id;
-    if (auto es = impObj()->add(id.m_id, entry.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->add(id.m_id, entry.impObj()));
     return id;
 }
 

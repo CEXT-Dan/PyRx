@@ -18,6 +18,5 @@ PyDbIdMapping::PyDbIdMapping()
 PyDbIdMapping::PyDbIdMapping(const AcDbIdMapping& mapping)
     : m_imp(new AcDbIdMapping())
 {
-    if (auto es = m_imp->copyFrom(&mapping); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(m_imp->copyFrom(&mapping));
 }

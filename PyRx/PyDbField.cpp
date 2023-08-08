@@ -98,14 +98,6 @@ void makePyDbFieldtWrapper()
         ;
 }
 
-static AcDbField* openAcDbField(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbField* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbField>(pobj, id.m_id, mode); es != eOk) [[unlikely]]
-        throw PyAcadErrorStatus(es);
-    return pobj;
-}
-
 PyDbField::PyDbField()
     : PyDbObject(new AcDbField(), true)
 {

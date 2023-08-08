@@ -56,8 +56,7 @@ PyDbDictionary::PyDbDictionary(const PyDbObjectId& id)
 PyDbObjectId PyDbDictionary::getAt(const std::string& entryName)
 {
     AcDbObjectId id;
-    if (auto es = impObj()->getAt(utf8_to_wstr(entryName).c_str(), id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getAt(utf8_to_wstr(entryName).c_str(), id));
     return PyDbObjectId(id);
 }
 
@@ -74,8 +73,7 @@ bool PyDbDictionary::has2(const PyDbObjectId& id)
 std::string PyDbDictionary::nameAt(const PyDbObjectId& id)
 {
     AcString name;
-    if (auto es = impObj()->nameAt(id.m_id, name); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->nameAt(id.m_id, name));
     return wstr_to_utf8(name);
 }
 
@@ -87,8 +85,7 @@ Adesk::UInt32 PyDbDictionary::numEntries() const
 PyDbObjectId PyDbDictionary::setAt(const std::string& srchKey, PyDbObject& newValue)
 {
     PyDbObjectId id;
-    if (auto es = impObj()->setAt(utf8_to_wstr(srchKey).c_str(), newValue.impObj(), id.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->setAt(utf8_to_wstr(srchKey).c_str(), newValue.impObj(), id.m_id));
     return id;
 }
 

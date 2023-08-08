@@ -33,7 +33,7 @@ PyDbSymbolTableRecord::PyDbSymbolTableRecord(AcDbSymbolTableRecord* ptr, bool au
 }
 
 PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbObject<AcDbSymbolTableRecord>(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbSymbolTableRecord>(id, mode), false)
 {
 }
 
@@ -102,7 +102,7 @@ AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbSymbolTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbSymbolTableRecord*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -132,7 +132,7 @@ PyDbDimStyleTableRecord::PyDbDimStyleTableRecord(AcDbDimStyleTableRecord* ptr, b
 }
 
 PyDbDimStyleTableRecord::PyDbDimStyleTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbObject<AcDbDimStyleTableRecord>(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbDimStyleTableRecord>(id, mode), false)
 {
 }
 
@@ -170,7 +170,7 @@ AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbDimStyleTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbDimStyleTableRecord*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -255,7 +255,7 @@ PyDbAbstractViewTableRecord::PyDbAbstractViewTableRecord(AcDbAbstractViewTableRe
 }
 
 PyDbAbstractViewTableRecord::PyDbAbstractViewTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbObject<AcDbAbstractViewTableRecord>(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbAbstractViewTableRecord>(id, mode), false)
 {
 }
 
@@ -573,7 +573,7 @@ AcDbAbstractViewTableRecord* PyDbAbstractViewTableRecord::impObj(const std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbAbstractViewTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbAbstractViewTableRecord*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -652,7 +652,7 @@ PyDbViewportTableRecord::PyDbViewportTableRecord(AcDbViewportTableRecord* ptr, b
 }
 
 PyDbViewportTableRecord::PyDbViewportTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbAbstractViewTableRecord(openAcDbObject<AcDbViewportTableRecord>(id,mode), false)
+    : PyDbAbstractViewTableRecord(openAcDbObject<AcDbViewportTableRecord>(id, mode), false)
 {
 }
 
@@ -995,7 +995,7 @@ AcDbViewportTableRecord* PyDbViewportTableRecord::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbViewportTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbViewportTableRecord*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -1049,7 +1049,7 @@ PyDbViewTableRecord::PyDbViewTableRecord(AcDbViewTableRecord* ptr, bool autoDele
 }
 
 PyDbViewTableRecord::PyDbViewTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbAbstractViewTableRecord(openAcDbObject<AcDbViewTableRecord>(id,mode), false)
+    : PyDbAbstractViewTableRecord(openAcDbObject<AcDbViewTableRecord>(id, mode), false)
 {
 }
 
@@ -1089,8 +1089,7 @@ std::string PyDbViewTableRecord::getCategoryName() const
     throw PyNotimplementedByHost();
 #else
     AcString str;
-    if (auto es = impObj()->getCategoryName(str); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getCategoryName(str));
     return wstr_to_utf8(str);
 #endif
 }
@@ -1106,8 +1105,7 @@ std::string PyDbViewTableRecord::getLayerState() const
     throw PyNotimplementedByHost();
 #else
     AcString str;
-    if (auto es = impObj()->getLayerState(str); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLayerState(str));
     return wstr_to_utf8(str);
 #endif
 }
@@ -1120,8 +1118,7 @@ void PyDbViewTableRecord::setLayerState(const std::string& layerStateName)
 PyDbObjectId PyDbViewTableRecord::getLayout() const
 {
     PyDbObjectId id;
-    if (auto es = impObj()->getLayout(id.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLayout(id.m_id));
     return id;
 }
 
@@ -1252,7 +1249,7 @@ AcDbViewTableRecord* PyDbViewTableRecord::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbViewTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbViewTableRecord*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -1266,7 +1263,7 @@ void makePyDbBlockTableRecordWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId=kNull", "mode: OpenMode=kForRead" })))
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity, DS.ARGS({ "entity :PyDb.Entity" }))
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
-        .def("objectIds", &PyDbBlockTableRecord::objectIdsOfType, DS.ARGS({"desc:PyRx.RxClass=AcDbEntity"}))
+        .def("objectIds", &PyDbBlockTableRecord::objectIdsOfType, DS.ARGS({ "desc:PyRx.RxClass=AcDbEntity" }))
         .def("comments", &PyDbBlockTableRecord::comments)
         .def("setComments", &PyDbBlockTableRecord::setComments)
         .def("pathName", &PyDbBlockTableRecord::pathName)
@@ -1322,7 +1319,7 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(AcDbBlockTableRecord* ptr, bool autoD
 }
 
 PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbObject<AcDbBlockTableRecord>(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbBlockTableRecord>(id, mode), false)
 {
 }
 
@@ -1334,8 +1331,7 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id)
 PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
 {
     AcDbObjectId _id;
-    if (auto es = impObj()->appendAcDbEntity(_id, ent.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->appendAcDbEntity(_id, ent.impObj()));
     return PyDbObjectId(_id);
 }
 
@@ -1579,19 +1575,12 @@ AcDb::XrefStatus PyDbBlockTableRecord::xrefStatus() const
 
 void PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::list& entitiesToMove)
 {
-    try
-    {
-        PyAutoLockGIL lock;
-        const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(entitiesToMove);
-        AcDbObjectIdArray ids;
-        for (const auto& pyId : PyDbObjectIds)
-            ids.append(pyId.m_id);
-        return PyThrowBadEs(impObj()->assumeOwnershipOf(ids));
-    }
-    catch (...)
-    {
-        throw PyAcadErrorStatus(eInvalidInput);
-    }
+    PyAutoLockGIL lock;
+    const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(entitiesToMove);
+    AcDbObjectIdArray ids;
+    for (const auto& pyId : PyDbObjectIds)
+        ids.append(pyId.m_id);
+    return PyThrowBadEs(impObj()->assumeOwnershipOf(ids));
 }
 
 AcDbBlockTableRecord::BlockScaling PyDbBlockTableRecord::blockScaling() const
@@ -1627,8 +1616,7 @@ AcDb::UnitsValue PyDbBlockTableRecord::blockInsertUnits() const
 int PyDbBlockTableRecord::postProcessAnnotativeBTR(bool bqueryOnly, bool bScale)
 {
     int stripCnt = 0;
-    if (auto stat = impObj()->postProcessAnnotativeBTR(stripCnt, bqueryOnly, bScale); stat != eOk)
-        throw PyAcadErrorStatus(stat);
+    PyThrowBadEs(impObj()->postProcessAnnotativeBTR(stripCnt, bqueryOnly, bScale));
     return stripCnt;
 }
 
@@ -1666,7 +1654,7 @@ AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbBlockTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbBlockTableRecord*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -1751,7 +1739,7 @@ PyDbLayerTableRecord::PyDbLayerTableRecord(AcDbLayerTableRecord* ptr, bool autoD
 }
 
 PyDbLayerTableRecord::PyDbLayerTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbObject<AcDbLayerTableRecord>(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbLayerTableRecord>(id, mode), false)
 {
 }
 
@@ -2064,7 +2052,7 @@ AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbLayerTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbLayerTableRecord*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -2114,7 +2102,7 @@ PyDbTextStyleTableRecord::PyDbTextStyleTableRecord(AcDbTextStyleTableRecord* ptr
 }
 
 PyDbTextStyleTableRecord::PyDbTextStyleTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbObject<AcDbTextStyleTableRecord>(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbTextStyleTableRecord>(id, mode), false)
 {
 }
 
@@ -2199,8 +2187,7 @@ std::string PyDbTextStyleTableRecord::fileName()
     throw PyNotimplementedByHost();
 #else
     AcString path;
-    if (auto es = impObj()->fileName(path); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->fileName(path));
     return wstr_to_utf8(path);
 #endif
 }
@@ -2213,8 +2200,7 @@ void PyDbTextStyleTableRecord::setFileName(const std::string& path)
 std::string PyDbTextStyleTableRecord::bigFontFileName()
 {
     AcString path;
-    if (auto es = impObj()->bigFontFileName(path); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->bigFontFileName(path));
     return wstr_to_utf8(path);
 }
 
@@ -2246,8 +2232,7 @@ boost::python::tuple PyDbTextStyleTableRecord::font()
     AcString sTypeface;
     Autodesk::AutoCAD::PAL::FontUtils::FontPitch pitch = Autodesk::AutoCAD::PAL::FontUtils::FontPitch::kDefault;
     Autodesk::AutoCAD::PAL::FontUtils::FontFamily family = Autodesk::AutoCAD::PAL::FontUtils::FontFamily::kDoNotCare;
-    if (auto es = impObj()->font(sTypeface, bold, italic, charset, pitch, family); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->font(sTypeface, bold, italic, charset, pitch, family));
     std::string tf = wstr_to_utf8(sTypeface);
     return boost::python::make_tuple(tf, bold, italic, (int)charset, (int)pitch, (int)family);
 #endif
@@ -2282,7 +2267,7 @@ AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbTextStyleTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbTextStyleTableRecord*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -2320,7 +2305,7 @@ PyDbUCSTableRecord::PyDbUCSTableRecord(AcDbUCSTableRecord* ptr, bool autoDelete)
 }
 
 PyDbUCSTableRecord::PyDbUCSTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbObject<AcDbUCSTableRecord>(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbUCSTableRecord>(id, mode), false)
 {
 }
 
@@ -2406,7 +2391,7 @@ AcDbUCSTableRecord* PyDbUCSTableRecord::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbUCSTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbUCSTableRecord*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -2436,7 +2421,7 @@ PyDbRegAppTableRecord::PyDbRegAppTableRecord(AcDbRegAppTableRecord* ptr, bool au
 }
 
 PyDbRegAppTableRecord::PyDbRegAppTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbObject<AcDbRegAppTableRecord>(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbRegAppTableRecord>(id, mode), false)
 {
 }
 
@@ -2474,7 +2459,7 @@ AcDbRegAppTableRecord* PyDbRegAppTableRecord::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbRegAppTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbRegAppTableRecord*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -2530,7 +2515,7 @@ PyDbLinetypeTableRecord::PyDbLinetypeTableRecord(AcDbLinetypeTableRecord* ptr, b
 }
 
 PyDbLinetypeTableRecord::PyDbLinetypeTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTableRecord(openAcDbObject<AcDbLinetypeTableRecord>(id,mode), false)
+    : PyDbSymbolTableRecord(openAcDbObject<AcDbLinetypeTableRecord>(id, mode), false)
 {
 }
 
@@ -2542,8 +2527,7 @@ PyDbLinetypeTableRecord::PyDbLinetypeTableRecord(const PyDbObjectId& id)
 std::string PyDbLinetypeTableRecord::comments() const
 {
     const wchar_t* val = nullptr;
-    if (auto es = impObj()->comments(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->comments(val));
     return wstr_to_utf8(val);
 }
 
@@ -2665,8 +2649,7 @@ void PyDbLinetypeTableRecord::setShapeRotationAt(int index, double rotation)
 std::string PyDbLinetypeTableRecord::textAt(int index)
 {
     const wchar_t* val = nullptr;
-    if (auto es = impObj()->textAt(index, val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->textAt(index, val));
     return wstr_to_utf8(val);
 }
 
@@ -2704,5 +2687,5 @@ AcDbLinetypeTableRecord* PyDbLinetypeTableRecord::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbLinetypeTableRecord*>(m_pyImp.get());
+        return static_cast<AcDbLinetypeTableRecord*>(m_pyImp.get());
 }

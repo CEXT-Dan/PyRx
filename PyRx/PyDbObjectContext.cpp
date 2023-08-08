@@ -119,43 +119,39 @@ void PyDbAnnotationScale::copyFrom(const PyRxObject& val)
 double PyDbAnnotationScale::getPaperUnits() const
 {
     double val;
-    if (auto es = impObj()->getPaperUnits(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPaperUnits(val));
     return val;
 }
 
 double PyDbAnnotationScale::getDrawingUnits() const
 {
     double val;
-    if (auto es = impObj()->getDrawingUnits(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getDrawingUnits(val));
     return val;
 }
 
 double PyDbAnnotationScale::getScale() const
 {
     double val;
-    if (auto es = impObj()->getScale(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getScale(val));
     return val;
 }
 
 bool PyDbAnnotationScale::getIsTemporaryScale() const
 {
     bool val;
-    if (auto es = impObj()->getIsTemporaryScale(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getIsTemporaryScale(val));
     return val;
 }
 
 void PyDbAnnotationScale::setPaperUnits(double val)
 {
-    return  PyThrowBadEs(impObj()->setPaperUnits(val));
+    return PyThrowBadEs(impObj()->setPaperUnits(val));
 }
 
 void PyDbAnnotationScale::setDrawingUnits(double val)
 {
-    return  PyThrowBadEs(impObj()->setDrawingUnits(val));
+    return PyThrowBadEs(impObj()->setDrawingUnits(val));
 }
 
 bool PyDbAnnotationScale::matchScaleId(Adesk::LongPtr val) const

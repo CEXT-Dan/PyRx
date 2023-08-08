@@ -231,7 +231,7 @@ PyDbRegion PyDb3dSolid::getSection(const PyGePlane& plane)
 {
     AcDbRegion* sectionRegion = nullptr;
     PyThrowBadEs(impObj()->getSection(*plane.impObj(), sectionRegion));
-    return PyDbRegion(sectionRegion,true);
+    return PyDbRegion(sectionRegion, true);
 }
 
 void PyDb3dSolid::stlOut1(const std::string& fileName, Adesk::Boolean asciiFormat) const
@@ -340,7 +340,7 @@ boost::python::list PyDb3dSolid::separateBody()
     PyThrowBadEs(impObj()->separateBody(newSolids));
     boost::python::list pyList;
     for (auto item : newSolids)
-        pyList.append(PyDb3dSolid(item,true));
+        pyList.append(PyDb3dSolid(item, true));
     return pyList;
 }
 
@@ -544,7 +544,7 @@ PyDbRegion::PyDbRegion(AcDbRegion* ptr, bool autoDelete)
 }
 
 PyDbRegion::PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbRegion>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbRegion>(id, mode), false)
 {
 }
 
@@ -568,8 +568,7 @@ boost::python::list PyDbRegion::createFromCurves(const boost::python::list& curv
     for (auto& item : vec)
         acCurveSegments.append(item.impObj());
     AcArray<AcDbRegion*> regions;
-    if (auto es = AcDbRegion::createFromCurves(acCurveSegments, regions); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(AcDbRegion::createFromCurves(acCurveSegments, regions));
     for (auto item : regions)
         pyRegions.append(PyDbRegion(item, true));
 #else
@@ -578,8 +577,7 @@ boost::python::list PyDbRegion::createFromCurves(const boost::python::list& curv
     for (auto& item : vec)
         acCurveSegments.append(item.impObj());
     AcDbVoidPtrArray regions;
-    if (auto es = AcDbRegion::createFromCurves(acCurveSegments, regions); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(AcDbRegion::createFromCurves(acCurveSegments, regions));
     for (auto item : regions)
         pyRegions.append(PyDbRegion((AcDbRegion*)item, true));
 #endif
@@ -645,7 +643,7 @@ PyDbBody::PyDbBody(AcDbBody* ptr, bool autoDelete)
 }
 
 PyDbBody::PyDbBody(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbBody>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbBody>(id, mode), false)
 {
 }
 

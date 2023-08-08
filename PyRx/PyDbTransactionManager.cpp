@@ -90,8 +90,7 @@ boost::python::list PyDbTransactionManager::getAllObjects()
     PyAutoLockGIL lock;
     AcDbVoidPtrArray objs;
     boost::python::list pyObjs;
-    if (auto es = impObj()->getAllObjects(objs); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getAllObjects(objs));
     for (auto item : objs)
         pyObjs.append(PyDbObject((AcDbObject*)item, true));
     return pyObjs;
@@ -99,8 +98,7 @@ boost::python::list PyDbTransactionManager::getAllObjects()
     PyAutoLockGIL lock;
     AcArray<AcDbObject*> objs;
     boost::python::list pyObjs;
-    if (auto es = impObj()->getAllObjects(objs); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getAllObjects(objs));
     for (auto item : objs)
         pyObjs.append(PyDbObject(item, true));
     return pyObjs;
@@ -120,8 +118,7 @@ PyDbObject PyDbTransactionManager::getObject2(const PyDbObjectId& id, AcDb::Open
 PyDbObject PyDbTransactionManager::getObject3(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErasedObject)
 {
     AcDbObject* obj = nullptr;
-    if (auto es = impObj()->getObject(obj, id.m_id, mode, openErasedObject); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getObject(obj, id.m_id, mode, openErasedObject));
     return PyDbObject(obj, true);
 }
 
@@ -241,8 +238,7 @@ boost::python::list PyTransaction::getAllObjects()
     PyAutoLockGIL lock;
     AcDbVoidPtrArray objs;
     boost::python::list pyObjs;
-    if (auto es = impObj()->getAllObjects(objs); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getAllObjects(objs));
     for (auto item : objs)
         pyObjs.append(PyDbObject((AcDbObject*)item, true));
     return pyObjs;
@@ -250,8 +246,7 @@ boost::python::list PyTransaction::getAllObjects()
     PyAutoLockGIL lock;
     AcArray<AcDbObject*> objs;
     boost::python::list pyObjs;
-    if (auto es = impObj()->getAllObjects(objs); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getAllObjects(objs));
     for (auto item : objs)
         pyObjs.append(PyDbObject(item, true));
     return pyObjs;

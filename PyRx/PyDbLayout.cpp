@@ -175,8 +175,7 @@ void PyDbPlotSettings::addToPlotSettingsDict(PyDbDatabase& towhichDb)
 std::string PyDbPlotSettings::getPlotSettingsName() const
 {
     const wchar_t* plotSettingsName = nullptr;
-    if (auto es = impObj()->getPlotSettingsName(plotSettingsName); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPlotSettingsName(plotSettingsName));
     return wstr_to_utf8(plotSettingsName);
 }
 
@@ -188,8 +187,7 @@ void PyDbPlotSettings::setPlotSettingsName(const std::string& plotSettingsName)
 std::string PyDbPlotSettings::getPlotCfgName() const
 {
     const wchar_t* plotCfgName = nullptr;
-    if (auto es = impObj()->getPlotCfgName(plotCfgName); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPlotCfgName(plotCfgName));
     return wstr_to_utf8(plotCfgName);
 }
 
@@ -200,8 +198,7 @@ boost::python::tuple PyDbPlotSettings::getPlotPaperMargins() const
     double printableYmin = 0;
     double printableXmax = 0;
     double printableYmax = 0;
-    if (auto es = impObj()->getPlotPaperMargins(printableXmin, printableYmin, printableXmax, printableYmax); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPlotPaperMargins(printableXmin, printableYmin, printableXmax, printableYmax));
     return boost::python::make_tuple(printableXmin, printableYmin, printableXmax, printableYmax);
 }
 
@@ -210,16 +207,14 @@ boost::python::tuple PyDbPlotSettings::getPlotPaperSize() const
     PyAutoLockGIL lock;
     double paperWidth = 0;
     double paperHeight = 0;
-    if (auto es = impObj()->getPlotPaperSize(paperWidth, paperHeight); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPlotPaperSize(paperWidth, paperHeight));
     return boost::python::make_tuple(paperWidth, paperHeight);
 }
 
 std::string PyDbPlotSettings::getCanonicalMediaName() const
 {
     const wchar_t* mediaName = nullptr;
-    if (auto es = impObj()->getCanonicalMediaName(mediaName); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getCanonicalMediaName(mediaName));
     return wstr_to_utf8(mediaName);
 }
 
@@ -228,8 +223,7 @@ boost::python::tuple PyDbPlotSettings::getPlotOrigin() const
     PyAutoLockGIL lock;
     double x = 0;
     double y = 0;
-    if (auto es = impObj()->getPlotOrigin(x, y); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPlotOrigin(x, y));
     return boost::python::make_tuple(x, y);
 }
 
@@ -371,16 +365,14 @@ boost::python::tuple PyDbPlotSettings::getPlotWindowArea() const
     double printableYmin = 0;
     double printableXmax = 0;
     double printableYmax = 0;
-    if (auto es = impObj()->getPlotWindowArea(printableXmin, printableYmin, printableXmax, printableYmax); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPlotWindowArea(printableXmin, printableYmin, printableXmax, printableYmax));
     return boost::python::make_tuple(printableXmin, printableYmin, printableXmax, printableYmax);
 }
 
 std::string PyDbPlotSettings::getPlotViewName() const
 {
     const ACHAR* viewName = nullptr;
-    if (auto es = impObj()->getPlotViewName(viewName); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getPlotViewName(viewName));
     return wstr_to_utf8(viewName);
 }
 
@@ -394,16 +386,14 @@ boost::python::tuple PyDbPlotSettings::getCustomPrintScale() const
     PyAutoLockGIL lock;
     double x = 0;
     double y = 0;
-    if (auto es = impObj()->getCustomPrintScale(x, y); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getCustomPrintScale(x, y));
     return boost::python::make_tuple(x, y);
 }
 
 std::string PyDbPlotSettings::getCurrentStyleSheet() const
 {
     const ACHAR* styleSheetName = nullptr;
-    if (auto es = impObj()->getCurrentStyleSheet(styleSheetName); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getCurrentStyleSheet(styleSheetName));
     return wstr_to_utf8(styleSheetName);
 }
 
@@ -415,8 +405,7 @@ AcDbPlotSettings::StdScaleType PyDbPlotSettings::stdScaleType() const
 double PyDbPlotSettings::getStdScale() const
 {
     double scale = 0;
-    if (auto es = impObj()->getStdScale(scale); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getStdScale(scale));
     return scale;
 }
 
@@ -565,8 +554,7 @@ void PyDbLayout::addToLayoutDict(PyDbDatabase& towhichDb, PyDbObjectId BlockTabl
 std::string PyDbLayout::getLayoutName() const
 {
     const ACHAR* layoutName = nullptr;
-    if (auto es = impObj()->getLayoutName(layoutName); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getLayoutName(layoutName));
     return wstr_to_utf8(layoutName);
 }
 
@@ -746,16 +734,14 @@ void PyDbLayoutManager::setCurrentLayoutId(const PyDbObjectId& layoutId)
 std::string PyDbLayoutManager::getActiveLayoutName1(bool allowModel)
 {
     AcString sName;
-    if (auto es = impObj()->getActiveLayoutName(sName, allowModel); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getActiveLayoutName(sName, allowModel));
     return wstr_to_utf8(sName);
 }
 
 std::string PyDbLayoutManager::getActiveLayoutName2(bool allowModel, PyDbDatabase& pDb)
 {
     AcString sName;
-    if (auto es = impObj()->getActiveLayoutName(sName, allowModel, pDb.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getActiveLayoutName(sName, allowModel, pDb.impObj()));
     return wstr_to_utf8(sName);
 }
 
@@ -870,8 +856,7 @@ Adesk::ULongPtr PyDbLayoutManager::setupForLayouts(PyDbDatabase& pDb)
     throw PyNotimplementedByHost();
 #else
     Adesk::ULongPtr contextHandle = 0;
-    if (auto es = acdbDoSetupForLayouts(pDb.impObj(), contextHandle); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(acdbDoSetupForLayouts(pDb.impObj(), contextHandle));
     return contextHandle;
 #endif
 }
