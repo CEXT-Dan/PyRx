@@ -21,7 +21,7 @@ public:
     PyDbObjectId            setAt(const std::string& srchKey, PyDbObject& newValue);
     void                    remove1(const std::string& key);
     void                    remove2(const std::string& key, PyDbObjectId& returnId);
-    void                    remove3(PyDbObjectId&  objId);
+    void                    remove3(PyDbObjectId& objId);
     bool                    setName(const std::string& oldName, const std::string& newName);
     boost::python::dict     asDict();
     static std::string      className();
