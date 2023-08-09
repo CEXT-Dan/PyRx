@@ -6520,11 +6520,8 @@ class BlockTableRecord:
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None:
       '''                             '''
     ...
-    def appendAcDbEntity (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''appendAcDbEntity( (BlockTableRecord)arg1, (Entity)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId appendAcDbEntity(class PyDbBlockTableRecord {lvalue},class PyDbEntity)'''
+    def appendAcDbEntity (self: BlockTableRecord,entity :PyDb.Entity)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -19906,6 +19903,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
+    def projectOnToSurface (self, *args, **kwargs)-> list:
+      '''projectOnToSurface( (Surface)arg1, (Entity)arg2, (Vector3d)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
+    ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
@@ -31147,6 +31150,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
+    def projectOnToSurface (self, *args, **kwargs)-> list:
+      '''projectOnToSurface( (Surface)arg1, (Entity)arg2, (Vector3d)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
+    ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
@@ -38167,6 +38176,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
+    def projectOnToSurface (self, *args, **kwargs)-> list:
+      '''projectOnToSurface( (Surface)arg1, (Entity)arg2, (Vector3d)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
+    ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
@@ -41317,6 +41332,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def plotStyleName (self: Entity)-> str:
       '''                             '''
+    ...
+    def projectOnToSurface (self, *args, **kwargs)-> list:
+      '''projectOnToSurface( (Surface)arg1, (Entity)arg2, (Vector3d)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -51996,6 +52017,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
+    def projectOnToSurface (self, *args, **kwargs)-> list:
+      '''projectOnToSurface( (Surface)arg1, (Entity)arg2, (Vector3d)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
+    ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
@@ -55919,6 +55946,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
+    def projectOnToSurface (self, *args, **kwargs)-> list:
+      '''projectOnToSurface( (Surface)arg1, (Entity)arg2, (Vector3d)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
+    ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
@@ -56811,6 +56844,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def plotStyleName (self: Entity)-> str:
       '''                             '''
+    ...
+    def projectOnToSurface (self, *args, **kwargs)-> list:
+      '''projectOnToSurface( (Surface)arg1, (Entity)arg2, (Vector3d)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
