@@ -40,7 +40,7 @@ struct PyRxObjectDeleter
 
     inline void operator()(AcRxObject* p) const
     {
-        if (p == nullptr)[[unlikely]]
+        if (p == nullptr) [[unlikely]]
             return;
         else if (isDbroThenClose(p))
             return;
@@ -69,6 +69,7 @@ public:
     bool operator!=(const PyRxObject& rhs) const;
     PyRxClass           isA() const;
     void                forceKeepAlive(bool flag);
+    void                dispose();
     bool                isNullObj();
     int                 implRefCount();
     PyRxObject          queryX(const PyRxClass& protocolClass) const;

@@ -12,6 +12,8 @@ void makeAcRxObjectWrapper()
         .def("isA", &PyRxObject::isA, DS.ARGS())
         .def("isNullObj", &PyRxObject::isNullObj, DS.ARGS())
         .def("implRefCount", &PyRxObject::implRefCount, DS.ARGS())
+        .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({"flag:bool"}))
+        .def("dispose", &PyRxObject::dispose, DS.ARGS())
         .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs :  PyRx.RxClass" }))
         .def("__eq__", &PyRxObject::operator==, DS.ARGS({ "rhs :  PyRx.RxObject" }))
         .def("__ne__", &PyRxObject::operator!=, DS.ARGS({ "rhs :  PyRx.RxObject" }))
@@ -51,6 +53,11 @@ void PyRxObject::forceKeepAlive(bool flag)
     auto del_p = std::get_deleter<PyRxObjectDeleter>(m_pyImp);
     if (del_p != nullptr)
         del_p->m_forceKeepAlive = flag;
+}
+
+void PyRxObject::dispose()
+{
+    m_pyImp.reset();
 }
 
 bool PyRxObject::isNullObj()

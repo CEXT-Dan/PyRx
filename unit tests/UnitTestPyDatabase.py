@@ -117,7 +117,17 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(info.getRevisionNumber(),"1.1.0001")
         self.assertEqual(info.getHyperlinkBase(),"myHyperlinkBase")
         self.assertEqual(info.asDict(),customDict)
-        
+
+    def test_dbopbjectforread(self):
+        sideDb = Db.Database(False,True)
+        sideDb.readDwgFile("./testmedia/06457.dwg")
+        sideDb.closeInput(True)
+        objHnd = Db.Handle("20128")
+        objId = sideDb.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(),True)
+        dbo = Db.DbObject(objId)
+        #self.assertEqual(dbo.isA().dxfName(),"LINE")
+
 def PyRxCmd_pydbtest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDatabase)

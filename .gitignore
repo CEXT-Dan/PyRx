@@ -20,3 +20,5 @@
 /PyRxStubs/genDocTest.py
 /PySamples/_doit.py
 /PySamples/_wxdoit.py
+/unit tests/testmedia/06457.bak
+/unit tests/testmedia/*.bak
