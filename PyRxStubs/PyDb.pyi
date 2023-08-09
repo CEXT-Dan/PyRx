@@ -298,6 +298,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -349,7 +352,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list:
@@ -641,6 +644,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -722,7 +728,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -1348,6 +1354,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -1462,7 +1471,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -2200,6 +2209,9 @@ __init__( (object)arg1) -> None :
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -2212,7 +2224,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         bool matchScaleId(class PyDbAnnotationScale {lvalue},__int64)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def setDrawingUnits (self, *args, **kwargs)-> None:
@@ -2526,6 +2538,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -2619,7 +2634,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def radius (self: Arc)-> float:
@@ -3146,6 +3161,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -3260,7 +3278,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -4059,6 +4077,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isInvisible (self: AttributeDefinition)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isMTextAttributeDefinition (self: AttributeDefinition)-> bool:
       '''                             '''
     ...
@@ -4182,7 +4203,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prompt (self: AttributeDefinition)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -4628,6 +4649,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isInvisible (self: AttributeReference)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isMTextAttribute (self: AttributeReference)-> bool:
       '''                             '''
     ...
@@ -4751,7 +4775,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Text)-> PyGe.Point3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -5151,6 +5175,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -5235,7 +5262,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -5546,6 +5573,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -5630,7 +5660,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -5962,6 +5992,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -6058,7 +6091,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: BlockReference)-> PyGe.Point3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -6455,6 +6488,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -6506,7 +6542,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list:
@@ -6804,6 +6840,9 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         bool isFromOverlayReference(class PyDbBlockTableRecord {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isLayout (self, *args, **kwargs)-> bool:
       '''isLayout( (BlockTableRecord)arg1) -> bool :
 
@@ -6906,7 +6945,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         int postProcessAnnotativeBTR(class PyDbBlockTableRecord {lvalue},bool,bool)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -7232,6 +7271,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -7316,7 +7358,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -9123,6 +9165,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -9213,7 +9258,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def radius (self: Circle)-> float:
@@ -10650,6 +10695,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -10737,7 +10785,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -11182,6 +11230,9 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def isEMR (self: Database)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -11455,7 +11506,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def qtextmode (self: Database)-> bool:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def readDwgFile (self: Database,fileName : str,mode : int=kForReadAndReadShare,bAllowCPConversion : bool=False,password : str=empty)-> None:
@@ -12361,6 +12412,9 @@ getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> tuple :
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -12373,7 +12427,7 @@ getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> tuple :
     C++ signature :
         int numCustomInfo(class PyDbDatabaseSummaryInfo {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def setAuthor (self, *args, **kwargs)-> None:
@@ -12548,6 +12602,9 @@ class DbObject:
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -12599,7 +12656,7 @@ class DbObject:
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -12696,6 +12753,9 @@ __init__( (object)arg1) -> None :
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -12717,7 +12777,7 @@ __init__( (object)arg1) -> None :
     def openedForModify (self: DbObjectReactor,obj: PyDb.DbObject)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def reappended (self: DbObjectReactor,obj: PyDb.DbObject)-> None:
@@ -13087,6 +13147,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -13189,7 +13252,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -13865,6 +13928,9 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -13928,7 +13994,7 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -14297,6 +14363,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -14348,7 +14417,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list:
@@ -14560,6 +14629,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -14617,7 +14689,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -14986,6 +15058,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -15082,7 +15157,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -17273,6 +17348,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -17357,7 +17435,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -17803,6 +17881,9 @@ __init__( (object)arg1) -> None :
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -17827,7 +17908,7 @@ __init__( (object)arg1) -> None :
     def openedForModify (self: EntityReactor,obj: PyDb.DbObject)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def reappended (self: EntityReactor,obj: PyDb.DbObject)-> None:
@@ -19612,13 +19693,16 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def setDouble (self, *args, **kwargs)-> None:
@@ -19993,6 +20077,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -20083,7 +20170,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -20418,6 +20505,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -20508,7 +20598,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -20831,6 +20921,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -20921,7 +21014,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -21271,6 +21364,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -21361,7 +21457,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -21743,6 +21839,9 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -21806,7 +21905,7 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     C++ signature :
         void postInDatabase(class PyDbField {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -23898,6 +23997,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isHatch(class PyDbHatch {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -24060,7 +24162,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -25358,6 +25460,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -25442,7 +25547,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -26021,6 +26126,9 @@ class JoinEntityPE:
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -26033,7 +26141,7 @@ class JoinEntityPE:
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
 
@@ -26314,6 +26422,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -26365,7 +26476,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list:
@@ -26641,6 +26752,9 @@ isHidden( (ObjectId)arg1) -> bool :
     C++ signature :
         bool isInUse(class PyDbLayerTableRecord {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isLocked (self, *args, **kwargs)-> bool:
       '''isLocked( (LayerTableRecord)arg1) -> bool :
 
@@ -26772,7 +26886,7 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId plotStyleNameId(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -27278,6 +27392,9 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -27401,7 +27518,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         bool printLineweights(class PyDbPlotSettings {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -27742,6 +27859,9 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -27770,7 +27890,7 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
     C++ signature :
         bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def renameLayout (self, *args, **kwargs)-> None:
@@ -28246,6 +28366,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -28363,7 +28486,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -28914,6 +29037,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -29004,7 +29130,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -29495,6 +29621,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -29591,7 +29720,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -30606,6 +30735,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -30657,7 +30789,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list:
@@ -30881,6 +31013,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -30956,7 +31091,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double patternLength(class PyDbLinetypeTableRecord {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -31342,6 +31477,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -31432,7 +31570,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -31770,6 +31908,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -31866,7 +32007,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: BlockReference)-> PyGe.Point3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -32493,6 +32634,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -32678,7 +32822,7 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
     C++ signature :
         void postMLeaderToDb(class PyDbMLeader {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -34582,6 +34726,9 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -34687,7 +34834,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     C++ signature :
         class PyDbObjectId postMLeaderStyleToDb(class PyDbMLeaderStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -35936,6 +36083,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -36044,7 +36194,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -37315,6 +37465,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -37429,7 +37582,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -37959,6 +38112,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -38022,7 +38178,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -38410,6 +38566,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -38500,7 +38659,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -38660,13 +38819,16 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def setName (self, *args, **kwargs)-> None:
@@ -39201,6 +39363,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -39321,7 +39486,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -40466,6 +40631,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isLoaded (self, *args, **kwargs)-> bool:
       '''isLoaded( (UnderlayDefinition)arg1) -> bool :
 
@@ -40534,7 +40702,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -40911,6 +41079,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isFrameVisible(class PyDbUnderlayReference {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -41019,7 +41190,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class AcGePoint3d position(class PyDbUnderlayReference {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -41597,6 +41768,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -41687,7 +41861,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -42281,6 +42455,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -42404,7 +42581,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool printLineweights(class PyDbPlotSettings {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -43044,6 +43221,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -43134,7 +43314,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Point)-> PyGe.Point3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -43622,6 +43802,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -43718,7 +43901,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -44692,6 +44875,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -44779,7 +44965,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: PolyFaceMeshVertex)-> PyGe.Point3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -45096,6 +45282,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -45183,7 +45372,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: PolygonMeshVertex)-> PyGe.Point3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -45634,6 +45823,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -45742,7 +45934,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -46236,6 +46428,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isLinetypeGenerationOn (self, *args, **kwargs)-> bool:
       '''isLinetypeGenerationOn( (Polyline2d)arg1) -> bool :
 
@@ -46377,7 +46572,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         enum AcDb::Poly2dType polyType(class PyDb2dPolyline {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -46903,6 +47098,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -47026,7 +47224,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         enum AcDb::Poly3dType polyType(class PyDb3dPolyline {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -47381,6 +47579,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -47468,7 +47669,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Polyline3dVertex)-> PyGe.Point3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -47953,6 +48154,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -48055,7 +48259,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -48929,6 +49133,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -49043,7 +49250,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -49896,6 +50103,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isImageTransparent(class PyDbRasterImage {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -49998,7 +50208,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class AcGePoint3d position(class PyDbRasterImage {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def reactorId (self, *args, **kwargs)-> PyDb.ObjectId:
@@ -50412,6 +50622,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isLoaded (self, *args, **kwargs)-> bool:
       '''isLoaded( (RasterImageDef)arg1) -> bool :
 
@@ -50475,7 +50688,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -50746,6 +50959,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -50797,7 +51013,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -51010,6 +51226,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -51061,7 +51280,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list:
@@ -51273,6 +51492,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -51330,7 +51552,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -51596,6 +51818,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -51686,7 +51911,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -52389,6 +52614,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -52479,7 +52707,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -52940,6 +53168,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -53054,7 +53285,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -54183,6 +54414,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -54267,7 +54501,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -55180,6 +55414,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -55294,7 +55531,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSolid(class PyDb3dSolid {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -56342,6 +56579,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -56432,7 +56672,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -57247,6 +57487,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -57337,7 +57580,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -57879,6 +58122,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -57930,7 +58176,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list:
@@ -58112,6 +58358,9 @@ class SymbolTableRecord:
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -58169,7 +58418,7 @@ class SymbolTableRecord:
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -58992,6 +59241,9 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     C++ signature :
         bool isHeaderSuppressed(class PyDbTable {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isLinked (self, *args, **kwargs)-> bool:
       '''isLinked( (Table)arg1, (int)arg2, (int)arg3) -> bool :
 
@@ -59178,7 +59430,7 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def position (self: BlockReference)-> PyGe.Point3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -60964,6 +61216,9 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     C++ signature :
         bool isHeaderSuppressed(class PyDbTableStyle {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isMergeAllEnabled (self, *args, **kwargs)-> bool:
       '''isMergeAllEnabled( (TableStyle)arg1, (str)arg2) -> bool :
 
@@ -61045,7 +61300,7 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     C++ signature :
         class PyDbObjectId postTableStyleToDb(class PyDbTableStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -61595,6 +61850,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isMirroredInX (self: Text)-> bool:
       '''                             '''
     ...
@@ -61703,7 +61961,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Text)-> PyGe.Point3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -62326,6 +62584,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -62377,7 +62638,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list:
@@ -62613,6 +62874,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -62694,7 +62958,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double priorSize(class PyDbTextStyleTableRecord {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -63219,6 +63483,9 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -63231,7 +63498,7 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
     C++ signature :
         int numOpenedObjects(class PyDbTransactionManager {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
 
@@ -63269,6 +63536,9 @@ class TransactionManager:
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -63281,7 +63551,7 @@ class TransactionManager:
     def numOpenedObjects (self: TransactionManager)-> int:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def queueForGraphicsFlush (self: TransactionManager)-> None:
@@ -63649,6 +63919,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -63700,7 +63973,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list:
@@ -63912,6 +64185,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -63975,7 +64251,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -64228,6 +64504,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isLoaded (self, *args, **kwargs)-> bool:
       '''isLoaded( (UnderlayDefinition)arg1) -> bool :
 
@@ -64296,7 +64575,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -64695,6 +64974,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isFrameVisible(class PyDbUnderlayReference {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -64803,7 +65085,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class AcGePoint3d position(class PyDbUnderlayReference {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -65704,6 +65986,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -65788,7 +66073,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -66116,6 +66401,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -66206,7 +66494,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Vertex2d)-> PyGe.Point3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -66766,6 +67054,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -66871,7 +67162,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -67607,6 +67898,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isGridSubdivisionRestricted(class PyDbViewport {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isLayerFrozenInViewport (self, *args, **kwargs)-> bool:
       '''isLayerFrozenInViewport( (Viewport)arg1, (ObjectId)arg2) -> bool :
 
@@ -67834,7 +68128,7 @@ previousBackground( (Viewport)arg1, (GiDrawableType)arg2) -> ObjectId :
     C++ signature :
         bool previousBackgroundForcedSwitch(class PyDbViewport {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool:
@@ -68976,6 +69270,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool isGridSubdivisionRestricted(class PyDbViewportTableRecord {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -69098,7 +69395,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     C++ signature :
         bool previousBackgroundForcedSwitch(class PyDbViewportTableRecord {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None:
@@ -70055,6 +70352,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
     ...
@@ -70118,7 +70418,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def rbChain (self, *args, **kwargs)-> list:

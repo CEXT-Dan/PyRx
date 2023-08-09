@@ -1184,13 +1184,16 @@ This class cannot be instantiated from Python'''
     def isDragging (self: CommonDraw)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def regenAbort (self: CommonDraw)-> bool:
@@ -1387,6 +1390,9 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -1396,7 +1402,7 @@ This class cannot be instantiated from Python'''
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool:
@@ -1485,6 +1491,9 @@ class DrawableOverrule:
     C++ signature :
         bool isApplicable(class PyGiDrawableOverrule {lvalue},class PyRxObject {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -1497,7 +1506,7 @@ class DrawableOverrule:
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def removeOverrule (self, *args, **kwargs)-> None:
@@ -1587,6 +1596,9 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -1623,7 +1635,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def sectionable (self, *args, **kwargs)-> bool:
@@ -1854,6 +1866,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -1884,7 +1899,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def pushScaleTransform (self: Geometry,behavior : PyGi.AcGiScaleTransformBehavior, extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def ray (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool:
@@ -2531,6 +2546,9 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -2567,7 +2585,7 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def sectionable (self, *args, **kwargs)-> bool:
@@ -2938,13 +2956,16 @@ This class cannot be instantiated from Python'''
     def isDragging (self: CommonDraw)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def regenAbort (self: CommonDraw)-> bool:
@@ -3024,6 +3045,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -3054,7 +3078,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def pushScaleTransform (self: Geometry,behavior : PyGi.AcGiScaleTransformBehavior, extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def ray (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool:
@@ -3099,13 +3123,16 @@ This class cannot be instantiated from Python'''
     def isDragging (self: CommonDraw)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def regenAbort (self: CommonDraw)-> bool:
@@ -3185,6 +3212,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -3215,7 +3245,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def pushScaleTransform (self: Geometry,behavior : PyGi.AcGiScaleTransformBehavior, extents : PyGe.Point2d|PyGe.Point2d)-> PyGe.Matrix3d:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def ray (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool:

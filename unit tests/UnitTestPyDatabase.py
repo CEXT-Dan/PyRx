@@ -154,14 +154,14 @@ class TestDatabase(unittest.TestCase):
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         dbo = Db.Curve(objId)
-        self.assertEqual(dbo.isA().dxfName(), "LINE")
+        self.assertEqual(dbo.isA(), Db.Line.desc())
 
     def test_dblineforread(self):
         objHnd = Db.Handle("2c830c")
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         dbo = Db.Line(objId)
-        self.assertEqual(dbo.isA().dxfName(), "LINE")
+        self.assertEqual(dbo.isKindOf(Db.Line.desc()), True)
 
 
 def PyRxCmd_pydbtest():

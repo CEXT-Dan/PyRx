@@ -214,6 +214,9 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -226,7 +229,7 @@ This class cannot be instantiated from Python'''
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def removeOverrule (self, *args, **kwargs)-> None:
@@ -271,6 +274,9 @@ This class cannot be instantiated from Python'''
     def isDerivedFrom (self: RxClass,other : PyRx.RxClass)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -301,13 +307,16 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
 

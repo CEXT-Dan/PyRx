@@ -999,6 +999,9 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     C++ signature :
         bool isDocumentActivationEnabled(class PyApDocManager {lvalue})'''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -1057,7 +1060,7 @@ lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (s
     C++ signature :
         void pushAcadResourceHandle(class PyApDocManager {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def sendModelessInterrupt (self, *args, **kwargs)-> None:
@@ -1204,6 +1207,9 @@ This class cannot be instantiated from Python'''
     def isCommandInputInactive (self: Document)-> bool:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -1225,7 +1231,7 @@ This class cannot be instantiated from Python'''
     def pushDbmod (self: Document)-> None:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def setDocTitle (self: Document,title : str)-> None:
@@ -1375,6 +1381,9 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -1409,7 +1418,7 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
     def pointInViewports (self: LayoutManager,val : PyGe.Point3d)-> list:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def renameLayout (self, *args, **kwargs)-> None:
@@ -1883,6 +1892,9 @@ class TransactionManager:
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+      '''                             '''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -1895,7 +1907,7 @@ class TransactionManager:
     def numOpenedObjects (self: TransactionManager)-> int:
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
     ...
     def queueForGraphicsFlush (self: TransactionManager)-> None:
