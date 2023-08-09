@@ -224,6 +224,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -335,6 +338,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -530,6 +536,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -690,6 +699,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class boost::python::tuple isViewOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def lensLength (self, *args, **kwargs)-> float:
@@ -1169,6 +1181,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -1392,6 +1407,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d jogSymbolPosition(class PyDbAlignedDimension {lvalue})'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
     ...
     def layer (self: Entity)-> str:
       '''                             '''
@@ -2143,6 +2161,9 @@ __init__( (object)arg1) -> None :
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def getDrawingUnits (self, *args, **kwargs)-> float:
       '''getDrawingUnits( (AnnotationScale)arg1) -> float :
 
@@ -2180,6 +2201,9 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def matchScaleId (self, *args, **kwargs)-> bool:
@@ -2312,6 +2336,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
       '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None:
       '''                             '''
     ...
     def downgradeOpen (self: DbObject)-> None:
@@ -2545,6 +2572,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -2943,6 +2973,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -3165,6 +3198,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -3891,6 +3927,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -4081,6 +4120,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def justification (self: Text)-> PyDb.TextAlignment:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -4454,6 +4496,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -4647,6 +4692,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def justification (self: Text)-> PyDb.TextAlignment:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -4998,6 +5046,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -5143,6 +5194,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -5387,6 +5441,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -5532,6 +5589,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -5791,6 +5851,9 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -5942,6 +6005,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -6315,6 +6381,9 @@ class BlockTable:
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -6426,6 +6495,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -6602,6 +6674,9 @@ class BlockTableRecord:
         class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None:
       '''                             '''
     ...
     def downgradeOpen (self: DbObject)-> None:
@@ -6787,6 +6862,9 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
         bool isUnloaded(class PyDbBlockTableRecord {lvalue})'''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -7049,6 +7127,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -7194,6 +7275,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -8854,6 +8938,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -9082,6 +9169,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -10375,6 +10465,9 @@ class Curve:
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -10603,6 +10696,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -10941,6 +11037,9 @@ class Database:
     def dispSilh (self: Database)-> bool:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def dragVisStyle (self: Database)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -11105,6 +11204,9 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
     def joinStyle (self: Database)-> PyDb.JoinStyle:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def lastSavedAsMaintenanceVersion (self: Database)-> int:
@@ -12191,6 +12293,9 @@ deleteCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
     C++ signature :
         void deleteCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def getAuthor (self, *args, **kwargs)-> str:
       '''getAuthor( (DatabaseSummaryInfo)arg1) -> str :
 
@@ -12257,6 +12362,9 @@ getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> tuple :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def numCustomInfo (self, *args, **kwargs)-> int:
@@ -12383,6 +12491,9 @@ class DbObject:
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -12479,6 +12590,9 @@ class DbObject:
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
     ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -12567,6 +12681,9 @@ __init__( (object)arg1) -> None :
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def erased (self: DbObjectReactor,obj: PyDb.DbObject,flag: bool)-> None:
       '''                             '''
     ...
@@ -12580,6 +12697,9 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def modified (self: DbObjectReactor,obj: PyDb.DbObject)-> None:
@@ -12780,6 +12900,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None:
       '''                             '''
     ...
     def downgradeOpen (self: DbObject)-> None:
@@ -13010,6 +13133,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -13665,6 +13791,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -13776,6 +13905,9 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def nameAt (self, *args, **kwargs)-> str:
@@ -14091,6 +14223,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -14202,6 +14337,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -14359,6 +14497,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -14465,6 +14606,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -14673,6 +14817,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None:
       '''                             '''
     ...
     def downgradeOpen (self: DbObject)-> None:
@@ -14885,6 +15032,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -17018,6 +17168,9 @@ class Entity:
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -17163,6 +17316,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -17629,6 +17785,9 @@ __init__( (object)arg1) -> None :
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def dragCloneToBeDeleted (self: EntityReactor,obj: PyDb.Entity,clone: PyDb.Entity)-> None:
       '''                             '''
     ...
@@ -17645,6 +17804,9 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def modified (self: EntityReactor,obj: PyDb.DbObject)-> None:
@@ -19393,6 +19555,9 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def getDouble (self, *args, **kwargs)-> float:
       '''getDouble( (EvalVariant)arg1) -> float :
 
@@ -19448,6 +19613,9 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
@@ -19720,6 +19888,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -19865,6 +20036,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -20133,6 +20307,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -20284,6 +20461,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -20540,6 +20720,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -20691,6 +20874,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -20971,6 +21157,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -21125,6 +21314,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -21437,6 +21629,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -21594,6 +21789,9 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -23434,6 +23632,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -23746,6 +23947,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -25049,6 +25253,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -25194,6 +25401,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -25802,6 +26012,9 @@ class JoinEntityPE:
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
@@ -25815,6 +26028,9 @@ class JoinEntityPE:
       '''                             '''
     ...
     def joinEntity (self: RxClass,primaryEntity : PyDb.Entity,secondaryEntity : PyDb.Entity,tol : PyGe.Tol=default)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
@@ -26024,6 +26240,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -26135,6 +26354,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -26315,6 +26537,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -26491,6 +26716,9 @@ isReconciled( (ObjectId)arg1) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def lineWeight (self, *args, **kwargs)-> PyDb.LineWeight:
@@ -26868,6 +27096,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -27087,6 +27318,9 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def modelType (self, *args, **kwargs)-> bool:
@@ -27460,6 +27694,9 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def findLayoutNamed (self, *args, **kwargs)-> PyDb.ObjectId:
       '''findLayoutNamed( (LayoutManager)arg1, (str)arg2) -> ObjectId :
 
@@ -27518,6 +27755,9 @@ isVpnumClipped( (LayoutManager)arg1, (int)arg2, (Database)arg3) -> bool :
 
     C++ signature :
         bool isVpnumClipped(class PyDbLayoutManager {lvalue},int,class PyDbDatabase)'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
     ...
     def layoutExists (self, *args, **kwargs)-> bool:
       '''layoutExists( (LayoutManager)arg1, (str)arg2) -> bool :
@@ -27778,6 +28018,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void disableArrowHead(class PyDbLeader {lvalue})'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None:
       '''                             '''
     ...
     def downgradeOpen (self: DbObject)-> None:
@@ -28055,6 +28298,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def lastVertex (self, *args, **kwargs)-> PyGe.Point3d:
@@ -28480,6 +28726,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -28711,6 +28960,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -29070,6 +29322,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -29286,6 +29541,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -30274,6 +30532,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -30385,6 +30646,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -30554,6 +30818,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -30666,6 +30933,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def numDashes (self, *args, **kwargs)-> int:
@@ -30967,6 +31237,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -31112,6 +31385,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -31383,6 +31659,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -31534,6 +31813,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -31934,6 +32216,9 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def doglegLength (self, *args, **kwargs)-> float:
       '''doglegLength( (MLeader)arg1) -> float :
 
@@ -32257,6 +32542,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def landingGap (self, *args, **kwargs)-> float:
@@ -34166,6 +34454,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def doglegLength (self, *args, **kwargs)-> float:
       '''doglegLength( (MLeaderStyle)arg1) -> float :
 
@@ -34337,6 +34628,9 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def landingGap (self, *args, **kwargs)-> float:
@@ -35453,6 +35747,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -35682,6 +35979,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -36880,6 +37180,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -37062,6 +37365,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         signed char justification(class PyDbMline {lvalue})'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
     ...
     def layer (self: Entity)-> str:
       '''                             '''
@@ -37548,6 +37854,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -37690,6 +37999,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def name (self, *args, **kwargs)-> str:
@@ -37993,6 +38305,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -38138,6 +38453,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -38327,6 +38645,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def getName (self, *args, **kwargs)-> str:
       '''getName( (ObjectContext)arg1) -> str :
 
@@ -38340,6 +38661,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
@@ -38710,6 +39034,9 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -38932,6 +39259,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         bool isUsingYAxis(class PyDbOrdinateDimension {lvalue})'''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -40061,6 +40391,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -40179,6 +40512,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def load (self, *args, **kwargs)-> None:
@@ -40396,6 +40732,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None:
       '''                             '''
     ...
     def downgradeOpen (self: DbObject)-> None:
@@ -40627,6 +40966,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -41150,6 +41492,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -41295,6 +41640,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -41804,6 +42152,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -41970,6 +42321,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def modelType (self, *args, **kwargs)-> bool:
@@ -42582,6 +42936,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -42730,6 +43087,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -43089,6 +43449,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -43305,6 +43668,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -44221,6 +44587,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -44366,6 +44735,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -44619,6 +44991,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -44764,6 +45139,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -45024,6 +45402,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None:
       '''                             '''
     ...
     def downgradeOpen (self: DbObject)-> None:
@@ -45302,6 +45683,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -45650,6 +46034,9 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -45901,6 +46288,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -46317,6 +46707,9 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -46556,6 +46949,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -46880,6 +47276,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -47025,6 +47424,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -47372,6 +47774,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -47594,6 +47999,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -48342,6 +48750,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -48577,6 +48988,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d jogPoint(class PyDbRadialDimensionLarge {lvalue})'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
     ...
     def layer (self: Entity)-> str:
       '''                             '''
@@ -49294,6 +49708,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -49534,6 +49951,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -49905,6 +50325,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -50035,6 +50458,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def load (self, *args, **kwargs)-> None:
@@ -50263,6 +50689,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -50357,6 +50786,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -50504,6 +50936,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -50615,6 +51050,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -50772,6 +51210,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -50878,6 +51319,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -51047,6 +51491,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -51198,6 +51645,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -51834,6 +52284,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -51979,6 +52432,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -52317,6 +52773,9 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -52540,6 +52999,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d jogSymbolPosition(class PyDbRotatedDimension {lvalue})'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
     ...
     def layer (self: Entity)-> str:
       '''                             '''
@@ -53616,6 +54078,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -53761,6 +54226,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -54520,6 +54988,9 @@ createSweptSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Entity)arg4, (Sw
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -54758,6 +55229,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -55763,6 +56237,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -55908,6 +56385,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -56662,6 +57142,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -56807,6 +57290,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -57319,6 +57805,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -57430,6 +57919,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -57557,6 +58049,9 @@ class SymbolTableRecord:
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -57663,6 +58158,9 @@ class SymbolTableRecord:
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -58078,6 +58576,9 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> None :
         class AcGeVector3d direction(class PyDbTable {lvalue})'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None:
       '''                             '''
     ...
     def downgradeOpen (self: DbObject)-> None:
@@ -58564,6 +59065,9 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -60265,6 +60769,9 @@ createCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -60509,6 +61016,9 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def margin (self, *args, **kwargs)-> float:
@@ -60965,6 +61475,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -61134,6 +61647,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def justification (self: Text)-> PyDb.TextAlignment:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -61736,6 +62252,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -61847,6 +62366,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -62010,6 +62532,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -62146,6 +62671,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         bool isVertical(class PyDbTextStyleTableRecord {lvalue})'''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -62660,6 +63188,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def getAllObjects (self, *args, **kwargs)-> list:
       '''getAllObjects( (Transaction)arg1) -> list :
 
@@ -62691,6 +63222,9 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
+    ...
     def numOpenedObjects (self, *args, **kwargs)-> int:
       '''numOpenedObjects( (TransactionManager)arg1) -> int :
 
@@ -62717,6 +63251,9 @@ class TransactionManager:
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def endTransaction (self: TransactionManager)-> None:
       '''                             '''
     ...
@@ -62733,6 +63270,9 @@ class TransactionManager:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def numActiveTransactions (self: TransactionManager)-> int:
@@ -63035,6 +63575,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -63146,6 +63689,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -63303,6 +63849,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -63409,6 +63958,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
@@ -63601,6 +64153,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -63719,6 +64274,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def load (self, *args, **kwargs)-> None:
@@ -63960,6 +64518,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -64189,6 +64750,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -65035,6 +65599,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -65180,6 +65747,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -65435,6 +66005,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -65589,6 +66162,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -66061,6 +66637,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void disassociateUcsFromView(class PyDbViewTableRecord {lvalue})'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -66263,6 +66842,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class boost::python::tuple isViewOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def lensLength (self, *args, **kwargs)-> float:
@@ -66776,6 +67358,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -67149,6 +67734,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         class boost::python::tuple isViewOrthographic(class PyDbViewport {lvalue})'''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layer (self: Entity)-> str:
@@ -68223,6 +68811,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -68456,6 +69047,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool isometricSnapEnabled(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
     ...
     def lensLength (self, *args, **kwargs)-> float:
       '''lensLength( (AbstractViewTableRecord)arg1) -> float :
@@ -69404,6 +69998,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def downgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
@@ -69505,6 +70102,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool isXlateReferences(class PyDbXrecord {lvalue})'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
     ...
     def mergeStyle (self, *args, **kwargs)-> PyDb.DuplicateRecordCloning:
       '''mergeStyle( (Xrecord)arg1) -> DuplicateRecordCloning :

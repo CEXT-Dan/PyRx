@@ -954,6 +954,9 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     C++ signature :
         void disableDocumentActivation(class PyApDocManager {lvalue})'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def document (self, *args, **kwargs)-> PyAp.Document:
       '''document( (DocManager)arg1, (Database)arg2) -> Document :
 
@@ -997,6 +1000,9 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
         bool isDocumentActivationEnabled(class PyApDocManager {lvalue})'''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def lockDocument (self, *args, **kwargs)-> None:
@@ -1159,6 +1165,9 @@ This class cannot be instantiated from Python'''
     def database (self: Document)-> PyDb.Database:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def docTitle (self: Document)-> str:
       '''                             '''
     ...
@@ -1199,6 +1208,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isQuiescent (self: Document)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def lockMode (self: Document,bIncludeMyLocks : bool=False)-> PyAp.DocLockMode:
@@ -1306,6 +1318,9 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def findLayoutNamed (self, *args, **kwargs)-> PyDb.ObjectId:
       '''findLayoutNamed( (LayoutManager)arg1, (str)arg2) -> ObjectId :
 
@@ -1373,6 +1388,9 @@ isVpnumClipped( (LayoutManager)arg1, (int)arg2, (Database)arg3) -> bool :
 
     C++ signature :
         bool isVpnumClipped(class PyDbLayoutManager {lvalue},int,class PyDbDatabase)'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
     ...
     def layoutExists (self, *args, **kwargs)-> bool:
       '''layoutExists( (LayoutManager)arg1, (str)arg2) -> bool :
@@ -1835,6 +1853,9 @@ class TransactionManager:
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def enableGraphicsFlush (self, *args, **kwargs)-> None:
       '''enableGraphicsFlush( (TransactionManager)arg1, (bool)arg2) -> None :
 
@@ -1863,6 +1884,9 @@ class TransactionManager:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def numActiveTransactions (self: TransactionManager)-> int:

@@ -199,6 +199,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def hasOverrule (self, *args, **kwargs)-> bool:
       '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
@@ -219,6 +222,9 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         bool isOverruling()'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -250,6 +256,9 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def dxfName (self: RxClass)-> str:
       '''                             '''
     ...
@@ -263,6 +272,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def name (self: RxClass)-> str:
@@ -280,6 +292,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
@@ -287,6 +302,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:

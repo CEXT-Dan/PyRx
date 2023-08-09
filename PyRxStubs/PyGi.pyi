@@ -1172,6 +1172,9 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
@@ -1182,6 +1185,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
@@ -1366,6 +1372,9 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
@@ -1382,6 +1391,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isPersistent (self: Drawable)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
@@ -1452,6 +1464,9 @@ class DrawableOverrule:
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def hasOverrule (self, *args, **kwargs)-> bool:
       '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
@@ -1478,6 +1493,9 @@ class DrawableOverrule:
 
     C++ signature :
         bool isOverruling()'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -1542,6 +1560,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def drawFlags (self, *args, **kwargs)-> int:
       '''drawFlags( (SubEntityTraits)arg1) -> int :
 
@@ -1567,6 +1588,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layerId (self, *args, **kwargs)-> PyDb.ObjectId:
@@ -1806,6 +1830,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def draw (self: Geometry,drawable : PyGi.Drawable)-> bool:
       '''                             '''
     ...
@@ -1828,6 +1855,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def pline (self: Geometry,p1 : PyDb.Polyline,fromIndex : int,numSegs : int)-> bool:
@@ -2474,6 +2504,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def drawFlags (self, *args, **kwargs)-> int:
       '''drawFlags( (SubEntityTraits)arg1) -> int :
 
@@ -2499,6 +2532,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def layerId (self, *args, **kwargs)-> PyDb.ObjectId:
@@ -2887,6 +2923,9 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def geometry (self: ViewportDraw)-> PyGi.ViewportGeometry:
       '''                             '''
     ...
@@ -2900,6 +2939,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
@@ -2958,6 +3000,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def draw (self: Geometry,drawable : PyGi.Drawable)-> bool:
       '''                             '''
     ...
@@ -2980,6 +3025,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def pline (self: Geometry,p1 : PyDb.Polyline,fromIndex : int,numSegs : int)-> bool:
@@ -3036,6 +3084,9 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def geometry (self: WorldDraw)-> PyGi.WorldGeometry:
       '''                             '''
     ...
@@ -3049,6 +3100,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> PyRx.RxObject:
@@ -3107,6 +3161,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
     def draw (self: Geometry,drawable : PyGi.Drawable)-> bool:
       '''                             '''
     ...
@@ -3129,6 +3186,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
     def pline (self: Geometry,p1 : PyDb.Polyline,fromIndex : int,numSegs : int)-> bool:
