@@ -68,6 +68,7 @@ public:
     bool operator==(const PyRxObject& rhs) const;
     bool operator!=(const PyRxObject& rhs) const;
     PyRxClass           isA() const;
+    bool                isKindOf(const PyRxClass& aClass);
     void                forceKeepAlive(bool flag);
     void                dispose();
     bool                isNullObj();

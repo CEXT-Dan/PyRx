@@ -10,13 +10,14 @@ void makeAcRxObjectWrapper()
     PyDocString DS("RxObject");
     class_<PyRxObject>("RxObject", boost::python::no_init)
         .def("isA", &PyRxObject::isA, DS.ARGS())
+        .def("isKindOf", &PyRxObject::isKindOf, DS.ARGS({ "rhs:PyRx.RxObject" }))
         .def("isNullObj", &PyRxObject::isNullObj, DS.ARGS())
         .def("implRefCount", &PyRxObject::implRefCount, DS.ARGS())
         .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({"flag:bool"}))
         .def("dispose", &PyRxObject::dispose, DS.ARGS())
-        .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs :  PyRx.RxClass" }))
-        .def("__eq__", &PyRxObject::operator==, DS.ARGS({ "rhs :  PyRx.RxObject" }))
-        .def("__ne__", &PyRxObject::operator!=, DS.ARGS({ "rhs :  PyRx.RxObject" }))
+        .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs:PyRx.RxClass" }))
+        .def("__eq__", &PyRxObject::operator==, DS.ARGS({ "rhs:PyRx.RxObject" }))
+        .def("__ne__", &PyRxObject::operator!=, DS.ARGS({ "rhs:PyRx.RxObject" }))
         .def("className", &PyRxObject::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -46,6 +47,11 @@ bool PyRxObject::operator!=(const PyRxObject& rhs) const
 PyRxClass PyRxObject::isA() const
 {
     return PyRxClass(m_pyImp->isA(), false);
+}
+
+bool PyRxObject::isKindOf(const PyRxClass& aClass)
+{
+    return impObj()->isKindOf(aClass.impObj());
 }
 
 void PyRxObject::forceKeepAlive(bool flag)
