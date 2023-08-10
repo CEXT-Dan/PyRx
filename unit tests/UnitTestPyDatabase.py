@@ -173,7 +173,7 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(pline.isKindOf(Db.Polyline.desc()), True)
         self.assertEqual(pline.layer(), "1_CRP_WALLS")
         self.assertEqual(pline.numVerts(), 5)
-        self.assertEqual(pline.getArea(),7222764.727745382)
+        self.assertAlmostEqual(pline.getArea(),7222764.7277,4)
         
     def test_dbsplineforread(self):
         objHnd = Db.Handle("2c62a1")
@@ -182,6 +182,7 @@ class TestDatabase(unittest.TestCase):
         spline = Db.Spline(objId)
         self.assertEqual(spline.isKindOf(Db.Curve.desc()), True)
         self.assertEqual(spline.isKindOf(Db.Spline.desc()), True)
+        self.assertEqual(spline.numFitPoints(), 3)
 
 
 def PyRxCmd_pydbtest():
