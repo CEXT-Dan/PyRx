@@ -17,11 +17,15 @@ struct PyRxObjectDeleter
 
     inline bool isDbroThenClose(AcRxObject* p) const
     {
+#ifdef NEVER
+        if (IsBadReadPtr(p, sizeof(AcRxObject)))
+            return true;
+#endif
         if (!m_isDbObject)
         {
             return false;
         }
-        else if (m_forceKeepAlive) [[unlikely]]
+        else if (m_forceKeepAlive)
         {
             return true;
         }

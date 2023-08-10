@@ -10,7 +10,7 @@ void makeAcRxObjectWrapper()
     PyDocString DS("RxObject");
     class_<PyRxObject>("RxObject", boost::python::no_init)
         .def("isA", &PyRxObject::isA, DS.ARGS())
-        .def("isKindOf", &PyRxObject::isKindOf, DS.ARGS({ "rhs:PyRx.RxObject" }))
+        .def("isKindOf", &PyRxObject::isKindOf, DS.ARGS({ "rhs:PyRx.RxClass" }))
         .def("isNullObj", &PyRxObject::isNullObj, DS.ARGS())
         .def("implRefCount", &PyRxObject::implRefCount, DS.ARGS())
         .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({"flag:bool"}))

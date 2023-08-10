@@ -3600,3 +3600,71 @@ AcDbFcf* PyDbFcf::impObj(const std::source_location& src /*= std::source_locatio
         throw PyNullObject(src);
     return static_cast<AcDbFcf*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//AcDbSpline
+void makePyDbSplineWrapper()
+{
+    PyDocString DS("Spline");
+    class_<PyDbSpline, bases<PyDbCurve>>("Spline")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbSpline::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbSpline::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbSpline::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSpline::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbSpline::PyDbSpline()
+    : PyDbCurve(new AcDbSpline(), true)
+{
+}
+
+PyDbSpline::PyDbSpline(AcDbSpline* ptr, bool autoDelete)
+    : PyDbCurve(ptr, autoDelete)
+{
+}
+
+PyDbSpline::PyDbSpline(const PyDbObjectId& id)
+    : PyDbSpline(id, AcDb::kForRead)
+{
+}
+
+PyDbSpline::PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbCurve(openAcDbObject<AcDbSpline>(id, mode), false)
+{
+}
+
+std::string PyDbSpline::className()
+{
+    return "AcDbSpline";
+}
+
+PyRxClass PyDbSpline::desc()
+{
+    return PyRxClass(AcDbSpline::desc(), false);
+}
+
+PyDbSpline PyDbSpline::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbSpline::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbSpline(static_cast<AcDbSpline*>(src.impObj()->clone()), true);
+}
+
+PyDbSpline PyDbSpline::cast(const PyRxObject& src)
+{
+    PyDbSpline dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbSpline* PyDbSpline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+        return static_cast<AcDbSpline*>(m_pyImp.get());
+}
