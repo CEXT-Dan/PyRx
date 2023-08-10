@@ -55756,7 +55756,77 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list)
+
+__init__( (object)arg1, (list)arg2, (int)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,int,double)
+
+__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d)
+
+__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (int)arg5, (float)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,int,double)
+
+__init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,bool)
+
+__init__( (object)arg1, (list)arg2, (bool)arg3, (object)arg4, (int)arg5, (float)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,bool,enum AcGe::KnotParameterization,int,double)
+
+__init__( (object)arg1, (list)arg2, (object)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,enum AcGe::KnotParameterization)
+
+__init__( (object)arg1, (list)arg2, (object)arg3, (int)arg4, (float)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,enum AcGe::KnotParameterization,int,double)
+
+__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (object)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization)
+
+__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (object)arg5, (int)arg6, (float)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization,int,double)
+
+__init__( (object)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list)arg6, (list)arg7, (list)arg8) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list)
+
+__init__( (object)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list)arg6, (list)arg7, (list)arg8, (float)arg9, (float)arg10) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list,double,double)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)'''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None:
       '''                             '''
@@ -55815,6 +55885,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
+    def degree (self, *args, **kwargs)-> int:
+      '''degree( (Spline)arg1) -> int :
+
+    C++ signature :
+        int degree(class PyDbSpline {lvalue})'''
+    ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
@@ -55835,6 +55911,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
+    ...
+    def elevateDegree (self, *args, **kwargs)-> None:
+      '''elevateDegree( (Spline)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void elevateDegree(class PyDbSpline {lvalue},int)'''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor:
       '''                             '''
@@ -55859,6 +55941,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def fitTolerance (self, *args, **kwargs)-> float:
+      '''fitTolerance( (Spline)arg1) -> float :
+
+    C++ signature :
+        double fitTolerance(class PyDbSpline {lvalue})'''
+    ...
     def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d:
       '''                             '''
     ...
@@ -55870,6 +55958,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d:
       '''                             '''
+    ...
+    def getControlPointAt (self, *args, **kwargs)-> PyGe.Point3d:
+      '''getControlPointAt( (Spline)arg1, (int)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getControlPointAt(class PyDbSpline {lvalue},int)'''
     ...
     def getDistAtParam (self: Curve,param: float)-> float:
       '''                             '''
@@ -55895,17 +55989,50 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d:
       '''                             '''
     ...
+    def getFitData (self, *args, **kwargs)-> tuple:
+      '''getFitData( (Spline)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getFitData(class PyDbSpline {lvalue})'''
+    ...
+    def getFitDataKnot (self, *args, **kwargs)-> tuple:
+      '''getFitDataKnot( (Spline)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getFitDataKnot(class PyDbSpline {lvalue})'''
+    ...
+    def getFitPointAt (self, *args, **kwargs)-> PyGe.Point3d:
+      '''getFitPointAt( (Spline)arg1, (int)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getFitPointAt(class PyDbSpline {lvalue},int)'''
+    ...
+    def getFitTangents (self, *args, **kwargs)-> tuple:
+      '''getFitTangents( (Spline)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getFitTangents(class PyDbSpline {lvalue})'''
+    ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
+    def getNurbsData (self, *args, **kwargs)-> tuple:
+      '''getNurbsData( (Spline)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getNurbsData(class PyDbSpline {lvalue})'''
+    ...
     def getOffsetCurves (self: Curve,dist: float)-> list:
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list:
-      '''                             '''
+    def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list:
+      '''getOffsetCurvesGivenPlaneNormal( (Spline)arg1, (Vector3d)arg2, (float)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbSpline {lvalue},class AcGeVector3d,double)'''
     ...
     def getParamAtDist (self: Curve,dist: float)-> float:
       '''                             '''
@@ -55958,6 +56085,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def hasFields (self: DbObject)-> bool:
       '''                             '''
     ...
+    def hasFitData (self, *args, **kwargs)-> bool:
+      '''hasFitData( (Spline)arg1) -> bool :
+
+    C++ signature :
+        bool hasFitData(class PyDbSpline {lvalue})'''
+    ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
@@ -55966,6 +56099,29 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def implRefCount (self: RxObject)-> int:
       '''                             '''
+    ...
+    def insertControlPointAt (self, *args, **kwargs)-> None:
+      '''insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void insertControlPointAt(class PyDbSpline {lvalue},double,class AcGePoint3d)
+
+insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void insertControlPointAt(class PyDbSpline {lvalue},double,class AcGePoint3d,double)'''
+    ...
+    def insertFitPointAt (self, *args, **kwargs)-> None:
+      '''insertFitPointAt( (Spline)arg1, (int)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void insertFitPointAt(class PyDbSpline {lvalue},int,class AcGePoint3d)'''
+    ...
+    def insertKnot (self, *args, **kwargs)-> None:
+      '''insertKnot( (Spline)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void insertKnot(class PyDbSpline {lvalue},double)'''
     ...
     def intersectWith (self, *args, **kwargs)-> list:
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -56027,6 +56183,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isNotifying (self: DbObject)-> bool:
       '''                             '''
     ...
+    def isNull (self, *args, **kwargs)-> bool:
+      '''isNull( (Spline)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyDbSpline {lvalue})'''
+    ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
@@ -56038,6 +56200,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def isPlanar (self: Entity)-> bool:
       '''                             '''
+    ...
+    def isRational (self, *args, **kwargs)-> bool:
+      '''isRational( (Spline)arg1) -> bool :
+
+    C++ signature :
+        bool isRational(class PyDbSpline {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -56087,6 +56255,18 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def numControlPoints (self, *args, **kwargs)-> int:
+      '''numControlPoints( (Spline)arg1) -> int :
+
+    C++ signature :
+        int numControlPoints(class PyDbSpline {lvalue})'''
+    ...
+    def numFitPoints (self, *args, **kwargs)-> int:
+      '''numFitPoints( (Spline)arg1) -> int :
+
+    C++ signature :
+        int numFitPoints(class PyDbSpline {lvalue})'''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -56096,8 +56276,20 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str:
       '''                             '''
     ...
+    def purgeFitData (self, *args, **kwargs)-> None:
+      '''purgeFitData( (Spline)arg1) -> None :
+
+    C++ signature :
+        void purgeFitData(class PyDbSpline {lvalue})'''
+    ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
+    ...
+    def rebuild (self, *args, **kwargs)-> None:
+      '''rebuild( (Spline)arg1, (int)arg2, (int)arg3) -> None :
+
+    C++ signature :
+        void rebuild(class PyDbSpline {lvalue},int,int)'''
     ...
     def receiveShadows (self: Entity)-> bool:
       '''                             '''
@@ -56108,8 +56300,20 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
+    def removeControlPointAt (self, *args, **kwargs)-> None:
+      '''removeControlPointAt( (Spline)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void removeControlPointAt(class PyDbSpline {lvalue},int)'''
+    ...
     def removeField (self: DbObject,id: str|ObjectId)-> None:
       '''                             '''
+    ...
+    def removeFitPointAt (self, *args, **kwargs)-> None:
+      '''removeFitPointAt( (Spline)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void removeFitPointAt(class PyDbSpline {lvalue},int)'''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None:
       '''                             '''
@@ -56135,11 +56339,62 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None:
       '''                             '''
     ...
+    def setControlPointAt (self, *args, **kwargs)-> None:
+      '''setControlPointAt( (Spline)arg1, (int)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void setControlPointAt(class PyDbSpline {lvalue},int,class AcGePoint3d)'''
+    ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None:
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId:
       '''                             '''
+    ...
+    def setFitData (self, *args, **kwargs)-> None:
+      '''setFitData( (Spline)arg1, (list)arg2, (int)arg3, (float)arg4, (Vector3d)arg5, (Vector3d)arg6) -> None :
+
+    C++ signature :
+        void setFitData(class PyDbSpline {lvalue},class boost::python::list,int,double,class AcGeVector3d,class AcGeVector3d)'''
+    ...
+    def setFitDataKnot (self, *args, **kwargs)-> None:
+      '''setFitDataKnot( (Spline)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (object)arg5) -> None :
+
+    C++ signature :
+        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization)
+
+setFitDataKnot( (Spline)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (object)arg5, (int)arg6, (float)arg7) -> None :
+
+    C++ signature :
+        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization,int,double)
+
+setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (object)arg4) -> None :
+
+    C++ signature :
+        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,bool,enum AcGe::KnotParameterization)
+
+setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (object)arg4, (int)arg5, (float)arg6) -> None :
+
+    C++ signature :
+        void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,bool,enum AcGe::KnotParameterization,int,double)'''
+    ...
+    def setFitPointAt (self, *args, **kwargs)-> None:
+      '''setFitPointAt( (Spline)arg1, (int)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void setFitPointAt(class PyDbSpline {lvalue},int,class AcGePoint3d)'''
+    ...
+    def setFitTangents (self, *args, **kwargs)-> None:
+      '''setFitTangents( (Spline)arg1, (Vector3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void setFitTangents(class PyDbSpline {lvalue},class AcGeVector3d,class AcGeVector3d)'''
+    ...
+    def setFitTol (self, *args, **kwargs)-> None:
+      '''setFitTol( (Spline)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setFitTol(class PyDbSpline {lvalue},double)'''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None:
       '''                             '''
@@ -56158,6 +56413,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None:
       '''                             '''
+    ...
+    def setNurbsData (self, *args, **kwargs)-> None:
+      '''setNurbsData( (Spline)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list)arg6, (list)arg7, (list)arg8) -> None :
+
+    C++ signature :
+        void setNurbsData(class PyDbSpline {lvalue},int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list)
+
+setNurbsData( (Spline)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list)arg6, (list)arg7, (list)arg8, (float)arg9, (float)arg10) -> None :
+
+    C++ signature :
+        void setNurbsData(class PyDbSpline {lvalue},int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list,double,double)'''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None:
       '''                             '''
@@ -56184,6 +56450,12 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None:
       '''                             '''
     ...
+    def setType (self, *args, **kwargs)-> None:
+      '''setType( (Spline)arg1, (SplineType)arg2) -> None :
+
+    C++ signature :
+        void setType(class PyDbSpline {lvalue},enum SplineType)'''
+    ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None:
       '''                             '''
     ...
@@ -56196,8 +56468,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
+    def toPolyline (self, *args, **kwargs)-> PyDb.Curve:
+      '''toPolyline( (Spline)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve toPolyline(class PyDbSpline {lvalue})'''
+    ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None:
       '''                             '''
+    ...
+    def type (self, *args, **kwargs)-> PyDb.SplineType:
+      '''type( (Spline)arg1) -> SplineType :
+
+    C++ signature :
+        enum SplineType type(class PyDbSpline {lvalue})'''
+    ...
+    def updateFitData (self, *args, **kwargs)-> None:
+      '''updateFitData( (Spline)arg1) -> None :
+
+    C++ signature :
+        void updateFitData(class PyDbSpline {lvalue})'''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None:
       '''                             '''
@@ -56214,6 +56504,12 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility:
       '''                             '''
     ...
+    def weightAt (self, *args, **kwargs)-> float:
+      '''weightAt( (Spline)arg1, (int)arg2) -> float :
+
+    C++ signature :
+        double weightAt(class PyDbSpline {lvalue},int)'''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool:
       '''                             '''
     ...
@@ -56222,6 +56518,128 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
     def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None:
       '''                             '''
+    ...
+
+class SplineType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kControlPoints (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kFitPoints (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class StandardScaleType:

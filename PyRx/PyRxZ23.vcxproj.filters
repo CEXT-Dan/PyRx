@@ -271,6 +271,9 @@
     <ClCompile Include="PyDbProtocolExtensions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbSpline.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -544,6 +547,9 @@
       <Filter>Header Files\PyGs</Filter>
     </ClInclude>
     <ClInclude Include="PyDbProtocolExtensions.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbSpline.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
