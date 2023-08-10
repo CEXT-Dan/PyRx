@@ -1032,6 +1032,15 @@ BOOST_PYTHON_MODULE(PyGe)
     makePyGeNurbCurve3dWrapper();
     makePyGePolyline3dWrapper();
 
+    enum_<AcGe::KnotParameterization>("AcGeKnotParameterization")
+        .value("kChord", AcGe::KnotParameterization::kChord)
+        .value("kSqrtChord", AcGe::KnotParameterization::kSqrtChord)
+        .value("kUniform", AcGe::KnotParameterization::kUniform)
+        .value("kCustomParameterization", AcGe::KnotParameterization::kCustomParameterization)
+        .value("kNotDefinedKnotParam", AcGe::KnotParameterization::kNotDefinedKnotParam)
+        .export_values()
+        ;
+
     enum_<AcGe::ErrorCondition>("AcGeError")
         .value("kOk", AcGe::ErrorCondition::kOk)
         .value("k0This", AcGe::ErrorCondition::k0This)
