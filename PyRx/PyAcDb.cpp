@@ -32,6 +32,7 @@
 #include "PyDbObjectContext.h"
 #include "PyDbProtocolExtensions.h"
 #include "PyDbFiler.h"
+#include "PyDbSpline.h"
 
 using namespace boost::python;
 
