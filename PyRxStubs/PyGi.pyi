@@ -1184,7 +1184,7 @@ This class cannot be instantiated from Python'''
     def isDragging (self: CommonDraw)-> bool:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -1390,7 +1390,7 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -1491,7 +1491,7 @@ class DrawableOverrule:
     C++ signature :
         bool isApplicable(class PyGiDrawableOverrule {lvalue},class PyRxObject {lvalue})'''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -1596,7 +1596,7 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -1866,7 +1866,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -2546,7 +2546,7 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -2956,7 +2956,7 @@ This class cannot be instantiated from Python'''
     def isDragging (self: CommonDraw)-> bool:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -3045,7 +3045,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -3123,7 +3123,7 @@ This class cannot be instantiated from Python'''
     def isDragging (self: CommonDraw)-> bool:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -3212,7 +3212,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:

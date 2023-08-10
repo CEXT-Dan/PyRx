@@ -136,32 +136,52 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(info.asDict(), customDict)
 
     def test_dbopbjectforread(self):
-        objHnd = Db.Handle("2c830c")
+        objHnd = Db.Handle("20127")
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         dbo = Db.DbObject(objId)
         self.assertEqual(dbo.isA().dxfName(), "LINE")
 
     def test_dbentityforread(self):
-        objHnd = Db.Handle("2c830c")
+        objHnd = Db.Handle("20127")
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         dbo = Db.Entity(objId)
         self.assertEqual(dbo.isA().dxfName(), "LINE")
 
     def test_dbcurveforread(self):
-        objHnd = Db.Handle("2c830c")
+        objHnd = Db.Handle("20127")
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
         dbo = Db.Curve(objId)
         self.assertEqual(dbo.isA(), Db.Line.desc())
 
     def test_dblineforread(self):
-        objHnd = Db.Handle("2c830c")
+        objHnd = Db.Handle("20127")
         objId = self.db06457.getObjectId(False, objHnd)
         self.assertEqual(objId.isValid(), True)
-        dbo = Db.Line(objId)
-        self.assertEqual(dbo.isKindOf(Db.Line.desc()), True)
+        line = Db.Line(objId)
+        self.assertEqual(line.isKindOf(Db.Line.desc()), True)
+        self.assertEqual(line.layer(), "1_1_WALLS")
+        
+    def test_dbpolylineforread(self):
+        objHnd = Db.Handle("201ee")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        pline = Db.Polyline(objId)
+        self.assertEqual(pline.isKindOf(Db.Curve.desc()), True)
+        self.assertEqual(pline.isKindOf(Db.Polyline.desc()), True)
+        self.assertEqual(pline.layer(), "1_CRP_WALLS")
+        self.assertEqual(pline.numVerts(), 5)
+        self.assertEqual(pline.getArea(),7222764.727745382)
+        
+    def test_dbsplineforread(self):
+        objHnd = Db.Handle("2c62a1")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        spline = Db.Spline(objId)
+        self.assertEqual(spline.isKindOf(Db.Curve.desc()), True)
+        self.assertEqual(spline.isKindOf(Db.Spline.desc()), True)
 
 
 def PyRxCmd_pydbtest():

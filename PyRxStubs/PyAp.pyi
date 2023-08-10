@@ -999,7 +999,7 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     C++ signature :
         bool isDocumentActivationEnabled(class PyApDocManager {lvalue})'''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -1207,7 +1207,7 @@ This class cannot be instantiated from Python'''
     def isCommandInputInactive (self: Document)-> bool:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -1381,7 +1381,7 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
@@ -1892,7 +1892,7 @@ class TransactionManager:
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxObject)-> bool:
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:

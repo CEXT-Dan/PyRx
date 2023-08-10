@@ -168,6 +168,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbPolylineWrapper();
     makePyDbFaceWrapper();
     makePyDbFcfWrapper();
+    makePyDbSplineWrapper();
     makePyDbMlineWrapper();
     makePyDbHatchWrapper();
     makePyDbDictionaryWrapper();

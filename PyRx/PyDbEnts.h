@@ -758,3 +758,23 @@ public:
 public:
     inline AcDbFcf* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------
+//AcDbSpline
+void makePyDbSplineWrapper();
+class PyDbSpline : public PyDbCurve
+{
+public:
+    PyDbSpline();
+    PyDbSpline(AcDbSpline* ptr, bool autoDelete);
+    PyDbSpline(const PyDbObjectId& id);
+    PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbSpline() override = default;
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbSpline	cloneFrom(const PyRxObject& src);
+    static PyDbSpline   cast(const PyRxObject& src);
+public:
+    inline AcDbSpline*  impObj(const std::source_location& src = std::source_location::current()) const;
+};
