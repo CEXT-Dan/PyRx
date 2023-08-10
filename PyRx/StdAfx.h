@@ -336,6 +336,33 @@ inline boost::python::list std_vector_to_py_list(std::vector<T> vector)
     return list;
 }
 
+inline boost::python::list DoubleArrayToPyList(const AcGeDoubleArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
+inline boost::python::list Point3dArrayToPyList(const AcGePoint3dArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto &item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
+inline boost::python::list Point2dArrayToPyList(const AcGePoint2dArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto& item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
 
 //TODO avoid copy
 inline AcGeDoubleArray PyListToDoubleArray(const boost::python::object& iterable)

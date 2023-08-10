@@ -103,7 +103,7 @@ PyDbText::PyDbText(AcDbText* ptr, bool autoDelete)
 }
 
 PyDbText::PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbText>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbText>(id, mode), false)
 {
 }
 
@@ -353,7 +353,7 @@ AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbText*>(m_pyImp.get());
+        return static_cast<AcDbText*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -411,7 +411,7 @@ PyDbAttributeDefinition::PyDbAttributeDefinition(AcDbAttributeDefinition* ptr, b
 }
 
 PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbText(openAcDbObject<AcDbAttributeDefinition>(id,mode), false)
+    : PyDbText(openAcDbObject<AcDbAttributeDefinition>(id, mode), false)
 {
 }
 
@@ -562,7 +562,7 @@ AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbAttributeDefinition*>(m_pyImp.get());
+        return static_cast<AcDbAttributeDefinition*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -617,7 +617,7 @@ PyDbAttribute::PyDbAttribute(AcDbAttribute* ptr, bool autoDelete)
 }
 
 PyDbAttribute::PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbText(openAcDbObject<AcDbAttribute>(id,mode), false)
+    : PyDbText(openAcDbObject<AcDbAttribute>(id, mode), false)
 {
 }
 
@@ -754,7 +754,7 @@ AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::so
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbAttribute*>(m_pyImp.get());
+        return static_cast<AcDbAttribute*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -815,7 +815,7 @@ PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id)
 }
 
 PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbBlockReference>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbBlockReference>(id, mode), false)
 {
 }
 
@@ -957,7 +957,7 @@ AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbBlockReference*>(m_pyImp.get());
+        return static_cast<AcDbBlockReference*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1053,7 +1053,7 @@ AcDbDynBlockReference* PyDbDynBlockReference::impObj(const std::source_location&
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbDynBlockReference*>(m_imp.get());
+        return static_cast<AcDbDynBlockReference*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1097,7 +1097,7 @@ PyDbMInsertBlock::PyDbMInsertBlock(AcDbMInsertBlock* ptr, bool autoDelete)
 }
 
 PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbBlockReference(openAcDbObject<AcDbMInsertBlock>(id,mode), false)
+    : PyDbBlockReference(openAcDbObject<AcDbMInsertBlock>(id, mode), false)
 {
 }
 
@@ -1175,7 +1175,7 @@ AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbMInsertBlock*>(m_pyImp.get());
+        return static_cast<AcDbMInsertBlock*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1205,7 +1205,7 @@ PyDbVertex::PyDbVertex(AcDbVertex* ptr, bool autoDelete)
 }
 
 PyDbVertex::PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbVertex>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbVertex>(id, mode), false)
 {
 }
 
@@ -1243,7 +1243,7 @@ AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbVertex*>(m_pyImp.get());
+        return static_cast<AcDbVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1442,7 +1442,7 @@ AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDb2dVertex*>(m_pyImp.get());
+        return static_cast<AcDb2dVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1534,7 +1534,7 @@ AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDb3dPolylineVertex*>(m_pyImp.get());
+        return static_cast<AcDb3dPolylineVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1626,7 +1626,7 @@ AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbPolygonMeshVertex*>(m_pyImp.get());
+        return static_cast<AcDbPolygonMeshVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1712,7 +1712,7 @@ AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbPolyFaceMeshVertex*>(m_pyImp.get());
+        return static_cast<AcDbPolyFaceMeshVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1820,7 +1820,7 @@ AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbFaceRecord*>(m_pyImp.get());
+        return static_cast<AcDbFaceRecord*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1942,7 +1942,7 @@ AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbPoint*>(m_pyImp.get());
+        return static_cast<AcDbPoint*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2246,7 +2246,7 @@ AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDb2dPolyline*>(m_pyImp.get());
+        return static_cast<AcDb2dPolyline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2430,7 +2430,7 @@ AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDb3dPolyline*>(m_pyImp.get());
+        return static_cast<AcDb3dPolyline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2594,7 +2594,7 @@ AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbArc*>(m_pyImp.get());
+        return static_cast<AcDbArc*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2756,7 +2756,7 @@ AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbCircle*>(m_pyImp.get());
+        return static_cast<AcDbCircle*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2796,7 +2796,7 @@ PyDbLine::PyDbLine(AcDbLine* ptr, bool autoDelete)
 }
 
 PyDbLine::PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDbObject<AcDbLine>(id,mode), false)
+    : PyDbCurve(openAcDbObject<AcDbLine>(id, mode), false)
 {
 }
 
@@ -2879,7 +2879,7 @@ AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbLine*>(m_pyImp.get());
+        return static_cast<AcDbLine*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2961,7 +2961,7 @@ PyDbPolyline::PyDbPolyline(AcDbPolyline* ptr, bool autoDelete)
 }
 
 PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbCurve(openAcDbObject<AcDbPolyline>(id,mode), false)
+    : PyDbCurve(openAcDbObject<AcDbPolyline>(id, mode), false)
 {
 }
 
@@ -3216,7 +3216,7 @@ AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbPolyline*>(m_pyImp.get());
+        return static_cast<AcDbPolyline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -3342,7 +3342,7 @@ AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbFace*>(m_pyImp.get());
+        return static_cast<AcDbFace*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -3401,7 +3401,7 @@ PyDbFcf::PyDbFcf(AcDbFcf* ptr, bool autoDelete)
 }
 
 PyDbFcf::PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbFcf>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbFcf>(id, mode), false)
 {
 }
 
@@ -3598,7 +3598,7 @@ AcDbFcf* PyDbFcf::impObj(const std::source_location& src /*= std::source_locatio
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbFcf*>(m_pyImp.get());
+        return static_cast<AcDbFcf*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -3610,6 +3610,11 @@ void makePyDbSplineWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+
+        .def(init<const boost::python::list&>())
+        .def(init<const boost::python::list&, int, double>())
+
+
         .def("className", &PyDbSpline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbSpline::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbSpline::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -3651,8 +3656,8 @@ PyDbSpline::PyDbSpline(const boost::python::list& fitPoints,
 
 PyDbSpline::PyDbSpline(const boost::python::list& fitPoints,
     const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
-   : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints),
-       startTangent, endTangent), true)
+    : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints),
+        startTangent, endTangent), true)
 {
 }
 
@@ -3722,7 +3727,7 @@ PyDbSpline::PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean close
 #if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyDbSpline::PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic,
     const boost::python::list& controlPoints, const boost::python::list& knots, const boost::python::list& weights, double controlPtTol, double knotTol)
-    : PyDbSpline(new AcDbSpline(degree, rational, closed, periodic, 
+    : PyDbSpline(new AcDbSpline(degree, rational, closed, periodic,
         PyListToPoint3dArray(controlPoints), PyListToDoubleArray(knots), PyListToDoubleArray(weights), controlPtTol, knotTol), true)
 {
 }
@@ -3740,6 +3745,275 @@ PyDbSpline::PyDbSpline(const AcGePoint3d& center, const AcGeVector3d& unitNormal
     : PyDbSpline(new AcDbSpline(center, unitNormal,
         majorAxis, radiusRatio, startAngle, endAngle), true)
 {
+}
+
+Adesk::Boolean PyDbSpline::isNull() const
+{
+    return impObj()->isNull();
+}
+
+Adesk::Boolean PyDbSpline::isRational() const
+{
+    return impObj()->isRational();
+}
+
+int PyDbSpline::degree() const
+{
+    return impObj()->degree();
+}
+
+void PyDbSpline::elevateDegree(int newDegree)
+{
+    PyThrowBadEs(impObj()->elevateDegree(newDegree));
+}
+
+int PyDbSpline::numControlPoints() const
+{
+    return impObj()->numControlPoints();
+}
+
+AcGePoint3d PyDbSpline::getControlPointAt(int index) const
+{
+    AcGePoint3d point;
+    PyThrowBadEs(impObj()->getControlPointAt(index, point));
+    return point;
+}
+
+void PyDbSpline::setControlPointAt(int index, const AcGePoint3d& point)
+{
+    PyThrowBadEs(impObj()->setControlPointAt(index, point));
+}
+
+int PyDbSpline::numFitPoints() const
+{
+    return impObj()->numFitPoints();
+}
+
+AcGePoint3d PyDbSpline::getFitPointAt(int index) const
+{
+    AcGePoint3d point;
+    PyThrowBadEs(impObj()->getFitPointAt(index, point));
+    return point;
+}
+
+void PyDbSpline::setFitPointAt(int index, const AcGePoint3d& point)
+{
+    PyThrowBadEs(impObj()->setFitPointAt(index, point));
+}
+
+void PyDbSpline::insertFitPointAt(int index, const AcGePoint3d& point)
+{
+    PyThrowBadEs(impObj()->insertFitPointAt(index, point));
+}
+
+void PyDbSpline::removeFitPointAt(int index)
+{
+    PyThrowBadEs(impObj()->removeFitPointAt(index));
+}
+
+double PyDbSpline::fitTolerance() const
+{
+    return impObj()->fitTolerance();
+}
+
+void PyDbSpline::setFitTol(double tol)
+{
+    PyThrowBadEs(impObj()->setFitTol(tol));
+}
+
+boost::python::tuple PyDbSpline::getFitTangents() const
+{
+    PyAutoLockGIL lock;
+    AcGeVector3d startTangent;
+    AcGeVector3d endTangent;
+    PyThrowBadEs(impObj()->getFitTangents(startTangent, endTangent));
+    return boost::python::make_tuple(startTangent, endTangent);
+}
+
+void PyDbSpline::setFitTangents(const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
+{
+    PyThrowBadEs(impObj()->setFitTangents(startTangent, endTangent));
+}
+
+Adesk::Boolean PyDbSpline::hasFitData() const
+{
+    return impObj()->hasFitData();
+}
+
+boost::python::tuple PyDbSpline::getFitData() const
+{
+    PyAutoLockGIL lock;
+    AcGePoint3dArray fitPoints;
+    int degree;
+    double fitTolerance;
+    Adesk::Boolean tangentsExist;
+    AcGeVector3d startTangent;
+    AcGeVector3d endTangent;
+    PyThrowBadEs(impObj()->getFitData(fitPoints, degree, fitTolerance, tangentsExist, startTangent, endTangent));
+    return boost::python::make_tuple(Point3dArrayToPyList(fitPoints), degree, fitTolerance, tangentsExist, startTangent, endTangent);
+}
+
+void PyDbSpline::setFitData(const boost::python::list& fitPoints, int degree, double fitTolerance, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
+{
+    PyThrowBadEs(impObj()->setFitData(PyListToPoint3dArray(fitPoints), degree, fitTolerance, startTangent, endTangent));
+}
+
+boost::python::tuple PyDbSpline::getFitDataKnot() const
+{
+    AcGePoint3dArray fitPoints;
+    Adesk::Boolean tangentsExist;
+    AcGeVector3d startTangent;
+    AcGeVector3d endTangent;
+    AcGe::KnotParameterization knotParam;
+    int degree;
+    double fitTolerance;
+    PyThrowBadEs(impObj()->getFitData(fitPoints, tangentsExist, startTangent, endTangent, knotParam, degree, fitTolerance));
+    return boost::python::make_tuple(Point3dArrayToPyList(fitPoints), tangentsExist, startTangent, endTangent, knotParam, degree, fitTolerance);
+}
+
+void PyDbSpline::setFitDataKnot1(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam)
+{
+    PyThrowBadEs(impObj()->setFitData(PyListToPoint3dArray(fitPoints), startTangent, endTangent, knotParam));
+}
+
+void PyDbSpline::setFitDataKnot2(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
+{
+    PyThrowBadEs(impObj()->setFitData(PyListToPoint3dArray(fitPoints), startTangent, endTangent, knotParam, degree, fitTolerance));
+}
+
+void PyDbSpline::setFitDataKnot3(const boost::python::list& fitPoints, bool isPeriodic, AcGe::KnotParameterization knotParam)
+{
+    PyThrowBadEs(impObj()->setFitData(PyListToPoint3dArray(fitPoints), isPeriodic, knotParam));
+}
+
+void PyDbSpline::setFitDataKnot4(const boost::python::list& fitPoints, bool isPeriodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
+{
+    PyThrowBadEs(impObj()->setFitData(PyListToPoint3dArray(fitPoints), isPeriodic, knotParam, degree, fitTolerance));
+}
+
+void PyDbSpline::purgeFitData()
+{
+    PyThrowBadEs(impObj()->purgeFitData());
+}
+
+void PyDbSpline::updateFitData()
+{
+    PyThrowBadEs(impObj()->updateFitData());
+}
+
+boost::python::tuple PyDbSpline::getNurbsData()
+{
+    int degree;
+    Adesk::Boolean rational;
+    Adesk::Boolean closed;
+    Adesk::Boolean periodic;
+    AcGePoint3dArray controlPoints;
+    AcGeDoubleArray knots;
+    AcGeDoubleArray weights;
+    double controlPtTol;
+    double knotTol;
+    PyThrowBadEs(impObj()->getNurbsData(degree, rational, closed, periodic, controlPoints, knots, weights, controlPtTol, knotTol));
+    return boost::python::make_tuple(
+        degree, 
+        rational, 
+        closed, 
+        periodic,
+        Point3dArrayToPyList(controlPoints),
+        DoubleArrayToPyList(knots),
+        DoubleArrayToPyList(weights), 
+        controlPtTol,
+        knotTol);
+}
+
+void PyDbSpline::setNurbsData1(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic, 
+    const boost::python::list& controlPoints, const boost::python::list& knots, const boost::python::list& weights)
+{
+    auto _controlPoints = PyListToPoint3dArray(controlPoints);
+    auto _knots = PyListToDoubleArray(knots);
+    auto _weights = PyListToDoubleArray(knots);
+    PyThrowBadEs(impObj()->setNurbsData(degree, rational, closed, periodic, _controlPoints, _knots, _weights));
+}
+
+void PyDbSpline::setNurbsData2(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic, 
+    const boost::python::list& controlPoints, const boost::python::list& knots, const boost::python::list& weights, double controlPtTol, double knotTol)
+{
+    auto _controlPoints = PyListToPoint3dArray(controlPoints);
+    auto _knots = PyListToDoubleArray(knots);
+    auto _weights = PyListToDoubleArray(knots);
+    PyThrowBadEs(impObj()->setNurbsData(degree, rational, closed, periodic, _controlPoints, _knots, _weights, controlPtTol, knotTol));
+}
+
+double PyDbSpline::weightAt(int index) const
+{
+    return impObj()->weightAt(index);
+}
+
+void PyDbSpline::setWeightAt(int index, double weight)
+{
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyThrowBadEs(impObj()->setWeightAt(index, weight));
+#endif
+}
+
+void PyDbSpline::insertKnot(double param)
+{
+    PyThrowBadEs(impObj()->insertKnot(param));
+}
+
+boost::python::list PyDbSpline::getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    AcDbVoidPtrArray offsetCurves;
+    PyThrowBadEs(impObj()->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves));
+    for (auto item : offsetCurves)
+        pylist.append(PyDbCurve((AcDbCurve*)item, true));
+    return pylist;
+}
+
+PyDbCurve PyDbSpline::toPolyline()
+{
+    AcDbCurve* pCurve = nullptr;
+    PyThrowBadEs(impObj()->toPolyline(pCurve));
+    return PyDbCurve(pCurve, true);
+}
+
+void PyDbSpline::insertControlPointAt1(double knotParam, const AcGePoint3d& ctrlPt)
+{
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyThrowBadEs(impObj()->insertControlPointAt(knotParam, ctrlPt));
+#endif
+}
+
+void PyDbSpline::insertControlPointAt2(double knotParam, const AcGePoint3d& ctrlPt, double weight)
+{
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyThrowBadEs(impObj()->insertControlPointAt(knotParam, ctrlPt, weight));
+#endif
+}
+
+void PyDbSpline::removeControlPointAt(int index)
+{
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyThrowBadEs(impObj()->removeControlPointAt(index));
+#endif
+}
+
+SplineType PyDbSpline::type() const
+{
+    return impObj()->type();
+}
+
+void PyDbSpline::setType(SplineType type)
+{
+    PyThrowBadEs(impObj()->setType(type));
+}
+
+void PyDbSpline::rebuild(int degree, int numCtrlPts)
+{
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyThrowBadEs(impObj()->rebuild(degree, numCtrlPts));
+#endif
 }
 
 std::string PyDbSpline::className()
