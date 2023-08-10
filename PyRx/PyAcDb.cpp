@@ -246,6 +246,12 @@ BOOST_PYTHON_MODULE(PyDb)
     def("curDb", curPyDb);
 
     //enums
+    enum_<SplineType >("SplineType")
+        .value("kFitPoints", SplineType::kFitPoints)
+        .value("kControlPoints", SplineType::kControlPoints)
+        .export_values()
+        ;
+
     enum_<AcDb::reservedStringEnumType >("ReservedStringEnumType")
         .value("kByLayer", AcDb::reservedStringEnumType::kByLayer)
         .value("kByBlock", AcDb::reservedStringEnumType::kByBlock)

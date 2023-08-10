@@ -769,6 +769,51 @@ public:
     PyDbSpline(AcDbSpline* ptr, bool autoDelete);
     PyDbSpline(const PyDbObjectId& id);
     PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    PyDbSpline(const boost::python::list& fitPoints);
+    PyDbSpline(const boost::python::list& fitPoints, int order, double  fitTolerance);
+
+    PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
+    PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, int order, double fitTolerance);
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyDbSpline(const boost::python::list& fitPoints, bool periodic);
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyDbSpline(const boost::python::list& fitPoints, bool periodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam);
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam);
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic, const boost::python::list& controlPoints,
+        const boost::python::list& knots, const boost::python::list& weights);
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic, const boost::python::list& controlPoints,
+        const boost::python::list& knots, const boost::python::list& weights, double controlPtTol, double knotTol);
+#endif
+
+    PyDbSpline(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio);
+    PyDbSpline(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio, double startAngle, double endAngle);
+
+
     virtual ~PyDbSpline() override = default;
 public:
     static std::string  className();
@@ -776,5 +821,5 @@ public:
     static PyDbSpline	cloneFrom(const PyRxObject& src);
     static PyDbSpline   cast(const PyRxObject& src);
 public:
-    inline AcDbSpline*  impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbSpline* impObj(const std::source_location& src = std::source_location::current()) const;
 };

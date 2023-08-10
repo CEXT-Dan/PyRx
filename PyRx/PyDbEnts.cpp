@@ -3637,6 +3637,111 @@ PyDbSpline::PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
+PyDbSpline::PyDbSpline(const boost::python::list& fitPoints)
+    : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints)), true)
+{
+}
+
+PyDbSpline::PyDbSpline(const boost::python::list& fitPoints,
+    int order, double fitTolerance)
+    : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints),
+        order, fitTolerance), true)
+{
+}
+
+PyDbSpline::PyDbSpline(const boost::python::list& fitPoints,
+    const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
+   : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints),
+       startTangent, endTangent), true)
+{
+}
+
+PyDbSpline::PyDbSpline(const boost::python::list& fitPoints,
+    const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, int order, double fitTolerance)
+    : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints),
+        startTangent, endTangent, order, fitTolerance), true)
+{
+}
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, bool periodic)
+    : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), periodic), true)
+{
+}
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, bool periodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
+    : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), periodic, knotParam, degree, fitTolerance), true)
+{
+}
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam)
+    : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), knotParam), true)
+{
+}
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+PyDbSpline::PyDbSpline(const boost::python::list& fitPoints,
+    AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
+    : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), knotParam,
+        degree, fitTolerance), true)
+{
+}
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent,
+    const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam)
+    : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), startTangent,
+        endTangent, knotParam), true)
+{
+}
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent,
+    const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
+    : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), startTangent,
+        endTangent, knotParam, degree, fitTolerance), true)
+{
+}
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+PyDbSpline::PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic,
+    const boost::python::list& controlPoints, const boost::python::list& knots, const boost::python::list& weights)
+    : PyDbSpline(new AcDbSpline(degree, rational, closed, periodic,
+        PyListToPoint3dArray(controlPoints), PyListToDoubleArray(knots), PyListToDoubleArray(weights)), true)
+{
+}
+#endif
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+PyDbSpline::PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic,
+    const boost::python::list& controlPoints, const boost::python::list& knots, const boost::python::list& weights, double controlPtTol, double knotTol)
+    : PyDbSpline(new AcDbSpline(degree, rational, closed, periodic, 
+        PyListToPoint3dArray(controlPoints), PyListToDoubleArray(knots), PyListToDoubleArray(weights), controlPtTol, knotTol), true)
+{
+}
+#endif
+
+PyDbSpline::PyDbSpline(const AcGePoint3d& center, const AcGeVector3d& unitNormal,
+    const AcGeVector3d& majorAxis, double radiusRatio)
+    : PyDbSpline(new AcDbSpline(center, unitNormal,
+        majorAxis, radiusRatio), true)
+{
+}
+
+PyDbSpline::PyDbSpline(const AcGePoint3d& center, const AcGeVector3d& unitNormal,
+    const AcGeVector3d& majorAxis, double radiusRatio, double startAngle, double endAngle)
+    : PyDbSpline(new AcDbSpline(center, unitNormal,
+        majorAxis, radiusRatio, startAngle, endAngle), true)
+{
+}
+
 std::string PyDbSpline::className()
 {
     return "AcDbSpline";

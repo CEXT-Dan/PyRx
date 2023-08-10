@@ -336,6 +336,18 @@ inline boost::python::list std_vector_to_py_list(std::vector<T> vector)
     return list;
 }
 
+
+//TODO avoid copy
+inline AcGeDoubleArray PyListToDoubleArray(const boost::python::object& iterable)
+{
+    AcGeDoubleArray arr;
+    const auto& vec = py_list_to_std_vector<double>(iterable);
+    arr.setLogicalLength(vec.size());
+    for (auto& item : vec)
+        arr.append(item);
+    return arr;
+}
+
 //TODO avoid copy
 inline AcGePoint2dArray PyListToPoint2dArray(const boost::python::object& iterable)
 {
