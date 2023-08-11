@@ -59,7 +59,6 @@ BOOST_PYTHON_MODULE(PyEd)
         .value("kDrawOrderAbove", AcEdDrawOrderCmdType::kDrawOrderAbove)
         .export_values()
         ;
-
     enum_<Acad::PointHistory>("AcEdPointHistory")
         .value("eTablet", Acad::PointHistory::eTablet)
         .value("eNotDigitizer", Acad::PointHistory::eNotDigitizer)
@@ -88,7 +87,6 @@ BOOST_PYTHON_MODULE(PyEd)
         .value("eGizmoConstrainted", Acad::PointHistory::eGizmoConstrainted)
         .export_values()
         ;
-
 };
 
 void initPyEdModule()

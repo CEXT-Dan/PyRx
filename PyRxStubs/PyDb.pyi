@@ -55783,27 +55783,27 @@ __init__( (object)arg1, (list)arg2, (bool)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class boost::python::list,bool)
 
-__init__( (object)arg1, (list)arg2, (bool)arg3, (object)arg4, (int)arg5, (float)arg6) -> None :
+__init__( (object)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)arg4, (int)arg5, (float)arg6) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class boost::python::list,bool,enum AcGe::KnotParameterization,int,double)
 
-__init__( (object)arg1, (list)arg2, (object)arg3) -> None :
+__init__( (object)arg1, (list)arg2, (AcGeKnotParameterization)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class boost::python::list,enum AcGe::KnotParameterization)
 
-__init__( (object)arg1, (list)arg2, (object)arg3, (int)arg4, (float)arg5) -> None :
+__init__( (object)arg1, (list)arg2, (AcGeKnotParameterization)arg3, (int)arg4, (float)arg5) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class boost::python::list,enum AcGe::KnotParameterization,int,double)
 
-__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (object)arg5) -> None :
+__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (AcGeKnotParameterization)arg5) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization)
 
-__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (object)arg5, (int)arg6, (float)arg7) -> None :
+__init__( (object)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (AcGeKnotParameterization)arg5, (int)arg6, (float)arg7) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization,int,double)
@@ -56358,22 +56358,22 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void setFitData(class PyDbSpline {lvalue},class boost::python::list,int,double,class AcGeVector3d,class AcGeVector3d)'''
     ...
     def setFitDataKnot (self, *args, **kwargs)-> None:
-      '''setFitDataKnot( (Spline)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (object)arg5) -> None :
+      '''setFitDataKnot( (Spline)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (AcGeKnotParameterization)arg5) -> None :
 
     C++ signature :
         void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization)
 
-setFitDataKnot( (Spline)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (object)arg5, (int)arg6, (float)arg7) -> None :
+setFitDataKnot( (Spline)arg1, (list)arg2, (Vector3d)arg3, (Vector3d)arg4, (AcGeKnotParameterization)arg5, (int)arg6, (float)arg7) -> None :
 
     C++ signature :
         void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,class AcGeVector3d,class AcGeVector3d,enum AcGe::KnotParameterization,int,double)
 
-setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (object)arg4) -> None :
+setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)arg4) -> None :
 
     C++ signature :
         void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,bool,enum AcGe::KnotParameterization)
 
-setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (object)arg4, (int)arg5, (float)arg6) -> None :
+setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)arg4, (int)arg5, (float)arg6) -> None :
 
     C++ signature :
         void setFitDataKnot(class PyDbSpline {lvalue},class boost::python::list,bool,enum AcGe::KnotParameterization,int,double)'''
