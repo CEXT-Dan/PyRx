@@ -1,5 +1,3 @@
-***not ready for production work, still in progress***
-
 Python bindings for AutoCAD® ObjectARX®
 uses wxPython for the GUI
 
