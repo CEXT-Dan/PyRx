@@ -272,9 +272,9 @@ bool PyEdInputPoint::pointComputed() const
     return rpyimp.pointComputed();
 }
 
-int PyEdInputPoint::history() const
+Acad::PointHistory PyEdInputPoint::history() const
 {
-    return rpyimp.history();
+    return Acad::PointHistory(rpyimp.history());
 }
 
 AcGePoint3d PyEdInputPoint::lastPoint() const
