@@ -119,6 +119,32 @@ public:
     PyDbHelix(AcDbHelix* ptr, bool autoDelete);
     PyDbHelix(const PyDbObjectId& id);
     PyDbHelix(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbHelix() override = default;
+    void            createHelix();
+    AcGePoint3d     axisPoint() const;
+    void            setAxisPoint1(const AcGePoint3d& axisPoint);
+    void            setAxisPoint2(const AcGePoint3d& axisPoint, const bool bMoveStartPoint);
+    AcGePoint3d     startPoint() const;
+    void            setStartPoint(const AcGePoint3d& startPoint);
+    AcGeVector3d    axisVector() const;
+    void            setAxisVector(const AcGeVector3d& axisVector);
+    double          height() const;
+    void            setHeight(double dHeight);
+    double          baseRadius() const;
+    void            setBaseRadius(double dRadius);
+    double          topRadius() const;
+    void            setTopRadius(double dRadius);
+    double          turns() const;
+    void            setTurns(double dTurns);
+    double          turnHeight() const;
+    void            setTurnHeight(double dTurnHeight);
+    Adesk::Boolean  twist() const;
+    void            setTwist(Adesk::Boolean bTwist);
+    AcDbHelix::ConstrainType   constrain() const;
+    void                       setConstrain(AcDbHelix::ConstrainType constrain);
+    double          turnSlope() const;
+    double          totalLength() const;
+    void            reverseCurve();
 
 public:
     static std::string  className();
