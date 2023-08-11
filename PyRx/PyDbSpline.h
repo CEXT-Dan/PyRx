@@ -1,5 +1,6 @@
 #pragma once
 #include "PyDbCurve.h"
+#include "dbhelix.h"
 //-----------------------------------------------------------------------------------
 //AcDbSpline
 void makePyDbSplineWrapper();
@@ -105,4 +106,25 @@ public:
     static PyDbSpline   cast(const PyRxObject& src);
 public:
     inline AcDbSpline* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------
+//PyDbHelix
+void makePyDbHelixWrapper();
+class PyDbHelix : public PyDbSpline
+{
+public:
+    PyDbHelix();
+    PyDbHelix(AcDbHelix* ptr, bool autoDelete);
+    PyDbHelix(const PyDbObjectId& id);
+    PyDbHelix(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbHelix	cloneFrom(const PyRxObject& src);
+    static PyDbHelix    cast(const PyRxObject& src);
+public:
+    inline AcDbHelix* impObj(const std::source_location& src = std::source_location::current()) const;
 };
