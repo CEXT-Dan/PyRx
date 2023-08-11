@@ -108,7 +108,7 @@ AcEdInputPointManager* PyEdInputPointManager::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_pyImp;
+        return m_pyImp;
 }
 
 //---------------------------------------------------------------------------------
@@ -131,7 +131,7 @@ PyEdInputPointFilter* PyEdInputPointFilterImpl::backPtr(const std::source_locati
 {
     if (m_bckPtr == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_bckPtr;
+        return m_bckPtr;
 }
 
 //---------------------------------------------------------------------------------
@@ -154,7 +154,7 @@ PyEdInputPointMonitor* PyEdInputPointMonitorImpl::backPtr(const std::source_loca
 {
     if (m_bckPtr == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_bckPtr;
+        return m_bckPtr;
 }
 
 //---------------------------------------------------------------------------------
@@ -188,9 +188,9 @@ Acad::ErrorStatus PyEdInputPointFilter::processInputPoint(const PyEdInputPoint& 
 
 PyEdInputPointFilterImpl* PyEdInputPointFilter::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<PyEdInputPointFilterImpl*>(m_pyImp.get());
+        return static_cast<PyEdInputPointFilterImpl*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------
@@ -224,9 +224,9 @@ Acad::ErrorStatus PyEdInputPointMonitor::monitorInputPoint(const PyEdInputPoint&
 
 PyEdInputPointMonitorImpl* PyEdInputPointMonitor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<PyEdInputPointMonitorImpl*>(m_pyImp.get());
+        return static_cast<PyEdInputPointMonitorImpl*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------
@@ -485,7 +485,7 @@ PyEdInputPointMonitorResult::PyEdInputPointMonitorResult(AcEdInputPointMonitorRe
 
 void PyEdInputPointMonitorResult::setAdditionalTooltipString(const std::string& newValue)
 {
-    CString str = utf8_to_wstr(newValue).c_str();
+    const CString str{ utf8_to_wstr(newValue).c_str() };
     rpyimp.setAdditionalTooltipString(str);
 }
 
