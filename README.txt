@@ -5,9 +5,23 @@ uses wxPython for the GUI
 
 Embeds Python (3.10.10) and wxPython(4.2.0) into a loadable ARX module
 
+Get the latest build from https://github.com/CEXT-Dan/PyRx/releases
+
+On loading the ARX module, the following commands are added to AutoCAD
+PYLOAD:
+Use this command to load your python modules.
+
+PYRELOAD:
+Use this command to reload your python modules.
+
+PYCMDPROMPT:
+Provides simple access to the python interpreter 
+
+PYRXVER:
+Prints the ARX module version
 
 sample:
-#
+#imports 
 import PyRx as Rx
 import PyGe as Ge
 import PyGi as Gi
@@ -15,6 +29,7 @@ import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
 
+ # these four functions are called as they would be in ARX
 def OnPyInitApp():
     print("\nOnPyInitApp")
     print("\ncommand = pydoit")
@@ -28,6 +43,7 @@ def OnPyLoadDwg():
 def OnPyUnloadDwg():
     print("\nOnPyUnloadDwg")
 
+ # functions that are prefixed with PyRxCmd_ are registered as AutoCAD commands
 def PyRxCmd_pydoit():
     try:
         db = Db.HostApplicationServices().workingDatabase()
