@@ -502,3 +502,70 @@ AcDbSpline* PyDbSpline::impObj(const std::source_location& src /*= std::source_l
         return static_cast<AcDbSpline*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+//PyDbHelix
+void makePyDbHelixWrapper()
+{
+    PyDocString DS("Spline");
+    class_<PyDbHelix, bases<PyDbSpline>>("Helix")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbHelix::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbHelix::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbHelix::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbHelix::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbHelix::PyDbHelix()
+    : PyDbHelix(new AcDbHelix(),true)
+{
+}
+
+PyDbHelix::PyDbHelix(AcDbHelix* ptr, bool autoDelete)
+    : PyDbSpline(ptr, autoDelete)
+{
+}
+
+PyDbHelix::PyDbHelix(const PyDbObjectId& id)
+    : PyDbHelix(id, AcDb::kForRead)
+{
+}
+
+PyDbHelix::PyDbHelix(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbHelix(openAcDbObject<AcDbHelix>(id, mode), false)
+{
+}
+
+std::string PyDbHelix::className()
+{
+    return "AcDbSpline";
+}
+
+PyRxClass PyDbHelix::desc()
+{
+    return PyRxClass(AcDbHelix::desc(), false);
+}
+
+PyDbHelix PyDbHelix::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbHelix::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbHelix(static_cast<AcDbHelix*>(src.impObj()->clone()), true);
+}
+
+PyDbHelix PyDbHelix::cast(const PyRxObject& src)
+{
+    PyDbHelix dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbHelix* PyDbHelix::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+        return static_cast<AcDbHelix*>(m_pyImp.get());
+}
