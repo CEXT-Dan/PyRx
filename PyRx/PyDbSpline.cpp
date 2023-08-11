@@ -511,10 +511,42 @@ void makePyDbHelixWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("createHelix", &PyDbHelix::createHelix)
+        .def("axisPoint", &PyDbHelix::axisPoint)
+        .def("setAxisPoint", &PyDbHelix::setAxisPoint1)
+        .def("setAxisPoint", &PyDbHelix::setAxisPoint2)
+        .def("startPoint", &PyDbHelix::startPoint)
+        .def("setStartPoint", &PyDbHelix::setStartPoint)
+        .def("axisVector", &PyDbHelix::axisVector)
+        .def("setAxisVector", &PyDbHelix::setAxisVector)
+        .def("height", &PyDbHelix::height)
+        .def("setHeight", &PyDbHelix::setHeight)
+        .def("baseRadius", &PyDbHelix::baseRadius)
+        .def("setBaseRadius", &PyDbHelix::setBaseRadius)
+        .def("topRadius", &PyDbHelix::topRadius)
+        .def("setTopRadius", &PyDbHelix::setTopRadius)
+        .def("turns", &PyDbHelix::turns)
+        .def("setTurns", &PyDbHelix::setTurns)
+        .def("turnHeight", &PyDbHelix::turnHeight)
+        .def("setTurnHeight", &PyDbHelix::setTurnHeight)
+        .def("twist", &PyDbHelix::twist)
+        .def("setTwist", &PyDbHelix::setTwist)
+        .def("constrain", &PyDbHelix::constrain)
+        .def("setConstrain", &PyDbHelix::setConstrain)
+        .def("turnSlope", &PyDbHelix::turnSlope)
+        .def("totalLength", &PyDbHelix::totalLength)
+        .def("reverseCurve", &PyDbHelix::reverseCurve)
         .def("className", &PyDbHelix::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbHelix::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbHelix::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbHelix::cast, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cast")
+        ;
+
+    enum_<AcDbHelix::ConstrainType>("HelixConstrainType")
+        .value("kTurnHeight", AcDbHelix::ConstrainType::kTurnHeight)
+        .value("kTurns", AcDbHelix::ConstrainType::kTurns)
+        .value("kHeight", AcDbHelix::ConstrainType::kHeight)
+        .export_values()
         ;
 }
 
@@ -536,6 +568,131 @@ PyDbHelix::PyDbHelix(const PyDbObjectId& id)
 PyDbHelix::PyDbHelix(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbHelix(openAcDbObject<AcDbHelix>(id, mode), false)
 {
+}
+
+void PyDbHelix::createHelix()
+{
+    PyThrowBadEs(impObj()->createHelix());
+}
+
+AcGePoint3d PyDbHelix::axisPoint() const
+{
+    return impObj()->axisPoint();
+}
+
+void PyDbHelix::setAxisPoint1(const AcGePoint3d& axisPoint)
+{
+    PyThrowBadEs(impObj()->setAxisPoint(axisPoint));
+}
+
+void PyDbHelix::setAxisPoint2(const AcGePoint3d& axisPoint, const bool bMoveStartPoint)
+{
+    PyThrowBadEs(impObj()->setAxisPoint(axisPoint, bMoveStartPoint));
+}
+
+AcGePoint3d PyDbHelix::startPoint() const
+{
+    return impObj()->startPoint();
+}
+
+void PyDbHelix::setStartPoint(const AcGePoint3d& startPoint)
+{
+    PyThrowBadEs(impObj()->setStartPoint(startPoint));
+}
+
+AcGeVector3d PyDbHelix::axisVector() const
+{
+    return impObj()->axisVector();
+}
+
+void PyDbHelix::setAxisVector(const AcGeVector3d& axisVector)
+{
+    PyThrowBadEs(impObj()->setAxisVector(axisVector));
+}
+
+double PyDbHelix::height() const
+{
+    return impObj()->height();
+}
+
+void PyDbHelix::setHeight(double dHeight)
+{
+    PyThrowBadEs(impObj()->setHeight(dHeight));
+}
+
+double PyDbHelix::baseRadius() const
+{
+    return impObj()->baseRadius();
+}
+
+void PyDbHelix::setBaseRadius(double dRadius)
+{
+    PyThrowBadEs(impObj()->setBaseRadius(dRadius));
+}
+
+double PyDbHelix::topRadius() const
+{
+    return impObj()->topRadius();
+}
+
+void PyDbHelix::setTopRadius(double dRadius)
+{
+    PyThrowBadEs(impObj()->setTopRadius(dRadius));
+}
+
+double PyDbHelix::turns() const
+{
+    return impObj()->turns();
+}
+
+void PyDbHelix::setTurns(double dTurns)
+{
+    PyThrowBadEs(impObj()->setTurns(dTurns));
+}
+
+double PyDbHelix::turnHeight() const
+{
+    return impObj()->turnHeight();
+}
+
+void PyDbHelix::setTurnHeight(double dTurnHeight)
+{
+    PyThrowBadEs(impObj()->setTurnHeight(dTurnHeight));
+}
+
+Adesk::Boolean PyDbHelix::twist() const
+{
+    return impObj()->twist();
+}
+
+void PyDbHelix::setTwist(Adesk::Boolean bTwist)
+{
+    PyThrowBadEs(impObj()->setTwist(bTwist));
+}
+
+AcDbHelix::ConstrainType PyDbHelix::constrain() const
+{
+    return impObj()->constrain();
+}
+
+void PyDbHelix::setConstrain(AcDbHelix::ConstrainType constrain)
+{
+    PyThrowBadEs(impObj()->setConstrain(constrain));
+}
+
+double PyDbHelix::turnSlope() const
+{
+    return impObj()->turnSlope();
+}
+
+double PyDbHelix::totalLength() const
+{
+    return impObj()->totalLength();
+}
+
+void PyDbHelix::reverseCurve()
+{
+    PyThrowBadEs(impObj()->reverseCurve());
 }
 
 std::string PyDbHelix::className()
