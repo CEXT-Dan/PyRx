@@ -111,10 +111,10 @@ class PyEdInputPoint
 {
 public:
     explicit PyEdInputPoint(const AcEdInputPoint& inp);
-    ~PyEdInputPoint()  = default;
+    ~PyEdInputPoint() = default;
     PyApDocument        document() const;
     bool                pointComputed() const;
-    int                 history() const;
+    Acad::PointHistory  history() const;
     AcGePoint3d         lastPoint() const;
     AcGePoint3d         rawPoint() const;
     AcGePoint3d         grippedPoint() const;
