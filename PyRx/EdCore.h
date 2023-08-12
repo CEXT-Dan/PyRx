@@ -2,7 +2,7 @@
 class PyDbObjectId;
 class PyDbDatabase;
 class PyDbMText;
-
+class PyApDocument;
 void makePyEdCoreWrapper();
 
 //acedSetUndoMark
@@ -11,6 +11,7 @@ class EdCore
 {
 public:
     static ULONG_PTR            getAcadDockCmdLine();
+    static ULONG_PTR            getAcadTextCmdLine();
     static int                  alert(const std::string& msg);
     static int                  arxLoad(const std::string& msg);
     static boost::python::list  arxLoaded();
@@ -39,13 +40,24 @@ public:
     static int                  eatCommandThroat();
     static int                  editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs);
     static void                 enableUsrbrk();
-
     static std::string          findFile(const std::string& file);
     static std::string          findTrustedFile(const std::string& file);
     static boost::python::list  getPredefinedPattens();
     static std::string          getFileD(const std::string& title, const std::string& defawlt, const std::string& ext, int flags);
     static boost::python::list  getFileNavDialog(const std::string& title, const std::string& defawlt, const std::string& ext, const std::string& dlgname, int flags);
     static std::string          getCommandPromptString();
+    static unsigned int         getBlockEditMode();
+    static std::string          getCommandForDocument(const PyApDocument& doc);
+    static boost::python::list  getCurrentSelectionSet();
+    static boost::python::tuple getCurVportPixelToDisplay();
+    static boost::python::tuple getCurVportScreenToDisplay();
+    static float                getDpiScalingValue();
+    static std::string          getEnv(const std::string& str);
+    static void                 setEnv(const std::string& sym, const std::string& val);
+    static boost::python::list  getSym(const std::string& symname);
+    static bool                 putSym(const std::string& symname, boost::python::list& buf);
+
+
     static boost::python::list  invoke(const boost::python::list& args);
     static boost::python::dict  getSysVars();
     static boost::python::object getVar(const std::string& sym);
