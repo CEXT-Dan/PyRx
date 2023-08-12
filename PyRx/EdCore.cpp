@@ -5,6 +5,7 @@
 #include "ResultBuffer.h"
 #include "acedCmdNF.h"
 #include "PyDbMText.h"
+#include "PyApDocument.h"
 #include "rxvar.h"
 
 #ifdef ARXAPP
@@ -62,8 +63,19 @@ void makePyEdCoreWrapper()
         .def("getFileD", &EdCore::getFileD).staticmethod("getFileD")
         .def("getFileNavDialog", &EdCore::getFileNavDialog).staticmethod("getFileNavDialog")
         .def("getAcadDockCmdLine", &EdCore::getAcadDockCmdLine).staticmethod("getAcadDockCmdLine")
+        .def("getAcadTextCmdLine", &EdCore::getAcadTextCmdLine).staticmethod("getAcadTextCmdLine")
+        .def("getCommandForDocument", &EdCore::getCommandForDocument).staticmethod("getCommandForDocument")
+        .def("getCurrentSelectionSet", &EdCore::getCurrentSelectionSet).staticmethod("getCurrentSelectionSet")
+        .def("getCurVportPixelToDisplay", &EdCore::getCurVportPixelToDisplay).staticmethod("getCurVportPixelToDisplay")
+        .def("getCurVportScreenToDisplay", &EdCore::getCurVportScreenToDisplay).staticmethod("getCurVportScreenToDisplay")
+        .def("getEnv", &EdCore::getEnv).staticmethod("getEnv")
+        .def("setEnv", &EdCore::setEnv).staticmethod("setEnv")
+        .def("getSym", &EdCore::getSym).staticmethod("getSym")
+        .def("putSym", &EdCore::putSym).staticmethod("putSym")
+
         .def("grDraw", &EdCore::grDraw).staticmethod("grDraw")
         .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
+        .def("getBlockEditMode", &EdCore::getBlockEditMode).staticmethod("getBlockEditMode")
         .def("invoke", &EdCore::invoke).staticmethod("invoke")
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
@@ -111,6 +123,11 @@ void makePyEdCoreWrapper()
 ULONG_PTR EdCore::getAcadDockCmdLine()
 {
     return reinterpret_cast<UINT_PTR>(acedGetAcadDockCmdLine()->GetSafeHwnd());
+}
+
+ULONG_PTR EdCore::getAcadTextCmdLine()
+{
+    return reinterpret_cast<UINT_PTR>(acedGetAcadTextCmdLine()->GetSafeHwnd());
 }
 
 int EdCore::alert(const std::string& msg)
@@ -191,7 +208,7 @@ boost::python::dict EdCore::getCommands()
     {
         const auto cmd = iter->command();
         pyMap[wstr_to_utf8(iter->commandGroup())].append(
-            boost::python::make_tuple(wstr_to_utf8(cmd->globalName()), 
+            boost::python::make_tuple(wstr_to_utf8(cmd->globalName()),
                 wstr_to_utf8(cmd->localName()), cmd->commandFlags()));
     }
     for (auto& item : pyMap)
@@ -410,6 +427,105 @@ std::string EdCore::getCommandPromptString()
 #endif
 }
 
+unsigned int EdCore::getBlockEditMode()
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    return acedGetBlockEditMode();
+#endif
+}
+
+std::string EdCore::getCommandForDocument(const PyApDocument& doc)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    AcString cmd;
+    PyThrowBadEs(acedGetCommandForDocument(doc.impObj(), cmd));
+    return wstr_to_utf8(cmd);
+#endif
+}
+
+boost::python::list EdCore::getCurrentSelectionSet()
+{
+    PyAutoLockGIL lock;
+    AcDbObjectIdArray sset;
+    PyThrowBadEs(acedGetCurrentSelectionSet(sset));
+    boost::python::list pyList;
+    for (auto item : sset)
+        pyList.append(PyDbObjectId(item));
+    return pyList;
+}
+
+boost::python::tuple EdCore::getCurVportPixelToDisplay()
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    double xFactor = 0;
+    double yFactor = 0;
+    acedGetCurVportPixelToDisplay(xFactor, yFactor);
+    return boost::python::make_tuple(xFactor, yFactor);
+#endif
+}
+
+boost::python::tuple EdCore::getCurVportScreenToDisplay()
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    double xFactor = 0;
+    double yFactor = 0;
+    acedGetCurVportScreenToDisplay(xFactor, yFactor);
+    return boost::python::make_tuple(xFactor, yFactor);
+#endif
+}
+
+float EdCore::getDpiScalingValue()
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    return acedGetDpiScalingValue();
+#endif
+}
+
+std::string EdCore::getEnv(const std::string& env)
+{
+#ifndef ARXAPP
+    std::array<wchar_t, 1024> buff = { 0 };
+    PyThrowBadRt(acedGetEnv(utf8_to_wstr(env).c_str(), buff.data(), buff.size()));
+    return wstr_to_utf8(buff.data());
+#else
+    AcString val;
+    PyThrowBadRt(acedGetEnv(utf8_to_wstr(env).c_str(), val));
+    return wstr_to_utf8(val);
+#endif
+}
+
+void EdCore::setEnv(const std::string& sym, const std::string& val)
+{
+    PyThrowBadRt(acedSetEnv(utf8_to_wstr(sym).c_str(), utf8_to_wstr(val).c_str()));
+}
+
+boost::python::list EdCore::getSym(const std::string& symname)
+{
+    PyAutoLockGIL lock;
+    resbuf* rb = nullptr;
+    acedGetSym(utf8_to_wstr(symname).c_str(), &rb);
+    AcResBufPtr holder(rb);
+    return resbufToList(rb);
+}
+
+bool EdCore::putSym(const std::string& symname, boost::python::list& buf)
+{
+    AcResBufPtr ptr(listToResbuf(buf));
+    return acedPutSym(utf8_to_wstr(symname).c_str(), ptr.get()) == RTNORM;
+}
+
 boost::python::list EdCore::invoke(const boost::python::list& args)
 {
     PyAutoLockGIL lock;
@@ -441,29 +557,29 @@ boost::python::dict EdCore::getSysVars()
         }
         switch (buf.restype)
         {
-            case RTSTR:
-            {
-                pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
-                acutDelString(buf.resval.rstring);
-                break;
-            }
-            case RTLONG:
-            case RTSHORT:
-            {
-                pydict[utf8Name] = buf.resval.rlong;
-                break;
-            }
-            case RTREAL:
-            {
-                pydict[utf8Name] = buf.resval.rreal;
-                break;
-            }
-            case RTPOINT:
-            case RT3DPOINT:
-            {
-                pydict[utf8Name] = asPnt3d(buf.resval.rpoint);
-                break;
-            }
+        case RTSTR:
+        {
+            pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
+            acutDelString(buf.resval.rstring);
+            break;
+        }
+        case RTLONG:
+        case RTSHORT:
+        {
+            pydict[utf8Name] = buf.resval.rlong;
+            break;
+        }
+        case RTREAL:
+        {
+            pydict[utf8Name] = buf.resval.rreal;
+            break;
+        }
+        case RTPOINT:
+        case RT3DPOINT:
+        {
+            pydict[utf8Name] = asPnt3d(buf.resval.rpoint);
+            break;
+        }
         }
     }
     return pydict;
@@ -481,38 +597,38 @@ boost::python::object EdCore::getVar(const std::string& sym)
         }
         switch (buf.restype)
         {
-            case RTSHORT:
-            {
-                return boost::python::object(buf.resval.rint);
-            }
-            case RTLONG:
-            {
-                return boost::python::object(buf.resval.rlong);
-            }
-            case RTREAL:
-            {
-                return boost::python::object(buf.resval.rreal);
-            }
-            case RTSTR:
-            {
-                std::string val = wstr_to_utf8(buf.resval.rstring);
-                acutDelString(buf.resval.rstring);
-                return boost::python::object(val);
-            }
-            case RTPOINT:
-            {
-                AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
-                return boost::python::object(pnt);
-            }
-            case RT3DPOINT:
-            {
-                AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
-                return boost::python::object(pnt);
-            }
-            default:
-            {
-                return boost::python::object();
-            }
+        case RTSHORT:
+        {
+            return boost::python::object(buf.resval.rint);
+        }
+        case RTLONG:
+        {
+            return boost::python::object(buf.resval.rlong);
+        }
+        case RTREAL:
+        {
+            return boost::python::object(buf.resval.rreal);
+        }
+        case RTSTR:
+        {
+            std::string val = wstr_to_utf8(buf.resval.rstring);
+            acutDelString(buf.resval.rstring);
+            return boost::python::object(val);
+        }
+        case RTPOINT:
+        {
+            AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
+            return boost::python::object(pnt);
+        }
+        case RT3DPOINT:
+        {
+            AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
+            return boost::python::object(pnt);
+        }
+        default:
+        {
+            return boost::python::object();
+        }
         }
     }
     catch (...)

@@ -513,6 +513,24 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         unsigned __int64 getAcadDockCmdLine()'''
     ...
+    def getAcadTextCmdLine (self, *args, **kwargs)-> int:
+      '''getAcadTextCmdLine() -> int :
+
+    C++ signature :
+        unsigned __int64 getAcadTextCmdLine()'''
+    ...
+    def getBlockEditMode (self, *args, **kwargs)-> int:
+      '''getBlockEditMode() -> int :
+
+    C++ signature :
+        unsigned int getBlockEditMode()'''
+    ...
+    def getCommandForDocument (self, *args, **kwargs)-> str:
+      '''getCommandForDocument( (Document)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCommandForDocument(class PyApDocument)'''
+    ...
     def getCommandPromptString (self, *args, **kwargs)-> str:
       '''getCommandPromptString() -> str :
 
@@ -524,6 +542,30 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         class boost::python::dict getCommands()'''
+    ...
+    def getCurVportPixelToDisplay (self, *args, **kwargs)-> tuple:
+      '''getCurVportPixelToDisplay() -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getCurVportPixelToDisplay()'''
+    ...
+    def getCurVportScreenToDisplay (self, *args, **kwargs)-> tuple:
+      '''getCurVportScreenToDisplay() -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getCurVportScreenToDisplay()'''
+    ...
+    def getCurrentSelectionSet (self, *args, **kwargs)-> list:
+      '''getCurrentSelectionSet() -> list :
+
+    C++ signature :
+        class boost::python::list getCurrentSelectionSet()'''
+    ...
+    def getEnv (self, *args, **kwargs)-> str:
+      '''getEnv( (str)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getEnv(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getFileD (self, *args, **kwargs)-> str:
       '''getFileD( (str)arg1, (str)arg2, (str)arg3, (int)arg4) -> str :
@@ -542,6 +584,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         class boost::python::list getPredefinedHatchPatterns()'''
+    ...
+    def getSym (self, *args, **kwargs)-> list:
+      '''getSym( (str)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getSym(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getSysVars (self, *args, **kwargs)-> dict:
       '''getSysVars() -> dict :
@@ -584,6 +632,18 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         void pSpace()'''
+    ...
+    def putSym (self, *args, **kwargs)-> bool:
+      '''putSym( (str)arg1, (list)arg2) -> bool :
+
+    C++ signature :
+        bool putSym(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::list {lvalue})'''
+    ...
+    def setEnv (self, *args, **kwargs)-> None:
+      '''setEnv( (str)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setEnv(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def setUndoMark (self, *args, **kwargs)-> None:
       '''setUndoMark( (bool)arg1) -> None :
