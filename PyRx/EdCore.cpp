@@ -14,7 +14,9 @@
 
 using namespace boost::python;
 
+
 #ifdef ARXAPP
+extern "C" void acedLoadJSScript(const ACHAR * pUriOfJSFile);
 extern "C" bool acedGetPredefinedPattens(AcStringArray & patterns);
 extern "C" Acad::ErrorStatus acedSetUndoMark(bool);
 extern "C" void acedGetCommandPromptString(CString&);
@@ -72,17 +74,34 @@ void makePyEdCoreWrapper()
         .def("setEnv", &EdCore::setEnv).staticmethod("setEnv")
         .def("getSym", &EdCore::getSym).staticmethod("getSym")
         .def("putSym", &EdCore::putSym).staticmethod("putSym")
-
+        .def("getWinNum", &EdCore::getWinNum).staticmethod("getWinNum")
+        .def("graphScr", &EdCore::graphScr).staticmethod("graphScr")
         .def("grDraw", &EdCore::grDraw).staticmethod("grDraw")
         .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
         .def("getBlockEditMode", &EdCore::getBlockEditMode).staticmethod("getBlockEditMode")
-        .def("invoke", &EdCore::invoke).staticmethod("invoke")
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
         .def("getSysVars", &EdCore::getSysVars).staticmethod("getSysVars")
+        .def("invoke", &EdCore::invoke).staticmethod("invoke")
+        .def("initDialog", &EdCore::initDialog).staticmethod("initDialog")
+        .def("isDragging", &EdCore::isDragging).staticmethod("isDragging")
+        .def("isInBackgroundMode", &EdCore::isInBackgroundMode).staticmethod("isInBackgroundMode")
+        .def("isInputPending", &EdCore::isInputPending).staticmethod("isInputPending")
+        .def("isMenuGroupLoaded", &EdCore::isMenuGroupLoaded).staticmethod("isMenuGroupLoaded")
+        .def("isOsnapOverride", &EdCore::isOsnapOverride).staticmethod("isOsnapOverride")
+        .def("isUpdateDisplayPaused", &EdCore::isUpdateDisplayPaused).staticmethod("isUpdateDisplayPaused")
+        .def("isUsrbrkDisabled", &EdCore::isUsrbrkDisabled).staticmethod("isUsrbrkDisabled")
+        .def("loadJSScript", &EdCore::loadJSScript).staticmethod("loadJSScript")
+        .def("loadPartialMenu", &EdCore::loadPartialMenu).staticmethod("loadPartialMenu")
+        .def("markForDelayXRefRelativePathResolve", &EdCore::markForDelayXRefRelativePathResolve).staticmethod("markForDelayXRefRelativePathResolve")
         .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
+        .def("postCommandPrompt", &EdCore::postCommandPrompt).staticmethod("postCommandPrompt")
+        .def("prompt", &EdCore::prompt).staticmethod("prompt")
         .def("osnap", &EdCore::osnap).staticmethod("osnap")
+        .def("redraw", &EdCore::redraw).staticmethod("redraw")
+        .def("reloadMenus", &EdCore::reloadMenus).staticmethod("reloadMenus")
+
         .def("setUndoMark", &EdCore::setUndoMark).staticmethod("setUndoMark")
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow1)
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow2).staticmethod("showHTMLModalWindow")
@@ -526,6 +545,96 @@ bool EdCore::putSym(const std::string& symname, boost::python::list& buf)
     return acedPutSym(utf8_to_wstr(symname).c_str(), ptr.get()) == RTNORM;
 }
 
+int EdCore::getWinNum(int ptx, int pty)
+{
+    return acedGetWinNum(ptx, pty);
+}
+
+void EdCore::graphScr()
+{
+    PyThrowBadRt(acedGraphScr());
+}
+
+Adesk::Boolean EdCore::initDialog(Adesk::Boolean useDialog)
+{
+    return acedInitDialog(useDialog);
+}
+
+int EdCore::isDragging()
+{
+    return acedIsDragging();
+}
+
+bool EdCore::isInBackgroundMode()
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    return acedIsInBackgroundMode();
+#endif
+}
+
+bool EdCore::isInputPending()
+{
+   return acedIsInputPending();
+}
+
+Adesk::Boolean EdCore::isMenuGroupLoaded(const std::string& mnu)
+{
+    return acedIsMenuGroupLoaded(utf8_to_wstr(mnu).c_str());
+}
+
+bool EdCore::isOsnapOverride()
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    return acedIsOsnapOverride();
+#endif
+}
+
+bool EdCore::isUpdateDisplayPaused()
+{
+    return acedIsUpdateDisplayPaused();
+}
+
+bool EdCore::isUsrbrkDisabled()
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    return acedIsUsrbrkDisabled();
+#endif
+}
+
+void EdCore::loadJSScript(const std::string& pUriOfJSFile)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    acedLoadJSScript(utf8_to_wstr(pUriOfJSFile).c_str());
+#endif // !ARXAPP
+}
+
+bool EdCore::loadPartialMenu(const std::string& mnu)
+{
+    return acedLoadPartialMenu(utf8_to_wstr(mnu).c_str());
+}
+
+void EdCore::markForDelayXRefRelativePathResolve(const PyDbObjectId& id)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    acedMarkForDelayXRefRelativePathResolve(id.m_id);
+#endif
+}
+
+int EdCore::menuCmd(const std::string& mnu)
+{
+    return acedMenuCmd(utf8_to_wstr(mnu).c_str());
+}
+
 boost::python::list EdCore::invoke(const boost::python::list& args)
 {
     PyAutoLockGIL lock;
@@ -689,6 +798,29 @@ void EdCore::mSpace()
 void EdCore::pSpace()
 {
     return PyThrowBadEs(acedPspace());
+}
+
+void EdCore::postCommandPrompt()
+{
+    acedPostCommandPrompt();
+}
+
+
+int EdCore::prompt(const std::string& str)
+{
+    return acedPrompt(utf8_to_wstr(str).c_str());
+}
+
+int EdCore::redraw(const PyDbObjectId& ent, int mode)
+{
+    ads_name adsn = { 0L };
+    acdbGetAdsName(adsn, ent.m_id);
+    return acedRedraw(adsn, mode);
+}
+
+void EdCore::reloadMenus(bool bIncrementalReloading)
+{
+    acedReloadMenus(bIncrementalReloading);
 }
 
 int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight)
