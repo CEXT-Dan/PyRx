@@ -14,7 +14,7 @@ public:
 
     static void applyHostIcon(UINT_PTR hwnd);
     static void setTitleThemeDark(UINT_PTR hwnd);
-    static int64_t mainWnd();
+    static UINT_PTR mainWnd();
     static std::string className();
 };
 

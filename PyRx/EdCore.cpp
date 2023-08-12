@@ -56,13 +56,12 @@ void makePyEdCoreWrapper()
         .def("eatCommandThroat", &EdCore::eatCommandThroat).staticmethod("eatCommandThroat")
         .def("editMTextInteractive", &EdCore::editMTextInteractive).staticmethod("editMTextInteractive")
         .def("enableUsrbrk", &EdCore::enableUsrbrk).staticmethod("enableUsrbrk")
-
-
         .def("findFile", &EdCore::findFile).staticmethod("findFile")
         .def("findTrustedFile", &EdCore::findTrustedFile).staticmethod("findTrustedFile")
         .def("getPredefinedHatchPatterns", &EdCore::getPredefinedPattens).staticmethod("getPredefinedHatchPatterns")
         .def("getFileD", &EdCore::getFileD).staticmethod("getFileD")
         .def("getFileNavDialog", &EdCore::getFileNavDialog).staticmethod("getFileNavDialog")
+        .def("getAcadDockCmdLine", &EdCore::getAcadDockCmdLine).staticmethod("getAcadDockCmdLine")
         .def("grDraw", &EdCore::grDraw).staticmethod("grDraw")
         .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
         .def("invoke", &EdCore::invoke).staticmethod("invoke")
@@ -107,6 +106,11 @@ void makePyEdCoreWrapper()
         .def("xrefXBind", &EdCore::xrefXBind1)
         .def("xrefXBind", &EdCore::xrefXBind2).staticmethod("xrefXBind")
         ;
+}
+
+ULONG_PTR EdCore::getAcadDockCmdLine()
+{
+    return reinterpret_cast<UINT_PTR>(acedGetAcadDockCmdLine()->GetSafeHwnd());
 }
 
 int EdCore::alert(const std::string& msg)

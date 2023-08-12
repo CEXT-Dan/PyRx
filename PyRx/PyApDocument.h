@@ -36,7 +36,7 @@ public:
     PyTransactionManager transactionManager();
     PyEdInputPointManager inputPointManager();
 
-    static int64_t      docWnd();
+    static UINT_PTR     docWnd();
     static std::string  className();
 public:
     AcApDocument* impObj(const std::source_location& src = std::source_location::current()) const;
