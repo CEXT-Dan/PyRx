@@ -507,6 +507,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getAcadDockCmdLine (self, *args, **kwargs)-> int:
+      '''getAcadDockCmdLine() -> int :
+
+    C++ signature :
+        unsigned __int64 getAcadDockCmdLine()'''
+    ...
     def getCommandPromptString (self, *args, **kwargs)-> str:
       '''getCommandPromptString() -> str :
 

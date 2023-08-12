@@ -10,6 +10,7 @@ void makePyEdCoreWrapper();
 class EdCore
 {
 public:
+    static ULONG_PTR            getAcadDockCmdLine();
     static int                  alert(const std::string& msg);
     static int                  arxLoad(const std::string& msg);
     static boost::python::list  arxLoaded();

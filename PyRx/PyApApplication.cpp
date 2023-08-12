@@ -61,9 +61,9 @@ void PyApApplication::setTitleThemeDark(UINT_PTR _hwnd)
     SetWindowLong(hwnd, GWL_STYLE, style);
 }
 
-int64_t PyApApplication::mainWnd()
+UINT_PTR PyApApplication::mainWnd()
 {
-    return reinterpret_cast<int64_t>(adsw_acadMainWnd());
+    return reinterpret_cast<UINT_PTR>(adsw_acadMainWnd());
 }
 
 std::string PyApApplication::className()

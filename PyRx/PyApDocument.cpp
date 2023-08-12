@@ -184,9 +184,9 @@ PyEdInputPointManager PyApDocument::inputPointManager()
     return PyEdInputPointManager(impObj()->inputPointManager());
 }
 
-int64_t PyApDocument::docWnd()
+UINT_PTR PyApDocument::docWnd()
 {
-    return reinterpret_cast<uint64_t>(adsw_acadDocWnd());
+    return reinterpret_cast<UINT_PTR>(adsw_acadDocWnd());
 }
 
 PyAcEditor PyApDocument::editor()
