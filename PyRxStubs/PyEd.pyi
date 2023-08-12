@@ -603,11 +603,29 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class boost::python::api::object getVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getWinNum (self, *args, **kwargs)-> int:
+      '''getWinNum( (int)arg1, (int)arg2) -> int :
+
+    C++ signature :
+        int getWinNum(int,int)'''
+    ...
     def grDraw (self, *args, **kwargs)-> int:
       '''grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
 
     C++ signature :
         int grDraw(class AcGePoint3d,class AcGePoint3d,int,int)'''
+    ...
+    def graphScr (self, *args, **kwargs)-> None:
+      '''graphScr() -> None :
+
+    C++ signature :
+        void graphScr()'''
+    ...
+    def initDialog (self, *args, **kwargs)-> bool:
+      '''initDialog( (bool)arg1) -> bool :
+
+    C++ signature :
+        bool initDialog(bool)'''
     ...
     def invoke (self, *args, **kwargs)-> list:
       '''invoke( (list)arg1) -> list :
@@ -615,11 +633,71 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class boost::python::list invoke(class boost::python::list)'''
     ...
+    def isDragging (self, *args, **kwargs)-> int:
+      '''isDragging() -> int :
+
+    C++ signature :
+        int isDragging()'''
+    ...
+    def isInBackgroundMode (self, *args, **kwargs)-> bool:
+      '''isInBackgroundMode() -> bool :
+
+    C++ signature :
+        bool isInBackgroundMode()'''
+    ...
+    def isInputPending (self, *args, **kwargs)-> bool:
+      '''isInputPending() -> bool :
+
+    C++ signature :
+        bool isInputPending()'''
+    ...
+    def isMenuGroupLoaded (self, *args, **kwargs)-> bool:
+      '''isMenuGroupLoaded( (str)arg1) -> bool :
+
+    C++ signature :
+        bool isMenuGroupLoaded(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def isOsnapOverride (self, *args, **kwargs)-> bool:
+      '''isOsnapOverride() -> bool :
+
+    C++ signature :
+        bool isOsnapOverride()'''
+    ...
+    def isUpdateDisplayPaused (self, *args, **kwargs)-> bool:
+      '''isUpdateDisplayPaused() -> bool :
+
+    C++ signature :
+        bool isUpdateDisplayPaused()'''
+    ...
+    def isUsrbrkDisabled (self, *args, **kwargs)-> bool:
+      '''isUsrbrkDisabled() -> bool :
+
+    C++ signature :
+        bool isUsrbrkDisabled()'''
+    ...
+    def loadJSScript (self, *args, **kwargs)-> None:
+      '''loadJSScript( (str)arg1) -> None :
+
+    C++ signature :
+        void loadJSScript(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def loadPartialMenu (self, *args, **kwargs)-> bool:
+      '''loadPartialMenu( (str)arg1) -> bool :
+
+    C++ signature :
+        bool loadPartialMenu(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def mSpace (self, *args, **kwargs)-> None:
       '''mSpace() -> None :
 
     C++ signature :
         void mSpace()'''
+    ...
+    def markForDelayXRefRelativePathResolve (self, *args, **kwargs)-> None:
+      '''markForDelayXRefRelativePathResolve( (ObjectId)arg1) -> None :
+
+    C++ signature :
+        void markForDelayXRefRelativePathResolve(class PyDbObjectId)'''
     ...
     def osnap (self, *args, **kwargs)-> PyGe.Point3d:
       '''osnap( (Point3d)arg1, (str)arg2) -> Point3d :
@@ -633,11 +711,35 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         void pSpace()'''
     ...
+    def postCommandPrompt (self, *args, **kwargs)-> None:
+      '''postCommandPrompt() -> None :
+
+    C++ signature :
+        void postCommandPrompt()'''
+    ...
+    def prompt (self, *args, **kwargs)-> int:
+      '''prompt( (str)arg1) -> int :
+
+    C++ signature :
+        int prompt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def putSym (self, *args, **kwargs)-> bool:
       '''putSym( (str)arg1, (list)arg2) -> bool :
 
     C++ signature :
         bool putSym(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::list {lvalue})'''
+    ...
+    def redraw (self, *args, **kwargs)-> int:
+      '''redraw( (ObjectId)arg1, (int)arg2) -> int :
+
+    C++ signature :
+        int redraw(class PyDbObjectId,int)'''
+    ...
+    def reloadMenus (self, *args, **kwargs)-> None:
+      '''reloadMenus( (bool)arg1) -> None :
+
+    C++ signature :
+        void reloadMenus(bool)'''
     ...
     def setEnv (self, *args, **kwargs)-> None:
       '''setEnv( (str)arg1, (str)arg2) -> None :
