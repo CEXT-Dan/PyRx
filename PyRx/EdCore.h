@@ -56,15 +56,32 @@ public:
     static void                 setEnv(const std::string& sym, const std::string& val);
     static boost::python::list  getSym(const std::string& symname);
     static bool                 putSym(const std::string& symname, boost::python::list& buf);
-
-
-    static boost::python::list  invoke(const boost::python::list& args);
+    static int                  getWinNum(int ptx, int pty);
+    static void                 graphScr();
     static boost::python::dict  getSysVars();
     static boost::python::object getVar(const std::string& sym);
     static bool                  setVar(const std::string& sym, const  boost::python::object&);
+    static int                  grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
+    static boost::python::list  invoke(const boost::python::list& args);
+    static Adesk::Boolean       initDialog(Adesk::Boolean useDialog);
+    static int                  isDragging();
+    static bool                 isInBackgroundMode();
+    static bool                 isInputPending();
+    static Adesk::Boolean       isMenuGroupLoaded(const std::string& mnu);
+    static bool                 isOsnapOverride();
+    static bool                 isUpdateDisplayPaused();
+    static bool                 isUsrbrkDisabled();
+    static void                 loadJSScript(const std::string& pUriOfJSFile);
+    static bool                 loadPartialMenu(const std::string& mnu);
+    static void                 markForDelayXRefRelativePathResolve(const PyDbObjectId& id);
+    static int                  menuCmd(const std::string& mnu);
     static void                 mSpace();
     static void                 pSpace();
-    static int                  grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
+    static void                 postCommandPrompt();
+    static int                  prompt(const std::string& str);
+    static int                  redraw(const PyDbObjectId& ent, int mode);
+    static void                 reloadMenus(bool bIncrementalReloading);
+
     static AcGePoint3d          osnap(const AcGePoint3d& pt, const std::string& mode);
     static void                 setUndoMark(bool flag);
     static bool                 showHTMLModalWindow1(UINT_PTR hwnd, const std::string & uriOfHtmlPage);
