@@ -789,6 +789,17 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class boost::python::tuple setColorDialog(int,bool,int)'''
     ...
+    def setColorDialogTrueColor (self, *args, **kwargs)-> tuple:
+      '''setColorDialogTrueColor( (Color)arg1, (bool)arg2, (Color)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple setColorDialogTrueColor(class AcCmColor,bool,class AcCmColor)
+
+setColorDialogTrueColor( (Color)arg1, (bool)arg2, (Color)arg3, (AcCmDialogTabs)arg4) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple setColorDialogTrueColor(class AcCmColor,bool,class AcCmColor,enum AcCm::DialogTabs)'''
+    ...
     def setEnv (self, *args, **kwargs)-> None:
       '''setEnv( (str)arg1, (str)arg2) -> None :
 
