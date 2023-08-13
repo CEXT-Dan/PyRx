@@ -211,6 +211,7 @@
     <ClCompile Include="PyGiTransientManager.cpp" />
     <ClCompile Include="PyGsManager.cpp" />
     <ClCompile Include="PyJig.cpp" />
+    <ClCompile Include="PyLayerFilter.cpp" />
     <ClCompile Include="PyLispService.cpp" />
     <ClCompile Include="PyRxApp.cpp" />
     <ClCompile Include="PyRxObject.cpp" />
@@ -306,6 +307,7 @@
     <ClInclude Include="PyGiTransientManager.h" />
     <ClInclude Include="PyGsManager.h" />
     <ClInclude Include="PyJig.h" />
+    <ClInclude Include="PyLayerFilter.h" />
     <ClInclude Include="PyLispService.h" />
     <ClInclude Include="PyRxApp.h" />
     <ClInclude Include="PyRxObject.h" />
