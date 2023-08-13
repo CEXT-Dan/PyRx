@@ -248,6 +248,13 @@ BOOST_PYTHON_MODULE(PyDb)
     def("curDb", curPyDb);
 
     //enums
+
+    enum_<AcCm::DialogTabs >("AcCmDialogTabs")
+        .value("kACITab", AcCm::DialogTabs::kACITab)
+        .value("kTrueColorTab", AcCm::DialogTabs::kTrueColorTab)
+        .value("kColorBookTab", AcCm::DialogTabs::kColorBookTab)
+        .export_values()
+        ;
     enum_<SplineType >("SplineType")
         .value("kFitPoints", SplineType::kFitPoints)
         .value("kControlPoints", SplineType::kControlPoints)

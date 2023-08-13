@@ -5,6 +5,16 @@ using namespace boost::python;
 
 //----------------------------------------------------------------------------------------------------
 //wrapper
+std::string AcCmColorToString(const AcCmColor& s)
+{
+    return std::format("({},{},{})", s.red(), s.green(),s.blue());
+}
+
+std::string AcCmColorToStringRepr(const AcCmColor& s)
+{
+    return std::format("<{}.Color({},{},{})>", PyDbNamespace, s.red(), s.green(), s.blue());
+}
+
 static bool AcCmColorEqualsOperator(const AcCmColor& left, const AcCmColor& right)
 {
     return left == right;
@@ -57,6 +67,8 @@ void makePyCmColorWrapper()
         //operators
         .def("__eq__", &AcCmColorEqualsOperator)
         .def("__ne__", &AcCmColorNotEqualsOperator)
+        .def("__str__", &AcCmColorToString)
+        .def("__repr__", &AcCmColorToStringRepr)
         ;
 }
 
