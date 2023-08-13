@@ -54,6 +54,8 @@ public:
     static float                getDpiScalingValue();
     static std::string          getEnv(const std::string& str);
     static void                 setEnv(const std::string& sym, const std::string& val);
+    static std::string          getCfg(const std::string& str);
+    static void                 setCfg(const std::string& sym, const std::string& val);
     static boost::python::list  getSym(const std::string& symname);
     static bool                 putSym(const std::string& symname, boost::python::list& buf);
     static int                  getWinNum(int ptx, int pty);
@@ -81,7 +83,14 @@ public:
     static int                  prompt(const std::string& str);
     static int                  redraw(const PyDbObjectId& ent, int mode);
     static void                 reloadMenus(bool bIncrementalReloading);
-
+    static void                 restoreCurrentView(const PyDbObjectId& namedViewId);
+    static void                 restorePreviousUCS();
+    static void                 restoreStatusBar();
+    static void                 sendModelessOperationEnded(const std::string& strContext);
+    static void                 sendModelessOperationStart(const std::string& strContext);
+    static boost::python::tuple setColorDialog(int color, Adesk::Boolean bAllowMetaColor, int nCurLayerColor);
+    static boost::python::tuple setColorDialogTrueColor1(const AcCmColor& color, Adesk::Boolean bAllowMetaColor, const AcCmColor& nCurLayerColor);
+    static boost::python::tuple setColorDialogTrueColor2(const AcCmColor& color, Adesk::Boolean bAllowMetaColor, const AcCmColor& nCurLayerColor, AcCm::DialogTabs tab);
     static AcGePoint3d          osnap(const AcGePoint3d& pt, const std::string& mode);
     static void                 setUndoMark(bool flag);
     static bool                 showHTMLModalWindow1(UINT_PTR hwnd, const std::string & uriOfHtmlPage);

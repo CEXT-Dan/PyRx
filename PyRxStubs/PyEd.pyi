@@ -525,6 +525,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         unsigned int getBlockEditMode()'''
     ...
+    def getCfg (self, *args, **kwargs)-> str:
+      '''getCfg( (str)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCfg(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def getCommandForDocument (self, *args, **kwargs)-> str:
       '''getCommandForDocument( (Document)arg1) -> str :
 
@@ -740,6 +746,48 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         void reloadMenus(bool)'''
+    ...
+    def restoreCurrentView (self, *args, **kwargs)-> None:
+      '''restoreCurrentView( (ObjectId)arg1) -> None :
+
+    C++ signature :
+        void restoreCurrentView(class PyDbObjectId)'''
+    ...
+    def restorePreviousUCS (self, *args, **kwargs)-> None:
+      '''restorePreviousUCS() -> None :
+
+    C++ signature :
+        void restorePreviousUCS()'''
+    ...
+    def restoreStatusBar (self, *args, **kwargs)-> None:
+      '''restoreStatusBar() -> None :
+
+    C++ signature :
+        void restoreStatusBar()'''
+    ...
+    def sendModelessOperationEnded (self, *args, **kwargs)-> None:
+      '''sendModelessOperationEnded( (str)arg1) -> None :
+
+    C++ signature :
+        void sendModelessOperationEnded(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def sendModelessOperationStart (self, *args, **kwargs)-> None:
+      '''sendModelessOperationStart( (str)arg1) -> None :
+
+    C++ signature :
+        void sendModelessOperationStart(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setCfg (self, *args, **kwargs)-> None:
+      '''setCfg( (str)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setCfg(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setColorDialog (self, *args, **kwargs)-> tuple:
+      '''setColorDialog( (int)arg1, (bool)arg2, (int)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple setColorDialog(int,bool,int)'''
     ...
     def setEnv (self, *args, **kwargs)-> None:
       '''setEnv( (str)arg1, (str)arg2) -> None :

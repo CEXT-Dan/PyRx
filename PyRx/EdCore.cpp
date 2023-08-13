@@ -72,6 +72,8 @@ void makePyEdCoreWrapper()
         .def("getCurVportScreenToDisplay", &EdCore::getCurVportScreenToDisplay).staticmethod("getCurVportScreenToDisplay")
         .def("getEnv", &EdCore::getEnv).staticmethod("getEnv")
         .def("setEnv", &EdCore::setEnv).staticmethod("setEnv")
+        .def("getCfg", &EdCore::getCfg).staticmethod("getCfg")
+        .def("setCfg", &EdCore::setCfg).staticmethod("setCfg")
         .def("getSym", &EdCore::getSym).staticmethod("getSym")
         .def("putSym", &EdCore::putSym).staticmethod("putSym")
         .def("getWinNum", &EdCore::getWinNum).staticmethod("getWinNum")
@@ -101,6 +103,15 @@ void makePyEdCoreWrapper()
         .def("osnap", &EdCore::osnap).staticmethod("osnap")
         .def("redraw", &EdCore::redraw).staticmethod("redraw")
         .def("reloadMenus", &EdCore::reloadMenus).staticmethod("reloadMenus")
+        .def("restoreCurrentView", &EdCore::restoreCurrentView).staticmethod("restoreCurrentView")
+        .def("restorePreviousUCS", &EdCore::restorePreviousUCS).staticmethod("restorePreviousUCS")
+        .def("restoreStatusBar", &EdCore::restoreStatusBar).staticmethod("restoreStatusBar")
+        .def("sendModelessOperationEnded", &EdCore::sendModelessOperationEnded).staticmethod("sendModelessOperationEnded")
+        .def("sendModelessOperationStart", &EdCore::sendModelessOperationStart).staticmethod("sendModelessOperationStart")
+        .def("setColorDialog", &EdCore::setColorDialog).staticmethod("setColorDialog")
+        .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor1)
+        .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2).staticmethod("setColorDialogTrueColor")
+
 
         .def("setUndoMark", &EdCore::setUndoMark).staticmethod("setUndoMark")
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow1)
@@ -530,6 +541,18 @@ void EdCore::setEnv(const std::string& sym, const std::string& val)
     PyThrowBadRt(acedSetEnv(utf8_to_wstr(sym).c_str(), utf8_to_wstr(val).c_str()));
 }
 
+std::string EdCore::getCfg(const std::string& str)
+{
+    std::array<wchar_t, 2048> buff = { 0 };
+    PyThrowBadRt(acedGetCfg(utf8_to_wstr(str).c_str(), buff.data(), buff.size()));
+    return wstr_to_utf8(buff.data());
+}
+
+void EdCore::setCfg(const std::string& sym, const std::string& val)
+{
+    PyThrowBadRt(acedSetCfg(utf8_to_wstr(sym).c_str(), utf8_to_wstr(val).c_str()));
+}
+
 boost::python::list EdCore::getSym(const std::string& symname)
 {
     PyAutoLockGIL lock;
@@ -823,6 +846,55 @@ void EdCore::reloadMenus(bool bIncrementalReloading)
     acedReloadMenus(bIncrementalReloading);
 }
 
+void EdCore::restoreCurrentView(const PyDbObjectId& namedViewId)
+{
+    PyThrowBadEs(acedRestoreCurrentView(namedViewId.m_id));
+}
+
+void EdCore::restorePreviousUCS()
+{
+    PyThrowBadEs(acedRestorePreviousUCS());
+}
+
+void EdCore::restoreStatusBar()
+{
+    acedRestoreStatusBar();
+}
+
+void EdCore::sendModelessOperationEnded(const std::string& strContext)
+{
+    acedSendModelessOperationEnded(utf8_to_wstr(strContext).c_str());
+}
+
+void EdCore::sendModelessOperationStart(const std::string& strContext)
+{
+    acedSendModelessOperationStart(utf8_to_wstr(strContext).c_str());
+}
+
+boost::python::tuple EdCore::setColorDialog(int color, Adesk::Boolean bAllowMetaColor, int nCurLayerColor)
+{
+    PyAutoLockGIL lock;
+    int _color = color;
+    auto flag = acedSetColorDialog(_color, bAllowMetaColor, nCurLayerColor);
+    return boost::python::make_tuple(flag, _color);
+}
+
+boost::python::tuple EdCore::setColorDialogTrueColor1(const AcCmColor& color, Adesk::Boolean bAllowMetaColor, const AcCmColor& nCurLayerColor)
+{
+    PyAutoLockGIL lock;
+    AcCmColor _color = color;
+    auto flag = acedSetColorDialogTrueColor(_color, bAllowMetaColor, nCurLayerColor);
+    return boost::python::make_tuple(flag, _color);
+}
+
+boost::python::tuple EdCore::setColorDialogTrueColor2(const AcCmColor& color, Adesk::Boolean bAllowMetaColor, const AcCmColor& nCurLayerColor, AcCm::DialogTabs tab)
+{
+    PyAutoLockGIL lock;
+    AcCmColor _color = color;
+    auto flag = acedSetColorDialogTrueColor(_color, bAllowMetaColor, nCurLayerColor, tab);
+    return boost::python::make_tuple(flag, _color);
+}
+
 int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight)
 {
     return acedGrDraw(asDblArray(from), asDblArray(to), colorIndex, highlight);
@@ -830,7 +902,6 @@ int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorInde
 
 AcGePoint3d EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)
 {
-    PyAutoLockGIL lock;
     AcGePoint3d result;
     PyThrowBadRt(acedOsnap(asDblArray(pt), utf8_to_wstr(mode).c_str(), asDblArray(result)));
     return result;
