@@ -6,6 +6,8 @@
 #include "acedCmdNF.h"
 #include "PyDbMText.h"
 #include "PyApDocument.h"
+#include "PyDbViewport.h"
+#include "PyDbSymbolTableRecord.h"
 #include "rxvar.h"
 
 #ifdef ARXAPP
@@ -111,13 +113,19 @@ void makePyEdCoreWrapper()
         .def("setColorDialog", &EdCore::setColorDialog).staticmethod("setColorDialog")
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor1)
         .def("setColorDialogTrueColor", &EdCore::setColorDialogTrueColor2).staticmethod("setColorDialogTrueColor")
-
-
+        .def("setCurrentView", &EdCore::setCurrentView).staticmethod("setCurrentView")
+        .def("setCurrentVPort", &EdCore::setCurrentVPort).staticmethod("setCurrentVPort")
+        .def("setStatusBarProgressMeter", &EdCore::setStatusBarProgressMeter).staticmethod("setStatusBarProgressMeter")
+        .def("setStatusBarProgressMeterPos", &EdCore::setStatusBarProgressMeterPos).staticmethod("setStatusBarProgressMeterPos")
+        .def("setXrefResolvedWithUpdateStatus", &EdCore::setXrefResolvedWithUpdateStatus).staticmethod("setXrefResolvedWithUpdateStatus")
         .def("setUndoMark", &EdCore::setUndoMark).staticmethod("setUndoMark")
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow1)
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow2).staticmethod("showHTMLModalWindow")
         .def("showHTMLModelessWindow", &EdCore::showHTMLModelessWindow1)
         .def("showHTMLModelessWindow", &EdCore::showHTMLModelessWindow2).staticmethod("showHTMLModelessWindow")
+        .def("skipXrefNotification", &EdCore::skipXrefNotification).staticmethod("skipXrefNotification")
+
+
         .def("update", &EdCore::update).staticmethod("update")
         .def("updateDisplay", &EdCore::updateDisplay).staticmethod("updateDisplay")
         .def("updateDisplayPause", &EdCore::updateDisplayPause).staticmethod("updateDisplayPause")
@@ -916,6 +924,35 @@ void EdCore::setUndoMark(bool flag)
 #endif
 }
 
+void EdCore::setCurrentView(const PyDbViewTableRecord& vrec, const PyDbViewport& vp)
+{
+    return PyThrowBadEs(acedSetCurrentView(vrec.impObj(), vp.impObj()));
+}
+
+void EdCore::setCurrentVPort(const PyDbViewport& vp)
+{
+    return PyThrowBadEs(acedSetCurrentVPort(vp.impObj()));
+}
+
+int EdCore::setStatusBarProgressMeter(const std::string& pszLabel, int nMinPos, int nMaxPos)
+{
+    return acedSetStatusBarProgressMeter(utf8_to_wstr(pszLabel).c_str(), nMinPos, nMaxPos);
+}
+
+int EdCore::setStatusBarProgressMeterPos(int pos)
+{
+    return acedSetStatusBarProgressMeterPos(pos);
+}
+
+void EdCore::setXrefResolvedWithUpdateStatus(const PyDbBlockTableRecord& rec)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return PyThrowBadEs(acedSetXrefResolvedWithUpdateStatus(rec.impObj()));
+#endif
+}
+
 bool EdCore::showHTMLModalWindow1(UINT_PTR hwnd, const std::string& uriOfHtmlPage)
 {
 #ifndef ARXAPP
@@ -949,6 +986,15 @@ UINT_PTR EdCore::showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriO
     throw PyNotimplementedByHost();
 #else
     return (UINT_PTR)acedShowHTMLModelessWindow((HWND)owner, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
+#endif
+}
+
+void EdCore::skipXrefNotification(PyDbDatabase& db, const std::string& xrefName)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(acedSkipXrefNotification(db.impObj(), utf8_to_wstr(xrefName).c_str()));
 #endif
 }
 

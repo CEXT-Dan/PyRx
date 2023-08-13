@@ -3,9 +3,11 @@ class PyDbObjectId;
 class PyDbDatabase;
 class PyDbMText;
 class PyApDocument;
-void makePyEdCoreWrapper();
+class PyDbBlockTableRecord;
+class PyDbViewTableRecord;
+class PyDbViewport;
 
-//acedSetUndoMark
+void makePyEdCoreWrapper();
 
 class EdCore
 {
@@ -93,10 +95,17 @@ public:
     static boost::python::tuple setColorDialogTrueColor2(const AcCmColor& color, Adesk::Boolean bAllowMetaColor, const AcCmColor& nCurLayerColor, AcCm::DialogTabs tab);
     static AcGePoint3d          osnap(const AcGePoint3d& pt, const std::string& mode);
     static void                 setUndoMark(bool flag);
+    static void                 setCurrentView(const PyDbViewTableRecord& vrec, const PyDbViewport& vp);
+    static void                 setCurrentVPort(const PyDbViewport& vp);
+    static int                  setStatusBarProgressMeter(const std::string& pszLabel, int nMinPos, int nMaxPos);
+    static int                  setStatusBarProgressMeterPos(int pos);
+    static void                 setXrefResolvedWithUpdateStatus(const PyDbBlockTableRecord& rec);
     static bool                 showHTMLModalWindow1(UINT_PTR hwnd, const std::string & uriOfHtmlPage);
     static bool                 showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPage, bool persistSizeAndPosition);
     static UINT_PTR             showHTMLModelessWindow1(UINT_PTR owner, const std::string& uriOfHtmlPage);
     static UINT_PTR             showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriOfHtmlPage, bool persistSizeAndPosition);
+    static void                 skipXrefNotification(PyDbDatabase& db, const std::string& xrefName);
+
     static int                  update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2);
     static void                 updateDisplay();
     static void                 updateDisplayPause(bool bEnable);
