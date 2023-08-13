@@ -15,7 +15,6 @@ public:
     inline virtual ~PyLyLayerFilter() = default;
     static PyRxClass    desc();
     static std::string  className();
-
 public:
     inline AcLyLayerFilter* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -31,7 +30,6 @@ public:
     inline virtual ~PyLyLayerGroup() = default;
     static PyRxClass    desc();
     static std::string  className();
-
 public:
     inline AcLyLayerGroup* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -46,8 +44,8 @@ public:
     PyLayerFilterManager();
     PyLayerFilterManager(PyDbDatabase& db);
     virtual ~PyLayerFilterManager() = default;
-    boost::python::list getFilters();
-    void setFilters(boost::python::list& pyList);
+    boost::python::tuple getFilters();
+    void setFilters(boost::python::tuple& pyList);
 public:
     AcLyLayerFilterManager* imp = nullptr;
 };

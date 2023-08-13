@@ -7,6 +7,7 @@
 #include "PyDbTransactionManager.h"
 #include "PyApLayoutManager.h"
 #include "PyUiPalette.h"
+#include "PyLayerFilter.h"
 
 using namespace boost::python;
 
@@ -92,6 +93,9 @@ BOOST_PYTHON_MODULE(PyAp)
     makePyApDocManagerReactorWrapper();
     makePyApLayoutManagerWrapper();
     makePyCAdUiPaletteSetWrapper();
+    makePyLyLayerFilterWrapper();
+    makePyLyLayerGroupWrapper();
+    makePyLayerFilterManagerWrapper();
 
     def("curDoc", curPyDoc);
 };

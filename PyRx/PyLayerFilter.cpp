@@ -55,7 +55,6 @@ void makePyLyLayerGroupWrapper()
         ;
 }
 
-
 PyLyLayerGroup::PyLyLayerGroup()
     : PyLyLayerGroup(new AcLyLayerGroup(),true)
 {
@@ -87,7 +86,7 @@ AcLyLayerGroup* PyLyLayerGroup::impObj(const std::source_location& src /*= std::
 //PyLayerFilterManager
 void makePyLayerFilterManagerWrapper()
 {
-    class_<PyLayerFilterManager>(":LayerFilterManager")
+    class_<PyLayerFilterManager>("LayerFilterManager")
         .def(init<>())
         .def(init<PyDbDatabase&>())
         .def("getFilters", &PyLayerFilterManager::getFilters)
@@ -103,18 +102,23 @@ PyLayerFilterManager::PyLayerFilterManager()
 PyLayerFilterManager::PyLayerFilterManager(PyDbDatabase& db)
     : imp(aclyGetLayerFilterManager(db.impObj()))
 {
-
 }
 
-boost::python::list PyLayerFilterManager::getFilters()
+boost::python::tuple PyLayerFilterManager::getFilters()
 {
     PyAutoLockGIL lock;
-    boost::python::list pyList;
-    //
-    return pyList;
+    AcLyLayerFilter* root = nullptr;
+    AcLyLayerFilter* current = nullptr;
+    PyThrowBadEs(imp->getFilters(root, current));
+    return boost::python::make_tuple(PyLyLayerFilter(root, true), PyLyLayerFilter(current, false));
 }
 
-void PyLayerFilterManager::setFilters(boost::python::list& pyList)
+void PyLayerFilterManager::setFilters(boost::python::tuple& tpl)
 {
-    //
+    const size_t tplSize = boost::python::len(tpl);
+    if (tplSize != 2)
+        PyThrowBadEs(eInvalidInput);
+    PyLyLayerFilter root = extract<PyLyLayerFilter>(tpl[0]);
+    PyLyLayerFilter current = extract<PyLyLayerFilter>(tpl[1]);
+    PyThrowBadEs(imp->setFilters(root.impObj(), current.impObj()));
 }
