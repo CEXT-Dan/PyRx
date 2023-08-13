@@ -800,11 +800,35 @@ setColorDialogTrueColor( (Color)arg1, (bool)arg2, (Color)arg3, (AcCmDialogTabs)a
     C++ signature :
         class boost::python::tuple setColorDialogTrueColor(class AcCmColor,bool,class AcCmColor,enum AcCm::DialogTabs)'''
     ...
+    def setCurrentVPort (self, *args, **kwargs)-> None:
+      '''setCurrentVPort( (Viewport)arg1) -> None :
+
+    C++ signature :
+        void setCurrentVPort(class PyDbViewport)'''
+    ...
+    def setCurrentView (self, *args, **kwargs)-> None:
+      '''setCurrentView( (ViewTableRecord)arg1, (Viewport)arg2) -> None :
+
+    C++ signature :
+        void setCurrentView(class PyDbViewTableRecord,class PyDbViewport)'''
+    ...
     def setEnv (self, *args, **kwargs)-> None:
       '''setEnv( (str)arg1, (str)arg2) -> None :
 
     C++ signature :
         void setEnv(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setStatusBarProgressMeter (self, *args, **kwargs)-> int:
+      '''setStatusBarProgressMeter( (str)arg1, (int)arg2, (int)arg3) -> int :
+
+    C++ signature :
+        int setStatusBarProgressMeter(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)'''
+    ...
+    def setStatusBarProgressMeterPos (self, *args, **kwargs)-> int:
+      '''setStatusBarProgressMeterPos( (int)arg1) -> int :
+
+    C++ signature :
+        int setStatusBarProgressMeterPos(int)'''
     ...
     def setUndoMark (self, *args, **kwargs)-> None:
       '''setUndoMark( (bool)arg1) -> None :
@@ -817,6 +841,12 @@ setColorDialogTrueColor( (Color)arg1, (bool)arg2, (Color)arg3, (AcCmDialogTabs)a
 
     C++ signature :
         bool setVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object)'''
+    ...
+    def setXrefResolvedWithUpdateStatus (self, *args, **kwargs)-> None:
+      '''setXrefResolvedWithUpdateStatus( (BlockTableRecord)arg1) -> None :
+
+    C++ signature :
+        void setXrefResolvedWithUpdateStatus(class PyDbBlockTableRecord)'''
     ...
     def showHTMLModalWindow (self, *args, **kwargs)-> bool:
       '''showHTMLModalWindow( (int)arg1, (str)arg2) -> bool :
@@ -839,6 +869,12 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
 
     C++ signature :
         unsigned __int64 showHTMLModelessWindow(unsigned __int64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    ...
+    def skipXrefNotification (self, *args, **kwargs)-> None:
+      '''skipXrefNotification( (Database)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void skipXrefNotification(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def update (self, *args, **kwargs)-> int:
       '''update( (int)arg1, (Point2d)arg2, (Point2d)arg3) -> int :

@@ -1244,6 +1244,116 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
 
+class LayerFilter:
+    def __init__ (self, *args, **kwargs)-> None:
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className ()-> str:
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int:
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
+      '''                             '''
+    ...
+
+class LayerFilterManager:
+    def __init__ (self, *args, **kwargs)-> None:
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Database)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbDatabase {lvalue})'''
+    ...
+    def getFilters (self, *args, **kwargs)-> tuple:
+      '''getFilters( (LayerFilterManager)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getFilters(class PyLayerFilterManager {lvalue})'''
+    ...
+    def setFilters (self, *args, **kwargs)-> None:
+      '''setFilters( (LayerFilterManager)arg1, (tuple)arg2) -> None :
+
+    C++ signature :
+        void setFilters(class PyLayerFilterManager {lvalue},class boost::python::tuple {lvalue})'''
+    ...
+
+class LayerGroup:
+    def __init__ (self, *args, **kwargs)-> None:
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className ()-> str:
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int:
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
+      '''                             '''
+    ...
+
 class LayoutManager:
     def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
