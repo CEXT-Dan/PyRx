@@ -274,6 +274,9 @@
     <ClCompile Include="PyDbSpline.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyLayerFilter.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -551,6 +554,9 @@
     </ClInclude>
     <ClInclude Include="PyDbSpline.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyLayerFilter.h">
+      <Filter>Header Files\PyAp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
