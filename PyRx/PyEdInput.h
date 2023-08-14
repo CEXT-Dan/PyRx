@@ -89,7 +89,6 @@ public:
     PyEdInputPointFilterImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //---------------------------------------------------------------------------------
 //PyEdInputPointMonitor
 void makePyEdInputPointMonitorWrapper();

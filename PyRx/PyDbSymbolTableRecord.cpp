@@ -1340,14 +1340,14 @@ boost::python::list PyDbBlockTableRecord::objectIds()
     PyAutoLockGIL lock;
     boost::python::list pyList;
     auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-    if (es == eOk)
+    if (es != eOk)
+        return pyList;
+
+    PyDbObjectId id;
+    for (iter->start(); !iter->done(); iter->step())
     {
-        PyDbObjectId id;
-        for (iter->start(); !iter->done(); iter->step())
-        {
-            if (iter->getEntityId(id.m_id) == eOk)
-                pyList.append(id);
-        }
+        if (iter->getEntityId(id.m_id) == eOk)
+            pyList.append(id);
     }
     return pyList;
 }
@@ -1358,17 +1358,15 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfType(const PyRxClass& _clas
     boost::python::list pyList;
     const auto _desc = _class.impObj();
     auto [es, iter] = makeBlockTableRecordIterator(*impObj());
-    if (es == eOk)
+    if (es != eOk)
+        return pyList;
+
+    PyDbObjectId id;
+    for (iter->start(); !iter->done(); iter->step())
     {
-        PyDbObjectId id;
-        for (iter->start(); !iter->done(); iter->step())
-        {
-            if (iter->getEntityId(id.m_id) == eOk)
-            {
-                if (id.m_id.objectClass()->isDerivedFrom(_desc))
-                    pyList.append(id);
-            }
-        }
+        if (const auto es = iter->getEntityId(id.m_id);
+            es == eOk && id.m_id.objectClass()->isDerivedFrom(_desc))
+            pyList.append(id);
     }
     return pyList;
 }
