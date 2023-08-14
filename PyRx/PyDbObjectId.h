@@ -42,6 +42,7 @@ inline boost::python::list ObjectIdArrayToPyList(const AcDbObjectIdArray& arr)
     return pyList;
 }
 
+//TODO see if we can avoid the copy
 inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iterable)
 {
     AcDbObjectIdArray arr;

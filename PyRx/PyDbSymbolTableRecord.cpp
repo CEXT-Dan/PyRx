@@ -1330,9 +1330,9 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id)
 
 PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
 {
-    AcDbObjectId _id;
-    PyThrowBadEs(impObj()->appendAcDbEntity(_id, ent.impObj()));
-    return PyDbObjectId(_id);
+    PyDbObjectId id;
+    PyThrowBadEs(impObj()->appendAcDbEntity(id.m_id, ent.impObj()));
+    return id;
 }
 
 boost::python::list PyDbBlockTableRecord::objectIds()
@@ -1520,35 +1520,23 @@ void PyDbBlockTableRecord::setLayoutId(const PyDbObjectId& id)
 
 boost::python::list PyDbBlockTableRecord::getBlockReferenceIds1()
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
-    boost::python::list lids;
     impObj()->getBlockReferenceIds(ids);
-    for (const auto& item : ids)
-        lids.append(PyDbObjectId(item));
-    return lids;
+    return ObjectIdArrayToPyList(ids);
 }
 
 boost::python::list PyDbBlockTableRecord::getBlockReferenceIds2(bool bDirectOnly, bool bForceValidity)
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
-    boost::python::list lids;
     impObj()->getBlockReferenceIds(ids, bDirectOnly, bForceValidity);
-    for (const auto& item : ids)
-        lids.append(PyDbObjectId(item));
-    return lids;
+    return ObjectIdArrayToPyList(ids);
 }
 
 boost::python::list PyDbBlockTableRecord::getErasedBlockReferenceIds()
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
-    boost::python::list lids;
     impObj()->getErasedBlockReferenceIds(ids);
-    for (const auto& item : ids)
-        lids.append(PyDbObjectId(item));
-    return lids;
+    return ObjectIdArrayToPyList(ids);
 }
 
 PyDbDatabase PyDbBlockTableRecord::xrefDatabase(bool incUnres) const
@@ -1574,10 +1562,7 @@ AcDb::XrefStatus PyDbBlockTableRecord::xrefStatus() const
 void PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::list& entitiesToMove)
 {
     PyAutoLockGIL lock;
-    const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(entitiesToMove);
-    AcDbObjectIdArray ids;
-    for (const auto& pyId : PyDbObjectIds)
-        ids.append(pyId.m_id);
+    AcDbObjectIdArray ids = PyListToObjectIdArray(entitiesToMove);
     return PyThrowBadEs(impObj()->assumeOwnershipOf(ids));
 }
 
