@@ -37,7 +37,7 @@ void makePyLyLayerFilterWrapper()
 }
 
 PyLyLayerFilter::PyLyLayerFilter()
-    : PyRxObject(new AcLyLayerFilter(),true,false)
+    : PyRxObject(new AcLyLayerFilter(), true, false)
 {
 }
 
@@ -70,9 +70,9 @@ boost::python::list PyLyLayerFilter::getNestedFilters() const
 {
     PyAutoLockGIL lock;
     boost::python::list pyFilters;
-    const auto&filters = impObj()->getNestedFilters();
+    const auto& filters = impObj()->getNestedFilters();
     for (auto filter : filters)
-        pyFilters.append(PyLyLayerFilter(filter,false));
+        pyFilters.append(PyLyLayerFilter(filter, false));
     return pyFilters;
 }
 
@@ -174,7 +174,7 @@ void makePyLyLayerGroupWrapper()
 }
 
 PyLyLayerGroup::PyLyLayerGroup()
-    : PyLyLayerGroup(new AcLyLayerGroup(),true)
+    : PyLyLayerGroup(new AcLyLayerGroup(), true)
 {
 }
 

@@ -316,9 +316,9 @@ resbuf* acGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArray)
     resbuf* lastRb = NULL;        // place holder to end of list
     resbuf* rb;
     int len = ptArray.length();
-    for (int i = 0; i < len; i++) 
+    for (int i = 0; i < len; i++)
     {
-        if ((rb = acutNewRb(RT3DPOINT)) == NULL) 
+        if ((rb = acutNewRb(RT3DPOINT)) == NULL)
         {
             acutRelRb(ptList);
             return NULL;
@@ -327,12 +327,12 @@ resbuf* acGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArray)
         rb->resval.rpoint[0] = p.x;
         rb->resval.rpoint[1] = p.y;
         rb->resval.rpoint[2] = p.z;
-        if (ptList == NULL) 
+        if (ptList == NULL)
         {
             ptList = rb;
             lastRb = rb;
         }
-        else 
+        else
         {
             lastRb->rbnext = rb;
             lastRb = rb;

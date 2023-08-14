@@ -18,19 +18,19 @@ void makePyApDocumentWrapper()
         .def("fileName", &PyApDocument::fileName, DS.ARGS())
         .def("formatForSave", &PyApDocument::formatForSave, DS.ARGS())
         .def("lockMode", &PyApDocument::lockMode1)
-        .def("lockMode", &PyApDocument::lockMode2, DS.ARGS({"bIncludeMyLocks : bool=False"}))
-        .def("myLockMode", &PyApDocument::myLockMode,DS.ARGS())
+        .def("lockMode", &PyApDocument::lockMode2, DS.ARGS({ "bIncludeMyLocks : bool=False" }))
+        .def("myLockMode", &PyApDocument::myLockMode, DS.ARGS())
         .def("isQuiescent", &PyApDocument::isQuiescent, DS.ARGS())
         .def("docTitle", &PyApDocument::docTitle, DS.ARGS())
-        .def("setDocTitle", &PyApDocument::setDocTitle, DS.ARGS({"title : str"}))
+        .def("setDocTitle", &PyApDocument::setDocTitle, DS.ARGS({ "title : str" }))
         .def("getCountOfLispList", &PyApDocument::getCountOfLispList, DS.ARGS())
-        .def("getItemOfLispList", &PyApDocument::getItemOfLispList, DS.ARGS({"index : int"}))
+        .def("getItemOfLispList", &PyApDocument::getItemOfLispList, DS.ARGS({ "index : int" }))
         .def("isCommandInputInactive", &PyApDocument::isCommandInputInactive, DS.ARGS())
         .def("pushDbmod", &PyApDocument::pushDbmod, DS.ARGS())
         .def("popDbmod", &PyApDocument::popDbmod, DS.ARGS())
         .def("upgradeDocOpen", &PyApDocument::upgradeDocOpen, DS.ARGS())
-        .def("downgradeDocOpen", &PyApDocument::downgradeDocOpen, DS.ARGS({"promptForSave : bool"}))
-        .def("transactionManager", &PyApDocument::transactionManager,  DS.ARGS())
+        .def("downgradeDocOpen", &PyApDocument::downgradeDocOpen, DS.ARGS({ "promptForSave : bool" }))
+        .def("transactionManager", &PyApDocument::transactionManager, DS.ARGS())
         .def("inputPointManager", &PyApDocument::inputPointManager, DS.ARGS())
         //static
         .def("docWnd", &PyApDocument::docWnd, DS.SARGS()).staticmethod("docWnd")
@@ -203,5 +203,5 @@ AcApDocument* PyApDocument::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcApDocument*>(m_pyImp.get());
+        return static_cast<AcApDocument*>(m_pyImp.get());
 }
