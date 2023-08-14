@@ -1012,19 +1012,13 @@ void PyDbViewport::removeHiddenLines2(bool val)
 
 void PyDbViewport::freezeLayersInViewport(const boost::python::list& pyids)
 {
-    AcDbObjectIdArray ids;
-    auto vec = py_list_to_std_vector<PyDbObjectId>(pyids);
-    for (auto& id : vec)
-        ids.append(id.m_id);
+    AcDbObjectIdArray ids = PyListToObjectIdArray(pyids);
     return PyThrowBadEs(impObj()->freezeLayersInViewport(ids));
 }
 
 void PyDbViewport::thawLayersInViewport(const boost::python::list& pyids)
 {
-    AcDbObjectIdArray ids;
-    auto vec = py_list_to_std_vector<PyDbObjectId>(pyids);
-    for (auto& id : vec)
-        ids.append(id.m_id);
+    AcDbObjectIdArray ids = PyListToObjectIdArray(pyids);
     return PyThrowBadEs(impObj()->thawLayersInViewport(ids));
 }
 
@@ -1040,13 +1034,9 @@ bool PyDbViewport::isLayerFrozenInViewport(const PyDbObjectId& layerId) const
 
 boost::python::list PyDbViewport::getFrozenLayerList() const
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
-    boost::python::list pyids;
     PyThrowBadEs(impObj()->getFrozenLayerList(ids));
-    for (auto& id : ids)
-        pyids.append(PyDbObjectId(id));
-    return pyids;
+    return ObjectIdArrayToPyList(ids);
 }
 
 void PyDbViewport::updateDisplay() const
@@ -1445,5 +1435,5 @@ AcDbViewport* PyDbViewport::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbViewport*>(m_pyImp.get());
+        return static_cast<AcDbViewport*>(m_pyImp.get());
 }

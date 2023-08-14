@@ -347,21 +347,12 @@ double PyDbUnderlayReference::height() const
 
 boost::python::list PyDbUnderlayReference::clipBoundary() const
 {
-    PyAutoLockGIL lock;
-    boost::python::list result;
-    const AcGePoint2dArray& clip = impObj()->clipBoundary();
-    for (auto& item : clip)
-        result.append(item);
-    return result;
+    return Point2dArrayToPyList(impObj()->clipBoundary());
 }
 
 void PyDbUnderlayReference::setClipBoundary(const boost::python::list& clip)
 {
-    AcGePoint2dArray _clip;
-    auto pnts = py_list_to_std_vector<AcGePoint2d>(clip);
-    for (auto& item : pnts)
-        _clip.append(item);
-    return PyThrowBadEs(impObj()->setClipBoundary(_clip));
+    return PyThrowBadEs(impObj()->setClipBoundary(PyListToPoint2dArray(clip)));
 }
 
 bool PyDbUnderlayReference::isClipped() const
