@@ -949,11 +949,7 @@ boost::python::list PyDbDatabase::getViewportArray() const
 {
     AcDbObjectIdArray vportIds;
     PyThrowBadEs(impObj()->getViewportArray(vportIds));
-    PyAutoLockGIL lock;
-    boost::python::list pyvportIds;
-    for (auto& item : vportIds)
-        pyvportIds.append(PyDbObjectId(item));
-    return pyvportIds;
+    return ObjectIdArrayToPyList(vportIds);
 }
 
 boost::python::list PyDbDatabase::getVisualStyleList()
@@ -1605,14 +1601,9 @@ AcGeVector3d PyDbDatabase::pucsydir() const
 
 boost::python::list PyDbDatabase::purge()
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
-    boost::python::list pyids;
-    if (auto es = impObj()->purge(ids); es != eOk)
-        throw PyAcadErrorStatus(es);
-    for (const auto& id : ids)
-        pyids.append(PyDbObjectId(id));
-    return pyids;
+    PyThrowBadEs(impObj()->purge(ids));
+    return ObjectIdArrayToPyList(ids);
 }
 
 bool PyDbDatabase::qtextmode() const
@@ -1622,11 +1613,7 @@ bool PyDbDatabase::qtextmode() const
 
 void PyDbDatabase::reclaimMemoryFromErasedObjects(const boost::python::list& erasedObjects)
 {
-    PyAutoLockGIL lock;
-    const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(erasedObjects);
-    AcDbObjectIdArray ids;
-    for (const auto& pyId : PyDbObjectIds)
-        ids.append(pyId.m_id);
+    const AcDbObjectIdArray ids = PyListToObjectIdArray(erasedObjects);
     return PyThrowBadEs(impObj()->reclaimMemoryFromErasedObjects(ids));
 }
 
@@ -3195,12 +3182,7 @@ void PyDbDatabase::wblock3(PyDbDatabase& pOutputDb, const PyDbObjectId& blockId)
 
 void PyDbDatabase::wblock2(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint)
 {
-    PyAutoLockGIL lock;
-    //TODO: maybe we can do better
-    const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(outObjIds);
-    AcDbObjectIdArray ids;
-    for (const auto& pyId : PyDbObjectIds)
-        ids.append(pyId.m_id);
+    AcDbObjectIdArray ids = PyListToObjectIdArray(outObjIds);
     AcDbDatabase* _pOutputDb = nullptr;
     PyThrowBadEs(impObj()->wblock(_pOutputDb, ids, basePoint));
     pOutputDb = PyDbDatabase(_pOutputDb, true);
@@ -3211,14 +3193,8 @@ void PyDbDatabase::wblock1(PyDbDatabase& pOutputDb, const boost::python::list& o
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
-    PyAutoLockGIL lock;
-    //TODO: maybe we can do better
-    const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(outObjIds);
-    AcDbObjectIdArray ids;
-    for (const auto& pyId : PyDbObjectIds)
-        ids.append(pyId.m_id);
-    AcDbDatabase* pDb = pOutputDb.impObj();
-    PyThrowBadEs(impObj()->wblock(pDb, ids, basePoint, drc));
+    AcDbObjectIdArray ids = PyListToObjectIdArray(outObjIds);
+    PyThrowBadEs(impObj()->wblock(pOutputDb.impObj(), ids, basePoint, drc));
 #endif
 }
 
