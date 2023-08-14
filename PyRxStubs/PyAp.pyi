@@ -1256,8 +1256,38 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+    def addNested (self, *args, **kwargs)-> None:
+      '''addNested( (LayerFilter)arg1, (LayerFilter)arg2) -> None :
+
+    C++ signature :
+        void addNested(class PyLyLayerFilter {lvalue},class PyLyLayerFilter {lvalue})'''
+    ...
+    def allowDelete (self, *args, **kwargs)-> bool:
+      '''allowDelete( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool allowDelete(class PyLyLayerFilter {lvalue})'''
+    ...
+    def allowNested (self, *args, **kwargs)-> bool:
+      '''allowNested( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool allowNested(class PyLyLayerFilter {lvalue})'''
+    ...
+    def allowRename (self, *args, **kwargs)-> bool:
+      '''allowRename( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool allowRename(class PyLyLayerFilter {lvalue})'''
+    ...
     def className ()-> str:
       '''                             '''
+    ...
+    def compareTo (self, *args, **kwargs)-> bool:
+      '''compareTo( (LayerFilter)arg1, (LayerFilter)arg2) -> bool :
+
+    C++ signature :
+        bool compareTo(class PyLyLayerFilter {lvalue},class PyLyLayerFilter)'''
     ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
@@ -1265,11 +1295,47 @@ __init__( (object)arg1) -> None :
     def dispose (self: RxObject)-> None:
       '''                             '''
     ...
+    def dynamicallyGenerated (self, *args, **kwargs)-> bool:
+      '''dynamicallyGenerated( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool dynamicallyGenerated(class PyLyLayerFilter {lvalue})'''
+    ...
+    def filter (self, *args, **kwargs)-> bool:
+      '''filter( (LayerFilter)arg1, (LayerTableRecord)arg2) -> bool :
+
+    C++ signature :
+        bool filter(class PyLyLayerFilter {lvalue},class PyDbLayerTableRecord {lvalue})'''
+    ...
+    def filterExpression (self, *args, **kwargs)-> str:
+      '''filterExpression( (LayerFilter)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > filterExpression(class PyLyLayerFilter {lvalue})'''
+    ...
+    def generateNested (self, *args, **kwargs)-> None:
+      '''generateNested( (LayerFilter)arg1) -> None :
+
+    C++ signature :
+        void generateNested(class PyLyLayerFilter {lvalue})'''
+    ...
+    def getNestedFilters (self, *args, **kwargs)-> list:
+      '''getNestedFilters( (LayerFilter)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getNestedFilters(class PyLyLayerFilter {lvalue})'''
+    ...
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
+    ...
+    def isIdFilter (self, *args, **kwargs)-> bool:
+      '''isIdFilter( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool isIdFilter(class PyLyLayerFilter {lvalue})'''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
@@ -1277,11 +1343,53 @@ __init__( (object)arg1) -> None :
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
+    def isProxy (self, *args, **kwargs)-> bool:
+      '''isProxy( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool isProxy(class PyLyLayerFilter {lvalue})'''
+    ...
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
+    def name (self, *args, **kwargs)-> str:
+      '''name( (LayerFilter)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyLyLayerFilter {lvalue})'''
+    ...
+    def parent (self, *args, **kwargs)-> PyAp.LayerFilter:
+      '''parent( (LayerFilter)arg1) -> LayerFilter :
+
+    C++ signature :
+        class PyLyLayerFilter parent(class PyLyLayerFilter {lvalue})'''
+    ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
+    ...
+    def removeNested (self, *args, **kwargs)-> None:
+      '''removeNested( (LayerFilter)arg1, (LayerFilter)arg2) -> None :
+
+    C++ signature :
+        void removeNested(class PyLyLayerFilter {lvalue},class PyLyLayerFilter {lvalue})'''
+    ...
+    def setFilterExpression (self, *args, **kwargs)-> None:
+      '''setFilterExpression( (LayerFilter)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setFilterExpression(class PyLyLayerFilter {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setName (self, *args, **kwargs)-> None:
+      '''setName( (LayerFilter)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setName(class PyLyLayerFilter {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def showEditor (self, *args, **kwargs)-> int:
+      '''showEditor( (LayerFilter)arg1) -> int :
+
+    C++ signature :
+        int showEditor(class PyLyLayerFilter {lvalue})'''
     ...
 
 class LayerFilterManager:
@@ -1311,7 +1419,12 @@ __init__( (object)arg1, (Database)arg2) -> None :
       '''setFilters( (LayerFilterManager)arg1, (tuple)arg2) -> None :
 
     C++ signature :
-        void setFilters(class PyLayerFilterManager {lvalue},class boost::python::tuple {lvalue})'''
+        void setFilters(class PyLayerFilterManager {lvalue},class boost::python::tuple {lvalue})
+
+setFilters( (LayerFilterManager)arg1, (LayerFilter)arg2, (LayerFilter)arg3) -> None :
+
+    C++ signature :
+        void setFilters(class PyLayerFilterManager {lvalue},class PyLyLayerFilter {lvalue},class PyLyLayerFilter {lvalue})'''
     ...
 
 class LayerGroup:
@@ -1326,8 +1439,44 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+    def addLayerId (self, *args, **kwargs)-> None:
+      '''addLayerId( (LayerGroup)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void addLayerId(class PyLyLayerGroup {lvalue},class PyDbObjectId)'''
+    ...
+    def addNested (self, *args, **kwargs)-> None:
+      '''addNested( (LayerFilter)arg1, (LayerFilter)arg2) -> None :
+
+    C++ signature :
+        void addNested(class PyLyLayerFilter {lvalue},class PyLyLayerFilter {lvalue})'''
+    ...
+    def allowDelete (self, *args, **kwargs)-> bool:
+      '''allowDelete( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool allowDelete(class PyLyLayerFilter {lvalue})'''
+    ...
+    def allowNested (self, *args, **kwargs)-> bool:
+      '''allowNested( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool allowNested(class PyLyLayerFilter {lvalue})'''
+    ...
+    def allowRename (self, *args, **kwargs)-> bool:
+      '''allowRename( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool allowRename(class PyLyLayerFilter {lvalue})'''
+    ...
     def className ()-> str:
       '''                             '''
+    ...
+    def compareTo (self, *args, **kwargs)-> bool:
+      '''compareTo( (LayerFilter)arg1, (LayerFilter)arg2) -> bool :
+
+    C++ signature :
+        bool compareTo(class PyLyLayerFilter {lvalue},class PyLyLayerFilter)'''
     ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
@@ -1335,11 +1484,47 @@ __init__( (object)arg1) -> None :
     def dispose (self: RxObject)-> None:
       '''                             '''
     ...
+    def dynamicallyGenerated (self, *args, **kwargs)-> bool:
+      '''dynamicallyGenerated( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool dynamicallyGenerated(class PyLyLayerFilter {lvalue})'''
+    ...
+    def filter (self, *args, **kwargs)-> bool:
+      '''filter( (LayerFilter)arg1, (LayerTableRecord)arg2) -> bool :
+
+    C++ signature :
+        bool filter(class PyLyLayerFilter {lvalue},class PyDbLayerTableRecord {lvalue})'''
+    ...
+    def filterExpression (self, *args, **kwargs)-> str:
+      '''filterExpression( (LayerFilter)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > filterExpression(class PyLyLayerFilter {lvalue})'''
+    ...
+    def generateNested (self, *args, **kwargs)-> None:
+      '''generateNested( (LayerFilter)arg1) -> None :
+
+    C++ signature :
+        void generateNested(class PyLyLayerFilter {lvalue})'''
+    ...
+    def getNestedFilters (self, *args, **kwargs)-> list:
+      '''getNestedFilters( (LayerFilter)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getNestedFilters(class PyLyLayerFilter {lvalue})'''
+    ...
     def implRefCount (self: RxObject)-> int:
       '''                             '''
     ...
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
+    ...
+    def isIdFilter (self, *args, **kwargs)-> bool:
+      '''isIdFilter( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool isIdFilter(class PyLyLayerFilter {lvalue})'''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
@@ -1347,11 +1532,65 @@ __init__( (object)arg1) -> None :
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
+    def isProxy (self, *args, **kwargs)-> bool:
+      '''isProxy( (LayerFilter)arg1) -> bool :
+
+    C++ signature :
+        bool isProxy(class PyLyLayerFilter {lvalue})'''
+    ...
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
+    def layerIds (self, *args, **kwargs)-> list:
+      '''layerIds( (LayerGroup)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list layerIds(class PyLyLayerGroup {lvalue})'''
+    ...
+    def name (self, *args, **kwargs)-> str:
+      '''name( (LayerFilter)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyLyLayerFilter {lvalue})'''
+    ...
+    def parent (self, *args, **kwargs)-> PyAp.LayerFilter:
+      '''parent( (LayerFilter)arg1) -> LayerFilter :
+
+    C++ signature :
+        class PyLyLayerFilter parent(class PyLyLayerFilter {lvalue})'''
+    ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
+    ...
+    def removeLayerId (self, *args, **kwargs)-> None:
+      '''removeLayerId( (LayerGroup)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void removeLayerId(class PyLyLayerGroup {lvalue},class PyDbObjectId)'''
+    ...
+    def removeNested (self, *args, **kwargs)-> None:
+      '''removeNested( (LayerFilter)arg1, (LayerFilter)arg2) -> None :
+
+    C++ signature :
+        void removeNested(class PyLyLayerFilter {lvalue},class PyLyLayerFilter {lvalue})'''
+    ...
+    def setFilterExpression (self, *args, **kwargs)-> None:
+      '''setFilterExpression( (LayerFilter)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setFilterExpression(class PyLyLayerFilter {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setName (self, *args, **kwargs)-> None:
+      '''setName( (LayerFilter)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setName(class PyLyLayerFilter {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def showEditor (self, *args, **kwargs)-> int:
+      '''showEditor( (LayerFilter)arg1) -> int :
+
+    C++ signature :
+        int showEditor(class PyLyLayerFilter {lvalue})'''
     ...
 
 class LayoutManager:
