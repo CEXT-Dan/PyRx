@@ -244,7 +244,7 @@ boost::python::tuple PyLayerFilterManager::getFilters()
     AcLyLayerFilter* root = nullptr;
     AcLyLayerFilter* current = nullptr;
     PyThrowBadEs(imp->getFilters(root, current));
-    return boost::python::make_tuple(PyLyLayerFilter(root, true), PyLyLayerFilter(current, false));//current is owned by root
+    return boost::python::make_tuple(PyLyLayerFilter(root, false), PyLyLayerFilter(current, false));//current is owned by root
 }
 
 void PyLayerFilterManager::setFilters1(boost::python::tuple& tpl)
@@ -255,10 +255,14 @@ void PyLayerFilterManager::setFilters1(boost::python::tuple& tpl)
     PyLyLayerFilter root = extract<PyLyLayerFilter>(tpl[0]);
     PyLyLayerFilter current = extract<PyLyLayerFilter>(tpl[1]);
     PyThrowBadEs(imp->setFilters(root.impObj(), current.impObj()));
+    root.forceKeepAlive(true);
+    current.forceKeepAlive(true);
 }
 
 void PyLayerFilterManager::setFilters2(PyLyLayerFilter& root, PyLyLayerFilter& current)
 {
     PyThrowBadEs(imp->setFilters(root.impObj(), current.impObj()));
+    root.forceKeepAlive(true);
+    current.forceKeepAlive(true);
 }
 
