@@ -1,4 +1,4 @@
-Python bindings for AutoCAD® ObjectARX®
+Python (cPython) bindings for AutoCAD® ObjectARX®
 uses wxPython for the GUI
 
 Embeds Python (3.10.10) and wxPython(4.2.0) into a loadable ARX module
