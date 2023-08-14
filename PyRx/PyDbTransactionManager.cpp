@@ -139,7 +139,7 @@ std::string PyDbTransactionManager::className()
 
 AcDbTransactionManager* PyDbTransactionManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbTransactionManager*>(m_pyImp.get());
 }
@@ -189,7 +189,7 @@ std::string PyTransactionManager::className()
 
 AcTransactionManager* PyTransactionManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcTransactionManager*>(m_pyImp.get());
 }
@@ -227,8 +227,7 @@ PyDbObject PyTransaction::getObject2(const PyDbObjectId& id, AcDb::OpenMode mode
 PyDbObject PyTransaction::getObject3(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErasedObject)
 {
     AcDbObject* obj = nullptr;
-    if (auto es = impObj()->getObject(obj, id.m_id, mode, openErasedObject); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getObject(obj, id.m_id, mode, openErasedObject));
     return PyDbObject(obj, true);
 }
 
@@ -274,7 +273,7 @@ std::string PyTransaction::className()
 
 AcTransaction* PyTransaction::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcTransaction*>(m_pyImp.get());
 }
