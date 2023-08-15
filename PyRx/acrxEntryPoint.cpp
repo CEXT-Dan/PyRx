@@ -250,11 +250,11 @@ public:
             const AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
             if (key.find(PyCommandPrefix) != -1)
             {
-                AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1);
+                const AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1).makeUpper();
                 if (PyFunction_Check(pValue))
                 {
                     const int commandFlags = PyCmd::getCommandFlags(pValue);
-                    PyRxApp::instance().commands.emplace(commandName.makeUpper(), pValue);
+                    PyRxApp::instance().commands.emplace(commandName, pValue);
                     PyRxApp::instance().pathForCommand.emplace(commandName, pyPath);
                     acedRegCmds->addCommand(formatFileNameforCommandGroup(moduleName), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
                 }
@@ -274,10 +274,10 @@ public:
             AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
             if (key.find(PyCommandPrefix) != -1)
             {
-                AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1);
+                const AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1).makeUpper();
                 if (PyFunction_Check(pValue))
                 {
-                    if (PyRxApp::instance().commands.contains(commandName.makeUpper()))
+                    if (PyRxApp::instance().commands.contains(commandName))
                     {
                         PyRxApp::instance().commands[commandName] = pValue;
                     }

@@ -3,6 +3,7 @@
 #include "ResultBuffer.h"
 #include "PyRxApp.h"
 
+//TODO set current directory...
 int PyLispService::execLispFunc()
 {
     try
