@@ -491,7 +491,6 @@ PyCAdUiPalette::PyCAdUiPalette(const std::string& name, wxPanel* panel)
     impObj()->SetName(utf8_to_wstr(name).c_str());
 }
 
-
 PyCAdUiPaletteImpl* PyCAdUiPalette::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)

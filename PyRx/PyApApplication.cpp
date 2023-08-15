@@ -71,7 +71,6 @@ std::string PyApApplication::className()
     return std::string{ "AcApApplication" };
 }
 
-
 //-----------------------------------------------------------------------------------------
 //makeAPyApResourceOverrideWrapper  Wrapper
 void makePyApResourceOverrideWrapper()

@@ -446,13 +446,9 @@ boost::python::list PyDbEntity::intersectWith1(const PyDbEntity& pEnt, AcDb::Int
 
 boost::python::list PyDbEntity::intersectWith2(const PyDbEntity& pEnt, AcDb::Intersect intType, Adesk::GsMarker thisGsMarker, Adesk::GsMarker otherGsMarker) const
 {
-    PyAutoLockGIL lock;
     AcGePoint3dArray pnts;
-    boost::python::list points;
     PyThrowBadEs(impObj()->intersectWith(pEnt.impObj(), intType, pnts, thisGsMarker, otherGsMarker));
-    for (const auto& item : pnts)
-        points.append(item);
-    return points;
+    return Point3dArrayToPyList(pnts);
 }
 
 boost::python::list PyDbEntity::intersectWith3(const PyDbEntity& pEnt, AcDb::Intersect intType, const PyGePlane& projPlane) const
@@ -462,13 +458,9 @@ boost::python::list PyDbEntity::intersectWith3(const PyDbEntity& pEnt, AcDb::Int
 
 boost::python::list PyDbEntity::intersectWith4(const PyDbEntity& pEnt, AcDb::Intersect intType, const PyGePlane& projPlane, Adesk::GsMarker thisGsMarker, Adesk::GsMarker otherGsMarker) const
 {
-    PyAutoLockGIL lock;
     AcGePoint3dArray pnts;
-    boost::python::list points;
     PyThrowBadEs(impObj()->intersectWith(pEnt.impObj(), intType, *projPlane.impObj(), pnts, thisGsMarker, otherGsMarker));
-    for (const auto& item : pnts)
-        points.append(item);
-    return points;
+    return Point3dArrayToPyList(pnts);
 }
 
 boost::python::list PyDbEntity::explode() const
