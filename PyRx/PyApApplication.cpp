@@ -16,6 +16,7 @@ void makePyApApplictionWrapper()
         .def("mainWnd", &PyApApplication::mainWnd, DS.SARGS()).staticmethod("mainWnd")
         .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark, DS.SARGS({ "wnd : int" })).staticmethod("setTitleThemeDark")
         .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "wnd : int" })).staticmethod("applyHostIcon")
+        .def("acadGetIDispatch", &PyApApplication::acadGetIDispatch, DS.SARGS()).staticmethod("acadGetIDispatch")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -69,6 +70,11 @@ UINT_PTR PyApApplication::mainWnd()
 std::string PyApApplication::className()
 {
     return std::string{ "AcApApplication" };
+}
+
+UINT_PTR PyApApplication::acadGetIDispatch()
+{
+    return (UINT_PTR)acedGetIDispatch(true);
 }
 
 //-----------------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 import os
-import PyRxApp
+import PyRx
 import psutil
 
 
@@ -7,7 +7,7 @@ import psutil
 #proof that we are running in process
 
 def PyRxCmd_curproc():
-	PyRxApp.Printf(psutil.Process(os.getpid()).name())
+	print(psutil.Process(os.getpid()).name())
 
 
 		

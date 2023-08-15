@@ -16,6 +16,7 @@ public:
     static void setTitleThemeDark(UINT_PTR hwnd);
     static UINT_PTR mainWnd();
     static std::string className();
+    static UINT_PTR acadGetIDispatch();
 };
 
 //-----------------------------------------------------------------------------------------
