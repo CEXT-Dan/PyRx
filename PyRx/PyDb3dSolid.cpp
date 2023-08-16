@@ -581,7 +581,6 @@ boost::python::list PyDbRegion::createFromCurves(const boost::python::list& curv
     for (auto item : regions)
         pyRegions.append(PyDbRegion((AcDbRegion*)item, true));
 #endif
-
     return pyRegions;
 }
 
