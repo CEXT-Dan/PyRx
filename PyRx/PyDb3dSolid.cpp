@@ -562,7 +562,7 @@ boost::python::list PyDbRegion::createFromCurves(const boost::python::list& curv
 {
     PyAutoLockGIL lock;
     boost::python::list pyRegions;
-#ifdef ARXAPP
+#if defined(_ARXTARGET) && (_ARXTARGET >= 242)
     AcArray<AcDbEntity*> acCurveSegments;
     auto vec = py_list_to_std_vector<PyDbEntity>(curveSegments);
     for (auto& item : vec)

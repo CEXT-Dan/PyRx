@@ -533,14 +533,15 @@ float EdCore::getDpiScalingValue()
 
 std::string EdCore::getEnv(const std::string& env)
 {
-#ifndef ARXAPP
-    std::array<wchar_t, 1024> buff = { 0 };
-    PyThrowBadRt(acedGetEnv(utf8_to_wstr(env).c_str(), buff.data(), buff.size()));
-    return wstr_to_utf8(buff.data());
-#else
+#if defined(_ARXTARGET) && (_ARXTARGET >= 242)
+
     AcString val;
     PyThrowBadRt(acedGetEnv(utf8_to_wstr(env).c_str(), val));
     return wstr_to_utf8(val);
+#else
+    std::array<wchar_t, 1024> buff = { 0 };
+    PyThrowBadRt(acedGetEnv(utf8_to_wstr(env).c_str(), buff.data(), buff.size()));
+    return wstr_to_utf8(buff.data());
 #endif
 }
 
