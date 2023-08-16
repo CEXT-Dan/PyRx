@@ -298,13 +298,9 @@ int PyDbMText::correctSpelling()
 
 boost::python::list PyDbMText::getBoundingPoints() const
 {
-    PyAutoLockGIL lock;
-    boost::python::list l;
     AcGePoint3dArray arr;
     impObj()->getBoundingPoints(arr);
-    for (const auto& item : arr)
-        l.append(item);
-    return l;
+    return Point3dArrayToPyList(arr);
 }
 
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
