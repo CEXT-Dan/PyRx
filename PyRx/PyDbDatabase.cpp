@@ -1295,7 +1295,7 @@ void PyDbDatabase::registerApp(const std::string& pszAppName)
 #if defined(_ARXTARGET) && (_ARXTARGET >= 242)
     return PyThrowBadEs(impObj()->registerApp(utf8_to_wstr(pszAppName).c_str()));
 #else
-    throw PyNotimplementedByHost();
+    PyThrowBadRt(acdbRegApp(utf8_to_wstr(pszAppName).c_str()));
 #endif
 }
 
