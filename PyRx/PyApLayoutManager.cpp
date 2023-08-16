@@ -185,22 +185,15 @@ boost::python::list PyApLayoutManager::getClipBoundaryElabration(const PyDbObjec
     AcGePoint2dArray* clipBoundary = nullptr;
     PyThrowBadEs(impObj()->getClipBoundaryElaboration(clipId.m_id, clipBoundary));
     if (clipBoundary != nullptr)
-    {
-        for (auto& item : *clipBoundary)
-            pyList.append(item);
-    }
+        return Point2dArrayToPyList(*clipBoundary);
     return pyList;
 }
 
 boost::python::list PyApLayoutManager::pointInViewports(const AcGePoint3d& pickPt)
 {
-    PyAutoLockGIL lock;
-    boost::python::list pyList;
     AcDbObjectIdArray viewports;
     PyThrowBadEs(impObj()->pointInViewports(pickPt, viewports));
-    for (auto& item : viewports)
-        pyList.append(item);
-    return pyList;
+    return ObjectIdArrayToPyList(viewports);
 }
 
 void PyApLayoutManager::setCaptureOnLayoutSwitch(bool bCaptureOnLayout)
