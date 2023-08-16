@@ -61,7 +61,7 @@ void makePyGiSubEntityTraitsWrapper()
         .value("kDrawFillTextBoundaryEnd", AcGiSubEntityTraits::DrawFlags::kDrawFillTextBoundaryEnd)
         .value("kDrawFillSelectionWindow", AcGiSubEntityTraits::DrawFlags::kDrawFillSelectionWindow)
         .value("kDrawNoForceByLayer", AcGiSubEntityTraits::DrawFlags::kDrawNoForceByLayer)
-#ifdef ARXAPP
+#if defined(_ARXTARGET) && (_ARXTARGET >= 242)
         .value("KDrawIsInWCS", AcGiSubEntityTraits::DrawFlags::KDrawIsInWCS)
 #endif
         .export_values()

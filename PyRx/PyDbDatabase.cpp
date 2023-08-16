@@ -1292,8 +1292,8 @@ Adesk::Int16 PyDbDatabase::luprec() const
 
 void PyDbDatabase::registerApp(const std::string& pszAppName)
 {
-#ifdef ARX2023
-    return impObj()->registerApp(utf8_to_wstr(pszAppName).c_str());
+#if defined(_ARXTARGET) && (_ARXTARGET >= 242)
+    return PyThrowBadEs(impObj()->registerApp(utf8_to_wstr(pszAppName).c_str()));
 #else
     throw PyNotimplementedByHost();
 #endif
