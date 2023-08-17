@@ -10,6 +10,8 @@ import PyEd  # = editor
 from Delaunator import Delaunator
 from time import perf_counter
 
+#PySamples\dwg\TestPoints.dwg
+
 def OnPyInitApp():
     print("\nOnPyInitApp")
 
