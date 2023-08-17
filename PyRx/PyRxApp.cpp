@@ -82,7 +82,6 @@ bool WxRxApp::Init_wxPython()
         acutPrintf(_T("\nPYTHONOPTIMIZE = TRUE\n"));
 #endif
     Py_InitializeEx(0);
-    PyEval_InitThreads();
     if (wxPyGetAPIPtr() == NULL)
     {
         acutPrintf(_T("\n*****Error importing the wxPython API!*****"));
