@@ -22,3 +22,5 @@
 /PySamples/_wxdoit.py
 /unit tests/testmedia/06457.bak
 /unit tests/testmedia/*.bak
+/PySamples/dwg/*.dwl
+/PySamples/dwg/*.dwl2

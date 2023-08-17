@@ -29,8 +29,7 @@ print("added command pydelaunator")
 
 def do_select():
     filter = [(PyDb.DxfCode.kDxfStart, "POINT")]
-    ed = PyAp.Application().docManager().curDocument().editor()
-    ss = ed.selectPrompt("\nSelect points: ", "\nRemove points: ", filter)
+    ss = PyEd.Editor.selectPrompt("\nSelect points: ", "\nRemove points: ", filter)
     if (ss[0] == PyEd.PromptStatus.eNormal):
         return ss[1]
 
