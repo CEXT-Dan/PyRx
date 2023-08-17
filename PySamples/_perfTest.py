@@ -8,6 +8,8 @@ import PyGs as Gs
 
 from timeit import default_timer as timer
 
+#PySamples\dwg\TestPoints.dwg
+
 # 0.1997940999990533 time to beat
 def move_points():
     mat = Ge.Matrix3d()
