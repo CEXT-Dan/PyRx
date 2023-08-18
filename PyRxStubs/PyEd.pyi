@@ -1715,6 +1715,9 @@ class Editor:
     def getCorner (basePt:PyGe.Point3d,prompt:str)-> tuple:
       '''                             '''
     ...
+    def getCurrentSelectionSet ()-> list:
+      '''                             '''
+    ...
     def getCurrentUCS (self, *args, **kwargs)-> PyGe.Matrix3d:
       '''getCurrentUCS() -> Matrix3d :
 
