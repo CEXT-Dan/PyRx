@@ -173,32 +173,28 @@ void PyDbEvalVariant::setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& val
 double PyDbEvalVariant::getDouble()
 {
     double val = 0;
-    if (auto es = impObj()->getValue(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getValue(val));
     return val;
 }
 
 short PyDbEvalVariant::getInt16()
 {
     short val = 0;
-    if (auto es = impObj()->getValue(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getValue(val));
     return val;
 }
 
 Int32 PyDbEvalVariant::getInt32()
 {
     Int32 val = 0;
-    if (auto es = impObj()->getValue(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getValue(val));
     return val;
 }
 
 std::string PyDbEvalVariant::getString()
 {
     AcString val;
-    if (auto es = impObj()->getValue(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getValue(val));
     return wstr_to_utf8(val);
 }
 
@@ -211,8 +207,7 @@ PyDbObjectId PyDbEvalVariant::getObjectId()
         case AcDb::kDwgSoftOwnershipId:
         case AcDb::kDwgHardPointerId:
         case AcDb::kDwgSoftPointerId:
-            if (auto es = acdbGetObjectId(val.m_id, impObj()->resval.rlname); es != eOk)
-                throw PyAcadErrorStatus(es);
+            PyThrowBadEs(acdbGetObjectId(val.m_id, impObj()->resval.rlname));
             break;
         default:
             throw PyAcadErrorStatus(eInvalidInput);
@@ -234,8 +229,7 @@ AcGePoint2d PyDbEvalVariant::getPoint2d()
 AcGePoint3d PyDbEvalVariant::getPoint3d()
 {
     AcGePoint3d val;
-    if (auto es = impObj()->getValue(val); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getValue(val));
     return val;
 }
 
@@ -366,8 +360,7 @@ boost::python::list PyDbDynBlockReferenceProperty::getAllowedValues()
     PyAutoLockGIL lock;
     boost::python::list pyList;
     AcDbEvalVariantArray values;
-    if (auto es = impObj()->getAllowedValues(values); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getAllowedValues(values));
     for (const auto item : values)
         pyList.append(PyDbEvalVariant(item));
     return pyList;
