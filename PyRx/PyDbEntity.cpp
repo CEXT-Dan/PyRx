@@ -81,6 +81,7 @@ void makePyDbEntityWrapper()
         .def("getTransformedCopy", &PyDbEntity::getTransformedCopy, DS.ARGS({ "matrix3d: PyGe.Matrix3d" }))
         .def("addReactor", &PyDbEntity::addReactor, DS.ARGS({ "reactor: EntityReactor" }))
         .def("removeReactor", &PyDbEntity::removeReactor, DS.ARGS({ "reactor: EntityReactor" }))
+        .def("getGripPoints", &PyDbEntity::getGripPoints1)
         .def("className", &PyDbEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -497,6 +498,21 @@ void PyDbEntity::removeReactor(PyDbEntityReactor& pReactor) const
 #else
     return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
 #endif
+}
+
+void PyDbEntity::getGripPoints1(boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds)
+{
+    AcGePoint3dArray _gripPoints;
+    AcDbIntArray _osnapModes;
+    AcDbIntArray _geomIds;
+    PyThrowBadEs(impObj()->getGripPoints(_gripPoints, _osnapModes, _geomIds));
+    PyAutoLockGIL lock;
+    for (auto& item : _gripPoints)
+        gripPoints.append(item);
+    for (auto& item : _osnapModes)
+        osnapModes.append(item);
+    for (auto& item : _geomIds)
+        geomIds.append(item);
 }
 
 std::string PyDbEntity::className()

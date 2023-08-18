@@ -1392,6 +1392,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -2555,6 +2561,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -3192,6 +3204,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -4118,6 +4136,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -4690,6 +4714,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -5237,6 +5267,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -5634,6 +5670,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -6053,6 +6095,12 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -7332,6 +7380,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -9182,6 +9236,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -10711,6 +10771,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -13185,6 +13251,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -15095,6 +15167,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -17409,6 +17487,12 @@ class Entity:
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -20139,6 +20223,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -20561,6 +20651,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -20976,6 +21072,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -21425,6 +21527,12 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -23963,6 +24071,12 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         bool getGradientOneColorMode(class PyDbHatch {lvalue})'''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -25570,6 +25684,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -26506,6 +26626,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -29350,6 +29476,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -30039,6 +30171,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -30643,6 +30781,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -32524,6 +32668,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -32954,6 +33104,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -33597,6 +33753,12 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -37118,6 +37280,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -38509,6 +38677,12 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -39613,6 +39787,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -40385,6 +40565,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -42084,6 +42270,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -42814,6 +43006,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -44268,6 +44466,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -44824,6 +45028,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -45922,6 +46132,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -46328,6 +46544,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -46797,6 +47019,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -47418,6 +47646,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -48089,6 +48323,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -48625,6 +48865,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -49176,6 +49422,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -50156,6 +50408,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -51072,6 +51330,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -52865,6 +53129,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -53661,6 +53931,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -54190,6 +54466,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -55461,6 +55743,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -56420,6 +56708,12 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> None
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -57125,6 +57419,12 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -58532,6 +58832,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -59439,6 +59745,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -60982,6 +61294,12 @@ getDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> tuple :
 
     C++ signature :
         struct AcGridProperty getGridProperty(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -63790,6 +64108,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -66885,6 +67209,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -67939,6 +68269,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
     ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
@@ -68350,6 +68686,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
@@ -69742,6 +70084,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents:
       '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None:
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''

@@ -135,6 +135,9 @@ class Application:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+    def acadGetIDispatch ()-> int:
+      '''                             '''
+    ...
     def applyHostIcon (wnd : int)-> None:
       '''                             '''
     ...

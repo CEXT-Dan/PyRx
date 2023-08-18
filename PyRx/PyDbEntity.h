@@ -86,6 +86,8 @@ public:
     PyDbEntity          getTransformedCopy(const AcGeMatrix3d& xform) const;
     void                addReactor(PyDbEntityReactor& pReactor) const;
     void                removeReactor(PyDbEntityReactor& pReactor) const;
+
+    void                getGripPoints1(boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbEntity   cloneFrom(const PyRxObject& src);

@@ -1207,9 +1207,6 @@ This class cannot be instantiated from Python'''
     ...
 
 class DrawFlags:
-    def KDrawIsInWCS (self, *args, **kwargs)-> None:
-      '''None'''
-    ...
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
