@@ -131,8 +131,7 @@ std::string PyDbTableStyle::getName()
     throw PyNotimplementedByHost();
 #else
     AcString name;
-    if (auto es = impObj()->getName(name); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getName(name));
     return wstr_to_utf8(name);
 #endif
 }
