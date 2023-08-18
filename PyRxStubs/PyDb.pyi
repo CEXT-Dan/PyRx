@@ -1407,6 +1407,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -2618,6 +2621,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStartPoint (self: Curve)-> PyGe.Point3d:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -3218,6 +3224,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -4154,6 +4163,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -4732,6 +4744,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -5282,6 +5297,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -5684,6 +5702,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -6109,6 +6130,9 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -7394,6 +7418,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -9293,6 +9320,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStartPoint (self: Curve)-> PyGe.Point3d:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -10827,6 +10857,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartPoint (self: Curve)-> PyGe.Point3d:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -13266,6 +13299,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -15181,6 +15217,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -17501,6 +17540,9 @@ class Entity:
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -20238,6 +20280,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -20666,6 +20711,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -21086,6 +21134,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -21541,6 +21592,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -24128,6 +24182,9 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         float getShadeTintValue(class PyDbHatch {lvalue})'''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -25750,6 +25807,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStartPoint (self: Curve)-> PyGe.Point3d:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -26640,6 +26700,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -29533,6 +29596,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStartPoint (self: Curve)-> PyGe.Point3d:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -30228,6 +30294,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStartPoint (self: Curve)-> PyGe.Point3d:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -30795,6 +30864,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -32683,6 +32755,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -33118,6 +33193,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -33826,6 +33904,9 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTextLocation (self, *args, **kwargs)-> PyGe.Point3d:
@@ -37295,6 +37376,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -38695,6 +38779,9 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -39802,6 +39889,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -40579,6 +40669,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -42285,6 +42378,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -43020,6 +43116,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -44481,6 +44580,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -45042,6 +45144,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -46147,6 +46252,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -46558,6 +46666,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -47090,6 +47201,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartWidthAt (self: Polyline,idx:int)-> float:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -47702,6 +47816,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartPoint (self: Curve)-> PyGe.Point3d:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -48380,6 +48497,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getStartPoint (self: Curve)-> PyGe.Point3d:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -48879,6 +48999,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -49436,6 +49559,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -50423,6 +50549,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -51356,6 +51485,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -53144,6 +53276,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -53946,6 +54081,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -54480,6 +54618,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -55758,6 +55899,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -56746,6 +56890,9 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
     C++ signature :
         class PyDb3dSolid getSlice(class PyDb3dSolid {lvalue},class PyDbSurface,bool)'''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getSubentColor (self, *args, **kwargs)-> PyDb.Color:
       '''getSubentColor( (Solid3d)arg1, (SubentId)arg2) -> Color :
 
@@ -57484,6 +57631,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartPoint (self: Curve)-> PyGe.Point3d:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -58847,6 +58997,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -59759,6 +59912,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -61341,6 +61497,9 @@ getOverride( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> GridPrope
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getSubSelection (self, *args, **kwargs)-> PyDb.CellRange:
@@ -64122,6 +64281,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -67224,6 +67386,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -68284,6 +68449,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
       '''                             '''
     ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
+    ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''
     ...
@@ -68700,6 +68868,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId:
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list:
       '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
@@ -70117,6 +70288,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId getSheetView(class PyDbViewport {lvalue})'''
+    ...
+    def getStretchPoints (self: Entity)-> list:
+      '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity:
       '''                             '''

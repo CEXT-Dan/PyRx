@@ -81,6 +81,7 @@ void makePyDbEntityWrapper()
         .def("getTransformedCopy", &PyDbEntity::getTransformedCopy, DS.ARGS({ "matrix3d: PyGe.Matrix3d" }))
         .def("addReactor", &PyDbEntity::addReactor, DS.ARGS({ "reactor: EntityReactor" }))
         .def("removeReactor", &PyDbEntity::removeReactor, DS.ARGS({ "reactor: EntityReactor" }))
+        .def("getStretchPoints", &PyDbEntity::getStretchPoints, DS.ARGS())
         .def("getGripPoints", &PyDbEntity::getGripPoints1)
         .def("className", &PyDbEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.SARGS()).staticmethod("desc")
@@ -500,7 +501,14 @@ void PyDbEntity::removeReactor(PyDbEntityReactor& pReactor) const
 #endif
 }
 
-void PyDbEntity::getGripPoints1(boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds)
+boost::python::list PyDbEntity::getStretchPoints() const
+{
+    AcGePoint3dArray points;
+    PyThrowBadEs(impObj()->getStretchPoints(points));
+    return Point3dArrayToPyList(points);
+}
+
+void PyDbEntity::getGripPoints1(boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds) const
 {
     AcGePoint3dArray _gripPoints;
     AcDbIntArray _osnapModes;
