@@ -3,10 +3,21 @@
 #include "PyRxObject.h"
 #include "PyDbObjectId.h"
 #include "PyRxApp.h"
+#include "PyApDocument.h"
+
 
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
 // PyEdUserInteraction
+
+void makePyEdUserInteractionWrapper()
+{
+    class_<PyEdUserInteraction>("UserInteraction")
+        .def(init<>())
+        .def(init<PyApDocument&, bool>())
+        ;
+}
+
 PyEdUserInteraction::PyEdUserInteraction()
 {
     userInteraction(acDocManagerPtr()->curDocument(), true);
@@ -15,6 +26,11 @@ PyEdUserInteraction::PyEdUserInteraction()
 PyEdUserInteraction::PyEdUserInteraction(AcApDocument* pDocument, bool prompting)
 {
     userInteraction(pDocument, prompting);
+}
+
+PyEdUserInteraction::PyEdUserInteraction(PyApDocument& pDocument, bool prompting)
+{
+    userInteraction(pDocument.impObj(), prompting);
 }
 
 PyEdUserInteraction::~PyEdUserInteraction(void)
@@ -57,9 +73,7 @@ void PyEdUserInteraction::undoUserInteraction()
     if (m_wnds.size() > 0)
     {
         for (std::vector<HWND>::reverse_iterator it = m_wnds.rbegin(); it != m_wnds.rend(); ++it)
-        {
             ::ShowWindow(*it, SW_SHOW);
-        }
         ::EnableWindow(adsw_acadMainWnd(), FALSE);
         ::SetFocus(m_activeWindow);
     }
@@ -149,7 +163,7 @@ boost::python::object PyEdUIContext::getMenuContextWr(const PyRxClass& pyclass, 
     }
     catch (...)
     {
-        acutPrintf(_T("Exception @ %ls: "), __FUNCTIONW__);
+        printExceptionMsg();
     }
     return val;
 }
@@ -164,7 +178,7 @@ void PyEdUIContext::onCommandWr(Adesk::UInt32 cmd)
     }
     catch (...)
     {
-        acutPrintf(_T("Exception @ %ls: "), __FUNCTIONW__);
+        printExceptionMsg();
     }
 }
 
@@ -178,7 +192,7 @@ void PyEdUIContext::OnUpdateMenuWr()
     }
     catch (...)
     {
-        acutPrintf(_T("Exception @ %ls: "), __FUNCTIONW__);
+        printExceptionMsg();
     }
 }
 

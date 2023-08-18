@@ -28,6 +28,7 @@ BOOST_PYTHON_MODULE(PyEd)
     makePyEditorWrapper();
     makePyEditorReactorWrapper();
     makePyEdUIContextWrapper();
+    makePyEdUserInteractionWrapper();
     makePyEdInputPointManagerWrapper();
     makePyEdInputPointFilterWrapper();
     makePyEdInputPointMonitorWrapper();

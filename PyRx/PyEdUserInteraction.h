@@ -1,22 +1,17 @@
 #pragma once
 class PyRxClass;
 
-//TODO:
-//expose this as functions to python
-//BeginEditorCommand();
-//CancelEditorCommand();
-//ComleteEditorCommand();
-
-
-
+class PyApDocument;
 //-----------------------------------------------------------------------------------------
 // PyEdUserInteraction
+void makePyEdUserInteractionWrapper();
 class PyEdUserInteraction
 {
     HWND m_activeWindow;
     std::vector<HWND> m_wnds;
 public:
     PyEdUserInteraction();
+    PyEdUserInteraction(PyApDocument& pDocument, bool prompting);
     PyEdUserInteraction(AcApDocument* pDocument, bool prompting);
     virtual ~PyEdUserInteraction(void);
 protected:
