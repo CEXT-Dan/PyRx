@@ -32,7 +32,7 @@ PyCAdUiPaletteSet* PyCAdUiPaletteSetImpl::bckptr(const std::source_location& src
 {
     if (m_bckPtr == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_bckPtr;
+        return m_bckPtr;
 }
 
 //---------------------------------------------------------------------
@@ -166,7 +166,7 @@ void PyCAdUiPaletteSet::createChildren()
 {
     for (auto& child : m_children)
     {
-        if(child.impObj()->Create(WS_CHILD | WS_VISIBLE, child.impObj()->GetName(), impObj()) == FALSE)
+        if (child.impObj()->Create(WS_CHILD | WS_VISIBLE, child.impObj()->GetName(), impObj()) == FALSE)
             acutPrintf(_T("Failed to Create palette: "));
         if (impObj()->AddPalette(child.impObj()) == -1)
             acutPrintf(_T("Failed to add palette: "));
@@ -382,9 +382,9 @@ COLORREF PyCAdUiPaletteSet::paletteBackgroundColor() const
     auto theme = impObj()->GetTheme();
     if (theme == nullptr) [[unlikely]]
         throw PyNullObject();
-    return theme->GetColor(kPaletteBackground);
+        return theme->GetColor(kPaletteBackground);
 #endif
-    return RGB(0, 0, 0);
+        return RGB(0, 0, 0);
 }
 
 COLORREF PyCAdUiPaletteSet::paletteTabTextColor() const
@@ -395,7 +395,7 @@ COLORREF PyCAdUiPaletteSet::paletteTabTextColor() const
     auto theme = impObj()->GetTheme();
     if (theme == nullptr) [[unlikely]]
         throw PyNullObject();
-    return theme->GetColor(kPaletteTabText);
+        return theme->GetColor(kPaletteTabText);
 #endif
 }
 
@@ -403,7 +403,7 @@ PyCAdUiPaletteSetImpl* PyCAdUiPaletteSet::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<PyCAdUiPaletteSetImpl*>(m_pyImp.get());
+        return static_cast<PyCAdUiPaletteSetImpl*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------
@@ -461,28 +461,28 @@ wxWindow* PyCAdUiPaletteImpl::thiswindow(const std::source_location& src /*= std
 {
     if (m_thiswin == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_thiswin;
+        return m_thiswin;
 }
 
 wxWindow* PyCAdUiPaletteImpl::ownerwin(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_ownerwin == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_ownerwin;
+        return m_ownerwin;
 }
 
 wxPanel* PyCAdUiPaletteImpl::panel(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_panel == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_panel;
+        return m_panel;
 }
 
 PyCAdUiPalette* PyCAdUiPaletteImpl::bckptr(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_bckPtr == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_bckPtr;
+        return m_bckPtr;
 }
 
 //---------------------------------------------------------------------
@@ -503,7 +503,7 @@ PyCAdUiPaletteImpl* PyCAdUiPalette::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<PyCAdUiPaletteImpl*>(m_pyImp.get());
+        return static_cast<PyCAdUiPaletteImpl*>(m_pyImp.get());
 }
 
 
