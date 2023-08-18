@@ -369,14 +369,22 @@ void PyCAdUiPaletteSet::updateTabs()
 
 COLORREF PyCAdUiPaletteSet::paletteBackgroundColor() const
 {
-#ifndef ARXAPP
+#ifdef BRXAPP
     return RGB(45, 48, 53);
-#else
+#endif
+#ifdef ZRXAPP
+    return RGB(49, 56, 66);
+#endif
+#ifdef GRXAPP
+    return RGB(49, 56, 66);
+#endif
+#ifdef ARXAPP
     auto theme = impObj()->GetTheme();
     if (theme == nullptr)
         throw PyNullObject();
     return theme->GetColor(kPaletteBackground);
 #endif
+    return RGB(0, 0, 0);
 }
 
 COLORREF PyCAdUiPaletteSet::paletteTabTextColor() const
