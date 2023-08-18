@@ -336,6 +336,15 @@ inline boost::python::list std_vector_to_py_list(std::vector<T> vector)
     return list;
 }
 
+inline boost::python::list IntArrayToPyList(const AcDbIntArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (auto item : arr)
+        pyPyList.append(item);
+    return pyPyList;
+}
+
 inline boost::python::list DoubleArrayToPyList(const AcGeDoubleArray& arr)
 {
     PyAutoLockGIL lock;
