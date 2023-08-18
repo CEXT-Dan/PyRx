@@ -494,8 +494,7 @@ boost::python::tuple PyAcEditor::ssget2(const std::string& args, const boost::py
 AcGeMatrix3d PyAcEditor::curUCS()
 {
     AcGeMatrix3d mat;
-    if (auto es = acedGetCurrentUCS(mat); es != eOk)
-        throw PyAcadErrorStatus(es);
+    (acedGetCurrentUCS(mat));
     return mat;
 }
 
@@ -532,10 +531,11 @@ boost::python::tuple PyAcEditor::getKword(const std::string& skwl)
 boost::python::list PyAcEditor::traceBoundary(const AcGePoint3d& seedPoint, bool detectIslands)
 {
     PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    AcAxDocLock dlock;
     boost::python::list pyList;
     AcDbVoidPtrArray resultingBoundarySet;
-    if (auto es = acedTraceBoundary(seedPoint, detectIslands, resultingBoundarySet); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(acedTraceBoundary(seedPoint, detectIslands, resultingBoundarySet));
     for (auto ptr : resultingBoundarySet)
         pyList.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), true));
     return pyList;
