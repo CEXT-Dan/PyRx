@@ -9,6 +9,8 @@ import wx
 from wx import xrc
 from datetime import date
 
+print("added command - wxpalette")
+
 
 class MyPopupMenu(wx.Menu):
     def __init__(self):
@@ -143,14 +145,14 @@ def createPalette():
         #panel2 = MyPanel()
         palette.add("MyPanel", panel)
         #palette.add("MyPanel2", panel2)
-        palette.setOpacity(50)
+        #palette.setOpacity(50)
         palette.setVisible(True)
         palette.setName("Didn't think this would work")
     except Exception as err:
         print(err)
 
 
-def PyRxCmd_wxdoit():
+def PyRxCmd_wxpalette():
     try:
         createPalette()
     except Exception as err:
