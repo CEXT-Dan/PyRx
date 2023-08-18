@@ -48,6 +48,7 @@ public:
     static Acad::PromptStatus   initGet(int val, const std::string& skwl);
     static boost::python::tuple getKword(const std::string& skwl);
     static boost::python::list  traceBoundary(const AcGePoint3d& seedPoint, bool detectIslands);
+    static boost::python::list  getCurrentSelectionSet();
     static std::string          className();
 };
 

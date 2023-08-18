@@ -487,13 +487,9 @@ std::string EdCore::getCommandForDocument(const PyApDocument& doc)
 
 boost::python::list EdCore::getCurrentSelectionSet()
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray sset;
     PyThrowBadEs(acedGetCurrentSelectionSet(sset));
-    boost::python::list pyList;
-    for (auto item : sset)
-        pyList.append(PyDbObjectId(item));
-    return pyList;
+    return ObjectIdArrayToPyList(sset);
 }
 
 boost::python::tuple EdCore::getCurVportPixelToDisplay()
