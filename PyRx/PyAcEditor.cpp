@@ -86,6 +86,7 @@ void makePyEditorWrapper()
         .def("getDouble", &PyAcEditor::getDouble, DS.SARGS({ "prompt:str" })).staticmethod("getDouble")
         .def("getReal", &PyAcEditor::getDouble, DS.SARGS({ "prompt:str" })).staticmethod("getReal")
         .def("getAngle", &PyAcEditor::getAngle, DS.SARGS({ "basePt:PyGe.Point3d","prompt:str" })).staticmethod("getAngle")
+        .def("getCurrentSelectionSet", &PyAcEditor::getCurrentSelectionSet, DS.SARGS()).staticmethod("getCurrentSelectionSet")
         .def("getString", &PyAcEditor::getString, DS.SARGS({ "cronly:int","prompt:str" })).staticmethod("getString")
         .def("getPoint", &PyAcEditor::getPoint1)
         .def("getPoint", &PyAcEditor::getPoint2, DS.SARGS({ "basePt:PyGe.Point3d=None","prompt:str" })).staticmethod("getPoint")
@@ -538,6 +539,13 @@ boost::python::list PyAcEditor::traceBoundary(const AcGePoint3d& seedPoint, bool
     for (auto ptr : resultingBoundarySet)
         pyList.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), true));
     return pyList;
+}
+
+boost::python::list PyAcEditor::getCurrentSelectionSet()
+{
+    AcDbObjectIdArray sset;
+    PyThrowBadEs(acedGetCurrentSelectionSet(sset));
+    return ObjectIdArrayToPyList(sset);
 }
 
 std::string PyAcEditor::className()
