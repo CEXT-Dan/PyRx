@@ -3255,21 +3255,8 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class UserInteraction:
-    def __init__ (self, *args, **kwargs)-> None:
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Document)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyApDocument {lvalue},bool)'''
+    def __init__ (self: UserInteraction,doc:PyAp.Document=current,isPrompting:bool=True)-> None:
+      '''                             '''
     ...
 
 class __loader__:
