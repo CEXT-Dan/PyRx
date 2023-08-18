@@ -3254,6 +3254,24 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class UserInteraction:
+    def __init__ (self, *args, **kwargs)-> None:
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Document)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyApDocument {lvalue},bool)'''
+    ...
+
 class __loader__:
     def _ORIGIN (self, *args, **kwargs)-> str
 str(bytes_or_buffer[, encoding[, errors]]) -> str
