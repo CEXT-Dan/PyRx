@@ -45,7 +45,7 @@ PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id)
 std::string PyDbSymbolTableRecord::getName()
 {
     AcString arxName;
-    impObj()->getName(arxName);
+    PyThrowBadEs(impObj()->getName(arxName));
     return wstr_to_utf8(arxName);
 }
 
