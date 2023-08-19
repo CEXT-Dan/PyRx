@@ -36,6 +36,7 @@ void makePyDbObjectWrapper()
         .def("cancel", &PyDbObject::cancel, DS.ARGS())
         .def("handOverTo", &PyDbObject::handOverTo, DS.ARGS({ "newObject: DbObject", "keepXData: bool", "keepExtDict: bool" }))
         .def("swapIdWith", &PyDbObject::swapIdWith, DS.ARGS({ "otherId: DbObject", "swapXdata: bool", "swapExtDict: bool" }))
+        .def("hasXData", &PyDbObject::hasXData, DS.ARGS({ "appname: str" }))
         .def("setXData", &PyDbObject::setXData, DS.ARGS({ "xdata: list" }))
         .def("xData", &PyDbObject::xData, DS.ARGS({ "appname: str" }))
         .def("xDataTransformBy", &PyDbObject::xDataTransformBy, DS.ARGS({ "xform: AcGeMatrix3d" }))
@@ -181,6 +182,12 @@ void PyDbObject::handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Ade
 void PyDbObject::swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict)
 {
     return PyThrowBadEs(impObj()->swapIdWith(otherId.m_id, swapXdata, swapExtDict));
+}
+
+bool PyDbObject::hasXData(const std::string& regappName)
+{
+    AcResBufPtr pData(impObj()->xData(utf8_to_wstr(regappName).c_str()));
+    return pData.get() != nullptr;
 }
 
 void PyDbObject::setXData(const boost::python::list& xdata)

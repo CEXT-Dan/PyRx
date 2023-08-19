@@ -36,6 +36,7 @@ public:
     void                erase2(Adesk::Boolean erasing);
     void                handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Adesk::Boolean keepExtDict);
     void                swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict);
+    bool                hasXData(const std::string& regappName);
     void                setXData(const boost::python::list& xdata);
     virtual boost::python::list xData(const std::string& regappName) const;
     void                xDataTransformBy(const AcGeMatrix3d& xform);

@@ -85,6 +85,7 @@ void makePyDbDatabaseWrapper()
         .def("geoCoordinateSystemId", &PyDbDatabase::geoCoordinateSystemId, DS.ARGS())
         .def("geoMarkerVisibility", &PyDbDatabase::geoMarkerVisibility, DS.ARGS())
         .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec, DS.ARGS())
+        .def("objectIds", &PyDbDatabase::objectIds, DS.ARGS())
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId1)
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }))
         .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId1)
@@ -882,6 +883,26 @@ double PyDbDatabase::get3dDwfPrec() const
 #else
     return impObj()->get3dDwfPrec();
 #endif
+}
+
+boost::python::list PyDbDatabase::objectIds() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    AcDbDatabase* pDb = impObj();
+    Adesk::UInt64 nhnd = pDb->handseed();
+    while (nhnd > 0)
+    {
+        nhnd--;
+        PyDbObjectId id;
+        AcDbHandle hnd{ nhnd };
+        if (auto es = pDb->getAcDbObjectId(id.m_id, false, hnd); es != eOk)
+            continue;
+        if (!id.isValid() || id.isErased())
+            continue;
+        pyList.append(id);
+    }
+    return pyList;
 }
 
 PyDbObjectId PyDbDatabase::getAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle)
@@ -3263,8 +3284,9 @@ std::string PyDbDatabase::className()
 
 AcDbDatabase* PyDbDatabase::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr)[[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcDbDatabase*>(m_pyImp.get());
 }
+
 
