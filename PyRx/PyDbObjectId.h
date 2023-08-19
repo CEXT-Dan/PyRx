@@ -16,17 +16,22 @@ public:
     bool operator>=(const PyDbObjectId& rhs) const;
     INT_PTR asOldId() const;
     PyDbObjectId& setFromOldId(INT_PTR oldId);
-    bool isNull() const;
-    bool isResident() const;
-    bool isValid() const;
-    bool isWellBehaved() const;
-    bool convertToRedirectedId();
-    std::string repr();
-    std::string str();
-    PyDbDatabase database() const;
-    PyDbDatabase originalDatabase() const;
-    PyRxClass objectClass() const;
-    bool isDerivedFrom(const PyRxClass& other) const;
+    bool          isNull() const;
+    bool          isResident() const;
+    bool          isValid() const;
+    bool          isWellBehaved() const;
+    bool          convertToRedirectedId();
+    bool          isErased() const;
+    bool          isEffectivelyErased() const;
+    bool          objectLeftOnDisk() const;
+    PyDbHandle    handle() const;
+    PyDbHandle    nonForwardedHandle() const;
+    std::string   repr();
+    std::string   str();
+    PyDbDatabase  database() const;
+    PyDbDatabase  originalDatabase() const;
+    PyRxClass     objectClass() const;
+    bool          isDerivedFrom(const PyRxClass& other) const;
     std::size_t hash();
 
 public:
@@ -160,6 +165,8 @@ public:
     std::string    toString() const;
     std::string    repr() const;
     std::size_t    hash();
+    void           increment(void);
+    void           decrement(void);
     bool operator==(const PyDbHandle& rhs) const;
     bool operator!=(const PyDbHandle& rhs) const;
 

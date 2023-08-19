@@ -19,6 +19,11 @@ void makePyDbObjectIdWrapper()
         .def("database", &PyDbObjectId::database, DS.ARGS())
         .def("originalDatabase", &PyDbObjectId::originalDatabase, DS.ARGS())
         .def("convertToRedirectedId", &PyDbObjectId::convertToRedirectedId, DS.ARGS())
+        .def("isErased", &PyDbObjectId::isErased, DS.ARGS())
+        .def("isEffectivelyErased", &PyDbObjectId::isEffectivelyErased, DS.ARGS())
+        .def("objectLeftOnDisk", &PyDbObjectId::objectLeftOnDisk, DS.ARGS())
+        .def("handle", &PyDbObjectId::handle, DS.ARGS())
+        .def("nonForwardedHandle", &PyDbObjectId::nonForwardedHandle, DS.ARGS())
         .def("objectClass", &PyDbObjectId::objectClass, DS.ARGS())
         .def("isDerivedFrom", &PyDbObjectId::isDerivedFrom, DS.ARGS({ "desc : PyRx.RxClass" }))
         .def("__str__", &PyDbObjectId::str)
@@ -116,6 +121,31 @@ bool PyDbObjectId::convertToRedirectedId()
 #else
     return m_id.convertToRedirectedId();
 #endif // GRXAPP
+}
+
+bool PyDbObjectId::isErased() const
+{
+    return m_id.isErased();
+}
+
+bool PyDbObjectId::isEffectivelyErased() const
+{
+    return m_id.isEffectivelyErased();
+}
+
+bool PyDbObjectId::objectLeftOnDisk() const
+{
+    return m_id.objectLeftOnDisk();
+}
+
+PyDbHandle PyDbObjectId::handle() const
+{
+    return PyDbHandle(m_id.handle());
+}
+
+PyDbHandle PyDbObjectId::nonForwardedHandle() const
+{
+    return PyDbHandle(m_id.nonForwardedHandle());
 }
 
 std::string PyDbObjectId::repr()
@@ -383,6 +413,8 @@ void makePyDbHandleWrapper()
         .def("setValue", &PyDbHandle::setValue)
         .def("isOne", &PyDbHandle::isOne)
         .def("value", &PyDbHandle::value)
+        .def("increment", &PyDbHandle::increment)
+        .def("decrement", &PyDbHandle::decrement)
         .def("toString", &PyDbHandle::toString)
         .def_pickle(PyDbHandledpickle())
         .def("__str__", &PyDbHandle::toString)
@@ -475,6 +507,24 @@ std::string PyDbHandle::repr() const
 std::size_t PyDbHandle::hash()
 {
     return (std::size_t)value();
+}
+
+void PyDbHandle::increment(void)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyNotimplementedByHost();
+#else
+    m_hnd.increment();
+#endif
+}
+
+void PyDbHandle::decrement(void)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyNotimplementedByHost();
+#else
+    m_hnd.decrement();
+#endif
 }
 
 bool PyDbHandle::operator!=(const PyDbHandle& rhs) const
