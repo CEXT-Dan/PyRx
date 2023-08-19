@@ -7,6 +7,7 @@ typedef std::array<int64_t, 2> PySSName;
 
 void makePyEdSelectionSetWrapper();
 
+//used a shared pointer for reference counting. 
 struct PyEdSSDeleter
 {
     inline void operator()(PySSName* ss) const
