@@ -277,6 +277,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -606,6 +609,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def height (self, *args, **kwargs)-> float:
@@ -1420,6 +1426,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float:
@@ -2636,6 +2645,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -3245,6 +3257,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
         bool hasLeader(class PyDbArcDimension {lvalue})'''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float:
@@ -4178,6 +4193,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def height (self: Text)-> float:
       '''                             '''
     ...
@@ -4759,6 +4777,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def height (self: Text)-> float:
       '''                             '''
     ...
@@ -5312,6 +5333,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -5717,6 +5741,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -6145,6 +6172,9 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -6664,6 +6694,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -6994,6 +7027,9 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
 
     C++ signature :
         bool hasPreviewIcon(class PyDbBlockTableRecord {lvalue})'''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -7433,6 +7469,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -9335,6 +9374,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -10500,6 +10542,12 @@ entGetX( (ObjectId)arg1, (list)arg2) -> list :
     C++ signature :
         class PyDbObjectId namedObjDict()'''
     ...
+    def openDbEntities (self, *args, **kwargs)-> list:
+      '''openDbEntities( (list)arg1, (OpenMode)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list openDbEntities(class boost::python::list,enum AcDb::OpenMode)'''
+    ...
     def openDbEntity (self, *args, **kwargs)-> PyDb.Entity:
       '''openDbEntity( (ObjectId)arg1, (OpenMode)arg2) -> Entity :
 
@@ -10511,6 +10559,12 @@ entGetX( (ObjectId)arg1, (list)arg2) -> list :
 
     C++ signature :
         class PyDbObject openDbObject(class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def openDbObjects (self, *args, **kwargs)-> list:
+      '''openDbObjects( (list)arg1, (OpenMode)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list openDbObjects(class boost::python::list,enum AcDb::OpenMode)'''
     ...
     def putSummaryInfo (self, *args, **kwargs)-> None:
       '''putSummaryInfo( (DatabaseSummaryInfo)arg1, (Database)arg2) -> None :
@@ -10872,6 +10926,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -11617,6 +11674,9 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
     def numberOfSaves (self: Database)-> int:
+      '''                             '''
+    ...
+    def objectIds (self: Database)-> list:
       '''                             '''
     ...
     def obscuredColor (self: Database)-> int:
@@ -12423,6 +12483,9 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def treedepth (self: Database)-> int:
       '''                             '''
     ...
+    def tryGetObjectId (self: Database,createIfNotFound : bool,objHandle : Handle,xRefId : int=0)-> PyDb.ObjectId:
+      '''                             '''
+    ...
     def tstackalign (self: Database)-> int:
       '''                             '''
     ...
@@ -12803,6 +12866,9 @@ class DbObject:
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -13312,6 +13378,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float:
@@ -14140,6 +14209,9 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -14575,6 +14647,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -14836,6 +14911,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -15232,6 +15310,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float:
@@ -17555,6 +17636,9 @@ class Entity:
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -20295,6 +20379,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -20729,6 +20816,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -21152,6 +21242,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -21607,6 +21700,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -22103,6 +22199,9 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -23731,11 +23830,23 @@ __init__( (object)arg1, (int)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,unsigned __int64)'''
     ...
+    def decrement (self, *args, **kwargs)-> None:
+      '''decrement( (Handle)arg1) -> None :
+
+    C++ signature :
+        void decrement(class PyDbHandle {lvalue})'''
+    ...
     def high (self, *args, **kwargs)-> int:
       '''high( (Handle)arg1) -> int :
 
     C++ signature :
         unsigned int high(class PyDbHandle {lvalue})'''
+    ...
+    def increment (self, *args, **kwargs)-> None:
+      '''increment( (Handle)arg1) -> None :
+
+    C++ signature :
+        void increment(class PyDbHandle {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool:
       '''isNull( (Handle)arg1) -> bool :
@@ -23818,7 +23929,16 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def database (self: ObjectId)-> PyDb.Database:
       '''                             '''
     ...
+    def handle (self: ObjectId)-> PyDb.Handle:
+      '''                             '''
+    ...
     def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool:
+      '''                             '''
+    ...
+    def isEffectivelyErased (self: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def isErased (self: ObjectId)-> bool:
       '''                             '''
     ...
     def isNull (self: ObjectId)-> bool:
@@ -23833,7 +23953,13 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def isWellBehaved (self: ObjectId)-> bool:
       '''                             '''
     ...
+    def nonForwardedHandle (self: ObjectId)-> PyDb.Handle:
+      '''                             '''
+    ...
     def objectClass (self: ObjectId)-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def objectLeftOnDisk (self: ObjectId)-> bool:
       '''                             '''
     ...
     def originalDatabase (self: ObjectId)-> PyDb.Database:
@@ -23869,7 +23995,16 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def database (self: ObjectId)-> PyDb.Database:
       '''                             '''
     ...
+    def handle (self: ObjectId)-> PyDb.Handle:
+      '''                             '''
+    ...
     def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool:
+      '''                             '''
+    ...
+    def isEffectivelyErased (self: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def isErased (self: ObjectId)-> bool:
       '''                             '''
     ...
     def isNull (self: ObjectId)-> bool:
@@ -23884,7 +24019,13 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def isWellBehaved (self: ObjectId)-> bool:
       '''                             '''
     ...
+    def nonForwardedHandle (self: ObjectId)-> PyDb.Handle:
+      '''                             '''
+    ...
     def objectClass (self: ObjectId)-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def objectLeftOnDisk (self: ObjectId)-> bool:
       '''                             '''
     ...
     def originalDatabase (self: ObjectId)-> PyDb.Database:
@@ -24219,6 +24360,9 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def hatchObjectType (self, *args, **kwargs)-> PyDb.HatchObjectType:
@@ -25828,6 +25972,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def height (self, *args, **kwargs)-> float:
       '''height( (Helix)arg1) -> float :
 
@@ -26715,6 +26862,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -27700,6 +27850,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -28002,6 +28155,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
         bool hasOverrides(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -28657,6 +28813,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -29629,6 +29788,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -30309,6 +30471,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -30879,6 +31044,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float:
@@ -32040,6 +32208,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -32313,6 +32484,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -32770,6 +32944,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -33208,6 +33385,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -33943,6 +34123,9 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -36058,6 +36241,9 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -37389,6 +37575,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def height (self, *args, **kwargs)-> float:
@@ -38794,6 +38983,9 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -39456,6 +39648,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -39904,6 +40099,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -40245,7 +40443,16 @@ __init__( (object)arg1) -> None :
     def database (self: ObjectId)-> PyDb.Database:
       '''                             '''
     ...
+    def handle (self: ObjectId)-> PyDb.Handle:
+      '''                             '''
+    ...
     def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool:
+      '''                             '''
+    ...
+    def isEffectivelyErased (self: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def isErased (self: ObjectId)-> bool:
       '''                             '''
     ...
     def isNull (self: ObjectId)-> bool:
@@ -40260,7 +40467,13 @@ __init__( (object)arg1) -> None :
     def isWellBehaved (self: ObjectId)-> bool:
       '''                             '''
     ...
+    def nonForwardedHandle (self: ObjectId)-> PyDb.Handle:
+      '''                             '''
+    ...
     def objectClass (self: ObjectId)-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def objectLeftOnDisk (self: ObjectId)-> bool:
       '''                             '''
     ...
     def originalDatabase (self: ObjectId)-> PyDb.Database:
@@ -40684,6 +40897,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float:
@@ -41999,6 +42215,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -42397,6 +42616,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def height (self, *args, **kwargs)-> float:
@@ -43133,6 +43355,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -43839,6 +44064,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -44595,6 +44823,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -45159,6 +45390,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float:
@@ -46267,6 +46501,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -46681,6 +46918,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -47228,6 +47468,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def hasWidth (self: Polyline)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -47831,6 +48074,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -48512,6 +48758,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -49014,6 +49263,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -49574,6 +49826,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float:
@@ -50564,6 +50819,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def horizontalRotation (self: Dimension)-> float:
       '''                             '''
     ...
@@ -51508,6 +51766,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def height (self, *args, **kwargs)-> float:
       '''height( (RasterImage)arg1) -> float :
 
@@ -52095,6 +52356,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -52444,6 +52708,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -52711,6 +52978,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -52972,6 +53242,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -53289,6 +53562,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -54096,6 +54372,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -54633,6 +54912,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float:
@@ -55914,6 +56196,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -56467,7 +56752,16 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def database (self: ObjectId)-> PyDb.Database:
       '''                             '''
     ...
+    def handle (self: ObjectId)-> PyDb.Handle:
+      '''                             '''
+    ...
     def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool:
+      '''                             '''
+    ...
+    def isEffectivelyErased (self: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def isErased (self: ObjectId)-> bool:
       '''                             '''
     ...
     def isNull (self: ObjectId)-> bool:
@@ -56482,7 +56776,13 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def isWellBehaved (self: ObjectId)-> bool:
       '''                             '''
     ...
+    def nonForwardedHandle (self: ObjectId)-> PyDb.Handle:
+      '''                             '''
+    ...
     def objectClass (self: ObjectId)-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def objectLeftOnDisk (self: ObjectId)-> bool:
       '''                             '''
     ...
     def originalDatabase (self: ObjectId)-> PyDb.Database:
@@ -56518,7 +56818,16 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def database (self: ObjectId)-> PyDb.Database:
       '''                             '''
     ...
+    def handle (self: ObjectId)-> PyDb.Handle:
+      '''                             '''
+    ...
     def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool:
+      '''                             '''
+    ...
+    def isEffectivelyErased (self: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def isErased (self: ObjectId)-> bool:
       '''                             '''
     ...
     def isNull (self: ObjectId)-> bool:
@@ -56533,7 +56842,13 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def isWellBehaved (self: ObjectId)-> bool:
       '''                             '''
     ...
+    def nonForwardedHandle (self: ObjectId)-> PyDb.Handle:
+      '''                             '''
+    ...
     def objectClass (self: ObjectId)-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def objectLeftOnDisk (self: ObjectId)-> bool:
       '''                             '''
     ...
     def originalDatabase (self: ObjectId)-> PyDb.Database:
@@ -56915,6 +57230,9 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -57652,6 +57970,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
         bool hasFitData(class PyDbSpline {lvalue})'''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -59012,6 +59333,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -59929,6 +60253,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -60585,6 +60912,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -60816,6 +61146,9 @@ class SymbolTableRecord:
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -61597,6 +61930,9 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
 
     C++ signature :
         bool hasSubSelection(class PyDbTable {lvalue})'''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
     ...
     def height (self, *args, **kwargs)-> float:
       '''height( (Table)arg1) -> float :
@@ -63664,6 +64000,9 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def horzCellMargin (self, *args, **kwargs)-> float:
       '''horzCellMargin( (TableStyle)arg1) -> float :
 
@@ -64296,6 +64635,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def height (self: Text)-> float:
@@ -65065,6 +65407,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -65350,6 +65695,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -66400,6 +66748,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -66661,6 +67012,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -66983,6 +67337,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -67405,6 +67762,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def height (self, *args, **kwargs)-> float:
@@ -68464,6 +68824,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
     ...
@@ -68883,6 +69246,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
@@ -69539,6 +69905,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def height (self, *args, **kwargs)-> float:
@@ -70320,6 +70689,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def height (self, *args, **kwargs)-> float:
@@ -71736,6 +72108,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
+    def hasXData (self: DbObject,appname: str)-> bool:
+      '''                             '''
+    ...
     def height (self, *args, **kwargs)-> float:
       '''height( (AbstractViewTableRecord)arg1) -> float :
 
@@ -72867,6 +73242,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:

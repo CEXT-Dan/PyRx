@@ -83,6 +83,7 @@ public:
     bool                geoMarkerVisibility() const;
     double              get3dDwfPrec() const;
     boost::python::list objectIds() const;
+    boost::python::list objectIdsOfType(const PyRxClass& _class);
     PyDbObjectId        getAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle);
     PyDbObjectId        getAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId);
     PyDbObjectId        tryGetAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle);
