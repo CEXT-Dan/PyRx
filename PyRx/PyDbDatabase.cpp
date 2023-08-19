@@ -85,8 +85,8 @@ void makePyDbDatabaseWrapper()
         .def("geoCoordinateSystemId", &PyDbDatabase::geoCoordinateSystemId, DS.ARGS())
         .def("geoMarkerVisibility", &PyDbDatabase::geoMarkerVisibility, DS.ARGS())
         .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec, DS.ARGS())
-        .def("objectIds", &PyDbDatabase::objectIds, DS.ARGS())
-        .def("objectIds", &PyDbDatabase::objectIdsOfType, DS.ARGS({ "desc:PyRx.RxClass=AcDbDbObject" }))
+        .def("objectIds", &PyDbDatabase::objectIds)
+        .def("objectIds", &PyDbDatabase::objectIdsOfType, DS.ARGS({ "desc:PyRx.RxClass=DbObject" }))
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId1)
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }))
         .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId1)
@@ -886,11 +886,14 @@ double PyDbDatabase::get3dDwfPrec() const
 #endif
 }
 
-boost::python::list PyDbDatabase::objectIds() const
+static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* pClass)
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
-    AcDbDatabase* pDb = impObj();
+    if (pDb == nullptr)
+        return pyList;
+    if(pClass == nullptr)
+         return pyList;
     Adesk::UInt64 nhnd = pDb->handseed();
     while (nhnd > 0)
     {
@@ -901,31 +904,20 @@ boost::python::list PyDbDatabase::objectIds() const
             continue;
         if (!id.isValid() || id.isErased())
             continue;
-        pyList.append(id);
+        if (id.m_id.objectClass()->isDerivedFrom(pClass))
+            pyList.append(id);
     }
     return pyList;
 }
 
+boost::python::list PyDbDatabase::objectIds() const
+{
+    return PyDbDatabaseObjectIds(impObj(), AcDbObject::desc());
+}
+
 boost::python::list PyDbDatabase::objectIdsOfType(const PyRxClass& _class)
 {
-    PyAutoLockGIL lock;
-    boost::python::list pyList;
-    AcDbDatabase* pDb = impObj();
-    const auto _desc = _class.impObj();
-    Adesk::UInt64 nhnd = pDb->handseed();
-    while (nhnd > 0)
-    {
-        nhnd--;
-        PyDbObjectId id;
-        AcDbHandle hnd{ nhnd };
-        if (auto es = pDb->getAcDbObjectId(id.m_id, false, hnd); es != eOk)
-            continue;
-        if (!id.isValid() || id.isErased())
-            continue;
-        if (id.m_id.objectClass()->isDerivedFrom(_desc))
-            pyList.append(id);
-    }
-    return pyList;
+    return PyDbDatabaseObjectIds(impObj(), _class.impObj());
 }
 
 PyDbObjectId PyDbDatabase::getAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle)

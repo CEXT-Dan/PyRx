@@ -11676,7 +11676,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def numberOfSaves (self: Database)-> int:
       '''                             '''
     ...
-    def objectIds (self: Database)-> list:
+    def objectIds (self: Database,desc:PyRx.RxClass=DbObject)-> list:
       '''                             '''
     ...
     def obscuredColor (self: Database)-> int:
