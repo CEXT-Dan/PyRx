@@ -87,6 +87,8 @@ void makePyDbDatabaseWrapper()
         .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec, DS.ARGS())
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId1)
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }))
+        .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId1)
+        .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }))
         .def("getCePlotStyleNameId", &PyDbDatabase::getCePlotStyleNameId, DS.ARGS())
         .def("getDimstyleParentId", &PyDbDatabase::getDimstyleParentId, DS.ARGS())
         .def("getNearestLineWeight", &PyDbDatabase::getNearestLineWeight, DS.SARGS({ "weight : int" })).staticmethod("getNearestLineWeight")//static
@@ -885,11 +887,25 @@ double PyDbDatabase::get3dDwfPrec() const
 PyDbObjectId PyDbDatabase::getAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle)
 {
     PyDbObjectId retId;
-    PyThrowBadEs(impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd));
+    impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd);
     return retId;
 }
 
 PyDbObjectId PyDbDatabase::getAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId)
+{
+    PyDbObjectId retId;
+    impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd, xRefId);
+    return retId;
+}
+
+PyDbObjectId PyDbDatabase::tryGetAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle)
+{
+    PyDbObjectId retId;
+    PyThrowBadEs(impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd));
+    return retId;
+}
+
+PyDbObjectId PyDbDatabase::tryGetAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId)
 {
     PyDbObjectId retId;
     PyThrowBadEs(impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd, xRefId));

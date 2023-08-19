@@ -84,6 +84,8 @@ public:
     double              get3dDwfPrec() const;
     PyDbObjectId        getAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle);
     PyDbObjectId        getAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId);
+    PyDbObjectId        tryGetAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle);
+    PyDbObjectId        tryGetAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId);
     AcDb::PlotStyleNameType getCePlotStyleNameId(PyDbObjectId& id) const;
     bool                isAppRegistered(const std::string& pszAppName) const;
     std::string         dimapost() const;
