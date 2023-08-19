@@ -86,6 +86,7 @@ void makePyDbDatabaseWrapper()
         .def("geoMarkerVisibility", &PyDbDatabase::geoMarkerVisibility, DS.ARGS())
         .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec, DS.ARGS())
         .def("objectIds", &PyDbDatabase::objectIds, DS.ARGS())
+        .def("objectIds", &PyDbDatabase::objectIdsOfType, DS.ARGS({ "desc:PyRx.RxClass=AcDbDbObject" }))
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId1)
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.ARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }))
         .def("tryGetObjectId", &PyDbDatabase::tryGetAcDbObjectId1)
@@ -905,31 +906,53 @@ boost::python::list PyDbDatabase::objectIds() const
     return pyList;
 }
 
+boost::python::list PyDbDatabase::objectIdsOfType(const PyRxClass& _class)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    AcDbDatabase* pDb = impObj();
+    const auto _desc = _class.impObj();
+    Adesk::UInt64 nhnd = pDb->handseed();
+    while (nhnd > 0)
+    {
+        nhnd--;
+        PyDbObjectId id;
+        AcDbHandle hnd{ nhnd };
+        if (auto es = pDb->getAcDbObjectId(id.m_id, false, hnd); es != eOk)
+            continue;
+        if (!id.isValid() || id.isErased())
+            continue;
+        if (id.m_id.objectClass()->isDerivedFrom(_desc))
+            pyList.append(id);
+    }
+    return pyList;
+}
+
 PyDbObjectId PyDbDatabase::getAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle)
-{
-    PyDbObjectId retId;
-    impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd);
-    return retId;
-}
-
-PyDbObjectId PyDbDatabase::getAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId)
-{
-    PyDbObjectId retId;
-    impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd, xRefId);
-    return retId;
-}
-
-PyDbObjectId PyDbDatabase::tryGetAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle)
 {
     PyDbObjectId retId;
     PyThrowBadEs(impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd));
     return retId;
 }
 
-PyDbObjectId PyDbDatabase::tryGetAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId)
+PyDbObjectId PyDbDatabase::getAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId)
 {
     PyDbObjectId retId;
     PyThrowBadEs(impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd, xRefId));
+    return retId;
+}
+
+PyDbObjectId PyDbDatabase::tryGetAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle)
+{
+    PyDbObjectId retId;
+    impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd);
+    return retId;
+}
+
+PyDbObjectId PyDbDatabase::tryGetAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId)
+{
+    PyDbObjectId retId;
+    impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd, xRefId);
     return retId;
 }
 
