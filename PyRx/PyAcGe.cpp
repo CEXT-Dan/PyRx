@@ -217,7 +217,7 @@ std::string AcGeVector2ToString(const AcGeVector2d& p)
     return std::format("({:.14f},{:.14f})", p.x, p.y);
 }
 
-std::string AcGeVector2dToStringRepr(const AcGePoint2d& s)
+std::string AcGeVector2dToStringRepr(const AcGeVector2d& s)
 {
     return std::format("<{}.Vector2d({:.14f},{:.14f})>", PyGeNamespace, s.x, s.y);
 }
