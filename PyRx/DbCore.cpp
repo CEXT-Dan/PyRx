@@ -80,7 +80,9 @@ void makeDbCoreWrapper()
         .def("loadMlineStyleFile", &DbCore::loadMlineStyleFile).staticmethod("loadMlineStyleFile")
         .def("namedObjDict", &DbCore::namedObjDict).staticmethod("namedObjDict")
         .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
+        .def("openDbObjects", &DbCore::openDbObjects).staticmethod("openDbObjects")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
+        .def("openDbEntities", &DbCore::openDbEntities).staticmethod("openDbEntities")
         .def("queueAnnotationEntitiesForRegen", &DbCore::queueAnnotationEntitiesForRegen).staticmethod("queueAnnotationEntitiesForRegen")
         .def("queueForRegen", &DbCore::queueForRegen).staticmethod("queueForRegen")
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
@@ -559,6 +561,19 @@ PyDbObject DbCore::openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
     return PyDbObject{ pObj, true };
 }
 
+boost::python::list DbCore::openDbObjects(const boost::python::list& ids, AcDb::OpenMode mode)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    for (auto& id : PyListToObjectIdArray(ids))
+    {
+        AcDbObject* pObj = nullptr;
+        PyThrowBadEs(acdbOpenAcDbObject(pObj, id, mode));
+        pyList.append(PyDbObject(pObj, true));
+    }
+    return pyList;
+}
+
 PyDbEntity DbCore::openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     if (id.m_id.objectClass()->isDerivedFrom(AcDbEntity::desc()))
@@ -568,6 +583,19 @@ PyDbEntity DbCore::openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
         return PyDbEntity(pObj, true);
     }
     throw PyNotThatKindOfClass();
+}
+
+boost::python::list DbCore::openDbEntities(const boost::python::list& ids, AcDb::OpenMode mode)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    for (auto& id : PyListToObjectIdArray(ids))
+    {
+        AcDbEntity* pObj = nullptr;
+        PyThrowBadEs(acdbOpenAcDbEntity(pObj, id, mode));
+        pyList.append(PyDbEntity(pObj, true));
+    }
+    return pyList;
 }
 
 void DbCore::queueAnnotationEntitiesForRegen(PyDbDatabase& db)
