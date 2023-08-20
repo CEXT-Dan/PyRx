@@ -1,72 +1,79 @@
-import PyRx
-import PyGe
-import PyGi
-import PyDb
-import PyAp
-import PyEd
+import PyRx as Rx
+import PyGe as Ge
+import PyGi as Gi
+import PyDb as Db
+import PyAp as Ap
+import PyEd as Ed
+
 
 def OnPyInitApp():
     print("\nadded command pyregdocreactor")
     print("\nadded command pyunregdocreactor")
 
+
 def OnPyUnloadApp():
     PyRxCmd_pyunregdocreactor()
-   
-class DocReactor(PyAp.DocManagerReactor):
-    def __init__(self):
-        PyAp.DocManagerReactor.__init__(self)
 
-    def documentCreateStarted(self, dwgdoc):
-        if dwgdoc.isNull() == False:
+
+class DocReactor(Ap.DocManagerReactor):
+    def __init__(self):
+        Ap.DocManagerReactor.__init__(self)
+
+    def documentCreateStarted(self, dwgdoc: Ap.Document):
+        if dwgdoc.isNullObj() == False:
             print("\ndocumentCreateStarted-{}".format(dwgdoc.docTitle()))
 
-    def documentCreated(self, dwgdoc):
-        if dwgdoc.isNull() == False:
+    def documentCreated(self, dwgdoc: Ap.Document):
+        if dwgdoc.isNullObj() == False:
             print("\ndocumentCreated-{}".format(dwgdoc.docTitle()))
 
-    def documentToBeDestroyed(self, dwgdoc):
-        if dwgdoc.isNull() == False:
+    def documentToBeDestroyed(self, dwgdoc: Ap.Document):
+        if dwgdoc.isNullObj() == False:
             print("\ndocumentToBeDestroyed-{}".format(dwgdoc.docTitle()))
 
-    def documentDestroyed(self, filename):
+    def documentDestroyed(self, filename: str):
         print("\ndocumentDestroyed-{}".format(filename))
 
-    def documentCreateCanceled(self, dwgdoc):
-        if dwgdoc.isNull() == False:
+    def documentCreateCanceled(self, dwgdoc: Ap.Document):
+        if dwgdoc.isNullObj() == False:
             print("\ndocumentCreateCanceled-{}".format(dwgdoc.docTitle()))
 
-    def documentLockModeWillChange(self, dwgdoc, myCurrentMode, myNewMode, currentMode, pGlobalCmdName):
-        if dwgdoc.isNull() == False:
-            print("\ndocumentLockModeWillChange-{} {} {} {} {}".format(dwgdoc.docTitle(),
-                myCurrentMode, myNewMode, currentMode, pGlobalCmdName))
+    def documentLockModeWillChange(self, dwgdoc: Ap.Document,
+                                   myCurrentMode, myNewMode, currentMode, pGlobalCmdName):
+        if dwgdoc.isNullObj() == False:
+            print("\ndocumentLockModeWillChange-{} {} {} {} {}".format(
+                dwgdoc.docTitle(), myCurrentMode, myNewMode, currentMode, pGlobalCmdName))
 
-    def documentLockModeChangeVetoed(self, dwgdoc, pGlobalCmdName):
-        if dwgdoc.isNull() == False:
-            print("\ndocumentLockModeChangeVetoed-{} {}".format(dwgdoc.docTitle(), pGlobalCmdName))
+    def documentLockModeChangeVetoed(self, dwgdoc: Ap.Document, pGlobalCmdName):
+        if dwgdoc.isNullObj() == False:
+            print("\ndocumentLockModeChangeVetoed-{} {}".format(
+                dwgdoc.docTitle(), pGlobalCmdName))
 
-    def documentLockModeChanged(self, dwgdoc, myPreviousMode, myCurrentMode, currentMode, pGlobalCmdName):
-        if dwgdoc.isNull() == False:
-            print("\ndocumentLockModeChanged-{} {} {} {} {}".format(dwgdoc.docTitle(),
-              myCurrentMode, myPreviousMode, currentMode, pGlobalCmdName))
+    def documentLockModeChanged(self, dwgdoc: Ap.Document,
+                                myPreviousMode, myCurrentMode, currentMode, pGlobalCmdName):
+        if dwgdoc.isNullObj() == False:
+            print("\ndocumentLockModeChanged-{} {} {} {} {}".format(
+                dwgdoc.docTitle(), myCurrentMode, myPreviousMode, currentMode, pGlobalCmdName))
 
-    def documentBecameCurrent(self, dwgdoc):
-        if dwgdoc.isNull() == False:
+    def documentBecameCurrent(self, dwgdoc: Ap.Document):
+        if dwgdoc.isNullObj() == False:
             print("\ndocumentBecameCurrent-{}".format(dwgdoc.docTitle()))
 
-    def documentToBeActivated(self, dwgdoc):
-        if dwgdoc.isNull() == False:
+    def documentToBeActivated(self, dwgdoc: Ap.Document):
+        if dwgdoc.isNullObj() == False:
             print("\ndocumentToBeActivated-{}".format(dwgdoc.docTitle()))
 
-    def documentToBeDeactivated(self, dwgdoc):
-        if dwgdoc.isNull() == False:
+    def documentToBeDeactivated(self, dwgdoc: Ap.Document):
+        if dwgdoc.isNullObj() == False:
             print("\ndocumentToBeDeactivated-{}".format(dwgdoc.docTitle()))
 
-    def documentActivationModified(self, bActivation):
+    def documentActivationModified(self, bActivation: bool):
         print("\ndocumentToBeDeactivated-{}".format(bActivation))
 
-    def documentToBeDeactivated(self, dwgdoc):
-        if dwgdoc.isNull() == False:
+    def documentToBeDeactivated(self, dwgdoc: Ap.Document):
+        if dwgdoc.isNullObj() == False:
             print("\ndocumentToBeDeactivated-{}".format(dwgdoc.docTitle()))
+
 
 def PyRxCmd_pyregdocreactor():
     try:
@@ -74,7 +81,8 @@ def PyRxCmd_pyregdocreactor():
         docReactorInstance = DocReactor()
         docReactorInstance.addReactor()
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
+
 
 def PyRxCmd_pyunregdocreactor():
     try:
@@ -82,6 +90,6 @@ def PyRxCmd_pyunregdocreactor():
         if docReactorInstance == None:
             return
         docReactorInstance.removeReactor()
-        del(docReactorInstance)
+        del (docReactorInstance)
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
