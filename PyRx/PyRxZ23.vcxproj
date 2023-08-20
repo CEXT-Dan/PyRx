@@ -104,6 +104,7 @@
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>$(ZRX2023)\arxport;$(Py310)\include;$(boost);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <OutputFile>$(outdir)/$(targetname)$(TargetExt)</OutputFile>
