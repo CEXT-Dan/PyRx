@@ -29,7 +29,7 @@ PyEdSelectionSet::PyEdSelectionSet()
     : m_pSet(new PySSName(), PyEdSSDeleter())
 {
     ads_name result = { 0L,0L };
-    acedSSAdd(nullptr, nullptr, result);
+    PyThrowBadRt(acedSSAdd(nullptr, nullptr, result));
     auto& a = *m_pSet;
     a[0] = result[0];
     a[1] = result[1];
@@ -47,7 +47,7 @@ bool PyEdSelectionSet::isInitialized() const
 {
     if (m_pSet == nullptr)
         return false;
-    else if ((m_pSet->at(0) == 0) && (m_pSet->at(1) == 0))
+    else if ((m_pSet->at(0) + m_pSet->at(1)) == 0)
         return false;
     return true;
 }
@@ -70,34 +70,28 @@ void PyEdSelectionSet::clear()
 void PyEdSelectionSet::add(const PyDbObjectId& objId)
 {
     ads_name ent = { 0 };
-    if (auto es = acdbGetAdsName(ent, objId.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
-    acedSSAdd(ent, impObj()->data(), impObj()->data());
+    PyThrowBadEs(acdbGetAdsName(ent, objId.m_id));
+    PyThrowBadRt(acedSSAdd(ent, impObj()->data(), impObj()->data()));
 }
 
 void PyEdSelectionSet::remove(const PyDbObjectId& objId)
 {
     ads_name ent = { 0 };
-    if (auto es = acdbGetAdsName(ent, objId.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
-    acedSSDel(ent, impObj()->data());
+    PyThrowBadEs(acdbGetAdsName(ent, objId.m_id));
+    PyThrowBadRt(acedSSDel(ent, impObj()->data()));
 }
 
 bool PyEdSelectionSet::hasMember(const PyDbObjectId& objId)
 {
     ads_name ent = { 0 };
-    if (auto es = acdbGetAdsName(ent, objId.m_id); es != eOk)
-        throw PyAcadErrorStatus(es);
-    if (acedSSMemb(ent, impObj()->data()) == RTNORM)
-        return true;
-    else
-        return false;
+    PyThrowBadEs(acdbGetAdsName(ent, objId.m_id));
+    return acedSSMemb(ent, impObj()->data()) == RTNORM;
 }
 
 AdsName PyEdSelectionSet::adsname() const
 {
     AdsName _name;
-    if (m_pSet != nullptr)
+    if (isInitialized())
     {
         _name.m_data[0] = m_pSet->at(0);
         _name.m_data[1] = m_pSet->at(1);
@@ -107,7 +101,7 @@ AdsName PyEdSelectionSet::adsname() const
 
 bool PyEdSelectionSet::ssSetFirst()
 {
-    if (m_pSet == nullptr)
+    if (!isInitialized())
         throw PyAcadErrorStatus(eInvalidInput);
     ads_name dummy = { 0 };
     return acedSSSetFirst(m_pSet->data(), dummy) == RTNORM;
@@ -128,11 +122,10 @@ boost::python::list PyEdSelectionSet::ssNameX1()
 boost::python::list PyEdSelectionSet::ssNameX2(int idx)
 {
     PyAutoLockGIL lock;
-    if (m_pSet == nullptr)
+    if (!isInitialized())
         throw PyAcadErrorStatus(eInvalidInput);
     resbuf* rb = nullptr;
-    if (RTNORM != acedSSNameX(&rb, m_pSet->data(), idx))
-        throw PyAcadErrorStatus(eInvalidInput);
+    PyThrowBadRt(acedSSNameX(&rb, m_pSet->data(), idx));
     AcResBufPtr ptr(rb);
     return resbufToList(rb);
 }
