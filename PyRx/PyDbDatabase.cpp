@@ -892,8 +892,8 @@ static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* p
     boost::python::list pyList;
     if (pDb == nullptr)
         return pyList;
-    if(pClass == nullptr)
-         return pyList;
+    if (pClass == nullptr)
+        return pyList;
     Adesk::UInt64 nhnd = pDb->handseed();
     while (nhnd > 0)
     {
@@ -3299,9 +3299,9 @@ std::string PyDbDatabase::className()
 
 AcDbDatabase* PyDbDatabase::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)[[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbDatabase*>(m_pyImp.get());
+        return static_cast<AcDbDatabase*>(m_pyImp.get());
 }
 
 

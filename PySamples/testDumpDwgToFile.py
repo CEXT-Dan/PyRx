@@ -7,13 +7,13 @@ import PyEd as Ed
 from timeit import default_timer as timer
 
 def writealltofile(ids):
-    f = open("E:/snoopbrx.txt", "w")
+    f = open("E:/snooparx2.txt", "w")
     pylist = []
     for id in ids:
         o = Db.DbObject(id)
         s = Db.SnoopDwgFiler()
         o.snoop(s)
-        pylist.append((o.isA().dxfName(),s.buffer().__str__()))
+        pylist.append((o.isA().name(),s.buffer().__str__()))
     
     pylist.sort(key=lambda x: x[0])
     for item in pylist:
@@ -22,11 +22,11 @@ def writealltofile(ids):
     f.close()
     
 def writetoTypesfile(ids):
-    f = open("E:/snoopbrx.txt", "w")
+    f = open("E:/snooparx2.txt", "w")
     pydict = {}
     for id in ids:
         o = Db.DbObject(id)
-        s = o.isA().dxfName()
+        s = o.isA().name()
         if not s in pydict:
             pydict[s] = 0
         else:
