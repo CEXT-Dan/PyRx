@@ -34,7 +34,7 @@ def PyRxCmd_pyregedreactor():
         inst = EdReactor()
         inst.addReactor()
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
 def PyRxCmd_pyunregedreactor():
     try:
@@ -44,4 +44,4 @@ def PyRxCmd_pyunregedreactor():
         inst.removeReactor()
         del(inst)
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
