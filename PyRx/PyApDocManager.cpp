@@ -663,10 +663,6 @@ PyAutoDocLock::PyAutoDocLock()
 {
 }
 
-PyAutoDocLock::~PyAutoDocLock()
-{
-}
-
 std::string PyAutoDocLock::className()
 {
     return "AutoDocLock";

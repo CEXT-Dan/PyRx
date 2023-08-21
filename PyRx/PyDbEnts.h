@@ -180,6 +180,7 @@ public:
     AcDbExtents         geomExtentsBestFit1() const;
     AcDbExtents         geomExtentsBestFit2(const AcGeMatrix3d& parentXform) const;
     void                explodeToOwnerSpace() const;
+    std::string         getBlockName() const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbBlockReference cloneFrom(const PyRxObject& src);
