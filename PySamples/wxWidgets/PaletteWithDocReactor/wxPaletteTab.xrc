@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource version="2.3.0.1" xmlns="http://www.wxwidgets.org/wxxrc">
+    <object class="wxPanel" name="ID_WXPALETTETAB">
+        <style>wxWANTS_CHARS|wxTAB_TRAVERSAL</style>
+        <exstyle>wxWS_EX_VALIDATE_RECURSIVELY</exstyle>
+        <size>400,300</size>
+        <title>wxPaletteTab</title>
+        <centered>1</centered>
+        <object class="wxBoxSizer">
+            <orient>wxVERTICAL</orient>
+            <object class="sizeritem">
+                <flag>wxGROW|wxALL</flag>
+                <border>5</border>
+                <object class="wxBoxSizer">
+                    <orient>wxHORIZONTAL</orient>
+                    <object class="sizeritem">
+                        <flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+                        <border>5</border>
+                        <option>1</option>
+                        <object class="wxChoice" name="wxID_COMBOCTRL">
+                            <tooltip>don't ask for tips</tooltip>
+                            <help>don't ask for help</help>
+                        </object>
+                    </object>
+                </object>
+            </object>
+            <object class="sizeritem">
+                <flag>wxGROW|wxALL</flag>
+                <border>5</border>
+                <option>1</option>
+                <object class="wxBoxSizer">
+                    <orient>wxHORIZONTAL</orient>
+                    <object class="sizeritem">
+                        <flag>wxGROW|wxALL</flag>
+                        <border>5</border>
+                        <option>1</option>
+                        <object class="wxListCtrl" name="wxID_LISTCTRL">
+                            <size>100,100</size>
+                            <style>wxLC_REPORT|wxLC_EDIT_LABELS|wxLC_NO_SORT_HEADER|wxLC_SINGLE_SEL</style>
+                        </object>
+                    </object>
+                </object>
+            </object>
+        </object>
+    </object>
+</resource>
