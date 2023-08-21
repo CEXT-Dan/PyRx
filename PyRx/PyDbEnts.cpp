@@ -782,6 +782,7 @@ void makePyDbBlockReferenceWrapper()
         .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit1)
         .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit2, DS.ARGS({ "val : PyGe.Matrix3d=kIdentity" }))
         .def("explodeToOwnerSpace", &PyDbBlockReference::explodeToOwnerSpace, DS.ARGS())
+        .def("getBlockName", &PyDbBlockReference::getBlockName, DS.ARGS())
         .def("className", &PyDbBlockReference::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockReference::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockReference::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -921,6 +922,15 @@ AcDbExtents PyDbBlockReference::geomExtentsBestFit2(const AcGeMatrix3d& parentXf
 void PyDbBlockReference::explodeToOwnerSpace() const
 {
     return PyThrowBadEs(impObj()->explodeToOwnerSpace());
+}
+
+std::string PyDbBlockReference::getBlockName() const
+{
+    AcString name;
+    AcDbBlockTableRecordPointer bBlock(impObj()->blockTableRecord());
+    if (bBlock.openStatus() == eOk)
+        bBlock->getName(name);
+    return wstr_to_utf8(name);
 }
 
 std::string PyDbBlockReference::className()

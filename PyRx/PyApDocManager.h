@@ -165,7 +165,7 @@ class PyAutoDocLock
 {
 public:
     PyAutoDocLock();
-    ~PyAutoDocLock();
+    ~PyAutoDocLock() = default;
     static std::string className();
 public:
     std::shared_ptr<PyAutoDocLockImp> imp;
