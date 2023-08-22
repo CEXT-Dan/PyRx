@@ -26,7 +26,7 @@ std::string PyGsManager::className()
 
 AcGsManager* PyGsManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr)
+    if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return m_pyImp;
 }
