@@ -51,6 +51,134 @@ PyDbGroup::PyDbGroup(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
+boost::python::list PyDbGroup::objectIds() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    for (std::unique_ptr<AcDbGroupIterator> iter(impObj()->newIterator()); !iter->done(); iter->next())
+        pyList(PyDbObjectId(iter->objectId()));
+    return pyList;
+}
+
+std::string PyDbGroup::description() const
+{
+    return wstr_to_utf8(impObj()->description());
+}
+
+void PyDbGroup::setDescription(const std::string& grpDesc)
+{
+    PyThrowBadEs(impObj()->setDescription(utf8_to_wstr(grpDesc).c_str()));
+}
+
+bool PyDbGroup::isSelectable() const
+{
+    return impObj()->isSelectable();
+}
+
+void PyDbGroup::setSelectable(bool selectable)
+{
+    PyThrowBadEs(impObj()->setSelectable(selectable));
+}
+
+std::string PyDbGroup::getName() const
+{
+    RxAutoOutStr str;
+    PyThrowBadEs(impObj()->getName(str.buf));
+    return wstr_to_utf8(str.buf);
+}
+
+void PyDbGroup::setName(const std::string& name)
+{
+    PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
+}
+
+bool PyDbGroup::isNotAccessible() const
+{
+    return impObj()->isNotAccessible();
+}
+
+bool PyDbGroup::isAnonymous() const
+{
+    return impObj()->isAnonymous();
+}
+
+void PyDbGroup::setAnonymous()
+{
+    PyThrowBadEs(impObj()->setAnonymous());
+}
+
+void PyDbGroup::append1(const PyDbObjectId& id)
+{
+    PyThrowBadEs(impObj()->append(id.m_id));
+}
+
+void PyDbGroup::append2(const boost::python::list& ids)
+{
+    PyThrowBadEs(impObj()->append(PyListToObjectIdArray(ids)));
+}
+
+void PyDbGroup::prepend1(const PyDbObjectId& id)
+{
+    PyThrowBadEs(impObj()->prepend(id.m_id));
+}
+
+void PyDbGroup::prepend2(const boost::python::list& ids)
+{
+    PyThrowBadEs(impObj()->prepend(PyListToObjectIdArray(ids)));
+}
+
+void PyDbGroup::insertAt1(Adesk::UInt32 idx, const PyDbObjectId& id)
+{
+    PyThrowBadEs(impObj()->insertAt(idx, id.m_id));
+}
+
+void PyDbGroup::insertAt2(Adesk::UInt32 idx, const boost::python::list& ids)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->insertAt(idx, PyListToObjectIdArray(ids)));
+#endif
+}
+
+void PyDbGroup::remove1(const PyDbObjectId& id)
+{
+    PyThrowBadEs(impObj()->remove(id.m_id));
+}
+
+void PyDbGroup::remove2(const boost::python::list& ids)
+{
+    PyThrowBadEs(impObj()->remove(PyListToObjectIdArray(ids)));
+}
+
+void PyDbGroup::removeAt1(Adesk::UInt32 idx)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->removeAt(idx));
+#endif
+}
+
+void PyDbGroup::removeAt2(Adesk::UInt32 idx, const boost::python::list& ids)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(impObj()->removeAt(idx, PyListToObjectIdArray(ids)));
+#endif
+}
+
+void PyDbGroup::replace(const AcDbObjectId& oldId, const AcDbObjectId& newId)
+{
+    PyThrowBadEs(impObj()->replace(oldId, newId));
+}
+
+void PyDbGroup::transfer(Adesk::UInt32 fromIndex, Adesk::UInt32 toIndex, Adesk::UInt32 numItems)
+{
+    PyThrowBadEs(impObj()->transfer(fromIndex, toIndex, numItems));
+}
+
 PyRxClass PyDbGroup::desc()
 {
     return PyRxClass(AcDbGroup::desc(), false);
