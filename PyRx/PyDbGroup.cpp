@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyDbGroup.h"
 #include "PyDbObjectId.h"
+#include "PyDbEntity.h"
 
 using namespace boost::python;
 
@@ -13,7 +14,45 @@ void makePyDbGroupWrapper()
         .def(init<const std::string&, bool>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        
+        .def("objectIds", &PyDbGroup::objectIds)
+        .def("description", &PyDbGroup::description)
+        .def("setDescription", &PyDbGroup::setDescription)
+        .def("isSelectable", &PyDbGroup::isSelectable)
+        .def("setSelectable", &PyDbGroup::setSelectable)
+        .def("getName", &PyDbGroup::getName)
+        .def("setName", &PyDbGroup::setName)
+        .def("isNotAccessible", &PyDbGroup::isNotAccessible)
+        .def("isAnonymous", &PyDbGroup::isAnonymous)
+        .def("setAnonymous", &PyDbGroup::setAnonymous)
+        .def("append", &PyDbGroup::append1)
+        .def("append", &PyDbGroup::append2)
+        .def("prepend", &PyDbGroup::prepend1)
+        .def("prepend", &PyDbGroup::prepend2)
+        .def("insertAt", &PyDbGroup::insertAt1)
+        .def("insertAt", &PyDbGroup::insertAt2)
+        .def("remove", &PyDbGroup::remove1)
+        .def("remove", &PyDbGroup::remove2)
+        .def("removeAt", &PyDbGroup::removeAt1)
+        .def("removeAt", &PyDbGroup::removeAt2)
+        .def("replace", &PyDbGroup::replace)
+        .def("transfer", &PyDbGroup::transfer)
+        .def("clear", &PyDbGroup::clear)
+        .def("numEntities", &PyDbGroup::numEntities)
+        .def("has", &PyDbGroup::has)
+        .def("allEntityIds", &PyDbGroup::allEntityIds)
+        .def("getIndex", &PyDbGroup::getIndex)
+        .def("reverse", &PyDbGroup::reverse)
+        .def("setColor", &PyDbGroup::setColor)
+        .def("setColorIndex", &PyDbGroup::setColorIndex)
+        .def("setLayer", &PyDbGroup::setLayer1)
+        .def("setLayer", &PyDbGroup::setLayer2)
+        .def("setLinetype", &PyDbGroup::setLinetype1)
+        .def("setLinetype", &PyDbGroup::setLinetype2)
+        .def("setLinetypeScale", &PyDbGroup::setLinetypeScale)
+        .def("setVisibility", &PyDbGroup::setVisibility)
+        .def("setHighlight", &PyDbGroup::setHighlight)
+        .def("setMaterial", &PyDbGroup::setMaterial1)
+        .def("setMaterial", &PyDbGroup::setMaterial2)
         .def("desc", &PyDbGroup::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyDbGroup::className, DS.SARGS()).staticmethod("className")
         .def("cloneFrom", &PyDbGroup::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -177,6 +216,95 @@ void PyDbGroup::replace(const AcDbObjectId& oldId, const AcDbObjectId& newId)
 void PyDbGroup::transfer(Adesk::UInt32 fromIndex, Adesk::UInt32 toIndex, Adesk::UInt32 numItems)
 {
     PyThrowBadEs(impObj()->transfer(fromIndex, toIndex, numItems));
+}
+
+void PyDbGroup::clear()
+{
+    PyThrowBadEs(impObj()->clear());
+}
+
+Adesk::UInt32 PyDbGroup::numEntities() const
+{
+    return impObj()->numEntities();
+}
+
+bool PyDbGroup::has(const PyDbEntity& pEntity) const
+{
+    return impObj()->has(pEntity.impObj());
+}
+
+boost::python::list PyDbGroup::allEntityIds() const
+{
+    AcDbObjectIdArray ids;
+    impObj()->allEntityIds(ids);
+    return ObjectIdArrayToPyList(ids);
+}
+
+Adesk::UInt32 PyDbGroup::getIndex(const PyDbObjectId& id) const
+{
+    Adesk::UInt32 idx;
+    PyThrowBadEs(impObj()->getIndex(id.m_id, idx));
+    return idx;
+}
+
+void PyDbGroup::reverse()
+{
+    PyThrowBadEs(impObj()->reverse());
+}
+
+void PyDbGroup::setColor(const AcCmColor& color)
+{
+    PyThrowBadEs(impObj()->setColor(color));
+}
+
+void PyDbGroup::setColorIndex(Adesk::UInt16 color)
+{
+    PyThrowBadEs(impObj()->setColorIndex(color));
+}
+
+void PyDbGroup::setLayer1(const std::string& newVal)
+{
+    PyThrowBadEs(impObj()->setLayer(utf8_to_wstr(newVal).c_str()));
+}
+
+void PyDbGroup::setLayer2(const PyDbObjectId& newVal)
+{
+    PyThrowBadEs(impObj()->setLayer(newVal.m_id));
+}
+
+void PyDbGroup::setLinetype1(const std::string& newVal)
+{
+    PyThrowBadEs(impObj()->setLinetype(utf8_to_wstr(newVal).c_str()));
+}
+
+void PyDbGroup::setLinetype2(const PyDbObjectId& newVal)
+{
+    PyThrowBadEs(impObj()->setLinetype(newVal.m_id));
+}
+
+void PyDbGroup::setLinetypeScale(double newval)
+{
+    PyThrowBadEs(impObj()->setLinetypeScale(newval));
+}
+
+void PyDbGroup::setVisibility(AcDb::Visibility newVal)
+{
+    PyThrowBadEs(impObj()->setVisibility(newVal));
+}
+
+void PyDbGroup::setHighlight(bool newVal)
+{
+    PyThrowBadEs(impObj()->setHighlight(newVal));
+}
+
+void PyDbGroup::setMaterial1(const std::string& newVal)
+{
+    PyThrowBadEs(impObj()->setMaterial(utf8_to_wstr(newVal).c_str()));
+}
+
+void PyDbGroup::setMaterial2(const PyDbObjectId& newVal)
+{
+    PyThrowBadEs(impObj()->setMaterial(newVal.m_id));
 }
 
 PyRxClass PyDbGroup::desc()
