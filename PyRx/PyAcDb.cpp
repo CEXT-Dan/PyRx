@@ -33,6 +33,7 @@
 #include "PyDbProtocolExtensions.h"
 #include "PyDbFiler.h"
 #include "PyDbSpline.h"
+#include "PyDbGroup.h"
 
 using namespace boost::python;
 
@@ -241,6 +242,7 @@ BOOST_PYTHON_MODULE(PyDb)
 #ifndef ZRXAPP
     makePyDbJoinEntityPEWrapper();
 #endif
+    makePyDbGroupWrapper();
     makePyDbDatabaseSummaryInfoWrapper();
     makePyDbSnoopDwgFilerWrapper();
     makeDbCoreWrapper();//LAST?
