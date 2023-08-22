@@ -14,7 +14,7 @@ class MyMenu(Ed.UIContext):
     def __init__(self):
         Ed.UIContext.__init__(self)
         self.contextMenu = wx.Menu()
-        self.contextMenu.Append(10001, "Print Attributes")
+        self.contextMenu.Append(10001, "🖨️ Print Attributes")
         self.ids = []
         self.rxClass = None
 
