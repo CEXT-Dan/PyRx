@@ -1,6 +1,8 @@
 #pragma once
 #include "PyDbObject.h"
 
+class PyDbEntity;
+
 //----------------------------------------------------------------------------------------
 //PyDbGroup
 void makePyDbGroupWrapper();
@@ -35,8 +37,26 @@ public:
     void                remove2(const boost::python::list& ids);
     void                removeAt1(Adesk::UInt32 idx);
     void                removeAt2(Adesk::UInt32 idx, const boost::python::list& ids);
-    void                replace(const AcDbObjectId& oldId,const AcDbObjectId& newId);
+    void                replace(const AcDbObjectId& oldId, const AcDbObjectId& newId);
     void                transfer(Adesk::UInt32 fromIndex, Adesk::UInt32 toIndex, Adesk::UInt32 numItems);
+    void                clear();
+    Adesk::UInt32       numEntities() const;
+    bool                has(const PyDbEntity& pEntity) const;
+    boost::python::list allEntityIds() const;
+    Adesk::UInt32       getIndex(const PyDbObjectId& id) const;
+    void                reverse();
+
+    void                setColor(const AcCmColor& color);
+    void                setColorIndex(Adesk::UInt16 color);
+    void                setLayer1(const std::string& newVal);
+    void                setLayer2(const PyDbObjectId& newVal);
+    void                setLinetype1(const std::string& newVal);
+    void                setLinetype2(const PyDbObjectId& newVal);
+    void                setLinetypeScale(double newval);
+    void                setVisibility(AcDb::Visibility newVal);
+    void                setHighlight(bool newVal);
+    void                setMaterial1(const std::string& newVal);
+    void                setMaterial2(const PyDbObjectId& newVal);
 
 public:
     static PyRxClass    desc();

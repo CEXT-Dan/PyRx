@@ -972,6 +972,12 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     C++ signature :
         int documentCount(class PyApDocManager {lvalue})'''
     ...
+    def documents (self, *args, **kwargs)-> list:
+      '''documents( (DocManager)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list documents(class PyApDocManager {lvalue})'''
+    ...
     def enableDocumentActivation (self, *args, **kwargs)-> None:
       '''enableDocumentActivation( (DocManager)arg1) -> None :
 
@@ -1032,12 +1038,6 @@ lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (s
 
     C++ signature :
         class PyApDocument mdiActiveDocument(class PyApDocManager {lvalue})'''
-    ...
-    def newAcApDocumentIterator (self, *args, **kwargs)-> list:
-      '''newAcApDocumentIterator( (DocManager)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list newAcApDocumentIterator(class PyApDocManager {lvalue})'''
     ...
     def newDocument (self, *args, **kwargs)-> None:
       '''newDocument( (DocManager)arg1) -> None :
