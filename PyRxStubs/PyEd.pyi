@@ -3266,6 +3266,30 @@ class Util:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+    def angle (self, *args, **kwargs)-> float:
+      '''angle( (Point3d)arg1, (Point3d)arg2) -> float :
+
+    C++ signature :
+        double angle(class AcGePoint3d,class AcGePoint3d)'''
+    ...
+    def cvUnit (self, *args, **kwargs)-> float:
+      '''cvUnit( (float)arg1, (str)arg2, (str)arg3) -> float :
+
+    C++ signature :
+        double cvUnit(double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def distance (self, *args, **kwargs)-> float:
+      '''distance( (Point3d)arg1, (Point3d)arg2) -> float :
+
+    C++ signature :
+        double distance(class AcGePoint3d,class AcGePoint3d)'''
+    ...
+    def polar (self, *args, **kwargs)-> PyGe.Point3d:
+      '''polar( (Point3d)arg1, (float)arg2, (float)arg3) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d polar(class AcGePoint3d,double,double)'''
+    ...
     def wcMatch (self, *args, **kwargs)-> bool:
       '''wcMatch( (str)arg1, (str)arg2, (bool)arg3) -> bool :
 
