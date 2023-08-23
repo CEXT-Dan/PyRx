@@ -25,7 +25,21 @@ extern "C" void acedGetCommandPromptString(CString&);
 #endif
 
 //-----------------------------------------------------------------------------------------
-//helpers
+//Util
+void makePyUtilWrapper()
+{
+    PyDocString DS("Util");
+    class_<Util>("Util")
+        .def("wcMatch", &Util::wcMatch)
+        ;
+}
+
+
+bool Util::wcMatch(const std::string& string, const std::string& pattern, bool ignoreCase)
+{
+    return acutWcMatchEx(utf8_to_wstr(string).c_str(), utf8_to_wstr(pattern).c_str(), ignoreCase);
+}
+
 
 //-----------------------------------------------------------------------------------------
 //EdCore
@@ -135,7 +149,6 @@ void makePyEdCoreWrapper()
         .def("vports", &EdCore::vports).staticmethod("vports")
         .def("vports2VportTableRecords", &EdCore::vports2VportTableRecords).staticmethod("vports2VportTableRecords")
         .def("vportTableRecords2Vports", &EdCore::vportTableRecords2Vports).staticmethod("vportTableRecords2Vports")
-        .def("wcMatch", &EdCore::wcMatch)
         .def("xrefAttach", &EdCore::xrefAttach1)
         .def("xrefAttach", &EdCore::xrefAttach2).staticmethod("xrefAttach")
         .def("xrefCreateBlockname", &EdCore::xrefCreateBlockname).staticmethod("xrefCreateBlockname")
@@ -605,7 +618,7 @@ bool EdCore::isInBackgroundMode()
 
 bool EdCore::isInputPending()
 {
-   return acedIsInputPending();
+    return acedIsInputPending();
 }
 
 Adesk::Boolean EdCore::isMenuGroupLoaded(const std::string& mnu)
@@ -1043,11 +1056,6 @@ void EdCore::vports2VportTableRecords()
 void EdCore::vportTableRecords2Vports()
 {
     return PyThrowBadEs(acedVportTableRecords2Vports());
-}
-
-bool EdCore::wcMatch(const std::string& string, const std::string& pattern, bool ignoreCase)
-{
-    return acutWcMatchEx(utf8_to_wstr(string).c_str(), utf8_to_wstr(pattern).c_str(), ignoreCase);
 }
 
 void EdCore::xrefAttach1(const std::string& path, const std::string& name)

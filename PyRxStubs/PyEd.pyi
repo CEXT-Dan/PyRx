@@ -3259,6 +3259,20 @@ class UserInteraction:
       '''                             '''
     ...
 
+class Util:
+    def __init__ (self, *args, **kwargs)-> None:
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def wcMatch (self, *args, **kwargs)-> bool:
+      '''wcMatch( (str)arg1, (str)arg2, (bool)arg3) -> bool :
+
+    C++ signature :
+        bool wcMatch(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    ...
+
 class __loader__:
     def _ORIGIN (self, *args, **kwargs)-> str
 str(bytes_or_buffer[, encoding[, errors]]) -> str
