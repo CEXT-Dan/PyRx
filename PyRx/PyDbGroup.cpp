@@ -61,7 +61,7 @@ void makePyDbGroupWrapper()
 }
 
 PyDbGroup::PyDbGroup()
-    : PyDbGroup(new AcDbGroup(),true)
+    : PyDbGroup(new AcDbGroup(), true)
 {
 }
 
