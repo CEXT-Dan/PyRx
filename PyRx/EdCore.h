@@ -12,7 +12,12 @@ void makePyUtilWrapper();
 class Util
 {
 public:
+    static double               angle(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
+    static double               cvUnit(double val, const std::string& oldunit, const std::string& newunit);
+    static double               distance(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
+    static AcGePoint3d          polar(const AcGePoint3d& pt, double angle, double dist);
     static bool                 wcMatch(const std::string& string, const std::string& pattern, bool ignoreCase);
+
 
 };
 

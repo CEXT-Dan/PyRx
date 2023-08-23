@@ -30,10 +30,38 @@ void makePyUtilWrapper()
 {
     PyDocString DS("Util");
     class_<Util>("Util")
+        .def("angle", &Util::angle)
+        .def("cvUnit", &Util::cvUnit)
+        .def("distance", &Util::distance)
+        .def("polar", &Util::polar)
         .def("wcMatch", &Util::wcMatch)
         ;
 }
 
+
+double Util::angle(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
+{
+    return acutAngle(asDblArray(pt1), asDblArray(pt1));
+}
+
+double Util::cvUnit(double val, const std::string& oldunit, const std::string& newunit)
+{
+    double result = 0;
+    PyThrowBadRt(acutCvUnit(val, utf8_to_wstr(oldunit).c_str(), utf8_to_wstr(newunit).c_str(), &result));
+    return result;
+}
+
+double Util::distance(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
+{
+    return acutDistance(asDblArray(pt1), asDblArray(pt1));
+}
+
+AcGePoint3d Util::polar(const AcGePoint3d& pt, double angle, double dist)
+{
+    AcGePoint3d result;
+    acutPolar(asDblArray(pt), angle, dist, asDblArray(result));
+    return result;
+}
 
 bool Util::wcMatch(const std::string& string, const std::string& pattern, bool ignoreCase)
 {
