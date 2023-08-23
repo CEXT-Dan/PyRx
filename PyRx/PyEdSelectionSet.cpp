@@ -30,17 +30,13 @@ PyEdSelectionSet::PyEdSelectionSet()
 {
     ads_name result = { 0L,0L };
     PyThrowBadRt(acedSSAdd(nullptr, nullptr, result));
-    auto& a = *m_pSet;
-    a[0] = result[0];
-    a[1] = result[1];
+    memcpy(m_pSet->data(), result, sizeof(result));
 }
 
 PyEdSelectionSet::PyEdSelectionSet(const ads_name& ss)
     : m_pSet(new PySSName(), PyEdSSDeleter())
 {
-    auto& a = *m_pSet;
-    a[0] = ss[0];
-    a[1] = ss[1];
+    memcpy(m_pSet->data(), ss, sizeof(ss));
 }
 
 bool PyEdSelectionSet::isInitialized() const
