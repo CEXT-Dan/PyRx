@@ -7,6 +7,15 @@ class PyDbBlockTableRecord;
 class PyDbViewTableRecord;
 class PyDbViewport;
 
+
+void makePyUtilWrapper();
+class Util
+{
+public:
+    static bool                 wcMatch(const std::string& string, const std::string& pattern, bool ignoreCase);
+
+};
+
 void makePyEdCoreWrapper();
 
 class EdCore
@@ -115,7 +124,6 @@ public:
     static boost::python::list  vports();
     static void                 vports2VportTableRecords();
     static void                 vportTableRecords2Vports();
-    static bool                 wcMatch(const std::string& string, const std::string& pattern,bool ignoreCase);
     static void                 xrefAttach1(const std::string& path, const std::string& name);
     static void                 xrefAttach2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid, AcGePoint3d& pt,
         AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd);
