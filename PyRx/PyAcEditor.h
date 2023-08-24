@@ -2,6 +2,7 @@
 
 class PyDbObjectId;
 class PyDbDatabase;
+class PyApDocument;
 
 void makePyEditorWrapper();
 
@@ -45,10 +46,15 @@ public:
     static void                 setCurUCS(const AcGeMatrix3d& mat);
     static PyDbObjectId         activeViewportId();
     static PyDbObjectId         curViewportObjectId();
+    static AcGeVector3d         ucsNormalVector();
+    static AcGeVector3d         ucsXDir();
+    static AcGeVector3d         ucsYDir();
     static Acad::PromptStatus   initGet(int val, const std::string& skwl);
     static boost::python::tuple getKword(const std::string& skwl);
     static boost::python::list  traceBoundary(const AcGePoint3d& seedPoint, bool detectIslands);
     static boost::python::list  getCurrentSelectionSet();
+    static void                 setAllowDuplicateSelection(PyApDocument& doc, bool flag);
+    static bool                 duplicateSelectionsAllowed(PyApDocument& doc);
     static std::string          className();
 };
 

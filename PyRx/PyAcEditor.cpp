@@ -6,6 +6,7 @@
 #include "PyEdSelectionSet.h"
 #include "PyDbEntity.h"
 #include "PyEdUserInteraction.h"
+#include "PyApDocument.h"
 
 using namespace boost::python;
 
@@ -122,6 +123,11 @@ void makePyEditorWrapper()
         .def("initGet", &PyAcEditor::initGet, DS.SARGS({ "val:int","keyword:str" })).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword, DS.SARGS({"keyword:str" })).staticmethod("getKword")
         .def("traceBoundary", &PyAcEditor::traceBoundary, DS.SARGS({ "point:PyGe.Point3d","detectIslands : bool" })).staticmethod("traceBoundary")
+        .def("ucsNormalVector", &PyAcEditor::ucsNormalVector, DS.SARGS()).staticmethod("ucsNormalVector")
+        .def("ucsXDir", &PyAcEditor::ucsXDir, DS.SARGS()).staticmethod("ucsXDir")
+        .def("ucsYDir", &PyAcEditor::ucsYDir, DS.SARGS()).staticmethod("ucsYDir")
+        .def("duplicateSelectionsAllowed", &PyAcEditor::duplicateSelectionsAllowed, DS.SARGS({ "doc:PyAp.Document"})).staticmethod("duplicateSelectionsAllowed")
+        .def("setAllowDuplicateSelection", &PyAcEditor::setAllowDuplicateSelection, DS.SARGS({ "doc:PyAp.Document","flag:bool" })).staticmethod("setAllowDuplicateSelection")
         .def("className", &PyAcEditor::className).staticmethod("className")
         ;
 }
@@ -513,6 +519,23 @@ PyDbObjectId PyAcEditor::curViewportObjectId()
     return PyDbObjectId(acedGetCurViewportObjectId());
 }
 
+AcGeVector3d PyAcEditor::ucsNormalVector()
+{
+    AcGeVector3d vec;
+    ::ucsNormalVector(vec);
+    return vec;
+}
+
+AcGeVector3d PyAcEditor::ucsXDir()
+{
+    return ::ucsXDir();
+}
+
+AcGeVector3d PyAcEditor::ucsYDir()
+{
+    return ::ucsYDir();
+}
+
 Acad::PromptStatus PyAcEditor::initGet(int val, const std::string& skwl)
 {
     return static_cast<Acad::PromptStatus>(acedInitGet(val, utf8_to_wstr(skwl).c_str()));
@@ -546,6 +569,24 @@ boost::python::list PyAcEditor::getCurrentSelectionSet()
     AcDbObjectIdArray sset;
     PyThrowBadEs(acedGetCurrentSelectionSet(sset));
     return ObjectIdArrayToPyList(sset);
+}
+
+void PyAcEditor::setAllowDuplicateSelection(PyApDocument& doc, bool flag)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(::setAllowDuplicateSelection(doc.impObj(),flag));
+#endif
+}
+
+bool PyAcEditor::duplicateSelectionsAllowed(PyApDocument& doc)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return ::duplicateSelectionsAllowed(doc.impObj());
+#endif
 }
 
 std::string PyAcEditor::className()
