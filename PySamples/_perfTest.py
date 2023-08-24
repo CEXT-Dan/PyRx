@@ -5,6 +5,7 @@ import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
 import PyGs as Gs
+import dis
 
 from timeit import default_timer as timer
 
@@ -87,6 +88,13 @@ def PyRxCmd_pydoit3():
             move_points_new()
             end = timer()
             print(end - start)
+
+    except Exception as err:
+        print(err)
+
+def PyRxCmd_pydoit4():
+    try:
+       print(dis.dis(move_points_new))
 
     except Exception as err:
         print(err)

@@ -8,6 +8,10 @@ class PyRxClass;
 // note: PyDbObject::cast resets the pointer, which call this, but it's not a double delete
 // define PyRxDebug when running unit tests
 
+
+//this crashes for objects that are opened in a side database
+//and the side database is deleted. one idea is to store an objectID here
+//use AcDbObjectId.isValid()
 struct PyRxObjectDeleter
 {
     inline PyRxObjectDeleter(bool autoDelete, bool isDbObject)
