@@ -6,12 +6,7 @@ class PyRxClass;
 // id the object is some sort of global pointer or should not be deleted m_autoDelete should be false
 // examples would be document or current database
 // note: PyDbObject::cast resets the pointer, which call this, but it's not a double delete
-// define PyRxDebug when running unit tests
 
-
-//this crashes for objects that are opened in a side database
-//and the side database is deleted. one idea is to store an objectID here
-//use AcDbObjectId.isValid()
 struct PyRxObjectDeleter
 {
     inline PyRxObjectDeleter(bool autoDelete, bool isDbObject)
@@ -21,10 +16,6 @@ struct PyRxObjectDeleter
 
     inline bool isDbroThenClose(AcRxObject* p) const
     {
-#ifdef NEVER
-        if (IsBadReadPtr(p, sizeof(AcRxObject)))
-            return true;
-#endif
         if (!m_isDbObject)
         {
             return false;
@@ -33,13 +24,14 @@ struct PyRxObjectDeleter
         {
             return true;
         }
-        else if (p->isA()->isDerivedFrom(AcDbObject::desc()))//very negligible impact on performance .01 @ 50,000 entities  
+        else
         {
-            auto dbo = static_cast<AcDbObject*>(p);
-            if (!dbo->objectId().isNull())
+            AcDbObject* pDbo = static_cast<AcDbObject*>(p);
+            if (!pDbo->objectId().isNull())
             {
-                if (auto es = dbo->close(); es != eOk)
+                if (auto es = pDbo->close(); es != eOk) [[unlikely]] {
                     acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
+                }
                 return true;
             }
         }
