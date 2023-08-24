@@ -17,8 +17,6 @@ public:
     static double               distance(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
     static AcGePoint3d          polar(const AcGePoint3d& pt, double angle, double dist);
     static bool                 wcMatch(const std::string& string, const std::string& pattern, bool ignoreCase);
-
-
 };
 
 void makePyEdCoreWrapper();
@@ -153,4 +151,3 @@ public:
     static void                 xrefXBind1(const boost::python::list& symbolIds);
     static void                 xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
 };
-
