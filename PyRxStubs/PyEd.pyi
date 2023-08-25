@@ -2963,11 +2963,8 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def add (self, *args, **kwargs)-> None:
-      '''add( (SelectionSet)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void add(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
+    def add (self: SelectionSet,id:PyDb.ObjectId)-> None:
+      '''                             '''
     ...
     def adsname (self: SelectionSet)-> PyDb.AdsName:
       '''                             '''
@@ -2975,11 +2972,8 @@ __init__( (object)arg1) -> None :
     def clear (self: SelectionSet)-> None:
       '''                             '''
     ...
-    def hasMember (self, *args, **kwargs)-> bool:
-      '''hasMember( (SelectionSet)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool hasMember(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
+    def hasMember (self: SelectionSet,id:PyDb.ObjectId)-> bool:
+      '''                             '''
     ...
     def isInitialized (self: SelectionSet)-> bool:
       '''                             '''
@@ -2987,34 +2981,20 @@ __init__( (object)arg1) -> None :
     def objectIds (self: SelectionSet,desc:PyRx.RxClass=AcDbEntity)-> list:
       '''                             '''
     ...
-    def remove (self, *args, **kwargs)-> None:
-      '''remove( (SelectionSet)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void remove(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
+    def remove (self: SelectionSet,id:PyDb.ObjectId)-> None:
+      '''                             '''
     ...
     def size (self: SelectionSet)-> int:
       '''                             '''
     ...
-    def ssNameX (self, *args, **kwargs)-> list:
-      '''ssNameX( (SelectionSet)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list ssNameX(class PyEdSelectionSet {lvalue})
-
-ssNameX( (SelectionSet)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list ssNameX(class PyEdSelectionSet {lvalue},int)'''
+    def ssNameX (self: SelectionSet,val:int = 0)-> list:
+      '''                             '''
     ...
     def ssSetFirst (self: SelectionSet)-> bool:
       '''                             '''
     ...
-    def ssXform (self, *args, **kwargs)-> PyEd.PromptStatus:
-      '''ssXform( (SelectionSet)arg1, (Matrix3d)arg2) -> PromptStatus :
-
-    C++ signature :
-        enum Acad::PromptStatus ssXform(class PyEdSelectionSet {lvalue},class AcGeMatrix3d)'''
+    def ssXform (self: SelectionSet,xform:PyGe.Matrix3d)-> PyEd.PromptStatus:
+      '''                             '''
     ...
     def toList (self: SelectionSet)-> list:
       '''                             '''
