@@ -443,11 +443,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None:
       '''                             '''
     ...
-    def ambientLightColor (self, *args, **kwargs)-> PyDb.Color:
-      '''ambientLightColor( (AbstractViewTableRecord)arg1) -> Color :
-
-    C++ signature :
-        class AcCmColor ambientLightColor(class PyDbAbstractViewTableRecord {lvalue})'''
+    def ambientLightColor (self: PyDbAbstractViewTableRecord)-> PyDb.Color:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -458,68 +455,41 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None:
       '''                             '''
     ...
-    def backClipDistance (self, *args, **kwargs)-> float:
-      '''backClipDistance( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double backClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    def backClipDistance (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
-    def backClipEnabled (self, *args, **kwargs)-> bool:
-      '''backClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool backClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    def backClipEnabled (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
-    def background (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''background( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId background(class PyDbAbstractViewTableRecord {lvalue})'''
+    def background (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
     ...
-    def brightness (self, *args, **kwargs)-> float:
-      '''brightness( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double brightness(class PyDbAbstractViewTableRecord {lvalue})'''
+    def brightness (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def cancel (self: DbObject)-> None:
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.AbstractViewTableRecord:
-      '''cast( (RxObject)arg1) -> AbstractViewTableRecord :
-
-    C++ signature :
-        class PyDbAbstractViewTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTableRecord:
+      '''                             '''
     ...
-    def centerPoint (self, *args, **kwargs)-> PyGe.Point2d:
-      '''centerPoint( (AbstractViewTableRecord)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d centerPoint(class PyDbAbstractViewTableRecord {lvalue})'''
+    def centerPoint (self: PyDbAbstractViewTableRecord)-> PyGe.Point2d:
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str:
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str:
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.AbstractViewTableRecord:
-      '''cloneFrom( (RxObject)arg1) -> AbstractViewTableRecord :
-
-    C++ signature :
-        class PyDbAbstractViewTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTableRecord:
+      '''                             '''
     ...
     def close (self: DbObject)-> None:
       '''                             '''
     ...
-    def contrast (self, *args, **kwargs)-> float:
-      '''contrast( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double contrast(class PyDbAbstractViewTableRecord {lvalue})'''
+    def contrast (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -527,17 +497,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
-    def defaultLightingType (self, *args, **kwargs)-> object:
-      '''defaultLightingType( (AbstractViewTableRecord)arg1) -> object :
-
-    C++ signature :
-        enum AcGiViewportTraits::DefaultLightingType defaultLightingType(class PyDbAbstractViewTableRecord {lvalue})'''
+    def defaultLightingType (self: PyDbAbstractViewTableRecord)-> object:
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass:
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -554,11 +518,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbAbstractViewTableRecord {lvalue})'''
+    def elevation (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def erase (self: DbObject)-> None:
       '''                             '''
@@ -566,23 +527,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def frontClipAtEye (self, *args, **kwargs)-> bool:
-      '''frontClipAtEye( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool frontClipAtEye(class PyDbAbstractViewTableRecord {lvalue})'''
+    def frontClipAtEye (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
-    def frontClipDistance (self, *args, **kwargs)-> float:
-      '''frontClipDistance( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double frontClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    def frontClipDistance (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
-    def frontClipEnabled (self, *args, **kwargs)-> bool:
-      '''frontClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool frontClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    def frontClipEnabled (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId:
       '''                             '''
@@ -596,11 +548,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getName (self: SymbolTableRecord)-> str:
       '''                             '''
     ...
-    def getUcs (self, *args, **kwargs)-> None:
-      '''getUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void getUcs(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d {lvalue},class AcGeVector3d {lvalue},class AcGeVector3d {lvalue})'''
+    def getUcs (self: PyDbAbstractViewTableRecord)-> tuple:
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None:
       '''                             '''
@@ -614,11 +563,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float:
-      '''height( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbAbstractViewTableRecord {lvalue})'''
+    def height (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -635,11 +581,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isDefaultLightingOn (self, *args, **kwargs)-> bool:
-      '''isDefaultLightingOn( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue})'''
+    def isDefaultLightingOn (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
     def isDependent (self: SymbolTableRecord)-> bool:
       '''                             '''
@@ -692,11 +635,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isTransactionResident (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUcsOrthographic (self, *args, **kwargs)-> tuple:
-      '''isUcsOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isUcsOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    def isUcsOrthographic (self: PyDbAbstractViewTableRecord)-> tuple:
+      '''                             '''
     ...
     def isUndoRecordingDisabled (self: DbObject)-> bool:
       '''                             '''
@@ -704,11 +644,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isViewOrthographic (self, *args, **kwargs)-> tuple:
-      '''isViewOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isViewOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    def isViewOrthographic (self: PyDbAbstractViewTableRecord)-> tuple:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -716,11 +653,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def lensLength (self, *args, **kwargs)-> float:
-      '''lensLength( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double lensLength(class PyDbAbstractViewTableRecord {lvalue})'''
+    def lensLength (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -728,11 +662,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def perspectiveEnabled (self, *args, **kwargs)-> bool:
-      '''perspectiveEnabled( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    def perspectiveEnabled (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -934,26 +865,17 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def sunId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''sunId( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId sunId(class PyDbAbstractViewTableRecord {lvalue})'''
+    def sunId (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def target (self, *args, **kwargs)-> PyGe.Point3d:
-      '''target( (AbstractViewTableRecord)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d target(class PyDbAbstractViewTableRecord {lvalue})'''
+    def target (self: PyDbAbstractViewTableRecord)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def ucsName (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''ucsName( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId ucsName(class PyDbAbstractViewTableRecord {lvalue})'''
+    def ucsName (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None:
       '''                             '''
@@ -961,17 +883,11 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def viewDirection (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''viewDirection( (AbstractViewTableRecord)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d viewDirection(class PyDbAbstractViewTableRecord {lvalue})'''
+    def viewDirection (self: PyDbAbstractViewTableRecord)-> PyGe.Vector3d:
+      '''                             '''
     ...
-    def viewTwist (self, *args, **kwargs)-> float:
-      '''viewTwist( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double viewTwist(class PyDbAbstractViewTableRecord {lvalue})'''
+    def viewTwist (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -979,17 +895,11 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int:
       '''                             '''
     ...
-    def visualStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''visualStyle( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId visualStyle(class PyDbAbstractViewTableRecord {lvalue})'''
+    def visualStyle (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def width (self, *args, **kwargs)-> float:
-      '''width( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double width(class PyDbAbstractViewTableRecord {lvalue})'''
+    def width (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool:
       '''                             '''
@@ -6879,17 +6789,11 @@ class BlockTableRecord:
     C++ signature :
         void assumeOwnershipOf(class PyDbBlockTableRecord {lvalue},class boost::python::list)'''
     ...
-    def blockInsertUnits (self, *args, **kwargs)-> PyDb.UnitsValue:
-      '''blockInsertUnits( (BlockTableRecord)arg1) -> UnitsValue :
-
-    C++ signature :
-        enum AcDb::UnitsValue blockInsertUnits(class PyDbBlockTableRecord {lvalue})'''
+    def blockInsertUnits (self: BlockTableRecord)-> PyDb.UnitsValue:
+      '''                             '''
     ...
-    def blockScaling (self, *args, **kwargs)-> PyDb.BlockScaling:
-      '''blockScaling( (BlockTableRecord)arg1) -> BlockScaling :
-
-    C++ signature :
-        enum AcDbBlockTableRecord::BlockScaling blockScaling(class PyDbBlockTableRecord {lvalue})'''
+    def blockScaling (self: BlockTableRecord)-> PyDb.BlockScaling:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -6897,38 +6801,23 @@ class BlockTableRecord:
     def cancel (self: DbObject)-> None:
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.BlockTableRecord:
-      '''cast( (RxObject)arg1) -> BlockTableRecord :
-
-    C++ signature :
-        class PyDbBlockTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.BlockTableRecord:
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str:
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str:
+      '''                             '''
     ...
-    def clearPreviewIcon (self, *args, **kwargs)-> None:
-      '''clearPreviewIcon( (BlockTableRecord)arg1) -> None :
-
-    C++ signature :
-        void clearPreviewIcon(class PyDbBlockTableRecord {lvalue})'''
+    def clearPreviewIcon (self: BlockTableRecord)-> None:
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.BlockTableRecord:
-      '''cloneFrom( (RxObject)arg1) -> BlockTableRecord :
-
-    C++ signature :
-        class PyDbBlockTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.BlockTableRecord:
+      '''                             '''
     ...
     def close (self: DbObject)-> None:
       '''                             '''
     ...
-    def comments (self, *args, **kwargs)-> str:
-      '''comments( (BlockTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > comments(class PyDbBlockTableRecord {lvalue})'''
+    def comments (self: BlockTableRecord)-> str:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -6936,11 +6825,8 @@ class BlockTableRecord:
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass:
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -6960,11 +6846,8 @@ class BlockTableRecord:
     def erase (self: DbObject)-> None:
       '''                             '''
     ...
-    def explodable (self, *args, **kwargs)-> bool:
-      '''explodable( (BlockTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool explodable(class PyDbBlockTableRecord {lvalue})'''
+    def explodable (self: BlockTableRecord)-> bool:
+      '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -6980,11 +6863,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         class boost::python::list getBlockReferenceIds(class PyDbBlockTableRecord {lvalue},bool,bool)'''
     ...
-    def getErasedBlockReferenceIds (self, *args, **kwargs)-> list:
-      '''getErasedBlockReferenceIds( (BlockTableRecord)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getErasedBlockReferenceIds(class PyDbBlockTableRecord {lvalue})'''
+    def getErasedBlockReferenceIds (self: BlockTableRecord)-> list:
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId:
       '''                             '''
@@ -6995,29 +6875,20 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
-    def getLayoutId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''getLayoutId( (BlockTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getLayoutId(class PyDbBlockTableRecord {lvalue})'''
+    def getLayoutId (self: BlockTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def getName (self: SymbolTableRecord)-> str:
       '''                             '''
     ...
-    def getPreviewIcon (self, *args, **kwargs)-> object:
-      '''getPreviewIcon( (BlockTableRecord)arg1) -> object :
-
-    C++ signature :
-        class boost::python::api::object getPreviewIcon(class PyDbBlockTableRecord {lvalue})'''
+    def getPreviewIcon (self: BlockTableRecord)-> object:
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None:
       '''                             '''
     ...
-    def hasAttributeDefinitions (self, *args, **kwargs)-> bool:
-      '''hasAttributeDefinitions( (BlockTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool hasAttributeDefinitions(class PyDbBlockTableRecord {lvalue})'''
+    def hasAttributeDefinitions (self: BlockTableRecord)-> bool:
+      '''                             '''
     ...
     def hasFields (self: DbObject)-> bool:
       '''                             '''
@@ -7025,11 +6896,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool:
       '''                             '''
     ...
-    def hasPreviewIcon (self, *args, **kwargs)-> bool:
-      '''hasPreviewIcon( (BlockTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool hasPreviewIcon(class PyDbBlockTableRecord {lvalue})'''
+    def hasPreviewIcon (self: BlockTableRecord)-> bool:
+      '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
@@ -7046,11 +6914,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def isAProxy (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isAnonymous (self, *args, **kwargs)-> bool:
-      '''isAnonymous( (BlockTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isAnonymous(class PyDbBlockTableRecord {lvalue})'''
+    def isAnonymous (self: BlockTableRecord)-> bool:
+      '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
@@ -7064,26 +6929,17 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isFromExternalReference (self, *args, **kwargs)-> bool:
-      '''isFromExternalReference( (BlockTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isFromExternalReference(class PyDbBlockTableRecord {lvalue})'''
+    def isFromExternalReference (self: BlockTableRecord)-> bool:
+      '''                             '''
     ...
-    def isFromOverlayReference (self, *args, **kwargs)-> bool:
-      '''isFromOverlayReference( (BlockTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isFromOverlayReference(class PyDbBlockTableRecord {lvalue})'''
+    def isFromOverlayReference (self: BlockTableRecord)-> bool:
+      '''                             '''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
-    def isLayout (self, *args, **kwargs)-> bool:
-      '''isLayout( (BlockTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isLayout(class PyDbBlockTableRecord {lvalue})'''
+    def isLayout (self: BlockTableRecord)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -7130,11 +6986,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUnloaded (self, *args, **kwargs)-> bool:
-      '''isUnloaded( (BlockTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isUnloaded(class PyDbBlockTableRecord {lvalue})'''
+    def isUnloaded (self: BlockTableRecord)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -7160,20 +7013,14 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         void openBlockEnd(class PyDbBlockTableRecord {lvalue},class PyDbBlockEnd {lvalue},enum AcDb::OpenMode)'''
     ...
-    def origin (self, *args, **kwargs)-> PyGe.Point3d:
-      '''origin( (BlockTableRecord)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d origin(class PyDbBlockTableRecord {lvalue})'''
+    def origin (self: BlockTableRecord)-> PyGe.Point3d:
+      '''                             '''
     ...
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def pathName (self, *args, **kwargs)-> str:
-      '''pathName( (BlockTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > pathName(class PyDbBlockTableRecord {lvalue})'''
+    def pathName (self: BlockTableRecord)-> str:
+      '''                             '''
     ...
     def postProcessAnnotativeBTR (self, *args, **kwargs)-> int:
       '''postProcessAnnotativeBTR( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> int :
@@ -7301,11 +7148,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         class PyDbDatabase xrefDatabase(class PyDbBlockTableRecord {lvalue},bool)'''
     ...
-    def xrefStatus (self, *args, **kwargs)-> PyDb.XrefStatus:
-      '''xrefStatus( (BlockTableRecord)arg1) -> XrefStatus :
-
-    C++ signature :
-        enum AcDb::XrefStatus xrefStatus(class PyDbBlockTableRecord {lvalue})'''
+    def xrefStatus (self: BlockTableRecord)-> PyDb.XrefStatus:
+      '''                             '''
     ...
 
 class Body:
@@ -14841,23 +14685,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None:
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''cast( (RxObject)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str:
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str:
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.DimStyleTableRecord:
-      '''cloneFrom( (RxObject)arg1) -> DimStyleTableRecord :
-
-    C++ signature :
-        class PyDbDimStyleTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.DimStyleTableRecord:
+      '''                             '''
     ...
     def close (self: DbObject)-> None:
       '''                             '''
@@ -14868,11 +14703,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass:
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -28525,23 +28357,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None:
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.LayerTableRecord:
-      '''cast( (RxObject)arg1) -> LayerTableRecord :
-
-    C++ signature :
-        class PyDbLayerTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.LayerTableRecord:
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str:
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str:
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.LayerTableRecord:
-      '''cloneFrom( (RxObject)arg1) -> LayerTableRecord :
-
-    C++ signature :
-        class PyDbLayerTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.LayerTableRecord:
+      '''                             '''
     ...
     def close (self: DbObject)-> None:
       '''                             '''
@@ -28563,11 +28386,8 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass:
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
     ...
     def description (self, *args, **kwargs)-> str:
       '''description( (LayerTableRecord)arg1) -> str :
@@ -28829,11 +28649,6 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
       '''removeAllOverrides( (LayerTableRecord)arg1) -> None :
 
     C++ signature :
-        void removeAllOverrides(class PyDbLayerTableRecord {lvalue})
-
-removeAllOverrides( (LayerTableRecord)arg1) -> None :
-
-    C++ signature :
         void removeAllOverrides(class PyDbLayerTableRecord {lvalue})'''
     ...
     def removeColorOverride (self, *args, **kwargs)-> None:
@@ -28977,15 +28792,15 @@ setPlotStyleName( (LayerTableRecord)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setPlotStyleName(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)
 
-setPlotStyleName( (LayerTableRecord)arg1, (ObjectId)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void setPlotStyleName(class PyDbLayerTableRecord {lvalue},class PyDbObjectId,class PyDbObjectId)
-
 setPlotStyleName( (LayerTableRecord)arg1, (str)arg2, (ObjectId)arg3) -> None :
 
     C++ signature :
-        void setPlotStyleName(class PyDbLayerTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+        void setPlotStyleName(class PyDbLayerTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)
+
+setPlotStyleName( (LayerTableRecord)arg1, (ObjectId)arg2, (ObjectId)arg3) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbLayerTableRecord {lvalue},class PyDbObjectId,class PyDbObjectId)'''
     ...
     def setTransparency (self, *args, **kwargs)-> None:
       '''setTransparency( (LayerTableRecord)arg1, (Transparency)arg2) -> None :
@@ -32877,32 +32692,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None:
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.LinetypeTableRecord:
-      '''cast( (RxObject)arg1) -> LinetypeTableRecord :
-
-    C++ signature :
-        class PyDbLinetypeTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.LinetypeTableRecord:
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str:
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str:
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.LinetypeTableRecord:
-      '''cloneFrom( (RxObject)arg1) -> LinetypeTableRecord :
-
-    C++ signature :
-        class PyDbLinetypeTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.LinetypeTableRecord:
+      '''                             '''
     ...
     def close (self: DbObject)-> None:
       '''                             '''
     ...
-    def comments (self, *args, **kwargs)-> str:
-      '''comments( (LinetypeTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > comments(class PyDbLinetypeTableRecord {lvalue})'''
+    def comments (self: LinetypeTableRecord)-> str:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -32916,11 +32719,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass:
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -33030,11 +32830,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isResolved (self: SymbolTableRecord)-> bool:
       '''                             '''
     ...
-    def isScaledToFit (self, *args, **kwargs)-> bool:
-      '''isScaledToFit( (LinetypeTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isScaledToFit(class PyDbLinetypeTableRecord {lvalue})'''
+    def isScaledToFit (self: LinetypeTableRecord)-> bool:
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool:
       '''                             '''
@@ -33051,11 +32848,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def numDashes (self, *args, **kwargs)-> int:
-      '''numDashes( (LinetypeTableRecord)arg1) -> int :
-
-    C++ signature :
-        int numDashes(class PyDbLinetypeTableRecord {lvalue})'''
+    def numDashes (self: LinetypeTableRecord)-> int:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -33063,11 +32857,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def patternLength (self, *args, **kwargs)-> float:
-      '''patternLength( (LinetypeTableRecord)arg1) -> float :
-
-    C++ signature :
-        double patternLength(class PyDbLinetypeTableRecord {lvalue})'''
+    def patternLength (self: LinetypeTableRecord)-> float:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -53650,23 +53441,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None:
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.RegAppTableRecord:
-      '''cast( (RxObject)arg1) -> RegAppTableRecord :
-
-    C++ signature :
-        class PyDbRegAppTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.RegAppTableRecord:
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str:
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str:
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.RegAppTableRecord:
-      '''cloneFrom( (RxObject)arg1) -> RegAppTableRecord :
-
-    C++ signature :
-        class PyDbRegAppTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.RegAppTableRecord:
+      '''                             '''
     ...
     def close (self: DbObject)-> None:
       '''                             '''
@@ -53677,11 +53459,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass:
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -66076,11 +65855,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None:
       '''                             '''
     ...
-    def bigFontFileName (self, *args, **kwargs)-> str:
-      '''bigFontFileName( (TextStyleTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > bigFontFileName(class PyDbTextStyleTableRecord {lvalue})'''
+    def bigFontFileName (self: TextStyleTableRecord)-> str:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
@@ -66088,23 +65864,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None:
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.TextStyleTableRecord:
-      '''cast( (RxObject)arg1) -> TextStyleTableRecord :
-
-    C++ signature :
-        class PyDbTextStyleTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.TextStyleTableRecord:
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str:
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str:
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.TextStyleTableRecord:
-      '''cloneFrom( (RxObject)arg1) -> TextStyleTableRecord :
-
-    C++ signature :
-        class PyDbTextStyleTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.TextStyleTableRecord:
+      '''                             '''
     ...
     def close (self: DbObject)-> None:
       '''                             '''
@@ -66115,11 +65882,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass:
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -66142,23 +65906,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def fileName (self, *args, **kwargs)-> str:
-      '''fileName( (TextStyleTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > fileName(class PyDbTextStyleTableRecord {lvalue})'''
+    def fileName (self: TextStyleTableRecord)-> str:
+      '''                             '''
     ...
-    def flagBits (self, *args, **kwargs)-> int:
-      '''flagBits( (TextStyleTableRecord)arg1) -> int :
-
-    C++ signature :
-        unsigned char flagBits(class PyDbTextStyleTableRecord {lvalue})'''
+    def flagBits (self: TextStyleTableRecord)-> int:
+      '''                             '''
     ...
-    def font (self, *args, **kwargs)-> tuple:
-      '''font( (TextStyleTableRecord)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple font(class PyDbTextStyleTableRecord {lvalue})'''
+    def font (self: TextStyleTableRecord)-> tuple:
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId:
       '''                             '''
@@ -66247,11 +66002,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isResolved (self: SymbolTableRecord)-> bool:
       '''                             '''
     ...
-    def isShapeFile (self, *args, **kwargs)-> bool:
-      '''isShapeFile( (TextStyleTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isShapeFile(class PyDbTextStyleTableRecord {lvalue})'''
+    def isShapeFile (self: TextStyleTableRecord)-> bool:
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool:
       '''                             '''
@@ -66262,11 +66014,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isVertical (self, *args, **kwargs)-> bool:
-      '''isVertical( (TextStyleTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isVertical(class PyDbTextStyleTableRecord {lvalue})'''
+    def isVertical (self: TextStyleTableRecord)-> bool:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -66277,20 +66026,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def obliquingAngle (self, *args, **kwargs)-> float:
-      '''obliquingAngle( (TextStyleTableRecord)arg1) -> float :
-
-    C++ signature :
-        double obliquingAngle(class PyDbTextStyleTableRecord {lvalue})'''
+    def obliquingAngle (self: TextStyleTableRecord)-> float:
+      '''                             '''
     ...
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def priorSize (self, *args, **kwargs)-> float:
-      '''priorSize( (TextStyleTableRecord)arg1) -> float :
-
-    C++ signature :
-        double priorSize(class PyDbTextStyleTableRecord {lvalue})'''
+    def priorSize (self: TextStyleTableRecord)-> float:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -66391,11 +66134,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def textSize (self, *args, **kwargs)-> float:
-      '''textSize( (TextStyleTableRecord)arg1) -> float :
-
-    C++ signature :
-        double textSize(class PyDbTextStyleTableRecord {lvalue})'''
+    def textSize (self: TextStyleTableRecord)-> float:
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None:
       '''                             '''
@@ -66418,11 +66158,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None:
       '''                             '''
     ...
-    def xScale (self, *args, **kwargs)-> float:
-      '''xScale( (TextStyleTableRecord)arg1) -> float :
-
-    C++ signature :
-        double xScale(class PyDbTextStyleTableRecord {lvalue})'''
+    def xScale (self: TextStyleTableRecord)-> float:
+      '''                             '''
     ...
 
 class TimeZone:
@@ -67423,23 +67160,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None:
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.UCSTableRecord:
-      '''cast( (RxObject)arg1) -> UCSTableRecord :
-
-    C++ signature :
-        class PyDbUCSTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.UCSTableRecord:
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str:
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str:
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.UCSTableRecord:
-      '''cloneFrom( (RxObject)arg1) -> UCSTableRecord :
-
-    C++ signature :
-        class PyDbUCSTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.UCSTableRecord:
+      '''                             '''
     ...
     def close (self: DbObject)-> None:
       '''                             '''
@@ -67450,11 +67178,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass:
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -67582,11 +67307,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def origin (self, *args, **kwargs)-> PyGe.Point3d:
-      '''origin( (UCSTableRecord)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d origin(class PyDbUCSTableRecord {lvalue})'''
+    def origin (self: UCSTableRecord)-> PyGe.Point3d:
+      '''                             '''
     ...
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -67675,11 +67397,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool:
       '''                             '''
     ...
-    def xAxis (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''xAxis( (UCSTableRecord)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d xAxis(class PyDbUCSTableRecord {lvalue})'''
+    def xAxis (self: UCSTableRecord)-> PyGe.Vector3d:
+      '''                             '''
     ...
     def xData (self: DbObject,appname: str)-> list:
       '''                             '''
@@ -67687,11 +67406,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None:
       '''                             '''
     ...
-    def yAxis (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''yAxis( (UCSTableRecord)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d yAxis(class PyDbUCSTableRecord {lvalue})'''
+    def yAxis (self: UCSTableRecord)-> PyGe.Vector3d:
+      '''                             '''
     ...
 
 class UnderlayDefinition:
@@ -70187,17 +69903,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None:
       '''                             '''
     ...
-    def ambientLightColor (self, *args, **kwargs)-> PyDb.Color:
-      '''ambientLightColor( (AbstractViewTableRecord)arg1) -> Color :
-
-    C++ signature :
-        class AcCmColor ambientLightColor(class PyDbAbstractViewTableRecord {lvalue})'''
+    def ambientLightColor (self: PyDbAbstractViewTableRecord)-> PyDb.Color:
+      '''                             '''
     ...
-    def annotationScale (self, *args, **kwargs)-> PyDb.AnnotationScale:
-      '''annotationScale( (ViewTableRecord)arg1) -> AnnotationScale :
-
-    C++ signature :
-        class PyDbAnnotationScale annotationScale(class PyDbViewTableRecord {lvalue})'''
+    def annotationScale (self: ViewTableRecord)-> PyDb.AnnotationScale:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -70208,74 +69918,44 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None:
       '''                             '''
     ...
-    def backClipDistance (self, *args, **kwargs)-> float:
-      '''backClipDistance( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double backClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    def backClipDistance (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
-    def backClipEnabled (self, *args, **kwargs)-> bool:
-      '''backClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool backClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    def backClipEnabled (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
-    def background (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''background( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId background(class PyDbAbstractViewTableRecord {lvalue})'''
+    def background (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
     ...
-    def brightness (self, *args, **kwargs)-> float:
-      '''brightness( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double brightness(class PyDbAbstractViewTableRecord {lvalue})'''
+    def brightness (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
-    def camera (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''camera( (ViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId camera(class PyDbViewTableRecord {lvalue})'''
+    def camera (self: ViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def cancel (self: DbObject)-> None:
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.ViewTableRecord:
-      '''cast( (RxObject)arg1) -> ViewTableRecord :
-
-    C++ signature :
-        class PyDbViewTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.ViewTableRecord:
+      '''                             '''
     ...
-    def centerPoint (self, *args, **kwargs)-> PyGe.Point2d:
-      '''centerPoint( (AbstractViewTableRecord)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d centerPoint(class PyDbAbstractViewTableRecord {lvalue})'''
+    def centerPoint (self: PyDbAbstractViewTableRecord)-> PyGe.Point2d:
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str:
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str:
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.ViewTableRecord:
-      '''cloneFrom( (RxObject)arg1) -> ViewTableRecord :
-
-    C++ signature :
-        class PyDbViewTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.ViewTableRecord:
+      '''                             '''
     ...
     def close (self: DbObject)-> None:
       '''                             '''
     ...
-    def contrast (self, *args, **kwargs)-> float:
-      '''contrast( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double contrast(class PyDbAbstractViewTableRecord {lvalue})'''
+    def contrast (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -70283,26 +69963,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
-    def defaultLightingType (self, *args, **kwargs)-> object:
-      '''defaultLightingType( (AbstractViewTableRecord)arg1) -> object :
-
-    C++ signature :
-        enum AcGiViewportTraits::DefaultLightingType defaultLightingType(class PyDbAbstractViewTableRecord {lvalue})'''
+    def defaultLightingType (self: PyDbAbstractViewTableRecord)-> object:
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass:
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
     ...
-    def disassociateUcsFromView (self, *args, **kwargs)-> None:
-      '''disassociateUcsFromView( (ViewTableRecord)arg1) -> None :
-
-    C++ signature :
-        void disassociateUcsFromView(class PyDbViewTableRecord {lvalue})'''
+    def disassociateUcsFromView (self: ViewTableRecord)-> None:
+      '''                             '''
     ...
     def dispose (self: RxObject)-> None:
       '''                             '''
@@ -70316,11 +69987,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbAbstractViewTableRecord {lvalue})'''
+    def elevation (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def erase (self: DbObject)-> None:
       '''                             '''
@@ -70328,29 +69996,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def frontClipAtEye (self, *args, **kwargs)-> bool:
-      '''frontClipAtEye( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool frontClipAtEye(class PyDbAbstractViewTableRecord {lvalue})'''
+    def frontClipAtEye (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
-    def frontClipDistance (self, *args, **kwargs)-> float:
-      '''frontClipDistance( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double frontClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    def frontClipDistance (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
-    def frontClipEnabled (self, *args, **kwargs)-> bool:
-      '''frontClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool frontClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    def frontClipEnabled (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
-    def getCategoryName (self, *args, **kwargs)-> str:
-      '''getCategoryName( (ViewTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCategoryName(class PyDbViewTableRecord {lvalue})'''
+    def getCategoryName (self: ViewTableRecord)-> str:
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId:
       '''                             '''
@@ -70361,26 +70017,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle:
       '''                             '''
     ...
-    def getLayerState (self, *args, **kwargs)-> str:
-      '''getLayerState( (ViewTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getLayerState(class PyDbViewTableRecord {lvalue})'''
+    def getLayerState (self: ViewTableRecord)-> str:
+      '''                             '''
     ...
-    def getLayout (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''getLayout( (ViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getLayout(class PyDbViewTableRecord {lvalue})'''
+    def getLayout (self: ViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def getName (self: SymbolTableRecord)-> str:
       '''                             '''
     ...
-    def getUcs (self, *args, **kwargs)-> None:
-      '''getUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void getUcs(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d {lvalue},class AcGeVector3d {lvalue},class AcGeVector3d {lvalue})'''
+    def getUcs (self: PyDbAbstractViewTableRecord)-> tuple:
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None:
       '''                             '''
@@ -70394,11 +70041,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float:
-      '''height( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbAbstractViewTableRecord {lvalue})'''
+    def height (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -70412,20 +70056,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAProxy (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isCameraPlottable (self, *args, **kwargs)-> bool:
-      '''isCameraPlottable( (ViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isCameraPlottable(class PyDbViewTableRecord {lvalue})'''
+    def isCameraPlottable (self: ViewTableRecord)-> bool:
+      '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isDefaultLightingOn (self, *args, **kwargs)-> bool:
-      '''isDefaultLightingOn( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue})'''
+    def isDefaultLightingOn (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
     def isDependent (self: SymbolTableRecord)-> bool:
       '''                             '''
@@ -70460,11 +70098,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
-    def isPaperspaceView (self, *args, **kwargs)-> bool:
-      '''isPaperspaceView( (ViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isPaperspaceView(class PyDbViewTableRecord {lvalue})'''
+    def isPaperspaceView (self: ViewTableRecord)-> bool:
+      '''                             '''
     ...
     def isPersistent (self: Drawable)-> bool:
       '''                             '''
@@ -70484,17 +70119,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isTransactionResident (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUcsAssociatedToView (self, *args, **kwargs)-> bool:
-      '''isUcsAssociatedToView( (ViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isUcsAssociatedToView(class PyDbViewTableRecord {lvalue})'''
+    def isUcsAssociatedToView (self: ViewTableRecord)-> bool:
+      '''                             '''
     ...
-    def isUcsOrthographic (self, *args, **kwargs)-> tuple:
-      '''isUcsOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isUcsOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    def isUcsOrthographic (self: PyDbAbstractViewTableRecord)-> tuple:
+      '''                             '''
     ...
     def isUndoRecordingDisabled (self: DbObject)-> bool:
       '''                             '''
@@ -70502,17 +70131,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isViewAssociatedToViewport (self, *args, **kwargs)-> bool:
-      '''isViewAssociatedToViewport( (ViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isViewAssociatedToViewport(class PyDbViewTableRecord {lvalue})'''
+    def isViewAssociatedToViewport (self: ViewTableRecord)-> bool:
+      '''                             '''
     ...
-    def isViewOrthographic (self, *args, **kwargs)-> tuple:
-      '''isViewOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isViewOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    def isViewOrthographic (self: PyDbAbstractViewTableRecord)-> tuple:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -70520,17 +70143,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def lensLength (self, *args, **kwargs)-> float:
-      '''lensLength( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double lensLength(class PyDbAbstractViewTableRecord {lvalue})'''
+    def lensLength (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
-    def liveSection (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''liveSection( (ViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId liveSection(class PyDbViewTableRecord {lvalue})'''
+    def liveSection (self: ViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -70538,11 +70155,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def perspectiveEnabled (self, *args, **kwargs)-> bool:
-      '''perspectiveEnabled( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    def perspectiveEnabled (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -70804,26 +70418,17 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def sunId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''sunId( (ViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId sunId(class PyDbViewTableRecord {lvalue})'''
+    def sunId (self: ViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def target (self, *args, **kwargs)-> PyGe.Point3d:
-      '''target( (AbstractViewTableRecord)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d target(class PyDbAbstractViewTableRecord {lvalue})'''
+    def target (self: PyDbAbstractViewTableRecord)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def ucsName (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''ucsName( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId ucsName(class PyDbAbstractViewTableRecord {lvalue})'''
+    def ucsName (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None:
       '''                             '''
@@ -70831,17 +70436,11 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def viewDirection (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''viewDirection( (AbstractViewTableRecord)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d viewDirection(class PyDbAbstractViewTableRecord {lvalue})'''
+    def viewDirection (self: PyDbAbstractViewTableRecord)-> PyGe.Vector3d:
+      '''                             '''
     ...
-    def viewTwist (self, *args, **kwargs)-> float:
-      '''viewTwist( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double viewTwist(class PyDbAbstractViewTableRecord {lvalue})'''
+    def viewTwist (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -70849,17 +70448,11 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int:
       '''                             '''
     ...
-    def visualStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''visualStyle( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId visualStyle(class PyDbAbstractViewTableRecord {lvalue})'''
+    def visualStyle (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def width (self, *args, **kwargs)-> float:
-      '''width( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double width(class PyDbAbstractViewTableRecord {lvalue})'''
+    def width (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool:
       '''                             '''
@@ -72394,11 +71987,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None:
       '''                             '''
     ...
-    def ambientLightColor (self, *args, **kwargs)-> PyDb.Color:
-      '''ambientLightColor( (AbstractViewTableRecord)arg1) -> Color :
-
-    C++ signature :
-        class AcCmColor ambientLightColor(class PyDbAbstractViewTableRecord {lvalue})'''
+    def ambientLightColor (self: PyDbAbstractViewTableRecord)-> PyDb.Color:
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None:
       '''                             '''
@@ -72409,74 +71999,44 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None:
       '''                             '''
     ...
-    def backClipDistance (self, *args, **kwargs)-> float:
-      '''backClipDistance( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double backClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    def backClipDistance (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
-    def backClipEnabled (self, *args, **kwargs)-> bool:
-      '''backClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool backClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    def backClipEnabled (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
-    def background (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''background( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId background(class PyDbAbstractViewTableRecord {lvalue})'''
+    def background (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool:
       '''                             '''
     ...
-    def brightness (self, *args, **kwargs)-> float:
-      '''brightness( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double brightness(class PyDbAbstractViewTableRecord {lvalue})'''
+    def brightness (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def cancel (self: DbObject)-> None:
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.ViewportTableRecord:
-      '''cast( (RxObject)arg1) -> ViewportTableRecord :
-
-    C++ signature :
-        class PyDbViewportTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.ViewportTableRecord:
+      '''                             '''
     ...
-    def centerPoint (self, *args, **kwargs)-> PyGe.Point2d:
-      '''centerPoint( (AbstractViewTableRecord)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d centerPoint(class PyDbAbstractViewTableRecord {lvalue})'''
+    def centerPoint (self: PyDbAbstractViewTableRecord)-> PyGe.Point2d:
+      '''                             '''
     ...
-    def circleSides (self, *args, **kwargs)-> int:
-      '''circleSides( (ViewportTableRecord)arg1) -> int :
-
-    C++ signature :
-        unsigned short circleSides(class PyDbViewportTableRecord {lvalue})'''
+    def circleSides (self: ViewportTableRecord)-> int:
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str:
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str:
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.ViewportTableRecord:
-      '''cloneFrom( (RxObject)arg1) -> ViewportTableRecord :
-
-    C++ signature :
-        class PyDbViewportTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.ViewportTableRecord:
+      '''                             '''
     ...
     def close (self: DbObject)-> None:
       '''                             '''
     ...
-    def contrast (self, *args, **kwargs)-> float:
-      '''contrast( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double contrast(class PyDbAbstractViewTableRecord {lvalue})'''
+    def contrast (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -72484,17 +72044,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database:
       '''                             '''
     ...
-    def defaultLightingType (self, *args, **kwargs)-> object:
-      '''defaultLightingType( (AbstractViewTableRecord)arg1) -> object :
-
-    C++ signature :
-        enum AcGiViewportTraits::DefaultLightingType defaultLightingType(class PyDbAbstractViewTableRecord {lvalue})'''
+    def defaultLightingType (self: PyDbAbstractViewTableRecord)-> object:
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass:
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -72511,11 +72065,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float:
-      '''elevation( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbAbstractViewTableRecord {lvalue})'''
+    def elevation (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def erase (self: DbObject)-> None:
       '''                             '''
@@ -72523,29 +72074,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def fastZoomsEnabled (self, *args, **kwargs)-> bool:
-      '''fastZoomsEnabled( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool fastZoomsEnabled(class PyDbViewportTableRecord {lvalue})'''
+    def fastZoomsEnabled (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
-    def frontClipAtEye (self, *args, **kwargs)-> bool:
-      '''frontClipAtEye( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool frontClipAtEye(class PyDbAbstractViewTableRecord {lvalue})'''
+    def frontClipAtEye (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
-    def frontClipDistance (self, *args, **kwargs)-> float:
-      '''frontClipDistance( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double frontClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    def frontClipDistance (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
-    def frontClipEnabled (self, *args, **kwargs)-> bool:
-      '''frontClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool frontClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    def frontClipEnabled (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId:
       '''                             '''
@@ -72559,29 +72098,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getName (self: SymbolTableRecord)-> str:
       '''                             '''
     ...
-    def getUcs (self, *args, **kwargs)-> None:
-      '''getUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void getUcs(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d {lvalue},class AcGeVector3d {lvalue},class AcGeVector3d {lvalue})'''
+    def getUcs (self: PyDbAbstractViewTableRecord)-> tuple:
+      '''                             '''
     ...
-    def gridEnabled (self, *args, **kwargs)-> bool:
-      '''gridEnabled( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool gridEnabled(class PyDbViewportTableRecord {lvalue})'''
+    def gridEnabled (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
-    def gridIncrements (self, *args, **kwargs)-> PyGe.Point2d:
-      '''gridIncrements( (ViewportTableRecord)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d gridIncrements(class PyDbViewportTableRecord {lvalue})'''
+    def gridIncrements (self: ViewportTableRecord)-> PyGe.Point2d:
+      '''                             '''
     ...
-    def gridMajor (self, *args, **kwargs)-> int:
-      '''gridMajor( (ViewportTableRecord)arg1) -> int :
-
-    C++ signature :
-        short gridMajor(class PyDbViewportTableRecord {lvalue})'''
+    def gridMajor (self: ViewportTableRecord)-> int:
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None:
       '''                             '''
@@ -72595,23 +72122,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasXData (self: DbObject,appname: str)-> bool:
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float:
-      '''height( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbAbstractViewTableRecord {lvalue})'''
+    def height (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
-    def iconAtOrigin (self, *args, **kwargs)-> bool:
-      '''iconAtOrigin( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool iconAtOrigin(class PyDbViewportTableRecord {lvalue})'''
+    def iconAtOrigin (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
-    def iconEnabled (self, *args, **kwargs)-> bool:
-      '''iconEnabled( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool iconEnabled(class PyDbViewportTableRecord {lvalue})'''
+    def iconEnabled (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId:
       '''                             '''
@@ -72628,11 +72146,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isCancelling (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isDefaultLightingOn (self, *args, **kwargs)-> bool:
-      '''isDefaultLightingOn( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue})'''
+    def isDefaultLightingOn (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
     def isDependent (self: SymbolTableRecord)-> bool:
       '''                             '''
@@ -72643,29 +72158,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isGridAdaptive (self, *args, **kwargs)-> bool:
-      '''isGridAdaptive( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isGridAdaptive(class PyDbViewportTableRecord {lvalue})'''
+    def isGridAdaptive (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
-    def isGridBoundToLimits (self, *args, **kwargs)-> bool:
-      '''isGridBoundToLimits( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isGridBoundToLimits(class PyDbViewportTableRecord {lvalue})'''
+    def isGridBoundToLimits (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
-    def isGridFollow (self, *args, **kwargs)-> bool:
-      '''isGridFollow( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isGridFollow(class PyDbViewportTableRecord {lvalue})'''
+    def isGridFollow (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
-    def isGridSubdivisionRestricted (self, *args, **kwargs)-> bool:
-      '''isGridSubdivisionRestricted( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isGridSubdivisionRestricted(class PyDbViewportTableRecord {lvalue})'''
+    def isGridSubdivisionRestricted (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
@@ -72709,17 +72212,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isTransactionResident (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isUcsOrthographic (self, *args, **kwargs)-> tuple:
-      '''isUcsOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isUcsOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    def isUcsOrthographic (self: PyDbAbstractViewTableRecord)-> tuple:
+      '''                             '''
     ...
-    def isUcsSavedWithViewport (self, *args, **kwargs)-> bool:
-      '''isUcsSavedWithViewport( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isUcsSavedWithViewport(class PyDbViewportTableRecord {lvalue})'''
+    def isUcsSavedWithViewport (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
     def isUndoRecordingDisabled (self: DbObject)-> bool:
       '''                             '''
@@ -72727,41 +72224,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isUndoing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isViewOrthographic (self, *args, **kwargs)-> tuple:
-      '''isViewOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isViewOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    def isViewOrthographic (self: PyDbAbstractViewTableRecord)-> tuple:
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isometricSnapEnabled (self, *args, **kwargs)-> bool:
-      '''isometricSnapEnabled( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isometricSnapEnabled(class PyDbViewportTableRecord {lvalue})'''
+    def isometricSnapEnabled (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
-    def lensLength (self, *args, **kwargs)-> float:
-      '''lensLength( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double lensLength(class PyDbAbstractViewTableRecord {lvalue})'''
+    def lensLength (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
-    def lowerLeftCorner (self, *args, **kwargs)-> PyGe.Point2d:
-      '''lowerLeftCorner( (ViewportTableRecord)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d lowerLeftCorner(class PyDbViewportTableRecord {lvalue})'''
+    def lowerLeftCorner (self: ViewportTableRecord)-> PyGe.Point2d:
+      '''                             '''
     ...
-    def number (self, *args, **kwargs)-> int:
-      '''number( (ViewportTableRecord)arg1) -> int :
-
-    C++ signature :
-        short number(class PyDbViewportTableRecord {lvalue})'''
+    def number (self: ViewportTableRecord)-> int:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
@@ -72769,11 +72251,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def perspectiveEnabled (self, *args, **kwargs)-> bool:
-      '''perspectiveEnabled( (AbstractViewTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    def perspectiveEnabled (self: PyDbAbstractViewTableRecord)-> bool:
+      '''                             '''
     ...
     def previousBackground (self, *args, **kwargs)-> PyDb.ObjectId:
       '''previousBackground( (ViewportTableRecord)arg1) -> ObjectId :
@@ -72786,11 +72265,8 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     C++ signature :
         class PyDbObjectId previousBackground(class PyDbViewportTableRecord {lvalue},enum AcGiDrawable::DrawableType)'''
     ...
-    def previousBackgroundForcedSwitch (self, *args, **kwargs)-> bool:
-      '''previousBackgroundForcedSwitch( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool previousBackgroundForcedSwitch(class PyDbViewportTableRecord {lvalue})'''
+    def previousBackgroundForcedSwitch (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
@@ -73126,65 +72602,38 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
     ...
-    def snapAngle (self, *args, **kwargs)-> float:
-      '''snapAngle( (ViewportTableRecord)arg1) -> float :
-
-    C++ signature :
-        double snapAngle(class PyDbViewportTableRecord {lvalue})'''
+    def snapAngle (self: ViewportTableRecord)-> float:
+      '''                             '''
     ...
-    def snapBase (self, *args, **kwargs)-> PyGe.Point2d:
-      '''snapBase( (ViewportTableRecord)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d snapBase(class PyDbViewportTableRecord {lvalue})'''
+    def snapBase (self: ViewportTableRecord)-> PyGe.Point2d:
+      '''                             '''
     ...
-    def snapEnabled (self, *args, **kwargs)-> bool:
-      '''snapEnabled( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool snapEnabled(class PyDbViewportTableRecord {lvalue})'''
+    def snapEnabled (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
-    def snapIncrements (self, *args, **kwargs)-> PyGe.Point2d:
-      '''snapIncrements( (ViewportTableRecord)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d snapIncrements(class PyDbViewportTableRecord {lvalue})'''
+    def snapIncrements (self: ViewportTableRecord)-> PyGe.Point2d:
+      '''                             '''
     ...
-    def snapPair (self, *args, **kwargs)-> int:
-      '''snapPair( (ViewportTableRecord)arg1) -> int :
-
-    C++ signature :
-        short snapPair(class PyDbViewportTableRecord {lvalue})'''
+    def snapPair (self: ViewportTableRecord)-> int:
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None:
       '''                             '''
     ...
-    def sunId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''sunId( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId sunId(class PyDbAbstractViewTableRecord {lvalue})'''
+    def sunId (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None:
       '''                             '''
     ...
-    def target (self, *args, **kwargs)-> PyGe.Point3d:
-      '''target( (AbstractViewTableRecord)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d target(class PyDbAbstractViewTableRecord {lvalue})'''
+    def target (self: PyDbAbstractViewTableRecord)-> PyGe.Point3d:
+      '''                             '''
     ...
-    def ucsFollowMode (self, *args, **kwargs)-> bool:
-      '''ucsFollowMode( (ViewportTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool ucsFollowMode(class PyDbViewportTableRecord {lvalue})'''
+    def ucsFollowMode (self: ViewportTableRecord)-> bool:
+      '''                             '''
     ...
-    def ucsName (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''ucsName( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId ucsName(class PyDbAbstractViewTableRecord {lvalue})'''
+    def ucsName (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None:
       '''                             '''
@@ -73192,23 +72641,14 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def upgradeOpen (self: DbObject)-> None:
       '''                             '''
     ...
-    def upperRightCorner (self, *args, **kwargs)-> PyGe.Point2d:
-      '''upperRightCorner( (ViewportTableRecord)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d upperRightCorner(class PyDbViewportTableRecord {lvalue})'''
+    def upperRightCorner (self: ViewportTableRecord)-> PyGe.Point2d:
+      '''                             '''
     ...
-    def viewDirection (self, *args, **kwargs)-> PyGe.Vector3d:
-      '''viewDirection( (AbstractViewTableRecord)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d viewDirection(class PyDbAbstractViewTableRecord {lvalue})'''
+    def viewDirection (self: PyDbAbstractViewTableRecord)-> PyGe.Vector3d:
+      '''                             '''
     ...
-    def viewTwist (self, *args, **kwargs)-> float:
-      '''viewTwist( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double viewTwist(class PyDbAbstractViewTableRecord {lvalue})'''
+    def viewTwist (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None:
       '''                             '''
@@ -73216,17 +72656,11 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int:
       '''                             '''
     ...
-    def visualStyle (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''visualStyle( (AbstractViewTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId visualStyle(class PyDbAbstractViewTableRecord {lvalue})'''
+    def visualStyle (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
-    def width (self, *args, **kwargs)-> float:
-      '''width( (AbstractViewTableRecord)arg1) -> float :
-
-    C++ signature :
-        double width(class PyDbAbstractViewTableRecord {lvalue})'''
+    def width (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool:
       '''                             '''
