@@ -2,25 +2,28 @@
 #include "PyEdSelectionSet.h"
 #include "PyDbObjectId.h"
 #include "ResultBuffer.h"
+#include "PyRxObject.h"
 
 using namespace boost::python;
 
 void makePyEdSelectionSetWrapper()
 {
+    PyDocString DS("SelectionSet");
     class_<PyEdSelectionSet>("SelectionSet")
         .def(init<>())
-        .def("isInitialized", &PyEdSelectionSet::isInitialized)
-        .def("size", &PyEdSelectionSet::size)
-        .def("clear", &PyEdSelectionSet::clear)
+        .def("isInitialized", &PyEdSelectionSet::isInitialized, DS.ARGS())
+        .def("size", &PyEdSelectionSet::size, DS.ARGS())
+        .def("clear", &PyEdSelectionSet::clear, DS.ARGS())
         .def("add", &PyEdSelectionSet::add)
         .def("remove", &PyEdSelectionSet::remove)
         .def("hasMember", &PyEdSelectionSet::hasMember)
-        .def("toList", &PyEdSelectionSet::objectIds)
+        .def("toList", &PyEdSelectionSet::objectIds, DS.ARGS())
         .def("objectIds", &PyEdSelectionSet::objectIds)
-        .def("adsname", &PyEdSelectionSet::adsname)
+        .def("objectIds", &PyEdSelectionSet::objectIdsOfType, DS.ARGS({ "desc:PyRx.RxClass=AcDbEntity" }))
+        .def("adsname", &PyEdSelectionSet::adsname, DS.ARGS())
         .def("ssNameX", &PyEdSelectionSet::ssNameX1)
         .def("ssNameX", &PyEdSelectionSet::ssNameX2)
-        .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst)
+        .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst, DS.ARGS())
         .def("ssXform", &PyEdSelectionSet::ssXform)
         ;
 }
@@ -139,6 +142,28 @@ boost::python::list PyEdSelectionSet::objectIds()
         {
             if (acdbGetObjectId(objId.m_id, ent) == eOk)
                 idList.append(objId);
+        }
+    }
+    return idList;
+}
+
+boost::python::list PyEdSelectionSet::objectIdsOfType(const PyRxClass& _class)
+{
+    PyAutoLockGIL lock;
+    AcDbObjectId objId;
+    ads_name ent = { 0 };
+    boost::python::list idList;
+    const auto _desc = _class.impObj();
+    const size_t len = size();
+    for (size_t i = 0; i < len; i++)
+    {
+        if (acedSSName(impObj()->data(), i, ent) == RTNORM)
+        {
+            if (acdbGetObjectId(objId, ent) == eOk)
+            {
+                if (objId.objectClass()->isDerivedFrom(_desc))
+                    idList.append(PyDbObjectId{ objId });
+            }
         }
     }
     return idList;
