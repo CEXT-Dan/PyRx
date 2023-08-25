@@ -28309,11 +28309,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
 
 class LayerTableRecord:
-    def VPDFLT (self, *args, **kwargs)-> bool:
-      '''VPDFLT( (LayerTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool VPDFLT(class PyDbLayerTableRecord {lvalue})'''
+    def VPDFLT (self: LayerTableRecord)-> bool:
+      '''                             '''
     ...
     def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
@@ -28389,11 +28386,8 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
-    def description (self, *args, **kwargs)-> str:
-      '''description( (LayerTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > description(class PyDbLayerTableRecord {lvalue})'''
+    def description (self: LayerTableRecord)-> str:
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None:
       '''                             '''
@@ -28410,11 +28404,8 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType:
       '''                             '''
     ...
-    def entityColor (self, *args, **kwargs)-> PyDb.EntityColor:
-      '''entityColor( (LayerTableRecord)arg1) -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor entityColor(class PyDbLayerTableRecord {lvalue})'''
+    def entityColor (self: LayerTableRecord)-> PyDb.EntityColor:
+      '''                             '''
     ...
     def erase (self: DbObject)-> None:
       '''                             '''
@@ -28482,37 +28473,23 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def isErased (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isFrozen (self, *args, **kwargs)-> bool:
-      '''isFrozen( (LayerTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isFrozen(class PyDbLayerTableRecord {lvalue})'''
+    def isFrozen (self: LayerTableRecord)-> bool:
+      '''                             '''
     ...
-    def isHidden (self, *args, **kwargs)-> bool:
-      '''isHidden( (LayerTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isHidden(class PyDbLayerTableRecord {lvalue})
-
-isHidden( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool isHidden(class PyDbObjectId)'''
+    def isHidden (self: LayerTableRecord)-> bool:
+      '''                             '''
     ...
-    def isInUse (self, *args, **kwargs)-> bool:
-      '''isInUse( (LayerTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isInUse(class PyDbLayerTableRecord {lvalue})'''
+    def isHiddenS ()-> bool:
+      '''                             '''
+    ...
+    def isInUse (self: LayerTableRecord)-> bool:
+      '''                             '''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
-    def isLocked (self, *args, **kwargs)-> bool:
-      '''isLocked( (LayerTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isLocked(class PyDbLayerTableRecord {lvalue})'''
+    def isLocked (self: LayerTableRecord)-> bool:
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool:
       '''                             '''
@@ -28535,20 +28512,14 @@ isHidden( (ObjectId)arg1) -> bool :
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
-    def isOff (self, *args, **kwargs)-> bool:
-      '''isOff( (LayerTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isOff(class PyDbLayerTableRecord {lvalue})'''
+    def isOff (self: LayerTableRecord)-> bool:
+      '''                             '''
     ...
     def isPersistent (self: Drawable)-> bool:
       '''                             '''
     ...
-    def isPlottable (self, *args, **kwargs)-> bool:
-      '''isPlottable( (LayerTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isPlottable(class PyDbLayerTableRecord {lvalue})'''
+    def isPlottable (self: LayerTableRecord)-> bool:
+      '''                             '''
     ...
     def isReadEnabled (self: DbObject)-> bool:
       '''                             '''
@@ -28556,16 +28527,11 @@ isHidden( (ObjectId)arg1) -> bool :
     def isReallyClosing (self: DbObject)-> bool:
       '''                             '''
     ...
-    def isReconciled (self, *args, **kwargs)-> bool:
-      '''isReconciled( (LayerTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isReconciled(class PyDbLayerTableRecord {lvalue})
-
-isReconciled( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool isReconciled(class PyDbObjectId)'''
+    def isReconciled (self: LayerTableRecord)-> bool:
+      '''                             '''
+    ...
+    def isReconciledS ()-> bool:
+      '''                             '''
     ...
     def isRenamable (self: SymbolTableRecord)-> bool:
       '''                             '''
@@ -28605,11 +28571,8 @@ lineWeight( (LayerTableRecord)arg1, (ObjectId)arg2) -> LineWeight :
     C++ signature :
         class PyDbObjectId linetypeObjectId(class PyDbLayerTableRecord {lvalue})'''
     ...
-    def materialId (self, *args, **kwargs)-> PyDb.ObjectId:
-      '''materialId( (LayerTableRecord)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId materialId(class PyDbLayerTableRecord {lvalue})'''
+    def materialId (self: LayerTableRecord)-> PyDb.ObjectId:
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId:
       '''                             '''
