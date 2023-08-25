@@ -14,11 +14,8 @@ print("added command = pyselectallf")
 
 def PyRxCmd_pyselectall():
     try:
-        # get the Editor class
-        ed = Ed.Editor()
-
         # returns a tuple (PromptStatus, SelectionSet)
-        ssres = ed.selectAll()
+        ssres =Ed.Editor.selectAll()
 
         # check if we have a set
         if ssres[0] == Ed.PromptStatus.eNormal:
@@ -57,16 +54,46 @@ def PyRxCmd_pyselectallf():
         # filter = [(0, "CIRCLE"),  # type
         #          (8, "0")]  # layer
 
-        # get the Editor class
-        ed = Ed.Editor()
-
         # returns a tuple (PromptStatus, SelectionSet)
-        ssres = ed.selectAll(filter)
+        ssres = Ed.Editor.selectAll(filter)
 
         # check if we have a set
         if ssres[0] == Ed.PromptStatus.eNormal:
             selection = ssres[1]
             print(selection.size())
+
+    except Exception as err:
+	    print(err)
+     
+def PyRxCmd_pyselectf():
+    try:
+        # example using a filter
+        # create a filter, a list of tuples
+        filter = [(Db.DxfCode.kDxfStart, "LINE,CIRCLE"),  # type
+                  (Db.DxfCode.kDxfLayerName, "0")]  # layer
+
+        # lots of lisp samples use int for DxfCode, should work here as well
+        # filter = [(0, "LINE,CIRCLE"),  # type
+        #          (8, "0")]  # layer
+        
+        # returns a tuple (PromptStatus, SelectionSet)
+        ssres = Ed.Editor.select(filter)
+
+        # check if we have a set
+        if ssres[0] == Ed.PromptStatus.eNormal:
+          
+            #get all Ids
+            ids = ssres[1].objectIds()
+          
+            #just get the lines
+            lineIds = ssres[1].objectIds(Db.Line.desc())
+            
+            #just get the circles
+            circleIds = ssres[1].objectIds(Db.Circle.desc())
+            
+            print("call = {}".format(len(ids)))
+            print("Lines = {}".format(len(lineIds)))
+            print("Circles = {}".format(len(circleIds)))
 
     except Exception as err:
 	    print(err)
