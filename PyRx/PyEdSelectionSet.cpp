@@ -138,8 +138,7 @@ boost::python::list PyEdSelectionSet::objectIds()
     PyDbObjectId objId;
     ads_name ent = { 0 };
     boost::python::list idList;
-    const size_t len = size();
-    for (size_t i = 0; i < len; i++)
+    for (size_t i = 0, len = size(); i < len; i++)
     {
         if (acedSSName(impObj()->data(), i, ent) == RTNORM)
         {
@@ -157,10 +156,9 @@ boost::python::list PyEdSelectionSet::objectIdsOfType(const PyRxClass& _class)
     PyAutoLockGIL lock;
     AcDbObjectId objId;
     ads_name ent = { 0 };
-    const size_t len = size();
     boost::python::list idList;
     const auto _desc = _class.impObj();
-    for (size_t i = 0; i < len; i++)
+    for (size_t i = 0, len = size(); i < len; i++)
     {
         if (acedSSName(impObj()->data(), i, ent) == RTNORM)
         {

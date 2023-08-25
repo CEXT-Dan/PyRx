@@ -113,7 +113,7 @@ public:
     void                setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun);
     //void toneOperatorParameters(AcGiToneOperatorParameters& params) const;
     //void setToneOperatorParameters(const AcGiToneOperatorParameters& params);
-    void                getUcs(AcGePoint3d& origin, AcGeVector3d& xAxis, AcGeVector3d& yAxis) const;
+    boost::python::tuple getUcs() const;
     boost::python::tuple isUcsOrthographic() const;
     PyDbObjectId        ucsName() const;
     double              elevation() const;
