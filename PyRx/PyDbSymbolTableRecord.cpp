@@ -114,10 +114,10 @@ void makePyDbDimStyleTableRecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbDimStyleTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbDimStyleTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbDimStyleTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbDimStyleTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbDimStyleTableRecord::className,DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbDimStyleTableRecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbDimStyleTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbDimStyleTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -181,47 +181,47 @@ void makePyDbAbstractViewTableRecordWrapper()
     class_<PyDbAbstractViewTableRecord, bases<PyDbSymbolTableRecord>>("AbstractViewTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("centerPoint", &PyDbAbstractViewTableRecord::centerPoint)
+        .def("centerPoint", &PyDbAbstractViewTableRecord::centerPoint, DS.ARGS())
         .def("setCenterPoint", &PyDbAbstractViewTableRecord::setCenterPoint)
-        .def("height", &PyDbAbstractViewTableRecord::height)
+        .def("height", &PyDbAbstractViewTableRecord::height, DS.ARGS())
         .def("setHeight", &PyDbAbstractViewTableRecord::setHeight)
-        .def("width", &PyDbAbstractViewTableRecord::width)
+        .def("width", &PyDbAbstractViewTableRecord::width, DS.ARGS())
         .def("setWidth", &PyDbAbstractViewTableRecord::setWidth)
-        .def("target", &PyDbAbstractViewTableRecord::target)
+        .def("target", &PyDbAbstractViewTableRecord::target, DS.ARGS())
         .def("setTarget", &PyDbAbstractViewTableRecord::setTarget)
-        .def("viewDirection", &PyDbAbstractViewTableRecord::viewDirection)
+        .def("viewDirection", &PyDbAbstractViewTableRecord::viewDirection, DS.ARGS())
         .def("setViewDirection", &PyDbAbstractViewTableRecord::setViewDirection1)
-        .def("viewTwist", &PyDbAbstractViewTableRecord::viewTwist)
+        .def("viewTwist", &PyDbAbstractViewTableRecord::viewTwist, DS.ARGS())
         .def("setViewTwist", &PyDbAbstractViewTableRecord::setViewTwist)
-        .def("lensLength", &PyDbAbstractViewTableRecord::lensLength)
+        .def("lensLength", &PyDbAbstractViewTableRecord::lensLength, DS.ARGS())
         .def("setLensLength", &PyDbAbstractViewTableRecord::setLensLength)
-        .def("frontClipDistance", &PyDbAbstractViewTableRecord::frontClipDistance)
+        .def("frontClipDistance", &PyDbAbstractViewTableRecord::frontClipDistance, DS.ARGS())
         .def("setFrontClipDistance", &PyDbAbstractViewTableRecord::setFrontClipDistance)
-        .def("backClipDistance", &PyDbAbstractViewTableRecord::backClipDistance)
+        .def("backClipDistance", &PyDbAbstractViewTableRecord::backClipDistance, DS.ARGS())
         .def("setBackClipDistance", &PyDbAbstractViewTableRecord::setBackClipDistance)
-        .def("perspectiveEnabled", &PyDbAbstractViewTableRecord::perspectiveEnabled)
+        .def("perspectiveEnabled", &PyDbAbstractViewTableRecord::perspectiveEnabled, DS.ARGS())
         .def("setPerspectiveEnabled", &PyDbAbstractViewTableRecord::setPerspectiveEnabled)
-        .def("frontClipEnabled", &PyDbAbstractViewTableRecord::frontClipEnabled)
+        .def("frontClipEnabled", &PyDbAbstractViewTableRecord::frontClipEnabled, DS.ARGS())
         .def("setFrontClipEnabled", &PyDbAbstractViewTableRecord::setFrontClipEnabled)
-        .def("backClipEnabled", &PyDbAbstractViewTableRecord::backClipEnabled)
+        .def("backClipEnabled", &PyDbAbstractViewTableRecord::backClipEnabled, DS.ARGS())
         .def("setBackClipEnabled", &PyDbAbstractViewTableRecord::setBackClipEnabled)
-        .def("frontClipAtEye", &PyDbAbstractViewTableRecord::frontClipAtEye)
+        .def("frontClipAtEye", &PyDbAbstractViewTableRecord::frontClipAtEye, DS.ARGS())
         .def("setFrontClipAtEye", &PyDbAbstractViewTableRecord::setFrontClipAtEye)
-        .def("background", &PyDbAbstractViewTableRecord::background)
+        .def("background", &PyDbAbstractViewTableRecord::background, DS.ARGS())
         .def("setBackground", &PyDbAbstractViewTableRecord::setBackground)
-        .def("visualStyle", &PyDbAbstractViewTableRecord::visualStyle)
+        .def("visualStyle", &PyDbAbstractViewTableRecord::visualStyle, DS.ARGS())
         .def("setVisualStyle", &PyDbAbstractViewTableRecord::setVisualStyle)
-        .def("isDefaultLightingOn", &PyDbAbstractViewTableRecord::isDefaultLightingOn)
+        .def("isDefaultLightingOn", &PyDbAbstractViewTableRecord::isDefaultLightingOn, DS.ARGS())
         .def("setDefaultLightingOn", &PyDbAbstractViewTableRecord::setDefaultLightingOn)
-        .def("defaultLightingType", &PyDbAbstractViewTableRecord::defaultLightingType)
+        .def("defaultLightingType", &PyDbAbstractViewTableRecord::defaultLightingType, DS.ARGS())
         .def("setDefaultLightingType", &PyDbAbstractViewTableRecord::setDefaultLightingType)
-        .def("brightness", &PyDbAbstractViewTableRecord::brightness)
+        .def("brightness", &PyDbAbstractViewTableRecord::brightness, DS.ARGS())
         .def("setBrightness", &PyDbAbstractViewTableRecord::setBrightness)
-        .def("contrast", &PyDbAbstractViewTableRecord::contrast)
+        .def("contrast", &PyDbAbstractViewTableRecord::contrast, DS.ARGS())
         .def("setContrast", &PyDbAbstractViewTableRecord::setContrast)
-        .def("ambientLightColor", &PyDbAbstractViewTableRecord::ambientLightColor)
+        .def("ambientLightColor", &PyDbAbstractViewTableRecord::ambientLightColor, DS.ARGS())
         .def("setAmbientLightColor", &PyDbAbstractViewTableRecord::setAmbientLightColor)
-        .def("sunId", &PyDbAbstractViewTableRecord::sunId)
+        .def("sunId", &PyDbAbstractViewTableRecord::sunId, DS.ARGS())
         .def("setSun", &PyDbAbstractViewTableRecord::setSun1)
         .def("setSun", &PyDbAbstractViewTableRecord::setSun2)
         .def("getUcs", &PyDbAbstractViewTableRecord::getUcs)
@@ -235,10 +235,10 @@ void makePyDbAbstractViewTableRecordWrapper()
         .def("setElevation", &PyDbAbstractViewTableRecord::setElevation)
         .def("isViewOrthographic", &PyDbAbstractViewTableRecord::isViewOrthographic)
         .def("setViewDirection", &PyDbAbstractViewTableRecord::setViewDirection2)
-        .def("className", &PyDbAbstractViewTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbAbstractViewTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbAbstractViewTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbAbstractViewTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbAbstractViewTableRecord::className,DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbAbstractViewTableRecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbAbstractViewTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbAbstractViewTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -488,9 +488,14 @@ void PyDbAbstractViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun,
 #endif
 }
 
-void PyDbAbstractViewTableRecord::getUcs(AcGePoint3d& origin, AcGeVector3d& xAxis, AcGeVector3d& yAxis) const
+boost::python::tuple PyDbAbstractViewTableRecord::getUcs() const
 {
-    return PyThrowBadEs(impObj()->getUcs(origin, xAxis, yAxis));
+    PyAutoLockGIL lock;
+    AcGePoint3d origin;
+    AcGeVector3d xAxis; 
+    AcGeVector3d yAxis;
+    PyThrowBadEs(impObj()->getUcs(origin, xAxis, yAxis));
+    return boost::python::make_tuple(origin, xAxis, yAxis);
 }
 
 boost::python::tuple PyDbAbstractViewTableRecord::isUcsOrthographic() const
@@ -634,10 +639,10 @@ void makePyDbViewportTableRecordWrapper()
         .def("setPreviousBackground", &PyDbViewportTableRecord::setPreviousBackground1)
         .def("setPreviousBackground", &PyDbViewportTableRecord::setPreviousBackground2)
         .def("previousBackgroundForcedSwitch", &PyDbViewportTableRecord::previousBackgroundForcedSwitch)
-        .def("className", &PyDbViewportTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbViewportTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbViewportTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbViewportTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbViewportTableRecord::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbViewportTableRecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbViewportTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbViewportTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1031,10 +1036,10 @@ void makePyDbViewTableRecordWrapper()
         .def("sunId", &PyDbViewTableRecord::sunId)
         .def("setSun", &PyDbViewTableRecord::setSun1)
         .def("setSun", &PyDbViewTableRecord::setSun2)
-        .def("className", &PyDbViewTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbViewTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbViewTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbViewTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbViewTableRecord::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbViewTableRecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbViewTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbViewTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1299,10 +1304,10 @@ void makePyDbBlockTableRecordWrapper()
         .def("blockInsertUnits", &PyDbBlockTableRecord::blockInsertUnits)
         .def("postProcessAnnotativeBTR", &PyDbBlockTableRecord::postProcessAnnotativeBTR)
         .def("addAnnoScalestoBlkRefs", &PyDbBlockTableRecord::addAnnoScalestoBlkRefs)
-        .def("className", &PyDbBlockTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbBlockTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbBlockTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbBlockTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbBlockTableRecord::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbBlockTableRecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbBlockTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbBlockTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1364,8 +1369,7 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfType(const PyRxClass& _clas
     PyDbObjectId id;
     for (iter->start(); !iter->done(); iter->step())
     {
-        if (const auto es = iter->getEntityId(id.m_id);
-            es == eOk && id.m_id.objectClass()->isDerivedFrom(_desc))
+        if (const auto es = iter->getEntityId(id.m_id); es == eOk && id.m_id.objectClass()->isDerivedFrom(_desc))
             pyList.append(id);
     }
     return pyList;
@@ -1702,10 +1706,10 @@ void makePyDbLayerTableRecordWrapper()
         .def("hasAnyOverrides", &PyDbLayerTableRecord::hasAnyOverrides)
         .def("isReconciled", &PyDbLayerTableRecord::isReconciled)
         .def("isReconciled", &PyDbLayerTableRecord::isReconciledS).staticmethod("isReconciled")//TODO: can't override with a static test
-        .def("className", &PyDbLayerTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbLayerTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbLayerTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbLayerTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbLayerTableRecord::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbLayerTableRecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbLayerTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbLayerTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2067,10 +2071,10 @@ void makePyDbTextStyleTableRecordWrapper()
         .def("setBigFontFileName", &PyDbTextStyleTableRecord::setBigFontFileName)
         .def("setFont", &PyDbTextStyleTableRecord::setFont)
         .def("font", &PyDbTextStyleTableRecord::font)
-        .def("className", &PyDbTextStyleTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbTextStyleTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbTextStyleTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbTextStyleTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbTextStyleTableRecord::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbTextStyleTableRecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbTextStyleTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbTextStyleTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2270,10 +2274,10 @@ void makePyDbUCSTableRecordWrapper()
         .def("setYAxis", &PyDbUCSTableRecord::setYAxis)
         .def("ucsBaseOrigin", &PyDbUCSTableRecord::ucsBaseOrigin)
         .def("setUcsBaseOrigin", &PyDbUCSTableRecord::setUcsBaseOrigin)
-        .def("className", &PyDbUCSTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbUCSTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbUCSTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbUCSTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbUCSTableRecord::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbUCSTableRecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbUCSTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbUCSTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2386,10 +2390,10 @@ void makePyDbRegAppTableRecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbRegAppTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbRegAppTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbRegAppTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbRegAppTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbRegAppTableRecord::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbRegAppTableRecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbRegAppTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbRegAppTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -2480,10 +2484,10 @@ void makePyDbLinetypeTableRecordWrapper()
         .def("setShapeRotationAt", &PyDbLinetypeTableRecord::setShapeRotationAt)
         .def("textAt", &PyDbLinetypeTableRecord::textAt)
         .def("setTextAt", &PyDbLinetypeTableRecord::setTextAt)
-        .def("className", &PyDbLinetypeTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbLinetypeTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbLinetypeTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbLinetypeTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbLinetypeTableRecord::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbLinetypeTableRecord::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbLinetypeTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbLinetypeTableRecord::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
