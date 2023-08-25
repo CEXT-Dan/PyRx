@@ -64,6 +64,8 @@ void PyEdSelectionSet::clear()
 
 void PyEdSelectionSet::add(const PyDbObjectId& objId)
 {
+    if (!isInitialized())
+        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
     ads_name ent = { 0 };
     PyThrowBadEs(acdbGetAdsName(ent, objId.m_id));
     PyThrowBadRt(acedSSAdd(ent, impObj()->data(), impObj()->data()));
@@ -71,6 +73,8 @@ void PyEdSelectionSet::add(const PyDbObjectId& objId)
 
 void PyEdSelectionSet::remove(const PyDbObjectId& objId)
 {
+    if (!isInitialized())
+        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
     ads_name ent = { 0 };
     PyThrowBadEs(acdbGetAdsName(ent, objId.m_id));
     PyThrowBadRt(acedSSDel(ent, impObj()->data()));
@@ -78,6 +82,8 @@ void PyEdSelectionSet::remove(const PyDbObjectId& objId)
 
 bool PyEdSelectionSet::hasMember(const PyDbObjectId& objId)
 {
+    if (!isInitialized())
+        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
     ads_name ent = { 0 };
     PyThrowBadEs(acdbGetAdsName(ent, objId.m_id));
     return acedSSMemb(ent, impObj()->data()) == RTNORM;
@@ -85,25 +91,25 @@ bool PyEdSelectionSet::hasMember(const PyDbObjectId& objId)
 
 AdsName PyEdSelectionSet::adsname() const
 {
-    AdsName _name;
-    if (isInitialized())
-    {
-        _name.m_data[0] = m_pSet->at(0);
-        _name.m_data[1] = m_pSet->at(1);
-    }
+    if (!isInitialized())
+        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
+    AdsName _name = { 0L };
+    memcpy(&_name,m_pSet->data(), sizeof(_name));
     return _name;
 }
 
 bool PyEdSelectionSet::ssSetFirst()
 {
     if (!isInitialized())
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
     ads_name dummy = { 0 };
     return acedSSSetFirst(m_pSet->data(), dummy) == RTNORM;
 }
 
 Acad::PromptStatus PyEdSelectionSet::ssXform(const AcGeMatrix3d& xform)
 {
+    if (!isInitialized())
+        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
     ads_matrix adsXform;
     memcpy(adsXform, xform.entry, sizeof(ads_matrix));
     return static_cast<Acad::PromptStatus>(acedXformSS(m_pSet->data(), adsXform));
@@ -116,9 +122,8 @@ boost::python::list PyEdSelectionSet::ssNameX1()
 
 boost::python::list PyEdSelectionSet::ssNameX2(int idx)
 {
-    PyAutoLockGIL lock;
     if (!isInitialized())
-        throw PyAcadErrorStatus(eInvalidInput);
+        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
     resbuf* rb = nullptr;
     PyThrowBadRt(acedSSNameX(&rb, m_pSet->data(), idx));
     AcResBufPtr ptr(rb);
@@ -127,6 +132,8 @@ boost::python::list PyEdSelectionSet::ssNameX2(int idx)
 
 boost::python::list PyEdSelectionSet::objectIds()
 {
+    if (!isInitialized())
+        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
     PyAutoLockGIL lock;
     PyDbObjectId objId;
     ads_name ent = { 0 };
@@ -145,12 +152,14 @@ boost::python::list PyEdSelectionSet::objectIds()
 
 boost::python::list PyEdSelectionSet::objectIdsOfType(const PyRxClass& _class)
 {
+    if (!isInitialized())
+        throw PyAcadErrorStatus(Acad::eNotInitializedYet);
     PyAutoLockGIL lock;
     AcDbObjectId objId;
     ads_name ent = { 0 };
+    const size_t len = size();
     boost::python::list idList;
     const auto _desc = _class.impObj();
-    const size_t len = size();
     for (size_t i = 0; i < len; i++)
     {
         if (acedSSName(impObj()->data(), i, ent) == RTNORM)
