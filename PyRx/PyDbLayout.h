@@ -153,7 +153,7 @@ public:
     //void              removeReactor(AcDbLayoutManagerReactor* delObj)
 
     static Adesk::ULongPtr      setupForLayouts(PyDbDatabase& pDb);
-    static void    clearSetupForLayouts(Adesk::ULongPtr contextHandle);
+    static void                 clearSetupForLayouts(Adesk::ULongPtr contextHandle);
     static PyRxClass            desc();
     static std::string          className();
 public:

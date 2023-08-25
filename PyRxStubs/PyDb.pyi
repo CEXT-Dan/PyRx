@@ -683,56 +683,32 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool:
       '''                             '''
     ...
-    def setAmbientLightColor (self, *args, **kwargs)-> None:
-      '''setAmbientLightColor( (AbstractViewTableRecord)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setAmbientLightColor(class PyDbAbstractViewTableRecord {lvalue},class AcCmColor)'''
+    def setAmbientLightColor (self: PyDbAbstractViewTableRecord,val : PyDb.Color)-> None:
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int:
       '''                             '''
     ...
-    def setBackClipDistance (self, *args, **kwargs)-> None:
-      '''setBackClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBackClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setBackClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setBackClipEnabled (self, *args, **kwargs)-> None:
-      '''setBackClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setBackClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setBackClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setBackground (self, *args, **kwargs)-> None:
-      '''setBackground( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setBackground(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    def setBackground (self: PyDbAbstractViewTableRecord,val : PyDb.ObjectId)-> None:
+      '''                             '''
     ...
-    def setBrightness (self, *args, **kwargs)-> None:
-      '''setBrightness( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBrightness(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setBrightness (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setCenterPoint (self, *args, **kwargs)-> None:
-      '''setCenterPoint( (AbstractViewTableRecord)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setCenterPoint(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint2d)'''
+    def setCenterPoint (self: PyDbAbstractViewTableRecord,val : PyGe.Point2d)-> None:
+      '''                             '''
     ...
-    def setContrast (self, *args, **kwargs)-> None:
-      '''setContrast( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setContrast(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setContrast (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setDefaultLightingOn (self, *args, **kwargs)-> None:
-      '''setDefaultLightingOn( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setDefaultLightingOn (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
     def setDefaultLightingType (self, *args, **kwargs)-> None:
       '''setDefaultLightingType( (AbstractViewTableRecord)arg1, (object)arg2) -> None :
@@ -740,44 +716,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDefaultLightingType(class PyDbAbstractViewTableRecord {lvalue},enum AcGiViewportTraits::DefaultLightingType)'''
     ...
-    def setElevation (self, *args, **kwargs)-> None:
-      '''setElevation( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setElevation(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setElevation (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def setFrontClipAtEye (self, *args, **kwargs)-> None:
-      '''setFrontClipAtEye( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setFrontClipAtEye(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setFrontClipAtEye (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setFrontClipDistance (self, *args, **kwargs)-> None:
-      '''setFrontClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setFrontClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setFrontClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setFrontClipEnabled (self, *args, **kwargs)-> None:
-      '''setFrontClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setFrontClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setFrontClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None:
-      '''setHeight( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setHeight (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setLensLength (self, *args, **kwargs)-> None:
-      '''setLensLength( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLensLength(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setLensLength (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
     def setName (self: SymbolTableRecord,name: str)-> None:
       '''                             '''
@@ -785,28 +743,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setOwnerId (self: DbObject,owner: ObjectId)-> None:
       '''                             '''
     ...
-    def setPerspectiveEnabled (self, *args, **kwargs)-> None:
-      '''setPerspectiveEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPerspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setPerspectiveEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setSun (self, *args, **kwargs)-> None:
-      '''setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3) -> None :
-
-    C++ signature :
-        void setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue})
-
-setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue},bool)'''
+    def setSun (self: PyDbAbstractViewTableRecord,retId : PyDb.ObjectId,pSun : PyDb.Object,eraseOldSun : bool=True)-> None:
+      '''                             '''
     ...
-    def setTarget (self, *args, **kwargs)-> None:
-      '''setTarget( (AbstractViewTableRecord)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setTarget(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d)'''
+    def setTarget (self: PyDbAbstractViewTableRecord,val : PyGe.Point3d)-> None:
+      '''                             '''
     ...
     def setUcs (self, *args, **kwargs)-> None:
       '''setUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
@@ -824,11 +768,8 @@ setUcs( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setUcs(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def setUcsToWorld (self, *args, **kwargs)-> None:
-      '''setUcsToWorld( (AbstractViewTableRecord)arg1) -> None :
-
-    C++ signature :
-        void setUcsToWorld(class PyDbAbstractViewTableRecord {lvalue})'''
+    def setUcsToWorld (self: PyDbAbstractViewTableRecord)-> None:
+      '''                             '''
     ...
     def setViewDirection (self, *args, **kwargs)-> None:
       '''setViewDirection( (AbstractViewTableRecord)arg1, (Vector3d)arg2) -> None :
@@ -841,23 +782,14 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     C++ signature :
         void setViewDirection(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)'''
     ...
-    def setViewTwist (self, *args, **kwargs)-> None:
-      '''setViewTwist( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setViewTwist(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setViewTwist (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setVisualStyle (self, *args, **kwargs)-> None:
-      '''setVisualStyle( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setVisualStyle(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    def setVisualStyle (self: PyDbAbstractViewTableRecord,val : PyDb.ObjectId)-> None:
+      '''                             '''
     ...
-    def setWidth (self, *args, **kwargs)-> None:
-      '''setWidth( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidth(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setWidth (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
@@ -6759,11 +6691,8 @@ class BlockTableRecord:
     def __init__ (self: BlockTableRecord,id: ObjectId=kNull,mode: OpenMode=kForRead)-> None:
       '''                             '''
     ...
-    def addAnnoScalestoBlkRefs (self, *args, **kwargs)-> None:
-      '''addAnnoScalestoBlkRefs( (BlockTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void addAnnoScalestoBlkRefs(class PyDbBlockTableRecord {lvalue},bool)'''
+    def addAnnoScalestoBlkRefs (self: BlockTableRecord,scale : bool)-> None:
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None:
       '''                             '''
@@ -6783,11 +6712,8 @@ class BlockTableRecord:
     def assertWriteEnabled (self: DbObject)-> None:
       '''                             '''
     ...
-    def assumeOwnershipOf (self, *args, **kwargs)-> None:
-      '''assumeOwnershipOf( (BlockTableRecord)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void assumeOwnershipOf(class PyDbBlockTableRecord {lvalue},class boost::python::list)'''
+    def assumeOwnershipOf (self: BlockTableRecord,entities : list[PyDb.Entity])-> None:
+      '''                             '''
     ...
     def blockInsertUnits (self: BlockTableRecord)-> PyDb.UnitsValue:
       '''                             '''
@@ -7061,56 +6987,35 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         void setBlockScaling(class PyDbBlockTableRecord {lvalue},enum AcDbBlockTableRecord::BlockScaling)'''
     ...
-    def setComments (self, *args, **kwargs)-> None:
-      '''setComments( (BlockTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setComments(class PyDbBlockTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setComments (self: BlockTableRecord,val : str)-> None:
+      '''                             '''
     ...
-    def setExplodable (self, *args, **kwargs)-> None:
-      '''setExplodable( (BlockTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setExplodable(class PyDbBlockTableRecord {lvalue},bool)'''
+    def setExplodable (self: BlockTableRecord,val : bool)-> None:
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def setIsFromOverlayReference (self, *args, **kwargs)-> None:
-      '''setIsFromOverlayReference( (BlockTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsFromOverlayReference(class PyDbBlockTableRecord {lvalue},bool)'''
+    def setIsFromOverlayReference (self: BlockTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setIsUnloaded (self, *args, **kwargs)-> None:
-      '''setIsUnloaded( (BlockTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsUnloaded(class PyDbBlockTableRecord {lvalue},bool)'''
+    def setIsUnloaded (self: BlockTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setLayoutId (self, *args, **kwargs)-> None:
-      '''setLayoutId( (BlockTableRecord)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setLayoutId(class PyDbBlockTableRecord {lvalue},class PyDbObjectId)'''
+    def setLayoutId (self: BlockTableRecord,val : PyDb.ObjectId)-> None:
+      '''                             '''
     ...
     def setName (self: SymbolTableRecord,name: str)-> None:
       '''                             '''
     ...
-    def setOrigin (self, *args, **kwargs)-> None:
-      '''setOrigin( (BlockTableRecord)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setOrigin(class PyDbBlockTableRecord {lvalue},class AcGePoint3d)'''
+    def setOrigin (self: BlockTableRecord,val : PyGe.Point3d)-> None:
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None:
       '''                             '''
     ...
-    def setPathName (self, *args, **kwargs)-> None:
-      '''setPathName( (BlockTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setPathName(class PyDbBlockTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setPathName (self: BlockTableRecord,val : str)-> None:
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
@@ -7142,11 +7047,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None:
       '''                             '''
     ...
-    def xrefDatabase (self, *args, **kwargs)-> PyDb.Database:
-      '''xrefDatabase( (BlockTableRecord)arg1, (bool)arg2) -> Database :
-
-    C++ signature :
-        class PyDbDatabase xrefDatabase(class PyDbBlockTableRecord {lvalue},bool)'''
+    def xrefDatabase (self: BlockTableRecord,val : bool)-> PyDb.Database:
+      '''                             '''
     ...
     def xrefStatus (self: BlockTableRecord)-> PyDb.XrefStatus:
       '''                             '''
@@ -70139,11 +70041,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool:
       '''                             '''
     ...
-    def setAmbientLightColor (self, *args, **kwargs)-> None:
-      '''setAmbientLightColor( (AbstractViewTableRecord)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setAmbientLightColor(class PyDbAbstractViewTableRecord {lvalue},class AcCmColor)'''
+    def setAmbientLightColor (self: PyDbAbstractViewTableRecord,val : PyDb.Color)-> None:
+      '''                             '''
     ...
     def setAnnotationScale (self, *args, **kwargs)-> None:
       '''setAnnotationScale( (ViewTableRecord)arg1, (AnnotationScale)arg2) -> None :
@@ -70154,59 +70053,32 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int:
       '''                             '''
     ...
-    def setBackClipDistance (self, *args, **kwargs)-> None:
-      '''setBackClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBackClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setBackClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setBackClipEnabled (self, *args, **kwargs)-> None:
-      '''setBackClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setBackClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setBackClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setBackground (self, *args, **kwargs)-> None:
-      '''setBackground( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setBackground(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    def setBackground (self: PyDbAbstractViewTableRecord,val : PyDb.ObjectId)-> None:
+      '''                             '''
     ...
-    def setBrightness (self, *args, **kwargs)-> None:
-      '''setBrightness( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBrightness(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setBrightness (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setCamera (self, *args, **kwargs)-> None:
-      '''setCamera( (ViewTableRecord)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setCamera(class PyDbViewTableRecord {lvalue},class PyDbObjectId)'''
+    def setCamera (self: ViewTableRecord,val : PyDb.ObjectId)-> None:
+      '''                             '''
     ...
-    def setCategoryName (self, *args, **kwargs)-> None:
-      '''setCategoryName( (ViewTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setCategoryName(class PyDbViewTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setCategoryName (self: ViewTableRecord,val : str)-> None:
+      '''                             '''
     ...
-    def setCenterPoint (self, *args, **kwargs)-> None:
-      '''setCenterPoint( (AbstractViewTableRecord)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setCenterPoint(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint2d)'''
+    def setCenterPoint (self: PyDbAbstractViewTableRecord,val : PyGe.Point2d)-> None:
+      '''                             '''
     ...
-    def setContrast (self, *args, **kwargs)-> None:
-      '''setContrast( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setContrast(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setContrast (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setDefaultLightingOn (self, *args, **kwargs)-> None:
-      '''setDefaultLightingOn( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setDefaultLightingOn (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
     def setDefaultLightingType (self, *args, **kwargs)-> None:
       '''setDefaultLightingType( (AbstractViewTableRecord)arg1, (object)arg2) -> None :
@@ -70214,74 +70086,41 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDefaultLightingType(class PyDbAbstractViewTableRecord {lvalue},enum AcGiViewportTraits::DefaultLightingType)'''
     ...
-    def setElevation (self, *args, **kwargs)-> None:
-      '''setElevation( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setElevation(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setElevation (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def setFrontClipAtEye (self, *args, **kwargs)-> None:
-      '''setFrontClipAtEye( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setFrontClipAtEye(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setFrontClipAtEye (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setFrontClipDistance (self, *args, **kwargs)-> None:
-      '''setFrontClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setFrontClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setFrontClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setFrontClipEnabled (self, *args, **kwargs)-> None:
-      '''setFrontClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setFrontClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setFrontClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None:
-      '''setHeight( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setHeight (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setIsCameraPlottable (self, *args, **kwargs)-> None:
-      '''setIsCameraPlottable( (ViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsCameraPlottable(class PyDbViewTableRecord {lvalue},bool)'''
+    def setIsCameraPlottable (self: ViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setIsPaperspaceView (self, *args, **kwargs)-> None:
-      '''setIsPaperspaceView( (ViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsPaperspaceView(class PyDbViewTableRecord {lvalue},bool)'''
+    def setIsPaperspaceView (self: ViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setLayerState (self, *args, **kwargs)-> None:
-      '''setLayerState( (ViewTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setLayerState(class PyDbViewTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setLayerState (self: ViewTableRecord,val : str)-> None:
+      '''                             '''
     ...
-    def setLayout (self, *args, **kwargs)-> None:
-      '''setLayout( (ViewTableRecord)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setLayout(class PyDbViewTableRecord {lvalue},class PyDbObjectId)'''
+    def setLayout (self: ViewTableRecord,val : PyDb.ObjectId)-> None:
+      '''                             '''
     ...
-    def setLensLength (self, *args, **kwargs)-> None:
-      '''setLensLength( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLensLength(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setLensLength (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setLiveSection (self, *args, **kwargs)-> None:
-      '''setLiveSection( (ViewTableRecord)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setLiveSection(class PyDbViewTableRecord {lvalue},class PyDbObjectId)'''
+    def setLiveSection (self: ViewTableRecord,val : PyDb.ObjectId)-> None:
+      '''                             '''
     ...
     def setName (self: SymbolTableRecord,name: str)-> None:
       '''                             '''
@@ -70295,28 +70134,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setParametersFromViewport(class PyDbViewTableRecord {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def setPerspectiveEnabled (self, *args, **kwargs)-> None:
-      '''setPerspectiveEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPerspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setPerspectiveEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setSun (self, *args, **kwargs)-> None:
-      '''setSun( (ViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3) -> None :
-
-    C++ signature :
-        void setSun(class PyDbViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue})
-
-setSun( (ViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void setSun(class PyDbViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue},bool)'''
+    def setSun (self: ViewTableRecord,retId : PyDb.ObjectId,pSun : PyDb.Object,eraseOldSun : bool=True)-> None:
+      '''                             '''
     ...
-    def setTarget (self, *args, **kwargs)-> None:
-      '''setTarget( (AbstractViewTableRecord)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setTarget(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d)'''
+    def setTarget (self: PyDbAbstractViewTableRecord,val : PyGe.Point3d)-> None:
+      '''                             '''
     ...
     def setUcs (self, *args, **kwargs)-> None:
       '''setUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
@@ -70334,17 +70159,11 @@ setUcs( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setUcs(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def setUcsToWorld (self, *args, **kwargs)-> None:
-      '''setUcsToWorld( (AbstractViewTableRecord)arg1) -> None :
-
-    C++ signature :
-        void setUcsToWorld(class PyDbAbstractViewTableRecord {lvalue})'''
+    def setUcsToWorld (self: PyDbAbstractViewTableRecord)-> None:
+      '''                             '''
     ...
-    def setViewAssociatedToViewport (self, *args, **kwargs)-> None:
-      '''setViewAssociatedToViewport( (ViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setViewAssociatedToViewport(class PyDbViewTableRecord {lvalue},bool)'''
+    def setViewAssociatedToViewport (self: ViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
     def setViewDirection (self, *args, **kwargs)-> None:
       '''setViewDirection( (AbstractViewTableRecord)arg1, (Vector3d)arg2) -> None :
@@ -70357,23 +70176,14 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     C++ signature :
         void setViewDirection(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)'''
     ...
-    def setViewTwist (self, *args, **kwargs)-> None:
-      '''setViewTwist( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setViewTwist(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setViewTwist (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setVisualStyle (self, *args, **kwargs)-> None:
-      '''setVisualStyle( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setVisualStyle(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    def setVisualStyle (self: PyDbAbstractViewTableRecord,val : PyDb.ObjectId)-> None:
+      '''                             '''
     ...
-    def setWidth (self, *args, **kwargs)-> None:
-      '''setWidth( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidth(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setWidth (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
@@ -72249,62 +72059,35 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool:
       '''                             '''
     ...
-    def setAmbientLightColor (self, *args, **kwargs)-> None:
-      '''setAmbientLightColor( (AbstractViewTableRecord)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setAmbientLightColor(class PyDbAbstractViewTableRecord {lvalue},class AcCmColor)'''
+    def setAmbientLightColor (self: PyDbAbstractViewTableRecord,val : PyDb.Color)-> None:
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int:
       '''                             '''
     ...
-    def setBackClipDistance (self, *args, **kwargs)-> None:
-      '''setBackClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBackClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setBackClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setBackClipEnabled (self, *args, **kwargs)-> None:
-      '''setBackClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setBackClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setBackClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setBackground (self, *args, **kwargs)-> None:
-      '''setBackground( (ViewportTableRecord)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setBackground(class PyDbViewportTableRecord {lvalue},class PyDbObjectId)'''
+    def setBackground (self: ViewportTableRecord,val : PyDb.ObjectId)-> None:
+      '''                             '''
     ...
-    def setBrightness (self, *args, **kwargs)-> None:
-      '''setBrightness( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBrightness(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setBrightness (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setCenterPoint (self, *args, **kwargs)-> None:
-      '''setCenterPoint( (AbstractViewTableRecord)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setCenterPoint(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint2d)'''
+    def setCenterPoint (self: PyDbAbstractViewTableRecord,val : PyGe.Point2d)-> None:
+      '''                             '''
     ...
-    def setCircleSides (self, *args, **kwargs)-> None:
-      '''setCircleSides( (ViewportTableRecord)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setCircleSides(class PyDbViewportTableRecord {lvalue},unsigned short)'''
+    def setCircleSides (self: ViewportTableRecord,val : int)-> None:
+      '''                             '''
     ...
-    def setContrast (self, *args, **kwargs)-> None:
-      '''setContrast( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setContrast(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setContrast (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setDefaultLightingOn (self, *args, **kwargs)-> None:
-      '''setDefaultLightingOn( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setDefaultLightingOn (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
     def setDefaultLightingType (self, *args, **kwargs)-> None:
       '''setDefaultLightingType( (AbstractViewTableRecord)arg1, (object)arg2) -> None :
@@ -72312,116 +72095,62 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     C++ signature :
         void setDefaultLightingType(class PyDbAbstractViewTableRecord {lvalue},enum AcGiViewportTraits::DefaultLightingType)'''
     ...
-    def setElevation (self, *args, **kwargs)-> None:
-      '''setElevation( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setElevation(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setElevation (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setFastZoomsEnabled (self, *args, **kwargs)-> None:
-      '''setFastZoomsEnabled( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setFastZoomsEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setFastZoomsEnabled (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId:
       '''                             '''
     ...
-    def setFrontClipAtEye (self, *args, **kwargs)-> None:
-      '''setFrontClipAtEye( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setFrontClipAtEye(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setFrontClipAtEye (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setFrontClipDistance (self, *args, **kwargs)-> None:
-      '''setFrontClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setFrontClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setFrontClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setFrontClipEnabled (self, *args, **kwargs)-> None:
-      '''setFrontClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setFrontClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setFrontClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setGridAdaptive (self, *args, **kwargs)-> None:
-      '''setGridAdaptive( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGridAdaptive(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setGridAdaptive (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setGridBoundToLimits (self, *args, **kwargs)-> None:
-      '''setGridBoundToLimits( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGridBoundToLimits(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setGridBoundToLimits (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setGridEnabled (self, *args, **kwargs)-> None:
-      '''setGridEnabled( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGridEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setGridEnabled (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setGridFollow (self, *args, **kwargs)-> None:
-      '''setGridFollow( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGridFollow(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setGridFollow (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setGridIncrements (self, *args, **kwargs)-> None:
-      '''setGridIncrements( (ViewportTableRecord)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setGridIncrements(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
+    def setGridIncrements (self: ViewportTableRecord,val : PyGe.Point2d)-> None:
+      '''                             '''
     ...
-    def setGridMajor (self, *args, **kwargs)-> None:
-      '''setGridMajor( (ViewportTableRecord)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setGridMajor(class PyDbViewportTableRecord {lvalue},short)'''
+    def setGridMajor (self: ViewportTableRecord,val : int)-> None:
+      '''                             '''
     ...
-    def setGridSubdivisionRestricted (self, *args, **kwargs)-> None:
-      '''setGridSubdivisionRestricted( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGridSubdivisionRestricted(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setGridSubdivisionRestricted (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None:
-      '''setHeight( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setHeight (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setIconAtOrigin (self, *args, **kwargs)-> None:
-      '''setIconAtOrigin( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIconAtOrigin(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setIconAtOrigin (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setIconEnabled (self, *args, **kwargs)-> None:
-      '''setIconEnabled( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIconEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setIconEnabled (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setIsometricSnapEnabled (self, *args, **kwargs)-> None:
-      '''setIsometricSnapEnabled( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsometricSnapEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setIsometricSnapEnabled (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setLensLength (self, *args, **kwargs)-> None:
-      '''setLensLength( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLensLength(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setLensLength (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setLowerLeftCorner (self, *args, **kwargs)-> None:
-      '''setLowerLeftCorner( (ViewportTableRecord)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setLowerLeftCorner(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
+    def setLowerLeftCorner (self: ViewportTableRecord,val : PyGe.Point2d)-> None:
+      '''                             '''
     ...
     def setName (self: SymbolTableRecord,name: str)-> None:
       '''                             '''
@@ -72429,11 +72158,8 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def setOwnerId (self: DbObject,owner: ObjectId)-> None:
       '''                             '''
     ...
-    def setPerspectiveEnabled (self, *args, **kwargs)-> None:
-      '''setPerspectiveEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPerspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    def setPerspectiveEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None:
+      '''                             '''
     ...
     def setPreviousBackground (self, *args, **kwargs)-> None:
       '''setPreviousBackground( (ViewportTableRecord)arg1, (ObjectId)arg2) -> None :
@@ -72446,52 +72172,26 @@ setPreviousBackground( (ViewportTableRecord)arg1, (ObjectId)arg2, (GiDrawableTyp
     C++ signature :
         void setPreviousBackground(class PyDbViewportTableRecord {lvalue},class PyDbObjectId {lvalue},enum AcGiDrawable::DrawableType,bool)'''
     ...
-    def setSnapAngle (self, *args, **kwargs)-> None:
-      '''setSnapAngle( (ViewportTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setSnapAngle(class PyDbViewportTableRecord {lvalue},double)'''
+    def setSnapAngle (self: ViewportTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setSnapBase (self, *args, **kwargs)-> None:
-      '''setSnapBase( (ViewportTableRecord)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setSnapBase(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
+    def setSnapBase (self: ViewportTableRecord,val : PyGe.Point2d)-> None:
+      '''                             '''
     ...
-    def setSnapEnabled (self, *args, **kwargs)-> None:
-      '''setSnapEnabled( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSnapEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setSnapEnabled (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setSnapIncrements (self, *args, **kwargs)-> None:
-      '''setSnapIncrements( (ViewportTableRecord)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setSnapIncrements(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
+    def setSnapIncrements (self: ViewportTableRecord,val : PyGe.Point2d)-> None:
+      '''                             '''
     ...
-    def setSnapPair (self, *args, **kwargs)-> None:
-      '''setSnapPair( (ViewportTableRecord)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setSnapPair(class PyDbViewportTableRecord {lvalue},short)'''
+    def setSnapPair (self: ViewportTableRecord,val : int)-> None:
+      '''                             '''
     ...
-    def setSun (self, *args, **kwargs)-> None:
-      '''setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3) -> None :
-
-    C++ signature :
-        void setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue})
-
-setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue},bool)'''
+    def setSun (self: PyDbAbstractViewTableRecord,retId : PyDb.ObjectId,pSun : PyDb.Object,eraseOldSun : bool=True)-> None:
+      '''                             '''
     ...
-    def setTarget (self, *args, **kwargs)-> None:
-      '''setTarget( (AbstractViewTableRecord)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setTarget(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d)'''
+    def setTarget (self: PyDbAbstractViewTableRecord,val : PyGe.Point3d)-> None:
+      '''                             '''
     ...
     def setUcs (self, *args, **kwargs)-> None:
       '''setUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
@@ -72509,29 +72209,17 @@ setUcs( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setUcs(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def setUcsFollowMode (self, *args, **kwargs)-> None:
-      '''setUcsFollowMode( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setUcsFollowMode(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setUcsFollowMode (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setUcsPerViewport (self, *args, **kwargs)-> None:
-      '''setUcsPerViewport( (ViewportTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setUcsPerViewport(class PyDbViewportTableRecord {lvalue},bool)'''
+    def setUcsPerViewport (self: ViewportTableRecord,val : bool)-> None:
+      '''                             '''
     ...
-    def setUcsToWorld (self, *args, **kwargs)-> None:
-      '''setUcsToWorld( (AbstractViewTableRecord)arg1) -> None :
-
-    C++ signature :
-        void setUcsToWorld(class PyDbAbstractViewTableRecord {lvalue})'''
+    def setUcsToWorld (self: PyDbAbstractViewTableRecord)-> None:
+      '''                             '''
     ...
-    def setUpperRightCorner (self, *args, **kwargs)-> None:
-      '''setUpperRightCorner( (ViewportTableRecord)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setUpperRightCorner(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
+    def setUpperRightCorner (self: ViewportTableRecord,val : PyGe.Point2d)-> None:
+      '''                             '''
     ...
     def setViewDirection (self, *args, **kwargs)-> None:
       '''setViewDirection( (AbstractViewTableRecord)arg1, (Vector3d)arg2) -> None :
@@ -72544,23 +72232,14 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     C++ signature :
         void setViewDirection(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)'''
     ...
-    def setViewTwist (self, *args, **kwargs)-> None:
-      '''setViewTwist( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setViewTwist(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setViewTwist (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
-    def setVisualStyle (self, *args, **kwargs)-> None:
-      '''setVisualStyle( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setVisualStyle(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    def setVisualStyle (self: PyDbAbstractViewTableRecord,val : PyDb.ObjectId)-> None:
+      '''                             '''
     ...
-    def setWidth (self, *args, **kwargs)-> None:
-      '''setWidth( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidth(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    def setWidth (self: PyDbAbstractViewTableRecord,val : real)-> None:
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None:
       '''                             '''
