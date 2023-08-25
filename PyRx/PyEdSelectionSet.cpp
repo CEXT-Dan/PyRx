@@ -44,11 +44,7 @@ PyEdSelectionSet::PyEdSelectionSet(const ads_name& ss)
 
 bool PyEdSelectionSet::isInitialized() const
 {
-    if (m_pSet == nullptr)
-        return false;
-    else if ((m_pSet->at(0) + m_pSet->at(1)) == 0)
-        return false;
-    return true;
+    return (m_pSet->at(0) + m_pSet->at(1)) != 0;
 }
 
 size_t PyEdSelectionSet::size()
