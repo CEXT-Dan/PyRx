@@ -1661,33 +1661,33 @@ void makePyDbLayerTableRecordWrapper()
         .def("setVPDFLT", &PyDbLayerTableRecord::setVPDFLT)
         .def("isLocked", &PyDbLayerTableRecord::isLocked)
         .def("setIsLocked", &PyDbLayerTableRecord::setIsLocked)
-        .def<AcCmColor(PyDbLayerTableRecord::*)(void)const>("color", &PyDbLayerTableRecord::color)
-        .def<AcCmColor(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("color", &PyDbLayerTableRecord::color)
-        .def<void(PyDbLayerTableRecord::*)(const AcCmColor& color)>("setColor", &PyDbLayerTableRecord::setColor)
-        .def<void(PyDbLayerTableRecord::*)(const AcCmColor& color, const PyDbObjectId&)>("setColor", &PyDbLayerTableRecord::setColor)
+        .def("color", &PyDbLayerTableRecord::color1)
+        .def("color", &PyDbLayerTableRecord::color2)
+        .def("setColor", &PyDbLayerTableRecord::setColor1)
+        .def("setColor", &PyDbLayerTableRecord::setColor2)
         .def("entityColor", &PyDbLayerTableRecord::entityColor)
-        .def<AcCmTransparency(PyDbLayerTableRecord::*)(void)const>("transparency", &PyDbLayerTableRecord::transparency)
-        .def<AcCmTransparency(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("transparency", &PyDbLayerTableRecord::transparency)
-        .def<void(PyDbLayerTableRecord::*)(const AcCmTransparency&)>("setTransparency", &PyDbLayerTableRecord::setTransparency)
-        .def<void(PyDbLayerTableRecord::*)(const AcCmTransparency&, const PyDbObjectId&)>("setTransparency", &PyDbLayerTableRecord::setTransparency)
+        .def("transparency", &PyDbLayerTableRecord::transparency1)
+        .def("transparency", &PyDbLayerTableRecord::transparency2)
+        .def("setTransparency", &PyDbLayerTableRecord::setTransparency1)
+        .def("setTransparency", &PyDbLayerTableRecord::setTransparency2)
         .def("linetypeObjectId", &PyDbLayerTableRecord::linetypeObjectId)
         .def("setLinetypeObjectId", &PyDbLayerTableRecord::setLinetypeObjectId)
         .def("materialId", &PyDbLayerTableRecord::materialId)
         .def("setMaterialId", &PyDbLayerTableRecord::setMaterialId)
         .def("isPlottable", &PyDbLayerTableRecord::isPlottable)
         .def("setIsPlottable", &PyDbLayerTableRecord::setIsPlottable)
-        .def<AcDb::LineWeight(PyDbLayerTableRecord::*)(void)const>("lineWeight", &PyDbLayerTableRecord::lineWeight)
-        .def<AcDb::LineWeight(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("lineWeight", &PyDbLayerTableRecord::lineWeight)
-        .def<void(PyDbLayerTableRecord::*)(AcDb::LineWeight)>("setLineWeight", &PyDbLayerTableRecord::setLineWeight)
-        .def<void(PyDbLayerTableRecord::*)(AcDb::LineWeight, const PyDbObjectId&)>("setLineWeight", &PyDbLayerTableRecord::setLineWeight)
-        .def<std::string(PyDbLayerTableRecord::*)(void)const>("plotStyleName", &PyDbLayerTableRecord::plotStyleName)
-        .def<std::string(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("plotStyleName", &PyDbLayerTableRecord::plotStyleName)
-        .def<PyDbObjectId(PyDbLayerTableRecord::*)(void)const>("plotStyleNameId", &PyDbLayerTableRecord::plotStyleNameId)
-        .def<PyDbObjectId(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("plotStyleNameId", &PyDbLayerTableRecord::plotStyleNameId)
-        .def<void(PyDbLayerTableRecord::*)(const std::string&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
-        .def<void(PyDbLayerTableRecord::*)(const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
-        .def<void(PyDbLayerTableRecord::*)(const PyDbObjectId&, const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
-        .def<void(PyDbLayerTableRecord::*)(const std::string&, const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
+        .def("lineWeight", &PyDbLayerTableRecord::lineWeight1)
+        .def("lineWeight", &PyDbLayerTableRecord::lineWeight2)
+        .def("setLineWeight", &PyDbLayerTableRecord::setLineWeight1)
+        .def("setLineWeight", &PyDbLayerTableRecord::setLineWeight2)
+        .def("plotStyleName", &PyDbLayerTableRecord::plotStyleName1)
+        .def("plotStyleName", &PyDbLayerTableRecord::plotStyleName2)
+        .def("plotStyleNameId", &PyDbLayerTableRecord::plotStyleNameId1)
+        .def("plotStyleNameId", &PyDbLayerTableRecord::plotStyleNameId2)
+        .def("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName1)
+        .def("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName2)
+        .def("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName3)
+        .def("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName4)
         .def("isInUse", &PyDbLayerTableRecord::isInUse)
         .def("description", &PyDbLayerTableRecord::description)
         .def("setDescription", &PyDbLayerTableRecord::setDescription)
@@ -1700,7 +1700,6 @@ void makePyDbLayerTableRecordWrapper()
         .def("removePlotStyleOverride", &PyDbLayerTableRecord::removePlotStyleOverride)
         .def("removeTransparencyOverride", &PyDbLayerTableRecord::removeTransparencyOverride)
         .def("removeViewportOverrides", &PyDbLayerTableRecord::removeViewportOverrides)
-        .def("removeAllOverrides", &PyDbLayerTableRecord::removeAllOverrides)
         .def("removeAllOverrides", &PyDbLayerTableRecord::removeAllOverrides)
         .def("hasOverrides", &PyDbLayerTableRecord::hasOverrides)
         .def("hasAnyOverrides", &PyDbLayerTableRecord::hasAnyOverrides)
@@ -1775,23 +1774,23 @@ void PyDbLayerTableRecord::setIsLocked(bool locked)
     return impObj()->setIsLocked(locked);
 }
 
-AcCmColor PyDbLayerTableRecord::color() const
+AcCmColor PyDbLayerTableRecord::color1() const
 {
     return impObj()->color();
 }
 
-AcCmColor PyDbLayerTableRecord::color(const PyDbObjectId& viewportId) const
+AcCmColor PyDbLayerTableRecord::color2(const PyDbObjectId& viewportId) const
 {
     bool flag = false;
     return impObj()->color(viewportId.m_id, flag);
 }
 
-void PyDbLayerTableRecord::setColor(const AcCmColor& _color)
+void PyDbLayerTableRecord::setColor1(const AcCmColor& _color)
 {
     return impObj()->setColor(_color);
 }
 
-void PyDbLayerTableRecord::setColor(const AcCmColor& color, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setColor2(const AcCmColor& color, const PyDbObjectId& viewportId)
 {
     return PyThrowBadEs(impObj()->setColor(color, viewportId.m_id));
 }
@@ -1801,23 +1800,23 @@ AcCmEntityColor PyDbLayerTableRecord::entityColor(void) const
     return impObj()->entityColor();
 }
 
-AcCmTransparency PyDbLayerTableRecord::transparency(void) const
+AcCmTransparency PyDbLayerTableRecord::transparency1(void) const
 {
     return impObj()->transparency();
 }
 
-AcCmTransparency PyDbLayerTableRecord::transparency(const PyDbObjectId& viewportId) const
+AcCmTransparency PyDbLayerTableRecord::transparency2(const PyDbObjectId& viewportId) const
 {
     bool flag = false;
     return impObj()->transparency(viewportId.m_id, flag);
 }
 
-void PyDbLayerTableRecord::setTransparency(const AcCmTransparency& trans)
+void PyDbLayerTableRecord::setTransparency1(const AcCmTransparency& trans)
 {
     return PyThrowBadEs(impObj()->setTransparency(trans));
 }
 
-void PyDbLayerTableRecord::setTransparency(const AcCmTransparency& trans, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setTransparency2(const AcCmTransparency& trans, const PyDbObjectId& viewportId)
 {
     return PyThrowBadEs(impObj()->setTransparency(trans, viewportId.m_id));
 }
@@ -1901,65 +1900,65 @@ void PyDbLayerTableRecord::setIsPlottable(bool plot)
     return PyThrowBadEs(impObj()->setIsPlottable(plot));
 }
 
-AcDb::LineWeight PyDbLayerTableRecord::lineWeight() const
+AcDb::LineWeight PyDbLayerTableRecord::lineWeight1() const
 {
     return impObj()->lineWeight();
 }
 
-AcDb::LineWeight PyDbLayerTableRecord::lineWeight(const PyDbObjectId& viewportId) const
+AcDb::LineWeight PyDbLayerTableRecord::lineWeight2(const PyDbObjectId& viewportId) const
 {
     bool flag = false;
     return impObj()->lineWeight(viewportId.m_id, flag);
 }
 
-void PyDbLayerTableRecord::setLineWeight(AcDb::LineWeight weight)
+void PyDbLayerTableRecord::setLineWeight1(AcDb::LineWeight weight)
 {
     return PyThrowBadEs(impObj()->setLineWeight(weight));
 }
 
-void PyDbLayerTableRecord::setLineWeight(AcDb::LineWeight weight, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setLineWeight2(AcDb::LineWeight weight, const PyDbObjectId& viewportId)
 {
     return PyThrowBadEs(impObj()->setLineWeight(weight, viewportId.m_id));
 }
 
-std::string PyDbLayerTableRecord::plotStyleName() const
+std::string PyDbLayerTableRecord::plotStyleName1() const
 {
     return wstr_to_utf8(impObj()->plotStyleName());
 }
 
-std::string PyDbLayerTableRecord::plotStyleName(const PyDbObjectId& viewportId) const
+std::string PyDbLayerTableRecord::plotStyleName2(const PyDbObjectId& viewportId) const
 {
     bool flag = false;
     return wstr_to_utf8(impObj()->plotStyleName(viewportId.m_id, flag));
 }
 
-PyDbObjectId PyDbLayerTableRecord::plotStyleNameId() const
+PyDbObjectId PyDbLayerTableRecord::plotStyleNameId1() const
 {
     return PyDbObjectId(impObj()->plotStyleNameId());
 }
 
-PyDbObjectId PyDbLayerTableRecord::plotStyleNameId(const PyDbObjectId& viewportId) const
+PyDbObjectId PyDbLayerTableRecord::plotStyleNameId2(const PyDbObjectId& viewportId) const
 {
     bool flag = false;
     return PyDbObjectId(impObj()->plotStyleNameId(viewportId.m_id, flag));
 }
 
-void PyDbLayerTableRecord::setPlotStyleName(const std::string& newName)
+void PyDbLayerTableRecord::setPlotStyleName1(const std::string& newName)
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str()));
 }
 
-void PyDbLayerTableRecord::setPlotStyleName(const PyDbObjectId& newId)
+void PyDbLayerTableRecord::setPlotStyleName2(const PyDbObjectId& newId)
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(newId.m_id));
 }
 
-void PyDbLayerTableRecord::setPlotStyleName(const std::string& newName, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setPlotStyleName3(const std::string& newName, const PyDbObjectId& viewportId)
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str(), viewportId.m_id));
 }
 
-void PyDbLayerTableRecord::setPlotStyleName(const PyDbObjectId& newId, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setPlotStyleName4(const PyDbObjectId& newId, const PyDbObjectId& viewportId)
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(newId.m_id, viewportId.m_id));
 }
@@ -2051,26 +2050,26 @@ void makePyDbTextStyleTableRecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("isShapeFile", &PyDbTextStyleTableRecord::isShapeFile)
+        .def("isShapeFile", &PyDbTextStyleTableRecord::isShapeFile, DS.ARGS())
         .def("setIsShapeFile", &PyDbTextStyleTableRecord::setIsShapeFile)
-        .def("isVertical", &PyDbTextStyleTableRecord::isVertical)
+        .def("isVertical", &PyDbTextStyleTableRecord::isVertical, DS.ARGS())
         .def("setIsVertical", &PyDbTextStyleTableRecord::setIsVertical)
-        .def("textSize", &PyDbTextStyleTableRecord::textSize)
+        .def("textSize", &PyDbTextStyleTableRecord::textSize, DS.ARGS())
         .def("setTextSize", &PyDbTextStyleTableRecord::setTextSize)
-        .def("xScale", &PyDbTextStyleTableRecord::xScale)
+        .def("xScale", &PyDbTextStyleTableRecord::xScale, DS.ARGS())
         .def("setXScale", &PyDbTextStyleTableRecord::setXScale)
-        .def("obliquingAngle", &PyDbTextStyleTableRecord::obliquingAngle)
+        .def("obliquingAngle", &PyDbTextStyleTableRecord::obliquingAngle, DS.ARGS())
         .def("setObliquingAngle", &PyDbTextStyleTableRecord::setObliquingAngle)
-        .def("flagBits", &PyDbTextStyleTableRecord::flagBits)
+        .def("flagBits", &PyDbTextStyleTableRecord::flagBits, DS.ARGS())
         .def("setFlagBits", &PyDbTextStyleTableRecord::setFlagBits)
-        .def("priorSize", &PyDbTextStyleTableRecord::priorSize)
+        .def("priorSize", &PyDbTextStyleTableRecord::priorSize, DS.ARGS())
         .def("setPriorSize", &PyDbTextStyleTableRecord::setPriorSize)
-        .def("fileName", &PyDbTextStyleTableRecord::fileName)
+        .def("fileName", &PyDbTextStyleTableRecord::fileName, DS.ARGS())
         .def("setFileName", &PyDbTextStyleTableRecord::setFileName)
-        .def("bigFontFileName", &PyDbTextStyleTableRecord::bigFontFileName)
+        .def("bigFontFileName", &PyDbTextStyleTableRecord::bigFontFileName, DS.ARGS())
         .def("setBigFontFileName", &PyDbTextStyleTableRecord::setBigFontFileName)
         .def("setFont", &PyDbTextStyleTableRecord::setFont)
-        .def("font", &PyDbTextStyleTableRecord::font)
+        .def("font", &PyDbTextStyleTableRecord::font, DS.ARGS())
         .def("className", &PyDbTextStyleTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbTextStyleTableRecord::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbTextStyleTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -2266,11 +2265,11 @@ void makePyDbUCSTableRecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("origin", &PyDbUCSTableRecord::origin)
+        .def("origin", &PyDbUCSTableRecord::origin, DS.ARGS())
         .def("setOrigin", &PyDbUCSTableRecord::setOrigin)
-        .def("xAxis", &PyDbUCSTableRecord::xAxis)
+        .def("xAxis", &PyDbUCSTableRecord::xAxis, DS.ARGS())
         .def("setXAxis", &PyDbUCSTableRecord::setXAxis)
-        .def("yAxis", &PyDbUCSTableRecord::yAxis)
+        .def("yAxis", &PyDbUCSTableRecord::yAxis, DS.ARGS())
         .def("setYAxis", &PyDbUCSTableRecord::setYAxis)
         .def("ucsBaseOrigin", &PyDbUCSTableRecord::ucsBaseOrigin)
         .def("setUcsBaseOrigin", &PyDbUCSTableRecord::setUcsBaseOrigin)
@@ -2458,11 +2457,11 @@ void makePyDbLinetypeTableRecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("comments", &PyDbLinetypeTableRecord::comments)
+        .def("comments", &PyDbLinetypeTableRecord::comments, DS.ARGS())
         .def("setComments", &PyDbLinetypeTableRecord::setComments)
-        .def("patternLength", &PyDbLinetypeTableRecord::patternLength)
+        .def("patternLength", &PyDbLinetypeTableRecord::patternLength, DS.ARGS())
         .def("setPatternLength", &PyDbLinetypeTableRecord::setPatternLength)
-        .def("numDashes", &PyDbLinetypeTableRecord::numDashes)
+        .def("numDashes", &PyDbLinetypeTableRecord::numDashes, DS.ARGS())
         .def("setNumDashes", &PyDbLinetypeTableRecord::setNumDashes)
         .def("dashLengthAt", &PyDbLinetypeTableRecord::dashLengthAt)
         .def("setDashLengthAt", &PyDbLinetypeTableRecord::setDashLengthAt)
@@ -2474,7 +2473,7 @@ void makePyDbLinetypeTableRecordWrapper()
         .def("setShapeOffsetAt", &PyDbLinetypeTableRecord::setShapeOffsetAt)
         .def("shapeScaleAt", &PyDbLinetypeTableRecord::shapeScaleAt)
         .def("setShapeScaleAt", &PyDbLinetypeTableRecord::setShapeScaleAt)
-        .def("isScaledToFit", &PyDbLinetypeTableRecord::isScaledToFit)
+        .def("isScaledToFit", &PyDbLinetypeTableRecord::isScaledToFit, DS.ARGS())
         .def("setIsScaledToFit", &PyDbLinetypeTableRecord::setIsScaledToFit)
         .def("shapeIsUcsOrientedAt", &PyDbLinetypeTableRecord::shapeIsUcsOrientedAt)
         .def("setShapeIsUcsOrientedAt", &PyDbLinetypeTableRecord::setShapeIsUcsOrientedAt)
