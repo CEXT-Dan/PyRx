@@ -1,5 +1,6 @@
 #pragma once
 
+class PyRxClass;
 class PyDbObjectId;
 class AdsName;
 typedef std::array<int64_t, 2> PySSName;
@@ -39,6 +40,7 @@ public:
     boost::python::list ssNameX1();
     boost::python::list ssNameX2(int ind);
     boost::python::list objectIds();
+    boost::python::list objectIdsOfType(const PyRxClass& _class);
 
 public:
     PySSName* impObj(const std::source_location& src = std::source_location::current()) const;

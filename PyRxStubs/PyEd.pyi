@@ -2969,17 +2969,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void add(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
     ...
-    def adsname (self, *args, **kwargs)-> PyDb.AdsName:
-      '''adsname( (SelectionSet)arg1) -> AdsName :
-
-    C++ signature :
-        class AdsName adsname(class PyEdSelectionSet {lvalue})'''
+    def adsname (self: SelectionSet)-> PyDb.AdsName:
+      '''                             '''
     ...
-    def clear (self, *args, **kwargs)-> None:
-      '''clear( (SelectionSet)arg1) -> None :
-
-    C++ signature :
-        void clear(class PyEdSelectionSet {lvalue})'''
+    def clear (self: SelectionSet)-> None:
+      '''                             '''
     ...
     def hasMember (self, *args, **kwargs)-> bool:
       '''hasMember( (SelectionSet)arg1, (ObjectId)arg2) -> bool :
@@ -2987,17 +2981,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         bool hasMember(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
     ...
-    def isInitialized (self, *args, **kwargs)-> bool:
-      '''isInitialized( (SelectionSet)arg1) -> bool :
-
-    C++ signature :
-        bool isInitialized(class PyEdSelectionSet {lvalue})'''
+    def isInitialized (self: SelectionSet)-> bool:
+      '''                             '''
     ...
-    def objectIds (self, *args, **kwargs)-> list:
-      '''objectIds( (SelectionSet)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list objectIds(class PyEdSelectionSet {lvalue})'''
+    def objectIds (self: SelectionSet,desc:PyRx.RxClass=AcDbEntity)-> list:
+      '''                             '''
     ...
     def remove (self, *args, **kwargs)-> None:
       '''remove( (SelectionSet)arg1, (ObjectId)arg2) -> None :
@@ -3005,11 +2993,8 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void remove(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
     ...
-    def size (self, *args, **kwargs)-> int:
-      '''size( (SelectionSet)arg1) -> int :
-
-    C++ signature :
-        unsigned __int64 size(class PyEdSelectionSet {lvalue})'''
+    def size (self: SelectionSet)-> int:
+      '''                             '''
     ...
     def ssNameX (self, *args, **kwargs)-> list:
       '''ssNameX( (SelectionSet)arg1) -> list :
@@ -3022,11 +3007,8 @@ ssNameX( (SelectionSet)arg1, (int)arg2) -> list :
     C++ signature :
         class boost::python::list ssNameX(class PyEdSelectionSet {lvalue},int)'''
     ...
-    def ssSetFirst (self, *args, **kwargs)-> bool:
-      '''ssSetFirst( (SelectionSet)arg1) -> bool :
-
-    C++ signature :
-        bool ssSetFirst(class PyEdSelectionSet {lvalue})'''
+    def ssSetFirst (self: SelectionSet)-> bool:
+      '''                             '''
     ...
     def ssXform (self, *args, **kwargs)-> PyEd.PromptStatus:
       '''ssXform( (SelectionSet)arg1, (Matrix3d)arg2) -> PromptStatus :
@@ -3034,11 +3016,8 @@ ssNameX( (SelectionSet)arg1, (int)arg2) -> list :
     C++ signature :
         enum Acad::PromptStatus ssXform(class PyEdSelectionSet {lvalue},class AcGeMatrix3d)'''
     ...
-    def toList (self, *args, **kwargs)-> list:
-      '''toList( (SelectionSet)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list toList(class PyEdSelectionSet {lvalue})'''
+    def toList (self: SelectionSet)-> list:
+      '''                             '''
     ...
 
 class UIContext:
