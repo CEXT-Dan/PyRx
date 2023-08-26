@@ -374,6 +374,16 @@ inline boost::python::list Point2dArrayToPyList(const AcGePoint2dArray& arr)
     return pyPyList;
 }
 
+inline boost::python::list AcStringArrayToPyList(const AcStringArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyPyList;
+    for (const auto& item : arr)
+        pyPyList.append(wstr_to_utf8(item).c_str());
+    return pyPyList;
+}
+
+
 //TODO avoid copy
 inline AcGeDoubleArray PyListToDoubleArray(const boost::python::object& iterable)
 {
@@ -416,6 +426,17 @@ inline AcArray<int> PyListToIntArray(const boost::python::object& iterable)
         arr.append(item);
     return arr;
 }
+
+inline AcStringArray PyListAcStringArray(const boost::python::object& iterable)
+{
+    AcStringArray arr;
+    const auto& vec = py_list_to_std_vector<std::string>(iterable);
+    arr.setLogicalLength(vec.size());
+    for (const auto& item : vec)
+        arr.append(utf8_to_wstr(item).c_str());
+    return arr;
+}
+
 
 #pragma pack (pop)
 

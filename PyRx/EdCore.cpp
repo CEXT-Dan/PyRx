@@ -658,7 +658,7 @@ Adesk::Boolean EdCore::isMenuGroupLoaded(const std::string& mnu)
 
 bool EdCore::isOsnapOverride()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+#ifndef ARXAPP
     throw PyNotimplementedByHost();
 #else
     return acedIsOsnapOverride();
