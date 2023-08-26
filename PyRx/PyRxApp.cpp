@@ -7,6 +7,7 @@
 #include "PyAcGs.h"
 #include "PyAcAp.h"
 #include "PyAcEd.h"
+#include "PyAcPl.h"
 
 #include "wx/setup.h"
 #include "wx/wx.h"
@@ -157,6 +158,7 @@ bool PyRxApp::init()
         initPyDbModule();
         initPyApModule();
         initPyEdModule();
+        initPyPlModule();
         initWxApp();
 
         if (Py_IsInitialized() && setPyConfig())

@@ -137,6 +137,7 @@
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="PyAcGeSurface.cpp" />
     <ClCompile Include="PyAcGs.cpp" />
+    <ClCompile Include="PyAcPl.cpp" />
     <ClCompile Include="PyApLayoutManager.cpp" />
     <ClCompile Include="PyCmd.cpp" />
     <ClCompile Include="PyDb3dSolid.cpp" />
@@ -215,6 +216,7 @@
     <ClCompile Include="PyJig.cpp" />
     <ClCompile Include="PyLayerFilter.cpp" />
     <ClCompile Include="PyLispService.cpp" />
+    <ClCompile Include="PyPlObject.cpp" />
     <ClCompile Include="PyRxApp.cpp" />
     <ClCompile Include="PyRxObject.cpp" />
     <ClCompile Include="PyRxOverrule.cpp" />
@@ -233,6 +235,7 @@
     <ClInclude Include="EdCore.h" />
     <ClInclude Include="PyAcGeSurface.h" />
     <ClInclude Include="PyAcGs.h" />
+    <ClInclude Include="PyAcPl.h" />
     <ClInclude Include="PyApLayoutManager.h" />
     <ClInclude Include="PyCmd.h" />
     <ClInclude Include="PyDb3dSolid.h" />
@@ -312,6 +315,7 @@
     <ClInclude Include="PyJig.h" />
     <ClInclude Include="PyLayerFilter.h" />
     <ClInclude Include="PyLispService.h" />
+    <ClInclude Include="PyPlObject.h" />
     <ClInclude Include="PyRxApp.h" />
     <ClInclude Include="PyRxObject.h" />
     <ClInclude Include="PyRxOverrule.h" />

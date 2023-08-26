@@ -153,6 +153,7 @@ static inline constexpr const char* PyGsNamespace = "PyGs";
 static inline constexpr const char* PyDbNamespace = "PyDb";
 static inline constexpr const char* PyGiNamespace = "PyGi";
 static inline constexpr const char* PyEdNamespace = "PyEd";
+static inline constexpr const char* PyPlNamespace = "PyPl";
 
 static inline constexpr const wchar_t* PyAppNamespaceW = L"PyRxApp";
 static inline constexpr const wchar_t* PyApNamespaceW = L"PyAp";
@@ -162,6 +163,7 @@ static inline constexpr const wchar_t* PyGsNamespaceW = L"PyGs";
 static inline constexpr const wchar_t* PyDbNamespaceW = L"PyDb";
 static inline constexpr const wchar_t* PyGiNamespaceW = L"PyGi";
 static inline constexpr const wchar_t* PyEdNamespaceW = L"PyEd";
+static inline constexpr const wchar_t* PyPlNamespaceW = L"PyPl";
 
 //-----------------------------------------------------------------------------
 #include "DocData.h" //- Your document specific data class holder
