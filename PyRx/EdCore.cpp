@@ -744,8 +744,12 @@ boost::python::dict EdCore::getSysVars()
             acutDelString(buf.resval.rstring);
             break;
         }
-        case RTLONG:
         case RTSHORT:
+        {
+            pydict[utf8Name] = buf.resval.rint;
+            break;
+        }
+        case RTLONG:
         {
             pydict[utf8Name] = buf.resval.rlong;
             break;
@@ -824,16 +828,16 @@ bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
     PyAutoLockGIL lock;
     try
     {
-        if (extract<double>(src).check())
+        if (extract<uint32_t>(src).check())
+        {
+            const int val = extract<uint32_t>(src);
+            AcResBufPtr buf(acutBuildList(RTLONG, val, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+        }
+        else if (extract<double>(src).check())
         {
             const double val = extract<double>(src);
             AcResBufPtr buf(acutBuildList(RTREAL, val, 0));
-            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
-        }
-        else if (extract<int>(src).check())
-        {
-            const int val = extract<int>(src);
-            AcResBufPtr buf(acutBuildList(RTLONG, val, 0));
             return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
         }
         else if (extract<AcGePoint2d>(src).check())
@@ -872,12 +876,6 @@ void EdCore::pSpace()
     return PyThrowBadEs(acedPspace());
 }
 
-void EdCore::postCommandPrompt()
-{
-    acedPostCommandPrompt();
-}
-
-
 void EdCore::postCommand(const std::string& str)
 {
 #ifndef ARXAPP
@@ -885,6 +883,11 @@ void EdCore::postCommand(const std::string& str)
 #else
     acedPostCommand(utf8_to_wstr(str).c_str());
 #endif // !ARXAPP
+}
+
+void EdCore::postCommandPrompt()
+{
+    acedPostCommandPrompt();
 }
 
 int EdCore::prompt(const std::string& str)

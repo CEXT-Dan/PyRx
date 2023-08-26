@@ -93,8 +93,8 @@ public:
     static int                  menuCmd(const std::string& mnu);
     static void                 mSpace();
     static void                 pSpace();
-    static void                 postCommandPrompt();
     static void                 postCommand(const std::string& str);
+    static void                 postCommandPrompt();
     static int                  prompt(const std::string& str);
     static int                  redraw(const PyDbObjectId& ent, int mode);
     static void                 reloadMenus(bool bIncrementalReloading);
