@@ -280,6 +280,12 @@
     <ClCompile Include="PyDbGroup.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyPlObject.cpp">
+      <Filter>Source Files\PyPl</Filter>
+    </ClCompile>
+    <ClCompile Include="PyAcPl.cpp">
+      <Filter>Source Files\PyPl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -564,6 +570,12 @@
     <ClInclude Include="PyDbGroup.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
+    <ClInclude Include="PyPlObject.h">
+      <Filter>Header Files\PyPl</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcPl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -616,6 +628,12 @@
     </Filter>
     <Filter Include="Source Files\PyGs">
       <UniqueIdentifier>{223ea7cd-33df-4213-8a08-4d620a94f579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PyPl">
+      <UniqueIdentifier>{d6d37838-c402-4dca-b3ec-7b719075c410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PyPl">
+      <UniqueIdentifier>{c6968ad3-b129-4a76-87e1-f760eb0e93b2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
