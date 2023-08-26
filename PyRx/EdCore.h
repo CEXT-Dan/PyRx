@@ -94,6 +94,7 @@ public:
     static void                 mSpace();
     static void                 pSpace();
     static void                 postCommandPrompt();
+    static void                 postCommand(const std::string& str);
     static int                  prompt(const std::string& str);
     static int                  redraw(const PyDbObjectId& ent, int mode);
     static void                 reloadMenus(bool bIncrementalReloading);

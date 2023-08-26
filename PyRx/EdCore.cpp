@@ -22,6 +22,7 @@ extern "C" void acedLoadJSScript(const ACHAR * pUriOfJSFile);
 extern "C" bool acedGetPredefinedPattens(AcStringArray & patterns);
 extern "C" Acad::ErrorStatus acedSetUndoMark(bool);
 extern "C" void acedGetCommandPromptString(CString&);
+extern Adesk::Boolean acedPostCommand(const ACHAR*);
 #endif
 
 //-----------------------------------------------------------------------------------------
@@ -142,6 +143,7 @@ void makePyEdCoreWrapper()
         .def("markForDelayXRefRelativePathResolve", &EdCore::markForDelayXRefRelativePathResolve).staticmethod("markForDelayXRefRelativePathResolve")
         .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
+        .def("postCommand", &EdCore::postCommand).staticmethod("postCommand")
         .def("postCommandPrompt", &EdCore::postCommandPrompt).staticmethod("postCommandPrompt")
         .def("prompt", &EdCore::prompt).staticmethod("prompt")
         .def("osnap", &EdCore::osnap).staticmethod("osnap")
@@ -875,6 +877,15 @@ void EdCore::postCommandPrompt()
     acedPostCommandPrompt();
 }
 
+
+void EdCore::postCommand(const std::string& str)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    acedPostCommand(utf8_to_wstr(str).c_str());
+#endif // !ARXAPP
+}
 
 int EdCore::prompt(const std::string& str)
 {
