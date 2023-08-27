@@ -127,14 +127,21 @@ void PyPlDSDData::setDestinationName(const std::string& pVal)
 boost::python::list PyPlDSDData::getDSDEntries() const
 {
     PyAutoLockGIL lock;
+    AcPlDSDEntries arr;
     boost::python::list pyList;
-    //...
+    impObj()->getDSDEntries(arr);
+    for (const auto& item : arr)
+        pyList.append(PyPlDSDEntry(item));
     return pyList;
 }
 
 void PyPlDSDData::setDSDEntries(const boost::python::list& val)
 {
-    //...
+    AcPlDSDEntries arr;
+    const auto& vec = py_list_to_std_vector<PyPlDSDEntry>(val);
+    for (auto& item : vec)
+        arr.append(AcPlDSDEntry(*item.impObj()));
+    impObj()->setDSDEntries(arr);
 }
 
 boost::python::list PyPlDSDData::getPrecisionEntries() const
@@ -153,6 +160,11 @@ void PyPlDSDData::setPrecisionEntries(const boost::python::list& val)
 int PyPlDSDData::numberOfDSDEntries() const
 {
     return impObj()->numberOfDSDEntries();
+}
+
+PyPlDSDEntry PyPlDSDData::DSDEntryAt(int idx)
+{
+    return PyPlDSDEntry(impObj()->DSDEntryAt(idx));
 }
 
 AcPlDSDEntry::SheetType PyPlDSDData::sheetType() const
@@ -484,22 +496,136 @@ AcPlDSDData* PyPlDSDData::impObj(const std::source_location& src /*= std::source
 //PyPlDSDEntry
 void makePyPlDSDEntryWrapper()
 {
-    PyDocString DS("DSDData");
+    PyDocString DS("DSDEntry");
     class_<PyPlDSDEntry, bases<PyPlObject>>("DSDEntry")
-        
+        .def("dwgName", &PyPlDSDEntry::dwgName)
+        .def("setDwgName", &PyPlDSDEntry::setDwgName)
+        .def("layout", &PyPlDSDEntry::layout)
+        .def("setLayout", &PyPlDSDEntry::setLayout)
+        .def("title", &PyPlDSDEntry::title)
+        .def("setTitle", &PyPlDSDEntry::setTitle)
+        .def("NPS", &PyPlDSDEntry::NPS)
+        .def("setNPS", &PyPlDSDEntry::setNPS)
+        .def("NPSSourceDWG", &PyPlDSDEntry::NPSSourceDWG)
+        .def("setNPSSourceDWG", &PyPlDSDEntry::setNPSSourceDWG)
+        .def("has3dDwfSetup", &PyPlDSDEntry::has3dDwfSetup)
+        .def("setHas3dDwfSetup", &PyPlDSDEntry::setHas3dDwfSetup)
+        .def("setupType", &PyPlDSDEntry::setupType)
+        .def("setSetupType", &PyPlDSDEntry::setSetupType)
+        .def("orgSheetPath", &PyPlDSDEntry::orgSheetPath)
+        .def("traceSession", &PyPlDSDEntry::traceSession)
+        .def("setTraceSession", &PyPlDSDEntry::setTraceSession)
         .def("desc", &PyPlDSDEntry::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlDSDEntry::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
 PyPlDSDEntry::PyPlDSDEntry()
-    : PyPlObject(new AcPlDSDEntry(), true)
+    : PyPlDSDEntry(new AcPlDSDEntry(), true)
 {
 }
 
 PyPlDSDEntry::PyPlDSDEntry(AcPlDSDEntry* ptr, bool autoDelete)
     : PyPlObject(ptr, autoDelete)
 {
+}
+
+PyPlDSDEntry::PyPlDSDEntry(const AcPlDSDEntry& entry)
+    : PyPlDSDEntry(new AcPlDSDEntry(entry), true)
+{
+}
+
+std::string PyPlDSDEntry::dwgName() const
+{
+    return wstr_to_utf8(impObj()->dwgName());
+}
+
+void PyPlDSDEntry::setDwgName(const std::string& pName)
+{
+    impObj()->setDwgName(utf8_to_wstr(pName).c_str());
+}
+
+std::string PyPlDSDEntry::layout() const
+{
+    return wstr_to_utf8(impObj()->layout());
+}
+
+void PyPlDSDEntry::setLayout(std::string& pLayoutName)
+{
+    impObj()->setLayout(utf8_to_wstr(pLayoutName).c_str());
+}
+
+std::string PyPlDSDEntry::title() const
+{
+    return wstr_to_utf8(impObj()->title());
+}
+
+void PyPlDSDEntry::setTitle(const std::string& pTitle)
+{
+    impObj()->setLayout(utf8_to_wstr(pTitle).c_str());
+}
+
+std::string PyPlDSDEntry::NPS() const
+{
+    return wstr_to_utf8(impObj()->NPS());
+}
+
+void PyPlDSDEntry::setNPS(const std::string& pNPSName)
+{
+    impObj()->setNPS(utf8_to_wstr(pNPSName).c_str());
+}
+
+std::string PyPlDSDEntry::NPSSourceDWG() const
+{
+    return wstr_to_utf8(impObj()->NPSSourceDWG());
+}
+
+void PyPlDSDEntry::setNPSSourceDWG(const std::string& pNPWDWGName)
+{
+    impObj()->setNPSSourceDWG(utf8_to_wstr(pNPWDWGName).c_str());
+}
+
+bool PyPlDSDEntry::has3dDwfSetup() const
+{
+    return impObj()->has3dDwfSetup();
+}
+
+void PyPlDSDEntry::setHas3dDwfSetup(bool b3dDwfSetup)
+{
+    return impObj()->setHas3dDwfSetup(b3dDwfSetup);
+}
+
+AcPlDSDEntry::SetupType PyPlDSDEntry::setupType() const
+{
+    return impObj()->setupType();
+}
+
+void PyPlDSDEntry::setSetupType(AcPlDSDEntry::SetupType eType)
+{
+    return impObj()->setSetupType(eType);
+}
+
+std::string PyPlDSDEntry::orgSheetPath() const
+{
+    return wstr_to_utf8(impObj()->orgSheetPath());
+}
+
+std::string PyPlDSDEntry::traceSession() const
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return wstr_to_utf8(impObj()->traceSession());
+#endif
+}
+
+void PyPlDSDEntry::setTraceSession(const std::string& pTraceSession)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    impObj()->setNPSSourceDWG(utf8_to_wstr(pTraceSession).c_str());
+#endif
 }
 
 PyRxClass PyPlDSDEntry::desc()
