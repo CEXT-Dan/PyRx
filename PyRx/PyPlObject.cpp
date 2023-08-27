@@ -479,3 +479,42 @@ AcPlDSDData* PyPlDSDData::impObj(const std::source_location& src /*= std::source
         throw PyNullObject(src);
         return static_cast<AcPlDSDData*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------------
+//PyPlDSDEntry
+void makePyPlDSDEntryWrapper()
+{
+    PyDocString DS("DSDData");
+    class_<PyPlDSDEntry, bases<PyPlObject>>("DSDEntry")
+        
+        .def("desc", &PyPlDSDEntry::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyPlDSDEntry::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyPlDSDEntry::PyPlDSDEntry()
+    : PyPlObject(new AcPlDSDEntry(), true)
+{
+}
+
+PyPlDSDEntry::PyPlDSDEntry(AcPlDSDEntry* ptr, bool autoDelete)
+    : PyPlObject(ptr, autoDelete)
+{
+}
+
+PyRxClass PyPlDSDEntry::desc()
+{
+    return PyRxClass(AcPlDSDEntry::desc(), false);
+}
+
+std::string PyPlDSDEntry::className()
+{
+    return "AcPlDSDEntry";
+}
+
+AcPlDSDEntry* PyPlDSDEntry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+        return static_cast<AcPlDSDEntry*>(m_pyImp.get());
+}
