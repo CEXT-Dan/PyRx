@@ -13,7 +13,8 @@ void makePyGiObjectWrapper();
 class PyGiDrawable : public PyRxObject
 {
 public:
-    PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject);
+	PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject);
+    PyGiDrawable(const AcGiDrawable* ptr);
     inline virtual ~PyGiDrawable() override = default;
 	Adesk::UInt32   setAttributes(PyGiDrawableTraits& traits);
 	Adesk::Boolean  worldDraw(PyGiWorldDraw& wd);

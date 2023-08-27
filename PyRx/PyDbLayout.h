@@ -14,6 +14,7 @@ public:
     PyDbPlotSettings();
     PyDbPlotSettings(bool ModelType);
     PyDbPlotSettings(AcDbPlotSettings* ptr, bool autoDelete);
+    PyDbPlotSettings(const AcDbPlotSettings* ptr);
     PyDbPlotSettings(const PyDbObjectId& id);
     PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode);
     ~PyDbPlotSettings() override = default;

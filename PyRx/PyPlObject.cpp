@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "PyPlObject.h"
+#include "PyDbLayout.h"
+#include "PyDbObjectId.h"
 
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
@@ -26,7 +28,7 @@ AcPlObject* PyPlObject::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-        return static_cast<AcPlObject*>(m_pyImp.get());
+    return static_cast<AcPlObject*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -489,7 +491,7 @@ AcPlDSDData* PyPlDSDData::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-        return static_cast<AcPlDSDData*>(m_pyImp.get());
+    return static_cast<AcPlDSDData*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -642,5 +644,73 @@ AcPlDSDEntry* PyPlDSDEntry::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-        return static_cast<AcPlDSDEntry*>(m_pyImp.get());
+    return static_cast<AcPlDSDEntry*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyPlPlotInfo
+void makePyPlPlotInfoWrapper()
+{
+    PyDocString DS("PlotInfo");
+    class_<PyPlPlotInfo, bases<PyPlObject>>("PlotInfo")
+        .def("desc", &PyPlPlotInfo::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyPlPlotInfo::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyPlPlotInfo::PyPlPlotInfo()
+    : PyPlPlotInfo(new AcPlPlotInfo(), true)
+{
+}
+
+PyPlPlotInfo::PyPlPlotInfo(AcPlPlotInfo* ptr, bool autoDelete)
+    : PyPlObject(ptr, autoDelete)
+{
+}
+
+PyPlPlotInfo::PyPlPlotInfo(const AcPlPlotInfo& entry)
+    : PyPlPlotInfo(new AcPlPlotInfo(entry), true)
+{
+}
+
+void PyPlPlotInfo::copyFrom(const PyRxObject& pOther)
+{
+    PyThrowBadEs(impObj()->copyFrom(pOther.impObj()));
+}
+
+void PyPlPlotInfo::setLayout(PyDbObjectId& layoutId)
+{
+    impObj()->setLayout(layoutId.m_id);
+}
+
+PyDbObjectId PyPlPlotInfo::layout() const
+{
+    return PyDbObjectId(impObj()->layout());
+}
+
+void PyPlPlotInfo::setOverrideSettings(const PyDbPlotSettings& pOverrides)
+{
+    impObj()->setOverrideSettings(pOverrides.impObj());
+}
+
+PyDbPlotSettings PyPlPlotInfo::overrideSettings() const
+{
+    return PyDbPlotSettings(impObj()->overrideSettings());
+}
+
+PyRxClass PyPlPlotInfo::desc()
+{
+    return PyRxClass(AcPlPlotInfo::desc(), false);
+}
+
+std::string PyPlPlotInfo::className()
+{
+    return "AcPlPlotInfo";
+}
+
+AcPlPlotInfo* PyPlPlotInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+    return static_cast<AcPlPlotInfo*>(m_pyImp.get());
 }

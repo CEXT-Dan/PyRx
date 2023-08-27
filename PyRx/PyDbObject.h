@@ -16,6 +16,7 @@ class PyDbObject : public PyGiDrawable
 {
 public:
     PyDbObject(AcDbObject* ptr, bool autoDelete);
+    PyDbObject(const AcDbObject* ptr);
     PyDbObject(const PyDbObjectId&);
     PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
     inline virtual ~PyDbObject() override = default;
