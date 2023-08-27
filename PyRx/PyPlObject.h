@@ -137,7 +137,16 @@ public:
     PyDbObjectId            layout() const;
     void                    setOverrideSettings(const PyDbPlotSettings& pOverrides);
     PyDbPlotSettings        overrideSettings() const;
-   
+    //void                    setDeviceOverride(const PyPlPlotConfig* pconf);
+    PyDbPlotSettings        validatedSettings() const;
+    void                    setValidatedSettings(const PyDbPlotSettings& pValidatedSettings);
+    //const AcPlPlotConfig* validatedConfig() const;
+    //void setValidatedConfig(const AcPlPlotConfig* pConfig);
+    //const AcPlPlotConfig* deviceOverride() const;
+    //bool isCompatibleDocument(const AcPlPlotInfo* pOtherInfo) const;
+    bool                    isValidated() const;
+    unsigned long           mergeStatus() const;
+    std::string             OrgFilePath();
     static PyRxClass        desc();
     static std::string      className();
 public:
