@@ -67,7 +67,7 @@ public:
     boost::python::tuple    get3dDwfOptions() const;
     void                    set3dDwfOptions(bool  bGroupByXrefHierarchy, bool  bPublishWithMaterials);
     bool                    includeLayerInfo() const;
-    void                    setIncludeLayerInfo(bool bOn);              
+    void                    setIncludeLayerInfo(bool bOn);
     bool                    lineMerge() const;
     void                    setLineMerge(bool bOn);
     std::string             currentPrecision() const;
@@ -95,8 +95,25 @@ class PyPlDSDEntry : public PyPlObject
 public:
     PyPlDSDEntry();
     PyPlDSDEntry(AcPlDSDEntry* ptr, bool autoDelete);
+    PyPlDSDEntry(const AcPlDSDEntry& entry);
     virtual ~PyPlDSDEntry() override = default;
-
+    std::string             dwgName() const;
+    void                    setDwgName(const std::string& pName);
+    std::string             layout() const;
+    void                    setLayout(std::string& pLayoutName);
+    std::string             title() const;
+    void                    setTitle(const std::string& pTitle);
+    std::string             NPS() const;
+    void                    setNPS(const std::string& pNPSName);
+    std::string             NPSSourceDWG() const;
+    void                    setNPSSourceDWG(const std::string& pNPWDWGName);
+    bool                    has3dDwfSetup() const;
+    void                    setHas3dDwfSetup(bool b3dDwfSetup);
+    AcPlDSDEntry::SetupType setupType() const;
+    void                    setSetupType(AcPlDSDEntry::SetupType eType);
+    std::string             orgSheetPath() const;
+    std::string             traceSession() const;
+    void                    setTraceSession(const std::string& pTraceSession);
     static PyRxClass        desc();
     static std::string      className();
 public:
