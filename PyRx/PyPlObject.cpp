@@ -200,15 +200,7 @@ void PyPlDSDData::setUnrecognizedData2(const boost::python::list& sectionArray, 
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     //TODO: SR163653
-    AcStringArray _sectionArray = PyListAcStringArray(sectionArray);
-    AcStringArray _dataArray = PyListAcStringArray(dataArray);
-    AcArray<ACHAR*> _sectionArray_;
-    AcArray<ACHAR*>  _dataArray_;
-    for (const AcString& str : _sectionArray)
-        _sectionArray_.append(const_cast<ACHAR*>(str.constPtr()));
-    for (const AcString& str : _dataArray)
-        _dataArray_.append(const_cast<ACHAR*>(str.constPtr()));
-    impObj()->setUnrecognizedData(_sectionArray_, _dataArray_);
+    throw PyNotimplementedByHost();
 #else
     impObj()->setUnrecognizedData(PyListAcStringArray(sectionArray), PyListAcStringArray(dataArray));
 #endif
