@@ -698,6 +698,36 @@ PyDbPlotSettings PyPlPlotInfo::overrideSettings() const
     return PyDbPlotSettings(impObj()->overrideSettings());
 }
 
+PyDbPlotSettings PyPlPlotInfo::validatedSettings() const
+{
+    return PyDbPlotSettings(impObj()->validatedSettings());
+}
+
+void PyPlPlotInfo::setValidatedSettings(const PyDbPlotSettings& pValidatedSettings)
+{
+    impObj()->setOverrideSettings(pValidatedSettings.impObj());
+}
+
+bool PyPlPlotInfo::isValidated() const
+{
+    return impObj()->isValidated();
+}
+
+unsigned long PyPlPlotInfo::mergeStatus() const
+{
+    return impObj()->mergeStatus();
+}
+
+std::string PyPlPlotInfo::OrgFilePath()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcString str = impObj()->OrgFilePath();
+    return wstr_to_utf8(str);
+#endif
+}
+
 PyRxClass PyPlPlotInfo::desc()
 {
     return PyRxClass(AcPlPlotInfo::desc(), false);
