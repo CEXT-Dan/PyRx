@@ -1,6 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 
+class PyPlDSDEntry;
 //-----------------------------------------------------------------------------------------
 //PyRxObject
 void makePyPlObjectWrapper();
@@ -24,7 +25,6 @@ public:
     PyPlDSDData();
     PyPlDSDData(AcPlDSDData* ptr, bool autoDelete);
     virtual ~PyPlDSDData() override = default;
-
     std::string             projectPath() const;
     void                    setProjectPath(const std::string& pVal);
     std::string             destinationName() const;
@@ -34,7 +34,7 @@ public:
     boost::python::list     getPrecisionEntries() const;
     void                    setPrecisionEntries(const boost::python::list& val);
     int                     numberOfDSDEntries() const;
-    //PyPlDSDEntry            DSDEntryAt(int idx);
+    PyPlDSDEntry            DSDEntryAt(int idx);
     AcPlDSDEntry::SheetType sheetType() const;
     void                    setSheetType(AcPlDSDEntry::SheetType val);
     std::string             password() const;
@@ -84,5 +84,22 @@ public:
     static std::string      className();
 public:
     inline AcPlDSDData* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PyPlDSDEntry
+void makePyPlDSDEntryWrapper();
+class PyPlDSDEntry : public PyPlObject
+{
+public:
+    PyPlDSDEntry();
+    PyPlDSDEntry(AcPlDSDEntry* ptr, bool autoDelete);
+    virtual ~PyPlDSDEntry() override = default;
+
+    static PyRxClass        desc();
+    static std::string      className();
+public:
+    inline AcPlDSDEntry* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
