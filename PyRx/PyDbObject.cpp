@@ -99,6 +99,12 @@ PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
 }
 
+PyDbObject::PyDbObject(const AcDbObject* ptr)
+    : PyGiDrawable(ptr)
+{
+
+}
+
 PyDbObjectId PyDbObject::objectId() const
 {
     return PyDbObjectId(impObj()->objectId());

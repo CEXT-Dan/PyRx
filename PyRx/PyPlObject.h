@@ -1,7 +1,10 @@
 #pragma once
 #include "PyRxObject.h"
 
+class PyDbObjectId;
 class PyPlDSDEntry;
+class PyDbPlotSettings;
+
 //-----------------------------------------------------------------------------------------
 //PyRxObject
 void makePyPlObjectWrapper();
@@ -14,7 +17,6 @@ public:
 public:
     inline AcPlObject* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PyPlDSDData
@@ -86,7 +88,6 @@ public:
     inline AcPlDSDData* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PyPlDSDEntry
 void makePyPlDSDEntryWrapper();
@@ -118,5 +119,28 @@ public:
     static std::string      className();
 public:
     inline AcPlDSDEntry* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//PyPlPlotInfo
+void makePyPlPlotInfoWrapper();
+class PyPlPlotInfo : public PyPlObject
+{
+public:
+    PyPlPlotInfo();
+    PyPlPlotInfo(AcPlPlotInfo* ptr, bool autoDelete);
+    PyPlPlotInfo(const AcPlPlotInfo& entry);
+    virtual ~PyPlPlotInfo() override = default;
+
+    void                    copyFrom(const PyRxObject& pOther);
+    void                    setLayout(PyDbObjectId& layoutId);
+    PyDbObjectId            layout() const;
+    void                    setOverrideSettings(const PyDbPlotSettings& pOverrides);
+    PyDbPlotSettings        overrideSettings() const;
+   
+    static PyRxClass        desc();
+    static std::string      className();
+public:
+    inline AcPlPlotInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

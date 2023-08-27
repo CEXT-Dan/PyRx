@@ -73,6 +73,12 @@ PyGiDrawable::PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject)
 {
 }
 
+PyGiDrawable::PyGiDrawable(const AcGiDrawable* ptr)
+    : PyRxObject(ptr)
+{
+
+}
+
 Adesk::UInt32 PyGiDrawable::setAttributes(PyGiDrawableTraits& traits)
 {
     return impObj()->setAttributes(traits.impObj());
