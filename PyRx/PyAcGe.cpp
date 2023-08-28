@@ -22,8 +22,6 @@
 #include "PyGeSurfSurfInt.h"
 #include "PyGeKnotVector.h"
 
-#include <boost/functional/hash.hpp>
-
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
@@ -122,14 +120,6 @@ std::string AcGePoint2dToStringRepr(const AcGePoint2d& s)
 static AcGePoint2d AcGePoint2dkOrigin()
 {
     return AcGePoint2d::kOrigin;
-}
-
-std::size_t AcGePoint2dHash(const AcGePoint2d& p)
-{
-    std::size_t seed = 0;
-    boost::hash_combine(seed, p.x);
-    boost::hash_combine(seed, p.y);
-    return seed;
 }
 
 double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
@@ -525,15 +515,6 @@ AcGePoint3d rmul_double_AcGepoint3d(const AcGePoint3d& pnt, double val)
     return val * pnt;
 }
 
-std::size_t AcGePoint3dHash(const AcGePoint3d& p)
-{
-    std::size_t seed = 0;
-    boost::hash_combine(seed, p.x);
-    boost::hash_combine(seed, p.y);
-    boost::hash_combine(seed, p.z);
-    return seed;
-}
-
 double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
 {
     switch (idx)
@@ -666,15 +647,6 @@ AcGeVector3d rmul_double_AcGeVector3d(const AcGeVector3d& vec, double val)
 AcGeVector3d rmul_AcGeMatrix3d_AcGeVector3d(const AcGeVector3d& vec, const AcGeMatrix3d& mat)
 {
     return mat * vec;
-}
-
-std::size_t AcGeVector3dHash(const AcGeVector3d& p)
-{
-    std::size_t seed = 0;
-    boost::hash_combine(seed, p.x);
-    boost::hash_combine(seed, p.y);
-    boost::hash_combine(seed, p.z);
-    return seed;
 }
 
 double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
