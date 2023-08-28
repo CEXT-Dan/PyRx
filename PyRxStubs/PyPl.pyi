@@ -571,6 +571,12 @@ createPreviewEngine( (int)arg1) -> PlotEngine :
     ...
 
 class PlotInfo:
+    def OrgFilePath (self, *args, **kwargs)-> str:
+      '''OrgFilePath( (PlotInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > OrgFilePath(class PyPlPlotInfo {lvalue})'''
+    ...
     def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
 
@@ -580,8 +586,20 @@ class PlotInfo:
     def className ()-> str:
       '''                             '''
     ...
+    def copyFrom (self, *args, **kwargs)-> None:
+      '''copyFrom( (PlotInfo)arg1, (RxObject)arg2) -> None :
+
+    C++ signature :
+        void copyFrom(class PyPlPlotInfo {lvalue},class PyRxObject)'''
+    ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
+    ...
+    def deviceOverride (self, *args, **kwargs)-> PyPl.PlotConfig:
+      '''deviceOverride( (PlotInfo)arg1) -> PlotConfig :
+
+    C++ signature :
+        class PyPlPlotConfig deviceOverride(class PyPlPlotInfo {lvalue})'''
     ...
     def dispose (self: RxObject)-> None:
       '''                             '''
@@ -592,17 +610,89 @@ class PlotInfo:
     def isA (self: RxObject)-> PyRx.RxClass:
       '''                             '''
     ...
+    def isCompatibleDocument (self, *args, **kwargs)-> bool:
+      '''isCompatibleDocument( (PlotInfo)arg1, (PlotInfo)arg2) -> bool :
+
+    C++ signature :
+        bool isCompatibleDocument(class PyPlPlotInfo {lvalue},class PyPlPlotInfo)'''
+    ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool:
       '''                             '''
     ...
+    def isValidated (self, *args, **kwargs)-> bool:
+      '''isValidated( (PlotInfo)arg1) -> bool :
+
+    C++ signature :
+        bool isValidated(class PyPlPlotInfo {lvalue})'''
+    ...
     def keepAlive (self: RxObject,flag:bool)-> None:
       '''                             '''
     ...
+    def layout (self, *args, **kwargs)-> PyDb.ObjectId:
+      '''layout( (PlotInfo)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId layout(class PyPlPlotInfo {lvalue})'''
+    ...
+    def mergeStatus (self, *args, **kwargs)-> int:
+      '''mergeStatus( (PlotInfo)arg1) -> int :
+
+    C++ signature :
+        unsigned long mergeStatus(class PyPlPlotInfo {lvalue})'''
+    ...
+    def overrideSettings (self, *args, **kwargs)-> PyDb.PlotSettings:
+      '''overrideSettings( (PlotInfo)arg1) -> PlotSettings :
+
+    C++ signature :
+        class PyDbPlotSettings overrideSettings(class PyPlPlotInfo {lvalue})'''
+    ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
       '''                             '''
+    ...
+    def setDeviceOverride (self, *args, **kwargs)-> None:
+      '''setDeviceOverride( (PlotInfo)arg1, (PlotConfig)arg2) -> None :
+
+    C++ signature :
+        void setDeviceOverride(class PyPlPlotInfo {lvalue},class PyPlPlotConfig)'''
+    ...
+    def setLayout (self, *args, **kwargs)-> None:
+      '''setLayout( (PlotInfo)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setLayout(class PyPlPlotInfo {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def setOverrideSettings (self, *args, **kwargs)-> None:
+      '''setOverrideSettings( (PlotInfo)arg1, (PlotSettings)arg2) -> None :
+
+    C++ signature :
+        void setOverrideSettings(class PyPlPlotInfo {lvalue},class PyDbPlotSettings)'''
+    ...
+    def setValidatedConfig (self, *args, **kwargs)-> None:
+      '''setValidatedConfig( (PlotInfo)arg1, (PlotConfig)arg2) -> None :
+
+    C++ signature :
+        void setValidatedConfig(class PyPlPlotInfo {lvalue},class PyPlPlotConfig)'''
+    ...
+    def setValidatedSettings (self, *args, **kwargs)-> None:
+      '''setValidatedSettings( (PlotInfo)arg1, (PlotSettings)arg2) -> None :
+
+    C++ signature :
+        void setValidatedSettings(class PyPlPlotInfo {lvalue},class PyDbPlotSettings)'''
+    ...
+    def validatedConfig (self, *args, **kwargs)-> PyPl.PlotConfig:
+      '''validatedConfig( (PlotInfo)arg1) -> PlotConfig :
+
+    C++ signature :
+        class PyPlPlotConfig validatedConfig(class PyPlPlotInfo {lvalue})'''
+    ...
+    def validatedSettings (self, *args, **kwargs)-> PyDb.PlotSettings:
+      '''validatedSettings( (PlotInfo)arg1) -> PlotSettings :
+
+    C++ signature :
+        class PyDbPlotSettings validatedSettings(class PyPlPlotInfo {lvalue})'''
     ...
 
 class PlotPageInfo:

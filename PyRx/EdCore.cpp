@@ -169,6 +169,8 @@ void makePyEdCoreWrapper()
         .def("showHTMLModelessWindow", &EdCore::showHTMLModelessWindow2).staticmethod("showHTMLModelessWindow")
         .def("skipXrefNotification", &EdCore::skipXrefNotification).staticmethod("skipXrefNotification")
 
+        .def("trans", &EdCore::trans).staticmethod("trans")
+
 
         .def("update", &EdCore::update).staticmethod("update")
         .def("updateDisplay", &EdCore::updateDisplay).staticmethod("updateDisplay")
@@ -1049,6 +1051,15 @@ void EdCore::skipXrefNotification(PyDbDatabase& db, const std::string& xrefName)
 #else
     PyThrowBadEs(acedSkipXrefNotification(db.impObj(), utf8_to_wstr(xrefName).c_str()));
 #endif
+}
+
+AcGePoint3d EdCore::trans(AcGePoint3d& pt, const boost::python::list& from, const boost::python::list& to, int disp)
+{
+    AcGePoint3d result;
+    AcResBufPtr pFrom(listToResbuf(from));
+    AcResBufPtr pTo(listToResbuf(to));
+    PyThrowBadRt(acedTrans(asDblArray(pt), pFrom.get(), pTo.get(), disp, asDblArray(result)));
+    return result;
 }
 
 int EdCore::update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2)

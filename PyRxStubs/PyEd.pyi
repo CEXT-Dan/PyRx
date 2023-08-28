@@ -883,6 +883,12 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     C++ signature :
         void skipXrefNotification(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def trans (self, *args, **kwargs)-> PyGe.Point3d:
+      '''trans( (Point3d)arg1, (list)arg2, (list)arg3, (int)arg4) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d trans(class AcGePoint3d {lvalue},class boost::python::list,class boost::python::list,int)'''
+    ...
     def update (self, *args, **kwargs)-> int:
       '''update( (int)arg1, (Point2d)arg2, (Point2d)arg3) -> int :
 
