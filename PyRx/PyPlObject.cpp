@@ -14,6 +14,11 @@ void makePyPlObjectWrapper()
         ;
 }
 
+PyPlObject::PyPlObject(const AcPlObject* ptr)
+    :PyRxObject(ptr)
+{
+}
+
 PyPlObject::PyPlObject(AcPlObject* ptr, bool autoDelete)
     :PyRxObject(ptr, autoDelete, false)
 {
@@ -698,6 +703,11 @@ PyDbPlotSettings PyPlPlotInfo::overrideSettings() const
     return PyDbPlotSettings(impObj()->overrideSettings());
 }
 
+void PyPlPlotInfo::setDeviceOverride(const PyPlPlotConfig& pconf)
+{
+    impObj()->setDeviceOverride(pconf.impObj());
+}
+
 PyDbPlotSettings PyPlPlotInfo::validatedSettings() const
 {
     return PyDbPlotSettings(impObj()->validatedSettings());
@@ -706,6 +716,34 @@ PyDbPlotSettings PyPlPlotInfo::validatedSettings() const
 void PyPlPlotInfo::setValidatedSettings(const PyDbPlotSettings& pValidatedSettings)
 {
     impObj()->setOverrideSettings(pValidatedSettings.impObj());
+}
+
+PyPlPlotConfig PyPlPlotInfo::validatedConfig() const
+{
+    return PyPlPlotConfig(impObj()->validatedConfig());
+}
+
+void PyPlPlotInfo::setValidatedConfig(const PyPlPlotConfig& pConfig)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    impObj()->setValidatedConfig(pConfig.impObj());
+#endif
+}
+
+PyPlPlotConfig PyPlPlotInfo::deviceOverride() const
+{
+    return PyPlPlotConfig(impObj()->deviceOverride());
+}
+
+bool PyPlPlotInfo::isCompatibleDocument(const PyPlPlotInfo& pOtherInfo) const
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+   return impObj()->isCompatibleDocument(pOtherInfo.impObj());
+#endif
 }
 
 bool PyPlPlotInfo::isValidated() const
@@ -743,4 +781,43 @@ AcPlPlotInfo* PyPlPlotInfo::impObj(const std::source_location& src /*= std::sour
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcPlPlotInfo*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyPlPlotConfig
+void makePyPlPlotConfigWrapper()
+{
+    PyDocString DS("PlotConfig");
+    class_<PyPlPlotConfig, bases<PyPlObject>>("PlotConfig", boost::python::no_init)
+        .def("desc", &PyPlPlotConfig::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyPlPlotConfig::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyPlPlotConfig::PyPlPlotConfig(const AcPlPlotConfig* ptr)
+    : PyPlObject(ptr)
+{
+
+}
+
+PyPlPlotConfig::PyPlPlotConfig(AcPlPlotConfig* ptr, bool autoDelete)
+    : PyPlObject(ptr, autoDelete)
+{
+}
+
+PyRxClass PyPlPlotConfig::desc()
+{
+    return PyRxClass(AcPlPlotConfig::desc(), false);
+}
+
+std::string PyPlPlotConfig::className()
+{
+    return "AcPlPlotConfig";
+}
+
+AcPlPlotConfig* PyPlPlotConfig::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+    return static_cast<AcPlPlotConfig*>(m_pyImp.get());
 }
