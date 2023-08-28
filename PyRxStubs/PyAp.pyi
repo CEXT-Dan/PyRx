@@ -940,6 +940,9 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     C++ signature :
         void closeDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def curDocument (self, *args, **kwargs)-> PyAp.Document:
       '''curDocument( (DocManager)arg1) -> Document :
 
@@ -1169,6 +1172,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def database (self: Document)-> PyDb.Database:
       '''                             '''
     ...
@@ -1292,6 +1298,9 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         bool compareTo(class PyLyLayerFilter {lvalue},class PyLyLayerFilter)'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
@@ -1482,6 +1491,9 @@ __init__( (object)arg1) -> None :
     C++ signature :
         bool compareTo(class PyLyLayerFilter {lvalue},class PyLyLayerFilter)'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
@@ -1623,6 +1635,9 @@ cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)
 
     C++ signature :
         void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def copyLayout (self, *args, **kwargs)-> None:
       '''copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
@@ -2208,6 +2223,9 @@ class TransactionManager:
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass:
       '''desc() -> RxClass :

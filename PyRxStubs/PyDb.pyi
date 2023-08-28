@@ -210,6 +210,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -490,6 +493,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def contrast (self: PyDbAbstractViewTableRecord)-> float:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -1117,6 +1123,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -2321,6 +2330,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -2948,6 +2960,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -3940,6 +3955,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def convertIntoMTextAttributeDefinition (self: AttributeDefinition,val : bool)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def correctSpelling (self: Text)-> int:
       '''                             '''
     ...
@@ -4524,6 +4542,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def convertIntoMTextAttribute (self: AttributeReference,val : bool)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def correctSpelling (self: Text)-> int:
       '''                             '''
     ...
@@ -5089,6 +5110,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -5497,6 +5521,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -5925,6 +5952,9 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -6475,6 +6505,9 @@ class BlockTable:
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -6744,6 +6777,9 @@ class BlockTableRecord:
       '''                             '''
     ...
     def comments (self: BlockTableRecord)-> str:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -7132,6 +7168,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -8957,6 +8996,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -10514,6 +10556,9 @@ class Curve:
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -11057,6 +11102,9 @@ class Database:
       '''                             '''
     ...
     def coords (self: Database)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def countEmptyObjects (self: Database,flag : int)-> int:
@@ -12370,6 +12418,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def deleteCustomSummaryInfo (self, *args, **kwargs)-> None:
       '''deleteCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> None :
 
@@ -12568,6 +12619,9 @@ class DbObject:
       '''                             '''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -12775,6 +12829,9 @@ __init__( (object)arg1) -> None :
     def copied (self: DbObjectReactor,obj: PyDb.DbObject,newObj: PyDb.DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
@@ -12964,6 +13021,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -13891,6 +13951,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -14329,6 +14392,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -14598,6 +14664,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -14902,6 +14971,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -17292,6 +17364,9 @@ class Entity:
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -17931,6 +18006,9 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def copied (self: EntityReactor,obj: PyDb.DbObject,newObj: PyDb.DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass:
@@ -20030,6 +20108,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -20467,6 +20548,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -20895,6 +20979,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -21321,6 +21408,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -21830,6 +21920,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void convertToTextField(class PyDbField {lvalue})'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -23629,6 +23722,9 @@ append( (Group)arg1, (list)arg2) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -24355,6 +24451,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -25952,6 +26051,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum AcDbHelix::ConstrainType constrain(class PyDbHelix {lvalue})'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -26990,6 +27092,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -27776,6 +27881,9 @@ class JoinEntityPE:
     def className ()-> str:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
@@ -27993,6 +28101,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbLayerTable cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -28279,6 +28390,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
 
     C++ signature :
         class AcCmColor color(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -28807,6 +28921,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbLayout cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -29378,6 +29495,9 @@ cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)
     C++ signature :
         void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def copyLayout (self, *args, **kwargs)-> None:
       '''copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
 
@@ -29666,6 +29786,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void copied(class PyDbLeader {lvalue},class PyDbObject,class PyDbObject)'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -30463,6 +30586,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -31051,6 +31177,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -32299,6 +32428,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -32571,6 +32703,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def comments (self: LinetypeTableRecord)-> str:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -32990,6 +33125,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -33430,6 +33568,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def columns (self: MInsertBlock)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -34003,6 +34144,9 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
 
     C++ signature :
         enum AcDbMLeaderStyle::ContentType contentType(class PyDbMLeader {lvalue})'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -36245,6 +36389,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum AcDbMLeaderStyle::ContentType contentType(class PyDbMLeaderStyle {lvalue})'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -37537,6 +37684,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void convertFieldToText(class PyDbMText {lvalue})'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def correctSpelling (self, *args, **kwargs)-> int:
       '''correctSpelling( (MText)arg1) -> int :
@@ -39004,6 +39154,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -39687,6 +39840,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -40150,6 +40306,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -40513,6 +40672,9 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > collectionName(class PyDbObjectContext {lvalue})'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass:
       '''desc() -> RxClass :
@@ -40883,6 +41045,9 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -42278,6 +42443,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -42626,6 +42794,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         unsigned char contrastLowerLimit()'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -43406,6 +43577,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -44079,6 +44253,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbPlotSettings cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -44874,6 +45051,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -45376,6 +45556,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -46555,6 +46738,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -46972,6 +47158,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -47397,6 +47586,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -48031,6 +48223,9 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
 
     C++ signature :
         void convertToPolyType(class PyDb2dPolyline {lvalue},enum AcDb::Poly2dType)'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -48732,6 +48927,9 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     C++ signature :
         void convertToPolyType(class PyDb3dPolyline {lvalue},enum AcDb::Poly3dType)'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -49319,6 +49517,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -49806,6 +50007,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -50797,6 +51001,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -51793,6 +52000,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         signed char contrast(class PyDbRasterImage {lvalue})'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -52419,6 +52629,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -52795,6 +53008,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -53046,6 +53262,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbRegAppTable cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -53317,6 +53536,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -53595,6 +53817,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -54411,6 +54636,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -54886,6 +55114,9 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -56235,6 +56466,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -57099,6 +57333,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbEntity copyFace(class PyDb3dSolid {lvalue},class PyDbSubentId)'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createBox (self, *args, **kwargs)-> None:
       '''createBox( (Solid3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
 
@@ -57869,6 +58106,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -59372,6 +59612,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -60292,6 +60535,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -60970,6 +61216,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -61221,6 +61470,9 @@ class SymbolTableRecord:
       '''                             '''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -61697,6 +61949,9 @@ contentType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> CellContentType :
 
     C++ signature :
         enum AcDb::CellContentType contentType(class PyDbTable {lvalue},int,int,int)'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def createContent (self, *args, **kwargs)-> int:
       '''createContent( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> int :
@@ -63936,6 +64191,9 @@ color( (TableStyle)arg1, (str)arg2) -> Color :
     C++ signature :
         void copyCellStyle(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createCellStyle (self, *args, **kwargs)-> str:
       '''createCellStyle( (TableStyle)arg1) -> str :
 
@@ -64674,6 +64932,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def convertFieldToText (self: Text)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def correctSpelling (self: Text)-> int:
@@ -65468,6 +65729,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -65740,6 +66004,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -66383,6 +66650,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass:
       '''desc() -> RxClass :
 
@@ -66450,6 +66720,9 @@ class TransactionManager:
       '''                             '''
     ...
     def className ()-> str:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass:
@@ -66767,6 +67040,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -67036,6 +67312,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -67328,6 +67607,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbUnderlayDefinition cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -67700,6 +67982,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         unsigned char contrastLowerLimit()'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -68806,6 +69091,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -69225,6 +69513,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
@@ -69823,6 +70114,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def contrast (self: PyDbAbstractViewTableRecord)-> float:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -70370,6 +70664,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void copied(class PyDbViewport {lvalue},class PyDbObject,class PyDbObject)'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
@@ -71812,6 +72109,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def contrast (self: PyDbAbstractViewTableRecord)-> float:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def createExtensionDictionary (self: DbObject)-> None:
       '''                             '''
     ...
@@ -72752,6 +73052,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None:

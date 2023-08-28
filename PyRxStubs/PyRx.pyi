@@ -194,6 +194,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass:
       '''desc() -> RxClass :
 
@@ -257,6 +260,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
@@ -297,6 +303,9 @@ class RxObject:
 This class cannot be instantiated from Python'''
     ...
     def className ()-> str:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def dispose (self: RxObject)-> None:

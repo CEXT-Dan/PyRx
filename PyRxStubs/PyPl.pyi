@@ -29,6 +29,9 @@ class DSDEntry:
     def className ()-> str:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
@@ -158,6 +161,9 @@ class PlObject:
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > categoryName(class PyPlDSDData {lvalue})'''
     ...
     def className ()-> str:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def currentPrecision (self, *args, **kwargs)-> str:
@@ -510,6 +516,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str:
       '''                             '''
     ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass:
       '''                             '''
     ...
@@ -703,6 +712,9 @@ class PlotPageInfo:
         void __init__(struct _object * __ptr64)'''
     ...
     def className ()-> str:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass:

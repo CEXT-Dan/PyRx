@@ -73,6 +73,7 @@ public:
     void                dispose();
     bool                isNullObj();
     int                 implRefCount();
+    void                copyFrom(PyRxObject& obj);
     PyRxObject          queryX(const PyRxClass& protocolClass) const;
     static PyRxClass    desc();
     static std::string  className();
