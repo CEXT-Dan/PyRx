@@ -39,7 +39,7 @@ def PyRxCmd_doit():
         pi = Pl.PlotInfo()
         pi.setLayout(layout.objectId())
         
-        ps = Pl.
+        #PlotSettings ps = Pl.
         
 
     except Exception as err:
