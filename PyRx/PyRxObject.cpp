@@ -16,6 +16,7 @@ void makeAcRxObjectWrapper()
         .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({"flag:bool"}))
         .def("dispose", &PyRxObject::dispose, DS.ARGS())
         .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs:PyRx.RxClass" }))
+        .def("copyFrom", &PyRxObject::copyFrom, DS.ARGS({ "other:PyRx.RxObject" }))
         .def("__eq__", &PyRxObject::operator==, DS.ARGS({ "rhs:PyRx.RxObject" }))
         .def("__ne__", &PyRxObject::operator!=, DS.ARGS({ "rhs:PyRx.RxObject" }))
         .def("className", &PyRxObject::className, DS.SARGS()).staticmethod("className")
@@ -36,12 +37,12 @@ PyRxObject::PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbOject)
 
 bool PyRxObject::operator==(const PyRxObject& rhs) const
 {
-    return impObj() == rhs.impObj();
+    return impObj()->isEqualTo(rhs.impObj());
 }
 
 bool PyRxObject::operator!=(const PyRxObject& rhs) const
 {
-    return impObj() != rhs.impObj();
+    return !impObj()->isEqualTo(rhs.impObj());
 }
 
 PyRxClass PyRxObject::isA() const
@@ -74,6 +75,11 @@ bool PyRxObject::isNullObj()
 int PyRxObject::implRefCount()
 {
     return m_pyImp.use_count();
+}
+
+void PyRxObject::copyFrom(PyRxObject& obj)
+{
+    PyThrowBadEs(impObj()->copyFrom(obj.impObj()));
 }
 
 PyRxObject PyRxObject::queryX(const PyRxClass& protocolClass) const
