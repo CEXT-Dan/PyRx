@@ -28,7 +28,7 @@ class PyPlPlotEngine
 public:
     PyPlPlotEngine(const AcPlPlotEngine* ptr);
     virtual ~PyPlPlotEngine() = default;
-    static std::string      className();
+    static std::string className();
 public:
     inline const AcPlPlotEngine*   impObj(const std::source_location& src = std::source_location::current()) const;
     const AcPlPlotEngine* m_imp = nullptr;
@@ -198,4 +198,22 @@ public:
     static std::string      className();
 public:
     inline AcPlPlotConfig*  impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PyPlPlotPageInfo
+void makePyPlPlotPageInfoWrapper();
+class PyPlPlotPageInfo : public PyPlObject
+{
+public:
+    PyPlPlotPageInfo();
+    PyPlPlotPageInfo(const AcPlPlotPageInfo* ptr);
+    PyPlPlotPageInfo(AcPlPlotPageInfo* ptr, bool autoDelete);
+    virtual ~PyPlPlotPageInfo() override = default;
+
+    static PyRxClass        desc();
+    static std::string      className();
+public:
+    inline AcPlPlotPageInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
