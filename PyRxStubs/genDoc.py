@@ -11,13 +11,15 @@ import PyGs  # = editor
 import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
+import PyPl  # = plot
+
 
 class_types = {}
 
-all_modules = [("PyRx", PyRx), ("PyGe", PyGe), ("PyGi", PyGi),
-              ("PyGs", PyGs), ("PyDb", PyDb), ("PyAp", PyAp), ("PyEd", PyEd)]
+all_modules = [("PyRx", PyRx), ("PyGe", PyGe), ("PyGi", PyGi),("PyGs", PyGs), 
+               ("PyDb", PyDb), ("PyAp", PyAp), ("PyEd", PyEd), ("PyPl", PyPl)]
 
-all_modules_names = ["PyRx", "PyGe", "PyGi", "PyGs", "PyDb", "PyAp", "PyEd"]
+all_modules_names = ["PyRx", "PyGe", "PyGi", "PyGs", "PyDb", "PyAp", "PyEd", "PyPl"]
 
 # TODO iterate all the above modules, and add imports ant type aliasing
 # to each

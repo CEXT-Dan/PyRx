@@ -906,15 +906,19 @@ void makePyPlPlotPageInfoWrapper()
 {
     PyDocString DS("PlotPageInfo");
     class_<PyPlPlotPageInfo, bases<PyPlObject>>("PlotPageInfo")
+        .def("entityCount", &PyPlPlotPageInfo::entityCount, DS.SARGS())
+        .def("rasterCount", &PyPlPlotPageInfo::rasterCount, DS.SARGS())
+        .def("oleObjectCount", &PyPlPlotPageInfo::oleObjectCount, DS.SARGS())
+        .def("gradientCount", &PyPlPlotPageInfo::gradientCount, DS.SARGS())
+        .def("shadedViewportType", &PyPlPlotPageInfo::shadedViewportType, DS.SARGS())
         .def("desc", &PyPlPlotPageInfo::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlPlotPageInfo::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
 PyPlPlotPageInfo::PyPlPlotPageInfo()
-    : PyPlObject(new AcPlPlotPageInfo(),true)
+    : PyPlObject(new AcPlPlotPageInfo(), true)
 {
-
 }
 
 PyPlPlotPageInfo::PyPlPlotPageInfo(const AcPlPlotPageInfo* ptr)
@@ -925,6 +929,31 @@ PyPlPlotPageInfo::PyPlPlotPageInfo(const AcPlPlotPageInfo* ptr)
 PyPlPlotPageInfo::PyPlPlotPageInfo(AcPlPlotPageInfo* ptr, bool autoDelete)
     : PyPlObject(ptr, autoDelete)
 {
+}
+
+Adesk::Int32 PyPlPlotPageInfo::entityCount() const
+{
+    return impObj()->entityCount();
+}
+
+Adesk::Int32 PyPlPlotPageInfo::rasterCount() const
+{
+    return impObj()->rasterCount();
+}
+
+Adesk::Int32 PyPlPlotPageInfo::oleObjectCount() const
+{
+    return impObj()->oleObjectCount();
+}
+
+Adesk::Int32 PyPlPlotPageInfo::gradientCount() const
+{
+    return impObj()->gradientCount();
+}
+
+Adesk::Int32 PyPlPlotPageInfo::shadedViewportType() const
+{
+    return impObj()->shadedViewportType();
 }
 
 PyRxClass PyPlPlotPageInfo::desc()
