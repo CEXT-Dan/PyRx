@@ -527,45 +527,8 @@ public:
         }
         return RSRSLT;
     }
-
-    static std::vector<AcGePoint3d> makePnts()
-    {
-        return std::vector<AcGePoint3d>{
-            AcGePoint3d(-2000.11111111111111, 2000.11111111111111, 2000.11111111111111),
-            AcGePoint3d(-2000.11111111112222, 2000.11111111112222, 2000.11111111112222),
-            AcGePoint3d(-2000.11111111113333, 2000.11111111113333, 2000.11111111113333),
-            AcGePoint3d(-2000.11111111114444, 2000.11111111114444, 2000.11111111114444),
-            AcGePoint3d(-2000.11111111115555, 2000.11111111115555, 2000.11111111115555),
-            AcGePoint3d(-2000.11111111116666, 2000.11111111116666, 2000.11111111116666),
-            AcGePoint3d(-2000.11111111199999, 1, 1)//check
-        };
-    }
-
     static void AcRxPyApp_idoit(void)
     {
-        auto vecOfPoints = makePnts();
-        const auto fp = vecOfPoints[0];
-        for(int idx = 0;const auto& np : vecOfPoints)
-        { 
-            if (idx == 0)
-            {
-                idx++;
-                continue;
-            }
-
-            const TCHAR* result = fp == np ? _T("True") : _T("False");
-            std::wstring s = std::format(_T("\n({},{},{}) == ({},{},{}) = {}"), fp.x, fp.y, fp.z, np.x, np.y, np.z, result);
-            acutPrintf(s.c_str());
-        }
-
-        for (const auto& np : vecOfPoints)
-        {
-            size_t hash1 = AcGePoint3dHash(fp);
-            size_t hash2 = AcGePoint3dHash(np);
-            const TCHAR* result = hash1 == hash2 ? _T("True") : _T("False");
-            std::wstring s = std::format(_T("\n{} == {} = {}"), hash1, hash2, result);
-            acutPrintf(s.c_str());
-        }
 
     }
 };
