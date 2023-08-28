@@ -4,6 +4,7 @@
 class PyDbObjectId;
 class PyPlDSDEntry;
 class PyDbPlotSettings;
+class PyPlPlotConfig;
 
 //-----------------------------------------------------------------------------------------
 //PyRxObject
@@ -11,6 +12,7 @@ void makePyPlObjectWrapper();
 class PyPlObject : public PyRxObject
 {
 public:
+    PyPlObject(const AcPlObject* ptr);
     PyPlObject(AcPlObject* ptr, bool autoDelete);
     virtual ~PyPlObject() override = default;
     static std::string      className();
@@ -137,13 +139,13 @@ public:
     PyDbObjectId            layout() const;
     void                    setOverrideSettings(const PyDbPlotSettings& pOverrides);
     PyDbPlotSettings        overrideSettings() const;
-    //void                    setDeviceOverride(const PyPlPlotConfig* pconf);
+    void                    setDeviceOverride(const PyPlPlotConfig& pconf);
     PyDbPlotSettings        validatedSettings() const;
     void                    setValidatedSettings(const PyDbPlotSettings& pValidatedSettings);
-    //const AcPlPlotConfig* validatedConfig() const;
-    //void setValidatedConfig(const AcPlPlotConfig* pConfig);
-    //const AcPlPlotConfig* deviceOverride() const;
-    //bool isCompatibleDocument(const AcPlPlotInfo* pOtherInfo) const;
+    PyPlPlotConfig          validatedConfig() const;
+    void                    setValidatedConfig(const PyPlPlotConfig& pConfig);
+    PyPlPlotConfig          deviceOverride() const;
+    bool                    isCompatibleDocument(const PyPlPlotInfo& pOtherInfo) const;
     bool                    isValidated() const;
     unsigned long           mergeStatus() const;
     std::string             OrgFilePath();
@@ -153,3 +155,19 @@ public:
     inline AcPlPlotInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
+//-----------------------------------------------------------------------------------------
+//PyPlPlotConfig
+void makePyPlPlotConfigWrapper();
+class PyPlPlotConfig : public PyPlObject
+{
+public:
+    PyPlPlotConfig(const AcPlPlotConfig* ptr);
+    PyPlPlotConfig(AcPlPlotConfig* ptr, bool autoDelete);
+    virtual ~PyPlPlotConfig() override = default;
+
+    static PyRxClass        desc();
+    static std::string      className();
+public:
+    inline AcPlPlotConfig*  impObj(const std::source_location& src = std::source_location::current()) const;
+};
