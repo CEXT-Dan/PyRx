@@ -5,6 +5,34 @@ class PyDbObjectId;
 class PyPlDSDEntry;
 class PyDbPlotSettings;
 class PyPlPlotConfig;
+class PyPlPlotEngine;
+
+//-----------------------------------------------------------------------------------------
+//AcPlPlotFactory
+void makeAcPlPlotFactoryWrapper();
+class PyPlPlotFactory
+{
+public:
+    static PyPlPlotEngine createPreviewEngine1();
+    static PyPlPlotEngine createPreviewEngine2(long flags);
+    static PyPlPlotEngine createPublishEngine();
+    static ProcessPlotState processPlotState();
+    static std::string  className();
+};
+
+//-----------------------------------------------------------------------------------------
+//PyPlPlotEngine
+void makePyPlPlotEngineWrapper();
+class PyPlPlotEngine
+{
+public:
+    PyPlPlotEngine(const AcPlPlotEngine* ptr);
+    virtual ~PyPlPlotEngine() = default;
+    static std::string      className();
+public:
+    inline const AcPlPlotEngine*   impObj(const std::source_location& src = std::source_location::current()) const;
+    const AcPlPlotEngine* m_imp = nullptr;
+};
 
 //-----------------------------------------------------------------------------------------
 //PyRxObject

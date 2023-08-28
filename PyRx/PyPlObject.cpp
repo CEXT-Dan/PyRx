@@ -4,6 +4,85 @@
 #include "PyDbObjectId.h"
 
 using namespace boost::python;
+
+//-----------------------------------------------------------------------------------------
+//AcPlPlotFactory
+void makeAcPlPlotFactoryWrapper()
+{
+    PyDocString DS("PlotFactory");
+    class_<PyPlPlotFactory>("PlotFactory", boost::python::no_init)
+        .def("createPreviewEngine", &PyPlPlotFactory::createPreviewEngine1)
+        .def("createPreviewEngine", &PyPlPlotFactory::createPreviewEngine2).staticmethod("createPreviewEngine")
+        .def("createPublishEngine", &PyPlPlotFactory::createPublishEngine).staticmethod("createPublishEngine")
+        .def("className", &PyPlPlotFactory::className, DS.SARGS()).staticmethod("className")
+        ;
+
+    enum_<ProcessPlotState>("ProcessPlotState ")
+        .value("kNotPlotting ", ProcessPlotState::kNotPlotting)
+        .value("kForegroundPlotting ", ProcessPlotState::kForegroundPlotting)
+        .value("kBackgroundPlotting ", ProcessPlotState::kBackgroundPlotting)
+        .export_values()
+        ;
+}
+
+PyPlPlotEngine PyPlPlotFactory::createPreviewEngine1()
+{
+    AcPlPlotEngine* ptr = nullptr;
+    AcPlPlotFactory::createPreviewEngine(ptr);
+    return PyPlPlotEngine(ptr);
+}
+
+PyPlPlotEngine PyPlPlotFactory::createPreviewEngine2(long flags)
+{
+    AcPlPlotEngine* ptr = nullptr;
+    AcPlPlotFactory::createPreviewEngine(ptr, flags);
+    return PyPlPlotEngine(ptr);
+}
+
+PyPlPlotEngine PyPlPlotFactory::createPublishEngine()
+{
+    AcPlPlotEngine* ptr = nullptr;
+    AcPlPlotFactory::createPublishEngine(ptr);
+    return PyPlPlotEngine(ptr);
+}
+
+ProcessPlotState PyPlPlotFactory::processPlotState()
+{
+    return acplProcessPlotState();
+}
+
+std::string PyPlPlotFactory::className()
+{
+    return "AcPlPlotFactory";
+}
+
+//-----------------------------------------------------------------------------------------
+//PyPlPlotEngine
+void makePyPlPlotEngineWrapper()
+{
+    PyDocString DS("PlotEngine");
+    class_<PyPlPlotEngine>("PlotEngine", boost::python::no_init)
+        .def("className", &PyPlObject::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyPlPlotEngine::PyPlPlotEngine(const AcPlPlotEngine* ptr)
+    : m_imp(ptr)
+{
+}
+
+std::string PyPlPlotEngine::className()
+{
+    return "AcPlPlotEngine";
+}
+
+const AcPlPlotEngine* PyPlPlotEngine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_imp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+    return static_cast<const AcPlPlotEngine*>(m_imp);
+}
+
 //-----------------------------------------------------------------------------------------
 //PyRxObject
 void makePyPlObjectWrapper()
@@ -20,7 +99,7 @@ PyPlObject::PyPlObject(const AcPlObject* ptr)
 }
 
 PyPlObject::PyPlObject(AcPlObject* ptr, bool autoDelete)
-    :PyRxObject(ptr, autoDelete, false)
+    : PyRxObject(ptr, autoDelete, false)
 {
 }
 
@@ -742,7 +821,7 @@ bool PyPlPlotInfo::isCompatibleDocument(const PyPlPlotInfo& pOtherInfo) const
 #ifndef ARXAPP
     throw PyNotimplementedByHost();
 #else
-   return impObj()->isCompatibleDocument(pOtherInfo.impObj());
+    return impObj()->isCompatibleDocument(pOtherInfo.impObj());
 #endif
 }
 
@@ -797,7 +876,6 @@ void makePyPlPlotConfigWrapper()
 PyPlPlotConfig::PyPlPlotConfig(const AcPlPlotConfig* ptr)
     : PyPlObject(ptr)
 {
-
 }
 
 PyPlPlotConfig::PyPlPlotConfig(AcPlPlotConfig* ptr, bool autoDelete)
