@@ -5,6 +5,7 @@ import PyGs
 import PyDb
 import PyAp
 import PyEd
+import PyPl
 
 class AcEdDrawOrderCmdType:
     def __init__ (self, /, *args, **kwargs):
@@ -716,6 +717,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         void pSpace()'''
+    ...
+    def postCommand (self, *args, **kwargs)-> None:
+      '''postCommand( (str)arg1) -> None :
+
+    C++ signature :
+        void postCommand(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def postCommandPrompt (self, *args, **kwargs)-> None:
       '''postCommandPrompt() -> None :

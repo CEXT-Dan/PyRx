@@ -161,7 +161,6 @@ public:
     PyPlPlotInfo(AcPlPlotInfo* ptr, bool autoDelete);
     PyPlPlotInfo(const AcPlPlotInfo& entry);
     virtual ~PyPlPlotInfo() override = default;
-
     void                    copyFrom(const PyRxObject& pOther);
     void                    setLayout(PyDbObjectId& layoutId);
     PyDbObjectId            layout() const;
@@ -211,7 +210,11 @@ public:
     PyPlPlotPageInfo(const AcPlPlotPageInfo* ptr);
     PyPlPlotPageInfo(AcPlPlotPageInfo* ptr, bool autoDelete);
     virtual ~PyPlPlotPageInfo() override = default;
-
+    Adesk::Int32            entityCount() const;
+    Adesk::Int32            rasterCount() const;
+    Adesk::Int32            oleObjectCount() const;
+    Adesk::Int32            gradientCount() const;
+    Adesk::Int32            shadedViewportType() const;
     static PyRxClass        desc();
     static std::string      className();
 public:
