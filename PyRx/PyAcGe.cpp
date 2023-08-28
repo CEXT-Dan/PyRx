@@ -26,6 +26,11 @@ using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
 //hashing
+
+// this is not exact, the rule is 
+// (Point1 == Point2) == (Point1.__hash__() ==  Point2.__hash__())
+// must be true, we use AutoCad's (Point1 == Point2) which has different behavior than rounding each element
+
 inline double roundPointComponentTo(double value, double precision = AcGeContext::gTol.equalPoint())
 {
     return std::round(value / precision) * precision;
