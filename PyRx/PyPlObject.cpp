@@ -899,3 +899,47 @@ AcPlPlotConfig* PyPlPlotConfig::impObj(const std::source_location& src /*= std::
         throw PyNullObject(src);
     return static_cast<AcPlPlotConfig*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------------
+//PyPlPlotPageInfo
+void makePyPlPlotPageInfoWrapper()
+{
+    PyDocString DS("PlotPageInfo");
+    class_<PyPlPlotPageInfo, bases<PyPlObject>>("PlotPageInfo")
+        .def("desc", &PyPlPlotPageInfo::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyPlPlotPageInfo::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyPlPlotPageInfo::PyPlPlotPageInfo()
+    : PyPlObject(new AcPlPlotPageInfo(),true)
+{
+
+}
+
+PyPlPlotPageInfo::PyPlPlotPageInfo(const AcPlPlotPageInfo* ptr)
+    : PyPlObject(ptr)
+{
+}
+
+PyPlPlotPageInfo::PyPlPlotPageInfo(AcPlPlotPageInfo* ptr, bool autoDelete)
+    : PyPlObject(ptr, autoDelete)
+{
+}
+
+PyRxClass PyPlPlotPageInfo::desc()
+{
+    return PyRxClass(AcPlPlotPageInfo::desc(), false);
+}
+
+std::string PyPlPlotPageInfo::className()
+{
+    return "AcPlPlotPageInfo";
+}
+
+AcPlPlotPageInfo* PyPlPlotPageInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+    return static_cast<AcPlPlotPageInfo*>(m_pyImp.get());
+}
