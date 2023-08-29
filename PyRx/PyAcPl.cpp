@@ -16,6 +16,7 @@ BOOST_PYTHON_MODULE(PyPl)
     makePyPlPlotPageInfoWrapper();
     makeAcPlPlotFactoryWrapper();
     makePyPlPlotEngineWrapper();
+    makePyPlPlotInfoValidatorWrapper();
 }
 
 void initPyPlModule()

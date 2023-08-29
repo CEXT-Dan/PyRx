@@ -987,3 +987,257 @@ AcPlPlotPageInfo* PyPlPlotPageInfo::impObj(const std::source_location& src /*= s
         throw PyNullObject(src);
     return static_cast<AcPlPlotPageInfo*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------------
+//PyPlPlotInfoValidator
+void makePyPlPlotInfoValidatorWrapper()
+{
+    PyDocString DS("PlotInfoValidator");
+    class_<PyPlPlotInfoValidator, bases<PyPlObject>>("PlotInfoValidator")
+        .def("validate", &PyPlPlotInfoValidator::validate)
+        .def("isCustomPossible", &PyPlPlotInfoValidator::isCustomPossible)
+        .def("matchingPolicy", &PyPlPlotInfoValidator::matchingPolicy)
+        .def("setMediaMatchingPolicy", &PyPlPlotInfoValidator::setMediaMatchingPolicy)
+        .def("setMediaGroupWeight", &PyPlPlotInfoValidator::setMediaGroupWeight)
+        .def("setDefMediaGroupWeight", &PyPlPlotInfoValidator::setDefMediaGroupWeight)
+        .def("mediaGroupWeight", &PyPlPlotInfoValidator::mediaGroupWeight)
+        .def("setSheetMediaGroupWeight", &PyPlPlotInfoValidator::setSheetMediaGroupWeight)
+        .def("setDefSheetMediaGroupWeight", &PyPlPlotInfoValidator::setDefSheetMediaGroupWeight)
+        .def("sheetMediaGroupWeight", &PyPlPlotInfoValidator::sheetMediaGroupWeight)
+        .def("setMediaBoundsWeight", &PyPlPlotInfoValidator::setMediaBoundsWeight)
+        .def("setDefMediaBoundsWeight", &PyPlPlotInfoValidator::setDefMediaBoundsWeight)
+        .def("mediaBoundsWeight", &PyPlPlotInfoValidator::mediaBoundsWeight)
+        .def("setPrintableBoundsWeight", &PyPlPlotInfoValidator::setPrintableBoundsWeight)
+        .def("setDefPrintableBoundsWeight", &PyPlPlotInfoValidator::setDefPrintableBoundsWeight)
+        .def("printableBoundsWeight", &PyPlPlotInfoValidator::printableBoundsWeight)
+        .def("setDimensionalWeight", &PyPlPlotInfoValidator::setDimensionalWeight)
+        .def("setDefDimensionalWeight", &PyPlPlotInfoValidator::setDefDimensionalWeight)
+        .def("dimensionalWeight", &PyPlPlotInfoValidator::dimensionalWeight)
+        .def("setSheetDimensionalWeight", &PyPlPlotInfoValidator::setSheetDimensionalWeight)
+        .def("setDefSheetDimensionalWeight", &PyPlPlotInfoValidator::setDefSheetDimensionalWeight)
+        .def("sheetDimensionalWeight", &PyPlPlotInfoValidator::sheetDimensionalWeight)
+        .def("setMediaMatchingThreshold", &PyPlPlotInfoValidator::setMediaMatchingThreshold)
+        .def("setDefMediaMatchingThreshold", &PyPlPlotInfoValidator::setDefMediaMatchingThreshold)
+        .def("mediaMatchingThreshold", &PyPlPlotInfoValidator::mediaMatchingThreshold)
+        .def("desc", &PyPlPlotInfoValidator::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyPlPlotInfoValidator::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyPlPlotInfoValidator::PyPlPlotInfoValidator()
+    : PyPlObject(new AcPlPlotInfoValidator(), true)
+{
+}
+
+
+PyPlPlotInfoValidator::PyPlPlotInfoValidator(AcPlPlotInfoValidator* ptr, bool autoDelete)
+    : PyPlObject(ptr, autoDelete)
+{
+}
+
+PyPlPlotInfoValidator::PyPlPlotInfoValidator(const AcPlPlotInfoValidator* ptr)
+    : PyPlObject(ptr)
+{
+}
+
+void PyPlPlotInfoValidator::validate(PyPlPlotInfo& info)
+{
+    PyThrowBadEs(impObj()->validate(*info.impObj())); 
+}
+
+AcPlPlotInfoValidator::eCustomSizeResult PyPlPlotInfoValidator::isCustomPossible(PyPlPlotInfo& info)
+{
+    return (AcPlPlotInfoValidator::eCustomSizeResult)impObj()->isCustomPossible(*info.impObj());
+}
+
+AcPlPlotInfoValidator::MatchingPolicy PyPlPlotInfoValidator::matchingPolicy() const
+{
+    return impObj()->matchingPolicy();
+}
+
+void PyPlPlotInfoValidator::setMediaMatchingPolicy(AcPlPlotInfoValidator::MatchingPolicy policy)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    impObj()->setMediaMatchingPolicy(policy);
+#endif
+}
+
+void PyPlPlotInfoValidator::setMediaGroupWeight(unsigned int weight)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    impObj()->setMediaGroupWeight(weight);
+#endif
+}
+
+void PyPlPlotInfoValidator::setDefMediaGroupWeight()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    impObj()->setMediaGroupWeight();
+#endif
+}
+
+unsigned int PyPlPlotInfoValidator::mediaGroupWeight() const
+{
+    return impObj()->mediaGroupWeight();
+}
+
+void PyPlPlotInfoValidator::setSheetMediaGroupWeight(unsigned int weight)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    impObj()->setSheetMediaGroupWeight(weight);
+#endif
+}
+
+void PyPlPlotInfoValidator::setDefSheetMediaGroupWeight()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    impObj()->setSheetMediaGroupWeight();
+#endif
+}
+
+unsigned int PyPlPlotInfoValidator::sheetMediaGroupWeight() const
+{
+    return impObj()->sheetMediaGroupWeight();
+}
+
+void PyPlPlotInfoValidator::setMediaBoundsWeight(unsigned int weight)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setMediaBoundsWeight(weight);
+#endif
+}
+
+void PyPlPlotInfoValidator::setDefMediaBoundsWeight()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setMediaBoundsWeight();
+#endif
+}
+
+unsigned int PyPlPlotInfoValidator::mediaBoundsWeight() const
+{
+    return impObj()->mediaBoundsWeight();
+}
+
+void PyPlPlotInfoValidator::setPrintableBoundsWeight(unsigned int weight)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setPrintableBoundsWeight(weight);
+#endif
+}
+
+void PyPlPlotInfoValidator::setDefPrintableBoundsWeight()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setPrintableBoundsWeight();
+#endif
+}
+
+unsigned int PyPlPlotInfoValidator::printableBoundsWeight() const
+{
+    return impObj()->printableBoundsWeight();
+}
+
+void PyPlPlotInfoValidator::setDimensionalWeight(unsigned int weight)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setDimensionalWeight(weight);
+#endif
+}
+
+void PyPlPlotInfoValidator::setDefDimensionalWeight()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setDimensionalWeight();
+#endif
+}
+
+unsigned int PyPlPlotInfoValidator::dimensionalWeight() const
+{
+    return impObj()->dimensionalWeight();
+}
+
+void PyPlPlotInfoValidator::setSheetDimensionalWeight(unsigned int weight)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSheetDimensionalWeight(weight);
+#endif
+}
+
+void PyPlPlotInfoValidator::setDefSheetDimensionalWeight()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSheetDimensionalWeight();
+#endif
+}
+
+unsigned int PyPlPlotInfoValidator::sheetDimensionalWeight() const
+{
+    return impObj()->sheetDimensionalWeight();
+}
+
+void PyPlPlotInfoValidator::setDefMediaMatchingThreshold()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setMediaMatchingThreshold();
+#endif
+}
+
+unsigned int PyPlPlotInfoValidator::mediaMatchingThreshold() const
+{
+    return impObj()->mediaMatchingThreshold();
+}
+
+void PyPlPlotInfoValidator::setMediaMatchingThreshold(unsigned int threshold)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setMediaMatchingThreshold(threshold);
+#endif
+}
+
+PyRxClass PyPlPlotInfoValidator::desc()
+{
+    return PyRxClass(AcPlPlotInfoValidator::desc(), false);
+}
+
+std::string PyPlPlotInfoValidator::className()
+{
+    return "AcPlPlotInfoValidator";
+}
+
+AcPlPlotInfoValidator* PyPlPlotInfoValidator::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+    return static_cast<AcPlPlotInfoValidator*>(m_pyImp.get());
+}

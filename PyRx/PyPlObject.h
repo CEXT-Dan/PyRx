@@ -220,3 +220,53 @@ public:
 public:
     inline AcPlPlotPageInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------------
+//PyPlPlotInfoValidator
+void makePyPlPlotInfoValidatorWrapper();
+class PyPlPlotInfoValidator : public PyPlObject
+{
+public:
+    PyPlPlotInfoValidator();
+    PyPlPlotInfoValidator(const AcPlPlotInfoValidator* ptr);
+    PyPlPlotInfoValidator(AcPlPlotInfoValidator* ptr, bool autoDelete);
+    virtual ~PyPlPlotInfoValidator() override = default;
+
+    void                validate(PyPlPlotInfo& info);
+    AcPlPlotInfoValidator::eCustomSizeResult isCustomPossible(PyPlPlotInfo& info);
+    AcPlPlotInfoValidator::MatchingPolicy matchingPolicy() const;
+    void                setMediaMatchingPolicy(AcPlPlotInfoValidator::MatchingPolicy policy);
+
+    void                setMediaGroupWeight(unsigned int weight);
+    void                setDefMediaGroupWeight();
+    unsigned int        mediaGroupWeight() const;
+    
+    void                setSheetMediaGroupWeight(unsigned int weight);
+    void                setDefSheetMediaGroupWeight();
+    unsigned int        sheetMediaGroupWeight() const;
+    
+    void                setMediaBoundsWeight(unsigned int weight);
+    void                setDefMediaBoundsWeight();
+    unsigned int        mediaBoundsWeight() const;
+    
+    void                setPrintableBoundsWeight(unsigned int weight);
+    void                setDefPrintableBoundsWeight();
+    unsigned int        printableBoundsWeight() const;
+    
+    void                setDimensionalWeight(unsigned int weight);
+    void                setDefDimensionalWeight();
+    unsigned int        dimensionalWeight() const;
+    
+    void                setSheetDimensionalWeight(unsigned int weight);
+    void                setDefSheetDimensionalWeight();
+    unsigned int        sheetDimensionalWeight() const;
+    
+    void                setMediaMatchingThreshold(unsigned int threshold);
+    void                setDefMediaMatchingThreshold();
+    unsigned int        mediaMatchingThreshold() const;
+
+    static PyRxClass    desc();
+    static std::string  className();
+public:
+    inline AcPlPlotInfoValidator* impObj(const std::source_location& src = std::source_location::current()) const;
+};
