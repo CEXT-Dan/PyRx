@@ -286,6 +286,9 @@
     <ClCompile Include="PyAcPl.cpp">
       <Filter>Source Files\PyPl</Filter>
     </ClCompile>
+    <ClCompile Include="PyPlPlotProgressDialog.cpp">
+      <Filter>Source Files\PyPl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -574,6 +577,9 @@
       <Filter>Header Files\PyPl</Filter>
     </ClInclude>
     <ClInclude Include="PyAcPl.h">
+      <Filter>Header Files\PyPl</Filter>
+    </ClInclude>
+    <ClInclude Include="PyPlPlotProgressDialog.h">
       <Filter>Header Files\PyPl</Filter>
     </ClInclude>
   </ItemGroup>
