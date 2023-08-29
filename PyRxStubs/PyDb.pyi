@@ -44757,7 +44757,7 @@ getLocaleMediaName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (int)arg3) 
       '''setCanonicalMediaName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (str)arg3) -> None :
 
     C++ signature :
-        void setCanonicalMediaName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
+        void setCanonicalMediaName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def setClosestMediaName (self, *args, **kwargs)-> None:
       '''setClosestMediaName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (float)arg3, (float)arg4, (PlotPaperUnits)arg5, (bool)arg6) -> None :
@@ -44793,12 +44793,12 @@ getLocaleMediaName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (int)arg3) 
       '''setPlotCfgName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (str)arg3) -> None :
 
     C++ signature :
-        void setPlotCfgName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})
+        void setPlotCfgName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
 setPlotCfgName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (str)arg3, (str)arg4) -> None :
 
     C++ signature :
-        void setPlotCfgName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
+        void setPlotCfgName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def setPlotOrigin (self, *args, **kwargs)-> None:
       '''setPlotOrigin( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (float)arg3, (float)arg4) -> None :

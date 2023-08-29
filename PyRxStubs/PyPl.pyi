@@ -7,6 +7,167 @@ import PyAp
 import PyEd
 import PyPl
 
+class CustomSizeResult:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eDeviceLoadFailed (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def eException (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def eMustCreatePC3 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def ePC3DirReadOnly (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def ePC3FileReadOnly (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def ePMPDirMissing (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def ePMPDirReadOnly (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def ePMPFileReadOnly (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def ePossible (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def eRotationRequired (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def eSizeTooBig (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def eUnknownErrPC3File (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def eUnknownErrPMPDir (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def eUnknownErrPMPFile (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def eWidthAndHeightMustBePositive (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class DSDEntry:
     def NPS (self, *args, **kwargs)-> str:
       '''NPS( (DSDEntry)arg1) -> str :
@@ -145,6 +306,134 @@ class DSDEntry:
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > traceSession(class PyPlDSDEntry {lvalue})'''
+    ...
+
+class MatchingPolicy:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kMatchDisabled  (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMatchEnabled  (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMatchEnabledCustom  (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMatchEnabledTmpCustom  (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class PlObject:
@@ -578,6 +867,12 @@ createPreviewEngine( (int)arg1) -> PlotEngine :
     C++ signature :
         class PyPlPlotEngine createPublishEngine()'''
     ...
+    def processPlotState (self, *args, **kwargs)-> PyPl.ProcessPlotState:
+      '''processPlotState() -> ProcessPlotState :
+
+    C++ signature :
+        enum ProcessPlotState processPlotState()'''
+    ...
 
 class PlotInfo:
     def OrgFilePath (self, *args, **kwargs)-> str:
@@ -704,6 +999,194 @@ class PlotInfo:
         class PyDbPlotSettings validatedSettings(class PyPlPlotInfo {lvalue})'''
     ...
 
+class PlotInfoValidator:
+    def __init__ (self, *args, **kwargs)-> None:
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className ()-> str:
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None:
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def dimensionalWeight (self, *args, **kwargs)-> int:
+      '''dimensionalWeight( (PlotInfoValidator)arg1) -> int :
+
+    C++ signature :
+        unsigned int dimensionalWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def dispose (self: RxObject)-> None:
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int:
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass:
+      '''                             '''
+    ...
+    def isCustomPossible (self, *args, **kwargs)-> PyPl.CustomSizeResult:
+      '''isCustomPossible( (PlotInfoValidator)arg1, (PlotInfo)arg2) -> CustomSizeResult :
+
+    C++ signature :
+        enum AcPlPlotInfoValidator::eCustomSizeResult isCustomPossible(class PyPlPlotInfoValidator {lvalue},class PyPlPlotInfo {lvalue})'''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool:
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool:
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None:
+      '''                             '''
+    ...
+    def matchingPolicy (self, *args, **kwargs)-> PyPl.MatchingPolicy:
+      '''matchingPolicy( (PlotInfoValidator)arg1) -> MatchingPolicy :
+
+    C++ signature :
+        enum AcPlPlotInfoValidator::MatchingPolicy matchingPolicy(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def mediaBoundsWeight (self, *args, **kwargs)-> int:
+      '''mediaBoundsWeight( (PlotInfoValidator)arg1) -> int :
+
+    C++ signature :
+        unsigned int mediaBoundsWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def mediaGroupWeight (self, *args, **kwargs)-> int:
+      '''mediaGroupWeight( (PlotInfoValidator)arg1) -> int :
+
+    C++ signature :
+        unsigned int mediaGroupWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def mediaMatchingThreshold (self, *args, **kwargs)-> int:
+      '''mediaMatchingThreshold( (PlotInfoValidator)arg1) -> int :
+
+    C++ signature :
+        unsigned int mediaMatchingThreshold(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def printableBoundsWeight (self, *args, **kwargs)-> int:
+      '''printableBoundsWeight( (PlotInfoValidator)arg1) -> int :
+
+    C++ signature :
+        unsigned int printableBoundsWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject:
+      '''                             '''
+    ...
+    def setDefDimensionalWeight (self, *args, **kwargs)-> None:
+      '''setDefDimensionalWeight( (PlotInfoValidator)arg1) -> None :
+
+    C++ signature :
+        void setDefDimensionalWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def setDefMediaBoundsWeight (self, *args, **kwargs)-> None:
+      '''setDefMediaBoundsWeight( (PlotInfoValidator)arg1) -> None :
+
+    C++ signature :
+        void setDefMediaBoundsWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def setDefMediaGroupWeight (self, *args, **kwargs)-> None:
+      '''setDefMediaGroupWeight( (PlotInfoValidator)arg1) -> None :
+
+    C++ signature :
+        void setDefMediaGroupWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def setDefMediaMatchingThreshold (self, *args, **kwargs)-> None:
+      '''setDefMediaMatchingThreshold( (PlotInfoValidator)arg1) -> None :
+
+    C++ signature :
+        void setDefMediaMatchingThreshold(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def setDefPrintableBoundsWeight (self, *args, **kwargs)-> None:
+      '''setDefPrintableBoundsWeight( (PlotInfoValidator)arg1) -> None :
+
+    C++ signature :
+        void setDefPrintableBoundsWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def setDefSheetDimensionalWeight (self, *args, **kwargs)-> None:
+      '''setDefSheetDimensionalWeight( (PlotInfoValidator)arg1) -> None :
+
+    C++ signature :
+        void setDefSheetDimensionalWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def setDefSheetMediaGroupWeight (self, *args, **kwargs)-> None:
+      '''setDefSheetMediaGroupWeight( (PlotInfoValidator)arg1) -> None :
+
+    C++ signature :
+        void setDefSheetMediaGroupWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def setDimensionalWeight (self, *args, **kwargs)-> None:
+      '''setDimensionalWeight( (PlotInfoValidator)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setDimensionalWeight(class PyPlPlotInfoValidator {lvalue},unsigned int)'''
+    ...
+    def setMediaBoundsWeight (self, *args, **kwargs)-> None:
+      '''setMediaBoundsWeight( (PlotInfoValidator)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setMediaBoundsWeight(class PyPlPlotInfoValidator {lvalue},unsigned int)'''
+    ...
+    def setMediaGroupWeight (self, *args, **kwargs)-> None:
+      '''setMediaGroupWeight( (PlotInfoValidator)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setMediaGroupWeight(class PyPlPlotInfoValidator {lvalue},unsigned int)'''
+    ...
+    def setMediaMatchingPolicy (self, *args, **kwargs)-> None:
+      '''setMediaMatchingPolicy( (PlotInfoValidator)arg1, (MatchingPolicy)arg2) -> None :
+
+    C++ signature :
+        void setMediaMatchingPolicy(class PyPlPlotInfoValidator {lvalue},enum AcPlPlotInfoValidator::MatchingPolicy)'''
+    ...
+    def setMediaMatchingThreshold (self, *args, **kwargs)-> None:
+      '''setMediaMatchingThreshold( (PlotInfoValidator)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setMediaMatchingThreshold(class PyPlPlotInfoValidator {lvalue},unsigned int)'''
+    ...
+    def setPrintableBoundsWeight (self, *args, **kwargs)-> None:
+      '''setPrintableBoundsWeight( (PlotInfoValidator)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setPrintableBoundsWeight(class PyPlPlotInfoValidator {lvalue},unsigned int)'''
+    ...
+    def setSheetDimensionalWeight (self, *args, **kwargs)-> None:
+      '''setSheetDimensionalWeight( (PlotInfoValidator)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setSheetDimensionalWeight(class PyPlPlotInfoValidator {lvalue},unsigned int)'''
+    ...
+    def setSheetMediaGroupWeight (self, *args, **kwargs)-> None:
+      '''setSheetMediaGroupWeight( (PlotInfoValidator)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setSheetMediaGroupWeight(class PyPlPlotInfoValidator {lvalue},unsigned int)'''
+    ...
+    def sheetDimensionalWeight (self, *args, **kwargs)-> int:
+      '''sheetDimensionalWeight( (PlotInfoValidator)arg1) -> int :
+
+    C++ signature :
+        unsigned int sheetDimensionalWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def sheetMediaGroupWeight (self, *args, **kwargs)-> int:
+      '''sheetMediaGroupWeight( (PlotInfoValidator)arg1) -> int :
+
+    C++ signature :
+        unsigned int sheetMediaGroupWeight(class PyPlPlotInfoValidator {lvalue})'''
+    ...
+    def validate (self, *args, **kwargs)-> None:
+      '''validate( (PlotInfoValidator)arg1, (PlotInfo)arg2) -> None :
+
+    C++ signature :
+        void validate(class PyPlPlotInfoValidator {lvalue},class PyPlPlotInfo {lvalue})'''
+    ...
+
 class PlotPageInfo:
     def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
@@ -757,7 +1240,7 @@ class PlotPageInfo:
       '''                             '''
     ...
 
-class ProcessPlotState :
+class ProcessPlotState:
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
@@ -818,13 +1301,13 @@ Also known as the population count.
     def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBackgroundPlotting  (self, *args, **kwargs)-> None:
+    def kBackgroundPlotting (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kForegroundPlotting  (self, *args, **kwargs)-> None:
+    def kForegroundPlotting (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNotPlotting  (self, *args, **kwargs)-> None:
+    def kNotPlotting (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def name (self, *args, **kwargs)-> None:
