@@ -734,7 +734,8 @@ void makePyDbPlotSettingsValidatorWrapper()
         .def("setPlotRotation", &PyDbPlotSettingsValidator::setPlotRotation)
         .def("setPlotCentered", &PyDbPlotSettingsValidator::setPlotCentered)
         .def("setPlotType", &PyDbPlotSettingsValidator::setPlotType)
-        .def("setPlotWindowArea", &PyDbPlotSettingsValidator::setPlotWindowArea)
+        .def("setPlotWindowArea", &PyDbPlotSettingsValidator::setPlotWindowArea1)
+        .def("setPlotWindowArea", &PyDbPlotSettingsValidator::setPlotWindowArea2)
         .def("setPlotViewName", &PyDbPlotSettingsValidator::setPlotViewName)
         .def("setUseStandardScale", &PyDbPlotSettingsValidator::setUseStandardScale)
         .def("setCustomPrintScale", &PyDbPlotSettingsValidator::setCustomPrintScale)
@@ -753,17 +754,17 @@ void makePyDbPlotSettingsValidatorWrapper()
         ;
 }
 
-void PyDbPlotSettingsValidator::setPlotCfgName1(PyDbPlotSettings& settings, std::string& plotDeviceName)
+void PyDbPlotSettingsValidator::setPlotCfgName1(PyDbPlotSettings& settings, const std::string& plotDeviceName)
 {
     PyThrowBadEs(impObj()->setPlotCfgName(settings.impObj(), utf8_to_wstr(plotDeviceName).c_str()));
 }
 
-void PyDbPlotSettingsValidator::setPlotCfgName2(PyDbPlotSettings& settings, std::string& plotDeviceName, std::string& mediaName)
+void PyDbPlotSettingsValidator::setPlotCfgName2(PyDbPlotSettings& settings, const std::string& plotDeviceName, const std::string& mediaName)
 {
     PyThrowBadEs(impObj()->setPlotCfgName(settings.impObj(), utf8_to_wstr(plotDeviceName).c_str(), utf8_to_wstr(mediaName).c_str()));
 }
 
-void PyDbPlotSettingsValidator::setCanonicalMediaName(PyDbPlotSettings& settings, std::string& mediaName)
+void PyDbPlotSettingsValidator::setCanonicalMediaName(PyDbPlotSettings& settings, const std::string& mediaName)
 {
     PyThrowBadEs(impObj()->setCanonicalMediaName(settings.impObj(), utf8_to_wstr(mediaName).c_str()));
 }
@@ -793,9 +794,14 @@ void PyDbPlotSettingsValidator::setPlotType(PyDbPlotSettings& pPlotSet, const Pl
     PyThrowBadEs(impObj()->setPlotType(pPlotSet.impObj(), plotAreaType));
 }
 
-void PyDbPlotSettingsValidator::setPlotWindowArea(PyDbPlotSettings& pPlotSet, const double xmin, const double ymin, const double xmax, const double ymax)
+void PyDbPlotSettingsValidator::setPlotWindowArea1(PyDbPlotSettings& pPlotSet, const double xmin, const double ymin, const double xmax, const double ymax)
 {
     PyThrowBadEs(impObj()->setPlotWindowArea(pPlotSet.impObj(), xmin, ymin, xmax, ymax));
+}
+
+void PyDbPlotSettingsValidator::setPlotWindowArea2(PyDbPlotSettings& pPlotSet, AcDbExtents2d& ex)
+{
+    PyThrowBadEs(impObj()->setPlotWindowArea(pPlotSet.impObj(), ex.minPoint().x, ex.minPoint().y, ex.maxPoint().x, ex.maxPoint().y));
 }
 
 void PyDbPlotSettingsValidator::setPlotViewName(PyDbPlotSettings& pPlotSet, const std::string& viewName)
