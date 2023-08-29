@@ -56,6 +56,8 @@ def PyRxCmd_doit():
             ps, "DWF6 ePlot.pc3", "ANSI_A_(8.50_x_11.00_Inches)")
         
         pi.setOverrideSettings(ps)
+        
+        piv = Pl.PlotInfoValidator()
 
     except Exception as err:
         print(traceback.format_exc())
