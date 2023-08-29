@@ -67,9 +67,18 @@ void makePyPlPlotEngineWrapper()
         ;
 }
 
-PyPlPlotEngine::PyPlPlotEngine(const AcPlPlotEngine* ptr)
+PyPlPlotEngine::PyPlPlotEngine(AcPlPlotEngine* ptr)
     : m_imp(ptr)
 {
+}
+
+PyPlPlotEngine::~PyPlPlotEngine()
+{
+    if (m_imp != nullptr)
+    {
+        m_imp->destroy();
+        m_imp = nullptr;
+    }
 }
 
 std::string PyPlPlotEngine::className()
@@ -77,11 +86,11 @@ std::string PyPlPlotEngine::className()
     return "AcPlPlotEngine";
 }
 
-const AcPlPlotEngine* PyPlPlotEngine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+AcPlPlotEngine* PyPlPlotEngine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<const AcPlPlotEngine*>(m_imp);
+    return static_cast<AcPlPlotEngine*>(m_imp);
 }
 
 //-----------------------------------------------------------------------------------------

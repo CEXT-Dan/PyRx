@@ -26,12 +26,14 @@ void makePyPlPlotEngineWrapper();
 class PyPlPlotEngine
 {
 public:
-    PyPlPlotEngine(const AcPlPlotEngine* ptr);
-    virtual ~PyPlPlotEngine() = default;
+    PyPlPlotEngine(AcPlPlotEngine* ptr);
+    virtual ~PyPlPlotEngine();
+
+
     static std::string className();
 public:
-    inline const AcPlPlotEngine*   impObj(const std::source_location& src = std::source_location::current()) const;
-    const AcPlPlotEngine* m_imp = nullptr;
+    inline AcPlPlotEngine* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcPlPlotEngine* m_imp = nullptr;
 };
 
 //-----------------------------------------------------------------------------------------
