@@ -4,7 +4,7 @@
 class PyDbObjectId;
 class PyDbDatabase;
 class PyDbLayoutManager;
-
+class PyDbPlotSettings;
 //---------------------------------------------------------------------------------------- -
 //PyDbHostApplicationServices
 void makePyDbHostApplicationServicesWrapper();
@@ -78,7 +78,7 @@ public:
     std::string         getPathNameFromSymbolName(const std::string& symbolName, const std::string& extensions) const;
     std::string         getSymbolNameFromPathName(const std::string& symbolName, const std::string& extensions) const;
     Acad::ErrorStatus   validateCompatibleSymbolName(const std::string& name, bool isNewName, bool allowVerticalBar, bool compatibilityMode) const;
-                                      
+
 public:
     const AcDbSymUtilServices* imp = acdbSymUtil();
 };
@@ -122,3 +122,45 @@ public:
 public:
     AcDbDatabaseSummaryInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+
+//---------------------------------------------------------------------------------------- -
+//PyDbPlotSettingsValidator
+void makePyDbPlotSettingsValidatorWrapper();
+class PyDbPlotSettingsValidator
+{
+public:
+    PyDbPlotSettingsValidator() = default;
+    ~PyDbPlotSettingsValidator() = default;
+
+    void                setPlotCfgName1(PyDbPlotSettings& settings, std::string& plotDeviceName);
+    void                setPlotCfgName2(PyDbPlotSettings& settings, std::string& plotDeviceName, std::string& mediaName);
+    void                setCanonicalMediaName(PyDbPlotSettings& settings, std::string& mediaName);
+    void                setPlotOrigin(PyDbPlotSettings& settings, const double xCoordinate, const double yCoordinate);
+    void                setPlotPaperUnits(PyDbPlotSettings& pPlotSet, const PlotPaperUnits units);
+    void                setPlotRotation(PyDbPlotSettings& pPlotSet, const PlotRotation rotationType);
+    void                setPlotCentered(PyDbPlotSettings& pPlotSet, Adesk::Boolean isCentered);
+    void                setPlotType(PyDbPlotSettings& pPlotSet, const PlotType plotAreaType);
+    void                setPlotWindowArea(PyDbPlotSettings& pPlotSet, const double xmin, const double ymin, const double xmax, const double ymax);
+    void                setPlotViewName(PyDbPlotSettings& pPlotSet, const std::string& viewName);
+    void                setUseStandardScale(PyDbPlotSettings& pPlotSet, Adesk::Boolean useStandard);
+    void                setCustomPrintScale(PyDbPlotSettings& pPlotSet, const double numerator, const double denominator);
+    void                setCurrentStyleSheet(PyDbPlotSettings& pPlotSet, const std::string& styleSheetName);
+    void                setStdScaleType(PyDbPlotSettings& pPlotSet, const StdScaleType scaleType);
+    void                setStdScale(PyDbPlotSettings& pPlotSet, const double standardScale);
+    boost::python::list plotDeviceList();
+    boost::python::list canonicalMediaNameList(PyDbPlotSettings& pPlotSet);
+    std::string         getLocaleMediaName1(PyDbPlotSettings& pPlotSet, const std::string& canonicalName);
+    std::string         getLocaleMediaName2(PyDbPlotSettings& pPlotSet,int index);
+    void                setClosestMediaName(PyDbPlotSettings& pPlotSet, double paperWidth, double paperHeight, PlotPaperUnits units, Adesk::Boolean matchPrintableArea);
+    boost::python::list plotStyleSheetList();
+    void                refreshLists(PyDbPlotSettings& pPlotSet);
+    void                setZoomToPaperOnUpdate(PyDbPlotSettings& pPlotSet,Adesk::Boolean doZoom);
+    void                setDefaultPlotConfig(PyDbPlotSettings& pPlotSet);
+    static std::string  className();
+public:
+    AcDbPlotSettingsValidator* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    AcDbPlotSettingsValidator* m_impl = acdbHostApplicationServices()->plotSettingsValidator();
+};
+

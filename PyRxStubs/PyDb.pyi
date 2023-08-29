@@ -44714,6 +44714,153 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
       '''                             '''
     ...
 
+class PlotSettingsValidator:
+    def __init__ (self, *args, **kwargs)-> None:
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def canonicalMediaNameList (self, *args, **kwargs)-> list:
+      '''canonicalMediaNameList( (PlotSettingsValidator)arg1, (PlotSettings)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list canonicalMediaNameList(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue})'''
+    ...
+    def className ()-> str:
+      '''                             '''
+    ...
+    def getLocaleMediaName (self, *args, **kwargs)-> str:
+      '''getLocaleMediaName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (str)arg3) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getLocaleMediaName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+getLocaleMediaName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (int)arg3) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getLocaleMediaName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},int)'''
+    ...
+    def plotDeviceList (self, *args, **kwargs)-> list:
+      '''plotDeviceList( (PlotSettingsValidator)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list plotDeviceList(class PyDbPlotSettingsValidator {lvalue})'''
+    ...
+    def plotStyleSheetList (self, *args, **kwargs)-> list:
+      '''plotStyleSheetList( (PlotSettingsValidator)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list plotStyleSheetList(class PyDbPlotSettingsValidator {lvalue})'''
+    ...
+    def setCanonicalMediaName (self, *args, **kwargs)-> None:
+      '''setCanonicalMediaName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void setCanonicalMediaName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
+    ...
+    def setClosestMediaName (self, *args, **kwargs)-> None:
+      '''setClosestMediaName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (float)arg3, (float)arg4, (PlotPaperUnits)arg5, (bool)arg6) -> None :
+
+    C++ signature :
+        void setClosestMediaName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},double,double,enum AcDbPlotSettings::PlotPaperUnits,bool)'''
+    ...
+    def setCurrentStyleSheet (self, *args, **kwargs)-> None:
+      '''setCurrentStyleSheet( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void setCurrentStyleSheet(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setCustomPrintScale (self, *args, **kwargs)-> None:
+      '''setCustomPrintScale( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (float)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void setCustomPrintScale(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},double,double)'''
+    ...
+    def setDefaultPlotConfig (self, *args, **kwargs)-> None:
+      '''setDefaultPlotConfig( (PlotSettingsValidator)arg1, (PlotSettings)arg2) -> None :
+
+    C++ signature :
+        void setDefaultPlotConfig(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue})'''
+    ...
+    def setPlotCentered (self, *args, **kwargs)-> None:
+      '''setPlotCentered( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setPlotCentered(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setPlotCfgName (self, *args, **kwargs)-> None:
+      '''setPlotCfgName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void setPlotCfgName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})
+
+setPlotCfgName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (str)arg3, (str)arg4) -> None :
+
+    C++ signature :
+        void setPlotCfgName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
+    ...
+    def setPlotOrigin (self, *args, **kwargs)-> None:
+      '''setPlotOrigin( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (float)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void setPlotOrigin(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},double,double)'''
+    ...
+    def setPlotPaperUnits (self, *args, **kwargs)-> None:
+      '''setPlotPaperUnits( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (PlotPaperUnits)arg3) -> None :
+
+    C++ signature :
+        void setPlotPaperUnits(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::PlotPaperUnits)'''
+    ...
+    def setPlotRotation (self, *args, **kwargs)-> None:
+      '''setPlotRotation( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (PlotRotation)arg3) -> None :
+
+    C++ signature :
+        void setPlotRotation(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::PlotRotation)'''
+    ...
+    def setPlotType (self, *args, **kwargs)-> None:
+      '''setPlotType( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (PlotType)arg3) -> None :
+
+    C++ signature :
+        void setPlotType(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::PlotType)'''
+    ...
+    def setPlotViewName (self, *args, **kwargs)-> None:
+      '''setPlotViewName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void setPlotViewName(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setPlotWindowArea (self, *args, **kwargs)-> None:
+      '''setPlotWindowArea( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (float)arg3, (float)arg4, (float)arg5, (float)arg6) -> None :
+
+    C++ signature :
+        void setPlotWindowArea(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},double,double,double,double)'''
+    ...
+    def setStdScale (self, *args, **kwargs)-> None:
+      '''setStdScale( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void setStdScale(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},double)'''
+    ...
+    def setStdScaleType (self, *args, **kwargs)-> None:
+      '''setStdScaleType( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (StdScaleType)arg3) -> None :
+
+    C++ signature :
+        void setStdScaleType(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::StdScaleType)'''
+    ...
+    def setUseStandardScale (self, *args, **kwargs)-> None:
+      '''setUseStandardScale( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setUseStandardScale(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setZoomToPaperOnUpdate (self, *args, **kwargs)-> None:
+      '''setZoomToPaperOnUpdate( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setZoomToPaperOnUpdate(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},bool)'''
+    ...
+
 class PlotStyleNameType:
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''

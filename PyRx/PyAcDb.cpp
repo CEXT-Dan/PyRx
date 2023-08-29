@@ -244,6 +244,7 @@ BOOST_PYTHON_MODULE(PyDb)
 #endif
     makePyDbGroupWrapper();
     makePyDbDatabaseSummaryInfoWrapper();
+    makePyDbPlotSettingsValidatorWrapper();
     makePyDbSnoopDwgFilerWrapper();
     makeDbCoreWrapper();//LAST?
 
