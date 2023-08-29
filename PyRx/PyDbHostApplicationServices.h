@@ -133,15 +133,16 @@ public:
     PyDbPlotSettingsValidator() = default;
     ~PyDbPlotSettingsValidator() = default;
 
-    void                setPlotCfgName1(PyDbPlotSettings& settings, std::string& plotDeviceName);
-    void                setPlotCfgName2(PyDbPlotSettings& settings, std::string& plotDeviceName, std::string& mediaName);
-    void                setCanonicalMediaName(PyDbPlotSettings& settings, std::string& mediaName);
+    void                setPlotCfgName1(PyDbPlotSettings& settings, const std::string& plotDeviceName);
+    void                setPlotCfgName2(PyDbPlotSettings& settings, const std::string& plotDeviceName, const std::string& mediaName);
+    void                setCanonicalMediaName(PyDbPlotSettings& settings, const std::string& mediaName);
     void                setPlotOrigin(PyDbPlotSettings& settings, const double xCoordinate, const double yCoordinate);
     void                setPlotPaperUnits(PyDbPlotSettings& pPlotSet, const PlotPaperUnits units);
     void                setPlotRotation(PyDbPlotSettings& pPlotSet, const PlotRotation rotationType);
     void                setPlotCentered(PyDbPlotSettings& pPlotSet, Adesk::Boolean isCentered);
     void                setPlotType(PyDbPlotSettings& pPlotSet, const PlotType plotAreaType);
-    void                setPlotWindowArea(PyDbPlotSettings& pPlotSet, const double xmin, const double ymin, const double xmax, const double ymax);
+    void                setPlotWindowArea1(PyDbPlotSettings& pPlotSet, const double xmin, const double ymin, const double xmax, const double ymax);
+    void                setPlotWindowArea2(PyDbPlotSettings& pPlotSet, AcDbExtents2d& ex);
     void                setPlotViewName(PyDbPlotSettings& pPlotSet, const std::string& viewName);
     void                setUseStandardScale(PyDbPlotSettings& pPlotSet, Adesk::Boolean useStandard);
     void                setCustomPrintScale(PyDbPlotSettings& pPlotSet, const double numerator, const double denominator);

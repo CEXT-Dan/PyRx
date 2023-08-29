@@ -44834,7 +44834,12 @@ setPlotCfgName( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (str)arg3, (str
       '''setPlotWindowArea( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (float)arg3, (float)arg4, (float)arg5, (float)arg6) -> None :
 
     C++ signature :
-        void setPlotWindowArea(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},double,double,double,double)'''
+        void setPlotWindowArea(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},double,double,double,double)
+
+setPlotWindowArea( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (Extents2d)arg3) -> None :
+
+    C++ signature :
+        void setPlotWindowArea(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue},class AcDbExtents2d {lvalue})'''
     ...
     def setStdScale (self, *args, **kwargs)-> None:
       '''setStdScale( (PlotSettingsValidator)arg1, (PlotSettings)arg2, (float)arg3) -> None :
