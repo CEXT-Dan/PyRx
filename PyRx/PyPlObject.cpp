@@ -14,13 +14,14 @@ void makeAcPlPlotFactoryWrapper()
         .def("createPreviewEngine", &PyPlPlotFactory::createPreviewEngine1)
         .def("createPreviewEngine", &PyPlPlotFactory::createPreviewEngine2).staticmethod("createPreviewEngine")
         .def("createPublishEngine", &PyPlPlotFactory::createPublishEngine).staticmethod("createPublishEngine")
+        .def("processPlotState", &PyPlPlotFactory::processPlotState).staticmethod("processPlotState")
         .def("className", &PyPlPlotFactory::className, DS.SARGS()).staticmethod("className")
         ;
 
-    enum_<ProcessPlotState>("ProcessPlotState ")
-        .value("kNotPlotting ", ProcessPlotState::kNotPlotting)
-        .value("kForegroundPlotting ", ProcessPlotState::kForegroundPlotting)
-        .value("kBackgroundPlotting ", ProcessPlotState::kBackgroundPlotting)
+    enum_<ProcessPlotState>("ProcessPlotState")
+        .value("kNotPlotting", ProcessPlotState::kNotPlotting)
+        .value("kForegroundPlotting", ProcessPlotState::kForegroundPlotting)
+        .value("kBackgroundPlotting", ProcessPlotState::kBackgroundPlotting)
         .export_values()
         ;
 }
@@ -1022,13 +1023,40 @@ void makePyPlPlotInfoValidatorWrapper()
         .def("desc", &PyPlPlotInfoValidator::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlPlotInfoValidator::className, DS.SARGS()).staticmethod("className")
         ;
+
+    enum_<AcPlPlotInfoValidator::MatchingPolicy>("MatchingPolicy")
+        .value("kMatchDisabled", AcPlPlotInfoValidator::MatchingPolicy::kMatchDisabled)
+        .value("kMatchEnabled", AcPlPlotInfoValidator::MatchingPolicy::kMatchEnabled)
+        .value("kMatchEnabledCustom", AcPlPlotInfoValidator::MatchingPolicy::kMatchEnabledCustom)
+        .value("kMatchEnabledTmpCustom", AcPlPlotInfoValidator::MatchingPolicy::kMatchEnabledTmpCustom)
+        .export_values()
+        ;
+
+    enum_<AcPlPlotInfoValidator::eCustomSizeResult>("CustomSizeResult")
+        .value("ePossible", AcPlPlotInfoValidator::eCustomSizeResult::ePossible)
+        .value("eMustCreatePC3", AcPlPlotInfoValidator::eCustomSizeResult::eMustCreatePC3)
+        .value("eRotationRequired", AcPlPlotInfoValidator::eCustomSizeResult::eRotationRequired)
+        .value("ePC3DirReadOnly", AcPlPlotInfoValidator::eCustomSizeResult::ePC3DirReadOnly)
+        .value("ePMPDirReadOnly", AcPlPlotInfoValidator::eCustomSizeResult::ePMPDirReadOnly)
+        .value("ePMPDirMissing", AcPlPlotInfoValidator::eCustomSizeResult::ePMPDirMissing)
+        .value("eUnknownErrPMPDir", AcPlPlotInfoValidator::eCustomSizeResult::eUnknownErrPMPDir)
+        .value("ePC3FileReadOnly", AcPlPlotInfoValidator::eCustomSizeResult::ePC3FileReadOnly)
+        .value("eSizeTooBig", AcPlPlotInfoValidator::eCustomSizeResult::eSizeTooBig)
+        .value("eException", AcPlPlotInfoValidator::eCustomSizeResult::eException)
+        .value("eUnknownErrPC3File", AcPlPlotInfoValidator::eCustomSizeResult::eUnknownErrPC3File)
+        .value("eUnknownErrPMPFile", AcPlPlotInfoValidator::eCustomSizeResult::eUnknownErrPMPFile)
+        .value("ePMPFileReadOnly", AcPlPlotInfoValidator::eCustomSizeResult::ePMPFileReadOnly)
+        .value("eWidthAndHeightMustBePositive", AcPlPlotInfoValidator::eCustomSizeResult::eWidthAndHeightMustBePositive)
+        .value("eDeviceLoadFailed", AcPlPlotInfoValidator::eCustomSizeResult::eDeviceLoadFailed)
+        .export_values()
+        ;
+
 }
 
 PyPlPlotInfoValidator::PyPlPlotInfoValidator()
     : PyPlObject(new AcPlPlotInfoValidator(), true)
 {
 }
-
 
 PyPlPlotInfoValidator::PyPlPlotInfoValidator(AcPlPlotInfoValidator* ptr, bool autoDelete)
     : PyPlObject(ptr, autoDelete)

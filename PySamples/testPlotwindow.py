@@ -58,6 +58,12 @@ def PyRxCmd_doit():
         pi.setOverrideSettings(ps)
         
         piv = Pl.PlotInfoValidator()
+        piv.setMediaMatchingPolicy(Pl.MatchingPolicy.kMatchEnabled)
+        
+        if Pl.PlotFactory.processPlotState != Pl.ProcessPlotState.kNotPlotting:
+            return
+        
+        Pl.PlotEngine = Pl.PlotFactory.createPublishEngine()
 
     except Exception as err:
         print(traceback.format_exc())
