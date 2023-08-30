@@ -23,8 +23,59 @@ void makeAcRxObjectWrapper()
         ;
 }
 
-//-----------------------------------------------------------------------------------------
-//PyRxObject
+// if the object is dbo, close it and return out
+// objects that derived from PyDbObject have m_isDbObject set to true
+// id the object is some sort of global pointer or should not be deleted m_autoDelete should be false
+// examples would be document or current database
+// note: PyDbObject::cast resets the pointer, which call this, but it's not a double delete
+struct PyRxObjectDeleter
+{
+    inline PyRxObjectDeleter(bool autoDelete, bool isDbObject)
+        : m_autoDelete(autoDelete), m_isDbObject(isDbObject)
+    {
+    }
+
+    inline bool isDbroThenClose(AcRxObject* p) const
+    {
+        if (!m_isDbObject)
+        {
+            return false;
+        }
+        else if (m_forceKeepAlive)
+        {
+            return true;
+        }
+        else
+        {
+            AcDbObject* pDbo = static_cast<AcDbObject*>(p);
+            if (!pDbo->objectId().isNull())
+            {
+                if (auto es = pDbo->close(); es != eOk) [[unlikely]] {
+                    acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    inline void operator()(AcRxObject* p) const
+    {
+        if (p == nullptr) [[unlikely]]
+            return;
+        else if (isDbroThenClose(p))
+            return;
+        else if (!m_autoDelete)
+            return;
+        else
+            delete p;
+    }
+
+    bool m_autoDelete = true;
+    bool m_isDbObject = false;
+    bool m_forceKeepAlive = false;
+};
+
 PyRxObject::PyRxObject(const AcRxObject* ptr)
     : m_pyImp(const_cast<AcRxObject*>(ptr), PyRxObjectDeleter(false, false))
 {
