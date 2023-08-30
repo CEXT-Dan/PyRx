@@ -13,9 +13,9 @@ void makeAcPlPlotFactoryWrapper()
     PyDocString DS("PlotFactory");
     class_<PyPlPlotFactory>("PlotFactory", boost::python::no_init)
         .def("createPreviewEngine", &PyPlPlotFactory::createPreviewEngine1)
-        .def("createPreviewEngine", &PyPlPlotFactory::createPreviewEngine2).staticmethod("createPreviewEngine")
-        .def("createPublishEngine", &PyPlPlotFactory::createPublishEngine).staticmethod("createPublishEngine")
-        .def("processPlotState", &PyPlPlotFactory::processPlotState).staticmethod("processPlotState")
+        .def("createPreviewEngine", &PyPlPlotFactory::createPreviewEngine2, DS.SARGS()).staticmethod("createPreviewEngine")
+        .def("createPublishEngine", &PyPlPlotFactory::createPublishEngine, DS.SARGS()).staticmethod("createPublishEngine")
+        .def("processPlotState", &PyPlPlotFactory::processPlotState,DS.SARGS()).staticmethod("processPlotState")
         .def("className", &PyPlPlotFactory::className, DS.SARGS()).staticmethod("className")
         ;
 
