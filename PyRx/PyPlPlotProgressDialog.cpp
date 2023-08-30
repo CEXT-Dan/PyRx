@@ -77,23 +77,18 @@ void makePyPlPlotProgressDialogWrapper()
 }
 
 PyPlPlotProgressDialog::PyPlPlotProgressDialog()
-    : m_impl(acplCreatePlotProgressDialog(adsw_acadMainWnd()))
+    : m_impl(acplCreatePlotProgressDialog(adsw_acadMainWnd()), PyPlPlotProgressDialogDeleter())
 {
 }
 
 PyPlPlotProgressDialog::PyPlPlotProgressDialog(bool bPreview, int nSheets, bool bShowCancelSheetButton)
-    : m_impl(acplCreatePlotProgressDialog(adsw_acadMainWnd(), bPreview, nSheets, nullptr, bShowCancelSheetButton))
+    : m_impl(acplCreatePlotProgressDialog(adsw_acadMainWnd(), bPreview, nSheets, nullptr, bShowCancelSheetButton), PyPlPlotProgressDialogDeleter())
 {
 }
 
 PyPlPlotProgressDialog::PyPlPlotProgressDialog(UINT_PTR hwnd, bool bPreview, int nSheets, bool bShowCancelSheetButton)
-    : m_impl(acplCreatePlotProgressDialog((HWND)hwnd, bPreview, nSheets, nullptr, bShowCancelSheetButton))
+    : m_impl(acplCreatePlotProgressDialog((HWND)hwnd, bPreview, nSheets, nullptr, bShowCancelSheetButton), PyPlPlotProgressDialogDeleter())
 {
-}
-
-PyPlPlotProgressDialog::~PyPlPlotProgressDialog()
-{
-    this->destroy();
 }
 
 bool PyPlPlotProgressDialog::isPlotCancelled() const
@@ -240,11 +235,7 @@ bool PyPlPlotProgressDialog::isSingleSheetPlot() const
 
 void PyPlPlotProgressDialog::destroy()
 {
-    if (m_impl == nullptr)
-    {
-        m_impl->destroy();
-        m_impl = nullptr;
-    }
+    m_impl.reset();
 }
 
 std::string PyPlPlotProgressDialog::className()
@@ -256,5 +247,5 @@ AcPlPlotProgressDialog* PyPlPlotProgressDialog::impObj(const std::source_locatio
 {
     if (m_impl == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_impl;
+    return m_impl.get();
 }
