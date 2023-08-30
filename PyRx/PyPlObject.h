@@ -6,6 +6,8 @@ class PyPlDSDEntry;
 class PyDbPlotSettings;
 class PyPlPlotConfig;
 class PyPlPlotEngine;
+class PyPlPlotInfo;
+class PyPlPlotPageInfo;
 
 //-----------------------------------------------------------------------------------------
 //AcPlPlotFactory
@@ -29,6 +31,17 @@ public:
     PyPlPlotEngine(AcPlPlotEngine* ptr);
     virtual ~PyPlPlotEngine();
 
+    void beginDocument(PyPlPlotInfo& plotInfo, const std::string& pDocname, Adesk::Int32 nCopies, bool bPlotToFile, const std::string& pFileName);
+    void endDocument();
+
+    void beginPage(PyPlPlotPageInfo& pageInfo, PyPlPlotInfo& plotInfo, bool bLastPage);
+    void endPage();
+
+    void beginGenerateGraphics();
+    void endGenerateGraphics();
+
+    void destroy();
+    bool isBackgroundPackaging() const;
 
     static std::string className();
 public:

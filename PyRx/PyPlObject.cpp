@@ -74,11 +74,51 @@ PyPlPlotEngine::PyPlPlotEngine(AcPlPlotEngine* ptr)
 
 PyPlPlotEngine::~PyPlPlotEngine()
 {
+    this->destroy();
+}
+
+void PyPlPlotEngine::beginDocument(PyPlPlotInfo& plotInfo, const std::string& pDocname, Adesk::Int32 nCopies, bool bPlotToFile, const std::string& pFileName)
+{
+    PyThrowBadEs(impObj()->beginDocument(*plotInfo.impObj(), utf8_to_wstr(pDocname).c_str(), NULL, nCopies, bPlotToFile, utf8_to_wstr(pFileName).c_str()));
+}
+
+void PyPlPlotEngine::endDocument()
+{
+    PyThrowBadEs(impObj()->endDocument());
+}
+
+void PyPlPlotEngine::beginPage(PyPlPlotPageInfo& pageInfo, PyPlPlotInfo& plotInfo, bool bLastPage)
+{
+    PyThrowBadEs(impObj()->beginPage(*pageInfo.impObj(), *plotInfo.impObj(), bLastPage));
+}
+
+void PyPlPlotEngine::endPage()
+{
+    PyThrowBadEs(impObj()->endPage());
+}
+
+void PyPlPlotEngine::beginGenerateGraphics()
+{
+    PyThrowBadEs(impObj()->beginGenerateGraphics());
+}
+
+void PyPlPlotEngine::endGenerateGraphics()
+{
+    PyThrowBadEs(impObj()->endGenerateGraphics());
+}
+
+void PyPlPlotEngine::destroy()
+{
     if (m_imp != nullptr)
     {
         m_imp->destroy();
         m_imp = nullptr;
     }
+}
+
+bool PyPlPlotEngine::isBackgroundPackaging() const
+{
+    return impObj()->isBackgroundPackaging();
 }
 
 std::string PyPlPlotEngine::className()

@@ -63,7 +63,19 @@ def PyRxCmd_doit():
         if Pl.PlotFactory.processPlotState != Pl.ProcessPlotState.kNotPlotting:
             return
         
-        Pl.PlotEngine = Pl.PlotFactory.createPublishEngine()
+        pe = Pl.PlotFactory.createPublishEngine()
+        
+        ppd = Pl.PlotProgressDialog(False, 1, True)
+        ppd.setPlotMsgString(Pl.PlotMSGIndex.kDialogTitle,"Custom Plot Progress")
+        ppd.setPlotMsgString(Pl.PlotMSGIndex.kCancelSheetBtnMsg,"Cancel Job")
+        ppd.setPlotMsgString(Pl.PlotMSGIndex.kCancelSheetBtnMsg,"Cancel Sheet")
+        ppd.setPlotMsgString(Pl.PlotMSGIndex.kSheetSetProgressCaption,"Sheet Set Progress")
+        ppd.setPlotMsgString(Pl.PlotMSGIndex.kSheetProgressCaption,  "Sheet Progress")
+        
+        ppd.setPlotProgressRange(0,100)
+        ppd.setPlotProgressPos(0)
+        
+        pe.
 
     except Exception as err:
         print(traceback.format_exc())
