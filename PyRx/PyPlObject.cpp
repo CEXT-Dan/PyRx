@@ -63,7 +63,15 @@ void makePyPlPlotEngineWrapper()
 {
     PyDocString DS("PlotEngine");
     class_<PyPlPlotEngine>("PlotEngine", boost::python::no_init)
-        .def("className", &PyPlObject::className, DS.SARGS()).staticmethod("className")
+        .def("beginDocument", &PyPlPlotEngine::beginDocument)
+        .def("endDocument", &PyPlPlotEngine::endDocument)
+        .def("beginPage", &PyPlPlotEngine::beginPage)
+        .def("endPage", &PyPlPlotEngine::endPage)
+        .def("beginGenerateGraphics", &PyPlPlotEngine::beginGenerateGraphics)
+        .def("endGenerateGraphics", &PyPlPlotEngine::endGenerateGraphics)
+        .def("destroy", &PyPlPlotEngine::destroy)
+        .def("isBackgroundPackaging", &PyPlPlotEngine::isBackgroundPackaging)
+        .def("className", &PyPlPlotEngine::className, DS.SARGS()).staticmethod("className")
         ;
 }
 

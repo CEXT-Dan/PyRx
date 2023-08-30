@@ -966,8 +966,56 @@ class PlotEngine:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+    def beginDocument (self, *args, **kwargs)-> None:
+      '''beginDocument( (PlotEngine)arg1, (PlotInfo)arg2, (str)arg3, (int)arg4, (bool)arg5, (str)arg6) -> None :
+
+    C++ signature :
+        void beginDocument(class PyPlPlotEngine {lvalue},class PyPlPlotInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,bool,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def beginGenerateGraphics (self, *args, **kwargs)-> None:
+      '''beginGenerateGraphics( (PlotEngine)arg1) -> None :
+
+    C++ signature :
+        void beginGenerateGraphics(class PyPlPlotEngine {lvalue})'''
+    ...
+    def beginPage (self, *args, **kwargs)-> None:
+      '''beginPage( (PlotEngine)arg1, (PlotPageInfo)arg2, (PlotInfo)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void beginPage(class PyPlPlotEngine {lvalue},class PyPlPlotPageInfo {lvalue},class PyPlPlotInfo {lvalue},bool)'''
+    ...
     def className ()-> str:
       '''                             '''
+    ...
+    def destroy (self, *args, **kwargs)-> None:
+      '''destroy( (PlotEngine)arg1) -> None :
+
+    C++ signature :
+        void destroy(class PyPlPlotEngine {lvalue})'''
+    ...
+    def endDocument (self, *args, **kwargs)-> None:
+      '''endDocument( (PlotEngine)arg1) -> None :
+
+    C++ signature :
+        void endDocument(class PyPlPlotEngine {lvalue})'''
+    ...
+    def endGenerateGraphics (self, *args, **kwargs)-> None:
+      '''endGenerateGraphics( (PlotEngine)arg1) -> None :
+
+    C++ signature :
+        void endGenerateGraphics(class PyPlPlotEngine {lvalue})'''
+    ...
+    def endPage (self, *args, **kwargs)-> None:
+      '''endPage( (PlotEngine)arg1) -> None :
+
+    C++ signature :
+        void endPage(class PyPlPlotEngine {lvalue})'''
+    ...
+    def isBackgroundPackaging (self, *args, **kwargs)-> bool:
+      '''isBackgroundPackaging( (PlotEngine)arg1) -> bool :
+
+    C++ signature :
+        bool isBackgroundPackaging(class PyPlPlotEngine {lvalue})'''
     ...
 
 class PlotFactory:
