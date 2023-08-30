@@ -212,6 +212,7 @@
     <ClCompile Include="PyLayerFilter.cpp" />
     <ClCompile Include="PyLispService.cpp" />
     <ClCompile Include="PyPlObject.cpp" />
+    <ClCompile Include="PyPlPlotConfigManager.cpp" />
     <ClCompile Include="PyPlPlotProgressDialog.cpp" />
     <ClCompile Include="PyRxApp.cpp" />
     <ClCompile Include="PyRxObject.cpp" />
@@ -312,6 +313,7 @@
     <ClInclude Include="PyLayerFilter.h" />
     <ClInclude Include="PyLispService.h" />
     <ClInclude Include="PyPlObject.h" />
+    <ClInclude Include="PyPlPlotConfigManager.h" />
     <ClInclude Include="PyPlPlotProgressDialog.h" />
     <ClInclude Include="PyRxApp.h" />
     <ClInclude Include="PyRxObject.h" />
