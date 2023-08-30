@@ -189,13 +189,17 @@ class RxAutoOutStr
 {
 public:
     RxAutoOutStr() = default;
-    ~RxAutoOutStr()
+    inline ~RxAutoOutStr()
     {
         if (buf != nullptr)
         {
             acutDelString(buf);
             buf = nullptr;
         }
+    }
+    inline std::string str() const
+    {
+        return wstr_to_utf8(buf);
     }
     RxAutoOutStr(RxAutoOutStr const&) = delete;
     RxAutoOutStr& operator=(RxAutoOutStr const&) = delete;

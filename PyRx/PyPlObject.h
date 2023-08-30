@@ -206,6 +206,14 @@ public:
     PyPlPlotConfig(AcPlPlotConfig* ptr, bool autoDelete);
     virtual ~PyPlPlotConfig() override = default;
 
+    boost::python::tuple    getDescriptionFields() const;
+    std::string             deviceName() const;
+    std::string             fullPath() const;
+    unsigned int            maxDeviceDPI() const;
+    unsigned long           deviceType() const;
+    boost::python::list     getCanonicalMediaNameList() const;
+    std::string             getLocalMediaName(const std::string& pCanonicalMediaName) const;
+
     static PyRxClass        desc();
     static std::string      className();
 public:

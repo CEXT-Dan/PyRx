@@ -60,16 +60,6 @@ std::string PyPlPlotFactory::className()
 
 //-----------------------------------------------------------------------------------------
 //PyPlPlotEngine
-struct PyPlPlotEngineDeleter
-{
-    inline void operator()(AcPlPlotEngine* p) const
-    {
-        if (p == nullptr) [[unlikely]]
-            return;
-        p->destroy();
-    };
-};
-
 void makePyPlPlotEngineWrapper()
 {
     PyDocString DS("PlotEngine");
@@ -87,6 +77,16 @@ void makePyPlPlotEngineWrapper()
         .def("className", &PyPlPlotEngine::className, DS.SARGS()).staticmethod("className")
         ;
 }
+
+struct PyPlPlotEngineDeleter
+{
+    inline void operator()(AcPlPlotEngine* p) const
+    {
+        if (p == nullptr) [[unlikely]]
+            return;
+        p->destroy();
+    };
+};
 
 PyPlPlotEngine::PyPlPlotEngine(AcPlPlotEngine* ptr)
     : m_imp(ptr, PyPlPlotEngineDeleter())
@@ -970,6 +970,60 @@ PyPlPlotConfig::PyPlPlotConfig(AcPlPlotConfig* ptr, bool autoDelete)
 {
 }
 
+boost::python::tuple PyPlPlotConfig::getDescriptionFields() const
+{
+    PyAutoLockGIL lock;
+    RxAutoOutStr pDriverName;
+    RxAutoOutStr pLocationName;
+    RxAutoOutStr pComment;
+    RxAutoOutStr pPortName;
+    RxAutoOutStr pServerName;
+    RxAutoOutStr pTagLine;
+    impObj()->getDescriptionFields(pDriverName.buf, pLocationName.buf, pComment.buf, pPortName.buf, pServerName.buf, pTagLine.buf);
+    return boost::python::make_tuple(pDriverName.str(), pLocationName.str(), pComment.str(), pPortName.str(), pServerName.str(), pTagLine.str());
+}
+
+std::string PyPlPlotConfig::deviceName() const
+{
+    return wstr_to_utf8(impObj()->deviceName());
+}
+
+std::string PyPlPlotConfig::fullPath() const
+{
+    return wstr_to_utf8(impObj()->fullPath());
+}
+
+unsigned int PyPlPlotConfig::maxDeviceDPI() const
+{
+    return impObj()->maxDeviceDPI();
+}
+
+unsigned long PyPlPlotConfig::deviceType() const
+{
+    return impObj()->deviceType();
+}
+
+boost::python::list PyPlPlotConfig::getCanonicalMediaNameList() const
+{
+    PyAutoLockGIL lock;
+    AcArray<ACHAR*>mediaList;
+    impObj()->getCanonicalMediaNameList(mediaList);
+    boost::python::list pyList;
+    for (auto ptr: mediaList)
+    {
+        pyList.append(wstr_to_utf8(ptr));
+        acutDelString(ptr);
+    }
+    return pyList;
+}
+
+std::string PyPlPlotConfig::getLocalMediaName(const std::string& pCanonicalMediaName) const
+{
+    RxAutoOutStr pstr;
+    impObj()->getLocalMediaName(utf8_to_wstr(pCanonicalMediaName).c_str(), pstr.buf);
+    return pstr.str();
+}
+
 PyRxClass PyPlPlotConfig::desc()
 {
     return PyRxClass(AcPlPlotConfig::desc(), false);
@@ -1141,7 +1195,7 @@ PyPlPlotInfoValidator::PyPlPlotInfoValidator(const AcPlPlotInfoValidator* ptr)
 
 void PyPlPlotInfoValidator::validate(PyPlPlotInfo& info)
 {
-    PyThrowBadEs(impObj()->validate(*info.impObj())); 
+    PyThrowBadEs(impObj()->validate(*info.impObj()));
 }
 
 AcPlPlotInfoValidator::eCustomSizeResult PyPlPlotInfoValidator::isCustomPossible(PyPlPlotInfo& info)
@@ -1156,11 +1210,7 @@ AcPlPlotInfoValidator::MatchingPolicy PyPlPlotInfoValidator::matchingPolicy() co
 
 void PyPlPlotInfoValidator::setMediaMatchingPolicy(AcPlPlotInfoValidator::MatchingPolicy policy)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     impObj()->setMediaMatchingPolicy(policy);
-#endif
 }
 
 void PyPlPlotInfoValidator::setMediaGroupWeight(unsigned int weight)
