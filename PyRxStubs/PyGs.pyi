@@ -8,10 +8,10 @@ import PyEd
 import PyPl
 
 class GsManager:
-    def __init__ (self: GsManager)-> None:
+    def __init__ (self: GsManager)-> None :
       '''                             '''
     ...
-    def className ()-> str:
+    def className ()-> str :
       '''                             '''
     ...
 
@@ -25,7 +25,7 @@ that will be decoded using the given encoding and error handler.
 Otherwise, returns the result of object.__str__() (if defined)
 or repr(object).
 encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict':
+errors defaults to 'strict' :
       '''str(object='') -> str
 str(bytes_or_buffer[, encoding[, errors]]) -> str
 
@@ -37,16 +37,16 @@ or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.'''
     ...
-    def __init__ (self, /, *args, **kwargs):
+    def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def create_module (spec):
+    def create_module (spec) :
       '''Create a built-in module'''
     ...
-    def exec_module (module):
+    def exec_module (module) :
       '''Exec a built-in module'''
     ...
-    def find_module (fullname, path=None):
+    def find_module (fullname, path=None) :
       '''Find the built-in module.
 
         If 'path' is ever specified then the search is considered a failure.
@@ -55,26 +55,26 @@ errors defaults to 'strict'.'''
 
         '''
     ...
-    def find_spec (fullname, path=None, target=None):
+    def find_spec (fullname, path=None, target=None) :
       '''None'''
     ...
-    def get_code (fullname):
+    def get_code (fullname) :
       '''Return None as built-in modules do not have code objects.'''
     ...
-    def get_source (fullname):
+    def get_source (fullname) :
       '''Return None as built-in modules do not have source code.'''
     ...
-    def is_package (fullname):
+    def is_package (fullname) :
       '''Return False as built-in modules are never packages.'''
     ...
-    def load_module (fullname):
+    def load_module (fullname) :
       '''Load the specified module into sys.modules and return it.
 
     This method is deprecated.  Use loader.exec_module() instead.
 
     '''
     ...
-    def module_repr (module):
+    def module_repr (module) :
       '''Return repr for the module.
 
         The method is deprecated.  The import machinery does the job itself.
