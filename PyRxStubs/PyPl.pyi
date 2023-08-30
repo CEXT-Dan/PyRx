@@ -984,6 +984,12 @@ This class cannot be instantiated from Python'''
     C++ signature :
         void beginPage(class PyPlPlotEngine {lvalue},class PyPlPlotPageInfo {lvalue},class PyPlPlotInfo {lvalue},bool)'''
     ...
+    def beginPlot (self, *args, **kwargs)-> None:
+      '''beginPlot( (PlotEngine)arg1, (PlotProgressDialog)arg2) -> None :
+
+    C++ signature :
+        void beginPlot(class PyPlPlotEngine {lvalue},class PyPlPlotProgressDialog {lvalue})'''
+    ...
     def className ()-> str:
       '''                             '''
     ...
@@ -1010,6 +1016,12 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         void endPage(class PyPlPlotEngine {lvalue})'''
+    ...
+    def endPlot (self, *args, **kwargs)-> None:
+      '''endPlot( (PlotEngine)arg1) -> None :
+
+    C++ signature :
+        void endPlot(class PyPlPlotEngine {lvalue})'''
     ...
     def isBackgroundPackaging (self, *args, **kwargs)-> bool:
       '''isBackgroundPackaging( (PlotEngine)arg1) -> bool :
