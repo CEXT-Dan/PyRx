@@ -1038,28 +1038,14 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def createPreviewEngine (self, *args, **kwargs)-> PyPl.PlotEngine :
-      '''createPreviewEngine() -> PlotEngine :
-
-    C++ signature :
-        class PyPlPlotEngine createPreviewEngine()
-
-createPreviewEngine( (int)arg1) -> PlotEngine :
-
-    C++ signature :
-        class PyPlPlotEngine createPreviewEngine(long)'''
+    def createPreviewEngine (flags : int = default)-> PyPl.PlotEngine :
+      '''                             '''
     ...
-    def createPublishEngine (self, *args, **kwargs)-> PyPl.PlotEngine :
-      '''createPublishEngine() -> PlotEngine :
-
-    C++ signature :
-        class PyPlPlotEngine createPublishEngine()'''
+    def createPublishEngine ()-> PyPl.PlotEngine :
+      '''                             '''
     ...
-    def processPlotState (self, *args, **kwargs)-> PyPl.ProcessPlotState :
-      '''processPlotState() -> ProcessPlotState :
-
-    C++ signature :
-        enum ProcessPlotState processPlotState()'''
+    def processPlotState ()-> PyPl.ProcessPlotState :
+      '''                             '''
     ...
 
 class PlotInfo:
