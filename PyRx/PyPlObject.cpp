@@ -60,6 +60,16 @@ std::string PyPlPlotFactory::className()
 
 //-----------------------------------------------------------------------------------------
 //PyPlPlotEngine
+struct PyPlPlotEngineDeleter
+{
+    inline void operator()(AcPlPlotEngine* p) const
+    {
+        if (p == nullptr) [[unlikely]]
+            return;
+        p->destroy();
+    };
+};
+
 void makePyPlPlotEngineWrapper()
 {
     PyDocString DS("PlotEngine");

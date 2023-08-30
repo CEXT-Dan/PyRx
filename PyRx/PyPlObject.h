@@ -10,16 +10,6 @@ class PyPlPlotInfo;
 class PyPlPlotPageInfo;
 class PyPlPlotProgressDialog;
 
-struct PyPlPlotEngineDeleter
-{
-    inline void operator()(AcPlPlotEngine* p) const
-    {
-        if (p == nullptr) [[unlikely]]
-            return;
-        p->destroy();
-    };
-};
-
 
 //-----------------------------------------------------------------------------------------
 //AcPlPlotFactory

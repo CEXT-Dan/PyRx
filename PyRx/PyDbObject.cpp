@@ -84,6 +84,11 @@ void makePyDbObjectWrapper()
 
 //-----------------------------------------------------------------------------------------
 //PyDbObject
+PyDbObject::PyDbObject(const AcDbObject* ptr)
+    : PyGiDrawable(ptr)
+{
+}
+
 PyDbObject::PyDbObject(AcDbObject* ptr, bool autoDelete)
     : PyGiDrawable(ptr, autoDelete, true)
 {
@@ -97,12 +102,6 @@ PyDbObject::PyDbObject(const PyDbObjectId& id)
 PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyGiDrawable(openAcDbObject<AcDbObject>(id, mode), false, true)
 {
-}
-
-PyDbObject::PyDbObject(const AcDbObject* ptr)
-    : PyGiDrawable(ptr)
-{
-
 }
 
 PyDbObjectId PyDbObject::objectId() const
