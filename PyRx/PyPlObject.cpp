@@ -2,6 +2,7 @@
 #include "PyPlObject.h"
 #include "PyDbLayout.h"
 #include "PyDbObjectId.h"
+#include "PyPlPlotProgressDialog.h"
 
 using namespace boost::python;
 
@@ -29,21 +30,21 @@ void makeAcPlPlotFactoryWrapper()
 PyPlPlotEngine PyPlPlotFactory::createPreviewEngine1()
 {
     AcPlPlotEngine* ptr = nullptr;
-    AcPlPlotFactory::createPreviewEngine(ptr);
+    PyThrowBadEs(AcPlPlotFactory::createPreviewEngine(ptr));
     return PyPlPlotEngine(ptr);
 }
 
 PyPlPlotEngine PyPlPlotFactory::createPreviewEngine2(long flags)
 {
     AcPlPlotEngine* ptr = nullptr;
-    AcPlPlotFactory::createPreviewEngine(ptr, flags);
+    PyThrowBadEs(AcPlPlotFactory::createPreviewEngine(ptr, flags));
     return PyPlPlotEngine(ptr);
 }
 
 PyPlPlotEngine PyPlPlotFactory::createPublishEngine()
 {
     AcPlPlotEngine* ptr = nullptr;
-    AcPlPlotFactory::createPublishEngine(ptr);
+    PyThrowBadEs(AcPlPlotFactory::createPublishEngine(ptr));
     return PyPlPlotEngine(ptr);
 }
 
@@ -63,6 +64,8 @@ void makePyPlPlotEngineWrapper()
 {
     PyDocString DS("PlotEngine");
     class_<PyPlPlotEngine>("PlotEngine", boost::python::no_init)
+        .def("beginPlot", &PyPlPlotEngine::beginPlot)
+        .def("endPlot", &PyPlPlotEngine::endPlot)
         .def("beginDocument", &PyPlPlotEngine::beginDocument)
         .def("endDocument", &PyPlPlotEngine::endDocument)
         .def("beginPage", &PyPlPlotEngine::beginPage)
@@ -76,13 +79,18 @@ void makePyPlPlotEngineWrapper()
 }
 
 PyPlPlotEngine::PyPlPlotEngine(AcPlPlotEngine* ptr)
-    : m_imp(ptr)
+    : m_imp(ptr, PyPlPlotEngineDeleter())
 {
 }
 
-PyPlPlotEngine::~PyPlPlotEngine()
+void PyPlPlotEngine::beginPlot(PyPlPlotProgressDialog& pPlotProgress)
 {
-    this->destroy();
+    PyThrowBadEs(impObj()->beginPlot(pPlotProgress.impObj()));
+}
+
+void PyPlPlotEngine::endPlot()
+{
+    PyThrowBadEs(impObj()->endPlot());
 }
 
 void PyPlPlotEngine::beginDocument(PyPlPlotInfo& plotInfo, const std::string& pDocname, Adesk::Int32 nCopies, bool bPlotToFile, const std::string& pFileName)
@@ -117,11 +125,7 @@ void PyPlPlotEngine::endGenerateGraphics()
 
 void PyPlPlotEngine::destroy()
 {
-    if (m_imp != nullptr)
-    {
-        m_imp->destroy();
-        m_imp = nullptr;
-    }
+    m_imp.reset();
 }
 
 bool PyPlPlotEngine::isBackgroundPackaging() const
@@ -138,7 +142,7 @@ AcPlPlotEngine* PyPlPlotEngine::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlPlotEngine*>(m_imp);
+    return static_cast<AcPlPlotEngine*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------

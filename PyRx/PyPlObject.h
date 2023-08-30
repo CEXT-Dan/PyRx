@@ -8,6 +8,18 @@ class PyPlPlotConfig;
 class PyPlPlotEngine;
 class PyPlPlotInfo;
 class PyPlPlotPageInfo;
+class PyPlPlotProgressDialog;
+
+struct PyPlPlotEngineDeleter
+{
+    inline void operator()(AcPlPlotEngine* p) const
+    {
+        if (p == nullptr) [[unlikely]]
+            return;
+        p->destroy();
+    };
+};
+
 
 //-----------------------------------------------------------------------------------------
 //AcPlPlotFactory
@@ -29,7 +41,9 @@ class PyPlPlotEngine
 {
 public:
     PyPlPlotEngine(AcPlPlotEngine* ptr);
-    virtual ~PyPlPlotEngine();
+    ~PyPlPlotEngine() = default;
+    void beginPlot(PyPlPlotProgressDialog& pPlotProgress);
+    void endPlot();
     void beginDocument(PyPlPlotInfo& plotInfo, const std::string& pDocname, Adesk::Int32 nCopies, bool bPlotToFile, const std::string& pFileName);
     void endDocument();
     void beginPage(PyPlPlotPageInfo& pageInfo, PyPlPlotInfo& plotInfo, bool bLastPage);
@@ -41,7 +55,7 @@ public:
     static std::string className();
 public:
     inline AcPlPlotEngine* impObj(const std::source_location& src = std::source_location::current()) const;
-    AcPlPlotEngine* m_imp = nullptr;
+    std::shared_ptr<AcPlPlotEngine> m_imp = nullptr;
 };
 
 //-----------------------------------------------------------------------------------------

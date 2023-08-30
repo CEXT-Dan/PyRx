@@ -14,7 +14,10 @@ import traceback
 
 def PyRxCmd_doit():
     try:
-        db = Db.curDb()
+
+        doc = Ap.curDoc()
+        db = doc.database()
+        
 
         ppr = Ed.Editor.getPoint("\nSelect first corner of plot area: ")
         if ppr[0] != Ed.PromptStatus.eOk:
@@ -34,6 +37,8 @@ def PyRxCmd_doit():
         ext = Db.Extents2d()
         ext.addPoint(Ge.Point2d(p1.x, p1.y))
         ext.addPoint(Ge.Point2d(p2.x, p2.y))
+        
+        #breakpoint()
 
         btr = Db.BlockTableRecord(db.currentSpaceId())
         lo = Db.Layout(btr.getLayoutId())
@@ -60,11 +65,11 @@ def PyRxCmd_doit():
         piv = Pl.PlotInfoValidator()
         piv.setMediaMatchingPolicy(Pl.MatchingPolicy.kMatchEnabled)
         
-        if Pl.PlotFactory.processPlotState != Pl.ProcessPlotState.kNotPlotting:
+        if Pl.PlotFactory.processPlotState() != Pl.ProcessPlotState.kNotPlotting:
             return
         
         pe = Pl.PlotFactory.createPublishEngine()
-        
+
         ppd = Pl.PlotProgressDialog(False, 1, True)
         ppd.setPlotMsgString(Pl.PlotMSGIndex.kDialogTitle,"Custom Plot Progress")
         ppd.setPlotMsgString(Pl.PlotMSGIndex.kCancelSheetBtnMsg,"Cancel Job")
@@ -75,7 +80,28 @@ def PyRxCmd_doit():
         ppd.setPlotProgressRange(0,100)
         ppd.setPlotProgressPos(0)
         
-        pe.
+        pe.beginPlot(ppd)
+        pe.beginDocument(pi,"HAY",1,True, "E:\\test-output")
+        
+        ppd.onBeginSheet()
+        ppd.setSheetProgressRange(0,100)
+        ppd.setSheetProgressPos(0)
+        
+        ppi = Pl.PlotPageInfo()
+        pe.beginPage(ppi,pi,True)
+        
+        pe.beginGenerateGraphics()
+        pe.endGenerateGraphics()
+        
+        pe.endPage()
+        ppd.setSheetProgressPos(100)
+        ppd.onEndSheet()
+        
+        pe.endDocument()
+        ppd.setPlotProgressPos(100)
+        ppd.onEndPlot()
+        pe.endPlot()
+    
 
     except Exception as err:
         print(traceback.format_exc())

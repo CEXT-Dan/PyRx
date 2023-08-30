@@ -1,5 +1,15 @@
 #pragma once
 
+struct PyPlPlotProgressDialogDeleter
+{
+    inline void operator()(AcPlPlotProgressDialog* p) const
+    {
+        if (p == nullptr) [[unlikely]]
+            return;
+        p->destroy();
+    };
+};
+
 //-----------------------------------------------------------------------------------------
 //PyPlPlotProgressDialog
 void makePyPlPlotProgressDialogWrapper();
@@ -10,7 +20,7 @@ public:
     PyPlPlotProgressDialog();
     PyPlPlotProgressDialog(bool bPreview, int nSheets, bool bShowCancelSheetButton);
     PyPlPlotProgressDialog(UINT_PTR hwnd, bool bPreview, int nSheets, bool bShowCancelSheetButton);
-    ~PyPlPlotProgressDialog();
+    ~PyPlPlotProgressDialog() = default;
 
     //----AcPlPlotProgress section----
     bool                    isPlotCancelled() const;
@@ -61,7 +71,7 @@ public:
 public:
     inline AcPlPlotProgressDialog* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
-    AcPlPlotProgressDialog* m_impl = nullptr;
+    std::shared_ptr<AcPlPlotProgressDialog> m_impl = nullptr;
 };
 
 //AcPlPlotProgressDialog
