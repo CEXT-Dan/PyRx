@@ -369,16 +369,16 @@ Also known as the population count.
     def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kMatchDisabled  (self, *args, **kwargs)-> None:
+    def kMatchDisabled (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMatchEnabled  (self, *args, **kwargs)-> None:
+    def kMatchEnabled (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMatchEnabledCustom  (self, *args, **kwargs)-> None:
+    def kMatchEnabledCustom (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMatchEnabledTmpCustom  (self, *args, **kwargs)-> None:
+    def kMatchEnabledTmpCustom (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def name (self, *args, **kwargs)-> None:
@@ -797,6 +797,134 @@ setUnrecognizedData( (PlObject)arg1, (list)arg2, (list)arg3) -> None :
         bool viewFile(class PyPlDSDData {lvalue})'''
     ...
 
+class PlotCancelStatus:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kPlotCancelStatusCount (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kPlotCanceledByCaller (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kPlotCanceledByCancelAllButton (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kPlotContinue (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class PlotConfig:
     def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
@@ -1187,6 +1315,155 @@ class PlotInfoValidator:
         void validate(class PyPlPlotInfoValidator {lvalue},class PyPlPlotInfo {lvalue})'''
     ...
 
+class PlotMSGIndex:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kCancelJobBtnMsg (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kCancelSheetBtnMsg (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kDialogTitle (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMsgCancelling (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMsgCancellingCurrent (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMsgCount (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSheetName (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSheetNameToolTip (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSheetProgressCaption (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSheetSetProgressCaption (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kStatus (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class PlotPageInfo:
     def __init__ (self, *args, **kwargs)-> None:
       '''__init__( (object)arg1) -> None :
@@ -1238,6 +1515,194 @@ class PlotPageInfo:
     ...
     def shadedViewportType ()-> int:
       '''                             '''
+    ...
+
+class PlotProgressDialog:
+    def __init__ (self, *args, **kwargs)-> None:
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (bool)arg2, (int)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,bool,int,bool)
+
+__init__( (object)arg1, (int)arg2, (bool)arg3, (int)arg4, (bool)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,unsigned __int64,bool,int,bool)'''
+    ...
+    def className ()-> str:
+      '''                             '''
+    ...
+    def destroy (self, *args, **kwargs)-> None:
+      '''destroy( (PlotProgressDialog)arg1) -> None :
+
+    C++ signature :
+        void destroy(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def getPlotMsgString (self, *args, **kwargs)-> str:
+      '''getPlotMsgString( (PlotProgressDialog)arg1, (PlotMSGIndex)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotMsgString(class PyPlPlotProgressDialog {lvalue},enum AcPlPlotProgressDialog::PlotMSGIndex)'''
+    ...
+    def getPlotProgressRange (self, *args, **kwargs)-> tuple:
+      '''getPlotProgressRange( (PlotProgressDialog)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlotProgressRange(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def getSheetProgressRange (self, *args, **kwargs)-> tuple:
+      '''getSheetProgressRange( (PlotProgressDialog)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getSheetProgressRange(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def getStatusMsgString (self, *args, **kwargs)-> str:
+      '''getStatusMsgString( (PlotProgressDialog)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getStatusMsgString(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def heartbeat (self, *args, **kwargs)-> None:
+      '''heartbeat( (PlotProgressDialog)arg1) -> None :
+
+    C++ signature :
+        void heartbeat(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def isPlotCancelled (self, *args, **kwargs)-> bool:
+      '''isPlotCancelled( (PlotProgressDialog)arg1) -> bool :
+
+    C++ signature :
+        bool isPlotCancelled(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def isSheetCancelled (self, *args, **kwargs)-> bool:
+      '''isSheetCancelled( (PlotProgressDialog)arg1) -> bool :
+
+    C++ signature :
+        bool isSheetCancelled(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def isSingleSheetPlot (self, *args, **kwargs)-> bool:
+      '''isSingleSheetPlot( (PlotProgressDialog)arg1) -> bool :
+
+    C++ signature :
+        bool isSingleSheetPlot(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def isVisible (self, *args, **kwargs)-> bool:
+      '''isVisible( (PlotProgressDialog)arg1) -> bool :
+
+    C++ signature :
+        bool isVisible(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def onBeginPlot (self, *args, **kwargs)-> bool:
+      '''onBeginPlot( (PlotProgressDialog)arg1) -> bool :
+
+    C++ signature :
+        bool onBeginPlot(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def onBeginSheet (self, *args, **kwargs)-> bool:
+      '''onBeginSheet( (PlotProgressDialog)arg1) -> bool :
+
+    C++ signature :
+        bool onBeginSheet(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def onEndPlot (self, *args, **kwargs)-> bool:
+      '''onEndPlot( (PlotProgressDialog)arg1) -> bool :
+
+    C++ signature :
+        bool onEndPlot(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def onEndSheet (self, *args, **kwargs)-> bool:
+      '''onEndSheet( (PlotProgressDialog)arg1) -> bool :
+
+    C++ signature :
+        bool onEndSheet(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def plotCancelStatus (self, *args, **kwargs)-> PyPl.PlotCancelStatus:
+      '''plotCancelStatus( (PlotProgressDialog)arg1) -> PlotCancelStatus :
+
+    C++ signature :
+        enum AcPlPlotProgress::PlotCancelStatus plotCancelStatus(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def plotProgressPos (self, *args, **kwargs)-> int:
+      '''plotProgressPos( (PlotProgressDialog)arg1) -> int :
+
+    C++ signature :
+        int plotProgressPos(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def setIsVisible (self, *args, **kwargs)-> bool:
+      '''setIsVisible( (PlotProgressDialog)arg1, (bool)arg2) -> bool :
+
+    C++ signature :
+        bool setIsVisible(class PyPlPlotProgressDialog {lvalue},bool)'''
+    ...
+    def setPlotCancelStatus (self, *args, **kwargs)-> None:
+      '''setPlotCancelStatus( (PlotProgressDialog)arg1, (PlotCancelStatus)arg2) -> None :
+
+    C++ signature :
+        void setPlotCancelStatus(class PyPlPlotProgressDialog {lvalue},enum AcPlPlotProgress::PlotCancelStatus)'''
+    ...
+    def setPlotMsgString (self, *args, **kwargs)-> bool:
+      '''setPlotMsgString( (PlotProgressDialog)arg1, (PlotMSGIndex)arg2, (str)arg3) -> bool :
+
+    C++ signature :
+        bool setPlotMsgString(class PyPlPlotProgressDialog {lvalue},enum AcPlPlotProgressDialog::PlotMSGIndex,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setPlotProgressPos (self, *args, **kwargs)-> None:
+      '''setPlotProgressPos( (PlotProgressDialog)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setPlotProgressPos(class PyPlPlotProgressDialog {lvalue},int)'''
+    ...
+    def setPlotProgressRange (self, *args, **kwargs)-> None:
+      '''setPlotProgressRange( (PlotProgressDialog)arg1, (int)arg2, (int)arg3) -> None :
+
+    C++ signature :
+        void setPlotProgressRange(class PyPlPlotProgressDialog {lvalue},int,int)'''
+    ...
+    def setSheetCancelStatus (self, *args, **kwargs)-> None:
+      '''setSheetCancelStatus( (PlotProgressDialog)arg1, (SheetCancelStatus)arg2) -> None :
+
+    C++ signature :
+        void setSheetCancelStatus(class PyPlPlotProgressDialog {lvalue},enum AcPlPlotProgress::SheetCancelStatus)'''
+    ...
+    def setSheetProgressPos (self, *args, **kwargs)-> None:
+      '''setSheetProgressPos( (PlotProgressDialog)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setSheetProgressPos(class PyPlPlotProgressDialog {lvalue},int)'''
+    ...
+    def setSheetProgressRange (self, *args, **kwargs)-> None:
+      '''setSheetProgressRange( (PlotProgressDialog)arg1, (int)arg2, (int)arg3) -> None :
+
+    C++ signature :
+        void setSheetProgressRange(class PyPlPlotProgressDialog {lvalue},int,int)'''
+    ...
+    def setStatusMsgString (self, *args, **kwargs)-> bool:
+      '''setStatusMsgString( (PlotProgressDialog)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool setStatusMsgString(class PyPlPlotProgressDialog {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def sheetCancelStatus (self, *args, **kwargs)-> PyPl.SheetCancelStatus:
+      '''sheetCancelStatus( (PlotProgressDialog)arg1) -> SheetCancelStatus :
+
+    C++ signature :
+        enum AcPlPlotProgress::SheetCancelStatus sheetCancelStatus(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+    def sheetProgressPos (self, *args, **kwargs)-> int:
+      '''sheetProgressPos( (PlotProgressDialog)arg1) -> int :
+
+    C++ signature :
+        int sheetProgressPos(class PyPlPlotProgressDialog {lvalue})'''
     ...
 
 class ProcessPlotState:
@@ -1308,6 +1773,137 @@ Also known as the population count.
       '''None'''
     ...
     def kNotPlotting (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class SheetCancelStatus:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kSheetCancelStatusCount (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSheetCanceledByCaller (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSheetCanceledByCancelAllButton (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSheetCanceledByCancelButton (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSheetContinue (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def name (self, *args, **kwargs)-> None:
