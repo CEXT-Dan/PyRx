@@ -6,6 +6,16 @@ using namespace boost::python;
 //-----------------------------------------------------------------------------------------
 //PyPlPlotProgressDialog
 
+struct PyPlPlotProgressDialogDeleter
+{
+    inline void operator()(AcPlPlotProgressDialog* p) const
+    {
+        if (p == nullptr) [[unlikely]]
+            return;
+        p->destroy();
+    };
+};
+
 void makePyPlPlotProgressDialogWrapper()
 {
     PyDocString DS("PlotProgressDialog");

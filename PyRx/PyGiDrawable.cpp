@@ -68,15 +68,14 @@ void makePyGiObjectWrapper()
         ;
 }
 
-PyGiDrawable::PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject)
-    : PyRxObject(ptr, autoDelete, isDbObject)
-{
-}
-
 PyGiDrawable::PyGiDrawable(const AcGiDrawable* ptr)
     : PyRxObject(ptr)
 {
+}
 
+PyGiDrawable::PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject)
+    : PyRxObject(ptr, autoDelete, isDbObject)
+{
 }
 
 Adesk::UInt32 PyGiDrawable::setAttributes(PyGiDrawableTraits& traits)
