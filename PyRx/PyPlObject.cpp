@@ -3,6 +3,7 @@
 #include "PyDbLayout.h"
 #include "PyDbObjectId.h"
 #include "PyPlPlotProgressDialog.h"
+#include "PyGeBoundBlock2d.h"
 
 using namespace boost::python;
 
@@ -827,6 +828,8 @@ void makePyPlPlotInfoWrapper()
         .def("desc", &PyPlPlotInfo::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlPlotInfo::className, DS.SARGS()).staticmethod("className")
         ;
+
+
 }
 
 PyPlPlotInfo::PyPlPlotInfo()
@@ -955,8 +958,30 @@ void makePyPlPlotConfigWrapper()
 {
     PyDocString DS("PlotConfig");
     class_<PyPlPlotConfig, bases<PyPlObject>>("PlotConfig", boost::python::no_init)
+        .def("getDescriptionFields", &PyPlPlotConfig::getDescriptionFields)
+        .def("deviceName", &PyPlPlotConfig::deviceName)
+        .def("fullPath", &PyPlPlotConfig::fullPath)
+        .def("maxDeviceDPI", &PyPlPlotConfig::maxDeviceDPI)
+        .def("deviceType", &PyPlPlotConfig::deviceType)
+        .def("getCanonicalMediaNameList", &PyPlPlotConfig::getCanonicalMediaNameList)
+        .def("getLocalMediaName", &PyPlPlotConfig::getLocalMediaName)
+        .def("getMediaBounds", &PyPlPlotConfig::getMediaBounds)
+        .def("refreshMediaNameList", &PyPlPlotConfig::refreshMediaNameList)
+        .def("isPlotToFile", &PyPlPlotConfig::isPlotToFile)
+        .def("setPlotToFile", &PyPlPlotConfig::setPlotToFile)
+        .def("getDefaultFileExtension", &PyPlPlotConfig::getDefaultFileExtension)
+        .def("plotToFileCapability", &PyPlPlotConfig::plotToFileCapability)
+        .def("saveToPC3", &PyPlPlotConfig::saveToPC3)
+
         .def("desc", &PyPlPlotConfig::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlPlotConfig::className, DS.SARGS()).staticmethod("className")
+        ;
+
+    enum_<AcPlPlotConfig::PlotToFileCapability>("PlotToFileCapability")
+        .value("kNoPlotToFile", AcPlPlotConfig::PlotToFileCapability::kNoPlotToFile)
+        .value("kPlotToFileAllowed", AcPlPlotConfig::PlotToFileCapability::kPlotToFileAllowed)
+        .value("kMustPlotToFile", AcPlPlotConfig::PlotToFileCapability::kMustPlotToFile)
+        .export_values()
         ;
 }
 
@@ -1022,6 +1047,43 @@ std::string PyPlPlotConfig::getLocalMediaName(const std::string& pCanonicalMedia
     RxAutoOutStr pstr;
     impObj()->getLocalMediaName(utf8_to_wstr(pCanonicalMediaName).c_str(), pstr.buf);
     return pstr.str();
+}
+
+void PyPlPlotConfig::getMediaBounds(const std::string& pCanonicalMediaName, AcGePoint2d& pageSize, PyGeBoundBlock2d& printableArea) const
+{
+    impObj()->getMediaBounds(utf8_to_wstr(pCanonicalMediaName).c_str(), pageSize, *printableArea.impObj());
+}
+
+void PyPlPlotConfig::refreshMediaNameList()
+{
+    impObj()->refreshMediaNameList();
+}
+
+bool PyPlPlotConfig::isPlotToFile() const
+{
+    return impObj()->isPlotToFile();
+}
+
+void PyPlPlotConfig::setPlotToFile(bool bPlotToFile)
+{
+    PyThrowBadEs(impObj()->setPlotToFile(bPlotToFile));
+}
+
+std::string PyPlPlotConfig::getDefaultFileExtension() const
+{
+    const ACHAR* pPC3Name = nullptr;
+    PyThrowBadEs(impObj()->getDefaultFileExtension(pPC3Name));
+    return wstr_to_utf8(pPC3Name);
+}
+
+AcPlPlotConfig::PlotToFileCapability PyPlPlotConfig::plotToFileCapability() const
+{
+    return impObj()->plotToFileCapability();
+}
+
+bool PyPlPlotConfig::saveToPC3(const std::string& pPC3Name)
+{
+    return impObj()->saveToPC3(utf8_to_wstr(pPC3Name).c_str());
 }
 
 PyRxClass PyPlPlotConfig::desc()

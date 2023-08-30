@@ -9,7 +9,7 @@ class PyPlPlotEngine;
 class PyPlPlotInfo;
 class PyPlPlotPageInfo;
 class PyPlPlotProgressDialog;
-
+class PyGeBoundBlock2d;
 
 //-----------------------------------------------------------------------------------------
 //AcPlPlotFactory
@@ -213,6 +213,13 @@ public:
     unsigned long           deviceType() const;
     boost::python::list     getCanonicalMediaNameList() const;
     std::string             getLocalMediaName(const std::string& pCanonicalMediaName) const;
+    void                    getMediaBounds(const std::string& pCanonicalMediaName, AcGePoint2d& pageSize, PyGeBoundBlock2d& printableArea) const;
+    void                    refreshMediaNameList();
+    bool                    isPlotToFile() const;
+    void                    setPlotToFile(bool bPlotToFile);
+    std::string             getDefaultFileExtension() const;
+    AcPlPlotConfig::PlotToFileCapability plotToFileCapability() const;
+    bool                    saveToPC3(const std::string& pPC3Name);
 
     static PyRxClass        desc();
     static std::string      className();

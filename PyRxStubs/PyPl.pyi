@@ -939,8 +939,56 @@ This class cannot be instantiated from Python'''
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
+    def deviceName (self, *args, **kwargs)-> str :
+      '''deviceName( (PlotConfig)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > deviceName(class PyPlPlotConfig {lvalue})'''
+    ...
+    def deviceType (self, *args, **kwargs)-> int :
+      '''deviceType( (PlotConfig)arg1) -> int :
+
+    C++ signature :
+        unsigned long deviceType(class PyPlPlotConfig {lvalue})'''
+    ...
     def dispose (self: RxObject)-> None :
       '''                             '''
+    ...
+    def fullPath (self, *args, **kwargs)-> str :
+      '''fullPath( (PlotConfig)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > fullPath(class PyPlPlotConfig {lvalue})'''
+    ...
+    def getCanonicalMediaNameList (self, *args, **kwargs)-> list :
+      '''getCanonicalMediaNameList( (PlotConfig)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getCanonicalMediaNameList(class PyPlPlotConfig {lvalue})'''
+    ...
+    def getDefaultFileExtension (self, *args, **kwargs)-> str :
+      '''getDefaultFileExtension( (PlotConfig)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getDefaultFileExtension(class PyPlPlotConfig {lvalue})'''
+    ...
+    def getDescriptionFields (self, *args, **kwargs)-> tuple :
+      '''getDescriptionFields( (PlotConfig)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getDescriptionFields(class PyPlPlotConfig {lvalue})'''
+    ...
+    def getLocalMediaName (self, *args, **kwargs)-> str :
+      '''getLocalMediaName( (PlotConfig)arg1, (str)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getLocalMediaName(class PyPlPlotConfig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getMediaBounds (self, *args, **kwargs)-> None :
+      '''getMediaBounds( (PlotConfig)arg1, (str)arg2, (Point2d)arg3, (BoundBlock2d)arg4) -> None :
+
+    C++ signature :
+        void getMediaBounds(class PyPlPlotConfig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint2d {lvalue},class PyGeBoundBlock2d {lvalue})'''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -954,11 +1002,47 @@ This class cannot be instantiated from Python'''
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
+    def isPlotToFile (self, *args, **kwargs)-> bool :
+      '''isPlotToFile( (PlotConfig)arg1) -> bool :
+
+    C++ signature :
+        bool isPlotToFile(class PyPlPlotConfig {lvalue})'''
+    ...
     def keepAlive (self: RxObject,flag:bool)-> None :
       '''                             '''
     ...
+    def maxDeviceDPI (self, *args, **kwargs)-> int :
+      '''maxDeviceDPI( (PlotConfig)arg1) -> int :
+
+    C++ signature :
+        unsigned int maxDeviceDPI(class PyPlPlotConfig {lvalue})'''
+    ...
+    def plotToFileCapability (self, *args, **kwargs)-> PyPl.PlotToFileCapability :
+      '''plotToFileCapability( (PlotConfig)arg1) -> PlotToFileCapability :
+
+    C++ signature :
+        enum AcPlPlotConfig::PlotToFileCapability plotToFileCapability(class PyPlPlotConfig {lvalue})'''
+    ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
+    ...
+    def refreshMediaNameList (self, *args, **kwargs)-> None :
+      '''refreshMediaNameList( (PlotConfig)arg1) -> None :
+
+    C++ signature :
+        void refreshMediaNameList(class PyPlPlotConfig {lvalue})'''
+    ...
+    def saveToPC3 (self, *args, **kwargs)-> bool :
+      '''saveToPC3( (PlotConfig)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool saveToPC3(class PyPlPlotConfig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setPlotToFile (self, *args, **kwargs)-> None :
+      '''setPlotToFile( (PlotConfig)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPlotToFile(class PyPlPlotConfig {lvalue},bool)'''
     ...
 
 class PlotEngine:
@@ -1749,6 +1833,131 @@ __init__( (object)arg1, (int)arg2, (bool)arg3, (int)arg4, (bool)arg5) -> None :
 
     C++ signature :
         int sheetProgressPos(class PyPlPlotProgressDialog {lvalue})'''
+    ...
+
+class PlotToFileCapability:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kMustPlotToFile (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kNoPlotToFile (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPlotToFileAllowed (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class ProcessPlotState:
