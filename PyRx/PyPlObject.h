@@ -294,7 +294,7 @@ public:
 //-----------------------------------------------------------------------------------------
 //PylPlotConfigInfo
 void makePyPlPlotConfigInfoWrapper();
-#ifdef ARXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 class PyPlPlotConfigInfo : public PyPlObject
 {
 public:
