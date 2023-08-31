@@ -8,8 +8,8 @@ void makePyPlCoreWrapper();
 class PlCore
 {
 public:
-    void publishExecute(const PyPlDSDData& dsdDataObj, const PyPlPlotConfig& pConfig,bool bShowPlotProgress);
-
+    static ProcessPlotState processPlotState();
+    static void publishExecute(const PyPlDSDData& dsdDataObj, const PyPlPlotConfig& pConfig,bool bShowPlotProgress);
     static std::string className();
 };
 

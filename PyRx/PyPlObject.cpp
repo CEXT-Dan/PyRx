@@ -828,8 +828,6 @@ void makePyPlPlotInfoWrapper()
         .def("desc", &PyPlPlotInfo::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlPlotInfo::className, DS.SARGS()).staticmethod("className")
         ;
-
-
 }
 
 PyPlPlotInfo::PyPlPlotInfo()
@@ -1452,6 +1450,145 @@ AcPlPlotInfoValidator* PyPlPlotInfoValidator::impObj(const std::source_location&
         throw PyNullObject(src);
     return static_cast<AcPlPlotInfoValidator*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------------
+//PyPlPrecisionEntry
+void makePyPlPrecisionEntryWrapper()
+{
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    PyDocString DS("PrecisionEntry");
+    class_<PyPlPrecisionEntry, bases<PyPlObject>>("PrecisionEntry")
+        .def(init<>())
+        .def("title", &PyPlPrecisionEntry::title)
+        .def("setTitle", &PyPlPrecisionEntry::setTitle)
+        .def("description", &PyPlPrecisionEntry::description)
+        .def("setDescription", &PyPlPrecisionEntry::setDescription)
+        .def("unitType", &PyPlPrecisionEntry::unitType)
+        .def("setUnitType", &PyPlPrecisionEntry::setUnitType)
+        .def("unitScale", &PyPlPrecisionEntry::unitScale)
+        .def("setUnitScale", &PyPlPrecisionEntry::setUnitScale)
+        .def("desiredPrecision", &PyPlPrecisionEntry::desiredPrecision)
+        .def("setDesiredPrecision", &PyPlPrecisionEntry::setDesiredPrecision)
+        .def("gradientResolution", &PyPlPrecisionEntry::gradientResolution)
+        .def("setGradientResolution", &PyPlPrecisionEntry::setGradientResolution)
+        .def("colorResolution", &PyPlPrecisionEntry::colorResolution)
+        .def("setColorResolution", &PyPlPrecisionEntry::setColorResolution)
+        .def("monoResolution", &PyPlPrecisionEntry::monoResolution)
+        .def("setMonoResolution", &PyPlPrecisionEntry::setMonoResolution)
+        .def("desc", &PyPlPrecisionEntry::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyPlPrecisionEntry::className, DS.SARGS()).staticmethod("className")
+        ;
+#endif
+}
+
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+PyPlPrecisionEntry::PyPlPrecisionEntry()
+    : PyPlObject(new AcPlPrecisionEntry(), true)
+{
+}
+
+PyPlPrecisionEntry::PyPlPrecisionEntry(AcPlPrecisionEntry* ptr, bool autoDelete)
+    : PyPlObject(ptr, autoDelete)
+{
+}
+
+const std::string PyPlPrecisionEntry::title() const
+{
+    return wstr_to_utf8(impObj()->title());
+}
+
+void PyPlPrecisionEntry::setTitle(const std::string& pTitle)
+{
+    impObj()->setTitle(utf8_to_wstr(pTitle).c_str());
+}
+
+const std::string PyPlPrecisionEntry::description() const
+{
+    return wstr_to_utf8(impObj()->description());
+}
+
+void PyPlPrecisionEntry::setDescription(const std::string& pDescription)
+{
+    impObj()->setDescription(utf8_to_wstr(pDescription).c_str());
+}
+
+const std::string PyPlPrecisionEntry::unitType() const
+{
+    return wstr_to_utf8(impObj()->unitType());
+}
+
+void PyPlPrecisionEntry::setUnitType(const std::string& pUnitType)
+{
+    impObj()->setUnitType(utf8_to_wstr(pUnitType).c_str());
+}
+
+const std::string PyPlPrecisionEntry::unitScale() const
+{
+    return wstr_to_utf8(impObj()->unitScale());
+}
+
+void PyPlPrecisionEntry::setUnitScale(const std::string& pUnitScale)
+{
+    impObj()->setUnitScale(utf8_to_wstr(pUnitScale).c_str());
+}
+
+double PyPlPrecisionEntry::desiredPrecision() const
+{
+    return impObj()->desiredPrecision();
+}
+
+void PyPlPrecisionEntry::setDesiredPrecision(double dDesiredPrecision)
+{
+    return impObj()->setDesiredPrecision(dDesiredPrecision);
+}
+
+int PyPlPrecisionEntry::gradientResolution() const
+{
+    return impObj()->gradientResolution();
+}
+
+void PyPlPrecisionEntry::setGradientResolution(int nGradientResolution)
+{
+    return impObj()->setGradientResolution(nGradientResolution);
+}
+
+int PyPlPrecisionEntry::colorResolution() const
+{
+    return impObj()->colorResolution();
+}
+
+void PyPlPrecisionEntry::setColorResolution(int nColorResolution)
+{
+    return impObj()->setColorResolution(nColorResolution);
+}
+
+int PyPlPrecisionEntry::monoResolution() const
+{
+    return impObj()->monoResolution();
+}
+
+void PyPlPrecisionEntry::setMonoResolution(int nMonoResolution)
+{
+    return impObj()->setMonoResolution(nMonoResolution);
+}
+
+PyRxClass PyPlPrecisionEntry::desc()
+{
+    return PyRxClass(AcPlPrecisionEntry::desc(), false);
+}
+
+std::string PyPlPrecisionEntry::className()
+{
+    return "AcPlPrecisionEntry";
+}
+
+AcPlPrecisionEntry* PyPlPrecisionEntry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+    return static_cast<AcPlPrecisionEntry*>(m_pyImp.get());
+}
+#endif
 
 //-----------------------------------------------------------------------------------------
 //PylPlotConfigInfo

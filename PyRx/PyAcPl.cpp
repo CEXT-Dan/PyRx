@@ -21,6 +21,7 @@ BOOST_PYTHON_MODULE(PyPl)
     makePyPlPlotInfoValidatorWrapper();
     makePyPlPlotProgressDialogWrapper();
     makePyPlPlotConfigInfoWrapper();
+    makePyPlPrecisionEntryWrapper();
     makePyPlPlotConfigManagerWrapper();
 }
 

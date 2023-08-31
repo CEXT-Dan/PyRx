@@ -292,6 +292,38 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
+//PyPlPrecisionEntry
+void makePyPlPrecisionEntryWrapper();
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+class PyPlPrecisionEntry : public PyPlObject
+{
+public:
+    PyPlPrecisionEntry();
+    PyPlPrecisionEntry(AcPlPrecisionEntry* ptr, bool autoDelete);
+    virtual ~PyPlPrecisionEntry() override = default;
+    const std::string   title() const;
+    void                setTitle(const std::string& pTitle);
+    const std::string   description() const;
+    void                setDescription(const std::string& pDescription);
+    const std::string   unitType() const;
+    void                setUnitType(const std::string& pUnitType);
+    const std::string   unitScale() const;
+    void                setUnitScale(const std::string& pUnitScale);
+    double              desiredPrecision() const;
+    void                setDesiredPrecision(double dDesiredPrecision);
+    int                 gradientResolution() const;
+    void                setGradientResolution(int nGradientResolution);
+    int                 colorResolution() const;
+    void                setColorResolution(int nColorResolution);
+    int                 monoResolution() const;
+    void                setMonoResolution(int nMonoResolution);
+    static PyRxClass    desc();
+    static std::string  className();
+public:
+    inline AcPlPrecisionEntry* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
+//-----------------------------------------------------------------------------------------
 //PylPlotConfigInfo
 void makePyPlPlotConfigInfoWrapper();
 #if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
