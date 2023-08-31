@@ -308,6 +308,134 @@ class DSDEntry:
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > traceSession(class PyPlDSDEntry {lvalue})'''
     ...
 
+class DeviceType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kOneOffConfig (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPC3File (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kSystemPrinter (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kUninitialized (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class MatchingPolicy:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -1043,6 +1171,154 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         void setPlotToFile(class PyPlPlotConfig {lvalue},bool)'''
+    ...
+
+class PlotConfigInfo:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (str)arg2, (str)arg3, (DeviceType)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,enum DeviceType)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def deviceId (self, *args, **kwargs)-> str :
+      '''deviceId( (PlotConfigInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > deviceId(class PyPlPlotConfigInfo {lvalue})'''
+    ...
+    def deviceName (self, *args, **kwargs)-> str :
+      '''deviceName( (PlotConfigInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > deviceName(class PyPlPlotConfigInfo {lvalue})'''
+    ...
+    def deviceType (self, *args, **kwargs)-> PyPl.DeviceType :
+      '''deviceType( (PlotConfigInfo)arg1) -> DeviceType :
+
+    C++ signature :
+        enum DeviceType deviceType(class PyPlPlotConfigInfo {lvalue})'''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def fullPath (self, *args, **kwargs)-> str :
+      '''fullPath( (PlotConfigInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > fullPath(class PyPlPlotConfigInfo {lvalue})'''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setDeviceId (self, *args, **kwargs)-> None :
+      '''setDeviceId( (PlotConfigInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDeviceId(class PyPlPlotConfigInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDeviceName (self, *args, **kwargs)-> None :
+      '''setDeviceName( (PlotConfigInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDeviceName(class PyPlPlotConfigInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDeviceType (self, *args, **kwargs)-> None :
+      '''setDeviceType( (PlotConfigInfo)arg1, (DeviceType)arg2) -> None :
+
+    C++ signature :
+        void setDeviceType(class PyPlPlotConfigInfo {lvalue},enum DeviceType)'''
+    ...
+    def setFullPath (self, *args, **kwargs)-> None :
+      '''setFullPath( (PlotConfigInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setFullPath(class PyPlPlotConfigInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+
+class PlotConfigManager:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def getCurrentConfig (self, *args, **kwargs)-> PyPl.PlotConfig :
+      '''getCurrentConfig( (PlotConfigManager)arg1) -> PlotConfig :
+
+    C++ signature :
+        class PyPlPlotConfig getCurrentConfig(class PyPlPlotConfigManager {lvalue})'''
+    ...
+    def getDevicesList (self, *args, **kwargs)-> list :
+      '''getDevicesList( (PlotConfigManager)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getDevicesList(class PyPlPlotConfigManager {lvalue})'''
+    ...
+    def getStdConfigName (self, *args, **kwargs)-> str :
+      '''getStdConfigName( (PlotConfigManager)arg1, (StdConfigs)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getStdConfigName(class PyPlPlotConfigManager {lvalue},enum AcPlPlotConfigManager::StdConfigs)'''
+    ...
+    def getStyleList (self, *args, **kwargs)-> list :
+      '''getStyleList( (PlotConfigManager)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getStyleList(class PyPlPlotConfigManager {lvalue})'''
+    ...
+    def refreshList (self, *args, **kwargs)-> None :
+      '''refreshList( (PlotConfigManager)arg1) -> None :
+
+    C++ signature :
+        void refreshList(class PyPlPlotConfigManager {lvalue})
+
+refreshList( (PlotConfigManager)arg1, (RefreshCode)arg2) -> None :
+
+    C++ signature :
+        void refreshList(class PyPlPlotConfigManager {lvalue},enum AcPlPlotConfigManager::RefreshCode)'''
+    ...
+    def setCurrentConfig (self, *args, **kwargs)-> PyPl.PlotConfig :
+      '''setCurrentConfig( (PlotConfigManager)arg1, (str)arg2) -> PlotConfig :
+
+    C++ signature :
+        class PyPlPlotConfig setCurrentConfig(class PyPlPlotConfigManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
 
 class PlotEngine:
@@ -2085,6 +2361,137 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class RefreshCode:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kAll (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kRefreshDevicesList (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kRefreshPC3DevicesList (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kRefreshStyleList (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kRefreshSystemDevicesList (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class SheetCancelStatus:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -2159,6 +2566,301 @@ Also known as the population count.
       '''None'''
     ...
     def kSheetContinue (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class StdConfigs:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kDWF6ePlot (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kDWFePlotOptForPlotting (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kDWFePlotOptForViewing (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kDWFxePlot (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kDefaultWindowsSysPrinter (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kNoneDevice (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPDFePlot (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPDFePlotGeneralDocs (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPDFePlotHighQuality (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPDFePlotSmallerFile (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPDFePlotWebMobile (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPublishToWebDWF (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPublishToWebDWFx (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPublishToWebJPG (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPublishToWebPNG (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kSVFePlot (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class StyTypes:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kAllTypes (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kColorDep (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kRegular (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kTranslation (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kUndefined (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def name (self, *args, **kwargs)-> None :
