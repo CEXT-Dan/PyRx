@@ -14,9 +14,9 @@ void makeAcPlPlotFactoryWrapper()
     PyDocString DS("PlotFactory");
     class_<PyPlPlotFactory>("PlotFactory", boost::python::no_init)
         .def("createPreviewEngine", &PyPlPlotFactory::createPreviewEngine1)
-        .def("createPreviewEngine", &PyPlPlotFactory::createPreviewEngine2, DS.SARGS({"flags : int = default"})).staticmethod("createPreviewEngine")
+        .def("createPreviewEngine", &PyPlPlotFactory::createPreviewEngine2, DS.SARGS({ "flags : int = default" })).staticmethod("createPreviewEngine")
         .def("createPublishEngine", &PyPlPlotFactory::createPublishEngine, DS.SARGS()).staticmethod("createPublishEngine")
-        .def("processPlotState", &PyPlPlotFactory::processPlotState,DS.SARGS()).staticmethod("processPlotState")
+        .def("processPlotState", &PyPlPlotFactory::processPlotState, DS.SARGS()).staticmethod("processPlotState")
         .def("className", &PyPlPlotFactory::className, DS.SARGS()).staticmethod("className")
         ;
 
@@ -1034,7 +1034,7 @@ boost::python::list PyPlPlotConfig::getCanonicalMediaNameList() const
     AcArray<ACHAR*>mediaList;
     impObj()->getCanonicalMediaNameList(mediaList);
     boost::python::list pyList;
-    for (auto ptr: mediaList)
+    for (auto ptr : mediaList)
     {
         pyList.append(wstr_to_utf8(ptr));
         acutDelString(ptr);
@@ -1452,3 +1452,105 @@ AcPlPlotInfoValidator* PyPlPlotInfoValidator::impObj(const std::source_location&
         throw PyNullObject(src);
     return static_cast<AcPlPlotInfoValidator*>(m_pyImp.get());
 }
+
+//-----------------------------------------------------------------------------------------
+//PylPlotConfigInfo
+void makePyPlPlotConfigInfoWrapper()
+{
+#ifdef ARXAPP
+    PyDocString DS("PlotConfigInfo");
+    class_<PyPlPlotConfigInfo, bases<PyPlObject>>("PlotConfigInfo")
+        .def(init<>())
+        .def(init<const std::string&, const std::string&, DeviceType>())
+        .def("fullPath", &PyPlPlotConfigInfo::fullPath)
+        .def("setFullPath", &PyPlPlotConfigInfo::setFullPath)
+        .def("deviceName", &PyPlPlotConfigInfo::deviceName)
+        .def("setDeviceName", &PyPlPlotConfigInfo::setDeviceName)
+        .def("deviceType", &PyPlPlotConfigInfo::deviceType)
+        .def("setDeviceType", &PyPlPlotConfigInfo::setDeviceType)
+        .def("deviceId", &PyPlPlotConfigInfo::deviceId)
+        .def("setDeviceId", &PyPlPlotConfigInfo::setDeviceId)
+        .def("desc", &PyPlPlotConfigInfo::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyPlPlotConfigInfo::className, DS.SARGS()).staticmethod("className")
+        ;
+#endif
+}
+
+#ifdef ARXAPP
+PyPlPlotConfigInfo::PyPlPlotConfigInfo()
+    : PyPlObject(new AcPlPlotConfigInfo(), true)
+{
+}
+
+PyPlPlotConfigInfo::PyPlPlotConfigInfo(const std::string& pDevName, const std::string& pFullPath, DeviceType devType)
+    : PyPlObject(new AcPlPlotConfigInfo(utf8_to_wstr(pDevName).c_str(), utf8_to_wstr(pFullPath).c_str(), devType), true)
+{
+}
+
+PyPlPlotConfigInfo::PyPlPlotConfigInfo(AcPlPlotInfoValidator* ptr, bool autoDelete)
+    : PyPlObject(ptr, autoDelete)
+{
+}
+
+PyPlPlotConfigInfo::PyPlPlotConfigInfo(const AcPlPlotConfigInfo& copy)
+    : PyPlObject(new AcPlPlotConfigInfo(copy), true)
+{
+}
+
+std::string PyPlPlotConfigInfo::fullPath() const
+{
+    return wstr_to_utf8(impObj()->fullPath());
+}
+
+void PyPlPlotConfigInfo::setFullPath(const std::string& pPath)
+{
+    impObj()->setFullPath(utf8_to_wstr(pPath).c_str());
+}
+
+std::string PyPlPlotConfigInfo::deviceName() const
+{
+    return wstr_to_utf8(impObj()->deviceName());
+}
+
+void PyPlPlotConfigInfo::setDeviceName(const std::string& pDevName) const
+{
+    impObj()->setDeviceName(utf8_to_wstr(pDevName).c_str());
+}
+
+DeviceType PyPlPlotConfigInfo::deviceType() const
+{
+    return impObj()->deviceType();
+}
+
+void PyPlPlotConfigInfo::setDeviceType(DeviceType devType)
+{
+    impObj()->setDeviceType(devType);
+}
+
+std::string PyPlPlotConfigInfo::deviceId() const
+{
+    return wstr_to_utf8(impObj()->deviceId());
+}
+
+void PyPlPlotConfigInfo::setDeviceId(const std::string& pDevId)
+{
+    impObj()->setDeviceId(utf8_to_wstr(pDevId).c_str());
+}
+
+PyRxClass PyPlPlotConfigInfo::desc()
+{
+    return PyRxClass(AcPlPlotConfigInfo::desc(), false);
+}
+
+std::string PyPlPlotConfigInfo::className()
+{
+    return "AcPlPlotConfigInfo";
+}
+
+AcPlPlotConfigInfo* PyPlPlotConfigInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+    return static_cast<AcPlPlotConfigInfo*>(m_pyImp.get());
+}
+#endif

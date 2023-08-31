@@ -2,6 +2,7 @@
 #include "PyAcPl.h"
 #include "PyPlObject.h"
 #include "PyPlPlotProgressDialog.h"
+#include "PyPlPlotConfigManager.h"
 
 using namespace boost::python;
 
@@ -19,6 +20,8 @@ BOOST_PYTHON_MODULE(PyPl)
     makePyPlPlotEngineWrapper();
     makePyPlPlotInfoValidatorWrapper();
     makePyPlPlotProgressDialogWrapper();
+    makePyPlPlotConfigInfoWrapper();
+    makePyPlPlotConfigManagerWrapper();
 }
 
 void initPyPlModule()

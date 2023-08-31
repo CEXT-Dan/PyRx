@@ -290,3 +290,30 @@ public:
 public:
     inline AcPlPlotInfoValidator* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------------
+//PylPlotConfigInfo
+void makePyPlPlotConfigInfoWrapper();
+#ifdef ARXAPP
+class PyPlPlotConfigInfo : public PyPlObject
+{
+public:
+    PyPlPlotConfigInfo();
+    PyPlPlotConfigInfo(const std::string& pDevName, const std::string& pFullPath, DeviceType devType);
+    PyPlPlotConfigInfo(const AcPlPlotConfigInfo& copy);
+    PyPlPlotConfigInfo(AcPlPlotInfoValidator* ptr, bool autoDelete);
+    virtual ~PyPlPlotConfigInfo() override = default;
+    std::string         fullPath() const;
+    void                setFullPath(const std::string& pPath);
+    std::string         deviceName() const;
+    void                setDeviceName(const std::string& pDevName) const;
+    DeviceType          deviceType() const;
+    void                setDeviceType(DeviceType devType);
+    std::string         deviceId() const;
+    void                setDeviceId(const std::string& pDevId);
+    static PyRxClass    desc();
+    static std::string  className();
+public:
+    inline AcPlPlotConfigInfo* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+#endif
