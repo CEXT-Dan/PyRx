@@ -135,6 +135,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DocData.cpp" />
     <ClCompile Include="EdCore.cpp" />
+    <ClCompile Include="PlCore.cpp" />
     <ClCompile Include="PyAcGeSurface.cpp" />
     <ClCompile Include="PyAcGs.cpp" />
     <ClCompile Include="PyAcPl.cpp" />
@@ -235,6 +236,7 @@
     <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />
     <ClInclude Include="EdCore.h" />
+    <ClInclude Include="PlCore.h" />
     <ClInclude Include="PyAcGeSurface.h" />
     <ClInclude Include="PyAcGs.h" />
     <ClInclude Include="PyAcPl.h" />

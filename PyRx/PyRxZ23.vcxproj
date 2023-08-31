@@ -129,6 +129,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DocData.cpp" />
     <ClCompile Include="EdCore.cpp" />
+    <ClCompile Include="PlCore.cpp" />
     <ClCompile Include="PyAcAp.cpp" />
     <ClCompile Include="PyAcDb.cpp" />
     <ClCompile Include="PyAcEd.cpp" />
@@ -229,6 +230,7 @@
     <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />
     <ClInclude Include="EdCore.h" />
+    <ClInclude Include="PlCore.h" />
     <ClInclude Include="PyAcAp.h" />
     <ClInclude Include="PyAcDb.h" />
     <ClInclude Include="PyAcEd.h" />

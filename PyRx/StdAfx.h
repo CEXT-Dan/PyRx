@@ -141,6 +141,7 @@
 #ifdef ARXAPP
 #pragma comment( lib , "AcPal.lib" )
 #pragma comment( lib , "acgeoment.lib" )
+#pragma comment( lib , "AcPublish_crx.lib" )
 #endif
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
