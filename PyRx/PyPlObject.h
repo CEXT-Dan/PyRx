@@ -299,6 +299,7 @@ class PyPlPrecisionEntry : public PyPlObject
 {
 public:
     PyPlPrecisionEntry();
+    PyPlPrecisionEntry(const AcPlPrecisionEntry& entry);
     PyPlPrecisionEntry(AcPlPrecisionEntry* ptr, bool autoDelete);
     virtual ~PyPlPrecisionEntry() override = default;
     const std::string   title() const;

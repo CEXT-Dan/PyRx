@@ -305,15 +305,30 @@ void PyPlDSDData::setDSDEntries(const boost::python::list& val)
 
 boost::python::list PyPlDSDData::getPrecisionEntries() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     boost::python::list pyList;
-    //...
+    AcPlPrecisionEntries entries;
+    impObj()->getPrecisionEntries(entries);
+    for (const auto& entry : entries)
+        pyList.append(PyPlPrecisionEntry(entry));
     return pyList;
+#endif
 }
 
 void PyPlDSDData::setPrecisionEntries(const boost::python::list& val)
 {
-    //...
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    AcPlPrecisionEntries entries;
+    const auto& vec = py_list_to_std_vector<PyPlPrecisionEntry>(val);
+    for (const auto& entry : vec)
+        entries.append(*entry.impObj());
+    impObj()->setPrecisionEntries(entries);
+#endif
 }
 
 int PyPlDSDData::numberOfDSDEntries() const
@@ -1489,6 +1504,11 @@ PyPlPrecisionEntry::PyPlPrecisionEntry()
 
 PyPlPrecisionEntry::PyPlPrecisionEntry(AcPlPrecisionEntry* ptr, bool autoDelete)
     : PyPlObject(ptr, autoDelete)
+{
+}
+
+PyPlPrecisionEntry::PyPlPrecisionEntry(const AcPlPrecisionEntry& entry)
+    : PyPlObject(new AcPlPrecisionEntry(entry), true)
 {
 }
 
