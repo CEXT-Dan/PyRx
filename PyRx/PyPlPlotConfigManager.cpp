@@ -77,7 +77,7 @@ boost::python::list PyPlPlotConfigManager::getDevicesList()
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
-#ifdef ARXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     AcArray<AcPlPlotConfigInfo, AcArrayObjectCopyReallocator <AcPlPlotConfigInfo>> deviceList;
     impObj()->getDevicesList(deviceList);
     for (const auto& item : deviceList)

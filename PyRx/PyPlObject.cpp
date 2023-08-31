@@ -1457,7 +1457,7 @@ AcPlPlotInfoValidator* PyPlPlotInfoValidator::impObj(const std::source_location&
 //PylPlotConfigInfo
 void makePyPlPlotConfigInfoWrapper()
 {
-#ifdef ARXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDocString DS("PlotConfigInfo");
     class_<PyPlPlotConfigInfo, bases<PyPlObject>>("PlotConfigInfo")
         .def(init<>())
@@ -1476,7 +1476,7 @@ void makePyPlPlotConfigInfoWrapper()
 #endif
 }
 
-#ifdef ARXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyPlPlotConfigInfo::PyPlPlotConfigInfo()
     : PyPlObject(new AcPlPlotConfigInfo(), true)
 {
