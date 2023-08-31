@@ -292,6 +292,9 @@
     <ClCompile Include="PyPlPlotConfigManager.cpp">
       <Filter>Source Files\PyPl</Filter>
     </ClCompile>
+    <ClCompile Include="PlCore.cpp">
+      <Filter>Source Files\PyPl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -586,6 +589,9 @@
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="PyPlPlotConfigManager.h">
+      <Filter>Header Files\PyPl</Filter>
+    </ClInclude>
+    <ClInclude Include="PlCore.h">
       <Filter>Header Files\PyPl</Filter>
     </ClInclude>
   </ItemGroup>
