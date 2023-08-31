@@ -225,7 +225,7 @@ public:
     static PyRxClass        desc();
     static std::string      className();
 public:
-    inline AcPlPlotConfig*  impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcPlPlotConfig* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------

@@ -985,7 +985,6 @@ void makePyPlPlotConfigWrapper()
         .def("getDefaultFileExtension", &PyPlPlotConfig::getDefaultFileExtension)
         .def("plotToFileCapability", &PyPlPlotConfig::plotToFileCapability)
         .def("saveToPC3", &PyPlPlotConfig::saveToPC3)
-
         .def("desc", &PyPlPlotConfig::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlPlotConfig::className, DS.SARGS()).staticmethod("className")
         ;
