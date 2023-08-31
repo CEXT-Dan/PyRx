@@ -2236,6 +2236,145 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class PrecisionEntry:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def colorResolution (self, *args, **kwargs)-> int :
+      '''colorResolution( (PrecisionEntry)arg1) -> int :
+
+    C++ signature :
+        int colorResolution(class PyPlPrecisionEntry {lvalue})'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def description (self, *args, **kwargs)-> str :
+      '''description( (PrecisionEntry)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > description(class PyPlPrecisionEntry {lvalue})'''
+    ...
+    def desiredPrecision (self, *args, **kwargs)-> float :
+      '''desiredPrecision( (PrecisionEntry)arg1) -> float :
+
+    C++ signature :
+        double desiredPrecision(class PyPlPrecisionEntry {lvalue})'''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def gradientResolution (self, *args, **kwargs)-> int :
+      '''gradientResolution( (PrecisionEntry)arg1) -> int :
+
+    C++ signature :
+        int gradientResolution(class PyPlPrecisionEntry {lvalue})'''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def monoResolution (self, *args, **kwargs)-> int :
+      '''monoResolution( (PrecisionEntry)arg1) -> int :
+
+    C++ signature :
+        int monoResolution(class PyPlPrecisionEntry {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setColorResolution (self, *args, **kwargs)-> None :
+      '''setColorResolution( (PrecisionEntry)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setColorResolution(class PyPlPrecisionEntry {lvalue},int)'''
+    ...
+    def setDescription (self, *args, **kwargs)-> None :
+      '''setDescription( (PrecisionEntry)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDescription(class PyPlPrecisionEntry {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDesiredPrecision (self, *args, **kwargs)-> None :
+      '''setDesiredPrecision( (PrecisionEntry)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDesiredPrecision(class PyPlPrecisionEntry {lvalue},double)'''
+    ...
+    def setGradientResolution (self, *args, **kwargs)-> None :
+      '''setGradientResolution( (PrecisionEntry)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setGradientResolution(class PyPlPrecisionEntry {lvalue},int)'''
+    ...
+    def setMonoResolution (self, *args, **kwargs)-> None :
+      '''setMonoResolution( (PrecisionEntry)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setMonoResolution(class PyPlPrecisionEntry {lvalue},int)'''
+    ...
+    def setTitle (self, *args, **kwargs)-> None :
+      '''setTitle( (PrecisionEntry)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setTitle(class PyPlPrecisionEntry {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setUnitScale (self, *args, **kwargs)-> None :
+      '''setUnitScale( (PrecisionEntry)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setUnitScale(class PyPlPrecisionEntry {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setUnitType (self, *args, **kwargs)-> None :
+      '''setUnitType( (PrecisionEntry)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setUnitType(class PyPlPrecisionEntry {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def title (self, *args, **kwargs)-> str :
+      '''title( (PrecisionEntry)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > title(class PyPlPrecisionEntry {lvalue})'''
+    ...
+    def unitScale (self, *args, **kwargs)-> str :
+      '''unitScale( (PrecisionEntry)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > unitScale(class PyPlPrecisionEntry {lvalue})'''
+    ...
+    def unitType (self, *args, **kwargs)-> str :
+      '''unitType( (PrecisionEntry)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > unitType(class PyPlPrecisionEntry {lvalue})'''
+    ...
+
 class ProcessPlotState:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
