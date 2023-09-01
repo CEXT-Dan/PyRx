@@ -114,14 +114,14 @@ PyPlPlotConfig PyPlPlotConfigManager::getCurrentConfig()
 {
     AcPlPlotConfig* pConfig = nullptr;
     PyThrowBadEs(impObj()->getCurrentConfig(pConfig));
-    return PyPlPlotConfig(pConfig, true);
+    return PyPlPlotConfig(pConfig, false);
 }
 
 PyPlPlotConfig PyPlPlotConfigManager::setCurrentConfig(const std::string& pDeviceName)
 {
     AcPlPlotConfig* pConfig = nullptr;
     PyThrowBadEs(impObj()->setCurrentConfig(pConfig, utf8_to_wstr(pDeviceName).c_str()));
-    return PyPlPlotConfig(pConfig, true);
+    return PyPlPlotConfig(pConfig, false);
 }
 
 std::string PyPlPlotConfigManager::getStdConfigName(AcPlPlotConfigManager::StdConfigs stdConfig)

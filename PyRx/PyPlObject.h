@@ -77,7 +77,7 @@ public:
     std::string             destinationName() const;
     void                    setDestinationName(const std::string& pVal);
     boost::python::list     getDSDEntries() const;
-    void                    setDSDEntries(const  boost::python::list& val);
+    void                    setDSDEntries(const boost::python::list& val);
     boost::python::list     getPrecisionEntries() const;
     void                    setPrecisionEntries(const boost::python::list& val);
     int                     numberOfDSDEntries() const;
@@ -146,7 +146,7 @@ public:
     std::string             dwgName() const;
     void                    setDwgName(const std::string& pName);
     std::string             layout() const;
-    void                    setLayout(std::string& pLayoutName);
+    void                    setLayout(const std::string& pLayoutName);
     std::string             title() const;
     void                    setTitle(const std::string& pTitle);
     std::string             NPS() const;

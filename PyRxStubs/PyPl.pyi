@@ -7,6 +7,29 @@ import PyAp
 import PyEd
 import PyPl
 
+class Core:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def processPlotState (self, *args, **kwargs)-> PyPl.ProcessPlotState :
+      '''processPlotState() -> ProcessPlotState :
+
+    C++ signature :
+        enum ProcessPlotState processPlotState()'''
+    ...
+    def publishExecute (self, *args, **kwargs)-> None :
+      '''publishExecute( (DSDData)arg1, (PlotConfig)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void publishExecute(class PyPlDSDData,class PyPlPlotConfig,bool)'''
+    ...
+
 class CustomSizeResult:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -166,6 +189,367 @@ dict(iterable) -> new dictionary initialized as if via:
         d[k] = v
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class DSDData:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def categoryName (self, *args, **kwargs)-> str :
+      '''categoryName( (DSDData)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > categoryName(class PyPlDSDData {lvalue})'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def currentPrecision (self, *args, **kwargs)-> str :
+      '''currentPrecision( (DSDData)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > currentPrecision(class PyPlDSDData {lvalue})'''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def destinationName (self, *args, **kwargs)-> str :
+      '''destinationName( (DSDData)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > destinationName(class PyPlDSDData {lvalue})'''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def get3dDwfOptions (self, *args, **kwargs)-> tuple :
+      '''get3dDwfOptions( (DSDData)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple get3dDwfOptions(class PyPlDSDData {lvalue})'''
+    ...
+    def getDSDEntries (self, *args, **kwargs)-> list :
+      '''getDSDEntries( (DSDData)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getDSDEntries(class PyPlDSDData {lvalue})'''
+    ...
+    def getPrecisionEntries (self, *args, **kwargs)-> list :
+      '''getPrecisionEntries( (DSDData)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getPrecisionEntries(class PyPlDSDData {lvalue})'''
+    ...
+    def getUnrecognizedData (self, *args, **kwargs)-> None :
+      '''getUnrecognizedData( (DSDData)arg1, (list)arg2, (list)arg3) -> None :
+
+    C++ signature :
+        void getUnrecognizedData(class PyPlDSDData {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def includeLayerInfo (self, *args, **kwargs)-> bool :
+      '''includeLayerInfo( (DSDData)arg1) -> bool :
+
+    C++ signature :
+        bool includeLayerInfo(class PyPlDSDData {lvalue})'''
+    ...
+    def initializeLayouts (self, *args, **kwargs)-> bool :
+      '''initializeLayouts( (DSDData)arg1) -> bool :
+
+    C++ signature :
+        bool initializeLayouts(class PyPlDSDData {lvalue})'''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isHomogeneous (self, *args, **kwargs)-> bool :
+      '''isHomogeneous( (DSDData)arg1) -> bool :
+
+    C++ signature :
+        bool isHomogeneous(class PyPlDSDData {lvalue})'''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isSheetSet (self, *args, **kwargs)-> bool :
+      '''isSheetSet( (DSDData)arg1) -> bool :
+
+    C++ signature :
+        bool isSheetSet(class PyPlDSDData {lvalue})'''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def lineMerge (self, *args, **kwargs)-> bool :
+      '''lineMerge( (DSDData)arg1) -> bool :
+
+    C++ signature :
+        bool lineMerge(class PyPlDSDData {lvalue})'''
+    ...
+    def logFilePath (self, *args, **kwargs)-> str :
+      '''logFilePath( (DSDData)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > logFilePath(class PyPlDSDData {lvalue})'''
+    ...
+    def majorVersion (self, *args, **kwargs)-> int :
+      '''majorVersion( (DSDData)arg1) -> int :
+
+    C++ signature :
+        unsigned int majorVersion(class PyPlDSDData {lvalue})'''
+    ...
+    def minorVersion (self, *args, **kwargs)-> int :
+      '''minorVersion( (DSDData)arg1) -> int :
+
+    C++ signature :
+        unsigned int minorVersion(class PyPlDSDData {lvalue})'''
+    ...
+    def noOfCopies (self, *args, **kwargs)-> int :
+      '''noOfCopies( (DSDData)arg1) -> int :
+
+    C++ signature :
+        unsigned int noOfCopies(class PyPlDSDData {lvalue})'''
+    ...
+    def numberOfDSDEntries (self, *args, **kwargs)-> int :
+      '''numberOfDSDEntries( (DSDData)arg1) -> int :
+
+    C++ signature :
+        int numberOfDSDEntries(class PyPlDSDData {lvalue})'''
+    ...
+    def password (self, *args, **kwargs)-> str :
+      '''password( (DSDData)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > password(class PyPlDSDData {lvalue})'''
+    ...
+    def plotStampOn (self, *args, **kwargs)-> bool :
+      '''plotStampOn( (DSDData)arg1) -> bool :
+
+    C++ signature :
+        bool plotStampOn(class PyPlDSDData {lvalue})'''
+    ...
+    def projectPath (self, *args, **kwargs)-> str :
+      '''projectPath( (DSDData)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > projectPath(class PyPlDSDData {lvalue})'''
+    ...
+    def promptForDwfName (self, *args, **kwargs)-> bool :
+      '''promptForDwfName( (DSDData)arg1) -> bool :
+
+    C++ signature :
+        bool promptForDwfName(class PyPlDSDData {lvalue})'''
+    ...
+    def promptForPassword (self, *args, **kwargs)-> bool :
+      '''promptForPassword( (DSDData)arg1) -> bool :
+
+    C++ signature :
+        bool promptForPassword(class PyPlDSDData {lvalue})'''
+    ...
+    def pwdProtectPublishedDWF (self, *args, **kwargs)-> bool :
+      '''pwdProtectPublishedDWF( (DSDData)arg1) -> bool :
+
+    C++ signature :
+        bool pwdProtectPublishedDWF(class PyPlDSDData {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def selectionSetName (self, *args, **kwargs)-> str :
+      '''selectionSetName( (DSDData)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > selectionSetName(class PyPlDSDData {lvalue})'''
+    ...
+    def set3dDwfOptions (self, *args, **kwargs)-> None :
+      '''set3dDwfOptions( (DSDData)arg1, (bool)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void set3dDwfOptions(class PyPlDSDData {lvalue},bool,bool)'''
+    ...
+    def setCategoryName (self, *args, **kwargs)-> None :
+      '''setCategoryName( (DSDData)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setCategoryName(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setCurrentPrecision (self, *args, **kwargs)-> None :
+      '''setCurrentPrecision( (DSDData)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setCurrentPrecision(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDSDEntries (self, *args, **kwargs)-> None :
+      '''setDSDEntries( (DSDData)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void setDSDEntries(class PyPlDSDData {lvalue},class boost::python::list)'''
+    ...
+    def setDestinationName (self, *args, **kwargs)-> None :
+      '''setDestinationName( (DSDData)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDestinationName(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setIncludeLayerInfo (self, *args, **kwargs)-> None :
+      '''setIncludeLayerInfo( (DSDData)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setIncludeLayerInfo(class PyPlDSDData {lvalue},bool)'''
+    ...
+    def setInitializeLayouts (self, *args, **kwargs)-> None :
+      '''setInitializeLayouts( (DSDData)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setInitializeLayouts(class PyPlDSDData {lvalue},bool)'''
+    ...
+    def setIsHomogeneous (self, *args, **kwargs)-> None :
+      '''setIsHomogeneous( (DSDData)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setIsHomogeneous(class PyPlDSDData {lvalue},bool)'''
+    ...
+    def setIsSheetSet (self, *args, **kwargs)-> None :
+      '''setIsSheetSet( (DSDData)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setIsSheetSet(class PyPlDSDData {lvalue},bool)'''
+    ...
+    def setLineMerge (self, *args, **kwargs)-> None :
+      '''setLineMerge( (DSDData)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setLineMerge(class PyPlDSDData {lvalue},bool)'''
+    ...
+    def setLogFilePath (self, *args, **kwargs)-> None :
+      '''setLogFilePath( (DSDData)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setLogFilePath(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setMajorVersion (self, *args, **kwargs)-> None :
+      '''setMajorVersion( (DSDData)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setMajorVersion(class PyPlDSDData {lvalue},unsigned int)'''
+    ...
+    def setMinorVersion (self, *args, **kwargs)-> None :
+      '''setMinorVersion( (DSDData)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setMinorVersion(class PyPlDSDData {lvalue},unsigned int)'''
+    ...
+    def setNoOfCopies (self, *args, **kwargs)-> None :
+      '''setNoOfCopies( (DSDData)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setNoOfCopies(class PyPlDSDData {lvalue},unsigned int)'''
+    ...
+    def setPassword (self, *args, **kwargs)-> None :
+      '''setPassword( (DSDData)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setPassword(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setPlotStampOn (self, *args, **kwargs)-> None :
+      '''setPlotStampOn( (DSDData)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPlotStampOn(class PyPlDSDData {lvalue},bool)'''
+    ...
+    def setPrecisionEntries (self, *args, **kwargs)-> None :
+      '''setPrecisionEntries( (DSDData)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void setPrecisionEntries(class PyPlDSDData {lvalue},class boost::python::list)'''
+    ...
+    def setProjectPath (self, *args, **kwargs)-> None :
+      '''setProjectPath( (DSDData)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setProjectPath(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setPromptForDwfName (self, *args, **kwargs)-> None :
+      '''setPromptForDwfName( (DSDData)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPromptForDwfName(class PyPlDSDData {lvalue},bool)'''
+    ...
+    def setPromptForPassword (self, *args, **kwargs)-> None :
+      '''setPromptForPassword( (DSDData)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPromptForPassword(class PyPlDSDData {lvalue},bool)'''
+    ...
+    def setPwdProtectPublishedDWF (self, *args, **kwargs)-> None :
+      '''setPwdProtectPublishedDWF( (DSDData)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPwdProtectPublishedDWF(class PyPlDSDData {lvalue},bool)'''
+    ...
+    def setSelectionSetName (self, *args, **kwargs)-> None :
+      '''setSelectionSetName( (DSDData)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setSelectionSetName(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setSheetSetName (self, *args, **kwargs)-> None :
+      '''setSheetSetName( (DSDData)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setSheetSetName(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setSheetType (self, *args, **kwargs)-> None :
+      '''setSheetType( (DSDData)arg1, (object)arg2) -> None :
+
+    C++ signature :
+        void setSheetType(class PyPlDSDData {lvalue},enum AcPlDSDEntry::SheetType)'''
+    ...
+    def setUnrecognizedData (self, *args, **kwargs)-> None :
+      '''setUnrecognizedData( (DSDData)arg1, (str)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void setUnrecognizedData(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setUnrecognizedData( (DSDData)arg1, (list)arg2, (list)arg3) -> None :
+
+    C++ signature :
+        void setUnrecognizedData(class PyPlDSDData {lvalue},class boost::python::list,class boost::python::list)'''
+    ...
+    def setViewFile (self, *args, **kwargs)-> None :
+      '''setViewFile( (DSDData)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setViewFile(class PyPlDSDData {lvalue},bool)'''
+    ...
+    def sheetSetName (self, *args, **kwargs)-> str :
+      '''sheetSetName( (DSDData)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > sheetSetName(class PyPlDSDData {lvalue})'''
+    ...
+    def sheetType (self, *args, **kwargs)-> object :
+      '''sheetType( (DSDData)arg1) -> object :
+
+    C++ signature :
+        enum AcPlDSDEntry::SheetType sheetType(class PyPlDSDData {lvalue})'''
+    ...
+    def viewFile (self, *args, **kwargs)-> bool :
+      '''viewFile( (DSDData)arg1) -> bool :
+
+    C++ signature :
+        bool viewFile(class PyPlDSDData {lvalue})'''
     ...
 
 class DSDEntry:
@@ -566,16 +950,8 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 
 class PlObject:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def categoryName (self, *args, **kwargs)-> str :
-      '''categoryName( (PlObject)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > categoryName(class PyPlDSDData {lvalue})'''
+      '''Raises an exception
+This class cannot be instantiated from Python'''
     ...
     def className ()-> str :
       '''                             '''
@@ -583,71 +959,14 @@ class PlObject:
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def currentPrecision (self, *args, **kwargs)-> str :
-      '''currentPrecision( (PlObject)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > currentPrecision(class PyPlDSDData {lvalue})'''
-    ...
-    def desc ()-> PyRx.RxClass :
-      '''                             '''
-    ...
-    def destinationName (self, *args, **kwargs)-> str :
-      '''destinationName( (PlObject)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > destinationName(class PyPlDSDData {lvalue})'''
-    ...
     def dispose (self: RxObject)-> None :
       '''                             '''
-    ...
-    def get3dDwfOptions (self, *args, **kwargs)-> tuple :
-      '''get3dDwfOptions( (PlObject)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple get3dDwfOptions(class PyPlDSDData {lvalue})'''
-    ...
-    def getDSDEntries (self, *args, **kwargs)-> list :
-      '''getDSDEntries( (PlObject)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getDSDEntries(class PyPlDSDData {lvalue})'''
-    ...
-    def getPrecisionEntries (self, *args, **kwargs)-> list :
-      '''getPrecisionEntries( (PlObject)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getPrecisionEntries(class PyPlDSDData {lvalue})'''
-    ...
-    def getUnrecognizedData (self, *args, **kwargs)-> None :
-      '''getUnrecognizedData( (PlObject)arg1, (list)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void getUnrecognizedData(class PyPlDSDData {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def includeLayerInfo (self, *args, **kwargs)-> bool :
-      '''includeLayerInfo( (PlObject)arg1) -> bool :
-
-    C++ signature :
-        bool includeLayerInfo(class PyPlDSDData {lvalue})'''
-    ...
-    def initializeLayouts (self, *args, **kwargs)-> bool :
-      '''initializeLayouts( (PlObject)arg1) -> bool :
-
-    C++ signature :
-        bool initializeLayouts(class PyPlDSDData {lvalue})'''
-    ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
-    ...
-    def isHomogeneous (self, *args, **kwargs)-> bool :
-      '''isHomogeneous( (PlObject)arg1) -> bool :
-
-    C++ signature :
-        bool isHomogeneous(class PyPlDSDData {lvalue})'''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
@@ -655,274 +974,11 @@ class PlObject:
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def isSheetSet (self, *args, **kwargs)-> bool :
-      '''isSheetSet( (PlObject)arg1) -> bool :
-
-    C++ signature :
-        bool isSheetSet(class PyPlDSDData {lvalue})'''
-    ...
     def keepAlive (self: RxObject,flag:bool)-> None :
       '''                             '''
     ...
-    def lineMerge (self, *args, **kwargs)-> bool :
-      '''lineMerge( (PlObject)arg1) -> bool :
-
-    C++ signature :
-        bool lineMerge(class PyPlDSDData {lvalue})'''
-    ...
-    def logFilePath (self, *args, **kwargs)-> str :
-      '''logFilePath( (PlObject)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > logFilePath(class PyPlDSDData {lvalue})'''
-    ...
-    def majorVersion (self, *args, **kwargs)-> int :
-      '''majorVersion( (PlObject)arg1) -> int :
-
-    C++ signature :
-        unsigned int majorVersion(class PyPlDSDData {lvalue})'''
-    ...
-    def minorVersion (self, *args, **kwargs)-> int :
-      '''minorVersion( (PlObject)arg1) -> int :
-
-    C++ signature :
-        unsigned int minorVersion(class PyPlDSDData {lvalue})'''
-    ...
-    def noOfCopies (self, *args, **kwargs)-> int :
-      '''noOfCopies( (PlObject)arg1) -> int :
-
-    C++ signature :
-        unsigned int noOfCopies(class PyPlDSDData {lvalue})'''
-    ...
-    def numberOfDSDEntries (self, *args, **kwargs)-> int :
-      '''numberOfDSDEntries( (PlObject)arg1) -> int :
-
-    C++ signature :
-        int numberOfDSDEntries(class PyPlDSDData {lvalue})'''
-    ...
-    def password (self, *args, **kwargs)-> str :
-      '''password( (PlObject)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > password(class PyPlDSDData {lvalue})'''
-    ...
-    def plotStampOn (self, *args, **kwargs)-> bool :
-      '''plotStampOn( (PlObject)arg1) -> bool :
-
-    C++ signature :
-        bool plotStampOn(class PyPlDSDData {lvalue})'''
-    ...
-    def projectPath (self, *args, **kwargs)-> str :
-      '''projectPath( (PlObject)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > projectPath(class PyPlDSDData {lvalue})'''
-    ...
-    def promptForDwfName (self, *args, **kwargs)-> bool :
-      '''promptForDwfName( (PlObject)arg1) -> bool :
-
-    C++ signature :
-        bool promptForDwfName(class PyPlDSDData {lvalue})'''
-    ...
-    def promptForPassword (self, *args, **kwargs)-> bool :
-      '''promptForPassword( (PlObject)arg1) -> bool :
-
-    C++ signature :
-        bool promptForPassword(class PyPlDSDData {lvalue})'''
-    ...
-    def pwdProtectPublishedDWF (self, *args, **kwargs)-> bool :
-      '''pwdProtectPublishedDWF( (PlObject)arg1) -> bool :
-
-    C++ signature :
-        bool pwdProtectPublishedDWF(class PyPlDSDData {lvalue})'''
-    ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
-    ...
-    def selectionSetName (self, *args, **kwargs)-> str :
-      '''selectionSetName( (PlObject)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > selectionSetName(class PyPlDSDData {lvalue})'''
-    ...
-    def set3dDwfOptions (self, *args, **kwargs)-> None :
-      '''set3dDwfOptions( (PlObject)arg1, (bool)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void set3dDwfOptions(class PyPlDSDData {lvalue},bool,bool)'''
-    ...
-    def setCategoryName (self, *args, **kwargs)-> None :
-      '''setCategoryName( (PlObject)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setCategoryName(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setCurrentPrecision (self, *args, **kwargs)-> None :
-      '''setCurrentPrecision( (PlObject)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setCurrentPrecision(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setDSDEntries (self, *args, **kwargs)-> None :
-      '''setDSDEntries( (PlObject)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void setDSDEntries(class PyPlDSDData {lvalue},class boost::python::list)'''
-    ...
-    def setDestinationName (self, *args, **kwargs)-> None :
-      '''setDestinationName( (PlObject)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setDestinationName(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setIncludeLayerInfo (self, *args, **kwargs)-> None :
-      '''setIncludeLayerInfo( (PlObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIncludeLayerInfo(class PyPlDSDData {lvalue},bool)'''
-    ...
-    def setInitializeLayouts (self, *args, **kwargs)-> None :
-      '''setInitializeLayouts( (PlObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setInitializeLayouts(class PyPlDSDData {lvalue},bool)'''
-    ...
-    def setIsHomogeneous (self, *args, **kwargs)-> None :
-      '''setIsHomogeneous( (PlObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsHomogeneous(class PyPlDSDData {lvalue},bool)'''
-    ...
-    def setIsSheetSet (self, *args, **kwargs)-> None :
-      '''setIsSheetSet( (PlObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsSheetSet(class PyPlDSDData {lvalue},bool)'''
-    ...
-    def setLineMerge (self, *args, **kwargs)-> None :
-      '''setLineMerge( (PlObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setLineMerge(class PyPlDSDData {lvalue},bool)'''
-    ...
-    def setLogFilePath (self, *args, **kwargs)-> None :
-      '''setLogFilePath( (PlObject)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setLogFilePath(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setMajorVersion (self, *args, **kwargs)-> None :
-      '''setMajorVersion( (PlObject)arg1, (SubentType)arg2) -> None :
-
-    C++ signature :
-        void setMajorVersion(class PyPlDSDData {lvalue},unsigned int)'''
-    ...
-    def setMinorVersion (self, *args, **kwargs)-> None :
-      '''setMinorVersion( (PlObject)arg1, (SubentType)arg2) -> None :
-
-    C++ signature :
-        void setMinorVersion(class PyPlDSDData {lvalue},unsigned int)'''
-    ...
-    def setNoOfCopies (self, *args, **kwargs)-> None :
-      '''setNoOfCopies( (PlObject)arg1, (SubentType)arg2) -> None :
-
-    C++ signature :
-        void setNoOfCopies(class PyPlDSDData {lvalue},unsigned int)'''
-    ...
-    def setPassword (self, *args, **kwargs)-> None :
-      '''setPassword( (PlObject)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setPassword(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setPlotStampOn (self, *args, **kwargs)-> None :
-      '''setPlotStampOn( (PlObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlotStampOn(class PyPlDSDData {lvalue},bool)'''
-    ...
-    def setPrecisionEntries (self, *args, **kwargs)-> None :
-      '''setPrecisionEntries( (PlObject)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void setPrecisionEntries(class PyPlDSDData {lvalue},class boost::python::list)'''
-    ...
-    def setProjectPath (self, *args, **kwargs)-> None :
-      '''setProjectPath( (PlObject)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setProjectPath(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setPromptForDwfName (self, *args, **kwargs)-> None :
-      '''setPromptForDwfName( (PlObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPromptForDwfName(class PyPlDSDData {lvalue},bool)'''
-    ...
-    def setPromptForPassword (self, *args, **kwargs)-> None :
-      '''setPromptForPassword( (PlObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPromptForPassword(class PyPlDSDData {lvalue},bool)'''
-    ...
-    def setPwdProtectPublishedDWF (self, *args, **kwargs)-> None :
-      '''setPwdProtectPublishedDWF( (PlObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPwdProtectPublishedDWF(class PyPlDSDData {lvalue},bool)'''
-    ...
-    def setSelectionSetName (self, *args, **kwargs)-> None :
-      '''setSelectionSetName( (PlObject)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setSelectionSetName(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setSheetSetName (self, *args, **kwargs)-> None :
-      '''setSheetSetName( (PlObject)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setSheetSetName(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setSheetType (self, *args, **kwargs)-> None :
-      '''setSheetType( (PlObject)arg1, (object)arg2) -> None :
-
-    C++ signature :
-        void setSheetType(class PyPlDSDData {lvalue},enum AcPlDSDEntry::SheetType)'''
-    ...
-    def setUnrecognizedData (self, *args, **kwargs)-> None :
-      '''setUnrecognizedData( (PlObject)arg1, (str)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void setUnrecognizedData(class PyPlDSDData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setUnrecognizedData( (PlObject)arg1, (list)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void setUnrecognizedData(class PyPlDSDData {lvalue},class boost::python::list,class boost::python::list)'''
-    ...
-    def setViewFile (self, *args, **kwargs)-> None :
-      '''setViewFile( (PlObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setViewFile(class PyPlDSDData {lvalue},bool)'''
-    ...
-    def sheetSetName (self, *args, **kwargs)-> str :
-      '''sheetSetName( (PlObject)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > sheetSetName(class PyPlDSDData {lvalue})'''
-    ...
-    def sheetType (self, *args, **kwargs)-> object :
-      '''sheetType( (PlObject)arg1) -> object :
-
-    C++ signature :
-        enum AcPlDSDEntry::SheetType sheetType(class PyPlDSDData {lvalue})'''
-    ...
-    def viewFile (self, *args, **kwargs)-> bool :
-      '''viewFile( (PlObject)arg1) -> bool :
-
-    C++ signature :
-        bool viewFile(class PyPlDSDData {lvalue})'''
     ...
 
 class PlotCancelStatus:
