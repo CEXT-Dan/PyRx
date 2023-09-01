@@ -492,17 +492,17 @@ PyDbDatabase::PyDbDatabase()
 }
 
 PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb)
-    : PyRxObject(_pDb, false, false)
-{
-}
-
-PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb, bool autoDelete)
-    : PyRxObject(_pDb, false, false)
+    : PyDbDatabase(_pDb, false)
 {
 }
 
 PyDbDatabase::PyDbDatabase(bool buildDefaultDrawing, bool noDocument)
-    : PyRxObject(new AcDbDatabase(buildDefaultDrawing, noDocument), true, false)
+    : PyDbDatabase(new AcDbDatabase(buildDefaultDrawing, noDocument), true)
+{
+}
+
+PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb, bool autoDelete)
+    : PyRxObject(_pDb, autoDelete, false)
 {
 }
 

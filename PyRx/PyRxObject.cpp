@@ -13,7 +13,7 @@ void makeAcRxObjectWrapper()
         .def("isKindOf", &PyRxObject::isKindOf, DS.ARGS({ "rhs:PyRx.RxClass" }))
         .def("isNullObj", &PyRxObject::isNullObj, DS.ARGS())
         .def("implRefCount", &PyRxObject::implRefCount, DS.ARGS())
-        .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({"flag:bool"}))
+        .def("keepAlive", &PyRxObject::forceKeepAlive, DS.ARGS({ "flag:bool" }))
         .def("dispose", &PyRxObject::dispose, DS.ARGS())
         .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs:PyRx.RxClass" }))
         .def("copyFrom", &PyRxObject::copyFrom, DS.ARGS({ "other:PyRx.RxObject" }))
@@ -23,11 +23,17 @@ void makeAcRxObjectWrapper()
         ;
 }
 
+// TODO: cleanup on isle one! kind of ugly 
+// intent 
+// -- do nothing
+// -- close but don't delete
+// -- delete 
+// -- allow for the class the change this state
+// 
 // if the object is dbo, close it and return out
 // objects that derived from PyDbObject have m_isDbObject set to true
-// id the object is some sort of global pointer or should not be deleted m_autoDelete should be false
-// examples would be document or current database
-// note: PyDbObject::cast resets the pointer, which call this, but it's not a double delete
+//
+// note: PyDbObject::cast resets the pointer, which calls this, but it's not a double delete
 struct PyRxObjectDeleter
 {
     inline PyRxObjectDeleter(bool autoDelete, bool isDbObject)
@@ -37,15 +43,7 @@ struct PyRxObjectDeleter
 
     inline bool isDbroThenClose(AcRxObject* p) const
     {
-        if (!m_isDbObject)
-        {
-            return false;
-        }
-        else if (m_forceKeepAlive)
-        {
-            return true;
-        }
-        else
+        if (m_isDbObject)
         {
             AcDbObject* pDbo = static_cast<AcDbObject*>(p);
             if (!pDbo->objectId().isNull())
@@ -61,7 +59,9 @@ struct PyRxObjectDeleter
 
     inline void operator()(AcRxObject* p) const
     {
-        if (p == nullptr) [[unlikely]]
+        if (p == nullptr)
+            return;
+        else if (m_forceKeepAlive)
             return;
         else if (isDbroThenClose(p))
             return;
@@ -155,7 +155,7 @@ AcRxObject* PyRxObject::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_pyImp.get();
+        return m_pyImp.get();
 }
 
 //-----------------------------------------------------------------------------------------
@@ -223,5 +223,5 @@ AcRxClass* PyRxClass::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcRxClass*>(m_pyImp.get());
+        return static_cast<AcRxClass*>(m_pyImp.get());
 }

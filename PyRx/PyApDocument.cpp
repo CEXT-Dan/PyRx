@@ -121,7 +121,7 @@ std::string PyApDocument::docTitle() const
 {
     const TCHAR* title = impObj()->docTitle();
     if (title != nullptr)
-        return wstr_to_utf8(impObj()->docTitle());
+        return wstr_to_utf8(title);
     return std::string{};
 }
 
