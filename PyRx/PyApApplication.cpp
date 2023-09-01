@@ -78,7 +78,7 @@ UINT_PTR PyApApplication::acadGetIDispatch()
 }
 
 //-----------------------------------------------------------------------------------------
-//makeAPyApResourceOverrideWrapper  Wrapper
+//makeAPyApResourceOverrideWrapper
 void makePyApResourceOverrideWrapper()
 {
     class_<PyApResourceOverride>("ResourceOverride")

@@ -206,7 +206,6 @@ public:
     PyPlPlotConfig(const AcPlPlotConfig* ptr);
     PyPlPlotConfig(AcPlPlotConfig* ptr, bool autoDelete);
     virtual ~PyPlPlotConfig() override = default;
-
     boost::python::tuple    getDescriptionFields() const;
     std::string             deviceName() const;
     std::string             fullPath() const;
@@ -221,7 +220,6 @@ public:
     std::string             getDefaultFileExtension() const;
     AcPlPlotConfig::PlotToFileCapability plotToFileCapability() const;
     bool                    saveToPC3(const std::string& pPC3Name);
-
     static PyRxClass        desc();
     static std::string      className();
 public:
@@ -259,7 +257,6 @@ public:
     PyPlPlotInfoValidator(const AcPlPlotInfoValidator* ptr);
     PyPlPlotInfoValidator(AcPlPlotInfoValidator* ptr, bool autoDelete);
     virtual ~PyPlPlotInfoValidator() override = default;
-
     void                validate(PyPlPlotInfo& info);
     AcPlPlotInfoValidator::eCustomSizeResult isCustomPossible(PyPlPlotInfo& info);
     AcPlPlotInfoValidator::MatchingPolicy matchingPolicy() const;

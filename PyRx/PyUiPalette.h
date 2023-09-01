@@ -34,8 +34,8 @@ public:
     PyCAdUiPaletteSet(const std::string& name, const std::string& guid);
     virtual ~PyCAdUiPaletteSet() = default;
 public: //INTERNAL
-    void createChildren();
-    bool create();
+    void        createChildren();
+    bool        create();
 
 public:
     int         add(const std::string& name, boost::python::object& panel);
@@ -66,7 +66,7 @@ public:
     void        rollUp();
     bool        removePalette(int nPaletteIndex);
     int         getPaletteCount();
-    PyObject* getFullRect();//TODO test:
+    PyObject*   getFullRect();//TODO test:
     bool        rolledUp();
     CAdUiPaletteSet::AdUiTitleBarLocation titleBarLocation();
     void        setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc);

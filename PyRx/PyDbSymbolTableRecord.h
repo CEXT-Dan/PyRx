@@ -61,7 +61,7 @@ void makePyDbAbstractViewTableRecordWrapper();
 class PyDbAbstractViewTableRecord : public PyDbSymbolTableRecord
 {
 public:
-#ifdef NEVER
+#ifdef NEVER // this causes a linker error in AutoCAD
     PyDbAbstractViewTableRecord();
 #endif
     PyDbAbstractViewTableRecord(AcDbAbstractViewTableRecord* ptr, bool autoDelete);
@@ -191,11 +191,11 @@ public:
     void                setGridFollow(bool enabled);
     Adesk::Int16        gridMajor() const;
     void                setGridMajor(Adesk::Int16 value);
-    void   setBackground(const PyDbObjectId& backgroundId);
+    void                setBackground(const PyDbObjectId& backgroundId);
     PyDbObjectId        previousBackground1() const;
     PyDbObjectId        previousBackground2(AcGiDrawable::DrawableType type) const;
-    void   setPreviousBackground1(PyDbObjectId& backgroundId);
-    void   setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool bForcedSwitch);
+    void                setPreviousBackground1(PyDbObjectId& backgroundId);
+    void                setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool bForcedSwitch);
     bool                previousBackgroundForcedSwitch(void) const;
 
 public:
