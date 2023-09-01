@@ -117,6 +117,7 @@ PyPlPlotConfig PyPlPlotConfigManager::getCurrentConfig()
     return PyPlPlotConfig(pConfig, false);
 }
 
+//TODO: should be deleted? but the app crashes if it is, the C++ sample does not delete
 PyPlPlotConfig PyPlPlotConfigManager::setCurrentConfig(const std::string& pDeviceName)
 {
     AcPlPlotConfig* pConfig = nullptr;
