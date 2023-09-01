@@ -193,7 +193,7 @@ AcPlObject* PyPlObject::impObj(const std::source_location& src /*= std::source_l
 void makePyPlDSDDataWrapper()
 {
     PyDocString DS("DSDData");
-    class_<PyPlDSDData, bases<PyPlObject>>("PlObject")
+    class_<PyPlDSDData, bases<PyPlObject>>("DSDData")
         .def("projectPath", &PyPlDSDData::projectPath)
         .def("setProjectPath", &PyPlDSDData::setProjectPath)
         .def("destinationName", &PyPlDSDData::destinationName)
@@ -692,6 +692,30 @@ void makePyPlDSDEntryWrapper()
         .def("desc", &PyPlDSDEntry::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlDSDEntry::className, DS.SARGS()).staticmethod("className")
         ;
+
+    enum_<AcPlDSDEntry::SheetType>("SheetType")
+        .value("kSingleDWF", AcPlDSDEntry::SheetType::kSingleDWF)
+        .value("kMultiDWF", AcPlDSDEntry::SheetType::kMultiDWF)
+        .value("kOriginalDevice", AcPlDSDEntry::SheetType::kOriginalDevice)
+        .value("kSingleDWFx", AcPlDSDEntry::SheetType::kSingleDWFx)
+        .value("kMultiDWFx", AcPlDSDEntry::SheetType::kMultiDWFx)
+        .value("kSinglePDF", AcPlDSDEntry::SheetType::kSinglePDF)
+        .value("kMultiPDF", AcPlDSDEntry::SheetType::kMultiPDF)
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+        .value("kSingleSVF", AcPlDSDEntry::SheetType::kSingleSVF)
+        .value("kMultiSVF", AcPlDSDEntry::SheetType::kMultiSVF)
+#endif
+        .export_values()
+        ;
+
+    enum_<AcPlDSDEntry::SetupType>("SetupType")
+        .value("kOriginalPS", AcPlDSDEntry::SetupType::kOriginalPS)
+        .value("kNPSSameDWG", AcPlDSDEntry::SetupType::kNPSSameDWG)
+        .value("kNPSOtherDWG", AcPlDSDEntry::SetupType::kNPSOtherDWG)
+        .value("k3dDwf", AcPlDSDEntry::SetupType::k3dDwf)
+        .value("kOverridePS", AcPlDSDEntry::SetupType::kOverridePS)
+        .export_values()
+        ;
 }
 
 PyPlDSDEntry::PyPlDSDEntry()
@@ -724,7 +748,7 @@ std::string PyPlDSDEntry::layout() const
     return wstr_to_utf8(impObj()->layout());
 }
 
-void PyPlDSDEntry::setLayout(std::string& pLayoutName)
+void PyPlDSDEntry::setLayout(const std::string& pLayoutName)
 {
     impObj()->setLayout(utf8_to_wstr(pLayoutName).c_str());
 }

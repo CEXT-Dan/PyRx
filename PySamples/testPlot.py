@@ -114,3 +114,46 @@ def PyRxCmd_doit():
 
     except Exception as err:
         print(traceback.format_exc())
+
+def PyRxCmd_doit2():
+    try:
+        db = Db.curDb()
+        pdfPath = "C:\\temp\\pdf\\myPDF.pdf"
+        deviceName = "DWG To PDF.pc3"
+        docName = db.getFilename()
+
+        dsdEntries = []
+        symUtilServices = Db.SymUtilServices()
+        layoutDict = Db.Dictionary(db.layoutDictionaryId())
+
+        for name, id in layoutDict.asDict().items():
+
+            if name == "Model":
+                continue
+
+            dsdEntry = Pl.DSDEntry()
+            dsdEntry.setLayout(name)
+            dsdEntry.setDwgName(docName)
+            dsdEntry.setTitle(name)
+            dsdEntries.append(dsdEntry)
+
+        layoutDict.close()
+        dsdData = Pl.DSDData()
+        dsdData.setDSDEntries(dsdEntries)
+
+        dsdData.setProjectPath("c:\\temp\\pdf\\")
+        dsdData.setLogFilePath("c:\\temp\\pdf\\logpdf.log")
+        dsdData.setSheetType(Pl.SheetType.kMultiPDF)
+        dsdData.setNoOfCopies(1)
+        dsdData.setDestinationName(pdfPath)
+        dsdData.setPromptForDwfName(False)
+        dsdData.setSheetSetName("PublisherSet")
+
+        plotConfigManager = Pl.PlotConfigManager()
+        plotConfig = plotConfigManager.setCurrentConfig(deviceName)
+
+        Ed.Core.arxLoad("AcPublish.arx")
+        Pl.Core.publishExecute(dsdData, plotConfig, False)
+
+    except Exception as err:
+        print(traceback.format_exc())
