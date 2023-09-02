@@ -56,11 +56,7 @@ int PyGeSplineEnt2d::numKnots() const
 
 PyGeKnotVector PyGeSplineEnt2d::knots() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyGeKnotVector(impObj()->knots());
-#endif
 }
 
 int PyGeSplineEnt2d::numControlPoints() const
@@ -70,20 +66,12 @@ int PyGeSplineEnt2d::numControlPoints() const
 
 int PyGeSplineEnt2d::continuityAtKnot1(int idx) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->continuityAtKnot(idx);
-#endif
 }
 
 int PyGeSplineEnt2d::continuityAtKnot2(int idx, const AcGeTol& tol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->continuityAtKnot(idx, tol);
-#endif
 }
 
 double PyGeSplineEnt2d::startParam() const

@@ -13,7 +13,6 @@ class PyUnderlayLayer
 {
 public:
     PyUnderlayLayer();
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyUnderlayLayer(const AcUnderlayLayer& layer);
     std::string name();
     bool state() const;
@@ -21,7 +20,6 @@ public:
     void setState(bool state);
 public:
     AcUnderlayLayer imp;
-#endif
 };
 
 //-----------------------------------------------------------------------------------

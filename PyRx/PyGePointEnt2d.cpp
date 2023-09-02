@@ -103,20 +103,12 @@ AcGePoint2d PyGePointOnCurve2d::point1() const
 
 AcGePoint2d PyGePointOnCurve2d::point2(double param)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->point(param);
-#endif
 }
 
 AcGePoint2d PyGePointOnCurve2d::point3(const PyGeCurve2d& crv, double param)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->point(*crv.impObj(), param);
-#endif
 }
 
 AcGeVector2d PyGePointOnCurve2d::deriv1(int order) const
@@ -237,31 +229,22 @@ PyGePosition2d::PyGePosition2d(double x, double y)
     : PyGePointEnt2d(new AcGePosition2d(x, y))
 {
 }
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+
 PyGePosition2d::PyGePosition2d(const AcGePosition2d& pos)
     : PyGePointEnt2d(new AcGePosition2d(pos))
 {
 }
-#endif
 
 PyGePosition2d& PyGePosition2d::set1(const AcGePoint2d& pnt)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(pnt);
     return *this;
-#endif
 }
 
 PyGePosition2d& PyGePosition2d::set2(double x, double y)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(x, y);
     return *this;
-#endif
 }
 
 std::string PyGePosition2d::className()

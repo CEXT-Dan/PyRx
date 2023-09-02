@@ -190,38 +190,22 @@ bool PyCAdUiPaletteSet::autoRollupStyle()
 
 bool PyCAdUiPaletteSet::propertiesMenuStyle()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->PropertiesMenuStyle() == TRUE;
-#endif
 }
 
 bool PyCAdUiPaletteSet::closeButtonStyle()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->CloseButtonStyle() == TRUE;
-#endif
 }
 
 bool PyCAdUiPaletteSet::singlePaletteTabStyle()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->SinglePaletteTabStyle() == TRUE;
-#endif
 }
 
 bool PyCAdUiPaletteSet::useSinglePaletteTabNameStyle()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->UseSinglePaletteTabNameStyle() == TRUE;
-#endif
 }
 
 bool PyCAdUiPaletteSet::editNameStyle()
@@ -231,29 +215,17 @@ bool PyCAdUiPaletteSet::editNameStyle()
 
 bool PyCAdUiPaletteSet::snapStyle()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->SnapStyle() == TRUE;
-#endif
 }
 
 bool PyCAdUiPaletteSet::showRollupButtonStyle()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->ShowRollupButtonStyle() == TRUE;
-#endif
 }
 
 bool PyCAdUiPaletteSet::showIconStyle()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->ShowIconStyle() == TRUE;
-#endif
 }
 
 std::string PyCAdUiPaletteSet::getName()
@@ -278,20 +250,12 @@ bool PyCAdUiPaletteSet::setOpacity(int nOpacity)
 
 int PyCAdUiPaletteSet::getRolloverOpacity() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->GetRolloverOpacity();
-#endif
 }
 
 bool PyCAdUiPaletteSet::setRolloverOpacity(int nOpacity)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->SetRolloverOpacity(nOpacity) == TRUE;
-#endif
 }
 
 int PyCAdUiPaletteSet::getActivePaletteTabIndex()
@@ -369,34 +333,19 @@ void PyCAdUiPaletteSet::updateTabs()
 
 COLORREF PyCAdUiPaletteSet::paletteBackgroundColor() const
 {
-#ifdef BRXAPP
-    return RGB(45, 48, 53);
-#endif
-#ifdef ZRXAPP
-    return RGB(49, 56, 66);
-#endif
-#ifdef GRXAPP
-    return RGB(49, 56, 66);
-#endif
-#ifdef ARXAPP
+
     auto theme = impObj()->GetTheme();
     if (theme == nullptr) [[unlikely]]
         throw PyNullObject();
         return theme->GetColor(kPaletteBackground);
-#endif
-        return RGB(0, 0, 0);
 }
 
 COLORREF PyCAdUiPaletteSet::paletteTabTextColor() const
 {
-#ifndef ARXAPP
-    return 0xFFBEC0C5;
-#else
     auto theme = impObj()->GetTheme();
     if (theme == nullptr) [[unlikely]]
         throw PyNullObject();
         return theme->GetColor(kPaletteTabText);
-#endif
 }
 
 PyCAdUiPaletteSetImpl* PyCAdUiPaletteSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const

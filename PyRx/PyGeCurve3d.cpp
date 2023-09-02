@@ -1009,12 +1009,11 @@ PyGeEllipArc3d::PyGeEllipArc3d(AcGeEntity3d* pEnt)
     : PyGeCurve3d(pEnt)
 {
 }
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+
 PyGeEllipArc3d::PyGeEllipArc3d(const AcGeEllipArc3d& ell)
     : PyGeCurve3d(new AcGeEllipArc3d(ell))
 {
 }
-#endif
 
 PyGeEllipArc3d::PyGeEllipArc3d(const PyGeCircArc3d& arc)
     : PyGeCurve3d(new AcGeEllipArc3d(*arc.impObj()))

@@ -66,20 +66,12 @@ int PyGeSplineEnt3d::numControlPoints() const
 
 int PyGeSplineEnt3d::continuityAtKnot1(int idx) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->continuityAtKnot(idx);
-#endif
 }
 
 int PyGeSplineEnt3d::continuityAtKnot2(int idx, const AcGeTol& tol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->continuityAtKnot(idx, tol);
-#endif
 }
 
 double PyGeSplineEnt3d::startParam() const
@@ -114,12 +106,8 @@ double PyGeSplineEnt3d::knotAt(int idx) const
 
 PyGeSplineEnt3d& PyGeSplineEnt3d::setKnotAt(int idx, double val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setKnotAt(idx, val);
     return *this;
-#endif
 }
 
 AcGePoint3d PyGeSplineEnt3d::controlPointAt(int idx) const
@@ -215,9 +203,7 @@ void makePyGePolyline3dWrapper()
         .def(init<>())
         .def(init<const boost::python::list&>())
         .def(init<const PyGeKnotVector&, const boost::python::list&>())
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .def(init<const PyGeCurve3d&, double>())
-#endif // BRXAPP
         .def("numFitPoints", &PyGePolyline3d::numFitPoints)
         .def("fitPointAt", &PyGePolyline3d::fitPointAt)
         .def("setFitPointAt", &PyGePolyline3d::setFitPointAt, return_self<>())
@@ -250,12 +236,10 @@ PyGePolyline3d::PyGePolyline3d(const PyGeKnotVector& knots, const boost::python:
 {
 }
 
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyGePolyline3d::PyGePolyline3d(const PyGeCurve3d& crv, double apprEps)
     : PyGeSplineEnt3d(new AcGePolyline3d(*crv.impObj(), apprEps))
 {
 }
-#endif
 
 int PyGePolyline3d::numFitPoints() const
 {

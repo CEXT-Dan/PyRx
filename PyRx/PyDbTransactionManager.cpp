@@ -62,11 +62,7 @@ int PyDbTransactionManager::numActiveTransactions()
 
 int PyDbTransactionManager::numOpenedObjects()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->numOpenedObjects();
-#endif
 }
 
 PyTransaction PyDbTransactionManager::topTransaction()
@@ -86,15 +82,6 @@ void PyDbTransactionManager::addNewlyCreatedDBRObject2(PyDbObject& obj, bool add
 
 boost::python::list PyDbTransactionManager::getAllObjects()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)// SR159573
-    PyAutoLockGIL lock;
-    AcDbVoidPtrArray objs;
-    boost::python::list pyObjs;
-    PyThrowBadEs(impObj()->getAllObjects(objs));
-    for (auto item : objs)
-        pyObjs.append(PyDbObject((AcDbObject*)item, true));
-    return pyObjs;
-#else
     PyAutoLockGIL lock;
     AcArray<AcDbObject*> objs;
     boost::python::list pyObjs;
@@ -102,7 +89,6 @@ boost::python::list PyDbTransactionManager::getAllObjects()
     for (auto item : objs)
         pyObjs.append(PyDbObject(item, true));
     return pyObjs;
-#endif
 }
 
 PyDbObject PyDbTransactionManager::getObject1(const PyDbObjectId& id)
@@ -233,15 +219,6 @@ PyDbObject PyTransaction::getObject3(const PyDbObjectId& id, AcDb::OpenMode mode
 
 boost::python::list PyTransaction::getAllObjects()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    PyAutoLockGIL lock;
-    AcDbVoidPtrArray objs;
-    boost::python::list pyObjs;
-    PyThrowBadEs(impObj()->getAllObjects(objs));
-    for (auto item : objs)
-        pyObjs.append(PyDbObject((AcDbObject*)item, true));
-    return pyObjs;
-#else
     PyAutoLockGIL lock;
     AcArray<AcDbObject*> objs;
     boost::python::list pyObjs;
@@ -249,16 +226,11 @@ boost::python::list PyTransaction::getAllObjects()
     for (auto item : objs)
         pyObjs.append(PyDbObject(item, true));
     return pyObjs;
-#endif
 }
 
 int PyTransaction::numOpenedObjects()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->numOpenedObjects();
-#endif
 }
 
 PyRxClass PyTransaction::desc()
