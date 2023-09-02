@@ -61,8 +61,14 @@ void makePyGiSubEntityTraitsWrapper()
         .value("kDrawFillTextBoundaryEnd", AcGiSubEntityTraits::DrawFlags::kDrawFillTextBoundaryEnd)
         .value("kDrawFillSelectionWindow", AcGiSubEntityTraits::DrawFlags::kDrawFillSelectionWindow)
         .value("kDrawNoForceByLayer", AcGiSubEntityTraits::DrawFlags::kDrawNoForceByLayer)
-#if defined(_ARXTARGET) && (_ARXTARGET >= 242)
-        .value("KDrawIsInWCS", AcGiSubEntityTraits::DrawFlags::KDrawIsInWCS)
+
+         //DOH! the K lol!
+#if defined(_ARXTARGET) && (_ARXTARGET == 242)
+        .value("kDrawIsInWCS", AcGiSubEntityTraits::DrawFlags::KDrawIsInWCS)
+#endif
+#if defined(_ARXTARGET) && (_ARXTARGET >= 243)
+        .value("kDrawIsInWCS", AcGiSubEntityTraits::DrawFlags::kDrawIsInWCS)
+        .value("kDrawNoImageFrame", AcGiSubEntityTraits::DrawFlags::kDrawNoImageFrame)
 #endif
         .export_values()
         ;
