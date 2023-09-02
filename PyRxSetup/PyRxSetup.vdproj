@@ -691,7 +691,7 @@
             "Sequence" = "3:1"
             "Identifier" = "8:_4141C239_245F_4A4E_B92A_3345EC046A02"
             "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
+            "CustomActionData" = "8:[CommonAppDataFolder]Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
             "Run64Bit" = "11:TRUE"
             }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_96937141FC23444BB0141E59D311F975"
@@ -706,7 +706,7 @@
             "Sequence" = "3:1"
             "Identifier" = "8:_3ECFDC09_03A8_4DD6_BDAF_AFEA00EDBAAC"
             "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
+            "CustomActionData" = "8:[CommonAppDataFolder]Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
             "Run64Bit" = "11:TRUE"
             }
         }
@@ -1952,7 +1952,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PyRx"
         "ProductCode" = "8:{51386679-D611-4231-A17E-B959075AD6CA}"
-        "PackageCode" = "8:{9F68D197-EE43-4951-B522-7C59A8123552}"
+        "PackageCode" = "8:{FC49841C-1C58-4C6E-B190-06B4D0CE1DB9}"
         "UpgradeCode" = "8:{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
