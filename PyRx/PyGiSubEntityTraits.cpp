@@ -80,13 +80,12 @@ void makePyGiSubEntityTraitsWrapper()
         .value("kShadowsIgnore", AcGiSubEntityTraits::ShadowFlags::kShadowsIgnore)
         .export_values()
         ;
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
+
     enum_<AcGiSubEntityTraits::SelectionFlags>("SelectionFlags")
         .value("kNoSelectionFlags", AcGiSubEntityTraits::SelectionFlags::kNoSelectionFlags)
         .value("kSelectionIgnore", AcGiSubEntityTraits::SelectionFlags::kSelectionIgnore)
         .export_values()
         ;
-#endif // !BRXAPP
 }
 
 PyGiSubEntityTraits::PyGiSubEntityTraits(AcGiSubEntityTraits* ptr, bool autoDelete)

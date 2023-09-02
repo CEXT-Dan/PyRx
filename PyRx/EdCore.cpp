@@ -238,20 +238,12 @@ int EdCore::arxUnload(const std::string& app)
 
 void EdCore::audit1(PyDbDatabase& pDb, bool bFixErrors)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(acedAudit(pDb.impObj(), bFixErrors));
-#endif
 }
 
 void EdCore::audit2(PyDbDatabase& pDb, bool bFixErrors, bool bCmdLnEcho)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(acedAudit(pDb.impObj(), bFixErrors, bCmdLnEcho));
-#endif
 }
 
 void EdCore::callBackOnCancel()
@@ -340,22 +332,14 @@ bool EdCore::coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt, boost::p
 
 bool EdCore::createInternetShortcut(const std::string& szURL, const std::string& szShortcutPath)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return acedCreateInternetShortcut(utf8_to_wstr(szURL).c_str(), utf8_to_wstr(szShortcutPath).c_str());
-#endif
 }
 
 PyDbObjectId EdCore::createViewportByView(PyDbDatabase& db, PyDbObjectId& view, const AcGePoint2d& location, double scale)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     PyDbObjectId id;
     PyThrowBadEs(acedCreateViewportByView(db.impObj(), view.m_id, location, scale, id.m_id));
     return id;
-#endif
 }
 
 int EdCore::defun(const std::string& pszName, int nFuncNum)
@@ -365,11 +349,7 @@ int EdCore::defun(const std::string& pszName, int nFuncNum)
 
 int EdCore::defunEx(const std::string& pszGlobalName, const std::string& pszLocalName, int nFuncNum)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return acedDefunEx(utf8_to_wstr(pszGlobalName).c_str(), utf8_to_wstr(pszLocalName).c_str(), nFuncNum);
-#endif
 }
 
 void EdCore::disableDefaultARXExceptionHandler(bool flag)
@@ -379,20 +359,12 @@ void EdCore::disableDefaultARXExceptionHandler(bool flag)
 
 void EdCore::disableUsrbrk()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     acedDisableUsrbrk();
-#endif
 }
 
 bool EdCore::displayBorder(bool flag)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return acedDisplayBorder(flag);
-#endif
 }
 
 bool EdCore::drawingStatusBarsVisible()
@@ -402,21 +374,13 @@ bool EdCore::drawingStatusBarsVisible()
 
 void EdCore::drawOrderInherit(PyDbObjectId& parent, const boost::python::list& childArray, AcEdDrawOrderCmdType cmd)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     auto ids = PyListToObjectIdArray(childArray);
     PyThrowBadEs(acedDrawOrderInherit(parent.m_id, ids, cmd));
-#endif
 }
 
 int EdCore::eatCommandThroat()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return acedEatCommandThroat();
-#endif
 }
 
 int EdCore::editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs)
@@ -426,11 +390,7 @@ int EdCore::editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs
 
 void EdCore::enableUsrbrk()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return acedEnableUsrbrk();
-#endif
 }
 
 bool EdCore::cmdS(const boost::python::list& lst)
@@ -448,20 +408,13 @@ std::string EdCore::findFile(const std::string& file)
 
 std::string EdCore::findTrustedFile(const std::string& file)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     std::array<wchar_t, MAX_PATH> data;
     acedFindTrustedFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
     return wstr_to_utf8(data.data());
-#endif
 }
 
 boost::python::list EdCore::getPredefinedPattens()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     AcStringArray patterns;
     boost::python::list py_patterns;
@@ -471,7 +424,6 @@ boost::python::list EdCore::getPredefinedPattens()
             py_patterns.append(wstr_to_utf8(pattern));
     }
     return py_patterns;
-#endif
 }
 
 std::string EdCore::getFileD(const std::string& title, const std::string& defawlt, const std::string& ext, int flags)
@@ -502,33 +454,21 @@ boost::python::list EdCore::getFileNavDialog(const std::string& title, const std
 
 std::string EdCore::getCommandPromptString()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     CString str;
     acedGetCommandPromptString(str);
     return wstr_to_utf8(str);
-#endif
 }
 
 unsigned int EdCore::getBlockEditMode()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return acedGetBlockEditMode();
-#endif
 }
 
 std::string EdCore::getCommandForDocument(const PyApDocument& doc)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcString cmd;
     PyThrowBadEs(acedGetCommandForDocument(doc.impObj(), cmd));
     return wstr_to_utf8(cmd);
-#endif
 }
 
 boost::python::list EdCore::getCurrentSelectionSet()
@@ -540,43 +480,30 @@ boost::python::list EdCore::getCurrentSelectionSet()
 
 boost::python::tuple EdCore::getCurVportPixelToDisplay()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     double xFactor = 0;
     double yFactor = 0;
     acedGetCurVportPixelToDisplay(xFactor, yFactor);
     return boost::python::make_tuple(xFactor, yFactor);
-#endif
 }
 
 boost::python::tuple EdCore::getCurVportScreenToDisplay()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     double xFactor = 0;
     double yFactor = 0;
     acedGetCurVportScreenToDisplay(xFactor, yFactor);
     return boost::python::make_tuple(xFactor, yFactor);
-#endif
 }
 
 float EdCore::getDpiScalingValue()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return acedGetDpiScalingValue();
-#endif
 }
 
 std::string EdCore::getEnv(const std::string& env)
 {
 #if defined(_ARXTARGET) && (_ARXTARGET >= 242)
-
     AcString val;
     PyThrowBadRt(acedGetEnv(utf8_to_wstr(env).c_str(), val));
     return wstr_to_utf8(val);
@@ -641,11 +568,7 @@ int EdCore::isDragging()
 
 bool EdCore::isInBackgroundMode()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return acedIsInBackgroundMode();
-#endif
 }
 
 bool EdCore::isInputPending()
@@ -660,11 +583,7 @@ Adesk::Boolean EdCore::isMenuGroupLoaded(const std::string& mnu)
 
 bool EdCore::isOsnapOverride()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return acedIsOsnapOverride();
-#endif
 }
 
 bool EdCore::isUpdateDisplayPaused()
@@ -674,20 +593,12 @@ bool EdCore::isUpdateDisplayPaused()
 
 bool EdCore::isUsrbrkDisabled()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return acedIsUsrbrkDisabled();
-#endif
 }
 
 void EdCore::loadJSScript(const std::string& pUriOfJSFile)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     acedLoadJSScript(utf8_to_wstr(pUriOfJSFile).c_str());
-#endif // !ARXAPP
 }
 
 bool EdCore::loadPartialMenu(const std::string& mnu)
@@ -697,11 +608,7 @@ bool EdCore::loadPartialMenu(const std::string& mnu)
 
 void EdCore::markForDelayXRefRelativePathResolve(const PyDbObjectId& id)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     acedMarkForDelayXRefRelativePathResolve(id.m_id);
-#endif
 }
 
 int EdCore::menuCmd(const std::string& mnu)
@@ -880,11 +787,7 @@ void EdCore::pSpace()
 
 void EdCore::postCommand(const std::string& str)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     acedPostCommand(utf8_to_wstr(str).c_str());
-#endif // !ARXAPP
 }
 
 void EdCore::postCommandPrompt()
@@ -972,11 +875,7 @@ AcGePoint3d EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)
 
 void EdCore::setUndoMark(bool flag)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(acedSetUndoMark(flag));
-#endif
 }
 
 void EdCore::setCurrentView(const PyDbViewTableRecord& vrec, const PyDbViewport& vp)
@@ -1001,38 +900,22 @@ int EdCore::setStatusBarProgressMeterPos(int pos)
 
 void EdCore::setXrefResolvedWithUpdateStatus(const PyDbBlockTableRecord& rec)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(acedSetXrefResolvedWithUpdateStatus(rec.impObj()));
-#endif
 }
 
 bool EdCore::showHTMLModalWindow1(UINT_PTR hwnd, const std::string& uriOfHtmlPage)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return showHTMLModalWindow2(hwnd, uriOfHtmlPage, true);
-#endif
 }
 
 bool EdCore::showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return acedShowHTMLModalWindow((HWND)hwnd, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
-#endif
 }
 
 UINT_PTR EdCore::showHTMLModelessWindow1(UINT_PTR owner, const std::string& uriOfHtmlPage)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return showHTMLModelessWindow2(owner, uriOfHtmlPage, true);
-#endif
 }
 
 UINT_PTR EdCore::showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
@@ -1046,11 +929,7 @@ UINT_PTR EdCore::showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriO
 
 void EdCore::skipXrefNotification(PyDbDatabase& db, const std::string& xrefName)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(acedSkipXrefNotification(db.impObj(), utf8_to_wstr(xrefName).c_str()));
-#endif
 }
 
 AcGePoint3d EdCore::trans(AcGePoint3d& pt, const boost::python::list& from, const boost::python::list& to, int disp)
@@ -1155,14 +1034,10 @@ void EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbData
 
 bool EdCore::xrefNotifyCheckFileChanged(const PyDbObjectId& id)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     bool flag = false;
     if (auto es = acedXrefNotifyCheckFileChanged(id.m_id, flag); es != eOk)
         throw PyAcadErrorStatus(es);
     return flag;
-#endif
 }
 
 void EdCore::xrefOverlay1(const std::string& path, const std::string& name)
@@ -1240,20 +1115,12 @@ void EdCore::xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool 
 
 void EdCore::xrefXBind1(const boost::python::list& symbolIds)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
     return PyThrowBadEs(acedXrefXBind(ids));
-#endif
 }
 
 void EdCore::xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
     return PyThrowBadEs(acedXrefXBind(ids, bQuiet, pHostDb.impObj()));
-#endif
 }

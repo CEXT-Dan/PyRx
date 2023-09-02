@@ -129,16 +129,8 @@
 
 //#define PyRxDebug
 
-#ifdef GRXAPP
-#pragma comment( lib , "gcad.lib" )
-#pragma comment( lib , "gcbase.lib" )
-#pragma comment( lib , "gcax.lib" )
-#pragma comment( lib , "gcbr.lib" )
-#pragma comment( lib , "gccore.lib" )
-#pragma comment( lib , "gcdb.lib" )
-#endif
 
-#ifdef ARXAPP
+#if defined(_ARXTARGET)
 #pragma comment( lib , "AcPal.lib" )
 #pragma comment( lib , "acgeoment.lib" )
 #pragma comment( lib , "AcPublish_crx.lib" )
@@ -269,7 +261,6 @@ public:
 
 struct PyAutoLockGIL
 {
-
     PyAutoLockGIL()
     {
         if (canLock)[[likely]]
@@ -438,7 +429,6 @@ inline AcStringArray PyListAcStringArray(const boost::python::object& iterable)
         arr.append(utf8_to_wstr(item).c_str());
     return arr;
 }
-
 
 #pragma pack (pop)
 
