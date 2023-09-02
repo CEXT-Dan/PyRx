@@ -129,9 +129,7 @@ public:
     void                setToleranceSuppressLeadingZeros(bool val);
     bool                toleranceSuppressZeroInches() const;
     void                setToleranceSuppressZeroInches(bool val);
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     AcDbDimension::CenterMarkType centerMarkType() const;
-#endif
     static std::string className();
     static PyRxClass desc();
     static PyDbDimension cloneFrom(const PyRxObject& src);

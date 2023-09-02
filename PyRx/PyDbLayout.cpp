@@ -249,20 +249,12 @@ void PyDbPlotSettings::setPlotViewportBorders(Adesk::Boolean plotViewportBorders
 
 Adesk::Boolean PyDbPlotSettings::plotTransparency() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->plotTransparency();
-#endif
 }
 
 void PyDbPlotSettings::setPlotTransparency(Adesk::Boolean plotTransparency)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setPlotTransparency(plotTransparency);
-#endif
 }
 
 Adesk::Boolean PyDbPlotSettings::plotPlotStyles() const
@@ -307,20 +299,12 @@ void PyDbPlotSettings::setPlotHidden(Adesk::Boolean plotHidden)
 
 AcDbPlotSettings::ShadePlotType PyDbPlotSettings::shadePlot() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->shadePlot();
-#endif
 }
 
 void PyDbPlotSettings::setShadePlot1(AcDbPlotSettings::ShadePlotType shadePlot)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setShadePlot(shadePlot));
-#endif
 }
 
 void PyDbPlotSettings::setShadePlot2(AcDbPlotSettings::ShadePlotType type, const PyDbObjectId& shadePlotId)
@@ -451,11 +435,7 @@ Adesk::Boolean PyDbPlotSettings::modelType() const
 
 PyDbObjectId PyDbPlotSettings::shadePlotId() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->shadePlotId());
-#endif
 }
 
 std::string PyDbPlotSettings::className()
@@ -610,15 +590,11 @@ boost::python::tuple PyDbLayout::getLimits() const
 
 boost::python::tuple PyDbLayout::getExtents() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     AcGePoint3d extMin;
     AcGePoint3d extMax;
     impObj()->getExtents(extMin, extMax);
     return boost::python::make_tuple(extMin, extMax);
-#endif
 }
 
 void PyDbLayout::initialize1()
@@ -857,22 +833,14 @@ int PyDbLayoutManager::countLayouts2(PyDbDatabase& pDb)
 
 Adesk::ULongPtr PyDbLayoutManager::setupForLayouts(PyDbDatabase& pDb)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     Adesk::ULongPtr contextHandle = 0;
     PyThrowBadEs(acdbDoSetupForLayouts(pDb.impObj(), contextHandle));
     return contextHandle;
-#endif
 }
 
 void PyDbLayoutManager::clearSetupForLayouts(Adesk::ULongPtr contextHandle)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(acdbClearSetupForLayouts(contextHandle));
-#endif
 }
 
 PyRxClass PyDbLayoutManager::desc()

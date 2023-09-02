@@ -102,13 +102,11 @@ void makePyDbHatchWrapper()
         .value("kSelfIntersecting", AcDbHatch::HatchLoopType::kSelfIntersecting)
         .value("kTextIsland", AcDbHatch::HatchLoopType::kTextIsland)
         .value("kDuplicate", AcDbHatch::HatchLoopType::kDuplicate)
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kIsAnnotative", AcDbHatch::HatchLoopType::kIsAnnotative)
         .value("kDoesNotSupportScale", AcDbHatch::HatchLoopType::kDoesNotSupportScale)
         .value("kForceAnnoAllVisible", AcDbHatch::HatchLoopType::kForceAnnoAllVisible)
         .value("kOrientToPaper", AcDbHatch::HatchLoopType::kOrientToPaper)
         .value("kIsAnnotativeBlock", AcDbHatch::HatchLoopType::kIsAnnotativeBlock)
-#endif // !BRXAPP
         .export_values()
         ;
 
@@ -425,13 +423,9 @@ void PyDbHatch::setGradientShift(float shiftValue)
 
 AcCmColor PyDbHatch::evaluateGradientColorAt(float value)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcCmColor clr;
     PyThrowBadEs(impObj()->evaluateGradientColorAt(value, clr));
     return clr;
-#endif
 }
 
 AcDbHatch::HatchPatternType PyDbHatch::patternType() const
@@ -532,38 +526,22 @@ void PyDbHatch::evaluateHatch2(bool bUnderestimateNumLines)
 
 void PyDbHatch::evaluateHatchAllScales1()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->evaluateHatchAllScales());
-#endif
 }
 
 void PyDbHatch::evaluateHatchAllScales2(bool bUnderestimateNumLines)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->evaluateHatchAllScales(bUnderestimateNumLines));
-#endif
 }
 
 bool PyDbHatch::lineGenerationEnabled() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->lineGenerationEnabled();
-#endif
 }
 
 bool PyDbHatch::setLineGenerationEnabled(bool bEnable)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setLineGenerationEnabled(bEnable);
-#endif
 }
 
 int PyDbHatch::numHatchLines() const

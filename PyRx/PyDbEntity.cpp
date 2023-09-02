@@ -150,12 +150,8 @@ void PyDbEntity::setLayer6(const PyDbObjectId& newVal, bool doSubents, bool allo
 std::string PyDbEntity::plotStyleName() const
 {
     AcString str;
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    return  wstr_to_utf8(impObj()->plotStyleName());
-#else
-    impObj()->plotStyleName(str);
+    PyThrowBadEs(impObj()->plotStyleName(str));
     return wstr_to_utf8(str);
-#endif // BRXAPP
 }
 
 PyDbObjectId PyDbEntity::getPlotStyleNameId() const
@@ -485,20 +481,12 @@ PyDbEntity PyDbEntity::getTransformedCopy(const AcGeMatrix3d& xform) const
 
 void PyDbEntity::addReactor(PyDbEntityReactor& pReactor) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    impObj()->addReactor(pReactor.impObj());
-#else
     return PyThrowBadEs(impObj()->addReactor(pReactor.impObj()));
-#endif
 }
 
 void PyDbEntity::removeReactor(PyDbEntityReactor& pReactor) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    impObj()->removeReactor(pReactor.impObj());
-#else
     return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
-#endif
 }
 
 boost::python::list PyDbEntity::getStretchPoints() const
