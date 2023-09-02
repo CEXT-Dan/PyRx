@@ -10,7 +10,6 @@ using namespace boost::python;
 //PyDbObjectContext
 void makePyDbObjectContextWrapper()
 {
-#ifndef ZRXAPP
     class_<PyDbObjectContext, bases<PyRxObject>>("ObjectContext", boost::python::no_init)
         .def("getName", &PyDbObjectContext::getName)
         .def("setName", &PyDbObjectContext::setName)
@@ -19,10 +18,8 @@ void makePyDbObjectContextWrapper()
         .def("desc", &PyDbObjectContext::desc).staticmethod("desc")
         .def("className", &PyDbObjectContext::className).staticmethod("className")
         ;
-#endif
 }
 
-#ifndef ZRXAPP
 PyDbObjectContext::PyDbObjectContext(AcDbObjectContext* pt)
     : PyRxObject(pt)
 {
@@ -72,13 +69,11 @@ AcDbObjectContext* PyDbObjectContext::impObj(const std::source_location& src /*=
         throw PyNullObject(src);
     return static_cast<AcDbObjectContext*>(m_pyImp.get());
 }
-#endif
 
 //-----------------------------------------------------------------------------------------
 // PyDbAnnotationScale
 void makePyDbAnnotationScaleWrapper()
 {
-#ifndef ZRXAPP
     class_<PyDbAnnotationScale, bases<PyDbObjectContext>>("AnnotationScale")
         .def(init<>())
         .def("copyFrom", &PyDbAnnotationScale::copyFrom)
@@ -92,10 +87,8 @@ void makePyDbAnnotationScaleWrapper()
         .def("desc", &PyDbAnnotationScale::desc).staticmethod("desc")
         .def("className", &PyDbAnnotationScale::className).staticmethod("className")
         ;
-#endif
 }
 
-#ifndef ZRXAPP
 PyDbAnnotationScale::PyDbAnnotationScale()
     : PyDbObjectContext(new AcDbAnnotationScale(), true, false)
 {
@@ -175,5 +168,3 @@ AcDbAnnotationScale* PyDbAnnotationScale::impObj(const std::source_location& src
         throw PyNullObject(src);
     return static_cast<AcDbAnnotationScale*>(m_pyImp.get());
 }
-
-#endif

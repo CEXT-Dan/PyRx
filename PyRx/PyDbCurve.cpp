@@ -346,35 +346,23 @@ void PyDbCurve::setFromAcGeCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& norm
 
 PyDbCurve PyDbCurve::createFromAcGeCurve1(const PyGeCurve3d& geCurve)
 {
-#if defined(_ZRXTARGET) && (_ZRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcDbCurve* pDbCurve = nullptr;
     PyThrowBadEs(AcDbCurve::createFromAcGeCurve(*geCurve.impObj(), pDbCurve));
     return PyDbCurve(pDbCurve, true);
-#endif
 }
 
 PyDbCurve PyDbCurve::createFromAcGeCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal)
 {
-#if defined(_ZRXTARGET) && (_ZRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcDbCurve* pDbCurve = nullptr;
     PyThrowBadEs(AcDbCurve::createFromAcGeCurve(*geCurve.impObj(), pDbCurve, std::addressof(normal)));
     return PyDbCurve(pDbCurve, true);
-#endif
 }
 
 PyDbCurve PyDbCurve::createFromAcGeCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol)
 {
-#if defined(_ZRXTARGET) && (_ZRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcDbCurve* pDbCurve = nullptr;
     PyThrowBadEs(AcDbCurve::createFromAcGeCurve(*geCurve.impObj(), pDbCurve, std::addressof(normal), tol));
     return PyDbCurve(pDbCurve, true);
-#endif
 }
 
 std::string PyDbCurve::className()

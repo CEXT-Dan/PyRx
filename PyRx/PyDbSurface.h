@@ -49,9 +49,6 @@ public:
 //----------------------------------------------------------------------
 //AcDbLoftedSurface 
 void makePyDbLoftedSurfaceWrapper();
-
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
 class PyDbLoftedSurface : public PyDbSurface
 {
 public:
@@ -66,14 +63,11 @@ public:
 public:
     AcDbLoftedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-#endif
 
 //----------------------------------------------------------------------
 //PyDbNurbSurface 
 void makePyDbNurbSurfaceWrapper();
 
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
 class PyDbNurbSurface : public PyDbSurface
 {
 public:
@@ -88,14 +82,12 @@ public:
 public:
     AcDbNurbSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-#endif
+
 
 //----------------------------------------------------------------------
 //AcDbPlaneSurface  
 void makePyDbPlaneSurfaceWrapper();
 
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
 class PyDbPlaneSurface : public PyDbSurface
 {
 public:
@@ -110,14 +102,11 @@ public:
 public:
     AcDbPlaneSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-#endif
 
 //----------------------------------------------------------------------
 //PyDbRevolvedSurface  
 void makePyDbRevolvedSurfaceWrapper();
 
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
 class PyDbRevolvedSurface : public PyDbSurface
 {
 public:
@@ -132,14 +121,11 @@ public:
 public:
     AcDbRevolvedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-#endif
 
 //----------------------------------------------------------------------
 //AcDbSweptSurface  
 void makePyDbSweptSurfaceWrapper();
 
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
 class PyDbSweptSurface : public PyDbSurface
 {
 public:
@@ -154,5 +140,4 @@ public:
 public:
     AcDbSweptSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-#endif
 

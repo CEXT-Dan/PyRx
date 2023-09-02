@@ -136,10 +136,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbBlockEndWrapper();
     makePyDbSequenceEndWrapper();
     makePyDbXrecordWrapper();
-#ifndef ZRXAPP
     makePyDbObjectContextWrapper();
     makePyDbAnnotationScaleWrapper();
-#endif
     makePyDbTableStyleWrapper();
     makePyDbMLeaderStyleWrapper();
     makePyDbMlineStyleWrapper();
@@ -237,9 +235,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbLayoutManagerWrapper();
     makePyDbEvalVariantWrapper();
     makePyDbDynBlockReferencePropertyWrapper();
-#ifndef ZRXAPP
     makePyDbJoinEntityPEWrapper();
-#endif
     makePyDbGroupWrapper();
     makePyDbDatabaseSummaryInfoWrapper();
     makePyDbPlotSettingsValidatorWrapper();
