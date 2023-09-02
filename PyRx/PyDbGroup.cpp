@@ -173,11 +173,7 @@ void PyDbGroup::insertAt1(Adesk::UInt32 idx, const PyDbObjectId& id)
 
 void PyDbGroup::insertAt2(Adesk::UInt32 idx, const boost::python::list& ids)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(impObj()->insertAt(idx, PyListToObjectIdArray(ids)));
-#endif
 }
 
 void PyDbGroup::remove1(const PyDbObjectId& id)
@@ -192,20 +188,12 @@ void PyDbGroup::remove2(const boost::python::list& ids)
 
 void PyDbGroup::removeAt1(Adesk::UInt32 idx)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(impObj()->removeAt(idx));
-#endif
 }
 
 void PyDbGroup::removeAt2(Adesk::UInt32 idx, const boost::python::list& ids)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(impObj()->removeAt(idx, PyListToObjectIdArray(ids)));
-#endif
 }
 
 void PyDbGroup::replace(const AcDbObjectId& oldId, const AcDbObjectId& newId)

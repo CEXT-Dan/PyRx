@@ -40,9 +40,7 @@ void makePyDbFieldtWrapper()
         .value("kModified", AcDbField::State::kModified)
         .value("kEvaluated", AcDbField::State::kEvaluated)
         .value("kHasCache", AcDbField::State::kHasCache)
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kHasFormattedString", AcDbField::State::kHasFormattedString)
-#endif // BRXAPP
         .export_values()
         ;
     enum_<AcDbField::EvalOption>("FieldEvalOption")
@@ -87,14 +85,11 @@ void makePyDbFieldtWrapper()
         .value("kStripOptions", AcDbField::FieldCodeFlag::kStripOptions)
         .value("kPreserveFields", AcDbField::FieldCodeFlag::kPreserveFields)
         .value("kTextField", AcDbField::FieldCodeFlag::kTextField)
-        .export_values()
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kPreserveOptions", AcDbField::FieldCodeFlag::kPreserveOptions)
         .value("kDetachChildren", AcDbField::FieldCodeFlag::kDetachChildren)
         .value("kChildObjectReference", AcDbField::FieldCodeFlag::kChildObjectReference)
         .value("kForExpression", AcDbField::FieldCodeFlag::kForExpression)
         .export_values()
-#endif
         ;
 }
 
@@ -130,11 +125,7 @@ PyDbField::PyDbField(const PyDbObjectId& id)
 
 void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setInObject(pObj.impObj(), utf8_to_wstr(pszPropName).c_str()));
-#endif
 }
 
 void PyDbField::postInDatabase(PyDbDatabase& pDb)
@@ -179,11 +170,7 @@ bool PyDbField::isTextField(void) const
 
 void PyDbField::convertToTextField(void)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->convertToTextField());
-#endif
 }
 
 int PyDbField::childCount(void) const

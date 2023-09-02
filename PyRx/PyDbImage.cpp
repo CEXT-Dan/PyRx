@@ -258,13 +258,9 @@ PyDbObjectId PyDbRasterImageDef::imageDictionary(PyDbDatabase& pDb)
 
 std::string PyDbRasterImageDef::suggestName(PyDbDictionary& dict, const std::string& pPathName)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     ACHAR newImageName[AcDbRasterImageDef::kMaxSuggestNameSize];
     AcDbRasterImageDef::suggestName(dict.impObj(), utf8_to_wstr(pPathName).c_str(), newImageName, AcDbRasterImageDef::kMaxSuggestNameSize);
     return wstr_to_utf8(newImageName);
-#endif
 }
 
 std::string PyDbRasterImageDef::className()
