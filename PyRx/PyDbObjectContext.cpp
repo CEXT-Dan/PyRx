@@ -3,7 +3,6 @@
 #include "dbAnnotationScale.h"
 #include "dbObjContext.h"
 
-
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
@@ -33,14 +32,13 @@ PyDbObjectContext::PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete, boo
 std::string PyDbObjectContext::getName() const
 {
     AcString str;
-    if (auto es = impObj()->getName(str); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getName(str));
     return wstr_to_utf8(str);
 }
 
 void PyDbObjectContext::setName(const std::string& name)
 {
-    return  PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
+    return PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
 
 Adesk::LongPtr PyDbObjectContext::uniqueIdentifier() const
@@ -67,7 +65,7 @@ AcDbObjectContext* PyDbObjectContext::impObj(const std::source_location& src /*=
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbObjectContext*>(m_pyImp.get());
+        return static_cast<AcDbObjectContext*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -106,7 +104,7 @@ PyDbAnnotationScale::PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelet
 
 void PyDbAnnotationScale::copyFrom(const PyRxObject& val)
 {
-    return  PyThrowBadEs(impObj()->copyFrom(val.impObj()));
+    PyThrowBadEs(impObj()->copyFrom(val.impObj()));
 }
 
 double PyDbAnnotationScale::getPaperUnits() const
@@ -139,12 +137,12 @@ bool PyDbAnnotationScale::getIsTemporaryScale() const
 
 void PyDbAnnotationScale::setPaperUnits(double val)
 {
-    return PyThrowBadEs(impObj()->setPaperUnits(val));
+    PyThrowBadEs(impObj()->setPaperUnits(val));
 }
 
 void PyDbAnnotationScale::setDrawingUnits(double val)
 {
-    return PyThrowBadEs(impObj()->setDrawingUnits(val));
+    PyThrowBadEs(impObj()->setDrawingUnits(val));
 }
 
 bool PyDbAnnotationScale::matchScaleId(Adesk::LongPtr val) const
@@ -166,5 +164,5 @@ AcDbAnnotationScale* PyDbAnnotationScale::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcDbAnnotationScale*>(m_pyImp.get());
+        return static_cast<AcDbAnnotationScale*>(m_pyImp.get());
 }
