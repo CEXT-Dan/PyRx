@@ -1153,7 +1153,7 @@
             "SourcePath" = "8:Include\\PackageContents.xml"
             "TargetName" = "8:PackageContents.xml"
             "Tag" = "8:"
-            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
+            "Folder" = "8:_7EF8DB200D0C40B8B878074771B008CF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1494,6 +1494,18 @@
         }
         "Folder"
         {
+            "{994432C3-9487-495D-8656-3E829A8DBDDE}:_7EF8DB200D0C40B8B878074771B008CF"
+            {
+            "DefaultLocation" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle"
+            "Name" = "8:Program64Data"
+            "AlwaysCreate" = "11:TRUE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:PRODUCTROOT"
+                "Folders"
+                {
+                }
+            }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_C417D9F4A4F143FEA3567CC0E6251182"
             {
             "DefaultLocation" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
@@ -1644,7 +1656,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PyRx"
         "ProductCode" = "8:{51386679-D611-4231-A17E-B959075AD6CA}"
-        "PackageCode" = "8:{AD491882-9F54-4E6C-A877-0C4990648DCC}"
+        "PackageCode" = "8:{06EB4ADE-A9CC-4EE6-AA37-48A5C8C454E9}"
         "UpgradeCode" = "8:{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
