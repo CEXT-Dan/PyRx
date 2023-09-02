@@ -90,7 +90,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_PROJNAME            "ArxBrxTest"
+    IDS_PROJNAME            "PyRxApp"
 END
 
 #endif    // English (United States) resources

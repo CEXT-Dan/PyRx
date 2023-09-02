@@ -64,20 +64,12 @@ Adesk::Boolean PyAcGeSurface::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) 
 
 Adesk::Boolean PyAcGeSurface::isOn3(const AcGePoint3d& pnt, AcGePoint2d& paramPoint) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isOn(pnt, paramPoint);
-#endif
 }
 
 Adesk::Boolean PyAcGeSurface::isOn4(const AcGePoint3d& pnt, AcGePoint2d& paramPoint, const AcGeTol& tol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isOn(pnt, paramPoint, tol);
-#endif
 }
 
 AcGePoint3d PyAcGeSurface::closestPointTo1(const AcGePoint3d& pnt) const

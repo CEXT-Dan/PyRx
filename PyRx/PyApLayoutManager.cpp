@@ -82,13 +82,9 @@ void PyApLayoutManager::updateLayoutTabs()
 
 std::string PyApLayoutManager::getActiveTab()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcString sName;
     PyThrowBadEs(impObj()->getActiveTab(sName));
     return wstr_to_utf8(sName);
-#endif
 }
 
 Adesk::Boolean PyApLayoutManager::showTabs()
@@ -153,24 +149,16 @@ void PyApLayoutManager::setShowPrintBorder(Adesk::Boolean showPrintBorder)
 
 std::string PyApLayoutManager::generateNextNewLayoutName1()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcString sName;
     PyThrowBadEs(impObj()->generateNextNewLayoutName(sName));
     return wstr_to_utf8(sName);
-#endif
 }
 
 std::string PyApLayoutManager::generateNextNewLayoutName2(PyDbDatabase& useDb)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcString sName;
     PyThrowBadEs(impObj()->generateNextNewLayoutName(sName, useDb.impObj()));
     return wstr_to_utf8(sName);
-#endif
 }
 
 void PyApLayoutManager::setDefaultPlotConfig(PyDbObjectId& layoutBTRId)
@@ -203,24 +191,16 @@ void PyApLayoutManager::setCaptureOnLayoutSwitch(bool bCaptureOnLayout)
 
 PyDbObjectId PyApLayoutManager::createLayoutFromTemplate1(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyDbObjectId id;
     PyThrowBadEs(impObj()->createLayoutFromTemplate(utf8_to_wstr(newLayoutName).c_str(), id.m_id, utf8_to_wstr(templatePath).c_str(), utf8_to_wstr(layoutName).c_str()));
     return id;
-#endif
 }
 
 PyDbObjectId PyApLayoutManager::createLayoutFromTemplate2(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName, PyDbDatabase& pDb)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyDbObjectId id;
     PyThrowBadEs(impObj()->createLayoutFromTemplate(utf8_to_wstr(newLayoutName).c_str(), id.m_id, utf8_to_wstr(templatePath).c_str(), utf8_to_wstr(layoutName).c_str(), pDb.impObj()));
     return id;
-#endif
 }
 
 PyRxClass PyApLayoutManager::desc()
