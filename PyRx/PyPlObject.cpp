@@ -633,7 +633,7 @@ void PyPlDSDData::setPromptForPassword(bool bPromptForPassword)
 
 bool PyPlDSDData::initializeLayouts() const
 {
-#ifndef ARXAPP
+#if defined(_ARXTARGET) && (_ARXTARGET <= 240)
     throw PyNotimplementedByHost();
 #else
     return impObj()->initializeLayouts();
@@ -642,7 +642,7 @@ bool PyPlDSDData::initializeLayouts() const
 
 void PyPlDSDData::setInitializeLayouts(bool initLayouts)
 {
-#ifndef ARXAPP
+#if defined(_ARXTARGET) && (_ARXTARGET <= 240)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setInitializeLayouts(initLayouts);
@@ -810,7 +810,7 @@ std::string PyPlDSDEntry::orgSheetPath() const
 
 std::string PyPlDSDEntry::traceSession() const
 {
-#ifndef ARXAPP
+#if defined(_ARXTARGET) && (_ARXTARGET <= 240)
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->traceSession());
