@@ -28,13 +28,13 @@
         "Entry"
         {
         "MsmKey" = "8:_16BE379A90F64D7B6215A22AEC630E53"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_16BE379A90F64D7B6215A22AEC630E53"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,12 +46,24 @@
         "Entry"
         {
         "MsmKey" = "8:_16BE379A90F64D7B6215A22AEC630E53"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1E9F44A2DDD546238C585CE743F1E782"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_2138F24137344B9F949B8250F61A562D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_21C6E68A1A2A4A7C80AD02D828D95424"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -70,13 +82,13 @@
         "Entry"
         {
         "MsmKey" = "8:_28BFE9D66ED2FBB7D4C05C1E13042273"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_28BFE9D66ED2FBB7D4C05C1E13042273"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,7 +100,7 @@
         "Entry"
         {
         "MsmKey" = "8:_28BFE9D66ED2FBB7D4C05C1E13042273"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,13 +112,13 @@
         "Entry"
         {
         "MsmKey" = "8:_2EB02F1D8AF8A73D32795DFA684B9D31"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_2EB02F1D8AF8A73D32795DFA684B9D31"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -118,7 +130,13 @@
         "Entry"
         {
         "MsmKey" = "8:_2EB02F1D8AF8A73D32795DFA684B9D31"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3D8E2BA1D72D45FA888996C60310D38C"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -136,13 +154,13 @@
         "Entry"
         {
         "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -154,7 +172,7 @@
         "Entry"
         {
         "MsmKey" = "8:_4476ECCB8EEA5C888F8411F0560BC5B9"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -172,13 +190,13 @@
         "Entry"
         {
         "MsmKey" = "8:_49DE38D7FAAFEC8B6C80119587CE687F"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_49DE38D7FAAFEC8B6C80119587CE687F"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -190,12 +208,24 @@
         "Entry"
         {
         "MsmKey" = "8:_49DE38D7FAAFEC8B6C80119587CE687F"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4ACC8F6678524B16AED8B312A9432C38"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4BF1B1A263E94FDB9123A98B3DE1670C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4C302FC2FEDC4484B50C7BD7C6D08C36"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -220,13 +250,13 @@
         "Entry"
         {
         "MsmKey" = "8:_5746B9621D59851FB42AAEC3509C709E"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5746B9621D59851FB42AAEC3509C709E"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -238,12 +268,18 @@
         "Entry"
         {
         "MsmKey" = "8:_5746B9621D59851FB42AAEC3509C709E"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_57B890A76BDA44C7A55A05C7FC2DDF4F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_57E0B1CE1F4A438B932CC32C18B258A9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -256,13 +292,13 @@
         "Entry"
         {
         "MsmKey" = "8:_5F741AFD447CDFF8880B0635554508C3"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5F741AFD447CDFF8880B0635554508C3"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -274,7 +310,7 @@
         "Entry"
         {
         "MsmKey" = "8:_5F741AFD447CDFF8880B0635554508C3"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -286,13 +322,13 @@
         "Entry"
         {
         "MsmKey" = "8:_6E70CFE945ECC850451CFE2745805689"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6E70CFE945ECC850451CFE2745805689"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -304,7 +340,7 @@
         "Entry"
         {
         "MsmKey" = "8:_6E70CFE945ECC850451CFE2745805689"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -340,13 +376,13 @@
         "Entry"
         {
         "MsmKey" = "8:_8780DCDE49FAA2FA19FBD5C7C16D5E72"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8780DCDE49FAA2FA19FBD5C7C16D5E72"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -358,7 +394,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8780DCDE49FAA2FA19FBD5C7C16D5E72"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -399,6 +435,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B06B76D482B7414B9AF78487272D70BC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C855E55225E44E3E953B61E3065A3DDF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -424,13 +466,13 @@
         "Entry"
         {
         "MsmKey" = "8:_DA910765F44BB081D675C5032231DDDB"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_DA910765F44BB081D675C5032231DDDB"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -442,7 +484,7 @@
         "Entry"
         {
         "MsmKey" = "8:_DA910765F44BB081D675C5032231DDDB"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -454,13 +496,13 @@
         "Entry"
         {
         "MsmKey" = "8:_E998AB86FAACC22CABE0CA3CC33258C6"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E998AB86FAACC22CABE0CA3CC33258C6"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -472,6 +514,18 @@
         "Entry"
         {
         "MsmKey" = "8:_E998AB86FAACC22CABE0CA3CC33258C6"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EFDE0FB207DA4FB8AFA372A5E1C399D2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F06D947A13E3B29986704753DBEFFE49"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -484,19 +538,13 @@
         "Entry"
         {
         "MsmKey" = "8:_F06D947A13E3B29986704753DBEFFE49"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F06D947A13E3B29986704753DBEFFE49"
         "OwnerKey" = "8:_984A47D038684218B56637F570893F36"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F06D947A13E3B29986704753DBEFFE49"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -688,12 +736,52 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1E9F44A2DDD546238C585CE743F1E782"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\PyRx.html"
+            "TargetName" = "8:PyRx.html"
+            "Tag" = "8:"
+            "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2138F24137344B9F949B8250F61A562D"
             {
             "SourcePath" = "8:..\\PySamples\\wxWidgets\\testWxPyMatPlotLib.py"
             "TargetName" = "8:testWxPyMatPlotLib.py"
             "Tag" = "8:"
             "Folder" = "8:_3C4DE2D73D254D318C3500E33087B485"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_21C6E68A1A2A4A7C80AD02D828D95424"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\PyGi.html"
+            "TargetName" = "8:PyGi.html"
+            "Tag" = "8:"
+            "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -786,6 +874,26 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3D8E2BA1D72D45FA888996C60310D38C"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\PyGe.html"
+            "TargetName" = "8:PyGe.html"
+            "Tag" = "8:"
+            "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_421A842339304209A5C3313C924D7C87"
@@ -908,6 +1016,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4BF1B1A263E94FDB9123A98B3DE1670C"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\PyEd.html"
+            "TargetName" = "8:PyEd.html"
+            "Tag" = "8:"
+            "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C302FC2FEDC4484B50C7BD7C6D08C36"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\PyGs.html"
+            "TargetName" = "8:PyGs.html"
+            "Tag" = "8:"
+            "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4D54D74B48BA439CBCCC12E7384AE70A"
             {
             "SourcePath" = "8:..\\PySamples\\wxWidgets\\Palette\\wxPaletteTab.xrc"
@@ -994,6 +1142,26 @@
             "TargetName" = "8:solid.py"
             "Tag" = "8:"
             "Folder" = "8:_6C6E9DA323354162998D077BF8E8A872"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_57E0B1CE1F4A438B932CC32C18B258A9"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\PyAp.html"
+            "TargetName" = "8:PyAp.html"
+            "Tag" = "8:"
+            "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1308,6 +1476,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B06B76D482B7414B9AF78487272D70BC"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\PyPl.html"
+            "TargetName" = "8:PyPl.html"
+            "Tag" = "8:"
+            "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C855E55225E44E3E953B61E3065A3DDF"
             {
             "SourcePath" = "8:..\\PySamples\\PyDb\\dynamicBlock.py"
@@ -1446,6 +1634,26 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EFDE0FB207DA4FB8AFA372A5E1C399D2"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\PyDb.html"
+            "TargetName" = "8:PyDb.html"
+            "Tag" = "8:"
+            "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F06D947A13E3B29986704753DBEFFE49"
