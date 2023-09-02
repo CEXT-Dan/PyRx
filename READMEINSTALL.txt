@@ -8,8 +8,9 @@ Run the PyRxSetup installer
 This setup writes two values to the registry, adds wxPython to PATH, adds autocomplete stubs path to PYTHONPATH.
 The stub files are for intellisense in Visual studio code
 
-in autocad, run the appload command, navigate to .\Users\XXX\AppData\Local\PyRx
-and load the ARX module.
+see env.png in this folder
 
-Add to the startup suite to auto load. 
-TODO, create a bundle
+Installs a .bundle in %ProgramData\Autodesk\ApplicationPlugins\PyRx.bundle
+./PyRxHelp
+./PyRxSamples
+./PyRxSamples
