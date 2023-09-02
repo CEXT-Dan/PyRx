@@ -1829,29 +1829,17 @@ void PyDbMLeaderStyle::setTextAlignmentType(AcDbMLeaderStyle::TextAlignmentType 
 
 AcDbMLeaderStyle::TextAlignmentType PyDbMLeaderStyle::textAlignmentType() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->textAlignmentType();
-#endif
 }
 
 void PyDbMLeaderStyle::setTextAlignAlwaysLeft(bool bAlwaysLeft)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setTextAlignAlwaysLeft(bAlwaysLeft));
-#endif
 }
 
 bool PyDbMLeaderStyle::textAlignAlwaysLeft() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->textAlignAlwaysLeft();
-#endif
 }
 
 void PyDbMLeaderStyle::setTextColor(const AcCmColor& textColor)
@@ -1896,11 +1884,7 @@ double PyDbMLeaderStyle::alignSpace() const
 
 void PyDbMLeaderStyle::setBlockId1(const std::string& name)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBlockId(utf8_to_wstr(name).c_str()));
-#endif
 }
 
 void PyDbMLeaderStyle::setBlockId2(const PyDbObjectId& blockId)
@@ -1915,110 +1899,62 @@ PyDbObjectId PyDbMLeaderStyle::blockId() const
 
 void PyDbMLeaderStyle::setBlockColor(const AcCmColor& blockColor)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBlockColor(blockColor));
-#endif
 }
 
 AcCmColor PyDbMLeaderStyle::blockColor() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->blockColor();
-#endif
 }
 
 void PyDbMLeaderStyle::setBlockScale(const AcGeScale3d& scale)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBlockScale(scale));
-#endif
 }
 
 AcGeScale3d PyDbMLeaderStyle::blockScale() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->blockScale();
-#endif
 }
 
 void PyDbMLeaderStyle::setEnableBlockScale(bool enableBlockScale)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setEnableBlockScale(enableBlockScale));
-#endif
 }
 
 bool PyDbMLeaderStyle::enableBlockScale() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->enableBlockScale();
-#endif
 }
 
 void PyDbMLeaderStyle::setBlockRotation(double rotation)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBlockRotation(rotation));
-#endif
 }
 
 double PyDbMLeaderStyle::blockRotation() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->blockRotation();
-#endif
 }
 
 void PyDbMLeaderStyle::setEnableBlockRotation(bool enableBlockRotation)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setEnableBlockRotation(enableBlockRotation));
-#endif
 }
 
 bool PyDbMLeaderStyle::enableBlockRotation() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->enableBlockRotation();
-#endif
 }
 
 void PyDbMLeaderStyle::setBlockConnectionType(AcDbMLeaderStyle::BlockConnectionType blockConnectionType)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBlockConnectionType(blockConnectionType));
-#endif
 }
 
 AcDbMLeaderStyle::BlockConnectionType PyDbMLeaderStyle::blockConnectionType() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->blockConnectionType();
-#endif
 }
 
 void PyDbMLeaderStyle::setScale(double scale)
@@ -2033,11 +1969,7 @@ double PyDbMLeaderStyle::scale() const
 
 bool PyDbMLeaderStyle::overwritePropChanged() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->overwritePropChanged();
-#endif
 }
 
 PyDbObjectId PyDbMLeaderStyle::postMLeaderStyleToDb(PyDbDatabase& pDb, const std::string& styleName)
@@ -2069,38 +2001,22 @@ double PyDbMLeaderStyle::breakSize() const
 
 void PyDbMLeaderStyle::setTextAttachmentDirection(AcDbMLeaderStyle::TextAttachmentDirection textAttachmentDirection)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setTextAttachmentDirection(textAttachmentDirection));
-#endif
 }
 
 AcDbMLeaderStyle::TextAttachmentDirection PyDbMLeaderStyle::textAttachmentDirection() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->textAttachmentDirection();
-#endif
 }
 
 void PyDbMLeaderStyle::setExtendLeaderToText(bool value)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setExtendLeaderToText(value));
-#endif
 }
 
 bool PyDbMLeaderStyle::extendLeaderToText() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->extendLeaderToText();
-#endif
 }
 
 std::string PyDbMLeaderStyle::className()

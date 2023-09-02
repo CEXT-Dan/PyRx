@@ -194,10 +194,5 @@ public:
     void                getLocalId(PyDbObjectId& objId) const;
     void                resolveObjectId(PyDbObjectId& id) const;
 public:
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    int m_imp;
-#else
     AcDbXrefObjectId m_imp;
-#endif
-
 };

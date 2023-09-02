@@ -18,39 +18,18 @@ public:
     PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
     PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, int order, double fitTolerance);
 
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDbSpline(const boost::python::list& fitPoints, bool periodic);
-#endif
-
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDbSpline(const boost::python::list& fitPoints, bool periodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
-#endif
-
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam);
-#endif
-
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
-#endif
-
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam);
-#endif
 
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
-#endif
-
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic, const boost::python::list& controlPoints,
         const boost::python::list& knots, const boost::python::list& weights);
-#endif
 
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic, const boost::python::list& controlPoints,
         const boost::python::list& knots, const boost::python::list& weights, double controlPtTol, double knotTol);
-#endif
 
     PyDbSpline(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio);
     PyDbSpline(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio, double startAngle, double endAngle);
