@@ -45,7 +45,6 @@ void makePyPlPlotConfigManagerWrapper()
         .export_values()
         ;
 
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     enum_<AcPlPlotConfigManager::StdConfigs>("StdConfigs")
         .value("kNoneDevice", AcPlPlotConfigManager::StdConfigs::kNoneDevice)
         .value("kDefaultWindowsSysPrinter", AcPlPlotConfigManager::StdConfigs::kDefaultWindowsSysPrinter)
@@ -65,7 +64,6 @@ void makePyPlPlotConfigManagerWrapper()
         .value("kSVFePlot", AcPlPlotConfigManager::StdConfigs::kSVFePlot)
         .export_values()
         ;
-#endif
 }
 
 PyPlPlotConfigManager::PyPlPlotConfigManager()
@@ -77,12 +75,10 @@ boost::python::list PyPlPlotConfigManager::getDevicesList()
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     AcArray<AcPlPlotConfigInfo, AcArrayObjectCopyReallocator <AcPlPlotConfigInfo>> deviceList;
     impObj()->getDevicesList(deviceList);
     for (const auto& item : deviceList)
         pyList.append(PyPlPlotConfigInfo(item));
-#endif // !ARXAPP
     return pyList;
 }
 

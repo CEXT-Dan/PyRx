@@ -5,19 +5,10 @@ int PyCmd::getCommandFlags(AcString& str)
 {
     if (str.length() < 3) //we may get the function '()'
         return 1;
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    str.remove();
-#endif // !BRXAPP
     if (str.find(PyCommandFlagPrefix) == -1)
         return 1;
     AcString sflag = str.substr(PyCommandFlagPrefix.length() + 1, str.length() - 1);
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    CString csFlag = (const TCHAR*)sflag;
-    csFlag.TrimRight(')');
-    return _wtoi(csFlag);
-#else
     return _wtoi(sflag);
-#endif // !BRXAPP
 }
 
 int PyCmd::getCommandFlags(PyObject* pCommand)

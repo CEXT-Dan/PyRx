@@ -31,19 +31,6 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
-#ifdef ZRXAPP
-#define ADSPREFIX(x) zds_ ## x
-#endif
-#ifdef GRXAPP
-#define ADSPREFIX(x) gds_ ## x
-#endif
-#ifdef BRXAPP
-#define ADSPREFIX(x) ads_ ## x
-#endif
-#ifdef ARXAPP
-#define ADSPREFIX(x) ads_ ## x
-#endif
-
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
@@ -412,39 +399,10 @@ public:
 
     static AcString commandForCurDocument()
     {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-        AcString cmdName;
-        RxAutoOutStr pGlobalCmdName;
-        if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName.buf); es != eOk)
-            return cmdName;
-        cmdName = pGlobalCmdName.buf;
-        cmdName.makeUpper();
-        return cmdName;
-#endif
-#if defined(_GRXTARGET) && (_GRXTARGET <= 23)
-        AcString cmdName;
-        RxAutoOutStr pGlobalCmdName;
-        if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName.buf); es != eOk)
-            return cmdName;
-        cmdName = pGlobalCmdName.buf;
-        cmdName.makeUpper();
-        return cmdName;
-#endif
-#if defined(_ZRXTARGET) && (_ZRXTARGET <= 23)
-        AcString cmdName;
-        RxAutoOutStr pGlobalCmdName;
-        if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName.buf); es != eOk)
-            return cmdName;
-        cmdName = pGlobalCmdName.buf;
-        cmdName.makeUpper();
-        return cmdName;
-#endif
-#if defined(_ARXTARGET)
         AcString pGlobalCmdName;
         if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
             return pGlobalCmdName;
         return pGlobalCmdName.makeUpper();
-#endif
     }
 
     static void AcRxPyApp_pyfunc(void)
@@ -502,7 +460,7 @@ public:
     }
 
     //TODO: Fix this mess : |
-    static int ADSPREFIX(adspyload(void))
+    static int ads_adspyload(void)
     {
         std::filesystem::path pysyspath;
         std::filesystem::path pypath;

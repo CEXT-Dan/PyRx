@@ -291,7 +291,6 @@ public:
 //-----------------------------------------------------------------------------------------
 //PyPlPrecisionEntry
 void makePyPlPrecisionEntryWrapper();
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 class PyPlPrecisionEntry : public PyPlObject
 {
 public:
@@ -320,11 +319,9 @@ public:
 public:
     inline AcPlPrecisionEntry* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-#endif
 //-----------------------------------------------------------------------------------------
 //PylPlotConfigInfo
 void makePyPlPlotConfigInfoWrapper();
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 class PyPlPlotConfigInfo : public PyPlObject
 {
 public:
@@ -346,4 +343,4 @@ public:
 public:
     inline AcPlPlotConfigInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-#endif
+

@@ -85,7 +85,7 @@ struct PyPlPlotEngineDeleter
     {
         if (p == nullptr) [[unlikely]]
             return;
-        p->destroy();
+            p->destroy();
     };
 };
 
@@ -153,7 +153,7 @@ AcPlPlotEngine* PyPlPlotEngine::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlPlotEngine*>(m_imp.get());
+        return static_cast<AcPlPlotEngine*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -185,7 +185,7 @@ AcPlObject* PyPlObject::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlObject*>(m_pyImp.get());
+        return static_cast<AcPlObject*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -305,9 +305,6 @@ void PyPlDSDData::setDSDEntries(const boost::python::list& val)
 
 boost::python::list PyPlDSDData::getPrecisionEntries() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     boost::python::list pyList;
     AcPlPrecisionEntries entries;
@@ -315,20 +312,15 @@ boost::python::list PyPlDSDData::getPrecisionEntries() const
     for (const auto& entry : entries)
         pyList.append(PyPlPrecisionEntry(entry));
     return pyList;
-#endif
 }
 
 void PyPlDSDData::setPrecisionEntries(const boost::python::list& val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcPlPrecisionEntries entries;
     const auto& vec = py_list_to_std_vector<PyPlPrecisionEntry>(val);
     for (const auto& entry : vec)
         entries.append(*entry.impObj());
     impObj()->setPrecisionEntries(entries);
-#endif
 }
 
 int PyPlDSDData::numberOfDSDEntries() const
@@ -363,10 +355,6 @@ void PyPlDSDData::setPassword(const std::string& pVal)
 
 void PyPlDSDData::getUnrecognizedData(boost::python::list& sectionArray, boost::python::list& dataArray) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    //TODO: SR163653
-    throw PyNotimplementedByHost();
-#else
     AcStringArray _sectionArray;
     AcStringArray _dataArray;
     impObj()->getUnrecognizedData(_sectionArray, _dataArray);
@@ -374,7 +362,6 @@ void PyPlDSDData::getUnrecognizedData(boost::python::list& sectionArray, boost::
         sectionArray.append(wstr_to_utf8(item));
     for (const auto& item : _dataArray)
         dataArray.append(wstr_to_utf8(item));
-#endif
 }
 
 void PyPlDSDData::setUnrecognizedData1(const std::string& pSectionName, const std::string& pSectionData)
@@ -384,12 +371,7 @@ void PyPlDSDData::setUnrecognizedData1(const std::string& pSectionName, const st
 
 void PyPlDSDData::setUnrecognizedData2(const boost::python::list& sectionArray, const boost::python::list& dataArray)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    //TODO: SR163653
-    throw PyNotimplementedByHost();
-#else
     impObj()->setUnrecognizedData(PyListAcStringArray(sectionArray), PyListAcStringArray(dataArray));
-#endif
 }
 
 unsigned int PyPlDSDData::majorVersion() const
@@ -464,20 +446,12 @@ void PyPlDSDData::setPlotStampOn(bool bOn)
 
 bool PyPlDSDData::viewFile() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->viewFile();
-#endif
 }
 
 void PyPlDSDData::setViewFile(bool bViewFile)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setViewFile(bViewFile);
-#endif
 }
 
 std::string PyPlDSDData::selectionSetName() const
@@ -525,110 +499,62 @@ void PyPlDSDData::set3dDwfOptions(bool bGroupByXrefHierarchy, bool bPublishWithM
 
 bool PyPlDSDData::includeLayerInfo() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->includeLayerInfo();
-#endif
 }
 
 void PyPlDSDData::setIncludeLayerInfo(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setIncludeLayerInfo(bOn);
-#endif
 }
 
 bool PyPlDSDData::lineMerge() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->lineMerge();
-#endif
 }
 
 void PyPlDSDData::setLineMerge(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setLineMerge(bOn);
-#endif
 }
 
 std::string PyPlDSDData::currentPrecision() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return wstr_to_utf8(impObj()->currentPrecision());
-#endif
 }
 
 void PyPlDSDData::setCurrentPrecision(const std::string& pCurrentPrecision)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setCurrentPrecision(utf8_to_wstr(pCurrentPrecision).c_str());
-#endif
 }
 
 bool PyPlDSDData::promptForDwfName() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->promptForDwfName();
-#endif
 }
 
 void PyPlDSDData::setPromptForDwfName(bool bPromptForDwfName)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setPromptForDwfName(bPromptForDwfName);
-#endif
 }
 
 bool PyPlDSDData::pwdProtectPublishedDWF() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->pwdProtectPublishedDWF();
-#endif
 }
 
 void PyPlDSDData::setPwdProtectPublishedDWF(bool bPwdProtectPublishedDWF)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setPwdProtectPublishedDWF(bPwdProtectPublishedDWF);
-#endif
 }
 
 bool PyPlDSDData::promptForPassword() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->promptForPassword();
-#endif
 }
 
 void PyPlDSDData::setPromptForPassword(bool bPromptForPassword)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setPromptForPassword(bPromptForPassword);
-#endif
 }
 
 bool PyPlDSDData::initializeLayouts() const
@@ -663,7 +589,7 @@ AcPlDSDData* PyPlDSDData::impObj(const std::source_location& src /*= std::source
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlDSDData*>(m_pyImp.get());
+        return static_cast<AcPlDSDData*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -701,10 +627,8 @@ void makePyPlDSDEntryWrapper()
         .value("kMultiDWFx", AcPlDSDEntry::SheetType::kMultiDWFx)
         .value("kSinglePDF", AcPlDSDEntry::SheetType::kSinglePDF)
         .value("kMultiPDF", AcPlDSDEntry::SheetType::kMultiPDF)
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kSingleSVF", AcPlDSDEntry::SheetType::kSingleSVF)
         .value("kMultiSVF", AcPlDSDEntry::SheetType::kMultiSVF)
-#endif
         .export_values()
         ;
 
@@ -840,7 +764,7 @@ AcPlDSDEntry* PyPlDSDEntry::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlDSDEntry*>(m_pyImp.get());
+        return static_cast<AcPlDSDEntry*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -931,11 +855,7 @@ PyPlPlotConfig PyPlPlotInfo::validatedConfig() const
 
 void PyPlPlotInfo::setValidatedConfig(const PyPlPlotConfig& pConfig)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     impObj()->setValidatedConfig(pConfig.impObj());
-#endif
 }
 
 PyPlPlotConfig PyPlPlotInfo::deviceOverride() const
@@ -945,11 +865,7 @@ PyPlPlotConfig PyPlPlotInfo::deviceOverride() const
 
 bool PyPlPlotInfo::isCompatibleDocument(const PyPlPlotInfo& pOtherInfo) const
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isCompatibleDocument(pOtherInfo.impObj());
-#endif
 }
 
 bool PyPlPlotInfo::isValidated() const
@@ -964,12 +880,8 @@ unsigned long PyPlPlotInfo::mergeStatus() const
 
 std::string PyPlPlotInfo::OrgFilePath()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     AcString str = impObj()->OrgFilePath();
     return wstr_to_utf8(str);
-#endif
 }
 
 PyRxClass PyPlPlotInfo::desc()
@@ -986,7 +898,7 @@ AcPlPlotInfo* PyPlPlotInfo::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlPlotInfo*>(m_pyImp.get());
+        return static_cast<AcPlPlotInfo*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1136,7 +1048,7 @@ AcPlPlotConfig* PyPlPlotConfig::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlPlotConfig*>(m_pyImp.get());
+        return static_cast<AcPlPlotConfig*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1209,7 +1121,7 @@ AcPlPlotPageInfo* PyPlPlotPageInfo::impObj(const std::source_location& src /*= s
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlPlotPageInfo*>(m_pyImp.get());
+        return static_cast<AcPlPlotPageInfo*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1313,20 +1225,12 @@ void PyPlPlotInfoValidator::setMediaMatchingPolicy(AcPlPlotInfoValidator::Matchi
 
 void PyPlPlotInfoValidator::setMediaGroupWeight(unsigned int weight)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     impObj()->setMediaGroupWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefMediaGroupWeight()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     impObj()->setMediaGroupWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::mediaGroupWeight() const
@@ -1336,20 +1240,12 @@ unsigned int PyPlPlotInfoValidator::mediaGroupWeight() const
 
 void PyPlPlotInfoValidator::setSheetMediaGroupWeight(unsigned int weight)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     impObj()->setSheetMediaGroupWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefSheetMediaGroupWeight()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     impObj()->setSheetMediaGroupWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::sheetMediaGroupWeight() const
@@ -1359,20 +1255,12 @@ unsigned int PyPlPlotInfoValidator::sheetMediaGroupWeight() const
 
 void PyPlPlotInfoValidator::setMediaBoundsWeight(unsigned int weight)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setMediaBoundsWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefMediaBoundsWeight()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setMediaBoundsWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::mediaBoundsWeight() const
@@ -1382,20 +1270,12 @@ unsigned int PyPlPlotInfoValidator::mediaBoundsWeight() const
 
 void PyPlPlotInfoValidator::setPrintableBoundsWeight(unsigned int weight)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setPrintableBoundsWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefPrintableBoundsWeight()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setPrintableBoundsWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::printableBoundsWeight() const
@@ -1405,20 +1285,12 @@ unsigned int PyPlPlotInfoValidator::printableBoundsWeight() const
 
 void PyPlPlotInfoValidator::setDimensionalWeight(unsigned int weight)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setDimensionalWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefDimensionalWeight()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setDimensionalWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::dimensionalWeight() const
@@ -1428,20 +1300,12 @@ unsigned int PyPlPlotInfoValidator::dimensionalWeight() const
 
 void PyPlPlotInfoValidator::setSheetDimensionalWeight(unsigned int weight)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setSheetDimensionalWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefSheetDimensionalWeight()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setSheetDimensionalWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::sheetDimensionalWeight() const
@@ -1451,11 +1315,7 @@ unsigned int PyPlPlotInfoValidator::sheetDimensionalWeight() const
 
 void PyPlPlotInfoValidator::setDefMediaMatchingThreshold()
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setMediaMatchingThreshold();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::mediaMatchingThreshold() const
@@ -1465,11 +1325,7 @@ unsigned int PyPlPlotInfoValidator::mediaMatchingThreshold() const
 
 void PyPlPlotInfoValidator::setMediaMatchingThreshold(unsigned int threshold)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setMediaMatchingThreshold(threshold);
-#endif
 }
 
 PyRxClass PyPlPlotInfoValidator::desc()
@@ -1486,14 +1342,13 @@ AcPlPlotInfoValidator* PyPlPlotInfoValidator::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlPlotInfoValidator*>(m_pyImp.get());
+        return static_cast<AcPlPlotInfoValidator*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
 //PyPlPrecisionEntry
 void makePyPlPrecisionEntryWrapper()
 {
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDocString DS("PrecisionEntry");
     class_<PyPlPrecisionEntry, bases<PyPlObject>>("PrecisionEntry")
         .def(init<>())
@@ -1516,10 +1371,8 @@ void makePyPlPrecisionEntryWrapper()
         .def("desc", &PyPlPrecisionEntry::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlPrecisionEntry::className, DS.SARGS()).staticmethod("className")
         ;
-#endif
 }
 
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyPlPrecisionEntry::PyPlPrecisionEntry()
     : PyPlObject(new AcPlPrecisionEntry(), true)
 {
@@ -1629,15 +1482,13 @@ AcPlPrecisionEntry* PyPlPrecisionEntry::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlPrecisionEntry*>(m_pyImp.get());
+        return static_cast<AcPlPrecisionEntry*>(m_pyImp.get());
 }
-#endif
 
 //-----------------------------------------------------------------------------------------
 //PylPlotConfigInfo
 void makePyPlPlotConfigInfoWrapper()
 {
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDocString DS("PlotConfigInfo");
     class_<PyPlPlotConfigInfo, bases<PyPlObject>>("PlotConfigInfo")
         .def(init<>())
@@ -1653,10 +1504,8 @@ void makePyPlPlotConfigInfoWrapper()
         .def("desc", &PyPlPlotConfigInfo::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlPlotConfigInfo::className, DS.SARGS()).staticmethod("className")
         ;
-#endif
 }
 
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyPlPlotConfigInfo::PyPlPlotConfigInfo()
     : PyPlObject(new AcPlPlotConfigInfo(), true)
 {
@@ -1731,6 +1580,5 @@ AcPlPlotConfigInfo* PyPlPlotConfigInfo::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcPlPlotConfigInfo*>(m_pyImp.get());
+        return static_cast<AcPlPlotConfigInfo*>(m_pyImp.get());
 }
-#endif
