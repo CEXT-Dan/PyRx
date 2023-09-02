@@ -160,8 +160,6 @@ AcDbExtrudedSurface* PyDbExtrudedSurface::impObj(const std::source_location& src
 //AcDbLoftedSurface 
 void makePyDbLoftedSurfaceWrapper()
 {
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
     class_<PyDbLoftedSurface, bases<PyDbSurface>>("LoftedSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -171,11 +169,8 @@ void makePyDbLoftedSurfaceWrapper()
         .def("cloneFrom", &PyDbLoftedSurface::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbLoftedSurface::cast).staticmethod("cast")
         ;
-#endif
 }
 
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
 PyDbLoftedSurface::PyDbLoftedSurface()
     : PyDbSurface(new AcDbLoftedSurface(), true)
 {
@@ -227,15 +222,11 @@ AcDbLoftedSurface* PyDbLoftedSurface::impObj(const std::source_location& src /*=
         throw PyNullObject(src);
     return static_cast<AcDbLoftedSurface*>(m_pyImp.get());
 }
-#endif
-
 
 //----------------------------------------------------------------------
 //PyDbNurbSurface 
 void makePyDbNurbSurfaceWrapper()
 {
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
     class_<PyDbNurbSurface, bases<PyDbSurface>>("NurbSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -245,12 +236,8 @@ void makePyDbNurbSurfaceWrapper()
         .def("cloneFrom", &PyDbNurbSurface::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbNurbSurface::cast).staticmethod("cast")
         ;
-#endif
 }
 
-
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
 PyDbNurbSurface::PyDbNurbSurface()
     : PyDbSurface(new AcDbNurbSurface(), true)
 {
@@ -302,14 +289,11 @@ AcDbNurbSurface* PyDbNurbSurface::impObj(const std::source_location& src /*= std
         throw PyNullObject(src);
     return static_cast<AcDbNurbSurface*>(m_pyImp.get());
 }
-#endif
 
 //----------------------------------------------------------------------
 //AcDbPlaneSurface  
 void makePyDbPlaneSurfaceWrapper()
 {
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
     class_<PyDbPlaneSurface, bases<PyDbSurface>>("PlaneSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -319,11 +303,8 @@ void makePyDbPlaneSurfaceWrapper()
         .def("cloneFrom", &PyDbPlaneSurface::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbPlaneSurface::cast).staticmethod("cast")
         ;
-#endif
 }
 
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
 PyDbPlaneSurface::PyDbPlaneSurface()
     : PyDbSurface(new AcDbPlaneSurface(), true)
 {
@@ -375,15 +356,11 @@ AcDbPlaneSurface* PyDbPlaneSurface::impObj(const std::source_location& src /*= s
         throw PyNullObject(src);
     return static_cast<AcDbPlaneSurface*>(m_pyImp.get());
 }
-#endif
-
 
 //----------------------------------------------------------------------
 //AcDbPlaneSurface  
 void makePyDbRevolvedSurfaceWrapper()
 {
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
     class_<PyDbRevolvedSurface, bases<PyDbSurface>>("RevolvedSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -393,11 +370,8 @@ void makePyDbRevolvedSurfaceWrapper()
         .def("cloneFrom", &PyDbRevolvedSurface::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbRevolvedSurface::cast).staticmethod("cast")
         ;
-#endif
 }
 
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
 PyDbRevolvedSurface::PyDbRevolvedSurface()
     : PyDbSurface(new AcDbRevolvedSurface(), true)
 {
@@ -449,14 +423,11 @@ AcDbRevolvedSurface* PyDbRevolvedSurface::impObj(const std::source_location& src
         throw PyNullObject(src);
     return static_cast<AcDbRevolvedSurface*>(m_pyImp.get());
 }
-#endif
 
 //----------------------------------------------------------------------
 //AcDbPlaneSurface  
 void makePyDbSweptSurfaceWrapper()
 {
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
     class_<PyDbSweptSurface, bases<PyDbSurface>>("SweptSurface")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -466,11 +437,8 @@ void makePyDbSweptSurfaceWrapper()
         .def("cloneFrom", &PyDbSweptSurface::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbSweptSurface::cast).staticmethod("cast")
         ;
-#endif
 }
 
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
 PyDbSweptSurface::PyDbSweptSurface()
     : PyDbSurface(new AcDbPlaneSurface(), true)
 {
@@ -522,5 +490,4 @@ AcDbSweptSurface* PyDbSweptSurface::impObj(const std::source_location& src /*= s
         throw PyNullObject(src);
     return static_cast<AcDbSweptSurface*>(m_pyImp.get());
 }
-#endif
 

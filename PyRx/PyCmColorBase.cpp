@@ -27,14 +27,11 @@ static bool AcCmColorNotEqualsOperator(const AcCmColor& left, const AcCmColor& r
 void makePyCmColorWrapper()
 {
     class_<AcCmColor>("Color")
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
         .def("setNone", &AcCmColor::setNone)
         .def("setByBlock", &AcCmColor::setByBlock)
         .def("setForeground", &AcCmColor::setForeground)
         .def("setLayerOff", &AcCmColor::setLayerOff)
         .def("setByLayer", &AcCmColor::setByLayer)
-#endif
         .def("isByColor", &AcCmColor::isByColor)
         .def("isByLayer", &AcCmColor::isByLayer)
         .def("isByBlock", &AcCmColor::isByBlock)
@@ -42,23 +39,16 @@ void makePyCmColorWrapper()
         .def("isByPen", &AcCmColor::isByPen)
         .def("isForeground", &AcCmColor::isForeground)
         .def("isNone", &AcCmColor::isNone)
-
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
         .def<Acad::ErrorStatus(AcCmColor::*)(Adesk::RGBQuad)>("setRGB", &AcCmColor::setRGB)
-#endif
         .def<Acad::ErrorStatus(AcCmColor::*)(Adesk::UInt8, Adesk::UInt8, Adesk::UInt8)>("setRGB", &AcCmColor::setRGB)
         .def("red", &AcCmColor::red)
         .def("green", &AcCmColor::green)
         .def("blue", &AcCmColor::blue)
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
         .def("setCOLORREF", &AcCmColor::setCOLORREF)
         .def("getCOLORREF", &AcCmColor::getCOLORREF)
         .def("getRGB", &AcCmColor::getRGB)
         .def("setRGBM", &AcCmColor::setRGBM)
         .def("getRGBM", &AcCmColor::getRGBM)
-#endif
         .def("colorIndex", &AcCmColor::colorIndex)
         .def("setColorIndex", &AcCmColor::setColorIndex)
         .def("penIndex", &AcCmColor::penIndex)

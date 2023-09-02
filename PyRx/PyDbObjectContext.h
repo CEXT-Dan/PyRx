@@ -10,7 +10,6 @@ void makePyDbObjectContextWrapper();
 
 class PyDbObjectContext : public PyRxObject
 {
-#ifndef ZRXAPP
 public:
     PyDbObjectContext(AcDbObjectContext* pt);
     PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete, bool isDbOject);
@@ -23,7 +22,6 @@ public:
     static std::string    className();
 public:
     AcDbObjectContext* impObj(const std::source_location& src = std::source_location::current()) const;
-#endif
 };
 
 //-----------------------------------------------------------------------------------------
@@ -32,7 +30,6 @@ void makePyDbAnnotationScaleWrapper();
 
 class PyDbAnnotationScale : public PyDbObjectContext
 {
-#ifndef ZRXAPP
 public:
     PyDbAnnotationScale();
     PyDbAnnotationScale(AcDbAnnotationScale* pt);
@@ -50,5 +47,4 @@ public:
     static std::string  className();
 public:
     AcDbAnnotationScale* impObj(const std::source_location& src = std::source_location::current()) const;
-#endif
 };
