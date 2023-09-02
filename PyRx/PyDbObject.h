@@ -99,11 +99,7 @@ public:
     virtual ~PyDbObjectReactorImpl() override = default;
     virtual void    cancelled(const AcDbObject* pObj) override;
     virtual void    copied(const AcDbObject* src, const AcDbObject* newObj) override;
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    virtual void    erased(const AcDbObject*, Adesk::Boolean = Adesk::kTrue) override;
-#else
     virtual void    erased(const AcDbObject*, bool bErasing) override;
-#endif
     virtual void    goodbye(const AcDbObject* ptr) override;
     virtual void    openedForModify(const AcDbObject* ptr) override;
     virtual void    modified(const AcDbObject* ptr)override;
@@ -172,11 +168,7 @@ public:
     virtual ~AcDbEntityReactorImpl() override = default;
     virtual void        cancelled(const AcDbObject* pObj) override;
     virtual void        copied(const AcDbObject* src, const AcDbObject* newObj) override;
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    virtual void        erased(const AcDbObject*, Adesk::Boolean = Adesk::kTrue) override;
-#else
     virtual void        erased(const AcDbObject*, bool bErasing) override;
-#endif
     virtual void        goodbye(const AcDbObject* ptr) override;
     virtual void        openedForModify(const AcDbObject* ptr) override;
     virtual void        modified(const AcDbObject* ptr)override;

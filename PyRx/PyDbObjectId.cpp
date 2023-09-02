@@ -106,21 +106,12 @@ bool PyDbObjectId::isValid() const
 
 bool PyDbObjectId::isWellBehaved() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    return m_id.isValid();
-#else
     return m_id.isWellBehaved();
-#endif // GRXAPP
 }
 
 bool PyDbObjectId::convertToRedirectedId()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    m_id.convertToRedirectedId();
-    return !m_id.isNull();
-#else
     return m_id.convertToRedirectedId();
-#endif // GRXAPP
 }
 
 bool PyDbObjectId::isErased() const
@@ -511,20 +502,12 @@ std::size_t PyDbHandle::hash()
 
 void PyDbHandle::increment(void)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    PyNotimplementedByHost();
-#else
     m_hnd.increment();
-#endif
 }
 
 void PyDbHandle::decrement(void)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    PyNotimplementedByHost();
-#else
     m_hnd.decrement();
-#endif
 }
 
 bool PyDbHandle::operator!=(const PyDbHandle& rhs) const
@@ -562,109 +545,62 @@ PyDbXrefObjectId::PyDbXrefObjectId()
 {
 }
 
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyDbXrefObjectId::PyDbXrefObjectId(const AcDbXrefObjectId& id)
     : m_imp(id)
 {
 }
 
-#endif // !BRXAPP
-
 bool PyDbXrefObjectId::isValid(void) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return m_imp.isValid();
-#endif
 }
 
 bool PyDbXrefObjectId::isXref(void) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return m_imp.isXref();
-#endif
 }
 
 bool PyDbXrefObjectId::isNull(void) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return m_imp.isNull();
-#endif
 }
 
 void PyDbXrefObjectId::setNull(void)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(m_imp.setNull());
-#endif
 }
 
 void PyDbXrefObjectId::setXrefId(PyDbObjectId& xrefBlkId, const PyDbHandle& hObject)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(m_imp.setXrefId(xrefBlkId.m_id, hObject.m_hnd));
-#endif
 }
 
 void PyDbXrefObjectId::getXrefId(PyDbObjectId& xrefBlkId, PyDbHandle& hObject) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(m_imp.getXrefId(xrefBlkId.m_id, hObject.m_hnd));
-#endif
 }
 
 void PyDbXrefObjectId::setLocalId(PyDbObjectId& objId)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(m_imp.setLocalId(objId.m_id));
-#endif
 }
 
 void PyDbXrefObjectId::getLocalId(PyDbObjectId& objId) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(m_imp.getLocalId(objId.m_id));
-#endif
 }
 
 void PyDbXrefObjectId::resolveObjectId(PyDbObjectId& id) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(m_imp.resolveObjectId(id.m_id));
-#endif
 }
 
 bool PyDbXrefObjectId::operator!=(const PyDbXrefObjectId& other) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return m_imp != other.m_imp;
-#endif
 }
 
 bool PyDbXrefObjectId::operator==(const PyDbXrefObjectId& other) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return m_imp == other.m_imp;
-#endif
 }

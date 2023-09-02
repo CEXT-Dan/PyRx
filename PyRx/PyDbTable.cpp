@@ -272,9 +272,7 @@ void makePyDbTableWrapper()
         .value("kDataRow", AcDb::RowType::kDataRow)
         .value("kTitleRow", AcDb::RowType::kTitleRow)
         .value("kHeaderRow", AcDb::RowType::kHeaderRow)
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kAllRowTypes", AcDb::RowType::kAllRowTypes)
-#endif // !BRXAPP
         .export_values()
         ;
     enum_<AcDb::TableHitItem>("TableHitItem")
@@ -678,11 +676,7 @@ AcCmColor PyDbTable::contentColor2(int row, int col) const
 
 AcCmColor PyDbTable::contentColor3(int row, int col, int nContent) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->contentColor(row, col, nContent);
-#endif
 }
 
 void PyDbTable::setContentColor(const AcCmColor& color, AcDb::RowType type)
@@ -697,11 +691,7 @@ void PyDbTable::setContentColor2(int row, int col, const AcCmColor& color)
 
 void PyDbTable::setContentColor3(int row, int col, int nContent, const AcCmColor& color)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setContentColor(row, col, nContent, color));
-#endif
 }
 
 boost::python::list PyDbTable::cellStyleOverrides(int row, int col) const
@@ -779,11 +769,7 @@ void PyDbTable::setDataType4(int row, int col, int nContent, AcValue::DataType n
 
 void PyDbTable::setFormat(int row, int col, const std::string& pszFormat)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setFormat(row, col, utf8_to_wstr(pszFormat).c_str()));
-#endif
 }
 
 std::string PyDbTable::textString(int row, int col) const
@@ -793,11 +779,7 @@ std::string PyDbTable::textString(int row, int col) const
 
 std::string PyDbTable::textString2(int row, int col, int nContent) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return wstr_to_utf8(impObj()->textString(row, col, nContent));
-#endif
 }
 
 std::string PyDbTable::textString3(int row, int col, AcValue::FormatOption nOption) const
@@ -809,13 +791,9 @@ std::string PyDbTable::textString3(int row, int col, AcValue::FormatOption nOpti
 
 std::string PyDbTable::textString4(int row, int col, int nContent, AcValue::FormatOption nOption) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcString str;
     PyThrowBadEs(impObj()->textString(row, col, nContent, nOption, str));
     return wstr_to_utf8(str);
-#endif
 }
 
 void PyDbTable::setTextString(int row, int col, const std::string& text)
@@ -840,11 +818,7 @@ PyDbObjectId PyDbTable::textStyle2(int row, int col) const
 
 PyDbObjectId PyDbTable::textStyle3(int row, int col, int nContent) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->textStyle(row, col, nContent));
-#endif
 }
 
 void PyDbTable::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowTypes)
@@ -859,11 +833,7 @@ void PyDbTable::setTextStyle2(int row, int col, const PyDbObjectId& id)
 
 void PyDbTable::setTextStyle3(int row, int col, int nContent, const PyDbObjectId& id)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setTextStyle(row, col, nContent, id.m_id));
-#endif
 }
 
 double PyDbTable::textHeight(AcDb::RowType type) const
@@ -878,11 +848,7 @@ double PyDbTable::textHeight2(int row, int col) const
 
 double PyDbTable::textHeight3(int row, int col, int nContent) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->textHeight(row, col, nContent);
-#endif
 }
 
 void PyDbTable::setTextHeight(double height, AcDb::RowType rowTypes)
@@ -897,11 +863,7 @@ void PyDbTable::setTextHeight2(int row, int col, double height)
 
 void PyDbTable::setTextHeight3(int row, int col, int nContent, double height)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setTextHeight(row, col, nContent, height));
-#endif
 }
 
 AcDb::LineWeight PyDbTable::gridLineWeight(AcDb::GridLineType gridlineType, AcDb::RowType type) const
@@ -946,11 +908,7 @@ AcCmColor PyDbTable::gridColor2(int row, int col, AcDb::CellEdgeMask iEdge) cons
 
 AcCmColor PyDbTable::gridColor3(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->gridColor(nRow, nCol, nGridLineType);
-#endif
 }
 
 void PyDbTable::setGridColor(const AcCmColor& color, int nBorders, int nRows)
@@ -965,11 +923,7 @@ void PyDbTable::setGridColor2(int row, int col, AcDb::CellEdgeMask nEdges, const
 
 void PyDbTable::setGridColor3(int nRow, int nCol, AcDb::GridLineType nGridlineTypes, const AcCmColor& color)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setGridColor(nRow, nCol, nGridlineTypes, color));
-#endif
 }
 
 AcDb::Visibility PyDbTable::gridVisibility(AcDb::GridLineType gridlineType, AcDb::RowType type) const
@@ -1056,11 +1010,7 @@ PyDbObjectId PyDbTable::fieldId(int row, int col) const
 
 PyDbObjectId PyDbTable::fieldId2(int row, int col, int nContent) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->fieldId(row, col, nContent));
-#endif
 }
 
 void PyDbTable::setFieldId(int row, int col, const PyDbObjectId& fieldId)
@@ -1070,11 +1020,7 @@ void PyDbTable::setFieldId(int row, int col, const PyDbObjectId& fieldId)
 
 void PyDbTable::setFieldId2(int row, int col, int nContent, const PyDbObjectId& fieldId, AcDb::CellOption nFlag)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setFieldId(row, col, nContent, fieldId.m_id, nFlag));
-#endif
 }
 
 AcDb::RotationAngle PyDbTable::textRotation(int row, int col) const
@@ -1114,11 +1060,7 @@ PyDbObjectId PyDbTable::blockTableRecordId(int row, int col) const
 
 PyDbObjectId PyDbTable::blockTableRecordId2(int row, int col, int nContent) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->blockTableRecordId(row, col, nContent));
-#endif
 }
 
 void PyDbTable::setBlockTableRecordId(int row, int col, const PyDbObjectId& blkId, bool autoFit)
@@ -1128,11 +1070,7 @@ void PyDbTable::setBlockTableRecordId(int row, int col, const PyDbObjectId& blkI
 
 void PyDbTable::setBlockTableRecordId2(int row, int col, int nContent, const PyDbObjectId& blkId, bool autoFit)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBlockTableRecordId(row, col, nContent, blkId.m_id, autoFit));
-#endif
 }
 
 double PyDbTable::blockScale(int row, int col) const
@@ -1208,15 +1146,6 @@ void PyDbTable::recomputeTableBlock(bool forceUpdate)
 
 boost::python::tuple PyDbTable::hitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec, double wxaper, double wyaper)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    PyAutoLockGIL lock;
-    int resultRowIndex = -1;
-    int resultColumnIndex = -1;
-    int contentIndex = -1;
-    AcDb::TableHitItem nItem = AcDb::kTableHitNone;
-    bool flag = impObj()->hitTest(wpt, wviewVec, wxaper, wyaper, resultRowIndex, resultColumnIndex);
-    return boost::python::make_tuple(flag, resultRowIndex, resultColumnIndex, contentIndex, nItem);
-#else
     PyAutoLockGIL lock;
     int resultRowIndex = -1;
     int resultColumnIndex = -1;
@@ -1224,7 +1153,6 @@ boost::python::tuple PyDbTable::hitTest(const AcGePoint3d& wpt, const AcGeVector
     AcDb::TableHitItem nItem = AcDb::kTableHitNone;
     bool flag = impObj()->hitTest(wpt, wviewVec, wxaper, wyaper, resultRowIndex, resultColumnIndex, contentIndex, nItem);
     return boost::python::make_tuple(flag, resultRowIndex, resultColumnIndex, contentIndex, nItem);
-#endif
 }
 
 AcCellRange PyDbTable::getSubSelection(void) const
@@ -1234,11 +1162,7 @@ AcCellRange PyDbTable::getSubSelection(void) const
 
 void PyDbTable::setSubSelection(const AcCellRange& range)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setSubSelection(range));
-#endif
 }
 
 void PyDbTable::clearSubSelection()
@@ -1283,11 +1207,7 @@ void PyDbTable::suppressRegenerateTable(bool bSuppress)
 
 void PyDbTable::setRecomputeTableBlock(bool newVal)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setRecomputeTableBlock(newVal);
-#endif
 }
 
 void PyDbTable::setSize(int nRows, int nCols)
@@ -1297,11 +1217,7 @@ void PyDbTable::setSize(int nRows, int nCols)
 
 bool PyDbTable::canInsert(int nIndex, bool bRow) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->canInsert(nIndex, bRow);
-#endif
 }
 
 void PyDbTable::insertRowsAndInherit(int nIndex, int nInheritFrom, int nNumRows)
@@ -1316,20 +1232,12 @@ void PyDbTable::insertColumnsAndInherit(int col, int nInheritFrom, int nNumCols)
 
 bool PyDbTable::canDelete(int nIndex, int nCount, bool bRow) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->canDelete(nIndex, nCount, bRow);
-#endif
 }
 
 bool PyDbTable::isEmpty(int nRow, int nCol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isEmpty(nRow, nCol);
-#endif
 }
 
 AcCellRange PyDbTable::getMergeRange(int nRow, int nCol) const
@@ -1339,58 +1247,42 @@ AcCellRange PyDbTable::getMergeRange(int nRow, int nCol) const
 
 boost::python::list PyDbTable::getIterator1()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator());
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
-#endif
 }
 
 boost::python::list PyDbTable::getIterator2(AcDb::TableIteratorOption nOption) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(nullptr, nOption));
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
-#endif
 }
 
 boost::python::list PyDbTable::getIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, nOption));
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
-#endif
 }
 
 boost::python::list PyDbTable::getIterator4(const AcCellRange& pRange) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, AcDb::kTableIteratorNone));
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
-#endif
 }
 
 bool PyDbTable::isContentEditable(int nRow, int nCol) const
@@ -1400,11 +1292,7 @@ bool PyDbTable::isContentEditable(int nRow, int nCol) const
 
 bool PyDbTable::isFormatEditable(int nRow, int nCol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isFormatEditable(nRow, nCol);
-#endif
 }
 
 AcDb::CellState PyDbTable::cellState(int nRow, int nCol) const
@@ -1429,11 +1317,7 @@ int PyDbTable::createContent(int nRow, int nCol, int nIndex)
 
 void PyDbTable::moveContent(int nRow, int nCol, int nFromIndex, int nToIndex)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->moveContent(nRow, nCol, nFromIndex, nToIndex));
-#endif
 }
 
 void PyDbTable::deleteContent1(int nRow, int nCol)
@@ -1453,20 +1337,12 @@ void PyDbTable::deleteContent3(const AcCellRange& range)
 
 AcDb::CellContentType PyDbTable::contentType1(int nRow, int nCol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->contentType(nRow, nCol);
-#endif
 }
 
 AcDb::CellContentType PyDbTable::contentType2(int nRow, int nCol, int nIndex) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->contentType(nRow, nCol, nIndex);
-#endif
 }
 
 std::string PyDbTable::dataFormat1(int row, int col) const
@@ -1491,29 +1367,17 @@ void PyDbTable::setDataFormat2(int row, int col, int nContent, const std::string
 
 bool PyDbTable::hasFormula(int nRow, int nCol, int nContent) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->hasFormula(nRow, nCol, nContent);
-#endif
 }
 
 std::string PyDbTable::getFormula(int nRow, int nCol, int nContent) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return wstr_to_utf8(impObj()->getFormula(nRow, nCol, nContent));
-#endif
 }
 
 void PyDbTable::setFormula(int nRow, int nCol, int nContent, const std::string& pszFormula)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setFormula(nRow, nCol, nContent, utf8_to_wstr(pszFormula).c_str()));
-#endif
 }
 
 std::string PyDbTable::getBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId) const
@@ -1527,15 +1391,11 @@ std::string PyDbTable::getBlockAttributeValue1(int row, int col, const PyDbObjec
 
 std::string PyDbTable::getBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     ACHAR* val = nullptr;
     PyThrowBadEs(impObj()->getBlockAttributeValue(row, col, nContent, attdefId.m_id, val));
     std::string sval = wstr_to_utf8(val);
     acutDelString(val);
     return sval;
-#endif
 }
 
 void PyDbTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId, const std::string& value)
@@ -1545,11 +1405,7 @@ void PyDbTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& at
 
 void PyDbTable::setBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId, const std::string& value)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBlockAttributeValue(row, col, nContent, attdefId.m_id, utf8_to_wstr(value).c_str()));
-#endif
 }
 
 const std::string PyDbTable::cellStyle(int nRow, int nCol) const
@@ -1594,20 +1450,12 @@ void PyDbTable::setRotation2(int row, int col, int nContent, double fAngle)
 
 double PyDbTable::scale(int row, int col, int nContent) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->scale(row, col, nContent);
-#endif
 }
 
 void PyDbTable::setScale(int row, int col, int nContent, double scale)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setScale(row, col, nContent, scale));
-#endif
 }
 
 AcDb::CellContentLayout PyDbTable::contentLayout(int row, int col) const
@@ -1622,220 +1470,124 @@ void PyDbTable::setContentLayout(int row, int col, AcDb::CellContentLayout nLayo
 
 bool PyDbTable::isMergeAllEnabled(int nRow, int nCol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isMergeAllEnabled(nRow, nCol);
-#endif
 }
 
 void PyDbTable::enableMergeAll(int nRow, int nCol, bool bEnable)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->enableMergeAll(nRow, nCol, bEnable));
-#endif
 }
 
 AcDb::CellProperty PyDbTable::getOverride1(int nRow, int nCol, int nContent) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->getOverride(nRow, nCol, nContent);
-#endif
 }
 
 AcDb::GridProperty PyDbTable::getOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->getOverride(nRow, nCol, nGridLineType);
-#endif
 }
 
 void PyDbTable::setOverride1(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setOverride(nRow, nCol, nContent, nOverride));
-#endif
 }
 
 void PyDbTable::setOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType, AcDb::GridProperty nOverride)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setOverride(nRow, nCol, nGridLineType, nOverride));
-#endif
 }
 
 void PyDbTable::removeAllOverrides(int nRow, int nCol)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->removeAllOverrides(nRow, nCol));
-#endif
 }
 
 AcDb::GridLineStyle PyDbTable::gridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->gridLineStyle(nRow, nCol, nGridLineType);
-#endif
 }
 
 void PyDbTable::setGridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::GridLineStyle nLineStyle)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setGridLineStyle(nRow, nCol, nGridLineTypes, nLineStyle));
-#endif
 }
 
 PyDbObjectId PyDbTable::gridLinetype(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->gridLinetype(nRow, nCol, nGridLineType));
-#endif
 }
 
 void PyDbTable::setGridLinetype(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, const PyDbObjectId& idLinetype)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setGridLinetype(nRow, nCol, nGridLineTypes, idLinetype.m_id));
-#endif
 }
 
 double PyDbTable::gridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->gridDoubleLineSpacing(nRow, nCol, nGridLineType);
-#endif
 }
 
 void PyDbTable::setGridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, double fSpacing)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setGridDoubleLineSpacing(nRow, nCol, nGridLineTypes, fSpacing));
-#endif
 }
 
 AcGridProperty PyDbTable::getGridProperty(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcGridProperty prop;
     PyThrowBadEs(impObj()->getGridProperty(nRow, nCol, nGridLineType, prop));
     return prop;
-#endif
 }
 
 void PyDbTable::setGridProperty1(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, const AcGridProperty& gridProp)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setGridProperty(nRow, nCol, nGridLineTypes, gridProp));
-#endif
 }
 
 void PyDbTable::setGridProperty2(const AcCellRange& rangeIn, AcDb::GridLineType nGridLineTypes, const AcGridProperty& gridProp)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setGridProperty(rangeIn, nGridLineTypes, gridProp));
-#endif
 }
 
 bool PyDbTable::isLinked(int nRow, int nCol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isLinked(nRow, nCol);
-#endif
 }
 
 PyDbObjectId PyDbTable::getDataLink(int nRow, int nCol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return  PyDbObjectId(impObj()->getDataLink(nRow, nCol));
-#endif
 }
 
 void PyDbTable::setDataLink(const AcCellRange& range, const PyDbObjectId& idDataLink, bool bUpdate)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setDataLink(range, idDataLink.m_id, bUpdate));
-#endif
 }
 
 AcCellRange PyDbTable::getDataLinkRange(int nRow, int nCol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->getDataLinkRange(nRow, nCol);
-#endif
 }
 
 void PyDbTable::removeDataLink1(void)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->removeDataLink());
-#endif
 }
 
 void PyDbTable::removeDataLink2(int nRow, int nCol)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->removeDataLink(nRow, nCol));
-#endif
 }
 
 void PyDbTable::updateDataLink1(AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->updateDataLink(nDir, nOption));
-#endif
 }
 
 void PyDbTable::updateDataLink2(int nRow, int nCol, AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->updateDataLink(nRow, nCol, nDir, nOption));
-#endif
 }
 
 bool PyDbTable::isBreakEnabled(void) const
@@ -1850,20 +1602,12 @@ void PyDbTable::enableBreak(bool bEnable)
 
 AcDb::TableBreakFlowDirection PyDbTable::breakFlowDirection(void) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->breakFlowDirection();
-#endif
 }
 
 void PyDbTable::setBreakFlowDirection(AcDb::TableBreakFlowDirection nDir)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBreakFlowDirection(nDir));
-#endif
 }
 
 double PyDbTable::breakHeight(int nIndex) const
@@ -1878,65 +1622,37 @@ void PyDbTable::setBreakHeight(int nIndex, double fHeight)
 
 AcGeVector3d PyDbTable::breakOffset(int nIndex) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->breakOffset(nIndex);
-#endif
 }
 
 void PyDbTable::setBreakOffset(int nIndex, const AcGeVector3d& vec)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBreakOffset(nIndex, vec));
-#endif
 }
 
 AcDb::TableBreakOption PyDbTable::breakOption(void) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->breakOption();
-#endif
 }
 
 void PyDbTable::setBreakOption(AcDb::TableBreakOption nOption)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBreakOption(nOption));
-#endif
 }
 
 double PyDbTable::breakSpacing(void) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->breakSpacing();
-#endif
 }
 
 void PyDbTable::setBreakSpacing(double fSpacing)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBreakSpacing(fSpacing));
-#endif
 }
 
 AcCellRange PyDbTable::cellRange() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->cellRange();
-#endif
 }
 
 std::string PyDbTable::className()

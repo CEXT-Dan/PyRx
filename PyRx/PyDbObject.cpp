@@ -316,11 +316,7 @@ void PyDbObject::disableUndoRecording(Adesk::Boolean disable)
 
 void PyDbObject::addPersistentReactor(const PyDbObjectId& objId)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    impObj()->addPersistentReactor(objId.m_id);;
-#else
     return PyThrowBadEs(impObj()->addPersistentReactor(objId.m_id));
-#endif
 }
 
 void PyDbObject::removePersistentReactor(const PyDbObjectId& objId)
@@ -390,20 +386,12 @@ PyDbObjectId PyDbObject::getFieldDictionary(void) const
 
 void PyDbObject::addReactor(PyDbObjectReactor& pReactor) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    impObj()->addReactor(pReactor.impObj());
-#else
     return PyThrowBadEs(impObj()->addReactor(pReactor.impObj()));
-#endif
 }
 
 void PyDbObject::removeReactor(PyDbObjectReactor& pReactor) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    impObj()->removeReactor(pReactor.impObj());
-#else
     return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
-#endif
 }
 
 void PyDbObject::snoop(PyDbSnoopDwgFiler& filer)
@@ -474,18 +462,7 @@ void PyDbObjectReactorImpl::copied(const AcDbObject* src, const AcDbObject* newO
     }
 }
 
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-void PyDbObjectReactorImpl::erased(const AcDbObject* src, Adesk::Boolean bErasing)
-{
-    const auto imp = impObj();
-    if (imp->reg_erased)
-    {
-        PyDbObject obj(const_cast<AcDbObject*>(src), false);
-        obj.forceKeepAlive(true);
-        imp->erased(obj, bErasing);
-    }
-}
-#else
+
 void PyDbObjectReactorImpl::erased(const AcDbObject* src, bool bErasing)
 {
     const auto imp = impObj();
@@ -496,7 +473,6 @@ void PyDbObjectReactorImpl::erased(const AcDbObject* src, bool bErasing)
         imp->erased(obj, bErasing);
     }
 }
-#endif
 
 void PyDbObjectReactorImpl::goodbye(const AcDbObject* ptr)
 {
@@ -886,18 +862,6 @@ void AcDbEntityReactorImpl::copied(const AcDbObject* src, const AcDbObject* newO
     }
 }
 
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-void AcDbEntityReactorImpl::erased(const AcDbObject* src, Adesk::Boolean bErasing)
-{
-    const auto imp = impObj();
-    if (imp->reg_erased)
-    {
-        PyDbObject obj(const_cast<AcDbObject*>(src), false);
-        obj.forceKeepAlive(true);
-        imp->erased(obj, bErasing);
-    }
-}
-#else
 void AcDbEntityReactorImpl::erased(const AcDbObject* src, bool bErasing)
 {
     const auto imp = impObj();
@@ -908,7 +872,6 @@ void AcDbEntityReactorImpl::erased(const AcDbObject* src, bool bErasing)
         imp->erased(obj, bErasing);
     }
 }
-#endif
 
 void AcDbEntityReactorImpl::goodbye(const AcDbObject* ptr)
 {

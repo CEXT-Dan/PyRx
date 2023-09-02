@@ -1,7 +1,6 @@
 #pragma once
 #include "PyRxObject.h"
 
-#ifndef ZRXAPP
 class PyDbEntity;
 class AcDbJoinEntityPE;
 
@@ -25,5 +24,3 @@ public:
 public:
     AcDbJoinEntityPE* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
-#endif

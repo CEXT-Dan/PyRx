@@ -162,82 +162,50 @@ int PyDbMline::numVertices() const
 
 int PyDbMline::element(const AcGePoint3d& pt) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->element(pt);
-#endif
 }
 
 AcGePoint3d PyDbMline::vertexAt(int index) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->vertexAt(index);
-#endif
 }
 
 AcGeVector3d PyDbMline::axisAt(int index) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->axisAt(index);
-#endif
 }
 
 AcGeVector3d PyDbMline::miterAt(int index) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->miterAt(index);
-#endif
 }
 
 AcGePoint3d PyDbMline::getClosestPointTo1(const AcGePoint3d& givenPoint, bool extend) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcGePoint3d pnt;
     PyThrowBadEs(impObj()->getClosestPointTo(givenPoint, pnt, extend));
     return pnt;
-#endif
 }
 
 AcGePoint3d PyDbMline::getClosestPointTo2(const AcGePoint3d& givenPoint, bool extend, bool excludeCaps) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcGePoint3d pnt;
     PyThrowBadEs(impObj()->getClosestPointTo(givenPoint, pnt, extend, excludeCaps));
     return pnt;
-#endif
 }
 
 AcGePoint3d PyDbMline::getClosestPointTo3(const AcGePoint3d& givenPoint, const AcGeVector3d& normal, bool extend) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcGePoint3d pnt;
     PyThrowBadEs(impObj()->getClosestPointTo(givenPoint, normal, pnt, extend));
     return pnt;
-#endif
 }
 
 AcGePoint3d PyDbMline::getClosestPointTo4(const AcGePoint3d& givenPoint, const AcGeVector3d& normal, bool extend, bool excludeCaps) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     AcGePoint3d pnt;
     PyThrowBadEs(impObj()->getClosestPointTo(givenPoint, normal, pnt, extend, excludeCaps));
     return pnt;
-#endif
 }
 
 PyGePlane PyDbMline::getPlane() const

@@ -289,11 +289,7 @@ double PyDbMText::actualWidth() const
 
 int PyDbMText::correctSpelling()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->correctSpelling();
-#endif
 }
 
 boost::python::list PyDbMText::getBoundingPoints() const
@@ -305,11 +301,7 @@ boost::python::list PyDbMText::getBoundingPoints() const
 
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 {
-#ifdef ARXAPP
     return impObj()->hitTest(ptHit);
-#else
-    throw PyNotimplementedByHost();
-#endif // ARXAPP
 }
 
 void PyDbMText::setLineSpacingStyle(AcDb::LineSpacingStyle eStyle)
@@ -484,11 +476,7 @@ void PyDbMText::setColumnHeight(int idx, double val)
 
 void PyDbMText::convertFieldToText()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->convertFieldToText());
-#endif
 }
 
 double PyDbMText::height() const
