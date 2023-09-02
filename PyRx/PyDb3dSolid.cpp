@@ -447,11 +447,7 @@ void PyDb3dSolid::filletEdges(const boost::python::list& edgeSubentIds, boost::p
 
 bool PyDb3dSolid::usesGraphicsCache()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->usesGraphicsCache();
-#endif
 }
 
 void PyDb3dSolid::createSculptedSolid(const boost::python::list& limitingBodies, const boost::python::list& limitingFlags)
@@ -470,9 +466,6 @@ void PyDb3dSolid::createSculptedSolid(const boost::python::list& limitingBodies,
 
 boost::python::list PyDb3dSolid::projectOnToSolid(const PyDbEntity& pEntityToProject, const AcGeVector3d& projectionDirection) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     AcArray<AcDbEntity*> projectedEntities;
     PyThrowBadEs(impObj()->projectOnToSolid(pEntityToProject.impObj(), projectionDirection, projectedEntities));
@@ -480,7 +473,6 @@ boost::python::list PyDb3dSolid::projectOnToSolid(const PyDbEntity& pEntityToPro
     for (auto item : projectedEntities)
         pyList.append(PyDbEntity(item, true));
     return pyList;
-#endif
 }
 
 std::string PyDb3dSolid::className()
@@ -747,16 +739,12 @@ boost::python::tuple PyDbRevolveOptions::checkRevolveCurve1(PyDbEntity& ent, con
 
 boost::python::tuple PyDbRevolveOptions::checkRevolveCurve2(PyDbEntity& ent, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, bool displayErrorMessages)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     bool closed = false;
     bool planar = false;
     bool endPointsOnAxis = false;
     PyThrowBadEs(impObj()->checkRevolveCurve(ent.impObj(), axisPnt, axisDir, closed, endPointsOnAxis, planar, displayErrorMessages));
     return boost::python::make_tuple(closed, endPointsOnAxis, planar);
-#endif
 }
 
 AcDbRevolveOptions* PyDbRevolveOptions::impObj(const std::source_location& src /*= std::source_location::current()*/) const

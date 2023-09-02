@@ -86,9 +86,7 @@ void makePyCmTransparencyWrapper()
         .def("isByAlpha", &AcCmTransparency::isByAlpha)
         .def("isByBlock", &AcCmTransparency::isByBlock)
         .def("isByLayer", &AcCmTransparency::isByLayer)
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .def("isInvalid", &AcCmTransparency::isInvalid)
-#endif // !BRXAPP
         .def("isClear", &AcCmTransparency::isClear)
         .def("isSolid", &AcCmTransparency::isSolid)
         //operators
@@ -110,8 +108,6 @@ void makePyCmEntityColorWrapper()
 {
     class_<AcCmEntityColor>("EntityColor")
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>())
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
         .def("setNone", &AcCmEntityColor::setNone)
         .def("setByBlock", &AcCmEntityColor::setByBlock)
         .def("setForeground", &AcCmEntityColor::setForeground)
@@ -123,8 +119,6 @@ void makePyCmEntityColorWrapper()
         .def("Foreground", &AcCmEntityColor::Foreground)
         .def("white", &AcCmEntityColor::white)
         .def("black", &AcCmEntityColor::black)
-#endif
-#ifdef ARXAPP
         .def("colorMethod", &AcCmEntityColor::colorMethod)
         .def("setColorIndex", &AcCmEntityColor::setColorIndex)
         .def("colorIndex", &AcCmEntityColor::colorIndex)
@@ -135,28 +129,13 @@ void makePyCmEntityColorWrapper()
         .def("red", &AcCmEntityColor::red)
         .def("green", &AcCmEntityColor::green)
         .def("blue", &AcCmEntityColor::blue)
-#endif
-
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
         .def("setCOLORREF", &AcCmEntityColor::setCOLORREF)
         .def("getCOLORREF", &AcCmEntityColor::getCOLORREF)
-#endif
-
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::RGBQuad)>("setRGB", &AcCmEntityColor::setRGB)
-#endif
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::UInt8, Adesk::UInt8, Adesk::UInt8)>("setRGB", &AcCmEntityColor::setRGB)
-
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
         .def("getRGB", &AcCmEntityColor::getRGB)
         .def("setRGBM", &AcCmEntityColor::setRGBM)
         .def("getRGBM", &AcCmEntityColor::getRGBM)
-#endif
-
-#ifdef ARXAPP
         .def("isByColor", &AcCmEntityColor::isByColor)
         .def("isByLayer", &AcCmEntityColor::isByLayer)
         .def("isByBlock", &AcCmEntityColor::isByBlock)
@@ -167,15 +146,8 @@ void makePyCmEntityColorWrapper()
         .def("isLayerFrozen", &AcCmEntityColor::isLayerFrozen)
         .def("isNone", &AcCmEntityColor::isNone)
         .def("isLayerFrozenOrOff", &AcCmEntityColor::isLayerFrozenOrOff)
-#endif
-
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
         .def("canResolveRGB", &AcCmEntityColor::canResolveRGB)
         .def("makeTrueColor", &AcCmEntityColor::makeTrueColor)
-#endif
-#if defined(GRXAPP) || defined(ZRXAPP)
-#else
         .def("None", &AcCmEntityColor::None).staticmethod("None")
         .def("ByBlock", &AcCmEntityColor::ByBlock).staticmethod("ByBlock")
         .def("ByLayer", &AcCmEntityColor::ByLayer).staticmethod("ByLayer")
@@ -184,7 +156,6 @@ void makePyCmEntityColorWrapper()
         .def("black", &AcCmEntityColor::black).staticmethod("black")
         .def("__eq__", &AcCmEntityColor::operator==)
         .def("__ne__", &AcCmEntityColor::operator!=)
-#endif
         ;
     enum_<AcCmEntityColor::ColorMethod>("ColorMethod")
         .value("kByLayer", AcCmEntityColor::ColorMethod::kByLayer)
