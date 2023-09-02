@@ -1289,7 +1289,13 @@ Also known as the population count.
     def kDrawHatchGroup (self, *args, **kwargs)-> None :
       '''None'''
     ...
+    def kDrawIsInWCS (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
     def kDrawNoForceByLayer (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kDrawNoImageFrame (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def kDrawNoLineWeight (self, *args, **kwargs)-> None :
