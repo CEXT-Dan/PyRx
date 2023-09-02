@@ -27,17 +27,5 @@
 #include "StdAfx.h"
 const TCHAR* getappname()
 {
-#ifdef ZRXAPP
-    return _T("ZRX");
-#endif
-#ifdef BRXAPP
-    return _T("BRX");
-#endif
-#ifdef ARXAPP
-    return _T("ARX");
-#endif
-#ifdef GRXAPP
-    return _T("GRX");
-#endif
     return _T("ARX");
 }

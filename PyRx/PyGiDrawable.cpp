@@ -59,9 +59,7 @@ void makePyGiObjectWrapper()
         .value("kDrawableNotPlottable", AcGiDrawable::SetAttributesFlags::kDrawableNotPlottable)
         .value("kDrawableNotAllowLCS", AcGiDrawable::SetAttributesFlags::kDrawableNotAllowLCS)
         .value("kDrawableMergeControlOff", AcGiDrawable::SetAttributesFlags::kDrawableMergeControlOff)
-#ifdef ARXAPP
         .value("kThreadedWorldDrawViewportDraw", AcGiDrawable::SetAttributesFlags::kThreadedWorldDrawViewportDraw)
-#endif
         .export_values()
         ;
 }

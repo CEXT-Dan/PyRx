@@ -743,11 +743,7 @@ std::string PyPlDSDEntry::traceSession() const
 
 void PyPlDSDEntry::setTraceSession(const std::string& pTraceSession)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     impObj()->setNPSSourceDWG(utf8_to_wstr(pTraceSession).c_str());
-#endif
 }
 
 PyRxClass PyPlDSDEntry::desc()
