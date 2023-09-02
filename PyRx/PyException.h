@@ -3,18 +3,7 @@
 
 static std::string appHostName()
 {
-#ifdef ARXAPP
-    return  "ARX";
-#endif
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    return  "BRX";
-#endif
-#ifdef GRXAPP
-    return  "GRX";
-#endif
-#ifdef ZRXAPP
-    return  "GRX";
-#endif
+    return "ARX";
 }
 
 inline void printExceptionMsg(const std::source_location& src = std::source_location::current())

@@ -156,9 +156,7 @@ class PyGeEllipArc3d : public PyGeCurve3d
 {
 public:
     PyGeEllipArc3d();
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyGeEllipArc3d(const AcGeEllipArc3d& ell);
-#endif
     PyGeEllipArc3d(AcGeEntity3d* pEnt);
     PyGeEllipArc3d(const PyGeCircArc3d& arc);
     PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius);

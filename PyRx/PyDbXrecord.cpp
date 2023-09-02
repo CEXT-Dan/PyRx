@@ -82,20 +82,12 @@ void PyDbXrecord::setFromRbChain2(const boost::python::list& pRb, PyDbDatabase& 
 
 bool PyDbXrecord::isXlateReferences() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isXlateReferences();
-#endif
 }
 
 void PyDbXrecord::setXlateReferences(bool translate)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setXlateReferences(translate);
-#endif
 }
 
 AcDb::DuplicateRecordCloning PyDbXrecord::mergeStyle() const

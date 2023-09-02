@@ -69,9 +69,7 @@ public:
     PyGePolyline3d(const AcGePolyline3d& src);
     PyGePolyline3d(const boost::python::list& points);
     PyGePolyline3d(const PyGeKnotVector& knots, const boost::python::list& points);
-#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyGePolyline3d(const PyGeCurve3d& crv, double apprEps);
-#endif
 
     int              numFitPoints() const;
     AcGePoint3d      fitPointAt(int idx) const;
