@@ -3117,11 +3117,7 @@ Adesk::Boolean PyDbPolyline::hasWidth() const
 
 void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
-#endif
 }
 
 std::string PyDbPolyline::className()

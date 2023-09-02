@@ -10,7 +10,6 @@
 
 using namespace boost::python;
 
-#ifdef ARXAPP
 extern int acedNEntSelPEx(
     const ACHAR* str,
     ads_name entres,
@@ -20,7 +19,6 @@ extern int acedNEntSelPEx(
     struct resbuf** refstkres,
     unsigned int uTransSpaceFlag,
     Adesk::GsMarker* gsmarker);
-#endif
 //-----------------------------------------------------------------------------------------
 //helpers
 
@@ -276,7 +274,6 @@ boost::python::tuple PyAcEditor::nEntSelP2(const std::string& prompt,const AcGeP
     return nEntSelP(prompt, ptres, 1);
 }
 
-#ifdef ARXAPP
 static boost::python::tuple nEntSelPEx(const std::string& prompt,const AcGePoint3d& ptres, int opt, unsigned int uTransSpaceFlag)
 {
     PyAutoLockGIL lock;
@@ -307,25 +304,17 @@ static boost::python::tuple nEntSelPEx(const std::string& prompt,const AcGePoint
     }
     return boost::python::make_tuple(flag, id, xformres, gsmarker, pyIds);
 }
-#endif
 
 boost::python::tuple PyAcEditor::nEntSelPEx1(const std::string& prompt, int uTransSpaceFlag)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
+
     AcGePoint3d dummyptp;
     return nEntSelPEx(prompt, dummyptp, 0, uTransSpaceFlag);
-#endif // !ARXAPP
 }
 
 boost::python::tuple PyAcEditor::nEntSelPEx2(const std::string& prompt, const AcGePoint3d& ptres, int uTransSpaceFlag)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return nEntSelPEx(prompt, ptres, 1, uTransSpaceFlag);
-#endif // !ARXAPP
 }
 
 boost::python::tuple PyAcEditor::select1()
@@ -573,20 +562,12 @@ boost::python::list PyAcEditor::getCurrentSelectionSet()
 
 void PyAcEditor::setAllowDuplicateSelection(PyApDocument& doc, bool flag)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(::setAllowDuplicateSelection(doc.impObj(),flag));
-#endif
 }
 
 bool PyAcEditor::duplicateSelectionsAllowed(PyApDocument& doc)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return ::duplicateSelectionsAllowed(doc.impObj());
-#endif
 }
 
 std::string PyAcEditor::className()

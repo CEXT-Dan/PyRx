@@ -920,11 +920,7 @@ UINT_PTR EdCore::showHTMLModelessWindow1(UINT_PTR owner, const std::string& uriO
 
 UINT_PTR EdCore::showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
 {
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
     return (UINT_PTR)acedShowHTMLModelessWindow((HWND)owner, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
-#endif
 }
 
 void EdCore::skipXrefNotification(PyDbDatabase& db, const std::string& xrefName)
