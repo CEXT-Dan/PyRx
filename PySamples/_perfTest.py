@@ -5,13 +5,11 @@ import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
 import PyGs as Gs
-import dis
+import timeit
 
-from timeit import default_timer as timer
-
+#run this before release!!!
 #PySamples\dwg\TestPoints.dwg
 
-# 0.1997940999990533 time to beat
 def move_points():
     mat = Ge.Matrix3d()
     mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
@@ -25,7 +23,6 @@ def move_points():
             ent = Db.Entity(id, Db.OpenMode.ForWrite)
             ent.transformBy(mat)
 
-# 0.18798900000001595 time to beat
 def move_points_new():
     mat = Ge.Matrix3d()
     mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
@@ -38,8 +35,6 @@ def move_points_new():
         ent = Db.Entity(id, Db.OpenMode.ForWrite)
         ent.transformBy(mat)
 
-
-# 0.2265791000027093 time to beat
 def move_points_old():
     try:
         mat = Ge.Matrix3d()
@@ -57,44 +52,15 @@ def move_points_old():
         print(err)
 
 
-def PyRxCmd_pydoit():
+# test move_points_new....     time = 7.21236990000034
+# test move_points........     time = 8.443536700004188
+# test move_points_old....     time = 10.899455000006128
+def PyRxCmd_pyperftest():
     try:
-        for i in range(20):
-            start = timer()
-            move_points()
-            end = timer()
-            print(end - start)
-
+        print("test move_points_new....\t time = {}".format(timeit.timeit(move_points_new, number=20)))
+        print("test move_points........\t time = {}".format(timeit.timeit(move_points, number=20)))
+        print("test move_points_old....\t time = {}".format(timeit.timeit(move_points_old, number=20)))
     except Exception as err:
         print(err)
 
 
-def PyRxCmd_pydoit2():
-    try:
-        for i in range(20):
-            start = timer()
-            move_points_old()
-            end = timer()
-            print(end - start)
-
-    except Exception as err:
-        print(err)
-
-
-def PyRxCmd_pydoit3():
-    try:
-        for i in range(20):
-            start = timer()
-            move_points_new()
-            end = timer()
-            print(end - start)
-
-    except Exception as err:
-        print(err)
-
-def PyRxCmd_pydoit4():
-    try:
-       print(dis.dis(move_points_new))
-
-    except Exception as err:
-        print(err)
