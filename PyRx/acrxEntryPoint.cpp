@@ -424,7 +424,7 @@ public:
                         PyErr_Clear();
                         if (PyCallable_Check(pMethod))
                         {
-                            PyObjectPtr rslt(PyObject_CallFunction(pMethod, NULL));
+                            PyObjectPtr rslt(PyObject_CallNoArgs(pMethod));
                             if (rslt != nullptr)
                                 return;
                         }
