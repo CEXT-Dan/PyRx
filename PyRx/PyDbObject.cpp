@@ -331,7 +331,7 @@ bool PyDbObject::hasPersistentReactor(const PyDbObjectId& objId) const
 
 bool PyDbObject::hasFields(void) const
 {
-    return  impObj()->hasFields();
+    return impObj()->hasFields();
 }
 
 PyDbObjectId PyDbObject::getField1()

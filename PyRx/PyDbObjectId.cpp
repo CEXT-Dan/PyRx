@@ -207,8 +207,6 @@ void makePyDbHardPointerIdWrapper()
     class_<PyDbHardPointerId, bases<PyDbObjectId>>("HardPointerId")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def("__eq__", &PyDbHardPointerId::operator==)
-        .def("__ne__", &PyDbHardPointerId::operator!=)
         ;
     implicitly_convertible<PyDbHardPointerId, PyDbObjectId>();
 }
@@ -234,16 +232,6 @@ PyDbHardPointerId& PyDbHardPointerId::operator=(const PyDbHardPointerId& rhs)
     return *this;
 }
 
-bool PyDbHardPointerId::operator!=(const PyDbHardPointerId& rhs) const
-{
-    return m_id != rhs.m_id;
-}
-
-bool PyDbHardPointerId::operator==(const PyDbHardPointerId& rhs) const
-{
-    return m_id == rhs.m_id;
-}
-
 //-----------------------------------------------------------------------------------------
 //PyDbHardOwnershipId
 void makePyDbAcDbHardOwnershipIdWrapper()
@@ -251,8 +239,6 @@ void makePyDbAcDbHardOwnershipIdWrapper()
     class_<PyDbHardOwnershipId, bases<PyDbObjectId>>("HardOwnershipId")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def("__eq__", &PyDbHardOwnershipId::operator==)
-        .def("__ne__", &PyDbHardOwnershipId::operator!=)
         ;
     implicitly_convertible<PyDbHardOwnershipId, PyDbObjectId>();
 }
@@ -264,16 +250,6 @@ PyDbHardOwnershipId::PyDbHardOwnershipId()
 PyDbHardOwnershipId::PyDbHardOwnershipId(const PyDbObjectId& id)
     : m_id(id.m_id)
 {
-}
-
-bool PyDbHardOwnershipId::operator!=(const PyDbHardOwnershipId& rhs) const
-{
-    return m_id != rhs.m_id;
-}
-
-bool PyDbHardOwnershipId::operator==(const PyDbHardOwnershipId& rhs) const
-{
-    return m_id == rhs.m_id;
 }
 
 PyDbHardOwnershipId& PyDbHardOwnershipId::operator=(const PyDbObjectId& rhs)
@@ -295,8 +271,6 @@ void makePySoftPointerIdWrapper()
     class_<PyDbSoftPointerId, bases<PyDbObjectId>>("SoftPointerId")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def("__eq__", &PyDbSoftPointerId::operator==)
-        .def("__ne__", &PyDbSoftPointerId::operator!=)
         ;
     implicitly_convertible<PyDbSoftPointerId, PyDbObjectId>();
 }
@@ -321,16 +295,6 @@ PyDbSoftPointerId& PyDbSoftPointerId::operator=(const PyDbSoftPointerId& rhs)
     m_id = rhs.m_id;
     return *this;
 }
-
-bool PyDbSoftPointerId::operator!=(const PyDbSoftPointerId& rhs) const
-{
-    return m_id != rhs.m_id;
-}
-
-bool PyDbSoftPointerId::operator==(const PyDbSoftPointerId& rhs) const
-{
-    return m_id == rhs.m_id;
-}
 //-----------------------------------------------------------------------------------------
 //PyDbSoftOwnershipId
 
@@ -339,8 +303,6 @@ void makePyDbSoftOwnershipIdWrapper()
     class_<PyDbSoftOwnershipId, bases<PyDbObjectId>>("SoftOwnershipId")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def("__eq__", &PyDbSoftPointerId::operator==)
-        .def("__ne__", &PyDbSoftPointerId::operator!=)
         ;
     implicitly_convertible<PyDbSoftOwnershipId, PyDbObjectId>();
 }
@@ -354,16 +316,6 @@ PyDbSoftOwnershipId::PyDbSoftOwnershipId(const PyDbObjectId& id)
     : m_id(id.m_id)
 {
 
-}
-
-bool PyDbSoftOwnershipId::operator!=(const PyDbSoftOwnershipId& rhs) const
-{
-    return m_id != rhs.m_id;
-}
-
-bool PyDbSoftOwnershipId::operator==(const PyDbSoftOwnershipId& rhs) const
-{
-    return m_id == rhs.m_id;
 }
 
 PyDbSoftOwnershipId& PyDbSoftOwnershipId::operator=(const PyDbObjectId& rhs)

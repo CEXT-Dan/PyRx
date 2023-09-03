@@ -696,13 +696,9 @@ void PyDbTable::setContentColor3(int row, int col, int nContent, const AcCmColor
 
 boost::python::list PyDbTable::cellStyleOverrides(int row, int col) const
 {
-    PyAutoLockGIL lock;
     AcDbIntArray overrides;
-    boost::python::list l;
     impObj()->cellStyleOverrides(row, col, overrides);
-    for (auto item : overrides)
-        l.append(item);
-    return l;
+    return IntArrayToPyList(overrides);
 }
 
 void PyDbTable::clearCellOverrides(int row, int column)
@@ -958,13 +954,9 @@ void PyDbTable::setGridVisibility3(int nRow, int nCol, AcDb::GridLineType nGridL
 
 boost::python::list PyDbTable::tableStyleOverrides() const
 {
-    PyAutoLockGIL lock;
     AcDbIntArray overrides;
-    boost::python::list l;
     impObj()->tableStyleOverrides(overrides);
-    for (auto item : overrides)
-        l.append(item);
-    return l;
+    return IntArrayToPyList(overrides);
 }
 
 void PyDbTable::clearTableStyleOverrides()
@@ -984,13 +976,9 @@ void PyDbTable::setCellType(int row, int col, AcDb::CellType type)
 
 boost::python::list PyDbTable::getCellExtents(int row, int col, bool isOuterCell) const
 {
-    PyAutoLockGIL lock;
     AcGePoint3dArray pts;
-    boost::python::list l;
     PyThrowBadEs(impObj()->getCellExtents(row, col, isOuterCell, pts));
-    for (const auto& item : pts)
-        l.append(item);
-    return l;
+    return Point3dArrayToPyList(pts);
 }
 
 AcGePoint3d PyDbTable::attachmentPoint(int row, int col) const
@@ -1557,7 +1545,7 @@ bool PyDbTable::isLinked(int nRow, int nCol) const
 
 PyDbObjectId PyDbTable::getDataLink(int nRow, int nCol) const
 {
-    return  PyDbObjectId(impObj()->getDataLink(nRow, nCol));
+    return PyDbObjectId(impObj()->getDataLink(nRow, nCol));
 }
 
 void PyDbTable::setDataLink(const AcCellRange& range, const PyDbObjectId& idDataLink, bool bUpdate)

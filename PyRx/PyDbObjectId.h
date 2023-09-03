@@ -88,8 +88,6 @@ public:
     PyDbHardPointerId(const PyDbObjectId& id);
     PyDbHardPointerId& operator =(const PyDbHardPointerId& rhs);
     PyDbHardPointerId& operator =(const PyDbObjectId& rhs);
-    bool operator==(const PyDbHardPointerId& rhs) const;
-    bool operator!=(const PyDbHardPointerId& rhs) const;
 public:
     AcDbHardPointerId m_id;
 };
@@ -104,8 +102,6 @@ public:
     PyDbHardOwnershipId(const PyDbObjectId& id);
     PyDbHardOwnershipId& operator =(const PyDbHardOwnershipId& rhs);
     PyDbHardOwnershipId& operator =(const PyDbObjectId& rhs);
-    bool operator==(const PyDbHardOwnershipId& rhs) const;
-    bool operator!=(const PyDbHardOwnershipId& rhs) const;
 public:
     AcDbHardOwnershipId m_id;
 };
@@ -121,8 +117,6 @@ public:
     PyDbSoftPointerId(const PyDbObjectId& id);
     PyDbSoftPointerId& operator =(const PyDbSoftPointerId& rhs);
     PyDbSoftPointerId& operator =(const PyDbObjectId& rhs);
-    bool operator==(const PyDbSoftPointerId& rhs) const;
-    bool operator!=(const PyDbSoftPointerId& rhs) const;
 public:
     AcDbSoftPointerId m_id;
 };
@@ -137,8 +131,6 @@ public:
     PyDbSoftOwnershipId(const PyDbObjectId& id);
     PyDbSoftOwnershipId& operator =(const PyDbSoftOwnershipId& rhs);
     PyDbSoftOwnershipId& operator =(const PyDbObjectId& rhs);
-    bool operator==(const PyDbSoftOwnershipId& rhs) const;
-    bool operator!=(const PyDbSoftOwnershipId& rhs) const;
 public:
     AcDbSoftOwnershipId m_id;
 };

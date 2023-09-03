@@ -305,7 +305,6 @@ void PyDbUnderlayReference::setWidth(double width)
     return PyThrowBadEs(impObj()->setWidth(width));
 }
 
-
 double PyDbUnderlayReference::width() const
 {
     double val = 0;

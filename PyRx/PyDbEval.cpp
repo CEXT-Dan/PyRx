@@ -79,6 +79,7 @@ PyDbEvalVariant::PyDbEvalVariant(const AcGePoint3d& pt)
 {
 }
 
+//TODO:!
 PyDbEvalVariant::PyDbEvalVariant(const boost::python::tuple& rb)
     : PyRxObject(nullptr, false, false)
 {
