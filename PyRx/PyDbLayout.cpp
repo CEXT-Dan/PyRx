@@ -167,11 +167,6 @@ PyDbPlotSettings::PyDbPlotSettings(const PyDbObjectId& id)
 {
 }
 
-PyDbPlotSettings::PyDbPlotSettings(const AcDbPlotSettings* ptr)
-    : PyDbObject(ptr)
-{
-}
-
 void PyDbPlotSettings::addToPlotSettingsDict(PyDbDatabase& towhichDb)
 {
     return PyThrowBadEs(impObj()->addToPlotSettingsDict(towhichDb.impObj()));

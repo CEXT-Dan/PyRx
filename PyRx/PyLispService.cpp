@@ -17,7 +17,7 @@ int PyLispService::execLispFunc()
             auto method = lisplispService.lispFuncCodes.at(fcode);
             if (PyCallable_Check(method))
             {
-                boost::python::list args = resbufToList(acedGetArgs());
+                const boost::python::list& args = resbufToList(acedGetArgs());
                 PyObjectPtr pResult(PyObject_CallOneArg(method, args.ptr()));
                 if (pResult == nullptr)
                 {
