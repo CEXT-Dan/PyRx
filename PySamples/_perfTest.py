@@ -52,9 +52,13 @@ def move_points_old():
         print(err)
 
 
-# test move_points_new....     time = 7.21236990000034
-# test move_points........     time = 8.443536700004188
-# test move_points_old....     time = 10.899455000006128
+print("OldTest:..")
+print("test move_points_new....     time = 3.7837103999991086")
+print("test move_points........     time = 3.9697672000038438")
+print("test move_points_old....     time = 4.44495850000385")
+
+print("\nrun command pyperftest")
+
 def PyRxCmd_pyperftest():
     try:
         print("test move_points_new....\t time = {}".format(timeit.timeit(move_points_new, number=20)))
