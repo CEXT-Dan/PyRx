@@ -690,11 +690,9 @@ void PyDbMLeader::setBlockAttributeValue1(const PyDbObjectId& attdefId, const Py
 
 std::string PyDbMLeader::getBlockAttributeValue2(const PyDbObjectId& attdefId) const
 {
-    ACHAR* patt = nullptr;
-    PyThrowBadEs(impObj()->getBlockAttributeValue(attdefId.m_id, patt));
-    auto str = wstr_to_utf8(patt);
-    acutDelString(patt);
-    return str;
+    RxAutoOutStr patt;
+    PyThrowBadEs(impObj()->getBlockAttributeValue(attdefId.m_id, patt.buf));
+    return patt.str();
 }
 
 void PyDbMLeader::setBlockAttributeValue2(const PyDbObjectId& attdefId, const std::string& pAtt)
@@ -741,12 +739,9 @@ int PyDbMLeader::numLeaders() const
 
 boost::python::list PyDbMLeader::getLeaderIndexes() const
 {
-    boost::python::list _list;
-    AcArray<int> leaderIndexes;
+    AcDbIntArray leaderIndexes;
     PyThrowBadEs(impObj()->getLeaderIndexes(leaderIndexes));
-    for (auto item : leaderIndexes)
-        _list.append(item);
-    return _list;
+    return IntArrayToPyList(leaderIndexes);
 }
 
 int PyDbMLeader::addLeader()
@@ -819,22 +814,16 @@ int PyDbMLeader::numLeaderLines() const
 
 boost::python::list PyDbMLeader::getLeaderLineIndexes1() const
 {
-    boost::python::list _list;
-    AcArray<int> leaderIndexes;
+    AcDbIntArray leaderIndexes;
     PyThrowBadEs(impObj()->getLeaderLineIndexes(leaderIndexes));
-    for (auto item : leaderIndexes)
-        _list.append(item);
-    return _list;
+    return IntArrayToPyList(leaderIndexes);
 }
 
 boost::python::list PyDbMLeader::getLeaderLineIndexes2(int leaderIndex) const
 {
-    boost::python::list _list;
-    AcArray<int> leaderIndexes;
+    AcDbIntArray leaderIndexes;
     PyThrowBadEs(impObj()->getLeaderLineIndexes(leaderIndexes));
-    for (auto item : leaderIndexes)
-        _list.append(item);
-    return _list;
+    return IntArrayToPyList(leaderIndexes);
 }
 
 AcGePoint3d PyDbMLeader::getLastVertex(int leaderLineIndex) const
@@ -1572,8 +1561,7 @@ PyDbMLeaderStyle::PyDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
 std::string PyDbMLeaderStyle::getName() const
 {
     AcString name;
-    if (auto es = impObj()->getName(name); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getName(name));
     return wstr_to_utf8(name);
 }
 

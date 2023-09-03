@@ -508,12 +508,7 @@ void PyDbRasterImage::setClipBoundaryToWholeImage(AcGeVector2d& size)
 
 boost::python::list PyDbRasterImage::clipBoundary() const
 {
-    PyAutoLockGIL lock;
-    boost::python::list boundry;
-    const AcGePoint2dArray& arr = impObj()->clipBoundary();
-    for (auto& item : arr)
-        boundry.append(item);
-    return boundry;
+    return Point2dArrayToPyList(impObj()->clipBoundary());
 }
 
 AcDbRasterImage::ClipBoundaryType PyDbRasterImage::clipBoundaryType() const
@@ -528,13 +523,9 @@ Adesk::Boolean PyDbRasterImage::isClipped() const
 
 boost::python::list PyDbRasterImage::getVertices() const
 {
-    PyAutoLockGIL lock;
     AcGePoint3dArray verts;
-    boost::python::list boundry;
     PyThrowBadEs(impObj()->getVertices(verts));
-    for (auto& item : verts)
-        boundry.append(item);
-    return boundry;
+    return Point3dArrayToPyList(verts);
 }
 
 AcGeMatrix3d PyDbRasterImage::getPixelToModelTransform() const

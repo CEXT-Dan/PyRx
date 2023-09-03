@@ -489,13 +489,9 @@ int PyDbTableStyle::numCellStyles(void) const
 
 boost::python::list PyDbTableStyle::getCellStyles()
 {
-    PyAutoLockGIL lock;
     AcStringArray cellstyles;
-    boost::python::list outList;
     impObj()->getCellStyles(cellstyles);
-    for (auto& item : cellstyles)
-        outList.append(wstr_to_utf8(item));
-    return outList;
+    return AcStringArrayToPyList(cellstyles);
 }
 
 int PyDbTableStyle::cellClass(const std::string& pszCellStyle) const

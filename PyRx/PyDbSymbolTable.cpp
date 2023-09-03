@@ -101,7 +101,7 @@ boost::python::dict PyDbSymbolTable::toDict()
                 const TCHAR* name = nullptr;
                 if (record->getName(name) == eOk)
                 {
-                    std::string utf8name = wstr_to_utf8(name);
+                    const std::string& utf8name = wstr_to_utf8(name);
                     _items[utf8name] = id;
                 }
             }
