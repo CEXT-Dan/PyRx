@@ -64,11 +64,6 @@ void makePyGiObjectWrapper()
         ;
 }
 
-PyGiDrawable::PyGiDrawable(const AcGiDrawable* ptr)
-    : PyRxObject(ptr)
-{
-}
-
 PyGiDrawable::PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject)
     : PyRxObject(ptr, autoDelete, isDbObject)
 {
