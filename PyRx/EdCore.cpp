@@ -732,19 +732,18 @@ boost::python::object EdCore::getVar(const std::string& sym)
     return boost::python::object();
 }
 
-//TODO use PyLong_Check
 bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
 {
     PyAutoLockGIL lock;
     try
     {
-        if (extract<int32_t>(src).check())
+        if (PyLong_Check(src.ptr()))
         {
             const int val = extract<int32_t>(src);
             AcResBufPtr buf(acutBuildList(RTLONG, val, 0));
             return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
         }
-        else if (extract<double>(src).check())
+        else if (PyFloat_Check(src.ptr()))
         {
             const double val = extract<double>(src);
             AcResBufPtr buf(acutBuildList(RTREAL, val, 0));
