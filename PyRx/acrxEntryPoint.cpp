@@ -120,7 +120,6 @@ public:
     }
 
     //wxPython barfs if it's loaded while the open file dialog is open
-    //GStarCad barfs here. SR number 122956
     static void AcedOnIdleMsgFn()
     {
         PRINTVER();
@@ -421,9 +420,9 @@ public:
                     if (pMethod != nullptr)
                     {
                         WxPyAutoLock lock;
-                        PyErr_Clear();
                         if (PyCallable_Check(pMethod))
                         {
+                            PyErr_Clear();
                             PyObjectPtr rslt(PyObject_CallNoArgs(pMethod));
                             if (rslt != nullptr)
                                 return;
