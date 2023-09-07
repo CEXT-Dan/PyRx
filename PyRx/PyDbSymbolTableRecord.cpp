@@ -1163,6 +1163,7 @@ void makePyDbBlockTableRecordWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId=kNull", "mode: OpenMode=kForRead" })))
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity, DS.ARGS({ "entity :PyDb.Entity" }))
+        .def("appendAcDbEntities", &PyDbBlockTableRecord::appendAcDbEntities, DS.ARGS({ "entities : :list[PyDb.Entity]" }))
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
         .def("objectIds", &PyDbBlockTableRecord::objectIdsOfType, DS.ARGS({ "desc:PyRx.RxClass=AcDbEntity" }))
         .def("comments", &PyDbBlockTableRecord::comments, DS.ARGS())
@@ -1234,6 +1235,16 @@ PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
     PyDbObjectId id;
     PyThrowBadEs(impObj()->appendAcDbEntity(id.m_id, ent.impObj()));
     return id;
+}
+
+boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python::list& entities)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    const auto& ents = py_list_to_std_vector<PyDbEntity>(entities);
+    for (auto& ent : ents)
+        pylist.append(appendAcDbEntity(ent));
+    return pylist;
 }
 
 boost::python::list PyDbBlockTableRecord::objectIds()
