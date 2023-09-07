@@ -10335,28 +10335,28 @@ entGetX( (ObjectId)arg1, (list)arg2) -> list :
         class PyDbObjectId namedObjDict()'''
     ...
     def openDbEntities (self, *args, **kwargs)-> list :
-      '''openDbEntities( (list)arg1, (OpenMode)arg2) -> list :
+      '''openDbEntities( (list)arg1, (OpenMode)arg2, (bool)arg3) -> list :
 
     C++ signature :
-        class boost::python::list openDbEntities(class boost::python::list,enum AcDb::OpenMode)'''
+        class boost::python::list openDbEntities(class boost::python::list,enum AcDb::OpenMode,bool)'''
     ...
     def openDbEntity (self, *args, **kwargs)-> PyDb.Entity :
-      '''openDbEntity( (ObjectId)arg1, (OpenMode)arg2) -> Entity :
+      '''openDbEntity( (ObjectId)arg1, (OpenMode)arg2, (bool)arg3) -> Entity :
 
     C++ signature :
-        class PyDbEntity openDbEntity(class PyDbObjectId,enum AcDb::OpenMode)'''
+        class PyDbEntity openDbEntity(class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
     def openDbObject (self, *args, **kwargs)-> PyDb.DbObject :
-      '''openDbObject( (ObjectId)arg1, (OpenMode)arg2) -> DbObject :
+      '''openDbObject( (ObjectId)arg1, (OpenMode)arg2, (bool)arg3) -> DbObject :
 
     C++ signature :
-        class PyDbObject openDbObject(class PyDbObjectId,enum AcDb::OpenMode)'''
+        class PyDbObject openDbObject(class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
     def openDbObjects (self, *args, **kwargs)-> list :
-      '''openDbObjects( (list)arg1, (OpenMode)arg2) -> list :
+      '''openDbObjects( (list)arg1, (OpenMode)arg2, (bool)arg3) -> list :
 
     C++ signature :
-        class boost::python::list openDbObjects(class boost::python::list,enum AcDb::OpenMode)'''
+        class boost::python::list openDbObjects(class boost::python::list,enum AcDb::OpenMode,bool)'''
     ...
     def putSummaryInfo (self, *args, **kwargs)-> None :
       '''putSummaryInfo( (DatabaseSummaryInfo)arg1, (Database)arg2) -> None :
@@ -12585,7 +12585,7 @@ setCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2, (str)arg3, (str)arg4
     ...
 
 class DbObject:
-    def __init__ (self: DbObject,id: ObjectId,mode: OpenMode=kForRead)-> None :
+    def __init__ (self: DbObject,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -17313,7 +17313,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Entity:
-    def __init__ (self: Entity,id: ObjectId,mode: OpenMode=kForRead)-> None :
+    def __init__ (self: Entity,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :

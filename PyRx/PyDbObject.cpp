@@ -102,7 +102,6 @@ PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
     : PyGiDrawable(openAcDbObject<AcDbObject>(id, mode, erased), false, true)
 {
-
 }
 
 PyDbObjectId PyDbObject::objectId() const
