@@ -59,10 +59,10 @@ inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iter
 }
 
 template<typename T>
-inline T* openAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
+inline T* openAcDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased = false)
 {
     T* pobj = nullptr;
-    PyThrowBadEs(acdbOpenObject<T>(pobj, id.m_id, mode));
+    PyThrowBadEs(acdbOpenObject<T>(pobj, id.m_id, mode, erased));
     return pobj;
 }
 

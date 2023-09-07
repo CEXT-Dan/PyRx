@@ -13,7 +13,7 @@ void makePyDbObjectWrapper()
     PyDocString DS("DbObject");
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
         .def("objectId", &PyDbObject::objectId, DS.ARGS())
         .def("ownerId", &PyDbObject::ownerId, DS.ARGS())
         .def("setOwnerId", &PyDbObject::setOwnerId, DS.ARGS({ "owner: ObjectId" }))
@@ -90,13 +90,19 @@ PyDbObject::PyDbObject(AcDbObject* ptr, bool autoDelete)
 }
 
 PyDbObject::PyDbObject(const PyDbObjectId& id)
-    : PyDbObject(id, AcDb::OpenMode::kForRead)
+    : PyGiDrawable(openAcDbObject<AcDbObject>(id, AcDb::OpenMode::kForRead), false, true)
 {
 }
 
 PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyGiDrawable(openAcDbObject<AcDbObject>(id, mode), false, true)
 {
+}
+
+PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyGiDrawable(openAcDbObject<AcDbObject>(id, mode, erased), false, true)
+{
+
 }
 
 PyDbObjectId PyDbObject::objectId() const

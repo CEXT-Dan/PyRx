@@ -72,10 +72,10 @@ public:
     static void                 loadLineTypeFile(const std::string& ltname, const std::string& fname, PyDbDatabase& db);
     static void                 loadMlineStyleFile(const std::string& ltname, const std::string& fname);
     static PyDbObjectId         namedObjDict();
-    static PyDbObject           openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
-    static boost::python::list  openDbObjects(const boost::python::list& id, AcDb::OpenMode mode);
-    static PyDbEntity           openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
-    static boost::python::list  openDbEntities(const boost::python::list& ids, AcDb::OpenMode mode);
+    static PyDbObject           openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    static boost::python::list  openDbObjects(const boost::python::list& id, AcDb::OpenMode mode, bool erased);
+    static PyDbEntity           openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    static boost::python::list  openDbEntities(const boost::python::list& ids, AcDb::OpenMode mode, bool erased);
     static void                 queueAnnotationEntitiesForRegen(PyDbDatabase& db);
     static int                  queueForRegen(const boost::python::list& pyids);
     static bool                 regApp(const std::string& app);

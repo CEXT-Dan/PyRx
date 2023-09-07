@@ -510,45 +510,45 @@ PyDbObjectId DbCore::namedObjDict()
     return id;
 }
 
-PyDbObject DbCore::openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
+PyDbObject DbCore::openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 {
     AcDbObject* pObj = nullptr;
-    PyThrowBadEs(acdbOpenAcDbObject(pObj, id.m_id, mode));
+    PyThrowBadEs(acdbOpenAcDbObject(pObj, id.m_id, mode, erased));
     return PyDbObject{ pObj, true };
 }
 
-boost::python::list DbCore::openDbObjects(const boost::python::list& ids, AcDb::OpenMode mode)
+boost::python::list DbCore::openDbObjects(const boost::python::list& ids, AcDb::OpenMode mode, bool erased)
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
     for (auto& id : PyListToObjectIdArray(ids))
     {
         AcDbObject* pObj = nullptr;
-        PyThrowBadEs(acdbOpenAcDbObject(pObj, id, mode));
+        PyThrowBadEs(acdbOpenAcDbObject(pObj, id, mode, erased));
         pyList.append(PyDbObject(pObj, true));
     }
     return pyList;
 }
 
-PyDbEntity DbCore::openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
+PyDbEntity DbCore::openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
 {
     if (id.m_id.objectClass()->isDerivedFrom(AcDbEntity::desc()))
     {
         AcDbEntity* pObj = nullptr;
-        PyThrowBadEs(acdbOpenAcDbEntity(pObj, id.m_id, mode));
+        PyThrowBadEs(acdbOpenAcDbEntity(pObj, id.m_id, mode, erased));
         return PyDbEntity(pObj, true);
     }
     throw PyNotThatKindOfClass();
 }
 
-boost::python::list DbCore::openDbEntities(const boost::python::list& ids, AcDb::OpenMode mode)
+boost::python::list DbCore::openDbEntities(const boost::python::list& ids, AcDb::OpenMode mode, bool erased)
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
     for (auto& id : PyListToObjectIdArray(ids))
     {
         AcDbEntity* pObj = nullptr;
-        PyThrowBadEs(acdbOpenAcDbEntity(pObj, id, mode));
+        PyThrowBadEs(acdbOpenAcDbEntity(pObj, id, mode, erased));
         pyList.append(PyDbEntity(pObj, true));
     }
     return pyList;

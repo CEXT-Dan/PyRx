@@ -14,6 +14,7 @@ public:
     PyDbEntity(AcDbEntity* ptr, bool autoDelete);
     PyDbEntity(const PyDbObjectId& id);
     PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     inline virtual ~PyDbEntity() override = default;
     PyDbObjectId        blockId() const;
     AcCmColor           color() const;
