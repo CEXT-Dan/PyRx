@@ -11,7 +11,8 @@ void makePyDbEntityWrapper()
     PyDocString DS("Entity");
     class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
         .def("blockId", &PyDbEntity::blockId, DS.ARGS())
         .def("color", &PyDbEntity::color, DS.ARGS())
         .def("setColor", &PyDbEntity::setColor1)
@@ -97,13 +98,18 @@ PyDbEntity::PyDbEntity(AcDbEntity* ptr, bool autoDelete)
 {
 }
 
-PyDbEntity::PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
-  : PyDbObject(openAcDbObject<AcDbEntity>(id, mode),false)
+PyDbEntity::PyDbEntity(const PyDbObjectId& id)
+    : PyDbObject(openAcDbObject<AcDbEntity>(id, AcDb::OpenMode::kForRead), false)
 {
 }
 
-PyDbEntity::PyDbEntity(const PyDbObjectId& id)
-    : PyDbEntity(id, AcDb::OpenMode::kForRead)
+PyDbEntity::PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbObject(openAcDbObject<AcDbEntity>(id, mode), false)
+{
+}
+
+PyDbEntity::PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbObject(openAcDbObject<AcDbEntity>(id, mode, erased), false)
 {
 }
 

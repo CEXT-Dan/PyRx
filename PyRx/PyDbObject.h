@@ -18,6 +18,7 @@ public:
     PyDbObject(AcDbObject* ptr, bool autoDelete);
     PyDbObject(const PyDbObjectId&);
     PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     inline virtual ~PyDbObject() override = default;
     PyDbObjectId        objectId() const;
     PyDbObjectId        ownerId() const;
