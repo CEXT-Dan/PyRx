@@ -240,7 +240,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -528,7 +528,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def elevation (self: PyDbAbstractViewTableRecord)-> float :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -1191,7 +1191,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -2369,7 +2369,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -3022,7 +3022,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -3991,7 +3991,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -4578,7 +4578,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -5146,7 +5146,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -5559,7 +5559,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -5987,7 +5987,7 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -6532,7 +6532,7 @@ class BlockTable:
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -6806,7 +6806,7 @@ class BlockTableRecord:
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explodable (self: BlockTableRecord)-> bool :
@@ -7206,7 +7206,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -9035,7 +9035,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -10592,7 +10592,7 @@ class Curve:
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -12648,7 +12648,7 @@ class DbObject:
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -13083,7 +13083,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -13981,7 +13981,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -14422,7 +14422,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -14693,7 +14693,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -15033,7 +15033,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -17397,7 +17397,7 @@ class Entity:
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -20144,7 +20144,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -20581,7 +20581,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -21012,7 +21012,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -21467,7 +21467,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -21951,7 +21951,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def evaluate (self, *args, **kwargs)-> None :
@@ -23755,7 +23755,7 @@ append( (Group)arg1, (list)arg2) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -24495,7 +24495,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def evaluateGradientColorAt (self, *args, **kwargs)-> PyDb.Color :
@@ -26105,7 +26105,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -27128,7 +27128,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -28133,7 +28133,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -28424,7 +28424,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def entityColor (self: LayerTableRecord)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -28959,7 +28959,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -29898,7 +29898,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def erased (self, *args, **kwargs)-> None :
@@ -30625,7 +30625,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -31239,7 +31239,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -32458,7 +32458,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -32738,7 +32738,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -33163,7 +33163,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -33603,7 +33603,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -34211,7 +34211,7 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -36484,7 +36484,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     C++ signature :
         bool enableLanding(class PyDbMLeaderStyle {lvalue})'''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extendLeaderToText (self, *args, **kwargs)-> bool :
@@ -37739,7 +37739,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -39196,7 +39196,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -39900,7 +39900,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     C++ signature :
         bool endSquareCap(class PyDbMlineStyle {lvalue})'''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -40342,7 +40342,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -41113,7 +41113,7 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -42479,7 +42479,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -42837,7 +42837,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -43613,7 +43613,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -44291,7 +44291,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -45239,7 +45239,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -45770,7 +45770,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -46923,7 +46923,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -47345,7 +47345,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -47779,7 +47779,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -48430,7 +48430,7 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -49115,7 +49115,7 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -49702,7 +49702,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -50221,7 +50221,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -51215,7 +51215,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -52188,7 +52188,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -52829,7 +52829,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         int entityCount(class PyDbRasterImageDef {lvalue})'''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -53190,7 +53190,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -53446,7 +53446,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -53717,7 +53717,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -54013,7 +54013,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -54824,7 +54824,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -55334,7 +55334,7 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -56654,7 +56654,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -57612,7 +57612,7 @@ createSweptSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Entity)arg4, (Sw
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -58308,7 +58308,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -59800,7 +59800,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -60723,7 +60723,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -61398,7 +61398,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -61651,7 +61651,7 @@ class SymbolTableRecord:
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -62207,7 +62207,7 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -64407,7 +64407,7 @@ createCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> None :
     C++ signature :
         void enableMergeAll(class PyDbTableStyle {lvalue},bool,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -65122,7 +65122,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -65911,7 +65911,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -66185,7 +66185,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -67222,7 +67222,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -67493,7 +67493,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -67797,7 +67797,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -68177,7 +68177,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -69276,7 +69276,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -69703,7 +69703,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def explode (self: Entity)-> list :
@@ -70302,7 +70302,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def elevation (self: PyDbAbstractViewTableRecord)-> float :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -70877,7 +70877,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def erased (self, *args, **kwargs)-> None :
@@ -72294,7 +72294,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def elevation (self: PyDbAbstractViewTableRecord)-> float :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
@@ -73236,7 +73236,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def erase (self: DbObject)-> None :
+    def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
