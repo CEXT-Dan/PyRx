@@ -1384,7 +1384,6 @@ PyDb2dVertex PyDb2dVertex::cloneFrom(const PyRxObject& src)
     if (!src.impObj()->isKindOf(AcDb2dVertex::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDb2dVertex(static_cast<AcDb2dVertex*>(src.impObj()->clone()), true);
-
 }
 
 PyDb2dVertex PyDb2dVertex::cast(const PyRxObject& src)

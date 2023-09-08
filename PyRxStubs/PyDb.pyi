@@ -10164,64 +10164,32 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         bool ecs2Wcs(class AcGeVector3d,class AcGeVector3d,class AcGeVector3d {lvalue})'''
     ...
-    def entDel (self, *args, **kwargs)-> bool :
-      '''entDel( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool entDel(class PyDbObjectId)'''
+    def entDel (id : PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
-    def entGet (self, *args, **kwargs)-> list :
-      '''entGet( (ObjectId)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list entGet(class PyDbObjectId)'''
+    def entGet (id : PyDb.ObjectId)-> list :
+      '''                             '''
     ...
-    def entGetX (self, *args, **kwargs)-> list :
-      '''entGetX( (ObjectId)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list entGetX(class PyDbObjectId)
-
-entGetX( (ObjectId)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list entGetX(class PyDbObjectId,class boost::python::list)'''
+    def entGetX (id : PyDb.ObjectId,xdata : list)-> list :
+      '''                             '''
     ...
-    def entLast (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''entLast() -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId entLast()'''
+    def entLast ()-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def entMake (self, *args, **kwargs)-> bool :
-      '''entMake( (list)arg1) -> bool :
-
-    C++ signature :
-        bool entMake(class boost::python::list)'''
+    def entMake (resultBuffer : list)-> bool :
+      '''                             '''
     ...
-    def entMakeX (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''entMakeX( (list)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId entMakeX(class boost::python::list)'''
+    def entMakeX (resultBuffer : list)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def entMod (self, *args, **kwargs)-> bool :
-      '''entMod( (list)arg1) -> bool :
-
-    C++ signature :
-        bool entMod(class boost::python::list)'''
+    def entMod (resultBuffer : list)-> bool :
+      '''                             '''
     ...
-    def entNext (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''entNext( (ObjectId)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId entNext(class PyDbObjectId)'''
+    def entNext (id : PyDb.ObjectId)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def entUpd (self, *args, **kwargs)-> bool :
-      '''entUpd( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool entUpd(class PyDbObjectId)'''
+    def entUpd (id : PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def fail (self, *args, **kwargs)-> None :
       '''fail( (str)arg1) -> None :
