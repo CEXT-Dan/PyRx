@@ -11,7 +11,7 @@ int PyLispService::execLispFunc()
     {
         PyAutoLockGIL lock;
         const int fcode = acedGetFunCode();
-        auto& lisplispService = PyRxApp::instance().lispService;
+        const auto& lisplispService = PyRxApp::instance().lispService;
         if (lisplispService.lispFuncCodes.contains(fcode))
         {
             WxPyAutoLock lock;
@@ -111,12 +111,12 @@ bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
     {
         if (lispFuncs.contains(lispFuncName))
         {
-            funcode code = lispFuncs.at(lispFuncName);
+            const funcode code = lispFuncs.at(lispFuncName);
             lispFuncCodes[code] = method;
         }
         else
         {
-            funcode code = lispFuncCodes.size() + 1;
+            const funcode code = lispFuncCodes.size() + 1;
             lispFuncs.emplace(lispFuncName, code);
             lispFuncCodes.emplace(code, method);
             acedDefun(lispFuncName, code);
@@ -131,7 +131,7 @@ void PyLispService::On_kLoadDwgMsg()
 {
     if (lispFuncs.size() == lispFuncCodes.size())
     {
-        for (auto& item : lispFuncs)
+        for (const auto& item : lispFuncs)
         {
             acedDefun(item.first, item.second);
             ads_regfunc(PyLispService::execLispFunc, item.second);
@@ -142,10 +142,9 @@ void PyLispService::On_kLoadDwgMsg()
 void PyLispService::cleanup()
 {
     WxPyAutoLock lock;
-    for (auto& item : lispFuncCodes)
+    for (const auto& item : lispFuncCodes)
     {
-        auto& val = item.second;
-        Py_DecRef(val);
+        Py_DecRef(item.second);
     }
     lispFuncCodes.clear();
 }

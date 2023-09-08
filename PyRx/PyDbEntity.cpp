@@ -673,8 +673,6 @@ AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::sour
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbSequenceEnd
-//-------------------------------------------------------------------------------------------------------------
-//PyDbBlockEnd
 void makePyDbSequenceEndWrapper()
 {
     class_<PyDbSequenceEnd, bases<PyDbEntity>>("SequenceEnd", boost::python::no_init)

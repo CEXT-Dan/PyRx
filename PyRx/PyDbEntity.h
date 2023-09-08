@@ -171,5 +171,4 @@ public:
     inline AcDbSubentId* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
     std::shared_ptr<AcDbSubentId> m_pyImp;
-
 };
