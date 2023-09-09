@@ -222,7 +222,7 @@ boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple PyAcEditor::entSel1(const std::string& prompt)
+boost::python::tuple entSel(const std::string& prompt, AcRxClass* desc)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
@@ -231,22 +231,19 @@ boost::python::tuple PyAcEditor::entSel1(const std::string& prompt)
     auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
     PyDbObjectId id;
     acdbGetObjectId(id.m_id, name);
-    return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+    if (id.m_id.objectClass()->isDerivedFrom(desc))
+        return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+    return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eRejected, id, asPnt3d(pnt));
+}
+
+boost::python::tuple PyAcEditor::entSel1(const std::string& prompt)
+{
+    return entSel(prompt, AcDbEntity::desc());
 }
 
 boost::python::tuple PyAcEditor::entSel2(const std::string& prompt, const PyRxClass& desc)
 {
-    PyAutoLockGIL lock;
-    PyEdUserInteraction ui;
-    ads_point pnt;
-    ads_name name = { 0L };
-    auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
-    PyDbObjectId id;
-    acdbGetObjectId(id.m_id, name);
-    if (id.m_id.objectClass()->isDerivedFrom(desc.impObj()))
-        return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
-    return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eRejected, id, asPnt3d(pnt));
-
+    return entSel(prompt, desc.impObj());
 }
 
 static boost::python::tuple nEntSelP(const std::string& prompt, const AcGePoint3d& ptres, int opt)
