@@ -13,6 +13,7 @@ void makePyDbObjectWrapper()
     PyDocString DS("DbObject");
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
         .def("objectId", &PyDbObject::objectId, DS.ARGS())
         .def("ownerId", &PyDbObject::ownerId, DS.ARGS())

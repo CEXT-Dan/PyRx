@@ -51,6 +51,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_17B55E98DF6B4908A0B6F0E55A5D0AD4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1E9F44A2DDD546238C585CE743F1E782"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -782,6 +788,26 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_17B55E98DF6B4908A0B6F0E55A5D0AD4"
+            {
+            "SourcePath" = "8:..\\PySamples\\template.py"
+            "TargetName" = "8:template.py"
+            "Tag" = "8:"
+            "Folder" = "8:_1DB367D4871B44C38FE5532C2D9D0AE9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1E9F44A2DDD546238C585CE743F1E782"
@@ -1952,7 +1978,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PyRx"
         "ProductCode" = "8:{51386679-D611-4231-A17E-B959075AD6CA}"
-        "PackageCode" = "8:{C0604EAC-1CCD-4659-87DD-B5D5FCAF3A9D}"
+        "PackageCode" = "8:{B0CAE833-858A-4553-BDB3-4B2145FA2E22}"
         "UpgradeCode" = "8:{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
