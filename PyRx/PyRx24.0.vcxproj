@@ -213,6 +213,7 @@
     <ClCompile Include="PyGiSubEntityTraits.cpp" />
     <ClCompile Include="PyGiTransientManager.cpp" />
     <ClCompile Include="PyGsManager.cpp" />
+    <ClCompile Include="PyGsView.cpp" />
     <ClCompile Include="PyJig.cpp" />
     <ClCompile Include="PyLayerFilter.cpp" />
     <ClCompile Include="PyLispService.cpp" />
@@ -315,6 +316,7 @@
     <ClInclude Include="PyGiSubEntityTraits.h" />
     <ClInclude Include="PyGiTransientManager.h" />
     <ClInclude Include="PyGsManager.h" />
+    <ClInclude Include="PyGsView.h" />
     <ClInclude Include="PyJig.h" />
     <ClInclude Include="PyLayerFilter.h" />
     <ClInclude Include="PyLispService.h" />
