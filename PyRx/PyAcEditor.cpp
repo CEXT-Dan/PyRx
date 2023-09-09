@@ -91,11 +91,12 @@ void makePyEditorWrapper()
         .def("getPoint", &PyAcEditor::getPoint2, DS.SARGS({ "basePt:PyGe.Point3d=None","prompt:str" })).staticmethod("getPoint")
         .def("getDist", &PyAcEditor::getDist1)
         .def("getDist", &PyAcEditor::getDist2, DS.SARGS({ "basePt:PyGe.Point3d=None","prompt:str" })).staticmethod("getDist")
-        .def("entSel", &PyAcEditor::entSel, DS.SARGS({ "prompt:str" })).staticmethod("entSel")
+        .def("entSel", &PyAcEditor::entSel1)
+        .def("entSel", &PyAcEditor::entSel2, DS.SARGS({ "prompt:str", "desc:PyRx.RxClass=AcDbEntity" })).staticmethod("entSel")
         .def("nEntSelP", &PyAcEditor::nEntSelP1)
         .def("nEntSelP", &PyAcEditor::nEntSelP2, DS.SARGS({ "prompt:str","selpt:PyGe.Point3d=None" })).staticmethod("nEntSelP")
         .def("nEntSelPEx", &PyAcEditor::nEntSelPEx1)
-        .def("nEntSelPEx", &PyAcEditor::nEntSelPEx2, DS.SARGS({ "prompt:str","selpt:PyGe.Point3d=None", "flags:int"})).staticmethod("nEntSelPEx")
+        .def("nEntSelPEx", &PyAcEditor::nEntSelPEx2, DS.SARGS({ "prompt:str","selpt:PyGe.Point3d=None", "flags:int" })).staticmethod("nEntSelPEx")
         .def("getCurrentUCS", &PyAcEditor::curUCS).staticmethod("getCurrentUCS")
         .def("setCurrentUCS", &PyAcEditor::setCurUCS, DS.SARGS({ "ucs:PyGe.Matrix3d" })).staticmethod("setCurrentUCS")
         .def("activeViewportId", &PyAcEditor::activeViewportId).staticmethod("activeViewportId")
@@ -119,12 +120,12 @@ void makePyEditorWrapper()
         .def("ssget", &PyAcEditor::ssget1)
         .def("ssget", &PyAcEditor::ssget2, DS.SARGS({ "mode:str","arg1:any","arg2:any","filer:list=None" })).staticmethod("ssget")
         .def("initGet", &PyAcEditor::initGet, DS.SARGS({ "val:int","keyword:str" })).staticmethod("initGet")
-        .def("getKword", &PyAcEditor::getKword, DS.SARGS({"keyword:str" })).staticmethod("getKword")
+        .def("getKword", &PyAcEditor::getKword, DS.SARGS({ "keyword:str" })).staticmethod("getKword")
         .def("traceBoundary", &PyAcEditor::traceBoundary, DS.SARGS({ "point:PyGe.Point3d","detectIslands : bool" })).staticmethod("traceBoundary")
         .def("ucsNormalVector", &PyAcEditor::ucsNormalVector, DS.SARGS()).staticmethod("ucsNormalVector")
         .def("ucsXDir", &PyAcEditor::ucsXDir, DS.SARGS()).staticmethod("ucsXDir")
         .def("ucsYDir", &PyAcEditor::ucsYDir, DS.SARGS()).staticmethod("ucsYDir")
-        .def("duplicateSelectionsAllowed", &PyAcEditor::duplicateSelectionsAllowed, DS.SARGS({ "doc:PyAp.Document"})).staticmethod("duplicateSelectionsAllowed")
+        .def("duplicateSelectionsAllowed", &PyAcEditor::duplicateSelectionsAllowed, DS.SARGS({ "doc:PyAp.Document" })).staticmethod("duplicateSelectionsAllowed")
         .def("setAllowDuplicateSelection", &PyAcEditor::setAllowDuplicateSelection, DS.SARGS({ "doc:PyAp.Document","flag:bool" })).staticmethod("setAllowDuplicateSelection")
         .def("className", &PyAcEditor::className).staticmethod("className")
         ;
@@ -221,7 +222,7 @@ boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple PyAcEditor::entSel(const std::string& prompt)
+boost::python::tuple PyAcEditor::entSel1(const std::string& prompt)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
@@ -233,7 +234,22 @@ boost::python::tuple PyAcEditor::entSel(const std::string& prompt)
     return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
 }
 
-static boost::python::tuple nEntSelP(const std::string& prompt,const AcGePoint3d& ptres, int opt)
+boost::python::tuple PyAcEditor::entSel2(const std::string& prompt, const PyRxClass& desc)
+{
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    ads_point pnt;
+    ads_name name = { 0L };
+    auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
+    PyDbObjectId id;
+    acdbGetObjectId(id.m_id, name);
+    if (id.m_id.objectClass()->isDerivedFrom(desc.impObj()))
+        return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+    return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(Acad::PromptStatus::eRejected, id, asPnt3d(pnt));
+
+}
+
+static boost::python::tuple nEntSelP(const std::string& prompt, const AcGePoint3d& ptres, int opt)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
@@ -269,12 +285,12 @@ boost::python::tuple PyAcEditor::nEntSelP1(const std::string& prompt)
     return nEntSelP(prompt, dummyptp, 0);
 }
 
-boost::python::tuple PyAcEditor::nEntSelP2(const std::string& prompt,const AcGePoint3d& ptres)
+boost::python::tuple PyAcEditor::nEntSelP2(const std::string& prompt, const AcGePoint3d& ptres)
 {
     return nEntSelP(prompt, ptres, 1);
 }
 
-static boost::python::tuple nEntSelPEx(const std::string& prompt,const AcGePoint3d& ptres, int opt, unsigned int uTransSpaceFlag)
+static boost::python::tuple nEntSelPEx(const std::string& prompt, const AcGePoint3d& ptres, int opt, unsigned int uTransSpaceFlag)
 {
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
@@ -562,7 +578,7 @@ boost::python::list PyAcEditor::getCurrentSelectionSet()
 
 void PyAcEditor::setAllowDuplicateSelection(PyApDocument& doc, bool flag)
 {
-    PyThrowBadEs(::setAllowDuplicateSelection(doc.impObj(),flag));
+    PyThrowBadEs(::setAllowDuplicateSelection(doc.impObj(), flag));
 }
 
 bool PyAcEditor::duplicateSelectionsAllowed(PyApDocument& doc)

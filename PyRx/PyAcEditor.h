@@ -3,6 +3,7 @@
 class PyDbObjectId;
 class PyDbDatabase;
 class PyApDocument;
+class PyRxClass;
 
 void makePyEditorWrapper();
 
@@ -19,7 +20,8 @@ public:
     static boost::python::tuple getDist1(const std::string& prompt);
     static boost::python::tuple getDist2(const AcGePoint3d& basePt, const std::string& prompt);
     static boost::python::tuple getString(int cronly, const std::string& prompt);
-    static boost::python::tuple entSel(const std::string& prompt);
+    static boost::python::tuple entSel1(const std::string& prompt);
+    static boost::python::tuple entSel2(const std::string& prompt, const PyRxClass& desc);
     static boost::python::tuple nEntSelP1(const std::string& prompt);
     static boost::python::tuple nEntSelP2(const std::string& prompt, const AcGePoint3d& ptres);
     static boost::python::tuple nEntSelPEx1(const std::string& prompt, int uTransSpaceFlag);
