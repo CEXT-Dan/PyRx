@@ -102,7 +102,7 @@
 //-----------------------------------------------------------------------------
 //- Include ObjectDBX/ObjectARX headers
 //- Uncomment one of the following lines to bring a given library in your project.
-//#define _BREP_SUPPORT_			//- Support for the BRep API
+#define _BREP_SUPPORT_			//- Support for the BRep API
 //#define _HLR_SUPPORT_				//- Support for the Hidden Line Removal API
 //#define _AMODELER_SUPPORT_		//- Support for the AModeler API
 //#define _ASE_SUPPORT_				//- Support for the ASI/ASE API

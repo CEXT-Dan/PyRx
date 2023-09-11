@@ -43,6 +43,7 @@ public:
     virtual AcRx::AppRetCode On_kInitAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
+        acdbModelerStart();
         acedRegisterOnIdleWinMsg(AcedOnIdleMsgFn);
         acrxLockApplication(pkt);
         PyRxApp::instance().appPkt = pkt;
@@ -52,6 +53,7 @@ public:
     virtual AcRx::AppRetCode On_kUnloadAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
+        acdbModelerEnd();
         try
         {
             for (auto& method : PyRxApp::instance().funcNameMap)
