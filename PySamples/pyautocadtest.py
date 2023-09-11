@@ -11,7 +11,6 @@ from pyautocad import Autocad, APoint
 
 
 #pyautoacad from a command context
-
 def PyRxCmd_pyautoacad():
     try:
         acad = Autocad()
