@@ -6734,10 +6734,10 @@ class BlockTableRecord:
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
-    def appendAcDbEntities (self: BlockTableRecord,entities : :list[PyDb.Entity])-> list :
+    def appendAcDbEntities (self: BlockTableRecord,entities : list[PyDb.Entity])-> list :
       '''                             '''
     ...
-    def appendAcDbEntity (self: BlockTableRecord,entity :PyDb.Entity)-> PyDb.ObjectId :
+    def appendAcDbEntity (self: BlockTableRecord,entity : PyDb.Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
