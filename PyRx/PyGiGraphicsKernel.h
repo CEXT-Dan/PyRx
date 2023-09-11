@@ -3,3 +3,7 @@ class PyGiGraphicsKernel
 {
 };
 
+class PyGiContext
+{
+
+};
