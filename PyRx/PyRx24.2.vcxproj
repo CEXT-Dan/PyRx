@@ -69,7 +69,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=242;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ARX2023)\inc;$(ARX2023)\inc-$(PlatformName);$(Py310)\include;$(boost);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ARX2023)\inc;$(ARX2023)\inc-$(PlatformName);$(ARX2023)\utils\brep\inc;$(Py310)\include;$(boost);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -80,7 +80,7 @@
       <ProgramDatabaseFile>$(OutDir)/$(targetname).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(ARX2023)\lib;$(ARX2023)\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ARX2023)\lib;$(ARX2023)\lib-$(PlatformName);$(ARX2023)\utils\brep\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
       <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -102,7 +102,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=242;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ARX2023)\inc;$(ARX2023)\inc-$(PlatformName);$(Py310)\include;$(boost);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ARX2023)\inc;$(ARX2023)\inc-$(PlatformName);$(ARX2023)\utils\brep\inc;$(Py310)\include;$(boost);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -119,7 +119,7 @@
       </ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(ARX2023)\lib;$(ARX2023)\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ARX2023)\lib;$(ARX2023)\lib-$(PlatformName);$(ARX2023)\utils\brep\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
