@@ -32,13 +32,19 @@ void makePyGeSurfaceWrapper()
         ;
 }
 
-PyAcGeSurface::PyAcGeSurface(AcGeSurface* pEnt)
-    :PyGeEntity3d(pEnt)
-{
-}
 
 PyAcGeSurface::PyAcGeSurface(AcGeEntity3d* pEnt)
     : PyGeEntity3d(pEnt)
+{
+}
+
+PyAcGeSurface::PyAcGeSurface(AcGeSurface* pEnt, bool autoDelete /*= true*/)
+    :PyGeEntity3d(pEnt, autoDelete)
+{
+}
+
+PyAcGeSurface::PyAcGeSurface(const AcGeSurface* pEnt)
+    :PyGeEntity3d(const_cast<AcGeSurface*>(pEnt), false)
 {
 }
 

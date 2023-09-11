@@ -9,7 +9,8 @@ class PyGeEntity3d
 protected:
     PyGeEntity3d() = default;
 public:
-    PyGeEntity3d(AcGeEntity3d* pEnt);
+    PyGeEntity3d(const AcGeEntity3d* pEnt);
+    PyGeEntity3d(AcGeEntity3d* pEnt, bool autoDelete = true);
     ~PyGeEntity3d() = default;
     bool operator==(PyGeEntity3d const& rhs) const;
     bool operator!=(PyGeEntity3d const& rhs) const;

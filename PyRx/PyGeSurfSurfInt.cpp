@@ -19,8 +19,8 @@ PyGeSurfSurfInt::PyGeSurfSurfInt()
 {
 }
 
-PyGeSurfSurfInt::PyGeSurfSurfInt(AcGeEntity3d* pEnt)
-    : PyGeEntity3d(pEnt)
+PyGeSurfSurfInt::PyGeSurfSurfInt(AcGeSurfSurfInt* pEnt, bool autoDelete /*= false*/)
+    : PyGeEntity3d(pEnt, autoDelete)
 {
 }
 
@@ -32,6 +32,16 @@ PyGeSurfSurfInt::PyGeSurfSurfInt(const PyAcGeSurface& srf1, const PyAcGeSurface&
 PyGeSurfSurfInt::PyGeSurfSurfInt(const PyAcGeSurface& srf1, const PyAcGeSurface& srf2, const AcGeTol& tol)
     : PyGeEntity3d(new AcGeSurfSurfInt(*srf1.impObj(), *srf2.impObj(), tol))
 {
+}
+
+PyAcGeSurface PyGeSurfSurfInt::surface1() const
+{
+    return PyAcGeSurface(impObj()->surface1());
+}
+
+PyAcGeSurface PyGeSurfSurfInt::surface2() const
+{
+    return PyAcGeSurface(impObj()->surface2());
 }
 
 std::string PyGeSurfSurfInt::className()
