@@ -13,6 +13,7 @@ class PyGeCurve3d : public PyGeEntity3d
 {
 public:
     PyGeCurve3d(AcGeEntity3d* pEnt);
+    PyGeCurve3d(const AcGeEntity3d* pEnt);
     PyGeInterval    getInterval() const;
     AcGePoint3d     getStartPoint() const;
     AcGePoint3d     getEndPoint() const;
