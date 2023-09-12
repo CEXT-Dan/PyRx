@@ -62,7 +62,7 @@ public:
     PyGePointOnSurface(AcGeEntity3d* src);
     static std::string className();
 public:
-    AcGePointOnSurface* impObj() const;
+    AcGePointOnSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------
@@ -75,5 +75,5 @@ public:
     PyGePosition3d(AcGeEntity3d* src);
     static std::string className();
 public:
-    AcGePosition3d* impObj() const;
+    AcGePosition3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
