@@ -109,7 +109,7 @@
     <ClCompile Include="PyGeCurveSurfInt.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
-    <ClCompile Include="PyAcGeSurface.cpp">
+    <ClCompile Include="PyGeSurface.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
     <ClCompile Include="PyGePointEnt3d.cpp">
@@ -414,7 +414,7 @@
     <ClInclude Include="PyGeCurveSurfInt.h">
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
-    <ClInclude Include="PyAcGeSurface.h">
+    <ClInclude Include="PyGeSurface.h">
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
     <ClInclude Include="PyGePointEnt3d.h">

@@ -1,5 +1,5 @@
 #pragma once
-#include "PyAcGeSurface.h"
+#include "PyGeSurface.h"
 
 
 class PyGeLineSeg3d;
@@ -9,7 +9,7 @@ class PyGeCircArc3d;
 //-----------------------------------------------------------------------------------------
 //AcGeSurface wrapper
 void makePyGePlanarEntWrapper();
-class PyGePlanarEnt : public PyAcGeSurface
+class PyGePlanarEnt : public PyGeSurface
 {
 protected:
     PyGePlanarEnt() = default;

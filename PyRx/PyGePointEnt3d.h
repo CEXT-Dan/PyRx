@@ -2,7 +2,7 @@
 #include "PyGeEntity3d.h"
 
 class PyGeCurve3d;
-
+class PyGeSurface;
 
 //-------------------------------------------------------------------------------------------------------
 //PyGePointEnt3d
@@ -32,6 +32,7 @@ public:
 
     PyGeCurve3d         curve() const;
     double              parameter() const;
+
     AcGePoint3d         point1() const;
     AcGePoint3d         point2(double param);
     AcGePoint3d         point3(const PyGeCurve3d& crv, double param);
@@ -59,6 +60,10 @@ class PyGePointOnSurface : public PyGePointEnt3d
 {
 public:
     PyGePointOnSurface();
+    PyGePointOnSurface(const PyGeSurface& surf);
+    PyGePointOnSurface(const PyGeSurface& surf, const AcGePoint2d& param);
+    PyGePointOnSurface(const AcGePointOnSurface& src);
+
     PyGePointOnSurface(AcGeEntity3d* src);
     static std::string className();
 public:

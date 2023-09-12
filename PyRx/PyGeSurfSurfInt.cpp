@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PyGeSurfSurfInt.h"
-#include "PyAcGeSurface.h"
+#include "PyGeSurface.h"
 #include "PyGeCurve2d.h"
 #include "PyGeCurve3d.h"
 
@@ -10,8 +10,8 @@ void makePyGeSurfSurfIntWrapper()
 {
     class_<PyGeSurfSurfInt, bases<PyGeEntity3d>>("SurfSurfInt")
         .def(init<>())
-        .def(init<const PyAcGeSurface&, const PyAcGeSurface&>())
-        .def(init<const PyAcGeSurface&, const PyAcGeSurface&, const AcGeTol&>())
+        .def(init<const PyGeSurface&, const PyGeSurface&>())
+        .def(init<const PyGeSurface&, const PyGeSurface&, const AcGeTol&>())
         .def("surface1", &PyGeSurfSurfInt::surface1)
         .def("surface2", &PyGeSurfSurfInt::surface2)
         .def("tolerance", &PyGeSurfSurfInt::tolerance)
@@ -39,24 +39,24 @@ PyGeSurfSurfInt::PyGeSurfSurfInt(AcGeSurfSurfInt* pEnt, bool autoDelete /*= fals
 {
 }
 
-PyGeSurfSurfInt::PyGeSurfSurfInt(const PyAcGeSurface& srf1, const PyAcGeSurface& srf2)
+PyGeSurfSurfInt::PyGeSurfSurfInt(const PyGeSurface& srf1, const PyGeSurface& srf2)
     : PyGeEntity3d(new AcGeSurfSurfInt(*srf1.impObj(), *srf2.impObj()))
 {
 }
 
-PyGeSurfSurfInt::PyGeSurfSurfInt(const PyAcGeSurface& srf1, const PyAcGeSurface& srf2, const AcGeTol& tol)
+PyGeSurfSurfInt::PyGeSurfSurfInt(const PyGeSurface& srf1, const PyGeSurface& srf2, const AcGeTol& tol)
     : PyGeEntity3d(new AcGeSurfSurfInt(*srf1.impObj(), *srf2.impObj(), tol))
 {
 }
 
-PyAcGeSurface PyGeSurfSurfInt::surface1() const
+PyGeSurface PyGeSurfSurfInt::surface1() const
 {
-    return PyAcGeSurface(impObj()->surface1());
+    return PyGeSurface(impObj()->surface1());
 }
 
-PyAcGeSurface PyGeSurfSurfInt::surface2() const
+PyGeSurface PyGeSurfSurfInt::surface2() const
 {
-    return PyAcGeSurface(impObj()->surface2());
+    return PyGeSurface(impObj()->surface2());
 }
 
 AcGeTol PyGeSurfSurfInt::tolerance() const
@@ -147,12 +147,12 @@ int PyGeSurfSurfInt::getType(int intNum) const
     return result;
 }
 
-void PyGeSurfSurfInt::set1(const PyAcGeSurface& srf1, const PyAcGeSurface& srf2)
+void PyGeSurfSurfInt::set1(const PyGeSurface& srf1, const PyGeSurface& srf2)
 {
     impObj()->set(*srf1.impObj(), *srf2.impObj());
 }
 
-void PyGeSurfSurfInt::set2(const PyAcGeSurface& srf1, const PyAcGeSurface& srf2, const AcGeTol& tol)
+void PyGeSurfSurfInt::set2(const PyGeSurface& srf1, const PyGeSurface& srf2, const AcGeTol& tol)
 {
     impObj()->set(*srf1.impObj(), *srf2.impObj(), tol);
 }

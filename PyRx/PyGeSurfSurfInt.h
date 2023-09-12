@@ -1,7 +1,7 @@
 #pragma once
 #include "PyGeEntity3d.h"
 
-class PyAcGeSurface;
+class PyGeSurface;
 class PyGeCurve2d;
 class PyGeCurve3d;
 
@@ -11,11 +11,11 @@ class PyGeSurfSurfInt :public PyGeEntity3d
 {
 public:
     PyGeSurfSurfInt();
-    PyGeSurfSurfInt(const PyAcGeSurface& srf1, const PyAcGeSurface& srf2);
-    PyGeSurfSurfInt(const PyAcGeSurface& srf1,  const PyAcGeSurface& srf2, const AcGeTol& tol);
+    PyGeSurfSurfInt(const PyGeSurface& srf1, const PyGeSurface& srf2);
+    PyGeSurfSurfInt(const PyGeSurface& srf1,  const PyGeSurface& srf2, const AcGeTol& tol);
     PyGeSurfSurfInt(AcGeSurfSurfInt* pEnt, bool autoDelete = false);
-    PyAcGeSurface       surface1() const;
-    PyAcGeSurface       surface2() const;
+    PyGeSurface       surface1() const;
+    PyGeSurface       surface2() const;
     AcGeTol             tolerance() const;
     int                 numResults();
 
@@ -27,8 +27,8 @@ public:
 
     int		            getDimension(int intNum) const;
     int                 getType(int intNum) const;
-    void                set1(const PyAcGeSurface& srf1, const PyAcGeSurface& srf2);
-    void                set2(const PyAcGeSurface& srf1, const PyAcGeSurface& srf2, const AcGeTol& tol);
+    void                set1(const PyGeSurface& srf1, const PyGeSurface& srf2);
+    void                set2(const PyGeSurface& srf1, const PyGeSurface& srf2, const AcGeTol& tol);
 
     static std::string className();
 public:

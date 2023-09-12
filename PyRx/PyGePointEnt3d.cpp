@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyGePointEnt3d.h"
 #include "PyGeCurve3d.h"
+#include "PyGeSurface.h"
 
 using namespace boost::python;
 
@@ -79,7 +80,6 @@ PyGePointOnCurve3d::PyGePointOnCurve3d(const PyGeCurve3d& crv, double param)
 PyGePointOnCurve3d::PyGePointOnCurve3d(const AcGePointOnCurve3d& src)
     : PyGePointEnt3d(new AcGePointOnCurve3d(src))
 {
-
 }
 
 PyGePointOnCurve3d::PyGePointOnCurve3d(AcGeEntity3d* src)
@@ -143,7 +143,7 @@ double PyGePointOnCurve3d::curvature1()
 double PyGePointOnCurve3d::curvature2(double param)
 {
     double res = 0;
-    if (!impObj()->curvature(param,res))
+    if (!impObj()->curvature(param, res))
         throw PyAcadErrorStatus(Acad::eNotApplicable);
     return res;
 }
@@ -174,7 +174,10 @@ AcGePointOnCurve3d* PyGePointOnCurve3d::impObj(const std::source_location& src /
 //PyGePointOnSurface
 void makePyGePointOnSurfaceWrapper()
 {
-    class_<PyGePointOnSurface, bases<PyGePointEnt3d>>("PointOnCurve3d")
+    class_<PyGePointOnSurface, bases<PyGePointEnt3d>>("PointOnSurface")
+        .def(init<>())
+        .def(init<const PyGeSurface&>())
+        .def(init<const PyGeSurface&, const AcGePoint2d&>())
         .def("className", &PyGePointOnSurface::className).staticmethod("className")
         ;
 }
@@ -184,8 +187,23 @@ PyGePointOnSurface::PyGePointOnSurface()
 {
 }
 
+PyGePointOnSurface::PyGePointOnSurface(const PyGeSurface& surf)
+    : PyGePointEnt3d(new AcGePointOnSurface(*surf.impObj()))
+{
+}
+
+PyGePointOnSurface::PyGePointOnSurface(const PyGeSurface& surf, const AcGePoint2d& param)
+    : PyGePointEnt3d(new AcGePointOnSurface(*surf.impObj(), param))
+{
+}
+
 PyGePointOnSurface::PyGePointOnSurface(AcGeEntity3d* src)
     : PyGePointEnt3d(src)
+{
+}
+
+PyGePointOnSurface::PyGePointOnSurface(const AcGePointOnSurface& src)
+    : PyGePointEnt3d(new AcGePointOnSurface(src))
 {
 }
 

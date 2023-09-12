@@ -8,7 +8,7 @@ using namespace boost::python;
 //AcGePlanarEnt wrapper
 void makePyGePlanarEntWrapper()
 {
-    class_<PyGePlanarEnt, bases<PyAcGeSurface>>("PlanarEnt", boost::python::no_init)
+    class_<PyGePlanarEnt, bases<PyGeSurface>>("PlanarEnt", boost::python::no_init)
         .def("intersectWith", &PyGePlanarEnt::intersectWith1)
         .def("intersectWith", &PyGePlanarEnt::intersectWith2)
         .def("closestPointToLinearEnt", &PyGePlanarEnt::closestPointToLinearEnt1)
@@ -34,12 +34,12 @@ void makePyGePlanarEntWrapper()
 }
 
 PyGePlanarEnt::PyGePlanarEnt(AcGePlanarEnt* pEnt)
-    : PyAcGeSurface(pEnt)
+    : PyGeSurface(pEnt)
 {
 }
 
 PyGePlanarEnt::PyGePlanarEnt(AcGeEntity3d* pEnt)
-    : PyAcGeSurface(pEnt)
+    : PyGeSurface(pEnt)
 {
     //TODO check type
 }

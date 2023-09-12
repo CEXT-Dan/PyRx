@@ -135,7 +135,7 @@
     <ClCompile Include="DocData.cpp" />
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
-    <ClCompile Include="PyAcGeSurface.cpp" />
+    <ClCompile Include="PyGeSurface.cpp" />
     <ClCompile Include="PyAcGs.cpp" />
     <ClCompile Include="PyAcPl.cpp" />
     <ClCompile Include="PyApLayoutManager.cpp" />
@@ -238,7 +238,7 @@
     <ClInclude Include="DocData.h" />
     <ClInclude Include="EdCore.h" />
     <ClInclude Include="PlCore.h" />
-    <ClInclude Include="PyAcGeSurface.h" />
+    <ClInclude Include="PyGeSurface.h" />
     <ClInclude Include="PyAcGs.h" />
     <ClInclude Include="PyAcPl.h" />
     <ClInclude Include="PyApLayoutManager.h" />
