@@ -95,6 +95,11 @@ PyGeCurve3d::PyGeCurve3d(AcGeEntity3d* pEnt)
 {
 }
 
+PyGeCurve3d::PyGeCurve3d(const AcGeEntity3d* pEnt)
+    :PyGeEntity3d(pEnt)
+{
+}
+
 PyGeInterval PyGeCurve3d::getInterval() const
 {
     AcGeInterval iv;
