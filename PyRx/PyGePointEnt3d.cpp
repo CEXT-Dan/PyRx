@@ -194,9 +194,11 @@ std::string PyGePointOnSurface::className()
     return "AcGePointOnSurface";
 }
 
-AcGePointOnSurface* PyGePointOnSurface::impObj() const
+AcGePointOnSurface* PyGePointOnSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    return static_cast<AcGePointOnSurface*>(m_imp.get());
+    if (m_imp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+        return static_cast<AcGePointOnSurface*>(m_imp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -224,7 +226,9 @@ std::string PyGePosition3d::className()
     return "AcGePosition3d";
 }
 
-AcGePosition3d* PyGePosition3d::impObj() const
+AcGePosition3d* PyGePosition3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    return static_cast<AcGePosition3d*>(m_imp.get());
+    if (m_imp == nullptr) [[unlikely]]
+        throw PyNullObject(src);
+        return static_cast<AcGePosition3d*>(m_imp.get());
 }
