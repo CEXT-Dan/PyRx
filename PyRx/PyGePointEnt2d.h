@@ -44,8 +44,8 @@ public:
     boost::python::tuple   curvature();
     boost::python::tuple   curvature(double param);
 #endif
-    PyGePointOnCurve2d& setCurve(const PyGeCurve2d& crv);
-    PyGePointOnCurve2d& setParameter(double param);
+   void setCurve(const PyGeCurve2d& crv);
+   void setParameter(double param);
 
     static std::string className();
 public:
@@ -64,8 +64,8 @@ public:
     PyGePosition2d(double x, double y);
     PyGePosition2d(const AcGePosition2d& pos);
     PyGePosition2d(AcGeEntity2d* pEnt);
-    PyGePosition2d& set1(const AcGePoint2d&);
-    PyGePosition2d& set2(double x, double y);
+    void set1(const AcGePoint2d&);
+    void set2(double x, double y);
     static std::string className();
 public:
     AcGePosition2d* impObj(const std::source_location& src = std::source_location::current()) const;

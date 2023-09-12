@@ -52,8 +52,8 @@ void makePyGePointOnCurve2dWrapper()
         .def("deriv", &PyGePointOnCurve2d::deriv1)
         .def("deriv", &PyGePointOnCurve2d::deriv2)
         .def("deriv", &PyGePointOnCurve2d::deriv3)
-        .def("setCurve", &PyGePointOnCurve2d::setCurve, return_self<>())
-        .def("setParameter", &PyGePointOnCurve2d::setParameter, return_self<>())
+        .def("setCurve", &PyGePointOnCurve2d::setCurve)
+        .def("setParameter", &PyGePointOnCurve2d::setParameter)
         .def("className", &PyGePointOnCurve2d::className).staticmethod("className")
         ;
 }
@@ -172,16 +172,14 @@ boost::python::tuple PyGePointOnCurve2d::curvature(double param)
 }
 #endif
 
-PyGePointOnCurve2d& PyGePointOnCurve2d::setCurve(const PyGeCurve2d& crv)
+void PyGePointOnCurve2d::setCurve(const PyGeCurve2d& crv)
 {
     impObj()->setCurve(*crv.impObj());
-    return *this;
 }
 
-PyGePointOnCurve2d& PyGePointOnCurve2d::setParameter(double param)
+void PyGePointOnCurve2d::setParameter(double param)
 {
     impObj()->setParameter(param);
-    return *this;
 }
 
 std::string PyGePointOnCurve2d::className()
@@ -204,8 +202,8 @@ void makePyGePosition2dWrapper()
         .def(init<>())
         .def(init<const AcGePoint2d&>())
         .def(init<double, double>())
-        .def("set", &PyGePosition2d::set1, return_self<>())
-        .def("set", &PyGePosition2d::set2, return_self<>())
+        .def("set", &PyGePosition2d::set1)
+        .def("set", &PyGePosition2d::set2)
         .def("className", &PyGePosition2d::className).staticmethod("className")
         ;
 }
@@ -235,16 +233,14 @@ PyGePosition2d::PyGePosition2d(const AcGePosition2d& pos)
 {
 }
 
-PyGePosition2d& PyGePosition2d::set1(const AcGePoint2d& pnt)
+void PyGePosition2d::set1(const AcGePoint2d& pnt)
 {
     impObj()->set(pnt);
-    return *this;
 }
 
-PyGePosition2d& PyGePosition2d::set2(double x, double y)
+void PyGePosition2d::set2(double x, double y)
 {
     impObj()->set(x, y);
-    return *this;
 }
 
 std::string PyGePosition2d::className()
