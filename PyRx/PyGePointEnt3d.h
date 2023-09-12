@@ -63,8 +63,42 @@ public:
     PyGePointOnSurface(const PyGeSurface& surf);
     PyGePointOnSurface(const PyGeSurface& surf, const AcGePoint2d& param);
     PyGePointOnSurface(const AcGePointOnSurface& src);
-
     PyGePointOnSurface(AcGeEntity3d* src);
+
+    PyGeSurface         surface() const;
+    AcGePoint2d         parameter() const;
+
+    AcGePoint3d         point1() const;
+    AcGePoint3d         point2(const AcGePoint2d& param);
+    AcGePoint3d         point3(const PyGeSurface& surf, const AcGePoint2d& param);
+
+    AcGeVector3d        normal1() const;
+    AcGeVector3d        normal2(const AcGePoint2d& param);
+    AcGeVector3d        normal3(const PyGeSurface& surf, const AcGePoint2d& param);
+
+    AcGeVector3d        uDeriv1(int order) const;
+    AcGeVector3d        uDeriv2(int order, const AcGePoint2d& param);
+    AcGeVector3d        uDeriv3(int order, const PyGeSurface& surf, const AcGePoint2d& param);
+
+    AcGeVector3d        vDeriv1(int order) const;
+    AcGeVector3d        vDeriv2(int order, const AcGePoint2d& param);
+    AcGeVector3d        vDeriv3(int order, const PyGeSurface& surf, const AcGePoint2d& param);
+
+    AcGeVector3d        mixedPartial1() const;
+    AcGeVector3d        mixedPartial2(const AcGePoint2d& param);
+    AcGeVector3d        mixedPartial3(const PyGeSurface& surf, const AcGePoint2d& param);
+
+    AcGeVector3d        tangentVector1(const AcGeVector2d& vec) const;
+    AcGeVector3d        tangentVector2(const AcGeVector2d& vec, const AcGePoint2d& param);
+    AcGeVector3d        tangentVector3(const AcGeVector2d& vec, const PyGeSurface& vecSurf, const AcGePoint2d& param);
+
+    AcGeVector2d        inverseTangentVector1(const AcGeVector3d& vec) const;
+    AcGeVector2d        inverseTangentVector2(const AcGeVector3d& vec, const AcGePoint2d& param);
+    AcGeVector2d        inverseTangentVector3(const AcGeVector3d& vec, const PyGeSurface& surf, const AcGePoint2d& param);
+
+    void                setSurface(const PyGeSurface& surf);
+    void                setParameter(const AcGePoint2d& param);
+
     static std::string className();
 public:
     AcGePointOnSurface* impObj(const std::source_location& src = std::source_location::current()) const;

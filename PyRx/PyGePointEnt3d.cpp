@@ -178,6 +178,31 @@ void makePyGePointOnSurfaceWrapper()
         .def(init<>())
         .def(init<const PyGeSurface&>())
         .def(init<const PyGeSurface&, const AcGePoint2d&>())
+        .def("surface", &PyGePointOnSurface::surface)
+        .def("parameter", &PyGePointOnSurface::parameter)
+        .def("point", &PyGePointOnSurface::point1)
+        .def("point", &PyGePointOnSurface::point2)
+        .def("point", &PyGePointOnSurface::point3)
+        .def("normal", &PyGePointOnSurface::normal1)
+        .def("normal", &PyGePointOnSurface::normal2)
+        .def("normal", &PyGePointOnSurface::normal3)
+        .def("uDeriv", &PyGePointOnSurface::uDeriv1)
+        .def("uDeriv", &PyGePointOnSurface::uDeriv2)
+        .def("uDeriv", &PyGePointOnSurface::uDeriv3)
+        .def("vDeriv", &PyGePointOnSurface::vDeriv1)
+        .def("vDeriv", &PyGePointOnSurface::vDeriv2)
+        .def("vDeriv", &PyGePointOnSurface::vDeriv3)
+        .def("mixedPartial", &PyGePointOnSurface::mixedPartial1)
+        .def("mixedPartial", &PyGePointOnSurface::mixedPartial2)
+        .def("mixedPartial", &PyGePointOnSurface::mixedPartial3)
+        .def("tangentVector", &PyGePointOnSurface::tangentVector1)
+        .def("tangentVector", &PyGePointOnSurface::tangentVector2)
+        .def("tangentVector", &PyGePointOnSurface::tangentVector3)
+        .def("inverseTangentVector", &PyGePointOnSurface::inverseTangentVector1)
+        .def("inverseTangentVector", &PyGePointOnSurface::inverseTangentVector2)
+        .def("inverseTangentVector", &PyGePointOnSurface::inverseTangentVector3)
+        .def("setSurface", &PyGePointOnSurface::setSurface)
+        .def("setParameter", &PyGePointOnSurface::setParameter)
         .def("className", &PyGePointOnSurface::className).staticmethod("className")
         ;
 }
@@ -207,6 +232,131 @@ PyGePointOnSurface::PyGePointOnSurface(const AcGePointOnSurface& src)
 {
 }
 
+PyGeSurface PyGePointOnSurface::surface() const
+{
+    return PyGeSurface(impObj()->surface());
+}
+
+AcGePoint2d PyGePointOnSurface::parameter() const
+{
+    return impObj()->parameter();
+}
+
+AcGePoint3d PyGePointOnSurface::point1() const
+{
+    return impObj()->point();
+}
+
+AcGePoint3d PyGePointOnSurface::point2(const AcGePoint2d& param)
+{
+    return impObj()->point(param);
+}
+
+AcGePoint3d PyGePointOnSurface::point3(const PyGeSurface& surf, const AcGePoint2d& param)
+{
+    return impObj()->point(*surf.impObj(), param);
+}
+
+AcGeVector3d PyGePointOnSurface::normal1() const
+{
+    return impObj()->normal();
+}
+
+AcGeVector3d PyGePointOnSurface::normal2(const AcGePoint2d& param)
+{
+    return impObj()->normal(param);
+}
+
+AcGeVector3d PyGePointOnSurface::normal3(const PyGeSurface& surf, const AcGePoint2d& param)
+{
+    return impObj()->normal(*surf.impObj(), param);
+}
+
+AcGeVector3d PyGePointOnSurface::uDeriv1(int order) const
+{
+    return impObj()->uDeriv(order);
+}
+
+AcGeVector3d PyGePointOnSurface::uDeriv2(int order, const AcGePoint2d& param)
+{
+    return impObj()->uDeriv(order, param);
+}
+
+AcGeVector3d PyGePointOnSurface::uDeriv3(int order, const PyGeSurface& surf, const AcGePoint2d& param)
+{
+    return impObj()->uDeriv(order, *surf.impObj(), param);
+}
+
+AcGeVector3d PyGePointOnSurface::vDeriv1(int order) const
+{
+    return impObj()->vDeriv(order);
+}
+
+AcGeVector3d PyGePointOnSurface::vDeriv2(int order, const AcGePoint2d& param)
+{
+    return impObj()->vDeriv(order, param);
+}
+
+AcGeVector3d PyGePointOnSurface::vDeriv3(int order, const PyGeSurface& surf, const AcGePoint2d& param)
+{
+    return impObj()->vDeriv(order, *surf.impObj(), param);
+}
+
+AcGeVector3d PyGePointOnSurface::mixedPartial1() const
+{
+    return impObj()->mixedPartial();
+}
+
+AcGeVector3d PyGePointOnSurface::mixedPartial2(const AcGePoint2d& param)
+{
+    return impObj()->mixedPartial(param);
+}
+
+AcGeVector3d PyGePointOnSurface::mixedPartial3(const PyGeSurface& surf, const AcGePoint2d& param)
+{
+    return impObj()->mixedPartial(*surf.impObj(),param);
+}
+
+AcGeVector3d PyGePointOnSurface::tangentVector1(const AcGeVector2d& vec) const
+{
+    return impObj()->tangentVector(vec);
+}
+
+AcGeVector3d PyGePointOnSurface::tangentVector2(const AcGeVector2d& vec, const AcGePoint2d& param)
+{
+    return impObj()->tangentVector(vec, param);
+}
+
+AcGeVector3d PyGePointOnSurface::tangentVector3(const AcGeVector2d& vec, const PyGeSurface& vecSurf, const AcGePoint2d& param)
+{
+    return impObj()->tangentVector(vec, *vecSurf.impObj(), param);
+}
+
+AcGeVector2d PyGePointOnSurface::inverseTangentVector1(const AcGeVector3d& vec) const
+{
+    return impObj()->inverseTangentVector(vec);
+}
+
+AcGeVector2d PyGePointOnSurface::inverseTangentVector2(const AcGeVector3d& vec, const AcGePoint2d& param)
+{
+    return impObj()->inverseTangentVector(vec, param);
+}
+
+AcGeVector2d PyGePointOnSurface::inverseTangentVector3(const AcGeVector3d& vec, const PyGeSurface& surf, const AcGePoint2d& param)
+{
+    return impObj()->inverseTangentVector(vec, *surf.impObj(), param);
+}
+
+void PyGePointOnSurface::setSurface(const PyGeSurface& surf)
+{
+    impObj()->setSurface(*surf.impObj());
+}
+
+void PyGePointOnSurface::setParameter(const AcGePoint2d& param)
+{
+    impObj()->setParameter(param);
+}
+
 std::string PyGePointOnSurface::className()
 {
     return "AcGePointOnSurface";
@@ -232,7 +382,6 @@ PyGePosition3d::PyGePosition3d()
     : PyGePointEnt3d(new AcGePosition3d())
 {
 }
-
 
 PyGePosition3d::PyGePosition3d(AcGeEntity3d* src)
     : PyGePointEnt3d(src)
