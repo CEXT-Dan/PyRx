@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PyGeCurveSurfInt.h"
 #include "PyGeCurve3d.h"
-#include "PyAcGeSurface.h"
+#include "PyGeSurface.h"
 
 //TODO LINK ERROR @CTOR
 
@@ -25,12 +25,12 @@ PyGeCurveSurfInt::PyGeCurveSurfInt()
 {
 }
 
-PyGeCurveSurfInt::PyGeCurveSurfInt(const PyGeCurve3d& crv, const PyAcGeSurface& srf)
+PyGeCurveSurfInt::PyGeCurveSurfInt(const PyGeCurve3d& crv, const PyGeSurface& srf)
     : PyGeEntity3d(new AcGeCurveSurfInt(*crv.impObj(), *srf.impObj()))
 {
 }
 
-PyGeCurveSurfInt::PyGeCurveSurfInt(const PyGeCurve3d& crv, const PyAcGeSurface& srf, const AcGeTol& tol)
+PyGeCurveSurfInt::PyGeCurveSurfInt(const PyGeCurve3d& crv, const PyGeSurface& srf, const AcGeTol& tol)
     : PyGeEntity3d(new AcGeCurveSurfInt(*crv.impObj(), *srf.impObj(), tol))
 {
 }

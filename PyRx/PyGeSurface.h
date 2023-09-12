@@ -5,16 +5,16 @@ class PyGePointOnSurface;
 //-----------------------------------------------------------------------------------------
 //AcGeSurface wrapper
 void makePyGeSurfaceWrapper();
-class PyAcGeSurface : public PyGeEntity3d
+class PyGeSurface : public PyGeEntity3d
 {
 protected:
-    PyAcGeSurface() = default;
+    PyGeSurface() = default;
 public:
-    PyAcGeSurface(AcGeSurface* pEnt, bool autoDelete = true);
-    PyAcGeSurface(const AcGeSurface* pEnt);
+    PyGeSurface(AcGeSurface* pEnt, bool autoDelete = true);
+    PyGeSurface(const AcGeSurface* pEnt);
 
-    PyAcGeSurface(AcGeEntity3d* pEnt);//TODO check
-    ~PyAcGeSurface() = default;
+    PyGeSurface(AcGeEntity3d* pEnt);//TODO check
+    ~PyGeSurface() = default;
     AcGePoint2d     paramOf(const AcGePoint3d& pnt) const;
     AcGePoint2d     paramOfTol(const AcGePoint3d& pnt, const AcGeTol& tol) const;
     Adesk::Boolean  isOn1(const AcGePoint3d& pnt) const;
@@ -28,7 +28,7 @@ public:
     double          distanceTo1(const AcGePoint3d& pnt) const;
     double          distanceTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
     Adesk::Boolean  isNormalReversed() const;
-    PyAcGeSurface& reverseNormal();
+    PyGeSurface& reverseNormal();
     void            getEnvelope(PyGeInterval& intrvlX, PyGeInterval& intrvlY) const;
     Adesk::Boolean  isClosedInU1() const;
     Adesk::Boolean  isClosedInU2(const AcGeTol& tol) const;

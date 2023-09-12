@@ -2,7 +2,7 @@
 #include "PyGeEntity3d.h"
 
 class PyGeCurve3d;
-class PyAcGeSurface;
+class PyGeSurface;
 
 //TODO LINK ERROR @CTOR
 
@@ -13,8 +13,8 @@ public:
 #ifdef NEVER//TODO: link error
     PyGeCurveSurfInt();
     PyGeCurveSurfInt(const AcGeCurveSurfInt& src);
-    PyGeCurveSurfInt(const PyGeCurve3d& crv, const PyAcGeSurface& srf);
-    PyGeCurveSurfInt(const PyGeCurve3d& crv, const PyAcGeSurface& srf, const AcGeTol& tol);
+    PyGeCurveSurfInt(const PyGeCurve3d& crv, const PyGeSurface& srf);
+    PyGeCurveSurfInt(const PyGeCurve3d& crv, const PyGeSurface& srf, const AcGeTol& tol);
 #endif
     PyGeCurveSurfInt(AcGeEntity3d* pEnt);
     static std::string className();

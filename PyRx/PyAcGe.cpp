@@ -2,7 +2,7 @@
 #include "PyAcGe.h"
 #include "PyGeEntity3d.h"
 #include "PyGePointEnt3d.h"
-#include "PyAcGeSurface.h"
+#include "PyGeSurface.h"
 #include "PyGePlanarEnt.h"
 #include "PyGePlane.h"
 #include "PyGeInterval.h"
