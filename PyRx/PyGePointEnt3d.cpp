@@ -314,7 +314,7 @@ AcGeVector3d PyGePointOnSurface::mixedPartial2(const AcGePoint2d& param)
 
 AcGeVector3d PyGePointOnSurface::mixedPartial3(const PyGeSurface& surf, const AcGePoint2d& param)
 {
-    return impObj()->mixedPartial(*surf.impObj(),param);
+    return impObj()->mixedPartial(*surf.impObj(), param);
 }
 
 AcGeVector3d PyGePointOnSurface::tangentVector1(const AcGeVector2d& vec) const
@@ -374,6 +374,11 @@ AcGePointOnSurface* PyGePointOnSurface::impObj(const std::source_location& src /
 void makePyGePosition3dWrapper()
 {
     class_<PyGePosition3d, bases<PyGePointEnt3d>>("Position3d")
+        .def(init<>())
+        .def(init<const AcGePoint3d&>())
+        .def(init<double, double, double>())
+        .def("set", &PyGePosition3d::set1)
+        .def("set", &PyGePosition3d::set2)
         .def("className", &PyGePosition3d::className).staticmethod("className")
         ;
 }
@@ -386,6 +391,26 @@ PyGePosition3d::PyGePosition3d()
 PyGePosition3d::PyGePosition3d(AcGeEntity3d* src)
     : PyGePointEnt3d(src)
 {
+}
+
+PyGePosition3d::PyGePosition3d(const AcGePoint3d& pnt)
+    : PyGePointEnt3d(new AcGePosition3d(pnt))
+{
+}
+
+PyGePosition3d::PyGePosition3d(double x, double y, double z)
+    : PyGePointEnt3d(new AcGePosition3d(x, y, x))
+{
+}
+
+void PyGePosition3d::set1(const AcGePoint3d& pnt)
+{
+    impObj()->set(pnt);
+}
+
+void PyGePosition3d::set2(double x, double y, double z)
+{
+    impObj()->set(x, y, x);
 }
 
 std::string PyGePosition3d::className()

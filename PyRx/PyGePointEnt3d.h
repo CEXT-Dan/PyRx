@@ -111,7 +111,12 @@ class PyGePosition3d : public PyGePointEnt3d
 {
 public:
     PyGePosition3d();
+    PyGePosition3d(const AcGePoint3d& pnt);
+    PyGePosition3d(double x, double y, double z);
     PyGePosition3d(AcGeEntity3d* src);
+
+    void set1(const AcGePoint3d& pnt);
+    void set2(double x, double y, double z);
     static std::string className();
 public:
     AcGePosition3d* impObj(const std::source_location& src = std::source_location::current()) const;
