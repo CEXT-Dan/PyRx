@@ -11,8 +11,8 @@ void makePyGePlaneWrapper()
     class_<PyGePlane, bases<PyGePlanarEnt>>("Plane")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&>())
-        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<double, double, double, double>())
         .def("signedDistanceTo", &PyGePlane::signedDistanceTo)
         .def("intersectWith", &PyGePlane::intersectWith1)
@@ -163,7 +163,7 @@ AcGePlane* PyGePlane::impObj(const std::source_location& src /*= std::source_loc
 //PyGeBoundedPlane wrapper
 void makePyGeBoundedPlaneWrapper()
 {
-    class_<PyGeBoundedPlane, bases<PyGePlanarEnt>>("Plane")
+    class_<PyGeBoundedPlane, bases<PyGePlanarEnt>>("BoundedPlane")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())

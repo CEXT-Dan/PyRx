@@ -465,7 +465,7 @@ void makePyDbDatabaseWrapper()
         .def("xclipFrame", &PyDbDatabase::xclipFrame, DS.ARGS())
         .def("xrefBlockId", &PyDbDatabase::xrefBlockId, DS.ARGS())
         .def("xrefEditEnabled", &PyDbDatabase::xrefEditEnabled, DS.ARGS())
-        //TODO: TEST
+
         .def("wblock", &PyDbDatabase::wblock1)
         .def("wblock", &PyDbDatabase::wblock2)
         .def("wblock", &PyDbDatabase::wblock3)
