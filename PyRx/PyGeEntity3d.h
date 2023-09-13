@@ -17,7 +17,8 @@ public:
     Adesk::Boolean  isKindOf(AcGe::EntityId entType) const;
     AcGe::EntityId  type() const;
     PyGeEntity3d    copy() const;
-    Adesk::Boolean  isEqualTo(const PyGeEntity3d& ent, const AcGeTol& tol) const;
+    Adesk::Boolean  isEqualTo1(const PyGeEntity3d& ent) const;
+    Adesk::Boolean  isEqualTo2(const PyGeEntity3d& ent, const AcGeTol& tol) const;
     PyGeEntity3d&   transformBy(const AcGeMatrix3d& xfm);
     PyGeEntity3d&   translateBy(const AcGeVector3d& translateVec);
     PyGeEntity3d&   rotateBy1(double angle, const AcGeVector3d& vec);
