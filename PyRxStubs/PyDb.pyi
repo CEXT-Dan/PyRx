@@ -11562,7 +11562,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def readDwgFile (self: Database,fileName : str,mode : int=kForReadAndReadShare,bAllowCPConversion : bool=False,password : str=empty)-> None :
+    def readDwgFile (self: Database,fileName:str,mode:int=kForReadAndReadShare,bAllowCPConversion:bool=False,password:str=empty)-> None :
       '''                             '''
     ...
     def reclaimMemoryFromErasedObjects (self: Database,ids : list[ObjectId])-> None :
@@ -12350,16 +12350,8 @@ wblock( (Database)arg1, (Database)arg2 [, (ObjectId)arg3]) -> None :
     C++ signature :
         void wblock(class PyDbDatabase {lvalue},class PyDbDatabase {lvalue} [,class PyDbObjectId])'''
     ...
-    def wblockCloneObjects (self, *args, **kwargs)-> None :
-      '''wblockCloneObjects( (Database)arg1, (list)arg2, (ObjectId)arg3, (IdMapping)arg4, (DuplicateRecordCloning)arg5) -> None :
-
-    C++ signature :
-        void wblockCloneObjects(class PyDbDatabase {lvalue},class boost::python::list,class PyDbObjectId,class PyDbIdMapping {lvalue},enum AcDb::DuplicateRecordCloning)
-
-wblockCloneObjects( (Database)arg1, (list)arg2, (ObjectId)arg3, (IdMapping)arg4, (DuplicateRecordCloning)arg5, (bool)arg6) -> None :
-
-    C++ signature :
-        void wblockCloneObjects(class PyDbDatabase {lvalue},class boost::python::list,class PyDbObjectId,class PyDbIdMapping {lvalue},enum AcDb::DuplicateRecordCloning,bool)'''
+    def wblockCloneObjects (self: Database,ids:list[PyDb.ObjectId],owner:PyDb.ObjectId,idmap:PyDb.IdMapping,drc:DuplicateRecordCloning,deferXlation:bool=False)-> None :
+      '''                             '''
     ...
     def worldPucsBaseOrigin (self: Database,view : OrthographicView)-> PyGe.Point3d :
       '''                             '''
