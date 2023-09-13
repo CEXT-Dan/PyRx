@@ -284,20 +284,12 @@ PyDbEntity PyDb3dSolid::copyFace(const PyDbSubentId& subentId)
 
 void PyDb3dSolid::extrudeFaces(const boost::python::list& faceSubentIds, double height, double taper)
 {
-    auto vec = py_list_to_std_vector<PyDbSubentId>(faceSubentIds);
-    AcArray<AcDbSubentId*> _faceSubentIds;
-    for (auto item : vec)
-        _faceSubentIds.append(item.impObj());
-    return PyThrowBadEs(impObj()->extrudeFaces(_faceSubentIds, height, taper));
+    return PyThrowBadEs(impObj()->extrudeFaces(PyListToPyDbSubentIdPtrArray(faceSubentIds), height, taper));
 }
 
 void PyDb3dSolid::extrudeFacesAlongPath(boost::python::list& faceSubentIds, const PyDbCurve& path)
 {
-    auto vec = py_list_to_std_vector<PyDbSubentId>(faceSubentIds);
-    AcArray<AcDbSubentId*> _faceSubentIds;
-    for (auto item : vec)
-        _faceSubentIds.append(item.impObj());
-    return PyThrowBadEs(impObj()->extrudeFacesAlongPath(_faceSubentIds, path.impObj()));
+    return PyThrowBadEs(impObj()->extrudeFacesAlongPath(PyListToPyDbSubentIdPtrArray(faceSubentIds), path.impObj()));
 }
 
 void PyDb3dSolid::imprintEntity(const PyDbEntity& pEntity)
@@ -317,20 +309,12 @@ void PyDb3dSolid::offsetBody(double offsetDistance)
 
 void PyDb3dSolid::offsetFaces(const boost::python::list& faceSubentIds, double offsetDistance)
 {
-    auto vec = py_list_to_std_vector<PyDbSubentId>(faceSubentIds);
-    AcArray<AcDbSubentId*> _faceSubentIds;
-    for (auto item : vec)
-        _faceSubentIds.append(item.impObj());
-    return PyThrowBadEs(impObj()->offsetFaces(_faceSubentIds, offsetDistance));
+    return PyThrowBadEs(impObj()->offsetFaces(PyListToPyDbSubentIdPtrArray(faceSubentIds), offsetDistance));
 }
 
 void PyDb3dSolid::removeFaces(const boost::python::list& faceSubentIds)
 {
-    auto vec = py_list_to_std_vector<PyDbSubentId>(faceSubentIds);
-    AcArray<AcDbSubentId*> _faceSubentIds;
-    for (auto item : vec)
-        _faceSubentIds.append(item.impObj());
-    return PyThrowBadEs(impObj()->removeFaces(_faceSubentIds));
+    return PyThrowBadEs(impObj()->removeFaces(PyListToPyDbSubentIdPtrArray(faceSubentIds)));
 }
 
 boost::python::list PyDb3dSolid::separateBody()
@@ -346,29 +330,17 @@ boost::python::list PyDb3dSolid::separateBody()
 
 void PyDb3dSolid::shellBody(const boost::python::list& faceSubentIds, double offsetDistance)
 {
-    auto vec = py_list_to_std_vector<PyDbSubentId>(faceSubentIds);
-    AcArray<AcDbSubentId*> _faceSubentIds;
-    for (auto item : vec)
-        _faceSubentIds.append(item.impObj());
-    PyThrowBadEs(impObj()->shellBody(_faceSubentIds, offsetDistance));
+    PyThrowBadEs(impObj()->shellBody(PyListToPyDbSubentIdPtrArray(faceSubentIds), offsetDistance));
 }
 
 void PyDb3dSolid::taperFaces(const boost::python::list& faceSubentIds, const AcGePoint3d& basePoint, const AcGeVector3d& draftVector, double draftAngle)
 {
-    auto vec = py_list_to_std_vector<PyDbSubentId>(faceSubentIds);
-    AcArray<AcDbSubentId*> _faceSubentIds;
-    for (auto item : vec)
-        _faceSubentIds.append(item.impObj());
-    PyThrowBadEs(impObj()->taperFaces(_faceSubentIds, basePoint, draftVector, draftAngle));
+    PyThrowBadEs(impObj()->taperFaces(PyListToPyDbSubentIdPtrArray(faceSubentIds), basePoint, draftVector, draftAngle));
 }
 
 void PyDb3dSolid::transformFaces(const boost::python::list& faceSubentIds, const AcGeMatrix3d& matrix)
 {
-    auto vec = py_list_to_std_vector<PyDbSubentId>(faceSubentIds);
-    AcArray<AcDbSubentId*> _faceSubentIds;
-    for (auto item : vec)
-        _faceSubentIds.append(item.impObj());
-    PyThrowBadEs(impObj()->transformFaces(_faceSubentIds, matrix));
+    PyThrowBadEs(impObj()->transformFaces(PyListToPyDbSubentIdPtrArray(faceSubentIds), matrix));
 }
 
 void PyDb3dSolid::setSubentColor(const PyDbSubentId& subentId, const AcCmColor& color)
@@ -417,31 +389,15 @@ void PyDb3dSolid::setShowHistory(bool bShow)
 
 void PyDb3dSolid::chamferEdges(const boost::python::list& edgeSubentIds, const PyDbSubentId& baseFaceSubentId, double baseDist, double otherDist)
 {
-    auto vec = py_list_to_std_vector<PyDbSubentId>(edgeSubentIds);
-    AcArray<AcDbSubentId*> _edgeSubentIds;
-    for (auto item : vec)
-        _edgeSubentIds.append(item.impObj());
-    return PyThrowBadEs(impObj()->chamferEdges(_edgeSubentIds, *baseFaceSubentId.impObj(), baseDist, otherDist));
+    return PyThrowBadEs(impObj()->chamferEdges(PyListToPyDbSubentIdPtrArray(edgeSubentIds), *baseFaceSubentId.impObj(), baseDist, otherDist));
 }
 
 void PyDb3dSolid::filletEdges(const boost::python::list& edgeSubentIds, boost::python::list& radius, boost::python::list& startSetback, boost::python::list& endSetback)
 {
-    auto vec = py_list_to_std_vector<PyDbSubentId>(edgeSubentIds);
-    AcArray<AcDbSubentId*> _edgeSubentIds;
-    for (auto item : vec)
-        _edgeSubentIds.append(item.impObj());
-    auto radiusvec = py_list_to_std_vector<double>(radius);
-    AcGeDoubleArray _radius;
-    for (auto item : radiusvec)
-        _radius.append(item);
-    auto startSetbackvec = py_list_to_std_vector<double>(startSetback);
-    AcGeDoubleArray _startSetback;
-    for (auto item : startSetbackvec)
-        _startSetback.append(item);
-    auto endSetbackvec = py_list_to_std_vector<double>(endSetback);
-    AcGeDoubleArray _endSetback;
-    for (auto item : endSetbackvec)
-        _endSetback.append(item);
+    const auto& _edgeSubentIds = PyListToPyDbSubentIdPtrArray(edgeSubentIds);
+    const AcGeDoubleArray& _radius = PyListToDoubleArray(radius);
+    const AcGeDoubleArray& _startSetback = PyListToDoubleArray(startSetback);
+    const AcGeDoubleArray& _endSetback = PyListToDoubleArray(endSetback);
     return PyThrowBadEs(impObj()->filletEdges(_edgeSubentIds, _radius, _startSetback, _endSetback));
 }
 
@@ -452,15 +408,8 @@ bool PyDb3dSolid::usesGraphicsCache()
 
 void PyDb3dSolid::createSculptedSolid(const boost::python::list& limitingBodies, const boost::python::list& limitingFlags)
 {
-    auto vec = py_list_to_std_vector<PyDbEntity>(limitingBodies);
-    AcArray<AcDbEntity*> _limitingBodies;
-    for (auto item : vec)
-        _limitingBodies.append(item.impObj());
-
-    AcGeIntArray _limitingFlags;
-    auto intvec = py_list_to_std_vector<int>(limitingFlags);
-    for (auto item : intvec)
-        _limitingFlags.append(item);
+    const auto& _limitingBodies = PyListToPyDbEntityPtrArray(limitingBodies);
+    const AcGeIntArray& _limitingFlags = PyListToIntArray(limitingFlags);
     return PyThrowBadEs(impObj()->createSculptedSolid(_limitingBodies, _limitingFlags));
 }
 
