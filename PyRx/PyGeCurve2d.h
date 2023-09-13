@@ -71,6 +71,7 @@ public:
 public:
     AcGeCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-----------------------------------------------------------------------------------------
 //AcGeCircArc2d wrapper
 void makePyGeCircArc2dWrapper();

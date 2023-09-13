@@ -228,29 +228,19 @@ boost::python::tuple PyDbHatch::getLoopBulgesAt(int loopIndex)
 
 void PyDbHatch::appendLoopEdges(Adesk::Int32 loopType, const boost::python::list& edgePtrs, const boost::python::list& edgeTypes)
 {
-    PyAutoLockGIL lock;
     AcGeVoidPointerArray _edgePtrs;
-    AcGeIntArray _edgeTypes;
-    auto curves = py_list_to_std_vector<PyGeCurve2d>(edgePtrs);
+    const auto& curves = py_list_to_std_vector<PyGeCurve2d>(edgePtrs);
     for (const auto& curve : curves)
         _edgePtrs.append(curve.impObj()->copy());
-    auto ints = py_list_to_std_vector<Int32>(edgeTypes);
-    for (auto i : ints)
-        _edgeTypes.append(i);
+
+    const auto& _edgeTypes = PyListToIntArray(edgeTypes);
     return PyThrowBadEs(impObj()->appendLoop(loopType, _edgePtrs, _edgeTypes));
 }
 
 void PyDbHatch::appendLoopBulges(Adesk::Int32 loopType, const boost::python::list& vertices, const boost::python::list& bulges)
 {
-    PyAutoLockGIL lock;
-    AcGePoint2dArray _vertices;
-    AcGeDoubleArray _bulges;
-    auto verts = py_list_to_std_vector<AcGePoint2d>(vertices);
-    for (const auto& vert : verts)
-        _vertices.append(vert);
-    auto doubles = py_list_to_std_vector<double>(bulges);
-    for (auto dbl : doubles)
-        _bulges.append(dbl);
+    const auto& _vertices = PyListToPoint2dArray(vertices);
+    const auto& _bulges = PyListToDoubleArray(bulges);
     return PyThrowBadEs(impObj()->appendLoop(loopType, _vertices, _bulges));
 }
 
@@ -271,42 +261,26 @@ void PyDbHatch::setAssociative(bool isAssociative)
 
 void PyDbHatch::appendLoop(Adesk::Int32 loopType, const boost::python::list& dbObjIds)
 {
-    auto idsList = py_list_to_std_vector<PyDbObjectId>(dbObjIds);
-    AcDbObjectIdArray ids;
-    for (auto& id : idsList)
-        ids.append(id.m_id);
-    return PyThrowBadEs(impObj()->appendLoop(loopType, ids));
+    return PyThrowBadEs(impObj()->appendLoop(loopType, PyListToObjectIdArray(dbObjIds)));
 }
 
 void PyDbHatch::insertLoopAt(int loopIndex, Adesk::Int32 loopType, const boost::python::list& dbObjIds)
 {
-    auto idsList = py_list_to_std_vector<PyDbObjectId>(dbObjIds);
-    AcDbObjectIdArray ids;
-    for (auto& id : idsList)
-        ids.append(id.m_id);
-    return PyThrowBadEs(impObj()->insertLoopAt(loopIndex, loopType, ids));
+    return PyThrowBadEs(impObj()->insertLoopAt(loopIndex, loopType, PyListToObjectIdArray(dbObjIds)));
 }
 
 boost::python::list PyDbHatch::getAssocObjIdsAt(int loopIndex) const
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
-    boost::python::list idsList;
     PyThrowBadEs(impObj()->getAssocObjIdsAt(loopIndex, ids));
-    for (const auto& id : ids)
-        idsList.append(PyDbObjectId(id));
-    return idsList;
+    return ObjectIdArrayToPyList(ids);
 }
 
 boost::python::list PyDbHatch::getAssocObjIds() const
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
-    boost::python::list idsList;
     PyThrowBadEs(impObj()->getAssocObjIds(ids));
-    for (const auto& id : ids)
-        idsList.append(PyDbObjectId(id));
-    return idsList;
+    return ObjectIdArrayToPyList(ids);
 }
 
 void PyDbHatch::removeAssocObjIds()
@@ -498,10 +472,7 @@ boost::python::tuple PyDbHatch::getPatternDefinitionAt(int index)
     double offsetY;
     AcGeDoubleArray dashes;
     PyThrowBadEs(impObj()->getPatternDefinitionAt(index, angle, baseX, baseY, offsetX, offsetY, dashes));
-    boost::python::list _dashes;
-    for (auto d : dashes)
-        _dashes.append(d);
-    return boost::python::make_tuple(angle, baseX, baseY, offsetX, offsetY, dashes);
+    return boost::python::make_tuple(angle, baseX, baseY, offsetX, offsetY, DoubleArrayToPyList(dashes));
 }
 
 AcDbHatch::HatchStyle PyDbHatch::hatchStyle() const
@@ -569,13 +540,7 @@ boost::python::tuple PyDbHatch::getHatchLinesData() const
     AcGePoint2dArray startPts;
     AcGePoint2dArray endPts;
     PyThrowBadEs(impObj()->getHatchLinesData(startPts, endPts));
-    boost::python::list _startPts;
-    for (auto p : startPts)
-        _startPts.append(p);
-    boost::python::list _endPts;
-    for (auto p : endPts)
-        _endPts.append(p);
-    return boost::python::make_tuple(_startPts, _endPts);
+    return boost::python::make_tuple(Point2dArrayToPyList(startPts), Point2dArrayToPyList(endPts));
 }
 
 double PyDbHatch::getArea() const

@@ -96,6 +96,17 @@ public:
 public:
     inline  AcDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+inline AcArray<AcDbEntity*> PyListToPyDbEntityPtrArray(const boost::python::object& iterable)
+{
+    AcArray<AcDbEntity*> arr;
+    const auto& vec = py_list_to_std_vector<PyDbEntity>(iterable);
+    for (const auto& item : vec)
+        arr.append(item.impObj());
+    return arr;
+}
+
+
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockBegin
 void makePyDbBlockBeginWrapper();
@@ -130,6 +141,7 @@ public:
 public:
     inline AcDbBlockEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-------------------------------------------------------------------------------------------------------------
 //PyDbSequenceEnd
 void makePyDbSequenceEndWrapper();
@@ -172,3 +184,12 @@ public:
 private:
     std::shared_ptr<AcDbSubentId> m_pyImp;
 };
+
+inline AcArray<AcDbSubentId*> PyListToPyDbSubentIdPtrArray(const boost::python::object& iterable)
+{
+    AcArray<AcDbSubentId*> arr;
+    const auto& vec = py_list_to_std_vector<PyDbSubentId>(iterable);
+    for (const auto& item : vec)
+        arr.append(item.impObj());
+    return arr;
+}
