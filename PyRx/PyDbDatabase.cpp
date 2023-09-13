@@ -471,10 +471,14 @@ void makePyDbDatabaseWrapper()
         .def("wblock", &PyDbDatabase::wblock3)
         .def("wblock", &PyDbDatabase::wblock4)
         .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects1)
-        .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects2)
+        .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects2,
+            DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap:PyDb.IdMapping","drc:DuplicateRecordCloning","deferXlation:bool=False" }))
+
         .def("getFilename", &PyDbDatabase::getFilename, DS.ARGS())
         .def("readDwgFile", &PyDbDatabase::readDwgFile)
-        .def("readDwgFile", &PyDbDatabase::readDwgFile2, DS.ARGS({ "fileName : str", "mode : int=kForReadAndReadShare", "bAllowCPConversion : bool=False","password : str=empty" }))
+        .def("readDwgFile", &PyDbDatabase::readDwgFile2,
+            DS.ARGS({ "fileName:str", "mode:int=kForReadAndReadShare", "bAllowCPConversion:bool=False","password:str=empty" }))
+
         .def("blockTableId", &PyDbDatabase::blockTableId, DS.ARGS())
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId, DS.ARGS())
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId, DS.ARGS())
@@ -2848,13 +2852,13 @@ void PyDbDatabase::wblock4(PyDbDatabase& pOutputDb)
     pOutputDb = PyDbDatabase(_pOutputDb, true);
 }
 
-void PyDbDatabase::wblockCloneObjects1(const boost::python::list& objectIds, 
+void PyDbDatabase::wblockCloneObjects1(const boost::python::list& objectIds,
     const PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc)
 {
     PyThrowBadEs(impObj()->wblockCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj(), drc));
 }
 
-void PyDbDatabase::wblockCloneObjects2(const boost::python::list& objectIds, 
+void PyDbDatabase::wblockCloneObjects2(const boost::python::list& objectIds,
     const PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc, bool deferXlation)
 {
     PyThrowBadEs(impObj()->wblockCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj(), drc, deferXlation));
