@@ -218,7 +218,8 @@ boost::python::tuple PyDb3dSolid::getMassProp()
     AcGeVector3d prinAxes[3];
     AcGePoint3d radiiGyration;
     AcDbExtents extents;
-    PyThrowBadEs(impObj()->getMassProp(volume, centroid, asDblArray(momInertia), asDblArray(prodInertia), asDblArray(prinMoments), prinAxes, asDblArray(radiiGyration), extents));
+    PyThrowBadEs(impObj()->getMassProp(volume, centroid, asDblArray(momInertia),
+        asDblArray(prodInertia), asDblArray(prinMoments), prinAxes, asDblArray(radiiGyration), extents));
     return boost::python::make_tuple(volume, centroid, momInertia, prodInertia, prinMoments, prinAxes[0], prinAxes[1], prinAxes[2], radiiGyration, extents);
 }
 
