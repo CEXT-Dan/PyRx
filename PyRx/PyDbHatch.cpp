@@ -200,14 +200,13 @@ boost::python::tuple PyDbHatch::getLoopEdgesAt(int loopIndex)
     AcGeVoidPointerArray edgePtrs;
     AcGeIntArray edgeTypes;
     PyThrowBadEs(impObj()->getLoopAt(loopIndex, loopType, edgePtrs, edgeTypes));
+
     PyAutoLockGIL lock;
     boost::python::list edgePtrsList;
     for (auto ep : edgePtrs)
         edgePtrsList.append(PyGeCurve2d((AcGeCurve2d*)ep));
-    boost::python::list edgeTypesList;
-    for (auto et : edgeTypes)
-        edgeTypes.append(et);
-    return boost::python::make_tuple(loopType, edgePtrsList, edgeTypesList);
+
+    return boost::python::make_tuple(loopType, edgePtrsList, IntArrayToPyList(edgeTypes));
 }
 
 boost::python::tuple PyDbHatch::getLoopBulgesAt(int loopIndex)
@@ -216,14 +215,7 @@ boost::python::tuple PyDbHatch::getLoopBulgesAt(int loopIndex)
     AcGePoint2dArray vertices;
     AcGeDoubleArray bulges;
     PyThrowBadEs(impObj()->getLoopAt(loopIndex, loopType, vertices, bulges));
-    PyAutoLockGIL lock;
-    boost::python::list verticesList;
-    for (auto p : vertices)
-        verticesList.append(p);
-    boost::python::list bulgesList;
-    for (auto b : bulges)
-        bulgesList.append(b);
-    return boost::python::make_tuple(loopType, verticesList, bulgesList);
+    return boost::python::make_tuple(loopType, Point2dArrayToPyList(vertices), DoubleArrayToPyList(bulges));
 }
 
 void PyDbHatch::appendLoopEdges(Adesk::Int32 loopType, const boost::python::list& edgePtrs, const boost::python::list& edgeTypes)
@@ -232,7 +224,6 @@ void PyDbHatch::appendLoopEdges(Adesk::Int32 loopType, const boost::python::list
     const auto& curves = py_list_to_std_vector<PyGeCurve2d>(edgePtrs);
     for (const auto& curve : curves)
         _edgePtrs.append(curve.impObj()->copy());
-
     const auto& _edgeTypes = PyListToIntArray(edgeTypes);
     return PyThrowBadEs(impObj()->appendLoop(loopType, _edgePtrs, _edgeTypes));
 }
