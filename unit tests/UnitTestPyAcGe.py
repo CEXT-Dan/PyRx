@@ -268,12 +268,19 @@ class TestGe(unittest.TestCase):
         seg.reverseParam()
         self.assertEqual(seg.startPoint(), pnt2)
         
-
-
+    def test_surfSurfInt(self):
+        vec = PyGe.Vector3d.kXAxis
+        pnt = PyGe.Point3d(4000.0,3000.0,0.0)
+        p1 = PyGe.Plane(pnt, vec)
+        p3 = PyGe.Plane(pnt, vec)
+        si = PyGe.SurfSurfInt(p1,p3)
+        self.assertEqual(si.numResults(),1)
+    
+        
 def PyRxCmd_pyge():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestGe)
         print('TestGe')
         print(unittest.TextTestRunner(verbosity=0).run(suite))
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
