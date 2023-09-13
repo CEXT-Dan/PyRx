@@ -54,8 +54,6 @@ void makePyGeCurve3dWrapper()
         .def("isOn", &PyGeCurve3d::isOn2)
         .def("isOn", &PyGeCurve3d::isOn3)
         .def("isOn", &PyGeCurve3d::isOn4)
-        .def("isOn", &PyGeCurve3d::isOn5)
-        .def("isOn", &PyGeCurve3d::isOn6)
         .def("paramOf", &PyGeCurve3d::paramOf1)
         .def("paramOf", &PyGeCurve3d::paramOf2)
         .def("getTrimmedOffset", &PyGeCurve3d::getTrimmedOffset1)
@@ -328,34 +326,32 @@ PyGeEntity3d PyGeCurve3d::orthoProject2(const PyGePlane& projectionPlane, const 
     return PyGeEntity3d(impObj()->orthoProject(*projectionPlane.impObj(), tol));
 }
 
-bool PyGeCurve3d::isOn1(const AcGePoint3d& pnt) const
+boost::python::tuple PyGeCurve3d::isOn1(const AcGePoint3d& pnt) const
 {
-    return impObj()->isOn(pnt);
+    PyAutoLockGIL lock;
+    double param = 0;
+    auto res= impObj()->isOn(pnt, param);
+    return boost::python::make_tuple(res, param);
 }
 
-bool PyGeCurve3d::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
+boost::python::tuple PyGeCurve3d::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    return impObj()->isOn(pnt, tol);
+    PyAutoLockGIL lock;
+    double param = 0;
+    auto res = impObj()->isOn(pnt, param, tol);
+    return boost::python::make_tuple(res, param);
 }
 
-bool PyGeCurve3d::isOn3(const AcGePoint3d& pnt, double& param) const
+boost::python::tuple PyGeCurve3d::isOn3(double param) const
 {
-    return impObj()->isOn(pnt, param);
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(impObj()->isOn(param));
 }
 
-bool PyGeCurve3d::isOn4(const AcGePoint3d& pnt, double& param, const AcGeTol& tol) const
+boost::python::tuple PyGeCurve3d::isOn4(double param, const AcGeTol& tol) const
 {
-    return impObj()->isOn(pnt, param, tol);
-}
-
-bool PyGeCurve3d::isOn5(double param) const
-{
-    return impObj()->isOn(param);
-}
-
-bool PyGeCurve3d::isOn6(double param, const AcGeTol& tol) const
-{
-    return impObj()->isOn(param, tol);
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(impObj()->isOn(param, tol));
 }
 
 double PyGeCurve3d::paramOf1(const AcGePoint3d& pnt) const
