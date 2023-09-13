@@ -18,12 +18,13 @@ using namespace boost::python;
 
 
 #ifdef ARXAPP
-extern "C" void acedLoadJSScript(const ACHAR * pUriOfJSFile);
-extern "C" bool acedGetPredefinedPattens(AcStringArray & patterns);
-extern "C" Acad::ErrorStatus acedSetUndoMark(bool);
-extern "C" void acedGetCommandPromptString(CString&);
-extern void __cdecl acedGetLastCommandLines(AcStringArray&, int, bool);
-extern Adesk::Boolean acedPostCommand(const ACHAR*);
+
+EXTERN_C void                   acedLoadJSScript(const ACHAR * pUriOfJSFile);
+EXTERN_C bool                   acedGetPredefinedPattens(AcStringArray & patterns);
+EXTERN_C Acad::ErrorStatus      acedSetUndoMark(bool);
+EXTERN_C void                   acedGetCommandPromptString(CString&);
+extern void                     acedGetLastCommandLines(AcStringArray&, int, bool);
+extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 #endif
 
 //-----------------------------------------------------------------------------------------
