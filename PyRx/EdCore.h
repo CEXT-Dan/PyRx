@@ -60,6 +60,7 @@ public:
     static std::string          getFileD(const std::string& title, const std::string& defawlt, const std::string& ext, int flags);
     static boost::python::list  getFileNavDialog(const std::string& title, const std::string& defawlt, const std::string& ext, const std::string& dlgname, int flags);
     static std::string          getCommandPromptString();
+    static boost::python::list  getLastCommandLines(int lineCount, bool ignoreNull);
     static unsigned int         getBlockEditMode();
     static std::string          getCommandForDocument(const PyApDocument& doc);
     static boost::python::list  getCurrentSelectionSet();

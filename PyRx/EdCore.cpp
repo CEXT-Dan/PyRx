@@ -22,6 +22,7 @@ extern "C" void acedLoadJSScript(const ACHAR * pUriOfJSFile);
 extern "C" bool acedGetPredefinedPattens(AcStringArray & patterns);
 extern "C" Acad::ErrorStatus acedSetUndoMark(bool);
 extern "C" void acedGetCommandPromptString(CString&);
+extern void __cdecl acedGetLastCommandLines(AcStringArray&, int, bool);
 extern Adesk::Boolean acedPostCommand(const ACHAR*);
 #endif
 
@@ -125,6 +126,7 @@ void makePyEdCoreWrapper()
         .def("graphScr", &EdCore::graphScr).staticmethod("graphScr")
         .def("grDraw", &EdCore::grDraw).staticmethod("grDraw")
         .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
+        .def("getLastCommandLines", &EdCore::getLastCommandLines).staticmethod("getLastCommandLines")
         .def("getBlockEditMode", &EdCore::getBlockEditMode).staticmethod("getBlockEditMode")
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
@@ -457,6 +459,13 @@ std::string EdCore::getCommandPromptString()
     CString str;
     acedGetCommandPromptString(str);
     return wstr_to_utf8(str);
+}
+
+boost::python::list EdCore::getLastCommandLines(int lineCount, bool ignoreNull)
+{
+    AcStringArray strs;
+    acedGetLastCommandLines(strs, lineCount, ignoreNull);
+    return AcStringArrayToPyList(strs);
 }
 
 unsigned int EdCore::getBlockEditMode()
