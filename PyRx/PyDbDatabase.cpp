@@ -5,6 +5,7 @@
 #include "PyDbTransactionManager.h"
 #include "PyDbObjectContext.h"
 #include "PyDbSymbolTableRecord.h"
+#include "PyDbIdMapping.h"
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
@@ -469,6 +470,8 @@ void makePyDbDatabaseWrapper()
         .def("wblock", &PyDbDatabase::wblock2)
         .def("wblock", &PyDbDatabase::wblock3)
         .def("wblock", &PyDbDatabase::wblock4)
+        .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects1)
+        .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects2)
         .def("getFilename", &PyDbDatabase::getFilename, DS.ARGS())
         .def("readDwgFile", &PyDbDatabase::readDwgFile)
         .def("readDwgFile", &PyDbDatabase::readDwgFile2, DS.ARGS({ "fileName : str", "mode : int=kForReadAndReadShare", "bAllowCPConversion : bool=False","password : str=empty" }))
@@ -2843,6 +2846,18 @@ void PyDbDatabase::wblock4(PyDbDatabase& pOutputDb)
     AcDbDatabase* _pOutputDb = nullptr;
     PyThrowBadEs(impObj()->wblock(_pOutputDb));
     pOutputDb = PyDbDatabase(_pOutputDb, true);
+}
+
+void PyDbDatabase::wblockCloneObjects1(const boost::python::list& objectIds, 
+    const PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc)
+{
+    PyThrowBadEs(impObj()->wblockCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj(), drc));
+}
+
+void PyDbDatabase::wblockCloneObjects2(const boost::python::list& objectIds, 
+    const PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc, bool deferXlation)
+{
+    PyThrowBadEs(impObj()->wblockCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj(), drc, deferXlation));
 }
 
 void PyDbDatabase::wblock3(PyDbDatabase& pOutputDb, const PyDbObjectId& blockId)
