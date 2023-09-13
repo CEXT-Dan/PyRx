@@ -12,7 +12,8 @@ void makePyGeEntity3dWrapper()
         .def("isKindOf", &PyGeEntity3d::isKindOf)
         .def("type", &PyGeEntity3d::type)
         .def("copy", &PyGeEntity3d::copy)
-        .def("isEqualTo", &PyGeEntity3d::isEqualTo)
+        .def("isEqualTo", &PyGeEntity3d::isEqualTo1)
+        .def("isEqualTo", &PyGeEntity3d::isEqualTo2)
         .def("transformBy", &PyGeEntity3d::transformBy, return_value_policy<reference_existing_object>())
         .def("translateBy", &PyGeEntity3d::translateBy, return_value_policy<reference_existing_object>())
         .def("rotateBy", &PyGeEntity3d::rotateBy1, return_value_policy<reference_existing_object>())
@@ -88,7 +89,12 @@ PyGeEntity3d PyGeEntity3d::copy() const
     return PyGeEntity3d(impObj()->copy());
 }
 
-Adesk::Boolean PyGeEntity3d::isEqualTo(const PyGeEntity3d& ent, const AcGeTol& tol) const
+Adesk::Boolean PyGeEntity3d::isEqualTo1(const PyGeEntity3d& ent) const
+{
+    return impObj()->isEqualTo(*ent.impObj());
+}
+
+Adesk::Boolean PyGeEntity3d::isEqualTo2(const PyGeEntity3d& ent, const AcGeTol& tol) const
 {
     return impObj()->isEqualTo(*ent.impObj(), tol);
 }
