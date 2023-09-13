@@ -245,7 +245,6 @@ BOOST_PYTHON_MODULE(PyDb)
     def("curDb", curPyDb);
 
     //enums
-
     enum_<AcCm::DialogTabs >("AcCmDialogTabs")
         .value("kACITab", AcCm::DialogTabs::kACITab)
         .value("kTrueColorTab", AcCm::DialogTabs::kTrueColorTab)

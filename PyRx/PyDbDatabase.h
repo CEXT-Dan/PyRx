@@ -6,6 +6,7 @@ class PyDbTransactionManager;
 class PyDbHandle;
 class PyDbAnnotationScale;
 class PyDbDimStyleTableRecord;
+class PyDbIdMapping;
 
 void makePyDbDatabaseWrapper();
 class PyDbDatabase : public PyRxObject
@@ -489,8 +490,13 @@ public:
     void	            wblock2(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint);
     void	            wblock3(PyDbDatabase& pOutputDb, const PyDbObjectId& blockId);
     void	            wblock4(PyDbDatabase& pOutputDb);
-    //TODO: AcDbIdMapping
-    //void wblockCloneObjects(const boost::python::list& objectIds, const AcDbObjectId& owner, AcDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc, bool deferXlation = false);
+
+    void                wblockCloneObjects1(const boost::python::list& objectIds, const
+        PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc);
+
+    void                wblockCloneObjects2(const boost::python::list& objectIds, const 
+        PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc, bool deferXlation);
+
     AcGePoint3d			worldPucsBaseOrigin(AcDb::OrthographicView orthoView) const;
     AcGePoint3d			worldUcsBaseOrigin(AcDb::OrthographicView orthoView) const;
     bool				worldview() const;

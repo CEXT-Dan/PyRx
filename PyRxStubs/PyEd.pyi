@@ -586,6 +586,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class boost::python::list getFileNavDialog(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
+    def getLastCommandLines (self, *args, **kwargs)-> list :
+      '''getLastCommandLines( (int)arg1, (bool)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list getLastCommandLines(int,bool)'''
+    ...
     def getPredefinedHatchPatterns (self, *args, **kwargs)-> list :
       '''getPredefinedHatchPatterns() -> list :
 

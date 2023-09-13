@@ -12350,6 +12350,17 @@ wblock( (Database)arg1, (Database)arg2 [, (ObjectId)arg3]) -> None :
     C++ signature :
         void wblock(class PyDbDatabase {lvalue},class PyDbDatabase {lvalue} [,class PyDbObjectId])'''
     ...
+    def wblockCloneObjects (self, *args, **kwargs)-> None :
+      '''wblockCloneObjects( (Database)arg1, (list)arg2, (ObjectId)arg3, (IdMapping)arg4, (DuplicateRecordCloning)arg5) -> None :
+
+    C++ signature :
+        void wblockCloneObjects(class PyDbDatabase {lvalue},class boost::python::list,class PyDbObjectId,class PyDbIdMapping {lvalue},enum AcDb::DuplicateRecordCloning)
+
+wblockCloneObjects( (Database)arg1, (list)arg2, (ObjectId)arg3, (IdMapping)arg4, (DuplicateRecordCloning)arg5, (bool)arg6) -> None :
+
+    C++ signature :
+        void wblockCloneObjects(class PyDbDatabase {lvalue},class boost::python::list,class PyDbObjectId,class PyDbIdMapping {lvalue},enum AcDb::DuplicateRecordCloning,bool)'''
+    ...
     def worldPucsBaseOrigin (self: Database,view : OrthographicView)-> PyGe.Point3d :
       '''                             '''
     ...
