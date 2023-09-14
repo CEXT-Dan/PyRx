@@ -13,8 +13,8 @@ void makePyGeCurve2dWrapper()
         .def("getInterval", &PyGeCurve2d::getInterval)
         .def("getStartPoint", &PyGeCurve2d::getStartPoint)
         .def("getEndPoint", &PyGeCurve2d::getEndPoint)
-        .def("reverseParam", &PyGeCurve2d::reverseParam, return_self<>())
-        .def("setInterval", &PyGeCurve2d::setInterval1, return_self<>())
+        .def("reverseParam", &PyGeCurve2d::reverseParam)
+        .def("setInterval", &PyGeCurve2d::setInterval1)
         .def("setInterval", &PyGeCurve2d::setInterval2)
         .def("distanceTo", &PyGeCurve2d::distanceTo1)
         .def("distanceTo", &PyGeCurve2d::distanceTo2)
@@ -34,8 +34,6 @@ void makePyGeCurve2dWrapper()
         .def("isOn", &PyGeCurve2d::isOn2)
         .def("isOn", &PyGeCurve2d::isOn3)
         .def("isOn", &PyGeCurve2d::isOn4)
-        .def("isOn", &PyGeCurve2d::isOn5)
-        .def("isOn", &PyGeCurve2d::isOn6)
         .def("paramOf", &PyGeCurve2d::paramOf1)
         .def("paramOf", &PyGeCurve2d::paramOf2)
         .def("getTrimmedOffset", &PyGeCurve2d::getTrimmedOffset1)
@@ -98,16 +96,14 @@ AcGePoint2d PyGeCurve2d::getEndPoint() const
     return e;
 }
 
-PyGeCurve2d& PyGeCurve2d::reverseParam()
+void PyGeCurve2d::reverseParam()
 {
     impObj()->reverseParam();
-    return *this;
 }
 
-PyGeCurve2d& PyGeCurve2d::setInterval1()
+void PyGeCurve2d::setInterval1()
 {
     impObj()->setInterval();
-    return *this;
 }
 
 Adesk::Boolean PyGeCurve2d::setInterval2(const PyGeInterval& intrvl)
@@ -207,34 +203,30 @@ PyGePointOnCurve2d PyGeCurve2d::getNormalPoint2(const AcGePoint2d& pnt, const Ac
     return PyGePointOnCurve2d(curve);
 }
 
-Adesk::Boolean PyGeCurve2d::isOn1(const AcGePoint2d& pnt) const
+boost::python::tuple PyGeCurve2d::isOn1(const AcGePoint2d& pnt) const
 {
-    return impObj()->isOn(pnt);
+    PyAutoLockGIL lock;
+    double param = 0.0;
+    auto res = impObj()->isOn(pnt, param);
+    return boost::python::make_tuple(res, param);
 }
 
-Adesk::Boolean PyGeCurve2d::isOn2(const AcGePoint2d& pnt, const AcGeTol& tol) const
+boost::python::tuple PyGeCurve2d::isOn2(const AcGePoint2d& pnt, const AcGeTol& tol) const
 {
-    return impObj()->isOn(pnt, tol);
+    PyAutoLockGIL lock;
+    double param = 0.0;
+    auto res = impObj()->isOn(pnt, param, tol);
+    return boost::python::make_tuple(res, param);
 }
 
-Adesk::Boolean PyGeCurve2d::isOn3(const AcGePoint2d& pnt, double& param) const
+boost::python::tuple PyGeCurve2d::isOn3(double param) const
 {
-    return impObj()->isOn(pnt, param);
+    return boost::python::make_tuple(impObj()->isOn(param));
 }
 
-Adesk::Boolean PyGeCurve2d::isOn4(const AcGePoint2d& pnt, double& param, const AcGeTol& tol) const
+boost::python::tuple PyGeCurve2d::isOn4(double param, const AcGeTol& tol) const
 {
-    return impObj()->isOn(pnt, param, tol);
-}
-
-Adesk::Boolean PyGeCurve2d::isOn5(double param) const
-{
-    return impObj()->isOn(param);
-}
-
-Adesk::Boolean PyGeCurve2d::isOn6(double param, const AcGeTol& tol) const
-{
-    return impObj()->isOn(param, tol);
+    return boost::python::make_tuple(impObj()->isOn(param, tol));
 }
 
 double PyGeCurve2d::paramOf1(const AcGePoint2d& pnt) const
@@ -481,7 +473,7 @@ AcGeCurve2d* PyGeCurve2d::impObj(const std::source_location& src /*= std::source
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeCurve2d*>(m_imp.get());
+        return static_cast<AcGeCurve2d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -511,17 +503,17 @@ void makePyGeCircArc2dWrapper()
         .def("refVec", &PyGeCircArc2d::refVec)
         .def("startPoint", &PyGeCircArc2d::startPoint)
         .def("endPoint", &PyGeCircArc2d::endPoint)
-        .def("setCenter", &PyGeCircArc2d::setCenter, return_self<>())
-        .def("setRadius", &PyGeCircArc2d::setRadius, return_self<>())
-        .def("setAngles", &PyGeCircArc2d::setAngles, return_self<>())
-        .def("setToComplement", &PyGeCircArc2d::setToComplement, return_self<>())
-        .def("setRefVec", &PyGeCircArc2d::setRefVec, return_self<>())
-        .def("set", &PyGeCircArc2d::set1, return_self<>())
-        .def("set", &PyGeCircArc2d::set2, return_self<>())
-        .def("set", &PyGeCircArc2d::set3, return_self<>())
-        .def("set", &PyGeCircArc2d::set4, return_self<>())
-        .def("set", &PyGeCircArc2d::set5, return_self<>())
-        .def("set", &PyGeCircArc2d::set6, return_self<>())
+        .def("setCenter", &PyGeCircArc2d::setCenter)
+        .def("setRadius", &PyGeCircArc2d::setRadius)
+        .def("setAngles", &PyGeCircArc2d::setAngles)
+        .def("setToComplement", &PyGeCircArc2d::setToComplement)
+        .def("setRefVec", &PyGeCircArc2d::setRefVec)
+        .def("set", &PyGeCircArc2d::set1)
+        .def("set", &PyGeCircArc2d::set2)
+        .def("set", &PyGeCircArc2d::set3)
+        .def("set", &PyGeCircArc2d::set4)
+        .def("set", &PyGeCircArc2d::set5)
+        .def("set", &PyGeCircArc2d::set6)
         .def("className", &PyGeCircArc2d::className).staticmethod("className")
         ;
 }
@@ -670,64 +662,56 @@ AcGePoint2d PyGeCircArc2d::endPoint() const
     return impObj()->endPoint();
 }
 
-PyGeCircArc2d& PyGeCircArc2d::setCenter(const AcGePoint2d& cent)
+void PyGeCircArc2d::setCenter(const AcGePoint2d& cent)
 {
     impObj()->setCenter(cent);
-    return *this;
 }
 
-PyGeCircArc2d& PyGeCircArc2d::setRadius(double radius)
+void PyGeCircArc2d::setRadius(double radius)
 {
     impObj()->setRadius(radius);
-    return *this;
 }
 
-PyGeCircArc2d& PyGeCircArc2d::setAngles(double startAng, double endAng)
+void  PyGeCircArc2d::setAngles(double startAng, double endAng)
 {
     impObj()->setAngles(startAng, endAng);
-    return *this;
 }
 
-PyGeCircArc2d& PyGeCircArc2d::setToComplement()
+void PyGeCircArc2d::setToComplement()
 {
     impObj()->setToComplement();
-    return *this;
 }
 
-PyGeCircArc2d& PyGeCircArc2d::setRefVec(const AcGeVector2d& vec)
+void PyGeCircArc2d::setRefVec(const AcGeVector2d& vec)
 {
     impObj()->setRefVec(vec);
-    return *this;
 }
 
-PyGeCircArc2d& PyGeCircArc2d::set1(const AcGePoint2d& cent, double radius)
+void PyGeCircArc2d::set1(const AcGePoint2d& cent, double radius)
 {
     impObj()->set(cent, radius);
-    return *this;
 }
 
-PyGeCircArc2d& PyGeCircArc2d::set2(const AcGePoint2d& cent, double radius, double ang1, double ang2, const AcGeVector2d& refVec, Adesk::Boolean isClockWise)
+void  PyGeCircArc2d::set2(const AcGePoint2d& cent, double radius, double ang1, double ang2, const AcGeVector2d& refVec, Adesk::Boolean isClockWise)
 {
     impObj()->set(cent, radius, ang1, ang2, refVec, isClockWise);
-    return *this;
 }
 
-PyGeCircArc2d& PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, const AcGePoint2d& endPoint)
+void PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, const AcGePoint2d& endPoint)
 {
     AcGeError err;
     impObj()->set(startPoint, pnt, endPoint, err);
     if (err != AcGe::kOk)
         throw PyAcadErrorStatus(eInvalidInput);
-    return *this;
+
 }
 
-PyGeCircArc2d& PyGeCircArc2d::set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, Adesk::Boolean bulgeFlag)
+void PyGeCircArc2d::set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, Adesk::Boolean bulgeFlag)
 {
     impObj()->set(startPoint, endPoint, bulge, bulgeFlag);
-    return *this;
 }
 
-PyGeCircArc2d& PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius)
+void  PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius)
 {
     double param1 = 0.0;
     double param2 = 0.0;
@@ -735,10 +719,9 @@ PyGeCircArc2d& PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d&
     impObj()->set(*curve1.impObj(), *curve2.impObj(), radius, param1, param2, success);
     if (success == false)
         throw PyAcadErrorStatus(eInvalidInput);
-    return *this;
 }
 
-PyGeCircArc2d& PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, const PyGeCurve2d& curve3)
+void PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, const PyGeCurve2d& curve3)
 {
     double param1 = 0.0;
     double param2 = 0.0;
@@ -747,7 +730,7 @@ PyGeCircArc2d& PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d&
     impObj()->set(*curve1.impObj(), *curve2.impObj(), *curve3.impObj(), param1, param2, param3, success);
     if (success == false)
         throw PyAcadErrorStatus(eInvalidInput);
-    return *this;
+
 }
 
 std::string PyGeCircArc2d::className()
@@ -759,7 +742,7 @@ AcGeCircArc2d* PyGeCircArc2d::impObj(const std::source_location& src /*= std::so
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeCircArc2d*>(m_imp.get());
+        return static_cast<AcGeCircArc2d*>(m_imp.get());
 }
 
 //----------------------------------------------------------------------------
@@ -787,14 +770,14 @@ void makePyGeEllipArc2Wrapper()
         .def("startPoint", &PyGeEllipArc2d::startPoint)
         .def("endPoint", &PyGeEllipArc2d::endPoint)
         .def("isClockWise", &PyGeEllipArc2d::isClockWise)
-        .def("setCenter", &PyGeEllipArc2d::setCenter, return_self<>())
-        .def("setMinorRadius", &PyGeEllipArc2d::setMinorRadius, return_self<>())
-        .def("setMajorRadius", &PyGeEllipArc2d::setMajorRadius, return_self<>())
-        .def("setAxes", &PyGeEllipArc2d::setAxes, return_self<>())
-        .def("setAngles", &PyGeEllipArc2d::setAngles, return_self<>())
-        .def("set", &PyGeEllipArc2d::set1, return_self<>())
-        .def("set", &PyGeEllipArc2d::set2, return_self<>())
-        .def("set", &PyGeEllipArc2d::set3, return_self<>())
+        .def("setCenter", &PyGeEllipArc2d::setCenter)
+        .def("setMinorRadius", &PyGeEllipArc2d::setMinorRadius)
+        .def("setMajorRadius", &PyGeEllipArc2d::setMajorRadius)
+        .def("setAxes", &PyGeEllipArc2d::setAxes)
+        .def("setAngles", &PyGeEllipArc2d::setAngles)
+        .def("set", &PyGeEllipArc2d::set1)
+        .def("set", &PyGeEllipArc2d::set2)
+        .def("set", &PyGeEllipArc2d::set3)
         .def("className", &PyGeEllipArc2d::className).staticmethod("className")
         ;
 }
@@ -917,53 +900,44 @@ Adesk::Boolean PyGeEllipArc2d::isClockWise() const
     return impObj()->isClockWise();
 }
 
-PyGeEllipArc2d& PyGeEllipArc2d::setCenter(const AcGePoint2d& cent)
+void PyGeEllipArc2d::setCenter(const AcGePoint2d& cent)
 {
     impObj()->setCenter(cent);
-    return *this;
 }
 
-PyGeEllipArc2d& PyGeEllipArc2d::setMinorRadius(double rad)
+void PyGeEllipArc2d::setMinorRadius(double rad)
 {
     impObj()->setMinorRadius(rad);
-    return *this;
 }
 
-PyGeEllipArc2d& PyGeEllipArc2d::setMajorRadius(double rad)
+void PyGeEllipArc2d::setMajorRadius(double rad)
 {
     impObj()->setMajorRadius(rad);
-    return *this;
 }
 
-PyGeEllipArc2d& PyGeEllipArc2d::setAxes(const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis)
+void PyGeEllipArc2d::setAxes(const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis)
 {
     impObj()->setAxes(majorAxis, minorAxis);
-    return *this;
 }
 
-PyGeEllipArc2d& PyGeEllipArc2d::setAngles(double startAngle, double endAngle)
+void PyGeEllipArc2d::setAngles(double startAngle, double endAngle)
 {
     impObj()->setAngles(startAngle, endAngle);
-    return *this;
 }
 
-PyGeEllipArc2d& PyGeEllipArc2d::set1(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius)
+void PyGeEllipArc2d::set1(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius)
 {
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius);
-    return *this;
 }
 
-PyGeEllipArc2d& PyGeEllipArc2d::set2(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
+void PyGeEllipArc2d::set2(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
 {
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle);
-    return *this;
 }
 
-PyGeEllipArc2d& PyGeEllipArc2d::set3(const PyGeCircArc2d& arc)
+void PyGeEllipArc2d::set3(const PyGeCircArc2d& arc)
 {
-    if (impObj() == nullptr || arc.isNull())
-        impObj()->set(*arc.impObj());
-    return *this;
+    impObj()->set(*arc.impObj());
 }
 
 std::string PyGeEllipArc2d::className()
@@ -975,7 +949,7 @@ AcGeEllipArc2d* PyGeEllipArc2d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeEllipArc2d*>(m_imp.get());
+        return static_cast<AcGeEllipArc2d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1001,7 +975,7 @@ AcGeExternalCurve2d* PyGeExternalCurve2d::impObj(const std::source_location& src
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeExternalCurve2d*>(m_imp.get());
+        return static_cast<AcGeExternalCurve2d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1033,7 +1007,7 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*=
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeOffsetCurve2d*>(m_imp.get());
+        return static_cast<AcGeOffsetCurve2d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1064,6 +1038,6 @@ AcGeCompositeCurve2d* PyGeCompositeCurve2d::impObj(const std::source_location& s
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeCompositeCurve2d*>(m_imp.get());
+        return static_cast<AcGeCompositeCurve2d*>(m_imp.get());
 }
 

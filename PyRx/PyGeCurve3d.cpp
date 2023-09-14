@@ -330,7 +330,7 @@ boost::python::tuple PyGeCurve3d::isOn1(const AcGePoint3d& pnt) const
 {
     PyAutoLockGIL lock;
     double param = 0;
-    auto res= impObj()->isOn(pnt, param);
+    auto res = impObj()->isOn(pnt, param);
     return boost::python::make_tuple(res, param);
 }
 
@@ -609,7 +609,7 @@ AcGeCurve3d* PyGeCurve3d::impObj(const std::source_location& src /*= std::source
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeCurve3d*>(m_imp.get());
+        return static_cast<AcGeCurve3d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -644,15 +644,15 @@ void makePyGeCircArc3dWrapper()
         .def("endAng", &PyGeCircArc3d::endAng)
         .def("startPoint", &PyGeCircArc3d::startPoint)
         .def("endPoint", &PyGeCircArc3d::endPoint)
-        .def("setCenter", &PyGeCircArc3d::setCenter, return_self<>())
-        .def("setAxes", &PyGeCircArc3d::setAxes, return_self<>())
-        .def("setRadius", &PyGeCircArc3d::setRadius, return_self<>())
-        .def("setAngles", &PyGeCircArc3d::setAngles, return_self<>())
-        .def("set", &PyGeCircArc3d::set1, return_self<>())
-        .def("set", &PyGeCircArc3d::set2, return_self<>())
-        .def("set", &PyGeCircArc3d::set3, return_self<>())
-        .def("set", &PyGeCircArc3d::set4, return_self<>())
-        .def("set", &PyGeCircArc3d::set5, return_self<>())
+        .def("setCenter", &PyGeCircArc3d::setCenter)
+        .def("setAxes", &PyGeCircArc3d::setAxes)
+        .def("setRadius", &PyGeCircArc3d::setRadius)
+        .def("setAngles", &PyGeCircArc3d::setAngles)
+        .def("set", &PyGeCircArc3d::set1)
+        .def("set", &PyGeCircArc3d::set2)
+        .def("set", &PyGeCircArc3d::set3)
+        .def("set", &PyGeCircArc3d::set4)
+        .def("set", &PyGeCircArc3d::set5)
         .def("className", &PyGeCircArc3d::className).staticmethod("className")
         ;
 }
@@ -849,49 +849,42 @@ AcGePoint3d PyGeCircArc3d::endPoint() const
     return impObj()->endPoint();
 }
 
-PyGeCircArc3d& PyGeCircArc3d::setCenter(const AcGePoint3d& val)
+void PyGeCircArc3d::setCenter(const AcGePoint3d& val)
 {
     impObj()->setCenter(val);
-    return *this;
 }
 
-PyGeCircArc3d& PyGeCircArc3d::setAxes(const AcGeVector3d& normal, const AcGeVector3d& refVec)
+void PyGeCircArc3d::setAxes(const AcGeVector3d& normal, const AcGeVector3d& refVec)
 {
     impObj()->setAxes(normal, refVec);
-    return *this;
 }
 
-PyGeCircArc3d& PyGeCircArc3d::setRadius(double val)
+void PyGeCircArc3d::setRadius(double val)
 {
     impObj()->setRadius(val);
-    return *this;
 }
 
-PyGeCircArc3d& PyGeCircArc3d::setAngles(double startAngle, double endAngle)
+void PyGeCircArc3d::setAngles(double startAngle, double endAngle)
 {
     impObj()->setAngles(startAngle, endAngle);
-    return *this;
 }
 
-PyGeCircArc3d& PyGeCircArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius)
+void PyGeCircArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius)
 {
     impObj()->set(cent, nrm, radius);
-    return *this;
 }
 
-PyGeCircArc3d& PyGeCircArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle)
+void PyGeCircArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle)
 {
     impObj()->set(cent, nrm, refVec, radius, startAngle, endAngle);
-    return *this;
 }
 
-PyGeCircArc3d& PyGeCircArc3d::set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint)
+void PyGeCircArc3d::set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint)
 {
     impObj()->set(startPoint, pnt, endPoint);
-    return *this;
 }
 
-PyGeCircArc3d& PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius)
+void PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius)
 {
     double param1;
     double param2;
@@ -899,10 +892,9 @@ PyGeCircArc3d& PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d&
     impObj()->set(*curve1.impObj(), *curve2.impObj(), radius, param1, param2, success);
     if (success == false)
         throw PyAcadErrorStatus(eInvalidInput);
-    return *this;
 }
 
-PyGeCircArc3d& PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3)
+void PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3)
 {
     double param1;
     double param2;
@@ -911,7 +903,6 @@ PyGeCircArc3d& PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d&
     impObj()->set(*curve1.impObj(), *curve2.impObj(), *curve3.impObj(), param1, param2, param3, success);
     if (success == false)
         throw PyAcadErrorStatus(eInvalidInput);
-    return *this;
 }
 
 std::string PyGeCircArc3d::className()
@@ -923,7 +914,7 @@ AcGeCircArc3d* PyGeCircArc3d::impObj(const std::source_location& src /*= std::so
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeCircArc3d*>(m_imp.get());
+        return static_cast<AcGeCircArc3d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -954,7 +945,7 @@ AcGeCompositeCurve3d* PyGeCompositeCurve3d::impObj(const std::source_location& s
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeCompositeCurve3d*>(m_imp.get());
+        return static_cast<AcGeCompositeCurve3d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -989,14 +980,14 @@ void makePyGeEllipArc3dWrapper()
         .def("endAng", &PyGeEllipArc3d::endAng)
         .def("startPoint", &PyGeEllipArc3d::startPoint)
         .def("endPoint", &PyGeEllipArc3d::endPoint)
-        .def("setCenter", &PyGeEllipArc3d::setCenter, return_self<>())
-        .def("setMinorRadius", &PyGeEllipArc3d::setMinorRadius, return_self<>())
-        .def("setMajorRadius", &PyGeEllipArc3d::setMajorRadius, return_self<>())
-        .def("setAxes", &PyGeEllipArc3d::setAxes, return_self<>())
-        .def("setAngles", &PyGeEllipArc3d::setAngles, return_self<>())
-        .def("set", &PyGeEllipArc3d::set1, return_self<>())
-        .def("set", &PyGeEllipArc3d::set2, return_self<>())
-        .def("set", &PyGeEllipArc3d::set3, return_self<>())
+        .def("setCenter", &PyGeEllipArc3d::setCenter)
+        .def("setMinorRadius", &PyGeEllipArc3d::setMinorRadius)
+        .def("setMajorRadius", &PyGeEllipArc3d::setMajorRadius)
+        .def("setAxes", &PyGeEllipArc3d::setAxes)
+        .def("setAngles", &PyGeEllipArc3d::setAngles)
+        .def("set", &PyGeEllipArc3d::set1)
+        .def("set", &PyGeEllipArc3d::set2)
+        .def("set", &PyGeEllipArc3d::set3)
         .def("className", &PyGeEllipArc3d::className).staticmethod("className")
         ;
 }
@@ -1179,52 +1170,44 @@ AcGePoint3d PyGeEllipArc3d::endPoint() const
     return impObj()->endPoint();
 }
 
-PyGeEllipArc3d& PyGeEllipArc3d::setCenter(const AcGePoint3d& cent)
+void PyGeEllipArc3d::setCenter(const AcGePoint3d& cent)
 {
     impObj()->setCenter(cent);
-    return *this;
 }
 
-PyGeEllipArc3d& PyGeEllipArc3d::setMinorRadius(double rad)
+void PyGeEllipArc3d::setMinorRadius(double rad)
 {
     impObj()->setMinorRadius(rad);
-    return *this;
 }
 
-PyGeEllipArc3d& PyGeEllipArc3d::setMajorRadius(double rad)
+void PyGeEllipArc3d::setMajorRadius(double rad)
 {
     impObj()->setMajorRadius(rad);
-    return *this;
 }
 
-PyGeEllipArc3d& PyGeEllipArc3d::setAxes(const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis)
+void PyGeEllipArc3d::setAxes(const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis)
 {
     impObj()->setAxes(majorAxis, minorAxis);
-    return *this;
 }
 
-PyGeEllipArc3d& PyGeEllipArc3d::setAngles(double startAngle, double endAngle)
+void PyGeEllipArc3d::setAngles(double startAngle, double endAngle)
 {
     impObj()->setAngles(startAngle, endAngle);
-    return *this;
 }
 
-PyGeEllipArc3d& PyGeEllipArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius)
+void PyGeEllipArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius)
 {
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius);
-    return *this;
 }
 
-PyGeEllipArc3d& PyGeEllipArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
+void PyGeEllipArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
 {
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle);
-    return *this;
 }
 
-PyGeEllipArc3d& PyGeEllipArc3d::set3(const PyGeCircArc3d& arc)
+void PyGeEllipArc3d::set3(const PyGeCircArc3d& arc)
 {
     impObj()->set(*arc.impObj());
-    return *this;
 }
 
 std::string PyGeEllipArc3d::className()
@@ -1236,7 +1219,7 @@ AcGeEllipArc3d* PyGeEllipArc3d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeEllipArc3d*>(m_imp.get());
+        return static_cast<AcGeEllipArc3d*>(m_imp.get());
 }
 
 
@@ -1295,5 +1278,5 @@ AcGeOffsetCurve3d* PyGeOffsetCurve3d::impObj(const std::source_location& src /*=
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeOffsetCurve3d*>(m_imp.get());
+        return static_cast<AcGeOffsetCurve3d*>(m_imp.get());
 }

@@ -17,8 +17,8 @@ public:
     PyGeInterval            getInterval() const;
     AcGePoint3d             getStartPoint() const;
     AcGePoint3d             getEndPoint() const;
-    PyGeCurve3d&            reverseParam();
-    PyGeCurve3d&            setInterval1();
+    PyGeCurve3d& reverseParam();
+    PyGeCurve3d& setInterval1();
     bool                    setInterval2(const PyGeInterval& intrvl);
     double                  distanceTo1(const AcGePoint3d& pnt) const;
     double                  distanceTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
@@ -123,15 +123,15 @@ public:
     double                  endAng() const;
     AcGePoint3d             startPoint() const;
     AcGePoint3d             endPoint() const;
-    PyGeCircArc3d&          setCenter(const AcGePoint3d&);
-    PyGeCircArc3d&          setAxes(const AcGeVector3d& normal, const AcGeVector3d& refVec);
-    PyGeCircArc3d&          setRadius(double);
-    PyGeCircArc3d&          setAngles(double startAngle, double endAngle);
-    PyGeCircArc3d&          set1(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius);
-    PyGeCircArc3d&          set2(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle);
-    PyGeCircArc3d&          set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint);
-    PyGeCircArc3d&          set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius);
-    PyGeCircArc3d&          set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3);
+    void                    setCenter(const AcGePoint3d&);
+    void                    setAxes(const AcGeVector3d& normal, const AcGeVector3d& refVec);
+    void                    setRadius(double);
+    void                    setAngles(double startAngle, double endAngle);
+    void                    set1(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius);
+    void                    set2(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle);
+    void                    set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint);
+    void                    set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius);
+    void                    set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3);
     static std::string className();
 public:
     AcGeCircArc3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -183,14 +183,14 @@ public:
     double                  endAng() const;
     AcGePoint3d             startPoint() const;
     AcGePoint3d             endPoint() const;
-    PyGeEllipArc3d&         setCenter(const AcGePoint3d& cent);
-    PyGeEllipArc3d&         setMinorRadius(double rad);
-    PyGeEllipArc3d&         setMajorRadius(double rad);
-    PyGeEllipArc3d&         setAxes(const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis);
-    PyGeEllipArc3d&         setAngles(double startAngle, double endAngle);
-    PyGeEllipArc3d&         set1(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius);
-    PyGeEllipArc3d&         set2(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle);
-    PyGeEllipArc3d&         set3(const PyGeCircArc3d&);
+    void                    setCenter(const AcGePoint3d& cent);
+    void                    setMinorRadius(double rad);
+    void                    setMajorRadius(double rad);
+    void                    setAxes(const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis);
+    void                    setAngles(double startAngle, double endAngle);
+    void                    set1(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius);
+    void                    set2(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle);
+    void                    set3(const PyGeCircArc3d&);
     static std::string      className();
 public:
     AcGeEllipArc3d* impObj(const std::source_location& src = std::source_location::current()) const;

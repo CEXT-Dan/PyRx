@@ -16,14 +16,14 @@ void makePyGeBoundBlock2dWrapper()
         .def("getBasePoint", &PyGeBoundBlock2d::getBasePoint)
         .def("getDirection1", &PyGeBoundBlock2d::getDirection1)
         .def("getDirection2", &PyGeBoundBlock2d::getDirection2)
-        .def("set", &PyGeBoundBlock2d::set1, return_self<>())
-        .def("set", &PyGeBoundBlock2d::set2, return_self<>())
-        .def("extend", &PyGeBoundBlock2d::extend, return_self<>())
-        .def("swell", &PyGeBoundBlock2d::swell, return_self<>())
+        .def("set", &PyGeBoundBlock2d::set1)
+        .def("set", &PyGeBoundBlock2d::set2)
+        .def("extend", &PyGeBoundBlock2d::extend)
+        .def("swell", &PyGeBoundBlock2d::swell)
         .def("contains", &PyGeBoundBlock2d::contains)
         .def("isDisjoint", &PyGeBoundBlock2d::isDisjoint)
         .def("isBox", &PyGeBoundBlock2d::isBox)
-        .def("setToBox", &PyGeBoundBlock2d::setToBox, return_self<>())
+        .def("setToBox", &PyGeBoundBlock2d::setToBox)
         .def("className", &PyGeBoundBlock2d::className).staticmethod("className")
         ;
 }
@@ -91,28 +91,24 @@ AcGeVector2d PyGeBoundBlock2d::getDirection2() const
     return dir2;
 }
 
-PyGeBoundBlock2d& PyGeBoundBlock2d::set1(const AcGePoint2d& point1, const AcGePoint2d& point2)
+void PyGeBoundBlock2d::set1(const AcGePoint2d& point1, const AcGePoint2d& point2)
 {
     impObj()->set(point1, point2);
-    return *this;
 }
 
-PyGeBoundBlock2d& PyGeBoundBlock2d::set2(const AcGePoint2d& base, const AcGeVector2d& dir1, const AcGeVector2d& dir2)
+void PyGeBoundBlock2d::set2(const AcGePoint2d& base, const AcGeVector2d& dir1, const AcGeVector2d& dir2)
 {
     impObj()->set(base, dir1, dir2);
-    return *this;
 }
 
-PyGeBoundBlock2d& PyGeBoundBlock2d::extend(const AcGePoint2d& point)
+void PyGeBoundBlock2d::extend(const AcGePoint2d& point)
 {
     impObj()->extend(point);
-    return *this;
 }
 
-PyGeBoundBlock2d& PyGeBoundBlock2d::swell(double distance)
+void PyGeBoundBlock2d::swell(double distance)
 {
     impObj()->swell(distance);
-    return *this;
 }
 
 Adesk::Boolean PyGeBoundBlock2d::contains(const AcGePoint2d& point) const
@@ -130,9 +126,9 @@ Adesk::Boolean PyGeBoundBlock2d::isBox() const
     return impObj()->isBox();
 }
 
-AcGeBoundBlock2d& PyGeBoundBlock2d::setToBox(Adesk::Boolean val)
+void PyGeBoundBlock2d::setToBox(Adesk::Boolean val)
 {
-    return impObj()->setToBox(val);
+    impObj()->setToBox(val);
 }
 
 std::string PyGeBoundBlock2d::className()
@@ -144,5 +140,5 @@ AcGeBoundBlock2d* PyGeBoundBlock2d::impObj(const std::source_location& src /*= s
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeBoundBlock2d*>(m_imp.get());
+        return static_cast<AcGeBoundBlock2d*>(m_imp.get());
 }
