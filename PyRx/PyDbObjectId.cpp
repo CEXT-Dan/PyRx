@@ -15,7 +15,7 @@ void makePyDbObjectIdWrapper()
         .def("isResident", &PyDbObjectId::isResident, DS.ARGS())
         .def("isValid", &PyDbObjectId::isValid, DS.ARGS())
         .def("isWellBehaved", &PyDbObjectId::isWellBehaved, DS.ARGS())
-        .def("setFromOldId", &PyDbObjectId::setFromOldId, DS.ARGS({ "val : int" }), return_self<>())
+        .def("setFromOldId", &PyDbObjectId::setFromOldId, DS.ARGS({ "val : int" }))
         .def("database", &PyDbObjectId::database, DS.ARGS())
         .def("originalDatabase", &PyDbObjectId::originalDatabase, DS.ARGS())
         .def("convertToRedirectedId", &PyDbObjectId::convertToRedirectedId, DS.ARGS())
@@ -83,10 +83,9 @@ INT_PTR PyDbObjectId::asOldId() const
     return m_id.asOldId();
 }
 
-PyDbObjectId& PyDbObjectId::setFromOldId(INT_PTR oldId)
+void PyDbObjectId::setFromOldId(INT_PTR oldId)
 {
     m_id.setFromOldId(oldId);
-    return *this;
 }
 
 bool PyDbObjectId::isNull() const

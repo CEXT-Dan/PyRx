@@ -362,7 +362,6 @@ boost::python::list PyGeCurve2d::explode1()
         if (newExplodedCurve[idx] == 1)
             delete pCurve;
     }
-
     return curves;
 }
 
