@@ -24,9 +24,9 @@ public:
     AcGePoint3d       endPoint() const;
     Adesk::Boolean    hasFitData() const;
     double            knotAt(int idx) const;
-    PyGeSplineEnt3d&  setKnotAt(int idx, double val);
+    void              setKnotAt(int idx, double val);
     AcGePoint3d       controlPointAt(int idx) const;
-    PyGeSplineEnt3d&  setControlPointAt(int idx, const AcGePoint3d& pnt);
+    void              setControlPointAt(int idx, const AcGePoint3d& pnt);
     static std::string className();
 public:
     AcGeSplineEnt3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -73,8 +73,7 @@ public:
 
     int              numFitPoints() const;
     AcGePoint3d      fitPointAt(int idx) const;
-    PyGeSplineEnt3d& setFitPointAt(int idx, const AcGePoint3d& point);
-
+    void             setFitPointAt(int idx, const AcGePoint3d& point);
 
     static std::string className();
 public:
