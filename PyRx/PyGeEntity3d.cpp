@@ -14,13 +14,13 @@ void makePyGeEntity3dWrapper()
         .def("copy", &PyGeEntity3d::copy)
         .def("isEqualTo", &PyGeEntity3d::isEqualTo1)
         .def("isEqualTo", &PyGeEntity3d::isEqualTo2)
-        .def("transformBy", &PyGeEntity3d::transformBy, return_value_policy<reference_existing_object>())
-        .def("translateBy", &PyGeEntity3d::translateBy, return_value_policy<reference_existing_object>())
-        .def("rotateBy", &PyGeEntity3d::rotateBy1, return_value_policy<reference_existing_object>())
-        .def("rotateBy", &PyGeEntity3d::rotateBy2, return_value_policy<reference_existing_object>())
-        .def("mirror", &PyGeEntity3d::mirror, return_value_policy<reference_existing_object>())
-        .def("scaleBy", &PyGeEntity3d::scaleBy1, return_value_policy<reference_existing_object>())
-        .def("scaleBy", &PyGeEntity3d::scaleBy2, return_value_policy<reference_existing_object>())
+        .def("transformBy", &PyGeEntity3d::transformBy)
+        .def("translateBy", &PyGeEntity3d::translateBy)
+        .def("rotateBy", &PyGeEntity3d::rotateBy1)
+        .def("rotateBy", &PyGeEntity3d::rotateBy2)
+        .def("mirror", &PyGeEntity3d::mirror)
+        .def("scaleBy", &PyGeEntity3d::scaleBy1)
+        .def("scaleBy", &PyGeEntity3d::scaleBy2)
         .def("isOn", &PyGeEntity3d::isOn1)
         .def("isOn", &PyGeEntity3d::isOn2)
         .def("isNull", &PyGeEntity3d::isNull)
@@ -99,46 +99,39 @@ Adesk::Boolean PyGeEntity3d::isEqualTo2(const PyGeEntity3d& ent, const AcGeTol& 
     return impObj()->isEqualTo(*ent.impObj(), tol);
 }
 
-PyGeEntity3d& PyGeEntity3d::transformBy(const AcGeMatrix3d& xfm)
+void PyGeEntity3d::transformBy(const AcGeMatrix3d& xfm)
 {
     impObj()->transformBy(xfm);
-    return *this;
 }
 
-PyGeEntity3d& PyGeEntity3d::translateBy(const AcGeVector3d& translateVec)
+void PyGeEntity3d::translateBy(const AcGeVector3d& translateVec)
 {
     impObj()->translateBy(translateVec);
-    return *this;
 }
 
-PyGeEntity3d& PyGeEntity3d::rotateBy1(double angle, const AcGeVector3d& vec)
+void PyGeEntity3d::rotateBy1(double angle, const AcGeVector3d& vec)
 {
     impObj()->rotateBy(angle, vec);
-    return *this;
 }
 
-PyGeEntity3d& PyGeEntity3d::rotateBy2(double angle, const AcGeVector3d& vec, const AcGePoint3d& wrtPoint)
+void PyGeEntity3d::rotateBy2(double angle, const AcGeVector3d& vec, const AcGePoint3d& wrtPoint)
 {
     impObj()->rotateBy(angle, vec, wrtPoint);
-    return *this;
 }
 
-PyGeEntity3d& PyGeEntity3d::mirror(const PyGePlane& plane)
+void PyGeEntity3d::mirror(const PyGePlane& plane)
 {
     impObj()->mirror(*plane.impObj());
-    return *this;
 }
 
-PyGeEntity3d& PyGeEntity3d::scaleBy1(double scaleFactor)
+void PyGeEntity3d::scaleBy1(double scaleFactor)
 {
     impObj()->scaleBy(scaleFactor);
-    return *this;
 }
 
-PyGeEntity3d& PyGeEntity3d::scaleBy2(double scaleFactor, const AcGePoint3d& wrtPoint)
+void PyGeEntity3d::scaleBy2(double scaleFactor, const AcGePoint3d& wrtPoint)
 {
     impObj()->scaleBy(scaleFactor, wrtPoint);
-    return *this;
 }
 
 Adesk::Boolean PyGeEntity3d::isOn1(const AcGePoint3d& pnt) const
