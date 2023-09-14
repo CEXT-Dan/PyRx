@@ -138,8 +138,8 @@ void makePyGeLine2dWrapper()
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
         .add_static_property("kXAxis", PyGeLine2d::kXAxis)
         .add_static_property("kYAxis", PyGeLine2d::kYAxis)
-        .def("set", &PyGeLine2d::set1, return_self<>())
-        .def("set", &PyGeLine2d::set2, return_self<>())
+        .def("set", &PyGeLine2d::set1)
+        .def("set", &PyGeLine2d::set2)
         .def("className", &PyGeLine2d::className).staticmethod("className")
         ;
 }
@@ -179,16 +179,14 @@ PyGeLine2d PyGeLine2d::kYAxis()
     return PyGeLine2d(AcGeLine2d::kYAxis);
 }
 
-PyGeLine2d& PyGeLine2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
+void PyGeLine2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
     impObj()->set(pnt, vec);
-    return *this;
 }
 
-PyGeLine2d& PyGeLine2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
+void PyGeLine2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
     impObj()->set(pnt1, pnt2);
-    return *this;
 }
 
 std::string PyGeLine2d::className()
@@ -211,10 +209,10 @@ void makePyGeLineSeg2dWrapper()
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
-        .def("set", &PyGeLineSeg2d::set1, return_self<>())
-        .def("set", &PyGeLineSeg2d::set2, return_self<>())
-        .def("set", &PyGeLineSeg2d::set3, return_self<>())
-        .def("set", &PyGeLineSeg2d::set4, return_self<>())
+        .def("set", &PyGeLineSeg2d::set1)
+        .def("set", &PyGeLineSeg2d::set2)
+        .def("set", &PyGeLineSeg2d::set3)
+        .def("set", &PyGeLineSeg2d::set4)
         .def("getBisector", &PyGeLineSeg2d::getBisector)
         .def("baryComb", &PyGeLineSeg2d::baryComb)
         .def("startPoint", &PyGeLineSeg2d::startPoint)
@@ -252,36 +250,32 @@ PyGeLineSeg2d::PyGeLineSeg2d(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
 }
 
-PyGeLineSeg2d& PyGeLineSeg2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
+void PyGeLineSeg2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
     impObj()->set(pnt, vec);
-    return *this;
 }
 
-PyGeLineSeg2d& PyGeLineSeg2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
+void PyGeLineSeg2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
     impObj()->set(pnt1, pnt2);
-    return *this;
 }
 
-PyGeLineSeg2d& PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2)
+void PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2)
 {
     double param1, param2;
     Adesk::Boolean success;
     impObj()->set(*curve1.impObj(), *curve2.impObj(), param1, param2, success);
     if (!success)
         throw PyAcadErrorStatus(eInvalidInput);
-    return *this;
 }
 
-PyGeLineSeg2d& PyGeLineSeg2d::set4(const PyGeCurve2d& curve, const AcGePoint2d& point)
+void PyGeLineSeg2d::set4(const PyGeCurve2d& curve, const AcGePoint2d& point)
 {
     double param1;
     Adesk::Boolean success;
     impObj()->set(*curve.impObj(), point, param1, success);
     if (!success)
         throw PyAcadErrorStatus(eInvalidInput);
-    return *this;
 }
 
 PyGeLine2d PyGeLineSeg2d::getBisector() const
@@ -346,8 +340,8 @@ void makePyGeRay2dWrapper()
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
-        .def("set", &PyGeRay2d::set1, return_self<>())
-        .def("set", &PyGeRay2d::set2, return_self<>())
+        .def("set", &PyGeRay2d::set1)
+        .def("set", &PyGeRay2d::set2)
         .def("className", &PyGeRay2d::className).staticmethod("className")
         ;
 }
@@ -377,16 +371,14 @@ PyGeRay2d::PyGeRay2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
 }
 
-PyGeRay2d& PyGeRay2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
+void PyGeRay2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
     impObj()->set(pnt, vec);
-    return *this;
 }
 
-PyGeRay2d& PyGeRay2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
+void PyGeRay2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
     impObj()->set(pnt1, pnt2);
-    return *this;
 }
 
 std::string PyGeRay2d::className()

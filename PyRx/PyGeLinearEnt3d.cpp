@@ -231,7 +231,7 @@ AcGeLinearEnt3d* PyGeLinearEnt3d::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeLinearEnt3d*>(m_imp.get());
+        return static_cast<AcGeLinearEnt3d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -245,8 +245,8 @@ void makePyGeLine3dWrapper()
         .add_static_property("kXAxis", PyGeLine3d::kXAxis)
         .add_static_property("kYAxis", PyGeLine3d::kYAxis)
         .add_static_property("kZAxis", PyGeLine3d::kZAxis)
-        .def("set", &PyGeLine3d::set1, return_self<>())
-        .def("set", &PyGeLine3d::set2, return_self<>())
+        .def("set", &PyGeLine3d::set1)
+        .def("set", &PyGeLine3d::set2)
         .def("className", &PyGeLine3d::className).staticmethod("className")
         ;
 }
@@ -291,16 +291,14 @@ PyGeLine3d PyGeLine3d::kZAxis()
     return PyGeLine3d(AcGeLine3d::kZAxis);
 }
 
-PyGeLine3d& PyGeLine3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+void PyGeLine3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
 {
     impObj()->set(pnt, vec);
-    return *this;
 }
 
-PyGeLine3d& PyGeLine3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+void PyGeLine3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 {
     impObj()->set(pnt1, pnt2);
-    return *this;
 }
 
 std::string PyGeLine3d::className()
@@ -312,7 +310,7 @@ AcGeLine3d* PyGeLine3d::impObj(const std::source_location& src /*= std::source_l
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeLine3d*>(m_imp.get());
+        return static_cast<AcGeLine3d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -331,8 +329,8 @@ void makePyGeLineSeg3dWrapper()
         .def("length", &PyGeLineSeg3d::length1)
         .def("length", &PyGeLineSeg3d::length2)
         .def("length", &PyGeLineSeg3d::length3)
-        .def("set", &PyGeLineSeg3d::set1, return_self<>())
-        .def("set", &PyGeLineSeg3d::set2, return_self<>())
+        .def("set", &PyGeLineSeg3d::set1)
+        .def("set", &PyGeLineSeg3d::set2)
         .def("className", &PyGeLineSeg3d::className).staticmethod("className")
         ;
 }
@@ -404,16 +402,14 @@ double PyGeLineSeg3d::length3(double fromParam, double toParam, double tol) cons
     return impObj()->length(fromParam, toParam, tol);
 }
 
-PyGeLineSeg3d& PyGeLineSeg3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+void PyGeLineSeg3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
 {
     impObj()->set(pnt, vec);
-    return *this;
 }
 
-PyGeLineSeg3d& PyGeLineSeg3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+void PyGeLineSeg3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 {
     impObj()->set(pnt1, pnt2);
-    return *this;
 }
 
 std::string PyGeLineSeg3d::className()
@@ -425,7 +421,7 @@ AcGeLineSeg3d* PyGeLineSeg3d::impObj(const std::source_location& src /*= std::so
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeLineSeg3d*>(m_imp.get());
+        return static_cast<AcGeLineSeg3d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -436,8 +432,8 @@ void makePyGeRay3ddWrapper()
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&>())
-        .def("set", &PyGeRay3d::set1, return_self<>())
-        .def("set", &PyGeRay3d::set2, return_self<>())
+        .def("set", &PyGeRay3d::set1)
+        .def("set", &PyGeRay3d::set2)
         .def("className", &PyGeRay3d::className).staticmethod("className")
         ;
 }
@@ -467,16 +463,14 @@ PyGeRay3d::PyGeRay3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 {
 }
 
-PyGeRay3d& PyGeRay3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+void PyGeRay3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
 {
     impObj()->set(pnt, vec);
-    return *this;
 }
 
-PyGeRay3d& PyGeRay3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+void PyGeRay3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 {
     impObj()->set(pnt1, pnt2);
-    return *this;
 }
 
 std::string PyGeRay3d::className()
@@ -488,5 +482,5 @@ AcGeRay3d* PyGeRay3d::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeRay3d*>(m_imp.get());
+        return static_cast<AcGeRay3d*>(m_imp.get());
 }
