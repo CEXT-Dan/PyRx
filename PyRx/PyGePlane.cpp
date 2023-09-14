@@ -21,10 +21,10 @@ void makePyGePlaneWrapper()
         .def("intersectWith", &PyGePlane::intersectWith4)
         .def("intersectWith", &PyGePlane::intersectWith5)
         .def("intersectWith", &PyGePlane::intersectWith6)
-        .def("set", &PyGePlane::set1, return_self<>())
-        .def("set", &PyGePlane::set2, return_self<>())
-        .def("set", &PyGePlane::set3, return_self<>())
-        .def("set", &PyGePlane::set4, return_self<>())
+        .def("set", &PyGePlane::set1)
+        .def("set", &PyGePlane::set2)
+        .def("set", &PyGePlane::set3)
+        .def("set", &PyGePlane::set4)
         .def("className", &PyGePlane::className).staticmethod("className")
         ;
 }
@@ -123,28 +123,24 @@ boost::python::tuple PyGePlane::intersectWith6(const PyGeBoundedPlane& bndPln, c
     return boost::python::make_tuple(res, PyGeLineSeg3d(resultLine));
 }
 
-PyGePlane& PyGePlane::set1(const AcGePoint3d& pnt, const AcGeVector3d& normal)
+void PyGePlane::set1(const AcGePoint3d& pnt, const AcGeVector3d& normal)
 {
     impObj()->set(pnt, normal);
-    return *this;
 }
 
-PyGePlane& PyGePlane::set2(const AcGePoint3d& pntU, const AcGePoint3d& org, const AcGePoint3d& pntV)
+void PyGePlane::set2(const AcGePoint3d& pntU, const AcGePoint3d& org, const AcGePoint3d& pntV)
 {
     impObj()->set(pntU, org, pntV);
-    return *this;
 }
 
-PyGePlane& PyGePlane::set3(double a, double b, double c, double d)
+void PyGePlane::set3(double a, double b, double c, double d)
 {
     impObj()->set(a, b, c, d);
-    return *this;
 }
 
-PyGePlane& PyGePlane::set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const AcGeVector3d& vAxis)
+void PyGePlane::set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const AcGeVector3d& vAxis)
 {
     impObj()->set(org, uAxis, vAxis);
-    return *this;
 }
 
 std::string PyGePlane::className()
@@ -156,7 +152,7 @@ AcGePlane* PyGePlane::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGePlane*>(m_imp.get());
+        return static_cast<AcGePlane*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -173,8 +169,8 @@ void makePyGeBoundedPlaneWrapper()
         .def("intersectWith", &PyGeBoundedPlane::intersectWith4)
         .def("intersectWith", &PyGeBoundedPlane::intersectWith5)
         .def("intersectWith", &PyGeBoundedPlane::intersectWith6)
-        .def("set", &PyGeBoundedPlane::set1, return_self<>())
-        .def("set", &PyGeBoundedPlane::set2, return_self<>())
+        .def("set", &PyGeBoundedPlane::set1)
+        .def("set", &PyGeBoundedPlane::set2)
         .def("className", &PyGeBoundedPlane::className).staticmethod("className")
         ;
 }
@@ -252,16 +248,14 @@ boost::python::tuple PyGeBoundedPlane::intersectWith6(const PyGeBoundedPlane& bn
     return boost::python::make_tuple(res, PyGeLineSeg3d(resultLine));
 }
 
-PyGeBoundedPlane& PyGeBoundedPlane::set1(const AcGePoint3d& origin, const AcGeVector3d& uVec, const AcGeVector3d& vVec)
+void PyGeBoundedPlane::set1(const AcGePoint3d& origin, const AcGeVector3d& uVec, const AcGeVector3d& vVec)
 {
     impObj()->set(origin, uVec, vVec);
-    return *this;
 }
 
-PyGeBoundedPlane& PyGeBoundedPlane::set2(const AcGePoint3d& p1, const AcGePoint3d& origin, const AcGePoint3d& p2)
+void PyGeBoundedPlane::set2(const AcGePoint3d& p1, const AcGePoint3d& origin, const AcGePoint3d& p2)
 {
     impObj()->set(p1, origin, p2);
-    return *this;
 }
 
 std::string PyGeBoundedPlane::className()
@@ -273,5 +267,5 @@ AcGeBoundedPlane* PyGeBoundedPlane::impObj(const std::source_location& src /*= s
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeBoundedPlane*>(m_imp.get());
+        return static_cast<AcGeBoundedPlane*>(m_imp.get());
 }

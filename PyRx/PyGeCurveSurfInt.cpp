@@ -3,8 +3,6 @@
 #include "PyGeCurve3d.h"
 #include "PyGeSurface.h"
 
-//TODO LINK ERROR @CTOR
-
 using namespace boost::python;
 
 void makePyGeCurveSurfIntWrapper()
@@ -19,7 +17,6 @@ PyGeCurveSurfInt::PyGeCurveSurfInt(AcGeEntity3d* pEnt)
 {
 }
 
-#ifdef NEVER
 PyGeCurveSurfInt::PyGeCurveSurfInt()
     : PyGeEntity3d(new AcGeCurveSurfInt())
 {
@@ -39,7 +36,6 @@ PyGeCurveSurfInt::PyGeCurveSurfInt(const AcGeCurveSurfInt& src)
     : PyGeEntity3d(new AcGeCurveSurfInt(src))
 {
 }
-#endif
 
 std::string PyGeCurveSurfInt::className()
 {
