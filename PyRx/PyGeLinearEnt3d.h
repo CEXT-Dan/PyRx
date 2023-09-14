@@ -56,8 +56,8 @@ public:
     static PyGeLine3d kXAxis();
     static PyGeLine3d kYAxis();
     static PyGeLine3d kZAxis();
-    PyGeLine3d& set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
-    PyGeLine3d& set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+    void              set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
+    void              set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     static std::string className();
 public:
     AcGeLine3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -81,8 +81,8 @@ public:
     double         length1() const;
     double         length2(double fromParam, double toParam) const;
     double         length3(double fromParam, double toParam, double tol) const;
-    PyGeLineSeg3d& set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
-    PyGeLineSeg3d& set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+    void           set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
+    void           set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     static std::string className();
 public:
     AcGeLineSeg3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -98,8 +98,8 @@ public:
     PyGeRay3d(const AcGePoint3d& pnt, const AcGeVector3d& vec);
     PyGeRay3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     PyGeRay3d(AcGeEntity3d* pEnt);
-    PyGeRay3d& set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
-    PyGeRay3d& set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+    void   set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
+    void   set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     static std::string className();
 public:
     AcGeRay3d* impObj(const std::source_location& src = std::source_location::current()) const;
