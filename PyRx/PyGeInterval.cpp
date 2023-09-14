@@ -85,7 +85,6 @@ PyGeInterval::PyGeInterval(double lower, double upper)
 PyGeInterval::PyGeInterval(Adesk::Boolean boundedBelow, double bound)
     : imp(boundedBelow, bound)
 {
-
 }
 
 std::string PyGeInterval::className()

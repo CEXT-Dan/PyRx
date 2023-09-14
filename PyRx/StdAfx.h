@@ -376,32 +376,32 @@ inline boost::python::list AcStringArrayToPyList(const AcStringArray& arr)
     return pyPyList;
 }
 
-
 //TODO avoid copy
 inline AcGeDoubleArray PyListToDoubleArray(const boost::python::object& iterable)
 {
-    AcGeDoubleArray arr;
     const auto& vec = py_list_to_std_vector<double>(iterable);
+    AcGeDoubleArray arr;
+    arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
         arr.append(item);
     return arr;
 }
 
-//TODO avoid copy
 inline AcGePoint2dArray PyListToPoint2dArray(const boost::python::object& iterable)
 {
-    AcGePoint2dArray arr;
     const auto& vec = py_list_to_std_vector<AcGePoint2d>(iterable);
+    AcGePoint2dArray arr;
+    arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
         arr.append(item);
     return arr;
 }
 
-//TODO avoid copy
 inline AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterable)
 {
-    AcGePoint3dArray arr;
     const auto& vec = py_list_to_std_vector<AcGePoint3d>(iterable);
+    AcGePoint3dArray arr;
+    arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
         arr.append(item);
     return arr;
@@ -409,8 +409,9 @@ inline AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterab
 
 inline AcArray<int> PyListToIntArray(const boost::python::object& iterable)
 {
-    AcArray<int> arr;
     const auto& vec = py_list_to_std_vector<int>(iterable);
+    AcArray<int> arr;
+    arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
         arr.append(item);
     return arr;
@@ -418,8 +419,9 @@ inline AcArray<int> PyListToIntArray(const boost::python::object& iterable)
 
 inline AcStringArray PyListAcStringArray(const boost::python::object& iterable)
 {
-    AcStringArray arr;
     const auto& vec = py_list_to_std_vector<std::string>(iterable);
+    AcStringArray arr;
+    arr.setPhysicalLength(vec.size());
     for (const auto& item : vec)
         arr.append(utf8_to_wstr(item).c_str());
     return arr;

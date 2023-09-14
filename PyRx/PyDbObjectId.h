@@ -15,7 +15,7 @@ public:
     bool operator<=(const PyDbObjectId& rhs) const;
     bool operator>=(const PyDbObjectId& rhs) const;
     INT_PTR asOldId() const;
-    PyDbObjectId& setFromOldId(INT_PTR oldId);
+    void          setFromOldId(INT_PTR oldId);
     bool          isNull() const;
     bool          isResident() const;
     bool          isValid() const;
@@ -32,7 +32,7 @@ public:
     PyDbDatabase  originalDatabase() const;
     PyRxClass     objectClass() const;
     bool          isDerivedFrom(const PyRxClass& other) const;
-    std::size_t hash();
+    std::size_t   hash();
 
 public:
     AcDbObjectId m_id;
@@ -50,8 +50,9 @@ inline boost::python::list ObjectIdArrayToPyList(const AcDbObjectIdArray& arr)
 //TODO see if we can avoid the copy
 inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iterable)
 {
-    AcDbObjectIdArray arr;
     const auto& vec = py_list_to_std_vector<PyDbObjectId>(iterable);
+    AcDbObjectIdArray arr;
+    arr.setPhysicalLength(vec.size());
     for (auto& item : vec)
         arr.append(item.m_id);
     return arr;
