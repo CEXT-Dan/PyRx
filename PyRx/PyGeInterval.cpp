@@ -7,6 +7,62 @@ using namespace boost::python;
 void makePyGeIntervalWrapper()
 {
     class_<PyGeInterval>("Interval")
+        .def(init<>())
+        .def(init<double, double>())
+        .def(init<Adesk::Boolean, double>())
+        .def("lowerBound", &PyGeInterval::lowerBound)
+        .def("upperBound", &PyGeInterval::upperBound)
+        .def("element", &PyGeInterval::element)
+        .def("getBounds", &PyGeInterval::getBounds)
+        .def("length", &PyGeInterval::length)
+        .def("tolerance", &PyGeInterval::tolerance)
+        .def("set", &PyGeInterval::set1)
+        .def("set", &PyGeInterval::set2)
+        .def("set", &PyGeInterval::set3)
+        .def("setUpper", &PyGeInterval::setUpper)
+        .def("setLower", &PyGeInterval::setLower)
+        .def("setTolerance", &PyGeInterval::setTolerance)
+        .def("getMerge", &PyGeInterval::getMerge)
+        .def("subtract", &PyGeInterval::subtract)
+        .def("intersectWith", &PyGeInterval::intersectWith)
+        .def("isBounded", &PyGeInterval::isBounded)
+        .def("isBoundedAbove", &PyGeInterval::isBoundedAbove)
+        .def("isBoundedBelow", &PyGeInterval::isBoundedBelow)
+        .def("isUnBounded", &PyGeInterval::isUnBounded)
+        .def("isSingleton", &PyGeInterval::isSingleton)
+        .def("isDisjoint", &PyGeInterval::isDisjoint)
+        .def("contains", &PyGeInterval::contains1)
+        .def("contains", &PyGeInterval::contains2)
+        .def("isContinuousAtUpper", &PyGeInterval::isContinuousAtUpper)
+        .def("isOverlapAtUpper", &PyGeInterval::isOverlapAtUpper)
+        .def("isEqualAtUpper", &PyGeInterval::isEqualAtUpper1)
+        .def("isEqualAtUpper", &PyGeInterval::isEqualAtUpper2)
+        .def("isEqualAtLower", &PyGeInterval::isEqualAtLower1)
+        .def("isEqualAtLower", &PyGeInterval::isEqualAtLower2)
+        .def("isPeriodicallyOn", &PyGeInterval::isPeriodicallyOn)
+        .def("isGreater", &PyGeInterval::isGreater1)
+        .def("isGreater", &PyGeInterval::isGreater2)
+        .def("isGreaterOrEqual", &PyGeInterval::isGreaterOrEqual1)
+        .def("isGreaterOrEqual", &PyGeInterval::isGreaterOrEqual2)
+        .def("isLess", &PyGeInterval::isLess1)
+        .def("isLess", &PyGeInterval::isLess2)
+        .def("isLessOrEqual", &PyGeInterval::isLessOrEqual1)
+        .def("isLessOrEqual", &PyGeInterval::isLessOrEqual2)
+
+        //operators 
+        .def("__eq__", &PyGeInterval::operator==)
+        .def("__ne__", &PyGeInterval::operator!=)
+
+        .def("__lt__", &PyGeInterval::isLess1)
+        .def("__lt__", &PyGeInterval::isLess2)
+        .def("__le__", &PyGeInterval::isLessOrEqual1)
+        .def("__le__", &PyGeInterval::isLessOrEqual2)
+
+        .def("__gt__", &PyGeInterval::isGreater1)
+        .def("__gt__", &PyGeInterval::isGreater2)
+        .def("__ge__", &PyGeInterval::isGreaterOrEqual1)
+        .def("__ge__", &PyGeInterval::isGreaterOrEqual2)
+
         .def("className", &PyGeInterval::className).staticmethod("className")
         ;
 }
@@ -71,17 +127,17 @@ double PyGeInterval::tolerance() const
     return imp.tolerance();
 }
 
-void PyGeInterval::set(double lower, double upper)
+void PyGeInterval::set1(double lower, double upper)
 {
     imp.set(lower, upper);
 }
 
-void PyGeInterval::set(Adesk::Boolean boundedBelow, double bound)
+void PyGeInterval::set2(Adesk::Boolean boundedBelow, double bound)
 {
     imp.set(boundedBelow, bound);
 }
 
-void PyGeInterval::set()
+void PyGeInterval::set3()
 {
     imp.set();
 }

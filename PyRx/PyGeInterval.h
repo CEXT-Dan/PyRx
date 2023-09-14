@@ -11,7 +11,6 @@ public:
     PyGeInterval(double lower, double upper);
     PyGeInterval(Adesk::Boolean boundedBelow, double bound);
     PyGeInterval(const AcGeInterval& src);
-    static std::string className();
 
     double               lowerBound() const;
     double               upperBound() const;
@@ -20,9 +19,9 @@ public:
     double               length() const;
     double               tolerance() const;
 
-    void                 set(double lower, double upper);
-    void                 set(Adesk::Boolean boundedBelow, double bound);
-    void                 set();
+    void                 set1(double lower, double upper);
+    void                 set2(Adesk::Boolean boundedBelow, double bound);
+    void                 set3();
     void                 setUpper(double upper);
     void                 setLower(double lower);
     void                 setTolerance(double tol);
@@ -59,6 +58,7 @@ public:
     Adesk::Boolean       operator ==      (const PyGeInterval& otherInterval) const;
     Adesk::Boolean       operator !=      (const PyGeInterval& otherInterval) const;
 
+    static std::string   className();
 
 public:
     AcGeInterval imp;
