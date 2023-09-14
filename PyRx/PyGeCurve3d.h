@@ -17,8 +17,8 @@ public:
     PyGeInterval            getInterval() const;
     AcGePoint3d             getStartPoint() const;
     AcGePoint3d             getEndPoint() const;
-    PyGeCurve3d& reverseParam();
-    PyGeCurve3d& setInterval1();
+    void                    reverseParam();
+    void                    setInterval1();
     bool                    setInterval2(const PyGeInterval& intrvl);
     double                  distanceTo1(const AcGePoint3d& pnt) const;
     double                  distanceTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
