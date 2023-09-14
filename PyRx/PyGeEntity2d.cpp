@@ -14,13 +14,13 @@ void makePyGeEntity2dWrapper()
         .def("copy", &PyGeEntity2d::copy)
         .def("isEqualTo", &PyGeEntity2d::isEqualTo1)
         .def("isEqualTo", &PyGeEntity2d::isEqualTo2)
-        .def("transformBy", &PyGeEntity2d::transformBy, return_self<>())
-        .def("translateBy", &PyGeEntity2d::translateBy, return_self<>())
-        .def("rotateBy", &PyGeEntity2d::rotateBy1, return_self<>())
-        .def("rotateBy", &PyGeEntity2d::rotateBy2, return_self<>())
-        .def("mirror", &PyGeEntity2d::mirror, return_self<>())
-        .def("scaleBy", &PyGeEntity2d::scaleBy1, return_self<>())
-        .def("scaleBy", &PyGeEntity2d::scaleBy2, return_self<>())
+        .def("transformBy", &PyGeEntity2d::transformBy)
+        .def("translateBy", &PyGeEntity2d::translateBy)
+        .def("rotateBy", &PyGeEntity2d::rotateBy1)
+        .def("rotateBy", &PyGeEntity2d::rotateBy2)
+        .def("mirror", &PyGeEntity2d::mirror)
+        .def("scaleBy", &PyGeEntity2d::scaleBy1)
+        .def("scaleBy", &PyGeEntity2d::scaleBy2)
         .def("isOn", &PyGeEntity2d::isOn1)
         .def("isOn", &PyGeEntity2d::isOn2)
         .def("isNull", &PyGeEntity2d::isNull)
@@ -74,46 +74,39 @@ Adesk::Boolean PyGeEntity2d::isEqualTo2(const PyGeEntity2d& ent, const AcGeTol& 
     return impObj()->isEqualTo(*ent.impObj(), tol);
 }
 
-PyGeEntity2d& PyGeEntity2d::transformBy(const AcGeMatrix2d& xfm)
+void PyGeEntity2d::transformBy(const AcGeMatrix2d& xfm)
 {
     impObj()->transformBy(xfm);
-    return *this;
 }
 
-PyGeEntity2d& PyGeEntity2d::translateBy(const AcGeVector2d& translateVec)
+void PyGeEntity2d::translateBy(const AcGeVector2d& translateVec)
 {
     impObj()->translateBy(translateVec);
-    return *this;
 }
 
-PyGeEntity2d& PyGeEntity2d::rotateBy1(double angle)
+void PyGeEntity2d::rotateBy1(double angle)
 {
     impObj()->rotateBy(angle);
-    return *this;
 }
 
-PyGeEntity2d& PyGeEntity2d::rotateBy2(double angle, const AcGePoint2d& origin)
+void PyGeEntity2d::rotateBy2(double angle, const AcGePoint2d& origin)
 {
     impObj()->rotateBy(angle, origin);
-    return *this;
 }
 
-PyGeEntity2d& PyGeEntity2d::mirror(const PyGeLine2d& plane)
+void PyGeEntity2d::mirror(const PyGeLine2d& plane)
 {
     impObj()->mirror(*plane.impObj());
-    return *this;
 }
 
-PyGeEntity2d& PyGeEntity2d::scaleBy1(double scaleFactor)
+void PyGeEntity2d::scaleBy1(double scaleFactor)
 {
     impObj()->scaleBy(scaleFactor);
-    return *this;
 }
 
-PyGeEntity2d& PyGeEntity2d::scaleBy2(double scaleFactor, const AcGePoint2d& wrtPoint)
+void PyGeEntity2d::scaleBy2(double scaleFactor, const AcGePoint2d& wrtPoint)
 {
     impObj()->scaleBy(scaleFactor, wrtPoint);
-    return *this;
 }
 
 Adesk::Boolean PyGeEntity2d::isOn1(const AcGePoint2d& pnt) const

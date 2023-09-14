@@ -17,8 +17,8 @@ void makePyGeCurve3dWrapper()
         .def("getInterval", &PyGeCurve3d::getInterval)
         .def("getStartPoint", &PyGeCurve3d::getStartPoint)
         .def("getEndPoint", &PyGeCurve3d::getEndPoint)
-        .def("reverseParam", &PyGeCurve3d::reverseParam, return_self<>())
-        .def("setInterval", &PyGeCurve3d::setInterval1, return_self<>())
+        .def("reverseParam", &PyGeCurve3d::reverseParam)
+        .def("setInterval", &PyGeCurve3d::setInterval1)
         .def("setInterval", &PyGeCurve3d::setInterval2)
         .def("distanceTo", &PyGeCurve3d::distanceTo1)
         .def("distanceTo", &PyGeCurve3d::distanceTo2)
@@ -121,16 +121,14 @@ AcGePoint3d PyGeCurve3d::getEndPoint() const
     return e;
 }
 
-PyGeCurve3d& PyGeCurve3d::reverseParam()
+void PyGeCurve3d::reverseParam()
 {
     impObj()->reverseParam();
-    return *this;
 }
 
-PyGeCurve3d& PyGeCurve3d::setInterval1()
+void PyGeCurve3d::setInterval1()
 {
     impObj()->setInterval();
-    return *this;
 }
 
 bool PyGeCurve3d::setInterval2(const PyGeInterval& intrvl)
