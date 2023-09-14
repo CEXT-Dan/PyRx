@@ -22,9 +22,9 @@ void makePyGeSplineEnt3dWrapper()
         .def("endPoint", &PyGeSplineEnt3d::endPoint)
         .def("hasFitData", &PyGeSplineEnt3d::hasFitData)
         .def("knotAt", &PyGeSplineEnt3d::knotAt)
-        .def("setKnotAt", &PyGeSplineEnt3d::setKnotAt, return_self<>())
+        .def("setKnotAt", &PyGeSplineEnt3d::setKnotAt)
         .def("controlPointAt", &PyGeSplineEnt3d::controlPointAt)
-        .def("setControlPointAt", &PyGeSplineEnt3d::setControlPointAt, return_self<>())
+        .def("setControlPointAt", &PyGeSplineEnt3d::setControlPointAt)
         .def("className", &PyGeSplineEnt3d::className).staticmethod("className")
         ;
 }
@@ -104,10 +104,9 @@ double PyGeSplineEnt3d::knotAt(int idx) const
     return impObj()->knotAt(idx);
 }
 
-PyGeSplineEnt3d& PyGeSplineEnt3d::setKnotAt(int idx, double val)
+void PyGeSplineEnt3d::setKnotAt(int idx, double val)
 {
     impObj()->setKnotAt(idx, val);
-    return *this;
 }
 
 AcGePoint3d PyGeSplineEnt3d::controlPointAt(int idx) const
@@ -115,10 +114,9 @@ AcGePoint3d PyGeSplineEnt3d::controlPointAt(int idx) const
     return impObj()->controlPointAt(idx);
 }
 
-PyGeSplineEnt3d& PyGeSplineEnt3d::setControlPointAt(int idx, const AcGePoint3d& pnt)
+void PyGeSplineEnt3d::setControlPointAt(int idx, const AcGePoint3d& pnt)
 {
     impObj()->setControlPointAt(idx, pnt);
-    return *this;
 }
 
 std::string PyGeSplineEnt3d::className()
@@ -128,7 +126,7 @@ std::string PyGeSplineEnt3d::className()
 
 AcGeSplineEnt3d* PyGeSplineEnt3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr)
+    if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
     return static_cast<AcGeSplineEnt3d*>(m_imp.get());
 }
@@ -192,7 +190,7 @@ AcGeNurbCurve3d* PyGeNurbCurve3d::impObj(const std::source_location& src /*= std
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGeNurbCurve3d*>(m_imp.get());
+        return static_cast<AcGeNurbCurve3d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -206,7 +204,7 @@ void makePyGePolyline3dWrapper()
         .def(init<const PyGeCurve3d&, double>())
         .def("numFitPoints", &PyGePolyline3d::numFitPoints)
         .def("fitPointAt", &PyGePolyline3d::fitPointAt)
-        .def("setFitPointAt", &PyGePolyline3d::setFitPointAt, return_self<>())
+        .def("setFitPointAt", &PyGePolyline3d::setFitPointAt)
         .def("className", &PyGePolyline3d::className).staticmethod("className")
         ;
 }
@@ -251,10 +249,9 @@ AcGePoint3d PyGePolyline3d::fitPointAt(int idx) const
     return impObj()->fitPointAt(idx);
 }
 
-PyGeSplineEnt3d& PyGePolyline3d::setFitPointAt(int idx, const AcGePoint3d& point)
+void PyGePolyline3d::setFitPointAt(int idx, const AcGePoint3d& point)
 {
     impObj()->setFitPointAt(idx, point);
-    return *this;
 }
 
 std::string PyGePolyline3d::className()
@@ -266,5 +263,5 @@ AcGePolyline3d* PyGePolyline3d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return static_cast<AcGePolyline3d*>(m_imp.get());
+        return static_cast<AcGePolyline3d*>(m_imp.get());
 }
