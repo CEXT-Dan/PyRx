@@ -330,11 +330,11 @@ __init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> None :
     C++ signature :
         class PyGeEntity2d copy(class PyGeEntity2d {lvalue})'''
     ...
-    def extend (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''extend( (BoundBlock2d)arg1, (Point2d)arg2) -> BoundBlock2d :
+    def extend (self, *args, **kwargs)-> None :
+      '''extend( (BoundBlock2d)arg1, (Point2d)arg2) -> None :
 
     C++ signature :
-        class PyGeBoundBlock2d {lvalue} extend(class PyGeBoundBlock2d {lvalue},class AcGePoint2d)'''
+        void extend(class PyGeBoundBlock2d {lvalue},class AcGePoint2d)'''
     ...
     def getBasePoint (self, *args, **kwargs)-> PyGe.Point2d :
       '''getBasePoint( (BoundBlock2d)arg1) -> Point2d :
@@ -412,68 +412,68 @@ isOn( (Entity2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''set( (BoundBlock2d)arg1, (Point2d)arg2, (Point2d)arg3) -> BoundBlock2d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (BoundBlock2d)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeBoundBlock2d {lvalue} set(class PyGeBoundBlock2d {lvalue},class AcGePoint2d,class AcGePoint2d)
+        void set(class PyGeBoundBlock2d {lvalue},class AcGePoint2d,class AcGePoint2d)
 
-set( (BoundBlock2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> BoundBlock2d :
+set( (BoundBlock2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> None :
 
     C++ signature :
-        class PyGeBoundBlock2d {lvalue} set(class PyGeBoundBlock2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d)'''
+        void set(class PyGeBoundBlock2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d)'''
     ...
-    def setToBox (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''setToBox( (BoundBlock2d)arg1, (bool)arg2) -> BoundBlock2d :
+    def setToBox (self, *args, **kwargs)-> None :
+      '''setToBox( (BoundBlock2d)arg1, (bool)arg2) -> None :
 
     C++ signature :
-        class PyGeBoundBlock2d {lvalue} setToBox(class PyGeBoundBlock2d {lvalue},bool)'''
+        void setToBox(class PyGeBoundBlock2d {lvalue},bool)'''
     ...
-    def swell (self, *args, **kwargs)-> PyGe.BoundBlock2d :
-      '''swell( (BoundBlock2d)arg1, (float)arg2) -> BoundBlock2d :
+    def swell (self, *args, **kwargs)-> None :
+      '''swell( (BoundBlock2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeBoundBlock2d {lvalue} swell(class PyGeBoundBlock2d {lvalue},double)'''
+        void swell(class PyGeBoundBlock2d {lvalue},double)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -571,7 +571,12 @@ getDirection3( (BoundBlock3d)arg1) -> Vector3d :
         bool isDisjoint(class PyGeBoundBlock3d {lvalue},class PyGeBoundBlock3d)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -599,33 +604,33 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity3d {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def set (self, *args, **kwargs)-> PyGe.BoundBlock3d :
       '''set( (BoundBlock3d)arg1, (Point3d)arg2, (Point3d)arg3) -> BoundBlock3d :
@@ -650,17 +655,17 @@ set( (BoundBlock3d)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (Vector3
     C++ signature :
         class PyGeBoundBlock3d {lvalue} swell(class PyGeBoundBlock3d {lvalue},double)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -840,7 +845,12 @@ isCoplanarTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
         bool isCoplanarTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -926,11 +936,11 @@ isPerpendicularTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector3d :
       '''normal( (PlanarEnt)arg1) -> Vector3d :
@@ -961,27 +971,27 @@ paramOf( (Surface)arg1, (Point3d)arg2, (Tol)arg3) -> Point2d :
     C++ signature :
         class PyGeSurface {lvalue} reverseNormal(class PyGeSurface {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def set (self, *args, **kwargs)-> PyGe.BoundedPlane :
       '''set( (BoundedPlane)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> BoundedPlane :
@@ -994,17 +1004,17 @@ set( (BoundedPlane)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> Bounded
     C++ signature :
         class PyGeBoundedPlane {lvalue} set(class PyGeBoundedPlane {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -1351,36 +1361,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve2d)arg1) -> tuple :
@@ -1399,11 +1399,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
       '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
@@ -1450,105 +1450,105 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGeVector2d refVec(class PyGeCircArc2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.CircArc2d :
-      '''set( (CircArc2d)arg1, (Point2d)arg2, (float)arg3) -> CircArc2d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (CircArc2d)arg1, (Point2d)arg2, (float)arg3) -> None :
 
     C++ signature :
-        class PyGeCircArc2d {lvalue} set(class PyGeCircArc2d {lvalue},class AcGePoint2d,double)
+        void set(class PyGeCircArc2d {lvalue},class AcGePoint2d,double)
 
-set( (CircArc2d)arg1, (Point2d)arg2, (float)arg3, (float)arg4, (float)arg5, (Vector2d)arg6, (bool)arg7) -> CircArc2d :
-
-    C++ signature :
-        class PyGeCircArc2d {lvalue} set(class PyGeCircArc2d {lvalue},class AcGePoint2d,double,double,double,class AcGeVector2d,bool)
-
-set( (CircArc2d)arg1, (Point2d)arg2, (Point2d)arg3, (Point2d)arg4) -> CircArc2d :
+set( (CircArc2d)arg1, (Point2d)arg2, (float)arg3, (float)arg4, (float)arg5, (Vector2d)arg6, (bool)arg7) -> None :
 
     C++ signature :
-        class PyGeCircArc2d {lvalue} set(class PyGeCircArc2d {lvalue},class AcGePoint2d,class AcGePoint2d,class AcGePoint2d)
+        void set(class PyGeCircArc2d {lvalue},class AcGePoint2d,double,double,double,class AcGeVector2d,bool)
 
-set( (CircArc2d)arg1, (Point2d)arg2, (Point2d)arg3, (float)arg4, (bool)arg5) -> CircArc2d :
-
-    C++ signature :
-        class PyGeCircArc2d {lvalue} set(class PyGeCircArc2d {lvalue},class AcGePoint2d,class AcGePoint2d,double,bool)
-
-set( (CircArc2d)arg1, (Curve2d)arg2, (Curve2d)arg3, (float)arg4) -> CircArc2d :
+set( (CircArc2d)arg1, (Point2d)arg2, (Point2d)arg3, (Point2d)arg4) -> None :
 
     C++ signature :
-        class PyGeCircArc2d {lvalue} set(class PyGeCircArc2d {lvalue},class PyGeCurve2d,class PyGeCurve2d,double)
+        void set(class PyGeCircArc2d {lvalue},class AcGePoint2d,class AcGePoint2d,class AcGePoint2d)
 
-set( (CircArc2d)arg1, (Curve2d)arg2, (Curve2d)arg3, (Curve2d)arg4) -> CircArc2d :
+set( (CircArc2d)arg1, (Point2d)arg2, (Point2d)arg3, (float)arg4, (bool)arg5) -> None :
 
     C++ signature :
-        class PyGeCircArc2d {lvalue} set(class PyGeCircArc2d {lvalue},class PyGeCurve2d,class PyGeCurve2d,class PyGeCurve2d)'''
+        void set(class PyGeCircArc2d {lvalue},class AcGePoint2d,class AcGePoint2d,double,bool)
+
+set( (CircArc2d)arg1, (Curve2d)arg2, (Curve2d)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void set(class PyGeCircArc2d {lvalue},class PyGeCurve2d,class PyGeCurve2d,double)
+
+set( (CircArc2d)arg1, (Curve2d)arg2, (Curve2d)arg3, (Curve2d)arg4) -> None :
+
+    C++ signature :
+        void set(class PyGeCircArc2d {lvalue},class PyGeCurve2d,class PyGeCurve2d,class PyGeCurve2d)'''
     ...
-    def setAngles (self, *args, **kwargs)-> PyGe.CircArc2d :
-      '''setAngles( (CircArc2d)arg1, (float)arg2, (float)arg3) -> CircArc2d :
+    def setAngles (self, *args, **kwargs)-> None :
+      '''setAngles( (CircArc2d)arg1, (float)arg2, (float)arg3) -> None :
 
     C++ signature :
-        class PyGeCircArc2d {lvalue} setAngles(class PyGeCircArc2d {lvalue},double,double)'''
+        void setAngles(class PyGeCircArc2d {lvalue},double,double)'''
     ...
-    def setCenter (self, *args, **kwargs)-> PyGe.CircArc2d :
-      '''setCenter( (CircArc2d)arg1, (Point2d)arg2) -> CircArc2d :
+    def setCenter (self, *args, **kwargs)-> None :
+      '''setCenter( (CircArc2d)arg1, (Point2d)arg2) -> None :
 
     C++ signature :
-        class PyGeCircArc2d {lvalue} setCenter(class PyGeCircArc2d {lvalue},class AcGePoint2d)'''
+        void setCenter(class PyGeCircArc2d {lvalue},class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
     ...
-    def setRadius (self, *args, **kwargs)-> PyGe.CircArc2d :
-      '''setRadius( (CircArc2d)arg1, (float)arg2) -> CircArc2d :
+    def setRadius (self, *args, **kwargs)-> None :
+      '''setRadius( (CircArc2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeCircArc2d {lvalue} setRadius(class PyGeCircArc2d {lvalue},double)'''
+        void setRadius(class PyGeCircArc2d {lvalue},double)'''
     ...
-    def setRefVec (self, *args, **kwargs)-> PyGe.CircArc2d :
-      '''setRefVec( (CircArc2d)arg1, (Vector2d)arg2) -> CircArc2d :
+    def setRefVec (self, *args, **kwargs)-> None :
+      '''setRefVec( (CircArc2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeCircArc2d {lvalue} setRefVec(class PyGeCircArc2d {lvalue},class AcGeVector2d)'''
+        void setRefVec(class PyGeCircArc2d {lvalue},class AcGeVector2d)'''
     ...
-    def setToComplement (self, *args, **kwargs)-> PyGe.CircArc2d :
-      '''setToComplement( (CircArc2d)arg1) -> CircArc2d :
+    def setToComplement (self, *args, **kwargs)-> None :
+      '''setToComplement( (CircArc2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCircArc2d {lvalue} setToComplement(class PyGeCircArc2d {lvalue})'''
+        void setToComplement(class PyGeCircArc2d {lvalue})'''
     ...
     def startAng (self, *args, **kwargs)-> float :
       '''startAng( (CircArc2d)arg1) -> float :
@@ -1573,17 +1573,17 @@ tangent( (CircArc2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple tangent(class PyGeCircArc2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -1930,7 +1930,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -1969,36 +1974,26 @@ isLinear( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity3d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
-
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3) -> bool :
+isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue},class AcGeTol)
-
-isOn( (Curve3d)arg1, (float)arg2) -> bool :
+isOn( (Curve3d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double)
 
-isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve3d)arg1) -> tuple :
@@ -2028,11 +2023,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector3d :
       '''normal( (CircArc3d)arg1) -> Vector3d :
@@ -2140,94 +2135,94 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class AcGeVector3d refVec(class PyGeCircArc3d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.CircArc3d :
-      '''set( (CircArc3d)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> CircArc3d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (CircArc3d)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
 
     C++ signature :
-        class PyGeCircArc3d {lvalue} set(class PyGeCircArc3d {lvalue},class AcGePoint3d,class AcGeVector3d,double)
+        void set(class PyGeCircArc3d {lvalue},class AcGePoint3d,class AcGeVector3d,double)
 
-set( (CircArc3d)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7) -> CircArc3d :
-
-    C++ signature :
-        class PyGeCircArc3d {lvalue} set(class PyGeCircArc3d {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)
-
-set( (CircArc3d)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> CircArc3d :
+set( (CircArc3d)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7) -> None :
 
     C++ signature :
-        class PyGeCircArc3d {lvalue} set(class PyGeCircArc3d {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
+        void set(class PyGeCircArc3d {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)
 
-set( (CircArc3d)arg1, (Curve3d)arg2, (Curve3d)arg3, (float)arg4) -> CircArc3d :
-
-    C++ signature :
-        class PyGeCircArc3d {lvalue} set(class PyGeCircArc3d {lvalue},class PyGeCurve3d,class PyGeCurve3d,double)
-
-set( (CircArc3d)arg1, (Curve3d)arg2, (Curve3d)arg3, (Curve3d)arg4) -> CircArc3d :
+set( (CircArc3d)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeCircArc3d {lvalue} set(class PyGeCircArc3d {lvalue},class PyGeCurve3d,class PyGeCurve3d,class PyGeCurve3d)'''
+        void set(class PyGeCircArc3d {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
+
+set( (CircArc3d)arg1, (Curve3d)arg2, (Curve3d)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void set(class PyGeCircArc3d {lvalue},class PyGeCurve3d,class PyGeCurve3d,double)
+
+set( (CircArc3d)arg1, (Curve3d)arg2, (Curve3d)arg3, (Curve3d)arg4) -> None :
+
+    C++ signature :
+        void set(class PyGeCircArc3d {lvalue},class PyGeCurve3d,class PyGeCurve3d,class PyGeCurve3d)'''
     ...
-    def setAngles (self, *args, **kwargs)-> PyGe.CircArc3d :
-      '''setAngles( (CircArc3d)arg1, (float)arg2, (float)arg3) -> CircArc3d :
+    def setAngles (self, *args, **kwargs)-> None :
+      '''setAngles( (CircArc3d)arg1, (float)arg2, (float)arg3) -> None :
 
     C++ signature :
-        class PyGeCircArc3d {lvalue} setAngles(class PyGeCircArc3d {lvalue},double,double)'''
+        void setAngles(class PyGeCircArc3d {lvalue},double,double)'''
     ...
-    def setAxes (self, *args, **kwargs)-> PyGe.CircArc3d :
-      '''setAxes( (CircArc3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> CircArc3d :
+    def setAxes (self, *args, **kwargs)-> None :
+      '''setAxes( (CircArc3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeCircArc3d {lvalue} setAxes(class PyGeCircArc3d {lvalue},class AcGeVector3d,class AcGeVector3d)'''
+        void setAxes(class PyGeCircArc3d {lvalue},class AcGeVector3d,class AcGeVector3d)'''
     ...
-    def setCenter (self, *args, **kwargs)-> PyGe.CircArc3d :
-      '''setCenter( (CircArc3d)arg1, (Point3d)arg2) -> CircArc3d :
+    def setCenter (self, *args, **kwargs)-> None :
+      '''setCenter( (CircArc3d)arg1, (Point3d)arg2) -> None :
 
     C++ signature :
-        class PyGeCircArc3d {lvalue} setCenter(class PyGeCircArc3d {lvalue},class AcGePoint3d)'''
+        void setCenter(class PyGeCircArc3d {lvalue},class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve3d {lvalue},class PyGeInterval)'''
     ...
-    def setRadius (self, *args, **kwargs)-> PyGe.CircArc3d :
-      '''setRadius( (CircArc3d)arg1, (float)arg2) -> CircArc3d :
+    def setRadius (self, *args, **kwargs)-> None :
+      '''setRadius( (CircArc3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeCircArc3d {lvalue} setRadius(class PyGeCircArc3d {lvalue},double)'''
+        void setRadius(class PyGeCircArc3d {lvalue},double)'''
     ...
     def startAng (self, *args, **kwargs)-> float :
       '''startAng( (CircArc3d)arg1) -> float :
@@ -2252,17 +2247,17 @@ tangent( (CircArc3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple tangent(class PyGeCircArc3d {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -2339,45 +2334,45 @@ isOn( (Entity2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -2638,36 +2633,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve2d)arg1) -> tuple :
@@ -2686,11 +2671,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
       '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
@@ -2725,56 +2710,56 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -3035,7 +3020,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -3063,36 +3053,26 @@ isLinear( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity3d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
-
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3) -> bool :
+isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue},class AcGeTol)
-
-isOn( (Curve3d)arg1, (float)arg2) -> bool :
+isOn( (Curve3d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double)
 
-isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve3d)arg1) -> tuple :
@@ -3122,11 +3102,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock3d :
       '''orthoBoundBlock( (Curve3d)arg1) -> BoundBlock3d :
@@ -3205,56 +3185,56 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve3d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -3556,36 +3536,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve2d)arg1) -> tuple :
@@ -3622,11 +3592,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def numControlPoints (self, *args, **kwargs)-> int :
       '''numControlPoints( (SplineEnt2d)arg1) -> int :
@@ -3679,33 +3649,33 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
     def setControlPointAt (self, *args, **kwargs)-> PyGe.SplineEnt2d :
       '''setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> SplineEnt2d :
@@ -3713,11 +3683,11 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
@@ -3742,17 +3712,17 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint2d startPoint(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -4054,7 +4024,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -4082,36 +4057,26 @@ isLinear( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity3d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
-
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3) -> bool :
+isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue},class AcGeTol)
-
-isOn( (Curve3d)arg1, (float)arg2) -> bool :
+isOn( (Curve3d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double)
 
-isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve3d)arg1) -> tuple :
@@ -4159,11 +4124,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def numControlPoints (self, *args, **kwargs)-> int :
       '''numControlPoints( (SplineEnt3d)arg1) -> int :
@@ -4260,33 +4225,33 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def setControlPointAt (self, *args, **kwargs)-> PyGe.SplineEnt3d :
       '''setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> SplineEnt3d :
@@ -4294,11 +4259,11 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
@@ -4323,17 +4288,17 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint3d startPoint(class PyGeSplineEnt3d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -4592,36 +4557,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve2d)arg1) -> tuple :
@@ -4640,11 +4595,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
       '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
@@ -4679,56 +4634,56 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -4987,7 +4942,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -5015,36 +4975,26 @@ isLinear( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity3d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
-
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3) -> bool :
+isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue},class AcGeTol)
-
-isOn( (Curve3d)arg1, (float)arg2) -> bool :
+isOn( (Curve3d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double)
 
-isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve3d)arg1) -> tuple :
@@ -5074,11 +5024,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock3d :
       '''orthoBoundBlock( (Curve3d)arg1) -> BoundBlock3d :
@@ -5157,56 +5107,56 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve3d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -5293,45 +5243,45 @@ isOn( (Entity2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -5365,7 +5315,12 @@ __init__( (object)arg1) -> None :
         class PyGeEntity3d copy(class PyGeEntity3d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -5393,45 +5348,45 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity3d {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -5458,7 +5413,12 @@ This class cannot be instantiated from Python'''
         class PyGeEntity3d copy(class PyGeEntity3d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -5486,45 +5446,45 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity3d {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -5862,36 +5822,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve2d)arg1) -> tuple :
@@ -5934,11 +5884,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double minorRadius(class PyGeEllipArc2d {lvalue})'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
       '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
@@ -5973,90 +5923,90 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.EllipArc2d :
-      '''set( (EllipArc2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6) -> EllipArc2d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (EllipArc2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6) -> None :
 
     C++ signature :
-        class PyGeEllipArc2d {lvalue} set(class PyGeEllipArc2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double)
+        void set(class PyGeEllipArc2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double)
 
-set( (EllipArc2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> EllipArc2d :
-
-    C++ signature :
-        class PyGeEllipArc2d {lvalue} set(class PyGeEllipArc2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double,double,double)
-
-set( (EllipArc2d)arg1, (CircArc2d)arg2) -> EllipArc2d :
+set( (EllipArc2d)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> None :
 
     C++ signature :
-        class PyGeEllipArc2d {lvalue} set(class PyGeEllipArc2d {lvalue},class PyGeCircArc2d)'''
+        void set(class PyGeEllipArc2d {lvalue},class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double,double,double)
+
+set( (EllipArc2d)arg1, (CircArc2d)arg2) -> None :
+
+    C++ signature :
+        void set(class PyGeEllipArc2d {lvalue},class PyGeCircArc2d)'''
     ...
-    def setAngles (self, *args, **kwargs)-> PyGe.EllipArc2d :
-      '''setAngles( (EllipArc2d)arg1, (float)arg2, (float)arg3) -> EllipArc2d :
+    def setAngles (self, *args, **kwargs)-> None :
+      '''setAngles( (EllipArc2d)arg1, (float)arg2, (float)arg3) -> None :
 
     C++ signature :
-        class PyGeEllipArc2d {lvalue} setAngles(class PyGeEllipArc2d {lvalue},double,double)'''
+        void setAngles(class PyGeEllipArc2d {lvalue},double,double)'''
     ...
-    def setAxes (self, *args, **kwargs)-> PyGe.EllipArc2d :
-      '''setAxes( (EllipArc2d)arg1, (Vector2d)arg2, (Vector2d)arg3) -> EllipArc2d :
+    def setAxes (self, *args, **kwargs)-> None :
+      '''setAxes( (EllipArc2d)arg1, (Vector2d)arg2, (Vector2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEllipArc2d {lvalue} setAxes(class PyGeEllipArc2d {lvalue},class AcGeVector2d,class AcGeVector2d)'''
+        void setAxes(class PyGeEllipArc2d {lvalue},class AcGeVector2d,class AcGeVector2d)'''
     ...
-    def setCenter (self, *args, **kwargs)-> PyGe.EllipArc2d :
-      '''setCenter( (EllipArc2d)arg1, (Point2d)arg2) -> EllipArc2d :
+    def setCenter (self, *args, **kwargs)-> None :
+      '''setCenter( (EllipArc2d)arg1, (Point2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEllipArc2d {lvalue} setCenter(class PyGeEllipArc2d {lvalue},class AcGePoint2d)'''
+        void setCenter(class PyGeEllipArc2d {lvalue},class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
     ...
-    def setMajorRadius (self, *args, **kwargs)-> PyGe.EllipArc2d :
-      '''setMajorRadius( (EllipArc2d)arg1, (float)arg2) -> EllipArc2d :
+    def setMajorRadius (self, *args, **kwargs)-> None :
+      '''setMajorRadius( (EllipArc2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEllipArc2d {lvalue} setMajorRadius(class PyGeEllipArc2d {lvalue},double)'''
+        void setMajorRadius(class PyGeEllipArc2d {lvalue},double)'''
     ...
-    def setMinorRadius (self, *args, **kwargs)-> PyGe.EllipArc2d :
-      '''setMinorRadius( (EllipArc2d)arg1, (float)arg2) -> EllipArc2d :
+    def setMinorRadius (self, *args, **kwargs)-> None :
+      '''setMinorRadius( (EllipArc2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEllipArc2d {lvalue} setMinorRadius(class PyGeEllipArc2d {lvalue},double)'''
+        void setMinorRadius(class PyGeEllipArc2d {lvalue},double)'''
     ...
     def startAng (self, *args, **kwargs)-> float :
       '''startAng( (EllipArc2d)arg1) -> float :
@@ -6070,17 +6020,17 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint2d startPoint(class PyGeEllipArc2d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -6428,7 +6378,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -6467,36 +6422,26 @@ isLinear( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity3d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
-
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3) -> bool :
+isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue},class AcGeTol)
-
-isOn( (Curve3d)arg1, (float)arg2) -> bool :
+isOn( (Curve3d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double)
 
-isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve3d)arg1) -> tuple :
@@ -6550,11 +6495,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double minorRadius(class PyGeEllipArc3d {lvalue})'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector3d :
       '''normal( (EllipArc3d)arg1) -> Vector3d :
@@ -6650,90 +6595,90 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.EllipArc3d :
-      '''set( (EllipArc3d)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6) -> EllipArc3d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (EllipArc3d)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6) -> None :
 
     C++ signature :
-        class PyGeEllipArc3d {lvalue} set(class PyGeEllipArc3d {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double)
+        void set(class PyGeEllipArc3d {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double)
 
-set( (EllipArc3d)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> EllipArc3d :
-
-    C++ signature :
-        class PyGeEllipArc3d {lvalue} set(class PyGeEllipArc3d {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,double)
-
-set( (EllipArc3d)arg1, (CircArc3d)arg2) -> EllipArc3d :
+set( (EllipArc3d)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> None :
 
     C++ signature :
-        class PyGeEllipArc3d {lvalue} set(class PyGeEllipArc3d {lvalue},class PyGeCircArc3d)'''
+        void set(class PyGeEllipArc3d {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,double)
+
+set( (EllipArc3d)arg1, (CircArc3d)arg2) -> None :
+
+    C++ signature :
+        void set(class PyGeEllipArc3d {lvalue},class PyGeCircArc3d)'''
     ...
-    def setAngles (self, *args, **kwargs)-> PyGe.EllipArc3d :
-      '''setAngles( (EllipArc3d)arg1, (float)arg2, (float)arg3) -> EllipArc3d :
+    def setAngles (self, *args, **kwargs)-> None :
+      '''setAngles( (EllipArc3d)arg1, (float)arg2, (float)arg3) -> None :
 
     C++ signature :
-        class PyGeEllipArc3d {lvalue} setAngles(class PyGeEllipArc3d {lvalue},double,double)'''
+        void setAngles(class PyGeEllipArc3d {lvalue},double,double)'''
     ...
-    def setAxes (self, *args, **kwargs)-> PyGe.EllipArc3d :
-      '''setAxes( (EllipArc3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> EllipArc3d :
+    def setAxes (self, *args, **kwargs)-> None :
+      '''setAxes( (EllipArc3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEllipArc3d {lvalue} setAxes(class PyGeEllipArc3d {lvalue},class AcGeVector3d,class AcGeVector3d)'''
+        void setAxes(class PyGeEllipArc3d {lvalue},class AcGeVector3d,class AcGeVector3d)'''
     ...
-    def setCenter (self, *args, **kwargs)-> PyGe.EllipArc3d :
-      '''setCenter( (EllipArc3d)arg1, (Point3d)arg2) -> EllipArc3d :
+    def setCenter (self, *args, **kwargs)-> None :
+      '''setCenter( (EllipArc3d)arg1, (Point3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEllipArc3d {lvalue} setCenter(class PyGeEllipArc3d {lvalue},class AcGePoint3d)'''
+        void setCenter(class PyGeEllipArc3d {lvalue},class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve3d {lvalue},class PyGeInterval)'''
     ...
-    def setMajorRadius (self, *args, **kwargs)-> PyGe.EllipArc3d :
-      '''setMajorRadius( (EllipArc3d)arg1, (float)arg2) -> EllipArc3d :
+    def setMajorRadius (self, *args, **kwargs)-> None :
+      '''setMajorRadius( (EllipArc3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEllipArc3d {lvalue} setMajorRadius(class PyGeEllipArc3d {lvalue},double)'''
+        void setMajorRadius(class PyGeEllipArc3d {lvalue},double)'''
     ...
-    def setMinorRadius (self, *args, **kwargs)-> PyGe.EllipArc3d :
-      '''setMinorRadius( (EllipArc3d)arg1, (float)arg2) -> EllipArc3d :
+    def setMinorRadius (self, *args, **kwargs)-> None :
+      '''setMinorRadius( (EllipArc3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEllipArc3d {lvalue} setMinorRadius(class PyGeEllipArc3d {lvalue},double)'''
+        void setMinorRadius(class PyGeEllipArc3d {lvalue},double)'''
     ...
     def startAng (self, *args, **kwargs)-> float :
       '''startAng( (EllipArc3d)arg1) -> float :
@@ -6747,17 +6692,17 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint3d startPoint(class PyGeEllipArc3d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -6817,45 +6762,45 @@ isOn( (Entity2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -6882,7 +6827,12 @@ This class cannot be instantiated from Python'''
         class PyGeEntity3d copy(class PyGeEntity3d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -6910,45 +6860,45 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity3d {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -7566,36 +7516,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve2d)arg1) -> tuple :
@@ -7614,11 +7554,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
       '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
@@ -7653,56 +7593,56 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -7961,7 +7901,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -7989,36 +7934,26 @@ isLinear( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity3d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
-
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3) -> bool :
+isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue},class AcGeTol)
-
-isOn( (Curve3d)arg1, (float)arg2) -> bool :
+isOn( (Curve3d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double)
 
-isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve3d)arg1) -> tuple :
@@ -8048,11 +7983,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock3d :
       '''orthoBoundBlock( (Curve3d)arg1) -> BoundBlock3d :
@@ -8131,56 +8066,56 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve3d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -8524,36 +8459,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
       '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -8600,11 +8525,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
       '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
@@ -8656,67 +8581,67 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.Line2d :
-      '''set( (Line2d)arg1, (Point2d)arg2, (Vector2d)arg3) -> Line2d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (Line2d)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
 
     C++ signature :
-        class PyGeLine2d {lvalue} set(class PyGeLine2d {lvalue},class AcGePoint2d,class AcGeVector2d)
+        void set(class PyGeLine2d {lvalue},class AcGePoint2d,class AcGeVector2d)
 
-set( (Line2d)arg1, (Point2d)arg2, (Point2d)arg3) -> Line2d :
+set( (Line2d)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeLine2d {lvalue} set(class PyGeLine2d {lvalue},class AcGePoint2d,class AcGePoint2d)'''
+        void set(class PyGeLine2d {lvalue},class AcGePoint2d,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -9042,7 +8967,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -9180,11 +9110,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock3d :
       '''orthoBoundBlock( (Curve3d)arg1) -> BoundBlock3d :
@@ -9291,67 +9221,67 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.Line3d :
-      '''set( (Line3d)arg1, (Point3d)arg2, (Vector3d)arg3) -> Line3d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (Line3d)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeLine3d {lvalue} set(class PyGeLine3d {lvalue},class AcGePoint3d,class AcGeVector3d)
+        void set(class PyGeLine3d {lvalue},class AcGePoint3d,class AcGeVector3d)
 
-set( (Line3d)arg1, (Point3d)arg2, (Point3d)arg3) -> Line3d :
+set( (Line3d)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeLine3d {lvalue} set(class PyGeLine3d {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+        void set(class PyGeLine3d {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve3d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -9685,36 +9615,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
       '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -9766,11 +9686,11 @@ length( (LineSeg2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         class AcGePoint2d midPoint(class PyGeLineSeg2d {lvalue})'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
       '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
@@ -9822,60 +9742,60 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.LineSeg2d :
-      '''set( (LineSeg2d)arg1, (Point2d)arg2, (Vector2d)arg3) -> LineSeg2d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (LineSeg2d)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
 
     C++ signature :
-        class PyGeLineSeg2d {lvalue} set(class PyGeLineSeg2d {lvalue},class AcGePoint2d,class AcGeVector2d)
+        void set(class PyGeLineSeg2d {lvalue},class AcGePoint2d,class AcGeVector2d)
 
-set( (LineSeg2d)arg1, (Point2d)arg2, (Point2d)arg3) -> LineSeg2d :
-
-    C++ signature :
-        class PyGeLineSeg2d {lvalue} set(class PyGeLineSeg2d {lvalue},class AcGePoint2d,class AcGePoint2d)
-
-set( (LineSeg2d)arg1, (Curve2d)arg2, (Curve2d)arg3) -> LineSeg2d :
+set( (LineSeg2d)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeLineSeg2d {lvalue} set(class PyGeLineSeg2d {lvalue},class PyGeCurve2d,class PyGeCurve2d)
+        void set(class PyGeLineSeg2d {lvalue},class AcGePoint2d,class AcGePoint2d)
 
-set( (LineSeg2d)arg1, (Curve2d)arg2, (Point2d)arg3) -> LineSeg2d :
+set( (LineSeg2d)arg1, (Curve2d)arg2, (Curve2d)arg3) -> None :
 
     C++ signature :
-        class PyGeLineSeg2d {lvalue} set(class PyGeLineSeg2d {lvalue},class PyGeCurve2d,class AcGePoint2d)'''
+        void set(class PyGeLineSeg2d {lvalue},class PyGeCurve2d,class PyGeCurve2d)
+
+set( (LineSeg2d)arg1, (Curve2d)arg2, (Point2d)arg3) -> None :
+
+    C++ signature :
+        void set(class PyGeLineSeg2d {lvalue},class PyGeCurve2d,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
@@ -9888,17 +9808,17 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint2d startPoint(class PyGeLineSeg2d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -10242,7 +10162,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -10382,11 +10307,11 @@ length( (LineSeg3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         class AcGePoint3d midPoint(class PyGeLineSeg3d {lvalue})'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock3d :
       '''orthoBoundBlock( (Curve3d)arg1) -> BoundBlock3d :
@@ -10493,50 +10418,50 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.LineSeg3d :
-      '''set( (LineSeg3d)arg1, (Point3d)arg2, (Vector3d)arg3) -> LineSeg3d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (LineSeg3d)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeLineSeg3d {lvalue} set(class PyGeLineSeg3d {lvalue},class AcGePoint3d,class AcGeVector3d)
+        void set(class PyGeLineSeg3d {lvalue},class AcGePoint3d,class AcGeVector3d)
 
-set( (LineSeg3d)arg1, (Point3d)arg2, (Point3d)arg3) -> LineSeg3d :
+set( (LineSeg3d)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeLineSeg3d {lvalue} set(class PyGeLineSeg3d {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+        void set(class PyGeLineSeg3d {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
@@ -10549,17 +10474,17 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint3d startPoint(class PyGeLineSeg3d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -10858,36 +10783,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
       '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -10928,11 +10843,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
       '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
@@ -10984,56 +10899,56 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -11342,7 +11257,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -11471,11 +11391,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock3d :
       '''orthoBoundBlock( (Curve3d)arg1) -> BoundBlock3d :
@@ -11582,56 +11502,56 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve3d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -11690,16 +11610,16 @@ class Matrix2d:
         bool isConformal(class AcGeMatrix2d {lvalue},double {lvalue},double {lvalue},bool {lvalue},class AcGeVector2d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38C9D0>]) -> bool :
+      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C95A0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38C9D0>])'''
+        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C95A0>])'''
     ...
     def isScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38CAF0>]) -> bool :
+      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C96C0>]) -> bool :
 
     C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002229C38CAF0>])'''
+        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C96C0>])'''
     ...
     def isSingular (self, *args, **kwargs)-> bool :
       '''isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
@@ -11708,10 +11628,10 @@ class Matrix2d:
         bool isSingular(class AcGeMatrix2d {lvalue},class AcGeTol)'''
     ...
     def isUniScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38CA60>]) -> bool :
+      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9630>]) -> bool :
 
     C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002229C38CA60>])'''
+        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9630>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -12462,36 +12382,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve2d)arg1) -> tuple :
@@ -12528,11 +12438,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def numControlPoints (self, *args, **kwargs)-> int :
       '''numControlPoints( (SplineEnt2d)arg1) -> int :
@@ -12585,33 +12495,33 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
     def setControlPointAt (self, *args, **kwargs)-> PyGe.SplineEnt2d :
       '''setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> SplineEnt2d :
@@ -12619,11 +12529,11 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
@@ -12648,17 +12558,17 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint2d startPoint(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -12960,7 +12870,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -12988,36 +12903,26 @@ isLinear( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity3d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
-
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3) -> bool :
+isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue},class AcGeTol)
-
-isOn( (Curve3d)arg1, (float)arg2) -> bool :
+isOn( (Curve3d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double)
 
-isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve3d)arg1) -> tuple :
@@ -13065,11 +12970,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def numControlPoints (self, *args, **kwargs)-> int :
       '''numControlPoints( (SplineEnt3d)arg1) -> int :
@@ -13166,33 +13071,33 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def setControlPointAt (self, *args, **kwargs)-> PyGe.SplineEnt3d :
       '''setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> SplineEnt3d :
@@ -13200,11 +13105,11 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
@@ -13229,17 +13134,17 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint3d startPoint(class PyGeSplineEnt3d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -13625,36 +13530,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve2d)arg1) -> tuple :
@@ -13673,11 +13568,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
       '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
@@ -13712,56 +13607,56 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -14022,7 +13917,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -14050,36 +13950,26 @@ isLinear( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity3d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
-
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3) -> bool :
+isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue},class AcGeTol)
-
-isOn( (Curve3d)arg1, (float)arg2) -> bool :
+isOn( (Curve3d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double)
 
-isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve3d)arg1) -> tuple :
@@ -14109,11 +13999,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock3d :
       '''orthoBoundBlock( (Curve3d)arg1) -> BoundBlock3d :
@@ -14192,56 +14082,56 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve3d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -14384,7 +14274,12 @@ isCoplanarTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
         bool isCoplanarTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -14470,11 +14365,11 @@ isPerpendicularTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector3d :
       '''normal( (PlanarEnt)arg1) -> Vector3d :
@@ -14505,39 +14400,39 @@ paramOf( (Surface)arg1, (Point3d)arg2, (Tol)arg3) -> Point2d :
     C++ signature :
         class PyGeSurface {lvalue} reverseNormal(class PyGeSurface {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -14727,7 +14622,12 @@ isCoplanarTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
         bool isCoplanarTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -14813,11 +14713,11 @@ isPerpendicularTo( (PlanarEnt)arg1, (PlanarEnt)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isPerpendicularTo(class PyGePlanarEnt {lvalue},class PyGePlanarEnt,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector3d :
       '''normal( (PlanarEnt)arg1) -> Vector3d :
@@ -14848,27 +14748,27 @@ paramOf( (Surface)arg1, (Point3d)arg2, (Tol)arg3) -> Point2d :
     C++ signature :
         class PyGeSurface {lvalue} reverseNormal(class PyGeSurface {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def set (self, *args, **kwargs)-> PyGe.Plane :
       '''set( (Plane)arg1, (Point3d)arg2, (Vector3d)arg3) -> Plane :
@@ -14897,17 +14797,17 @@ set( (Plane)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> Plane :
     C++ signature :
         double signedDistanceTo(class PyGePlane {lvalue},class AcGePoint3d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -14951,10 +14851,10 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
         double distanceTo(class AcGePoint2d {lvalue},class AcGePoint2d)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38C4C0>]) -> bool :
+      '''isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9090>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38C4C0>])'''
+        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9090>])'''
     ...
     def kOrigin (self, *args, **kwargs)-> None :
       '''None'''
@@ -15049,10 +14949,10 @@ class Point3d:
         double distanceTo(class AcGePoint3d {lvalue},class AcGePoint3d)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38CB80>]) -> bool :
+      '''isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9750>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint3d {lvalue},class AcGePoint3d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38CB80>])'''
+        bool isEqualTo(class AcGePoint3d {lvalue},class AcGePoint3d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9750>])'''
     ...
     def kOrigin (self, *args, **kwargs)-> None :
       '''None'''
@@ -15183,11 +15083,11 @@ isOn( (Entity2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def point2d (self, *args, **kwargs)-> PyGe.Point2d :
       '''point2d( (PointEnt2d)arg1) -> Point2d :
@@ -15195,39 +15095,39 @@ isOn( (Entity2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         class AcGePoint2d point2d(class PyGePointEnt2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -15254,7 +15154,12 @@ This class cannot be instantiated from Python'''
         class PyGeEntity3d copy(class PyGeEntity3d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -15282,11 +15187,11 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity3d {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def point3d (self, *args, **kwargs)-> PyGe.Point3d :
       '''point3d( (PointEnt3d)arg1) -> Point3d :
@@ -15294,39 +15199,39 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         class AcGePoint3d point3d(class PyGePointEnt3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -15425,11 +15330,11 @@ isOn( (Entity2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def parameter (self, *args, **kwargs)-> float :
       '''parameter( (PointOnCurve2d)arg1) -> float :
@@ -15459,27 +15364,27 @@ point( (PointOnCurve2d)arg1, (Curve2d)arg2, (float)arg3) -> Point2d :
     C++ signature :
         class AcGePoint2d point2d(class PyGePointEnt2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
     def setCurve (self, *args, **kwargs)-> None :
       '''setCurve( (PointOnCurve2d)arg1, (Curve2d)arg2) -> None :
@@ -15493,17 +15398,17 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     C++ signature :
         void setParameter(class PyGePointOnCurve2d {lvalue},double)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -15580,7 +15485,12 @@ deriv( (PointOnCurve3d)arg1, (int)arg2, (Curve3d)arg3, (float)arg4) -> Vector3d 
         class AcGeVector3d deriv(class PyGePointOnCurve3d {lvalue},int,class PyGeCurve3d,double)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -15614,11 +15524,11 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isSingular(class PyGePointOnCurve3d {lvalue})'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def parameter (self, *args, **kwargs)-> float :
       '''parameter( (PointOnCurve3d)arg1) -> float :
@@ -15648,27 +15558,27 @@ point( (PointOnCurve3d)arg1, (Curve3d)arg2, (float)arg3) -> Point3d :
     C++ signature :
         class AcGePoint3d point3d(class PyGePointEnt3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def setCurve (self, *args, **kwargs)-> None :
       '''setCurve( (PointOnCurve3d)arg1, (Curve3d)arg2) -> None :
@@ -15682,17 +15592,17 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     C++ signature :
         void setParameter(class PyGePointOnCurve3d {lvalue},double)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -15752,7 +15662,12 @@ inverseTangentVector( (PointOnSurface)arg1, (Vector3d)arg2, (Surface)arg3, (Poin
         class AcGeVector2d inverseTangentVector(class PyGePointOnSurface {lvalue},class AcGeVector3d,class PyGeSurface,class AcGePoint2d)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -15780,11 +15695,11 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity3d {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def mixedPartial (self, *args, **kwargs)-> PyGe.Vector3d :
       '''mixedPartial( (PointOnSurface)arg1) -> Vector3d :
@@ -15846,27 +15761,27 @@ point( (PointOnSurface)arg1, (Surface)arg2, (Point2d)arg3) -> Point3d :
     C++ signature :
         class AcGePoint3d point3d(class PyGePointEnt3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def setParameter (self, *args, **kwargs)-> None :
       '''setParameter( (PointOnSurface)arg1, (Point2d)arg2) -> None :
@@ -15902,17 +15817,17 @@ tangentVector( (PointOnSurface)arg1, (Vector2d)arg2, (Surface)arg3, (Point2d)arg
     C++ signature :
         class AcGeVector3d tangentVector(class PyGePointOnSurface {lvalue},class AcGeVector2d,class PyGeSurface,class AcGePoint2d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -16272,36 +16187,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve2d)arg1) -> tuple :
@@ -16338,11 +16243,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def numControlPoints (self, *args, **kwargs)-> int :
       '''numControlPoints( (SplineEnt2d)arg1) -> int :
@@ -16401,33 +16306,33 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
     def setControlPointAt (self, *args, **kwargs)-> PyGe.SplineEnt2d :
       '''setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> SplineEnt2d :
@@ -16441,11 +16346,11 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     C++ signature :
         class PyGePolyline2d {lvalue} setFitPointAt(class PyGePolyline2d {lvalue},int,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
@@ -16470,17 +16375,17 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint2d startPoint(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -16808,7 +16713,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -16836,36 +16746,26 @@ isLinear( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity3d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
-
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3) -> bool :
+isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue},class AcGeTol)
-
-isOn( (Curve3d)arg1, (float)arg2) -> bool :
+isOn( (Curve3d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double)
 
-isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve3d)arg1) -> tuple :
@@ -16913,11 +16813,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def numControlPoints (self, *args, **kwargs)-> int :
       '''numControlPoints( (SplineEnt3d)arg1) -> int :
@@ -17020,33 +16920,33 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def setControlPointAt (self, *args, **kwargs)-> PyGe.SplineEnt3d :
       '''setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> SplineEnt3d :
@@ -17060,11 +16960,11 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     C++ signature :
         class PyGePolyline3d {lvalue} setFitPointAt(class PyGePolyline3d {lvalue},int,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
@@ -17089,17 +16989,17 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint3d startPoint(class PyGeSplineEnt3d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -17176,11 +17076,11 @@ isOn( (Entity2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def point2d (self, *args, **kwargs)-> PyGe.Point2d :
       '''point2d( (PointEnt2d)arg1) -> Point2d :
@@ -17188,27 +17088,27 @@ isOn( (Entity2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         class AcGePoint2d point2d(class PyGePointEnt2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
     def set (self, *args, **kwargs)-> None :
       '''set( (Position2d)arg1, (Point2d)arg2) -> None :
@@ -17221,17 +17121,17 @@ set( (Position2d)arg1, (float)arg2, (float)arg3) -> None :
     C++ signature :
         void set(class PyGePosition2d {lvalue},double,double)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -17275,7 +17175,12 @@ __init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
         class PyGeEntity3d copy(class PyGeEntity3d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -17303,11 +17208,11 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity3d {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def point3d (self, *args, **kwargs)-> PyGe.Point3d :
       '''point3d( (PointEnt3d)arg1) -> Point3d :
@@ -17315,27 +17220,27 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         class AcGePoint3d point3d(class PyGePointEnt3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def set (self, *args, **kwargs)-> None :
       '''set( (Position3d)arg1, (Point3d)arg2) -> None :
@@ -17348,17 +17253,17 @@ set( (Position3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
     C++ signature :
         void set(class PyGePosition3d {lvalue},double,double,double)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -17674,36 +17579,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
       '''isParallelTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2) -> bool :
@@ -17744,11 +17639,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock2d :
       '''orthoBoundBlock( (Curve2d)arg1) -> BoundBlock2d :
@@ -17800,67 +17695,67 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         class AcGePoint2d pointOnLine(class PyGeLinearEnt2d {lvalue})'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.Ray2d :
-      '''set( (Ray2d)arg1, (Point2d)arg2, (Vector2d)arg3) -> Ray2d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (Ray2d)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
 
     C++ signature :
-        class PyGeRay2d {lvalue} set(class PyGeRay2d {lvalue},class AcGePoint2d,class AcGeVector2d)
+        void set(class PyGeRay2d {lvalue},class AcGePoint2d,class AcGeVector2d)
 
-set( (Ray2d)arg1, (Point2d)arg2, (Point2d)arg3) -> Ray2d :
+set( (Ray2d)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeRay2d {lvalue} set(class PyGeRay2d {lvalue},class AcGePoint2d,class AcGePoint2d)'''
+        void set(class PyGeRay2d {lvalue},class AcGePoint2d,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve2d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -18186,7 +18081,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -18315,11 +18215,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def orthoBoundBlock (self, *args, **kwargs)-> PyGe.BoundBlock3d :
       '''orthoBoundBlock( (Curve3d)arg1) -> BoundBlock3d :
@@ -18426,67 +18326,67 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def set (self, *args, **kwargs)-> PyGe.Ray3d :
-      '''set( (Ray3d)arg1, (Point3d)arg2, (Vector3d)arg3) -> Ray3d :
+    def set (self, *args, **kwargs)-> None :
+      '''set( (Ray3d)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeRay3d {lvalue} set(class PyGeRay3d {lvalue},class AcGePoint3d,class AcGeVector3d)
+        void set(class PyGeRay3d {lvalue},class AcGePoint3d,class AcGeVector3d)
 
-set( (Ray3d)arg1, (Point3d)arg2, (Point3d)arg3) -> Ray3d :
+set( (Ray3d)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeRay3d {lvalue} set(class PyGeRay3d {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+        void set(class PyGeRay3d {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
     C++ signature :
         bool setInterval(class PyGeCurve3d {lvalue},class PyGeInterval)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -18905,36 +18805,26 @@ isLinear( (Curve2d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity2d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve2d)arg1, (Point2d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
-
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3) -> bool :
+isOn( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)
 
-isOn( (Curve2d)arg1, (Point2d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},class AcGePoint2d,double {lvalue},class AcGeTol)
-
-isOn( (Curve2d)arg1, (float)arg2) -> bool :
+isOn( (Curve2d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double)
 
-isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve2d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve2d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve2d)arg1) -> tuple :
@@ -18971,11 +18861,11 @@ length( (Curve2d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve2d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> Entity2d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity2d)arg1, (Line2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
+        void mirror(class PyGeEntity2d {lvalue},class PyGeLine2d)'''
     ...
     def numControlPoints (self, *args, **kwargs)-> int :
       '''numControlPoints( (SplineEnt2d)arg1) -> int :
@@ -19028,33 +18918,33 @@ paramOf( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> float :
     C++ signature :
         double paramOf(class PyGeCurve2d {lvalue},class AcGePoint2d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''reverseParam( (Curve2d)arg1) -> Curve2d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} reverseParam(class PyGeCurve2d {lvalue})'''
+        void reverseParam(class PyGeCurve2d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''rotateBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double)
+        void rotateBy(class PyGeEntity2d {lvalue},double)
 
-rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+rotateBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void rotateBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''scaleBy( (Entity2d)arg1, (float)arg2) -> Entity2d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity2d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double)
+        void scaleBy(class PyGeEntity2d {lvalue},double)
 
-scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
+scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
+        void scaleBy(class PyGeEntity2d {lvalue},double,class AcGePoint2d)'''
     ...
     def setControlPointAt (self, *args, **kwargs)-> PyGe.SplineEnt2d :
       '''setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> SplineEnt2d :
@@ -19062,11 +18952,11 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve2d :
-      '''setInterval( (Curve2d)arg1) -> Curve2d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve2d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve2d {lvalue} setInterval(class PyGeCurve2d {lvalue})
+        void setInterval(class PyGeCurve2d {lvalue})
 
 setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
 
@@ -19091,17 +18981,17 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint2d startPoint(class PyGeSplineEnt2d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> Entity2d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity2d)arg1, (Matrix2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
+        void transformBy(class PyGeEntity2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity2d :
-      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> Entity2d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity2d {lvalue} translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
+        void translateBy(class PyGeEntity2d {lvalue},class AcGeVector2d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity2d)arg1) -> EntityId :
@@ -19401,7 +19291,12 @@ isDegenerate( (Curve3d)arg1, (Tol)arg2) -> tuple :
         class boost::python::tuple isDegenerate(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -19429,36 +19324,26 @@ isLinear( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         bool isNull(class PyGeEntity3d {lvalue})'''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> bool :
+    def isOn (self, *args, **kwargs)-> tuple :
+      '''isOn( (Curve3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
-
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3) -> bool :
+isOn( (Curve3d)arg1, (Point3d)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue})
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,class AcGeTol)
 
-isOn( (Curve3d)arg1, (Point3d)arg2, (float)arg3, (Tol)arg4) -> bool :
-
-    C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},class AcGePoint3d,double {lvalue},class AcGeTol)
-
-isOn( (Curve3d)arg1, (float)arg2) -> bool :
+isOn( (Curve3d)arg1, (float)arg2) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double)
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double)
 
-isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> bool :
+isOn( (Curve3d)arg1, (float)arg2, (Tol)arg3) -> tuple :
 
     C++ signature :
-        bool isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
+        class boost::python::tuple isOn(class PyGeCurve3d {lvalue},double,class AcGeTol)'''
     ...
     def isPeriodic (self, *args, **kwargs)-> tuple :
       '''isPeriodic( (Curve3d)arg1) -> tuple :
@@ -19506,11 +19391,11 @@ length( (Curve3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> float :
     C++ signature :
         double length(class PyGeCurve3d {lvalue},double,double,double)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def numControlPoints (self, *args, **kwargs)-> int :
       '''numControlPoints( (SplineEnt3d)arg1) -> int :
@@ -19607,33 +19492,33 @@ project( (Curve3d)arg1, (Plane)arg2, (Vector3d)arg3, (Tol)arg4) -> Entity3d :
     C++ signature :
         class PyGeEntity3d project(class PyGeCurve3d {lvalue},class PyGePlane,class AcGeVector3d,class AcGeTol)'''
     ...
-    def reverseParam (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''reverseParam( (Curve3d)arg1) -> Curve3d :
+    def reverseParam (self, *args, **kwargs)-> None :
+      '''reverseParam( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} reverseParam(class PyGeCurve3d {lvalue})'''
+        void reverseParam(class PyGeCurve3d {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def setControlPointAt (self, *args, **kwargs)-> PyGe.SplineEnt3d :
       '''setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> SplineEnt3d :
@@ -19641,11 +19526,11 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
     ...
-    def setInterval (self, *args, **kwargs)-> PyGe.Curve3d :
-      '''setInterval( (Curve3d)arg1) -> Curve3d :
+    def setInterval (self, *args, **kwargs)-> None :
+      '''setInterval( (Curve3d)arg1) -> None :
 
     C++ signature :
-        class PyGeCurve3d {lvalue} setInterval(class PyGeCurve3d {lvalue})
+        void setInterval(class PyGeCurve3d {lvalue})
 
 setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
 
@@ -19670,17 +19555,17 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     C++ signature :
         class AcGePoint3d startPoint(class PyGeSplineEnt3d {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -19766,7 +19651,12 @@ __init__( (object)arg1, (Surface)arg2, (Surface)arg3, (Tol)arg4) -> None :
         class AcGePoint3d intPoint(class PyGeSurfSurfInt {lvalue},int)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -19794,11 +19684,11 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isOn(class PyGeEntity3d {lvalue},class AcGePoint3d,class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def numResults (self, *args, **kwargs)-> int :
       '''numResults( (SurfSurfInt)arg1) -> int :
@@ -19806,27 +19696,27 @@ isOn( (Entity3d)arg1, (Point3d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         int numResults(class PyGeSurfSurfInt {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
     def set (self, *args, **kwargs)-> None :
       '''set( (SurfSurfInt)arg1, (Surface)arg2, (Surface)arg3) -> None :
@@ -19857,17 +19747,17 @@ set( (SurfSurfInt)arg1, (Surface)arg2, (Surface)arg3, (Tol)arg4) -> None :
     C++ signature :
         class AcGeTol tolerance(class PyGeSurfSurfInt {lvalue})'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -19954,7 +19844,12 @@ isClosedInV( (Surface)arg1, (Tol)arg2) -> bool :
         bool isClosedInV(class PyGeSurface {lvalue},class AcGeTol)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
+      '''isEqualTo( (Entity3d)arg1, (Entity3d)arg2) -> bool :
+
+    C++ signature :
+        bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d)
+
+isEqualTo( (Entity3d)arg1, (Entity3d)arg2, (Tol)arg3) -> bool :
 
     C++ signature :
         bool isEqualTo(class PyGeEntity3d {lvalue},class PyGeEntity3d,class AcGeTol)'''
@@ -19998,11 +19893,11 @@ isOn( (Surface)arg1, (Point3d)arg2, (Point2d)arg3, (Tol)arg4) -> bool :
     C++ signature :
         bool isOn(class PyGeSurface {lvalue},class AcGePoint3d,class AcGePoint2d {lvalue},class AcGeTol)'''
     ...
-    def mirror (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''mirror( (Entity3d)arg1, (Plane)arg2) -> Entity3d :
+    def mirror (self, *args, **kwargs)-> None :
+      '''mirror( (Entity3d)arg1, (Plane)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
+        void mirror(class PyGeEntity3d {lvalue},class PyGePlane)'''
     ...
     def paramOf (self, *args, **kwargs)-> PyGe.Point2d :
       '''paramOf( (Surface)arg1, (Point3d)arg2) -> Point2d :
@@ -20021,39 +19916,39 @@ paramOf( (Surface)arg1, (Point3d)arg2, (Tol)arg3) -> Point2d :
     C++ signature :
         class PyGeSurface {lvalue} reverseNormal(class PyGeSurface {lvalue})'''
     ...
-    def rotateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> Entity3d :
+    def rotateBy (self, *args, **kwargs)-> None :
+      '''rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d)
 
-rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> Entity3d :
+rotateBy( (Entity3d)arg1, (float)arg2, (Vector3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
+        void rotateBy(class PyGeEntity3d {lvalue},double,class AcGeVector3d,class AcGePoint3d)'''
     ...
-    def scaleBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''scaleBy( (Entity3d)arg1, (float)arg2) -> Entity3d :
+    def scaleBy (self, *args, **kwargs)-> None :
+      '''scaleBy( (Entity3d)arg1, (float)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double)
+        void scaleBy(class PyGeEntity3d {lvalue},double)
 
-scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
+scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
+        void scaleBy(class PyGeEntity3d {lvalue},double,class AcGePoint3d)'''
     ...
-    def transformBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> Entity3d :
+    def transformBy (self, *args, **kwargs)-> None :
+      '''transformBy( (Entity3d)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
+        void transformBy(class PyGeEntity3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def translateBy (self, *args, **kwargs)-> PyGe.Entity3d :
-      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> Entity3d :
+    def translateBy (self, *args, **kwargs)-> None :
+      '''translateBy( (Entity3d)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
-        class PyGeEntity3d {lvalue} translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
+        void translateBy(class PyGeEntity3d {lvalue},class AcGeVector3d)'''
     ...
     def type (self, *args, **kwargs)-> PyGe.EntityId :
       '''type( (Entity3d)arg1) -> EntityId :
@@ -20143,40 +20038,40 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
         double dotProduct(class AcGeVector2d {lvalue},class AcGeVector2d)'''
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
-      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38C820>]) -> bool :
+      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C93F0>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38C820>])'''
+        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C93F0>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38C940>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9510>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38C940>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9510>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38C790>]) -> bool :
+      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9360>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38C790>])'''
+        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9360>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38C8B0>]) -> bool :
+      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9480>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38C8B0>])'''
+        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9480>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38C670>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9240>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002229C38C670>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9240>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38C700>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C92D0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002229C38C700>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C92D0>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -20212,16 +20107,16 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
         class AcGeVector2d {lvalue} negate(class AcGeVector2d {lvalue})'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38C550>]) -> Vector2d :
+      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9120>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002229C38C550>])'''
+        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9120>])'''
     ...
     def normalize (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38C5E0>]) -> Vector2d :
+      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C91B0>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002229C38C5E0>])'''
+        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C91B0>])'''
     ...
     def rotateBy (self, *args, **kwargs)-> PyGe.Vector2d :
       '''rotateBy( (Vector2d)arg1, (float)arg2) -> Vector2d :
@@ -20334,40 +20229,40 @@ angleTo( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> float :
         double dotProduct(class AcGeVector3d {lvalue},class AcGeVector3d)'''
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
-      '''isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38CEE0>]) -> bool :
+      '''isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9AB0>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38CEE0>])'''
+        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9AB0>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38D000>]) -> bool :
+      '''isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9BD0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38D000>])'''
+        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9BD0>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38CE50>]) -> bool :
+      '''isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9A20>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38CE50>])'''
+        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9A20>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38CF70>]) -> bool :
+      '''isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9B40>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002229C38CF70>])'''
+        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9B40>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38CD30>]) -> bool :
+      '''isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9900>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002229C38CD30>])'''
+        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9900>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38CDC0>]) -> bool :
+      '''isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9990>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002229C38CDC0>])'''
+        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9990>])'''
     ...
     def kIdentity (self, *args, **kwargs)-> None :
       '''None'''
@@ -20412,16 +20307,16 @@ angleTo( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> float :
         class AcGeVector3d {lvalue} negate(class AcGeVector3d {lvalue})'''
     ...
     def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38CCA0>]) -> Vector3d :
+      '''normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C9870>]) -> Vector3d :
 
     C++ signature :
-        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002229C38CCA0>])'''
+        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C9870>])'''
     ...
     def normalize (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normalize( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002229C38CC10>]) -> Vector3d :
+      '''normalize( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001A3658C97E0>]) -> Vector3d :
 
     C++ signature :
-        class AcGeVector3d {lvalue} normalize(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002229C38CC10>])
+        class AcGeVector3d {lvalue} normalize(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001A3658C97E0>])
 
 normalize( (Vector3d)arg1, (Tol)arg2, (AcGeError)arg3) -> Vector3d :
 
