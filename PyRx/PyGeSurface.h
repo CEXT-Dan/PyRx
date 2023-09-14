@@ -28,7 +28,7 @@ public:
     double          distanceTo1(const AcGePoint3d& pnt) const;
     double          distanceTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
     Adesk::Boolean  isNormalReversed() const;
-    PyGeSurface& reverseNormal();
+    void            reverseNormal();
     void            getEnvelope(PyGeInterval& intrvlX, PyGeInterval& intrvlY) const;
     Adesk::Boolean  isClosedInU1() const;
     Adesk::Boolean  isClosedInU2(const AcGeTol& tol) const;

@@ -22,9 +22,9 @@ void makePyGeSplineEnt2dWrapper()
         .def("endPoint", &PyGeSplineEnt2d::endPoint)
         .def("hasFitData", &PyGeSplineEnt2d::hasFitData)
         .def("knotAt", &PyGeSplineEnt2d::knotAt)
-        .def("setKnotAt", &PyGeSplineEnt2d::setKnotAt, return_self<>())
+        .def("setKnotAt", &PyGeSplineEnt2d::setKnotAt)
         .def("controlPointAt", &PyGeSplineEnt2d::controlPointAt)
-        .def("setControlPointAt", &PyGeSplineEnt2d::setControlPointAt, return_self<>())
+        .def("setControlPointAt", &PyGeSplineEnt2d::setControlPointAt)
         .def("className", &PyGeSplineEnt2d::className).staticmethod("className")
         ;
 }
@@ -104,10 +104,9 @@ double PyGeSplineEnt2d::knotAt(int idx) const
     return impObj()->knotAt(idx);
 }
 
-PyGeSplineEnt2d& PyGeSplineEnt2d::setKnotAt(int idx, double val)
+void PyGeSplineEnt2d::setKnotAt(int idx, double val)
 {
     impObj()->setKnotAt(idx, val);
-    return *this;
 }
 
 AcGePoint2d PyGeSplineEnt2d::controlPointAt(int idx) const
@@ -115,10 +114,9 @@ AcGePoint2d PyGeSplineEnt2d::controlPointAt(int idx) const
     return impObj()->controlPointAt(idx);
 }
 
-PyGeSplineEnt2d& PyGeSplineEnt2d::setControlPointAt(int idx, const AcGePoint2d& pnt)
+void PyGeSplineEnt2d::setControlPointAt(int idx, const AcGePoint2d& pnt)
 {
     impObj()->setControlPointAt(idx, pnt);
-    return *this;
 }
 
 std::string PyGeSplineEnt2d::className()
@@ -206,7 +204,7 @@ void makePyGePolyline2dWrapper()
         .def(init<const PyGeCurve2d&, double>())
         .def("numFitPoints", &PyGePolyline2d::numFitPoints)
         .def("fitPointAt", &PyGePolyline2d::fitPointAt)
-        .def("setFitPointAt", &PyGePolyline2d::setFitPointAt, return_self<>())
+        .def("setFitPointAt", &PyGePolyline2d::setFitPointAt)
         .def("className", &PyGePolyline2d::className).staticmethod("className")
         ;
 }
@@ -251,10 +249,9 @@ AcGePoint2d PyGePolyline2d::fitPointAt(int idx) const
     return impObj()->fitPointAt(idx);
 }
 
-PyGeSplineEnt2d& PyGePolyline2d::setFitPointAt(int idx, const AcGePoint2d& point)
+void PyGePolyline2d::setFitPointAt(int idx, const AcGePoint2d& point)
 {
     impObj()->setFitPointAt(idx, point);
-    return *this;
 }
 
 std::string PyGePolyline2d::className()

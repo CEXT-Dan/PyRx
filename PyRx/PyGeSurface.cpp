@@ -20,7 +20,7 @@ void makePyGeSurfaceWrapper()
         .def("distanceTo", &PyGeSurface::distanceTo1)
         .def("distanceTo", &PyGeSurface::distanceTo2)
         .def("isNormalReversed", &PyGeSurface::isNormalReversed)
-        .def("reverseNormal", &PyGeSurface::reverseNormal, return_self<>())
+        .def("reverseNormal", &PyGeSurface::reverseNormal)
         .def("isClosedInU", &PyGeSurface::isClosedInU1)
         .def("isClosedInU", &PyGeSurface::isClosedInU2)
         .def("isClosedInV", &PyGeSurface::isClosedInV1)
@@ -117,10 +117,9 @@ Adesk::Boolean PyGeSurface::isNormalReversed() const
     return impObj()->isNormalReversed();
 }
 
-PyGeSurface& PyGeSurface::reverseNormal()
+void PyGeSurface::reverseNormal()
 {
     impObj()->reverseNormal();
-    return *this;
 }
 
 void PyGeSurface::getEnvelope(PyGeInterval& intrvlX, PyGeInterval& intrvlY) const

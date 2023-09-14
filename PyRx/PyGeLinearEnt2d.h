@@ -11,19 +11,19 @@ public:
 
     boost::python::tuple intersectWith1(const PyGeLinearEnt2d& line);
     boost::python::tuple intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol);
-    boost::python::tuple  overlap1(const PyGeLinearEnt2d& line) const;
-    boost::python::tuple  overlap2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
-    Adesk::Boolean  isParallelTo1(const PyGeLinearEnt2d& line) const;
-    Adesk::Boolean  isParallelTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
-    Adesk::Boolean  isPerpendicularTo1(const PyGeLinearEnt2d& line) const;
-    Adesk::Boolean  isPerpendicularTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
-    Adesk::Boolean  isColinearTo1(const PyGeLinearEnt2d& line) const;
-    Adesk::Boolean  isColinearTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
-    PyGeLine2d      getPerpLine(const AcGePoint2d& pnt) const;
-    PyGeLine2d      getLine() const;
-    AcGePoint2d     pointOnLine() const;
-    AcGeVector2d    direction() const;
-    static std::string className();
+    boost::python::tuple overlap1(const PyGeLinearEnt2d& line) const;
+    boost::python::tuple overlap2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
+    Adesk::Boolean       isParallelTo1(const PyGeLinearEnt2d& line) const;
+    Adesk::Boolean       isParallelTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
+    Adesk::Boolean       isPerpendicularTo1(const PyGeLinearEnt2d& line) const;
+    Adesk::Boolean       isPerpendicularTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
+    Adesk::Boolean       isColinearTo1(const PyGeLinearEnt2d& line) const;
+    Adesk::Boolean       isColinearTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
+    PyGeLine2d           getPerpLine(const AcGePoint2d& pnt) const;
+    PyGeLine2d           getLine() const;
+    AcGePoint2d          pointOnLine() const;
+    AcGeVector2d         direction() const;
+    static std::string   className();
 public:
     AcGeLinearEnt2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -43,7 +43,7 @@ public:
     static PyGeLine2d   kYAxis();
     void                set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
     void                set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
-    static std::string className();
+    static std::string  className();
 public:
     AcGeLine2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };

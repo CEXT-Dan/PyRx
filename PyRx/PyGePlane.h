@@ -27,10 +27,10 @@ public:
     boost::python::tuple intersectWith4(const PyGePlane& otherPln, const AcGeTol& tol) const;
     boost::python::tuple intersectWith5(const PyGeBoundedPlane& bndPln) const;
     boost::python::tuple intersectWith6(const PyGeBoundedPlane& bndPln, const AcGeTol& tol) const;
-    PyGePlane& set1(const AcGePoint3d& pnt, const AcGeVector3d& normal);
-    PyGePlane& set2(const AcGePoint3d& pntU, const AcGePoint3d& org, const AcGePoint3d& pntV);
-    PyGePlane& set3(double a, double b, double c, double d);
-    PyGePlane& set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const AcGeVector3d& vAxis);
+    void set1(const AcGePoint3d& pnt, const AcGeVector3d& normal);
+    void set2(const AcGePoint3d& pntU, const AcGePoint3d& org, const AcGePoint3d& pntV);
+    void set3(double a, double b, double c, double d);
+    void set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const AcGeVector3d& vAxis);
 
     static std::string className();
 public:
@@ -55,8 +55,8 @@ public:
     boost::python::tuple intersectWith4(const PyGePlane& otherPln, const AcGeTol& tol) const;
     boost::python::tuple intersectWith5(const PyGeBoundedPlane& bndPln) const;
     boost::python::tuple intersectWith6(const PyGeBoundedPlane& bndPln, const AcGeTol& tol) const;
-    PyGeBoundedPlane& set1(const AcGePoint3d& origin, const AcGeVector3d& uVec,const AcGeVector3d& vVec);
-    PyGeBoundedPlane& set2(const AcGePoint3d& p1, const AcGePoint3d& origin, const AcGePoint3d& p2);
+    void set1(const AcGePoint3d& origin, const AcGeVector3d& uVec,const AcGeVector3d& vVec);
+    void set2(const AcGePoint3d& p1, const AcGePoint3d& origin, const AcGePoint3d& p2);
     static std::string className();
 public:
     AcGeBoundedPlane* impObj(const std::source_location& src = std::source_location::current()) const;
