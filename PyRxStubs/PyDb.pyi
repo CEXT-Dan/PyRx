@@ -2389,7 +2389,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: Arc,tol: Tol = default)-> PyGe.CircArc3d :
       '''                             '''
     ...
     def getArea (self: Curve)-> float :
@@ -9058,7 +9058,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: Circle,tol: Tol = default)-> PyGe.CircArc3d :
       '''                             '''
     ...
     def getArea (self: Curve)-> float :
@@ -30619,7 +30619,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: Line,tol: Tol = default)-> PyGe.LineSeg3d :
       '''                             '''
     ...
     def getArea (self: Curve)-> float :
