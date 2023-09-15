@@ -114,7 +114,7 @@ PyDbField::PyDbField(AcDbField* ptr, bool autoDelete)
 }
 
 PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbObject<AcDbField>(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbField>(id, mode), false)
 {
 }
 
@@ -250,8 +250,9 @@ PyDbField PyDbField::cast(const PyRxObject& src)
 
 AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbField*>(m_pyImp.get());
 }
 

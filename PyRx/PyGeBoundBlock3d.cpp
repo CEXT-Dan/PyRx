@@ -135,7 +135,8 @@ std::string PyGeBoundBlock3d::className()
 
 AcGeBoundBlock3d* PyGeBoundBlock3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcGeBoundBlock3d*>(m_imp.get());
 }

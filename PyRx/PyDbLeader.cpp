@@ -423,9 +423,10 @@ PyDbLeader PyDbLeader::cast(const PyRxObject& src)
 
 AcDbLeader* PyDbLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbLeader*>(m_pyImp.get());
+    }
+    return static_cast<AcDbLeader*>(m_pyImp.get());
 }
 
 
@@ -1357,9 +1358,10 @@ PyDbMLeader PyDbMLeader::cast(const PyRxObject& src)
 
 AcDbMLeader* PyDbMLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbMLeader*>(m_pyImp.get());
+    }
+    return static_cast<AcDbMLeader*>(m_pyImp.get());
 }
 
 //----------------------------------------------------------------------------------
@@ -2019,7 +2021,8 @@ PyRxClass PyDbMLeaderStyle::desc()
 
 AcDbMLeaderStyle* PyDbMLeaderStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbMLeaderStyle*>(m_pyImp.get());
+    }
+    return static_cast<AcDbMLeaderStyle*>(m_pyImp.get());
 }

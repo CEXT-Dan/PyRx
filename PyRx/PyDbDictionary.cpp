@@ -145,7 +145,8 @@ PyDbDictionary PyDbDictionary::cast(const PyRxObject& src)
 
 AcDbDictionary* PyDbDictionary::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbDictionary*>(m_pyImp.get());
+    }
+    return static_cast<AcDbDictionary*>(m_pyImp.get());
 }

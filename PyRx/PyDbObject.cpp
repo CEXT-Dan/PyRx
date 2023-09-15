@@ -427,8 +427,9 @@ PyDbObject PyDbObject::cast(const PyRxObject& src)
 
 AcDbObject* PyDbObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbObject*>(m_pyImp.get());
 }
 
@@ -579,7 +580,7 @@ PyDbObjectReactor* PyDbObjectReactorImpl::impObj(const std::source_location& src
 {
     if (m_backPtr == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_backPtr;
+        return m_backPtr;
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -827,8 +828,9 @@ std::string PyDbObjectReactor::className()
 
 AcDbObjectReactor* PyDbObjectReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbObjectReactor*>(m_pyImp.get());
 }
 
@@ -1002,7 +1004,7 @@ PyDbEntityReactor* AcDbEntityReactorImpl::impObj(const std::source_location& src
 {
     if (m_backPtr == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_backPtr;
+        return m_backPtr;
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -1286,7 +1288,8 @@ std::string PyDbEntityReactor::className()
 
 AcDbEntityReactor* PyDbEntityReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbEntityReactor*>(m_pyImp.get());
 }

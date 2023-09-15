@@ -175,12 +175,12 @@ double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
 {
     switch (idx)
     {
-        case 0:
-            return p.x;
-        case 1:
-            return p.y;
-        default:
-            throw PyAcadErrorStatus(eOutOfRange);
+    case 0:
+        return p.x;
+    case 1:
+        return p.y;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -188,14 +188,14 @@ void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
 {
     switch (idx)
     {
-        case 0:
-            p.x = val;
-            break;
-        case 1:
-            p.y = val;
-            break;
-        default:
-            throw PyAcadErrorStatus(eOutOfRange);
+    case 0:
+        p.x = val;
+        break;
+    case 1:
+        p.y = val;
+        break;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -290,12 +290,12 @@ double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
 {
     switch (idx)
     {
-        case 0:
-            return p.x;
-        case 1:
-            return p.y;
-        default:
-            throw PyAcadErrorStatus(eOutOfRange);
+    case 0:
+        return p.x;
+    case 1:
+        return p.y;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -303,14 +303,14 @@ void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
 {
     switch (idx)
     {
-        case 0:
-            p.x = val;
-            break;
-        case 1:
-            p.y = val;
-            break;
-        default:
-            throw PyAcadErrorStatus(eOutOfRange);
+    case 0:
+        p.x = val;
+        break;
+    case 1:
+        p.y = val;
+        break;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -567,14 +567,14 @@ double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
 {
     switch (idx)
     {
-        case 0:
-            return p.x;
-        case 1:
-            return p.y;
-        case 2:
-            return p.z;
-        default:
-            throw PyAcadErrorStatus(eOutOfRange);
+    case 0:
+        return p.x;
+    case 1:
+        return p.y;
+    case 2:
+        return p.z;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -582,17 +582,17 @@ void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
 {
     switch (idx)
     {
-        case 0:
-            p.x = val;
-            break;
-        case 1:
-            p.y = val;
-            break;
-        case 2:
-            p.z = val;
-            break;
-        default:
-            throw PyAcadErrorStatus(eOutOfRange);
+    case 0:
+        p.x = val;
+        break;
+    case 1:
+        p.y = val;
+        break;
+    case 2:
+        p.z = val;
+        break;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -701,14 +701,14 @@ double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
 {
     switch (idx)
     {
-        case 0:
-            return p.x;
-        case 1:
-            return p.y;
-        case 2:
-            return p.z;
-        default:
-            throw PyAcadErrorStatus(eOutOfRange);
+    case 0:
+        return p.x;
+    case 1:
+        return p.y;
+    case 2:
+        return p.z;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 
@@ -716,17 +716,17 @@ void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
 {
     switch (idx)
     {
-        case 0:
-            p.x = val;
-            break;
-        case 1:
-            p.y = val;
-            break;
-        case 2:
-            p.z = val;
-            break;
-        default:
-            throw PyAcadErrorStatus(eOutOfRange);
+    case 0:
+        p.x = val;
+        break;
+    case 1:
+        p.y = val;
+        break;
+    case 2:
+        p.z = val;
+        break;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
     }
 }
 

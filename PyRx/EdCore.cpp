@@ -19,8 +19,8 @@ using namespace boost::python;
 
 #ifdef ARXAPP
 
-EXTERN_C void                   acedLoadJSScript(const ACHAR * pUriOfJSFile);
-EXTERN_C bool                   acedGetPredefinedPattens(AcStringArray & patterns);
+EXTERN_C void                   acedLoadJSScript(const ACHAR* pUriOfJSFile);
+EXTERN_C bool                   acedGetPredefinedPattens(AcStringArray& patterns);
 EXTERN_C Acad::ErrorStatus      acedSetUndoMark(bool);
 EXTERN_C void                   acedGetCommandPromptString(CString&);
 extern void                     acedGetLastCommandLines(AcStringArray&, int, bool);

@@ -516,8 +516,9 @@ PyDbMText PyDbMText::cast(const PyRxObject& src)
 
 AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbMText*>(m_pyImp.get());
 }
 

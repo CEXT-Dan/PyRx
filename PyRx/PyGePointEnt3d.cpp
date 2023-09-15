@@ -32,9 +32,10 @@ std::string PyGePointEnt3d::className()
 
 AcGePointEnt3d* PyGePointEnt3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGePointEnt3d*>(m_imp.get());
+    }
+    return static_cast<AcGePointEnt3d*>(m_imp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -165,9 +166,10 @@ std::string PyGePointOnCurve3d::className()
 
 AcGePointOnCurve3d* PyGePointOnCurve3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGePointOnCurve3d*>(m_imp.get());
+    }
+    return static_cast<AcGePointOnCurve3d*>(m_imp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -364,9 +366,10 @@ std::string PyGePointOnSurface::className()
 
 AcGePointOnSurface* PyGePointOnSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGePointOnSurface*>(m_imp.get());
+    }
+    return static_cast<AcGePointOnSurface*>(m_imp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -420,7 +423,8 @@ std::string PyGePosition3d::className()
 
 AcGePosition3d* PyGePosition3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGePosition3d*>(m_imp.get());
+    }
+    return static_cast<AcGePosition3d*>(m_imp.get());
 }

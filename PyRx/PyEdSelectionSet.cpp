@@ -94,7 +94,7 @@ AdsName PyEdSelectionSet::adsname() const
     if (!isInitialized())
         throw PyAcadErrorStatus(Acad::eNotInitializedYet);
     AdsName _name = { 0L };
-    memcpy(&_name,m_pSet->data(), sizeof(_name));
+    memcpy(&_name, m_pSet->data(), sizeof(_name));
     return _name;
 }
 
@@ -176,5 +176,5 @@ PySSName* PyEdSelectionSet::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pSet == nullptr) [[unlikely]]
         throw PyNullObject(src);
-    return m_pSet.get();
+        return m_pSet.get();
 }

@@ -793,9 +793,10 @@ PyDbDimension PyDbDimension::cast(const PyRxObject& src)
 
 AcDbDimension* PyDbDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbDimension*>(m_pyImp.get());
+    }
+    return static_cast<AcDbDimension*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -953,9 +954,10 @@ PyDb2LineAngularDimension PyDb2LineAngularDimension::cast(const PyRxObject& src)
 
 AcDb2LineAngularDimension* PyDb2LineAngularDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDb2LineAngularDimension*>(m_pyImp.get());
+    }
+    return static_cast<AcDb2LineAngularDimension*>(m_pyImp.get());
 }
 
 
@@ -1099,9 +1101,10 @@ PyDb3PointAngularDimension PyDb3PointAngularDimension::cast(const PyRxObject& sr
 
 AcDb3PointAngularDimension* PyDb3PointAngularDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDb3PointAngularDimension*>(m_pyImp.get());
+    }
+    return static_cast<AcDb3PointAngularDimension*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1257,9 +1260,10 @@ PyDbAlignedDimension PyDbAlignedDimension::cast(const PyRxObject& src)
 
 AcDbAlignedDimension* PyDbAlignedDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbAlignedDimension*>(m_pyImp.get());
+    }
+    return static_cast<AcDbAlignedDimension*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1474,9 +1478,10 @@ PyDbArcDimension PyDbArcDimension::cast(const PyRxObject& src)
 
 AcDbArcDimension* PyDbArcDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbArcDimension*>(m_pyImp.get());
+    }
+    return static_cast<AcDbArcDimension*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1619,9 +1624,10 @@ PyDbDiametricDimension PyDbDiametricDimension::cast(const PyRxObject& src)
 
 AcDbDiametricDimension* PyDbDiametricDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbDiametricDimension*>(m_pyImp.get());
+    }
+    return static_cast<AcDbDiametricDimension*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1776,9 +1782,10 @@ PyDbOrdinateDimension PyDbOrdinateDimension::cast(const PyRxObject& src)
 
 AcDbOrdinateDimension* PyDbOrdinateDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbOrdinateDimension*>(m_pyImp.get());
+    }
+    return static_cast<AcDbOrdinateDimension*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1921,9 +1928,10 @@ PyDbRadialDimension PyDbRadialDimension::cast(const PyRxObject& src)
 
 AcDbRadialDimension* PyDbRadialDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbRadialDimension*>(m_pyImp.get());
+    }
+    return static_cast<AcDbRadialDimension*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2108,9 +2116,10 @@ PyDbRadialDimensionLarge PyDbRadialDimensionLarge::cast(const PyRxObject& src)
 
 AcDbRadialDimensionLarge* PyDbRadialDimensionLarge::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbRadialDimensionLarge*>(m_pyImp.get());
+    }
+    return static_cast<AcDbRadialDimensionLarge*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2277,7 +2286,8 @@ PyDbRotatedDimension PyDbRotatedDimension::cast(const PyRxObject& src)
 
 AcDbRotatedDimension* PyDbRotatedDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbRotatedDimension*>(m_pyImp.get());
+    }
+    return static_cast<AcDbRotatedDimension*>(m_pyImp.get());
 }

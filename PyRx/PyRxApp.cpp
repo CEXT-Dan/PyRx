@@ -144,7 +144,7 @@ void PyRxApp::cleanUpCommands()
         commands.clear();
         lispService.cleanup();
     }
-    catch (...) { }
+    catch (...) {}
 }
 
 bool PyRxApp::init()

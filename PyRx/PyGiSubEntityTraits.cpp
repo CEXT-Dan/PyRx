@@ -62,7 +62,7 @@ void makePyGiSubEntityTraitsWrapper()
         .value("kDrawFillSelectionWindow", AcGiSubEntityTraits::DrawFlags::kDrawFillSelectionWindow)
         .value("kDrawNoForceByLayer", AcGiSubEntityTraits::DrawFlags::kDrawNoForceByLayer)
 
-         //DOH! the K lol!
+        //DOH! the K lol!
 #if defined(_ARXTARGET) && (_ARXTARGET == 242)
         .value("kDrawIsInWCS", AcGiSubEntityTraits::DrawFlags::KDrawIsInWCS)
 #endif
@@ -282,8 +282,9 @@ PyRxClass PyGiSubEntityTraits::desc()
 
 AcGiSubEntityTraits* PyGiSubEntityTraits::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcGiSubEntityTraits*>(m_pyImp.get());
 }
 
@@ -314,7 +315,8 @@ PyRxClass PyGiDrawableTraits::desc()
 
 AcGiDrawableTraits* PyGiDrawableTraits::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcGiDrawableTraits*>(m_pyImp.get());
 }

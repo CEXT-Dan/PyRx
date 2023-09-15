@@ -66,7 +66,8 @@ PyRxClass PyRxOverrule::desc()
 
 AcRxOverrule* PyRxOverrule::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
-        throw PyNullObject(src);
+    if (m_pyImp == nullptr) [[unlikely]]{
+    throw PyNullObject(src);
+}
     return static_cast<AcRxOverrule*>(m_pyImp.get());
 }

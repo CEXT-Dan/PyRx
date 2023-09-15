@@ -40,7 +40,7 @@ PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id)
 }
 
 PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbObject<AcDbSymbolTable>(id,mode), true)
+    : PyDbObject(openAcDbObject<AcDbSymbolTable>(id, mode), true)
 {
 }
 
@@ -88,7 +88,7 @@ boost::python::dict PyDbSymbolTable::toDict()
     PyAutoLockGIL lock;
 
     AcDbSymbolTableIterator* pIter = nullptr;
-    PyThrowBadEs(impObj()->newIterator(pIter)); 
+    PyThrowBadEs(impObj()->newIterator(pIter));
     boost::python::dict _items;
     for (std::unique_ptr<AcDbSymbolTableIterator> iter(pIter); !iter->done(); iter->step())
     {
@@ -137,8 +137,9 @@ PyDbSymbolTable PyDbSymbolTable::cast(const PyRxObject& src)
 
 AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbSymbolTable*>(m_pyImp.get());
 }
 
@@ -163,7 +164,7 @@ PyDbDimStyleTable::PyDbDimStyleTable(AcDbDimStyleTable* ptr, bool autoDelete)
 }
 
 PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(openAcDbObject<AcDbDimStyleTable>(id,mode), false)
+    : PyDbSymbolTable(openAcDbObject<AcDbDimStyleTable>(id, mode), false)
 {
 }
 
@@ -206,8 +207,9 @@ PyDbDimStyleTable PyDbDimStyleTable::cast(const PyRxObject& src)
 
 AcDbDimStyleTable* PyDbDimStyleTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbDimStyleTable*>(m_pyImp.get());
 }
 
@@ -220,7 +222,7 @@ void makePyDbBlockTableWrapper()
     class_<PyDbBlockTable, bases<PyDbSymbolTable>>("BlockTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead" })))
-        .def("add", &PyDbBlockTable::add, DS.ARGS({ "block : BlockTableRecord"}))
+        .def("add", &PyDbBlockTable::add, DS.ARGS({ "block : BlockTableRecord" }))
         .def("className", &PyDbBlockTable::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbBlockTable::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -234,7 +236,7 @@ PyDbBlockTable::PyDbBlockTable(AcDbBlockTable* ptr, bool autoDelete)
 }
 
 PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(openAcDbObject<AcDbBlockTable>(id,mode), false)
+    : PyDbSymbolTable(openAcDbObject<AcDbBlockTable>(id, mode), false)
 {
 }
 
@@ -278,8 +280,9 @@ PyDbBlockTable PyDbBlockTable::cast(const PyRxObject& src)
 
 AcDbBlockTable* PyDbBlockTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbBlockTable*>(m_pyImp.get());
 }
 
@@ -309,7 +312,7 @@ PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id)
 }
 
 PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(openAcDbObject<AcDbTextStyleTable>(id,mode), false)
+    : PyDbSymbolTable(openAcDbObject<AcDbTextStyleTable>(id, mode), false)
 {
 }
 
@@ -347,8 +350,9 @@ PyDbTextStyleTable PyDbTextStyleTable::cast(const PyRxObject& src)
 
 AcDbTextStyleTable* PyDbTextStyleTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbTextStyleTable*>(m_pyImp.get());
 }
 
@@ -378,7 +382,7 @@ PyDbLinetypeTable::PyDbLinetypeTable(const PyDbObjectId& id)
 }
 
 PyDbLinetypeTable::PyDbLinetypeTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(openAcDbObject<AcDbLinetypeTable>(id,mode), false)
+    : PyDbSymbolTable(openAcDbObject<AcDbLinetypeTable>(id, mode), false)
 {
 }
 
@@ -416,8 +420,9 @@ PyDbLinetypeTable PyDbLinetypeTable::cast(const PyRxObject& src)
 
 AcDbLinetypeTable* PyDbLinetypeTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbLinetypeTable*>(m_pyImp.get());
 }
 
@@ -447,7 +452,7 @@ PyDbRegAppTable::PyDbRegAppTable(const PyDbObjectId& id)
 }
 
 PyDbRegAppTable::PyDbRegAppTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(openAcDbObject<AcDbRegAppTable>(id,mode), false)
+    : PyDbSymbolTable(openAcDbObject<AcDbRegAppTable>(id, mode), false)
 {
 }
 
@@ -485,8 +490,9 @@ PyDbRegAppTable PyDbRegAppTable::cast(const PyRxObject& src)
 
 AcDbRegAppTable* PyDbRegAppTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbRegAppTable*>(m_pyImp.get());
 }
 
@@ -516,7 +522,7 @@ PyDbUCSTable::PyDbUCSTable(const PyDbObjectId& id)
 }
 
 PyDbUCSTable::PyDbUCSTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(openAcDbObject<AcDbUCSTable>(id,mode), false)
+    : PyDbSymbolTable(openAcDbObject<AcDbUCSTable>(id, mode), false)
 {
 }
 
@@ -554,8 +560,9 @@ PyDbUCSTable PyDbUCSTable::cast(const PyRxObject& src)
 
 AcDbUCSTable* PyDbUCSTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbUCSTable*>(m_pyImp.get());
 }
 
@@ -585,7 +592,7 @@ PyDbLayerTable::PyDbLayerTable(const PyDbObjectId& id)
 }
 
 PyDbLayerTable::PyDbLayerTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(openAcDbObject<AcDbLayerTable>(id,mode), false)
+    : PyDbSymbolTable(openAcDbObject<AcDbLayerTable>(id, mode), false)
 {
 }
 
@@ -623,8 +630,9 @@ PyDbLayerTable PyDbLayerTable::cast(const PyRxObject& src)
 
 AcDbLayerTable* PyDbLayerTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbLayerTable*>(m_pyImp.get());
 }
 
@@ -654,7 +662,7 @@ PyDbAbstractViewTable::PyDbAbstractViewTable(const PyDbObjectId& id)
 }
 
 PyDbAbstractViewTable::PyDbAbstractViewTable(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSymbolTable(openAcDbObject<AcDbAbstractViewTable>(id,mode), false)
+    : PyDbSymbolTable(openAcDbObject<AcDbAbstractViewTable>(id, mode), false)
 {
 }
 
@@ -690,7 +698,8 @@ PyDbAbstractViewTable PyDbAbstractViewTable::cast(const PyRxObject& src)
 
 AcDbAbstractViewTable* PyDbAbstractViewTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbAbstractViewTable*>(m_pyImp.get());
 }

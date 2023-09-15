@@ -467,9 +467,10 @@ PyDbSpline PyDbSpline::cast(const PyRxObject& src)
 
 AcDbSpline* PyDbSpline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbSpline*>(m_pyImp.get());
+    }
+    return static_cast<AcDbSpline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -521,7 +522,7 @@ void makePyDbHelixWrapper()
 }
 
 PyDbHelix::PyDbHelix()
-    : PyDbHelix(new AcDbHelix(),true)
+    : PyDbHelix(new AcDbHelix(), true)
 {
 }
 
@@ -692,7 +693,8 @@ PyDbHelix PyDbHelix::cast(const PyRxObject& src)
 
 AcDbHelix* PyDbHelix::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbHelix*>(m_pyImp.get());
+    }
+    return static_cast<AcDbHelix*>(m_pyImp.get());
 }

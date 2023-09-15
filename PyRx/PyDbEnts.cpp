@@ -326,9 +326,10 @@ PyDbText PyDbText::cast(const PyRxObject& src)
 
 AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbText*>(m_pyImp.get());
+    }
+    return static_cast<AcDbText*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -535,9 +536,10 @@ PyDbAttributeDefinition PyDbAttributeDefinition::cast(const PyRxObject& src)
 
 AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbAttributeDefinition*>(m_pyImp.get());
+    }
+    return static_cast<AcDbAttributeDefinition*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -723,9 +725,10 @@ PyDbAttribute PyDbAttribute::cast(const PyRxObject& src)
 
 AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbAttribute*>(m_pyImp.get());
+    }
+    return static_cast<AcDbAttribute*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -936,9 +939,10 @@ PyDbBlockReference PyDbBlockReference::cast(const PyRxObject& src)
 
 AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbBlockReference*>(m_pyImp.get());
+    }
+    return static_cast<AcDbBlockReference*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1024,9 +1028,10 @@ std::string PyDbDynBlockReference::className()
 
 AcDbDynBlockReference* PyDbDynBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbDynBlockReference*>(m_imp.get());
+    }
+    return static_cast<AcDbDynBlockReference*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1146,9 +1151,10 @@ PyDbMInsertBlock PyDbMInsertBlock::cast(const PyRxObject& src)
 
 AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbMInsertBlock*>(m_pyImp.get());
+    }
+    return static_cast<AcDbMInsertBlock*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1214,9 +1220,10 @@ PyDbVertex PyDbVertex::cast(const PyRxObject& src)
 
 AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbVertex*>(m_pyImp.get());
+    }
+    return static_cast<AcDbVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1396,9 +1403,10 @@ PyDb2dVertex PyDb2dVertex::cast(const PyRxObject& src)
 
 AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDb2dVertex*>(m_pyImp.get());
+    }
+    return static_cast<AcDb2dVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1488,9 +1496,10 @@ PyDb3dPolylineVertex PyDb3dPolylineVertex::cast(const PyRxObject& src)
 
 AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDb3dPolylineVertex*>(m_pyImp.get());
+    }
+    return static_cast<AcDb3dPolylineVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1580,9 +1589,10 @@ PyDbPolygonMeshVertex PyDbPolygonMeshVertex::cast(const PyRxObject& src)
 
 AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbPolygonMeshVertex*>(m_pyImp.get());
+    }
+    return static_cast<AcDbPolygonMeshVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1666,9 +1676,10 @@ PyDbPolyFaceMeshVertex PyDbPolyFaceMeshVertex::cast(const PyRxObject& src)
 
 AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbPolyFaceMeshVertex*>(m_pyImp.get());
+    }
+    return static_cast<AcDbPolyFaceMeshVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1774,9 +1785,10 @@ PyDbFaceRecord PyDbFaceRecord::cast(const PyRxObject& src)
 
 AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbFaceRecord*>(m_pyImp.get());
+    }
+    return static_cast<AcDbFaceRecord*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1896,9 +1908,10 @@ PyDbPoint PyDbPoint::cast(const PyRxObject& src)
 
 AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbPoint*>(m_pyImp.get());
+    }
+    return static_cast<AcDbPoint*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2196,9 +2209,10 @@ PyDb2dPolyline PyDb2dPolyline::cast(const PyRxObject& src)
 
 AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDb2dPolyline*>(m_pyImp.get());
+    }
+    return static_cast<AcDb2dPolyline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2380,9 +2394,10 @@ PyDb3dPolyline PyDb3dPolyline::cast(const PyRxObject& src)
 
 AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDb3dPolyline*>(m_pyImp.get());
+    }
+    return static_cast<AcDb3dPolyline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2544,9 +2559,10 @@ PyDbArc PyDbArc::cast(const PyRxObject& src)
 
 AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbArc*>(m_pyImp.get());
+    }
+    return static_cast<AcDbArc*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2690,9 +2706,10 @@ PyDbCircle PyDbCircle::cast(const PyRxObject& src)
 
 AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbCircle*>(m_pyImp.get());
+    }
+    return static_cast<AcDbCircle*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2813,9 +2830,10 @@ PyDbLine PyDbLine::cast(const PyRxObject& src)
 
 AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbLine*>(m_pyImp.get());
+    }
+    return static_cast<AcDbLine*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -3146,9 +3164,10 @@ PyDbPolyline PyDbPolyline::cast(const PyRxObject& src)
 
 AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbPolyline*>(m_pyImp.get());
+    }
+    return static_cast<AcDbPolyline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -3272,9 +3291,10 @@ PyDbFace PyDbFace::cast(const PyRxObject& src)
 
 AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbFace*>(m_pyImp.get());
+    }
+    return static_cast<AcDbFace*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -3528,7 +3548,8 @@ PyDbFcf PyDbFcf::cast(const PyRxObject& src)
 
 AcDbFcf* PyDbFcf::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbFcf*>(m_pyImp.get());
+    }
+    return static_cast<AcDbFcf*>(m_pyImp.get());
 }

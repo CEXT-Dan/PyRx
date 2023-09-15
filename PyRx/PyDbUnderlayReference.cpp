@@ -163,9 +163,10 @@ PyDbUnderlayDefinition PyDbUnderlayDefinition::cast(const PyRxObject& src)
 
 AcDbUnderlayDefinition* PyDbUnderlayDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbUnderlayDefinition*>(m_pyImp.get());
+    }
+    return static_cast<AcDbUnderlayDefinition*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -488,9 +489,10 @@ PyDbUnderlayReference PyDbUnderlayReference::cast(const PyRxObject& src)
 
 AcDbUnderlayReference* PyDbUnderlayReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbUnderlayReference*>(m_pyImp.get());
+    }
+    return static_cast<AcDbUnderlayReference*>(m_pyImp.get());
 }
 
 
@@ -565,9 +567,10 @@ PyDbPdfDefinition PyDbPdfDefinition::cast(const PyRxObject& src)
 
 AcDbPdfDefinition* PyDbPdfDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbPdfDefinition*>(m_pyImp.get());
+    }
+    return static_cast<AcDbPdfDefinition*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -632,7 +635,8 @@ PyDbPdfReference PyDbPdfReference::cast(const PyRxObject& src)
 
 AcDbPdfReference* PyDbPdfReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbPdfReference*>(m_pyImp.get());
+    }
+    return static_cast<AcDbPdfReference*>(m_pyImp.get());
 }

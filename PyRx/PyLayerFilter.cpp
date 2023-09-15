@@ -153,9 +153,10 @@ std::string PyLyLayerFilter::className()
 
 AcLyLayerFilter* PyLyLayerFilter::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcLyLayerFilter*>(m_pyImp.get());
+    }
+    return static_cast<AcLyLayerFilter*>(m_pyImp.get());
 }
 
 //------------------------------------------------------------------------------------
@@ -210,9 +211,10 @@ std::string PyLyLayerGroup::className()
 
 AcLyLayerGroup* PyLyLayerGroup::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcLyLayerGroup*>(m_pyImp.get());
+    }
+    return static_cast<AcLyLayerGroup*>(m_pyImp.get());
 }
 
 //------------------------------------------------------------------------------------
