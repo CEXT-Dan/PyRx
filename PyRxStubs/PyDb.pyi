@@ -24248,7 +24248,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def originalDatabase (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,val : int)-> PyDb.ObjectId :
+    def setFromOldId (self: ObjectId,val : int)-> None :
       '''                             '''
     ...
 
@@ -24314,7 +24314,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def originalDatabase (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,val : int)-> PyDb.ObjectId :
+    def setFromOldId (self: ObjectId,val : int)-> None :
       '''                             '''
     ...
 
@@ -40753,7 +40753,7 @@ __init__( (object)arg1) -> None :
     def originalDatabase (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,val : int)-> PyDb.ObjectId :
+    def setFromOldId (self: ObjectId,val : int)-> None :
       '''                             '''
     ...
 
@@ -57274,7 +57274,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def originalDatabase (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,val : int)-> PyDb.ObjectId :
+    def setFromOldId (self: ObjectId,val : int)-> None :
       '''                             '''
     ...
 
@@ -57340,7 +57340,7 @@ __init__( (object)arg1, (ObjectId)arg2) -> None :
     def originalDatabase (self: ObjectId)-> PyDb.Database :
       '''                             '''
     ...
-    def setFromOldId (self: ObjectId,val : int)-> PyDb.ObjectId :
+    def setFromOldId (self: ObjectId,val : int)-> None :
       '''                             '''
     ...
 
