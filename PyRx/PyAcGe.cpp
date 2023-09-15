@@ -1039,6 +1039,14 @@ BOOST_PYTHON_MODULE(PyGe)
     makePyGePlanarEntWrapper();
     makePyGePlaneWrapper();
     makePyGeBoundedPlaneWrapper();
+    makePyGeConeWrapper();
+    makePyGeCylinderWrapper();
+    makePyGeExternalBoundedSurfaceWrapper();
+    makePyGeExternalSurfaceWrapper();
+    makePyGeNurbSurfaceWrapper();
+    makePyGeOffsetSurfaceWrapper();
+    makePyGeSphereWrapper();
+    makePyGeTorusWrapper();
     makePyGeCircArc3dWrapper();
     makePyGeCompositeCurve3dWrapper();
     makePyGeEllipArc3dWrapper();
