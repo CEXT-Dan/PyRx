@@ -36,7 +36,7 @@ public:
     std::shared_ptr<AcGeEntity3d> m_imp;
 };
 
-inline AcGeVoidPointerArray PyListToGeVoidPointerArray(const boost::python::object& iterable)
+inline AcGeVoidPointerArray PyListToGe3dVoidPointerArray(const boost::python::object& iterable)
 {
     const auto& vec = py_list_to_std_vector<PyGeEntity3d>(iterable);
     AcGeVoidPointerArray arr;

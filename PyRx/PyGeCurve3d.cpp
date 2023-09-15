@@ -945,12 +945,12 @@ PyGeCompositeCurve3d::PyGeCompositeCurve3d(AcGeEntity3d* pEnt)
 }
 
 PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::list& curveList)
-    :PyGeCurve3d(new AcGeCompositeCurve3d(PyListToGeVoidPointerArray(curveList)))
+    :PyGeCurve3d(new AcGeCompositeCurve3d(PyListToGe3dVoidPointerArray(curveList)))
 {
 }
 
 PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
-    :PyGeCurve3d(new AcGeCompositeCurve3d(PyListToGeVoidPointerArray(curveList),PyListToIntArray(isOwnerOfCurves)))
+    :PyGeCurve3d(new AcGeCompositeCurve3d(PyListToGe3dVoidPointerArray(curveList),PyListToIntArray(isOwnerOfCurves)))
 {
 }
 
@@ -967,12 +967,12 @@ boost::python::list PyGeCompositeCurve3d::getCurveList() const
 
 void PyGeCompositeCurve3d::setCurveList1(const boost::python::list& curveList)
 {
-    impObj()->setCurveList(PyListToGeVoidPointerArray(curveList));
+    impObj()->setCurveList(PyListToGe3dVoidPointerArray(curveList));
 }
 
 void PyGeCompositeCurve3d::setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
 {
-    impObj()->setCurveList(PyListToGeVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves));
+    impObj()->setCurveList(PyListToGe3dVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves));
 }
 
 boost::python::tuple PyGeCompositeCurve3d::globalToLocalParam(double param) const
