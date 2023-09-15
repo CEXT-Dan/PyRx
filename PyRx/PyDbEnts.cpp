@@ -2932,6 +2932,8 @@ void makePyDbPolylineWrapper()
         .def("hasWidth", &PyDbPolyline::hasWidth, DS.ARGS())
         .def("makeClosedIfStartAndEndVertexCoincide", &PyDbPolyline::makeClosedIfStartAndEndVertexCoincide, DS.ARGS({ "distTol:float" }))
         .def("getEcs", &PyDbPolyline::getEcs, DS.ARGS())
+        .def("getAcGeCurve", &PyDbPolyline::getAcGeCurve1)
+        .def("getAcGeCurve", &PyDbPolyline::getAcGeCurve2, DS.ARGS({ "tol: Tol = default" }))
         .def("className", &PyDbPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPolyline::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbPolyline::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -3183,6 +3185,20 @@ Adesk::Boolean PyDbPolyline::hasWidth() const
 void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
 {
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
+}
+
+PyGeCompositeCurve3d PyDbPolyline::getAcGeCurve1() const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve));
+    return PyGeCompositeCurve3d(pGeCurve);
+}
+
+PyGeCompositeCurve3d PyDbPolyline::getAcGeCurve2(const AcGeTol& tol) const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
+    return PyGeCompositeCurve3d(pGeCurve);
 }
 
 std::string PyDbPolyline::className()
