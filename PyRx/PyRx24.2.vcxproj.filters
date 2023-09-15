@@ -372,9 +372,6 @@
     <ClInclude Include="PyAcEd.h">
       <Filter>Header Files\PyEd</Filter>
     </ClInclude>
-    <ClInclude Include="PyAcEditor.h">
-      <Filter>Header Files\PyAp</Filter>
-    </ClInclude>
     <ClInclude Include="PyDbDictionary.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
@@ -605,6 +602,9 @@
     </ClInclude>
     <ClInclude Include="PyGiGraphicsKernel.h">
       <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyAcEditor.h">
+      <Filter>Header Files\PyEd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
