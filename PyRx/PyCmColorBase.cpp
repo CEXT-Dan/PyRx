@@ -7,7 +7,7 @@ using namespace boost::python;
 //wrapper
 std::string AcCmColorToString(const AcCmColor& s)
 {
-    return std::format("({},{},{})", s.red(), s.green(),s.blue());
+    return std::format("({},{},{})", s.red(), s.green(), s.blue());
 }
 
 std::string AcCmColorToStringRepr(const AcCmColor& s)

@@ -164,7 +164,8 @@ std::string PyGeSurfSurfInt::className()
 
 AcGeSurfSurfInt* PyGeSurfSurfInt::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeSurfSurfInt*>(m_imp.get());
+    }
+    return static_cast<AcGeSurfSurfInt*>(m_imp.get());
 }

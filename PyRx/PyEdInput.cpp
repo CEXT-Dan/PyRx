@@ -106,9 +106,10 @@ void PyEdInputPointManager::enableMultiSubentPathSelection(bool bEnable)
 
 AcEdInputPointManager* PyEdInputPointManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return m_pyImp;
+    }
+    return m_pyImp;
 }
 
 //---------------------------------------------------------------------------------
@@ -188,9 +189,10 @@ Acad::ErrorStatus PyEdInputPointFilter::processInputPoint(const PyEdInputPoint& 
 
 PyEdInputPointFilterImpl* PyEdInputPointFilter::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<PyEdInputPointFilterImpl*>(m_pyImp.get());
+    }
+    return static_cast<PyEdInputPointFilterImpl*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------
@@ -224,9 +226,10 @@ Acad::ErrorStatus PyEdInputPointMonitor::monitorInputPoint(const PyEdInputPoint&
 
 PyEdInputPointMonitorImpl* PyEdInputPointMonitor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<PyEdInputPointMonitorImpl*>(m_pyImp.get());
+    }
+    return static_cast<PyEdInputPointMonitorImpl*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------

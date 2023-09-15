@@ -605,9 +605,10 @@ std::string PyGeCurve3d::className()
 
 AcGeCurve3d* PyGeCurve3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeCurve3d*>(m_imp.get());
+    }
+    return static_cast<AcGeCurve3d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -910,9 +911,10 @@ std::string PyGeCircArc3d::className()
 
 AcGeCircArc3d* PyGeCircArc3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeCircArc3d*>(m_imp.get());
+    }
+    return static_cast<AcGeCircArc3d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -941,9 +943,10 @@ std::string PyGeCompositeCurve3d::className()
 
 AcGeCompositeCurve3d* PyGeCompositeCurve3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeCompositeCurve3d*>(m_imp.get());
+    }
+    return static_cast<AcGeCompositeCurve3d*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1215,9 +1218,10 @@ std::string PyGeEllipArc3d::className()
 
 AcGeEllipArc3d* PyGeEllipArc3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeEllipArc3d*>(m_imp.get());
+    }
+    return static_cast<AcGeEllipArc3d*>(m_imp.get());
 }
 
 
@@ -1274,7 +1278,8 @@ std::string PyGeOffsetCurve3d::className()
 
 AcGeOffsetCurve3d* PyGeOffsetCurve3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeOffsetCurve3d*>(m_imp.get());
+    }
+    return static_cast<AcGeOffsetCurve3d*>(m_imp.get());
 }

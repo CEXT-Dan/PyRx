@@ -37,7 +37,7 @@ PyDbXrecord::PyDbXrecord(AcDbObject* ptr, bool autoDelete)
 }
 
 PyDbXrecord::PyDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbObject<AcDbXrecord>(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbXrecord>(id, mode), false)
 {
 }
 
@@ -127,7 +127,8 @@ PyDbXrecord PyDbXrecord::cast(const PyRxObject& src)
 
 AcDbXrecord* PyDbXrecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbXrecord*>(m_pyImp.get());
 }

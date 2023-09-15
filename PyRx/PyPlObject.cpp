@@ -151,9 +151,10 @@ std::string PyPlPlotEngine::className()
 
 AcPlPlotEngine* PyPlPlotEngine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcPlPlotEngine*>(m_imp.get());
+    }
+    return static_cast<AcPlPlotEngine*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -183,9 +184,10 @@ std::string PyPlObject::className()
 
 AcPlObject* PyPlObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcPlObject*>(m_pyImp.get());
+    }
+    return static_cast<AcPlObject*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -587,9 +589,10 @@ std::string PyPlDSDData::className()
 
 AcPlDSDData* PyPlDSDData::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcPlDSDData*>(m_pyImp.get());
+    }
+    return static_cast<AcPlDSDData*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -758,9 +761,10 @@ std::string PyPlDSDEntry::className()
 
 AcPlDSDEntry* PyPlDSDEntry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcPlDSDEntry*>(m_pyImp.get());
+    }
+    return static_cast<AcPlDSDEntry*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -892,9 +896,10 @@ std::string PyPlPlotInfo::className()
 
 AcPlPlotInfo* PyPlPlotInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcPlPlotInfo*>(m_pyImp.get());
+    }
+    return static_cast<AcPlPlotInfo*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1042,9 +1047,10 @@ std::string PyPlPlotConfig::className()
 
 AcPlPlotConfig* PyPlPlotConfig::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcPlPlotConfig*>(m_pyImp.get());
+    }
+    return static_cast<AcPlPlotConfig*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1115,9 +1121,10 @@ std::string PyPlPlotPageInfo::className()
 
 AcPlPlotPageInfo* PyPlPlotPageInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcPlPlotPageInfo*>(m_pyImp.get());
+    }
+    return static_cast<AcPlPlotPageInfo*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1336,9 +1343,10 @@ std::string PyPlPlotInfoValidator::className()
 
 AcPlPlotInfoValidator* PyPlPlotInfoValidator::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcPlPlotInfoValidator*>(m_pyImp.get());
+    }
+    return static_cast<AcPlPlotInfoValidator*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1476,9 +1484,10 @@ std::string PyPlPrecisionEntry::className()
 
 AcPlPrecisionEntry* PyPlPrecisionEntry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcPlPrecisionEntry*>(m_pyImp.get());
+    }
+    return static_cast<AcPlPrecisionEntry*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -1574,7 +1583,8 @@ std::string PyPlPlotConfigInfo::className()
 
 AcPlPlotConfigInfo* PyPlPlotConfigInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcPlPlotConfigInfo*>(m_pyImp.get());
+    }
+    return static_cast<AcPlPlotConfigInfo*>(m_pyImp.get());
 }

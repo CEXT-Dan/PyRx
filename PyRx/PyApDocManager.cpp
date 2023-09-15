@@ -627,8 +627,9 @@ std::string PyApDocManager::className()
 
 AcApDocManager* PyApDocManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcApDocManager*>(m_pyImp.get());
 }
 

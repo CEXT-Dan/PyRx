@@ -61,9 +61,10 @@ PyDbImage PyDbImage::cast(const PyRxObject& src)
 
 AcDbImage* PyDbImage::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbImage*>(m_pyImp.get());
+    }
+    return static_cast<AcDbImage*>(m_pyImp.get());
 }
 
 
@@ -290,9 +291,10 @@ PyDbRasterImageDef PyDbRasterImageDef::cast(const PyRxObject& src)
 
 AcDbRasterImageDef* PyDbRasterImageDef::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbRasterImageDef*>(m_pyImp.get());
+    }
+    return static_cast<AcDbRasterImageDef*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -363,9 +365,10 @@ PyDbRasterImageDefReactor PyDbRasterImageDefReactor::cast(const PyRxObject& src)
 
 AcDbRasterImageDefReactor* PyDbRasterImageDefReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbRasterImageDefReactor*>(m_pyImp.get());
+    }
+    return static_cast<AcDbRasterImageDefReactor*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -687,7 +690,8 @@ PyDbRasterImage PyDbRasterImage::cast(const PyRxObject& src)
 
 AcDbRasterImage* PyDbRasterImage::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcDbRasterImage*>(m_pyImp.get());
+    }
+    return static_cast<AcDbRasterImage*>(m_pyImp.get());
 }

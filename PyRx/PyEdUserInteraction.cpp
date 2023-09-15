@@ -15,7 +15,7 @@ void makePyEdUserInteractionWrapper()
     PyDocString DS("UserInteraction");
     class_<PyEdUserInteraction>("UserInteraction")
         .def(init<>())
-        .def(init<PyApDocument&, bool>(DS.ARGS({"doc:PyAp.Document=current","isPrompting:bool=True" })))
+        .def(init<PyApDocument&, bool>(DS.ARGS({ "doc:PyAp.Document=current","isPrompting:bool=True" })))
         ;
 }
 

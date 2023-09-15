@@ -158,7 +158,7 @@ PyDbPlotSettings::PyDbPlotSettings(AcDbPlotSettings* ptr, bool autoDelete)
 }
 
 PyDbPlotSettings::PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbObject<AcDbPlotSettings>(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbPlotSettings>(id, mode), false)
 {
 }
 
@@ -460,8 +460,9 @@ PyDbPlotSettings PyDbPlotSettings::cast(const PyRxObject& src)
 
 AcDbPlotSettings* PyDbPlotSettings::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbPlotSettings*>(m_pyImp.get());
 }
 
@@ -507,7 +508,7 @@ PyDbLayout::PyDbLayout(AcDbLayout* ptr, bool autoDelete)
 }
 
 PyDbLayout::PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbPlotSettings(openAcDbObject<AcDbLayout>(id,mode), false)
+    : PyDbPlotSettings(openAcDbObject<AcDbLayout>(id, mode), false)
 {
 }
 
@@ -577,7 +578,7 @@ boost::python::list PyDbLayout::getViewportArray() const
 boost::python::tuple PyDbLayout::getLimits() const
 {
     PyAutoLockGIL lock;
-    AcGePoint2d limMin; 
+    AcGePoint2d limMin;
     AcGePoint2d limMax;
     impObj()->getLimits(limMin, limMax);
     return boost::python::make_tuple(limMin, limMax);
@@ -639,8 +640,9 @@ PyDbLayout PyDbLayout::cast(const PyRxObject& src)
 
 AcDbLayout* PyDbLayout::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbLayout*>(m_pyImp.get());
 }
 
@@ -850,7 +852,8 @@ std::string PyDbLayoutManager::className()
 
 AcDbLayoutManager* PyDbLayoutManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbLayoutManager*>(m_pyImp.get());
 }

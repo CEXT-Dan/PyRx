@@ -6,7 +6,7 @@ using namespace boost::python;
 void makePyGsViewWrapper()
 {
     PyDocString DS("PyGsView");
-    class_<PyGsView>("GsView",boost::python::no_init)
+    class_<PyGsView>("GsView", boost::python::no_init)
         .def("className", &PyGsView::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -22,7 +22,8 @@ std::string PyGsView::className()
 
 AcGsView* PyGsView::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return m_pyImp;
+    }
+    return m_pyImp;
 }

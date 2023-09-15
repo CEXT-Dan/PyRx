@@ -544,8 +544,9 @@ PyDbEntity PyDbEntity::cast(const PyRxObject& src)
 
 AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbEntity*>(m_pyImp.get());
 }
 
@@ -569,7 +570,7 @@ PyDbBlockBegin::PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete)
 }
 
 PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbBlockBegin>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbBlockBegin>(id, mode), false)
 {
 }
 
@@ -605,8 +606,9 @@ PyDbBlockBegin PyDbBlockBegin::cast(const PyRxObject& src)
 
 AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbBlockBegin*>(m_pyImp.get());
 }
 
@@ -630,7 +632,7 @@ PyDbBlockEnd::PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete)
 }
 
 PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbBlockEnd>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbBlockEnd>(id, mode), false)
 {
 }
 
@@ -666,8 +668,9 @@ PyDbBlockEnd PyDbBlockEnd::cast(const PyRxObject& src)
 
 AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbBlockEnd*>(m_pyImp.get());
 }
 
@@ -691,7 +694,7 @@ PyDbSequenceEnd::PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete)
 }
 
 PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbSequenceEnd>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbSequenceEnd>(id, mode), false)
 {
 }
 
@@ -727,8 +730,9 @@ PyDbSequenceEnd PyDbSequenceEnd::cast(const PyRxObject& src)
 
 AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbSequenceEnd*>(m_pyImp.get());
 }
 
@@ -815,7 +819,8 @@ bool PyDbSubentId::operator==(const PyDbSubentId& id) const
 
 AcDbSubentId* PyDbSubentId::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbSubentId*>(m_pyImp.get());
 }

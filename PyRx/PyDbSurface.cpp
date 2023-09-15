@@ -37,7 +37,7 @@ PyDbSurface::PyDbSurface(AcDbSurface* ptr, bool autoDelete)
 }
 
 PyDbSurface::PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(openAcDbObject<AcDbSurface>(id,mode), false)
+    : PyDbEntity(openAcDbObject<AcDbSurface>(id, mode), false)
 {
 }
 
@@ -84,8 +84,9 @@ PyDbSurface PyDbSurface::cast(const PyRxObject& src)
 
 AcDbSurface* PyDbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbSurface*>(m_pyImp.get());
 }
 
@@ -115,7 +116,7 @@ PyDbExtrudedSurface::PyDbExtrudedSurface(AcDbExtrudedSurface* ptr, bool autoDele
 }
 
 PyDbExtrudedSurface::PyDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbObject<AcDbExtrudedSurface>(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbExtrudedSurface>(id, mode), false)
 {
 }
 
@@ -182,7 +183,7 @@ PyDbLoftedSurface::PyDbLoftedSurface(AcDbLoftedSurface* ptr, bool autoDelete)
 }
 
 PyDbLoftedSurface::PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbObject<AcDbLoftedSurface>(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbLoftedSurface>(id, mode), false)
 {
 }
 
@@ -218,8 +219,9 @@ PyDbLoftedSurface PyDbLoftedSurface::cast(const PyRxObject& src)
 
 AcDbLoftedSurface* PyDbLoftedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbLoftedSurface*>(m_pyImp.get());
 }
 
@@ -249,7 +251,7 @@ PyDbNurbSurface::PyDbNurbSurface(AcDbNurbSurface* ptr, bool autoDelete)
 }
 
 PyDbNurbSurface::PyDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbObject<AcDbNurbSurface>(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbNurbSurface>(id, mode), false)
 {
 }
 
@@ -285,8 +287,9 @@ PyDbNurbSurface PyDbNurbSurface::cast(const PyRxObject& src)
 
 AcDbNurbSurface* PyDbNurbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbNurbSurface*>(m_pyImp.get());
 }
 
@@ -316,7 +319,7 @@ PyDbPlaneSurface::PyDbPlaneSurface(AcDbPlaneSurface* ptr, bool autoDelete)
 }
 
 PyDbPlaneSurface::PyDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbObject<AcDbPlaneSurface>(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbPlaneSurface>(id, mode), false)
 {
 }
 
@@ -352,8 +355,9 @@ PyDbPlaneSurface PyDbPlaneSurface::cast(const PyRxObject& src)
 
 AcDbPlaneSurface* PyDbPlaneSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbPlaneSurface*>(m_pyImp.get());
 }
 
@@ -383,7 +387,7 @@ PyDbRevolvedSurface::PyDbRevolvedSurface(AcDbRevolvedSurface* ptr, bool autoDele
 }
 
 PyDbRevolvedSurface::PyDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbObject<AcDbRevolvedSurface>(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbRevolvedSurface>(id, mode), false)
 {
 }
 
@@ -419,8 +423,9 @@ PyDbRevolvedSurface PyDbRevolvedSurface::cast(const PyRxObject& src)
 
 AcDbRevolvedSurface* PyDbRevolvedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbRevolvedSurface*>(m_pyImp.get());
 }
 
@@ -450,7 +455,7 @@ PyDbSweptSurface::PyDbSweptSurface(AcDbSweptSurface* ptr, bool autoDelete)
 }
 
 PyDbSweptSurface::PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbSurface(openAcDbObject<AcDbSweptSurface>(id,mode), false)
+    : PyDbSurface(openAcDbObject<AcDbSweptSurface>(id, mode), false)
 {
 }
 
@@ -486,8 +491,9 @@ PyDbSweptSurface PyDbSweptSurface::cast(const PyRxObject& src)
 
 AcDbSweptSurface* PyDbSweptSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbSweptSurface*>(m_pyImp.get());
 }
 

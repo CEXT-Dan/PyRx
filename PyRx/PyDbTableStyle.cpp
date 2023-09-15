@@ -116,7 +116,7 @@ PyDbTableStyle::PyDbTableStyle(AcDbObject* ptr, bool autoDelete)
 }
 
 PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbObject(openAcDbObject<AcDbTableStyle>(id,mode), false)
+    : PyDbObject(openAcDbObject<AcDbTableStyle>(id, mode), false)
 {
 }
 
@@ -618,7 +618,8 @@ PyDbTableStyle PyDbTableStyle::cast(const PyRxObject& src)
 
 AcDbTableStyle* PyDbTableStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbTableStyle*>(m_pyImp.get());
 }

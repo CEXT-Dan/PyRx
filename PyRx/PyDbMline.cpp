@@ -242,8 +242,9 @@ PyDbMline PyDbMline::cast(const PyRxObject& src)
 
 AcDbMline* PyDbMline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbMline*>(m_pyImp.get());
 }
 
@@ -524,7 +525,8 @@ PyDbMlineStyle PyDbMlineStyle::cast(const PyRxObject& src)
 
 AcDbMlineStyle* PyDbMlineStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbMlineStyle*>(m_pyImp.get());
 }

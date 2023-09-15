@@ -452,8 +452,9 @@ PyDb3dSolid PyDb3dSolid::cast(const PyRxObject& src)
 
 AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDb3dSolid*>(m_pyImp.get());
 }
 
@@ -553,8 +554,9 @@ PyDbRegion PyDbRegion::cast(const PyRxObject& src)
 
 AcDbRegion* PyDbRegion::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbRegion*>(m_pyImp.get());
 }
 
@@ -699,8 +701,9 @@ boost::python::tuple PyDbRevolveOptions::checkRevolveCurve2(PyDbEntity& ent, con
 
 AcDbRevolveOptions* PyDbRevolveOptions::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbRevolveOptions*>(m_pyImp.get());
 }
 
@@ -980,7 +983,8 @@ void PyDbSweepOptions::checkPathCurve2(PyDbEntity& pPathEnt, bool displayErrorMe
 
 AcDbSweepOptions* PyDbSweepOptions::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcDbSweepOptions*>(m_pyImp.get());
 }

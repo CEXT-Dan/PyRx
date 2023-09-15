@@ -204,14 +204,14 @@ PyDbObjectId PyDbEvalVariant::getObjectId()
     PyDbObjectId val;
     switch (impObj()->getType())
     {
-        case AcDb::kDwgHardOwnershipId:
-        case AcDb::kDwgSoftOwnershipId:
-        case AcDb::kDwgHardPointerId:
-        case AcDb::kDwgSoftPointerId:
-            PyThrowBadEs(acdbGetObjectId(val.m_id, impObj()->resval.rlname));
-            break;
-        default:
-            throw PyAcadErrorStatus(eInvalidInput);
+    case AcDb::kDwgHardOwnershipId:
+    case AcDb::kDwgSoftOwnershipId:
+    case AcDb::kDwgHardPointerId:
+    case AcDb::kDwgSoftPointerId:
+        PyThrowBadEs(acdbGetObjectId(val.m_id, impObj()->resval.rlname));
+        break;
+    default:
+        throw PyAcadErrorStatus(eInvalidInput);
     }
     return val;
 }

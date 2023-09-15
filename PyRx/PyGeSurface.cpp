@@ -178,9 +178,10 @@ std::string PyGeSurface::className()
 
 AcGeSurface* PyGeSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeSurface*>(m_imp.get());
+    }
+    return static_cast<AcGeSurface*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -209,9 +210,10 @@ std::string PyGeCone::className()
 
 AcGeCone* PyGeCone::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeCone*>(m_imp.get());
+    }
+    return static_cast<AcGeCone*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -240,9 +242,10 @@ std::string PyGeCylinder::className()
 
 AcGeCylinder* PyGeCylinder::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeCylinder*>(m_imp.get());
+    }
+    return static_cast<AcGeCylinder*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -271,9 +274,10 @@ std::string PyGeExternalBoundedSurface::className()
 
 AcGeExternalBoundedSurface* PyGeExternalBoundedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeExternalBoundedSurface*>(m_imp.get());
+    }
+    return static_cast<AcGeExternalBoundedSurface*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -302,9 +306,10 @@ std::string PyGeExternalSurface::className()
 
 AcGeExternalSurface* PyGeExternalSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeExternalSurface*>(m_imp.get());
+    }
+    return static_cast<AcGeExternalSurface*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -333,9 +338,10 @@ std::string PyGeNurbSurface::className()
 
 AcGeNurbSurface* PyGeNurbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeNurbSurface*>(m_imp.get());
+    }
+    return static_cast<AcGeNurbSurface*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -364,9 +370,10 @@ std::string PyGeOffsetSurface::className()
 
 AcGeOffsetSurface* PyGeOffsetSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeOffsetSurface*>(m_imp.get());
+    }
+    return static_cast<AcGeOffsetSurface*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -395,9 +402,10 @@ std::string PyGeSphere::className()
 
 AcGeSphere* PyGeSphere::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeSphere*>(m_imp.get());
+    }
+    return static_cast<AcGeSphere*>(m_imp.get());
 }
 
 //-----------------------------------------------------------------------------------------
@@ -426,7 +434,8 @@ std::string PyGeTorus::className()
 
 AcGeTorus* PyGeTorus::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return static_cast<AcGeTorus*>(m_imp.get());
+    }
+    return static_cast<AcGeTorus*>(m_imp.get());
 }

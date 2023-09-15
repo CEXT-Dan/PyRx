@@ -133,7 +133,8 @@ std::string PyPlPlotConfigManager::className()
 
 AcPlPlotConfigManager* PyPlPlotConfigManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_imp == nullptr) [[unlikely]]
+    if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return m_imp;
 }

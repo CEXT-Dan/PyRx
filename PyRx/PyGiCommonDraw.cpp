@@ -56,8 +56,9 @@ PyRxClass PyGiCommonDraw::desc()
 
 AcGiCommonDraw* PyGiCommonDraw::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcGiCommonDraw*>(m_pyImp.get());
 }
 
@@ -95,8 +96,9 @@ PyRxClass PyGiWorldDraw::desc()
 
 AcGiWorldDraw* PyGiWorldDraw::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcGiWorldDraw*>(m_pyImp.get());
 }
 
@@ -134,8 +136,9 @@ PyRxClass PyGiViewportDraw::desc()
 
 AcGiViewportDraw* PyGiViewportDraw::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcGiViewportDraw*>(m_pyImp.get());
 }
 
@@ -371,8 +374,9 @@ PyRxClass PyGiGeometry::desc()
 
 AcGiGeometry* PyGiGeometry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcGiGeometry*>(m_pyImp.get());
 }
 
@@ -404,8 +408,9 @@ PyRxClass PyGiWorldGeometry::desc()
 
 AcGiWorldGeometry* PyGiWorldGeometry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcGiWorldGeometry*>(m_pyImp.get());
 }
 
@@ -437,7 +442,8 @@ PyRxClass PyGiViewportGeometry::desc()
 
 AcGiViewportGeometry* PyGiViewportGeometry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]
+    if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
+    }
     return static_cast<AcGiViewportGeometry*>(m_pyImp.get());
 }
