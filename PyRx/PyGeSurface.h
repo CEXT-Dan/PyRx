@@ -41,3 +41,115 @@ public:
 public:
     AcGeSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------------
+//AcGeCone wrapper
+void makePyGeConeWrapper();
+class PyGeCone : public PyGeSurface
+{
+public:
+    PyGeCone();
+    PyGeCone(const AcGeCone& src);
+    ~PyGeCone() = default;
+    static std::string  className();
+public:
+    AcGeCone* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//AcGeCylinder wrapper
+void makePyGeCylinderWrapper();
+class PyGeCylinder : public PyGeSurface
+{
+public:
+    PyGeCylinder();
+    PyGeCylinder(const AcGeCylinder& src);
+    ~PyGeCylinder() = default;
+    static std::string  className();
+public:
+    AcGeCylinder* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//AcGeExternalBoundedSurface wrapper
+void makePyGeExternalBoundedSurfaceWrapper();
+class PyGeExternalBoundedSurface : public PyGeSurface
+{
+public:
+    PyGeExternalBoundedSurface();
+    PyGeExternalBoundedSurface(const AcGeExternalBoundedSurface& src);
+    ~PyGeExternalBoundedSurface() = default;
+    static std::string  className();
+public:
+    AcGeExternalBoundedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//AcGeExternalSurface wrapper
+void makePyGeExternalSurfaceWrapper();
+class PyGeExternalSurface : public PyGeSurface
+{
+public:
+    PyGeExternalSurface();
+    PyGeExternalSurface(const AcGeExternalSurface& src);
+    ~PyGeExternalSurface() = default;
+    static std::string  className();
+public:
+    AcGeExternalSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//AcGeNurbSurface wrapper
+void makePyGeNurbSurfaceWrapper();
+class PyGeNurbSurface : public PyGeSurface
+{
+public:
+    PyGeNurbSurface();
+    PyGeNurbSurface(const AcGeNurbSurface& src);
+    ~PyGeNurbSurface() = default;
+    static std::string  className();
+public:
+    AcGeNurbSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//AcGeOffsetSurface wrapper
+void makePyGeOffsetSurfaceWrapper();
+class PyGeOffsetSurface : public PyGeSurface
+{
+public:
+    PyGeOffsetSurface();
+    PyGeOffsetSurface(const AcGeOffsetSurface& src);
+    ~PyGeOffsetSurface() = default;
+    static std::string  className();
+public:
+    AcGeOffsetSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//AcGeSphere wrapper
+void makePyGeSphereWrapper();
+class PyGeSphere : public PyGeSurface
+{
+public:
+    PyGeSphere();
+    PyGeSphere(const AcGeSphere& src);
+    ~PyGeSphere() = default;
+    static std::string  className();
+public:
+    AcGeSphere* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//AcGeTorus wrapper
+void makePyGeTorusWrapper();
+class PyGeTorus : public PyGeSurface
+{
+public:
+    PyGeTorus();
+    PyGeTorus(const AcGeTorus& src);
+    ~PyGeTorus() = default;
+    static std::string  className();
+public:
+    AcGeTorus* impObj(const std::source_location& src = std::source_location::current()) const;
+};
