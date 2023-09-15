@@ -922,6 +922,14 @@ AcGeCircArc3d* PyGeCircArc3d::impObj(const std::source_location& src /*= std::so
 void makePyGeCompositeCurve3dWrapper()
 {
     class_<PyGeCompositeCurve3d, bases<PyGeCurve3d>>("CompositeCurve3d")
+        .def(init<>())
+        .def(init<const boost::python::list&>())
+        .def(init<const boost::python::list&, const boost::python::list&>())
+        .def("getCurveList", &PyGeCompositeCurve3d::getCurveList)
+        .def("setCurveList", &PyGeCompositeCurve3d::setCurveList1)
+        .def("setCurveList", &PyGeCompositeCurve3d::setCurveList2)
+        .def("globalToLocalParam", &PyGeCompositeCurve3d::globalToLocalParam)
+        .def("localToGlobalParam", &PyGeCompositeCurve3d::localToGlobalParam)
         .def("className", &PyGeCompositeCurve3d::className).staticmethod("className")
         ;
 }
@@ -934,6 +942,50 @@ PyGeCompositeCurve3d::PyGeCompositeCurve3d()
 PyGeCompositeCurve3d::PyGeCompositeCurve3d(AcGeEntity3d* pEnt)
     : PyGeCurve3d(pEnt)
 {
+}
+
+PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::list& curveList)
+    :PyGeCurve3d(new AcGeCompositeCurve3d(PyListToGeVoidPointerArray(curveList)))
+{
+}
+
+PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
+    :PyGeCurve3d(new AcGeCompositeCurve3d(PyListToGeVoidPointerArray(curveList),PyListToIntArray(isOwnerOfCurves)))
+{
+}
+
+boost::python::list PyGeCompositeCurve3d::getCurveList() const
+{
+    PyAutoLockGIL lock;
+    AcGeVoidPointerArray curveList;
+    impObj()->getCurveList(curveList);
+    boost::python::list pylist;
+    for (auto item : curveList)
+        pylist.append(PyGeCurve3d(static_cast<AcGeCurve3d*>(item)));
+    return pylist;
+}
+
+void PyGeCompositeCurve3d::setCurveList1(const boost::python::list& curveList)
+{
+    impObj()->setCurveList(PyListToGeVoidPointerArray(curveList));
+}
+
+void PyGeCompositeCurve3d::setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
+{
+    impObj()->setCurveList(PyListToGeVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves));
+}
+
+boost::python::tuple PyGeCompositeCurve3d::globalToLocalParam(double param) const
+{
+    PyAutoLockGIL lock;
+    int segNum = 0;
+    auto result = impObj()->globalToLocalParam(param, segNum);
+    return boost::python::make_tuple(result, segNum);
+}
+
+double PyGeCompositeCurve3d::localToGlobalParam(double param, int segNum) const
+{
+    return impObj()->localToGlobalParam(param, segNum);
 }
 
 std::string PyGeCompositeCurve3d::className()
