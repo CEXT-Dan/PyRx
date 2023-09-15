@@ -76,7 +76,35 @@ inline std::size_t AcGeVector3dHash(const AcGeVector3d& p)
 }
 
 //---------------------------------------------------------------------------------------------------------------
-//AcGeScale3d
+//AcGeScale2d
+double AcGeScale2dGetItem(const AcGeScale2d& p, int idx)
+{
+    switch (idx)
+    {
+    case 0:
+        return p.sx;
+    case 1:
+        return p.sy;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
+void AcGeScale2dSetItem(AcGeScale2d& p, int idx, double val)
+{
+    switch (idx)
+    {
+    case 0:
+        p.sx = val;
+        break;
+    case 1:
+        p.sy = val;
+        break;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
 std::string AcGeScale2dToString(const AcGeScale2d& s)
 {
     return std::format("({:.14f},{:.14f})", s.sx, s.sy);
@@ -109,6 +137,8 @@ void makePyGeScale2dWrapper()
         .def("toString", &AcGeScale2dToString)
         .def("__str__", &AcGeScale2dToString)
         .def("__repr__", &AcGeScale2dToStringRepr)
+        .def("__getitem__", &AcGeScale2dGetItem)
+        .def("__setitem__", &AcGeScale2dSetItem)
         ;
 }
 
@@ -478,6 +508,39 @@ static void makePyGeMatrix2dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeScale3d
+double AcGeScale3dGetItem(const AcGeScale3d& p, int idx)
+{
+    switch (idx)
+    {
+    case 0:
+        return p.sx;
+    case 1:
+        return p.sy;
+    case 2:
+        return p.sz;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
+void AcGeScale3dSetItem(AcGeScale3d& p, int idx, double val)
+{
+    switch (idx)
+    {
+    case 0:
+        p.sx = val;
+        break;
+    case 1:
+        p.sy = val;
+        break;
+    case 2:
+        p.sz = val;
+        break;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
 std::string AcGeScale3dToString(const AcGeScale3d& s)
 {
     return std::format("({:.14f},{:.14f},{:.14f})", s.sx, s.sy, s.sz);
@@ -509,6 +572,8 @@ void makePyGeScale3dWrapper()
         .def("toString", &AcGeScale3dToString)
         .def("__str__", &AcGeScale3dToString)
         .def("__repr__", &AcGeScale3dToStringRepr)
+        .def("__getitem__", &AcGeScale3dGetItem)
+        .def("__setitem__", &AcGeScale3dSetItem)
         ;
 }
 
@@ -732,6 +797,7 @@ void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
 
 static void makePyGeVector3dWrapper()
 {
+    PyDocString DS("Vector3d");
     class_<AcGeVector3d>("Vector3d")
         .def(init<>())
         .def(init<const AcGeVector3d&>())
@@ -740,10 +806,10 @@ static void makePyGeVector3dWrapper()
         .def_readwrite("x", &AcGeVector3d::x)
         .def_readwrite("y", &AcGeVector3d::y)
         .def_readwrite("z", &AcGeVector3d::z)
-        .add_static_property("kIdentity", &AcGeVector3dkIdentity)
-        .add_static_property("kXAxis", &AcGeVector3dkXAxis)
-        .add_static_property("kYAxis", &AcGeVector3dkYAxis)
-        .add_static_property("kZAxis", &AcGeVector3dkZAxis)
+        .add_static_property("kIdentity", &AcGeVector3dkIdentity, DS.SARGS())
+        .add_static_property("kXAxis", &AcGeVector3dkXAxis, DS.SARGS())
+        .add_static_property("kYAxis", &AcGeVector3dkYAxis, DS.SARGS())
+        .add_static_property("kZAxis", &AcGeVector3dkZAxis, DS.SARGS())
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeVector3d&, double)>("setToProduct", &AcGeVector3d::setToProduct, return_self<>())
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeMatrix3d&, const AcGeVector3d&)>("setToProduct", &AcGeVector3d::setToProduct, return_self<>())
         .def("transformBy", &AcGeVector3d::transformBy, return_self<>())
