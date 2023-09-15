@@ -537,6 +537,8 @@ public:
     void                setThickness(double);
     AcGeVector3d        normal() const;
     void                setNormal(const AcGeVector3d&);
+    PyGeCircArc3d       getAcGeCurve1() const;
+    PyGeCircArc3d       getAcGeCurve2(const AcGeTol& tol) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbArc		cloneFrom(const PyRxObject& src);
@@ -569,6 +571,8 @@ public:
     void                setCircumference(double val);
     double              diameter() const;
     void                setDiameter(double val);
+    PyGeCircArc3d       getAcGeCurve1() const;
+    PyGeCircArc3d       getAcGeCurve2(const AcGeTol& tol) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbCircle	cloneFrom(const PyRxObject& src);
@@ -597,6 +601,8 @@ public:
     void                setThickness(double val);
     AcGeVector3d        normal() const;
     void                setNormal(const AcGeVector3d& val);
+    PyGeLineSeg3d       getAcGeCurve1() const;
+    PyGeLineSeg3d       getAcGeCurve2(const AcGeTol& tol) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbLine		cloneFrom(const PyRxObject& src);

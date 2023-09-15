@@ -2425,6 +2425,8 @@ void makePyDbArcWrapper()
         .def("setThickness", &PyDbArc::setThickness, DS.ARGS({ "val:float" }))
         .def("normal", &PyDbArc::normal, DS.ARGS())
         .def("setNormal", &PyDbArc::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
+        .def("getAcGeCurve", &PyDbArc::getAcGeCurve1)
+        .def("getAcGeCurve", &PyDbArc::getAcGeCurve2, DS.ARGS({ "tol: Tol = default" }))
         .def("className", &PyDbArc::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbArc::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbArc::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -2532,6 +2534,20 @@ void PyDbArc::setNormal(const AcGeVector3d& val)
     return PyThrowBadEs(impObj()->setNormal(val));
 }
 
+PyGeCircArc3d PyDbArc::getAcGeCurve1() const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve));
+    return PyGeCircArc3d(pGeCurve);
+}
+
+PyGeCircArc3d PyDbArc::getAcGeCurve2(const AcGeTol& tol) const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
+    return PyGeCircArc3d(pGeCurve);
+}
+
 std::string PyDbArc::className()
 {
     return "AcDbArc";
@@ -2587,6 +2603,8 @@ void makePyDbCircleWrapper()
         .def("setCircumference", &PyDbCircle::setCircumference, DS.ARGS({ "val:float" }))
         .def("diameter", &PyDbCircle::diameter, DS.ARGS())
         .def("setDiameter", &PyDbCircle::setDiameter, DS.ARGS({ "val:float" }))
+        .def("getAcGeCurve", &PyDbCircle::getAcGeCurve1)
+        .def("getAcGeCurve", &PyDbCircle::getAcGeCurve2, DS.ARGS({ "tol: Tol = default" }))
         .def("className", &PyDbCircle::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbCircle::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbCircle::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -2679,6 +2697,20 @@ void PyDbCircle::setDiameter(double val)
     return PyThrowBadEs(impObj()->setDiameter(val));
 }
 
+PyGeCircArc3d PyDbCircle::getAcGeCurve1() const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve));
+    return PyGeCircArc3d(pGeCurve);
+}
+
+PyGeCircArc3d PyDbCircle::getAcGeCurve2(const AcGeTol& tol) const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
+    return PyGeCircArc3d(pGeCurve);
+}
+
 std::string PyDbCircle::className()
 {
     return "AcDbCircle";
@@ -2731,6 +2763,8 @@ void makePyDbLineWrapper()
         .def("normal", &PyDbLine::normal, DS.ARGS())
         .def("setNormal", &PyDbLine::setNormal, DS.ARGS({ "val:PyGe.Vector3d" }))
         .def("getOffsetCurvesGivenPlaneNormal", &PyDbLine::getOffsetCurvesGivenPlaneNormal, DS.ARGS({ "val:PyGe.Vector3d","offset:float" }))
+        .def("getAcGeCurve", &PyDbLine::getAcGeCurve1)
+        .def("getAcGeCurve", &PyDbLine::getAcGeCurve2, DS.ARGS({ "tol: Tol = default" }))
         .def("className", &PyDbLine::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbLine::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbLine::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -2801,6 +2835,20 @@ AcGeVector3d PyDbLine::normal() const
 void PyDbLine::setNormal(const AcGeVector3d& val)
 {
     return PyThrowBadEs(impObj()->setNormal(val));
+}
+
+PyGeLineSeg3d PyDbLine::getAcGeCurve1() const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve));
+    return PyGeLineSeg3d(pGeCurve);
+}
+
+PyGeLineSeg3d PyDbLine::getAcGeCurve2(const AcGeTol& tol) const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
+    return PyGeLineSeg3d(pGeCurve);
 }
 
 std::string PyDbLine::className()
