@@ -6,6 +6,7 @@ class PyGeBoundBlock3d;
 class PyGePlane;
 class PyGePlanarEnt;
 class PyGeLinearEnt3d;
+
 //-----------------------------------------------------------------------------------
 //PyGeCurve3d
 void makePyGeCurve3dWrapper();
@@ -88,6 +89,7 @@ public:
 public:
     AcGeCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-----------------------------------------------------------------------------------
 //AcGeCircArc3d
 void makePyGeCircArc3dWrapper();
@@ -136,6 +138,7 @@ public:
 public:
     AcGeCircArc3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-----------------------------------------------------------------------------------
 //AcGeCompositeCurve3d
 void makePyGeCompositeCurve3dWrapper();
@@ -143,11 +146,19 @@ class PyGeCompositeCurve3d : public PyGeCurve3d
 {
 public:
     PyGeCompositeCurve3d();
+    PyGeCompositeCurve3d(const boost::python::list& curveList);
+    PyGeCompositeCurve3d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves);
     PyGeCompositeCurve3d(AcGeEntity3d* pEnt);
+    boost::python::list getCurveList() const;
+    void                setCurveList1(const boost::python::list& curveList);
+    void                setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves);
+    boost::python::tuple globalToLocalParam(double param) const;
+    double				 localToGlobalParam(double param, int segNum) const;
     static std::string className();
 public:
     AcGeCompositeCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-----------------------------------------------------------------------------------------
 //AcGeCircArc3d wrapper
 void makePyGeEllipArc3dWrapper();
@@ -195,6 +206,7 @@ public:
 public:
     AcGeEllipArc3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-----------------------------------------------------------------------------------------
 //PyGeExternalCurve3d wrapper
 void makePyGeExternalCurve3dWrapper();
@@ -206,6 +218,7 @@ public:
 public:
     AcGeExternalCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-----------------------------------------------------------------------------------------
 //AcGeOffsetCurve3d wrapper
 void makePyGeOffsetCurve3dWrapper();

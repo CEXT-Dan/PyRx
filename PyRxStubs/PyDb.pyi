@@ -47773,7 +47773,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+    def getAcGeCurve (self: Polyline,tol: Tol = default)-> PyGe.CompositeCurve3d :
       '''                             '''
     ...
     def getArcSeg2dAt (self: Polyline,idx:int)-> PyGe.CircArc2d :
