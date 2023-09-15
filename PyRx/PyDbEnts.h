@@ -10,6 +10,7 @@ class PyGeCircArc2d;
 class PyGeCircArc3d;
 class PyDbMText;
 class PyDbHardPointerId;
+class PyGeCompositeCurve3d;
 //-----------------------------------------------------------------------------------
 //PyDbText
 void makePyDbTextWrapper();
@@ -660,6 +661,8 @@ public:
     Adesk::Boolean      hasVertexIdentifiers()    const;
     Adesk::Boolean      hasWidth()        const;
     void                makeClosedIfStartAndEndVertexCoincide(double distTol);
+    PyGeCompositeCurve3d  getAcGeCurve1() const;
+    PyGeCompositeCurve3d  getAcGeCurve2(const AcGeTol& tol) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbPolyline	cloneFrom(const PyRxObject& src);
