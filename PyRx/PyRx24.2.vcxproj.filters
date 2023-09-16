@@ -301,6 +301,9 @@
     <ClCompile Include="PyGiGraphicsKernel.cpp">
       <Filter>Source Files\PyGi</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbEllipse.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -605,6 +608,9 @@
     </ClInclude>
     <ClInclude Include="PyAcEditor.h">
       <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbEllipse.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
