@@ -10476,7 +10476,7 @@ wcs2Ecs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     ...
 
 class Curve:
-    def __init__ (self: Curve,id: ObjectId,mode: OpenMode=kForRead)-> None :
+    def __init__ (self: Curve,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
