@@ -65,6 +65,7 @@ public:
     boost::python::list     getSamplePoints1(int numSample) const;
     boost::python::list     getSamplePoints2(double fromParam, double toParam, double approxEps) const;
     boost::python::tuple    getSplitCurves(double param);
+    static PyGeCurve2d      copycast(const PyGeEntity2d& src);
     static std::string      className();
 public:
     AcGeCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -111,6 +112,7 @@ public:
     void                    set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, Adesk::Boolean bulgeFlag);
     void                    set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius);
     void                    set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, const PyGeCurve2d& curve3);
+    static PyGeCircArc2d    copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
     AcGeCircArc2d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -151,6 +153,7 @@ public:
     void                    set1(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius);
     void                    set2(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle);
     void                    set3(const PyGeCircArc2d& arc);
+    static PyGeEllipArc2d   copycast(const PyGeEntity2d& src);
     static std::string      className();
 public:
     AcGeEllipArc2d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -162,6 +165,7 @@ class PyGeExternalCurve2d : public PyGeCurve2d
 {
 public:
     PyGeExternalCurve2d(AcGeEntity2d* pEnt);
+    static PyGeExternalCurve2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
     AcGeExternalCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -174,6 +178,7 @@ class PyGeOffsetCurve2d : public PyGeCurve2d
 public:
     PyGeOffsetCurve2d(const PyGeCurve2d& baseCurve, double offsetDistance);
     PyGeOffsetCurve2d(AcGeEntity2d* pEnt);
+    static PyGeOffsetCurve2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
     AcGeOffsetCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -186,6 +191,7 @@ class PyGeCompositeCurve2d : public PyGeCurve2d
 public:
     PyGeCompositeCurve2d();
     PyGeCompositeCurve2d(AcGeEntity2d* pEnt);
+    static PyGeCompositeCurve2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
     AcGeCompositeCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;

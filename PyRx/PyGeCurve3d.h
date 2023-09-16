@@ -85,6 +85,7 @@ public:
     boost::python::tuple    evalPoint2(double param, int numDeriv) const;
     boost::python::list     getSamplePoints1(int numSample) const;
     boost::python::list     getSamplePoints2(double fromParam, double toParam, double approxEps) const;
+    static PyGeCurve3d      copycast(const PyGeEntity3d& src);
     static std::string      className();
 public:
     AcGeCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -134,6 +135,7 @@ public:
     void                    set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint);
     void                    set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius);
     void                    set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3);
+    static PyGeCircArc3d    copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGeCircArc3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -154,6 +156,7 @@ public:
     void                setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves);
     boost::python::tuple globalToLocalParam(double param) const;
     double				 localToGlobalParam(double param, int segNum) const;
+    static PyGeCompositeCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGeCompositeCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -202,6 +205,7 @@ public:
     void                    set1(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius);
     void                    set2(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle);
     void                    set3(const PyGeCircArc3d&);
+    static PyGeEllipArc3d   copycast(const PyGeEntity3d& src);
     static std::string      className();
 public:
     AcGeEllipArc3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -214,6 +218,7 @@ class PyGeExternalCurve3d : public PyGeCurve3d
 {
 public:
     PyGeExternalCurve3d(AcGeEntity3d* pEnt);
+    static PyGeExternalCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGeExternalCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -227,6 +232,7 @@ class PyGeOffsetCurve3d : public PyGeCurve3d
 public:
     PyGeOffsetCurve3d(const PyGeCurve3d& baseCurve, const AcGeVector3d& planeNormal, double offsetDistance);
     PyGeOffsetCurve3d(AcGeEntity3d* pEnt);
+    static PyGeOffsetCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGeOffsetCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;

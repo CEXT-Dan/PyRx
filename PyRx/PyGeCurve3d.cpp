@@ -84,6 +84,7 @@ void makePyGeCurve3dWrapper()
         .def("evalPoint", &PyGeCurve3d::evalPoint2)
         .def("getSamplePoints", &PyGeCurve3d::getSamplePoints1)
         .def("getSamplePoints", &PyGeCurve3d::getSamplePoints2)
+        .def("copycast", &PyGeCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeCurve3d::className).staticmethod("className")
         ;
 }
@@ -598,6 +599,13 @@ boost::python::list PyGeCurve3d::getSamplePoints2(double fromParam, double toPar
     return pointList;
 }
 
+PyGeCurve3d PyGeCurve3d::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurve3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeCurve3d(src.impObj()->copy());
+}
+
 std::string PyGeCurve3d::className()
 {
     return "AcGeCurve3d";
@@ -652,6 +660,7 @@ void makePyGeCircArc3dWrapper()
         .def("set", &PyGeCircArc3d::set3)
         .def("set", &PyGeCircArc3d::set4)
         .def("set", &PyGeCircArc3d::set5)
+        .def("copycast", &PyGeCircArc3d::copycast).staticmethod("copycast")
         .def("className", &PyGeCircArc3d::className).staticmethod("className")
         ;
 }
@@ -904,6 +913,13 @@ void PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, c
         throw PyAcadErrorStatus(eInvalidInput);
 }
 
+PyGeCircArc3d PyGeCircArc3d::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCircArc3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeCircArc3d(src.impObj()->copy());
+}
+
 std::string PyGeCircArc3d::className()
 {
     return "AcGeCircArc3d";
@@ -930,6 +946,7 @@ void makePyGeCompositeCurve3dWrapper()
         .def("setCurveList", &PyGeCompositeCurve3d::setCurveList2)
         .def("globalToLocalParam", &PyGeCompositeCurve3d::globalToLocalParam)
         .def("localToGlobalParam", &PyGeCompositeCurve3d::localToGlobalParam)
+        .def("copycast", &PyGeCompositeCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeCompositeCurve3d::className).staticmethod("className")
         ;
 }
@@ -988,6 +1005,13 @@ double PyGeCompositeCurve3d::localToGlobalParam(double param, int segNum) const
     return impObj()->localToGlobalParam(param, segNum);
 }
 
+PyGeCompositeCurve3d PyGeCompositeCurve3d::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCompositeCrv3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeCompositeCurve3d(src.impObj()->copy());
+}
+
 std::string PyGeCompositeCurve3d::className()
 {
     return "AcGeCompositeCurve3d";
@@ -1041,6 +1065,7 @@ void makePyGeEllipArc3dWrapper()
         .def("set", &PyGeEllipArc3d::set1)
         .def("set", &PyGeEllipArc3d::set2)
         .def("set", &PyGeEllipArc3d::set3)
+        .def("copycast", &PyGeEllipArc3d::copycast).staticmethod("copycast")
         .def("className", &PyGeEllipArc3d::className).staticmethod("className")
         ;
 }
@@ -1263,6 +1288,13 @@ void PyGeEllipArc3d::set3(const PyGeCircArc3d& arc)
     impObj()->set(*arc.impObj());
 }
 
+PyGeEllipArc3d PyGeEllipArc3d::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kEllipArc3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeEllipArc3d(src.impObj()->copy());
+}
+
 std::string PyGeEllipArc3d::className()
 {
     return "AcGeCompositeCurve3d";
@@ -1282,6 +1314,7 @@ AcGeEllipArc3d* PyGeEllipArc3d::impObj(const std::source_location& src /*= std::
 void makePyGeExternalCurve3dWrapper()
 {
     class_<PyGeExternalCurve3d, bases<PyGeCurve3d>>("ExternalCurve3d", boost::python::no_init)
+        .def("copycast", &PyGeExternalCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeExternalCurve3d::className).staticmethod("className")
         ;
 }
@@ -1289,6 +1322,13 @@ void makePyGeExternalCurve3dWrapper()
 PyGeExternalCurve3d::PyGeExternalCurve3d(AcGeEntity3d* pEnt)
     : PyGeCurve3d(pEnt)
 {
+}
+
+PyGeExternalCurve3d PyGeExternalCurve3d::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalCurve3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeExternalCurve3d(src.impObj()->copy());
 }
 
 std::string PyGeExternalCurve3d::className()
@@ -1309,6 +1349,7 @@ void makePyGeOffsetCurve3dWrapper()
 {
     class_<PyGeOffsetCurve3d, bases<PyGeCurve3d>>("OffsetCurve3d", boost::python::no_init)
         .def(init<const PyGeCurve3d&, const AcGeVector3d&, double>())
+        .def("copycast", &PyGeOffsetCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeOffsetCurve3d::className).staticmethod("className")
         ;
 }
@@ -1321,6 +1362,13 @@ PyGeOffsetCurve3d::PyGeOffsetCurve3d(const PyGeCurve3d& baseCurve, const AcGeVec
 PyGeOffsetCurve3d::PyGeOffsetCurve3d(AcGeEntity3d* pEnt)
     : PyGeCurve3d(pEnt)
 {
+}
+
+PyGeOffsetCurve3d PyGeOffsetCurve3d::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kOffsetCurve3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeOffsetCurve3d(src.impObj()->copy());
 }
 
 std::string PyGeOffsetCurve3d::className()
