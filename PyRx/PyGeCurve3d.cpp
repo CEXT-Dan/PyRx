@@ -967,7 +967,7 @@ PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::list& curveList)
 }
 
 PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
-    :PyGeCurve3d(new AcGeCompositeCurve3d(PyListToGe3dVoidPointerArray(curveList),PyListToIntArray(isOwnerOfCurves)))
+    :PyGeCurve3d(new AcGeCompositeCurve3d(PyListToGe3dVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves)))
 {
 }
 

@@ -208,7 +208,7 @@ public:
     static PyGeEllipArc3d   copycast(const PyGeEntity3d& src);
     static std::string      className();
 public:
-    AcGeEllipArc3d* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcGeEllipArc3d*         impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------

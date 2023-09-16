@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyDbSpline.h"
 #include "PyDbObjectId.h"
+#include "PyGeSplineEnt3d.h"
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
@@ -438,6 +439,20 @@ void PyDbSpline::setType(SplineType type)
 void PyDbSpline::rebuild(int degree, int numCtrlPts)
 {
     PyThrowBadEs(impObj()->rebuild(degree, numCtrlPts));
+}
+
+PyGeNurbCurve3d PyDbSpline::getAcGeCurve1() const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve));
+    return PyGeNurbCurve3d(pGeCurve);
+}
+
+PyGeNurbCurve3d PyDbSpline::getAcGeCurve2(const AcGeTol& tol) const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
+    return PyGeNurbCurve3d(pGeCurve);
 }
 
 std::string PyDbSpline::className()
