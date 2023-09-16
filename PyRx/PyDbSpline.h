@@ -1,6 +1,9 @@
 #pragma once
 #include "PyDbCurve.h"
 #include "dbhelix.h"
+
+class PyGeNurbCurve3d;
+
 //-----------------------------------------------------------------------------------
 //AcDbSpline
 void makePyDbSplineWrapper();
@@ -77,6 +80,8 @@ public:
     SplineType          type() const;
     void                setType(SplineType type);
     void                rebuild(int degree, int numCtrlPts);
+    PyGeNurbCurve3d     getAcGeCurve1() const;
+    PyGeNurbCurve3d     getAcGeCurve2(const AcGeTol& tol) const;
 
 public:
     static std::string  className();
