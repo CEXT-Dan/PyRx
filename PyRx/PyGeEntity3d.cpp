@@ -26,6 +26,7 @@ void makePyGeEntity3dWrapper()
         .def("isNull", &PyGeEntity3d::isNull)
         .def("__eq__", &PyGeEntity3d::operator==)
         .def("__ne__", &PyGeEntity3d::operator!=)
+        .def("cast", &PyGeEntity3d::cast).staticmethod("cast")
         .def("className", &PyGeEntity3d::className).staticmethod("className")
         ;
 }
@@ -152,6 +153,13 @@ bool PyGeEntity3d::isNull() const
 std::string PyGeEntity3d::className()
 {
     return "AcGeEntity3d";
+}
+
+PyGeEntity3d PyGeEntity3d::cast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kEntity3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeEntity3d(src.impObj()->copy());
 }
 
 AcGeEntity3d* PyGeEntity3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const

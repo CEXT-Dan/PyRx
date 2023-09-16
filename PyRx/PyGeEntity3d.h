@@ -30,6 +30,7 @@ public:
     Adesk::Boolean  isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
     bool            isNull()const;
     static std::string className();
+    static PyGeEntity3d cast(const PyGeEntity3d& src);
 public:
     AcGeEntity3d* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
