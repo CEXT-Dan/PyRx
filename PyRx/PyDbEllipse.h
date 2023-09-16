@@ -34,7 +34,6 @@ public:
 
     AcGePoint3d         center() const;
     void                setCenter(const AcGePoint3d& center);
-
     AcGeVector3d        normal() const;
     AcGeVector3d        majorAxis() const;
     AcGeVector3d        minorAxis() const;
@@ -42,31 +41,22 @@ public:
     double              minorRadius() const;
     void                setMajorRadius(double val);
     void                setMinorRadius(double val);
-
     double              radiusRatio() const;
     void                setRadiusRatio(double ratio);
-
     double              startAngle() const;
     void                setStartAngle(double startAngle);
-
     double              endAngle() const;
     void                setEndAngle(double endAngle);
-
     void                setStartParam(double startParam);
     void                setEndParam(double endParam);
-
     double              paramAtAngle(double angle) const;
     double              angleAtParam(double param) const;
-
     boost::python::tuple get() const;
-
     void                set1(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio);
     void                set2(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio, double startAngle, double endAngle);
     Adesk::Boolean      isNull() const;
-
     PyGeEllipArc3d      getAcGeCurve1() const;
     PyGeEllipArc3d      getAcGeCurve2(const AcGeTol& tol) const;
-
     static std::string  className();
     static PyRxClass    desc();
     static PyDbEllipse  cloneFrom(const PyRxObject& src);
