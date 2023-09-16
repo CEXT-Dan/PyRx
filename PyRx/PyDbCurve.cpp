@@ -10,7 +10,8 @@ void makePyDbCurveWrapper()
     PyDocString DS("Curve");
     class_<PyDbCurve, bases<PyDbEntity>>("Curve", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
         .def("isClosed", &PyDbCurve::isClosed, DS.ARGS())
         .def("isPeriodic", &PyDbCurve::isPeriodic, DS.ARGS())
         .def("getStartParam", &PyDbCurve::getStartParam, DS.ARGS())
@@ -67,7 +68,12 @@ PyDbCurve::PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode)
 }
 
 PyDbCurve::PyDbCurve(const PyDbObjectId& id)
-    : PyDbCurve(id, AcDb::OpenMode::kForRead)
+    : PyDbEntity(openAcDbObject<AcDbCurve>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbCurve::PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbCurve>(id, mode, erased), false)
 {
 }
 

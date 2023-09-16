@@ -14,6 +14,7 @@ public:
     PyDbCurve(AcDbCurve* ptr, bool autoDelete);
     PyDbCurve(const PyDbObjectId& id);
     PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbCurve() override = default;
     Adesk::Boolean      isClosed() const;
     Adesk::Boolean      isPeriodic() const;
