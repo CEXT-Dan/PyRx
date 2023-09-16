@@ -17159,8 +17159,41 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Ellipse:
-    def __init__ (self: Ellipse,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
-      '''                             '''
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
@@ -17168,11 +17201,8 @@ class Ellipse:
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def angleAtParam (self, *args, **kwargs)-> float :
-      '''angleAtParam( (Ellipse)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double angleAtParam(class PyDbEllipse {lvalue},double)'''
+    def angleAtParam (self: Ellipse,val : real)-> float :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -17198,11 +17228,8 @@ class Ellipse:
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def center (self, *args, **kwargs)-> PyGe.Point3d :
-      '''center( (Ellipse)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d center(class PyDbEllipse {lvalue})'''
+    def center (self: Ellipse)-> PyGe.Point3d :
+      '''                             '''
     ...
     def className ()-> str :
       '''                             '''
@@ -17255,11 +17282,8 @@ class Ellipse:
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def endAngle (self, *args, **kwargs)-> float :
-      '''endAngle( (Ellipse)arg1) -> float :
-
-    C++ signature :
-        double endAngle(class PyDbEllipse {lvalue})'''
+    def endAngle (self: Ellipse)-> float :
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
@@ -17284,11 +17308,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def get (self, *args, **kwargs)-> tuple :
-      '''get( (Ellipse)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple get(class PyDbEllipse {lvalue})'''
+    def get (self: Ellipse)-> tuple :
+      '''                             '''
     ...
     def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
       '''                             '''
@@ -17470,11 +17491,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (Ellipse)arg1) -> bool :
-
-    C++ signature :
-        bool isNull(class PyDbEllipse {lvalue})'''
+    def isNull (self: Ellipse)-> bool :
+      '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
@@ -17530,17 +17548,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None :
       '''                             '''
     ...
-    def majorAxis (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''majorAxis( (Ellipse)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d majorAxis(class PyDbEllipse {lvalue})'''
+    def majorAxis (self: Ellipse)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def majorRadius (self, *args, **kwargs)-> float :
-      '''majorRadius( (Ellipse)arg1) -> float :
-
-    C++ signature :
-        double majorRadius(class PyDbEllipse {lvalue})'''
+    def majorRadius (self: Ellipse)-> float :
+      '''                             '''
     ...
     def material (self: Entity)-> str :
       '''                             '''
@@ -17548,23 +17560,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def minorAxis (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''minorAxis( (Ellipse)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d minorAxis(class PyDbEllipse {lvalue})'''
+    def minorAxis (self: Ellipse)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def minorRadius (self, *args, **kwargs)-> float :
-      '''minorRadius( (Ellipse)arg1) -> float :
-
-    C++ signature :
-        double minorRadius(class PyDbEllipse {lvalue})'''
+    def minorRadius (self: Ellipse)-> float :
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (Ellipse)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbEllipse {lvalue})'''
+    def normal (self: Ellipse)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -17572,11 +17575,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def paramAtAngle (self, *args, **kwargs)-> float :
-      '''paramAtAngle( (Ellipse)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double paramAtAngle(class PyDbEllipse {lvalue},double)'''
+    def paramAtAngle (self: Ellipse,val : real)-> float :
+      '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
       '''                             '''
@@ -17584,11 +17584,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def radiusRatio (self, *args, **kwargs)-> float :
-      '''radiusRatio( (Ellipse)arg1) -> float :
-
-    C++ signature :
-        double radiusRatio(class PyDbEllipse {lvalue})'''
+    def radiusRatio (self: Ellipse)-> float :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -17631,11 +17628,8 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setCenter (self, *args, **kwargs)-> None :
-      '''setCenter( (Ellipse)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setCenter(class PyDbEllipse {lvalue},class AcGePoint3d)'''
+    def setCenter (self: Ellipse,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
@@ -17646,17 +17640,11 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setEndAngle (self, *args, **kwargs)-> None :
-      '''setEndAngle( (Ellipse)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setEndAngle(class PyDbEllipse {lvalue},double)'''
+    def setEndAngle (self: Ellipse,val : real)-> None :
+      '''                             '''
     ...
-    def setEndParam (self, *args, **kwargs)-> None :
-      '''setEndParam( (Ellipse)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setEndParam(class PyDbEllipse {lvalue},double)'''
+    def setEndParam (self: Ellipse,val : real)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
@@ -17676,20 +17664,14 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMajorRadius (self, *args, **kwargs)-> None :
-      '''setMajorRadius( (Ellipse)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setMajorRadius(class PyDbEllipse {lvalue},double)'''
+    def setMajorRadius (self: Ellipse,val : real)-> None :
+      '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMinorRadius (self, *args, **kwargs)-> None :
-      '''setMinorRadius( (Ellipse)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setMinorRadius(class PyDbEllipse {lvalue},double)'''
+    def setMinorRadius (self: Ellipse,val : real)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -17713,26 +17695,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setRadiusRatio (self, *args, **kwargs)-> None :
-      '''setRadiusRatio( (Ellipse)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRadiusRatio(class PyDbEllipse {lvalue},double)'''
+    def setRadiusRatio (self: Ellipse,val : real)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setStartAngle (self, *args, **kwargs)-> None :
-      '''setStartAngle( (Ellipse)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setStartAngle(class PyDbEllipse {lvalue},double)'''
+    def setStartAngle (self: Ellipse,val : real)-> None :
+      '''                             '''
     ...
-    def setStartParam (self, *args, **kwargs)-> None :
-      '''setStartParam( (Ellipse)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setStartParam(class PyDbEllipse {lvalue},double)'''
+    def setStartParam (self: Ellipse,val : real)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
@@ -17743,11 +17716,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def startAngle (self, *args, **kwargs)-> float :
-      '''startAngle( (Ellipse)arg1) -> float :
-
-    C++ signature :
-        double startAngle(class PyDbEllipse {lvalue})'''
+    def startAngle (self: Ellipse)-> float :
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
