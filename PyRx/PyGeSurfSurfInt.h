@@ -13,7 +13,7 @@ public:
     PyGeSurfSurfInt();
     PyGeSurfSurfInt(const PyGeSurface& srf1, const PyGeSurface& srf2);
     PyGeSurfSurfInt(const PyGeSurface& srf1,  const PyGeSurface& srf2, const AcGeTol& tol);
-    PyGeSurfSurfInt(AcGeSurfSurfInt* pEnt, bool autoDelete = false);
+    PyGeSurfSurfInt(AcGeSurfSurfInt* pEnt, bool autoDelete = true);
     PyGeSurface          surface1() const;
     PyGeSurface          surface2() const;
     AcGeTol              tolerance() const;
