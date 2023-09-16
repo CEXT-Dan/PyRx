@@ -26,6 +26,7 @@ void makePyGeEntity2dWrapper()
         .def("isNull", &PyGeEntity2d::isNull)
         .def("__eq__", &PyGeEntity2d::operator==)
         .def("__ne__", &PyGeEntity2d::operator!=)
+        .def("cast", &PyGeEntity2d::cast).staticmethod("cast")
         .def("className", &PyGeEntity2d::className).staticmethod("className")
         ;
 }
@@ -122,6 +123,13 @@ Adesk::Boolean PyGeEntity2d::isOn2(const AcGePoint2d& pnt, const AcGeTol& tol) c
 bool PyGeEntity2d::isNull() const
 {
     return m_imp == nullptr;
+}
+
+PyGeEntity2d PyGeEntity2d::cast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kEntity2d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeEntity2d(src.impObj()->copy());
 }
 
 std::string PyGeEntity2d::className()
