@@ -29,6 +29,7 @@ void makePyGePlanarEntWrapper()
         .def("normal", &PyGePlanarEnt::normal)
         .def("getCoefficients", &PyGePlanarEnt::getCoefficients)
         .def("getCoordSystem", &PyGePlanarEnt::getCoordSystem)
+        .def("copycast", &PyGePlanarEnt::copycast).staticmethod("copycast")
         .def("className", &PyGePlanarEnt::className).staticmethod("className")
         ;
 }
@@ -168,6 +169,13 @@ boost::python::tuple PyGePlanarEnt::getCoordSystem() const
     AcGeVector3d axis2;
     impObj()->getCoordSystem(origin, axis1, axis2);
     return boost::python::make_tuple(origin, axis1, axis2);
+}
+
+PyGePlanarEnt PyGePlanarEnt::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPlanarEnt))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGePlanarEnt(src.impObj()->copy());
 }
 
 std::string PyGePlanarEnt::className()

@@ -10,7 +10,8 @@ void makePyGeClipBoundary2dWrapper()
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
         .def(init<const boost::python::list&>())
-        .def("className", &PyGeEntity2d::className).staticmethod("className")
+        .def("copycast", &PyGeClipBoundary2d::copycast).staticmethod("copycast")
+        .def("className", &PyGeClipBoundary2d::className).staticmethod("className")
         ;
 }
 
@@ -43,6 +44,13 @@ PyGeClipBoundary2d::PyGeClipBoundary2d(const boost::python::list& clipBoundary)
 PyGeClipBoundary2d::PyGeClipBoundary2d(const AcGeClipBoundary2d& src)
     : PyGeEntity2d(src.copy())
 {
+}
+
+PyGeClipBoundary2d PyGeClipBoundary2d::copycast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kClipBoundary2d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeClipBoundary2d(src.impObj()->copy());
 }
 
 std::string PyGeClipBoundary2d::className()

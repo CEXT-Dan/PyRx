@@ -11,6 +11,7 @@ void makePyGePointEnt3dWrapper()
 {
     class_<PyGePointEnt3d, bases<PyGeEntity3d>>("PointEnt3d", boost::python::no_init)
         .def("point3d", &PyGePointEnt3d::point3d)
+        .def("copycast", &PyGePointEnt3d::copycast).staticmethod("copycast")
         .def("className", &PyGePointEnt3d::className).staticmethod("className")
         ;
 }
@@ -23,6 +24,13 @@ PyGePointEnt3d::PyGePointEnt3d(AcGeEntity3d* src)
 AcGePoint3d PyGePointEnt3d::point3d() const
 {
     return impObj()->point3d();
+}
+
+PyGePointEnt3d PyGePointEnt3d::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointEnt3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGePointEnt3d(src.impObj()->copy());
 }
 
 std::string PyGePointEnt3d::className()
@@ -59,6 +67,7 @@ void makePyGePointOnCurve3dWrapper()
         .def("curvature", &PyGePointOnCurve3d::curvature2)
         .def("setCurve", &PyGePointOnCurve3d::setCurve)
         .def("setParameter", &PyGePointOnCurve3d::setParameter)
+        .def("copycast", &PyGePointOnCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGePointOnCurve3d::className).staticmethod("className")
         ;
 }
@@ -159,6 +168,13 @@ void PyGePointOnCurve3d::setParameter(double param)
     impObj()->setParameter(param);
 }
 
+PyGePointOnCurve3d PyGePointOnCurve3d::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointOnCurve3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGePointOnCurve3d(src.impObj()->copy());
+}
+
 std::string PyGePointOnCurve3d::className()
 {
     return "AcGePointOnCurve3d";
@@ -205,6 +221,7 @@ void makePyGePointOnSurfaceWrapper()
         .def("inverseTangentVector", &PyGePointOnSurface::inverseTangentVector3)
         .def("setSurface", &PyGePointOnSurface::setSurface)
         .def("setParameter", &PyGePointOnSurface::setParameter)
+        .def("copycast", &PyGePointOnSurface::copycast).staticmethod("copycast")
         .def("className", &PyGePointOnSurface::className).staticmethod("className")
         ;
 }
@@ -359,6 +376,13 @@ void PyGePointOnSurface::setParameter(const AcGePoint2d& param)
     impObj()->setParameter(param);
 }
 
+PyGePointOnSurface PyGePointOnSurface::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointOnSurface))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGePointOnSurface(src.impObj()->copy());
+}
+
 std::string PyGePointOnSurface::className()
 {
     return "AcGePointOnSurface";
@@ -382,6 +406,7 @@ void makePyGePosition3dWrapper()
         .def(init<double, double, double>())
         .def("set", &PyGePosition3d::set1)
         .def("set", &PyGePosition3d::set2)
+        .def("copycast", &PyGePosition3d::copycast).staticmethod("copycast")
         .def("className", &PyGePosition3d::className).staticmethod("className")
         ;
 }
@@ -414,6 +439,13 @@ void PyGePosition3d::set1(const AcGePoint3d& pnt)
 void PyGePosition3d::set2(double x, double y, double z)
 {
     impObj()->set(x, y, x);
+}
+
+PyGePosition3d PyGePosition3d::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPosition3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGePosition3d(src.impObj()->copy());
 }
 
 std::string PyGePosition3d::className()

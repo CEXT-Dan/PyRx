@@ -25,6 +25,7 @@ void makePyGeSurfSurfIntWrapper()
         .def("getType", &PyGeSurfSurfInt::getType)
         .def("set", &PyGeSurfSurfInt::set1)
         .def("set", &PyGeSurfSurfInt::set2)
+        .def("copycast", &PyGeSurfSurfInt::copycast).staticmethod("copycast")
         .def("className", &PyGeSurfSurfInt::className).staticmethod("className")
         ;
 }
@@ -155,6 +156,13 @@ void PyGeSurfSurfInt::set1(const PyGeSurface& srf1, const PyGeSurface& srf2)
 void PyGeSurfSurfInt::set2(const PyGeSurface& srf1, const PyGeSurface& srf2, const AcGeTol& tol)
 {
     impObj()->set(*srf1.impObj(), *srf2.impObj(), tol);
+}
+
+PyGeSurfSurfInt PyGeSurfSurfInt::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPlanarEnt))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeSurfSurfInt(static_cast<AcGeSurfSurfInt*>(src.impObj()->copy()),true);
 }
 
 std::string PyGeSurfSurfInt::className()

@@ -28,6 +28,7 @@ void makePyGeSurfaceWrapper()
         .def("evalPoint", &PyGeSurface::evalPoint1)
         .def("evalPoint", &PyGeSurface::evalPoint2)
         .def("evalPoint", &PyGeSurface::evalPoint3)
+        .def("copycast", &PyGeSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeSurface::className).staticmethod("className")
         ;
 }
@@ -171,6 +172,13 @@ AcGePoint3d PyGeSurface::evalPoint3(const AcGePoint2d& param, int derivOrd, boos
     return pnt;
 }
 
+PyGeSurface PyGeSurface::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kSurface))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeSurface(src.impObj()->copy());
+}
+
 std::string PyGeSurface::className()
 {
     return "AcGeSurface";
@@ -189,6 +197,7 @@ AcGeSurface* PyGeSurface::impObj(const std::source_location& src /*= std::source
 void makePyGeConeWrapper()
 {
     class_<PyGeCone, bases<PyGeSurface>>("Cone")
+        .def("copycast", &PyGeCone::copycast).staticmethod("copycast")
         .def("className", &PyGeCone::className).staticmethod("className")
         ;
 }
@@ -201,6 +210,18 @@ PyGeCone::PyGeCone()
 PyGeCone::PyGeCone(const AcGeCone& src)
     : PyGeSurface(new AcGeCone(src), true)
 {
+}
+
+PyGeCone::PyGeCone(AcGeCone* src)
+    : PyGeSurface(src)
+{
+}
+
+PyGeCone PyGeCone::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCone))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeCone(static_cast<AcGeCone*>(src.impObj()->copy()));
 }
 
 std::string PyGeCone::className()
@@ -221,6 +242,7 @@ AcGeCone* PyGeCone::impObj(const std::source_location& src /*= std::source_locat
 void makePyGeCylinderWrapper()
 {
     class_<PyGeCylinder, bases<PyGeSurface>>("Cylinder")
+        .def("copycast", &PyGeCylinder::copycast).staticmethod("copycast")
         .def("className", &PyGeCylinder::className).staticmethod("className")
         ;
 }
@@ -233,6 +255,18 @@ PyGeCylinder::PyGeCylinder()
 PyGeCylinder::PyGeCylinder(const AcGeCylinder& src)
     : PyGeSurface(new AcGeCylinder(src), true)
 {
+}
+
+PyGeCylinder::PyGeCylinder(AcGeCylinder* src)
+    : PyGeSurface(src)
+{
+}
+
+PyGeCylinder PyGeCylinder::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCylinder))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeCylinder(static_cast<AcGeCylinder*>(src.impObj()->copy()));
 }
 
 std::string PyGeCylinder::className()
@@ -253,6 +287,7 @@ AcGeCylinder* PyGeCylinder::impObj(const std::source_location& src /*= std::sour
 void makePyGeExternalBoundedSurfaceWrapper()
 {
     class_<PyGeExternalBoundedSurface, bases<PyGeSurface>>("ExternalBoundedSurface")
+        .def("copycast", &PyGeExternalBoundedSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeExternalBoundedSurface::className).staticmethod("className")
         ;
 }
@@ -265,6 +300,18 @@ PyGeExternalBoundedSurface::PyGeExternalBoundedSurface()
 PyGeExternalBoundedSurface::PyGeExternalBoundedSurface(const AcGeExternalBoundedSurface& src)
     : PyGeSurface(new AcGeExternalBoundedSurface(src), true)
 {
+}
+
+PyGeExternalBoundedSurface::PyGeExternalBoundedSurface(AcGeExternalBoundedSurface* src)
+    : PyGeSurface(src)
+{
+}
+
+PyGeExternalBoundedSurface PyGeExternalBoundedSurface::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalBoundedSurface))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeExternalBoundedSurface(static_cast<AcGeExternalBoundedSurface*>(src.impObj()->copy()));
 }
 
 std::string PyGeExternalBoundedSurface::className()
@@ -285,6 +332,7 @@ AcGeExternalBoundedSurface* PyGeExternalBoundedSurface::impObj(const std::source
 void makePyGeExternalSurfaceWrapper()
 {
     class_<PyGeExternalSurface, bases<PyGeSurface>>("ExternalSurface")
+        .def("copycast", &PyGeExternalSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeExternalSurface::className).staticmethod("className")
         ;
 }
@@ -297,6 +345,18 @@ PyGeExternalSurface::PyGeExternalSurface()
 PyGeExternalSurface::PyGeExternalSurface(const AcGeExternalSurface& src)
     : PyGeSurface(new AcGeExternalSurface(src), true)
 {
+}
+
+PyGeExternalSurface::PyGeExternalSurface(AcGeExternalSurface* src)
+    : PyGeSurface(src)
+{
+}
+
+PyGeExternalSurface PyGeExternalSurface::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalSurface))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeExternalSurface(static_cast<AcGeExternalSurface*>(src.impObj()->copy()));
 }
 
 std::string PyGeExternalSurface::className()
@@ -317,6 +377,7 @@ AcGeExternalSurface* PyGeExternalSurface::impObj(const std::source_location& src
 void makePyGeNurbSurfaceWrapper()
 {
     class_<PyGeNurbSurface, bases<PyGeSurface>>("NurbSurface")
+        .def("copycast", &PyGeNurbSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeNurbSurface::className).staticmethod("className")
         ;
 }
@@ -329,6 +390,18 @@ PyGeNurbSurface::PyGeNurbSurface()
 PyGeNurbSurface::PyGeNurbSurface(const AcGeNurbSurface& src)
     : PyGeSurface(new AcGeNurbSurface(src), true)
 {
+}
+
+PyGeNurbSurface::PyGeNurbSurface(AcGeNurbSurface* src)
+    : PyGeSurface(src)
+{
+}
+
+PyGeNurbSurface PyGeNurbSurface::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kNurbSurface))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeNurbSurface(static_cast<AcGeNurbSurface*>(src.impObj()->copy()));
 }
 
 std::string PyGeNurbSurface::className()
@@ -349,6 +422,7 @@ AcGeNurbSurface* PyGeNurbSurface::impObj(const std::source_location& src /*= std
 void makePyGeOffsetSurfaceWrapper()
 {
     class_<PyGeOffsetSurface, bases<PyGeSurface>>("OffsetSurface")
+        .def("copycast", &PyGeOffsetSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeOffsetSurface::className).staticmethod("className")
         ;
 }
@@ -361,6 +435,18 @@ PyGeOffsetSurface::PyGeOffsetSurface()
 PyGeOffsetSurface::PyGeOffsetSurface(const AcGeOffsetSurface& src)
     : PyGeSurface(new AcGeOffsetSurface(src), true)
 {
+}
+
+PyGeOffsetSurface::PyGeOffsetSurface(AcGeOffsetSurface* src)
+    : PyGeSurface(src)
+{
+}
+
+PyGeOffsetSurface PyGeOffsetSurface::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kOffsetSurface))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeOffsetSurface(static_cast<AcGeOffsetSurface*>(src.impObj()->copy()));
 }
 
 std::string PyGeOffsetSurface::className()
@@ -381,6 +467,7 @@ AcGeOffsetSurface* PyGeOffsetSurface::impObj(const std::source_location& src /*=
 void makePyGeSphereWrapper()
 {
     class_<PyGeSphere, bases<PyGeSurface>>("Sphere")
+        .def("copycast", &PyGeSphere::copycast).staticmethod("copycast")
         .def("className", &PyGeSphere::className).staticmethod("className")
         ;
 }
@@ -393,6 +480,18 @@ PyGeSphere::PyGeSphere()
 PyGeSphere::PyGeSphere(const AcGeSphere& src)
     : PyGeSurface(new AcGeSphere(src), true)
 {
+}
+
+PyGeSphere::PyGeSphere(AcGeSphere* src)
+    : PyGeSurface(src)
+{
+}
+
+PyGeSphere PyGeSphere::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kSphere))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeSphere(static_cast<AcGeSphere*>(src.impObj()->copy()));
 }
 
 std::string PyGeSphere::className()
@@ -413,6 +512,7 @@ AcGeSphere* PyGeSphere::impObj(const std::source_location& src /*= std::source_l
 void makePyGeTorusWrapper()
 {
     class_<PyGeTorus, bases<PyGeSurface>>("Torus")
+        .def("copycast", &PyGeTorus::copycast).staticmethod("copycast")
         .def("className", &PyGeTorus::className).staticmethod("className")
         ;
 }
@@ -425,6 +525,18 @@ PyGeTorus::PyGeTorus()
 PyGeTorus::PyGeTorus(const AcGeTorus& src)
     : PyGeSurface(new AcGeTorus(src), true)
 {
+}
+
+PyGeTorus::PyGeTorus(AcGeTorus* src)
+    : PyGeSurface(src)
+{
+}
+
+PyGeTorus PyGeTorus::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kTorus))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeTorus(static_cast<AcGeTorus*>(src.impObj()->copy()));
 }
 
 std::string PyGeTorus::className()

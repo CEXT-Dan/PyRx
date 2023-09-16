@@ -23,6 +23,7 @@ public:
     PyGeLine2d           getLine() const;
     AcGePoint2d          pointOnLine() const;
     AcGeVector2d         direction() const;
+    static PyGeLinearEnt2d copycast(const PyGeEntity2d& src);
     static std::string   className();
 public:
     AcGeLinearEnt2d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -43,6 +44,7 @@ public:
     static PyGeLine2d   kYAxis();
     void                set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
     void                set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
+    static PyGeLine2d   copycast(const PyGeEntity2d& src);
     static std::string  className();
 public:
     AcGeLine2d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -71,6 +73,7 @@ public:
     double          length1() const;
     double          length2(double fromParam, double toParam) const;
     double          length3(double fromParam, double toParam, double tol) const;
+    static PyGeLineSeg2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
     AcGeLineSeg2d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -89,6 +92,7 @@ public:
     PyGeRay2d(AcGeEntity2d* pEnt);
     void      set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
     void      set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
+    static PyGeRay2d   copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
     AcGeRay2d* impObj(const std::source_location& src = std::source_location::current()) const;

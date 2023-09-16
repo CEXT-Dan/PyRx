@@ -30,6 +30,7 @@ public:
     void                 set1(const PyGeSurface& srf1, const PyGeSurface& srf2);
     void                 set2(const PyGeSurface& srf1, const PyGeSurface& srf2, const AcGeTol& tol);
 
+    static PyGeSurfSurfInt copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGeSurfSurfInt* impObj(const std::source_location& src = std::source_location::current()) const;

@@ -14,7 +14,8 @@ void makePyGeCurveCurveInt2dWrapper()
         .def(init<const AcGeCurve2d&, const AcGeCurve2d&, const AcGeTol&>())
         .def(init<const AcGeCurve2d&, const AcGeCurve2d&, const PyGeInterval&, const PyGeInterval&>())
         .def(init<const AcGeCurve2d&, const AcGeCurve2d&, const PyGeInterval&, const PyGeInterval&, const AcGeTol&>())
-        .def("className", &PyGeEntity2d::className).staticmethod("className")
+        .def("copycast", &PyGeCurveCurveInt2d::copycast).staticmethod("copycast")
+        .def("className", &PyGeCurveCurveInt2d::className).staticmethod("className")
         ;
 }
 
@@ -51,6 +52,13 @@ PyGeCurveCurveInt2d::PyGeCurveCurveInt2d(const AcGeCurveCurveInt2d& src)
 PyGeCurveCurveInt2d::PyGeCurveCurveInt2d(AcGeEntity2d* pEnt)
     : PyGeEntity2d(pEnt)
 {
+}
+
+PyGeCurveCurveInt2d PyGeCurveCurveInt2d::copycast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurveCurveInt2d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeCurveCurveInt2d(src.impObj()->copy());
 }
 
 std::string PyGeCurveCurveInt2d::className()

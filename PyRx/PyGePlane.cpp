@@ -143,6 +143,13 @@ void PyGePlane::set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const Ac
     impObj()->set(org, uAxis, vAxis);
 }
 
+PyGePlane PyGePlane::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPlane))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGePlane(src.impObj()->copy());
+}
+
 std::string PyGePlane::className()
 {
     return "AcGePlane";
@@ -257,6 +264,13 @@ void PyGeBoundedPlane::set1(const AcGePoint3d& origin, const AcGeVector3d& uVec,
 void PyGeBoundedPlane::set2(const AcGePoint3d& p1, const AcGePoint3d& origin, const AcGePoint3d& p2)
 {
     impObj()->set(p1, origin, p2);
+}
+
+PyGeBoundedPlane PyGeBoundedPlane::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kBoundedPlane))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeBoundedPlane(static_cast<AcGeBoundedPlane*>(src.impObj()->copy()));
 }
 
 std::string PyGeBoundedPlane::className()

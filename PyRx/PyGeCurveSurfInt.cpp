@@ -23,6 +23,7 @@ void makePyGeCurveSurfIntWrapper()
         .def("getIntConfigs", &PyGeCurveSurfInt::getIntConfigs)
         .def("set", &PyGeCurveSurfInt::set1)
         .def("set", &PyGeCurveSurfInt::set2)
+        .def("copycast", &PyGeCurveSurfInt::copycast).staticmethod("copycast")
         .def("className", &PyGeCurveSurfInt::className).staticmethod("className")
         ;
 }
@@ -140,6 +141,13 @@ void PyGeCurveSurfInt::set1(const PyGeCurve3d& cvr, const PyGeSurface& srf)
 void PyGeCurveSurfInt::set2(const PyGeCurve3d& cvr, const PyGeSurface& srf, const AcGeTol& tol)
 {
     impObj()->set(*cvr.impObj(), *srf.impObj(), tol);
+}
+
+PyGeCurveSurfInt PyGeCurveSurfInt::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurveSurfaceInt))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeCurveSurfInt(src.impObj()->copy());
 }
 
 std::string PyGeCurveSurfInt::className()

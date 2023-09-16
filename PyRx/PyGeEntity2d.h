@@ -28,7 +28,7 @@ public:
     Adesk::Boolean      isOn1(const AcGePoint2d& pnt) const;
     Adesk::Boolean      isOn2(const AcGePoint2d& pnt, const AcGeTol& tol) const;
     bool                isNull()const;
-    static PyGeEntity2d cast(const PyGeEntity2d& src);
+    static PyGeEntity2d copycast(const PyGeEntity2d& src);
     static std::string  className();
 public:
     AcGeEntity2d* impObj(const std::source_location& src = std::source_location::current()) const;

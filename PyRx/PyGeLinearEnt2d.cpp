@@ -21,6 +21,7 @@ void makePyGeLinearEnt2dWrapper()
         .def("getLine", &PyGeLinearEnt2d::getLine)
         .def("pointOnLine", &PyGeLinearEnt2d::pointOnLine)
         .def("direction", &PyGeLinearEnt2d::direction)
+        .def("copycast", &PyGeLinearEnt2d::copycast).staticmethod("copycast")
         .def("className", &PyGeLinearEnt2d::className).staticmethod("className")
         ;
 }
@@ -116,6 +117,13 @@ AcGeVector2d PyGeLinearEnt2d::direction() const
     return impObj()->direction();
 }
 
+PyGeLinearEnt2d PyGeLinearEnt2d::copycast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kLinearEnt2d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeLinearEnt2d(src.impObj()->copy());
+}
+
 std::string PyGeLinearEnt2d::className()
 {
     return "AcGeLinearEnt2d";
@@ -141,6 +149,7 @@ void makePyGeLine2dWrapper()
         .add_static_property("kYAxis", PyGeLine2d::kYAxis)
         .def("set", &PyGeLine2d::set1)
         .def("set", &PyGeLine2d::set2)
+        .def("copycast", &PyGeLine2d::copycast).staticmethod("copycast")
         .def("className", &PyGeLine2d::className).staticmethod("className")
         ;
 }
@@ -190,6 +199,13 @@ void PyGeLine2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
     impObj()->set(pnt1, pnt2);
 }
 
+PyGeLine2d PyGeLine2d::copycast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kLine2d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeLine2d(src.impObj()->copy());
+}
+
 std::string PyGeLine2d::className()
 {
     return "AcGeLine2d";
@@ -223,6 +239,7 @@ void makePyGeLineSeg2dWrapper()
         .def("length", &PyGeLineSeg2d::length1)
         .def("length", &PyGeLineSeg2d::length2)
         .def("length", &PyGeLineSeg2d::length3)
+        .def("copycast", &PyGeLineSeg2d::copycast).staticmethod("copycast")
         .def("className", &PyGeLineSeg2d::className).staticmethod("className")
         ;
 }
@@ -322,6 +339,13 @@ double PyGeLineSeg2d::length3(double fromParam, double toParam, double tol) cons
     return impObj()->length(fromParam, toParam, tol);
 }
 
+PyGeLineSeg2d PyGeLineSeg2d::copycast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kLinearEnt2d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeLineSeg2d(src.impObj()->copy());
+}
+
 std::string PyGeLineSeg2d::className()
 {
     return "AcGeLineSeg2d";
@@ -345,6 +369,7 @@ void makePyGeRay2dWrapper()
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
         .def("set", &PyGeRay2d::set1)
         .def("set", &PyGeRay2d::set2)
+        .def("copycast", &PyGeRay2d::copycast).staticmethod("copycast")
         .def("className", &PyGeRay2d::className).staticmethod("className")
         ;
 }
@@ -382,6 +407,13 @@ void PyGeRay2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 void PyGeRay2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
     impObj()->set(pnt1, pnt2);
+}
+
+PyGeRay2d PyGeRay2d::copycast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kRay2d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeRay2d(src.impObj()->copy());
 }
 
 std::string PyGeRay2d::className()

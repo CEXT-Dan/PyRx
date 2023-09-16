@@ -10,6 +10,7 @@ void makePyGePointEnt2dWrapper()
 {
     class_<PyGePointEnt2d, bases<PyGeEntity2d>>("PointEnt2d", boost::python::no_init)
         .def("point2d", &PyGePointEnt2d::point2d)
+        .def("copycast", &PyGePointEnt2d::copycast).staticmethod("copycast")
         .def("className", &PyGePointEnt2d::className).staticmethod("className")
         ;
 }
@@ -22,6 +23,13 @@ PyGePointEnt2d::PyGePointEnt2d(AcGeEntity2d* pEnt)
 AcGePoint2d PyGePointEnt2d::point2d() const
 {
     return impObj()->point2d();
+}
+
+PyGePointEnt2d PyGePointEnt2d::copycast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointEnt2d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGePointEnt2d(src.impObj()->copy());
 }
 
 std::string PyGePointEnt2d::className()
@@ -55,6 +63,7 @@ void makePyGePointOnCurve2dWrapper()
         .def("deriv", &PyGePointOnCurve2d::deriv3)
         .def("setCurve", &PyGePointOnCurve2d::setCurve)
         .def("setParameter", &PyGePointOnCurve2d::setParameter)
+        .def("copycast", &PyGePointOnCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGePointOnCurve2d::className).staticmethod("className")
         ;
 }
@@ -183,6 +192,13 @@ void PyGePointOnCurve2d::setParameter(double param)
     impObj()->setParameter(param);
 }
 
+PyGePointOnCurve2d PyGePointOnCurve2d::copycast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPointOnCurve2d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGePointOnCurve2d(src.impObj()->copy());
+}
+
 std::string PyGePointOnCurve2d::className()
 {
     return "AcGePointOnCurve2d";
@@ -206,6 +222,7 @@ void makePyGePosition2dWrapper()
         .def(init<double, double>())
         .def("set", &PyGePosition2d::set1)
         .def("set", &PyGePosition2d::set2)
+        .def("copycast", &PyGePosition2d::copycast).staticmethod("copycast")
         .def("className", &PyGePosition2d::className).staticmethod("className")
         ;
 }
@@ -243,6 +260,13 @@ void PyGePosition2d::set1(const AcGePoint2d& pnt)
 void PyGePosition2d::set2(double x, double y)
 {
     impObj()->set(x, y);
+}
+
+PyGePosition2d PyGePosition2d::copycast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPosition2d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGePosition2d(src.impObj()->copy());
 }
 
 std::string PyGePosition2d::className()
