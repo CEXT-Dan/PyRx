@@ -22,6 +22,11 @@
 #include "PyGeSurfSurfInt.h"
 #include "PyGeKnotVector.h"
 
+// TODO: memory management is awkward in AcGeEntity!
+// check Composite Entity memory handling
+// CompositeCurve3d returns member pointers which may cause issues.
+// it may be safer to return copies of everything 
+
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------

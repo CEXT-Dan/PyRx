@@ -978,7 +978,7 @@ boost::python::list PyGeCompositeCurve3d::getCurveList() const
     impObj()->getCurveList(curveList);
     boost::python::list pylist;
     for (auto item : curveList)
-        pylist.append(PyGeCurve3d(static_cast<AcGeCurve3d*>(item)));
+        pylist.append(PyGeCurve3d(static_cast<const AcGeCurve3d*>(item)));
     return pylist;
 }
 
