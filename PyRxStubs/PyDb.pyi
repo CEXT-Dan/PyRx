@@ -17158,6 +17158,628 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class Ellipse:
+    def __init__ (self: Ellipse,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+      '''                             '''
+    ...
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
+      '''                             '''
+    ...
+    def angleAtParam (self, *args, **kwargs)-> float :
+      '''angleAtParam( (Ellipse)arg1, (float)arg2) -> float :
+
+    C++ signature :
+        double angleAtParam(class PyDbEllipse {lvalue},double)'''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def blockId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Ellipse :
+      '''                             '''
+    ...
+    def castShadows (self: Entity)-> bool :
+      '''                             '''
+    ...
+    def center (self, *args, **kwargs)-> PyGe.Point3d :
+      '''center( (Ellipse)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d center(class PyDbEllipse {lvalue})'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Ellipse :
+      '''                             '''
+    ...
+    def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def collisionType (self: Entity)-> PyDb.CollisionType :
+      '''                             '''
+    ...
+    def color (self: Entity)-> PyDb.Color :
+      '''                             '''
+    ...
+    def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def draw (self: Entity)-> None :
+      '''                             '''
+    ...
+    def drawableType (self: Drawable)-> PyGi.GiDrawableType :
+      '''                             '''
+    ...
+    def endAngle (self, *args, **kwargs)-> float :
+      '''endAngle( (Ellipse)arg1) -> float :
+
+    C++ signature :
+        double endAngle(class PyDbEllipse {lvalue})'''
+    ...
+    def entityColor (self: Entity)-> PyDb.EntityColor :
+      '''                             '''
+    ...
+    def erase (self: DbObject,erasing : bool=True)-> None :
+      '''                             '''
+    ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
+    def extend (self, *args, **kwargs)-> None :
+      '''extend( (Curve)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void extend(class PyDbCurve {lvalue},double)
+
+extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void extend(class PyDbCurve {lvalue},bool,class AcGePoint3d)'''
+    ...
+    def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def get (self, *args, **kwargs)-> tuple :
+      '''get( (Ellipse)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple get(class PyDbEllipse {lvalue})'''
+    ...
+    def getAcGeCurve (self: Curve,tol: Tol = default)-> PyGe.Curve3d :
+      '''                             '''
+    ...
+    def getArea (self: Curve)-> float :
+      '''                             '''
+    ...
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def getDistAtParam (self: Curve,param: float)-> float :
+      '''                             '''
+    ...
+    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
+    ...
+    def getEcs (self: Entity)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def getEndParam (self: Curve)-> float :
+      '''                             '''
+    ...
+    def getEndPoint (self: Curve)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+      '''                             '''
+    ...
+    def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None :
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
+    def getHandle (self: DbObject)-> PyDb.Handle :
+      '''                             '''
+    ...
+    def getOffsetCurves (self: Curve,dist: float)-> list :
+      '''                             '''
+    ...
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
+      '''                             '''
+    ...
+    def getParamAtDist (self: Curve,dist: float)-> float :
+      '''                             '''
+    ...
+    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
+    ...
+    def getPlane (self: Entity)-> PyGe.Plane :
+      '''                             '''
+    ...
+    def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getPointAtDist (self: Curve,dist: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+      '''                             '''
+    ...
+    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+      '''                             '''
+    ...
+    def getStartParam (self: Curve)-> float :
+      '''                             '''
+    ...
+    def getStartPoint (self: Curve)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
+      '''                             '''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def id (self: Drawable)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def intersectWith (self, *args, **kwargs)-> list :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isClosed (self: Curve)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (Ellipse)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyDbEllipse {lvalue})'''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isPeriodic (self: Curve)-> bool :
+      '''                             '''
+    ...
+    def isPersistent (self: Drawable)-> bool :
+      '''                             '''
+    ...
+    def isPlanar (self: Entity)-> bool :
+      '''                             '''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def layer (self: Entity)-> str :
+      '''                             '''
+    ...
+    def layerId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def lineWeight (self: Entity)-> PyDb.LineWeight :
+      '''                             '''
+    ...
+    def linetype (self: Entity)-> str :
+      '''                             '''
+    ...
+    def linetypeId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def linetypeScale (self: Entity)-> float :
+      '''                             '''
+    ...
+    def list (self: Entity)-> None :
+      '''                             '''
+    ...
+    def majorAxis (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''majorAxis( (Ellipse)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d majorAxis(class PyDbEllipse {lvalue})'''
+    ...
+    def majorRadius (self, *args, **kwargs)-> float :
+      '''majorRadius( (Ellipse)arg1) -> float :
+
+    C++ signature :
+        double majorRadius(class PyDbEllipse {lvalue})'''
+    ...
+    def material (self: Entity)-> str :
+      '''                             '''
+    ...
+    def materialId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def minorAxis (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''minorAxis( (Ellipse)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d minorAxis(class PyDbEllipse {lvalue})'''
+    ...
+    def minorRadius (self, *args, **kwargs)-> float :
+      '''minorRadius( (Ellipse)arg1) -> float :
+
+    C++ signature :
+        double minorRadius(class PyDbEllipse {lvalue})'''
+    ...
+    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
+      '''normal( (Ellipse)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d normal(class PyDbEllipse {lvalue})'''
+    ...
+    def objectId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def paramAtAngle (self, *args, **kwargs)-> float :
+      '''paramAtAngle( (Ellipse)arg1, (float)arg2) -> float :
+
+    C++ signature :
+        double paramAtAngle(class PyDbEllipse {lvalue},double)'''
+    ...
+    def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def radiusRatio (self, *args, **kwargs)-> float :
+      '''radiusRatio( (Ellipse)arg1) -> float :
+
+    C++ signature :
+        double radiusRatio(class PyDbEllipse {lvalue})'''
+    ...
+    def receiveShadows (self: Entity)-> bool :
+      '''                             '''
+    ...
+    def recordGraphicsModified (self: Entity)-> None :
+      '''                             '''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+      '''                             '''
+    ...
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
+      '''                             '''
+    ...
+    def reverseCurve (self: Curve)-> None :
+      '''                             '''
+    ...
+    def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def set (self, *args, **kwargs)-> None :
+      '''set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5) -> None :
+
+    C++ signature :
+        void set(class PyDbEllipse {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double)
+
+set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7) -> None :
+
+    C++ signature :
+        void set(class PyDbEllipse {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)'''
+    ...
+    def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
+      '''                             '''
+    ...
+    def setCastShadows (self: Entity,val: bool)-> None :
+      '''                             '''
+    ...
+    def setCenter (self, *args, **kwargs)-> None :
+      '''setCenter( (Ellipse)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void setCenter(class PyDbEllipse {lvalue},class AcGePoint3d)'''
+    ...
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
+      '''                             '''
+    ...
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
+      '''                             '''
+    ...
+    def setEndAngle (self, *args, **kwargs)-> None :
+      '''setEndAngle( (Ellipse)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setEndAngle(class PyDbEllipse {lvalue},double)'''
+    ...
+    def setEndParam (self, *args, **kwargs)-> None :
+      '''setEndParam( (Ellipse)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setEndParam(class PyDbEllipse {lvalue},double)'''
+    ...
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+      '''                             '''
+    ...
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
+      '''                             '''
+    ...
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setMajorRadius (self, *args, **kwargs)-> None :
+      '''setMajorRadius( (Ellipse)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setMajorRadius(class PyDbEllipse {lvalue},double)'''
+    ...
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setMinorRadius (self, *args, **kwargs)-> None :
+      '''setMinorRadius( (Ellipse)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setMinorRadius(class PyDbEllipse {lvalue},double)'''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+      '''                             '''
+    ...
+    def setPlotStyleName (self, *args, **kwargs)-> None :
+      '''setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
+    ...
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setRadiusRatio (self, *args, **kwargs)-> None :
+      '''setRadiusRatio( (Ellipse)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setRadiusRatio(class PyDbEllipse {lvalue},double)'''
+    ...
+    def setReceiveShadows (self: Entity,val: bool)-> None :
+      '''                             '''
+    ...
+    def setStartAngle (self, *args, **kwargs)-> None :
+      '''setStartAngle( (Ellipse)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setStartAngle(class PyDbEllipse {lvalue},double)'''
+    ...
+    def setStartParam (self, *args, **kwargs)-> None :
+      '''setStartParam( (Ellipse)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setStartParam(class PyDbEllipse {lvalue},double)'''
+    ...
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setXData (self: DbObject,xdata: list)-> None :
+      '''                             '''
+    ...
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
+      '''                             '''
+    ...
+    def startAngle (self, *args, **kwargs)-> float :
+      '''startAngle( (Ellipse)arg1) -> float :
+
+    C++ signature :
+        double startAngle(class PyDbEllipse {lvalue})'''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
+      '''                             '''
+    ...
+    def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
+      '''                             '''
+    ...
+    def visibility (self: Entity)-> PyDb.Visibility :
+      '''                             '''
+    ...
+    def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+      '''                             '''
+    ...
+
 class EndCaps:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''

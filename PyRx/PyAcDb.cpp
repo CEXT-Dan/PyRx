@@ -34,6 +34,7 @@
 #include "PyDbFiler.h"
 #include "PyDbSpline.h"
 #include "PyDbGroup.h"
+#include "PyDbEllipse.h"
 
 using namespace boost::python;
 
@@ -166,6 +167,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbPolylineWrapper();
     makePyDbFaceWrapper();
     makePyDbFcfWrapper();
+    makePyDbEllipseWrapper();
     makePyDbSplineWrapper();
     makePyDbHelixWrapper();
     makePyDbMlineWrapper();
