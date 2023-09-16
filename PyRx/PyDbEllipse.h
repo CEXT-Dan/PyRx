@@ -2,6 +2,8 @@
 
 #include "PyDbCurve.h"
 
+class PyGeEllipArc3d;
+
 //-----------------------------------------------------------------------------------
 //PyDbCurve
 void makePyDbEllipseWrapper();
@@ -23,10 +25,11 @@ public:
         double              startAngle,
         double              endAngle);
 
-    PyDbEllipse(AcDbEllipse* ptr, bool autoDelete);
     PyDbEllipse(const PyDbObjectId& id);
     PyDbEllipse(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbEllipse(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+
+    PyDbEllipse(AcDbEllipse* ptr, bool autoDelete);
     virtual ~PyDbEllipse() override = default;
 
     AcGePoint3d         center() const;
@@ -60,6 +63,9 @@ public:
     void                set1(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio);
     void                set2(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio, double startAngle, double endAngle);
     Adesk::Boolean      isNull() const;
+
+    PyGeEllipArc3d      getAcGeCurve1() const;
+    PyGeEllipArc3d      getAcGeCurve2(const AcGeTol& tol) const;
 
     static std::string  className();
     static PyRxClass    desc();

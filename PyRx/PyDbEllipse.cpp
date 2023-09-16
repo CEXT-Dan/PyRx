@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyDbEllipse.h"
 #include "PyDbObjectId.h"
+#include "PyGeCurve3d.h"
 
 using namespace boost::python;
 
@@ -15,8 +16,8 @@ void makePyDbEllipseWrapper()
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
-        .def("center", &PyDbEllipse::center,DS.ARGS())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def("center", &PyDbEllipse::center, DS.ARGS())
         .def("setCenter", &PyDbEllipse::setCenter, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("normal", &PyDbEllipse::normal, DS.ARGS())
         .def("majorAxis", &PyDbEllipse::majorAxis, DS.ARGS())
@@ -180,8 +181,8 @@ boost::python::tuple PyDbEllipse::get() const
 {
     AcGePoint3d center;
     AcGeVector3d unitNormal;
-    AcGeVector3d majorAxis; 
-    double radiusRatio; 
+    AcGeVector3d majorAxis;
+    double radiusRatio;
     double startAngle;
     double endAngle;
     PyThrowBadEs(impObj()->get(center, unitNormal, majorAxis, radiusRatio, startAngle, endAngle));
@@ -201,6 +202,20 @@ void PyDbEllipse::set2(const AcGePoint3d& center, const AcGeVector3d& unitNormal
 Adesk::Boolean PyDbEllipse::isNull() const
 {
     return impObj()->isNull();
+}
+
+PyGeEllipArc3d PyDbEllipse::getAcGeCurve1() const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve));
+    return PyGeEllipArc3d(pGeCurve);
+}
+
+PyGeEllipArc3d PyDbEllipse::getAcGeCurve2(const AcGeTol& tol) const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
+    return PyGeEllipArc3d(pGeCurve);
 }
 
 std::string PyDbEllipse::className()
