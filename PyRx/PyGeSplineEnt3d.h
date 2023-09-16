@@ -80,8 +80,3 @@ public:
     AcGePolyline3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
-
-
-
-
