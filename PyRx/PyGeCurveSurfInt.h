@@ -28,6 +28,7 @@ public:
     void                    set1(const PyGeCurve3d& cvr, const PyGeSurface& srf);
     void                    set2(const PyGeCurve3d& cvr, const PyGeSurface& srf, const AcGeTol& tol);
 
+    static PyGeCurveSurfInt copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGeCurveSurfInt* impObj(const std::source_location& src = std::source_location::current()) const;

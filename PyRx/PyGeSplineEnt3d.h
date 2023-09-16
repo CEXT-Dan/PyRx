@@ -27,6 +27,7 @@ public:
     void              setKnotAt(int idx, double val);
     AcGePoint3d       controlPointAt(int idx) const;
     void              setControlPointAt(int idx, const AcGePoint3d& pnt);
+    static PyGeSplineEnt3d copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGeSplineEnt3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -40,6 +41,7 @@ class PyGeCubicSplineCurve3d : public PyGeSplineEnt3d
 public:
     PyGeCubicSplineCurve3d();
     PyGeCubicSplineCurve3d(AcGeEntity3d* pEnt);
+    static PyGeCubicSplineCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGeCubicSplineCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -53,6 +55,7 @@ class PyGeNurbCurve3d : public PyGeSplineEnt3d
 public:
     PyGeNurbCurve3d();
     PyGeNurbCurve3d(AcGeEntity3d* pEnt);
+    static PyGeNurbCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGeNurbCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -75,6 +78,7 @@ public:
     AcGePoint3d      fitPointAt(int idx) const;
     void             setFitPointAt(int idx, const AcGePoint3d& point);
 
+    static PyGePolyline3d copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGePolyline3d* impObj(const std::source_location& src = std::source_location::current()) const;

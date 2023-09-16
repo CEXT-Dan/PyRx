@@ -26,7 +26,7 @@ void makePyGeEntity2dWrapper()
         .def("isNull", &PyGeEntity2d::isNull)
         .def("__eq__", &PyGeEntity2d::operator==)
         .def("__ne__", &PyGeEntity2d::operator!=)
-        .def("cast", &PyGeEntity2d::cast).staticmethod("cast")
+        .def("copycast", &PyGeEntity2d::copycast).staticmethod("copycast")
         .def("className", &PyGeEntity2d::className).staticmethod("className")
         ;
 }
@@ -125,7 +125,7 @@ bool PyGeEntity2d::isNull() const
     return m_imp == nullptr;
 }
 
-PyGeEntity2d PyGeEntity2d::cast(const PyGeEntity2d& src)
+PyGeEntity2d PyGeEntity2d::copycast(const PyGeEntity2d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kEntity2d))
         PyThrowBadEs(Acad::eInvalidInput);

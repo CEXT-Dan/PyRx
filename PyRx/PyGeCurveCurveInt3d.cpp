@@ -7,7 +7,8 @@ void makePyGeCurveCurveInt3dWrapper()
 {
     class_<PyGeCurveCurveInt3d, bases<PyGeEntity3d>>("CurveCurveInt3d")
         .def(init<>())
-        .def("className", &PyGeEntity3d::className).staticmethod("className")
+        .def("copycast", &PyGeCurveCurveInt3d::copycast).staticmethod("copycast")
+        .def("className", &PyGeCurveCurveInt3d::className).staticmethod("className")
         ;
 }
 
@@ -19,6 +20,13 @@ PyGeCurveCurveInt3d::PyGeCurveCurveInt3d()
 PyGeCurveCurveInt3d::PyGeCurveCurveInt3d(AcGeEntity3d* pEnt)
     : PyGeEntity3d(pEnt)
 {
+}
+
+PyGeCurveCurveInt3d PyGeCurveCurveInt3d::copycast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurveCurveInt3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeCurveCurveInt3d(src.impObj()->copy());
 }
 
 std::string PyGeCurveCurveInt3d::className()

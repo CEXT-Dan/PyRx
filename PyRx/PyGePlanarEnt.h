@@ -37,6 +37,7 @@ public:
     AcGeVector3d         normal() const;
     boost::python::tuple getCoefficients() const;
     boost::python::tuple getCoordSystem() const;
+    static PyGePlanarEnt copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGePlanarEnt* impObj(const std::source_location& src = std::source_location::current()) const;

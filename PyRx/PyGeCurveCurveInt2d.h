@@ -17,6 +17,7 @@ public:
     PyGeCurveCurveInt2d(const AcGeCurve2d& curve1, const AcGeCurve2d& curve2, const PyGeInterval& range1, const PyGeInterval& range2, const AcGeTol& tol);
     PyGeCurveCurveInt2d(const AcGeCurveCurveInt2d& src);
     PyGeCurveCurveInt2d(AcGeEntity2d* pEnt);
+    static PyGeCurveCurveInt2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
     AcGeCurveCurveInt2d* impObj() const;

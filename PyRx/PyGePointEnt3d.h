@@ -12,6 +12,7 @@ class PyGePointEnt3d : public PyGeEntity3d
 public:
     PyGePointEnt3d(AcGeEntity3d* src);
     AcGePoint3d         point3d() const;
+    static PyGePointEnt3d copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGePointEnt3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -48,6 +49,7 @@ public:
     void                setCurve(const PyGeCurve3d& crv);
     void                setParameter(double param);
 
+    static PyGePointOnCurve3d copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:
     AcGePointOnCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -99,6 +101,7 @@ public:
     void                setSurface(const PyGeSurface& surf);
     void                setParameter(const AcGePoint2d& param);
 
+    static PyGePointOnSurface copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGePointOnSurface* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -117,6 +120,7 @@ public:
 
     void set1(const AcGePoint3d& pnt);
     void set2(double x, double y, double z);
+    static PyGePosition3d copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
     AcGePosition3d* impObj(const std::source_location& src = std::source_location::current()) const;
