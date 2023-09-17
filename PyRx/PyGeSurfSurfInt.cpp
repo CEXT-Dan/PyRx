@@ -25,6 +25,7 @@ void makePyGeSurfSurfIntWrapper()
         .def("getType", &PyGeSurfSurfInt::getType)
         .def("set", &PyGeSurfSurfInt::set1)
         .def("set", &PyGeSurfSurfInt::set2)
+        .def("cast", &PyGeSurfSurfInt::cast).staticmethod("cast")
         .def("copycast", &PyGeSurfSurfInt::copycast).staticmethod("copycast")
         .def("className", &PyGeSurfSurfInt::className).staticmethod("className")
         ;

@@ -14,6 +14,7 @@ void makePyGeCurveCurveInt2dWrapper()
         .def(init<const AcGeCurve2d&, const AcGeCurve2d&, const AcGeTol&>())
         .def(init<const AcGeCurve2d&, const AcGeCurve2d&, const PyGeInterval&, const PyGeInterval&>())
         .def(init<const AcGeCurve2d&, const AcGeCurve2d&, const PyGeInterval&, const PyGeInterval&, const AcGeTol&>())
+        .def("cast", &PyGeCurveCurveInt2d::cast).staticmethod("cast")
         .def("copycast", &PyGeCurveCurveInt2d::copycast).staticmethod("copycast")
         .def("className", &PyGeCurveCurveInt2d::className).staticmethod("className")
         ;

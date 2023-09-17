@@ -10,6 +10,7 @@ void makePyGeClipBoundary2dWrapper()
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
         .def(init<const boost::python::list&>())
+        .def("cast", &PyGeClipBoundary2d::cast).staticmethod("cast")
         .def("copycast", &PyGeClipBoundary2d::copycast).staticmethod("copycast")
         .def("className", &PyGeClipBoundary2d::className).staticmethod("className")
         ;

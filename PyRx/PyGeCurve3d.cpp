@@ -84,6 +84,7 @@ void makePyGeCurve3dWrapper()
         .def("evalPoint", &PyGeCurve3d::evalPoint2)
         .def("getSamplePoints", &PyGeCurve3d::getSamplePoints1)
         .def("getSamplePoints", &PyGeCurve3d::getSamplePoints2)
+        .def("cast", &PyGeCurve3d::cast).staticmethod("cast")
         .def("copycast", &PyGeCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeCurve3d::className).staticmethod("className")
         ;
@@ -1088,6 +1089,7 @@ void makePyGeEllipArc3dWrapper()
         .def("set", &PyGeEllipArc3d::set1)
         .def("set", &PyGeEllipArc3d::set2)
         .def("set", &PyGeEllipArc3d::set3)
+        .def("cast", &PyGeEllipArc3d::cast).staticmethod("cast")
         .def("copycast", &PyGeEllipArc3d::copycast).staticmethod("copycast")
         .def("className", &PyGeEllipArc3d::className).staticmethod("className")
         ;
@@ -1344,6 +1346,7 @@ AcGeEllipArc3d* PyGeEllipArc3d::impObj(const std::source_location& src /*= std::
 void makePyGeExternalCurve3dWrapper()
 {
     class_<PyGeExternalCurve3d, bases<PyGeCurve3d>>("ExternalCurve3d", boost::python::no_init)
+        .def("cast", &PyGeExternalCurve3d::cast).staticmethod("cast")
         .def("copycast", &PyGeExternalCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeExternalCurve3d::className).staticmethod("className")
         ;
@@ -1386,6 +1389,7 @@ void makePyGeOffsetCurve3dWrapper()
 {
     class_<PyGeOffsetCurve3d, bases<PyGeCurve3d>>("OffsetCurve3d", boost::python::no_init)
         .def(init<const PyGeCurve3d&, const AcGeVector3d&, double>())
+        .def("cast", &PyGeOffsetCurve3d::cast).staticmethod("cast")
         .def("copycast", &PyGeOffsetCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeOffsetCurve3d::className).staticmethod("className")
         ;

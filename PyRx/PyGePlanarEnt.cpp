@@ -29,6 +29,7 @@ void makePyGePlanarEntWrapper()
         .def("normal", &PyGePlanarEnt::normal)
         .def("getCoefficients", &PyGePlanarEnt::getCoefficients)
         .def("getCoordSystem", &PyGePlanarEnt::getCoordSystem)
+        .def("cast", &PyGePlanarEnt::cast).staticmethod("cast")
         .def("copycast", &PyGePlanarEnt::copycast).staticmethod("copycast")
         .def("className", &PyGePlanarEnt::className).staticmethod("className")
         ;
