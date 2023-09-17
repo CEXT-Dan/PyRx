@@ -120,10 +120,17 @@ void PyGeSplineEnt2d::setControlPointAt(int idx, const AcGePoint2d& pnt)
     impObj()->setControlPointAt(idx, pnt);
 }
 
+PyGeSplineEnt2d PyGeSplineEnt2d::cast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kSplineEnt2d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity2dCast<PyGeSplineEnt2d>(src);
+}
+
 PyGeSplineEnt2d PyGeSplineEnt2d::copycast(const PyGeEntity2d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kSplineEnt2d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeSplineEnt2d(src.impObj()->copy());
 }
 

@@ -42,7 +42,9 @@ struct PyGeObjectDeleter
 
     inline void operator()(AcGeEntity3d* p) const
     {
-        if (!m_autoDelete)
+        if (p == nullptr)
+            return;
+        else if (!m_autoDelete)
             return;
         else
             delete p;

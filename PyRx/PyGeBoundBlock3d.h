@@ -24,6 +24,7 @@ public:
     Adesk::Boolean    isDisjoint(const PyGeBoundBlock3d& block) const;
     Adesk::Boolean    isBox() const;
     void              setToBox(Adesk::Boolean);
+    static PyGeBoundBlock3d cast(const PyGeEntity3d& src);
     static PyGeBoundBlock3d copycast(const PyGeEntity3d& src);
     static std::string className();
 public:

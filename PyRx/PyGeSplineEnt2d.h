@@ -29,6 +29,7 @@ public:
     void              setKnotAt(int idx, double val);
     AcGePoint2d       controlPointAt(int idx) const;
     void              setControlPointAt(int idx, const AcGePoint2d& pnt);
+    static PyGeSplineEnt2d cast(const PyGeEntity2d& src);
     static PyGeSplineEnt2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:

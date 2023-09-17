@@ -31,6 +31,7 @@ public:
     void                    set2(const AcGePoint3d& pntU, const AcGePoint3d& org, const AcGePoint3d& pntV);
     void                    set3(double a, double b, double c, double d);
     void                    set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const AcGeVector3d& vAxis);
+    static PyGePlane   cast(const PyGeEntity3d& src);
     static PyGePlane   copycast(const PyGeEntity3d& src);
     static std::string className();
 public:
@@ -45,6 +46,7 @@ class PyGeBoundedPlane : public PyGePlanarEnt
 {
 public:
     PyGeBoundedPlane();
+    PyGeBoundedPlane(AcGeEntity3d* pEnt);
     PyGeBoundedPlane(AcGeBoundedPlane* pEnt);
     PyGeBoundedPlane(const AcGeBoundedPlane& plane);
     PyGeBoundedPlane(const AcGePoint3d& origin, const AcGeVector3d& uVec, const AcGeVector3d& vVec);
@@ -57,6 +59,7 @@ public:
     boost::python::tuple intersectWith6(const PyGeBoundedPlane& bndPln, const AcGeTol& tol) const;
     void                 set1(const AcGePoint3d& origin, const AcGeVector3d& uVec,const AcGeVector3d& vVec);
     void                 set2(const AcGePoint3d& p1, const AcGePoint3d& origin, const AcGePoint3d& p2);
+    static PyGeBoundedPlane cast(const PyGeEntity3d& src);
     static PyGeBoundedPlane copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:

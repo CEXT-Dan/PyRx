@@ -13,6 +13,7 @@ public:
     PyGeSurfSurfInt();
     PyGeSurfSurfInt(const PyGeSurface& srf1, const PyGeSurface& srf2);
     PyGeSurfSurfInt(const PyGeSurface& srf1,  const PyGeSurface& srf2, const AcGeTol& tol);
+    PyGeSurfSurfInt(AcGeEntity3d* pEnt);
     PyGeSurfSurfInt(AcGeSurfSurfInt* pEnt, bool autoDelete = true);
     PyGeSurface          surface1() const;
     PyGeSurface          surface2() const;
@@ -30,6 +31,7 @@ public:
     void                 set1(const PyGeSurface& srf1, const PyGeSurface& srf2);
     void                 set2(const PyGeSurface& srf1, const PyGeSurface& srf2, const AcGeTol& tol);
 
+    static PyGeSurfSurfInt cast(const PyGeEntity3d& src);
     static PyGeSurfSurfInt copycast(const PyGeEntity3d& src);
     static std::string className();
 public:

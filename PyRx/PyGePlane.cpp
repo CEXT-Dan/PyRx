@@ -143,6 +143,13 @@ void PyGePlane::set4(const AcGePoint3d& org, const AcGeVector3d& uAxis, const Ac
     impObj()->set(org, uAxis, vAxis);
 }
 
+PyGePlane PyGePlane::cast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPlane))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeEntity3dCast<PyGePlane>(src);
+}
+
 PyGePlane PyGePlane::copycast(const PyGeEntity3d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kPlane))
@@ -208,6 +215,11 @@ PyGeBoundedPlane::PyGeBoundedPlane(const AcGePoint3d& p1, const AcGePoint3d& ori
 {
 }
 
+PyGeBoundedPlane::PyGeBoundedPlane(AcGeEntity3d* pEnt)
+    : PyGePlanarEnt(pEnt)
+{
+}
+
 boost::python::tuple PyGeBoundedPlane::intersectWith1(const PyGeLinearEnt3d& linEnt) const
 {
     PyAutoLockGIL lock;
@@ -266,11 +278,18 @@ void PyGeBoundedPlane::set2(const AcGePoint3d& p1, const AcGePoint3d& origin, co
     impObj()->set(p1, origin, p2);
 }
 
+PyGeBoundedPlane PyGeBoundedPlane::cast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kBoundedPlane))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeEntity3dCast<PyGeBoundedPlane>(src);
+}
+
 PyGeBoundedPlane PyGeBoundedPlane::copycast(const PyGeEntity3d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kBoundedPlane))
         PyThrowBadEs(Acad::eInvalidInput);
-    return PyGeBoundedPlane(static_cast<AcGeBoundedPlane*>(src.impObj()->copy()));
+    return PyGeBoundedPlane(src.impObj()->copy());
 }
 
 std::string PyGeBoundedPlane::className()

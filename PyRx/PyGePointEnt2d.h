@@ -10,6 +10,7 @@ class PyGePointEnt2d : public PyGeEntity2d
 public:
     PyGePointEnt2d(AcGeEntity2d* pEnt);
     AcGePoint2d     point2d() const;
+    static PyGePointEnt2d cast(const PyGeEntity2d& src);
     static PyGePointEnt2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
@@ -48,6 +49,7 @@ public:
    void setCurve(const PyGeCurve2d& crv);
    void setParameter(double param);
 
+    static PyGePointOnCurve2d copy(const PyGeEntity2d& src);
     static PyGePointOnCurve2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
@@ -68,6 +70,7 @@ public:
     PyGePosition2d(AcGeEntity2d* pEnt);
     void set1(const AcGePoint2d&);
     void set2(double x, double y);
+    static PyGePosition2d cast(const PyGeEntity2d& src);
     static PyGePosition2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:

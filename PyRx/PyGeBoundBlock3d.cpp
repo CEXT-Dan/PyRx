@@ -129,10 +129,17 @@ void PyGeBoundBlock3d::setToBox(Adesk::Boolean val)
     impObj()->setToBox(val);
 }
 
+PyGeBoundBlock3d PyGeBoundBlock3d::cast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kBoundBlock3d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity3dCast<PyGeBoundBlock3d>(src);
+}
+
 PyGeBoundBlock3d PyGeBoundBlock3d::copycast(const PyGeEntity3d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kBoundBlock3d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeBoundBlock3d(src.impObj()->copy());
 }
 

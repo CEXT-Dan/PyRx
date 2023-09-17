@@ -50,6 +50,11 @@ PyGeSurfSurfInt::PyGeSurfSurfInt(const PyGeSurface& srf1, const PyGeSurface& srf
 {
 }
 
+PyGeSurfSurfInt::PyGeSurfSurfInt(AcGeEntity3d* pEnt)
+    : PyGeEntity3d(pEnt)
+{
+}
+
 PyGeSurface PyGeSurfSurfInt::surface1() const
 {
     return PyGeSurface(impObj()->surface1());
@@ -158,10 +163,17 @@ void PyGeSurfSurfInt::set2(const PyGeSurface& srf1, const PyGeSurface& srf2, con
     impObj()->set(*srf1.impObj(), *srf2.impObj(), tol);
 }
 
+PyGeSurfSurfInt PyGeSurfSurfInt::cast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kPlanarEnt))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity3dCast<PyGeSurfSurfInt>(src);
+}
+
 PyGeSurfSurfInt PyGeSurfSurfInt::copycast(const PyGeEntity3d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kPlanarEnt))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeSurfSurfInt(static_cast<AcGeSurfSurfInt*>(src.impObj()->copy()),true);
 }
 

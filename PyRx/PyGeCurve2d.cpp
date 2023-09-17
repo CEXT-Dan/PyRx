@@ -464,10 +464,17 @@ boost::python::tuple PyGeCurve2d::getSplitCurves(double param)
     return make_tuple(PyGeCurve2d(p1), PyGeCurve2d(p2));
 }
 
+PyGeCurve2d PyGeCurve2d::cast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurve2d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity2dCast<PyGeCurve2d>(src);
+}
+
 PyGeCurve2d PyGeCurve2d::copycast(const PyGeEntity2d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kCurve2d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCurve2d(src.impObj()->copy());
 }
 
@@ -738,13 +745,19 @@ void PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, c
     impObj()->set(*curve1.impObj(), *curve2.impObj(), *curve3.impObj(), param1, param2, param3, success);
     if (success == false)
         throw PyAcadErrorStatus(eInvalidInput);
+}
 
+PyGeCircArc2d PyGeCircArc2d::cast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCircArc2d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity2dCast<PyGeCircArc2d>(src);
 }
 
 PyGeCircArc2d PyGeCircArc2d::copycast(const PyGeEntity2d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kCircArc2d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCircArc2d(src.impObj()->copy());
 }
 
@@ -957,10 +970,17 @@ void PyGeEllipArc2d::set3(const PyGeCircArc2d& arc)
     impObj()->set(*arc.impObj());
 }
 
+PyGeEllipArc2d PyGeEllipArc2d::cast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kEllipArc2d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity2dCast<PyGeEllipArc2d>(src);
+}
+
 PyGeEllipArc2d PyGeEllipArc2d::copycast(const PyGeEntity2d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kEllipArc2d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeEllipArc2d(src.impObj()->copy());
 }
 
@@ -992,10 +1012,17 @@ PyGeExternalCurve2d::PyGeExternalCurve2d(AcGeEntity2d* pEnt)
 {
 }
 
+PyGeExternalCurve2d PyGeExternalCurve2d::cast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalCurve2d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity2dCast<PyGeExternalCurve2d>(src);
+}
+
 PyGeExternalCurve2d PyGeExternalCurve2d::copycast(const PyGeEntity2d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kExternalCurve2d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeExternalCurve2d(src.impObj()->copy());
 }
 
@@ -1033,10 +1060,17 @@ PyGeOffsetCurve2d::PyGeOffsetCurve2d(AcGeEntity2d* pEnt)
 {
 }
 
+PyGeOffsetCurve2d PyGeOffsetCurve2d::cast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kOffsetCurve2d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity2dCast<PyGeOffsetCurve2d>(src);
+}
+
 PyGeOffsetCurve2d PyGeOffsetCurve2d::copycast(const PyGeEntity2d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kOffsetCurve2d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeOffsetCurve2d(src.impObj()->copy());
 }
 
@@ -1073,10 +1107,17 @@ PyGeCompositeCurve2d::PyGeCompositeCurve2d(AcGeEntity2d* pEnt)
 {
 }
 
+PyGeCompositeCurve2d PyGeCompositeCurve2d::cast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCompositeCrv2d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity2dCast<PyGeCompositeCurve2d>(src);
+}
+
 PyGeCompositeCurve2d PyGeCompositeCurve2d::copycast(const PyGeEntity2d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kCompositeCrv2d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCompositeCurve2d(src.impObj()->copy());
 }
 
