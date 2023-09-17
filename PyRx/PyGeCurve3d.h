@@ -237,6 +237,17 @@ class PyGeOffsetCurve3d : public PyGeCurve3d
 public:
     PyGeOffsetCurve3d(const PyGeCurve3d& baseCurve, const AcGeVector3d& planeNormal, double offsetDistance);
     PyGeOffsetCurve3d(AcGeEntity3d* pEnt);
+
+    PyGeCurve3d             curve() const;
+    AcGeVector3d            normal() const;
+    double                  offsetDistance() const;
+    Adesk::Boolean		    paramDirection() const;
+    AcGeMatrix3d		    transformation() const;
+
+    void                    setCurve(const PyGeCurve3d& baseCurve);
+    void                    setNormal(const AcGeVector3d& planeNormal);
+    void                    setOffsetDistance(double offsetDistance);
+
     static PyGeOffsetCurve3d cast(const PyGeEntity3d& src);
     static PyGeOffsetCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();

@@ -487,10 +487,12 @@ public:
         return RSRSLT;
     }
 
+#ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
 
     }
+#endif
 };
 
 //-----------------------------------------------------------------------------
@@ -501,5 +503,7 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_T
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
-//ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_TRANSPARENT, NULL)
+#ifdef PYRXDEBUG
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_TRANSPARENT, NULL)
+#endif
 #pragma warning( pop )
