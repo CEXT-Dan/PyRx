@@ -10,9 +10,9 @@ class PyGeBoundBlock2d : public PyGeEntity2d
 
 public:
     PyGeBoundBlock2d();
-    PyGeBoundBlock2d(AcGeEntity2d* pEnt);
     PyGeBoundBlock2d(const AcGePoint2d& point1, const AcGePoint2d& point2);
     PyGeBoundBlock2d(const AcGePoint2d& base, const AcGeVector2d& dir1, const AcGeVector2d& dir2);
+    PyGeBoundBlock2d(AcGeEntity2d* pEnt);
     PyGeBoundBlock2d(const AcGeBoundBlock2d& block);
     AcGePoint2d         getMinPoint() const;
     AcGePoint2d         getMaxPoint() const;
