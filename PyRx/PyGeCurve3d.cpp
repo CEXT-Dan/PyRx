@@ -1389,6 +1389,14 @@ void makePyGeOffsetCurve3dWrapper()
 {
     class_<PyGeOffsetCurve3d, bases<PyGeCurve3d>>("OffsetCurve3d", boost::python::no_init)
         .def(init<const PyGeCurve3d&, const AcGeVector3d&, double>())
+        .def("curve", &PyGeOffsetCurve3d::curve)
+        .def("normal", &PyGeOffsetCurve3d::normal)
+        .def("offsetDistance", &PyGeOffsetCurve3d::offsetDistance)
+        .def("paramDirection", &PyGeOffsetCurve3d::paramDirection)
+        .def("transformation", &PyGeOffsetCurve3d::transformation)
+        .def("setCurve", &PyGeOffsetCurve3d::setCurve)
+        .def("setNormal", &PyGeOffsetCurve3d::setNormal)
+        .def("setOffsetDistance", &PyGeOffsetCurve3d::setOffsetDistance)
         .def("cast", &PyGeOffsetCurve3d::cast).staticmethod("cast")
         .def("copycast", &PyGeOffsetCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeOffsetCurve3d::className).staticmethod("className")
@@ -1403,6 +1411,46 @@ PyGeOffsetCurve3d::PyGeOffsetCurve3d(const PyGeCurve3d& baseCurve, const AcGeVec
 PyGeOffsetCurve3d::PyGeOffsetCurve3d(AcGeEntity3d* pEnt)
     : PyGeCurve3d(pEnt)
 {
+}
+
+PyGeCurve3d PyGeOffsetCurve3d::curve() const
+{
+   return PyGeCurve3d(impObj()->curve());
+}
+
+AcGeVector3d PyGeOffsetCurve3d::normal() const
+{
+    return impObj()->normal();
+}
+
+double PyGeOffsetCurve3d::offsetDistance() const
+{
+    return impObj()->offsetDistance();
+}
+
+Adesk::Boolean PyGeOffsetCurve3d::paramDirection() const
+{
+    return impObj()->paramDirection();
+}
+
+AcGeMatrix3d PyGeOffsetCurve3d::transformation() const
+{
+    return impObj()->transformation();
+}
+
+void PyGeOffsetCurve3d::setCurve(const PyGeCurve3d& baseCurve)
+{
+    impObj()->setCurve(*baseCurve.impObj());
+}
+
+void PyGeOffsetCurve3d::setNormal(const AcGeVector3d& planeNormal)
+{
+    impObj()->setNormal(planeNormal);
+}
+
+void PyGeOffsetCurve3d::setOffsetDistance(double offsetDistance)
+{
+    impObj()->setOffsetDistance(offsetDistance);
 }
 
 PyGeOffsetCurve3d PyGeOffsetCurve3d::cast(const PyGeEntity3d& src)
