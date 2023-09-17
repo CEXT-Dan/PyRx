@@ -37,6 +37,7 @@ public:
     AcGePoint3d         evalPoint1(const AcGePoint2d& param) const;
     AcGePoint3d         evalPoint2(const AcGePoint2d& param, int derivOrd, boost::python::list& derivatives) const;
     AcGePoint3d         evalPoint3(const AcGePoint2d& param, int derivOrd, boost::python::list& derivatives, AcGeVector3d& normal) const;
+    static PyGeSurface  cast(const PyGeEntity3d& src);
     static PyGeSurface  copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:
@@ -50,9 +51,11 @@ class PyGeCone : public PyGeSurface
 {
 public:
     PyGeCone();
+    PyGeCone(AcGeEntity3d* src);
     PyGeCone(AcGeCone* src);
     PyGeCone(const AcGeCone& src);
     ~PyGeCone() = default;
+    static PyGeCone     cast(const PyGeEntity3d& src);
     static PyGeCone     copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:
@@ -66,9 +69,11 @@ class PyGeCylinder : public PyGeSurface
 {
 public:
     PyGeCylinder();
+    PyGeCylinder(AcGeEntity3d* src);
     PyGeCylinder(AcGeCylinder* src);
     PyGeCylinder(const AcGeCylinder& src);
     ~PyGeCylinder() = default;
+    static PyGeCylinder cast(const PyGeEntity3d& src);
     static PyGeCylinder copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:
@@ -82,9 +87,11 @@ class PyGeExternalBoundedSurface : public PyGeSurface
 {
 public:
     PyGeExternalBoundedSurface();
+    PyGeExternalBoundedSurface(AcGeEntity3d* src);
     PyGeExternalBoundedSurface(AcGeExternalBoundedSurface* src);
     PyGeExternalBoundedSurface(const AcGeExternalBoundedSurface& src);
     ~PyGeExternalBoundedSurface() = default;
+    static PyGeExternalBoundedSurface cast(const PyGeEntity3d& src);
     static PyGeExternalBoundedSurface copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:
@@ -98,9 +105,11 @@ class PyGeExternalSurface : public PyGeSurface
 {
 public:
     PyGeExternalSurface();
+    PyGeExternalSurface(AcGeEntity3d* src);
     PyGeExternalSurface(AcGeExternalSurface* src);
     PyGeExternalSurface(const AcGeExternalSurface& src);
     ~PyGeExternalSurface() = default;
+    static PyGeExternalSurface cast(const PyGeEntity3d& src);
     static PyGeExternalSurface copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:
@@ -114,9 +123,11 @@ class PyGeNurbSurface : public PyGeSurface
 {
 public:
     PyGeNurbSurface();
+    PyGeNurbSurface(AcGeEntity3d* src);
     PyGeNurbSurface(AcGeNurbSurface* src);
     PyGeNurbSurface(const AcGeNurbSurface& src);
     ~PyGeNurbSurface() = default;
+    static PyGeNurbSurface cast(const PyGeEntity3d& src);
     static PyGeNurbSurface copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:
@@ -131,8 +142,10 @@ class PyGeOffsetSurface : public PyGeSurface
 public:
     PyGeOffsetSurface();
     PyGeOffsetSurface(AcGeOffsetSurface* src);
+    PyGeOffsetSurface(AcGeEntity3d* src);
     PyGeOffsetSurface(const AcGeOffsetSurface& src);
     ~PyGeOffsetSurface() = default;
+    static PyGeOffsetSurface cast(const PyGeEntity3d& src);
     static PyGeOffsetSurface copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:
@@ -147,8 +160,10 @@ class PyGeSphere : public PyGeSurface
 public:
     PyGeSphere();
     PyGeSphere(AcGeSphere* src);
+    PyGeSphere(AcGeEntity3d* src);
     PyGeSphere(const AcGeSphere& src);
     ~PyGeSphere() = default;
+    static PyGeSphere cast(const PyGeEntity3d& src);
     static PyGeSphere copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:
@@ -162,9 +177,11 @@ class PyGeTorus : public PyGeSurface
 {
 public:
     PyGeTorus();
+    PyGeTorus(AcGeEntity3d* src);
     PyGeTorus(AcGeTorus* src);
     PyGeTorus(const AcGeTorus& src);
     ~PyGeTorus() = default;
+    static PyGeTorus cast(const PyGeEntity3d& src);
     static PyGeTorus copycast(const PyGeEntity3d& src);
     static std::string  className();
 public:

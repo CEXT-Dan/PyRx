@@ -46,10 +46,17 @@ PyGeClipBoundary2d::PyGeClipBoundary2d(const AcGeClipBoundary2d& src)
 {
 }
 
+PyGeClipBoundary2d PyGeClipBoundary2d::cast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kClipBoundary2d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity2dCast<PyGeClipBoundary2d>(src);
+}
+
 PyGeClipBoundary2d PyGeClipBoundary2d::copycast(const PyGeEntity2d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kClipBoundary2d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeClipBoundary2d(src.impObj()->copy());
 }
 

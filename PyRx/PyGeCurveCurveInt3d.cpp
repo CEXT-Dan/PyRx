@@ -22,10 +22,17 @@ PyGeCurveCurveInt3d::PyGeCurveCurveInt3d(AcGeEntity3d* pEnt)
 {
 }
 
+PyGeCurveCurveInt3d PyGeCurveCurveInt3d::cast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kCurveCurveInt3d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity3dCast<PyGeCurveCurveInt3d>(src);
+}
+
 PyGeCurveCurveInt3d PyGeCurveCurveInt3d::copycast(const PyGeEntity3d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kCurveCurveInt3d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeCurveCurveInt3d(src.impObj()->copy());
 }
 

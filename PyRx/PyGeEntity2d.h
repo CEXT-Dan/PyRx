@@ -36,3 +36,12 @@ public:
     std::shared_ptr<AcGeEntity2d> m_imp;
 };
 
+template<typename T>
+inline T PyGeEntity2dCast(const PyGeEntity2d& src)
+{
+    PyGeEntity2d tmp = src;
+    AcGeEntity2d* ptr = nullptr;
+    T dst(ptr);
+    std::swap(dst.m_imp, tmp.m_imp);
+    return dst;
+}

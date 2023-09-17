@@ -24,6 +24,7 @@ void makePyGeBoundBlock2dWrapper()
         .def("isDisjoint", &PyGeBoundBlock2d::isDisjoint)
         .def("isBox", &PyGeBoundBlock2d::isBox)
         .def("setToBox", &PyGeBoundBlock2d::setToBox)
+        .def("cast", &PyGeBoundBlock2d::cast).staticmethod("cast")
         .def("copycast", &PyGeBoundBlock2d::copycast).staticmethod("copycast")
         .def("className", &PyGeBoundBlock2d::className).staticmethod("className")
         ;
@@ -132,10 +133,17 @@ void PyGeBoundBlock2d::setToBox(Adesk::Boolean val)
     impObj()->setToBox(val);
 }
 
+PyGeBoundBlock2d PyGeBoundBlock2d::cast(const PyGeEntity2d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kBoundBlock2d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity2dCast<PyGeBoundBlock2d>(src);
+}
+
 PyGeBoundBlock2d PyGeBoundBlock2d::copycast(const PyGeEntity2d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kBoundBlock2d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeBoundBlock2d(src.impObj()->copy());
 }
 

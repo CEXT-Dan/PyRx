@@ -223,10 +223,17 @@ PyGeLine3d PyGeLinearEnt3d::getLine() const
     return PyGeLine3d(line);
 }
 
+PyGeLinearEnt3d PyGeLinearEnt3d::cast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kLinearEnt3d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity3dCast<PyGeLinearEnt3d>(src);
+}
+
 PyGeLinearEnt3d PyGeLinearEnt3d::copycast(const PyGeEntity3d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kLinearEnt3d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeLinearEnt3d(src.impObj()->copy());
 }
 
@@ -309,6 +316,13 @@ void PyGeLine3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
 void PyGeLine3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 {
     impObj()->set(pnt1, pnt2);
+}
+
+PyGeLine3d PyGeLine3d::cast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kLine3d))
+        PyThrowBadEs(Acad::eInvalidInput);
+    return PyGeEntity3dCast<PyGeLine3d>(src);
 }
 
 PyGeLine3d PyGeLine3d::copycast(const PyGeEntity3d& src)
@@ -431,10 +445,17 @@ void PyGeLineSeg3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
     impObj()->set(pnt1, pnt2);
 }
 
+PyGeLineSeg3d PyGeLineSeg3d::cast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kLineSeg3d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity3dCast<PyGeLineSeg3d>(src);
+}
+
 PyGeLineSeg3d PyGeLineSeg3d::copycast(const PyGeEntity3d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kLineSeg3d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeLineSeg3d(src.impObj()->copy());
 }
 
@@ -501,10 +522,17 @@ void PyGeRay3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
     impObj()->set(pnt1, pnt2);
 }
 
+PyGeRay3d PyGeRay3d::cast(const PyGeEntity3d& src)
+{
+    if (!src.impObj()->isKindOf(AcGe::EntityId::kRay3d))
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
+    return PyGeEntity3dCast<PyGeRay3d>(src);
+}
+
 PyGeRay3d PyGeRay3d::copycast(const PyGeEntity3d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kRay3d))
-        PyThrowBadEs(Acad::eInvalidInput);
+        PyThrowBadEs(Acad::eNotThatKindOfClass);
     return PyGeRay3d(src.impObj()->copy());
 }
 
