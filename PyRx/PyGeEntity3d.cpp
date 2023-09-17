@@ -52,9 +52,8 @@ struct PyGeObjectDeleter
     bool m_autoDelete = true;
 };
 
-
 PyGeEntity3d::PyGeEntity3d(const AcGeEntity3d* pEnt)
-    : PyGeEntity3d(const_cast<AcGeEntity3d*>(pEnt), false)
+    : m_imp(const_cast<AcGeEntity3d*>(pEnt), PyGeObjectDeleter(false))
 {
 }
 
