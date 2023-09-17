@@ -52,13 +52,13 @@ struct PyGeObjectDeleter
     bool m_autoDelete = true;
 };
 
-PyGeEntity3d::PyGeEntity3d(const AcGeEntity3d* pEnt)
-    : m_imp(const_cast<AcGeEntity3d*>(pEnt), PyGeObjectDeleter(false))
+PyGeEntity3d::PyGeEntity3d(AcGeEntity3d* pEnt)
+    : m_imp(pEnt, PyGeObjectDeleter(true))
 {
 }
 
-PyGeEntity3d::PyGeEntity3d(AcGeEntity3d* pEnt, bool autoDelete /*= true*/)
-    : m_imp(pEnt, PyGeObjectDeleter(autoDelete))
+PyGeEntity3d::PyGeEntity3d(const AcGeEntity3d* pEnt)
+    : m_imp(const_cast<AcGeEntity3d*>(pEnt), PyGeObjectDeleter(false))
 {
 }
 

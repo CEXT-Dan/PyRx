@@ -36,8 +36,8 @@ PyGeSurfSurfInt::PyGeSurfSurfInt()
 {
 }
 
-PyGeSurfSurfInt::PyGeSurfSurfInt(AcGeSurfSurfInt* pEnt, bool autoDelete /*= false*/)
-    : PyGeEntity3d(pEnt, autoDelete)
+PyGeSurfSurfInt::PyGeSurfSurfInt(AcGeSurfSurfInt* pEnt)
+    : PyGeEntity3d(pEnt)
 {
 }
 
@@ -175,7 +175,7 @@ PyGeSurfSurfInt PyGeSurfSurfInt::copycast(const PyGeEntity3d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kPlanarEnt))
         PyThrowBadEs(Acad::eNotThatKindOfClass);
-    return PyGeSurfSurfInt(static_cast<AcGeSurfSurfInt*>(src.impObj()->copy()),true);
+    return PyGeSurfSurfInt(static_cast<AcGeSurfSurfInt*>(src.impObj()->copy()));
 }
 
 std::string PyGeSurfSurfInt::className()

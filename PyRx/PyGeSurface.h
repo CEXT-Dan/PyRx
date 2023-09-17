@@ -10,10 +10,10 @@ class PyGeSurface : public PyGeEntity3d
 protected:
     PyGeSurface() = default;
 public:
-    PyGeSurface(AcGeSurface* pEnt, bool autoDelete = true);
+    PyGeSurface(AcGeEntity3d* pEnt);
+    PyGeSurface(AcGeSurface* pEnt);
     PyGeSurface(const AcGeSurface* pEnt);
 
-    PyGeSurface(AcGeEntity3d* pEnt);//TODO check
     ~PyGeSurface() = default;
     AcGePoint2d         paramOf(const AcGePoint3d& pnt) const;
     AcGePoint2d         paramOfTol(const AcGePoint3d& pnt, const AcGeTol& tol) const;
