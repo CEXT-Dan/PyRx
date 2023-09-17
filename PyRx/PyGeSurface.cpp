@@ -39,13 +39,13 @@ PyGeSurface::PyGeSurface(AcGeEntity3d* pEnt)
 {
 }
 
-PyGeSurface::PyGeSurface(AcGeSurface* pEnt, bool autoDelete /*= true*/)
-    :PyGeEntity3d(pEnt, autoDelete)
+PyGeSurface::PyGeSurface(AcGeSurface* pEnt)
+    :PyGeEntity3d(pEnt)
 {
 }
 
 PyGeSurface::PyGeSurface(const AcGeSurface* pEnt)
-    :PyGeEntity3d(const_cast<AcGeSurface*>(pEnt), false)
+    :PyGeEntity3d(pEnt)
 {
 }
 
@@ -212,12 +212,12 @@ void makePyGeConeWrapper()
 }
 
 PyGeCone::PyGeCone()
-    : PyGeSurface(new AcGeCone(), true)
+    : PyGeSurface(new AcGeCone())
 {
 }
 
 PyGeCone::PyGeCone(const AcGeCone& src)
-    : PyGeSurface(new AcGeCone(src), true)
+    : PyGeSurface(new AcGeCone(src))
 {
 }
 
@@ -270,12 +270,12 @@ void makePyGeCylinderWrapper()
 }
 
 PyGeCylinder::PyGeCylinder()
-    : PyGeSurface(new AcGeCylinder(), true)
+    : PyGeSurface(new AcGeCylinder())
 {
 }
 
 PyGeCylinder::PyGeCylinder(const AcGeCylinder& src)
-    : PyGeSurface(new AcGeCylinder(src), true)
+    : PyGeSurface(new AcGeCylinder(src))
 {
 }
 
@@ -328,12 +328,12 @@ void makePyGeExternalBoundedSurfaceWrapper()
 }
 
 PyGeExternalBoundedSurface::PyGeExternalBoundedSurface()
-    : PyGeSurface(new AcGeExternalBoundedSurface(), true)
+    : PyGeSurface(new AcGeExternalBoundedSurface())
 {
 }
 
 PyGeExternalBoundedSurface::PyGeExternalBoundedSurface(const AcGeExternalBoundedSurface& src)
-    : PyGeSurface(new AcGeExternalBoundedSurface(src), true)
+    : PyGeSurface(new AcGeExternalBoundedSurface(src))
 {
 }
 
@@ -387,12 +387,12 @@ void makePyGeExternalSurfaceWrapper()
 }
 
 PyGeExternalSurface::PyGeExternalSurface()
-    : PyGeSurface(new AcGeExternalSurface(), true)
+    : PyGeSurface(new AcGeExternalSurface())
 {
 }
 
 PyGeExternalSurface::PyGeExternalSurface(const AcGeExternalSurface& src)
-    : PyGeSurface(new AcGeExternalSurface(src), true)
+    : PyGeSurface(new AcGeExternalSurface(src))
 {
 }
 
@@ -404,7 +404,6 @@ PyGeExternalSurface::PyGeExternalSurface(AcGeExternalSurface* src)
 PyGeExternalSurface::PyGeExternalSurface(AcGeEntity3d* src)
     : PyGeSurface(src)
 {
-
 }
 
 PyGeExternalSurface PyGeExternalSurface::cast(const PyGeEntity3d& src)
@@ -446,12 +445,12 @@ void makePyGeNurbSurfaceWrapper()
 }
 
 PyGeNurbSurface::PyGeNurbSurface()
-    : PyGeSurface(new AcGeNurbSurface(), true)
+    : PyGeSurface(new AcGeNurbSurface())
 {
 }
 
 PyGeNurbSurface::PyGeNurbSurface(const AcGeNurbSurface& src)
-    : PyGeSurface(new AcGeNurbSurface(src), true)
+    : PyGeSurface(new AcGeNurbSurface(src))
 {
 }
 
@@ -504,12 +503,12 @@ void makePyGeOffsetSurfaceWrapper()
 }
 
 PyGeOffsetSurface::PyGeOffsetSurface()
-    : PyGeSurface(new AcGeOffsetSurface(), true)
+    : PyGeSurface(new AcGeOffsetSurface())
 {
 }
 
 PyGeOffsetSurface::PyGeOffsetSurface(const AcGeOffsetSurface& src)
-    : PyGeSurface(new AcGeOffsetSurface(src), true)
+    : PyGeSurface(new AcGeOffsetSurface(src))
 {
 }
 
@@ -562,12 +561,12 @@ void makePyGeSphereWrapper()
 }
 
 PyGeSphere::PyGeSphere()
-    : PyGeSurface(new AcGeSphere(), true)
+    : PyGeSurface(new AcGeSphere())
 {
 }
 
 PyGeSphere::PyGeSphere(const AcGeSphere& src)
-    : PyGeSurface(new AcGeSphere(src), true)
+    : PyGeSurface(new AcGeSphere(src))
 {
 }
 
@@ -621,12 +620,12 @@ void makePyGeTorusWrapper()
 }
 
 PyGeTorus::PyGeTorus()
-    : PyGeSurface(new AcGeTorus(), true)
+    : PyGeSurface(new AcGeTorus())
 {
 }
 
 PyGeTorus::PyGeTorus(const AcGeTorus& src)
-    : PyGeSurface(new AcGeTorus(src), true)
+    : PyGeSurface(new AcGeTorus(src))
 {
 }
 
