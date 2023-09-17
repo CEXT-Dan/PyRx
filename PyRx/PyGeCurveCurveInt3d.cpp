@@ -7,6 +7,7 @@ void makePyGeCurveCurveInt3dWrapper()
 {
     class_<PyGeCurveCurveInt3d, bases<PyGeEntity3d>>("CurveCurveInt3d")
         .def(init<>())
+        .def("cast", &PyGeCurveCurveInt3d::cast).staticmethod("cast")
         .def("copycast", &PyGeCurveCurveInt3d::copycast).staticmethod("copycast")
         .def("className", &PyGeCurveCurveInt3d::className).staticmethod("className")
         ;

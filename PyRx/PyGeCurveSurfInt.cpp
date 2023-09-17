@@ -23,6 +23,7 @@ void makePyGeCurveSurfIntWrapper()
         .def("getIntConfigs", &PyGeCurveSurfInt::getIntConfigs)
         .def("set", &PyGeCurveSurfInt::set1)
         .def("set", &PyGeCurveSurfInt::set2)
+        .def("cast", &PyGeCurveSurfInt::cast).staticmethod("cast")
         .def("copycast", &PyGeCurveSurfInt::copycast).staticmethod("copycast")
         .def("className", &PyGeCurveSurfInt::className).staticmethod("className")
         ;

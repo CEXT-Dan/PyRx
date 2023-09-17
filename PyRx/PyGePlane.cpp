@@ -25,6 +25,8 @@ void makePyGePlaneWrapper()
         .def("set", &PyGePlane::set2)
         .def("set", &PyGePlane::set3)
         .def("set", &PyGePlane::set4)
+        .def("cast", &PyGePlane::cast).staticmethod("cast")
+        .def("copycast", &PyGePlane::cast).staticmethod("copycast")
         .def("className", &PyGePlane::className).staticmethod("className")
         ;
 }
@@ -186,6 +188,8 @@ void makePyGeBoundedPlaneWrapper()
         .def("intersectWith", &PyGeBoundedPlane::intersectWith6)
         .def("set", &PyGeBoundedPlane::set1)
         .def("set", &PyGeBoundedPlane::set2)
+        .def("cast", &PyGeBoundedPlane::cast).staticmethod("cast")
+        .def("copycast", &PyGeBoundedPlane::cast).staticmethod("copycast")
         .def("className", &PyGeBoundedPlane::className).staticmethod("className")
         ;
 }

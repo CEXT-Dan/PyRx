@@ -10,6 +10,7 @@ void makePyGePointEnt2dWrapper()
 {
     class_<PyGePointEnt2d, bases<PyGeEntity2d>>("PointEnt2d", boost::python::no_init)
         .def("point2d", &PyGePointEnt2d::point2d)
+        .def("cast", &PyGePointEnt2d::cast).staticmethod("cast")
         .def("copycast", &PyGePointEnt2d::copycast).staticmethod("copycast")
         .def("className", &PyGePointEnt2d::className).staticmethod("className")
         ;
@@ -70,6 +71,7 @@ void makePyGePointOnCurve2dWrapper()
         .def("deriv", &PyGePointOnCurve2d::deriv3)
         .def("setCurve", &PyGePointOnCurve2d::setCurve)
         .def("setParameter", &PyGePointOnCurve2d::setParameter)
+        .def("cast", &PyGePointOnCurve2d::cast).staticmethod("cast")
         .def("copycast", &PyGePointOnCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGePointOnCurve2d::className).staticmethod("className")
         ;
@@ -236,6 +238,7 @@ void makePyGePosition2dWrapper()
         .def(init<double, double>())
         .def("set", &PyGePosition2d::set1)
         .def("set", &PyGePosition2d::set2)
+        .def("cast", &PyGePosition2d::cast).staticmethod("cast")
         .def("copycast", &PyGePosition2d::copycast).staticmethod("copycast")
         .def("className", &PyGePosition2d::className).staticmethod("className")
         ;

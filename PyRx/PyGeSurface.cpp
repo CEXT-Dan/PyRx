@@ -28,6 +28,7 @@ void makePyGeSurfaceWrapper()
         .def("evalPoint", &PyGeSurface::evalPoint1)
         .def("evalPoint", &PyGeSurface::evalPoint2)
         .def("evalPoint", &PyGeSurface::evalPoint3)
+        .def("cast", &PyGeSurface::cast).staticmethod("cast")
         .def("copycast", &PyGeSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeSurface::className).staticmethod("className")
         ;
@@ -204,6 +205,7 @@ AcGeSurface* PyGeSurface::impObj(const std::source_location& src /*= std::source
 void makePyGeConeWrapper()
 {
     class_<PyGeCone, bases<PyGeSurface>>("Cone")
+        .def("cast", &PyGeCone::cast).staticmethod("cast")
         .def("copycast", &PyGeCone::copycast).staticmethod("copycast")
         .def("className", &PyGeCone::className).staticmethod("className")
         ;
@@ -227,7 +229,6 @@ PyGeCone::PyGeCone(AcGeCone* src)
 PyGeCone::PyGeCone(AcGeEntity3d* src)
     : PyGeSurface(src)
 {
-
 }
 
 PyGeCone PyGeCone::cast(const PyGeEntity3d& src)
@@ -262,6 +263,7 @@ AcGeCone* PyGeCone::impObj(const std::source_location& src /*= std::source_locat
 void makePyGeCylinderWrapper()
 {
     class_<PyGeCylinder, bases<PyGeSurface>>("Cylinder")
+        .def("cast", &PyGeCylinder::cast).staticmethod("cast")
         .def("copycast", &PyGeCylinder::copycast).staticmethod("copycast")
         .def("className", &PyGeCylinder::className).staticmethod("className")
         ;
@@ -285,7 +287,6 @@ PyGeCylinder::PyGeCylinder(AcGeCylinder* src)
 PyGeCylinder::PyGeCylinder(AcGeEntity3d* src)
     : PyGeSurface(src)
 {
-
 }
 
 PyGeCylinder PyGeCylinder::cast(const PyGeEntity3d& src)
@@ -320,6 +321,7 @@ AcGeCylinder* PyGeCylinder::impObj(const std::source_location& src /*= std::sour
 void makePyGeExternalBoundedSurfaceWrapper()
 {
     class_<PyGeExternalBoundedSurface, bases<PyGeSurface>>("ExternalBoundedSurface")
+        .def("cast", &PyGeExternalBoundedSurface::cast).staticmethod("cast")
         .def("copycast", &PyGeExternalBoundedSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeExternalBoundedSurface::className).staticmethod("className")
         ;
@@ -378,6 +380,7 @@ AcGeExternalBoundedSurface* PyGeExternalBoundedSurface::impObj(const std::source
 void makePyGeExternalSurfaceWrapper()
 {
     class_<PyGeExternalSurface, bases<PyGeSurface>>("ExternalSurface")
+        .def("cast", &PyGeExternalSurface::cast).staticmethod("cast")
         .def("copycast", &PyGeExternalSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeExternalSurface::className).staticmethod("className")
         ;
@@ -436,6 +439,7 @@ AcGeExternalSurface* PyGeExternalSurface::impObj(const std::source_location& src
 void makePyGeNurbSurfaceWrapper()
 {
     class_<PyGeNurbSurface, bases<PyGeSurface>>("NurbSurface")
+        .def("cast", &PyGeNurbSurface::cast).staticmethod("cast")
         .def("copycast", &PyGeNurbSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeNurbSurface::className).staticmethod("className")
         ;
@@ -493,6 +497,7 @@ AcGeNurbSurface* PyGeNurbSurface::impObj(const std::source_location& src /*= std
 void makePyGeOffsetSurfaceWrapper()
 {
     class_<PyGeOffsetSurface, bases<PyGeSurface>>("OffsetSurface")
+        .def("cast", &PyGeOffsetSurface::cast).staticmethod("cast")
         .def("copycast", &PyGeOffsetSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeOffsetSurface::className).staticmethod("className")
         ;
@@ -550,6 +555,7 @@ AcGeOffsetSurface* PyGeOffsetSurface::impObj(const std::source_location& src /*=
 void makePyGeSphereWrapper()
 {
     class_<PyGeSphere, bases<PyGeSurface>>("Sphere")
+        .def("cast", &PyGeSphere::cast).staticmethod("cast")
         .def("copycast", &PyGeSphere::copycast).staticmethod("copycast")
         .def("className", &PyGeSphere::className).staticmethod("className")
         ;
@@ -608,6 +614,7 @@ AcGeSphere* PyGeSphere::impObj(const std::source_location& src /*= std::source_l
 void makePyGeTorusWrapper()
 {
     class_<PyGeTorus, bases<PyGeSurface>>("Torus")
+        .def("cast", &PyGeTorus::cast).staticmethod("cast")
         .def("copycast", &PyGeTorus::copycast).staticmethod("copycast")
         .def("className", &PyGeTorus::className).staticmethod("className")
         ;
@@ -631,7 +638,6 @@ PyGeTorus::PyGeTorus(AcGeTorus* src)
 PyGeTorus::PyGeTorus(AcGeEntity3d* src)
     : PyGeSurface(src)
 {
-
 }
 
 PyGeTorus PyGeTorus::cast(const PyGeEntity3d& src)

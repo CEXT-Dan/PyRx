@@ -25,6 +25,7 @@ void makePyGeSplineEnt3dWrapper()
         .def("setKnotAt", &PyGeSplineEnt3d::setKnotAt)
         .def("controlPointAt", &PyGeSplineEnt3d::controlPointAt)
         .def("setControlPointAt", &PyGeSplineEnt3d::setControlPointAt)
+        .def("cast", &PyGeSplineEnt3d::cast).staticmethod("cast")
         .def("copycast", &PyGeSplineEnt3d::copycast).staticmethod("copycast")
         .def("className", &PyGeSplineEnt3d::className).staticmethod("className")
         ;
@@ -152,6 +153,7 @@ AcGeSplineEnt3d* PyGeSplineEnt3d::impObj(const std::source_location& src /*= std
 void makePyGeCubicSplineCurve3dWrapper()
 {
     class_<PyGeCubicSplineCurve3d, bases<PyGeSplineEnt3d>>("CubicSplineCurve3d")
+        .def("cast", &PyGeCubicSplineCurve3d::cast).staticmethod("cast")
         .def("copycast", &PyGeCubicSplineCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeCubicSplineCurve3d::className).staticmethod("className")
         ;
@@ -198,6 +200,7 @@ AcGeCubicSplineCurve3d* PyGeCubicSplineCurve3d::impObj(const std::source_locatio
 void makePyGeNurbCurve3dWrapper()
 {
     class_<PyGeNurbCurve3d, bases<PyGeSplineEnt3d>>("NurbCurve3d")
+        .def("cast", &PyGeNurbCurve3d::cast).staticmethod("cast")
         .def("copycast", &PyGeNurbCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeNurbCurve3d::className).staticmethod("className")
         ;
@@ -252,6 +255,7 @@ void makePyGePolyline3dWrapper()
         .def("numFitPoints", &PyGePolyline3d::numFitPoints)
         .def("fitPointAt", &PyGePolyline3d::fitPointAt)
         .def("setFitPointAt", &PyGePolyline3d::setFitPointAt)
+        .def("cast", &PyGePolyline3d::cast).staticmethod("cast")
         .def("copycast", &PyGePolyline3d::copycast).staticmethod("copycast")
         .def("className", &PyGePolyline3d::className).staticmethod("className")
         ;

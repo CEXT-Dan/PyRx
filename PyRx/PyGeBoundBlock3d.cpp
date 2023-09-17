@@ -23,6 +23,7 @@ void makePyGeBoundBlock3dWrapper()
         .def("isDisjoint", &PyGeBoundBlock3d::isDisjoint)
         .def("isBox", &PyGeBoundBlock3d::isBox)
         .def("setToBox", &PyGeBoundBlock3d::setToBox, return_self<>())
+        .def("cast", &PyGeBoundBlock3d::cast).staticmethod("cast")
         .def("copycast", &PyGeBoundBlock3d::copycast).staticmethod("copycast")
         .def("className", &PyGeBoundBlock3d::className).staticmethod("className")
         ;

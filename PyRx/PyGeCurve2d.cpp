@@ -64,6 +64,7 @@ void makePyGeCurve2dWrapper()
         .def("getSamplePoints", &PyGeCurve2d::getSamplePoints1)
         .def("getSamplePoints", &PyGeCurve2d::getSamplePoints2)
         .def("getSplitCurves", &PyGeCurve2d::getSplitCurves)
+        .def("cast", &PyGeCurve2d::cast).staticmethod("cast")
         .def("copycast", &PyGeCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGeCurve2d::className).staticmethod("className")
         ;
@@ -529,6 +530,7 @@ void makePyGeCircArc2dWrapper()
         .def("set", &PyGeCircArc2d::set4)
         .def("set", &PyGeCircArc2d::set5)
         .def("set", &PyGeCircArc2d::set6)
+        .def("cast", &PyGeCircArc2d::cast).staticmethod("cast")
         .def("copycast", &PyGeCircArc2d::copycast).staticmethod("copycast")
         .def("className", &PyGeCircArc2d::className).staticmethod("className")
         ;
@@ -807,6 +809,7 @@ void makePyGeEllipArc2Wrapper()
         .def("set", &PyGeEllipArc2d::set1)
         .def("set", &PyGeEllipArc2d::set2)
         .def("set", &PyGeEllipArc2d::set3)
+        .def("cast", &PyGeEllipArc2d::cast).staticmethod("cast")
         .def("copycast", &PyGeEllipArc2d::copycast).staticmethod("copycast")
         .def("className", &PyGeEllipArc2d::className).staticmethod("className")
         ;
@@ -1002,6 +1005,7 @@ AcGeEllipArc2d* PyGeEllipArc2d::impObj(const std::source_location& src /*= std::
 void makePyGeExternalCurve2dWrapper()
 {
     class_<PyGeExternalCurve2d, bases<PyGeCurve2d>>("ExternalCurve2d", boost::python::no_init)
+        .def("cast", &PyGeExternalCurve2d::cast).staticmethod("cast")
         .def("copycast", &PyGeExternalCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGeExternalCurve2d::className).staticmethod("className")
         ;
@@ -1045,6 +1049,7 @@ void makePyGeOffsetCurve2dWrapper()
 {
     class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d", boost::python::no_init)
         .def(init<const PyGeCurve2d&, double>())
+        .def("cast", &PyGeOffsetCurve2d::cast).staticmethod("cast")
         .def("copycast", &PyGeOffsetCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGeOffsetCurve2d::className).staticmethod("className")
         ;
@@ -1092,6 +1097,7 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*=
 void makePyGeCompositeCurve2dWrapper()
 {
     class_<PyGeCompositeCurve2d, bases<PyGeCurve2d>>("CompositeCurve2d")
+        .def("cast", &PyGeCompositeCurve2d::cast).staticmethod("cast")
         .def("copycast", &PyGeCompositeCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGeCompositeCurve2d::className).staticmethod("className")
         ;
