@@ -52,10 +52,55 @@ class PyGeCone : public PyGeSurface
 {
 public:
     PyGeCone();
+
+    PyGeCone(double cosineAngle, double sineAngle,
+        const  AcGePoint3d& baseOrigin, double baseRadius,
+        const  AcGeVector3d& axisOfSymmetry);
+
+    PyGeCone(double cosineAngle, double sineAngle,
+        const  AcGePoint3d& baseOrigin, double baseRadius,
+        const  AcGeVector3d& axisOfSymmetry,
+        const  AcGeVector3d& refAxis, const  PyGeInterval& height,
+        double startAngle, double endAngle);
+
     PyGeCone(AcGeEntity3d* src);
     PyGeCone(AcGeCone* src);
     PyGeCone(const AcGeCone& src);
     ~PyGeCone() = default;
+
+    double              baseRadius() const;
+    AcGePoint3d         baseCenter() const;
+    boost::python::tuple getAngles() const;
+    double              halfAngle() const;
+    boost::python::tuple  getHalfAngle()const;
+    PyGeInterval        getHeight() const;
+    double              heightAt(double u) const;
+    AcGeVector3d        axisOfSymmetry() const;
+    AcGeVector3d        refAxis() const;
+    AcGePoint3d         apex() const;
+    Adesk::Boolean      isClosed1() const;
+    Adesk::Boolean      isClosed2(const AcGeTol& tol) const;
+    Adesk::Boolean      isOuterNormal() const;
+
+    void                setBaseRadius(double radius);
+    void                setAngles(double startAngle, double endAngle);
+    void                setHeight(const PyGeInterval& height);
+
+    void                set1(double cosineAngle, double sineAngle,
+        const  AcGePoint3d& baseCenter, double baseRadius,
+        const  AcGeVector3d& axisOfSymmetry);
+
+    void                set2(double cosineAngle, double sineAngle,
+        const  AcGePoint3d& baseCenter,
+        double baseRadius,
+        const  AcGeVector3d& axisOfSymmetry,
+        const  AcGeVector3d& refAxis,
+        const  PyGeInterval& height,
+        double startAngle, double endAngle);
+
+    Adesk::Boolean      intersectWith1(const PyGeLinearEnt3d& linEnt) const;
+    Adesk::Boolean      intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const;
+
     static PyGeCone     cast(const PyGeEntity3d& src);
     static PyGeCone     copycast(const PyGeEntity3d& src);
     static std::string  className();
@@ -225,8 +270,8 @@ public:
     void            setAnglesInV(double start, double end);
     void            set1(double radius, const AcGePoint3d& center);
     void            set2(double radius, const AcGePoint3d& center,
-        const AcGeVector3d& northAxis,const AcGeVector3d& refAxis,
-        double startAngleU,double endAngleU,
+        const AcGeVector3d& northAxis, const AcGeVector3d& refAxis,
+        double startAngleU, double endAngleU,
         double startAngleV, double endAngleV);
 
     Adesk::Boolean intersectWith1(const PyGeLinearEnt3d& ent) const;
