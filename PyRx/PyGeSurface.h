@@ -2,6 +2,7 @@
 #include "PyGeEntity3d.h"
 class PyGeInterval;
 class PyGePointOnSurface;
+class PyGeLinearEnt3d;
 //-----------------------------------------------------------------------------------------
 //AcGeSurface wrapper
 void makePyGeSurfaceWrapper();
@@ -69,10 +70,46 @@ class PyGeCylinder : public PyGeSurface
 {
 public:
     PyGeCylinder();
+
+    PyGeCylinder(double radius, const AcGePoint3d& origin,
+        const AcGeVector3d& axisOfSymmetry);
+
+
+    PyGeCylinder(double radius, const AcGePoint3d& origin,
+        const AcGeVector3d& axisOfSymmetry,
+        const AcGeVector3d& refAxis,
+        const PyGeInterval& height,
+        double startAngle, double endAngle);
+
     PyGeCylinder(AcGeEntity3d* src);
     PyGeCylinder(AcGeCylinder* src);
     PyGeCylinder(const AcGeCylinder& src);
     ~PyGeCylinder() = default;
+
+    double               radius() const;
+    AcGePoint3d          origin() const;
+    boost::python::tuple getAngles() const;
+    PyGeInterval         getHeight() const;
+    double               heightAt(double u) const;
+    AcGeVector3d         axisOfSymmetry() const;
+    AcGeVector3d         refAxis() const;
+    Adesk::Boolean       isOuterNormal() const;
+    Adesk::Boolean       isClosed1() const;
+    Adesk::Boolean       isClosed2(const AcGeTol& tol) const;
+
+    void                 setRadius(double radius);
+    void                 setAngles(double start, double end);
+    void                 setHeight(const PyGeInterval& height);
+
+    void                 set1(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym);
+
+    void                 set2(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym,
+        const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle);
+
+    boost::python::tuple intersectWith1(const PyGeLinearEnt3d& linEntconst) const;
+    boost::python::tuple intersectWith2(const PyGeLinearEnt3d& linEntconst, AcGeTol& tol) const;
+
+
     static PyGeCylinder cast(const PyGeEntity3d& src);
     static PyGeCylinder copycast(const PyGeEntity3d& src);
     static std::string  className();

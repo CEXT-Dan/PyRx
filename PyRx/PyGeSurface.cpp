@@ -2,6 +2,7 @@
 #include "PyGeSurface.h"
 #include "PyGePointEnt3d.h"
 #include "PyGeInterval.h"
+#include "PyGeLinearEnt3d.h"
 
 using namespace boost::python;
 // ---------------------------------------------------------------------------------------- -
@@ -263,6 +264,26 @@ AcGeCone* PyGeCone::impObj(const std::source_location& src /*= std::source_locat
 void makePyGeCylinderWrapper()
 {
     class_<PyGeCylinder, bases<PyGeSurface>>("Cylinder")
+        .def(init<>())
+        .def(init<double, const AcGePoint3d&, const AcGeVector3d&>())
+        .def(init<double, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, const PyGeInterval&, double, double>())
+        .def("radius", &PyGeCylinder::radius)
+        .def("origin", &PyGeCylinder::origin)
+        .def("getAngles", &PyGeCylinder::getAngles)
+        .def("getHeight", &PyGeCylinder::getHeight)
+        .def("heightAt", &PyGeCylinder::heightAt)
+        .def("axisOfSymmetry", &PyGeCylinder::axisOfSymmetry)
+        .def("refAxis", &PyGeCylinder::refAxis)
+        .def("isOuterNormal", &PyGeCylinder::isOuterNormal)
+        .def("isClosed", &PyGeCylinder::isClosed1)
+        .def("isClosed", &PyGeCylinder::isClosed2)
+        .def("setRadius", &PyGeCylinder::setRadius)
+        .def("setAngles", &PyGeCylinder::setAngles)
+        .def("setHeight", &PyGeCylinder::setHeight)
+        .def("set", &PyGeCylinder::set1)
+        .def("set", &PyGeCylinder::set2)
+        .def("intersectWith", &PyGeCylinder::intersectWith1)
+        .def("intersectWith", &PyGeCylinder::intersectWith2)
         .def("cast", &PyGeCylinder::cast).staticmethod("cast")
         .def("copycast", &PyGeCylinder::copycast).staticmethod("copycast")
         .def("className", &PyGeCylinder::className).staticmethod("className")
@@ -271,6 +292,17 @@ void makePyGeCylinderWrapper()
 
 PyGeCylinder::PyGeCylinder()
     : PyGeSurface(new AcGeCylinder())
+{
+}
+
+PyGeCylinder::PyGeCylinder(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSymmetry)
+    : PyGeSurface(new AcGeCylinder(radius, origin, axisOfSymmetry))
+{
+}
+
+PyGeCylinder::PyGeCylinder(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSymmetry,
+    const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle)
+    : PyGeSurface(new AcGeCylinder(radius, origin, axisOfSymmetry, refAxis, height.imp, startAngle, endAngle))
 {
 }
 
@@ -287,6 +319,108 @@ PyGeCylinder::PyGeCylinder(AcGeCylinder* src)
 PyGeCylinder::PyGeCylinder(AcGeEntity3d* src)
     : PyGeSurface(src)
 {
+}
+
+double PyGeCylinder::radius() const
+{
+    return impObj()->radius();
+}
+
+AcGePoint3d PyGeCylinder::origin() const
+{
+    return impObj()->origin();
+}
+
+boost::python::tuple PyGeCylinder::getAngles() const
+{
+    PyAutoLockGIL lock;
+    double start = 0;
+    double end = 0;
+    impObj()->getAngles(start, end);
+    return boost::python::make_tuple(start, end);
+}
+
+PyGeInterval PyGeCylinder::getHeight() const
+{
+    PyGeInterval interval;
+    impObj()->getHeight(interval.imp);
+    return interval;
+}
+
+double PyGeCylinder::heightAt(double u) const
+{
+   return impObj()->heightAt(u);
+}
+
+AcGeVector3d PyGeCylinder::axisOfSymmetry() const
+{
+    return impObj()->axisOfSymmetry();
+}
+
+AcGeVector3d PyGeCylinder::refAxis() const
+{
+    return impObj()->refAxis();
+}
+
+Adesk::Boolean PyGeCylinder::isOuterNormal() const
+{
+    return impObj()->isOuterNormal();
+}
+
+Adesk::Boolean PyGeCylinder::isClosed1() const
+{
+    return impObj()->isClosed();
+}
+
+Adesk::Boolean PyGeCylinder::isClosed2(const AcGeTol& tol) const
+{
+    return impObj()->isClosed(tol);
+}
+
+void PyGeCylinder::setRadius(double radius)
+{
+    impObj()->setRadius(radius);
+}
+
+void PyGeCylinder::setAngles(double start, double end)
+{
+    impObj()->setAngles(start, end);
+}
+
+void PyGeCylinder::setHeight(const PyGeInterval& height)
+{
+    impObj()->setHeight(height.imp);
+}
+
+void PyGeCylinder::set1(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym)
+{
+    impObj()->set(radius, origin, axisOfSym);
+}
+
+void PyGeCylinder::set2(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym, 
+    const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle)
+{
+    impObj()->set(radius, origin, axisOfSym, refAxis,height.imp, startAngle, endAngle);
+}
+
+boost::python::tuple PyGeCylinder::intersectWith1(const PyGeLinearEnt3d& linEntconst) const
+{
+    PyAutoLockGIL lock;
+    int intn = 0;
+    AcGePoint3d p1; 
+    AcGePoint3d p2;
+    impObj()->intersectWith(*linEntconst.impObj(), intn, p1, p2);
+    return boost::python::make_tuple(intn, p1, p2);
+}
+
+boost::python::tuple PyGeCylinder::intersectWith2(const PyGeLinearEnt3d& linEntconst, AcGeTol& tol) const
+{
+    PyAutoLockGIL lock;
+    int intn = 0;
+    AcGePoint3d p1;
+    AcGePoint3d p2;
+    impObj()->intersectWith(*linEntconst.impObj(), intn, p1, p2, tol);
+    return boost::python::make_tuple(intn, p1, p2);
 }
 
 PyGeCylinder PyGeCylinder::cast(const PyGeEntity3d& src)
@@ -578,7 +712,6 @@ PyGeSphere::PyGeSphere(AcGeSphere* src)
 PyGeSphere::PyGeSphere(AcGeEntity3d* src)
     : PyGeSurface(src)
 {
-
 }
 
 PyGeSphere PyGeSphere::cast(const PyGeEntity3d& src)
