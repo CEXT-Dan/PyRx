@@ -688,6 +688,27 @@ AcGeOffsetSurface* PyGeOffsetSurface::impObj(const std::source_location& src /*=
 void makePyGeSphereWrapper()
 {
     class_<PyGeSphere, bases<PyGeSurface>>("Sphere")
+        .def(init<>())
+        .def(init<double, const AcGePoint3d&>())
+        .def(init<double, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double, double>())
+        .def("radius", &PyGeSphere::radius)
+        .def("center", &PyGeSphere::center)
+        .def("getAnglesInU", &PyGeSphere::getAnglesInU)
+        .def("getAnglesInV", &PyGeSphere::getAnglesInV)
+        .def("northAxis", &PyGeSphere::northAxis)
+        .def("refAxis", &PyGeSphere::refAxis)
+        .def("northPole", &PyGeSphere::northPole)
+        .def("southPole", &PyGeSphere::southPole)
+        .def("isOuterNormal", &PyGeSphere::isOuterNormal)
+        .def("isClosed", &PyGeSphere::isClosed1)
+        .def("isClosed", &PyGeSphere::isClosed2)
+        .def("setRadius", &PyGeSphere::setRadius)
+        .def("setAnglesInU", &PyGeSphere::setAnglesInU)
+        .def("setAnglesInV", &PyGeSphere::setAnglesInV)
+        .def("set", &PyGeSphere::set1)
+        .def("set", &PyGeSphere::set2)
+        .def("intersectWith", &PyGeSphere::intersectWith1)
+        .def("intersectWith", &PyGeSphere::intersectWith2)
         .def("cast", &PyGeSphere::cast).staticmethod("cast")
         .def("copycast", &PyGeSphere::copycast).staticmethod("copycast")
         .def("className", &PyGeSphere::className).staticmethod("className")
@@ -712,6 +733,124 @@ PyGeSphere::PyGeSphere(AcGeSphere* src)
 PyGeSphere::PyGeSphere(AcGeEntity3d* src)
     : PyGeSurface(src)
 {
+}
+
+PyGeSphere::PyGeSphere(double radius, const AcGePoint3d& center)
+    : PyGeSurface(new AcGeSphere(radius, center))
+{
+}
+
+PyGeSphere::PyGeSphere(double radius, const AcGePoint3d& center, const AcGeVector3d& northAxis, const AcGeVector3d& refAxis, 
+    double startAngleU, double endAngleU, double startAngleV, double endAngleV)
+    : PyGeSurface(new AcGeSphere(radius, center, northAxis, refAxis, startAngleU, endAngleU, startAngleV, endAngleV))
+{
+}
+
+double PyGeSphere::radius() const
+{
+    return impObj()->radius();
+}
+
+AcGePoint3d PyGeSphere::center() const
+{
+    return impObj()->center();
+}
+
+boost::python::tuple PyGeSphere::getAnglesInU() const
+{
+    PyAutoLockGIL lock;
+    double start;
+    double end;
+    impObj()->getAnglesInU(start, end);
+    return boost::python::make_tuple(start, end);
+}
+
+boost::python::tuple PyGeSphere::getAnglesInV() const
+{
+    PyAutoLockGIL lock;
+    double start;
+    double end;
+    impObj()->getAnglesInV(start, end);
+    return boost::python::make_tuple(start, end);
+}
+
+AcGeVector3d PyGeSphere::northAxis() const
+{
+    return impObj()->northAxis();
+}
+
+AcGeVector3d PyGeSphere::refAxis() const
+{
+    return impObj()->refAxis();
+}
+
+AcGePoint3d PyGeSphere::northPole() const
+{
+    return impObj()->northPole();
+}
+
+AcGePoint3d PyGeSphere::southPole() const
+{
+    return impObj()->southPole();
+}
+
+Adesk::Boolean PyGeSphere::isOuterNormal() const
+{
+    return impObj()->isOuterNormal();
+}
+
+Adesk::Boolean PyGeSphere::isClosed1() const
+{
+    return impObj()->isClosed();
+}
+
+Adesk::Boolean PyGeSphere::isClosed2(const AcGeTol& tol) const
+{
+    return impObj()->isClosed(tol);
+}
+
+void PyGeSphere::setRadius(double val)
+{
+    impObj()->setRadius(val);
+}
+
+void PyGeSphere::setAnglesInU(double start, double end)
+{
+    impObj()->setAnglesInU(start, end);
+}
+
+void PyGeSphere::setAnglesInV(double start, double end)
+{
+    impObj()->setAnglesInV(start, end);
+}
+
+void PyGeSphere::set1(double radius, const AcGePoint3d& center)
+{
+    impObj()->set(radius, center);
+}
+
+void PyGeSphere::set2(double radius, const AcGePoint3d& center, const AcGeVector3d& northAxis, const AcGeVector3d& refAxis, 
+    double startAngleU, double endAngleU, double startAngleV, double endAngleV)
+{
+    impObj()->set(radius, center, northAxis, refAxis, startAngleU, endAngleU, startAngleV, endAngleV);
+}
+
+Adesk::Boolean PyGeSphere::intersectWith1(const PyGeLinearEnt3d& ent) const
+{
+    PyAutoLockGIL lock;
+    int intn = 0;
+    AcGePoint3d p1; 
+    AcGePoint3d p2;
+    return boost::python::make_tuple(intn, p1, p2);
+}
+
+Adesk::Boolean PyGeSphere::intersectWith2(const PyGeLinearEnt3d&, const AcGeTol& tol) const
+{
+    PyAutoLockGIL lock;
+    int intn = 0;
+    AcGePoint3d p1;
+    AcGePoint3d p2;
+    return boost::python::make_tuple(intn, p1, p2, tol);
 }
 
 PyGeSphere PyGeSphere::cast(const PyGeEntity3d& src)
