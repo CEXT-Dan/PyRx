@@ -990,6 +990,8 @@ PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::list& curveList,
 
 boost::python::list PyGeCompositeCurve3d::getCurveList() const
 {
+    // NOTE: don't delete these sub-curves, 
+    // AcGeCompositeCurve3d is the owner
     PyAutoLockGIL lock;
     AcGeVoidPointerArray curveList;
     impObj()->getCurveList(curveList);
