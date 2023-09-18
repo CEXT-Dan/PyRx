@@ -196,10 +196,42 @@ class PyGeSphere : public PyGeSurface
 {
 public:
     PyGeSphere();
+    PyGeSphere(double radius, const AcGePoint3d& center);
+
+    PyGeSphere(double radius, const AcGePoint3d& center,
+        const AcGeVector3d& northAxis, const AcGeVector3d& refAxis,
+        double startAngleU, double endAngleU,
+        double startAngleV, double endAngleV);
+
     PyGeSphere(AcGeSphere* src);
     PyGeSphere(AcGeEntity3d* src);
     PyGeSphere(const AcGeSphere& src);
     ~PyGeSphere() = default;
+
+    double         radius() const;
+    AcGePoint3d    center() const;
+    boost::python::tuple getAnglesInU() const;
+    boost::python::tuple getAnglesInV() const;
+    AcGeVector3d   northAxis() const;
+    AcGeVector3d   refAxis() const;
+    AcGePoint3d    northPole() const;
+    AcGePoint3d    southPole() const;
+    Adesk::Boolean isOuterNormal() const;
+    Adesk::Boolean isClosed1() const;
+    Adesk::Boolean isClosed2(const AcGeTol& to) const;
+
+    void            setRadius(double val);
+    void            setAnglesInU(double start, double end);
+    void            setAnglesInV(double start, double end);
+    void            set1(double radius, const AcGePoint3d& center);
+    void            set2(double radius, const AcGePoint3d& center,
+        const AcGeVector3d& northAxis,const AcGeVector3d& refAxis,
+        double startAngleU,double endAngleU,
+        double startAngleV, double endAngleV);
+
+    Adesk::Boolean intersectWith1(const PyGeLinearEnt3d& ent) const;
+    Adesk::Boolean intersectWith2(const PyGeLinearEnt3d&, const AcGeTol& tol) const;
+
     static PyGeSphere cast(const PyGeEntity3d& src);
     static PyGeSphere copycast(const PyGeEntity3d& src);
     static std::string  className();
