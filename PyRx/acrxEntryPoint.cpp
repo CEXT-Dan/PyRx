@@ -134,7 +134,7 @@ public:
     {
         constexpr TCHAR MAJOR1 = '1';
         constexpr TCHAR MINOR1 = '1';
-        constexpr TCHAR REVISION1 = '1', REVISION2 = '3', REVISION3 = '5';
+        constexpr TCHAR REVISION1 = '1', REVISION2 = '3', REVISION3 = '6';
 
         constexpr unsigned int compileYear = (__DATE__[7] - '0') * 1000 + (__DATE__[8] - '0') * 100 + (__DATE__[9] - '0') * 10 + (__DATE__[10] - '0');
         constexpr unsigned int compileMonth = (__DATE__[0] == 'J') ? ((__DATE__[1] == 'a') ? 1 : ((__DATE__[2] == 'n') ? 6 : 7))    // Jan, Jun or Jul
