@@ -24956,6 +24956,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void appendLoopEdges(class PyDbHatch {lvalue},int,class boost::python::list,class boost::python::list)'''
     ...
+    def appendLoopIds (self, *args, **kwargs)-> None :
+      '''appendLoopIds( (Hatch)arg1, (int)arg2, (list)arg3) -> None :
+
+    C++ signature :
+        void appendLoopIds(class PyDbHatch {lvalue},int,class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...

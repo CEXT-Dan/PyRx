@@ -7,6 +7,7 @@
 #include "PyDbEntity.h"
 #include "PyEdUserInteraction.h"
 #include "PyApDocument.h"
+#include "PyDbEnts.h"
 
 using namespace boost::python;
 
@@ -562,7 +563,7 @@ boost::python::list PyAcEditor::traceBoundary(const AcGePoint3d& seedPoint, bool
     AcDbVoidPtrArray resultingBoundarySet;
     PyThrowBadEs(acedTraceBoundary(seedPoint, detectIslands, resultingBoundarySet));
     for (auto ptr : resultingBoundarySet)
-        pyList.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), true));
+        pyList.append(PyDbPolyline(static_cast<AcDbPolyline*>(ptr), true));
     return pyList;
 }
 

@@ -1247,7 +1247,7 @@ boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python
     PyAutoLockGIL lock;
     boost::python::list pylist;
     const auto& ents = py_list_to_std_vector<PyDbEntity>(entities);
-    for (auto& ent : ents)
+    for (const auto& ent : ents)
         pylist.append(appendAcDbEntity(ent));
     return pylist;
 }
