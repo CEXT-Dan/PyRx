@@ -14613,6 +14613,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
+    def arrowId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''arrowId( (DimStyleTableRecord)arg1, (object)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId arrowId(class PyDbDimStyleTableRecord {lvalue},enum AcDb::DimArrowFlags)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -14651,6 +14657,474 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
+    ...
+    def dimadec (self, *args, **kwargs)-> int :
+      '''dimadec( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimadec(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimalt (self, *args, **kwargs)-> bool :
+      '''dimalt( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimalt(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimaltd (self, *args, **kwargs)-> int :
+      '''dimaltd( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimaltd(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimaltf (self, *args, **kwargs)-> float :
+      '''dimaltf( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimaltf(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimaltmzf (self, *args, **kwargs)-> float :
+      '''dimaltmzf( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimaltmzf(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimaltmzs (self, *args, **kwargs)-> str :
+      '''dimaltmzs( (DimStyleTableRecord)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimaltmzs(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimaltrnd (self, *args, **kwargs)-> float :
+      '''dimaltrnd( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimaltrnd(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimalttd (self, *args, **kwargs)-> int :
+      '''dimalttd( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimalttd(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimalttz (self, *args, **kwargs)-> int :
+      '''dimalttz( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimalttz(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimaltu (self, *args, **kwargs)-> int :
+      '''dimaltu( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimaltu(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimaltz (self, *args, **kwargs)-> int :
+      '''dimaltz( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimaltz(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimapost (self, *args, **kwargs)-> str :
+      '''dimapost( (DimStyleTableRecord)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimapost(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimarcsym (self, *args, **kwargs)-> int :
+      '''dimarcsym( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimarcsym(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimasz (self, *args, **kwargs)-> float :
+      '''dimasz( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimasz(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimatfit (self, *args, **kwargs)-> int :
+      '''dimatfit( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimatfit(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimaunit (self, *args, **kwargs)-> int :
+      '''dimaunit( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimaunit(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimazin (self, *args, **kwargs)-> int :
+      '''dimazin( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimazin(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimblk (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''dimblk( (DimStyleTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dimblk(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimblk1 (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''dimblk1( (DimStyleTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dimblk1(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimblk2 (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''dimblk2( (DimStyleTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dimblk2(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimcen (self, *args, **kwargs)-> float :
+      '''dimcen( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimcen(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimclrd (self, *args, **kwargs)-> PyDb.Color :
+      '''dimclrd( (DimStyleTableRecord)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor dimclrd(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimclre (self, *args, **kwargs)-> PyDb.Color :
+      '''dimclre( (DimStyleTableRecord)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor dimclre(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimclrt (self, *args, **kwargs)-> PyDb.Color :
+      '''dimclrt( (DimStyleTableRecord)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor dimclrt(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimdec (self, *args, **kwargs)-> int :
+      '''dimdec( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimdec(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimdle (self, *args, **kwargs)-> float :
+      '''dimdle( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimdle(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimdli (self, *args, **kwargs)-> float :
+      '''dimdli( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimdli(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimdsep (self, *args, **kwargs)-> str :
+      '''dimdsep( (DimStyleTableRecord)arg1) -> str :
+
+    C++ signature :
+        char dimdsep(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimexe (self, *args, **kwargs)-> float :
+      '''dimexe( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimexe(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimexo (self, *args, **kwargs)-> float :
+      '''dimexo( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimexo(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimfrac (self, *args, **kwargs)-> int :
+      '''dimfrac( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimfrac(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimfxlen (self, *args, **kwargs)-> float :
+      '''dimfxlen( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimfxlen(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimfxlenOn (self, *args, **kwargs)-> bool :
+      '''dimfxlenOn( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimfxlenOn(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimgap (self, *args, **kwargs)-> float :
+      '''dimgap( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimgap(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimjogang (self, *args, **kwargs)-> float :
+      '''dimjogang( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimjogang(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimjust (self, *args, **kwargs)-> int :
+      '''dimjust( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimjust(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimldrblk (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''dimldrblk( (DimStyleTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dimldrblk(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimlfac (self, *args, **kwargs)-> float :
+      '''dimlfac( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimlfac(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimlim (self, *args, **kwargs)-> bool :
+      '''dimlim( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimlim(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimltex1 (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''dimltex1( (DimStyleTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dimltex1(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimltex2 (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''dimltex2( (DimStyleTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dimltex2(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimltype (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''dimltype( (DimStyleTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dimltype(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimlunit (self, *args, **kwargs)-> int :
+      '''dimlunit( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimlunit(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimlwd (self, *args, **kwargs)-> PyDb.LineWeight :
+      '''dimlwd( (DimStyleTableRecord)arg1) -> LineWeight :
+
+    C++ signature :
+        enum AcDb::LineWeight dimlwd(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimlwe (self, *args, **kwargs)-> PyDb.LineWeight :
+      '''dimlwe( (DimStyleTableRecord)arg1) -> LineWeight :
+
+    C++ signature :
+        enum AcDb::LineWeight dimlwe(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimmzf (self, *args, **kwargs)-> float :
+      '''dimmzf( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimmzf(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimmzs (self, *args, **kwargs)-> str :
+      '''dimmzs( (DimStyleTableRecord)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimmzs(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimpost (self, *args, **kwargs)-> str :
+      '''dimpost( (DimStyleTableRecord)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dimpost(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimrnd (self, *args, **kwargs)-> float :
+      '''dimrnd( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimrnd(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimsah (self, *args, **kwargs)-> bool :
+      '''dimsah( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimsah(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimscale (self, *args, **kwargs)-> float :
+      '''dimscale( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimscale(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimsd1 (self, *args, **kwargs)-> bool :
+      '''dimsd1( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimsd1(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimsd2 (self, *args, **kwargs)-> bool :
+      '''dimsd2( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimsd2(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimse1 (self, *args, **kwargs)-> bool :
+      '''dimse1( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimse1(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimse2 (self, *args, **kwargs)-> bool :
+      '''dimse2( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimse2(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimsoxd (self, *args, **kwargs)-> bool :
+      '''dimsoxd( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimsoxd(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtad (self, *args, **kwargs)-> int :
+      '''dimtad( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimtad(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtdec (self, *args, **kwargs)-> int :
+      '''dimtdec( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimtdec(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtfac (self, *args, **kwargs)-> float :
+      '''dimtfac( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimtfac(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtfill (self, *args, **kwargs)-> int :
+      '''dimtfill( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimtfill(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtfillclr (self, *args, **kwargs)-> PyDb.Color :
+      '''dimtfillclr( (DimStyleTableRecord)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor dimtfillclr(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtih (self, *args, **kwargs)-> bool :
+      '''dimtih( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimtih(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtix (self, *args, **kwargs)-> bool :
+      '''dimtix( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimtix(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtm (self, *args, **kwargs)-> float :
+      '''dimtm( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimtm(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtmove (self, *args, **kwargs)-> int :
+      '''dimtmove( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimtmove(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtofl (self, *args, **kwargs)-> bool :
+      '''dimtofl( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimtofl(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtoh (self, *args, **kwargs)-> bool :
+      '''dimtoh( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimtoh(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtol (self, *args, **kwargs)-> bool :
+      '''dimtol( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimtol(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtolj (self, *args, **kwargs)-> int :
+      '''dimtolj( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimtolj(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtp (self, *args, **kwargs)-> float :
+      '''dimtp( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimtp(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtsz (self, *args, **kwargs)-> float :
+      '''dimtsz( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimtsz(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtvp (self, *args, **kwargs)-> float :
+      '''dimtvp( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimtvp(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtxsty (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''dimtxsty( (DimStyleTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dimtxsty(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtxt (self, *args, **kwargs)-> float :
+      '''dimtxt( (DimStyleTableRecord)arg1) -> float :
+
+    C++ signature :
+        double dimtxt(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtxtdirection (self, *args, **kwargs)-> bool :
+      '''dimtxtdirection( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimtxtdirection(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimtzin (self, *args, **kwargs)-> int :
+      '''dimtzin( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimtzin(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimupt (self, *args, **kwargs)-> bool :
+      '''dimupt( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool dimupt(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
+    def dimzin (self, *args, **kwargs)-> int :
+      '''dimzin( (DimStyleTableRecord)arg1) -> int :
+
+    C++ signature :
+        int dimzin(class PyDbDimStyleTableRecord {lvalue})'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -14727,6 +15201,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isModified (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isModifiedForRecompute (self, *args, **kwargs)-> bool :
+      '''isModifiedForRecompute( (DimStyleTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedForRecompute(class PyDbDimStyleTableRecord {lvalue})'''
+    ...
     def isModifiedGraphics (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -14801,6 +15281,494 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
+    ...
+    def setDimadec (self, *args, **kwargs)-> None :
+      '''setDimadec( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimadec(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimalt (self, *args, **kwargs)-> None :
+      '''setDimalt( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimalt(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimaltd (self, *args, **kwargs)-> None :
+      '''setDimaltd( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimaltd(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimaltf (self, *args, **kwargs)-> None :
+      '''setDimaltf( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimaltf(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimaltmzf (self, *args, **kwargs)-> None :
+      '''setDimaltmzf( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimaltmzf(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimaltmzs (self, *args, **kwargs)-> None :
+      '''setDimaltmzs( (DimStyleTableRecord)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDimaltmzs(class PyDbDimStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDimaltrnd (self, *args, **kwargs)-> None :
+      '''setDimaltrnd( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimaltrnd(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimalttd (self, *args, **kwargs)-> None :
+      '''setDimalttd( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimalttd(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimalttz (self, *args, **kwargs)-> None :
+      '''setDimalttz( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimalttz(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimaltu (self, *args, **kwargs)-> None :
+      '''setDimaltu( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimaltu(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimaltz (self, *args, **kwargs)-> None :
+      '''setDimaltz( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimaltz(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimapost (self, *args, **kwargs)-> None :
+      '''setDimapost( (DimStyleTableRecord)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDimapost(class PyDbDimStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDimarcsym (self, *args, **kwargs)-> None :
+      '''setDimarcsym( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimarcsym(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimasz (self, *args, **kwargs)-> None :
+      '''setDimasz( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimasz(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimatfit (self, *args, **kwargs)-> None :
+      '''setDimatfit( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimatfit(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimaunit (self, *args, **kwargs)-> None :
+      '''setDimaunit( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimaunit(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimazin (self, *args, **kwargs)-> None :
+      '''setDimazin( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimazin(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimblk (self, *args, **kwargs)-> None :
+      '''setDimblk( (DimStyleTableRecord)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setDimblk(class PyDbDimStyleTableRecord {lvalue},class PyDbObjectId)
+
+setDimblk( (DimStyleTableRecord)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDimblk(class PyDbDimStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDimblk1 (self, *args, **kwargs)-> None :
+      '''setDimblk1( (DimStyleTableRecord)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setDimblk1(class PyDbDimStyleTableRecord {lvalue},class PyDbObjectId)
+
+setDimblk1( (DimStyleTableRecord)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDimblk1(class PyDbDimStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDimblk2 (self, *args, **kwargs)-> None :
+      '''setDimblk2( (DimStyleTableRecord)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setDimblk2(class PyDbDimStyleTableRecord {lvalue},class PyDbObjectId)
+
+setDimblk2( (DimStyleTableRecord)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDimblk2(class PyDbDimStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDimcen (self, *args, **kwargs)-> None :
+      '''setDimcen( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimcen(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimclrd (self, *args, **kwargs)-> None :
+      '''setDimclrd( (DimStyleTableRecord)arg1, (Color)arg2) -> None :
+
+    C++ signature :
+        void setDimclrd(class PyDbDimStyleTableRecord {lvalue},class AcCmColor)'''
+    ...
+    def setDimclre (self, *args, **kwargs)-> None :
+      '''setDimclre( (DimStyleTableRecord)arg1, (Color)arg2) -> None :
+
+    C++ signature :
+        void setDimclre(class PyDbDimStyleTableRecord {lvalue},class AcCmColor)'''
+    ...
+    def setDimclrt (self, *args, **kwargs)-> None :
+      '''setDimclrt( (DimStyleTableRecord)arg1, (Color)arg2) -> None :
+
+    C++ signature :
+        void setDimclrt(class PyDbDimStyleTableRecord {lvalue},class AcCmColor)'''
+    ...
+    def setDimdec (self, *args, **kwargs)-> None :
+      '''setDimdec( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimdec(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimdle (self, *args, **kwargs)-> None :
+      '''setDimdle( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimdle(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimdli (self, *args, **kwargs)-> None :
+      '''setDimdli( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimdli(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimdsep (self, *args, **kwargs)-> None :
+      '''setDimdsep( (DimStyleTableRecord)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDimdsep(class PyDbDimStyleTableRecord {lvalue},char)'''
+    ...
+    def setDimexe (self, *args, **kwargs)-> None :
+      '''setDimexe( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimexe(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimexo (self, *args, **kwargs)-> None :
+      '''setDimexo( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimexo(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimfrac (self, *args, **kwargs)-> None :
+      '''setDimfrac( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimfrac(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimfxlen (self, *args, **kwargs)-> None :
+      '''setDimfxlen( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimfxlen(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimfxlenOn (self, *args, **kwargs)-> None :
+      '''setDimfxlenOn( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimfxlenOn(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimgap (self, *args, **kwargs)-> None :
+      '''setDimgap( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimgap(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimjogang (self, *args, **kwargs)-> None :
+      '''setDimjogang( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimjogang(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimjust (self, *args, **kwargs)-> None :
+      '''setDimjust( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimjust(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimldrblk (self, *args, **kwargs)-> None :
+      '''setDimldrblk( (DimStyleTableRecord)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setDimldrblk(class PyDbDimStyleTableRecord {lvalue},class PyDbObjectId)
+
+setDimldrblk( (DimStyleTableRecord)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDimldrblk(class PyDbDimStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDimlfac (self, *args, **kwargs)-> None :
+      '''setDimlfac( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimlfac(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimlim (self, *args, **kwargs)-> None :
+      '''setDimlim( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimlim(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimltex1 (self, *args, **kwargs)-> None :
+      '''setDimltex1( (DimStyleTableRecord)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setDimltex1(class PyDbDimStyleTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setDimltex2 (self, *args, **kwargs)-> None :
+      '''setDimltex2( (DimStyleTableRecord)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setDimltex2(class PyDbDimStyleTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setDimltype (self, *args, **kwargs)-> None :
+      '''setDimltype( (DimStyleTableRecord)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setDimltype(class PyDbDimStyleTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setDimlunit (self, *args, **kwargs)-> None :
+      '''setDimlunit( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimlunit(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimlwd (self, *args, **kwargs)-> None :
+      '''setDimlwd( (DimStyleTableRecord)arg1, (LineWeight)arg2) -> None :
+
+    C++ signature :
+        void setDimlwd(class PyDbDimStyleTableRecord {lvalue},enum AcDb::LineWeight)'''
+    ...
+    def setDimlwe (self, *args, **kwargs)-> None :
+      '''setDimlwe( (DimStyleTableRecord)arg1, (LineWeight)arg2) -> None :
+
+    C++ signature :
+        void setDimlwe(class PyDbDimStyleTableRecord {lvalue},enum AcDb::LineWeight)'''
+    ...
+    def setDimmzf (self, *args, **kwargs)-> None :
+      '''setDimmzf( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimmzf(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimmzs (self, *args, **kwargs)-> None :
+      '''setDimmzs( (DimStyleTableRecord)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDimmzs(class PyDbDimStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDimpost (self, *args, **kwargs)-> None :
+      '''setDimpost( (DimStyleTableRecord)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDimpost(class PyDbDimStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDimrnd (self, *args, **kwargs)-> None :
+      '''setDimrnd( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimrnd(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimsah (self, *args, **kwargs)-> None :
+      '''setDimsah( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimsah(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimscale (self, *args, **kwargs)-> None :
+      '''setDimscale( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimscale(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimsd1 (self, *args, **kwargs)-> None :
+      '''setDimsd1( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimsd1(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimsd2 (self, *args, **kwargs)-> None :
+      '''setDimsd2( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimsd2(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimse1 (self, *args, **kwargs)-> None :
+      '''setDimse1( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimse1(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimse2 (self, *args, **kwargs)-> None :
+      '''setDimse2( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimse2(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimsoxd (self, *args, **kwargs)-> None :
+      '''setDimsoxd( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimsoxd(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimtad (self, *args, **kwargs)-> None :
+      '''setDimtad( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimtad(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimtdec (self, *args, **kwargs)-> None :
+      '''setDimtdec( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimtdec(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimtfac (self, *args, **kwargs)-> None :
+      '''setDimtfac( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimtfac(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimtfill (self, *args, **kwargs)-> None :
+      '''setDimtfill( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimtfill(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimtfillclr (self, *args, **kwargs)-> None :
+      '''setDimtfillclr( (DimStyleTableRecord)arg1, (Color)arg2) -> None :
+
+    C++ signature :
+        void setDimtfillclr(class PyDbDimStyleTableRecord {lvalue},class AcCmColor)'''
+    ...
+    def setDimtih (self, *args, **kwargs)-> None :
+      '''setDimtih( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimtih(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimtix (self, *args, **kwargs)-> None :
+      '''setDimtix( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimtix(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimtm (self, *args, **kwargs)-> None :
+      '''setDimtm( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimtm(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimtmove (self, *args, **kwargs)-> None :
+      '''setDimtmove( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimtmove(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimtofl (self, *args, **kwargs)-> None :
+      '''setDimtofl( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimtofl(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimtoh (self, *args, **kwargs)-> None :
+      '''setDimtoh( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimtoh(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimtol (self, *args, **kwargs)-> None :
+      '''setDimtol( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimtol(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimtolj (self, *args, **kwargs)-> None :
+      '''setDimtolj( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimtolj(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimtp (self, *args, **kwargs)-> None :
+      '''setDimtp( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimtp(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimtsz (self, *args, **kwargs)-> None :
+      '''setDimtsz( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimtsz(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimtvp (self, *args, **kwargs)-> None :
+      '''setDimtvp( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimtvp(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimtxsty (self, *args, **kwargs)-> None :
+      '''setDimtxsty( (DimStyleTableRecord)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setDimtxsty(class PyDbDimStyleTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setDimtxt (self, *args, **kwargs)-> None :
+      '''setDimtxt( (DimStyleTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDimtxt(class PyDbDimStyleTableRecord {lvalue},double)'''
+    ...
+    def setDimtxtdirection (self, *args, **kwargs)-> None :
+      '''setDimtxtdirection( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimtxtdirection(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimtzin (self, *args, **kwargs)-> None :
+      '''setDimtzin( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimtzin(class PyDbDimStyleTableRecord {lvalue},int)'''
+    ...
+    def setDimupt (self, *args, **kwargs)-> None :
+      '''setDimupt( (DimStyleTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDimupt(class PyDbDimStyleTableRecord {lvalue},bool)'''
+    ...
+    def setDimzin (self, *args, **kwargs)-> None :
+      '''setDimzin( (DimStyleTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setDimzin(class PyDbDimStyleTableRecord {lvalue},int)'''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
@@ -24955,12 +25923,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void appendLoopEdges(class PyDbHatch {lvalue},int,class boost::python::list,class boost::python::list)'''
-    ...
-    def appendLoopIds (self, *args, **kwargs)-> None :
-      '''appendLoopIds( (Hatch)arg1, (int)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void appendLoopIds(class PyDbHatch {lvalue},int,class boost::python::list)'''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
