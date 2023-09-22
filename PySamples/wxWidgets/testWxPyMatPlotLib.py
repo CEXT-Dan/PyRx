@@ -17,7 +17,7 @@ import wx
 def PyRxCmd_wxpy():
     try: 
         res = PyAp.ResourceOverride()
-        dlg = TestDialog(None, -1, "Plot",wx.Size(700,500))
+        dlg = TestDialog(None, -1, "Plot",wx.Size(500,300))
         if dlg.ShowModal() == wx.ID_OK:
             print("Yay!")
     except Exception as err:
@@ -27,7 +27,7 @@ def PyRxCmd_wxpy():
 class CanvasPanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent)
-        self.figure = Figure()
+        self.figure = Figure(figsize=(1,1))
         self.axes = self.figure.add_subplot(111)
         self.canvas = FigureCanvas(self, -1, self.figure)
         self.sizer = wx.BoxSizer(wx.VERTICAL)
@@ -43,12 +43,11 @@ class CanvasPanel(wx.Panel):
 class TestDialog(wx.Dialog):
     def __init__(
             self, parent, id, title, size, pos=wx.DefaultPosition,
-            style=wx.DEFAULT_DIALOG_STYLE, name='dialog'
+            style=wx.DEFAULT_DIALOG_STYLE
             ):
 
         wx.Dialog.__init__(self)
-        self.SetExtraStyle(wx.DIALOG_EX_CONTEXTHELP)
-        self.Create(parent, id, title, pos, size, style, name)
+        self.Create(parent, id, title, pos, size, style)
         PyAp.Application.setTitleThemeDark(self.GetHandle())
         PyAp.Application.applyHostIcon(self.GetHandle())
         
