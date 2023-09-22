@@ -138,6 +138,816 @@ PyDbDimStyleTableRecord::PyDbDimStyleTableRecord(const PyDbObjectId& id)
 {
 }
 
+PyDbObjectId PyDbDimStyleTableRecord::arrowId(AcDb::DimArrowFlags whichArrow) const
+{
+    return PyDbObjectId(impObj()->arrowId(whichArrow));
+}
+
+int PyDbDimStyleTableRecord::dimadec() const
+{
+    return impObj()->dimadec();
+}
+
+bool PyDbDimStyleTableRecord::dimalt() const
+{
+    return impObj()->dimalt();
+}
+
+int PyDbDimStyleTableRecord::dimaltd() const
+{
+    return impObj()->dimaltd();
+}
+
+double PyDbDimStyleTableRecord::dimaltf() const
+{
+    return impObj()->dimaltf();
+}
+
+double PyDbDimStyleTableRecord::dimaltrnd() const
+{
+    return impObj()->dimaltrnd();
+}
+
+int PyDbDimStyleTableRecord::dimalttd() const
+{
+    return impObj()->dimalttd();
+}
+
+int PyDbDimStyleTableRecord::dimalttz() const
+{
+    return impObj()->dimalttz();
+}
+
+int PyDbDimStyleTableRecord::dimaltu() const
+{
+    return impObj()->dimaltu();
+}
+
+int PyDbDimStyleTableRecord::dimaltz() const
+{
+    return impObj()->dimaltz();
+}
+
+std::string PyDbDimStyleTableRecord::dimapost() const
+{
+    return wstr_to_utf8(impObj()->dimapost());
+}
+
+int PyDbDimStyleTableRecord::dimarcsym() const
+{
+    return impObj()->dimarcsym();
+}
+
+double PyDbDimStyleTableRecord::dimasz() const
+{
+    return impObj()->dimasz();
+}
+
+int PyDbDimStyleTableRecord::dimatfit() const
+{
+    return impObj()->dimatfit();
+}
+
+int PyDbDimStyleTableRecord::dimaunit() const
+{
+    return impObj()->dimaunit();
+}
+
+int PyDbDimStyleTableRecord::dimazin() const
+{
+    return impObj()->dimazin();
+}
+
+PyDbObjectId PyDbDimStyleTableRecord::dimblk() const
+{
+    return PyDbObjectId(impObj()->dimblk());
+}
+
+PyDbObjectId PyDbDimStyleTableRecord::dimblk1() const
+{
+    return PyDbObjectId(impObj()->dimblk1());
+}
+
+PyDbObjectId PyDbDimStyleTableRecord::dimblk2() const
+{
+    return PyDbObjectId(impObj()->dimblk2());
+}
+
+double PyDbDimStyleTableRecord::dimcen() const
+{
+    return impObj()->dimcen();
+}
+
+AcCmColor PyDbDimStyleTableRecord::dimclrd() const
+{
+    return impObj()->dimclrd();
+}
+
+AcCmColor PyDbDimStyleTableRecord::dimclre() const
+{
+    return impObj()->dimclre();
+}
+
+AcCmColor PyDbDimStyleTableRecord::dimclrt() const
+{
+    return impObj()->dimclrt();
+}
+
+int PyDbDimStyleTableRecord::dimdec() const
+{
+    return impObj()->dimdec();
+}
+
+double PyDbDimStyleTableRecord::dimdle() const
+{
+    return impObj()->dimdle();
+}
+
+double PyDbDimStyleTableRecord::dimdli() const
+{
+    return impObj()->dimdli();
+}
+
+char PyDbDimStyleTableRecord::dimdsep() const
+{
+    return (char)impObj()->dimdsep();
+}
+
+double PyDbDimStyleTableRecord::dimexe() const
+{
+    return impObj()->dimexe();
+}
+
+double PyDbDimStyleTableRecord::dimexo() const
+{
+    return impObj()->dimexo();
+}
+
+int PyDbDimStyleTableRecord::dimfrac() const
+{
+    return impObj()->dimfrac();
+}
+
+double PyDbDimStyleTableRecord::dimgap() const
+{
+    return impObj()->dimgap();
+}
+
+double PyDbDimStyleTableRecord::dimjogang() const
+{
+    return impObj()->dimjogang();
+}
+
+int PyDbDimStyleTableRecord::dimjust() const
+{
+    return impObj()->dimjust();
+}
+
+PyDbObjectId PyDbDimStyleTableRecord::dimldrblk() const
+{
+    return PyDbObjectId(impObj()->dimldrblk());
+}
+
+double PyDbDimStyleTableRecord::dimlfac() const
+{
+    return impObj()->dimlfac();
+}
+
+bool PyDbDimStyleTableRecord::dimlim() const
+{
+    return impObj()->dimlim();
+}
+
+PyDbObjectId PyDbDimStyleTableRecord::dimltex1() const
+{
+    return PyDbObjectId(impObj()->dimltex1());
+}
+
+PyDbObjectId PyDbDimStyleTableRecord::dimltex2() const
+{
+    return PyDbObjectId(impObj()->dimltex2());
+}
+
+PyDbObjectId PyDbDimStyleTableRecord::dimltype() const
+{
+    return PyDbObjectId(impObj()->dimltype());
+}
+
+int PyDbDimStyleTableRecord::dimlunit() const
+{
+    return impObj()->dimlunit();
+}
+
+AcDb::LineWeight PyDbDimStyleTableRecord::dimlwd() const
+{
+    return impObj()->dimlwd();
+}
+
+AcDb::LineWeight PyDbDimStyleTableRecord::dimlwe() const
+{
+    return impObj()->dimlwe();
+}
+
+std::string PyDbDimStyleTableRecord::dimpost() const
+{
+    return wstr_to_utf8(impObj()->dimpost());
+}
+
+double PyDbDimStyleTableRecord::dimrnd() const
+{
+    return impObj()->dimrnd();
+}
+
+bool PyDbDimStyleTableRecord::dimsah() const
+{
+    return impObj()->dimsah();
+}
+
+double PyDbDimStyleTableRecord::dimscale() const
+{
+    return impObj()->dimscale();
+}
+
+bool PyDbDimStyleTableRecord::dimsd1() const
+{
+    return impObj()->dimsd1();
+}
+
+bool PyDbDimStyleTableRecord::dimsd2() const
+{
+    return impObj()->dimsd2();
+}
+
+bool PyDbDimStyleTableRecord::dimse1() const
+{
+    return impObj()->dimse1();
+}
+
+bool PyDbDimStyleTableRecord::dimse2() const
+{
+    return impObj()->dimse2();
+}
+
+bool PyDbDimStyleTableRecord::dimsoxd() const
+{
+    return impObj()->dimsoxd();
+}
+
+int PyDbDimStyleTableRecord::dimtad() const
+{
+    return impObj()->dimtad();
+}
+
+int PyDbDimStyleTableRecord::dimtdec() const
+{
+    return impObj()->dimtdec();
+}
+
+double PyDbDimStyleTableRecord::dimtfac() const
+{
+    return impObj()->dimtfac();
+}
+
+int PyDbDimStyleTableRecord::dimtfill() const
+{
+    return impObj()->dimtfill();
+}
+
+AcCmColor PyDbDimStyleTableRecord::dimtfillclr() const
+{
+    return impObj()->dimtfillclr();
+}
+
+bool PyDbDimStyleTableRecord::dimtih() const
+{
+    return impObj()->dimtih();
+}
+
+bool PyDbDimStyleTableRecord::dimtix() const
+{
+    return impObj()->dimtix();
+}
+
+double PyDbDimStyleTableRecord::dimtm() const
+{
+    return impObj()->dimtm();
+}
+
+int PyDbDimStyleTableRecord::dimtmove() const
+{
+    return impObj()->dimtmove();
+}
+
+bool PyDbDimStyleTableRecord::dimtofl() const
+{
+    return impObj()->dimtofl();
+}
+
+bool PyDbDimStyleTableRecord::dimtoh() const
+{
+    return impObj()->dimtoh();
+}
+
+bool PyDbDimStyleTableRecord::dimtol() const
+{
+    return impObj()->dimtol();
+}
+
+int PyDbDimStyleTableRecord::dimtolj() const
+{
+    return impObj()->dimtolj();
+}
+
+double PyDbDimStyleTableRecord::dimtp() const
+{
+    return impObj()->dimtp();
+}
+
+double PyDbDimStyleTableRecord::dimtsz() const
+{
+    return impObj()->dimtsz();
+}
+
+double PyDbDimStyleTableRecord::dimtvp() const
+{
+    return impObj()->dimtvp();
+}
+
+PyDbObjectId PyDbDimStyleTableRecord::dimtxsty() const
+{
+    return PyDbObjectId(impObj()->dimtxsty());
+}
+
+double PyDbDimStyleTableRecord::dimtxt() const
+{
+    return impObj()->dimtxt();
+}
+
+int PyDbDimStyleTableRecord::dimtzin() const
+{
+    return impObj()->dimtzin();
+}
+
+bool PyDbDimStyleTableRecord::dimupt() const
+{
+    return impObj()->dimupt();
+}
+
+int PyDbDimStyleTableRecord::dimzin() const
+{
+    return impObj()->dimzin();
+}
+
+bool PyDbDimStyleTableRecord::dimfxlenOn() const
+{
+    return impObj()->dimfxlenOn();
+}
+
+double PyDbDimStyleTableRecord::dimfxlen() const
+{
+    return impObj()->dimfxlen();
+}
+
+bool PyDbDimStyleTableRecord::dimtxtdirection() const
+{
+    return impObj()->dimtxtdirection();
+}
+
+double PyDbDimStyleTableRecord::dimmzf() const
+{
+    return impObj()->dimmzf();
+}
+
+std::string PyDbDimStyleTableRecord::dimmzs() const
+{
+    return wstr_to_utf8(impObj()->dimmzs());
+}
+
+double PyDbDimStyleTableRecord::dimaltmzf() const
+{
+    return impObj()->dimaltmzf();
+}
+
+std::string PyDbDimStyleTableRecord::dimaltmzs() const
+{
+    return wstr_to_utf8(impObj()->dimaltmzs());
+}
+
+void PyDbDimStyleTableRecord::setDimadec(int v)
+{
+    PyThrowBadEs(impObj()->setDimadec(v));
+}
+
+void PyDbDimStyleTableRecord::setDimalt(bool v)
+{
+    PyThrowBadEs(impObj()->setDimalt(v));
+}
+
+void PyDbDimStyleTableRecord::setDimaltd(int v)
+{
+    PyThrowBadEs(impObj()->setDimaltd(v));
+}
+
+void PyDbDimStyleTableRecord::setDimaltf(double v)
+{
+    PyThrowBadEs(impObj()->setDimaltf(v));
+}
+
+void PyDbDimStyleTableRecord::setDimaltmzf(double v)
+{
+    PyThrowBadEs(impObj()->setDimaltmzf(v));
+}
+
+void PyDbDimStyleTableRecord::setDimaltmzs(const std::string& v)
+{
+    PyThrowBadEs(impObj()->setDimaltmzs(utf8_to_wstr(v).c_str()));
+}
+
+void PyDbDimStyleTableRecord::setDimaltrnd(double v)
+{
+    PyThrowBadEs(impObj()->setDimaltrnd(v));
+}
+
+void PyDbDimStyleTableRecord::setDimalttd(int v)
+{
+    PyThrowBadEs(impObj()->setDimalttd(v));
+}
+
+void PyDbDimStyleTableRecord::setDimalttz(int v)
+{
+    PyThrowBadEs(impObj()->setDimalttz(v));
+}
+
+void PyDbDimStyleTableRecord::setDimaltu(int v)
+{
+    PyThrowBadEs(impObj()->setDimaltu(v));
+}
+
+void PyDbDimStyleTableRecord::setDimaltz(int v)
+{
+    PyThrowBadEs(impObj()->setDimaltz(v));
+}
+
+void PyDbDimStyleTableRecord::setDimapost(const std::string& v)
+{
+    PyThrowBadEs(impObj()->setDimapost(utf8_to_wstr(v).c_str()));
+}
+
+void PyDbDimStyleTableRecord::setDimarcsym(int v)
+{
+    PyThrowBadEs(impObj()->setDimarcsym(v));
+}
+
+void PyDbDimStyleTableRecord::setDimasz(double v)
+{
+    PyThrowBadEs(impObj()->setDimasz(v));
+}
+
+void PyDbDimStyleTableRecord::setDimatfit(int v)
+{
+    PyThrowBadEs(impObj()->setDimatfit(v));
+}
+
+void PyDbDimStyleTableRecord::setDimaunit(int v)
+{
+    PyThrowBadEs(impObj()->setDimaunit(v));
+}
+
+void PyDbDimStyleTableRecord::setDimazin(int v)
+{
+    PyThrowBadEs(impObj()->setDimazin(v));
+}
+
+void PyDbDimStyleTableRecord::setDimblk(const PyDbObjectId& v)
+{
+    PyThrowBadEs(impObj()->setDimblk(v.m_id));
+}
+
+void PyDbDimStyleTableRecord::setDimblk(const std::string& v)
+{
+    PyThrowBadEs(impObj()->setDimblk(utf8_to_wstr(v).c_str()));
+}
+
+void PyDbDimStyleTableRecord::setDimblk1(const PyDbObjectId& v)
+{
+    PyThrowBadEs(impObj()->setDimblk1(v.m_id));
+}
+
+void PyDbDimStyleTableRecord::setDimblk1(const std::string& v)
+{
+    PyThrowBadEs(impObj()->setDimblk1(utf8_to_wstr(v).c_str()));
+}
+
+void PyDbDimStyleTableRecord::setDimblk2(const PyDbObjectId& v)
+{
+    PyThrowBadEs(impObj()->setDimblk2(v.m_id));
+}
+
+void PyDbDimStyleTableRecord::setDimblk2(const std::string& v)
+{
+    PyThrowBadEs(impObj()->setDimblk2(utf8_to_wstr(v).c_str()));
+}
+
+void PyDbDimStyleTableRecord::setDimldrblk(const PyDbObjectId& v)
+{
+    PyThrowBadEs(impObj()->setDimblk2(v.m_id));
+}
+
+void PyDbDimStyleTableRecord::setDimldrblk(const std::string& v)
+{
+    PyThrowBadEs(impObj()->setDimblk2(utf8_to_wstr(v).c_str()));
+}
+
+void PyDbDimStyleTableRecord::setDimfxlenOn(bool v)
+{
+    PyThrowBadEs(impObj()->setDimfxlenOn(v));
+}
+
+void PyDbDimStyleTableRecord::setDimfxlen(double v)
+{
+    PyThrowBadEs(impObj()->setDimfxlen(v));
+}
+
+bool PyDbDimStyleTableRecord::isModifiedForRecompute() const
+{
+    return impObj()->isModifiedForRecompute();
+}
+
+void PyDbDimStyleTableRecord::setDimlfac(double v)
+{
+    PyThrowBadEs(impObj()->setDimlfac(v));
+}
+
+void PyDbDimStyleTableRecord::setDimcen(double v)
+{
+    PyThrowBadEs(impObj()->setDimcen(v));
+}
+
+void PyDbDimStyleTableRecord::setDimclrd(const AcCmColor& v)
+{
+    PyThrowBadEs(impObj()->setDimclrd(v));
+}
+
+void PyDbDimStyleTableRecord::setDimclre(const AcCmColor& v)
+{
+    PyThrowBadEs(impObj()->setDimclre(v));
+}
+
+void PyDbDimStyleTableRecord::setDimclrt(const AcCmColor& v)
+{
+    PyThrowBadEs(impObj()->setDimclrt(v));
+}
+
+void PyDbDimStyleTableRecord::setDimdec(int v)
+{
+    PyThrowBadEs(impObj()->setDimdec(v));
+}
+
+void PyDbDimStyleTableRecord::setDimdle(double v)
+{
+    PyThrowBadEs(impObj()->setDimdle(v));
+}
+
+void PyDbDimStyleTableRecord::setDimdli(double v)
+{
+    PyThrowBadEs(impObj()->setDimdli(v));
+}
+
+void PyDbDimStyleTableRecord::setDimdsep(char v)
+{
+    PyThrowBadEs(impObj()->setDimdsep(v));
+}
+
+void PyDbDimStyleTableRecord::setDimexe(double v)
+{
+    PyThrowBadEs(impObj()->setDimexe(v));
+}
+
+void PyDbDimStyleTableRecord::setDimexo(double v)
+{
+    PyThrowBadEs(impObj()->setDimexo(v));
+}
+
+void PyDbDimStyleTableRecord::setDimfrac(int v)
+{
+    PyThrowBadEs(impObj()->setDimfrac(v));
+}
+
+void PyDbDimStyleTableRecord::setDimgap(double v)
+{
+    PyThrowBadEs(impObj()->setDimgap(v));
+}
+
+void PyDbDimStyleTableRecord::setDimjogang(double v)
+{
+    PyThrowBadEs(impObj()->setDimjogang(v));
+}
+
+void PyDbDimStyleTableRecord::setDimjust(int v)
+{
+    PyThrowBadEs(impObj()->setDimjust(v));
+}
+
+void PyDbDimStyleTableRecord::setDimlim(bool v)
+{
+    PyThrowBadEs(impObj()->setDimlim(v));
+}
+
+void PyDbDimStyleTableRecord::setDimltex1(const PyDbObjectId& v)
+{
+    PyThrowBadEs(impObj()->setDimltex1(v.m_id));
+}
+
+void PyDbDimStyleTableRecord::setDimltex2(const PyDbObjectId& v)
+{
+    PyThrowBadEs(impObj()->setDimltex2(v.m_id));
+}
+
+void PyDbDimStyleTableRecord::setDimltype(const PyDbObjectId& v)
+{
+    PyThrowBadEs(impObj()->setDimltype(v.m_id));
+}
+
+void PyDbDimStyleTableRecord::setDimlunit(int v)
+{
+    PyThrowBadEs(impObj()->setDimlunit(v));
+}
+
+void PyDbDimStyleTableRecord::setDimlwd(AcDb::LineWeight v)
+{
+    PyThrowBadEs(impObj()->setDimlwd(v));
+}
+
+void PyDbDimStyleTableRecord::setDimlwe(AcDb::LineWeight v)
+{
+    PyThrowBadEs(impObj()->setDimlwe(v));
+}
+
+void PyDbDimStyleTableRecord::setDimmzf(double v)
+{
+    PyThrowBadEs(impObj()->setDimmzf(v));
+}
+
+void PyDbDimStyleTableRecord::setDimmzs(const std::string& v)
+{
+    PyThrowBadEs(impObj()->setDimmzs(utf8_to_wstr(v).c_str()));
+}
+
+void PyDbDimStyleTableRecord::setDimpost(const std::string& v)
+{
+    PyThrowBadEs(impObj()->setDimpost(utf8_to_wstr(v).c_str()));
+}
+
+void PyDbDimStyleTableRecord::setDimrnd(double v)
+{
+    PyThrowBadEs(impObj()->setDimrnd(v));
+}
+
+void PyDbDimStyleTableRecord::setDimsah(bool v)
+{
+    PyThrowBadEs(impObj()->setDimsah(v));
+}
+
+void PyDbDimStyleTableRecord::setDimscale(double v)
+{
+    PyThrowBadEs(impObj()->setDimscale(v));
+}
+
+void PyDbDimStyleTableRecord::setDimsd1(bool v)
+{
+    PyThrowBadEs(impObj()->setDimsd1(v));
+}
+
+void PyDbDimStyleTableRecord::setDimsd2(bool v)
+{
+    PyThrowBadEs(impObj()->setDimsd2(v));
+}
+
+void PyDbDimStyleTableRecord::setDimse1(bool v)
+{
+    PyThrowBadEs(impObj()->setDimse1(v));
+}
+
+void PyDbDimStyleTableRecord::setDimse2(bool v)
+{
+    PyThrowBadEs(impObj()->setDimse2(v));
+}
+
+void PyDbDimStyleTableRecord::setDimsoxd(bool v)
+{
+    PyThrowBadEs(impObj()->setDimsoxd(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtad(int v)
+{
+    PyThrowBadEs(impObj()->setDimtad(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtdec(int v)
+{
+    PyThrowBadEs(impObj()->setDimtdec(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtfac(double v)
+{
+    PyThrowBadEs(impObj()->setDimtfac(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtfill(int v)
+{
+    PyThrowBadEs(impObj()->setDimtfill(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtfillclr(const AcCmColor& v)
+{
+    PyThrowBadEs(impObj()->setDimtfillclr(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtih(bool v)
+{
+    PyThrowBadEs(impObj()->setDimtih(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtix(bool v)
+{
+    PyThrowBadEs(impObj()->setDimtix(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtm(double v)
+{
+    PyThrowBadEs(impObj()->setDimtm(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtmove(int v)
+{
+    PyThrowBadEs(impObj()->setDimtmove(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtofl(bool v)
+{
+    PyThrowBadEs(impObj()->setDimtofl(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtoh(bool v)
+{
+    PyThrowBadEs(impObj()->setDimtoh(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtol(bool v)
+{
+    PyThrowBadEs(impObj()->setDimtol(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtolj(int v)
+{
+    PyThrowBadEs(impObj()->setDimtolj(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtp(double v)
+{
+    PyThrowBadEs(impObj()->setDimtp(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtsz(double v)
+{
+    PyThrowBadEs(impObj()->setDimtsz(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtvp(double v)
+{
+    PyThrowBadEs(impObj()->setDimtvp(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtxsty(const PyDbObjectId& v)
+{
+    PyThrowBadEs(impObj()->setDimtxsty(v.m_id));
+}
+
+void PyDbDimStyleTableRecord::setDimtxt(double v)
+{
+    PyThrowBadEs(impObj()->setDimtxt(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtxtdirection(bool v)
+{
+    PyThrowBadEs(impObj()->setDimtxtdirection(v));
+}
+
+void PyDbDimStyleTableRecord::setDimtzin(int v)
+{
+    PyThrowBadEs(impObj()->setDimtzin(v));
+}
+
+void PyDbDimStyleTableRecord::setDimupt(bool v)
+{
+    PyThrowBadEs(impObj()->setDimupt(v));
+}
+
+void PyDbDimStyleTableRecord::setDimzin(int v)
+{
+    PyThrowBadEs(impObj()->setDimzin(v));
+}
+
 std::string PyDbDimStyleTableRecord::className()
 {
     return "AcDbDimStyleTableRecord";
