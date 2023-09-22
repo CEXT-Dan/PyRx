@@ -142,9 +142,9 @@ public:
     void             setDimatfit(int v);
     void             setDimaunit(int v);
     void             setDimazin(int v);
-    void             setDimblk(const PyDbObjectId& v);
-    void             setDimblk1(const PyDbObjectId& v);
-    void             setDimblk2(const PyDbObjectId& v);
+    void             setDimblkId(const PyDbObjectId& v);
+    void             setDimblk1Id(const PyDbObjectId& v);
+    void             setDimblk2Id(const PyDbObjectId& v);
     void             setDimcen(double v);
     void             setDimclrd(const AcCmColor& v);
     void             setDimclre(const AcCmColor& v);
@@ -159,7 +159,7 @@ public:
     void             setDimgap(double v);
     void             setDimjogang(double v);
     void             setDimjust(int v);
-    void             setDimldrblk(const PyDbObjectId& v);
+    void             setDimldrblkId(const PyDbObjectId& v);
     void             setDimlfac(double v);
     void             setDimlim(bool v);
     void             setDimltex1(const PyDbObjectId& v);
