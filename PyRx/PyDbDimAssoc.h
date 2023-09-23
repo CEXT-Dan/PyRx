@@ -5,6 +5,7 @@
 
 class PyDbObjectId;
 class PyDbIdMapping;
+class PyDbPointRef;
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbDimAssoc
@@ -27,8 +28,8 @@ public:
     void                    setAssocFlag2(int assocFlg);
     bool                    assocFlag2(int ptType) const;
     int                     assocFlag1(void);
-    //void                    setPointRef(int ptType, PyDbPointRef* ptRef);
-    //const PyDbPointRef*     pointRef(int ptType) const;
+    void                    setPointRef(int ptType, PyDbPointRef& ptRef);
+    PyDbPointRef            pointRef(int ptType) const;
     void                    setRotatedDimType(AcDbDimAssoc::RotatedDimType dimType);
     AcDbDimAssoc::RotatedDimType rotatedDimType() const;
     void                    addToPointRefReactor();

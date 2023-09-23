@@ -154,10 +154,10 @@ std::string PyRxObject::className()
 
 AcRxObject* PyRxObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]{
-    throw PyNullObject(src);
-}
-        return m_pyImp.get();
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
 }
 
 //-----------------------------------------------------------------------------------------
@@ -223,8 +223,8 @@ std::string PyRxClass::className()
 
 AcRxClass* PyRxClass::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pyImp == nullptr) [[unlikely]]{
-    throw PyNullObject(src);
-}
-        return static_cast<AcRxClass*>(m_pyImp.get());
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcRxClass*>(m_pyImp.get());
 }
