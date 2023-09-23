@@ -44,7 +44,7 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acdbModelerStart();
-        acedRegisterOnIdleWinMsg(AcedOnIdleMsgFn);
+        acedRegisterOnIdleWinMsg(AcedOnIdleMsgFnOnce);
         acrxLockApplication(pkt);
         PyRxApp::instance().appPkt = pkt;
         return (retCode);
@@ -122,12 +122,12 @@ public:
     }
 
     //wxPython barfs if it's loaded while the open file dialog is open
-    static void AcedOnIdleMsgFn()
+    static void AcedOnIdleMsgFnOnce()
     {
         PRINTVER();
         if (!PyRxApp::instance().init())
             acutPrintf(_T("\nPyInit Failed"));
-        acedRemoveOnIdleWinMsg(AcedOnIdleMsgFn);
+        acedRemoveOnIdleWinMsg(AcedOnIdleMsgFnOnce);
     }
 
     static AcString GETVER()

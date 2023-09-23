@@ -135,6 +135,7 @@
     <ClCompile Include="DocData.cpp" />
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
+    <ClCompile Include="PyDbDimAssoc.cpp" />
     <ClCompile Include="PyDbEllipse.cpp" />
     <ClCompile Include="PyGeSurface.cpp" />
     <ClCompile Include="PyAcGs.cpp" />
@@ -239,6 +240,7 @@
     <ClInclude Include="DocData.h" />
     <ClInclude Include="EdCore.h" />
     <ClInclude Include="PlCore.h" />
+    <ClInclude Include="PyDbDimAssoc.h" />
     <ClInclude Include="PyDbEllipse.h" />
     <ClInclude Include="PyGeSurface.h" />
     <ClInclude Include="PyAcGs.h" />

@@ -304,6 +304,9 @@
     <ClCompile Include="PyDbEllipse.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbDimAssoc.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -610,6 +613,9 @@
       <Filter>Header Files\PyEd</Filter>
     </ClInclude>
     <ClInclude Include="PyDbEllipse.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbDimAssoc.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
