@@ -13,6 +13,8 @@ void makePyDbDimAssocWrapper();
 
 class PyDbDimAssoc : public PyDbObject
 {
+public:
+
     PyDbDimAssoc();
     PyDbDimAssoc(const PyDbObjectId& id);
     PyDbDimAssoc(const PyDbObjectId& id, AcDb::OpenMode mode);
@@ -22,10 +24,10 @@ class PyDbDimAssoc : public PyDbObject
 
     PyDbObjectId            dimObjId() const;
     void                    setDimObjId(const PyDbObjectId& dimId);
-    void                    setAssocFlag(int ptType, bool value);
-    void                    setAssocFlag(int assocFlg);
-    bool                    assocFlag(int ptType) const;
-    int                     assocFlag(void);
+    void                    setAssocFlag1(int ptType, bool value);
+    void                    setAssocFlag2(int assocFlg);
+    bool                    assocFlag2(int ptType) const;
+    int                     assocFlag1(void);
     //void                    setPointRef(int ptType, PyDbPointRef* ptRef);
     //const PyDbPointRef*     pointRef(int ptType) const;
 
@@ -59,7 +61,6 @@ class PyDbDimAssoc : public PyDbObject
     void                    updateXrefSubentPath();
     void                    updateSubentPath(PyDbIdMapping& idMap);
     void                    updateDueToMirror(bool wasInMirror);
-
 
 
     static PyRxClass      desc();
