@@ -21,7 +21,6 @@ public:
     PyDbDimAssoc(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbDimAssoc(AcDbDimAssoc* ptr, bool autoDelete);
     inline virtual ~PyDbDimAssoc() override = default;
-
     PyDbObjectId            dimObjId() const;
     void                    setDimObjId(const PyDbObjectId& dimId);
     void                    setAssocFlag1(int ptType, bool value);
@@ -30,7 +29,6 @@ public:
     int                     assocFlag1(void);
     //void                    setPointRef(int ptType, PyDbPointRef* ptRef);
     //const PyDbPointRef*     pointRef(int ptType) const;
-
     void                    setRotatedDimType(AcDbDimAssoc::RotatedDimType dimType);
     AcDbDimAssoc::RotatedDimType rotatedDimType() const;
     void                    addToPointRefReactor();
@@ -54,14 +52,12 @@ public:
     PyDbObjectId            post2(const PyDbObjectId& dimId,bool isActive);
     boost::python::list     getDimAssocGeomIds() const;
     bool                    isAllGeomErased() const;
-
     void                    swapReferences(const PyDbIdMapping& idMap);
     void                    updateFillet(const boost::python::list& ids);
     void                    updateAssociativity(const boost::python::list& ids);
     void                    updateXrefSubentPath();
     void                    updateSubentPath(PyDbIdMapping& idMap);
     void                    updateDueToMirror(bool wasInMirror);
-
 
     static PyRxClass      desc();
     static std::string    className();
@@ -70,4 +66,3 @@ public:
 public:
     inline AcDbDimAssoc*  impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
