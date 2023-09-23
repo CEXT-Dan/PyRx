@@ -35,6 +35,7 @@
 #include "PyDbSpline.h"
 #include "PyDbGroup.h"
 #include "PyDbEllipse.h"
+#include "PyDbDimAssoc.h"
 
 using namespace boost::python;
 
@@ -242,11 +243,48 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbDatabaseSummaryInfoWrapper();
     makePyDbPlotSettingsValidatorWrapper();
     makePyDbSnoopDwgFilerWrapper();
+    makePyDbDimAssocWrapper();
     makeDbCoreWrapper();//LAST?
 
     def("curDb", curPyDb);
 
     //enums
+    enum_<AcDbDimAssoc::PointType>("DimAssocPointType")
+        .value("kXline1Point", AcDbDimAssoc::PointType::kXline1Point)
+        .value("kXline2Point", AcDbDimAssoc::PointType::kXline2Point)
+        .value("kOriginPoint", AcDbDimAssoc::PointType::kOriginPoint)
+        .value("kDefiningPoint", AcDbDimAssoc::PointType::kDefiningPoint)
+        .value("kXline1Start", AcDbDimAssoc::PointType::kXline1Start)
+        .value("kXline1End", AcDbDimAssoc::PointType::kXline1End)
+        .value("kXline2Start", AcDbDimAssoc::PointType::kXline2Start)
+        .value("kXline2End", AcDbDimAssoc::PointType::kXline2End)
+        .value("kVertexPoint", AcDbDimAssoc::PointType::kVertexPoint)
+        .value("kChordPoint", AcDbDimAssoc::PointType::kChordPoint)
+        .value("kCenterPoint", AcDbDimAssoc::PointType::kCenterPoint)
+        .value("kFarChordPoint", AcDbDimAssoc::PointType::kFarChordPoint)
+        .value("kOverrideCenterPoint", AcDbDimAssoc::PointType::kOverrideCenterPoint)
+        .value("kAngLineStart", AcDbDimAssoc::PointType::kAngLineStart)
+        .value("kJogPoint", AcDbDimAssoc::PointType::kJogPoint)
+        .value("kAngLineEnd", AcDbDimAssoc::PointType::kAngLineEnd)
+        .value("kLeaderPoint", AcDbDimAssoc::PointType::kLeaderPoint)
+        .export_values()
+        ;
+
+    enum_<AcDbDimAssoc::AssocFlags>("DimAssocAssocFlags")
+        .value("kFirstPointRef", AcDbDimAssoc::AssocFlags::kFirstPointRef)
+        .value("kSecondPointRef", AcDbDimAssoc::AssocFlags::kSecondPointRef)
+        .value("kThirdPointRef", AcDbDimAssoc::AssocFlags::kThirdPointRef)
+        .value("kFourthPointRef", AcDbDimAssoc::AssocFlags::kFourthPointRef)
+        .export_values()
+        ;
+
+    enum_<AcDbDimAssoc::RotatedDimType>("DimAssocRotatedDimType")
+        .value("kUnknown", AcDbDimAssoc::RotatedDimType::kUnknown)
+        .value("kParallel", AcDbDimAssoc::RotatedDimType::kParallel)
+        .value("kPerpendicular", AcDbDimAssoc::RotatedDimType::kPerpendicular)
+        .export_values()
+        ;
+
     enum_<AcCm::DialogTabs >("AcCmDialogTabs")
         .value("kACITab", AcCm::DialogTabs::kACITab)
         .value("kTrueColorTab", AcCm::DialogTabs::kTrueColorTab)
