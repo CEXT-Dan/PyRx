@@ -14172,6 +14172,870 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
       '''                             '''
     ...
 
+class DimAssoc:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+      '''                             '''
+    ...
+    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+      '''                             '''
+    ...
+    def addToDimensionReactor (self, *args, **kwargs)-> None :
+      '''addToDimensionReactor( (DimAssoc)arg1) -> None :
+
+    C++ signature :
+        void addToDimensionReactor(class PyDbDimAssoc {lvalue})
+
+addToDimensionReactor( (DimAssoc)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void addToDimensionReactor(class PyDbDimAssoc {lvalue},bool)'''
+    ...
+    def addToPointRefReactor (self, *args, **kwargs)-> None :
+      '''addToPointRefReactor( (DimAssoc)arg1) -> None :
+
+    C++ signature :
+        void addToPointRefReactor(class PyDbDimAssoc {lvalue})'''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assocFlag (self, *args, **kwargs)-> int :
+      '''assocFlag( (DimAssoc)arg1) -> int :
+
+    C++ signature :
+        int assocFlag(class PyDbDimAssoc {lvalue})
+
+assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool assocFlag(class PyDbDimAssoc {lvalue},int)'''
+    ...
+    def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cast (otherObject: PyRx.RxObject)-> PyDb.DimAssoc :
+      '''                             '''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.DimAssoc :
+      '''                             '''
+    ...
+    def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def dimObjId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''dimObjId( (DimAssoc)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dimObjId(class PyDbDimAssoc {lvalue})'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def drawableType (self: Drawable)-> PyGi.GiDrawableType :
+      '''                             '''
+    ...
+    def erase (self: DbObject,erasing : bool=True)-> None :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getDimAssocGeomIds (self, *args, **kwargs)-> list :
+      '''getDimAssocGeomIds( (DimAssoc)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getDimAssocGeomIds(class PyDbDimAssoc {lvalue})'''
+    ...
+    def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getHandle (self: DbObject)-> PyDb.Handle :
+      '''                             '''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasOopsWatcher (self, *args, **kwargs)-> bool :
+      '''hasOopsWatcher( (DimAssoc)arg1) -> bool :
+
+    C++ signature :
+        bool hasOopsWatcher(class PyDbDimAssoc {lvalue})'''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def id (self: Drawable)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAllGeomErased (self, *args, **kwargs)-> bool :
+      '''isAllGeomErased( (DimAssoc)arg1) -> bool :
+
+    C++ signature :
+        bool isAllGeomErased(class PyDbDimAssoc {lvalue})'''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isPersistent (self: Drawable)-> bool :
+      '''                             '''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransSpatial (self, *args, **kwargs)-> bool :
+      '''isTransSpatial( (DimAssoc)arg1) -> bool :
+
+    C++ signature :
+        bool isTransSpatial(class PyDbDimAssoc {lvalue})'''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def objectId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def post (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''post( (DimAssoc)arg1, (ObjectId)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId post(class PyDbDimAssoc {lvalue},class PyDbObjectId)
+
+post( (DimAssoc)arg1, (ObjectId)arg2, (bool)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId post(class PyDbDimAssoc {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeAssociativity (self, *args, **kwargs)-> None :
+      '''removeAssociativity( (DimAssoc)arg1) -> None :
+
+    C++ signature :
+        void removeAssociativity(class PyDbDimAssoc {lvalue})
+
+removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void removeAssociativity(class PyDbDimAssoc {lvalue},bool)'''
+    ...
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
+      '''                             '''
+    ...
+    def removeOopsWatcher (self, *args, **kwargs)-> None :
+      '''removeOopsWatcher( (DimAssoc)arg1) -> None :
+
+    C++ signature :
+        void removeOopsWatcher(class PyDbDimAssoc {lvalue})'''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+      '''                             '''
+    ...
+    def removePointRef (self, *args, **kwargs)-> None :
+      '''removePointRef( (DimAssoc)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void removePointRef(class PyDbDimAssoc {lvalue},int)'''
+    ...
+    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+      '''                             '''
+    ...
+    def restoreAssocFromOopsWatcher (self, *args, **kwargs)-> None :
+      '''restoreAssocFromOopsWatcher( (DimAssoc)arg1) -> None :
+
+    C++ signature :
+        void restoreAssocFromOopsWatcher(class PyDbDimAssoc {lvalue})'''
+    ...
+    def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def rotatedDimType (self, *args, **kwargs)-> PyDb.DimAssocRotatedDimType :
+      '''rotatedDimType( (DimAssoc)arg1) -> DimAssocRotatedDimType :
+
+    C++ signature :
+        enum AcDbDimAssoc::RotatedDimType rotatedDimType(class PyDbDimAssoc {lvalue})'''
+    ...
+    def setAssocFlag (self, *args, **kwargs)-> None :
+      '''setAssocFlag( (DimAssoc)arg1, (int)arg2 [, (bool)arg3]) -> None :
+
+    C++ signature :
+        void setAssocFlag(class PyDbDimAssoc {lvalue},int [,bool])'''
+    ...
+    def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
+      '''                             '''
+    ...
+    def setDimObjId (self, *args, **kwargs)-> None :
+      '''setDimObjId( (DimAssoc)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setDimObjId(class PyDbDimAssoc {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+      '''                             '''
+    ...
+    def setRotatedDimType (self, *args, **kwargs)-> None :
+      '''setRotatedDimType( (DimAssoc)arg1, (DimAssocRotatedDimType)arg2) -> None :
+
+    C++ signature :
+        void setRotatedDimType(class PyDbDimAssoc {lvalue},enum AcDbDimAssoc::RotatedDimType)'''
+    ...
+    def setTransSpatial (self, *args, **kwargs)-> None :
+      '''setTransSpatial( (DimAssoc)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setTransSpatial(class PyDbDimAssoc {lvalue},bool)'''
+    ...
+    def setXData (self: DbObject,xdata: list)-> None :
+      '''                             '''
+    ...
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
+      '''                             '''
+    ...
+    def startCmdWatcher (self, *args, **kwargs)-> None :
+      '''startCmdWatcher( (DimAssoc)arg1) -> None :
+
+    C++ signature :
+        void startCmdWatcher(class PyDbDimAssoc {lvalue})'''
+    ...
+    def startOopsWatcher (self, *args, **kwargs)-> None :
+      '''startOopsWatcher( (DimAssoc)arg1) -> None :
+
+    C++ signature :
+        void startOopsWatcher(class PyDbDimAssoc {lvalue})
+
+startOopsWatcher( (DimAssoc)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void startOopsWatcher(class PyDbDimAssoc {lvalue},bool)'''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def swapReferences (self, *args, **kwargs)-> None :
+      '''swapReferences( (DimAssoc)arg1, (IdMapping)arg2) -> None :
+
+    C++ signature :
+        void swapReferences(class PyDbDimAssoc {lvalue},class PyDbIdMapping)'''
+    ...
+    def updateAssociativity (self, *args, **kwargs)-> None :
+      '''updateAssociativity( (DimAssoc)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void updateAssociativity(class PyDbDimAssoc {lvalue},class boost::python::list)'''
+    ...
+    def updateDimension (self, *args, **kwargs)-> None :
+      '''updateDimension( (DimAssoc)arg1) -> None :
+
+    C++ signature :
+        void updateDimension(class PyDbDimAssoc {lvalue})
+
+updateDimension( (DimAssoc)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void updateDimension(class PyDbDimAssoc {lvalue},bool)
+
+updateDimension( (DimAssoc)arg1, (bool)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void updateDimension(class PyDbDimAssoc {lvalue},bool,bool)'''
+    ...
+    def updateDueToMirror (self, *args, **kwargs)-> None :
+      '''updateDueToMirror( (DimAssoc)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void updateDueToMirror(class PyDbDimAssoc {lvalue},bool)'''
+    ...
+    def updateFillet (self, *args, **kwargs)-> None :
+      '''updateFillet( (DimAssoc)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void updateFillet(class PyDbDimAssoc {lvalue},class boost::python::list)'''
+    ...
+    def updateSubentPath (self, *args, **kwargs)-> None :
+      '''updateSubentPath( (DimAssoc)arg1, (IdMapping)arg2) -> None :
+
+    C++ signature :
+        void updateSubentPath(class PyDbDimAssoc {lvalue},class PyDbIdMapping {lvalue})'''
+    ...
+    def updateXrefSubentPath (self, *args, **kwargs)-> None :
+      '''updateXrefSubentPath( (DimAssoc)arg1) -> None :
+
+    C++ signature :
+        void updateXrefSubentPath(class PyDbDimAssoc {lvalue})'''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
+      '''                             '''
+    ...
+    def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
+      '''                             '''
+    ...
+    def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+      '''                             '''
+    ...
+
+class DimAssocAssocFlags:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kFirstPointRef (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kFourthPointRef (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kSecondPointRef (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kThirdPointRef (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class DimAssocPointType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kAngLineEnd (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kAngLineStart (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kCenterPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kChordPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kDefiningPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kFarChordPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kJogPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kLeaderPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOriginPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOverrideCenterPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kVertexPoint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXline1End (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXline1Point (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXline1Start (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXline2End (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXline2Point (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kXline2Start (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class DimAssocRotatedDimType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kParallel (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPerpendicular (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kUnknown (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class DimInspect:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
