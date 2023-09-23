@@ -1,5 +1,22 @@
 #pragma once
-class PyDbPointRef
+#include "PyRxObject.h"
+#include "dbdimptref.h"
+
+//-----------------------------------------------------------------------------------------
+//PyDbPointRef
+void makePyDbPointRefWrapper();
+
+class PyDbPointRef : public PyRxObject
 {
+public:
+    PyDbPointRef(const AcDbPointRef* ptr);
+    PyDbPointRef(AcDbPointRef* ptr, bool autoDelete);
+    virtual ~PyDbPointRef() override = default;
+    static PyRxClass       desc();
+    static std::string     className();
+
+public:
+    AcDbPointRef* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 

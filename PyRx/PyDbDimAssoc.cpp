@@ -2,9 +2,9 @@
 #include "PyDbDimAssoc.h"
 #include "PyDbObjectId.h"
 #include "PyDbIdMapping.h"
+#include "PyDbPointRef.h"
 
 using namespace boost::python;
-
 
 void makePyDbDimAssocWrapper()
 {
@@ -20,11 +20,8 @@ void makePyDbDimAssocWrapper()
         .def("setAssocFlag", &PyDbDimAssoc::setAssocFlag2)
         .def("assocFlag", &PyDbDimAssoc::assocFlag1)
         .def("assocFlag", &PyDbDimAssoc::assocFlag2)
-
-        //TODO:
-        // def("setPointRef", &PyDbDimAssoc::setPointRef)
-        //.def("pointRef", &PyDbDimAssoc::pointRef)
-
+        .def("setPointRef", &PyDbDimAssoc::setPointRef)
+        .def("pointRef", &PyDbDimAssoc::pointRef)
         .def("setRotatedDimType", &PyDbDimAssoc::setRotatedDimType)
         .def("rotatedDimType", &PyDbDimAssoc::rotatedDimType)
         .def("addToPointRefReactor", &PyDbDimAssoc::addToPointRefReactor)
@@ -115,6 +112,16 @@ bool PyDbDimAssoc::assocFlag2(int ptType) const
 int PyDbDimAssoc::assocFlag1(void)
 {
     return impObj()->assocFlag();
+}
+
+void PyDbDimAssoc::setPointRef(int ptType, PyDbPointRef& ptRef)
+{
+    PyThrowBadEs(impObj()->setPointRef(ptType, ptRef.impObj()));
+}
+
+PyDbPointRef PyDbDimAssoc::pointRef(int ptType) const
+{
+   return PyDbPointRef(impObj()->pointRef(ptType));
 }
 
 void PyDbDimAssoc::setRotatedDimType(AcDbDimAssoc::RotatedDimType dimType)
