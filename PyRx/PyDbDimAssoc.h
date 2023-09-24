@@ -6,6 +6,7 @@
 class PyDbObjectId;
 class PyDbIdMapping;
 class PyDbPointRef;
+class PyDbOsnapPointRef;
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbDimAssoc
@@ -30,6 +31,7 @@ public:
     int                     assocFlag1(void);
     void                    setPointRef(int ptType, PyDbPointRef& ptRef);
     PyDbPointRef            pointRef(int ptType) const;
+    PyDbOsnapPointRef       osnapPointRef(int ptType) const;
     void                    setRotatedDimType(AcDbDimAssoc::RotatedDimType dimType);
     AcDbDimAssoc::RotatedDimType rotatedDimType() const;
     void                    addToPointRefReactor();

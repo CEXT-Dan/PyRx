@@ -14555,6 +14555,12 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def osnapPointRef (self, *args, **kwargs)-> PyDb.OsnapPointRef :
+      '''osnapPointRef( (DimAssoc)arg1, (int)arg2) -> OsnapPointRef :
+
+    C++ signature :
+        class PyDbOsnapPointRef osnapPointRef(class PyDbDimAssoc {lvalue},int)'''
+    ...
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -44240,6 +44246,12 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         enum AcDbPointRef::OsnapType osnapType(class PyDbOsnapPointRef {lvalue})'''
     ...
+    def point (self, *args, **kwargs)-> PyGe.Point3d :
+      '''point( (OsnapPointRef)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d point(class PyDbOsnapPointRef {lvalue})'''
+    ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
@@ -44254,6 +44266,12 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
 
     C++ signature :
         void setOsnapType(class PyDbOsnapPointRef {lvalue},enum AcDbPointRef::OsnapType)'''
+    ...
+    def setPoint (self, *args, **kwargs)-> None :
+      '''setPoint( (OsnapPointRef)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void setPoint(class PyDbOsnapPointRef {lvalue},class AcGePoint3d)'''
     ...
 
 class OsnapType:
