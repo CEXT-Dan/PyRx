@@ -270,7 +270,7 @@ BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 
-    enum_<AcDbDimAssoc::AssocFlags>("DimAssocAssocFlags")
+    enum_<AcDbDimAssoc::AssocFlags>("AssocFlags")
         .value("kFirstPointRef", AcDbDimAssoc::AssocFlags::kFirstPointRef)
         .value("kSecondPointRef", AcDbDimAssoc::AssocFlags::kSecondPointRef)
         .value("kThirdPointRef", AcDbDimAssoc::AssocFlags::kThirdPointRef)
@@ -278,7 +278,7 @@ BOOST_PYTHON_MODULE(PyDb)
         .export_values()
         ;
 
-    enum_<AcDbDimAssoc::RotatedDimType>("DimAssocRotatedDimType")
+    enum_<AcDbDimAssoc::RotatedDimType>("RotatedDimType")
         .value("kUnknown", AcDbDimAssoc::RotatedDimType::kUnknown)
         .value("kParallel", AcDbDimAssoc::RotatedDimType::kParallel)
         .value("kPerpendicular", AcDbDimAssoc::RotatedDimType::kPerpendicular)
