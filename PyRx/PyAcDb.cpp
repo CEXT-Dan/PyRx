@@ -36,6 +36,7 @@
 #include "PyDbGroup.h"
 #include "PyDbEllipse.h"
 #include "PyDbDimAssoc.h"
+#include "PyDbPointRef.h"
 
 using namespace boost::python;
 
@@ -243,12 +244,34 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbDatabaseSummaryInfoWrapper();
     makePyDbPlotSettingsValidatorWrapper();
     makePyDbSnoopDwgFilerWrapper();
+
+    makePyDbPointRefWrapper();
+    makePyDbOsnapPointRefWrapper();
     makePyDbDimAssocWrapper();
+
     makeDbCoreWrapper();//LAST?
 
     def("curDb", curPyDb);
 
     //enums
+    enum_<AcDbPointRef::OsnapType>("OsnapType")
+        .value("kOsnapNone", AcDbPointRef::OsnapType::kOsnapNone)
+        .value("kOsnapEnd", AcDbPointRef::OsnapType::kOsnapEnd)
+        .value("kOsnapMid", AcDbPointRef::OsnapType::kOsnapMid)
+        .value("kOsnapCen", AcDbPointRef::OsnapType::kOsnapCen)
+        .value("kOsnapNode", AcDbPointRef::OsnapType::kOsnapNode)
+        .value("kOsnapQuad", AcDbPointRef::OsnapType::kOsnapQuad)
+        .value("kOsnapInt", AcDbPointRef::OsnapType::kOsnapInt)
+        .value("kOsnapIns", AcDbPointRef::OsnapType::kOsnapIns)
+        .value("kOsnapPerp", AcDbPointRef::OsnapType::kOsnapPerp)
+        .value("kOsnapTan", AcDbPointRef::OsnapType::kOsnapTan)
+        .value("kOsnapNear", AcDbPointRef::OsnapType::kOsnapNear)
+        .value("kOsnapApint", AcDbPointRef::OsnapType::kOsnapApint)
+        .value("kOsnapStart", AcDbPointRef::OsnapType::kOsnapStart)
+        .value("kOsnapCentroid", AcDbPointRef::OsnapType::kOsnapCentroid)
+        .export_values()
+        ;
+
     enum_<AcDbDimAssoc::PointType>("DimAssocPointType")
         .value("kXline1Point", AcDbDimAssoc::PointType::kXline1Point)
         .value("kXline2Point", AcDbDimAssoc::PointType::kXline2Point)

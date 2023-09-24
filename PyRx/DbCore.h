@@ -9,6 +9,7 @@ class PyDbDatabase;
 class PyDbDatabaseSummaryInfo;
 class PyDbSymUtilServices;
 class PyDbTransactionManager;
+class PyDbDimAssoc;
 
 void makeDbCoreWrapper();
 
@@ -76,6 +77,8 @@ public:
     static boost::python::list  openDbObjects(const boost::python::list& id, AcDb::OpenMode mode, bool erased);
     static PyDbEntity           openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     static boost::python::list  openDbEntities(const boost::python::list& ids, AcDb::OpenMode mode, bool erased);
+    static PyDbObjectId         postDimAssoc1(const PyDbObjectId& dimId, PyDbDimAssoc& assos);
+    static PyDbObjectId         postDimAssoc2(const PyDbObjectId& dimId, PyDbDimAssoc& assos, bool isActive);
     static void                 queueAnnotationEntitiesForRegen(PyDbDatabase& db);
     static int                  queueForRegen(const boost::python::list& pyids);
     static bool                 regApp(const std::string& app);

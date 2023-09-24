@@ -117,6 +117,7 @@ int PyDbDimAssoc::assocFlag1(void)
 void PyDbDimAssoc::setPointRef(int ptType, PyDbPointRef& ptRef)
 {
     PyThrowBadEs(impObj()->setPointRef(ptType, ptRef.impObj()));
+    ptRef.forceKeepAlive(true);
 }
 
 PyDbPointRef PyDbDimAssoc::pointRef(int ptType) const

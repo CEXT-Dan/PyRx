@@ -10457,6 +10457,17 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class boost::python::list openDbObjects(class boost::python::list,enum AcDb::OpenMode,bool)'''
     ...
+    def postDimAssoc (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''postDimAssoc( (ObjectId)arg1, (DimAssoc)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId postDimAssoc(class PyDbObjectId,class PyDbDimAssoc {lvalue})
+
+postDimAssoc( (ObjectId)arg1, (DimAssoc)arg2, (bool)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId postDimAssoc(class PyDbObjectId,class PyDbDimAssoc {lvalue},bool)'''
+    ...
     def putSummaryInfo (self, *args, **kwargs)-> None :
       '''putSummaryInfo( (DatabaseSummaryInfo)arg1, (Database)arg2) -> None :
 
@@ -14547,8 +14558,8 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def pointRef (self, *args, **kwargs)-> object :
-      '''pointRef( (DimAssoc)arg1, (int)arg2) -> object :
+    def pointRef (self, *args, **kwargs)-> PyDb.PointRef :
+      '''pointRef( (DimAssoc)arg1, (int)arg2) -> PointRef :
 
     C++ signature :
         class PyDbPointRef pointRef(class PyDbDimAssoc {lvalue},int)'''
@@ -14639,7 +14650,7 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
       '''                             '''
     ...
     def setPointRef (self, *args, **kwargs)-> None :
-      '''setPointRef( (DimAssoc)arg1, (int)arg2, (object)arg3) -> None :
+      '''setPointRef( (DimAssoc)arg1, (int)arg2, (PointRef)arg3) -> None :
 
     C++ signature :
         void setPointRef(class PyDbDimAssoc {lvalue},int,class PyDbPointRef {lvalue})'''
@@ -44179,6 +44190,230 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class OsnapPointRef:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def osnapType (self, *args, **kwargs)-> PyDb.OsnapType :
+      '''osnapType( (OsnapPointRef)arg1) -> OsnapType :
+
+    C++ signature :
+        enum AcDbPointRef::OsnapType osnapType(class PyDbOsnapPointRef {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def setIdPath (self, *args, **kwargs)-> None :
+      '''setIdPath( (OsnapPointRef)arg1, (ObjectId)arg2, (SubentType)arg3, (int)arg4) -> None :
+
+    C++ signature :
+        void setIdPath(class PyDbOsnapPointRef {lvalue},class PyDbObjectId {lvalue},unsigned int,__int64)'''
+    ...
+    def setOsnapType (self, *args, **kwargs)-> None :
+      '''setOsnapType( (OsnapPointRef)arg1, (OsnapType)arg2) -> None :
+
+    C++ signature :
+        void setOsnapType(class PyDbOsnapPointRef {lvalue},enum AcDbPointRef::OsnapType)'''
+    ...
+
+class OsnapType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kOsnapApint (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapCen (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapCentroid (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapEnd (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapIns (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapInt (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapMid (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapNear (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapNode (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapNone (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapPerp (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapQuad (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapStart (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsnapTan (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class PdfDefinition:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -48360,6 +48595,42 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
 
     C++ signature :
         class AcGePoint3d xLine2Point(class PyDb3PointAngularDimension {lvalue})'''
+    ...
+
+class PointRef:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
     ...
 
 class Poly2dType:

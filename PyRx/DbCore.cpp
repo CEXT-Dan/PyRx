@@ -9,6 +9,7 @@
 #include "PyDbCurve.h"
 #include "PyDbHostApplicationServices.h"
 #include "PyDbTransactionManager.h"
+#include "PyDbDimAssoc.h"
 
 using namespace boost::python;
 
@@ -83,6 +84,8 @@ void makeDbCoreWrapper()
         .def("openDbObjects", &DbCore::openDbObjects).staticmethod("openDbObjects")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
         .def("openDbEntities", &DbCore::openDbEntities).staticmethod("openDbEntities")
+        .def("postDimAssoc", &DbCore::postDimAssoc1)
+        .def("postDimAssoc", &DbCore::postDimAssoc2).staticmethod("postDimAssoc")
         .def("queueAnnotationEntitiesForRegen", &DbCore::queueAnnotationEntitiesForRegen).staticmethod("queueAnnotationEntitiesForRegen")
         .def("queueForRegen", &DbCore::queueForRegen).staticmethod("queueForRegen")
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
@@ -552,6 +555,20 @@ boost::python::list DbCore::openDbEntities(const boost::python::list& ids, AcDb:
         pyList.append(PyDbEntity(pObj, true));
     }
     return pyList;
+}
+
+PyDbObjectId DbCore::postDimAssoc1(const PyDbObjectId& dimId, PyDbDimAssoc& assos)
+{
+    PyDbObjectId outId;
+    PyThrowBadEs(acdbPostDimAssoc(dimId.m_id, assos.impObj(), outId.m_id));
+    return outId;
+}
+
+PyDbObjectId DbCore::postDimAssoc2(const PyDbObjectId& dimId, PyDbDimAssoc& assos, bool isActive)
+{
+    PyDbObjectId outId;
+    PyThrowBadEs(acdbPostDimAssoc(dimId.m_id, assos.impObj(), outId.m_id, isActive));
+    return outId;
 }
 
 void DbCore::queueAnnotationEntitiesForRegen(PyDbDatabase& db)

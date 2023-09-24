@@ -2,6 +2,8 @@
 #include "PyRxObject.h"
 #include "dbdimptref.h"
 
+class PyDbObjectId;
+
 //-----------------------------------------------------------------------------------------
 //PyDbPointRef
 void makePyDbPointRefWrapper();
@@ -33,6 +35,11 @@ public:
     PyDbOsnapPointRef(const AcDbOsnapPointRef* ptr);
     PyDbOsnapPointRef(AcDbOsnapPointRef* ptr, bool autoDelete);
     virtual ~PyDbOsnapPointRef() override = default;
+    AcDbPointRef::OsnapType osnapType() const;
+    void                    setOsnapType(AcDbPointRef::OsnapType osnType);
+
+    void                    setIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk::GsMarker gsMarker);
+
     static PyRxClass       desc();
     static std::string     className();
 
