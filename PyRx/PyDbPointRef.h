@@ -40,6 +40,9 @@ public:
 
     void                    setIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk::GsMarker gsMarker);
 
+    void                    setPoint(const AcGePoint3d& pt);
+    AcGePoint3d             point() const;
+
     static PyRxClass       desc();
     static std::string     className();
 

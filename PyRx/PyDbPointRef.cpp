@@ -52,6 +52,8 @@ void makePyDbOsnapPointRefWrapper()
         .def("osnapType", &PyDbOsnapPointRef::osnapType)
         .def("setOsnapType", &PyDbOsnapPointRef::setOsnapType)
         .def("setIdPath", &PyDbOsnapPointRef::setIdPath)
+        .def("setPoint", &PyDbOsnapPointRef::setPoint)
+        .def("point", &PyDbOsnapPointRef::point)
         .def("desc", &PyDbOsnapPointRef::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyDbOsnapPointRef::className, DS.SARGS()).staticmethod("className")
         ;
@@ -91,6 +93,16 @@ void PyDbOsnapPointRef::setIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk
 {
     AcDbFullSubentPath idPath(id.m_id, AcDbSubentId(type, marker));
     PyThrowBadEs(impObj()->setIdPath(idPath));
+}
+
+void PyDbOsnapPointRef::setPoint(const AcGePoint3d& pt)
+{
+    PyThrowBadEs(impObj()->setPoint(pt));
+}
+
+AcGePoint3d PyDbOsnapPointRef::point() const
+{
+    return impObj()->point();
 }
 
 PyRxClass PyDbOsnapPointRef::desc()

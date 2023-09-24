@@ -22,6 +22,7 @@ void makePyDbDimAssocWrapper()
         .def("assocFlag", &PyDbDimAssoc::assocFlag2)
         .def("setPointRef", &PyDbDimAssoc::setPointRef)
         .def("pointRef", &PyDbDimAssoc::pointRef)
+        .def("osnapPointRef", &PyDbDimAssoc::osnapPointRef)
         .def("setRotatedDimType", &PyDbDimAssoc::setRotatedDimType)
         .def("rotatedDimType", &PyDbDimAssoc::rotatedDimType)
         .def("addToPointRefReactor", &PyDbDimAssoc::addToPointRefReactor)
@@ -122,7 +123,17 @@ void PyDbDimAssoc::setPointRef(int ptType, PyDbPointRef& ptRef)
 
 PyDbPointRef PyDbDimAssoc::pointRef(int ptType) const
 {
-   return PyDbPointRef(impObj()->pointRef(ptType));
+    return PyDbPointRef(impObj()->pointRef(ptType));
+}
+
+PyDbOsnapPointRef PyDbDimAssoc::osnapPointRef(int ptType) const
+{
+    const AcDbPointRef* ref = impObj()->pointRef(ptType);
+    if (ref == nullptr)
+        throw PyNullObject();
+    if (!ref->isKindOf(AcDbOsnapPointRef::desc()))
+        PyThrowBadEs(eNotThatKindOfClass);
+    return PyDbOsnapPointRef(static_cast<const AcDbOsnapPointRef*>(impObj()->pointRef(ptType)));
 }
 
 void PyDbDimAssoc::setRotatedDimType(AcDbDimAssoc::RotatedDimType dimType)
