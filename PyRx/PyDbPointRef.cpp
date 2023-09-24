@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyDbPointRef.h"
+#include "PyDbObjectId.h"
 
 using namespace boost::python;
 
@@ -48,6 +49,9 @@ void makePyDbOsnapPointRefWrapper()
     class_<PyDbOsnapPointRef, bases<PyDbPointRef>>("OsnapPointRef")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
+        .def("osnapType", &PyDbOsnapPointRef::osnapType)
+        .def("setOsnapType", &PyDbOsnapPointRef::setOsnapType)
+        .def("setIdPath", &PyDbOsnapPointRef::setIdPath)
         .def("desc", &PyDbOsnapPointRef::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyDbOsnapPointRef::className, DS.SARGS()).staticmethod("className")
         ;
@@ -71,6 +75,22 @@ PyDbOsnapPointRef::PyDbOsnapPointRef(const AcDbOsnapPointRef* ptr)
 PyDbOsnapPointRef::PyDbOsnapPointRef(AcDbOsnapPointRef* ptr, bool autoDelete)
     :PyDbPointRef(ptr, autoDelete)
 {
+}
+
+AcDbPointRef::OsnapType PyDbOsnapPointRef::osnapType() const
+{
+    return impObj()->osnapType();
+}
+
+void PyDbOsnapPointRef::setOsnapType(AcDbPointRef::OsnapType osnType)
+{
+    PyThrowBadEs(impObj()->setOsnapType(osnType));
+}
+
+void PyDbOsnapPointRef::setIdPath(PyDbObjectId& id, AcDb::SubentType type, Adesk::GsMarker marker)
+{
+    AcDbFullSubentPath idPath(id.m_id, AcDbSubentId(type, marker));
+    PyThrowBadEs(impObj()->setIdPath(idPath));
 }
 
 PyRxClass PyDbOsnapPointRef::desc()
