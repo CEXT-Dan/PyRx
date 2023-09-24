@@ -20,3 +20,24 @@ public:
 };
 
 
+
+//-----------------------------------------------------------------------------------------
+//PyDbOsnapPointRef
+void makePyDbOsnapPointRefWrapper();
+
+class PyDbOsnapPointRef : public PyDbPointRef
+{
+public:
+    PyDbOsnapPointRef();
+    PyDbOsnapPointRef(const AcGePoint3d& refPt);
+    PyDbOsnapPointRef(const AcDbOsnapPointRef* ptr);
+    PyDbOsnapPointRef(AcDbOsnapPointRef* ptr, bool autoDelete);
+    virtual ~PyDbOsnapPointRef() override = default;
+    static PyRxClass       desc();
+    static std::string     className();
+
+public:
+    AcDbOsnapPointRef* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
