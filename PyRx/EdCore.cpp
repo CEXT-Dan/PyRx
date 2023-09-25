@@ -23,6 +23,7 @@ EXTERN_C void                   acedLoadJSScript(const ACHAR* pUriOfJSFile);
 EXTERN_C bool                   acedGetPredefinedPattens(AcStringArray& patterns);
 EXTERN_C Acad::ErrorStatus      acedSetUndoMark(bool);
 EXTERN_C void                   acedGetCommandPromptString(CString&);
+EXTERN_C void                   acedDropOpenFile(const ACHAR*);
 extern void                     acedGetLastCommandLines(AcStringArray&, int, bool);
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 #endif
@@ -103,6 +104,7 @@ void makePyEdCoreWrapper()
         .def("displayBorder", &EdCore::displayBorder).staticmethod("displayBorder")
         .def("drawingStatusBarsVisible", &EdCore::drawingStatusBarsVisible).staticmethod("drawingStatusBarsVisible")
         .def("drawOrderInherit", &EdCore::drawOrderInherit).staticmethod("drawOrderInherit")
+        .def("dropOpenFile", &EdCore::dropOpenFile).staticmethod("dropOpenFile")
         .def("eatCommandThroat", &EdCore::eatCommandThroat).staticmethod("eatCommandThroat")
         .def("editMTextInteractive", &EdCore::editMTextInteractive).staticmethod("editMTextInteractive")
         .def("enableUsrbrk", &EdCore::enableUsrbrk).staticmethod("enableUsrbrk")
@@ -379,6 +381,11 @@ void EdCore::drawOrderInherit(PyDbObjectId& parent, const boost::python::list& c
 {
     auto ids = PyListToObjectIdArray(childArray);
     PyThrowBadEs(acedDrawOrderInherit(parent.m_id, ids, cmd));
+}
+
+void EdCore::dropOpenFile(const std::string& value)
+{
+    acedDropOpenFile(utf8_to_wstr(value).c_str());
 }
 
 int EdCore::eatCommandThroat()

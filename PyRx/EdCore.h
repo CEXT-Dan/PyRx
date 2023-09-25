@@ -51,6 +51,7 @@ public:
     static bool                 displayBorder(bool flag);
     static bool                 drawingStatusBarsVisible();
     static void                 drawOrderInherit(PyDbObjectId& parent,const boost::python::list& childArray,AcEdDrawOrderCmdType cmd);
+    static void                 dropOpenFile(const std::string& value);
     static int                  eatCommandThroat();
     static int                  editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs);
     static void                 enableUsrbrk();
