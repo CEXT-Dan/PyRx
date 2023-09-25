@@ -14024,6 +14024,156 @@ dictionaryNameAt( (ObjectId)arg1, (ObjectId)arg2) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getColorName(class PyDbObjectId)'''
     ...
+    def getGroupId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getGroupId( (str)arg1, (Database)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getGroupId(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def getGroupName (self, *args, **kwargs)-> str :
+      '''getGroupName( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getGroupName(class PyDbObjectId)'''
+    ...
+    def getLayoutId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getLayoutId( (str)arg1, (Database)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getLayoutId(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def getLayoutName (self, *args, **kwargs)-> str :
+      '''getLayoutName( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getLayoutName(class PyDbObjectId)'''
+    ...
+    def getMLStyleId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getMLStyleId( (str)arg1, (Database)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getMLStyleId(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def getMLStyleName (self, *args, **kwargs)-> str :
+      '''getMLStyleName( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getMLStyleName(class PyDbObjectId)'''
+    ...
+    def getMaterialId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getMaterialId( (str)arg1, (Database)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getMaterialId(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def getMaterialName (self, *args, **kwargs)-> str :
+      '''getMaterialName( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getMaterialName(class PyDbObjectId)'''
+    ...
+    def getPlotSettingsId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getPlotSettingsId( (str)arg1, (Database)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getPlotSettingsId(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def getPlotSettingsName (self, *args, **kwargs)-> str :
+      '''getPlotSettingsName( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotSettingsName(class PyDbObjectId)'''
+    ...
+    def getPlotStyleNameId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getPlotStyleNameId( (str)arg1, (Database)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getPlotStyleNameId(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def getPlotStyleNameName (self, *args, **kwargs)-> str :
+      '''getPlotStyleNameName( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotStyleNameName(class PyDbObjectId)'''
+    ...
+    def getTableStyleId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getTableStyleId( (str)arg1, (Database)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getTableStyleId(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def getTableStyleName (self, *args, **kwargs)-> str :
+      '''getTableStyleName( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getTableStyleName(class PyDbObjectId)'''
+    ...
+    def getVisualStyleId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getVisualStyleId( (str)arg1, (Database)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getVisualStyleId(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def getVisualStyleName (self, *args, **kwargs)-> str :
+      '''getVisualStyleName( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getVisualStyleName(class PyDbObjectId)'''
+    ...
+    def hasColor (self, *args, **kwargs)-> bool :
+      '''hasColor( (str)arg1, (Database)arg2) -> bool :
+
+    C++ signature :
+        bool hasColor(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def hasGroup (self, *args, **kwargs)-> bool :
+      '''hasGroup( (str)arg1, (Database)arg2) -> bool :
+
+    C++ signature :
+        bool hasGroup(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def hasLayout (self, *args, **kwargs)-> bool :
+      '''hasLayout( (str)arg1, (Database)arg2) -> bool :
+
+    C++ signature :
+        bool hasLayout(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def hasMLStyle (self, *args, **kwargs)-> bool :
+      '''hasMLStyle( (str)arg1, (Database)arg2) -> bool :
+
+    C++ signature :
+        bool hasMLStyle(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def hasMaterial (self, *args, **kwargs)-> bool :
+      '''hasMaterial( (str)arg1, (Database)arg2) -> bool :
+
+    C++ signature :
+        bool hasMaterial(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def hasPlotSettings (self, *args, **kwargs)-> bool :
+      '''hasPlotSettings( (str)arg1, (Database)arg2) -> bool :
+
+    C++ signature :
+        bool hasPlotSettings(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def hasPlotStyleName (self, *args, **kwargs)-> bool :
+      '''hasPlotStyleName( (str)arg1, (Database)arg2) -> bool :
+
+    C++ signature :
+        bool hasPlotStyleName(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def hasTableStyle (self, *args, **kwargs)-> bool :
+      '''hasTableStyle( (str)arg1, (Database)arg2) -> bool :
+
+    C++ signature :
+        bool hasTableStyle(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def hasVisualStyle (self, *args, **kwargs)-> bool :
+      '''hasVisualStyle( (str)arg1, (Database)arg2) -> bool :
+
+    C++ signature :
+        bool hasVisualStyle(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
 
 class Dictionary:
     def __init__ (self, *args, **kwargs)-> None :

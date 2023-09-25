@@ -826,6 +826,31 @@ void makePyDbDictUtilWrapper()
         .def("dictionaryNameAt", &PyDbDictUtil::dictionaryNameAt2).staticmethod("dictionaryNameAt")
         .def("dictionaryGetAt", &PyDbDictUtil::dictionaryGetAt).staticmethod("dictionaryGetAt")
         .def("getColorName", &PyDbDictUtil::getColorName).staticmethod("getColorName")
+        .def("getGroupId", &PyDbDictUtil::getGroupId).staticmethod("getGroupId")
+        .def("getGroupName", &PyDbDictUtil::getGroupName).staticmethod("getGroupName")
+        .def("getLayoutId", &PyDbDictUtil::getLayoutId).staticmethod("getLayoutId")
+        .def("getLayoutName", &PyDbDictUtil::getLayoutName).staticmethod("getLayoutName")
+        .def("getMaterialId", &PyDbDictUtil::getMaterialId).staticmethod("getMaterialId")
+        .def("getMaterialName", &PyDbDictUtil::getMaterialName).staticmethod("getMaterialName")
+        .def("getMLStyleId", &PyDbDictUtil::getMLStyleId).staticmethod("getMLStyleId")
+        .def("getMLStyleName", &PyDbDictUtil::getMLStyleName).staticmethod("getMLStyleName")
+        .def("getPlotSettingsId", &PyDbDictUtil::getPlotSettingsId).staticmethod("getPlotSettingsId")
+        .def("getPlotSettingsName", &PyDbDictUtil::getPlotSettingsName).staticmethod("getPlotSettingsName")
+        .def("getPlotStyleNameId", &PyDbDictUtil::getPlotStyleNameId).staticmethod("getPlotStyleNameId")
+        .def("getPlotStyleNameName", &PyDbDictUtil::getPlotStyleNameName).staticmethod("getPlotStyleNameName")
+        .def("getTableStyleId", &PyDbDictUtil::getTableStyleId).staticmethod("getTableStyleId")
+        .def("getTableStyleName", &PyDbDictUtil::getTableStyleName).staticmethod("getTableStyleName")
+        .def("getVisualStyleId", &PyDbDictUtil::getVisualStyleId).staticmethod("getVisualStyleId")
+        .def("getVisualStyleName", &PyDbDictUtil::getVisualStyleName).staticmethod("getVisualStyleName")
+        .def("hasColor", &PyDbDictUtil::hasColor).staticmethod("hasColor")
+        .def("hasGroup", &PyDbDictUtil::hasGroup).staticmethod("hasGroup")
+        .def("hasLayout", &PyDbDictUtil::hasLayout).staticmethod("hasLayout")
+        .def("hasMaterial", &PyDbDictUtil::hasMaterial).staticmethod("hasMaterial")
+        .def("hasMLStyle", &PyDbDictUtil::hasMaterial).staticmethod("hasMLStyle")
+        .def("hasPlotSettings", &PyDbDictUtil::hasPlotSettings).staticmethod("hasPlotSettings")
+        .def("hasPlotStyleName", &PyDbDictUtil::hasPlotStyleName).staticmethod("hasPlotStyleName")
+        .def("hasTableStyle", &PyDbDictUtil::hasTableStyle).staticmethod("hasTableStyle")
+        .def("hasVisualStyle", &PyDbDictUtil::hasVisualStyle).staticmethod("hasVisualStyle")
         ;
 }
 
@@ -853,6 +878,164 @@ PyDbObjectId PyDbDictUtil::dictionaryGetAt(const std::string& name, const PyDbOb
 std::string PyDbDictUtil::getColorName(const PyDbObjectId& itemId)
 {
     AcString str;
-    AcDbDictUtil::getColorName(str, itemId.m_id);
+    PyThrowBadEs(AcDbDictUtil::getColorName(str, itemId.m_id));
     return wstr_to_utf8(str);
 }
+
+PyDbObjectId PyDbDictUtil::getGroupId(const std::string& name, const PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbDictUtil::getGroupId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    return id;
+}
+
+std::string PyDbDictUtil::getGroupName(const PyDbObjectId& itemId)
+{
+    AcString str;
+    PyThrowBadEs(AcDbDictUtil::getGroupName(str, itemId.m_id));
+    return wstr_to_utf8(str);
+}
+
+PyDbObjectId PyDbDictUtil::getLayoutId(const std::string& name, const PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbDictUtil::getLayoutId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    return id;
+}
+
+std::string PyDbDictUtil::getLayoutName(const PyDbObjectId& itemId)
+{
+    AcString str;
+    PyThrowBadEs(AcDbDictUtil::getLayoutName(str, itemId.m_id));
+    return wstr_to_utf8(str);
+}
+
+PyDbObjectId PyDbDictUtil::getMaterialId(const std::string& name, const PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbDictUtil::getMaterialId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    return id;
+}
+
+std::string PyDbDictUtil::getMaterialName(const PyDbObjectId& itemId)
+{
+    AcString str;
+    PyThrowBadEs(AcDbDictUtil::getMaterialName(str, itemId.m_id));
+    return wstr_to_utf8(str);
+}
+
+PyDbObjectId PyDbDictUtil::getMLStyleId(const std::string& name, const PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbDictUtil::getMLStyleId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    return id;
+}
+
+std::string PyDbDictUtil::getMLStyleName(const PyDbObjectId& itemId)
+{
+    AcString str;
+    PyThrowBadEs(AcDbDictUtil::getMLStyleName(str, itemId.m_id));
+    return wstr_to_utf8(str);
+}
+
+PyDbObjectId PyDbDictUtil::getPlotSettingsId(const std::string& name, const PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbDictUtil::getPlotSettingsId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    return id;
+}
+
+std::string PyDbDictUtil::getPlotSettingsName(const PyDbObjectId& itemId)
+{
+    AcString str;
+    PyThrowBadEs(AcDbDictUtil::getPlotSettingsName(str, itemId.m_id));
+    return wstr_to_utf8(str);
+}
+
+PyDbObjectId PyDbDictUtil::getPlotStyleNameId(const std::string& name, const PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbDictUtil::getPlotStyleNameId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    return id;
+}
+
+std::string PyDbDictUtil::getPlotStyleNameName(const PyDbObjectId& itemId)
+{
+    AcString str;
+    PyThrowBadEs(AcDbDictUtil::getPlotStyleNameName(str, itemId.m_id));
+    return wstr_to_utf8(str);
+}
+
+PyDbObjectId PyDbDictUtil::getTableStyleId(const std::string& name, const PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbDictUtil::getTableStyleId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    return id;
+}
+
+std::string PyDbDictUtil::getTableStyleName(const PyDbObjectId& itemId)
+{
+    AcString str;
+    PyThrowBadEs(AcDbDictUtil::getTableStyleName(str, itemId.m_id));
+    return wstr_to_utf8(str);
+}
+
+PyDbObjectId PyDbDictUtil::getVisualStyleId(const std::string& name, const PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbDictUtil::getVisualStyleId(id.m_id, utf8_to_wstr(name).c_str(), db.impObj()));
+    return id;
+}
+
+std::string PyDbDictUtil::getVisualStyleName(const PyDbObjectId& itemId)
+{
+    AcString str;
+    PyThrowBadEs(AcDbDictUtil::getVisualStyleName(str, itemId.m_id));
+    return wstr_to_utf8(str);
+}
+
+bool PyDbDictUtil::hasColor(const std::string& name, const PyDbDatabase& db)
+{
+    return AcDbDictUtil::hasColor(utf8_to_wstr(name).c_str(), db.impObj());
+}
+
+bool PyDbDictUtil::hasGroup(const std::string& name, const PyDbDatabase& db)
+{
+    return AcDbDictUtil::hasGroup(utf8_to_wstr(name).c_str(), db.impObj());
+}
+
+bool PyDbDictUtil::hasLayout(const std::string& name, const PyDbDatabase& db)
+{
+    return AcDbDictUtil::hasLayout(utf8_to_wstr(name).c_str(), db.impObj());
+}
+
+bool PyDbDictUtil::hasMaterial(const std::string& name, const PyDbDatabase& db)
+{
+    return AcDbDictUtil::hasMaterial(utf8_to_wstr(name).c_str(), db.impObj());
+}
+
+bool PyDbDictUtil::hasMLStyle(const std::string& name, const PyDbDatabase& db)
+{
+    return AcDbDictUtil::hasMLStyle(utf8_to_wstr(name).c_str(), db.impObj());
+}
+
+bool PyDbDictUtil::hasPlotSettings(const std::string& name, const PyDbDatabase& db)
+{
+    return AcDbDictUtil::hasPlotSettings(utf8_to_wstr(name).c_str(), db.impObj());
+}
+
+bool PyDbDictUtil::hasPlotStyleName(const std::string& name, const PyDbDatabase& db)
+{
+    return AcDbDictUtil::hasPlotStyleName(utf8_to_wstr(name).c_str(), db.impObj());
+}
+
+bool PyDbDictUtil::hasTableStyle(const std::string& name, const PyDbDatabase& db)
+{
+    return AcDbDictUtil::hasTableStyle(utf8_to_wstr(name).c_str(), db.impObj());
+}
+
+bool PyDbDictUtil::hasVisualStyle(const std::string& name, const PyDbDatabase& db)
+{
+    return AcDbDictUtil::hasVisualStyle(utf8_to_wstr(name).c_str(), db.impObj());
+}
+
