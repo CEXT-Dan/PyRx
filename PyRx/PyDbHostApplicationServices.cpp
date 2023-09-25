@@ -817,3 +817,42 @@ AcDbPlotSettingsValidator* PyDbPlotSettingsValidator::impObj(const std::source_l
         throw PyNullObject(src);
         return m_impl;
 }
+
+void makePyDbDictUtilWrapper()
+{
+    PyDocString DS("DictUtil");
+    class_<PyDbDictUtil>("DictUtil")
+        .def("dictionaryNameAt", &PyDbDictUtil::dictionaryNameAt1)
+        .def("dictionaryNameAt", &PyDbDictUtil::dictionaryNameAt2).staticmethod("dictionaryNameAt")
+        .def("dictionaryGetAt", &PyDbDictUtil::dictionaryGetAt).staticmethod("dictionaryGetAt")
+        .def("getColorName", &PyDbDictUtil::getColorName).staticmethod("getColorName")
+        ;
+}
+
+std::string PyDbDictUtil::dictionaryNameAt1(const PyDbObjectId& itemId)
+{
+    AcString str;
+    PyThrowBadEs(AcDbDictUtil::dictionaryNameAt(str, itemId.m_id));
+    return wstr_to_utf8(str);
+}
+
+std::string PyDbDictUtil::dictionaryNameAt2(const PyDbObjectId& itemId, const PyDbObjectId& ownerDictId)
+{
+    AcString str;
+    PyThrowBadEs(AcDbDictUtil::dictionaryNameAt(str, itemId.m_id, ownerDictId.m_id));
+    return wstr_to_utf8(str);
+}
+
+PyDbObjectId PyDbDictUtil::dictionaryGetAt(const std::string& name, const PyDbObjectId& ownerDictId)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbDictUtil::dictionaryGetAt(id.m_id,utf8_to_wstr(name).c_str(), ownerDictId.m_id));
+    return id;
+}
+
+std::string PyDbDictUtil::getColorName(const PyDbObjectId& itemId)
+{
+    AcString str;
+    AcDbDictUtil::getColorName(str, itemId.m_id);
+    return wstr_to_utf8(str);
+}

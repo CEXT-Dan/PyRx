@@ -21,8 +21,6 @@ public:
     AcDbPointRef* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
-
 //-----------------------------------------------------------------------------------------
 //PyDbOsnapPointRef
 void makePyDbOsnapPointRefWrapper();
@@ -43,8 +41,8 @@ public:
     void                    setPoint(const AcGePoint3d& pt);
     AcGePoint3d             point() const;
 
-    static PyRxClass       desc();
-    static std::string     className();
+    static PyRxClass        desc();
+    static std::string      className();
 
 public:
     AcDbOsnapPointRef* impObj(const std::source_location& src = std::source_location::current()) const;

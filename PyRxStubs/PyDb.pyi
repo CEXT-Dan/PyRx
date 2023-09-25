@@ -13994,6 +13994,37 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
+class DictUtil:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def dictionaryGetAt (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''dictionaryGetAt( (str)arg1, (ObjectId)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dictionaryGetAt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def dictionaryNameAt (self, *args, **kwargs)-> str :
+      '''dictionaryNameAt( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryNameAt(class PyDbObjectId)
+
+dictionaryNameAt( (ObjectId)arg1, (ObjectId)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryNameAt(class PyDbObjectId,class PyDbObjectId)'''
+    ...
+    def getColorName (self, *args, **kwargs)-> str :
+      '''getColorName( (ObjectId)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getColorName(class PyDbObjectId)'''
+    ...
+
 class Dictionary:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
