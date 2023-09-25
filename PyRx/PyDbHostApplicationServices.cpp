@@ -871,7 +871,7 @@ std::string PyDbDictUtil::dictionaryNameAt2(const PyDbObjectId& itemId, const Py
 PyDbObjectId PyDbDictUtil::dictionaryGetAt(const std::string& name, const PyDbObjectId& ownerDictId)
 {
     PyDbObjectId id;
-    PyThrowBadEs(AcDbDictUtil::dictionaryGetAt(id.m_id,utf8_to_wstr(name).c_str(), ownerDictId.m_id));
+    PyThrowBadEs(AcDbDictUtil::dictionaryGetAt(id.m_id, utf8_to_wstr(name).c_str(), ownerDictId.m_id));
     return id;
 }
 
@@ -1038,4 +1038,3 @@ bool PyDbDictUtil::hasVisualStyle(const std::string& name, const PyDbDatabase& d
 {
     return AcDbDictUtil::hasVisualStyle(utf8_to_wstr(name).c_str(), db.impObj());
 }
-
