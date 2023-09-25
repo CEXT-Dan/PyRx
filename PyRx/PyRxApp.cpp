@@ -111,33 +111,6 @@ PyRxApp& PyRxApp::instance()
     return mthis;
 }
 
-void PyRxApp::cleanUpCommands()
-{
-    try
-    {
-        WxPyAutoLock lock;
-        for (auto& item : funcNameMap)
-        {
-            auto& val = item.second;
-            Py_DecRef(val.mdict);
-            Py_DecRef(val.OnPyInitApp);
-            Py_DecRef(val.OnPyUnloadApp);
-            Py_DecRef(val.OnPyLoadDwg);
-            Py_DecRef(val.OnPyUnloadDwg);
-        }
-
-        funcNameMap.clear();
-        for (auto& item : commands)
-        {
-            auto& val = item.second;
-            Py_DecRef(val);
-        }
-        commands.clear();
-        lispService.cleanup();
-    }
-    catch (...) {}
-}
-
 bool PyRxApp::init()
 {
     try
@@ -175,7 +148,6 @@ bool PyRxApp::init()
 
 bool PyRxApp::uninit()
 {
-    cleanUpCommands();
     isLoaded = false;
     WxPyAutoLock::canLock = false;
     PyAutoLockGIL::canLock = false;
