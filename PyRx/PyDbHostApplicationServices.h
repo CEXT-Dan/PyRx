@@ -165,3 +165,14 @@ public:
     AcDbPlotSettingsValidator* m_impl = acdbHostApplicationServices()->plotSettingsValidator();
 };
 
+//---------------------------------------------------------------------------------------- -
+//PyDbDictUtil
+void makePyDbDictUtilWrapper();
+class PyDbDictUtil
+{
+public:
+    static std::string dictionaryNameAt1(const PyDbObjectId& itemId);
+    static std::string dictionaryNameAt2(const PyDbObjectId& itemId, const PyDbObjectId& ownerDictId);
+    static PyDbObjectId dictionaryGetAt(const std::string& name, const PyDbObjectId& ownerDictId);
+    static std::string getColorName(const PyDbObjectId& itemId);
+};
