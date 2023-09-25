@@ -23,11 +23,6 @@ public:
         this->m_isShown = true;
         wxTopLevelWindows.Append(this);
     }
-
-    virtual bool Destroy() override
-    {
-        return true;
-    }
 };
 
 class WxRxApp : public wxApp
@@ -35,9 +30,9 @@ class WxRxApp : public wxApp
 public:
     WxRxApp() = default;
     virtual ~WxRxApp() override = default;
-    virtual bool OnInit();
-    virtual int  OnExit();
-    bool Init_wxPython();
+    virtual bool    OnInit();
+    virtual int     OnExit();
+    bool            Init_wxPython();
     static WxRxApp& get();
 public:
     PyThreadState* m_mainTState = nullptr;
@@ -78,10 +73,6 @@ int WxRxApp::OnExit()
 
 bool WxRxApp::Init_wxPython()
 {
-#ifdef NEVER// interesting flag
-    if (SetEnvironmentVariable(L"PYTHONOPTIMIZE", L"yes") != 0)
-        acutPrintf(_T("\nPYTHONOPTIMIZE = TRUE\n"));
-#endif
     Py_InitializeEx(0);
     if (wxPyGetAPIPtr() == NULL)
     {
@@ -96,9 +87,9 @@ bool WxRxApp::Init_wxPython()
 
 bool initWxApp()
 {
+    wxApp::SetInstance(&WxRxApp::get());
     if (wxInitialize())
     {
-        wxApp::SetInstance(&WxRxApp::get());
         if (wxTheApp && wxTheApp->CallOnInit())
             return true;
     }

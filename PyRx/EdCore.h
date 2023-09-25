@@ -8,6 +8,10 @@ class PyDbViewTableRecord;
 class PyDbViewport;
 
 
+// TODO:
+// acedGetAcadFrame
+// acedGetApplicationFrame();
+
 void makePyUtilWrapper();
 class Util
 {
