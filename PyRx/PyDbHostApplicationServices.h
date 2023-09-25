@@ -171,8 +171,33 @@ void makePyDbDictUtilWrapper();
 class PyDbDictUtil
 {
 public:
-    static std::string dictionaryNameAt1(const PyDbObjectId& itemId);
-    static std::string dictionaryNameAt2(const PyDbObjectId& itemId, const PyDbObjectId& ownerDictId);
+    static std::string  dictionaryNameAt1(const PyDbObjectId& itemId);
+    static std::string  dictionaryNameAt2(const PyDbObjectId& itemId, const PyDbObjectId& ownerDictId);
     static PyDbObjectId dictionaryGetAt(const std::string& name, const PyDbObjectId& ownerDictId);
-    static std::string getColorName(const PyDbObjectId& itemId);
+    static std::string  getColorName(const PyDbObjectId& itemId);
+    static PyDbObjectId getGroupId(const std::string& name, const PyDbDatabase& db);
+    static std::string  getGroupName(const PyDbObjectId& itemId);
+    static PyDbObjectId getLayoutId(const std::string& name, const PyDbDatabase& db);
+    static std::string  getLayoutName(const PyDbObjectId& itemId);
+    static PyDbObjectId getMaterialId(const std::string& name, const PyDbDatabase& db);
+    static std::string  getMaterialName(const PyDbObjectId& itemId);
+    static PyDbObjectId getMLStyleId(const std::string& name, const PyDbDatabase& db);
+    static std::string  getMLStyleName(const PyDbObjectId& itemId);
+    static PyDbObjectId getPlotSettingsId(const std::string& name, const PyDbDatabase& db);
+    static std::string  getPlotSettingsName(const PyDbObjectId& itemId);
+    static PyDbObjectId getPlotStyleNameId(const std::string& name, const PyDbDatabase& db);
+    static std::string  getPlotStyleNameName(const PyDbObjectId& itemId);
+    static PyDbObjectId getTableStyleId(const std::string& name, const PyDbDatabase& db);
+    static std::string  getTableStyleName(const PyDbObjectId& itemId);
+    static PyDbObjectId getVisualStyleId(const std::string& name, const PyDbDatabase& db);
+    static std::string  getVisualStyleName(const PyDbObjectId& itemId);
+    static bool         hasColor(const std::string& name, const PyDbDatabase& db);
+    static bool         hasGroup(const std::string& name, const PyDbDatabase& db);
+    static bool         hasLayout(const std::string& name, const PyDbDatabase& db);
+    static bool         hasMaterial(const std::string& name, const PyDbDatabase& db);
+    static bool         hasMLStyle(const std::string& name, const PyDbDatabase& db);
+    static bool         hasPlotSettings(const std::string& name, const PyDbDatabase& db);
+    static bool         hasPlotStyleName(const std::string& name, const PyDbDatabase& db);
+    static bool         hasTableStyle(const std::string& name, const PyDbDatabase& db);
+    static bool         hasVisualStyle(const std::string& name, const PyDbDatabase& db);
 };
