@@ -887,9 +887,10 @@ int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorInde
 
 boost::python::tuple EdCore::getMousePosition()
 {
-    PyAutoLockGIL lock;
-    wxPoint pnt = wxGetMousePosition();
-    return boost::python::make_tuple(pnt.x, pnt.y);
+    POINT p;
+    if (GetCursorPos(&p))
+        return boost::python::make_tuple(p.x, p.y);
+    return boost::python::make_tuple(0, 0);
 }
 
 AcGePoint3d EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)
