@@ -888,6 +888,7 @@ int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorInde
 boost::python::tuple EdCore::getMousePosition()
 {
     POINT p;
+    PyAutoLockGIL lock;
     if (GetCursorPos(&p))
         return boost::python::make_tuple(p.x, p.y);
     return boost::python::make_tuple(0, 0);
