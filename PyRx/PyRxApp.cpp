@@ -30,16 +30,18 @@ class WxRxApp : public wxApp
 public:
     WxRxApp() = default;
     virtual ~WxRxApp() override = default;
-    virtual bool    OnInit();
-    virtual int     OnExit();
+    virtual bool    OnInit() override;
+    virtual int     OnExit() override;
+    virtual void    WakeUpIdle() override;
+    virtual void    ExitMainLoop() override;
     bool            Init_wxPython();
-    static WxRxApp& get();
+    static WxRxApp& instance();
 public:
     PyThreadState* m_mainTState = nullptr;
     std::unique_ptr<WinFrame> frame;
 };
 
-WxRxApp& WxRxApp::get()
+WxRxApp& WxRxApp::instance()
 {
     static WxRxApp mthis;
     return mthis;
@@ -48,7 +50,6 @@ WxRxApp& WxRxApp::get()
 bool WxRxApp::OnInit()
 {
     frame.reset(new WinFrame(adsw_acadMainWnd()));
-    wxSetInstance(acrxGetApp()->GetModuleInstance());
     wxTheApp->SetTopWindow(frame.get());
     if (wxTheApp->GetMainTopWindow() == nullptr)
         return false;
@@ -71,6 +72,20 @@ int WxRxApp::OnExit()
     return 0;
 }
 
+void WxRxApp::WakeUpIdle() 
+{
+    CWinApp* const mfcApp = AfxGetApp();
+    if (mfcApp && mfcApp->m_pMainWnd)
+    {
+        ::PostMessage(mfcApp->m_pMainWnd->m_hWnd, WM_NULL, 0, 0);
+    }
+}
+
+void WxRxApp::ExitMainLoop()
+{
+    ::PostQuitMessage(0);
+}
+
 bool WxRxApp::Init_wxPython()
 {
     Py_InitializeEx(0);
@@ -87,9 +102,15 @@ bool WxRxApp::Init_wxPython()
 
 bool initWxApp()
 {
-    wxApp::SetInstance(&WxRxApp::get());
+    wxApp::SetInstance(&WxRxApp::instance());
     if (wxInitialize())
     {
+        HINSTANCE hInst = AfxGetInstanceHandle();
+        if (hInst == nullptr)
+            return false;
+        if (!wxEntryStart(hInst))
+            return FALSE;
+        wxSetInstance(hInst);
         if (wxTheApp && wxTheApp->CallOnInit())
             return true;
     }

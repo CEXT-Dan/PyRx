@@ -28,6 +28,7 @@
 #include "PyRxApp.h"
 #include "PyCmd.h"
 #include "rxvar.h"
+
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
@@ -490,7 +491,8 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
-
+         wxPoint pnt = wxGetMousePosition();
+         acutPrintf(_T("\n%d, %d"), pnt.x, pnt.y);
     }
 #endif
 };
