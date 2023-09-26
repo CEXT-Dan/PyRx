@@ -134,8 +134,8 @@ void makePyEdCoreWrapper()
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
         .def("getSysVars", &EdCore::getSysVars).staticmethod("getSysVars")
-        .def("getCursorPosition", &EdCore::getMousePosition).staticmethod("getCursorPosition")
-        .def("getMousePosition", &EdCore::getMousePosition).staticmethod("getMousePosition")
+        .def("getMousePositionUCS", &EdCore::getMousePositionUCS).staticmethod("getMousePositionUCS")
+        .def("getMousePositionWCS", &EdCore::getMousePositionWCS).staticmethod("getMousePositionWCS")
         .def("invoke", &EdCore::invoke).staticmethod("invoke")
         .def("initDialog", &EdCore::initDialog).staticmethod("initDialog")
         .def("isDragging", &EdCore::isDragging).staticmethod("isDragging")
@@ -885,13 +885,48 @@ int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorInde
     return acedGrDraw(asDblArray(from), asDblArray(to), colorIndex, highlight);
 }
 
-boost::python::tuple EdCore::getMousePosition()
+AcGePoint3d EdCore::getMousePositionUCS()
 {
-    POINT p;
-    PyAutoLockGIL lock;
-    if (GetCursorPos(&p))
-        return boost::python::make_tuple(p.x, p.y);
-    return boost::python::make_tuple(0, 0);
+    CPoint cursorPos;
+    ::GetCursorPos(&cursorPos);
+    ::ScreenToClient(adsw_acadDocWnd(), &cursorPos);
+
+    acedDwgPoint cpt;
+    acedCoordFromPixelToWorld(cursorPos, cpt);
+
+    resbuf fromrb;
+    fromrb.restype = RTSHORT;
+    fromrb.resval.rint = 2; // DCS
+
+    resbuf torb;
+    torb.restype = RTSHORT;
+    torb.resval.rint = 1; // WCS 
+
+    AcGePoint3d hitPoint;
+    acedTrans(cpt, &fromrb, &torb, FALSE, asDblArray(hitPoint));
+    return hitPoint;
+}
+
+AcGePoint3d EdCore::getMousePositionWCS()
+{
+    CPoint cursorPos;
+    ::GetCursorPos(&cursorPos);
+    ::ScreenToClient(adsw_acadDocWnd(), &cursorPos);
+
+    acedDwgPoint cpt;
+    acedCoordFromPixelToWorld(cursorPos, cpt);
+
+    resbuf fromrb;
+    fromrb.restype = RTSHORT;
+    fromrb.resval.rint = 2; // DCS
+
+    resbuf torb;
+    torb.restype = RTSHORT;
+    torb.resval.rint = 0; // WCS 
+
+    AcGePoint3d hitPoint;
+    acedTrans(cpt, &fromrb, &torb, FALSE, asDblArray(hitPoint));
+    return hitPoint;
 }
 
 AcGePoint3d EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)

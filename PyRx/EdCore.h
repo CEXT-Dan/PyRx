@@ -84,7 +84,8 @@ public:
     static boost::python::object getVar(const std::string& sym);
     static bool                  setVar(const std::string& sym, const  boost::python::object&);
     static int                  grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
-    static boost::python::tuple getMousePosition();
+    static AcGePoint3d          getMousePositionUCS();
+    static AcGePoint3d          getMousePositionWCS();
     static boost::python::list  invoke(const boost::python::list& args);
     static Adesk::Boolean       initDialog(Adesk::Boolean useDialog);
     static int                  isDragging();
