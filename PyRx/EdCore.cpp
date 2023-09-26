@@ -134,6 +134,8 @@ void makePyEdCoreWrapper()
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
         .def("getSysVars", &EdCore::getSysVars).staticmethod("getSysVars")
+        .def("getCursorPosition", &EdCore::getMousePosition).staticmethod("getCursorPosition")
+        .def("getMousePosition", &EdCore::getMousePosition).staticmethod("getMousePosition")
         .def("invoke", &EdCore::invoke).staticmethod("invoke")
         .def("initDialog", &EdCore::initDialog).staticmethod("initDialog")
         .def("isDragging", &EdCore::isDragging).staticmethod("isDragging")
@@ -881,6 +883,13 @@ boost::python::tuple EdCore::setColorDialogTrueColor2(const AcCmColor& color, Ad
 int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight)
 {
     return acedGrDraw(asDblArray(from), asDblArray(to), colorIndex, highlight);
+}
+
+boost::python::tuple EdCore::getMousePosition()
+{
+    PyAutoLockGIL lock;
+    wxPoint pnt = wxGetMousePosition();
+    return boost::python::make_tuple(pnt.x, pnt.y);
 }
 
 AcGePoint3d EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)
