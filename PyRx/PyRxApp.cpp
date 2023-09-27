@@ -72,7 +72,7 @@ int WxRxApp::OnExit()
     return 0;
 }
 
-void WxRxApp::WakeUpIdle() 
+void WxRxApp::WakeUpIdle()
 {
     CWinApp* const mfcApp = AfxGetApp();
     if (mfcApp && mfcApp->m_pMainWnd)
@@ -88,10 +88,16 @@ void WxRxApp::ExitMainLoop()
 
 bool WxRxApp::Init_wxPython()
 {
+    constexpr const TCHAR* msg = _T("\n*****Error importing the wxPython API!*****");
     Py_InitializeEx(0);
     if (wxPyGetAPIPtr() == NULL)
     {
-        acutPrintf(_T("\n*****Error importing the wxPython API!*****"));
+        acutPrintf(msg);
+        return false;
+    }
+    if (!wxPyCheckForApp(false))
+    {
+        acutPrintf(msg);
         return false;
     }
     m_mainTState = wxPyBeginAllowThreads();
