@@ -491,8 +491,7 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
-         wxPoint pnt = wxGetMousePosition();
-         acutPrintf(_T("\n%d, %d"), pnt.x, pnt.y);
+         acutPrintf(_T("\nwxPyCheckForApp = %ls"), wxPyGetAPIPtr()->p_wxPyCheckForApp(false) ? _T("True"): _T("False"));
     }
 #endif
 };
