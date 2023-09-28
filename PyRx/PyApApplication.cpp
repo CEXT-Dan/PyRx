@@ -78,7 +78,7 @@ PyObject* PyApApplication::getwxApp()
     wxApp* pApp = wxTheApp;
     if (pApp == nullptr)
         throw PyNullObject();
-    PyObject* _wxapp = wxPyConstructObject(pApp, wxT("wxApp"));
+    PyObject* _wxapp = wxPyConstructObject(pApp, wxT("wxPyApp"));
     if (_wxapp == nullptr)
         throw PyNullObject();
     return _wxapp;
