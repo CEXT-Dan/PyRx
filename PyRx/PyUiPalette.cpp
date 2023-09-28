@@ -309,7 +309,7 @@ PyObject* PyCAdUiPaletteSet::getFullRect()
     CRect rect;
     impObj()->GetFullRect(rect);
     wxRect _wxRect(rect.left, rect.top, rect.right, rect.bottom);
-    return wxPyConstructObject(&_wxRect, "wxRect");
+    return wxPyConstructObject(&_wxRect, wxT("wxRect"));
 }
 
 bool PyCAdUiPaletteSet::rolledUp()

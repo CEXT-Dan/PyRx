@@ -491,7 +491,6 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
-         acutPrintf(_T("\nwxPyCheckForApp = %ls"), wxPyGetAPIPtr()->p_wxPyCheckForApp(false) ? _T("True"): _T("False"));
     }
 #endif
 };

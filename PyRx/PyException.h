@@ -45,9 +45,9 @@ struct PyNullObject
 
     inline std::string format() const
     {
-        static constexpr const char* fmtstr = "\nException,Object is NULL, in function {} {}: ";
+        static constexpr const char* fmtstr = "\nException! Object is NULL, in function {} ,Line {}, File {}: ";
         const std::filesystem::path file = m_src.file_name();
-        return std::format(fmtstr, m_src.function_name(), file.filename().string());
+        return std::format(fmtstr, m_src.function_name(), m_src.line(), file.filename().string());
     }
 
     static void translator(PyNullObject const& x)

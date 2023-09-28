@@ -231,8 +231,6 @@ using AcDbObjectUPtr = std::unique_ptr < T, decltype([](T* ptr) noexcept
 }) > ;
 
 // Import Python and wxPython headers
-#define WXUSINGDLL
-#define __WXMSW__ 
 #include <wxPython/sip.h>
 #include <wxPython/wxpy_api.h>
 #include "PyDocString.h"
