@@ -44,7 +44,6 @@ public:
 };
 DECLARE_APP(WxRxApp)
 
-
 //------------------------------------------------------------------------------------------------
 // the PyRxApp, holds the command objects
 class PyRxApp

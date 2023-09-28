@@ -67,7 +67,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=240;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;wxUSE_GUI=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=240;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>$(ARX2021)\inc;$(ARX2021)\inc-$(PlatformName);$(ARX2021)\utils\brep\inc;$(Py310)\include;$(boost);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -108,7 +108,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <OmitFramePointers>true</OmitFramePointers>
-      <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=240;__WXMSW__;WXUSINGDLL;wxUSE_GUI=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;ARXAPP;_ARXTARGET=240;__WXMSW__;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <OutputFile>$(outdir)/$(targetname)$(TargetExt)</OutputFile>
