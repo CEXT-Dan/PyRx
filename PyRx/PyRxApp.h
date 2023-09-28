@@ -3,7 +3,7 @@
 #include "PyLispService.h"
 
 //------------------------------------------------------------------------------------------------
-//  PyRxMethod holds command object
+//  PyRxMethod holds command objects
 struct PyRxMethod
 {
     PyObjectPtr modname;
@@ -42,7 +42,6 @@ public:
 public:
     std::unique_ptr<WinFrame> frame;
 };
-DECLARE_APP(WxRxApp)
 
 //------------------------------------------------------------------------------------------------
 // the PyRxApp, holds the command objects
@@ -58,7 +57,6 @@ public:
     static PyRxApp& instance();
 public:
 
-    void cleanUpCommands();
     using FuncNameMap = std::map<AcString, PyRxMethod>;
     FuncNameMap funcNameMap;
 
