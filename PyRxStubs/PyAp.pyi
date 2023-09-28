@@ -154,6 +154,9 @@ class Application:
     def setTitleThemeDark (wnd : int)-> None :
       '''                             '''
     ...
+    def wxApp ()-> object :
+      '''                             '''
+    ...
 
 class AutoDocLock:
     def __init__ (self, *args, **kwargs)-> None :

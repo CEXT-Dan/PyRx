@@ -2,6 +2,8 @@
 #include "stdafx.h"
 #include "PyLispService.h"
 
+//------------------------------------------------------------------------------------------------
+//  PyRxMethod holds command object
 struct PyRxMethod
 {
     PyObjectPtr modname;
@@ -16,6 +18,35 @@ struct PyRxMethod
     PyObject* OnPyUnloadDwg = nullptr;
 };
 
+//------------------------------------------------------------------------------------------------
+//  this is AutoCAD's main frame
+class WinFrame : public wxFrame
+{
+public:
+    WinFrame(HWND hwnd);
+};
+
+//------------------------------------------------------------------------------------------------
+// the wxApp
+class WxRxApp : public wxApp
+{
+public:
+    WxRxApp() = default;
+    virtual ~WxRxApp() override = default;
+    virtual bool    OnInit() override;
+    virtual int     OnExit() override;
+    virtual void    WakeUpIdle() override;
+    virtual void    ExitMainLoop() override;
+    bool            Init_wxPython();
+    static WxRxApp& instance();
+public:
+    std::unique_ptr<WinFrame> frame;
+};
+DECLARE_APP(WxRxApp)
+
+
+//------------------------------------------------------------------------------------------------
+// the PyRxApp, holds the command objects
 class PyRxApp
 {
 public:

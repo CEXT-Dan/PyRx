@@ -13,34 +13,18 @@
 #include "wx/wx.h"
 WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
 
-class WinFrame : public wxFrame
+//------------------------------------------------------------------------------------------------
+//  this is AutoCAD's main frame
+WinFrame::WinFrame(HWND hwnd)
 {
-public:
-    WinFrame(HWND hwnd)
-    {
-        this->SetHWND(hwnd);
-        this->AdoptAttributesFromHWND();
-        this->m_isShown = true;
-        wxTopLevelWindows.Append(this);
-    }
-};
+    this->SetHWND(hwnd);
+    this->AdoptAttributesFromHWND();
+    this->m_isShown = true;
+    wxTopLevelWindows.Append(this);
+}
 
-class WxRxApp : public wxApp
-{
-public:
-    WxRxApp() = default;
-    virtual ~WxRxApp() override = default;
-    virtual bool    OnInit() override;
-    virtual int     OnExit() override;
-    virtual void    WakeUpIdle() override;
-    virtual void    ExitMainLoop() override;
-    bool            Init_wxPython();
-    static WxRxApp& instance();
-public:
-    PyThreadState* m_mainTState = nullptr;
-    std::unique_ptr<WinFrame> frame;
-};
-
+//------------------------------------------------------------------------------------------------
+// the wxApp
 WxRxApp& WxRxApp::instance()
 {
     static WxRxApp mthis;
@@ -60,12 +44,11 @@ bool WxRxApp::OnInit()
 
 int WxRxApp::OnExit()
 {
-    m_mainTState = wxPyBeginAllowThreads();
-    wxPyEndAllowThreads(m_mainTState);
-    frame.release();
+    wxPyEndAllowThreads(wxPyBeginAllowThreads());
     wxTheApp->GetMainTopWindow()->SetHWND(0);
     wxTheApp->SetTopWindow(nullptr);
     wxTheApp->CleanUp();
+    frame.release();
 #ifdef NEVER //TODO!
     wxUninitialize();
 #endif
@@ -74,8 +57,8 @@ int WxRxApp::OnExit()
 
 void WxRxApp::WakeUpIdle()
 {
-    CWinApp* const mfcApp = AfxGetApp();
-    if (mfcApp && mfcApp->m_pMainWnd)
+    const CWinApp* mfcApp = AfxGetApp();
+    if (mfcApp != nullptr && mfcApp->m_pMainWnd)
     {
         ::PostMessage(mfcApp->m_pMainWnd->m_hWnd, WM_NULL, 0, 0);
     }
@@ -100,12 +83,15 @@ bool WxRxApp::Init_wxPython()
         acutPrintf(msg);
         return false;
     }
-    m_mainTState = wxPyBeginAllowThreads();
+    wxPyBeginAllowThreads();
     WxPyAutoLock::canLock = true;
     PyAutoLockGIL::canLock = true;
     return true;
 }
 
+
+//------------------------------------------------------------------------------------------------
+// helper function to initWxApp
 bool initWxApp()
 {
     wxApp::SetInstance(&WxRxApp::instance());
@@ -123,6 +109,8 @@ bool initWxApp()
     return false;
 }
 
+//------------------------------------------------------------------------------------------------
+// the PyRxApp, holds the command objects
 std::filesystem::path PyRxApp::modulePath()
 {
     wchar_t buffer[MAX_PATH];
@@ -167,7 +155,7 @@ bool PyRxApp::init()
     }
     catch (...)
     {
-        acutPrintf(_T("exception in uninit"));
+        acutPrintf(_T("exception in init"));
         isLoaded = false;
     }
     return isLoaded;
@@ -287,5 +275,6 @@ std::wstring PyRxApp::the_error()
     }
     return std::wstring{ };
 }
-
 IMPLEMENT_APP_NO_MAIN(WxRxApp)
+
+

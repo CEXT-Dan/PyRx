@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PyApApplication.h"
 #include "PyApDocManager.h"
-
+#include "PyRxApp.h"
 #include "dwmapi.h"
 #pragma comment( lib, "dwmapi.lib")
 
@@ -17,6 +17,7 @@ void makePyApApplictionWrapper()
         .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark, DS.SARGS({ "wnd : int" })).staticmethod("setTitleThemeDark")
         .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "wnd : int" })).staticmethod("applyHostIcon")
         .def("acadGetIDispatch", &PyApApplication::acadGetIDispatch, DS.SARGS()).staticmethod("acadGetIDispatch")
+        .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -67,6 +68,20 @@ std::string PyApApplication::className()
 UINT_PTR PyApApplication::acadGetIDispatch()
 {
     return (UINT_PTR)acedGetIDispatch(true);
+}
+
+PyObject* PyApApplication::getwxApp()
+{
+    WxPyAutoLock lock;
+    if (!wxPyCheckForApp(false))
+        throw PyNullObject();
+    wxApp* pApp = wxTheApp;
+    if (pApp == nullptr)
+        throw PyNullObject();
+    PyObject* _wxapp = wxPyConstructObject(pApp, wxT("wxApp"));
+    if (_wxapp == nullptr)
+        throw PyNullObject();
+    return _wxapp;
 }
 
 //-----------------------------------------------------------------------------------------

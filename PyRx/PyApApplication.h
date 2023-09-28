@@ -17,6 +17,7 @@ public:
     static UINT_PTR mainWnd();
     static std::string className();
     static UINT_PTR acadGetIDispatch();
+    static PyObject* getwxApp();
 };
 
 //-----------------------------------------------------------------------------------------

@@ -478,6 +478,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         bool drawingStatusBarsVisible()'''
     ...
+    def dropOpenFile (self, *args, **kwargs)-> None :
+      '''dropOpenFile( (str)arg1) -> None :
+
+    C++ signature :
+        void dropOpenFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def eatCommandThroat (self, *args, **kwargs)-> int :
       '''eatCommandThroat() -> int :
 
@@ -591,6 +597,18 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         class boost::python::list getLastCommandLines(int,bool)'''
+    ...
+    def getMousePositionUCS (self, *args, **kwargs)-> PyGe.Point3d :
+      '''getMousePositionUCS() -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getMousePositionUCS()'''
+    ...
+    def getMousePositionWCS (self, *args, **kwargs)-> PyGe.Point3d :
+      '''getMousePositionWCS() -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getMousePositionWCS()'''
     ...
     def getPredefinedHatchPatterns (self, *args, **kwargs)-> list :
       '''getPredefinedHatchPatterns() -> list :

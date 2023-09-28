@@ -2353,7 +2353,7 @@ boost::python::object PyDbBlockTableRecord::getPreviewIcon() const
     wxBitmap* bmp = new wxBitmap(img);
     if (!bmp->IsOk())
         PyThrowBadEs(Acad::eInvalidPreviewImage);
-    return boost::python::object(boost::python::handle<>(wxPyConstructObject(bmp, "wxBitmap", true)));
+    return boost::python::object(boost::python::handle<>(wxPyConstructObject(bmp, wxT("wxBitmap"), true)));
 }
 
 void PyDbBlockTableRecord::clearPreviewIcon() const
