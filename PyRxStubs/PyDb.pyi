@@ -14120,11 +14120,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
-    def asDict (self, *args, **kwargs)-> dict :
-      '''asDict( (Dictionary)arg1) -> dict :
-
-    C++ signature :
-        class boost::python::dict asDict(class PyDbDictionary {lvalue})'''
+    def asDict (self: Dictionary)-> dict :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -14141,23 +14138,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Dictionary :
-      '''cast( (RxObject)arg1) -> Dictionary :
-
-    C++ signature :
-        class PyDbDictionary cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Dictionary :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.Dictionary :
-      '''cloneFrom( (RxObject)arg1) -> Dictionary :
-
-    C++ signature :
-        class PyDbDictionary cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Dictionary :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -14171,11 +14159,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -14198,11 +14183,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getAt( (Dictionary)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getAt(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAt (self: Dictionary,val : str)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
       '''                             '''
@@ -14216,16 +14198,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
-    def has (self, *args, **kwargs)-> bool :
-      '''has( (Dictionary)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool has(class PyDbDictionary {lvalue},class PyDbObjectId)'''
+    def has (self: Dictionary,val : str|PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
@@ -14305,11 +14279,8 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     def keepAlive (self: RxObject,flag:bool)-> None :
       '''                             '''
     ...
-    def nameAt (self, *args, **kwargs)-> str :
-      '''nameAt( (Dictionary)arg1, (ObjectId)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > nameAt(class PyDbDictionary {lvalue},class PyDbObjectId)'''
+    def nameAt (self: Dictionary,val : PyDb.ObjectId)-> str :
+      '''                             '''
     ...
     def numEntries (self, *args, **kwargs)-> int :
       '''numEntries( (Dictionary)arg1) -> int :
@@ -14357,11 +14328,8 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def setAt (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''setAt( (Dictionary)arg1, (str)arg2, (DbObject)arg3) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId setAt(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObject {lvalue})'''
+    def setAt (self: Dictionary)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -14369,11 +14337,8 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setName (self, *args, **kwargs)-> bool :
-      '''setName( (Dictionary)arg1, (str)arg2, (str)arg3) -> bool :
-
-    C++ signature :
-        bool setName(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: Dictionary,old : str,new : str)-> bool :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
