@@ -174,7 +174,7 @@ class TestDbEntity(unittest.TestCase):
         leader.attachAnnotation(mtid)
         self.assertEqual(leader.annotationObjId(), mtid)
 
-    def test_dbpline_listctor1(self):
+    def test_polyline_listctor1(self):
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         pnts = []
@@ -186,10 +186,9 @@ class TestDbEntity(unittest.TestCase):
         pine = Db.Polyline(pnts)
         pine.setColorIndex(1)
         self.assertEqual(pine.numVerts(), 5)
-        # add leader to db
         model.appendAcDbEntity(pine)
 
-    def test_dbpline_listctor2(self):
+    def test_polyline_listctor2(self):
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         pnts = []
@@ -201,10 +200,9 @@ class TestDbEntity(unittest.TestCase):
         pine = Db.Polyline(pnts)
         pine.setColorIndex(2)
         self.assertEqual(pine.numVerts(), 5)
-        # add leader to db
         model.appendAcDbEntity(pine)
         
-    def test_dbpline_listctor3(self):
+    def test_polyline_listctor3(self):
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         pnts = []
@@ -218,7 +216,7 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(pine.numVerts(), 5)
         model.appendAcDbEntity(pine)
         
-    def test_dbpline_listctor4(self):
+    def test_polyline_listctor4(self):
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         pnts = []
@@ -232,7 +230,7 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(pine.numVerts(), 5)
         model.appendAcDbEntity(pine)
         
-    def test_dbpline_listctor5(self):
+    def test_polyline_listctor5(self):
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         pnts = []
@@ -246,7 +244,7 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(pine.numVerts(), 5)
         model.appendAcDbEntity(pine)
         
-    def test_dbpline_listctor6(self):
+    def test_polyline_listctor6(self):
         db = Db.curDb()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         pnts = []
