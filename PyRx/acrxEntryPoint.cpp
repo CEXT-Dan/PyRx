@@ -491,6 +491,7 @@ public:
 #ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
+        acDocManager->curDocument()->database();
     }
 #endif
 };

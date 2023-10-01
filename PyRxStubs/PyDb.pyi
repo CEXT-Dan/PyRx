@@ -49949,6 +49949,11 @@ __init__( (object)arg1, (SubentType)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,unsigned int)
 
+__init__( (object)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list)
+
 __init__( (object)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :

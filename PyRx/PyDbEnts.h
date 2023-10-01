@@ -620,6 +620,7 @@ class PyDbPolyline : public PyDbCurve
 public:
     PyDbPolyline();
     PyDbPolyline(unsigned int num_verts);
+    PyDbPolyline(const boost::python::list& pnts);
     PyDbPolyline(AcDbPolyline* ptr, bool autoDelete);
     PyDbPolyline(const PyDbObjectId& id);
     PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
