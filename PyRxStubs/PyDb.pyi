@@ -28590,7 +28590,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toPolyline (self: Spline)-> PyDb.Curve :
+    def toPolyline (self: Spline)-> PyDb.Polyline :
       '''                             '''
     ...
     def topRadius (self, *args, **kwargs)-> float :
@@ -61043,7 +61043,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def toPolyline (self: Spline)-> PyDb.Curve :
+    def toPolyline (self: Spline)-> PyDb.Polyline :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :

@@ -2,6 +2,7 @@
 #include "PyDbSpline.h"
 #include "PyDbObjectId.h"
 #include "PyGeSplineEnt3d.h"
+#include "PyDbEnts.h"
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
@@ -404,11 +405,11 @@ boost::python::list PyDbSpline::getOffsetCurvesGivenPlaneNormal(const AcGeVector
     return pylist;
 }
 
-PyDbCurve PyDbSpline::toPolyline()
+PyDbPolyline PyDbSpline::toPolyline()
 {
     AcDbCurve* pCurve = nullptr;
     PyThrowBadEs(impObj()->toPolyline(pCurve));
-    return PyDbCurve(pCurve, true);
+    return PyDbPolyline(static_cast<AcDbPolyline*>(pCurve), true);
 }
 
 void PyDbSpline::insertControlPointAt1(double knotParam, const AcGePoint3d& ctrlPt)

@@ -3,6 +3,7 @@
 #include "dbhelix.h"
 
 class PyGeNurbCurve3d;
+class PyDbPolyline;
 
 //-----------------------------------------------------------------------------------
 //AcDbSpline
@@ -73,7 +74,7 @@ public:
     void                setWeightAt(int index, double weight);
     void                insertKnot(double param);
     boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist);
-    PyDbCurve           toPolyline();
+    PyDbPolyline        toPolyline();
     void                insertControlPointAt1(double knotParam, const AcGePoint3d& ctrlPt);
     void                insertControlPointAt2(double knotParam, const AcGePoint3d& ctrlPt, double weight);
     void                removeControlPointAt(int index);
