@@ -666,6 +666,7 @@ public:
     PyGeCompositeCurve3d  getAcGeCurve2(const AcGeTol& tol) const;
     boost::python::list   toPoint2dList();
     boost::python::list   toPoint3dList();
+    boost::python::list   toList();
     static std::string  className();
     static PyRxClass    desc();
     static PyDbPolyline	cloneFrom(const PyRxObject& src);

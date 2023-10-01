@@ -50525,6 +50525,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def thickness (self: Polyline)-> float :
       '''                             '''
     ...
+    def toList (self: Polyline)-> list :
+      '''                             '''
+    ...
     def toPoint2dList (self: Polyline)-> list :
       '''                             '''
     ...
