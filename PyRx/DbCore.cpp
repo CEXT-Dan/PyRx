@@ -136,7 +136,7 @@ double DbCore::angToF(const std::string& str, int unit)
 
 std::string DbCore::angToS(double val, int unit, int prec)
 {
-    std::array<wchar_t, 24> buf = { 0 };
+    std::array<wchar_t, 64> buf = { 0 };
     PyThrowBadRt(acdbAngToS(val, unit, prec, buf.data(), buf.size()));
     return wstr_to_utf8(buf.data());
 }
@@ -589,7 +589,7 @@ bool DbCore::regApp(const std::string& app)
 
 std::string DbCore::rtos(double val, int unit, int prec)
 {
-    std::array<wchar_t, 24> buf = { 0 };
+    std::array<wchar_t, 64> buf = { 0 };
     PyThrowBadRt(acdbRToS(val, unit, prec, buf.data(), buf.size()));
     return wstr_to_utf8(buf.data());
 }

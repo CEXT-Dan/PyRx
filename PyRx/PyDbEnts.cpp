@@ -2892,6 +2892,7 @@ void makePyDbPolylineWrapper()
     class_<PyDbPolyline, bases<PyDbCurve>>("Polyline")
         .def(init<>())
         .def(init<unsigned int>())
+        .def(init<const boost::python::list&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getPoint3dAt", &PyDbPolyline::getPoint3dAt, DS.ARGS({ "idx:int" }))
@@ -2972,6 +2973,58 @@ PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbPolyline::PyDbPolyline(const PyDbObjectId& id)
     : PyDbPolyline(id, AcDb::OpenMode::kForRead)
 {
+}
+
+PyDbPolyline::PyDbPolyline(const boost::python::list& pnts)
+    : PyDbCurve(new AcDbPolyline(boost::python::len(pnts)), true)
+{
+    if (boost::python::len(pnts) == 0)
+        return;
+
+    const extract<AcGePoint2d> extractor2d(pnts[0]);
+    if (extractor2d.check())
+    {
+        const auto& vec = py_list_to_std_vector<AcGePoint2d>(pnts);
+        for (int i = 0; i < vec.size(); i++)
+            impObj()->addVertexAt(i, vec[i]);
+        return;
+    }
+    const extract<AcGePoint3d> extractor3d(pnts[0]);
+    if (extractor3d.check())
+    {
+        const auto& vec = py_list_to_std_vector<AcGePoint3d>(pnts);
+        for (int i = 0; i < vec.size(); i++)
+            impObj()->addVertexAt(i, AcGePoint2d(vec[i].x, vec[i].y));
+        return;
+    }
+    const extract<boost::python::tuple> extractorTpl(pnts[0]);
+    if (extractorTpl.check())
+    {
+        auto vec = std::vector<boost::python::tuple>(boost::python::stl_input_iterator<boost::python::tuple>(pnts),
+            boost::python::stl_input_iterator<boost::python::tuple>());
+
+        for (int i = 0; i < vec.size(); i++)
+        {
+            auto nlen = boost::python::len(vec[i]);
+            if (nlen > 1)
+                impObj()->addVertexAt(i, py_list_to_point2d(vec[i]));
+        }
+        return;
+    }
+    const extract<boost::python::list> extractorList(pnts[0]);
+    if (extractorList.check())
+    {
+        auto vec = std::vector<boost::python::list>(boost::python::stl_input_iterator<boost::python::list>(pnts),
+            boost::python::stl_input_iterator<boost::python::list>());
+
+        for (int i = 0; i < vec.size(); i++)
+        {
+            auto nlen = boost::python::len(vec[i]);
+            if (nlen > 1)
+                impObj()->addVertexAt(i, py_list_to_point2d(vec[i]));
+        }
+        return;
+    }
 }
 
 AcGePoint3d PyDbPolyline::getPoint3dAt(unsigned int idx) const
