@@ -186,6 +186,9 @@ class TestDbEntity(unittest.TestCase):
         pine = Db.Polyline(pnts)
         pine.setColorIndex(1)
         self.assertEqual(pine.numVerts(), 5)
+        self.assertEqual(len(pine.toPoint2dList()),5)
+        self.assertEqual(len(pine.toPoint3dList()),5)
+        self.assertEqual(pine.toPoint2dList(),pnts)
         model.appendAcDbEntity(pine)
 
     def test_polyline_listctor2(self):
@@ -200,6 +203,9 @@ class TestDbEntity(unittest.TestCase):
         pine = Db.Polyline(pnts)
         pine.setColorIndex(2)
         self.assertEqual(pine.numVerts(), 5)
+        self.assertEqual(len(pine.toPoint2dList()),5)
+        self.assertEqual(len(pine.toPoint3dList()),5)
+        self.assertEqual(pine.toPoint3dList(),pnts)
         model.appendAcDbEntity(pine)
         
     def test_polyline_listctor3(self):
@@ -214,6 +220,8 @@ class TestDbEntity(unittest.TestCase):
         pine = Db.Polyline(pnts)
         pine.setColorIndex(3)
         self.assertEqual(pine.numVerts(), 5)
+        self.assertEqual(len(pine.toPoint2dList()),5)
+        self.assertEqual(len(pine.toPoint3dList()),5)
         model.appendAcDbEntity(pine)
         
     def test_polyline_listctor4(self):
@@ -228,6 +236,8 @@ class TestDbEntity(unittest.TestCase):
         pine = Db.Polyline(pnts)
         pine.setColorIndex(4)
         self.assertEqual(pine.numVerts(), 5)
+        self.assertEqual(len(pine.toPoint2dList()),5)
+        self.assertEqual(len(pine.toPoint3dList()),5)
         model.appendAcDbEntity(pine)
         
     def test_polyline_listctor5(self):
@@ -242,6 +252,8 @@ class TestDbEntity(unittest.TestCase):
         pine = Db.Polyline(pnts)
         pine.setColorIndex(5)
         self.assertEqual(pine.numVerts(), 5)
+        self.assertEqual(len(pine.toPoint2dList()),5)
+        self.assertEqual(len(pine.toPoint3dList()),5)
         model.appendAcDbEntity(pine)
         
     def test_polyline_listctor6(self):
@@ -256,6 +268,8 @@ class TestDbEntity(unittest.TestCase):
         pine = Db.Polyline(pnts)
         pine.setColorIndex(6)
         self.assertEqual(pine.numVerts(), 5)
+        self.assertEqual(len(pine.toPoint2dList()),5)
+        self.assertEqual(len(pine.toPoint3dList()),5)
         model.appendAcDbEntity(pine)
 
 def PyRxCmd_pyentity():

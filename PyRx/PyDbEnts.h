@@ -664,6 +664,8 @@ public:
     void                makeClosedIfStartAndEndVertexCoincide(double distTol);
     PyGeCompositeCurve3d  getAcGeCurve1() const;
     PyGeCompositeCurve3d  getAcGeCurve2(const AcGeTol& tol) const;
+    boost::python::list   toPoint2dList();
+    boost::python::list   toPoint3dList();
     static std::string  className();
     static PyRxClass    desc();
     static PyDbPolyline	cloneFrom(const PyRxObject& src);
