@@ -8,25 +8,26 @@ using namespace boost::python;
 //PyDbDictionary wrapper
 void makePyDbDictionaryWrapper()
 {
+    PyDocString DS("Dictionary");
     class_<PyDbDictionary, bases<PyDbObject>>("Dictionary")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("getAt", &PyDbDictionary::getAt)
+        .def("getAt", &PyDbDictionary::getAt, DS.ARGS({ "val : str" }))
         .def("has", &PyDbDictionary::has1)
-        .def("has", &PyDbDictionary::has2)
-        .def("nameAt", &PyDbDictionary::nameAt)
+        .def("has", &PyDbDictionary::has2, DS.ARGS({ "val : str|PyDb.ObjectId" }))
+        .def("nameAt", &PyDbDictionary::nameAt, DS.ARGS({ "val : PyDb.ObjectId" }))
         .def("numEntries", &PyDbDictionary::numEntries)
-        .def("setAt", &PyDbDictionary::setAt)
+        .def("setAt", &PyDbDictionary::setAt, DS.ARGS())
         .def("remove", &PyDbDictionary::remove1)
         .def("remove", &PyDbDictionary::remove2)
         .def("remove", &PyDbDictionary::remove3)
-        .def("setName", &PyDbDictionary::setName)
-        .def("asDict", &PyDbDictionary::asDict)
-        .def("className", &PyDbDictionary::className).staticmethod("className")
-        .def("desc", &PyDbDictionary::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbDictionary::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbDictionary::cast).staticmethod("cast")
+        .def("setName", &PyDbDictionary::setName, DS.ARGS({ "old : str","new : str" }))
+        .def("asDict", &PyDbDictionary::asDict, DS.ARGS())
+        .def("className", &PyDbDictionary::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbDictionary::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbDictionary::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbDictionary::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
