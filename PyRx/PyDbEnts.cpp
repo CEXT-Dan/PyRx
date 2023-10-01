@@ -2937,6 +2937,7 @@ void makePyDbPolylineWrapper()
         .def("getAcGeCurve", &PyDbPolyline::getAcGeCurve2, DS.ARGS({ "tol: Tol = default" }))
         .def("toPoint2dList", &PyDbPolyline::toPoint2dList, DS.ARGS())
         .def("toPoint3dList", &PyDbPolyline::toPoint3dList, DS.ARGS())
+        .def("toList", &PyDbPolyline::toList, DS.ARGS())
         .def("className", &PyDbPolyline::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPolyline::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbPolyline::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -3280,6 +3281,20 @@ boost::python::list PyDbPolyline::toPoint3dList()
         AcGePoint3d pnt;
         PyThrowBadEs(impObj()->getPointAt(idx, pnt));
         pyList.append(pnt);
+    }
+    return pyList;
+}
+
+boost::python::list PyDbPolyline::toList()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const size_t count = impObj()->numVerts();
+    for (int idx = 0; idx < count; idx++)
+    {
+        AcGePoint2d pnt;
+        PyThrowBadEs(impObj()->getPointAt(idx, pnt));
+        pyList.append(boost::python::make_tuple(pnt.x, pnt.y));
     }
     return pyList;
 }
