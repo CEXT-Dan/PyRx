@@ -772,6 +772,9 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         int redraw(class PyDbObjectId,int)'''
     ...
+    def regen ()-> None :
+      '''                             '''
+    ...
     def reloadMenus (self, *args, **kwargs)-> None :
       '''reloadMenus( (bool)arg1) -> None :
 
@@ -1731,11 +1734,8 @@ class Editor:
     C++ signature :
         class PyDbObjectId activeViewportId()'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
     def curViewportObjectId (self, *args, **kwargs)-> PyDb.ObjectId :
       '''curViewportObjectId() -> ObjectId :
@@ -1792,6 +1792,9 @@ class Editor:
       '''                             '''
     ...
     def nEntSelPEx (prompt:str,selpt:PyGe.Point3d=None,flags:int)-> tuple :
+      '''                             '''
+    ...
+    def regen ()-> None :
       '''                             '''
     ...
     def select (filer:list=None)-> tuple :

@@ -57,6 +57,7 @@ public:
     static boost::python::list  getCurrentSelectionSet();
     static void                 setAllowDuplicateSelection(PyApDocument& doc, bool flag);
     static bool                 duplicateSelectionsAllowed(PyApDocument& doc);
+    static void                 regen();
     static std::string          className();
 };
 

@@ -11,6 +11,8 @@
 
 using namespace boost::python;
 
+void ads_regen(void);
+
 extern int acedNEntSelPEx(
     const ACHAR* str,
     ads_name entres,
@@ -128,7 +130,8 @@ void makePyEditorWrapper()
         .def("ucsYDir", &PyAcEditor::ucsYDir, DS.SARGS()).staticmethod("ucsYDir")
         .def("duplicateSelectionsAllowed", &PyAcEditor::duplicateSelectionsAllowed, DS.SARGS({ "doc:PyAp.Document" })).staticmethod("duplicateSelectionsAllowed")
         .def("setAllowDuplicateSelection", &PyAcEditor::setAllowDuplicateSelection, DS.SARGS({ "doc:PyAp.Document","flag:bool" })).staticmethod("setAllowDuplicateSelection")
-        .def("className", &PyAcEditor::className).staticmethod("className")
+        .def("regen", &PyAcEditor::regen, DS.SARGS()).staticmethod("regen")
+        .def("className", &PyAcEditor::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -581,6 +584,11 @@ void PyAcEditor::setAllowDuplicateSelection(PyApDocument& doc, bool flag)
 bool PyAcEditor::duplicateSelectionsAllowed(PyApDocument& doc)
 {
     return ::duplicateSelectionsAllowed(doc.impObj());
+}
+
+void PyAcEditor::regen()
+{
+    ads_regen();
 }
 
 std::string PyAcEditor::className()
