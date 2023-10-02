@@ -10,6 +10,7 @@ public:
     PyDbMText(AcDbMText* ptr, bool autoDelete);
     PyDbMText(const PyDbObjectId& id);
     PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbMText() override = default;
     AcGePoint3d         location() const;
     void                setLocation(const AcGePoint3d& val);
