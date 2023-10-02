@@ -1785,6 +1785,9 @@ class Editor:
     def getString (cronly:int,prompt:str)-> tuple :
       '''                             '''
     ...
+    def getViewportNumber (ptx : int,pty : int)-> int :
+      '''                             '''
+    ...
     def initGet (val:int,keyword:str)-> PyEd.PromptStatus :
       '''                             '''
     ...
