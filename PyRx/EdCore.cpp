@@ -18,7 +18,7 @@ using namespace boost::python;
 
 
 #ifdef ARXAPP
-
+void                            ads_regen(void);
 EXTERN_C void                   acedLoadJSScript(const ACHAR* pUriOfJSFile);
 EXTERN_C bool                   acedGetPredefinedPattens(AcStringArray& patterns);
 EXTERN_C Acad::ErrorStatus      acedSetUndoMark(bool);
@@ -159,6 +159,7 @@ void makePyEdCoreWrapper()
         .def("restoreCurrentView", &EdCore::restoreCurrentView).staticmethod("restoreCurrentView")
         .def("restorePreviousUCS", &EdCore::restorePreviousUCS).staticmethod("restorePreviousUCS")
         .def("restoreStatusBar", &EdCore::restoreStatusBar).staticmethod("restoreStatusBar")
+        .def("regen", &EdCore::regen, DS.SARGS()).staticmethod("regen")
         .def("sendModelessOperationEnded", &EdCore::sendModelessOperationEnded).staticmethod("sendModelessOperationEnded")
         .def("sendModelessOperationStart", &EdCore::sendModelessOperationStart).staticmethod("sendModelessOperationStart")
         .def("setColorDialog", &EdCore::setColorDialog).staticmethod("setColorDialog")
@@ -844,6 +845,11 @@ void EdCore::restorePreviousUCS()
 void EdCore::restoreStatusBar()
 {
     acedRestoreStatusBar();
+}
+
+void EdCore::regen()
+{
+    ads_regen();
 }
 
 void EdCore::sendModelessOperationEnded(const std::string& strContext)

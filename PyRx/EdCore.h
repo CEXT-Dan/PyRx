@@ -109,6 +109,7 @@ public:
     static void                 restoreCurrentView(const PyDbObjectId& namedViewId);
     static void                 restorePreviousUCS();
     static void                 restoreStatusBar();
+    static void                 regen();
     static void                 sendModelessOperationEnded(const std::string& strContext);
     static void                 sendModelessOperationStart(const std::string& strContext);
     static boost::python::tuple setColorDialog(int color, Adesk::Boolean bAllowMetaColor, int nCurLayerColor);
