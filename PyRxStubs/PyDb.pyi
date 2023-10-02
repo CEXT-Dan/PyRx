@@ -14282,11 +14282,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def nameAt (self: Dictionary,val : PyDb.ObjectId)-> str :
       '''                             '''
     ...
-    def numEntries (self, *args, **kwargs)-> int :
-      '''numEntries( (Dictionary)arg1) -> int :
-
-    C++ signature :
-        unsigned int numEntries(class PyDbDictionary {lvalue})'''
+    def numEntries (self: Dictionary)-> int :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -39358,38 +39355,14 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MText:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self: MText,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
     ...
-    def actualHeight (self, *args, **kwargs)-> float :
-      '''actualHeight( (MText)arg1) -> float :
-
-    C++ signature :
-        double actualHeight(class PyDbMText {lvalue})'''
+    def actualHeight (self: MText)-> float :
+      '''                             '''
     ...
-    def actualWidth (self, *args, **kwargs)-> float :
-      '''actualWidth( (MText)arg1) -> float :
-
-    C++ signature :
-        double actualWidth(class PyDbMText {lvalue})'''
+    def actualWidth (self: MText)-> float :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
@@ -39397,11 +39370,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def ascent (self, *args, **kwargs)-> float :
-      '''ascent( (MText)arg1) -> float :
-
-    C++ signature :
-        double ascent(class PyDbMText {lvalue})'''
+    def ascent (self: MText)-> float :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -39412,17 +39382,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def attachment (self, *args, **kwargs)-> PyDb.MTextAttachmentPoint :
-      '''attachment( (MText)arg1) -> MTextAttachmentPoint :
-
-    C++ signature :
-        enum AcDbMText::AttachmentPoint attachment(class PyDbMText {lvalue})'''
+    def attachment (self: MText)-> PyDb.MTextAttachmentPoint :
+      '''                             '''
     ...
-    def backgroundFillOn (self, *args, **kwargs)-> bool :
-      '''backgroundFillOn( (MText)arg1) -> bool :
-
-    C++ signature :
-        bool backgroundFillOn(class PyDbMText {lvalue})'''
+    def backgroundFillOn (self: MText)-> bool :
+      '''                             '''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
@@ -39433,26 +39397,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.MText :
-      '''cast( (RxObject)arg1) -> MText :
-
-    C++ signature :
-        class PyDbMText cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.MText :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.MText :
-      '''cloneFrom( (RxObject)arg1) -> MText :
-
-    C++ signature :
-        class PyDbMText cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.MText :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -39466,32 +39421,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def contents (self, *args, **kwargs)-> str :
-      '''contents( (MText)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > contents(class PyDbMText {lvalue})'''
+    def contents (self: MText)-> str :
+      '''                             '''
     ...
-    def contentsRTF (self, *args, **kwargs)-> str :
-      '''contentsRTF( (MText)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > contentsRTF(class PyDbMText {lvalue})'''
+    def contentsRTF (self: MText)-> str :
+      '''                             '''
     ...
-    def convertFieldToText (self, *args, **kwargs)-> None :
-      '''convertFieldToText( (MText)arg1) -> None :
-
-    C++ signature :
-        void convertFieldToText(class PyDbMText {lvalue})'''
+    def convertFieldToText (self: MText)-> None :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def correctSpelling (self, *args, **kwargs)-> int :
-      '''correctSpelling( (MText)arg1) -> int :
-
-    C++ signature :
-        int correctSpelling(class PyDbMText {lvalue})'''
+    def correctSpelling (self: MText)-> int :
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -39499,23 +39442,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
-    def descent (self, *args, **kwargs)-> float :
-      '''descent( (MText)arg1) -> float :
-
-    C++ signature :
-        double descent(class PyDbMText {lvalue})'''
+    def descent (self: MText)-> float :
+      '''                             '''
     ...
-    def direction (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''direction( (MText)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d direction(class PyDbMText {lvalue})'''
+    def direction (self: MText)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -39547,77 +39481,41 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def flowDirection (self, *args, **kwargs)-> PyDb.MTextFlowDirection :
-      '''flowDirection( (MText)arg1) -> MTextFlowDirection :
-
-    C++ signature :
-        enum AcDbMText::FlowDirection flowDirection(class PyDbMText {lvalue})'''
+    def flowDirection (self: MText)-> PyDb.MTextFlowDirection :
+      '''                             '''
     ...
-    def getBackgroundFillColor (self, *args, **kwargs)-> PyDb.Color :
-      '''getBackgroundFillColor( (MText)arg1) -> Color :
-
-    C++ signature :
-        class AcCmColor getBackgroundFillColor(class PyDbMText {lvalue})'''
+    def getBackgroundFillColor (self: MText)-> PyDb.Color :
+      '''                             '''
     ...
-    def getBackgroundScaleFactor (self, *args, **kwargs)-> float :
-      '''getBackgroundScaleFactor( (MText)arg1) -> float :
-
-    C++ signature :
-        double getBackgroundScaleFactor(class PyDbMText {lvalue})'''
+    def getBackgroundScaleFactor (self: MText)-> float :
+      '''                             '''
     ...
-    def getBackgroundTransparency (self, *args, **kwargs)-> PyDb.Transparency :
-      '''getBackgroundTransparency( (MText)arg1) -> Transparency :
-
-    C++ signature :
-        class AcCmTransparency getBackgroundTransparency(class PyDbMText {lvalue})'''
+    def getBackgroundTransparency (self: MText)-> PyDb.Transparency :
+      '''                             '''
     ...
-    def getBoundingPoints (self, *args, **kwargs)-> list :
-      '''getBoundingPoints( (MText)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getBoundingPoints(class PyDbMText {lvalue})'''
+    def getBoundingPoints (self: MText)-> list :
+      '''                             '''
     ...
-    def getColumnAutoHeight (self, *args, **kwargs)-> bool :
-      '''getColumnAutoHeight( (MText)arg1) -> bool :
-
-    C++ signature :
-        bool getColumnAutoHeight(class PyDbMText {lvalue})'''
+    def getColumnAutoHeight (self: MText)-> bool :
+      '''                             '''
     ...
-    def getColumnCount (self, *args, **kwargs)-> int :
-      '''getColumnCount( (MText)arg1) -> int :
-
-    C++ signature :
-        int getColumnCount(class PyDbMText {lvalue})'''
+    def getColumnCount (self: MText)-> int :
+      '''                             '''
     ...
-    def getColumnFlowReversed (self, *args, **kwargs)-> bool :
-      '''getColumnFlowReversed( (MText)arg1) -> bool :
-
-    C++ signature :
-        bool getColumnFlowReversed(class PyDbMText {lvalue})'''
+    def getColumnFlowReversed (self: MText)-> bool :
+      '''                             '''
     ...
-    def getColumnGutterWidth (self, *args, **kwargs)-> float :
-      '''getColumnGutterWidth( (MText)arg1) -> float :
-
-    C++ signature :
-        double getColumnGutterWidth(class PyDbMText {lvalue})'''
+    def getColumnGutterWidth (self: MText)-> float :
+      '''                             '''
     ...
-    def getColumnHeight (self, *args, **kwargs)-> float :
-      '''getColumnHeight( (MText)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double getColumnHeight(class PyDbMText {lvalue},int)'''
+    def getColumnHeight (self: MText,idx : int)-> float :
+      '''                             '''
     ...
-    def getColumnType (self, *args, **kwargs)-> PyDb.MTextColumnType :
-      '''getColumnType( (MText)arg1) -> MTextColumnType :
-
-    C++ signature :
-        enum AcDbMText::ColumnType getColumnType(class PyDbMText {lvalue})'''
+    def getColumnType (self: MText)-> PyDb.MTextColumnType :
+      '''                             '''
     ...
-    def getColumnWidth (self, *args, **kwargs)-> float :
-      '''getColumnWidth( (MText)arg1) -> float :
-
-    C++ signature :
-        double getColumnWidth(class PyDbMText {lvalue})'''
+    def getColumnWidth (self: MText)-> float :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -39667,17 +39565,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float :
-      '''height( (MText)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbMText {lvalue})'''
+    def height (self: MText)-> float :
+      '''                             '''
     ...
-    def hitTest (self, *args, **kwargs)-> bool :
-      '''hitTest( (MText)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool hitTest(class PyDbMText {lvalue},class AcGePoint3d)'''
+    def hitTest (self: MText,val : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
@@ -39778,17 +39670,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def layerId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def lineSpacingFactor (self, *args, **kwargs)-> float :
-      '''lineSpacingFactor( (MText)arg1) -> float :
-
-    C++ signature :
-        double lineSpacingFactor(class PyDbMText {lvalue})'''
+    def lineSpacingFactor (self: MText)-> float :
+      '''                             '''
     ...
-    def lineSpacingStyle (self, *args, **kwargs)-> PyDb.LineSpacingStyle :
-      '''lineSpacingStyle( (MText)arg1) -> LineSpacingStyle :
-
-    C++ signature :
-        enum AcDb::LineSpacingStyle lineSpacingStyle(class PyDbMText {lvalue})'''
+    def lineSpacingStyle (self: MText)-> PyDb.LineSpacingStyle :
+      '''                             '''
     ...
     def lineWeight (self: Entity)-> PyDb.LineWeight :
       '''                             '''
@@ -39805,11 +39691,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None :
       '''                             '''
     ...
-    def location (self, *args, **kwargs)-> PyGe.Point3d :
-      '''location( (MText)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d location(class PyDbMText {lvalue})'''
+    def location (self: MText)-> PyGe.Point3d :
+      '''                             '''
     ...
     def material (self: Entity)-> str :
       '''                             '''
@@ -39817,11 +39700,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (MText)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbMText {lvalue})'''
+    def normal (self: MText)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -39856,17 +39736,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (MText)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbMText {lvalue})'''
+    def rotation (self: MText)-> float :
+      '''                             '''
     ...
-    def setAttachment (self, *args, **kwargs)-> None :
-      '''setAttachment( (MText)arg1, (MTextAttachmentPoint)arg2) -> None :
-
-    C++ signature :
-        void setAttachment(class PyDbMText {lvalue},enum AcDbMText::AttachmentPoint)'''
+    def setAttachment (self: MText,val : PyDb.MTextAttachmentPoint)-> None :
+      '''                             '''
     ...
     def setAttachmentMovingLocation (self, *args, **kwargs)-> None :
       '''setAttachmentMovingLocation( (MText)arg1, (MTextAttachmentPoint)arg2) -> None :
@@ -39877,29 +39751,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBackgroundFill (self, *args, **kwargs)-> None :
-      '''setBackgroundFill( (MText)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setBackgroundFill(class PyDbMText {lvalue},bool)'''
+    def setBackgroundFill (self: MText,val : bool)-> None :
+      '''                             '''
     ...
-    def setBackgroundFillColor (self, *args, **kwargs)-> None :
-      '''setBackgroundFillColor( (MText)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setBackgroundFillColor(class PyDbMText {lvalue},class AcCmColor)'''
+    def setBackgroundFillColor (self: MText,val : PyDb.AcCmColor)-> None :
+      '''                             '''
     ...
-    def setBackgroundScaleFactor (self, *args, **kwargs)-> None :
-      '''setBackgroundScaleFactor( (MText)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBackgroundScaleFactor(class PyDbMText {lvalue},double)'''
+    def setBackgroundScaleFactor (self: MText,val : real)-> None :
+      '''                             '''
     ...
-    def setBackgroundTransparency (self, *args, **kwargs)-> None :
-      '''setBackgroundTransparency( (MText)arg1, (Transparency)arg2) -> None :
-
-    C++ signature :
-        void setBackgroundTransparency(class PyDbMText {lvalue},class AcCmTransparency)'''
+    def setBackgroundTransparency (self: MText,val : PyDb.AcCmTransparency)-> None :
+      '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -39910,104 +39772,59 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setColumnAutoHeight (self, *args, **kwargs)-> None :
-      '''setColumnAutoHeight( (MText)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setColumnAutoHeight(class PyDbMText {lvalue},bool)'''
+    def setColumnAutoHeight (self: MText,val : bool)-> None :
+      '''                             '''
     ...
-    def setColumnCount (self, *args, **kwargs)-> None :
-      '''setColumnCount( (MText)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setColumnCount(class PyDbMText {lvalue},int)'''
+    def setColumnCount (self: MText,val : int)-> None :
+      '''                             '''
     ...
-    def setColumnFlowReversed (self, *args, **kwargs)-> None :
-      '''setColumnFlowReversed( (MText)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setColumnFlowReversed(class PyDbMText {lvalue},bool)'''
+    def setColumnFlowReversed (self: MText,val : bool)-> None :
+      '''                             '''
     ...
-    def setColumnGutterWidth (self, *args, **kwargs)-> None :
-      '''setColumnGutterWidth( (MText)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setColumnGutterWidth(class PyDbMText {lvalue},double)'''
+    def setColumnGutterWidth (self: MText,val : real)-> None :
+      '''                             '''
     ...
-    def setColumnHeight (self, *args, **kwargs)-> None :
-      '''setColumnHeight( (MText)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setColumnHeight(class PyDbMText {lvalue},int,double)'''
+    def setColumnHeight (self: MText,idx : int,val : real)-> None :
+      '''                             '''
     ...
-    def setColumnType (self, *args, **kwargs)-> None :
-      '''setColumnType( (MText)arg1, (MTextColumnType)arg2) -> None :
-
-    C++ signature :
-        void setColumnType(class PyDbMText {lvalue},enum AcDbMText::ColumnType)'''
+    def setColumnType (self: MText,val : PyDb.MTextColumnType)-> None :
+      '''                             '''
     ...
-    def setColumnWidth (self, *args, **kwargs)-> None :
-      '''setColumnWidth( (MText)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setColumnWidth(class PyDbMText {lvalue},double)'''
+    def setColumnWidth (self: MText,val : real)-> None :
+      '''                             '''
     ...
-    def setContents (self, *args, **kwargs)-> int :
-      '''setContents( (MText)arg1, (str)arg2) -> int :
-
-    C++ signature :
-        int setContents(class PyDbMText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setContents (self: MText,val : str)-> int :
+      '''                             '''
     ...
-    def setContentsRTF (self, *args, **kwargs)-> int :
-      '''setContentsRTF( (MText)arg1, (str)arg2) -> int :
-
-    C++ signature :
-        int setContentsRTF(class PyDbMText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setContentsRTF (self: MText,val : str)-> int :
+      '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDirection (self, *args, **kwargs)-> None :
-      '''setDirection( (MText)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setDirection(class PyDbMText {lvalue},class AcGeVector3d)'''
+    def setDirection (self: MText,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def setDynamicColumns (self, *args, **kwargs)-> None :
-      '''setDynamicColumns( (MText)arg1, (float)arg2, (float)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void setDynamicColumns(class PyDbMText {lvalue},double,double,bool)'''
+    def setDynamicColumns (self: MText,width : real,gutter : real,autoHeight : bool)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFlowDirection (self, *args, **kwargs)-> None :
-      '''setFlowDirection( (MText)arg1, (MTextFlowDirection)arg2) -> None :
-
-    C++ signature :
-        void setFlowDirection(class PyDbMText {lvalue},enum AcDbMText::FlowDirection)'''
+    def setFlowDirection (self: MText,val : PyDb.MTextFlowDirection)-> None :
+      '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (MText)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbMText {lvalue},double)'''
+    def setHeight (self: MText,val : real)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineSpacingFactor (self, *args, **kwargs)-> None :
-      '''setLineSpacingFactor( (MText)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLineSpacingFactor(class PyDbMText {lvalue},double)'''
+    def setLineSpacingFactor (self: MText,val : real)-> None :
+      '''                             '''
     ...
-    def setLineSpacingStyle (self, *args, **kwargs)-> None :
-      '''setLineSpacingStyle( (MText)arg1, (LineSpacingStyle)arg2) -> None :
-
-    C++ signature :
-        void setLineSpacingStyle(class PyDbMText {lvalue},enum AcDb::LineSpacingStyle)'''
+    def setLineSpacingStyle (self: MText,val : PyDb.LineSpacingStyle)-> None :
+      '''                             '''
     ...
     def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
@@ -40018,20 +39835,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLocation (self, *args, **kwargs)-> None :
-      '''setLocation( (MText)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setLocation(class PyDbMText {lvalue},class AcGePoint3d)'''
+    def setLocation (self: MText,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (MText)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbMText {lvalue},class AcGeVector3d)'''
+    def setNormal (self: MText,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -40058,44 +39869,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self, *args, **kwargs)-> None :
-      '''setRotation( (MText)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbMText {lvalue},double)'''
+    def setRotation (self: MText,val : real)-> None :
+      '''                             '''
     ...
-    def setStaticColumns (self, *args, **kwargs)-> None :
-      '''setStaticColumns( (MText)arg1, (float)arg2, (float)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void setStaticColumns(class PyDbMText {lvalue},double,double,int)'''
+    def setStaticColumns (self: MText,width : real,gutter : real,count : int)-> None :
+      '''                             '''
     ...
-    def setTextHeight (self, *args, **kwargs)-> None :
-      '''setTextHeight( (MText)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTextHeight(class PyDbMText {lvalue},double)'''
+    def setTextHeight (self: MText,val : real)-> None :
+      '''                             '''
     ...
-    def setTextStyle (self, *args, **kwargs)-> None :
-      '''setTextStyle( (MText)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setTextStyle(class PyDbMText {lvalue},class PyDbObjectId)'''
+    def setTextStyle (self: MText,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setUseBackgroundColor (self, *args, **kwargs)-> None :
-      '''setUseBackgroundColor( (MText)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setUseBackgroundColor(class PyDbMText {lvalue},bool)'''
+    def setUseBackgroundColor (self: MText,val : bool)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidth (self, *args, **kwargs)-> None :
-      '''setWidth( (MText)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidth(class PyDbMText {lvalue},double)'''
+    def setWidth (self: MText,val : real)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -40106,23 +39899,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def text (self, *args, **kwargs)-> str :
-      '''text( (MText)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > text(class PyDbMText {lvalue})'''
+    def text (self: MText)-> str :
+      '''                             '''
     ...
-    def textHeight (self, *args, **kwargs)-> float :
-      '''textHeight( (MText)arg1) -> float :
-
-    C++ signature :
-        double textHeight(class PyDbMText {lvalue})'''
+    def textHeight (self: MText)-> float :
+      '''                             '''
     ...
-    def textStyle (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''textStyle( (MText)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId textStyle(class PyDbMText {lvalue})'''
+    def textStyle (self: MText)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -40133,11 +39917,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
     ...
-    def useBackgroundColorOn (self, *args, **kwargs)-> bool :
-      '''useBackgroundColorOn( (MText)arg1) -> bool :
-
-    C++ signature :
-        bool useBackgroundColorOn(class PyDbMText {lvalue})'''
+    def useBackgroundColorOn (self: MText)-> bool :
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -40148,11 +39929,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
-    def width (self, *args, **kwargs)-> float :
-      '''width( (MText)arg1) -> float :
-
-    C++ signature :
-        double width(class PyDbMText {lvalue})'''
+    def width (self: MText)-> float :
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
