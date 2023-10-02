@@ -34,7 +34,6 @@ def PyRxCmd_pyrx():
         #calls acutPrintf
         print("Hello, Autocad from Python\n")
         
-        #db = Db.curDb() or
         db = Db.HostApplicationServices().workingDatabase()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         
@@ -48,6 +47,7 @@ def PyRxCmd_pyrx():
         for i in range(5):
             
             mt = Db.MText()
+            mt.setDatabaseDefaults()
             mt.setLocation(p1)
             mt.setContents('PyHi %s!' % i)
             mt.setTextHeight(2.5)

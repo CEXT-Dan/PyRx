@@ -36,12 +36,12 @@ public:
         {
             return asDblArray(extract<AcGePoint3d>(m_obj));
         }
-        else if (extract<boost::python::list>(m_obj).check())
+        else if (PyList_Check(m_obj.ptr()))
         {
             ptr.reset(acGePoint3dArrayToResbuf(PyListToPoint3dArray(m_obj)));
             return ptr.get();
         }
-        else if (extract<boost::python::tuple>(m_obj).check())
+        else if (PyTuple_Check(m_obj.ptr()))
         {
             PyAutoLockGIL lock;
             tuple tpl = extract<tuple>(m_obj);
@@ -321,7 +321,6 @@ static boost::python::tuple nEntSelPEx(const std::string& prompt, const AcGePoin
 
 boost::python::tuple PyAcEditor::nEntSelPEx1(const std::string& prompt, int uTransSpaceFlag)
 {
-
     AcGePoint3d dummyptp;
     return nEntSelPEx(prompt, dummyptp, 0, uTransSpaceFlag);
 }
@@ -503,7 +502,7 @@ boost::python::tuple PyAcEditor::ssget2(const std::string& args, const boost::py
 AcGeMatrix3d PyAcEditor::curUCS()
 {
     AcGeMatrix3d mat;
-    (acedGetCurrentUCS(mat));
+    PyThrowBadEs(acedGetCurrentUCS(mat));
     return mat;
 }
 
