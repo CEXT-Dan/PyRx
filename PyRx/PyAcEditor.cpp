@@ -131,6 +131,7 @@ void makePyEditorWrapper()
         .def("duplicateSelectionsAllowed", &PyAcEditor::duplicateSelectionsAllowed, DS.SARGS({ "doc:PyAp.Document" })).staticmethod("duplicateSelectionsAllowed")
         .def("setAllowDuplicateSelection", &PyAcEditor::setAllowDuplicateSelection, DS.SARGS({ "doc:PyAp.Document","flag:bool" })).staticmethod("setAllowDuplicateSelection")
         .def("regen", &PyAcEditor::regen, DS.SARGS()).staticmethod("regen")
+        .def("getViewportNumber", &PyAcEditor::getViewportNumber, DS.SARGS({ "ptx : int","pty : int" })).staticmethod("getViewportNumber")
         .def("className", &PyAcEditor::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -589,6 +590,11 @@ bool PyAcEditor::duplicateSelectionsAllowed(PyApDocument& doc)
 void PyAcEditor::regen()
 {
     ads_regen();
+}
+
+int PyAcEditor::getViewportNumber(int ptx, int pty)
+{
+   return acedGetWinNum(ptx, pty);
 }
 
 std::string PyAcEditor::className()

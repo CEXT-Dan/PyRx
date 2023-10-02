@@ -58,6 +58,7 @@ public:
     static void                 setAllowDuplicateSelection(PyApDocument& doc, bool flag);
     static bool                 duplicateSelectionsAllowed(PyApDocument& doc);
     static void                 regen();
+    static int                  getViewportNumber(int ptx,int pty);
     static std::string          className();
 };
 
