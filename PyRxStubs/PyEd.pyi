@@ -914,7 +914,7 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
       '''trans( (Point3d)arg1, (list)arg2, (list)arg3, (int)arg4) -> Point3d :
 
     C++ signature :
-        class AcGePoint3d trans(class AcGePoint3d {lvalue},class boost::python::list,class boost::python::list,int)'''
+        class AcGePoint3d trans(class AcGePoint3d,class boost::python::list,class boost::python::list,int)'''
     ...
     def update (self, *args, **kwargs)-> int :
       '''update( (int)arg1, (Point2d)arg2, (Point2d)arg3) -> int :
