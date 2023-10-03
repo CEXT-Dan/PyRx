@@ -128,7 +128,7 @@ public:
     static UINT_PTR             showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriOfHtmlPage, bool persistSizeAndPosition);
     static void                 skipXrefNotification(PyDbDatabase& db, const std::string& xrefName);
 
-    static AcGePoint3d          trans(AcGePoint3d& pt, const boost::python::list& from, const boost::python::list& to, int disp);
+    static AcGePoint3d          trans(const AcGePoint3d& pt, const boost::python::list& from, const boost::python::list& to, int disp);
 
     static int                  update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2);
     static void                 updateDisplay();

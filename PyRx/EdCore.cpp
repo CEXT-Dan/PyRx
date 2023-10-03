@@ -997,7 +997,7 @@ void EdCore::skipXrefNotification(PyDbDatabase& db, const std::string& xrefName)
     PyThrowBadEs(acedSkipXrefNotification(db.impObj(), utf8_to_wstr(xrefName).c_str()));
 }
 
-AcGePoint3d EdCore::trans(AcGePoint3d& pt, const boost::python::list& from, const boost::python::list& to, int disp)
+AcGePoint3d EdCore::trans(const AcGePoint3d& pt, const boost::python::list& from, const boost::python::list& to, int disp)
 {
     AcGePoint3d result;
     AcResBufPtr pFrom(listToResbuf(from));
