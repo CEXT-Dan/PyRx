@@ -308,13 +308,11 @@ void makePyDbSoftOwnershipIdWrapper()
 
 PyDbSoftOwnershipId::PyDbSoftOwnershipId()
 {
-
 }
 
 PyDbSoftOwnershipId::PyDbSoftOwnershipId(const PyDbObjectId& id)
     : m_id(id.m_id)
 {
-
 }
 
 PyDbSoftOwnershipId& PyDbSoftOwnershipId::operator=(const PyDbObjectId& rhs)
