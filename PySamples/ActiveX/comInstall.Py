@@ -12,7 +12,7 @@ def makeComAcadDBX24():
     comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\ARX2021\inc-x64\axdb24enu.tlb"
     sys.argv = ["makepy", "-o", outputFile, comTypeLibraryOrDLL]
     makepy.main ()
-    
+
 def makeComETransmit20():
     outputFile = r"M:\Dev\Projects\PyRxGit\PyRxStubs\ComETransmit20.py"
     comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\ARX2021\inc-x64\AcETransmit20.tlb"
@@ -27,8 +27,8 @@ def makeComSmcomponents24():
 
 
 makeComAcadApplication24()
-makeComAcadDBX24()
-#makeComETransmit20()
+#makeComAcadDBX24()
+#makeComETransmit20() cant get this to work
 #makeComSmcomponents24()
 
 

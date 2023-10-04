@@ -2,7 +2,7 @@
 # Created by makepy.py version 0.5.01
 # By python version 3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit (AMD64)]
 # From type library 'acax24ENU.tlb'
-# On Wed Oct  4 20:18:30 2023
+# On Thu Oct  5 06:16:01 2023
 'AutoCAD 2021 Type Library'
 makepy_version = '0.5.01'
 python_version = 0x30a0af0

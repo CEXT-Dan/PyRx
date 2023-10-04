@@ -10,11 +10,8 @@ import win32com.client as com
 import pythoncom
 import ComAcadApplication24 as AcadApp
 
-def comPt3d(pt: Ge.Point3d):
-    return com.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, pt.toList())
+import AcadComTypes as Act
 
-def comMatrix3d(mat: Ge.Matrix3d):
-    return com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, mat.toList())
 
 def PyRxCmd_doit():
     try:
@@ -28,7 +25,7 @@ def PyRxCmd_doit():
         pt1 = Ge.Point3d(0, 0, 0)
         pt2 = Ge.Point3d(100, 100, 0)
 
-        model.AddLine(comPt3d(pt1), comPt3d(pt2))
+        model.AddLine(Act.comPt3d(pt1), Act.comPt3d(pt2))
 
         ent: AcadApp.IAcadEntity = util.GetEntity(
             None, None, "\nPick an ent: ")
