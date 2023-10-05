@@ -84,6 +84,14 @@ def PyRxCmd_comGetang():
 
     except Exception as err:
         traceback.print_exception(err)
+        
+def PyRxCmd_comLayerState():
+    try:
+        state : AcadApp.IAcadLayerStateManager = AcadApp.AcadLayerStateManager()
+        state.SetDatabase(theApp.ActiveDocument.Database)
+        state.Export('WOOHOOSTATE','e:\\temp\\WOOHOOSTATE.txt')
+    except Exception as err:
+        traceback.print_exception(err)
 
 # 0.9011179999997694!
 def PyRxCmd_comPerf():
