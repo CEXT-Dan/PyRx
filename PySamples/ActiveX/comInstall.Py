@@ -1,5 +1,6 @@
 import sys
 from win32com.client import makepy
+import PyRx
 
 def makeComAcadApplication24():
     outputFile = r"M:\Dev\Projects\PyRxGit\PyRxStubs\ComAcadApplication24.py"
@@ -18,20 +19,16 @@ def makeComETransmit20():
     comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\ARX2021\inc-x64\AcETransmit20.tlb"
     sys.argv = ["makepy", "-o", outputFile, comTypeLibraryOrDLL]
     makepy.main ()
-
+    
 def makeComSmcomponents24():
     outputFile = r"M:\Dev\Projects\PyRxGit\PyRxStubs\ComSmcomponents24.py"
     comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\ARX2021\inc-x64\acsmcomponents24.tlb"
     sys.argv = ["makepy", "-o", outputFile, comTypeLibraryOrDLL]
     makepy.main ()
-
-
-makeComAcadApplication24()
-#makeComAcadDBX24()
-#makeComETransmit20() cant get this to work
-#makeComSmcomponents24()
-
-
-
-
+    
+def PyRxCmd_makeComWrappers():
+    makeComAcadApplication24()
+    makeComAcadDBX24()
+    makeComETransmit20() #cant get this to work
+    makeComSmcomponents24()
 

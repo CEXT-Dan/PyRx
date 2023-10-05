@@ -1,9 +1,9 @@
 # -*- coding: mbcs -*-
 # Created by makepy.py version 0.5.01
 # By python version 3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit (AMD64)]
-# From type library 'acax24ENU.tlb'
+# From type library 'axdb24enu.tlb'
 # On Thu Oct  5 13:00:12 2023
-'AutoCAD 2021 Type Library'
+'AutoCAD/ObjectDBX Common 24.0 Type Library'
 makepy_version = '0.5.01'
 python_version = 0x30a0af0
 
@@ -18,7 +18,7 @@ defaultNamedOptArg=pythoncom.Empty
 defaultNamedNotOptArg=pythoncom.Empty
 defaultUnnamedArg=pythoncom.Empty
 
-CLSID = IID('{AA9A2205-75AA-43AD-9138-1767F1BB5E0C}')
+CLSID = IID('{39FFAA00-8623-488F-8C53-DD3B0B7A464F}')
 MajorVersion = 1
 MinorVersion = 0
 LibraryFlags = 8
@@ -1534,156 +1534,6 @@ class IAcadAcCmColor(DispatchBaseClass):
 		"ColorIndex": ((17, LCID, 4, 0),()),
 		"ColorMethod": ((16, LCID, 4, 0),()),
 		"EntityColor": ((1, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadApplication(DispatchBaseClass):
-	'An instance of the AutoCAD application'
-	CLSID = IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')
-	coclass_clsid = IID('{8B4929F8-076F-4AEC-AFEE-8928747B7AE3}')
-
-	def Eval(self, Expression=defaultNamedNotOptArg):
-		'Evaluates an expression in VBA'
-		return self._oleobj_.InvokeTypes(33, LCID, 1, (24, 0), ((8, 1),),Expression
-			)
-
-	# Result is of type IAcadState
-	def GetAcadState(self):
-		'Retrieves an AcadState object.'
-		ret = self._oleobj_.InvokeTypes(42, LCID, 1, (9, 0), (),)
-		if ret is not None:
-			ret = Dispatch(ret, 'GetAcadState', '{935B3D12-E5A3-46F8-8CBC-24646D46FAD8}')
-		return ret
-
-	def GetInterfaceObject(self, ProgID=defaultNamedNotOptArg):
-		'Accepts a program ID and attempts to load it into AutoCAD as an in-process server'
-		ret = self._oleobj_.InvokeTypes(20, LCID, 1, (9, 0), ((8, 1),),ProgID
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'GetInterfaceObject', None)
-		return ret
-
-	def ListArx(self):
-		'Gets the currently loaded AutoCAD ARX applications'
-		return self._ApplyTypes_(18, 1, (12, 0), (), 'ListArx', None,)
-
-	def LoadArx(self, Name=defaultNamedNotOptArg):
-		'Loads the specified AutoCAD ARX application'
-		return self._oleobj_.InvokeTypes(19, LCID, 1, (24, 0), ((8, 1),),Name
-			)
-
-	def LoadDVB(self, Name=defaultNamedNotOptArg):
-		'Loads the specified AutoCAD VBA project file'
-		return self._oleobj_.InvokeTypes(30, LCID, 1, (24, 0), ((8, 1),),Name
-			)
-
-	def Quit(self):
-		'Closes the drawing file and exits the AutoCAD application'
-		return self._oleobj_.InvokeTypes(25, LCID, 1, (24, 0), (),)
-
-	def RunMacro(self, MacroPath=defaultNamedNotOptArg):
-		'Runs a VBA macro from the Application object'
-		return self._oleobj_.InvokeTypes(35, LCID, 1, (24, 0), ((8, 1),),MacroPath
-			)
-
-	# The method StatusId is actually a property, but must be used as a method to correctly pass the arguments
-	def StatusId(self, VportObj=defaultNamedNotOptArg):
-		'Gets the current active status of the viewport'
-		return self._oleobj_.InvokeTypes(17, LCID, 2, (11, 0), ((9, 1),),VportObj
-			)
-
-	def UnloadArx(self, Name=defaultNamedNotOptArg):
-		'Unloads the specified AutoCAD ARX application'
-		return self._oleobj_.InvokeTypes(23, LCID, 1, (24, 0), ((8, 1),),Name
-			)
-
-	def UnloadDVB(self, Name=defaultNamedNotOptArg):
-		'Unloads the specified AutoCAD VBA project file'
-		return self._oleobj_.InvokeTypes(31, LCID, 1, (24, 0), ((8, 1),),Name
-			)
-
-	def Update(self):
-		'Updates the object to the drawing screen'
-		return self._oleobj_.InvokeTypes(24, LCID, 1, (24, 0), (),)
-
-	def Zoom(self, Type=defaultNamedNotOptArg, vParams=defaultNamedNotOptArg):
-		'Zoom '
-		return self._oleobj_.InvokeTypes(26, LCID, 1, (24, 0), ((3, 1), (16396, 1)),Type
-			, vParams)
-
-	def ZoomAll(self):
-		'Zooms the current viewport to display the entire drawing'
-		return self._oleobj_.InvokeTypes(37, LCID, 1, (24, 0), (),)
-
-	def ZoomCenter(self, Center=defaultNamedNotOptArg, Magnify=defaultNamedNotOptArg):
-		'Zooms the current viewport to a specified center point and magnification'
-		return self._oleobj_.InvokeTypes(38, LCID, 1, (24, 0), ((12, 1), (5, 1)),Center
-			, Magnify)
-
-	def ZoomExtents(self):
-		'Zooms the current viewport to the drawing extents'
-		return self._oleobj_.InvokeTypes(36, LCID, 1, (24, 0), (),)
-
-	def ZoomPickWindow(self):
-		'Zooms the current viewport to a window defined by points picked on the screen'
-		return self._oleobj_.InvokeTypes(41, LCID, 1, (24, 0), (),)
-
-	def ZoomPrevious(self):
-		'Zooms the current viewport to its previous extents'
-		return self._oleobj_.InvokeTypes(43, LCID, 1, (24, 0), (),)
-
-	def ZoomScaled(self, scale=defaultNamedNotOptArg, ScaleType=defaultNamedNotOptArg):
-		'Zooms the current viewport to given scale factor'
-		return self._oleobj_.InvokeTypes(39, LCID, 1, (24, 0), ((5, 1), (3, 1)),scale
-			, ScaleType)
-
-	def ZoomWindow(self, LowerLeft=defaultNamedNotOptArg, UpperRight=defaultNamedNotOptArg):
-		'Zooms the current viewport to the area specified by two opposite corners of a rectangle'
-		return self._oleobj_.InvokeTypes(40, LCID, 1, (24, 0), ((12, 1), (12, 1)),LowerLeft
-			, UpperRight)
-
-	_prop_map_get_ = {
-		# Method 'ActiveDocument' returns object of type 'IAcadDocument'
-		"ActiveDocument": (5, 2, (9, 0), (), "ActiveDocument", '{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}'),
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (4, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Caption": (3, 2, (8, 0), (), "Caption", None),
-		# Method 'Documents' returns object of type 'IAcadDocuments'
-		"Documents": (32, 2, (9, 0), (), "Documents", '{E725B837-BAD5-451E-97D4-6417B5B70EC7}'),
-		"FullName": (6, 2, (8, 0), (), "FullName", None),
-		"HWND": (44, 2, (20, 0), (), "HWND", None),
-		"Height": (7, 2, (3, 0), (), "Height", None),
-		"LocaleId": (10, 2, (3, 0), (), "LocaleId", None),
-		# Method 'MenuBar' returns object of type 'IAcadMenuBar'
-		"MenuBar": (29, 2, (9, 0), (), "MenuBar", '{A704FE5B-8BA2-484E-90FD-7AC8AF48A380}'),
-		# Method 'MenuGroups' returns object of type 'IAcadMenuGroups'
-		"MenuGroups": (28, 2, (9, 0), (), "MenuGroups", '{B6AD6C44-3524-477D-B5C5-2CBA04E7D410}'),
-		"Name": (2, 2, (8, 0), (), "Name", None),
-		"Path": (9, 2, (8, 0), (), "Path", None),
-		# Method 'Preferences' returns object of type 'IAcadPreferences'
-		"Preferences": (14, 2, (9, 0), (), "Preferences", '{C2A67E24-E163-4972-836A-490B41127A35}'),
-		"VBE": (27, 2, (9, 0), (), "VBE", None),
-		"Version": (12, 2, (8, 0), (), "Version", None),
-		"Visible": (1, 2, (11, 0), (), "Visible", None),
-		"Width": (13, 2, (3, 0), (), "Width", None),
-		"WindowLeft": (8, 2, (3, 0), (), "WindowLeft", None),
-		"WindowState": (34, 2, (3, 0), (), "WindowState", None),
-		"WindowTop": (11, 2, (3, 0), (), "WindowTop", None),
-	}
-	_prop_map_put_ = {
-		"ActiveDocument": ((5, LCID, 4, 0),()),
-		"Height": ((7, LCID, 4, 0),()),
-		"Visible": ((1, LCID, 4, 0),()),
-		"Width": ((13, LCID, 4, 0),()),
-		"WindowLeft": ((8, LCID, 4, 0),()),
-		"WindowState": ((34, LCID, 4, 0),()),
-		"WindowTop": ((11, LCID, 4, 0),()),
 	}
 	def __iter__(self):
 		"Return a Python iterator for this object"
@@ -7138,320 +6988,6 @@ class IAcadDimension(DispatchBaseClass):
 			raise TypeError("This object does not support enumeration")
 		return win32com.client.util.Iterator(ob, None)
 
-class IAcadDocument(DispatchBaseClass):
-	'An AutoCAD drawing'
-	CLSID = IID('{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')
-	coclass_clsid = IID('{345D3165-3889-4694-AB75-A91A27B217E8}')
-
-	def Activate(self):
-		'Makes the specified drawing active'
-		return self._oleobj_.InvokeTypes(57, LCID, 1, (24, 0), (),)
-
-	def AuditInfo(self, FixErr=defaultNamedNotOptArg):
-		'Evaluates the integrity of the drawing'
-		return self._oleobj_.InvokeTypes(43, LCID, 1, (24, 0), ((11, 1),),FixErr
-			)
-
-	def Close(self, SaveChanges=defaultNamedOptArg, FileName=defaultNamedOptArg):
-		'Closes the specified drawing, or all open drawings'
-		return self._oleobj_.InvokeTypes(58, LCID, 1, (24, 0), ((12, 17), (12, 17)),SaveChanges
-			, FileName)
-
-	def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg, IdPairs=defaultNamedOptArg):
-		'Duplicates multiple objects (deep cloning)'
-		return self._ApplyTypes_(4, 1, (12, 0), ((12, 1), (12, 17), (16396, 19)), 'CopyObjects', None,Objects
-			, Owner, IdPairs)
-
-	def EndUndoMark(self):
-		'Marks the end of a block of operations'
-		return self._oleobj_.InvokeTypes(69, LCID, 1, (24, 0), (),)
-
-	def Export(self, FileName=defaultNamedNotOptArg, Extension=defaultNamedNotOptArg, SelectionSet=defaultNamedNotOptArg):
-		'Exports the AutoCAD drawing to a WMF, SAT, EPS, DXF, or BMP format'
-		return self._oleobj_.InvokeTypes(45, LCID, 1, (24, 0), ((8, 1), (8, 1), (9, 1)),FileName
-			, Extension, SelectionSet)
-
-	def GetVariable(self, Name=defaultNamedNotOptArg):
-		'Gets the current setting of an AutoCAD system variable'
-		return self._ApplyTypes_(51, 1, (12, 0), ((8, 1),), 'GetVariable', None,Name
-			)
-
-	def HandleToObject(self, Handle=defaultNamedNotOptArg):
-		'Gets the object that corresponds to the given handle'
-		ret = self._oleobj_.InvokeTypes(18, LCID, 1, (9, 0), ((8, 1),),Handle
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'HandleToObject', None)
-		return ret
-
-	def Import(self, FileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
-		'Imports a drawing file in SAT, EPS, DXF, or WMF format'
-		ret = self._oleobj_.InvokeTypes(44, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),FileName
-			, InsertionPoint, ScaleFactor)
-		if ret is not None:
-			ret = Dispatch(ret, 'Import', None)
-		return ret
-
-	def LoadShapeFile(self, FullName=defaultNamedNotOptArg):
-		'Loads a shape file (SHX)'
-		return self._oleobj_.InvokeTypes(53, LCID, 1, (24, 0), ((8, 1),),FullName
-			)
-
-	# Result is of type IAcadDocument
-	def New(self, TemplateFileName=defaultNamedNotOptArg):
-		'Creates a new document in SDI mode'
-		ret = self._oleobj_.InvokeTypes(46, LCID, 1, (9, 0), ((8, 1),),TemplateFileName
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'New', '{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')
-		return ret
-
-	def ObjectIdToObject(self, ObjectID=defaultNamedNotOptArg):
-		'Gets the object that corresponds to the given object ID'
-		ret = self._oleobj_.InvokeTypes(19, LCID, 1, (9, 0), ((20, 1),),ObjectID
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'ObjectIdToObject', None)
-		return ret
-
-	# Result is of type IAcadDocument
-	def Open(self, FullName=defaultNamedNotOptArg, Password=defaultNamedOptArg):
-		'Opens an existing drawing file (DWG) and makes it the active document'
-		ret = self._oleobj_.InvokeTypes(42, LCID, 1, (9, 0), ((8, 1), (12, 17)),FullName
-			, Password)
-		if ret is not None:
-			ret = Dispatch(ret, 'Open', '{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')
-		return ret
-
-	def PostCommand(self, Command=defaultNamedNotOptArg):
-		'Posts a command string from a VB or VBA application to the document for processing'
-		return self._oleobj_.InvokeTypes(75, LCID, 1, (24, 0), ((8, 1),),Command
-			)
-
-	def PurgeAll(self):
-		'Removes unused named references such as unused blocks or layers from the document'
-		return self._oleobj_.InvokeTypes(50, LCID, 1, (24, 0), (),)
-
-	def Regen(self, WhichViewports=defaultNamedNotOptArg):
-		'Regenerates the entire drawing and recomputes the screen coordinates and view resolution for all objects'
-		return self._oleobj_.InvokeTypes(54, LCID, 1, (24, 0), ((3, 1),),WhichViewports
-			)
-
-	def Save(self):
-		'Saves the document or menu group'
-		return self._oleobj_.InvokeTypes(47, LCID, 1, (24, 0), (),)
-
-	def SaveAs(self, FullFileName=defaultNamedNotOptArg, SaveAsType=defaultNamedOptArg, vSecurityParams=defaultNamedOptArg):
-		'Saves the document or menu group to a specified file'
-		return self._oleobj_.InvokeTypes(48, LCID, 1, (24, 0), ((8, 1), (12, 17), (12, 17)),FullFileName
-			, SaveAsType, vSecurityParams)
-
-	def SendCommand(self, Command=defaultNamedNotOptArg):
-		'Sends a command string from a VB or VBA application to the document for processing'
-		return self._oleobj_.InvokeTypes(63, LCID, 1, (24, 0), ((8, 1),),Command
-			)
-
-	def SetVariable(self, Name=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
-		'Sets the value of an AutoCAD system variable'
-		return self._oleobj_.InvokeTypes(52, LCID, 1, (24, 0), ((8, 1), (12, 1)),Name
-			, Value)
-
-	def StartUndoMark(self):
-		'Marks the beginning of a block of operations'
-		return self._oleobj_.InvokeTypes(68, LCID, 1, (24, 0), (),)
-
-	def Wblock(self, FileName=defaultNamedNotOptArg, SelectionSet=defaultNamedNotOptArg):
-		'Writes out the given selection set as a new drawing file'
-		return self._oleobj_.InvokeTypes(49, LCID, 1, (24, 0), ((8, 1), (9, 1)),FileName
-			, SelectionSet)
-
-	_prop_map_get_ = {
-		"Active": (56, 2, (11, 0), (), "Active", None),
-		# Method 'ActiveDimStyle' returns object of type 'IAcadDimStyle'
-		"ActiveDimStyle": (26, 2, (9, 0), (), "ActiveDimStyle", '{B001A02B-0560-4954-B921-CFF786EAD2C6}'),
-		# Method 'ActiveLayer' returns object of type 'IAcadLayer'
-		"ActiveLayer": (24, 2, (9, 0), (), "ActiveLayer", '{57995A1E-64DB-4C6C-8155-1F9E6FB608E2}'),
-		# Method 'ActiveLayout' returns object of type 'IAcadLayout'
-		"ActiveLayout": (62, 2, (9, 0), (), "ActiveLayout", '{7A524437-AD0E-48C6-BC94-98BC85368BD8}'),
-		# Method 'ActiveLinetype' returns object of type 'IAcadLineType'
-		"ActiveLinetype": (25, 2, (9, 0), (), "ActiveLinetype", '{195E95A0-500A-4187-9EAC-E033BB9B1B08}'),
-		# Method 'ActiveMaterial' returns object of type 'IAcadMaterial'
-		"ActiveMaterial": (74, 2, (9, 0), (), "ActiveMaterial", '{BCDA7885-FBA7-4667-89F9-0077E3B9CEAB}'),
-		# Method 'ActivePViewport' returns object of type 'IAcadPViewport'
-		"ActivePViewport": (30, 2, (9, 0), (), "ActivePViewport", '{8E70F234-A6D0-4373-87C6-F041E6396E43}'),
-		# Method 'ActiveSelectionSet' returns object of type 'IAcadSelectionSet'
-		"ActiveSelectionSet": (33, 2, (9, 0), (), "ActiveSelectionSet", '{43820684-2C5B-4682-B644-AD703C70A611}'),
-		"ActiveSpace": (31, 2, (3, 0), (), "ActiveSpace", None),
-		# Method 'ActiveTextStyle' returns object of type 'IAcadTextStyle'
-		"ActiveTextStyle": (27, 2, (9, 0), (), "ActiveTextStyle", '{739F20C7-25D3-431E-88B7-B7824CA4D7BC}'),
-		# Method 'ActiveUCS' returns object of type 'IAcadUCS'
-		"ActiveUCS": (28, 2, (9, 0), (), "ActiveUCS", '{BFDBCCFC-E4F2-4C36-85FC-20595E28CD3B}'),
-		# Method 'ActiveViewport' returns object of type 'IAcadViewport'
-		"ActiveViewport": (29, 2, (9, 0), (), "ActiveViewport", '{37113848-87F7-4A28-BEA7-4B8559C603C7}'),
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (66, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		# Method 'Blocks' returns object of type 'IAcadBlocks'
-		"Blocks": (3, 2, (9, 0), (), "Blocks", '{6DC49550-9FE8-4456-9751-BCCB9C436FF3}'),
-		# Method 'Database' returns object of type 'IAcadDatabase'
-		"Database": (67, 2, (9, 0), (), "Database", '{3280D375-1DE4-4DA2-89EE-591E860056DC}'),
-		# Method 'Dictionaries' returns object of type 'IAcadDictionaries'
-		"Dictionaries": (9, 2, (9, 0), (), "Dictionaries", '{3ADFB200-A04C-434F-975E-3A3F978786A2}'),
-		# Method 'DimStyles' returns object of type 'IAcadDimStyles'
-		"DimStyles": (6, 2, (9, 0), (), "DimStyles", '{2932818F-C836-44F9-9329-3A27628B478A}'),
-		"ElevationModelSpace": (15, 2, (5, 0), (), "ElevationModelSpace", None),
-		"ElevationPaperSpace": (16, 2, (5, 0), (), "ElevationPaperSpace", None),
-		"FullName": (34, 2, (8, 0), (), "FullName", None),
-		# Method 'Groups' returns object of type 'IAcadGroups'
-		"Groups": (5, 2, (9, 0), (), "Groups", '{257DF530-AE46-4A50-8948-54948B2AB045}'),
-		"HWND": (64, 2, (20, 0), (), "HWND", None),
-		"Height": (61, 2, (3, 0), (), "Height", None),
-		# Method 'Layers' returns object of type 'IAcadLayers'
-		"Layers": (7, 2, (9, 0), (), "Layers", '{955BD2D0-D331-4E04-B50D-D3632BCAF5F2}'),
-		# Method 'Layouts' returns object of type 'IAcadLayouts'
-		"Layouts": (20, 2, (9, 0), (), "Layouts", '{8C3EC56B-ADA0-4FC9-8AAA-3B864ED5B633}'),
-		"Limits": (17, 2, (12, 0), (), "Limits", None),
-		# Method 'Linetypes' returns object of type 'IAcadLineTypes'
-		"Linetypes": (8, 2, (9, 0), (), "Linetypes", '{2EB8451D-2CFB-4F35-A9D9-24323AB74350}'),
-		"MSpace": (40, 2, (11, 0), (), "MSpace", None),
-		# Method 'Materials' returns object of type 'IAcadMaterials'
-		"Materials": (73, 2, (9, 0), (), "Materials", '{81B5645D-003B-4F35-B5FB-F0BABE4DD217}'),
-		# Method 'ModelSpace' returns object of type 'IAcadModelSpace'
-		"ModelSpace": (1, 2, (9, 0), (), "ModelSpace", '{34BD05D6-AC90-4409-8D22-D7B3C820E32B}'),
-		"Name": (35, 2, (8, 0), (), "Name", None),
-		"ObjectSnapMode": (37, 2, (11, 0), (), "ObjectSnapMode", None),
-		# Method 'PaperSpace' returns object of type 'IAcadPaperSpace'
-		"PaperSpace": (2, 2, (9, 0), (), "PaperSpace", '{BB92334B-CEBE-4C67-8E06-E4181B95F7B8}'),
-		"Path": (36, 2, (8, 0), (), "Path", None),
-		# Method 'PickfirstSelectionSet' returns object of type 'IAcadSelectionSet'
-		"PickfirstSelectionSet": (55, 2, (9, 0), (), "PickfirstSelectionSet", '{43820684-2C5B-4682-B644-AD703C70A611}'),
-		# Method 'Plot' returns object of type 'IAcadPlot'
-		"Plot": (23, 2, (9, 0), (), "Plot", '{60CD0F9E-61AB-4631-B947-88180FBFB9E9}'),
-		# Method 'PlotConfigurations' returns object of type 'IAcadPlotConfigurations'
-		"PlotConfigurations": (21, 2, (9, 0), (), "PlotConfigurations", '{6F5C4479-94B4-4ED6-B7B0-6D17841BA198}'),
-		# Method 'Preferences' returns object of type 'IAcadDatabasePreferences'
-		"Preferences": (22, 2, (9, 0), (), "Preferences", '{150F3C7A-A584-403E-93E8-98DB3D0A3485}'),
-		"ReadOnly": (38, 2, (11, 0), (), "ReadOnly", None),
-		# Method 'RegisteredApplications' returns object of type 'IAcadRegisteredApplications'
-		"RegisteredApplications": (10, 2, (9, 0), (), "RegisteredApplications", '{7D6C6772-C5CD-4633-BCFC-B4A8858A6BCB}'),
-		"Saved": (39, 2, (11, 0), (), "Saved", None),
-		# Method 'SectionManager' returns object of type 'IAcadSectionManager'
-		"SectionManager": (72, 2, (9, 0), (), "SectionManager", '{34B16C03-E5B7-41FD-8181-60141C33E394}'),
-		# Method 'SelectionSets' returns object of type 'IAcadSelectionSets'
-		"SelectionSets": (32, 2, (9, 0), (), "SelectionSets", '{A0A53FF5-1CCE-4A79-A74A-7BCDEBA03F35}'),
-		# Method 'SummaryInfo' returns object of type 'IAcadSummaryInfo'
-		"SummaryInfo": (71, 2, (9, 0), (), "SummaryInfo", '{709B6D13-62D3-49D2-9431-91BD88A7DCEC}'),
-		# Method 'TextStyles' returns object of type 'IAcadTextStyles'
-		"TextStyles": (11, 2, (9, 0), (), "TextStyles", '{6464273B-23A6-40D9-B408-6B7A3429892D}'),
-		# Method 'UserCoordinateSystems' returns object of type 'IAcadUCSs'
-		"UserCoordinateSystems": (12, 2, (9, 0), (), "UserCoordinateSystems", '{EA8D9DB3-5546-45F6-BBF6-844CA5E3E73E}'),
-		# Method 'Utility' returns object of type 'IAcadUtility'
-		"Utility": (41, 2, (9, 0), (), "Utility", '{F693DA67-0534-44D8-BDA3-E20C5FA32BA0}'),
-		# Method 'Viewports' returns object of type 'IAcadViewports'
-		"Viewports": (14, 2, (9, 0), (), "Viewports", '{49C7B6C0-8613-44CB-980B-7CE1371EA912}'),
-		# Method 'Views' returns object of type 'IAcadViews'
-		"Views": (13, 2, (9, 0), (), "Views", '{C08E2EA0-FF82-4DF6-A85C-5DF79B033929}'),
-		"Width": (60, 2, (3, 0), (), "Width", None),
-		"WindowState": (59, 2, (3, 0), (), "WindowState", None),
-		"WindowTitle": (65, 2, (8, 0), (), "WindowTitle", None),
-	}
-	_prop_map_put_ = {
-		"ActiveDimStyle": ((26, LCID, 4, 0),()),
-		"ActiveLayer": ((24, LCID, 4, 0),()),
-		"ActiveLayout": ((62, LCID, 4, 0),()),
-		"ActiveLinetype": ((25, LCID, 4, 0),()),
-		"ActiveMaterial": ((74, LCID, 4, 0),()),
-		"ActivePViewport": ((30, LCID, 4, 0),()),
-		"ActiveSpace": ((31, LCID, 4, 0),()),
-		"ActiveTextStyle": ((27, LCID, 4, 0),()),
-		"ActiveUCS": ((28, LCID, 4, 0),()),
-		"ActiveViewport": ((29, LCID, 4, 0),()),
-		"ElevationModelSpace": ((15, LCID, 4, 0),()),
-		"ElevationPaperSpace": ((16, LCID, 4, 0),()),
-		"Height": ((61, LCID, 4, 0),()),
-		"Limits": ((17, LCID, 4, 0),()),
-		"MSpace": ((40, LCID, 4, 0),()),
-		"ObjectSnapMode": ((37, LCID, 4, 0),()),
-		"Width": ((60, LCID, 4, 0),()),
-		"WindowState": ((59, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadDocuments(DispatchBaseClass):
-	'The collection of all AutoCAD drawings open in the current session'
-	CLSID = IID('{E725B837-BAD5-451E-97D4-6417B5B70EC7}')
-	coclass_clsid = IID('{F04A2229-71AE-4BC9-A300-99E058A40A8B}')
-
-	# Result is of type IAcadDocument
-	def Add(self, TemplateName=defaultNamedOptArg):
-		'Creates a member object and adds it to the appropriate collection'
-		ret = self._oleobj_.InvokeTypes(1610743812, LCID, 1, (9, 0), ((12, 17),),TemplateName
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Add', '{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')
-		return ret
-
-	def Close(self):
-		'Closes the specified drawing, or all open drawings'
-		return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), (),)
-
-	# Result is of type IAcadDocument
-	def Item(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Item', '{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')
-		return ret
-
-	# Result is of type IAcadDocument
-	def Open(self, Name=defaultNamedNotOptArg, ReadOnly=defaultNamedOptArg, Password=defaultNamedOptArg):
-		'Opens an existing drawing file (DWG) and makes it the active document'
-		ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1), (12, 17), (12, 17)),Name
-			, ReadOnly, Password)
-		if ret is not None:
-			ret = Dispatch(ret, 'Open', '{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')
-		return ret
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743811, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Count": (1610743810, 2, (3, 0), (), "Count", None),
-	}
-	_prop_map_put_ = {
-	}
-	# Default method for this class is 'Item'
-	def __call__(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, '__call__', '{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')
-		return ret
-
-	def __str__(self, *args):
-		return str(self.__call__(*args))
-	def __int__(self, *args):
-		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, '{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')
-	#This class has Count() property - allow len(ob) to provide this
-	def __len__(self):
-		return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
-	#This class has a __len__ - this is needed so 'if object:' always returns TRUE.
-	def __nonzero__(self):
-		return True
-
 class IAcadDwfUnderlay(DispatchBaseClass):
 	CLSID = IID('{EAF5801D-82B0-4558-AEEA-706D63F3C934}')
 	coclass_clsid = IID('{345C9439-5A05-4B6D-B7B8-83FFD1EB6280}')
@@ -12124,157 +11660,6 @@ class IAcadMaterials(DispatchBaseClass):
 	def __nonzero__(self):
 		return True
 
-class IAcadMenuBar(DispatchBaseClass):
-	'A collection of PopupMenu objects representing the current AutoCAD menu bar'
-	CLSID = IID('{A704FE5B-8BA2-484E-90FD-7AC8AF48A380}')
-	coclass_clsid = IID('{6DE060AA-B166-4102-B7E6-6E881C641F2A}')
-
-	# Result is of type IAcadPopupMenu
-	def Item(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Item', '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')
-		return ret
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743811, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Count": (1610743810, 2, (3, 0), (), "Count", None),
-		# Method 'Parent' returns object of type 'IAcadApplication'
-		"Parent": (1610743812, 2, (9, 0), (), "Parent", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-	}
-	_prop_map_put_ = {
-	}
-	# Default method for this class is 'Item'
-	def __call__(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, '__call__', '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')
-		return ret
-
-	def __str__(self, *args):
-		return str(self.__call__(*args))
-	def __int__(self, *args):
-		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')
-	#This class has Count() property - allow len(ob) to provide this
-	def __len__(self):
-		return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
-	#This class has a __len__ - this is needed so 'if object:' always returns TRUE.
-	def __nonzero__(self):
-		return True
-
-class IAcadMenuGroup(DispatchBaseClass):
-	'An AutoCAD menu group'
-	CLSID = IID('{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}')
-	coclass_clsid = IID('{3A625576-85BA-425C-B121-3CA6D8048184}')
-
-	def Save(self, MenuFileType=defaultNamedNotOptArg):
-		'Saves the document or menu group'
-		return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (24, 0), ((3, 1),),MenuFileType
-			)
-
-	def SaveAs(self, MenuFileName=defaultNamedNotOptArg, MenuFileType=defaultNamedNotOptArg):
-		'Saves the document or menu group to a specified file'
-		return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (24, 0), ((8, 1), (3, 1)),MenuFileName
-			, MenuFileType)
-
-	def Unload(self):
-		'Unloads the menu group or external reference'
-		return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), (),)
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"MenuFileName": (1610743812, 2, (8, 0), (), "MenuFileName", None),
-		# Method 'Menus' returns object of type 'IAcadPopupMenus'
-		"Menus": (1610743813, 2, (9, 0), (), "Menus", '{A14874CE-740A-4A1B-BB70-17D578F41913}'),
-		"Name": (1610743810, 2, (8, 0), (), "Name", None),
-		# Method 'Parent' returns object of type 'IAcadMenuGroups'
-		"Parent": (1610743809, 2, (9, 0), (), "Parent", '{B6AD6C44-3524-477D-B5C5-2CBA04E7D410}'),
-		# Method 'Toolbars' returns object of type 'IAcadToolbars'
-		"Toolbars": (1610743814, 2, (9, 0), (), "Toolbars", '{DA8044CA-7817-4557-8055-A03564BCF6AF}'),
-		"Type": (1610743811, 2, (3, 0), (), "Type", None),
-	}
-	_prop_map_put_ = {
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadMenuGroups(DispatchBaseClass):
-	'A collection of MenuGroup objects representing all the menu groups loaded in the current AutoCAD session'
-	CLSID = IID('{B6AD6C44-3524-477D-B5C5-2CBA04E7D410}')
-	coclass_clsid = IID('{B2A3DAF3-7420-4539-AAEC-901D2A8E1E3B}')
-
-	# Result is of type IAcadMenuGroup
-	def Item(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Item', '{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}')
-		return ret
-
-	# Result is of type IAcadMenuGroup
-	def Load(self, MenuFileName=defaultNamedNotOptArg, BaseMenu=defaultNamedOptArg):
-		'Loads a menu group from a menu file or the definition of a linetype from a library (LIN) file'
-		ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1), (12, 17)),MenuFileName
-			, BaseMenu)
-		if ret is not None:
-			ret = Dispatch(ret, 'Load', '{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}')
-		return ret
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743811, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Count": (1610743810, 2, (3, 0), (), "Count", None),
-		# Method 'Parent' returns object of type 'IAcadApplication'
-		"Parent": (1610743812, 2, (9, 0), (), "Parent", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-	}
-	_prop_map_put_ = {
-	}
-	# Default method for this class is 'Item'
-	def __call__(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, '__call__', '{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}')
-		return ret
-
-	def __str__(self, *args):
-		return str(self.__call__(*args))
-	def __int__(self, *args):
-		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, '{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}')
-	#This class has Count() property - allow len(ob) to provide this
-	def __len__(self):
-		return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
-	#This class has a __len__ - this is needed so 'if object:' always returns TRUE.
-	def __nonzero__(self):
-		return True
-
 class IAcadModelSpace(DispatchBaseClass):
 	'A special Block object containing all model space entities'
 	CLSID = IID('{34BD05D6-AC90-4409-8D22-D7B3C820E32B}')
@@ -14300,56 +13685,6 @@ class IAcadPlaneSurface(DispatchBaseClass):
 			raise TypeError("This object does not support enumeration")
 		return win32com.client.util.Iterator(ob, None)
 
-class IAcadPlot(DispatchBaseClass):
-	'The set of methods and properties used for plotting layouts'
-	CLSID = IID('{60CD0F9E-61AB-4631-B947-88180FBFB9E9}')
-	coclass_clsid = IID('{C8FC79B8-5C16-431E-B345-1165F1D19D47}')
-
-	def DisplayPlotPreview(self, Preview=defaultNamedNotOptArg):
-		'Displays the Plot Preview dialog box with the specified partial or full view preview'
-		return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), ((3, 1),),Preview
-			)
-
-	def PlotToDevice(self, plotConfig=defaultNamedOptArg):
-		'Plots a layout to a device'
-		return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (11, 0), ((12, 17),),plotConfig
-			)
-
-	def PlotToFile(self, plotFile=defaultNamedNotOptArg, plotConfig=defaultNamedOptArg):
-		'Plots a layout to the specified file'
-		return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (11, 0), ((8, 1), (12, 17)),plotFile
-			, plotConfig)
-
-	def SetLayoutsToPlot(self, layoutList=defaultNamedNotOptArg):
-		'Specifies the layout or layouts to plot'
-		return self._oleobj_.InvokeTypes(1610743818, LCID, 1, (24, 0), ((12, 1),),layoutList
-			)
-
-	def StartBatchMode(self, entryCount=defaultNamedNotOptArg):
-		'Invokes batchmode printing'
-		return self._oleobj_.InvokeTypes(1610743819, LCID, 1, (24, 0), ((3, 1),),entryCount
-			)
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"BatchPlotProgress": (1610743813, 2, (11, 0), (), "BatchPlotProgress", None),
-		"NumberOfCopies": (1610743811, 2, (3, 0), (), "NumberOfCopies", None),
-		"QuietErrorMode": (1610743809, 2, (11, 0), (), "QuietErrorMode", None),
-	}
-	_prop_map_put_ = {
-		"BatchPlotProgress": ((1610743813, LCID, 4, 0),()),
-		"NumberOfCopies": ((1610743811, LCID, 4, 0),()),
-		"QuietErrorMode": ((1610743809, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
 class IAcadPlotConfiguration(DispatchBaseClass):
 	'A named collection of plot settings'
 	CLSID = IID('{5C7DCDF9-0A55-4A13-9461-23BF37C77D3D}')
@@ -15864,730 +15199,6 @@ class IAcadPolyline(DispatchBaseClass):
 		"Type": ((13, LCID, 4, 0),()),
 		"Visible": ((1284, LCID, 4, 0),()),
 		"color": ((1280, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPopupMenu(DispatchBaseClass):
-	'An AutoCAD cascading menu'
-	CLSID = IID('{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')
-	coclass_clsid = IID('{67FE9EA9-C8DD-48EA-98BB-E285D06B9482}')
-
-	# Result is of type IAcadPopupMenuItem
-	def AddMenuItem(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg):
-		'Adds a popup menu item to a popup menu'
-		ret = self._oleobj_.InvokeTypes(1610743818, LCID, 1, (9, 0), ((12, 1), (8, 1), (8, 1)),Index
-			, Label, Macro)
-		if ret is not None:
-			ret = Dispatch(ret, 'AddMenuItem', '{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}')
-		return ret
-
-	# Result is of type IAcadPopupMenuItem
-	def AddSeparator(self, Index=defaultNamedNotOptArg):
-		'Adds a separator to an existing menu or toolbar'
-		ret = self._oleobj_.InvokeTypes(1610743820, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'AddSeparator', '{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}')
-		return ret
-
-	# Result is of type IAcadPopupMenu
-	def AddSubMenu(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg):
-		'Adds a submenu to an existing menu'
-		ret = self._oleobj_.InvokeTypes(1610743819, LCID, 1, (9, 0), ((12, 1), (8, 1)),Index
-			, Label)
-		if ret is not None:
-			ret = Dispatch(ret, 'AddSubMenu', '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')
-		return ret
-
-	def InsertInMenuBar(self, Index=defaultNamedNotOptArg):
-		'Inserts the popup menu into the AutoCAD menu bar at a specified location'
-		return self._oleobj_.InvokeTypes(1610743821, LCID, 1, (24, 0), ((12, 1),),Index
-			)
-
-	# Result is of type IAcadPopupMenuItem
-	def Item(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Item', '{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}')
-		return ret
-
-	def RemoveFromMenuBar(self):
-		'Removes the popup menu from the AutoCAD menu bar'
-		return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (24, 0), (),)
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743811, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Count": (1610743810, 2, (3, 0), (), "Count", None),
-		"Name": (1610743813, 2, (8, 0), (), "Name", None),
-		"NameNoMnemonic": (1610743815, 2, (8, 0), (), "NameNoMnemonic", None),
-		"OnMenuBar": (1610743817, 2, (11, 0), (), "OnMenuBar", None),
-		"Parent": (1610743812, 2, (9, 0), (), "Parent", None),
-		"ShortcutMenu": (1610743816, 2, (11, 0), (), "ShortcutMenu", None),
-		"TagString": (1610743823, 2, (8, 0), (), "TagString", None),
-	}
-	_prop_map_put_ = {
-		"Name": ((1610743813, LCID, 4, 0),()),
-	}
-	# Default method for this class is 'Item'
-	def __call__(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, '__call__', '{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}')
-		return ret
-
-	def __str__(self, *args):
-		return str(self.__call__(*args))
-	def __int__(self, *args):
-		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, '{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}')
-	#This class has Count() property - allow len(ob) to provide this
-	def __len__(self):
-		return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
-	#This class has a __len__ - this is needed so 'if object:' always returns TRUE.
-	def __nonzero__(self):
-		return True
-
-class IAcadPopupMenuItem(DispatchBaseClass):
-	'A single menu item on an AutoCAD pull-down menu'
-	CLSID = IID('{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}')
-	coclass_clsid = IID('{03FCD8AD-66AC-4B84-A563-FE19F8BC31AF}')
-
-	def Delete(self):
-		'Deletes a specified object'
-		return self._oleobj_.InvokeTypes(1610743826, LCID, 1, (24, 0), (),)
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Caption": (1610743823, 2, (8, 0), (), "Caption", None),
-		"Check": (1610743816, 2, (11, 0), (), "Check", None),
-		"Enable": (1610743814, 2, (11, 0), (), "Enable", None),
-		"EndSubMenuLevel": (1610743827, 2, (3, 0), (), "EndSubMenuLevel", None),
-		"HelpString": (1610743824, 2, (8, 0), (), "HelpString", None),
-		"Index": (1610743822, 2, (3, 0), (), "Index", None),
-		"Label": (1610743810, 2, (8, 0), (), "Label", None),
-		"Macro": (1610743820, 2, (8, 0), (), "Macro", None),
-		# Method 'Parent' returns object of type 'IAcadPopupMenu'
-		"Parent": (1610743809, 2, (9, 0), (), "Parent", '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}'),
-		# Method 'SubMenu' returns object of type 'IAcadPopupMenu'
-		"SubMenu": (1610743819, 2, (9, 0), (), "SubMenu", '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}'),
-		"TagString": (1610743812, 2, (8, 0), (), "TagString", None),
-		"Type": (1610743818, 2, (3, 0), (), "Type", None),
-	}
-	_prop_map_put_ = {
-		"Check": ((1610743816, LCID, 4, 0),()),
-		"Enable": ((1610743814, LCID, 4, 0),()),
-		"EndSubMenuLevel": ((1610743827, LCID, 4, 0),()),
-		"HelpString": ((1610743824, LCID, 4, 0),()),
-		"Label": ((1610743810, LCID, 4, 0),()),
-		"Macro": ((1610743820, LCID, 4, 0),()),
-		"TagString": ((1610743812, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPopupMenus(DispatchBaseClass):
-	'A collection of PopupMenu objects representing all the popup menus loaded in the MenuGroup'
-	CLSID = IID('{A14874CE-740A-4A1B-BB70-17D578F41913}')
-	coclass_clsid = IID('{ECCE89E0-1CF9-4D8F-B3EA-3E82E673EE6F}')
-
-	# Result is of type IAcadPopupMenu
-	def Add(self, MenuName=defaultNamedNotOptArg):
-		'Creates a member object and adds it to the appropriate collection'
-		ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1),),MenuName
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Add', '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')
-		return ret
-
-	def InsertMenuInMenuBar(self, MenuName=defaultNamedNotOptArg, Index=defaultNamedNotOptArg):
-		'Inserts a menu into the AutoCAD menu bar'
-		return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), ((8, 1), (12, 1)),MenuName
-			, Index)
-
-	# Result is of type IAcadPopupMenu
-	def Item(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Item', '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')
-		return ret
-
-	def RemoveMenuFromMenuBar(self, Index=defaultNamedNotOptArg):
-		'Removes the popup menu, as specified from the collection, from the AutoCAD menu bar'
-		return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), ((12, 1),),Index
-			)
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743811, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Count": (1610743810, 2, (3, 0), (), "Count", None),
-		# Method 'Parent' returns object of type 'IAcadMenuGroup'
-		"Parent": (1610743812, 2, (9, 0), (), "Parent", '{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}'),
-	}
-	_prop_map_put_ = {
-	}
-	# Default method for this class is 'Item'
-	def __call__(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, '__call__', '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')
-		return ret
-
-	def __str__(self, *args):
-		return str(self.__call__(*args))
-	def __int__(self, *args):
-		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')
-	#This class has Count() property - allow len(ob) to provide this
-	def __len__(self):
-		return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
-	#This class has a __len__ - this is needed so 'if object:' always returns TRUE.
-	def __nonzero__(self):
-		return True
-
-class IAcadPreferences(DispatchBaseClass):
-	'This object specifies the current AutoCAD settings'
-	CLSID = IID('{C2A67E24-E163-4972-836A-490B41127A35}')
-	coclass_clsid = IID('{02F066CC-A9C3-471D-B96D-CC260C296722}')
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		# Method 'Display' returns object of type 'IAcadPreferencesDisplay'
-		"Display": (1610743810, 2, (9, 0), (), "Display", '{0B1F1007-6232-4774-9989-5F4EC003AC4F}'),
-		# Method 'Drafting' returns object of type 'IAcadPreferencesDrafting'
-		"Drafting": (1610743815, 2, (9, 0), (), "Drafting", '{6CA0C79C-A982-409C-9821-76A69E49931A}'),
-		# Method 'Files' returns object of type 'IAcadPreferencesFiles'
-		"Files": (1610743809, 2, (9, 0), (), "Files", '{2F7C2478-9777-4359-BF58-57200E9C3200}'),
-		# Method 'OpenSave' returns object of type 'IAcadPreferencesOpenSave'
-		"OpenSave": (1610743811, 2, (9, 0), (), "OpenSave", '{D2E64B8C-E8C7-4453-8EC8-6B03E275309C}'),
-		# Method 'Output' returns object of type 'IAcadPreferencesOutput'
-		"Output": (1610743812, 2, (9, 0), (), "Output", '{15480E24-2072-4D1D-820C-29B8D5EF4B7B}'),
-		# Method 'Profiles' returns object of type 'IAcadPreferencesProfiles'
-		"Profiles": (1610743817, 2, (9, 0), (), "Profiles", '{55276CBD-A0CB-4E81-BB8D-66435D793708}'),
-		# Method 'Selection' returns object of type 'IAcadPreferencesSelection'
-		"Selection": (1610743816, 2, (9, 0), (), "Selection", '{4D4FD045-8B92-4A18-91D3-5E5C88C40C77}'),
-		# Method 'System' returns object of type 'IAcadPreferencesSystem'
-		"System": (1610743813, 2, (9, 0), (), "System", '{D9677553-A98F-4D1C-AA34-E07E2507128E}'),
-		# Method 'User' returns object of type 'IAcadPreferencesUser'
-		"User": (1610743814, 2, (9, 0), (), "User", '{F3816DB4-2048-4D5B-B0BA-A4FAAAD6F996}'),
-	}
-	_prop_map_put_ = {
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPreferencesDisplay(DispatchBaseClass):
-	'This object contains the options from the Display tab on the Options dialog'
-	CLSID = IID('{0B1F1007-6232-4774-9989-5F4EC003AC4F}')
-	coclass_clsid = IID('{54CFD161-1607-45C6-A00C-5A8C09310218}')
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"AutoTrackingVecColor": (1610743841, 2, (19, 0), (), "AutoTrackingVecColor", None),
-		"CursorSize": (1610743823, 2, (3, 0), (), "CursorSize", None),
-		"DisplayLayoutTabs": (1610743853, 2, (11, 0), (), "DisplayLayoutTabs", None),
-		"DisplayScreenMenu": (1610743821, 2, (11, 0), (), "DisplayScreenMenu", None),
-		"DisplayScrollBars": (1610743819, 2, (11, 0), (), "DisplayScrollBars", None),
-		"DockedVisibleLines": (1610743825, 2, (3, 0), (), "DockedVisibleLines", None),
-		"GraphicsWinLayoutBackgrndColor": (1610743833, 2, (19, 0), (), "GraphicsWinLayoutBackgrndColor", None),
-		"GraphicsWinModelBackgrndColor": (1610743829, 2, (19, 0), (), "GraphicsWinModelBackgrndColor", None),
-		"HistoryLines": (1610743849, 2, (3, 0), (), "HistoryLines", None),
-		"ImageFrameHighlight": (1610743855, 2, (11, 0), (), "ImageFrameHighlight", None),
-		"LayoutCreateViewport": (1610743817, 2, (11, 0), (), "LayoutCreateViewport", None),
-		"LayoutCrosshairColor": (1610743839, 2, (19, 0), (), "LayoutCrosshairColor", None),
-		"LayoutDisplayMargins": (1610743809, 2, (11, 0), (), "LayoutDisplayMargins", None),
-		"LayoutDisplayPaper": (1610743811, 2, (11, 0), (), "LayoutDisplayPaper", None),
-		"LayoutDisplayPaperShadow": (1610743813, 2, (11, 0), (), "LayoutDisplayPaperShadow", None),
-		"LayoutShowPlotSetup": (1610743815, 2, (11, 0), (), "LayoutShowPlotSetup", None),
-		"MaxAutoCADWindow": (1610743851, 2, (11, 0), (), "MaxAutoCADWindow", None),
-		"ModelCrosshairColor": (1610743831, 2, (19, 0), (), "ModelCrosshairColor", None),
-		"ShowRasterImage": (1610743827, 2, (11, 0), (), "ShowRasterImage", None),
-		"TextFont": (1610743843, 2, (8, 0), (), "TextFont", None),
-		"TextFontSize": (1610743847, 2, (3, 0), (), "TextFontSize", None),
-		"TextFontStyle": (1610743845, 2, (3, 0), (), "TextFontStyle", None),
-		"TextWinBackgrndColor": (1610743835, 2, (19, 0), (), "TextWinBackgrndColor", None),
-		"TextWinTextColor": (1610743837, 2, (19, 0), (), "TextWinTextColor", None),
-		"TrueColorImages": (1610743857, 2, (11, 0), (), "TrueColorImages", None),
-		"XRefFadeIntensity": (1610743859, 2, (3, 0), (), "XRefFadeIntensity", None),
-	}
-	_prop_map_put_ = {
-		"AutoTrackingVecColor": ((1610743841, LCID, 4, 0),()),
-		"CursorSize": ((1610743823, LCID, 4, 0),()),
-		"DisplayLayoutTabs": ((1610743853, LCID, 4, 0),()),
-		"DisplayScreenMenu": ((1610743821, LCID, 4, 0),()),
-		"DisplayScrollBars": ((1610743819, LCID, 4, 0),()),
-		"DockedVisibleLines": ((1610743825, LCID, 4, 0),()),
-		"GraphicsWinLayoutBackgrndColor": ((1610743833, LCID, 4, 0),()),
-		"GraphicsWinModelBackgrndColor": ((1610743829, LCID, 4, 0),()),
-		"HistoryLines": ((1610743849, LCID, 4, 0),()),
-		"ImageFrameHighlight": ((1610743855, LCID, 4, 0),()),
-		"LayoutCreateViewport": ((1610743817, LCID, 4, 0),()),
-		"LayoutCrosshairColor": ((1610743839, LCID, 4, 0),()),
-		"LayoutDisplayMargins": ((1610743809, LCID, 4, 0),()),
-		"LayoutDisplayPaper": ((1610743811, LCID, 4, 0),()),
-		"LayoutDisplayPaperShadow": ((1610743813, LCID, 4, 0),()),
-		"LayoutShowPlotSetup": ((1610743815, LCID, 4, 0),()),
-		"MaxAutoCADWindow": ((1610743851, LCID, 4, 0),()),
-		"ModelCrosshairColor": ((1610743831, LCID, 4, 0),()),
-		"ShowRasterImage": ((1610743827, LCID, 4, 0),()),
-		"TextFont": ((1610743843, LCID, 4, 0),()),
-		"TextFontSize": ((1610743847, LCID, 4, 0),()),
-		"TextFontStyle": ((1610743845, LCID, 4, 0),()),
-		"TextWinBackgrndColor": ((1610743835, LCID, 4, 0),()),
-		"TextWinTextColor": ((1610743837, LCID, 4, 0),()),
-		"TrueColorImages": ((1610743857, LCID, 4, 0),()),
-		"XRefFadeIntensity": ((1610743859, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPreferencesDrafting(DispatchBaseClass):
-	'This object contains the options from the Drafting tab on the Options dialog'
-	CLSID = IID('{6CA0C79C-A982-409C-9821-76A69E49931A}')
-	coclass_clsid = IID('{715B87C5-3BC1-42A0-8E7E-F2DDDA8408BA}')
-
-	_prop_map_get_ = {
-		"AlignmentPointAcquisition": (1610743829, 2, (3, 0), (), "AlignmentPointAcquisition", None),
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"AutoSnapAperture": (1610743815, 2, (11, 0), (), "AutoSnapAperture", None),
-		"AutoSnapApertureSize": (1610743817, 2, (3, 0), (), "AutoSnapApertureSize", None),
-		"AutoSnapMagnet": (1610743811, 2, (11, 0), (), "AutoSnapMagnet", None),
-		"AutoSnapMarker": (1610743809, 2, (11, 0), (), "AutoSnapMarker", None),
-		"AutoSnapMarkerColor": (1610743819, 2, (3, 0), (), "AutoSnapMarkerColor", None),
-		"AutoSnapMarkerSize": (1610743821, 2, (3, 0), (), "AutoSnapMarkerSize", None),
-		"AutoSnapTooltip": (1610743813, 2, (11, 0), (), "AutoSnapTooltip", None),
-		"AutoTrackTooltip": (1610743827, 2, (11, 0), (), "AutoTrackTooltip", None),
-		"FullScreenTrackingVector": (1610743825, 2, (11, 0), (), "FullScreenTrackingVector", None),
-		"PolarTrackingVector": (1610743823, 2, (11, 0), (), "PolarTrackingVector", None),
-	}
-	_prop_map_put_ = {
-		"AlignmentPointAcquisition": ((1610743829, LCID, 4, 0),()),
-		"AutoSnapAperture": ((1610743815, LCID, 4, 0),()),
-		"AutoSnapApertureSize": ((1610743817, LCID, 4, 0),()),
-		"AutoSnapMagnet": ((1610743811, LCID, 4, 0),()),
-		"AutoSnapMarker": ((1610743809, LCID, 4, 0),()),
-		"AutoSnapMarkerColor": ((1610743819, LCID, 4, 0),()),
-		"AutoSnapMarkerSize": ((1610743821, LCID, 4, 0),()),
-		"AutoSnapTooltip": ((1610743813, LCID, 4, 0),()),
-		"AutoTrackTooltip": ((1610743827, LCID, 4, 0),()),
-		"FullScreenTrackingVector": ((1610743825, LCID, 4, 0),()),
-		"PolarTrackingVector": ((1610743823, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPreferencesFiles(DispatchBaseClass):
-	'This object contains the options from the Files tab on the Options dialog'
-	CLSID = IID('{2F7C2478-9777-4359-BF58-57200E9C3200}')
-	coclass_clsid = IID('{1D5A59AE-FF0B-4366-BCB6-06D8465F2D5B}')
-
-	def GetProjectFilePath(self, ProjectName=defaultNamedNotOptArg):
-		'Gets the directory in which AutoCAD looks for external reference files'
-		# Result is a Unicode object
-		return self._oleobj_.InvokeTypes(1610743858, LCID, 1, (8, 0), ((8, 1),),ProjectName
-			)
-
-	def SetProjectFilePath(self, ProjectName=defaultNamedNotOptArg, ProjectFilePath=defaultNamedNotOptArg):
-		'Sets the directory in which AutoCAD looks for external reference files'
-		return self._oleobj_.InvokeTypes(1610743857, LCID, 1, (24, 0), ((8, 1), (8, 1)),ProjectName
-			, ProjectFilePath)
-
-	_prop_map_get_ = {
-		"ActiveInvProject": (1610743879, 2, (8, 0), (), "ActiveInvProject", None),
-		"AltFontFile": (1610743831, 2, (8, 0), (), "AltFontFile", None),
-		"AltTabletMenuFile": (1610743855, 2, (8, 0), (), "AltTabletMenuFile", None),
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"AutoSavePath": (1610743843, 2, (8, 0), (), "AutoSavePath", None),
-		"ColorBookPath": (1610743869, 2, (8, 0), (), "ColorBookPath", None),
-		"ConfigFile": (1610743823, 2, (8, 0), (), "ConfigFile", None),
-		"CustomDictionary": (1610743829, 2, (8, 0), (), "CustomDictionary", None),
-		"CustomIconPath": (1610743817, 2, (8, 0), (), "CustomIconPath", None),
-		"DefaultInternetURL": (1610743821, 2, (8, 0), (), "DefaultInternetURL", None),
-		"DriversPath": (1610743811, 2, (8, 0), (), "DriversPath", None),
-		"EnterpriseMenuFile": (1610743815, 2, (8, 0), (), "EnterpriseMenuFile", None),
-		"FontFileMap": (1610743833, 2, (8, 0), (), "FontFileMap", None),
-		"HelpFilePath": (1610743819, 2, (8, 0), (), "HelpFilePath", None),
-		"LicenseServer": (1610743824, 2, (8, 0), (), "LicenseServer", None),
-		"LogFilePath": (1610743847, 2, (8, 0), (), "LogFilePath", None),
-		"MainDictionary": (1610743827, 2, (8, 0), (), "MainDictionary", None),
-		"MenuFile": (1610743813, 2, (8, 0), (), "MenuFile", None),
-		"ObjectARXPath": (1610743867, 2, (8, 0), (), "ObjectARXPath", None),
-		"PageSetupOverridesTemplateFile": (1610743877, 2, (8, 0), (), "PageSetupOverridesTemplateFile", None),
-		"PlotLogFilePath": (1610743875, 2, (8, 0), (), "PlotLogFilePath", None),
-		"PostScriptPrologFile": (1610743839, 2, (8, 0), (), "PostScriptPrologFile", None),
-		"PrintFile": (1610743835, 2, (8, 0), (), "PrintFile", None),
-		"PrintSpoolExecutable": (1610743837, 2, (8, 0), (), "PrintSpoolExecutable", None),
-		"PrintSpoolerPath": (1610743841, 2, (8, 0), (), "PrintSpoolerPath", None),
-		"PrinterConfigPath": (1610743859, 2, (8, 0), (), "PrinterConfigPath", None),
-		"PrinterDescPath": (1610743861, 2, (8, 0), (), "PrinterDescPath", None),
-		"PrinterStyleSheetPath": (1610743863, 2, (8, 0), (), "PrinterStyleSheetPath", None),
-		"QNewTemplateFile": (1610743873, 2, (8, 0), (), "QNewTemplateFile", None),
-		"SupportPath": (0, 2, (8, 0), (), "SupportPath", None),
-		"TempFilePath": (1610743849, 2, (8, 0), (), "TempFilePath", None),
-		"TempXrefPath": (1610743851, 2, (8, 0), (), "TempXrefPath", None),
-		"TemplateDwgPath": (1610743845, 2, (8, 0), (), "TemplateDwgPath", None),
-		"TextEditor": (1610743825, 2, (8, 0), (), "TextEditor", None),
-		"TextureMapPath": (1610743853, 2, (8, 0), (), "TextureMapPath", None),
-		"ToolPalettePath": (1610743871, 2, (8, 0), (), "ToolPalettePath", None),
-		"WorkspacePath": (1610743865, 2, (8, 0), (), "WorkspacePath", None),
-	}
-	_prop_map_put_ = {
-		"ActiveInvProject": ((1610743879, LCID, 4, 0),()),
-		"AltFontFile": ((1610743831, LCID, 4, 0),()),
-		"AltTabletMenuFile": ((1610743855, LCID, 4, 0),()),
-		"AutoSavePath": ((1610743843, LCID, 4, 0),()),
-		"ColorBookPath": ((1610743869, LCID, 4, 0),()),
-		"CustomDictionary": ((1610743829, LCID, 4, 0),()),
-		"CustomIconPath": ((1610743817, LCID, 4, 0),()),
-		"DefaultInternetURL": ((1610743821, LCID, 4, 0),()),
-		"DriversPath": ((1610743811, LCID, 4, 0),()),
-		"EnterpriseMenuFile": ((1610743815, LCID, 4, 0),()),
-		"FontFileMap": ((1610743833, LCID, 4, 0),()),
-		"HelpFilePath": ((1610743819, LCID, 4, 0),()),
-		"LogFilePath": ((1610743847, LCID, 4, 0),()),
-		"MainDictionary": ((1610743827, LCID, 4, 0),()),
-		"MenuFile": ((1610743813, LCID, 4, 0),()),
-		"ObjectARXPath": ((1610743867, LCID, 4, 0),()),
-		"PageSetupOverridesTemplateFile": ((1610743877, LCID, 4, 0),()),
-		"PlotLogFilePath": ((1610743875, LCID, 4, 0),()),
-		"PostScriptPrologFile": ((1610743839, LCID, 4, 0),()),
-		"PrintFile": ((1610743835, LCID, 4, 0),()),
-		"PrintSpoolExecutable": ((1610743837, LCID, 4, 0),()),
-		"PrintSpoolerPath": ((1610743841, LCID, 4, 0),()),
-		"PrinterConfigPath": ((1610743859, LCID, 4, 0),()),
-		"PrinterDescPath": ((1610743861, LCID, 4, 0),()),
-		"PrinterStyleSheetPath": ((1610743863, LCID, 4, 0),()),
-		"QNewTemplateFile": ((1610743873, LCID, 4, 0),()),
-		"SupportPath": ((0, LCID, 4, 0),()),
-		"TempFilePath": ((1610743849, LCID, 4, 0),()),
-		"TempXrefPath": ((1610743851, LCID, 4, 0),()),
-		"TemplateDwgPath": ((1610743845, LCID, 4, 0),()),
-		"TextEditor": ((1610743825, LCID, 4, 0),()),
-		"TextureMapPath": ((1610743853, LCID, 4, 0),()),
-		"ToolPalettePath": ((1610743871, LCID, 4, 0),()),
-		"WorkspacePath": ((1610743865, LCID, 4, 0),()),
-	}
-	# Default property for this class is 'SupportPath'
-	def __call__(self):
-		return self._ApplyTypes_(*(0, 2, (8, 0), (), "SupportPath", None))
-	def __str__(self, *args):
-		return str(self.__call__(*args))
-	def __int__(self, *args):
-		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPreferencesOpenSave(DispatchBaseClass):
-	'This object contains the options from the Open and Save tab on the Options dialog'
-	CLSID = IID('{D2E64B8C-E8C7-4453-8EC8-6B03E275309C}')
-	coclass_clsid = IID('{DC580E36-67A2-406B-9867-80BE4C2FDC8A}')
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"AutoAudit": (1610743831, 2, (11, 0), (), "AutoAudit", None),
-		"AutoSaveInterval": (1610743813, 2, (3, 0), (), "AutoSaveInterval", None),
-		"CreateBackup": (1610743815, 2, (11, 0), (), "CreateBackup", None),
-		"DemandLoadARXApp": (1610743825, 2, (3, 0), (), "DemandLoadARXApp", None),
-		"FullCRCValidation": (1610743817, 2, (11, 0), (), "FullCRCValidation", None),
-		"IncrementalSavePercent": (1610743811, 2, (3, 0), (), "IncrementalSavePercent", None),
-		"LogFileOn": (1610743819, 2, (11, 0), (), "LogFileOn", None),
-		"MRUNumber": (1610743835, 2, (3, 0), (), "MRUNumber", None),
-		"ProxyImage": (1610743827, 2, (3, 0), (), "ProxyImage", None),
-		"SaveAsType": (1610743833, 2, (3, 0), (), "SaveAsType", None),
-		"SavePreviewThumbnail": (1610743809, 2, (11, 0), (), "SavePreviewThumbnail", None),
-		"ShowProxyDialogBox": (1610743829, 2, (11, 0), (), "ShowProxyDialogBox", None),
-		"TempFileExtension": (1610743821, 2, (8, 0), (), "TempFileExtension", None),
-		"XrefDemandLoad": (1610743823, 2, (3, 0), (), "XrefDemandLoad", None),
-	}
-	_prop_map_put_ = {
-		"AutoAudit": ((1610743831, LCID, 4, 0),()),
-		"AutoSaveInterval": ((1610743813, LCID, 4, 0),()),
-		"CreateBackup": ((1610743815, LCID, 4, 0),()),
-		"DemandLoadARXApp": ((1610743825, LCID, 4, 0),()),
-		"FullCRCValidation": ((1610743817, LCID, 4, 0),()),
-		"IncrementalSavePercent": ((1610743811, LCID, 4, 0),()),
-		"LogFileOn": ((1610743819, LCID, 4, 0),()),
-		"ProxyImage": ((1610743827, LCID, 4, 0),()),
-		"SaveAsType": ((1610743833, LCID, 4, 0),()),
-		"SavePreviewThumbnail": ((1610743809, LCID, 4, 0),()),
-		"ShowProxyDialogBox": ((1610743829, LCID, 4, 0),()),
-		"TempFileExtension": ((1610743821, LCID, 4, 0),()),
-		"XrefDemandLoad": ((1610743823, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPreferencesOutput(DispatchBaseClass):
-	'This object contains the options from the Output tab on the Options dialog'
-	CLSID = IID('{15480E24-2072-4D1D-820C-29B8D5EF4B7B}')
-	coclass_clsid = IID('{26D940FA-984E-471F-B993-887BC6018D6D}')
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"AutomaticPlotLog": (1610743831, 2, (11, 0), (), "AutomaticPlotLog", None),
-		"ContinuousPlotLog": (1610743829, 2, (11, 0), (), "ContinuousPlotLog", None),
-		"DefaultOutputDevice": (1610743809, 2, (8, 0), (), "DefaultOutputDevice", None),
-		"DefaultPlotStyleForLayer": (1610743827, 2, (8, 0), (), "DefaultPlotStyleForLayer", None),
-		"DefaultPlotStyleForObjects": (1610743825, 2, (8, 0), (), "DefaultPlotStyleForObjects", None),
-		"DefaultPlotStyleTable": (1610743823, 2, (8, 0), (), "DefaultPlotStyleTable", None),
-		"DefaultPlotToFilePath": (1610743833, 2, (8, 0), (), "DefaultPlotToFilePath", None),
-		"OLEQuality": (1610743817, 2, (3, 0), (), "OLEQuality", None),
-		"PlotLegacy": (1610743815, 2, (11, 0), (), "PlotLegacy", None),
-		"PlotPolicy": (1610743821, 2, (3, 0), (), "PlotPolicy", None),
-		"PrinterPaperSizeAlert": (1610743813, 2, (11, 0), (), "PrinterPaperSizeAlert", None),
-		"PrinterSpoolAlert": (1610743811, 2, (3, 0), (), "PrinterSpoolAlert", None),
-		"UseLastPlotSettings": (1610743819, 2, (11, 0), (), "UseLastPlotSettings", None),
-	}
-	_prop_map_put_ = {
-		"AutomaticPlotLog": ((1610743831, LCID, 4, 0),()),
-		"ContinuousPlotLog": ((1610743829, LCID, 4, 0),()),
-		"DefaultOutputDevice": ((1610743809, LCID, 4, 0),()),
-		"DefaultPlotStyleForLayer": ((1610743827, LCID, 4, 0),()),
-		"DefaultPlotStyleForObjects": ((1610743825, LCID, 4, 0),()),
-		"DefaultPlotStyleTable": ((1610743823, LCID, 4, 0),()),
-		"DefaultPlotToFilePath": ((1610743833, LCID, 4, 0),()),
-		"OLEQuality": ((1610743817, LCID, 4, 0),()),
-		"PlotLegacy": ((1610743815, LCID, 4, 0),()),
-		"PlotPolicy": ((1610743821, LCID, 4, 0),()),
-		"PrinterPaperSizeAlert": ((1610743813, LCID, 4, 0),()),
-		"PrinterSpoolAlert": ((1610743811, LCID, 4, 0),()),
-		"UseLastPlotSettings": ((1610743819, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPreferencesProfiles(DispatchBaseClass):
-	'This object contains the options from the Profiles tab on the Options dialog'
-	CLSID = IID('{55276CBD-A0CB-4E81-BB8D-66435D793708}')
-	coclass_clsid = IID('{CBC1112B-C780-4BE3-9F08-3C144FDEA37F}')
-
-	def CopyProfile(self, oldProfileName=defaultNamedNotOptArg, newProfileName=defaultNamedNotOptArg):
-		'Copies the specified profile'
-		return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (24, 0), ((8, 1), (8, 1)),oldProfileName
-			, newProfileName)
-
-	def DeleteProfile(self, ProfileName=defaultNamedNotOptArg):
-		'Deletes the specified profile'
-		return self._oleobj_.InvokeTypes(1610743813, LCID, 1, (24, 0), ((8, 1),),ProfileName
-			)
-
-	def ExportProfile(self, ProfileName=defaultNamedNotOptArg, RegFile=defaultNamedNotOptArg):
-		'Exports the active profile so it can be shared with other users'
-		return self._oleobj_.InvokeTypes(1610743812, LCID, 1, (24, 0), ((8, 1), (8, 1)),ProfileName
-			, RegFile)
-
-	def GetAllProfileNames(self, pNames=pythoncom.Missing):
-		'Gets all available profiles for the system'
-		return self._ApplyTypes_(1610743817, 1, (24, 0), ((16396, 2),), 'GetAllProfileNames', None,pNames
-			)
-
-	def ImportProfile(self, ProfileName=defaultNamedNotOptArg, RegFile=defaultNamedNotOptArg, IncludePathInfo=defaultNamedNotOptArg):
-		'Imports a profile created by another user'
-		return self._oleobj_.InvokeTypes(1610743811, LCID, 1, (24, 0), ((8, 1), (8, 1), (11, 1)),ProfileName
-			, RegFile, IncludePathInfo)
-
-	def RenameProfile(self, origProfileName=defaultNamedNotOptArg, newProfileName=defaultNamedNotOptArg):
-		'Renames the specified profile'
-		return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), ((8, 1), (8, 1)),origProfileName
-			, newProfileName)
-
-	def ResetProfile(self, Profile=defaultNamedNotOptArg):
-		'Resets the value in the specified profile to its default values'
-		return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), ((8, 1),),Profile
-			)
-
-	_prop_map_get_ = {
-		"ActiveProfile": (1610743809, 2, (8, 0), (), "ActiveProfile", None),
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-	}
-	_prop_map_put_ = {
-		"ActiveProfile": ((1610743809, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPreferencesSelection(DispatchBaseClass):
-	'This object contains the options from the Selection tab on the Options dialog'
-	CLSID = IID('{4D4FD045-8B92-4A18-91D3-5E5C88C40C77}')
-	coclass_clsid = IID('{46762221-9693-4CC5-8C58-B9A7FF499776}')
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"DisplayGrips": (1610743819, 2, (11, 0), (), "DisplayGrips", None),
-		"DisplayGripsWithinBlocks": (1610743821, 2, (11, 0), (), "DisplayGripsWithinBlocks", None),
-		"GripColorSelected": (1610743823, 2, (3, 0), (), "GripColorSelected", None),
-		"GripColorUnselected": (1610743825, 2, (3, 0), (), "GripColorUnselected", None),
-		"GripSize": (1610743827, 2, (3, 0), (), "GripSize", None),
-		"PickAdd": (1610743811, 2, (11, 0), (), "PickAdd", None),
-		"PickAuto": (1610743815, 2, (11, 0), (), "PickAuto", None),
-		"PickBoxSize": (1610743817, 2, (3, 0), (), "PickBoxSize", None),
-		"PickDrag": (1610743813, 2, (11, 0), (), "PickDrag", None),
-		"PickFirst": (1610743809, 2, (11, 0), (), "PickFirst", None),
-		"PickGroup": (1610743829, 2, (11, 0), (), "PickGroup", None),
-	}
-	_prop_map_put_ = {
-		"DisplayGrips": ((1610743819, LCID, 4, 0),()),
-		"DisplayGripsWithinBlocks": ((1610743821, LCID, 4, 0),()),
-		"GripColorSelected": ((1610743823, LCID, 4, 0),()),
-		"GripColorUnselected": ((1610743825, LCID, 4, 0),()),
-		"GripSize": ((1610743827, LCID, 4, 0),()),
-		"PickAdd": ((1610743811, LCID, 4, 0),()),
-		"PickAuto": ((1610743815, LCID, 4, 0),()),
-		"PickBoxSize": ((1610743817, LCID, 4, 0),()),
-		"PickDrag": ((1610743813, LCID, 4, 0),()),
-		"PickFirst": ((1610743809, LCID, 4, 0),()),
-		"PickGroup": ((1610743829, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPreferencesSystem(DispatchBaseClass):
-	'This object contains the options from the System tab on the Options dialog'
-	CLSID = IID('{D9677553-A98F-4D1C-AA34-E07E2507128E}')
-	coclass_clsid = IID('{759C8892-796F-427C-92A8-E1039C20DCB1}')
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"BeepOnError": (1610743819, 2, (11, 0), (), "BeepOnError", None),
-		"DisplayOLEScale": (1610743811, 2, (11, 0), (), "DisplayOLEScale", None),
-		"EnableStartupDialog": (1610743817, 2, (11, 0), (), "EnableStartupDialog", None),
-		"LoadAcadLspInAllDocuments": (1610743823, 2, (11, 0), (), "LoadAcadLspInAllDocuments", None),
-		"ShowWarningMessages": (1610743821, 2, (11, 0), (), "ShowWarningMessages", None),
-		"SingleDocumentMode": (1610743809, 2, (11, 0), (), "SingleDocumentMode", None),
-		"StoreSQLIndex": (1610743813, 2, (11, 0), (), "StoreSQLIndex", None),
-		"TablesReadOnly": (1610743815, 2, (11, 0), (), "TablesReadOnly", None),
-	}
-	_prop_map_put_ = {
-		"BeepOnError": ((1610743819, LCID, 4, 0),()),
-		"DisplayOLEScale": ((1610743811, LCID, 4, 0),()),
-		"EnableStartupDialog": ((1610743817, LCID, 4, 0),()),
-		"LoadAcadLspInAllDocuments": ((1610743823, LCID, 4, 0),()),
-		"ShowWarningMessages": ((1610743821, LCID, 4, 0),()),
-		"SingleDocumentMode": ((1610743809, LCID, 4, 0),()),
-		"StoreSQLIndex": ((1610743813, LCID, 4, 0),()),
-		"TablesReadOnly": ((1610743815, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadPreferencesUser(DispatchBaseClass):
-	'This object contains the options from the User tab on the Options dialog'
-	CLSID = IID('{F3816DB4-2048-4D5B-B0BA-A4FAAAD6F996}')
-	coclass_clsid = IID('{C4E07DD5-F25F-42EA-B786-8FC7469C6D9C}')
-
-	_prop_map_get_ = {
-		"ADCInsertUnitsDefaultSource": (1610743815, 2, (3, 0), (), "ADCInsertUnitsDefaultSource", None),
-		"ADCInsertUnitsDefaultTarget": (1610743817, 2, (3, 0), (), "ADCInsertUnitsDefaultTarget", None),
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"HyperlinkDisplayCursor": (1610743813, 2, (11, 0), (), "HyperlinkDisplayCursor", None),
-		"KeyboardAccelerator": (1610743809, 2, (3, 0), (), "KeyboardAccelerator", None),
-		"KeyboardPriority": (1610743811, 2, (3, 0), (), "KeyboardPriority", None),
-		"SCMCommandMode": (1610743825, 2, (3, 0), (), "SCMCommandMode", None),
-		"SCMDefaultMode": (1610743821, 2, (3, 0), (), "SCMDefaultMode", None),
-		"SCMEditMode": (1610743823, 2, (3, 0), (), "SCMEditMode", None),
-		"SCMTimeMode": (1610743827, 2, (11, 0), (), "SCMTimeMode", None),
-		"SCMTimeValue": (1610743829, 2, (3, 0), (), "SCMTimeValue", None),
-		"ShortCutMenuDisplay": (1610743819, 2, (11, 0), (), "ShortCutMenuDisplay", None),
-	}
-	_prop_map_put_ = {
-		"ADCInsertUnitsDefaultSource": ((1610743815, LCID, 4, 0),()),
-		"ADCInsertUnitsDefaultTarget": ((1610743817, LCID, 4, 0),()),
-		"HyperlinkDisplayCursor": ((1610743813, LCID, 4, 0),()),
-		"KeyboardAccelerator": ((1610743809, LCID, 4, 0),()),
-		"KeyboardPriority": ((1610743811, LCID, 4, 0),()),
-		"SCMCommandMode": ((1610743825, LCID, 4, 0),()),
-		"SCMDefaultMode": ((1610743821, LCID, 4, 0),()),
-		"SCMEditMode": ((1610743823, LCID, 4, 0),()),
-		"SCMTimeMode": ((1610743827, LCID, 4, 0),()),
-		"SCMTimeValue": ((1610743829, LCID, 4, 0),()),
-		"ShortCutMenuDisplay": ((1610743819, LCID, 4, 0),()),
 	}
 	def __iter__(self):
 		"Return a Python iterator for this object"
@@ -18335,164 +16946,6 @@ class IAcadSecurityParams(DispatchBaseClass):
 			raise TypeError("This object does not support enumeration")
 		return win32com.client.util.Iterator(ob, None)
 
-class IAcadSelectionSet(DispatchBaseClass):
-	'A group of one or more AutoCAD objects specified for processing as a single unit'
-	CLSID = IID('{43820684-2C5B-4682-B644-AD703C70A611}')
-	coclass_clsid = IID('{2B8622C5-9DB4-46A7-87C8-BC2F3EF58A6D}')
-
-	def AddItems(self, pSelSet=defaultNamedNotOptArg):
-		'Adds one or more objects to the specified selection set'
-		return self._oleobj_.InvokeTypes(7, LCID, 1, (24, 0), ((12, 1),),pSelSet
-			)
-
-	def Clear(self):
-		'Clears the specified selection set of all items'
-		return self._oleobj_.InvokeTypes(9, LCID, 1, (24, 0), (),)
-
-	def Delete(self):
-		'Deletes a specified object'
-		return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), (),)
-
-	def Erase(self):
-		'Erases all the objects in a selection set'
-		return self._oleobj_.InvokeTypes(4, LCID, 1, (24, 0), (),)
-
-	def Highlight(self, bFlag=defaultNamedNotOptArg):
-		'Sets the highlight status for the given object, or for all objects in a given selection set'
-		return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((11, 1),),bFlag
-			)
-
-	# Result is of type IAcadEntity
-	def Item(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Item', '{AB9F53A4-BA00-499B-BE4C-D178EC67FFCC}')
-		return ret
-
-	def RemoveItems(self, Objects=defaultNamedNotOptArg):
-		'Removes specified items from the group or selection set'
-		return self._oleobj_.InvokeTypes(8, LCID, 1, (24, 0), ((12, 1),),Objects
-			)
-
-	def Select(self, Mode=defaultNamedNotOptArg, Point1=defaultNamedOptArg, Point2=defaultNamedOptArg, FilterType=defaultNamedOptArg
-			, FilterData=defaultNamedOptArg):
-		'Selects objects and places them into a selection set'
-		return self._oleobj_.InvokeTypes(10, LCID, 1, (24, 0), ((3, 1), (12, 17), (12, 17), (12, 17), (12, 17)),Mode
-			, Point1, Point2, FilterType, FilterData)
-
-	def SelectAtPoint(self, Point=defaultNamedNotOptArg, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
-		'Selects an object passing through a given point and places it into a selection set'
-		return self._oleobj_.InvokeTypes(11, LCID, 1, (24, 0), ((12, 1), (12, 17), (12, 17)),Point
-			, FilterType, FilterData)
-
-	def SelectByPolygon(self, Mode=defaultNamedNotOptArg, PointsList=defaultNamedNotOptArg, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
-		'Selects entities within a fence and adds them to the selection set'
-		return self._oleobj_.InvokeTypes(12, LCID, 1, (24, 0), ((3, 1), (12, 1), (12, 17), (12, 17)),Mode
-			, PointsList, FilterType, FilterData)
-
-	def SelectOnScreen(self, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
-		'Prompts the user to pick an object from the screen'
-		return self._oleobj_.InvokeTypes(13, LCID, 1, (24, 0), ((12, 17), (12, 17)),FilterType
-			, FilterData)
-
-	def Update(self):
-		'Updates the object to the drawing screen'
-		return self._oleobj_.InvokeTypes(5, LCID, 1, (24, 0), (),)
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (6, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Count": (1, 2, (3, 0), (), "Count", None),
-		"Name": (2, 2, (8, 0), (), "Name", None),
-	}
-	_prop_map_put_ = {
-	}
-	# Default method for this class is 'Item'
-	def __call__(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, '__call__', '{AB9F53A4-BA00-499B-BE4C-D178EC67FFCC}')
-		return ret
-
-	def __str__(self, *args):
-		return str(self.__call__(*args))
-	def __int__(self, *args):
-		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, '{AB9F53A4-BA00-499B-BE4C-D178EC67FFCC}')
-	#This class has Count() property - allow len(ob) to provide this
-	def __len__(self):
-		return self._ApplyTypes_(*(1, 2, (3, 0), (), "Count", None))
-	#This class has a __len__ - this is needed so 'if object:' always returns TRUE.
-	def __nonzero__(self):
-		return True
-
-class IAcadSelectionSets(DispatchBaseClass):
-	'The collection of all selection sets in the drawing'
-	CLSID = IID('{A0A53FF5-1CCE-4A79-A74A-7BCDEBA03F35}')
-	coclass_clsid = IID('{660424A5-79B3-4E12-81A3-CE27D057137D}')
-
-	# Result is of type IAcadSelectionSet
-	def Add(self, Name=defaultNamedNotOptArg):
-		'Creates a member object and adds it to the appropriate collection'
-		ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Add', '{43820684-2C5B-4682-B644-AD703C70A611}')
-		return ret
-
-	# Result is of type IAcadSelectionSet
-	def Item(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Item', '{43820684-2C5B-4682-B644-AD703C70A611}')
-		return ret
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743811, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Count": (1, 2, (3, 0), (), "Count", None),
-	}
-	_prop_map_put_ = {
-	}
-	# Default method for this class is 'Item'
-	def __call__(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, '__call__', '{43820684-2C5B-4682-B644-AD703C70A611}')
-		return ret
-
-	def __str__(self, *args):
-		return str(self.__call__(*args))
-	def __int__(self, *args):
-		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, '{43820684-2C5B-4682-B644-AD703C70A611}')
-	#This class has Count() property - allow len(ob) to provide this
-	def __len__(self):
-		return self._ApplyTypes_(*(1, 2, (3, 0), (), "Count", None))
-	#This class has a __len__ - this is needed so 'if object:' always returns TRUE.
-	def __nonzero__(self):
-		return True
-
 class IAcadShadowDisplay(DispatchBaseClass):
 	'AutoCAD Entity with Shadows interface'
 	CLSID = IID('{847A8F18-D313-4382-8FC1-BDF7982B2F31}')
@@ -19196,26 +17649,6 @@ class IAcadSpline(DispatchBaseClass):
 		"Visible": ((1284, LCID, 4, 0),()),
 		"Weights": ((27, LCID, 4, 0),()),
 		"color": ((1280, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadState(DispatchBaseClass):
-	'AutoCAD State Interface'
-	CLSID = IID('{935B3D12-E5A3-46F8-8CBC-24646D46FAD8}')
-	coclass_clsid = IID('{C181A4F9-E04B-43BB-A503-9465D560E56D}')
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"IsQuiescent": (2, 2, (11, 0), (), "IsQuiescent", None),
-	}
-	_prop_map_put_ = {
 	}
 	def __iter__(self):
 		"Return a Python iterator for this object"
@@ -22080,220 +20513,6 @@ class IAcadTolerance(DispatchBaseClass):
 			raise TypeError("This object does not support enumeration")
 		return win32com.client.util.Iterator(ob, None)
 
-class IAcadToolbar(DispatchBaseClass):
-	'An AutoCAD toolbar'
-	CLSID = IID('{8B75685E-0AA7-403B-B602-C3386B4DEF16}')
-	coclass_clsid = IID('{A6E075A0-0A09-4928-BD6D-655C61716DC6}')
-
-	# Result is of type IAcadToolbarItem
-	def AddSeparator(self, Index=defaultNamedNotOptArg):
-		'Adds a separator to an existing menu or toolbar'
-		ret = self._oleobj_.InvokeTypes(1610743830, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'AddSeparator', '{088613D2-4917-4B78-94F3-781D0F5F08E8}')
-		return ret
-
-	# Result is of type IAcadToolbarItem
-	def AddToolbarButton(self, Index=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, HelpString=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg
-			, FlyoutButton=defaultNamedOptArg):
-		'Adds a toolbar item to a toolbar at a specified position'
-		ret = self._oleobj_.InvokeTypes(1610743829, LCID, 1, (9, 0), ((12, 1), (8, 1), (8, 1), (8, 1), (12, 17)),Index
-			, Name, HelpString, Macro, FlyoutButton)
-		if ret is not None:
-			ret = Dispatch(ret, 'AddToolbarButton', '{088613D2-4917-4B78-94F3-781D0F5F08E8}')
-		return ret
-
-	def Delete(self):
-		'Deletes a specified object'
-		return self._oleobj_.InvokeTypes(1610743833, LCID, 1, (24, 0), (),)
-
-	def Dock(self, Side=defaultNamedNotOptArg):
-		'Docks the toolbar to the owning frame window'
-		return self._oleobj_.InvokeTypes(1610743831, LCID, 1, (24, 0), ((3, 1),),Side
-			)
-
-	def Float(self, top=defaultNamedNotOptArg, left=defaultNamedNotOptArg, NumberFloatRows=defaultNamedNotOptArg):
-		'Floats the toolbar'
-		return self._oleobj_.InvokeTypes(1610743832, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),top
-			, left, NumberFloatRows)
-
-	# Result is of type IAcadToolbarItem
-	def Item(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Item', '{088613D2-4917-4B78-94F3-781D0F5F08E8}')
-		return ret
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743811, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Count": (1610743810, 2, (3, 0), (), "Count", None),
-		"DockStatus": (1610743817, 2, (3, 0), (), "DockStatus", None),
-		"FloatingRows": (1610743825, 2, (3, 0), (), "FloatingRows", None),
-		"Height": (1610743824, 2, (3, 0), (), "Height", None),
-		"HelpString": (1610743827, 2, (8, 0), (), "HelpString", None),
-		"LargeButtons": (1610743818, 2, (11, 0), (), "LargeButtons", None),
-		"Name": (1610743813, 2, (8, 0), (), "Name", None),
-		"Parent": (1610743812, 2, (9, 0), (), "Parent", None),
-		"TagString": (1610743834, 2, (8, 0), (), "TagString", None),
-		"Visible": (1610743815, 2, (11, 0), (), "Visible", None),
-		"Width": (1610743823, 2, (3, 0), (), "Width", None),
-		"left": (1610743819, 2, (3, 0), (), "left", None),
-		"top": (1610743821, 2, (3, 0), (), "top", None),
-	}
-	_prop_map_put_ = {
-		"FloatingRows": ((1610743825, LCID, 4, 0),()),
-		"HelpString": ((1610743827, LCID, 4, 0),()),
-		"Name": ((1610743813, LCID, 4, 0),()),
-		"Visible": ((1610743815, LCID, 4, 0),()),
-		"left": ((1610743819, LCID, 4, 0),()),
-		"top": ((1610743821, LCID, 4, 0),()),
-	}
-	# Default method for this class is 'Item'
-	def __call__(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, '__call__', '{088613D2-4917-4B78-94F3-781D0F5F08E8}')
-		return ret
-
-	def __str__(self, *args):
-		return str(self.__call__(*args))
-	def __int__(self, *args):
-		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, '{088613D2-4917-4B78-94F3-781D0F5F08E8}')
-	#This class has Count() property - allow len(ob) to provide this
-	def __len__(self):
-		return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
-	#This class has a __len__ - this is needed so 'if object:' always returns TRUE.
-	def __nonzero__(self):
-		return True
-
-class IAcadToolbarItem(DispatchBaseClass):
-	'A single button item on an AutoCAD toolbar'
-	CLSID = IID('{088613D2-4917-4B78-94F3-781D0F5F08E8}')
-	coclass_clsid = IID('{C71C7438-0568-4631-82AA-ABC2EBFC1D23}')
-
-	def AttachToolbarToFlyout(self, MenuGroupName=defaultNamedNotOptArg, ToolbarName=defaultNamedNotOptArg):
-		'Attaches a toolbar to a toolbar button defined as a flyout'
-		return self._oleobj_.InvokeTypes(1610743823, LCID, 1, (24, 0), ((8, 1), (8, 1)),MenuGroupName
-			, ToolbarName)
-
-	def Delete(self):
-		'Deletes a specified object'
-		return self._oleobj_.InvokeTypes(1610743824, LCID, 1, (24, 0), (),)
-
-	def GetBitmaps(self, SmallIconName=pythoncom.Missing, LargeIconName=pythoncom.Missing):
-		'Gets the large and small bitmaps used as icons for the toolbar item'
-		return self._ApplyTypes_(1610743821, 1, (24, 0), ((16392, 2), (16392, 2)), 'GetBitmaps', None,SmallIconName
-			, LargeIconName)
-
-	def SetBitmaps(self, SmallIconName=defaultNamedNotOptArg, LargeIconName=defaultNamedNotOptArg):
-		'Sets the large and small bitmaps used as icons for the toolbar item'
-		return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (24, 0), ((8, 1), (8, 1)),SmallIconName
-			, LargeIconName)
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743808, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"CommandDisplayName": (1610743825, 2, (8, 0), (), "CommandDisplayName", None),
-		# Method 'Flyout' returns object of type 'IAcadToolbar'
-		"Flyout": (1610743815, 2, (9, 0), (), "Flyout", '{8B75685E-0AA7-403B-B602-C3386B4DEF16}'),
-		"HelpString": (1610743819, 2, (8, 0), (), "HelpString", None),
-		"Index": (1610743818, 2, (3, 0), (), "Index", None),
-		"Macro": (1610743816, 2, (8, 0), (), "Macro", None),
-		"Name": (1610743810, 2, (8, 0), (), "Name", None),
-		# Method 'Parent' returns object of type 'IAcadToolbar'
-		"Parent": (1610743809, 2, (9, 0), (), "Parent", '{8B75685E-0AA7-403B-B602-C3386B4DEF16}'),
-		"TagString": (1610743812, 2, (8, 0), (), "TagString", None),
-		"Type": (1610743814, 2, (3, 0), (), "Type", None),
-	}
-	_prop_map_put_ = {
-		"CommandDisplayName": ((1610743825, LCID, 4, 0),()),
-		"HelpString": ((1610743819, LCID, 4, 0),()),
-		"Macro": ((1610743816, LCID, 4, 0),()),
-		"Name": ((1610743810, LCID, 4, 0),()),
-		"TagString": ((1610743812, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadToolbars(DispatchBaseClass):
-	'A collection of Toolbar objects representing all the toolbars loaded in the current AutoCAD session'
-	CLSID = IID('{DA8044CA-7817-4557-8055-A03564BCF6AF}')
-	coclass_clsid = IID('{6B2495AE-9752-4515-BD25-3718AC70350D}')
-
-	# Result is of type IAcadToolbar
-	def Add(self, ToolbarName=defaultNamedNotOptArg):
-		'Creates a member object and adds it to the appropriate collection'
-		ret = self._oleobj_.InvokeTypes(1610743815, LCID, 1, (9, 0), ((8, 1),),ToolbarName
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Add', '{8B75685E-0AA7-403B-B602-C3386B4DEF16}')
-		return ret
-
-	# Result is of type IAcadToolbar
-	def Item(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Item', '{8B75685E-0AA7-403B-B602-C3386B4DEF16}')
-		return ret
-
-	_prop_map_get_ = {
-		# Method 'Application' returns object of type 'IAcadApplication'
-		"Application": (1610743811, 2, (9, 0), (), "Application", '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}'),
-		"Count": (1610743810, 2, (3, 0), (), "Count", None),
-		"LargeButtons": (1610743813, 2, (11, 0), (), "LargeButtons", None),
-		# Method 'Parent' returns object of type 'IAcadMenuGroup'
-		"Parent": (1610743812, 2, (9, 0), (), "Parent", '{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}'),
-	}
-	_prop_map_put_ = {
-		"LargeButtons": ((1610743813, LCID, 4, 0),()),
-	}
-	# Default method for this class is 'Item'
-	def __call__(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, '__call__', '{8B75685E-0AA7-403B-B602-C3386B4DEF16}')
-		return ret
-
-	def __str__(self, *args):
-		return str(self.__call__(*args))
-	def __int__(self, *args):
-		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, '{8B75685E-0AA7-403B-B602-C3386B4DEF16}')
-	#This class has Count() property - allow len(ob) to provide this
-	def __len__(self):
-		return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
-	#This class has a __len__ - this is needed so 'if object:' always returns TRUE.
-	def __nonzero__(self):
-		return True
-
 class IAcadTrace(DispatchBaseClass):
 	'AutoCAD Trace Interface'
 	CLSID = IID('{B5BF1FBC-DA40-4DB8-A739-6DF60E5634F8}')
@@ -22803,180 +21022,6 @@ class IAcadUnderlay(DispatchBaseClass):
 		"Visible": ((1284, LCID, 4, 0),()),
 		"Width": ((5, LCID, 4, 0),()),
 		"color": ((1280, LCID, 4, 0),()),
-	}
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, None)
-
-class IAcadUtility(DispatchBaseClass):
-	'A series of methods provided for utility purposes'
-	CLSID = IID('{F693DA67-0534-44D8-BDA3-E20C5FA32BA0}')
-	coclass_clsid = IID('{0605FD7F-5675-42F6-8C9A-0D8A2AAAE547}')
-
-	def AngleFromXAxis(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
-		'Gets the angle of a line from the X axis'
-		return self._oleobj_.InvokeTypes(1610743820, LCID, 1, (5, 0), ((12, 1), (12, 1)),StartPoint
-			, EndPoint)
-
-	def AngleToReal(self, Angle=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg):
-		'Converts an angle as a string to a real (double) value'
-		return self._oleobj_.InvokeTypes(1610743808, LCID, 1, (5, 0), ((8, 1), (3, 1)),Angle
-			, Unit)
-
-	def AngleToString(self, Angle=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg, precision=defaultNamedNotOptArg):
-		'Converts an angle from a real (double) value to a string'
-		# Result is a Unicode object
-		return self._oleobj_.InvokeTypes(1610743809, LCID, 1, (8, 0), ((5, 1), (3, 1), (3, 1)),Angle
-			, Unit, precision)
-
-	def CreateTypedArray(self, *args):
-		'Creates a variant that contains an array of typed arguments'
-		return self._get_good_object_(self._oleobj_.Invoke(*((1610743826,0,1,1)+args)),'CreateTypedArray')
-
-	def DistanceToReal(self, Distance=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg):
-		'Converts a distance from a string to a real (double) value'
-		return self._oleobj_.InvokeTypes(1610743810, LCID, 1, (5, 0), ((8, 1), (3, 1)),Distance
-			, Unit)
-
-	def GetAngle(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
-		'Gets the angle specified. Considers the setting of the ANGBASE system variable'
-		return self._oleobj_.InvokeTypes(1610743819, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
-			, Prompt)
-
-	def GetCorner(self, Point=defaultNamedNotOptArg, Prompt=defaultNamedOptArg):
-		'Gets a corner of a rectangle'
-		return self._ApplyTypes_(1610743821, 1, (12, 0), ((12, 1), (12, 17)), 'GetCorner', None,Point
-			, Prompt)
-
-	def GetDistance(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
-		'Gets the distance from the prompt line or a selected set of points on the screen'
-		return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
-			, Prompt)
-
-	def GetEntity(self, Object=pythoncom.Missing, PickedPoint=pythoncom.Missing, Prompt=defaultNamedOptArg):
-		'Gets an object interactively'
-		return self._ApplyTypes_(1610743827, 1, (24, 0), ((16393, 2), (16396, 2), (12, 17)), 'GetEntity', None,Object
-			, PickedPoint, Prompt)
-
-	def GetInput(self):
-		'Converts an input string from the user into a keyword index'
-		# Result is a Unicode object
-		return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (8, 0), (),)
-
-	def GetInteger(self, Prompt=defaultNamedOptArg):
-		'Gets an integer value from the user'
-		return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (3, 0), ((12, 17),),Prompt
-			)
-
-	def GetKeyword(self, Prompt=defaultNamedOptArg):
-		'Gets a keyword string from the user'
-		# Result is a Unicode object
-		return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (8, 0), ((12, 17),),Prompt
-			)
-
-	def GetObjectIdString(self, Object=defaultNamedNotOptArg, bHex=defaultNamedNotOptArg):
-		# Result is a Unicode object
-		return self._oleobj_.InvokeTypes(1610743837, LCID, 1, (8, 0), ((9, 1), (11, 1)),Object
-			, bHex)
-
-	def GetOrientation(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
-		'Gets the angle specified. Ignores the setting of the ANGBASE system variable'
-		return self._oleobj_.InvokeTypes(1610743823, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
-			, Prompt)
-
-	def GetPoint(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
-		'Gets the point selected in AutoCAD'
-		return self._ApplyTypes_(1610743824, 1, (12, 0), ((12, 17), (12, 17)), 'GetPoint', None,Point
-			, Prompt)
-
-	def GetReal(self, Prompt=defaultNamedOptArg):
-		'Gets a real (double) value from the user'
-		return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (5, 0), ((12, 17),),Prompt
-			)
-
-	def GetRemoteFile(self, URL=defaultNamedNotOptArg, LocalFile=pythoncom.Missing, IgnoreCache=defaultNamedNotOptArg):
-		'Downloads the file specified by a URL'
-		return self._ApplyTypes_(1610743831, 1, (24, 0), ((8, 1), (16392, 2), (11, 1)), 'GetRemoteFile', None,URL
-			, LocalFile, IgnoreCache)
-
-	def GetString(self, HasSpaces=defaultNamedNotOptArg, Prompt=defaultNamedOptArg):
-		'Gets a string from the user'
-		# Result is a Unicode object
-		return self._oleobj_.InvokeTypes(1610743818, LCID, 1, (8, 0), ((3, 1), (12, 17)),HasSpaces
-			, Prompt)
-
-	def GetSubEntity(self, Object=pythoncom.Missing, PickedPoint=pythoncom.Missing, transMatrix=pythoncom.Missing, ContextData=pythoncom.Missing
-			, Prompt=defaultNamedOptArg):
-		'Gets an object or subentity interactively'
-		return self._ApplyTypes_(1610743829, 1, (24, 0), ((16393, 2), (16396, 2), (16396, 2), (16396, 2), (12, 17)), 'GetSubEntity', None,Object
-			, PickedPoint, transMatrix, ContextData, Prompt)
-
-	def InitializeUserInput(self, Bits=defaultNamedNotOptArg, KeyWordList=defaultNamedOptArg):
-		'Initializes the GetKeyword method'
-		return self._oleobj_.InvokeTypes(1610743813, LCID, 1, (24, 0), ((3, 1), (12, 17)),Bits
-			, KeyWordList)
-
-	def IsRemoteFile(self, LocalFile=defaultNamedNotOptArg, URL=pythoncom.Missing):
-		'Returns the URL that a remote file was downloaded from'
-		return self._ApplyTypes_(1610743833, 1, (11, 0), ((8, 1), (16392, 2)), 'IsRemoteFile', None,LocalFile
-			, URL)
-
-	def IsURL(self, URL=defaultNamedNotOptArg):
-		'Validates a given URL'
-		return self._oleobj_.InvokeTypes(1610743830, LCID, 1, (11, 0), ((8, 1),),URL
-			)
-
-	def LaunchBrowserDialog(self, SelectedURL=pythoncom.Missing, DialogTitle=defaultNamedNotOptArg, OpenButtonCaption=defaultNamedNotOptArg, StartPageURL=defaultNamedNotOptArg
-			, RegistryRootKey=defaultNamedNotOptArg, OpenButtonAlwaysEnabled=defaultNamedNotOptArg):
-		'Launches the Web Browser dialog that allows the user to navigate to any URL and select a URL'
-		return self._ApplyTypes_(1610743834, 1, (11, 0), ((16392, 2), (8, 1), (8, 1), (8, 1), (8, 1), (11, 1)), 'LaunchBrowserDialog', None,SelectedURL
-			, DialogTitle, OpenButtonCaption, StartPageURL, RegistryRootKey, OpenButtonAlwaysEnabled
-			)
-
-	def PolarPoint(self, Point=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg, Distance=defaultNamedNotOptArg):
-		'Gets the point at a specified angle and distance from a given point'
-		return self._ApplyTypes_(1610743825, 1, (12, 0), ((12, 1), (5, 1), (5, 1)), 'PolarPoint', None,Point
-			, Angle, Distance)
-
-	def Prompt(self, Message=defaultNamedNotOptArg):
-		'Posts a prompt to the command line'
-		return self._oleobj_.InvokeTypes(1610743828, LCID, 1, (24, 0), ((8, 1),),Message
-			)
-
-	def PutRemoteFile(self, URL=defaultNamedNotOptArg, LocalFile=defaultNamedNotOptArg):
-		'Uploads a file to a remote location specified by a URL'
-		return self._oleobj_.InvokeTypes(1610743832, LCID, 1, (24, 0), ((8, 1), (8, 1)),URL
-			, LocalFile)
-
-	def RealToString(self, Value=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg, precision=defaultNamedNotOptArg):
-		'Converts a real (double) value to a string'
-		# Result is a Unicode object
-		return self._oleobj_.InvokeTypes(1610743811, LCID, 1, (8, 0), ((5, 1), (3, 1), (3, 1)),Value
-			, Unit, precision)
-
-	def SendModelessOperationEnded(self, Context=defaultNamedNotOptArg):
-		'Indicates a modeless operation has ended.'
-		return self._oleobj_.InvokeTypes(1610743836, LCID, 1, (24, 0), ((8, 0),),Context
-			)
-
-	def SendModelessOperationStart(self, Context=defaultNamedNotOptArg):
-		'Indicates a modeless operation will start.'
-		return self._oleobj_.InvokeTypes(1610743835, LCID, 1, (24, 0), ((8, 0),),Context
-			)
-
-	def TranslateCoordinates(self, Point=defaultNamedNotOptArg, FromCoordSystem=defaultNamedNotOptArg, ToCoordSystem=defaultNamedNotOptArg, Displacement=defaultNamedNotOptArg
-			, OCSNormal=defaultNamedOptArg):
-		'Translates a point from one coordinate system to another coordinate system'
-		return self._ApplyTypes_(1610743812, 1, (12, 0), ((12, 1), (3, 1), (3, 1), (3, 1), (12, 17)), 'TranslateCoordinates', None,Point
-			, FromCoordSystem, ToCoordSystem, Displacement, OCSNormal)
-
-	_prop_map_get_ = {
-	}
-	_prop_map_put_ = {
 	}
 	def __iter__(self):
 		"Return a Python iterator for this object"
@@ -23779,228 +21824,116 @@ class IAcadXline(DispatchBaseClass):
 			raise TypeError("This object does not support enumeration")
 		return win32com.client.util.Iterator(ob, None)
 
-class _DAcadApplicationEvents:
-	'Event interface for AcadApplication'
-	CLSID = CLSID_Sink = IID('{8E5EE0A0-E6A1-4922-B29C-C289A72F16E2}')
-	coclass_clsid = IID('{8B4929F8-076F-4AEC-AFEE-8928747B7AE3}')
-	_public_methods_ = [] # For COM Server support
-	_dispid_to_func_ = {
-		        1 : "OnSysVarChanged",
-		        2 : "OnNewDrawing",
-		        3 : "OnAppActivate",
-		        4 : "OnAppDeactivate",
-		        5 : "OnWindowMovedOrResized",
-		        6 : "OnBeginModal",
-		        7 : "OnEndModal",
-		        8 : "OnBeginQuit",
-		       10 : "OnBeginFileDrop",
-		       11 : "OnARXLoaded",
-		       12 : "OnARXUnloaded",
-		       13 : "OnBeginPlot",
-		       14 : "OnEndPlot",
-		       19 : "OnBeginSave",
-		       20 : "OnEndSave",
-		       21 : "OnBeginOpen",
-		       22 : "OnEndOpen",
-		       17 : "OnBeginCommand",
-		       18 : "OnEndCommand",
-		       15 : "OnBeginLisp",
-		       16 : "OnEndLisp",
-		       24 : "OnLispCancelled",
-		       25 : "OnWindowChanged",
-		}
+class IAxDbDocument(DispatchBaseClass):
+	'IAxDbDocument Interface'
+	CLSID = IID('{C051EBF3-1969-4A9B-B7D4-67CB03858885}')
+	coclass_clsid = IID('{39C92898-2FBB-4629-8E1B-6968D3122EC4}')
 
-	def __init__(self, oobj = None):
-		if oobj is None:
-			self._olecp = None
-		else:
-			import win32com.server.util
-			from win32com.server.policy import EventHandlerPolicy
-			cpc=oobj._oleobj_.QueryInterface(pythoncom.IID_IConnectionPointContainer)
-			cp=cpc.FindConnectionPoint(self.CLSID_Sink)
-			cookie=cp.Advise(win32com.server.util.wrap(self, usePolicy=EventHandlerPolicy))
-			self._olecp,self._olecp_cookie = cp,cookie
-	def __del__(self):
+	def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg, IdPairs=defaultNamedOptArg):
+		'Duplicates multiple objects (deep cloning)'
+		return self._ApplyTypes_(4, 1, (12, 0), ((12, 1), (12, 17), (16396, 19)), 'CopyObjects', None,Objects
+			, Owner, IdPairs)
+
+	def DxfIn(self, FileName=defaultNamedNotOptArg, LogFileName=defaultNamedOptArg):
+		'method DxfIn'
+		return self._oleobj_.InvokeTypes(260, LCID, 1, (24, 0), ((8, 1), (12, 17)),FileName
+			, LogFileName)
+
+	def DxfOut(self, FileName=defaultNamedNotOptArg, precision=defaultNamedOptArg, SaveThumbnailImage=defaultNamedOptArg):
+		'method DxfOut'
+		return self._oleobj_.InvokeTypes(261, LCID, 1, (24, 0), ((8, 1), (12, 17), (12, 17)),FileName
+			, precision, SaveThumbnailImage)
+
+	def HandleToObject(self, Handle=defaultNamedNotOptArg):
+		'Gets the object that corresponds to the given handle'
+		ret = self._oleobj_.InvokeTypes(18, LCID, 1, (9, 0), ((8, 1),),Handle
+			)
+		if ret is not None:
+			ret = Dispatch(ret, 'HandleToObject', None)
+		return ret
+
+	def ObjectIdToObject(self, ObjectID=defaultNamedNotOptArg):
+		'Gets the object that corresponds to the given object ID'
+		ret = self._oleobj_.InvokeTypes(19, LCID, 1, (9, 0), ((20, 1),),ObjectID
+			)
+		if ret is not None:
+			ret = Dispatch(ret, 'ObjectIdToObject', None)
+		return ret
+
+	def Open(self, FileName=defaultNamedNotOptArg, Password=defaultNamedOptArg):
+		'method Open'
+		return self._oleobj_.InvokeTypes(257, LCID, 1, (24, 0), ((8, 1), (12, 17)),FileName
+			, Password)
+
+	def Save(self):
+		'method Save'
+		return self._oleobj_.InvokeTypes(258, LCID, 1, (24, 0), (),)
+
+	def SaveAs(self, FileName=defaultNamedNotOptArg, vSecurityParams=defaultNamedOptArg):
+		'method SaveAs'
+		return self._oleobj_.InvokeTypes(259, LCID, 1, (24, 0), ((8, 1), (12, 17)),FileName
+			, vSecurityParams)
+
+	_prop_map_get_ = {
+		"Application": (262, 2, (9, 0), (), "Application", None),
+		# Method 'Blocks' returns object of type 'IAcadBlocks'
+		"Blocks": (3, 2, (9, 0), (), "Blocks", '{6DC49550-9FE8-4456-9751-BCCB9C436FF3}'),
+		# Method 'Database' returns object of type 'IAcadDatabase'
+		"Database": (263, 2, (9, 0), (), "Database", '{3280D375-1DE4-4DA2-89EE-591E860056DC}'),
+		# Method 'Dictionaries' returns object of type 'IAcadDictionaries'
+		"Dictionaries": (9, 2, (9, 0), (), "Dictionaries", '{3ADFB200-A04C-434F-975E-3A3F978786A2}'),
+		# Method 'DimStyles' returns object of type 'IAcadDimStyles'
+		"DimStyles": (6, 2, (9, 0), (), "DimStyles", '{2932818F-C836-44F9-9329-3A27628B478A}'),
+		"ElevationModelSpace": (15, 2, (5, 0), (), "ElevationModelSpace", None),
+		"ElevationPaperSpace": (16, 2, (5, 0), (), "ElevationPaperSpace", None),
+		# Method 'Groups' returns object of type 'IAcadGroups'
+		"Groups": (5, 2, (9, 0), (), "Groups", '{257DF530-AE46-4A50-8948-54948B2AB045}'),
+		# Method 'Layers' returns object of type 'IAcadLayers'
+		"Layers": (7, 2, (9, 0), (), "Layers", '{955BD2D0-D331-4E04-B50D-D3632BCAF5F2}'),
+		# Method 'Layouts' returns object of type 'IAcadLayouts'
+		"Layouts": (20, 2, (9, 0), (), "Layouts", '{8C3EC56B-ADA0-4FC9-8AAA-3B864ED5B633}'),
+		"Limits": (17, 2, (12, 0), (), "Limits", None),
+		# Method 'Linetypes' returns object of type 'IAcadLineTypes'
+		"Linetypes": (8, 2, (9, 0), (), "Linetypes", '{2EB8451D-2CFB-4F35-A9D9-24323AB74350}'),
+		# Method 'Materials' returns object of type 'IAcadMaterials'
+		"Materials": (73, 2, (9, 0), (), "Materials", '{81B5645D-003B-4F35-B5FB-F0BABE4DD217}'),
+		# Method 'ModelSpace' returns object of type 'IAcadModelSpace'
+		"ModelSpace": (1, 2, (9, 0), (), "ModelSpace", '{34BD05D6-AC90-4409-8D22-D7B3C820E32B}'),
+		"Name": (256, 2, (8, 0), (), "Name", None),
+		# Method 'PaperSpace' returns object of type 'IAcadPaperSpace'
+		"PaperSpace": (2, 2, (9, 0), (), "PaperSpace", '{BB92334B-CEBE-4C67-8E06-E4181B95F7B8}'),
+		# Method 'PlotConfigurations' returns object of type 'IAcadPlotConfigurations'
+		"PlotConfigurations": (21, 2, (9, 0), (), "PlotConfigurations", '{6F5C4479-94B4-4ED6-B7B0-6D17841BA198}'),
+		# Method 'Preferences' returns object of type 'IAcadDatabasePreferences'
+		"Preferences": (22, 2, (9, 0), (), "Preferences", '{150F3C7A-A584-403E-93E8-98DB3D0A3485}'),
+		# Method 'RegisteredApplications' returns object of type 'IAcadRegisteredApplications'
+		"RegisteredApplications": (10, 2, (9, 0), (), "RegisteredApplications", '{7D6C6772-C5CD-4633-BCFC-B4A8858A6BCB}'),
+		# Method 'SectionManager' returns object of type 'IAcadSectionManager'
+		"SectionManager": (72, 2, (9, 0), (), "SectionManager", '{34B16C03-E5B7-41FD-8181-60141C33E394}'),
+		# Method 'SummaryInfo' returns object of type 'IAcadSummaryInfo'
+		"SummaryInfo": (71, 2, (9, 0), (), "SummaryInfo", '{709B6D13-62D3-49D2-9431-91BD88A7DCEC}'),
+		# Method 'TextStyles' returns object of type 'IAcadTextStyles'
+		"TextStyles": (11, 2, (9, 0), (), "TextStyles", '{6464273B-23A6-40D9-B408-6B7A3429892D}'),
+		# Method 'UserCoordinateSystems' returns object of type 'IAcadUCSs'
+		"UserCoordinateSystems": (12, 2, (9, 0), (), "UserCoordinateSystems", '{EA8D9DB3-5546-45F6-BBF6-844CA5E3E73E}'),
+		# Method 'Viewports' returns object of type 'IAcadViewports'
+		"Viewports": (14, 2, (9, 0), (), "Viewports", '{49C7B6C0-8613-44CB-980B-7CE1371EA912}'),
+		# Method 'Views' returns object of type 'IAcadViews'
+		"Views": (13, 2, (9, 0), (), "Views", '{C08E2EA0-FF82-4DF6-A85C-5DF79B033929}'),
+	}
+	_prop_map_put_ = {
+		"ElevationModelSpace": ((15, LCID, 4, 0),()),
+		"ElevationPaperSpace": ((16, LCID, 4, 0),()),
+		"Limits": ((17, LCID, 4, 0),()),
+		"Name": ((256, LCID, 4, 0),()),
+	}
+	def __iter__(self):
+		"Return a Python iterator for this object"
 		try:
-			self.close()
-		except pythoncom.com_error:
-			pass
-	def close(self):
-		if self._olecp is not None:
-			cp,cookie,self._olecp,self._olecp_cookie = self._olecp,self._olecp_cookie,None,None
-			cp.Unadvise(cookie)
-	def _query_interface_(self, iid):
-		import win32com.server.util
-		if iid==self.CLSID_Sink: return win32com.server.util.wrap(self)
-
-	# Event Handlers
-	# If you create handlers, they should have the following prototypes:
-#	def OnSysVarChanged(self, SysvarName=defaultNamedNotOptArg, newVal=defaultNamedNotOptArg):
-#		'Triggered when the value of a system variable is changed'
-#	def OnNewDrawing(self):
-#		'Triggered just before a new drawing is created'
-#	def OnAppActivate(self):
-#		'Triggered just before the main application window is activated'
-#	def OnAppDeactivate(self):
-#		'Triggered just before the main application window is deactivated'
-#	def OnWindowMovedOrResized(self, HWNDFrame=defaultNamedNotOptArg, bMoved=defaultNamedNotOptArg):
-#		'Happens when the main frame window is moved or resized'
-#	def OnBeginModal(self):
-#		'Triggered just before a modal dialog is displayed'
-#	def OnEndModal(self):
-#		'Triggered just after a modal dialog is dismissed'
-#	def OnBeginQuit(self, Cancel=defaultNamedNotOptArg):
-#		'Triggered just before an AutoCAD session ends or a document closes'
-#	def OnBeginFileDrop(self, FileName=defaultNamedNotOptArg, Cancel=defaultNamedNotOptArg):
-#		'Triggered when a file is dropped on the main application window'
-#	def OnARXLoaded(self, AppName=defaultNamedNotOptArg):
-#		'Triggered when an ObjectARX application has been loaded'
-#	def OnARXUnloaded(self, AppName=defaultNamedNotOptArg):
-#		'Triggered when an ObjectARX application has been unloaded'
-#	def OnBeginPlot(self, DrawingName=defaultNamedNotOptArg):
-#		'Triggered immediately after AutoCAD receives a request to print a drawing'
-#	def OnEndPlot(self, DrawingName=defaultNamedNotOptArg):
-#		'Triggered after a document has been sent to the printer'
-#	def OnBeginSave(self, FileName=defaultNamedNotOptArg):
-#		'Triggered immediately after AutoCAD receives a request to save the drawing'
-#	def OnEndSave(self, FileName=defaultNamedNotOptArg):
-#		'Triggered when AutoCAD has finished saving the drawing'
-#	def OnBeginOpen(self, FileName=defaultNamedNotOptArg):
-#		'Triggered immediately after AutoCAD receives a request to open an existing drawing'
-#	def OnEndOpen(self, FileName=defaultNamedNotOptArg):
-#		'Triggered immediately after AutoCAD finishes opening an existing drawing'
-#	def OnBeginCommand(self, CommandName=defaultNamedNotOptArg):
-#		'Triggered immediately after a command is issued, but before it completes'
-#	def OnEndCommand(self, CommandName=defaultNamedNotOptArg):
-#		'Triggered immediately after a command completes'
-#	def OnBeginLisp(self, FirstLine=defaultNamedNotOptArg):
-#		'Triggered immediately after AutoCAD receives a request to evaluate a LISP expression'
-#	def OnEndLisp(self):
-#		'Triggered upon completion of evaluating a LISP expression'
-#	def OnLispCancelled(self):
-#		'Triggered when the evaluation of a LISP expression is cancelled'
-#	def OnWindowChanged(self, WindowState=defaultNamedNotOptArg):
-#		'Triggered when there is a change to the application or document windows'
-
-
-class _DAcadDocumentEvents:
-	'Event interface for ThisDrawing'
-	CLSID = CLSID_Sink = IID('{1C5F04BB-9E50-489E-A879-65225E27A6CD}')
-	coclass_clsid = IID('{345D3165-3889-4694-AB75-A91A27B217E8}')
-	_public_methods_ = [] # For COM Server support
-	_dispid_to_func_ = {
-		        1 : "OnBeginSave",
-		        2 : "OnEndSave",
-		        6 : "OnBeginCommand",
-		        7 : "OnEndCommand",
-		        8 : "OnBeginLisp",
-		        9 : "OnEndLisp",
-		       10 : "OnLispCancelled",
-		       11 : "OnSelectionChanged",
-		       12 : "OnActivate",
-		       13 : "OnDeactivate",
-		       14 : "OnBeginRightClick",
-		       15 : "OnBeginShortcutMenuDefault",
-		       16 : "OnBeginShortcutMenuEdit",
-		       17 : "OnBeginShortcutMenuCommand",
-		       18 : "OnBeginShortcutMenuGrip",
-		       19 : "OnBeginShortcutMenuOsnap",
-		       30 : "OnEndShortcutMenu",
-		       20 : "OnBeginDoubleClick",
-		       21 : "OnObjectAdded",
-		       22 : "OnObjectErased",
-		       23 : "OnObjectModified",
-		       24 : "OnBeginPlot",
-		       25 : "OnEndPlot",
-		       29 : "OnWindowMovedOrResized",
-		       31 : "OnLayoutSwitched",
-		       32 : "OnWindowChanged",
-		       33 : "OnBeginClose",
-		       34 : "OnBeginDocClose",
-		}
-
-	def __init__(self, oobj = None):
-		if oobj is None:
-			self._olecp = None
-		else:
-			import win32com.server.util
-			from win32com.server.policy import EventHandlerPolicy
-			cpc=oobj._oleobj_.QueryInterface(pythoncom.IID_IConnectionPointContainer)
-			cp=cpc.FindConnectionPoint(self.CLSID_Sink)
-			cookie=cp.Advise(win32com.server.util.wrap(self, usePolicy=EventHandlerPolicy))
-			self._olecp,self._olecp_cookie = cp,cookie
-	def __del__(self):
-		try:
-			self.close()
-		except pythoncom.com_error:
-			pass
-	def close(self):
-		if self._olecp is not None:
-			cp,cookie,self._olecp,self._olecp_cookie = self._olecp,self._olecp_cookie,None,None
-			cp.Unadvise(cookie)
-	def _query_interface_(self, iid):
-		import win32com.server.util
-		if iid==self.CLSID_Sink: return win32com.server.util.wrap(self)
-
-	# Event Handlers
-	# If you create handlers, they should have the following prototypes:
-#	def OnBeginSave(self, FileName=defaultNamedNotOptArg):
-#		'Triggered immediately after AutoCAD receives a request to save the drawing'
-#	def OnEndSave(self, FileName=defaultNamedNotOptArg):
-#		'Triggered when AutoCAD has finished saving the drawing'
-#	def OnBeginCommand(self, CommandName=defaultNamedNotOptArg):
-#		'Triggered immediately after a command is issued, but before it completes'
-#	def OnEndCommand(self, CommandName=defaultNamedNotOptArg):
-#		'Triggered immediately after a command completes'
-#	def OnBeginLisp(self, FirstLine=defaultNamedNotOptArg):
-#		'Triggered immediately after AutoCAD receives a request to evaluate a LISP expression'
-#	def OnEndLisp(self):
-#		'Triggered upon completion of evaluating a LISP expression'
-#	def OnLispCancelled(self):
-#		'Triggered when the evaluation of a LISP expression is cancelled'
-#	def OnSelectionChanged(self):
-#		'Triggered when the current pickfirst selection set changes'
-#	def OnActivate(self):
-#		'Triggered when a document window is activated'
-#	def OnDeactivate(self):
-#		'Triggered when the drawing window is deactivated'
-#	def OnBeginRightClick(self, PickPoint=defaultNamedNotOptArg):
-#		'Triggered after the user right-clicks on the drawing window'
-#	def OnBeginShortcutMenuDefault(self, ShortcutMenu=pythoncom.Missing):
-#		'Triggered after the user right-clicks on the drawing window, and before the shortcut menu appears in default mode'
-#	def OnBeginShortcutMenuEdit(self, ShortcutMenu=pythoncom.Missing, SelectionSet=pythoncom.Missing):
-#		'Triggered after the user right-clicks on the drawing window, and before the shortcut menu appears in edit mode'
-#	def OnBeginShortcutMenuCommand(self, ShortcutMenu=pythoncom.Missing, Command=defaultNamedNotOptArg):
-#		'Triggered after the user right-clicks on the drawing window, and before the shortcut menu appears in command mode'
-#	def OnBeginShortcutMenuGrip(self, ShortcutMenu=pythoncom.Missing):
-#		'Triggered after the user right-clicks on the drawing window, and before the shortcut menu appears in grip mode'
-#	def OnBeginShortcutMenuOsnap(self, ShortcutMenu=pythoncom.Missing):
-#		'Triggered after the user right-clicks on the drawing window, and before the shortcut menu appears in osnap mode'
-#	def OnEndShortcutMenu(self, ShortcutMenu=pythoncom.Missing):
-#		'Triggered after the shortcut menu appears'
-#	def OnBeginDoubleClick(self, PickPoint=defaultNamedNotOptArg):
-#		'Triggered after the user double-clicks on an object in the drawing'
-#	def OnObjectAdded(self, Object=defaultNamedNotOptArg):
-#		'Triggered when an object has been added to the drawing'
-#	def OnObjectErased(self, ObjectID=defaultNamedNotOptArg):
-#		'Triggered when an object has been erased from the drawing'
-#	def OnObjectModified(self, Object=defaultNamedNotOptArg):
-#		'Triggered when an object in the drawing has been modified'
-#	def OnBeginPlot(self, DrawingName=defaultNamedNotOptArg):
-#		'Triggered immediately after AutoCAD receives a request to print a drawing'
-#	def OnEndPlot(self, DrawingName=defaultNamedNotOptArg):
-#		'Triggered after a document has been sent to the printer'
-#	def OnWindowMovedOrResized(self, HWNDFrame=defaultNamedNotOptArg, bMoved=defaultNamedNotOptArg):
-#		'Happens when the drawing window is moved or resized.'
-#	def OnLayoutSwitched(self, LayoutName=defaultNamedNotOptArg):
-#		'Triggered after the user switches to a different layout'
-#	def OnWindowChanged(self, WindowState=defaultNamedNotOptArg):
-#		'Triggered when there is a change to the application or document windows'
-#	def OnBeginClose(self):
-#		'Triggered immediately after AutoCAD receives a request to close a drawing'
-#	def OnBeginDocClose(self, Cancel=defaultNamedNotOptArg):
-#		'Triggered before the BeginClose event. This is an opportunity to cancel the closing process'
-
+			ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+		except pythoncom.error:
+			raise TypeError("This object does not support enumeration")
+		return win32com.client.util.Iterator(ob, None)
 
 from win32com.client import CoClassBaseClass
 class Acad3DFace(CoClassBaseClass): # A CoClass
@@ -24043,19 +21976,6 @@ class AcadAcCmColor(CoClassBaseClass): # A CoClass
 		IAcadAcCmColor,
 	]
 	default_interface = IAcadAcCmColor
-
-# This CoClass is known by the name 'AutoCAD.Application.24'
-class AcadApplication(CoClassBaseClass): # A CoClass
-	# An instance of the AutoCAD application
-	CLSID = IID('{8B4929F8-076F-4AEC-AFEE-8928747B7AE3}')
-	coclass_sources = [
-		_DAcadApplicationEvents,
-	]
-	default_source = _DAcadApplicationEvents
-	coclass_interfaces = [
-		IAcadApplication,
-	]
-	default_interface = IAcadApplication
 
 class AcadArc(CoClassBaseClass): # A CoClass
 	# AutoCAD Arc Object
@@ -24305,29 +22225,6 @@ class AcadDimension(CoClassBaseClass): # A CoClass
 		IAcadDimension,
 	]
 	default_interface = IAcadDimension
-
-# This CoClass is known by the name 'AutoCAD.Drawing.24'
-class AcadDocument(CoClassBaseClass): # A CoClass
-	# An AutoCAD drawing
-	CLSID = IID('{345D3165-3889-4694-AB75-A91A27B217E8}')
-	coclass_sources = [
-		_DAcadDocumentEvents,
-	]
-	default_source = _DAcadDocumentEvents
-	coclass_interfaces = [
-		IAcadDocument,
-	]
-	default_interface = IAcadDocument
-
-class AcadDocuments(CoClassBaseClass): # A CoClass
-	# The collection of all AutoCAD drawings open in the current session
-	CLSID = IID('{F04A2229-71AE-4BC9-A300-99E058A40A8B}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadDocuments,
-	]
-	default_interface = IAcadDocuments
 
 class AcadDwfUnderlay(CoClassBaseClass): # A CoClass
 	CLSID = IID('{345C9439-5A05-4B6D-B7B8-83FFD1EB6280}')
@@ -24669,36 +22566,6 @@ class AcadMaterials(CoClassBaseClass): # A CoClass
 	]
 	default_interface = IAcadMaterials
 
-class AcadMenuBar(CoClassBaseClass): # A CoClass
-	# A collection of PopupMenu objects representing the current AutoCAD menu bar
-	CLSID = IID('{6DE060AA-B166-4102-B7E6-6E881C641F2A}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadMenuBar,
-	]
-	default_interface = IAcadMenuBar
-
-class AcadMenuGroup(CoClassBaseClass): # A CoClass
-	# An AutoCAD menu group
-	CLSID = IID('{3A625576-85BA-425C-B121-3CA6D8048184}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadMenuGroup,
-	]
-	default_interface = IAcadMenuGroup
-
-class AcadMenuGroups(CoClassBaseClass): # A CoClass
-	# A collection of MenuGroup objects representing all the menu groups loaded in the current AutoCAD session
-	CLSID = IID('{B2A3DAF3-7420-4539-AAEC-901D2A8E1E3B}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadMenuGroups,
-	]
-	default_interface = IAcadMenuGroups
-
 class AcadModelSpace(CoClassBaseClass): # A CoClass
 	# A special Block object containing all model space entities
 	CLSID = IID('{4A7435A7-5AFA-44B1-8DA0-411D5EB98E94}')
@@ -24777,16 +22644,6 @@ class AcadPlaneSurface(CoClassBaseClass): # A CoClass
 		IAcadPlaneSurface,
 	]
 	default_interface = IAcadPlaneSurface
-
-class AcadPlot(CoClassBaseClass): # A CoClass
-	# The set of methods and properties used for plotting layouts
-	CLSID = IID('{C8FC79B8-5C16-431E-B345-1165F1D19D47}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPlot,
-	]
-	default_interface = IAcadPlot
 
 class AcadPlotConfiguration(CoClassBaseClass): # A CoClass
 	# A named collection of plot settings
@@ -24867,136 +22724,6 @@ class AcadPolyline(CoClassBaseClass): # A CoClass
 		IAcadPolyline,
 	]
 	default_interface = IAcadPolyline
-
-class AcadPopupMenu(CoClassBaseClass): # A CoClass
-	# An AutoCAD cascading menu
-	CLSID = IID('{67FE9EA9-C8DD-48EA-98BB-E285D06B9482}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPopupMenu,
-	]
-	default_interface = IAcadPopupMenu
-
-class AcadPopupMenuItem(CoClassBaseClass): # A CoClass
-	# A single menu item on an AutoCAD pull-down menu
-	CLSID = IID('{03FCD8AD-66AC-4B84-A563-FE19F8BC31AF}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPopupMenuItem,
-	]
-	default_interface = IAcadPopupMenuItem
-
-class AcadPopupMenus(CoClassBaseClass): # A CoClass
-	# A collection of PopupMenu objects representing all the popup menus loaded in the MenuGroup
-	CLSID = IID('{ECCE89E0-1CF9-4D8F-B3EA-3E82E673EE6F}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPopupMenus,
-	]
-	default_interface = IAcadPopupMenus
-
-class AcadPreferences(CoClassBaseClass): # A CoClass
-	# This object specifies the current AutoCAD settings
-	CLSID = IID('{02F066CC-A9C3-471D-B96D-CC260C296722}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPreferences,
-	]
-	default_interface = IAcadPreferences
-
-class AcadPreferencesDisplay(CoClassBaseClass): # A CoClass
-	# This object contains the options from the Display tab on the Options dialog
-	CLSID = IID('{54CFD161-1607-45C6-A00C-5A8C09310218}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPreferencesDisplay,
-	]
-	default_interface = IAcadPreferencesDisplay
-
-class AcadPreferencesDrafting(CoClassBaseClass): # A CoClass
-	# This object contains the options from the Drafting tab on the Options dialog
-	CLSID = IID('{715B87C5-3BC1-42A0-8E7E-F2DDDA8408BA}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPreferencesDrafting,
-	]
-	default_interface = IAcadPreferencesDrafting
-
-class AcadPreferencesFiles(CoClassBaseClass): # A CoClass
-	# This object contains the options from the Files tab on the Options dialog
-	CLSID = IID('{1D5A59AE-FF0B-4366-BCB6-06D8465F2D5B}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPreferencesFiles,
-	]
-	default_interface = IAcadPreferencesFiles
-
-class AcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
-	# This object contains the options from the Open and Save tab on the Options dialog
-	CLSID = IID('{DC580E36-67A2-406B-9867-80BE4C2FDC8A}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPreferencesOpenSave,
-	]
-	default_interface = IAcadPreferencesOpenSave
-
-class AcadPreferencesOutput(CoClassBaseClass): # A CoClass
-	# This object contains the options from the Output tab on the Options dialog
-	CLSID = IID('{26D940FA-984E-471F-B993-887BC6018D6D}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPreferencesOutput,
-	]
-	default_interface = IAcadPreferencesOutput
-
-class AcadPreferencesProfiles(CoClassBaseClass): # A CoClass
-	# This object contains the options from the Profiles tab on the Options dialog
-	CLSID = IID('{CBC1112B-C780-4BE3-9F08-3C144FDEA37F}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPreferencesProfiles,
-	]
-	default_interface = IAcadPreferencesProfiles
-
-class AcadPreferencesSelection(CoClassBaseClass): # A CoClass
-	# This object contains the options from the Selection tab on the Options dialog
-	CLSID = IID('{46762221-9693-4CC5-8C58-B9A7FF499776}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPreferencesSelection,
-	]
-	default_interface = IAcadPreferencesSelection
-
-class AcadPreferencesSystem(CoClassBaseClass): # A CoClass
-	# This object contains the options from the System tab on the Options dialog
-	CLSID = IID('{759C8892-796F-427C-92A8-E1039C20DCB1}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPreferencesSystem,
-	]
-	default_interface = IAcadPreferencesSystem
-
-class AcadPreferencesUser(CoClassBaseClass): # A CoClass
-	# This object contains the options from the User tab on the Options dialog
-	CLSID = IID('{C4E07DD5-F25F-42EA-B786-8FC7469C6D9C}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadPreferencesUser,
-	]
-	default_interface = IAcadPreferencesUser
 
 class AcadRasterImage(CoClassBaseClass): # A CoClass
 	# AutoCAD Raster Object
@@ -25110,26 +22837,6 @@ class AcadSecurityParams(CoClassBaseClass): # A CoClass
 	]
 	default_interface = IAcadSecurityParams
 
-class AcadSelectionSet(CoClassBaseClass): # A CoClass
-	# A group of one or more AutoCAD objects specified for processing as a single unit
-	CLSID = IID('{2B8622C5-9DB4-46A7-87C8-BC2F3EF58A6D}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadSelectionSet,
-	]
-	default_interface = IAcadSelectionSet
-
-class AcadSelectionSets(CoClassBaseClass): # A CoClass
-	# The collection of all selection sets in the drawing
-	CLSID = IID('{660424A5-79B3-4E12-81A3-CE27D057137D}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadSelectionSets,
-	]
-	default_interface = IAcadSelectionSets
-
 class AcadShape(CoClassBaseClass): # A CoClass
 	# AutoCAD Shape Object
 	CLSID = IID('{9DEE32A4-1B1E-4BC4-A505-C2DDFC1B93D4}')
@@ -25169,16 +22876,6 @@ class AcadSpline(CoClassBaseClass): # A CoClass
 		IAcadSpline,
 	]
 	default_interface = IAcadSpline
-
-class AcadState(CoClassBaseClass): # A CoClass
-	# AutoCAD State Object
-	CLSID = IID('{C181A4F9-E04B-43BB-A503-9465D560E56D}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadState,
-	]
-	default_interface = IAcadState
 
 class AcadSubDMesh(CoClassBaseClass): # A CoClass
 	# AutoCAD SubDMesh Object
@@ -25360,36 +23057,6 @@ class AcadTolerance(CoClassBaseClass): # A CoClass
 	]
 	default_interface = IAcadTolerance
 
-class AcadToolbar(CoClassBaseClass): # A CoClass
-	# An AutoCAD toolbar
-	CLSID = IID('{A6E075A0-0A09-4928-BD6D-655C61716DC6}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadToolbar,
-	]
-	default_interface = IAcadToolbar
-
-class AcadToolbarItem(CoClassBaseClass): # A CoClass
-	# A single button item on an AutoCAD toolbar
-	CLSID = IID('{C71C7438-0568-4631-82AA-ABC2EBFC1D23}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadToolbarItem,
-	]
-	default_interface = IAcadToolbarItem
-
-class AcadToolbars(CoClassBaseClass): # A CoClass
-	# A collection of Toolbar objects representing all the toolbars loaded in the current AutoCAD session
-	CLSID = IID('{6B2495AE-9752-4515-BD25-3718AC70350D}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadToolbars,
-	]
-	default_interface = IAcadToolbars
-
 class AcadTrace(CoClassBaseClass): # A CoClass
 	# AutoCAD Trace Object
 	CLSID = IID('{0B986F63-9DDA-41DC-AB65-1770AD991B66}')
@@ -25419,16 +23086,6 @@ class AcadUCSs(CoClassBaseClass): # A CoClass
 		IAcadUCSs,
 	]
 	default_interface = IAcadUCSs
-
-class AcadUtility(CoClassBaseClass): # A CoClass
-	# A series of methods provided for utility purposes
-	CLSID = IID('{0605FD7F-5675-42F6-8C9A-0D8A2AAAE547}')
-	coclass_sources = [
-	]
-	coclass_interfaces = [
-		IAcadUtility,
-	]
-	default_interface = IAcadUtility
 
 class AcadView(CoClassBaseClass): # A CoClass
 	# A graphical representation of a 2D drawing or 3D model from a specific location (viewpoint) in space
@@ -25499,6 +23156,17 @@ class AcadXline(CoClassBaseClass): # A CoClass
 		IAcadXline,
 	]
 	default_interface = IAcadXline
+
+# This CoClass is known by the name 'ObjectDBX.AxDbDocument.24'
+class AxDbDocument(CoClassBaseClass): # A CoClass
+	# ObjectDBX Document Object
+	CLSID = IID('{39C92898-2FBB-4629-8E1B-6968D3122EC4}')
+	coclass_sources = [
+	]
+	coclass_interfaces = [
+		IAxDbDocument,
+	]
+	default_interface = IAxDbDocument
 
 IAcad3DFace_vtables_dispatch_ = 1
 IAcad3DFace_vtables_ = [
@@ -25586,63 +23254,6 @@ IAcadAcCmColor_vtables_ = [
 	(( 'ColorIndex' , 'color' , ), 17, (17, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
 	(( 'SetColorBookColor' , 'BookName' , 'ColorName' , ), 18, (18, (), [ (8, 1, None, None) , 
 			 (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadApplication_vtables_dispatch_ = 1
-IAcadApplication_vtables_ = [
-	(( 'Visible' , 'Visible' , ), 1, (1, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'Visible' , 'Visible' , ), 1, (1, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'Name' , 'pAppName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Caption' , 'bstrCaption' , ), 3, (3, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Application' , 'pAppObj' , ), 4, (4, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveDocument' , 'pActiveDoc' , ), 5, (5, (), [ (16393, 10, None, "IID('{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')") , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveDocument' , 'pActiveDoc' , ), 5, (5, (), [ (9, 1, None, "IID('{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')") , ], 1 , 4 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'FullName' , 'FullName' , ), 6, (6, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'Height' , 'Height' , ), 7, (7, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'Height' , 'Height' , ), 7, (7, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'WindowLeft' , 'left' , ), 8, (8, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'WindowLeft' , 'left' , ), 8, (8, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'Path' , 'bstrPath' , ), 9, (9, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'LocaleId' , 'lcid' , ), 10, (10, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'WindowTop' , 'top' , ), 11, (11, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'WindowTop' , 'top' , ), 11, (11, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'Version' , 'bstrVer' , ), 12, (12, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'Width' , 'Width' , ), 13, (13, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'Width' , 'Width' , ), 13, (13, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'Preferences' , 'pPreferences' , ), 14, (14, (), [ (16393, 10, None, "IID('{C2A67E24-E163-4972-836A-490B41127A35}')") , ], 1 , 2 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'StatusId' , 'VportObj' , 'bStatus' , ), 17, (17, (), [ (9, 1, None, None) , 
-			 (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-	(( 'ListArx' , 'pVarListArray' , ), 18, (18, (), [ (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
-	(( 'LoadArx' , 'Name' , ), 19, (19, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
-	(( 'GetInterfaceObject' , 'ProgID' , 'pObj' , ), 20, (20, (), [ (8, 1, None, None) , 
-			 (16393, 10, None, None) , ], 1 , 1 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
-	(( 'UnloadArx' , 'Name' , ), 23, (23, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
-	(( 'Update' , ), 24, (24, (), [ ], 1 , 1 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
-	(( 'Quit' , ), 25, (25, (), [ ], 1 , 1 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
-	(( 'Zoom' , 'Type' , 'vParams' , ), 26, (26, (), [ (3, 1, None, None) , 
-			 (16396, 1, None, None) , ], 1 , 1 , 4 , 0 , 272 , (3, 0, None, None) , 64 , )),
-	(( 'VBE' , 'pDispVBE' , ), 27, (27, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
-	(( 'MenuGroups' , 'pMenuGroups' , ), 28, (28, (), [ (16393, 10, None, "IID('{B6AD6C44-3524-477D-B5C5-2CBA04E7D410}')") , ], 1 , 2 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
-	(( 'MenuBar' , 'pMenuBar' , ), 29, (29, (), [ (16393, 10, None, "IID('{A704FE5B-8BA2-484E-90FD-7AC8AF48A380}')") , ], 1 , 2 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
-	(( 'LoadDVB' , 'Name' , ), 30, (30, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
-	(( 'UnloadDVB' , 'Name' , ), 31, (31, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
-	(( 'Documents' , 'pDocuments' , ), 32, (32, (), [ (16393, 10, None, "IID('{E725B837-BAD5-451E-97D4-6417B5B70EC7}')") , ], 1 , 2 , 4 , 0 , 320 , (3, 0, None, None) , 0 , )),
-	(( 'Eval' , 'Expression' , ), 33, (33, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 328 , (3, 0, None, None) , 0 , )),
-	(( 'WindowState' , 'eWinState' , ), 34, (34, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 336 , (3, 0, None, None) , 0 , )),
-	(( 'WindowState' , 'eWinState' , ), 34, (34, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 344 , (3, 0, None, None) , 0 , )),
-	(( 'RunMacro' , 'MacroPath' , ), 35, (35, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 352 , (3, 0, None, None) , 0 , )),
-	(( 'ZoomExtents' , ), 36, (36, (), [ ], 1 , 1 , 4 , 0 , 360 , (3, 0, None, None) , 0 , )),
-	(( 'ZoomAll' , ), 37, (37, (), [ ], 1 , 1 , 4 , 0 , 368 , (3, 0, None, None) , 0 , )),
-	(( 'ZoomCenter' , 'Center' , 'Magnify' , ), 38, (38, (), [ (12, 1, None, None) , 
-			 (5, 1, None, None) , ], 1 , 1 , 4 , 0 , 376 , (3, 0, None, None) , 0 , )),
-	(( 'ZoomScaled' , 'scale' , 'ScaleType' , ), 39, (39, (), [ (5, 1, None, None) , 
-			 (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 384 , (3, 0, None, None) , 0 , )),
-	(( 'ZoomWindow' , 'LowerLeft' , 'UpperRight' , ), 40, (40, (), [ (12, 1, None, None) , 
-			 (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 392 , (3, 0, None, None) , 0 , )),
-	(( 'ZoomPickWindow' , ), 41, (41, (), [ ], 1 , 1 , 4 , 0 , 400 , (3, 0, None, None) , 0 , )),
-	(( 'GetAcadState' , 'pVal' , ), 42, (42, (), [ (16393, 10, None, "IID('{935B3D12-E5A3-46F8-8CBC-24646D46FAD8}')") , ], 1 , 1 , 4 , 0 , 408 , (3, 0, None, None) , 0 , )),
-	(( 'ZoomPrevious' , ), 43, (43, (), [ ], 1 , 1 , 4 , 0 , 416 , (3, 0, None, None) , 0 , )),
-	(( 'HWND' , 'HWND' , ), 44, (44, (), [ (16404, 10, None, None) , ], 1 , 2 , 4 , 0 , 424 , (3, 0, None, None) , 0 , )),
 ]
 
 IAcadArc_vtables_dispatch_ = 1
@@ -27147,97 +24758,6 @@ IAcadDimension_vtables_ = [
 	(( 'DimTxtDirection' , 'bVal' , ), 1573, (1573, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 912 , (3, 0, None, None) , 0 , )),
 ]
 
-IAcadDocument_vtables_dispatch_ = 1
-IAcadDocument_vtables_ = [
-	(( 'Plot' , 'pPlot' , ), 23, (23, (), [ (16393, 10, None, "IID('{60CD0F9E-61AB-4631-B947-88180FBFB9E9}')") , ], 1 , 2 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveLayer' , 'pActLayer' , ), 24, (24, (), [ (16393, 10, None, "IID('{57995A1E-64DB-4C6C-8155-1F9E6FB608E2}')") , ], 1 , 2 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveLayer' , 'pActLayer' , ), 24, (24, (), [ (9, 1, None, "IID('{57995A1E-64DB-4C6C-8155-1F9E6FB608E2}')") , ], 1 , 4 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveLinetype' , 'pActLinetype' , ), 25, (25, (), [ (16393, 10, None, "IID('{195E95A0-500A-4187-9EAC-E033BB9B1B08}')") , ], 1 , 2 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveLinetype' , 'pActLinetype' , ), 25, (25, (), [ (9, 1, None, "IID('{195E95A0-500A-4187-9EAC-E033BB9B1B08}')") , ], 1 , 4 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveDimStyle' , 'pActDimStyle' , ), 26, (26, (), [ (16393, 10, None, "IID('{B001A02B-0560-4954-B921-CFF786EAD2C6}')") , ], 1 , 2 , 4 , 0 , 320 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveDimStyle' , 'pActDimStyle' , ), 26, (26, (), [ (9, 1, None, "IID('{B001A02B-0560-4954-B921-CFF786EAD2C6}')") , ], 1 , 4 , 4 , 0 , 328 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveTextStyle' , 'pActTextStyle' , ), 27, (27, (), [ (16393, 10, None, "IID('{739F20C7-25D3-431E-88B7-B7824CA4D7BC}')") , ], 1 , 2 , 4 , 0 , 336 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveTextStyle' , 'pActTextStyle' , ), 27, (27, (), [ (9, 1, None, "IID('{739F20C7-25D3-431E-88B7-B7824CA4D7BC}')") , ], 1 , 4 , 4 , 0 , 344 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveUCS' , 'pActUCS' , ), 28, (28, (), [ (16393, 10, None, "IID('{BFDBCCFC-E4F2-4C36-85FC-20595E28CD3B}')") , ], 1 , 2 , 4 , 0 , 352 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveUCS' , 'pActUCS' , ), 28, (28, (), [ (9, 1, None, "IID('{BFDBCCFC-E4F2-4C36-85FC-20595E28CD3B}')") , ], 1 , 4 , 4 , 0 , 360 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveViewport' , 'pActView' , ), 29, (29, (), [ (16393, 10, None, "IID('{37113848-87F7-4A28-BEA7-4B8559C603C7}')") , ], 1 , 2 , 4 , 0 , 368 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveViewport' , 'pActView' , ), 29, (29, (), [ (9, 1, None, "IID('{37113848-87F7-4A28-BEA7-4B8559C603C7}')") , ], 1 , 4 , 4 , 0 , 376 , (3, 0, None, None) , 0 , )),
-	(( 'ActivePViewport' , 'pActView' , ), 30, (30, (), [ (16393, 10, None, "IID('{8E70F234-A6D0-4373-87C6-F041E6396E43}')") , ], 1 , 2 , 4 , 0 , 384 , (3, 0, None, None) , 0 , )),
-	(( 'ActivePViewport' , 'pActView' , ), 30, (30, (), [ (9, 1, None, "IID('{8E70F234-A6D0-4373-87C6-F041E6396E43}')") , ], 1 , 4 , 4 , 0 , 392 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveSpace' , 'ActSpace' , ), 31, (31, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 400 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveSpace' , 'ActSpace' , ), 31, (31, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 408 , (3, 0, None, None) , 0 , )),
-	(( 'SelectionSets' , 'pSelSets' , ), 32, (32, (), [ (16393, 10, None, "IID('{A0A53FF5-1CCE-4A79-A74A-7BCDEBA03F35}')") , ], 1 , 2 , 4 , 0 , 416 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveSelectionSet' , 'pSelSet' , ), 33, (33, (), [ (16393, 10, None, "IID('{43820684-2C5B-4682-B644-AD703C70A611}')") , ], 1 , 2 , 4 , 0 , 424 , (3, 0, None, None) , 0 , )),
-	(( 'FullName' , 'FullName' , ), 34, (34, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 432 , (3, 0, None, None) , 0 , )),
-	(( 'Name' , 'Name' , ), 35, (35, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 440 , (3, 0, None, None) , 0 , )),
-	(( 'Path' , 'Path' , ), 36, (36, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 448 , (3, 0, None, None) , 0 , )),
-	(( 'ObjectSnapMode' , 'fSnapMode' , ), 37, (37, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
-	(( 'ObjectSnapMode' , 'fSnapMode' , ), 37, (37, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
-	(( 'ReadOnly' , 'bReadOnly' , ), 38, (38, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
-	(( 'Saved' , 'bSaved' , ), 39, (39, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 480 , (3, 0, None, None) , 0 , )),
-	(( 'MSpace' , 'Mode' , ), 40, (40, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 488 , (3, 0, None, None) , 0 , )),
-	(( 'MSpace' , 'Mode' , ), 40, (40, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 496 , (3, 0, None, None) , 0 , )),
-	(( 'Utility' , 'pUtil' , ), 41, (41, (), [ (16393, 10, None, "IID('{F693DA67-0534-44D8-BDA3-E20C5FA32BA0}')") , ], 1 , 2 , 4 , 0 , 504 , (3, 0, None, None) , 0 , )),
-	(( 'Open' , 'FullName' , 'Password' , 'pDocObj' , ), 42, (42, (), [ 
-			 (8, 1, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')") , ], 1 , 1 , 4 , 1 , 512 , (3, 0, None, None) , 0 , )),
-	(( 'AuditInfo' , 'FixErr' , ), 43, (43, (), [ (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 520 , (3, 0, None, None) , 0 , )),
-	(( 'Import' , 'FileName' , 'InsertionPoint' , 'ScaleFactor' , 'pObj' , 
-			 ), 44, (44, (), [ (8, 1, None, None) , (12, 1, None, None) , (5, 1, None, None) , (16393, 10, None, None) , ], 1 , 1 , 4 , 0 , 528 , (3, 0, None, None) , 0 , )),
-	(( 'Export' , 'FileName' , 'Extension' , 'SelectionSet' , ), 45, (45, (), [ 
-			 (8, 1, None, None) , (8, 1, None, None) , (9, 1, None, "IID('{43820684-2C5B-4682-B644-AD703C70A611}')") , ], 1 , 1 , 4 , 0 , 536 , (3, 0, None, None) , 0 , )),
-	(( 'New' , 'TemplateFileName' , 'pDocObj' , ), 46, (46, (), [ (8, 1, None, None) , 
-			 (16393, 10, None, "IID('{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')") , ], 1 , 1 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
-	(( 'Save' , ), 47, (47, (), [ ], 1 , 1 , 4 , 0 , 552 , (3, 0, None, None) , 0 , )),
-	(( 'SaveAs' , 'FullFileName' , 'SaveAsType' , 'vSecurityParams' , ), 48, (48, (), [ 
-			 (8, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 560 , (3, 0, None, None) , 0 , )),
-	(( 'Wblock' , 'FileName' , 'SelectionSet' , ), 49, (49, (), [ (8, 1, None, None) , 
-			 (9, 1, None, "IID('{43820684-2C5B-4682-B644-AD703C70A611}')") , ], 1 , 1 , 4 , 0 , 568 , (3, 0, None, None) , 0 , )),
-	(( 'PurgeAll' , ), 50, (50, (), [ ], 1 , 1 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
-	(( 'GetVariable' , 'Name' , 'Value' , ), 51, (51, (), [ (8, 1, None, None) , 
-			 (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
-	(( 'SetVariable' , 'Name' , 'Value' , ), 52, (52, (), [ (8, 1, None, None) , 
-			 (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
-	(( 'LoadShapeFile' , 'FullName' , ), 53, (53, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 600 , (3, 0, None, None) , 0 , )),
-	(( 'Regen' , 'WhichViewports' , ), 54, (54, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
-	(( 'PickfirstSelectionSet' , 'pSelSet' , ), 55, (55, (), [ (16393, 10, None, "IID('{43820684-2C5B-4682-B644-AD703C70A611}')") , ], 1 , 2 , 4 , 0 , 616 , (3, 0, None, None) , 0 , )),
-	(( 'Active' , 'pvbActive' , ), 56, (56, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 624 , (3, 0, None, None) , 0 , )),
-	(( 'Activate' , ), 57, (57, (), [ ], 1 , 1 , 4 , 0 , 632 , (3, 0, None, None) , 0 , )),
-	(( 'Close' , 'SaveChanges' , 'FileName' , ), 58, (58, (), [ (12, 17, None, None) , 
-			 (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 640 , (3, 0, None, None) , 0 , )),
-	(( 'WindowState' , 'pWinState' , ), 59, (59, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 648 , (3, 0, None, None) , 0 , )),
-	(( 'WindowState' , 'pWinState' , ), 59, (59, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 656 , (3, 0, None, None) , 0 , )),
-	(( 'Width' , 'pWidth' , ), 60, (60, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 664 , (3, 0, None, None) , 0 , )),
-	(( 'Width' , 'pWidth' , ), 60, (60, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 672 , (3, 0, None, None) , 0 , )),
-	(( 'Height' , 'pHeight' , ), 61, (61, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 680 , (3, 0, None, None) , 0 , )),
-	(( 'Height' , 'pHeight' , ), 61, (61, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 688 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveLayout' , 'pLayout' , ), 62, (62, (), [ (9, 1, None, "IID('{7A524437-AD0E-48C6-BC94-98BC85368BD8}')") , ], 1 , 4 , 4 , 0 , 696 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveLayout' , 'pLayout' , ), 62, (62, (), [ (16393, 10, None, "IID('{7A524437-AD0E-48C6-BC94-98BC85368BD8}')") , ], 1 , 2 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
-	(( 'SendCommand' , 'Command' , ), 63, (63, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
-	(( 'HWND' , 'HWND' , ), 64, (64, (), [ (16404, 10, None, None) , ], 1 , 2 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
-	(( 'WindowTitle' , 'Title' , ), 65, (65, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 728 , (3, 0, None, None) , 0 , )),
-	(( 'Application' , 'pAppObj' , ), 66, (66, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 736 , (3, 0, None, None) , 0 , )),
-	(( 'Database' , 'pDatabase' , ), 67, (67, (), [ (16393, 10, None, "IID('{3280D375-1DE4-4DA2-89EE-591E860056DC}')") , ], 1 , 2 , 4 , 0 , 744 , (3, 0, None, None) , 0 , )),
-	(( 'StartUndoMark' , ), 68, (68, (), [ ], 1 , 1 , 4 , 0 , 752 , (3, 0, None, None) , 0 , )),
-	(( 'EndUndoMark' , ), 69, (69, (), [ ], 1 , 1 , 4 , 0 , 760 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveMaterial' , 'pActMaterial' , ), 74, (74, (), [ (16393, 10, None, "IID('{BCDA7885-FBA7-4667-89F9-0077E3B9CEAB}')") , ], 1 , 2 , 4 , 0 , 768 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveMaterial' , 'pActMaterial' , ), 74, (74, (), [ (9, 1, None, "IID('{BCDA7885-FBA7-4667-89F9-0077E3B9CEAB}')") , ], 1 , 4 , 4 , 0 , 776 , (3, 0, None, None) , 0 , )),
-	(( 'PostCommand' , 'Command' , ), 75, (75, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 784 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadDocuments_vtables_dispatch_ = 1
-IAcadDocuments_vtables_ = [
-	(( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
-	(( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Add' , 'TemplateName' , 'pDispDoc' , ), 1610743812, (1610743812, (), [ (12, 17, None, None) , 
-			 (16393, 10, None, "IID('{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')") , ], 1 , 1 , 4 , 1 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'Open' , 'Name' , 'ReadOnly' , 'Password' , 'pDispDoc' , 
-			 ), 1610743813, (1610743813, (), [ (8, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}')") , ], 1 , 1 , 4 , 2 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'Close' , ), 1610743814, (1610743814, (), [ ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-]
-
 IAcadDwfUnderlay_vtables_dispatch_ = 1
 IAcadDwfUnderlay_vtables_ = [
 	(( 'DWFFormat' , 'Name' , ), 18, (18, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
@@ -28039,43 +25559,6 @@ IAcadMaterials_vtables_ = [
 			 (16393, 10, None, "IID('{BCDA7885-FBA7-4667-89F9-0077E3B9CEAB}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IAcadMenuBar_vtables_dispatch_ = 1
-IAcadMenuBar_vtables_ = [
-	(( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
-	(( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadMenuGroup_vtables_dispatch_ = 1
-IAcadMenuGroup_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{B6AD6C44-3524-477D-B5C5-2CBA04E7D410}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'Name' , 'Name' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Type' , 'menuType' , ), 1610743811, (1610743811, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'MenuFileName' , 'Name' , ), 1610743812, (1610743812, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'Menus' , 'pMenus' , ), 1610743813, (1610743813, (), [ (16393, 10, None, "IID('{A14874CE-740A-4A1B-BB70-17D578F41913}')") , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'Toolbars' , 'pToolbars' , ), 1610743814, (1610743814, (), [ (16393, 10, None, "IID('{DA8044CA-7817-4557-8055-A03564BCF6AF}')") , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'Unload' , ), 1610743815, (1610743815, (), [ ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'Save' , 'MenuFileType' , ), 1610743816, (1610743816, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'SaveAs' , 'MenuFileName' , 'MenuFileType' , ), 1610743817, (1610743817, (), [ (8, 1, None, None) , 
-			 (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadMenuGroups_vtables_dispatch_ = 1
-IAcadMenuGroups_vtables_ = [
-	(( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
-	(( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'Load' , 'MenuFileName' , 'BaseMenu' , 'pMenuGroup' , ), 1610743813, (1610743813, (), [ 
-			 (8, 1, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}')") , ], 1 , 1 , 4 , 1 , 96 , (3, 0, None, None) , 0 , )),
-]
-
 IAcadModelSpace_vtables_dispatch_ = 1
 IAcadModelSpace_vtables_ = [
 ]
@@ -28213,24 +25696,6 @@ IAcadPaperSpace_vtables_ = [
 
 IAcadPlaneSurface_vtables_dispatch_ = 1
 IAcadPlaneSurface_vtables_ = [
-]
-
-IAcadPlot_vtables_dispatch_ = 1
-IAcadPlot_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'QuietErrorMode' , 'bErrorMode' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'QuietErrorMode' , 'bErrorMode' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'NumberOfCopies' , 'numCopies' , ), 1610743811, (1610743811, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'NumberOfCopies' , 'numCopies' , ), 1610743811, (1610743811, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'BatchPlotProgress' , 'bProgressStatus' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'BatchPlotProgress' , 'bProgressStatus' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayPlotPreview' , 'Preview' , ), 1610743815, (1610743815, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'PlotToFile' , 'plotFile' , 'plotConfig' , 'success' , ), 1610743816, (1610743816, (), [ 
-			 (8, 1, None, None) , (12, 17, None, None) , (16395, 10, None, None) , ], 1 , 1 , 4 , 1 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'PlotToDevice' , 'plotConfig' , 'success' , ), 1610743817, (1610743817, (), [ (12, 17, None, None) , 
-			 (16395, 10, None, None) , ], 1 , 1 , 4 , 1 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'SetLayoutsToPlot' , 'layoutList' , ), 1610743818, (1610743818, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'StartBatchMode' , 'entryCount' , ), 1610743819, (1610743819, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
 ]
 
 IAcadPlotConfiguration_vtables_dispatch_ = 1
@@ -28450,403 +25915,6 @@ IAcadPolyline_vtables_ = [
 	(( 'Coordinate' , 'Index' , 'pVal' , ), 17, (17, (), [ (3, 1, None, None) , 
 			 (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 656 , (3, 0, None, None) , 1024 , )),
 	(( 'Length' , 'Length' , ), 18, (18, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 664 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPopupMenu_vtables_dispatch_ = 1
-IAcadPopupMenu_vtables_ = [
-	(( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
-	(( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'Name' , 'bstrName' , ), 1610743813, (1610743813, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'Name' , 'bstrName' , ), 1610743813, (1610743813, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'NameNoMnemonic' , 'bstrName' , ), 1610743815, (1610743815, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'ShortcutMenu' , 'bFlag' , ), 1610743816, (1610743816, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'OnMenuBar' , 'bFlag' , ), 1610743817, (1610743817, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'AddMenuItem' , 'Index' , 'Label' , 'Macro' , 'pItem' , 
-			 ), 1610743818, (1610743818, (), [ (12, 1, None, None) , (8, 1, None, None) , (8, 1, None, None) , (16393, 10, None, "IID('{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}')") , ], 1 , 1 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'AddSubMenu' , 'Index' , 'Label' , 'pMenu' , ), 1610743819, (1610743819, (), [ 
-			 (12, 1, None, None) , (8, 1, None, None) , (16393, 10, None, "IID('{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')") , ], 1 , 1 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'AddSeparator' , 'Index' , 'pItem' , ), 1610743820, (1610743820, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}')") , ], 1 , 1 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'InsertInMenuBar' , 'Index' , ), 1610743821, (1610743821, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'RemoveFromMenuBar' , ), 1610743822, (1610743822, (), [ ], 1 , 1 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'TagString' , 'bstrTag' , ), 1610743823, (1610743823, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPopupMenuItem_vtables_dispatch_ = 1
-IAcadPopupMenuItem_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'Label' , 'bstrLabel' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Label' , 'bstrLabel' , ), 1610743810, (1610743810, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'TagString' , 'bstrTag' , ), 1610743812, (1610743812, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'TagString' , 'bstrTag' , ), 1610743812, (1610743812, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'Enable' , 'bFlag' , ), 1610743814, (1610743814, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'Enable' , 'bFlag' , ), 1610743814, (1610743814, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'Check' , 'bFlag' , ), 1610743816, (1610743816, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'Check' , 'bFlag' , ), 1610743816, (1610743816, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'Type' , 'itemType' , ), 1610743818, (1610743818, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'SubMenu' , 'pMenu' , ), 1610743819, (1610743819, (), [ (16393, 10, None, "IID('{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')") , ], 1 , 2 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'Macro' , 'bstrMacro' , ), 1610743820, (1610743820, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'Macro' , 'bstrMacro' , ), 1610743820, (1610743820, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'Index' , 'nIndex' , ), 1610743822, (1610743822, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'Caption' , 'bstrCaption' , ), 1610743823, (1610743823, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'HelpString' , 'bstrHelp' , ), 1610743824, (1610743824, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'HelpString' , 'bstrHelp' , ), 1610743824, (1610743824, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'Delete' , ), 1610743826, (1610743826, (), [ ], 1 , 1 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'EndSubMenuLevel' , 'level' , ), 1610743827, (1610743827, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'EndSubMenuLevel' , 'level' , ), 1610743827, (1610743827, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPopupMenus_vtables_dispatch_ = 1
-IAcadPopupMenus_vtables_ = [
-	(( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
-	(( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'Add' , 'MenuName' , 'pMenu' , ), 1610743813, (1610743813, (), [ (8, 1, None, None) , 
-			 (16393, 10, None, "IID('{CA20E9D5-7353-4B5E-9098-A66F741C2A72}')") , ], 1 , 1 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'InsertMenuInMenuBar' , 'MenuName' , 'Index' , ), 1610743814, (1610743814, (), [ (8, 1, None, None) , 
-			 (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'RemoveMenuFromMenuBar' , 'Index' , ), 1610743815, (1610743815, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPreferences_vtables_dispatch_ = 1
-IAcadPreferences_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'Files' , 'pObj' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{2F7C2478-9777-4359-BF58-57200E9C3200}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'Display' , 'pObj' , ), 1610743810, (1610743810, (), [ (16393, 10, None, "IID('{0B1F1007-6232-4774-9989-5F4EC003AC4F}')") , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'OpenSave' , 'pObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{D2E64B8C-E8C7-4453-8EC8-6B03E275309C}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Output' , 'pObj' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{15480E24-2072-4D1D-820C-29B8D5EF4B7B}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'System' , 'pObj' , ), 1610743813, (1610743813, (), [ (16393, 10, None, "IID('{D9677553-A98F-4D1C-AA34-E07E2507128E}')") , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'User' , 'pObj' , ), 1610743814, (1610743814, (), [ (16393, 10, None, "IID('{F3816DB4-2048-4D5B-B0BA-A4FAAAD6F996}')") , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'Drafting' , 'pObj' , ), 1610743815, (1610743815, (), [ (16393, 10, None, "IID('{6CA0C79C-A982-409C-9821-76A69E49931A}')") , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'Selection' , 'pObj' , ), 1610743816, (1610743816, (), [ (16393, 10, None, "IID('{4D4FD045-8B92-4A18-91D3-5E5C88C40C77}')") , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'Profiles' , 'pObj' , ), 1610743817, (1610743817, (), [ (16393, 10, None, "IID('{55276CBD-A0CB-4E81-BB8D-66435D793708}')") , ], 1 , 2 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPreferencesDisplay_vtables_dispatch_ = 1
-IAcadPreferencesDisplay_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutDisplayMargins' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutDisplayMargins' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutDisplayPaper' , 'Path' , ), 1610743811, (1610743811, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutDisplayPaper' , 'Path' , ), 1610743811, (1610743811, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutDisplayPaperShadow' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutDisplayPaperShadow' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutShowPlotSetup' , 'Path' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutShowPlotSetup' , 'Path' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutCreateViewport' , 'Path' , ), 1610743817, (1610743817, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutCreateViewport' , 'Path' , ), 1610743817, (1610743817, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayScrollBars' , 'Path' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayScrollBars' , 'Path' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayScreenMenu' , 'Path' , ), 1610743821, (1610743821, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayScreenMenu' , 'Path' , ), 1610743821, (1610743821, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'CursorSize' , 'Path' , ), 1610743823, (1610743823, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'CursorSize' , 'Path' , ), 1610743823, (1610743823, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'DockedVisibleLines' , 'Path' , ), 1610743825, (1610743825, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'DockedVisibleLines' , 'Path' , ), 1610743825, (1610743825, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'ShowRasterImage' , 'Path' , ), 1610743827, (1610743827, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'ShowRasterImage' , 'Path' , ), 1610743827, (1610743827, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-	(( 'GraphicsWinModelBackgrndColor' , 'color' , ), 1610743829, (1610743829, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
-	(( 'GraphicsWinModelBackgrndColor' , 'color' , ), 1610743829, (1610743829, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
-	(( 'ModelCrosshairColor' , 'crossHairColor' , ), 1610743831, (1610743831, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
-	(( 'ModelCrosshairColor' , 'crossHairColor' , ), 1610743831, (1610743831, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
-	(( 'GraphicsWinLayoutBackgrndColor' , 'color' , ), 1610743833, (1610743833, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
-	(( 'GraphicsWinLayoutBackgrndColor' , 'color' , ), 1610743833, (1610743833, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
-	(( 'TextWinBackgrndColor' , 'Path' , ), 1610743835, (1610743835, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 272 , (3, 0, None, None) , 0 , )),
-	(( 'TextWinBackgrndColor' , 'Path' , ), 1610743835, (1610743835, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
-	(( 'TextWinTextColor' , 'Path' , ), 1610743837, (1610743837, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
-	(( 'TextWinTextColor' , 'Path' , ), 1610743837, (1610743837, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutCrosshairColor' , 'crossHairColor' , ), 1610743839, (1610743839, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
-	(( 'LayoutCrosshairColor' , 'crossHairColor' , ), 1610743839, (1610743839, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
-	(( 'AutoTrackingVecColor' , 'AutoTrackingVecColor' , ), 1610743841, (1610743841, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 320 , (3, 0, None, None) , 0 , )),
-	(( 'AutoTrackingVecColor' , 'AutoTrackingVecColor' , ), 1610743841, (1610743841, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 328 , (3, 0, None, None) , 0 , )),
-	(( 'TextFont' , 'Path' , ), 1610743843, (1610743843, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 336 , (3, 0, None, None) , 0 , )),
-	(( 'TextFont' , 'Path' , ), 1610743843, (1610743843, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 344 , (3, 0, None, None) , 0 , )),
-	(( 'TextFontStyle' , 'Path' , ), 1610743845, (1610743845, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 352 , (3, 0, None, None) , 0 , )),
-	(( 'TextFontStyle' , 'Path' , ), 1610743845, (1610743845, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 360 , (3, 0, None, None) , 0 , )),
-	(( 'TextFontSize' , 'Path' , ), 1610743847, (1610743847, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 368 , (3, 0, None, None) , 0 , )),
-	(( 'TextFontSize' , 'Path' , ), 1610743847, (1610743847, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 376 , (3, 0, None, None) , 0 , )),
-	(( 'HistoryLines' , 'Path' , ), 1610743849, (1610743849, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 384 , (3, 0, None, None) , 0 , )),
-	(( 'HistoryLines' , 'Path' , ), 1610743849, (1610743849, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 392 , (3, 0, None, None) , 0 , )),
-	(( 'MaxAutoCADWindow' , 'Path' , ), 1610743851, (1610743851, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 400 , (3, 0, None, None) , 0 , )),
-	(( 'MaxAutoCADWindow' , 'Path' , ), 1610743851, (1610743851, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 408 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayLayoutTabs' , 'Path' , ), 1610743853, (1610743853, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 416 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayLayoutTabs' , 'Path' , ), 1610743853, (1610743853, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 424 , (3, 0, None, None) , 0 , )),
-	(( 'ImageFrameHighlight' , 'Path' , ), 1610743855, (1610743855, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 432 , (3, 0, None, None) , 0 , )),
-	(( 'ImageFrameHighlight' , 'Path' , ), 1610743855, (1610743855, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 440 , (3, 0, None, None) , 0 , )),
-	(( 'TrueColorImages' , 'Path' , ), 1610743857, (1610743857, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 448 , (3, 0, None, None) , 0 , )),
-	(( 'TrueColorImages' , 'Path' , ), 1610743857, (1610743857, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
-	(( 'XRefFadeIntensity' , 'Path' , ), 1610743859, (1610743859, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
-	(( 'XRefFadeIntensity' , 'Path' , ), 1610743859, (1610743859, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPreferencesDrafting_vtables_dispatch_ = 1
-IAcadPreferencesDrafting_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapMarker' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapMarker' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapMagnet' , 'Path' , ), 1610743811, (1610743811, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapMagnet' , 'Path' , ), 1610743811, (1610743811, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapTooltip' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapTooltip' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapAperture' , 'Path' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapAperture' , 'Path' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapApertureSize' , 'Path' , ), 1610743817, (1610743817, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapApertureSize' , 'Path' , ), 1610743817, (1610743817, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapMarkerColor' , 'Path' , ), 1610743819, (1610743819, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapMarkerColor' , 'Path' , ), 1610743819, (1610743819, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapMarkerSize' , 'Path' , ), 1610743821, (1610743821, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSnapMarkerSize' , 'Path' , ), 1610743821, (1610743821, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'PolarTrackingVector' , 'Path' , ), 1610743823, (1610743823, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'PolarTrackingVector' , 'Path' , ), 1610743823, (1610743823, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'FullScreenTrackingVector' , 'Path' , ), 1610743825, (1610743825, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'FullScreenTrackingVector' , 'Path' , ), 1610743825, (1610743825, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'AutoTrackTooltip' , 'Path' , ), 1610743827, (1610743827, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'AutoTrackTooltip' , 'Path' , ), 1610743827, (1610743827, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-	(( 'AlignmentPointAcquisition' , 'Path' , ), 1610743829, (1610743829, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
-	(( 'AlignmentPointAcquisition' , 'Path' , ), 1610743829, (1610743829, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPreferencesFiles_vtables_dispatch_ = 1
-IAcadPreferencesFiles_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'SupportPath' , 'orient' , ), 0, (0, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'SupportPath' , 'orient' , ), 0, (0, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'DriversPath' , 'Path' , ), 1610743811, (1610743811, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'DriversPath' , 'Path' , ), 1610743811, (1610743811, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'MenuFile' , 'Path' , ), 1610743813, (1610743813, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'MenuFile' , 'Path' , ), 1610743813, (1610743813, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'EnterpriseMenuFile' , 'Path' , ), 1610743815, (1610743815, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'EnterpriseMenuFile' , 'Path' , ), 1610743815, (1610743815, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'CustomIconPath' , 'Path' , ), 1610743817, (1610743817, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'CustomIconPath' , 'Path' , ), 1610743817, (1610743817, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'HelpFilePath' , 'Path' , ), 1610743819, (1610743819, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'HelpFilePath' , 'Path' , ), 1610743819, (1610743819, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultInternetURL' , 'Path' , ), 1610743821, (1610743821, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultInternetURL' , 'Path' , ), 1610743821, (1610743821, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'ConfigFile' , 'ConfigFile' , ), 1610743823, (1610743823, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'LicenseServer' , 'Path' , ), 1610743824, (1610743824, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 64 , )),
-	(( 'TextEditor' , 'Path' , ), 1610743825, (1610743825, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'TextEditor' , 'Path' , ), 1610743825, (1610743825, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'MainDictionary' , 'Path' , ), 1610743827, (1610743827, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'MainDictionary' , 'Path' , ), 1610743827, (1610743827, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-	(( 'CustomDictionary' , 'Path' , ), 1610743829, (1610743829, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
-	(( 'CustomDictionary' , 'Path' , ), 1610743829, (1610743829, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
-	(( 'AltFontFile' , 'fontFile' , ), 1610743831, (1610743831, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
-	(( 'AltFontFile' , 'fontFile' , ), 1610743831, (1610743831, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
-	(( 'FontFileMap' , 'Path' , ), 1610743833, (1610743833, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
-	(( 'FontFileMap' , 'Path' , ), 1610743833, (1610743833, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
-	(( 'PrintFile' , 'Path' , ), 1610743835, (1610743835, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 272 , (3, 0, None, None) , 0 , )),
-	(( 'PrintFile' , 'Path' , ), 1610743835, (1610743835, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
-	(( 'PrintSpoolExecutable' , 'Path' , ), 1610743837, (1610743837, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
-	(( 'PrintSpoolExecutable' , 'Path' , ), 1610743837, (1610743837, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
-	(( 'PostScriptPrologFile' , 'Path' , ), 1610743839, (1610743839, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
-	(( 'PostScriptPrologFile' , 'Path' , ), 1610743839, (1610743839, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
-	(( 'PrintSpoolerPath' , 'Path' , ), 1610743841, (1610743841, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 320 , (3, 0, None, None) , 0 , )),
-	(( 'PrintSpoolerPath' , 'Path' , ), 1610743841, (1610743841, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 328 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSavePath' , 'AutoSavePath' , ), 1610743843, (1610743843, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 336 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSavePath' , 'AutoSavePath' , ), 1610743843, (1610743843, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 344 , (3, 0, None, None) , 0 , )),
-	(( 'TemplateDwgPath' , 'Path' , ), 1610743845, (1610743845, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 352 , (3, 0, None, None) , 0 , )),
-	(( 'TemplateDwgPath' , 'Path' , ), 1610743845, (1610743845, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 360 , (3, 0, None, None) , 0 , )),
-	(( 'LogFilePath' , 'Path' , ), 1610743847, (1610743847, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 368 , (3, 0, None, None) , 0 , )),
-	(( 'LogFilePath' , 'Path' , ), 1610743847, (1610743847, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 376 , (3, 0, None, None) , 0 , )),
-	(( 'TempFilePath' , 'Path' , ), 1610743849, (1610743849, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 384 , (3, 0, None, None) , 0 , )),
-	(( 'TempFilePath' , 'Path' , ), 1610743849, (1610743849, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 392 , (3, 0, None, None) , 0 , )),
-	(( 'TempXrefPath' , 'Path' , ), 1610743851, (1610743851, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 400 , (3, 0, None, None) , 0 , )),
-	(( 'TempXrefPath' , 'Path' , ), 1610743851, (1610743851, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 408 , (3, 0, None, None) , 0 , )),
-	(( 'TextureMapPath' , 'Path' , ), 1610743853, (1610743853, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 416 , (3, 0, None, None) , 0 , )),
-	(( 'TextureMapPath' , 'Path' , ), 1610743853, (1610743853, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 424 , (3, 0, None, None) , 0 , )),
-	(( 'AltTabletMenuFile' , 'MenuFile' , ), 1610743855, (1610743855, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 432 , (3, 0, None, None) , 0 , )),
-	(( 'AltTabletMenuFile' , 'MenuFile' , ), 1610743855, (1610743855, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 440 , (3, 0, None, None) , 0 , )),
-	(( 'SetProjectFilePath' , 'ProjectName' , 'ProjectFilePath' , ), 1610743857, (1610743857, (), [ (8, 1, None, None) , 
-			 (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 448 , (3, 0, None, None) , 0 , )),
-	(( 'GetProjectFilePath' , 'ProjectName' , 'Path' , ), 1610743858, (1610743858, (), [ (8, 1, None, None) , 
-			 (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
-	(( 'PrinterConfigPath' , 'Path' , ), 1610743859, (1610743859, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
-	(( 'PrinterConfigPath' , 'Path' , ), 1610743859, (1610743859, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
-	(( 'PrinterDescPath' , 'Path' , ), 1610743861, (1610743861, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 480 , (3, 0, None, None) , 0 , )),
-	(( 'PrinterDescPath' , 'Path' , ), 1610743861, (1610743861, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 488 , (3, 0, None, None) , 0 , )),
-	(( 'PrinterStyleSheetPath' , 'Path' , ), 1610743863, (1610743863, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 496 , (3, 0, None, None) , 0 , )),
-	(( 'PrinterStyleSheetPath' , 'Path' , ), 1610743863, (1610743863, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 504 , (3, 0, None, None) , 0 , )),
-	(( 'WorkspacePath' , 'Path' , ), 1610743865, (1610743865, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 512 , (3, 0, None, None) , 0 , )),
-	(( 'WorkspacePath' , 'Path' , ), 1610743865, (1610743865, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 520 , (3, 0, None, None) , 0 , )),
-	(( 'ObjectARXPath' , 'Path' , ), 1610743867, (1610743867, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 528 , (3, 0, None, None) , 64 , )),
-	(( 'ObjectARXPath' , 'Path' , ), 1610743867, (1610743867, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 536 , (3, 0, None, None) , 64 , )),
-	(( 'ColorBookPath' , 'Path' , ), 1610743869, (1610743869, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
-	(( 'ColorBookPath' , 'Path' , ), 1610743869, (1610743869, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 552 , (3, 0, None, None) , 0 , )),
-	(( 'ToolPalettePath' , 'Path' , ), 1610743871, (1610743871, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
-	(( 'ToolPalettePath' , 'Path' , ), 1610743871, (1610743871, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 568 , (3, 0, None, None) , 0 , )),
-	(( 'QNewTemplateFile' , 'templateFile' , ), 1610743873, (1610743873, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
-	(( 'QNewTemplateFile' , 'templateFile' , ), 1610743873, (1610743873, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
-	(( 'PlotLogFilePath' , 'templateFile' , ), 1610743875, (1610743875, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
-	(( 'PlotLogFilePath' , 'templateFile' , ), 1610743875, (1610743875, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 600 , (3, 0, None, None) , 0 , )),
-	(( 'PageSetupOverridesTemplateFile' , 'templateFile' , ), 1610743877, (1610743877, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
-	(( 'PageSetupOverridesTemplateFile' , 'templateFile' , ), 1610743877, (1610743877, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 616 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveInvProject' , 'Path' , ), 1610743879, (1610743879, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 624 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveInvProject' , 'Path' , ), 1610743879, (1610743879, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 632 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPreferencesOpenSave_vtables_dispatch_ = 1
-IAcadPreferencesOpenSave_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'SavePreviewThumbnail' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'SavePreviewThumbnail' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'IncrementalSavePercent' , 'Path' , ), 1610743811, (1610743811, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'IncrementalSavePercent' , 'Path' , ), 1610743811, (1610743811, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSaveInterval' , 'Path' , ), 1610743813, (1610743813, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'AutoSaveInterval' , 'Path' , ), 1610743813, (1610743813, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'CreateBackup' , 'CreateBackup' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'CreateBackup' , 'CreateBackup' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'FullCRCValidation' , 'Path' , ), 1610743817, (1610743817, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'FullCRCValidation' , 'Path' , ), 1610743817, (1610743817, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'LogFileOn' , 'Path' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'LogFileOn' , 'Path' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'TempFileExtension' , 'Path' , ), 1610743821, (1610743821, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'TempFileExtension' , 'Path' , ), 1610743821, (1610743821, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'XrefDemandLoad' , 'Path' , ), 1610743823, (1610743823, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'XrefDemandLoad' , 'Path' , ), 1610743823, (1610743823, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'DemandLoadARXApp' , 'Path' , ), 1610743825, (1610743825, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'DemandLoadARXApp' , 'Path' , ), 1610743825, (1610743825, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'ProxyImage' , 'Path' , ), 1610743827, (1610743827, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'ProxyImage' , 'Path' , ), 1610743827, (1610743827, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-	(( 'ShowProxyDialogBox' , 'Path' , ), 1610743829, (1610743829, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
-	(( 'ShowProxyDialogBox' , 'Path' , ), 1610743829, (1610743829, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
-	(( 'AutoAudit' , 'bAudit' , ), 1610743831, (1610743831, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
-	(( 'AutoAudit' , 'bAudit' , ), 1610743831, (1610743831, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
-	(( 'SaveAsType' , 'Path' , ), 1610743833, (1610743833, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
-	(( 'SaveAsType' , 'Path' , ), 1610743833, (1610743833, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
-	(( 'MRUNumber' , 'Path' , ), 1610743835, (1610743835, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 272 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPreferencesOutput_vtables_dispatch_ = 1
-IAcadPreferencesOutput_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultOutputDevice' , 'Path' , ), 1610743809, (1610743809, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultOutputDevice' , 'Path' , ), 1610743809, (1610743809, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'PrinterSpoolAlert' , 'Path' , ), 1610743811, (1610743811, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'PrinterSpoolAlert' , 'Path' , ), 1610743811, (1610743811, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'PrinterPaperSizeAlert' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'PrinterPaperSizeAlert' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'PlotLegacy' , 'Path' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'PlotLegacy' , 'Path' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'OLEQuality' , 'Path' , ), 1610743817, (1610743817, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'OLEQuality' , 'Path' , ), 1610743817, (1610743817, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'UseLastPlotSettings' , 'Path' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'UseLastPlotSettings' , 'Path' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'PlotPolicy' , 'Path' , ), 1610743821, (1610743821, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'PlotPolicy' , 'Path' , ), 1610743821, (1610743821, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultPlotStyleTable' , 'Path' , ), 1610743823, (1610743823, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultPlotStyleTable' , 'Path' , ), 1610743823, (1610743823, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultPlotStyleForObjects' , 'Path' , ), 1610743825, (1610743825, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultPlotStyleForObjects' , 'Path' , ), 1610743825, (1610743825, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultPlotStyleForLayer' , 'Path' , ), 1610743827, (1610743827, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultPlotStyleForLayer' , 'Path' , ), 1610743827, (1610743827, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-	(( 'ContinuousPlotLog' , 'Path' , ), 1610743829, (1610743829, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
-	(( 'ContinuousPlotLog' , 'Path' , ), 1610743829, (1610743829, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
-	(( 'AutomaticPlotLog' , 'Path' , ), 1610743831, (1610743831, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
-	(( 'AutomaticPlotLog' , 'Path' , ), 1610743831, (1610743831, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultPlotToFilePath' , 'Path' , ), 1610743833, (1610743833, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
-	(( 'DefaultPlotToFilePath' , 'Path' , ), 1610743833, (1610743833, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPreferencesProfiles_vtables_dispatch_ = 1
-IAcadPreferencesProfiles_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveProfile' , 'Path' , ), 1610743809, (1610743809, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'ActiveProfile' , 'Path' , ), 1610743809, (1610743809, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'ImportProfile' , 'ProfileName' , 'RegFile' , 'IncludePathInfo' , ), 1610743811, (1610743811, (), [ 
-			 (8, 1, None, None) , (8, 1, None, None) , (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'ExportProfile' , 'ProfileName' , 'RegFile' , ), 1610743812, (1610743812, (), [ (8, 1, None, None) , 
-			 (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'DeleteProfile' , 'ProfileName' , ), 1610743813, (1610743813, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'ResetProfile' , 'Profile' , ), 1610743814, (1610743814, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'RenameProfile' , 'origProfileName' , 'newProfileName' , ), 1610743815, (1610743815, (), [ (8, 1, None, None) , 
-			 (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'CopyProfile' , 'oldProfileName' , 'newProfileName' , ), 1610743816, (1610743816, (), [ (8, 1, None, None) , 
-			 (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'GetAllProfileNames' , 'pNames' , ), 1610743817, (1610743817, (), [ (16396, 2, None, None) , ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPreferencesSelection_vtables_dispatch_ = 1
-IAcadPreferencesSelection_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'PickFirst' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'PickFirst' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'PickAdd' , 'Path' , ), 1610743811, (1610743811, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'PickAdd' , 'Path' , ), 1610743811, (1610743811, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'PickDrag' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'PickDrag' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'PickAuto' , 'Path' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'PickAuto' , 'Path' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'PickBoxSize' , 'Path' , ), 1610743817, (1610743817, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'PickBoxSize' , 'Path' , ), 1610743817, (1610743817, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayGrips' , 'Path' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayGrips' , 'Path' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayGripsWithinBlocks' , 'Path' , ), 1610743821, (1610743821, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayGripsWithinBlocks' , 'Path' , ), 1610743821, (1610743821, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'GripColorSelected' , 'Path' , ), 1610743823, (1610743823, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'GripColorSelected' , 'Path' , ), 1610743823, (1610743823, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'GripColorUnselected' , 'Path' , ), 1610743825, (1610743825, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'GripColorUnselected' , 'Path' , ), 1610743825, (1610743825, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'GripSize' , 'Path' , ), 1610743827, (1610743827, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'GripSize' , 'Path' , ), 1610743827, (1610743827, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-	(( 'PickGroup' , 'pick' , ), 1610743829, (1610743829, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
-	(( 'PickGroup' , 'pick' , ), 1610743829, (1610743829, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPreferencesSystem_vtables_dispatch_ = 1
-IAcadPreferencesSystem_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'SingleDocumentMode' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'SingleDocumentMode' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayOLEScale' , 'Path' , ), 1610743811, (1610743811, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'DisplayOLEScale' , 'Path' , ), 1610743811, (1610743811, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'StoreSQLIndex' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'StoreSQLIndex' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'TablesReadOnly' , 'Path' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'TablesReadOnly' , 'Path' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'EnableStartupDialog' , 'Path' , ), 1610743817, (1610743817, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'EnableStartupDialog' , 'Path' , ), 1610743817, (1610743817, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'BeepOnError' , 'BeepOnError' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'BeepOnError' , 'BeepOnError' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'ShowWarningMessages' , 'Path' , ), 1610743821, (1610743821, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'ShowWarningMessages' , 'Path' , ), 1610743821, (1610743821, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'LoadAcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'LoadAcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadPreferencesUser_vtables_dispatch_ = 1
-IAcadPreferencesUser_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'KeyboardAccelerator' , 'Path' , ), 1610743809, (1610743809, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'KeyboardAccelerator' , 'Path' , ), 1610743809, (1610743809, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'KeyboardPriority' , 'Path' , ), 1610743811, (1610743811, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'KeyboardPriority' , 'Path' , ), 1610743811, (1610743811, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'HyperlinkDisplayCursor' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'HyperlinkDisplayCursor' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'ADCInsertUnitsDefaultSource' , 'pIU' , ), 1610743815, (1610743815, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'ADCInsertUnitsDefaultSource' , 'pIU' , ), 1610743815, (1610743815, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'ADCInsertUnitsDefaultTarget' , 'pSUunits' , ), 1610743817, (1610743817, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'ADCInsertUnitsDefaultTarget' , 'pSUunits' , ), 1610743817, (1610743817, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'ShortCutMenuDisplay' , 'pSCM' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'ShortCutMenuDisplay' , 'pSCM' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'SCMDefaultMode' , 'pSCM' , ), 1610743821, (1610743821, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'SCMDefaultMode' , 'pSCM' , ), 1610743821, (1610743821, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'SCMEditMode' , 'pSCM' , ), 1610743823, (1610743823, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'SCMEditMode' , 'pSCM' , ), 1610743823, (1610743823, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'SCMCommandMode' , 'pSCM' , ), 1610743825, (1610743825, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'SCMCommandMode' , 'pSCM' , ), 1610743825, (1610743825, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'SCMTimeMode' , 'time' , ), 1610743827, (1610743827, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'SCMTimeMode' , 'time' , ), 1610743827, (1610743827, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-	(( 'SCMTimeValue' , 'time' , ), 1610743829, (1610743829, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
-	(( 'SCMTimeValue' , 'time' , ), 1610743829, (1610743829, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
 ]
 
 IAcadRasterImage_vtables_dispatch_ = 1
@@ -29141,43 +26209,6 @@ IAcadSecurityParams_vtables_ = [
 	(( 'TimeServer' , 'pTimeServerName' , ), 11, (11, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
 ]
 
-IAcadSelectionSet_vtables_dispatch_ = 1
-IAcadSelectionSet_vtables_ = [
-	(( 'Item' , 'Index' , 'pEntity' , ), 0, (0, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{AB9F53A4-BA00-499B-BE4C-D178EC67FFCC}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 65 , )),
-	(( 'Name' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Highlight' , 'bFlag' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'Erase' , ), 4, (4, (), [ ], 1 , 1 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'Update' , ), 5, (5, (), [ ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'Application' , 'pAppObj' , ), 6, (6, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'AddItems' , 'pSelSet' , ), 7, (7, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'RemoveItems' , 'Objects' , ), 8, (8, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'Clear' , ), 9, (9, (), [ ], 1 , 1 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'Select' , 'Mode' , 'Point1' , 'Point2' , 'FilterType' , 
-			 'FilterData' , ), 10, (10, (), [ (3, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , 
-			 (12, 17, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 4 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'SelectAtPoint' , 'Point' , 'FilterType' , 'FilterData' , ), 11, (11, (), [ 
-			 (12, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'SelectByPolygon' , 'Mode' , 'PointsList' , 'FilterType' , 'FilterData' , 
-			 ), 12, (12, (), [ (3, 1, None, None) , (12, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'SelectOnScreen' , 'FilterType' , 'FilterData' , ), 13, (13, (), [ (12, 17, None, None) , 
-			 (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'Delete' , ), 14, (14, (), [ ], 1 , 1 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadSelectionSets_vtables_dispatch_ = 1
-IAcadSelectionSets_vtables_ = [
-	(( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{43820684-2C5B-4682-B644-AD703C70A611}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 65 , )),
-	(( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Add' , 'Name' , 'pSet' , ), 2, (2, (), [ (8, 1, None, None) , 
-			 (16393, 10, None, "IID('{43820684-2C5B-4682-B644-AD703C70A611}')") , ], 1 , 1 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-]
-
 IAcadShadowDisplay_vtables_dispatch_ = 0
 IAcadShadowDisplay_vtables_ = [
 	(( 'ShadowDisplay' , 'ShadowDisplay' , ), 1610678272, (1610678272, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 24 , (3, 0, None, None) , 0 , )),
@@ -29291,12 +26322,6 @@ IAcadSpline_vtables_ = [
 	(( 'Degree2' , 'Degree' , ), 31, (31, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 784 , (3, 0, None, None) , 0 , )),
 	(( 'Closed2' , 'fClose' , ), 32, (32, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 792 , (3, 0, None, None) , 0 , )),
 	(( 'Closed2' , 'fClose' , ), 32, (32, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 800 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadState_vtables_dispatch_ = 1
-IAcadState_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1, (1, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'IsQuiescent' , 'pVal' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
 ]
 
 IAcadSubDMesh_vtables_dispatch_ = 1
@@ -30061,82 +27086,6 @@ IAcadTolerance_vtables_ = [
 	(( 'DimensionLineColor' , 'Type' , ), 13, (13, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
 ]
 
-IAcadToolbar_vtables_dispatch_ = 1
-IAcadToolbar_vtables_ = [
-	(( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{088613D2-4917-4B78-94F3-781D0F5F08E8}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
-	(( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'Name' , 'bstrName' , ), 1610743813, (1610743813, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'Name' , 'bstrName' , ), 1610743813, (1610743813, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'Visible' , 'bFlag' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'Visible' , 'bFlag' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'DockStatus' , 'nStatus' , ), 1610743817, (1610743817, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'LargeButtons' , 'bFlag' , ), 1610743818, (1610743818, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'left' , 'nLeft' , ), 1610743819, (1610743819, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'left' , 'nLeft' , ), 1610743819, (1610743819, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'top' , 'nTop' , ), 1610743821, (1610743821, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'top' , 'nTop' , ), 1610743821, (1610743821, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'Width' , 'nWidth' , ), 1610743823, (1610743823, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'Height' , 'nHeight' , ), 1610743824, (1610743824, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'FloatingRows' , 'nRows' , ), 1610743825, (1610743825, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'FloatingRows' , 'nRows' , ), 1610743825, (1610743825, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'HelpString' , 'bstrHelp' , ), 1610743827, (1610743827, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'HelpString' , 'bstrHelp' , ), 1610743827, (1610743827, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-	(( 'AddToolbarButton' , 'Index' , 'Name' , 'HelpString' , 'Macro' , 
-			 'FlyoutButton' , 'pItem' , ), 1610743829, (1610743829, (), [ (12, 1, None, None) , (8, 1, None, None) , 
-			 (8, 1, None, None) , (8, 1, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{088613D2-4917-4B78-94F3-781D0F5F08E8}')") , ], 1 , 1 , 4 , 1 , 224 , (3, 0, None, None) , 0 , )),
-	(( 'AddSeparator' , 'Index' , 'pItem' , ), 1610743830, (1610743830, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{088613D2-4917-4B78-94F3-781D0F5F08E8}')") , ], 1 , 1 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
-	(( 'Dock' , 'Side' , ), 1610743831, (1610743831, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
-	(( 'Float' , 'top' , 'left' , 'NumberFloatRows' , ), 1610743832, (1610743832, (), [ 
-			 (3, 1, None, None) , (3, 1, None, None) , (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
-	(( 'Delete' , ), 1610743833, (1610743833, (), [ ], 1 , 1 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
-	(( 'TagString' , 'bstrTag' , ), 1610743834, (1610743834, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadToolbarItem_vtables_dispatch_ = 1
-IAcadToolbarItem_vtables_ = [
-	(( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{8B75685E-0AA7-403B-B602-C3386B4DEF16}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'Name' , 'bstrName' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Name' , 'bstrName' , ), 1610743810, (1610743810, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'TagString' , 'bstrTag' , ), 1610743812, (1610743812, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'TagString' , 'bstrTag' , ), 1610743812, (1610743812, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'Type' , 'itemType' , ), 1610743814, (1610743814, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'Flyout' , 'pTlbar' , ), 1610743815, (1610743815, (), [ (16393, 10, None, "IID('{8B75685E-0AA7-403B-B602-C3386B4DEF16}')") , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'Macro' , 'bstrMacro' , ), 1610743816, (1610743816, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'Macro' , 'bstrMacro' , ), 1610743816, (1610743816, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'Index' , 'nIndex' , ), 1610743818, (1610743818, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'HelpString' , 'bstrHelp' , ), 1610743819, (1610743819, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'HelpString' , 'bstrHelp' , ), 1610743819, (1610743819, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'GetBitmaps' , 'SmallIconName' , 'LargeIconName' , ), 1610743821, (1610743821, (), [ (16392, 2, None, None) , 
-			 (16392, 2, None, None) , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'SetBitmaps' , 'SmallIconName' , 'LargeIconName' , ), 1610743822, (1610743822, (), [ (8, 1, None, None) , 
-			 (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'AttachToolbarToFlyout' , 'MenuGroupName' , 'ToolbarName' , ), 1610743823, (1610743823, (), [ (8, 1, None, None) , 
-			 (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'Delete' , ), 1610743824, (1610743824, (), [ ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'CommandDisplayName' , 'Name' , ), 1610743825, (1610743825, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'CommandDisplayName' , 'Name' , ), 1610743825, (1610743825, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadToolbars_vtables_dispatch_ = 1
-IAcadToolbars_vtables_ = [
-	(( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
-			 (16393, 10, None, "IID('{8B75685E-0AA7-403B-B602-C3386B4DEF16}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
-	(( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'LargeButtons' , 'bFlag' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'LargeButtons' , 'bFlag' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'Add' , 'ToolbarName' , 'pTlbar' , ), 1610743815, (1610743815, (), [ (8, 1, None, None) , 
-			 (16393, 10, None, "IID('{8B75685E-0AA7-403B-B602-C3386B4DEF16}')") , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
-]
-
 IAcadTrace_vtables_dispatch_ = 1
 IAcadTrace_vtables_ = [
 	(( 'Coordinates' , 'corners' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
@@ -30208,70 +27157,6 @@ IAcadUnderlay_vtables_ = [
 	(( 'ClippingEnabled' , 'kClip' , ), 16, (16, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 680 , (3, 0, None, None) , 0 , )),
 	(( 'UnderlayLayerOverrideApplied' , 'bOverride' , ), 17, (17, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 688 , (3, 0, None, None) , 0 , )),
 	(( 'UnderlayLayerOverrideApplied' , 'bOverride' , ), 17, (17, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 696 , (3, 0, None, None) , 0 , )),
-]
-
-IAcadUtility_vtables_dispatch_ = 1
-IAcadUtility_vtables_ = [
-	(( 'AngleToReal' , 'Angle' , 'Unit' , 'Value' , ), 1610743808, (1610743808, (), [ 
-			 (8, 1, None, None) , (3, 1, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
-	(( 'AngleToString' , 'Angle' , 'Unit' , 'precision' , 'bstrValue' , 
-			 ), 1610743809, (1610743809, (), [ (5, 1, None, None) , (3, 1, None, None) , (3, 1, None, None) , (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
-	(( 'DistanceToReal' , 'Distance' , 'Unit' , 'Value' , ), 1610743810, (1610743810, (), [ 
-			 (8, 1, None, None) , (3, 1, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
-	(( 'RealToString' , 'Value' , 'Unit' , 'precision' , 'bstrValue' , 
-			 ), 1610743811, (1610743811, (), [ (5, 1, None, None) , (3, 1, None, None) , (3, 1, None, None) , (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
-	(( 'TranslateCoordinates' , 'Point' , 'FromCoordSystem' , 'ToCoordSystem' , 'Displacement' , 
-			 'OCSNormal' , 'transPt' , ), 1610743812, (1610743812, (), [ (12, 1, None, None) , (3, 1, None, None) , 
-			 (3, 1, None, None) , (3, 1, None, None) , (12, 17, None, None) , (16396, 10, None, None) , ], 1 , 1 , 4 , 1 , 88 , (3, 0, None, None) , 0 , )),
-	(( 'InitializeUserInput' , 'Bits' , 'KeyWordList' , ), 1610743813, (1610743813, (), [ (3, 1, None, None) , 
-			 (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 96 , (3, 0, None, None) , 0 , )),
-	(( 'GetInteger' , 'Prompt' , 'Value' , ), 1610743814, (1610743814, (), [ (12, 17, None, None) , 
-			 (16387, 10, None, None) , ], 1 , 1 , 4 , 1 , 104 , (3, 0, None, None) , 0 , )),
-	(( 'GetReal' , 'Prompt' , 'Value' , ), 1610743815, (1610743815, (), [ (12, 17, None, None) , 
-			 (16389, 10, None, None) , ], 1 , 1 , 4 , 1 , 112 , (3, 0, None, None) , 0 , )),
-	(( 'GetInput' , 'Value' , ), 1610743816, (1610743816, (), [ (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
-	(( 'GetKeyword' , 'Prompt' , 'bstrKeyword' , ), 1610743817, (1610743817, (), [ (12, 17, None, None) , 
-			 (16392, 10, None, None) , ], 1 , 1 , 4 , 1 , 128 , (3, 0, None, None) , 0 , )),
-	(( 'GetString' , 'HasSpaces' , 'Prompt' , 'bstrValue' , ), 1610743818, (1610743818, (), [ 
-			 (3, 1, None, None) , (12, 17, None, None) , (16392, 10, None, None) , ], 1 , 1 , 4 , 1 , 136 , (3, 0, None, None) , 0 , )),
-	(( 'GetAngle' , 'Point' , 'Prompt' , 'Angle' , ), 1610743819, (1610743819, (), [ 
-			 (12, 17, None, None) , (12, 17, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 2 , 144 , (3, 0, None, None) , 0 , )),
-	(( 'AngleFromXAxis' , 'StartPoint' , 'EndPoint' , 'Angle' , ), 1610743820, (1610743820, (), [ 
-			 (12, 1, None, None) , (12, 1, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
-	(( 'GetCorner' , 'Point' , 'Prompt' , 'corner' , ), 1610743821, (1610743821, (), [ 
-			 (12, 1, None, None) , (12, 17, None, None) , (16396, 10, None, None) , ], 1 , 1 , 4 , 1 , 160 , (3, 0, None, None) , 0 , )),
-	(( 'GetDistance' , 'Point' , 'Prompt' , 'dist' , ), 1610743822, (1610743822, (), [ 
-			 (12, 17, None, None) , (12, 17, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 2 , 168 , (3, 0, None, None) , 0 , )),
-	(( 'GetOrientation' , 'Point' , 'Prompt' , 'Angle' , ), 1610743823, (1610743823, (), [ 
-			 (12, 17, None, None) , (12, 17, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 2 , 176 , (3, 0, None, None) , 0 , )),
-	(( 'GetPoint' , 'Point' , 'Prompt' , 'inputPoint' , ), 1610743824, (1610743824, (), [ 
-			 (12, 17, None, None) , (12, 17, None, None) , (16396, 10, None, None) , ], 1 , 1 , 4 , 2 , 184 , (3, 0, None, None) , 0 , )),
-	(( 'PolarPoint' , 'Point' , 'Angle' , 'Distance' , 'inputPoint' , 
-			 ), 1610743825, (1610743825, (), [ (12, 1, None, None) , (5, 1, None, None) , (5, 1, None, None) , (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
-	(( 'CreateTypedArray' , 'varArr' , 'Type' , 'inArgs' , ), 1610743826, (1610743826, (), [ 
-			 (16396, 2, None, None) , (3, 1, None, None) , (8204, 1, None, None) , ], 1 , 1 , 4 , -1 , 200 , (3, 0, None, None) , 0 , )),
-	(( 'GetEntity' , 'Object' , 'PickedPoint' , 'Prompt' , ), 1610743827, (1610743827, (), [ 
-			 (16393, 2, None, None) , (16396, 2, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 208 , (3, 0, None, None) , 0 , )),
-	(( 'Prompt' , 'Message' , ), 1610743828, (1610743828, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
-	(( 'GetSubEntity' , 'Object' , 'PickedPoint' , 'transMatrix' , 'ContextData' , 
-			 'Prompt' , ), 1610743829, (1610743829, (), [ (16393, 2, None, None) , (16396, 2, None, None) , (16396, 2, None, None) , 
-			 (16396, 2, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 224 , (3, 0, None, None) , 0 , )),
-	(( 'IsURL' , 'URL' , 'IsValidURL' , ), 1610743830, (1610743830, (), [ (8, 1, None, None) , 
-			 (16395, 10, None, None) , ], 1 , 1 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
-	(( 'GetRemoteFile' , 'URL' , 'LocalFile' , 'IgnoreCache' , ), 1610743831, (1610743831, (), [ 
-			 (8, 1, None, None) , (16392, 2, None, None) , (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
-	(( 'PutRemoteFile' , 'URL' , 'LocalFile' , ), 1610743832, (1610743832, (), [ (8, 1, None, None) , 
-			 (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
-	(( 'IsRemoteFile' , 'LocalFile' , 'URL' , 'IsDownloadedFile' , ), 1610743833, (1610743833, (), [ 
-			 (8, 1, None, None) , (16392, 2, None, None) , (16395, 10, None, None) , ], 1 , 1 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
-	(( 'LaunchBrowserDialog' , 'SelectedURL' , 'DialogTitle' , 'OpenButtonCaption' , 'StartPageURL' , 
-			 'RegistryRootKey' , 'OpenButtonAlwaysEnabled' , 'success' , ), 1610743834, (1610743834, (), [ (16392, 2, None, None) , 
-			 (8, 1, None, None) , (8, 1, None, None) , (8, 1, None, None) , (8, 1, None, None) , (11, 1, None, None) , 
-			 (16395, 10, None, None) , ], 1 , 1 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
-	(( 'SendModelessOperationStart' , 'Context' , ), 1610743835, (1610743835, (), [ (8, 0, None, None) , ], 1 , 1 , 4 , 0 , 272 , (3, 0, None, None) , 0 , )),
-	(( 'SendModelessOperationEnded' , 'Context' , ), 1610743836, (1610743836, (), [ (8, 0, None, None) , ], 1 , 1 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
-	(( 'GetObjectIdString' , 'Object' , 'bHex' , 'ObjectIdString' , ), 1610743837, (1610743837, (), [ 
-			 (9, 1, None, None) , (11, 1, None, None) , (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
 ]
 
 IAcadView_vtables_dispatch_ = 1
@@ -30389,6 +27274,27 @@ IAcadXline_vtables_ = [
 	(( 'DirectionVector' , 'dirVector' , ), 3, (3, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 496 , (3, 0, None, None) , 0 , )),
 	(( 'Offset' , 'Distance' , 'pOffsetCurves' , ), 4, (4, (), [ (5, 1, None, None) , 
 			 (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 504 , (3, 0, None, None) , 0 , )),
+]
+
+IAxDbDocument_vtables_dispatch_ = 1
+IAxDbDocument_vtables_ = [
+	(( 'Name' , 'pVal' , ), 256, (256, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
+	(( 'Name' , 'pVal' , ), 256, (256, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
+	(( 'Open' , 'FileName' , 'Password' , ), 257, (257, (), [ (8, 1, None, None) , 
+			 (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 296 , (3, 0, None, None) , 0 , )),
+	(( 'Save' , ), 258, (258, (), [ ], 1 , 1 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
+	(( 'SaveAs' , 'FileName' , 'vSecurityParams' , ), 259, (259, (), [ (8, 1, None, None) , 
+			 (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 312 , (3, 0, None, None) , 0 , )),
+	(( 'DxfIn' , 'FileName' , 'LogFileName' , ), 260, (260, (), [ (8, 1, None, None) , 
+			 (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 320 , (3, 0, None, None) , 0 , )),
+	(( 'DxfOut' , 'FileName' , 'precision' , 'SaveThumbnailImage' , ), 261, (261, (), [ 
+			 (8, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 328 , (3, 0, None, None) , 0 , )),
+	(( 'Application' , 'pAppObj' , ), 262, (262, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 336 , (3, 0, None, None) , 0 , )),
+	(( 'Database' , 'pDatabase' , ), 263, (263, (), [ (16393, 10, None, "IID('{3280D375-1DE4-4DA2-89EE-591E860056DC}')") , ], 1 , 2 , 4 , 0 , 344 , (3, 0, None, None) , 0 , )),
+]
+
+IAxDbDocumentEvents_vtables_dispatch_ = 0
+IAxDbDocumentEvents_vtables_ = [
 ]
 
 RecordMap = {
@@ -30642,62 +27548,8 @@ CLSIDToClassMap = {
 	'{8A64F84B-739B-4342-B855-879517F7D230}' : AcadSecurityParams,
 	'{42344E80-3558-49CD-A738-5602E8B4306A}' : IAcadLayerStateManager,
 	'{BCB968EE-5A0B-4972-929F-57CE8E45CCF1}' : AcadLayerStateManager,
-	'{8E5EE0A0-E6A1-4922-B29C-C289A72F16E2}' : _DAcadApplicationEvents,
-	'{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}' : IAcadDocument,
-	'{60CD0F9E-61AB-4631-B947-88180FBFB9E9}' : IAcadPlot,
-	'{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}' : IAcadApplication,
-	'{C2A67E24-E163-4972-836A-490B41127A35}' : IAcadPreferences,
-	'{2F7C2478-9777-4359-BF58-57200E9C3200}' : IAcadPreferencesFiles,
-	'{0B1F1007-6232-4774-9989-5F4EC003AC4F}' : IAcadPreferencesDisplay,
-	'{D2E64B8C-E8C7-4453-8EC8-6B03E275309C}' : IAcadPreferencesOpenSave,
-	'{15480E24-2072-4D1D-820C-29B8D5EF4B7B}' : IAcadPreferencesOutput,
-	'{D9677553-A98F-4D1C-AA34-E07E2507128E}' : IAcadPreferencesSystem,
-	'{F3816DB4-2048-4D5B-B0BA-A4FAAAD6F996}' : IAcadPreferencesUser,
-	'{6CA0C79C-A982-409C-9821-76A69E49931A}' : IAcadPreferencesDrafting,
-	'{4D4FD045-8B92-4A18-91D3-5E5C88C40C77}' : IAcadPreferencesSelection,
-	'{55276CBD-A0CB-4E81-BB8D-66435D793708}' : IAcadPreferencesProfiles,
-	'{B6AD6C44-3524-477D-B5C5-2CBA04E7D410}' : IAcadMenuGroups,
-	'{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}' : IAcadMenuGroup,
-	'{A14874CE-740A-4A1B-BB70-17D578F41913}' : IAcadPopupMenus,
-	'{CA20E9D5-7353-4B5E-9098-A66F741C2A72}' : IAcadPopupMenu,
-	'{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}' : IAcadPopupMenuItem,
-	'{DA8044CA-7817-4557-8055-A03564BCF6AF}' : IAcadToolbars,
-	'{8B75685E-0AA7-403B-B602-C3386B4DEF16}' : IAcadToolbar,
-	'{088613D2-4917-4B78-94F3-781D0F5F08E8}' : IAcadToolbarItem,
-	'{A704FE5B-8BA2-484E-90FD-7AC8AF48A380}' : IAcadMenuBar,
-	'{E725B837-BAD5-451E-97D4-6417B5B70EC7}' : IAcadDocuments,
-	'{935B3D12-E5A3-46F8-8CBC-24646D46FAD8}' : IAcadState,
-	'{A0A53FF5-1CCE-4A79-A74A-7BCDEBA03F35}' : IAcadSelectionSets,
-	'{43820684-2C5B-4682-B644-AD703C70A611}' : IAcadSelectionSet,
-	'{F693DA67-0534-44D8-BDA3-E20C5FA32BA0}' : IAcadUtility,
-	'{C181A4F9-E04B-43BB-A503-9465D560E56D}' : AcadState,
-	'{8B4929F8-076F-4AEC-AFEE-8928747B7AE3}' : AcadApplication,
-	'{2B8622C5-9DB4-46A7-87C8-BC2F3EF58A6D}' : AcadSelectionSet,
-	'{660424A5-79B3-4E12-81A3-CE27D057137D}' : AcadSelectionSets,
-	'{C8FC79B8-5C16-431E-B345-1165F1D19D47}' : AcadPlot,
-	'{02F066CC-A9C3-471D-B96D-CC260C296722}' : AcadPreferences,
-	'{715B87C5-3BC1-42A0-8E7E-F2DDDA8408BA}' : AcadPreferencesDrafting,
-	'{54CFD161-1607-45C6-A00C-5A8C09310218}' : AcadPreferencesDisplay,
-	'{1D5A59AE-FF0B-4366-BCB6-06D8465F2D5B}' : AcadPreferencesFiles,
-	'{DC580E36-67A2-406B-9867-80BE4C2FDC8A}' : AcadPreferencesOpenSave,
-	'{26D940FA-984E-471F-B993-887BC6018D6D}' : AcadPreferencesOutput,
-	'{CBC1112B-C780-4BE3-9F08-3C144FDEA37F}' : AcadPreferencesProfiles,
-	'{46762221-9693-4CC5-8C58-B9A7FF499776}' : AcadPreferencesSelection,
-	'{759C8892-796F-427C-92A8-E1039C20DCB1}' : AcadPreferencesSystem,
-	'{C4E07DD5-F25F-42EA-B786-8FC7469C6D9C}' : AcadPreferencesUser,
-	'{B2A3DAF3-7420-4539-AAEC-901D2A8E1E3B}' : AcadMenuGroups,
-	'{3A625576-85BA-425C-B121-3CA6D8048184}' : AcadMenuGroup,
-	'{6DE060AA-B166-4102-B7E6-6E881C641F2A}' : AcadMenuBar,
-	'{ECCE89E0-1CF9-4D8F-B3EA-3E82E673EE6F}' : AcadPopupMenus,
-	'{67FE9EA9-C8DD-48EA-98BB-E285D06B9482}' : AcadPopupMenu,
-	'{03FCD8AD-66AC-4B84-A563-FE19F8BC31AF}' : AcadPopupMenuItem,
-	'{0605FD7F-5675-42F6-8C9A-0D8A2AAAE547}' : AcadUtility,
-	'{1C5F04BB-9E50-489E-A879-65225E27A6CD}' : _DAcadDocumentEvents,
-	'{345D3165-3889-4694-AB75-A91A27B217E8}' : AcadDocument,
-	'{F04A2229-71AE-4BC9-A300-99E058A40A8B}' : AcadDocuments,
-	'{6B2495AE-9752-4515-BD25-3718AC70350D}' : AcadToolbars,
-	'{A6E075A0-0A09-4928-BD6D-655C61716DC6}' : AcadToolbar,
-	'{C71C7438-0568-4631-82AA-ABC2EBFC1D23}' : AcadToolbarItem,
+	'{C051EBF3-1969-4A9B-B7D4-67CB03858885}' : IAxDbDocument,
+	'{39C92898-2FBB-4629-8E1B-6968D3122EC4}' : AxDbDocument,
 }
 CLSIDToPackageMap = {}
 win32com.client.CLSIDToClass.RegisterCLSIDsFromDict( CLSIDToClassMap )
@@ -30829,33 +27681,8 @@ VTablesToClassMap = {
 	'{5F6C65FE-8489-4AE0-B491-C5FCD096DCF4}' : 'IAcadPointCloudEx2',
 	'{01AEF2A5-2F4E-4CB7-B726-742B3FB7BEB2}' : 'IAcadSecurityParams',
 	'{42344E80-3558-49CD-A738-5602E8B4306A}' : 'IAcadLayerStateManager',
-	'{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}' : 'IAcadDocument',
-	'{60CD0F9E-61AB-4631-B947-88180FBFB9E9}' : 'IAcadPlot',
-	'{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}' : 'IAcadApplication',
-	'{C2A67E24-E163-4972-836A-490B41127A35}' : 'IAcadPreferences',
-	'{2F7C2478-9777-4359-BF58-57200E9C3200}' : 'IAcadPreferencesFiles',
-	'{0B1F1007-6232-4774-9989-5F4EC003AC4F}' : 'IAcadPreferencesDisplay',
-	'{D2E64B8C-E8C7-4453-8EC8-6B03E275309C}' : 'IAcadPreferencesOpenSave',
-	'{15480E24-2072-4D1D-820C-29B8D5EF4B7B}' : 'IAcadPreferencesOutput',
-	'{D9677553-A98F-4D1C-AA34-E07E2507128E}' : 'IAcadPreferencesSystem',
-	'{F3816DB4-2048-4D5B-B0BA-A4FAAAD6F996}' : 'IAcadPreferencesUser',
-	'{6CA0C79C-A982-409C-9821-76A69E49931A}' : 'IAcadPreferencesDrafting',
-	'{4D4FD045-8B92-4A18-91D3-5E5C88C40C77}' : 'IAcadPreferencesSelection',
-	'{55276CBD-A0CB-4E81-BB8D-66435D793708}' : 'IAcadPreferencesProfiles',
-	'{B6AD6C44-3524-477D-B5C5-2CBA04E7D410}' : 'IAcadMenuGroups',
-	'{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}' : 'IAcadMenuGroup',
-	'{A14874CE-740A-4A1B-BB70-17D578F41913}' : 'IAcadPopupMenus',
-	'{CA20E9D5-7353-4B5E-9098-A66F741C2A72}' : 'IAcadPopupMenu',
-	'{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}' : 'IAcadPopupMenuItem',
-	'{DA8044CA-7817-4557-8055-A03564BCF6AF}' : 'IAcadToolbars',
-	'{8B75685E-0AA7-403B-B602-C3386B4DEF16}' : 'IAcadToolbar',
-	'{088613D2-4917-4B78-94F3-781D0F5F08E8}' : 'IAcadToolbarItem',
-	'{A704FE5B-8BA2-484E-90FD-7AC8AF48A380}' : 'IAcadMenuBar',
-	'{E725B837-BAD5-451E-97D4-6417B5B70EC7}' : 'IAcadDocuments',
-	'{935B3D12-E5A3-46F8-8CBC-24646D46FAD8}' : 'IAcadState',
-	'{A0A53FF5-1CCE-4A79-A74A-7BCDEBA03F35}' : 'IAcadSelectionSets',
-	'{43820684-2C5B-4682-B644-AD703C70A611}' : 'IAcadSelectionSet',
-	'{F693DA67-0534-44D8-BDA3-E20C5FA32BA0}' : 'IAcadUtility',
+	'{F4B345FD-D49C-4C3A-BB6D-74A3451420B2}' : 'IAxDbDocumentEvents',
+	'{C051EBF3-1969-4A9B-B7D4-67CB03858885}' : 'IAxDbDocument',
 }
 
 
@@ -30985,36 +27812,9 @@ NamesToIIDMap = {
 	'IAcadPointCloudEx2' : '{5F6C65FE-8489-4AE0-B491-C5FCD096DCF4}',
 	'IAcadSecurityParams' : '{01AEF2A5-2F4E-4CB7-B726-742B3FB7BEB2}',
 	'IAcadLayerStateManager' : '{42344E80-3558-49CD-A738-5602E8B4306A}',
-	'_DAcadApplicationEvents' : '{8E5EE0A0-E6A1-4922-B29C-C289A72F16E2}',
-	'IAcadDocument' : '{C5F0E321-B751-49D5-BAAC-DDC2FA67C6D8}',
-	'IAcadPlot' : '{60CD0F9E-61AB-4631-B947-88180FBFB9E9}',
-	'IAcadApplication' : '{52EE1CD2-A793-4DEC-9DF9-71CE75881F05}',
-	'IAcadPreferences' : '{C2A67E24-E163-4972-836A-490B41127A35}',
-	'IAcadPreferencesFiles' : '{2F7C2478-9777-4359-BF58-57200E9C3200}',
-	'IAcadPreferencesDisplay' : '{0B1F1007-6232-4774-9989-5F4EC003AC4F}',
-	'IAcadPreferencesOpenSave' : '{D2E64B8C-E8C7-4453-8EC8-6B03E275309C}',
-	'IAcadPreferencesOutput' : '{15480E24-2072-4D1D-820C-29B8D5EF4B7B}',
-	'IAcadPreferencesSystem' : '{D9677553-A98F-4D1C-AA34-E07E2507128E}',
-	'IAcadPreferencesUser' : '{F3816DB4-2048-4D5B-B0BA-A4FAAAD6F996}',
-	'IAcadPreferencesDrafting' : '{6CA0C79C-A982-409C-9821-76A69E49931A}',
-	'IAcadPreferencesSelection' : '{4D4FD045-8B92-4A18-91D3-5E5C88C40C77}',
-	'IAcadPreferencesProfiles' : '{55276CBD-A0CB-4E81-BB8D-66435D793708}',
-	'IAcadMenuGroups' : '{B6AD6C44-3524-477D-B5C5-2CBA04E7D410}',
-	'IAcadMenuGroup' : '{945BE914-0B8C-49CB-B61A-6C4B9ABC3281}',
-	'IAcadPopupMenus' : '{A14874CE-740A-4A1B-BB70-17D578F41913}',
-	'IAcadPopupMenu' : '{CA20E9D5-7353-4B5E-9098-A66F741C2A72}',
-	'IAcadPopupMenuItem' : '{BCAD59F8-0E34-4B8D-9AEC-09589AC2EE80}',
-	'IAcadToolbars' : '{DA8044CA-7817-4557-8055-A03564BCF6AF}',
-	'IAcadToolbar' : '{8B75685E-0AA7-403B-B602-C3386B4DEF16}',
-	'IAcadToolbarItem' : '{088613D2-4917-4B78-94F3-781D0F5F08E8}',
-	'IAcadMenuBar' : '{A704FE5B-8BA2-484E-90FD-7AC8AF48A380}',
-	'IAcadDocuments' : '{E725B837-BAD5-451E-97D4-6417B5B70EC7}',
-	'IAcadState' : '{935B3D12-E5A3-46F8-8CBC-24646D46FAD8}',
-	'IAcadSelectionSets' : '{A0A53FF5-1CCE-4A79-A74A-7BCDEBA03F35}',
-	'IAcadSelectionSet' : '{43820684-2C5B-4682-B644-AD703C70A611}',
-	'IAcadUtility' : '{F693DA67-0534-44D8-BDA3-E20C5FA32BA0}',
-	'_DAcadDocumentEvents' : '{1C5F04BB-9E50-489E-A879-65225E27A6CD}',
+	'IAxDbDocument' : '{C051EBF3-1969-4A9B-B7D4-67CB03858885}',
 	'IAcadObjectEvents' : '{6B854981-D908-4086-8AA1-9183B102ECA7}',
+	'IAxDbDocumentEvents' : '{F4B345FD-D49C-4C3A-BB6D-74A3451420B2}',
 }
 
 win32com.client.constants.__dicts__.append(constants.__dict__)
