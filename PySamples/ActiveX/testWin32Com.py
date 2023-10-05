@@ -1,39 +1,58 @@
 # import
-import traceback
+
 import PyRx as Rx
 import PyGe as Ge
 import PyGi as Gi
 import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
-import AcadComTypes as acax
+
+#these are in the stub file
+#requires win32com
+import win32com.client
+import AcadComTypes24 as Ac 
 import ComAcadApplication24 as AcadApp
-import win32com.client as com
+
+import traceback
 from timeit import default_timer as timer
 
 
-def getApp() -> AcadApp.IAcadApplication:
-    id = AcadApp.AcadApplication.CLSID
-    app: AcadApp.IAcadApplication = com.Dispatch(id)
-    return app
+theApp = Ac.getApp()
+#global instance of IAcadApplication, optional
 
+def PyRxCmd_comMenuGroups():
+    try:
+        menuGroups : AcadApp.IAcadMenuGroups = theApp.MenuGroups
+        print("Menu.Count",  menuGroups.Count)
+        
+        menuGroup : AcadApp.IAcadMenuGroup = menuGroups.Item(0)
+        pops : AcadApp.IAcadPopupMenus = menuGroup.Menus
+    
+        for i in range(pops.Count):
+            pop :  AcadApp.IAcadPopupMenu = pops.Item(i)
+            print(pop.Name)
+            
+    except Exception as err:
+        traceback.print_exception(err)
 
 def PyRxCmd_comAddLine():
     try:
-        app = getApp()
-        model: AcadApp.IAcadBlock = app.ActiveDocument.ModelSpace
-        pt1 = Ge.Point3d(0, 0, 0)
-        pt2 = Ge.Point3d(100, 100, 0)
-        model.AddLine(acax.comPnt3d(pt1), acax.comPnt3d(pt2))
-
+        model: AcadApp.IAcadBlock = theApp.ActiveDocument.ModelSpace
+        line : AcadApp.IAcadLine = model.AddLine(
+            Ac.comPnt3d(Ge.Point3d(0, 0, 0)), 
+            Ac.comPnt3d(Ge.Point3d(100, 100, 0)))
+        
+        clr : AcadApp.IAcadAcCmColor = AcadApp.AcadAcCmColor()
+        clr.SetRGB(255,255,0)
+        line.TrueColor = clr
+        
     except Exception as err:
         traceback.print_exception(err)
 
 
 def PyRxCmd_comGetEnt():
     try:
-        app = getApp()
-        doc: AcadApp.IAcadDocument = app.ActiveDocument
+        doc: AcadApp.IAcadDocument = theApp.ActiveDocument
         util: AcadApp.IAcadUtility = doc.Utility
 
         ent: AcadApp.IAcadEntity = util.GetEntity(
@@ -46,31 +65,26 @@ def PyRxCmd_comGetEnt():
 
 def PyRxCmd_comGetang():
     try:
-        app = getApp()
         pt1 = Ge.Point3d(100, 100, 0)
 
-        retAngle = app.ActiveDocument.Utility.GetAngle(
-            acax.comPnt3d(pt1), "\nGet Angle with base:")
+        retAngle = theApp.ActiveDocument.Utility.GetAngle(
+            Ac.comPnt3d(pt1), "\nGet Angle with base:")
 
         print(retAngle)
 
     except Exception as err:
         traceback.print_exception(err)
         
-#0.9682186000000002
+#0.9011179999997694
 def PyRxCmd_comPerf():
     try:
         start = timer()
         
-        app = getApp()
         mat = Ge.Matrix3d()
         mat.setToTranslation(Ge.Point3d(100,100,0).asVector())
+        comMat = Ac.comMatrix3d(mat)
         
-        comMat = acax.comMatrix3d(mat)
-
-        model: AcadApp.IAcadBlock = app.ActiveDocument.ModelSpace
-
-        for ent in model:
+        for ent in theApp.ActiveDocument.ModelSpace:
             if ent.ObjectName == "AcDbPoint":
                 ent.TransformBy(comMat)
                 
