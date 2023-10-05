@@ -20,4 +20,4 @@ def comVec3d(val: Ge.Vector3d):
     return com.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
 
 def comMatrix3d(val: Ge.Matrix3d):
-    return com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
+    return com.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
