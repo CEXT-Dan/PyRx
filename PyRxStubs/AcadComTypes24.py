@@ -4,6 +4,11 @@ import win32com.client as com
 import pythoncom
 import ComAcadApplication24 as AcadApp
 
+def getApp() -> AcadApp.IAcadApplication:
+    id = AcadApp.AcadApplication.CLSID
+    app: AcadApp.IAcadApplication = com.Dispatch(id)
+    return app
+
 def comPnt2d(val: Ge.Point2d):
     return com.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
 
