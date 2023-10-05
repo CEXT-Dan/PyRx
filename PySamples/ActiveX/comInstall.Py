@@ -30,8 +30,8 @@ def makeComSmcomponents24():
     
 def PyRxCmd_makeComWrappers():
     makeComAcadApplication24()
-    makeComAcadDBX24()
-    makeComETransmit20()
-    makeComSmcomponents24()
+    #makeComAcadDBX24() # i don't know how to make these work.. boo!
+    #makeComETransmit20()
+    #makeComSmcomponents24()
     print("done")
 
