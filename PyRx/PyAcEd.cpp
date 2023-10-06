@@ -36,6 +36,7 @@ BOOST_PYTHON_MODULE(PyEd)
     makePyEdInputPointWrapper();
     makePyEdInputPointFilterResultWrapper();
     makePyEdInputPointMonitorResultWrapper();
+    makePySysVarWrapper();
 
     def("print", print);
 

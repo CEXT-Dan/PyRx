@@ -4,12 +4,83 @@
 #include "PyDbObjectId.h"
 #include "PyRxApp.h"
 #include "PyApDocument.h"
-
+#include "EdCore.h"
 
 using namespace boost::python;
+
+//-----------------------------------------------------------------------------------------
+// PySysVar
+void makePySysVarWrapper()
+{
+    PyDocString DS("AutoSysVar");
+    class_<PySysVar>("AutoSysVar", no_init)
+        .def(init<const std::string&, const boost::python::object& >(DS.ARGS({ "varname:str","value : Any" })))
+        .def("detach", &PySysVar::detach)
+        ;
+}
+
+//-----------------------------------------------------------------------------------------
+// PySysVarImpl
+PySysVarImpl::PySysVarImpl(const std::string& name, const boost::python::object& obj)
+    : m_name(name)
+{
+    set(name, obj);
+}
+
+PySysVarImpl::~PySysVarImpl(void)
+{
+    clear();
+}
+
+void PySysVarImpl::detach(bool flag)
+{
+    m_doit = !flag;
+}
+
+void PySysVarImpl::set(const std::string& name, const boost::python::object& obj)
+{
+    try
+    {
+        m_oldobj = EdCore::getVar(name);
+        EdCore::setVar(name, obj);
+    }
+    catch (...)
+    {
+        m_doit = false;
+        acutPrintf(_T("\nPySysVar::set failed!: "));
+    }
+}
+
+void PySysVarImpl::clear()
+{
+    try
+    {
+        if (m_doit)
+        {
+            EdCore::setVar(m_name, m_oldobj);
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nPySysVar::clear failed!: "));
+    }
+}
+
+//-----------------------------------------------------------------------------------------
+// PySysVarImpl
+PySysVar::PySysVar(const std::string& name, const boost::python::object& obj)
+    : m_impl(new PySysVarImpl(name, obj))
+{
+}
+
+void PySysVar::detach(bool flag)
+{
+    if (m_impl != nullptr)
+        m_impl->detach(flag);
+}
+
 //-----------------------------------------------------------------------------------------
 // PyEdUserInteraction
-
 void makePyEdUserInteractionWrapper()
 {
     PyDocString DS("UserInteraction");

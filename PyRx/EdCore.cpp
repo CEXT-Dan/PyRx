@@ -9,6 +9,7 @@
 #include "PyDbViewport.h"
 #include "PyDbSymbolTableRecord.h"
 #include "rxvar.h"
+#include "PyEdUserInteraction.h"
 
 #ifdef ARXAPP
 #include "AcHTMLApi.h"
@@ -131,8 +132,9 @@ void makePyEdCoreWrapper()
         .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
         .def("getLastCommandLines", &EdCore::getLastCommandLines).staticmethod("getLastCommandLines")
         .def("getBlockEditMode", &EdCore::getBlockEditMode).staticmethod("getBlockEditMode")
-        .def("getVar", &EdCore::getVar).staticmethod("getVar")
-        .def("setVar", &EdCore::setVar).staticmethod("setVar")
+        .def("getVar", &EdCore::getVar, DS.SARGS({ "name:str"})).staticmethod("getVar")
+        .def("setVar", &EdCore::setVar, DS.SARGS({ "name:str","value : Any" })).staticmethod("setVar")
+        .def("autoSetVar", &EdCore::autoSetVar, DS.SARGS({ "name:str","value : Any" })).staticmethod("autoSetVar")
         .def("getSysVars", &EdCore::getSysVars).staticmethod("getSysVars")
         .def("getMousePositionUCS", &EdCore::getMousePositionUCS).staticmethod("getMousePositionUCS")
         .def("getMousePositionWCS", &EdCore::getMousePositionWCS).staticmethod("getMousePositionWCS")
@@ -793,6 +795,11 @@ bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
         acutPrintf(_T("\nExeption @ %ls"), __FUNCTIONW__);
     }
     return false;
+}
+
+PySysVar EdCore::autoSetVar(const std::string& sym, const boost::python::object& val)
+{
+    return PySysVar(sym, val);
 }
 
 void EdCore::mSpace()
