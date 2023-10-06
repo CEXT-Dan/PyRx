@@ -72,10 +72,10 @@ def move_points_com():
 
 
 print("OldTest:..")
-print("test move_points_new....     time = 3.7837103999991086")
-print("test move_points........     time = 3.9697672000038438")
-print("test move_points_old....     time = 4.44495850000385")
-print("test move_points_com....     time = 20.55892379999932")
+print("test move_points_new....     time = 3.5414436000000933")
+print("test move_points........     time = 3.7101225000005797")
+print("test move_points_old....     time = 4.271034999999756")
+print("test move_points_com....     time = 18.48414749999938")
 
 print("\nrun command pyperftest")
 

@@ -6,6 +6,7 @@ class PyApDocument;
 class PyDbBlockTableRecord;
 class PyDbViewTableRecord;
 class PyDbViewport;
+class PySysVar;
 
 
 // TODO:
@@ -83,6 +84,7 @@ public:
     static boost::python::dict  getSysVars();
     static boost::python::object getVar(const std::string& sym);
     static bool                  setVar(const std::string& sym, const  boost::python::object&);
+    static PySysVar              autoSetVar(const std::string& sym, const  boost::python::object& val);
     static int                  grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
     static AcGePoint3d          getMousePositionUCS();
     static AcGePoint3d          getMousePositionWCS();

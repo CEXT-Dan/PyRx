@@ -2,6 +2,36 @@
 class PyRxClass;
 
 class PyApDocument;
+
+//-----------------------------------------------------------------------------------------
+// PySysVar
+void makePySysVarWrapper();
+
+class PySysVarImpl
+{
+    std::string m_name;
+    boost::python::object m_oldobj;
+    bool m_doit = true;
+public:
+    PySysVarImpl(const std::string& name, const boost::python::object& obj );
+    ~PySysVarImpl(void);
+    void detach(bool flag);
+    void set(const std::string& name, const boost::python::object& obj);
+    void clear();
+};
+
+class PySysVar
+{
+public:
+    PySysVar(const std::string& name, const boost::python::object& obj);
+    ~PySysVar(void) = default;
+    void detach(bool flag);
+
+private:
+    std::shared_ptr<PySysVarImpl> m_impl;
+};
+
+
 //-----------------------------------------------------------------------------------------
 // PyEdUserInteraction
 void makePyEdUserInteractionWrapper();
@@ -13,7 +43,7 @@ public:
     PyEdUserInteraction();
     PyEdUserInteraction(PyApDocument& pDocument, bool prompting);
     PyEdUserInteraction(AcApDocument* pDocument, bool prompting);
-    virtual ~PyEdUserInteraction(void);
+    ~PyEdUserInteraction(void);
 protected:
     void userInteraction(AcApDocument* pDocument, bool prompting);
     void undoUserInteraction();

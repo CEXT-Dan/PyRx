@@ -329,6 +329,17 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class AutoSysVar:
+    def __init__ (self: AutoSysVar,varname:str,value : Any)-> None :
+      '''                             '''
+    ...
+    def detach (self, *args, **kwargs)-> None :
+      '''detach( (AutoSysVar)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void detach(class PySysVar {lvalue},bool)'''
+    ...
+
 class Core:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -370,6 +381,9 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void audit(class PyDbDatabase {lvalue},bool,bool)'''
+    ...
+    def autoSetVar (name:str,value : Any)-> PyEd.AutoSysVar :
+      '''                             '''
     ...
     def callBackOnCancel (self, *args, **kwargs)-> None :
       '''callBackOnCancel() -> None :
@@ -628,11 +642,8 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class boost::python::dict getSysVars()'''
     ...
-    def getVar (self, *args, **kwargs)-> object :
-      '''getVar( (str)arg1) -> object :
-
-    C++ signature :
-        class boost::python::api::object getVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getVar (name:str)-> object :
+      '''                             '''
     ...
     def getWinNum (self, *args, **kwargs)-> int :
       '''getWinNum( (int)arg1, (int)arg2) -> int :
@@ -870,11 +881,8 @@ setColorDialogTrueColor( (Color)arg1, (bool)arg2, (Color)arg3, (AcCmDialogTabs)a
     C++ signature :
         void setUndoMark(bool)'''
     ...
-    def setVar (self, *args, **kwargs)-> bool :
-      '''setVar( (str)arg1, (object)arg2) -> bool :
-
-    C++ signature :
-        bool setVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object)'''
+    def setVar (name:str,value : Any)-> bool :
+      '''                             '''
     ...
     def setXrefResolvedWithUpdateStatus (self, *args, **kwargs)-> None :
       '''setXrefResolvedWithUpdateStatus( (BlockTableRecord)arg1) -> None :
