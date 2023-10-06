@@ -39,15 +39,20 @@ void PySysVarImpl::detach(bool flag)
 
 void PySysVarImpl::set(const std::string& name, const boost::python::object& obj)
 {
+    static constexpr const TCHAR* errmsg = _T("\nPySysVar::set failed!: ");
     try
     {
         m_oldobj = EdCore::getVar(name);
-        EdCore::setVar(name, obj);
+        if (!EdCore::setVar(name, obj))
+        {
+            m_doit = false;
+            acutPrintf(errmsg);
+        }
     }
     catch (...)
     {
         m_doit = false;
-        acutPrintf(_T("\nPySysVar::set failed!: "));
+        acutPrintf(errmsg);
     }
 }
 
