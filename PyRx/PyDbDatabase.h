@@ -487,9 +487,9 @@ public:
     bool				visretain() const;
     PyDbObjectId		visualStyleDictionaryId() const;
     void	            wblock1(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc);
-    void	            wblock2(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint);
-    void	            wblock3(PyDbDatabase& pOutputDb, const PyDbObjectId& blockId);
-    void	            wblock4(PyDbDatabase& pOutputDb);
+    PyDbDatabase	    wblock2(const boost::python::list& outObjIds, const AcGePoint3d& basePoint);
+    PyDbDatabase	    wblock3(const PyDbObjectId& blockId);
+    PyDbDatabase	    wblock4();
 
     void                wblockCloneObjects1(const boost::python::list& objectIds, const
         PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc);
