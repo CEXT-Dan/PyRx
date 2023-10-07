@@ -494,7 +494,7 @@ void makePyDbDatabaseWrapper()
 //---------------------------------------------------------------------------------------------------
 // PyDbDatabase
 PyDbDatabase::PyDbDatabase()
-    :PyDbDatabase(new AcDbDatabase(false, true), true)
+    :PyDbDatabase(new AcDbDatabase(), true)
 {
 }
 
