@@ -12396,15 +12396,20 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
     def wblock (self, *args, **kwargs)-> None :
-      '''wblock( (Database)arg1, (Database)arg2, (list)arg3, (Point3d)arg4 [, (DuplicateRecordCloning)arg5]) -> None :
+      '''wblock( (Database)arg1, (Database)arg2, (list)arg3, (Point3d)arg4, (DuplicateRecordCloning)arg5) -> None :
 
     C++ signature :
-        void wblock(class PyDbDatabase {lvalue},class PyDbDatabase {lvalue},class boost::python::list,class AcGePoint3d [,enum AcDb::DuplicateRecordCloning])
+        void wblock(class PyDbDatabase {lvalue},class PyDbDatabase {lvalue},class boost::python::list,class AcGePoint3d,enum AcDb::DuplicateRecordCloning)
 
-wblock( (Database)arg1, (Database)arg2 [, (ObjectId)arg3]) -> None :
+wblock( (Database)arg1, (list)arg2, (Point3d)arg3) -> Database :
 
     C++ signature :
-        void wblock(class PyDbDatabase {lvalue},class PyDbDatabase {lvalue} [,class PyDbObjectId])'''
+        class PyDbDatabase wblock(class PyDbDatabase {lvalue},class boost::python::list,class AcGePoint3d)
+
+wblock( (Database)arg1 [, (ObjectId)arg2]) -> Database :
+
+    C++ signature :
+        class PyDbDatabase wblock(class PyDbDatabase {lvalue} [,class PyDbObjectId])'''
     ...
     def wblockCloneObjects (self: Database,ids:list[PyDb.ObjectId],owner:PyDb.ObjectId,idmap:PyDb.IdMapping,drc:DuplicateRecordCloning,deferXlation:bool=False)-> None :
       '''                             '''
