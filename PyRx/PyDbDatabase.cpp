@@ -494,7 +494,7 @@ void makePyDbDatabaseWrapper()
 //---------------------------------------------------------------------------------------------------
 // PyDbDatabase
 PyDbDatabase::PyDbDatabase()
-    :PyRxObject(nullptr, false, false)
+    :PyDbDatabase(new AcDbDatabase(false, true), true)
 {
 }
 
@@ -2845,13 +2845,6 @@ PyDbObjectId PyDbDatabase::visualStyleDictionaryId() const
     return PyDbObjectId(impObj()->visualStyleDictionaryId());
 }
 
-void PyDbDatabase::wblock4(PyDbDatabase& pOutputDb)
-{
-    AcDbDatabase* _pOutputDb = nullptr;
-    PyThrowBadEs(impObj()->wblock(_pOutputDb));
-    pOutputDb = PyDbDatabase(_pOutputDb, true);
-}
-
 void PyDbDatabase::wblockCloneObjects1(const boost::python::list& objectIds,
     const PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc)
 {
@@ -2864,25 +2857,32 @@ void PyDbDatabase::wblockCloneObjects2(const boost::python::list& objectIds,
     PyThrowBadEs(impObj()->wblockCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj(), drc, deferXlation));
 }
 
-void PyDbDatabase::wblock3(PyDbDatabase& pOutputDb, const PyDbObjectId& blockId)
-{
-    AcDbDatabase* _pOutputDb = nullptr;
-    PyThrowBadEs(impObj()->wblock(_pOutputDb, blockId.m_id));
-    pOutputDb = PyDbDatabase(_pOutputDb, true);
-}
-
-void PyDbDatabase::wblock2(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint)
-{
-    AcDbObjectIdArray ids = PyListToObjectIdArray(outObjIds);
-    AcDbDatabase* _pOutputDb = nullptr;
-    PyThrowBadEs(impObj()->wblock(_pOutputDb, ids, basePoint));
-    pOutputDb = PyDbDatabase(_pOutputDb, true);
-}
-
 void PyDbDatabase::wblock1(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc)
 {
     AcDbObjectIdArray ids = PyListToObjectIdArray(outObjIds);
     PyThrowBadEs(impObj()->wblock(pOutputDb.impObj(), ids, basePoint, drc));
+}
+
+PyDbDatabase PyDbDatabase::wblock2(const boost::python::list& outObjIds, const AcGePoint3d& basePoint)
+{
+    AcDbObjectIdArray ids = PyListToObjectIdArray(outObjIds);
+    AcDbDatabase* _pOutputDb = nullptr;
+    PyThrowBadEs(impObj()->wblock(_pOutputDb, ids, basePoint));
+    return PyDbDatabase(_pOutputDb, true);
+}
+
+PyDbDatabase PyDbDatabase::wblock3(const PyDbObjectId& blockId)
+{
+    AcDbDatabase* _pOutputDb = nullptr;
+    PyThrowBadEs(impObj()->wblock(_pOutputDb, blockId.m_id));
+    return PyDbDatabase(_pOutputDb, true);
+}
+
+PyDbDatabase PyDbDatabase::wblock4()
+{
+    AcDbDatabase* _pOutputDb = nullptr;
+    PyThrowBadEs(impObj()->wblock(_pOutputDb));
+    return PyDbDatabase(_pOutputDb, true);
 }
 
 AcGePoint3d PyDbDatabase::worldPucsBaseOrigin(AcDb::OrthographicView orthoView) const
