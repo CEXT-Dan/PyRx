@@ -43,3 +43,6 @@ def ssfilterType(ints):
 
 def ssfilterData(strings):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, strings)
+
+def coords(_coords):
+    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, _coords)
