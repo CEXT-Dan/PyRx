@@ -9,20 +9,25 @@ def getApp() -> AcadApp24.IAcadApplication:
     app: AcadApp24.IAcadApplication = win32com.client.Dispatch(id)
     return app
 
-def comPnt2d(val: Ge.Point2d):
+def getDbx() -> AcadApp24.IAxDbDocument:
+    id = AcadApp24.AxDbDocument.CLSID
+    dbx: AcadApp24.IAxDbDocument = win32com.client.Dispatch(id)
+    return dbx
+
+def pnt2d(val: Ge.Point2d):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
 
-def comVec2d(val: Ge.Vector2d):
+def vec2d(val: Ge.Vector2d):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
 
-def comMatrix2d(val: Ge.Matrix2d):
+def matrix2d(val: Ge.Matrix2d):
     return win32com.client.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
 
-def comPnt3d(val: Ge.Point3d):
+def pnt3d(val: Ge.Point3d):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
 
-def comVec3d(val: Ge.Vector3d):
+def vec3d(val: Ge.Vector3d):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
 
-def comMatrix3d(val: Ge.Matrix3d):
+def matrix3d(val: Ge.Matrix3d):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
