@@ -31,3 +31,15 @@ def vec3d(val: Ge.Vector3d):
 
 def matrix3d(val: Ge.Matrix3d):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
+
+def entlist(ents : [AcadApp24.IAcadEntity]):
+    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, ents)
+
+def dbolist(objs : [AcadApp24.IAcadObject]):
+    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, objs)
+
+def ssfilterType(vals):
+    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_I2, vals)
+
+def ssfilterData(vals):
+    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, vals)
