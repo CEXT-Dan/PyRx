@@ -33,13 +33,13 @@ def matrix3d(val: Ge.Matrix3d):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
 
 def entlist(ents : [AcadApp24.IAcadEntity]):
-    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, ents)
+    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_DISPATCH, ents)
 
 def dbolist(objs : [AcadApp24.IAcadObject]):
-    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, objs)
+    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_DISPATCH, objs)
 
-def ssfilterType(vals):
-    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_I2, vals)
+def ssfilterType(ints):
+    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_I2, ints)
 
-def ssfilterData(vals):
-    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, vals)
+def ssfilterData(strings):
+    return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, strings)
