@@ -20721,8 +20721,7 @@ class IAcadTableStyle(DispatchBaseClass):
 	coclass_clsid = IID('{99E5E0B7-1075-4690-A71F-2C0BD8FB3CCF}')
 
 	def CreateCellStyle(self, bstrCellStyle=defaultNamedNotOptArg):
-	return self._oleobj_.InvokeTypes(31, LCID, 1, (24, 0), ((8, 1),), bstrCellStyle
-                                  )
+		return self._oleobj_.InvokeTypes(31, LCID, 1, (24, 0), ((8, 1),), bstrCellStyle)
 
 	def CreateCellStyleFromStyle(self, bstrCellStyle=defaultNamedNotOptArg, bstrSourceCellStyle=defaultNamedNotOptArg):
 		return self._oleobj_.InvokeTypes(32, LCID, 1, (24, 0), ((8, 1), (8, 1)), bstrCellStyle, bstrSourceCellStyle)
@@ -20732,8 +20731,7 @@ class IAcadTableStyle(DispatchBaseClass):
 		return self._oleobj_.InvokeTypes(1028, LCID, 1, (24, 0), (),)
 
 	def DeleteCellStyle(self, bstrCellStyle=defaultNamedNotOptArg):
-	return self._oleobj_.InvokeTypes(34, LCID, 1, (24, 0), ((8, 1),), bstrCellStyle
-                                  )
+		return self._oleobj_.InvokeTypes(34, LCID, 1, (24, 0), ((8, 1),), bstrCellStyle)
 
 	def EnableMergeAll(self, bstrCellStyle=defaultNamedNotOptArg, bEnable=defaultNamedNotOptArg):
 		return self._oleobj_.InvokeTypes(1610809409, LCID, 1, (24, 0), ((8, 1), (11, 1)), bstrCellStyle, bEnable)
@@ -20778,12 +20776,10 @@ class IAcadTableStyle(DispatchBaseClass):
                                    )
 
 	def GetCellClass(self, bstrCellStyle=defaultNamedNotOptArg):
-	return self._oleobj_.InvokeTypes(1610809404, LCID, 1, (3, 0), ((8, 1),), bstrCellStyle
-                                  )
+		return self._oleobj_.InvokeTypes(1610809404, LCID, 1, (3, 0), ((8, 1),), bstrCellStyle)
 
 	def GetCellStyles(self, cellStylesArray=defaultNamedNotOptArg):
-	return self._oleobj_.InvokeTypes(38, LCID, 1, (24, 0), ((16396, 1),), cellStylesArray
-                                  )
+		return self._oleobj_.InvokeTypes(38, LCID, 1, (24, 0), ((16396, 1),), cellStylesArray)
 
 	# Result is of type IAcadAcCmColor
 	def GetColor(self, rowType=defaultNamedNotOptArg):
@@ -20867,32 +20863,26 @@ class IAcadTableStyle(DispatchBaseClass):
 		return self._oleobj_.InvokeTypes(59, LCID, 1, (11, 0), ((8, 1), (3, 1)), bstrCellStyle, gridLineType)
 
 	def GetIsCellStyleInUse(self, pszCellStyle=defaultNamedNotOptArg):
-	return self._oleobj_.InvokeTypes(36, LCID, 1, (11, 0), ((8, 1),), pszCellStyle
-                                  )
+		return self._oleobj_.InvokeTypes(36, LCID, 1, (11, 0), ((8, 1),), pszCellStyle)
 
 	def GetIsMergeAllEnabled(self, bstrCellStyle=defaultNamedNotOptArg):
-	return self._oleobj_.InvokeTypes(1610809408, LCID, 1, (11, 0), ((8, 1),), bstrCellStyle
-                                  )
+		return self._oleobj_.InvokeTypes(1610809408, LCID, 1, (11, 0), ((8, 1),), bstrCellStyle)
 
 	def GetRotation(self, bstrCellStyle=defaultNamedNotOptArg):
-	return self._oleobj_.InvokeTypes(1610809406, LCID, 1, (5, 0), ((8, 1),), bstrCellStyle
-                                  )
+		return self._oleobj_.InvokeTypes(1610809406, LCID, 1, (5, 0), ((8, 1),), bstrCellStyle)
 
 	def GetTextHeight(self, rowType=defaultNamedNotOptArg):
 		'Returns the text height for the specified row type.'
-		return self._oleobj_.InvokeTypes(11, LCID, 1, (5, 0), ((3, 1),), rowType
-                                   )
+		return self._oleobj_.InvokeTypes(11, LCID, 1, (5, 0), ((3, 1),), rowType)
 
 	def GetTextHeight2(self, bstrCellStyle=defaultNamedNotOptArg):
 		'Returns the text height for the specified cellStyle.'
-		return self._oleobj_.InvokeTypes(41, LCID, 1, (5, 0), ((8, 1),), bstrCellStyle
-                                   )
+		return self._oleobj_.InvokeTypes(41, LCID, 1, (5, 0), ((8, 1),), bstrCellStyle)
 
 	def GetTextStyle(self, rowType=defaultNamedNotOptArg):
 		'Returns the text style name for the specified row type.'
 		# Result is a Unicode object
-		return self._oleobj_.InvokeTypes(9, LCID, 1, (8, 0), ((3, 1),), rowType
-                                   )
+		return self._oleobj_.InvokeTypes(9, LCID, 1, (8, 0), ((3, 1),), rowType)
 
 	def GetTextStyleId(self, bstrCellStyle=defaultNamedNotOptArg):
 		'Returns the text style name for the specified cellStyle.'
@@ -20901,8 +20891,7 @@ class IAcadTableStyle(DispatchBaseClass):
 
 	def GetUniqueCellStyleName(self, pszBaseName=defaultNamedNotOptArg):
 		# Result is a Unicode object
-	return self._oleobj_.InvokeTypes(35, LCID, 1, (8, 0), ((8, 1),), pszBaseName
-                                  )
+		return self._oleobj_.InvokeTypes(35, LCID, 1, (8, 0), ((8, 1),), pszBaseName)
 
 	def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
 		'Gets the extended data (XData) associated with an object'
