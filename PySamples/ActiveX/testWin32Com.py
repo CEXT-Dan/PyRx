@@ -9,8 +9,8 @@ import PyEd as Ed
 
 # these are in the stub file
 # requires win32com
-import AcadApp24 as AcadApp
-import AcadAppUtils24 as Ac
+import AxApp24 as Ax
+import AxAppUtils24 as Axu
 
 import traceback
 from timeit import default_timer as timer
@@ -18,7 +18,7 @@ from timeit import default_timer as timer
 
 # optional, global instance of IAcadApplication
 # there's only one app, might as well cache it
-theApp = Ac.getApp()
+theApp = Axu.getApp()
 
 def PyRxCmd_sstest1():
     try:
@@ -27,20 +27,20 @@ def PyRxCmd_sstest1():
         ss = doc.SelectionSets.Add('mysset')
 
         #safe arrays
-        ss.SelectOnScreen(Ac.ssfilterType([0]),
-                          Ac.ssfilterData(["POINT"]))
+        ss.SelectOnScreen(Axu.ssfilterType([0]),
+                          Axu.ssfilterData(["POINT"]))
 
         # COM returns a tuple (ent, point)
         entres = doc.Utility.GetEntity(None, None, "\nPick an ent: ")
         
         #ass to the set
         entstoadd = [entres[0]]
-        ss.AddItems(Ac.entlist(entstoadd))
+        ss.AddItems(Axu.entlist(entstoadd))
 
         # for loop
         print('\nway 1')
         for e in ss:
-            p = AcadApp.IAcadPoint(e)
+            p = Ax.IAcadPoint(e)
             print(p.Coordinates)
 
         # sdded array ss[ids]
@@ -61,12 +61,12 @@ def PyRxCmd_sstest1():
 
 def PyRxCmd_comAddLine():
     try:
-        model: AcadApp.IAcadBlock = theApp.ActiveDocument.ModelSpace
-        line: AcadApp.IAcadLine = model.AddLine(
-            Ac.pnt3d(Ge.Point3d(0, 0, 0)),
-            Ac.pnt3d(Ge.Point3d(100, 100, 0)))
+        model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
+        line: Ax.IAcadLine = model.AddLine(
+            Axu.pnt3d(Ge.Point3d(0, 0, 0)),
+            Axu.pnt3d(Ge.Point3d(100, 100, 0)))
 
-        clr: AcadApp.IAcadAcCmColor = AcadApp.AcadAcCmColor()
+        clr: Ax.IAcadAcCmColor = Ax.AcadAcCmColor()
         clr.SetRGB(255, 255, 0)
         line.TrueColor = clr
 
@@ -83,14 +83,14 @@ def PyRxCmd_comAddLine():
 
 def PyRxCmd_comMenuGroups():
     try:
-        menuGroups: AcadApp.IAcadMenuGroups = theApp.MenuGroups
+        menuGroups: Ax.IAcadMenuGroups = theApp.MenuGroups
         print("Menu.Count",  menuGroups.Count)
 
-        menuGroup: AcadApp.IAcadMenuGroup = menuGroups.Item(0)
-        pops: AcadApp.IAcadPopupMenus = menuGroup.Menus
+        menuGroup: Ax.IAcadMenuGroup = menuGroups.Item(0)
+        pops: Ax.IAcadPopupMenus = menuGroup.Menus
 
         for i in range(pops.Count):
-            pop: AcadApp.IAcadPopupMenu = pops.Item(i)
+            pop: Ax.IAcadPopupMenu = pops.Item(i)
             print(pop.Name)
 
     except Exception as err:
@@ -99,10 +99,10 @@ def PyRxCmd_comMenuGroups():
 
 def PyRxCmd_comGetEnt():
     try:
-        doc: AcadApp.IAcadDocument = theApp.ActiveDocument
-        util: AcadApp.IAcadUtility = doc.Utility
+        doc: Ax.IAcadDocument = theApp.ActiveDocument
+        util: Ax.IAcadUtility = doc.Utility
 
-        ent: AcadApp.IAcadEntity = util.GetEntity(
+        ent: Ax.IAcadEntity = util.GetEntity(
             None, None, "\nPick an ent: ")
 
         print(ent[0].ObjectName, ent[1])
@@ -115,7 +115,7 @@ def PyRxCmd_comGetang():
         pt1 = Ge.Point3d(100, 100, 0)
 
         retAngle = theApp.ActiveDocument.Utility.GetAngle(
-            Ac.pnt3d(pt1), "\nGet Angle with base:")
+            Axu.pnt3d(pt1), "\nGet Angle with base:")
 
         print(retAngle)
 
@@ -124,7 +124,7 @@ def PyRxCmd_comGetang():
         
 def PyRxCmd_comLayerState():
     try:
-        state : AcadApp.IAcadLayerStateManager = AcadApp.AcadLayerStateManager()
+        state : Ax.IAcadLayerStateManager = Ax.AcadLayerStateManager()
         state.SetDatabase(theApp.ActiveDocument.Database)
         state.Export('WOOHOOSTATE','e:\\temp\\WOOHOOSTATE.txt')
     except Exception as err:
@@ -137,7 +137,7 @@ def PyRxCmd_comPerf():
 
         mat = Ge.Matrix3d()
         mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
-        comMat = Ac.matrix3d(mat)
+        comMat = Axu.matrix3d(mat)
 
         for ent in theApp.ActiveDocument.ModelSpace:
             if ent.ObjectName == "AcDbPoint":

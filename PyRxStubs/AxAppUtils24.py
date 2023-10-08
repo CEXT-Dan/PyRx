@@ -2,16 +2,16 @@
 import PyGe as Ge
 import win32com.client
 import pythoncom
-import AcadApp24
+import AxApp24
 
-def getApp() -> AcadApp24.IAcadApplication:
-    id = AcadApp24.AcadApplication.CLSID
-    app: AcadApp24.IAcadApplication = win32com.client.Dispatch(id)
+def getApp() -> AxApp24.IAcadApplication:
+    id = AxApp24.AcadApplication.CLSID
+    app: AxApp24.IAcadApplication = win32com.client.Dispatch(id)
     return app
 
-def getDbx() -> AcadApp24.IAxDbDocument:
-    id = AcadApp24.AxDbDocument.CLSID
-    dbx: AcadApp24.IAxDbDocument = win32com.client.Dispatch(id)
+def getDbx() -> AxApp24.IAxDbDocument:
+    id = AxApp24.AxDbDocument.CLSID
+    dbx: AxApp24.IAxDbDocument = win32com.client.Dispatch(id)
     return dbx
 
 def pnt2d(val: Ge.Point2d):
@@ -32,10 +32,10 @@ def vec3d(val: Ge.Vector3d):
 def matrix3d(val: Ge.Matrix3d):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
 
-def entlist(ents : [AcadApp24.IAcadEntity]):
+def entlist(ents : [AxApp24.IAcadEntity]):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_DISPATCH, ents)
 
-def dbolist(objs : [AcadApp24.IAcadObject]):
+def dbolist(objs : [AxApp24.IAcadObject]):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_DISPATCH, objs)
 
 def ssfilterType(ints):
