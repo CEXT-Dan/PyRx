@@ -20,6 +20,44 @@ from timeit import default_timer as timer
 # there's only one app, might as well cache it
 theApp = Ac.getApp()
 
+def PyRxCmd_sstest1():
+    try:
+
+        doc = theApp.ActiveDocument
+        ss = doc.SelectionSets.Add('mysset')
+
+        #safe arrays
+        ss.SelectOnScreen(Ac.ssfilterType([0]),
+                          Ac.ssfilterData(["POINT"]))
+
+        # COM returns a tuple (ent, point)
+        entres = doc.Utility.GetEntity(None, None, "\nPick an ent: ")
+        
+        #ass to the set
+        entstoadd = [entres[0]]
+        ss.AddItems(Ac.entlist(entstoadd))
+
+        # for loop
+        print('\nway 1')
+        for e in ss:
+            p = AcadApp.IAcadPoint(e)
+            print(p.Coordinates)
+
+        # sdded array ss[ids]
+        print('\nway 2')
+        for i in range(ss.Count):
+            print(ss[i].ObjectName)
+
+        # added array Item(idx)
+        print('\nway 3')
+        for i in range(ss.Count):
+            print(ss.Item(i).ObjectName)
+
+    except Exception as err:
+        traceback.print_exception(err)
+    finally:
+        ss.Delete()
+
 
 def PyRxCmd_comAddLine():
     try:
