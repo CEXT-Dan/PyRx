@@ -18470,22 +18470,15 @@ class IAcadSelectionSet(DispatchBaseClass):
 
 	def Highlight(self, bFlag=defaultNamedNotOptArg):
 		'Sets the highlight status for the given object, or for all objects in a given selection set'
-		return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((11, 1),),bFlag
-			)
+		return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((11, 1),),bFlag)
 
 	# Result is of type IAcadEntity
 	def Item(self, Index=defaultNamedNotOptArg):
-		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
-		if ret is not None:
-			ret = Dispatch(ret, 'Item', '{AB9F53A4-BA00-499B-BE4C-D178EC67FFCC}')
-		return ret
+		return self.__call__(Index)
 
 	def RemoveItems(self, Objects=defaultNamedNotOptArg):
 		'Removes specified items from the group or selection set'
-		return self._oleobj_.InvokeTypes(8, LCID, 1, (24, 0), ((12, 1),),Objects
-			)
+		return self._oleobj_.InvokeTypes(8, LCID, 1, (24, 0), ((12, 1),),Objects)
 
 	def Select(self, Mode=defaultNamedNotOptArg, Point1=defaultNamedOptArg, Point2=defaultNamedOptArg, FilterType=defaultNamedOptArg
 			, FilterData=defaultNamedOptArg):
@@ -18523,23 +18516,23 @@ class IAcadSelectionSet(DispatchBaseClass):
 	# Default method for this class is 'Item'
 	def __call__(self, Index=defaultNamedNotOptArg):
 		'Gets the member object at a given index in a collection, group, or selection set'
-		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-			)
+		ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index)
 		if ret is not None:
 			ret = Dispatch(ret, '__call__', '{AB9F53A4-BA00-499B-BE4C-D178EC67FFCC}')
 		return ret
 
+	def __getitem__(self, *args): 
+		try:
+			return self.__call__(*args)
+		except:
+			raise IndexError
+
 	def __str__(self, *args):
 		return str(self.__call__(*args))
+
 	def __int__(self, *args):
 		return int(self.__call__(*args))
-	def __iter__(self):
-		"Return a Python iterator for this object"
-		try:
-			ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
-		except pythoncom.error:
-			raise TypeError("This object does not support enumeration")
-		return win32com.client.util.Iterator(ob, '{AB9F53A4-BA00-499B-BE4C-D178EC67FFCC}')
+
 	#This class has Count() property - allow len(ob) to provide this
 	def __len__(self):
 		return self._ApplyTypes_(*(1, 2, (3, 0), (), "Count", None))
