@@ -9,9 +9,8 @@ import PyEd as Ed
 
 # these are in the stub file
 # requires win32com
-import win32com.client
-import AcadComTypes24 as Ac
-import ComAcadApplication24 as AcadApp
+import AcadApp24 as AcadApp
+import AcadAppUtils24 as Ac
 
 import traceback
 from timeit import default_timer as timer
@@ -26,8 +25,8 @@ def PyRxCmd_comAddLine():
     try:
         model: AcadApp.IAcadBlock = theApp.ActiveDocument.ModelSpace
         line: AcadApp.IAcadLine = model.AddLine(
-            Ac.comPnt3d(Ge.Point3d(0, 0, 0)),
-            Ac.comPnt3d(Ge.Point3d(100, 100, 0)))
+            Ac.pnt3d(Ge.Point3d(0, 0, 0)),
+            Ac.pnt3d(Ge.Point3d(100, 100, 0)))
 
         clr: AcadApp.IAcadAcCmColor = AcadApp.AcadAcCmColor()
         clr.SetRGB(255, 255, 0)
@@ -78,7 +77,7 @@ def PyRxCmd_comGetang():
         pt1 = Ge.Point3d(100, 100, 0)
 
         retAngle = theApp.ActiveDocument.Utility.GetAngle(
-            Ac.comPnt3d(pt1), "\nGet Angle with base:")
+            Ac.pnt3d(pt1), "\nGet Angle with base:")
 
         print(retAngle)
 
@@ -100,7 +99,7 @@ def PyRxCmd_comPerf():
 
         mat = Ge.Matrix3d()
         mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
-        comMat = Ac.comMatrix3d(mat)
+        comMat = Ac.matrix3d(mat)
 
         for ent in theApp.ActiveDocument.ModelSpace:
             if ent.ObjectName == "AcDbPoint":

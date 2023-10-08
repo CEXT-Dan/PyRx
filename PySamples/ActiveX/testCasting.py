@@ -7,13 +7,13 @@ import PyAp as Ap
 import PyEd as Ed
 import traceback
 
-import AcadComTypes24 as Ac
-import ComAcadApplication24 as AcadApp
+import AcadApp24 as AcadApp
+import AcadAppUtils24 as AcUtils
 
 
 def PyRxCmd_docast():
     try:
-        acad = Ac.getApp()
+        acad = AcUtils.getApp()
         for layout in acad.ActiveDocument.Layouts:
             if layout.ModelType:
                 continue
