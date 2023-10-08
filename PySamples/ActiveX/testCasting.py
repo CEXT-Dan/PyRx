@@ -21,7 +21,8 @@ def PyRxCmd_docast():
                 if entity.EntityName != 'AcDbBlockReference':
                     continue
                 #cast
-                ref = AxUtils.IAcadBlockReference(entity)
+                print(entity)
+                ref = Ax.IAcadBlockReference(entity)
                 if not ref.HasAttributes:
                     continue
                 for attrib in ref.GetAttributes():
