@@ -2,11 +2,11 @@
 import PyGe as Ge
 import win32com.client
 import pythoncom
-import ComAcadApplication24 as AcadApp
+import AcadApp24
 
-def getApp() -> AcadApp.IAcadApplication:
-    id = AcadApp.AcadApplication.CLSID
-    app: AcadApp.IAcadApplication = win32com.client.Dispatch(id)
+def getApp() -> AcadApp24.IAcadApplication:
+    id = AcadApp24.AcadApplication.CLSID
+    app: AcadApp24.IAcadApplication = win32com.client.Dispatch(id)
     return app
 
 def comPnt2d(val: Ge.Point2d):
