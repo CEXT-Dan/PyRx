@@ -1,24 +1,25 @@
-import PyRx  # = Runtime runtime
-import PyDb  # = database
-import PyEd  # = editor
-
+import PyRx as Rx
+import PyGe as Ge
+import PyGi as Gi
+import PyDb as Db
+import PyAp as Ap
+import PyEd as Ed
 from Delaunator import Delaunator
 from time import perf_counter
 
 #PySamples\dwg\TestPoints.dwg
 print("added command pydelaunator")
 
-
 def do_select():
-    filter = [(PyDb.DxfCode.kDxfStart, "POINT")]
-    ss = PyEd.Editor.selectPrompt("\nSelect points: ", "\nRemove points: ", filter)
-    if (ss[0] == PyEd.PromptStatus.eNormal):
+    filter = [(Db.DxfCode.kDxfStart, "POINT")]
+    ss = Ed.Editor.selectPrompt("\nSelect points: ", "\nRemove points: ", filter)
+    if (ss[0] == Ed.PromptStatus.eNormal):
         return ss[1]
 
 def get_3dpointds(objs):
     pnts = []
     for id in objs:
-        p = PyDb.Point(id)
+        p = Db.Point(id)
         pnts.append(p.position())
     return pnts
 
@@ -38,11 +39,11 @@ def PyRxCmd_pydelaunator():
         #doit
         t = Delaunator(pnt2ds).triangles
         
-        db = PyDb.HostApplicationServices().workingDatabase()
-        model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+        db = Db.HostApplicationServices().workingDatabase()
+        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
 
         for i in range(0, len(t), 3):
-            f = PyDb.Face(
+            f = Db.Face(
                 pnt3ds[t[i]], 
                 pnt3ds[t[i + 1]], 
                 pnt3ds[t[i + 2]])
@@ -50,7 +51,6 @@ def PyRxCmd_pydelaunator():
             model.appendAcDbEntity(f)
 
         t1_stop = perf_counter()
-        r = "Elapsed time: {t:.4f}".format(t=t1_stop-t1_start)
-        print(r)
+        print("Elapsed time: {t:.4f}".format(t=t1_stop-t1_start))
     except Exception as err:
         print(err)
