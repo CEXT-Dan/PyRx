@@ -2310,14 +2310,10 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object given four vertices'
-        if isinstance(Point1, list) or isinstance(Point1, tuple):
-            Point1 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point1)
-        if isinstance(Point2, list) or isinstance(Point2, tuple):
-            Point2 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point2)
-        if isinstance(point3, list) or isinstance(point3, tuple):
-            point3 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, point3)
-        if isinstance(Point4, list) or isinstance(Point4, tuple):
-            Point4 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point4)
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -2345,8 +2341,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc given the center, radius, start angle, and end angle of the arc'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -2357,8 +2352,7 @@ class IAcadBlock(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an attribute definition at the given location with the specified properties'
-        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
-            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -2369,8 +2363,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box with edges parallel to the axes of the WCS'
-        if isinstance(Origin, list) or isinstance(Origin, tuple):
-            Origin = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Origin)
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -2380,8 +2373,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given a center point and radius'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -2391,8 +2383,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone with the base on the XY plane of the WCS'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -2410,8 +2401,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -2421,12 +2411,9 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
-        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
-            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
-        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
-            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
-        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
-            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -2436,12 +2423,9 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension object'
-        if isinstance(ExtLine1Point, list) or isinstance(ExtLine1Point, tuple):
-            ExtLine1Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ExtLine1Point)
-        if isinstance(ExtLine2Point, list) or isinstance(ExtLine2Point, tuple):
-            ExtLine2Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ExtLine2Point)
-        if isinstance(TextPosition, list) or isinstance(TextPosition, tuple):
-            TextPosition = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPosition)
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -2451,12 +2435,9 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
-        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
-            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
-        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
-            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
-        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
-            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -2466,14 +2447,10 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         'Creates an arc length dimension for an arc'
-        if isinstance(ArcCenter, list) or isinstance(ArcCenter, tuple):
-            ArcCenter = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ArcCenter)
-        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
-            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
-        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
-            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
-        if isinstance(ArcPoint, list) or isinstance(ArcPoint, tuple):
-            ArcPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ArcPoint)
+        ArcCenter = VTR8ArrayOrVal(ArcCenter)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        ArcPoint = VTR8ArrayOrVal(ArcPoint)
         ret = self._oleobj_.InvokeTypes(1602, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),ArcCenter
             , FirstEndPoint, SecondEndPoint, ArcPoint)
         if ret is not None:
@@ -2483,10 +2460,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension for a circle or arc given the two points on the diameter and the length of the leader line'
-        if isinstance(ChordPoint, list) or isinstance(ChordPoint, tuple):
-            ChordPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ChordPoint)  
-        if isinstance(FarChordPoint, list) or isinstance(FarChordPoint, tuple):
-            FarChordPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FarChordPoint)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        FarChordPoint = VTR8ArrayOrVal(FarChordPoint)
         ret = self._oleobj_.InvokeTypes(1551, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),ChordPoint
             , FarChordPoint, LeaderLength)
         if ret is not None:
@@ -2496,10 +2471,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension given the definition point, and leader endpoint'
-        if isinstance(DefinitionPoint, list) or isinstance(DefinitionPoint, tuple):
-            DefinitionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, DefinitionPoint)  
-        if isinstance(LeaderEndPoint, list) or isinstance(LeaderEndPoint, tuple):
-            LeaderEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, LeaderEndPoint)
+        DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
+        LeaderEndPoint = VTR8ArrayOrVal(LeaderEndPoint)
         ret = self._oleobj_.InvokeTypes(1553, LCID, 1, (9, 0), ((12, 1), (12, 1), (3, 1)),DefinitionPoint
             , LeaderEndPoint, UseXAxis)
         if ret is not None:
@@ -2509,10 +2482,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension for the selected object at the given location'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)  
-        if isinstance(ChordPoint, list) or isinstance(ChordPoint, tuple):
-            ChordPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ChordPoint)  
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
         ret = self._oleobj_.InvokeTypes(1554, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, LeaderLength)
         if ret is not None:
@@ -2523,14 +2494,10 @@ class IAcadBlock(DispatchBaseClass):
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         'Creates a jogged radial dimension for an arc, circle, or polyline arc segment'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)  
-        if isinstance(ChordPoint, list) or isinstance(ChordPoint, tuple):
-            ChordPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ChordPoint)  
-        if isinstance(OverrideCenter, list) or isinstance(OverrideCenter, tuple):
-            OverrideCenter = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, OverrideCenter)  
-        if isinstance(JogPoint, list) or isinstance(JogPoint, tuple):
-            JogPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, JogPoint)  
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        OverrideCenter = VTR8ArrayOrVal(OverrideCenter)
+        JogPoint = VTR8ArrayOrVal(JogPoint)
         ret = self._oleobj_.InvokeTypes(1603, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, OverrideCenter, JogPoint, JogAngle)
         if ret is not None:
@@ -2540,12 +2507,9 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a rotated linear dimension'
-        if isinstance(ExtLine1Point, list) or isinstance(ExtLine1Point, tuple):
-            ExtLine1Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ExtLine1Point)
-        if isinstance(ExtLine2Point, list) or isinstance(ExtLine2Point, tuple):
-            ExtLine2Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ExtLine2Point)
-        if isinstance(DimLineLocation, list) or isinstance(DimLineLocation, tuple):
-            DimLineLocation = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, DimLineLocation)
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        DimLineLocation = VTR8ArrayOrVal(DimLineLocation)
         ret = self._oleobj_.InvokeTypes(1552, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (5, 1)),ExtLine1Point
             , ExtLine2Point, DimLineLocation, RotationAngle)
         if ret is not None:
@@ -2555,8 +2519,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the XY plane of the WCS given the center point, a point on the major axis, and the radius ratio'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -2566,8 +2529,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cone on the XY plane of the WCS given the Center, MajorRadius, MinorRadius, and Height'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -2577,8 +2539,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cylinder whose base is on the XY plane of the WCS, given the Center, MajorRadius, MinorRadius, and Height'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -2633,10 +2594,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a line passing through two points'
-        if isinstance(StartPoint, list) or isinstance(StartPoint, tuple):
-            StartPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, StartPoint)
-        if isinstance(EndPoint, list) or isinstance(EndPoint, tuple):
-            EndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, EndPoint)
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -2648,8 +2607,7 @@ class IAcadBlock(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an array of blocks'
-        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
-            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -2676,8 +2634,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates an MText entity in a rectangle defined by the insertion point and width of the bounding box'
-        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
-            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -2687,8 +2644,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object at a given location'
-        if isinstance(Point, list) or isinstance(Point, tuple):
-            Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point)
+        Point = VTR8ArrayOrVal(Point)
         ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point)
         if ret is not None:
             ret = Dispatch(ret, 'AddPoint', '{EBA657C9-D850-4172-B4C4-7925D6481D70}')
@@ -2715,8 +2671,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a new raster image based on an existing image file'
-        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
-            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -2726,6 +2681,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two unique points'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -2740,8 +2697,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid, given the region around an axis'
-        if isinstance(AxisPoint, list) or isinstance(AxisPoint, tuple):
-            AxisPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, AxisPoint)
+        AxisPoint = VTR8ArrayOrVal(AxisPoint)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -2751,12 +2707,9 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         'Creates a section plane'
-        if isinstance(FromPoint, list) or isinstance(FromPoint, tuple):
-            FromPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FromPoint)
-        if isinstance(ToPoint, list) or isinstance(ToPoint, tuple):
-            ToPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ToPoint)
-        if isinstance(planeVector, list) or isinstance(planeVector, tuple):
-            planeVector = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, planeVector)
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
+        planeVector = VTR8ArrayOrVal(planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -2775,6 +2728,10 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 2D solid polygon'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1569, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -2784,6 +2741,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1570, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -2803,6 +2761,7 @@ class IAcadBlock(DispatchBaseClass):
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1595, LCID, 1, (9, 0), ((12, 1), (3, 1), (3, 1), (5, 1), (5, 1)),InsertionPoint
             , NumRows, NumColumns, RowHeight, ColWidth)
         if ret is not None:
@@ -2812,6 +2771,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a single line of text'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1572, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),TextString
             , InsertionPoint, Height)
         if ret is not None:
@@ -2821,6 +2781,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance entity'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
+        Direction = VTR8ArrayOrVal(Direction)
         ret = self._oleobj_.InvokeTypes(1573, LCID, 1, (9, 0), ((8, 1), (12, 1), (12, 1)),Text
             , InsertionPoint, Direction)
         if ret is not None:
@@ -2830,6 +2792,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus at the given location'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1574, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , TorusRadius, TubeRadius)
         if ret is not None:
@@ -2848,6 +2811,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width, and height'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1576, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Length, Width, Height)
         if ret is not None:
@@ -2857,6 +2821,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an xline (an infinite line) passing through two specified points'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1577, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12508,14 +12474,10 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object given four vertices'
-        if isinstance(Point1, list) or isinstance(Point1, tuple):
-            Point1 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point1)
-        if isinstance(Point2, list) or isinstance(Point2, tuple):
-            Point2 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point2)
-        if isinstance(point3, list) or isinstance(point3, tuple):
-            point3 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, point3)
-        if isinstance(Point4, list) or isinstance(Point4, tuple):
-            Point4 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point4)
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -12543,8 +12505,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc given the center, radius, start angle, and end angle of the arc'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -12555,8 +12516,7 @@ class IAcadModelSpace(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an attribute definition at the given location with the specified properties'
-        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
-            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -12567,8 +12527,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box with edges parallel to the axes of the WCS'
-        if isinstance(Origin, list) or isinstance(Origin, tuple):
-            Origin = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Origin)
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -12578,8 +12537,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given a center point and radius'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -12589,8 +12547,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone with the base on the XY plane of the WCS'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -12608,8 +12565,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -12619,12 +12575,9 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
-        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
-            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
-        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
-            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
-        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
-            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -12634,12 +12587,9 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension object'
-        if isinstance(ExtLine1Point, list) or isinstance(ExtLine1Point, tuple):
-            ExtLine1Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ExtLine1Point)
-        if isinstance(ExtLine2Point, list) or isinstance(ExtLine2Point, tuple):
-            ExtLine2Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ExtLine2Point)
-        if isinstance(TextPosition, list) or isinstance(TextPosition, tuple):
-            TextPosition = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPosition)
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -12649,12 +12599,9 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
-        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
-            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
-        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
-            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
-        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
-            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -12831,10 +12778,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a line passing through two points'
-        if isinstance(StartPoint, list) or isinstance(StartPoint, tuple):
-            StartPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, StartPoint)
-        if isinstance(EndPoint, list) or isinstance(EndPoint, tuple):
-            EndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, EndPoint)
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -13854,14 +13799,10 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object given four vertices'
-        if isinstance(Point1, list) or isinstance(Point1, tuple):
-            Point1 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point1)
-        if isinstance(Point2, list) or isinstance(Point2, tuple):
-            Point2 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point2)
-        if isinstance(point3, list) or isinstance(point3, tuple):
-            point3 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, point3)
-        if isinstance(Point4, list) or isinstance(Point4, tuple):
-            Point4 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point4)
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -13889,8 +13830,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc given the center, radius, start angle, and end angle of the arc'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -13901,8 +13841,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an attribute definition at the given location with the specified properties'
-        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
-            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -13913,8 +13852,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box with edges parallel to the axes of the WCS'
-        if isinstance(Origin, list) or isinstance(Origin, tuple):
-            Origin = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Origin)
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -13924,8 +13862,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given a center point and radius'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -13935,8 +13872,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone with the base on the XY plane of the WCS'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -13954,8 +13890,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
-        if isinstance(Center, list) or isinstance(Center, tuple):
-            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -13965,12 +13900,9 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
-        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
-            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
-        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
-            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
-        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
-            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -13980,12 +13912,9 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension object'
-        if isinstance(ExtLine1Point, list) or isinstance(ExtLine1Point, tuple):
-            ExtLine1Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ExtLine1Point)
-        if isinstance(ExtLine2Point, list) or isinstance(ExtLine2Point, tuple):
-            ExtLine2Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ExtLine2Point)
-        if isinstance(TextPosition, list) or isinstance(TextPosition, tuple):
-            TextPosition = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPosition)
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -13995,12 +13924,9 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
-        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
-            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
-        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
-            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
-        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
-            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -14177,10 +14103,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a line passing through two points'
-        if isinstance(StartPoint, list) or isinstance(StartPoint, tuple):
-            StartPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, StartPoint)
-        if isinstance(EndPoint, list) or isinstance(EndPoint, tuple):
-            EndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, EndPoint)
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -15122,6 +15046,16 @@ class IAcadPoint(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #IAcadPoint override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
