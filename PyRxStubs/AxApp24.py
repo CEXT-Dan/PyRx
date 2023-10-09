@@ -2572,6 +2572,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cylinder whose base is on the XY plane of the WCS, given the Center, MajorRadius, MinorRadius, and Height'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -2641,6 +2643,8 @@ class IAcadBlock(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an array of blocks'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -2667,6 +2671,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates an MText entity in a rectangle defined by the insertion point and width of the bounding box'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -2704,6 +2710,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a new raster image based on an existing image file'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -2727,6 +2735,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid, given the region around an axis'
+        if isinstance(AxisPoint, list) or isinstance(AxisPoint, tuple):
+            AxisPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, AxisPoint)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -2736,6 +2746,12 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         'Creates a section plane'
+        if isinstance(FromPoint, list) or isinstance(FromPoint, tuple):
+            FromPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FromPoint)
+        if isinstance(ToPoint, list) or isinstance(ToPoint, tuple):
+            ToPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ToPoint)
+        if isinstance(planeVector, list) or isinstance(planeVector, tuple):
+            planeVector = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -12742,6 +12758,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cylinder whose base is on the XY plane of the WCS, given the Center, MajorRadius, MinorRadius, and Height'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -12811,6 +12829,8 @@ class IAcadModelSpace(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an array of blocks'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -12837,6 +12857,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates an MText entity in a rectangle defined by the insertion point and width of the bounding box'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -12874,6 +12896,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a new raster image based on an existing image file'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -12883,6 +12907,10 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two unique points'
+        if isinstance(Point1, list) or isinstance(Point1, tuple):
+            Point1 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point1)
+        if isinstance(Point2, list) or isinstance(Point2, tuple):
+            Point2 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12897,6 +12925,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid, given the region around an axis'
+        if isinstance(AxisPoint, list) or isinstance(AxisPoint, tuple):
+            AxisPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, AxisPoint)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -12906,6 +12936,12 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         'Creates a section plane'
+        if isinstance(FromPoint, list) or isinstance(FromPoint, tuple):
+            FromPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FromPoint)
+        if isinstance(ToPoint, list) or isinstance(ToPoint, tuple):
+            ToPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ToPoint)
+        if isinstance(planeVector, list) or isinstance(planeVector, tuple):
+            planeVector = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -14068,6 +14104,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cylinder whose base is on the XY plane of the WCS, given the Center, MajorRadius, MinorRadius, and Height'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -14137,6 +14175,8 @@ class IAcadPaperSpace(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an array of blocks'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -14163,6 +14203,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates an MText entity in a rectangle defined by the insertion point and width of the bounding box'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -14172,6 +14214,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadPViewport
     def AddPViewport(self, Center=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Adds a paper space viewport, given the center, height, and width'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Width, Height)
         if ret is not None:
@@ -14209,6 +14253,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a new raster image based on an existing image file'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -14232,6 +14278,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid, given the region around an axis'
+        if isinstance(AxisPoint, list) or isinstance(AxisPoint, tuple):
+            AxisPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, AxisPoint)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -14241,6 +14289,12 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         'Creates a section plane'
+        if isinstance(FromPoint, list) or isinstance(FromPoint, tuple):
+            FromPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FromPoint)
+        if isinstance(ToPoint, list) or isinstance(ToPoint, tuple):
+            ToPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, ToPoint)
+        if isinstance(planeVector, list) or isinstance(planeVector, tuple):
+            planeVector = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
