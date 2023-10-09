@@ -2305,6 +2305,14 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object given four vertices'
+        if isinstance(Point1, list) or isinstance(Point1, tuple):
+            Point1 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point1)
+        if isinstance(Point2, list) or isinstance(Point2, tuple):
+            Point2 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point2)
+        if isinstance(point3, list) or isinstance(point3, tuple):
+            point3 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, point3)
+        if isinstance(Point4, list) or isinstance(Point4, tuple):
+            Point4 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -2550,6 +2558,10 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a line passing through two points'
+        if isinstance(StartPoint, list) or isinstance(StartPoint, tuple):
+            StartPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, StartPoint)
+        if isinstance(EndPoint, list) or isinstance(EndPoint, tuple):
+            EndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -2596,8 +2608,9 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object at a given location'
-        ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
-            )
+        if isinstance(Point, list) or isinstance(Point, tuple):
+            Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point)
+        ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point)
         if ret is not None:
             ret = Dispatch(ret, 'AddPoint', '{EBA657C9-D850-4172-B4C4-7925D6481D70}')
         return ret
@@ -12394,6 +12407,14 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object given four vertices'
+        if isinstance(Point1, list) or isinstance(Point1, tuple):
+            Point1 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point1)
+        if isinstance(Point2, list) or isinstance(Point2, tuple):
+            Point2 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point2)
+        if isinstance(point3, list) or isinstance(point3, tuple):
+            point3 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, point3)
+        if isinstance(Point4, list) or isinstance(Point4, tuple):
+            Point4 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -12639,6 +12660,10 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a line passing through two points'
+        if isinstance(StartPoint, list) or isinstance(StartPoint, tuple):
+            StartPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, StartPoint)
+        if isinstance(EndPoint, list) or isinstance(EndPoint, tuple):
+            EndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -12685,8 +12710,9 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object at a given location'
-        ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
-            )
+        if isinstance(Point, list) or isinstance(Point, tuple):
+            Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point)
+        ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point)
         if ret is not None:
             ret = Dispatch(ret, 'AddPoint', '{EBA657C9-D850-4172-B4C4-7925D6481D70}')
         return ret
@@ -13639,6 +13665,14 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object given four vertices'
+        if isinstance(Point1, list) or isinstance(Point1, tuple):
+            Point1 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point1)
+        if isinstance(Point2, list) or isinstance(Point2, tuple):
+            Point2 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point2)
+        if isinstance(point3, list) or isinstance(point3, tuple):
+            point3 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, point3)
+        if isinstance(Point4, list) or isinstance(Point4, tuple):
+            Point4 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -13884,6 +13918,10 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a line passing through two points'
+        if isinstance(StartPoint, list) or isinstance(StartPoint, tuple):
+            StartPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, StartPoint)
+        if isinstance(EndPoint, list) or isinstance(EndPoint, tuple):
+            EndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -13939,8 +13977,9 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object at a given location'
-        ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
-            )
+        if isinstance(Point, list) or isinstance(Point, tuple):
+            Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point)
+        ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point)
         if ret is not None:
             ret = Dispatch(ret, 'AddPoint', '{EBA657C9-D850-4172-B4C4-7925D6481D70}')
         return ret
