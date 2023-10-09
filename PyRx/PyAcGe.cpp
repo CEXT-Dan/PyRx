@@ -185,10 +185,10 @@ boost::python::tuple AcGePoint2dToTuple(const AcGePoint2d& p)
 boost::python::list AcGePoint2dToList(const AcGePoint2d& p)
 {
     PyAutoLockGIL lock;
-    boost::python::list l;
-    l.append(p.x);
-    l.append(p.y);
-    return l;
+    boost::python::list pylist;
+    pylist.append(p.x);
+    pylist.append(p.y);
+    return pylist;
 }
 
 std::string AcGePoint2dToString(const AcGePoint2d& p)
