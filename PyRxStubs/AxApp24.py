@@ -2340,6 +2340,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc given the center, radius, start angle, and end angle of the arc'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -2350,6 +2352,8 @@ class IAcadBlock(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an attribute definition at the given location with the specified properties'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -2360,6 +2364,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box with edges parallel to the axes of the WCS'
+        if isinstance(Origin, list) or isinstance(Origin, tuple):
+            Origin = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -2369,6 +2375,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given a center point and radius'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -2378,6 +2386,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone with the base on the XY plane of the WCS'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -2395,6 +2405,8 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -2404,6 +2416,12 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
+        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
+            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
+        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
+            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
+        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
+            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -2422,6 +2440,12 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
+        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
+            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
+        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
+            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
+        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
+            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -12442,6 +12466,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc given the center, radius, start angle, and end angle of the arc'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -12452,6 +12478,8 @@ class IAcadModelSpace(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an attribute definition at the given location with the specified properties'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -12462,6 +12490,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box with edges parallel to the axes of the WCS'
+        if isinstance(Origin, list) or isinstance(Origin, tuple):
+            Origin = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -12471,6 +12501,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given a center point and radius'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -12480,6 +12512,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone with the base on the XY plane of the WCS'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -12497,6 +12531,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -12506,6 +12542,12 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
+        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
+            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
+        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
+            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
+        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
+            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -12524,6 +12566,12 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
+        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
+            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
+        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
+            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
+        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
+            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -13700,6 +13748,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc given the center, radius, start angle, and end angle of the arc'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -13710,6 +13760,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an attribute definition at the given location with the specified properties'
+        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
+            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -13720,6 +13772,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box with edges parallel to the axes of the WCS'
+        if isinstance(Origin, list) or isinstance(Origin, tuple):
+            Origin = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -13729,6 +13783,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given a center point and radius'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -13738,6 +13794,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone with the base on the XY plane of the WCS'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -13755,6 +13813,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
+        if isinstance(Center, list) or isinstance(Center, tuple):
+            Center = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -13764,6 +13824,12 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
+        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
+            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
+        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
+            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
+        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
+            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -13782,6 +13848,12 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
+        if isinstance(FirstEndPoint, list) or isinstance(FirstEndPoint, tuple):
+            FirstEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, FirstEndPoint)
+        if isinstance(SecondEndPoint, list) or isinstance(SecondEndPoint, tuple):
+            SecondEndPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, SecondEndPoint)
+        if isinstance(TextPoint, list) or isinstance(TextPoint, tuple):
+            TextPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
