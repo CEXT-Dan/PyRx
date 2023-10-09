@@ -1033,11 +1033,14 @@ class IAcad3DFace(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -1229,11 +1232,14 @@ class IAcad3DPolyline(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -1412,11 +1418,14 @@ class IAcad3DSolid(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -1799,11 +1808,14 @@ class IAcadArc(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -1980,11 +1992,14 @@ class IAcadAttribute(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -2206,11 +2221,14 @@ class IAcadAttributeReference(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -3228,11 +3246,14 @@ class IAcadBlockReference(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -3512,11 +3533,14 @@ class IAcadCircle(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -3719,11 +3743,14 @@ class IAcadComparedReference(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -4274,11 +4301,14 @@ class IAcadDim3PointAngular(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -4573,11 +4603,14 @@ class IAcadDimAligned(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -4926,11 +4959,14 @@ class IAcadDimAngular(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -5227,11 +5263,14 @@ class IAcadDimArcLength(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -5586,11 +5625,14 @@ class IAcadDimDiametric(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -5906,11 +5948,14 @@ class IAcadDimOrdinate(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -6199,11 +6244,14 @@ class IAcadDimRadial(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -6513,11 +6561,14 @@ class IAcadDimRadialLarge(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -6824,11 +6875,14 @@ class IAcadDimRotated(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -7322,11 +7376,14 @@ class IAcadDimension(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -7862,11 +7919,14 @@ class IAcadDwfUnderlay(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8095,11 +8155,14 @@ class IAcadEllipse(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8283,11 +8346,14 @@ class IAcadEntity(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8476,11 +8542,14 @@ class IAcadExternalReference(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8668,11 +8737,14 @@ class IAcadExtrudedSurface(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8852,11 +8924,14 @@ class IAcadGeoPositionMarker(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -9059,11 +9134,14 @@ class IAcadGeomapImage(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -9487,11 +9565,14 @@ class IAcadHatch(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -9697,11 +9778,14 @@ class IAcadHelix(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -10023,11 +10107,14 @@ class IAcadLWPolyline(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -10709,11 +10796,14 @@ class IAcadLeader(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -10910,11 +11000,14 @@ class IAcadLine(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -11248,11 +11341,14 @@ class IAcadLoftedSurface(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -11480,11 +11576,14 @@ class IAcadMInsertBlock(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -11732,11 +11831,14 @@ class IAcadMLeader(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -12167,11 +12269,14 @@ class IAcadMLine(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -12343,11 +12448,14 @@ class IAcadMText(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -13499,11 +13607,14 @@ class IAcadNurbSurface(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -13732,11 +13843,14 @@ class IAcadOle(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -13931,11 +14045,14 @@ class IAcadPViewport(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -14845,11 +14962,14 @@ class IAcadPlaneSurface(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -15312,11 +15432,14 @@ class IAcadPoint(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -15492,11 +15615,14 @@ class IAcadPointCloud(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -15684,11 +15810,14 @@ class IAcadPointCloudEx(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -15869,11 +15998,14 @@ class IAcadPointCloudEx2(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -16061,11 +16193,14 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -16251,11 +16386,14 @@ class IAcadPolygonMesh(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -16465,11 +16603,14 @@ class IAcadPolyline(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -17392,11 +17533,14 @@ class IAcadRasterImage(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -17586,11 +17730,14 @@ class IAcadRay(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -17765,11 +17912,14 @@ class IAcadRegion(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -18082,11 +18232,14 @@ class IAcadRevolvedSurface(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -18300,11 +18453,14 @@ class IAcadSection(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -18531,11 +18687,14 @@ class IAcadSection2(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -19344,11 +19503,14 @@ class IAcadShape(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -19530,11 +19692,14 @@ class IAcadSolid(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -19849,11 +20014,14 @@ class IAcadSpline(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -20086,11 +20254,14 @@ class IAcadSubDMesh(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -20600,11 +20771,14 @@ class IAcadSurface(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -20779,11 +20953,14 @@ class IAcadSweptSurface(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -21497,11 +21674,14 @@ class IAcadTable(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -22434,11 +22614,14 @@ class IAcadText(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -22799,11 +22982,14 @@ class IAcadTolerance(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -23203,11 +23389,14 @@ class IAcadTrace(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -23537,11 +23726,14 @@ class IAcadUnderlay(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -24279,11 +24471,14 @@ class IAcadWipeout(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -24544,11 +24739,14 @@ class IAcadXline(DispatchBaseClass):
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a 3D line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
