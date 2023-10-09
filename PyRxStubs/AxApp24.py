@@ -24,10 +24,26 @@ MinorVersion = 0
 LibraryFlags = 8
 LCID = 0x0
 
-def VTR8ArrayOrVal(__value):
-    if isinstance(__value, list) or isinstance(__value, tuple):
-        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, __value)
-    return __value
+def VTR8ArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, __values)
+    return __values
+
+def VTI2ArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_I2, __values)
+    return __values
+
+def VTVARArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, __values)
+    return __values
+
+def VTDISPArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_DISPATCH, __values)
+    return __values
+
 
 class constants:
     acCubicSpline3DPoly           =2          # from enum Ac3DPolylineType
@@ -19243,8 +19259,8 @@ class IAcadSelectionSet(DispatchBaseClass):
 
     def AddItems(self, pSelSet=defaultNamedNotOptArg):
         'Adds one or more objects to the specified selection set'
-        return self._oleobj_.InvokeTypes(7, LCID, 1, (24, 0), ((12, 1),),pSelSet
-            )
+        pSelSet = VTDISPArrayOrVal(pSelSet)
+        return self._oleobj_.InvokeTypes(7, LCID, 1, (24, 0), ((12, 1),),pSelSet)
 
     def Clear(self):
         'Clears the specified selection set of all items'
@@ -19268,26 +19284,40 @@ class IAcadSelectionSet(DispatchBaseClass):
 
     def RemoveItems(self, Objects=defaultNamedNotOptArg):
         'Removes specified items from the group or selection set'
+        pSelSet = VTDISPArrayOrVal(pSelSet)
         return self._oleobj_.InvokeTypes(8, LCID, 1, (24, 0), ((12, 1),),Objects)
 
-    def Select(self, Mode=defaultNamedNotOptArg, Point1=defaultNamedOptArg, Point2=defaultNamedOptArg, FilterType=defaultNamedOptArg
-            , FilterData=defaultNamedOptArg):
+    def Select(self, Mode=defaultNamedNotOptArg, Point1=defaultNamedOptArg, Point2=defaultNamedOptArg,
+               FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
         'Selects objects and places them into a selection set'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        FilterType = VTI2ArrayOrVal(FilterType)
+        FilterData = VTVARArrayOrVal(FilterData)
         return self._oleobj_.InvokeTypes(10, LCID, 1, (24, 0), ((3, 1), (12, 17), (12, 17), (12, 17), (12, 17)),Mode
             , Point1, Point2, FilterType, FilterData)
 
     def SelectAtPoint(self, Point=defaultNamedNotOptArg, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
         'Selects an object passing through a given point and places it into a selection set'
+        Point = VTR8ArrayOrVal(Point)
+        FilterType = VTI2ArrayOrVal(FilterType)
+        FilterData = VTVARArrayOrVal(FilterData)
         return self._oleobj_.InvokeTypes(11, LCID, 1, (24, 0), ((12, 1), (12, 17), (12, 17)),Point
             , FilterType, FilterData)
 
-    def SelectByPolygon(self, Mode=defaultNamedNotOptArg, PointsList=defaultNamedNotOptArg, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
+    def SelectByPolygon(self, Mode=defaultNamedNotOptArg, PointsList=defaultNamedNotOptArg,
+                        FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
         'Selects entities within a fence and adds them to the selection set'
+        PointsList = VTR8ArrayOrVal(PointsList)
+        FilterType = VTI2ArrayOrVal(FilterType)
+        FilterData = VTVARArrayOrVal(FilterData)
         return self._oleobj_.InvokeTypes(12, LCID, 1, (24, 0), ((3, 1), (12, 1), (12, 17), (12, 17)),Mode
             , PointsList, FilterType, FilterData)
 
     def SelectOnScreen(self, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
         'Prompts the user to pick an object from the screen'
+        FilterType = VTI2ArrayOrVal(FilterType)
+        FilterData = VTVARArrayOrVal(FilterData)
         return self._oleobj_.InvokeTypes(13, LCID, 1, (24, 0), ((12, 17), (12, 17)),FilterType
             , FilterData)
 
