@@ -24,6 +24,11 @@ MinorVersion = 0
 LibraryFlags = 8
 LCID = 0x0
 
+def VTR8ArrayOrVal(__value):
+    if isinstance(__value, list) or isinstance(__value, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, __value)
+    return __value
+
 class constants:
     acCubicSpline3DPoly           =2          # from enum Ac3DPolylineType
     acQuadSpline3DPoly            =1          # from enum Ac3DPolylineType
@@ -10733,6 +10738,18 @@ class IAcadLine(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #IAcadLine override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'StartPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Angle": (8, 2, (5, 0), (), "Angle", None),
