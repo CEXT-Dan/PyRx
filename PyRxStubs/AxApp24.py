@@ -944,14 +944,12 @@ class IAcad3DFace(DispatchBaseClass):
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
         'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
-            , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
-            )
+            , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels)
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
         'Specifies the coordinate of a single vertex in the object'
-        return self._ApplyTypes_(8, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
-            )
+        return self._ApplyTypes_(8, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index)
 
     def Copy(self):
         'Copies the entity object.'
@@ -983,8 +981,7 @@ class IAcad3DFace(DispatchBaseClass):
 
     def GetInvisibleEdge(self, Index=defaultNamedNotOptArg):
         'Gets the visibility status for the edge.'
-        return self._oleobj_.InvokeTypes(6, LCID, 1, (11, 0), ((3, 1),),Index
-            )
+        return self._oleobj_.InvokeTypes(6, LCID, 1, (11, 0), ((3, 1),),Index)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
         'Gets the extended data (XData) associated with an object'
@@ -993,24 +990,28 @@ class IAcad3DFace(DispatchBaseClass):
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
         'Intersects with the input entity object.'
-        return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)), 'IntersectWith', None,IntersectObject
-            , option)
+        return self._ApplyTypes_(1298, 1, (12, 0), ((9, 1), (3, 1)),
+                        'IntersectWith', None,IntersectObject, option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
-        ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
-            , Point2)
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),
+                    Point1, Point2)
         if ret is not None:
             ret = Dispatch(ret, 'Mirror', None)
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1019,11 +1020,14 @@ class IAcad3DFace(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -1040,6 +1044,7 @@ class IAcad3DFace(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(8, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -1055,8 +1060,7 @@ class IAcad3DFace(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -1125,8 +1129,7 @@ class IAcad3DPolyline(DispatchBaseClass):
 
     def AppendVertex(self, vertex=defaultNamedNotOptArg):
         'Appends a vertex to the 3dPolyline.'
-        return self._oleobj_.InvokeTypes(2, LCID, 1, (24, 0), ((12, 1),),vertex
-            )
+        return self._oleobj_.InvokeTypes(2, LCID, 1, (24, 0), ((12, 1),),vertex)
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
@@ -1137,14 +1140,12 @@ class IAcad3DPolyline(DispatchBaseClass):
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
         'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
-            , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
-            )
+            , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels)
 
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
         'Specifies the coordinate of a single vertex in the object'
-        return self._ApplyTypes_(4, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
-            )
+        return self._ApplyTypes_(4, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index)
 
     def Copy(self):
         'Copies the entity object.'
@@ -1185,8 +1186,7 @@ class IAcad3DPolyline(DispatchBaseClass):
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
         'Intersects with the input entity object.'
@@ -1195,6 +1195,8 @@ class IAcad3DPolyline(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -1203,6 +1205,9 @@ class IAcad3DPolyline(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1211,11 +1216,14 @@ class IAcad3DPolyline(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -1242,8 +1250,7 @@ class IAcad3DPolyline(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -1316,8 +1323,7 @@ class IAcad3DSolid(DispatchBaseClass):
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
         'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
-            , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
-            )
+            , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels)
 
     def Boolean(self, Operation=defaultNamedNotOptArg, SolidObject=defaultNamedNotOptArg):
         'Performs a boolean operation against another 3dsolid.'
@@ -1365,8 +1371,7 @@ class IAcad3DSolid(DispatchBaseClass):
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
         'Intersects with the input entity object.'
@@ -1375,6 +1380,8 @@ class IAcad3DSolid(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -1383,6 +1390,9 @@ class IAcad3DSolid(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1396,6 +1406,7 @@ class IAcad3DSolid(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -1434,8 +1445,7 @@ class IAcad3DSolid(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -1555,8 +1565,7 @@ class IAcadApplication(DispatchBaseClass):
 
     def Eval(self, Expression=defaultNamedNotOptArg):
         'Evaluates an expression in VBA'
-        return self._oleobj_.InvokeTypes(33, LCID, 1, (24, 0), ((8, 1),),Expression
-            )
+        return self._oleobj_.InvokeTypes(33, LCID, 1, (24, 0), ((8, 1),),Expression)
 
     # Result is of type IAcadState
     def GetAcadState(self):
@@ -1568,8 +1577,7 @@ class IAcadApplication(DispatchBaseClass):
 
     def GetInterfaceObject(self, ProgID=defaultNamedNotOptArg):
         'Accepts a program ID and attempts to load it into AutoCAD as an in-process server'
-        ret = self._oleobj_.InvokeTypes(20, LCID, 1, (9, 0), ((8, 1),),ProgID
-            )
+        ret = self._oleobj_.InvokeTypes(20, LCID, 1, (9, 0), ((8, 1),),ProgID)
         if ret is not None:
             ret = Dispatch(ret, 'GetInterfaceObject', None)
         return ret
@@ -1580,13 +1588,11 @@ class IAcadApplication(DispatchBaseClass):
 
     def LoadArx(self, Name=defaultNamedNotOptArg):
         'Loads the specified AutoCAD ARX application'
-        return self._oleobj_.InvokeTypes(19, LCID, 1, (24, 0), ((8, 1),),Name
-            )
+        return self._oleobj_.InvokeTypes(19, LCID, 1, (24, 0), ((8, 1),),Name)
 
     def LoadDVB(self, Name=defaultNamedNotOptArg):
         'Loads the specified AutoCAD VBA project file'
-        return self._oleobj_.InvokeTypes(30, LCID, 1, (24, 0), ((8, 1),),Name
-            )
+        return self._oleobj_.InvokeTypes(30, LCID, 1, (24, 0), ((8, 1),),Name)
 
     def Quit(self):
         'Closes the drawing file and exits the AutoCAD application'
@@ -1594,24 +1600,20 @@ class IAcadApplication(DispatchBaseClass):
 
     def RunMacro(self, MacroPath=defaultNamedNotOptArg):
         'Runs a VBA macro from the Application object'
-        return self._oleobj_.InvokeTypes(35, LCID, 1, (24, 0), ((8, 1),),MacroPath
-            )
+        return self._oleobj_.InvokeTypes(35, LCID, 1, (24, 0), ((8, 1),),MacroPath)
 
     # The method StatusId is actually a property, but must be used as a method to correctly pass the arguments
     def StatusId(self, VportObj=defaultNamedNotOptArg):
         'Gets the current active status of the viewport'
-        return self._oleobj_.InvokeTypes(17, LCID, 2, (11, 0), ((9, 1),),VportObj
-            )
+        return self._oleobj_.InvokeTypes(17, LCID, 2, (11, 0), ((9, 1),),VportObj)
 
     def UnloadArx(self, Name=defaultNamedNotOptArg):
         'Unloads the specified AutoCAD ARX application'
-        return self._oleobj_.InvokeTypes(23, LCID, 1, (24, 0), ((8, 1),),Name
-            )
+        return self._oleobj_.InvokeTypes(23, LCID, 1, (24, 0), ((8, 1),),Name)
 
     def UnloadDVB(self, Name=defaultNamedNotOptArg):
         'Unloads the specified AutoCAD VBA project file'
-        return self._oleobj_.InvokeTypes(31, LCID, 1, (24, 0), ((8, 1),),Name
-            )
+        return self._oleobj_.InvokeTypes(31, LCID, 1, (24, 0), ((8, 1),),Name)
 
     def Update(self):
         'Updates the object to the drawing screen'
@@ -1745,13 +1747,12 @@ class IAcadArc(DispatchBaseClass):
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
         'Gets the extended data (XData) associated with an object'
-        return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
-            , XDataType, XDataValue)
+        return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2),
+                    (16396, 2)), 'GetXData', None,AppName, XDataType, XDataValue)
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
         'Intersects with the input entity object.'
@@ -1760,14 +1761,18 @@ class IAcadArc(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
-        ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
-            , Point2)
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1, Point2)
         if ret is not None:
             ret = Dispatch(ret, 'Mirror', None)
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1776,6 +1781,8 @@ class IAcadArc(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -1786,6 +1793,7 @@ class IAcadArc(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -1938,6 +1946,8 @@ class IAcadAttribute(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -1946,6 +1956,9 @@ class IAcadAttribute(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1954,11 +1967,14 @@ class IAcadAttribute(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -2156,6 +2172,8 @@ class IAcadAttributeReference(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -2164,6 +2182,9 @@ class IAcadAttributeReference(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -2172,11 +2193,14 @@ class IAcadAttributeReference(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -3166,6 +3190,8 @@ class IAcadBlockReference(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -3174,6 +3200,9 @@ class IAcadBlockReference(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -3182,6 +3211,8 @@ class IAcadBlockReference(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -3191,6 +3222,7 @@ class IAcadBlockReference(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -3441,6 +3473,8 @@ class IAcadCircle(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -3449,6 +3483,9 @@ class IAcadCircle(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -3457,6 +3494,8 @@ class IAcadCircle(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -3467,6 +3506,7 @@ class IAcadCircle(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -3641,6 +3681,8 @@ class IAcadComparedReference(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -3649,6 +3691,9 @@ class IAcadComparedReference(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -3657,6 +3702,8 @@ class IAcadComparedReference(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -3666,6 +3713,7 @@ class IAcadComparedReference(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -4192,6 +4240,8 @@ class IAcadDim3PointAngular(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -4200,6 +4250,9 @@ class IAcadDim3PointAngular(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -4208,11 +4261,14 @@ class IAcadDim3PointAngular(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -4483,6 +4539,8 @@ class IAcadDimAligned(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -4491,6 +4549,9 @@ class IAcadDimAligned(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -4499,11 +4560,14 @@ class IAcadDimAligned(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -4828,6 +4892,8 @@ class IAcadDimAngular(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -4836,6 +4902,9 @@ class IAcadDimAngular(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -4844,11 +4913,14 @@ class IAcadDimAngular(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -5121,6 +5193,8 @@ class IAcadDimArcLength(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -5129,6 +5203,9 @@ class IAcadDimArcLength(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -5137,11 +5214,14 @@ class IAcadDimArcLength(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -5472,6 +5552,8 @@ class IAcadDimDiametric(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -5480,6 +5562,9 @@ class IAcadDimDiametric(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -5488,11 +5573,14 @@ class IAcadDimDiametric(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -5784,6 +5872,8 @@ class IAcadDimOrdinate(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -5792,6 +5882,9 @@ class IAcadDimOrdinate(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -5800,11 +5893,14 @@ class IAcadDimOrdinate(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -6069,6 +6165,8 @@ class IAcadDimRadial(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -6077,6 +6175,9 @@ class IAcadDimRadial(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -6085,11 +6186,14 @@ class IAcadDimRadial(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -6375,6 +6479,8 @@ class IAcadDimRadialLarge(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -6383,6 +6489,9 @@ class IAcadDimRadialLarge(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -6391,11 +6500,14 @@ class IAcadDimRadialLarge(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -6678,6 +6790,8 @@ class IAcadDimRotated(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -6686,6 +6800,9 @@ class IAcadDimRotated(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -6694,11 +6811,14 @@ class IAcadDimRotated(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -7168,6 +7288,8 @@ class IAcadDimension(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -7176,6 +7298,9 @@ class IAcadDimension(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -7184,11 +7309,14 @@ class IAcadDimension(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -7700,6 +7828,8 @@ class IAcadDwfUnderlay(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -7708,6 +7838,9 @@ class IAcadDwfUnderlay(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -7716,11 +7849,14 @@ class IAcadDwfUnderlay(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -7920,6 +8056,8 @@ class IAcadEllipse(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -7928,6 +8066,9 @@ class IAcadEllipse(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -7936,6 +8077,8 @@ class IAcadEllipse(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -7946,6 +8089,7 @@ class IAcadEllipse(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -8105,6 +8249,8 @@ class IAcadEntity(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -8113,6 +8259,9 @@ class IAcadEntity(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -8121,11 +8270,14 @@ class IAcadEntity(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -8286,6 +8438,8 @@ class IAcadExternalReference(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -8294,6 +8448,9 @@ class IAcadExternalReference(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -8302,6 +8459,8 @@ class IAcadExternalReference(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -8311,6 +8470,7 @@ class IAcadExternalReference(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -8474,6 +8634,8 @@ class IAcadExtrudedSurface(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -8482,6 +8644,9 @@ class IAcadExtrudedSurface(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -8490,11 +8655,14 @@ class IAcadExtrudedSurface(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -8650,6 +8818,8 @@ class IAcadGeoPositionMarker(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -8658,6 +8828,9 @@ class IAcadGeoPositionMarker(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -8666,11 +8839,14 @@ class IAcadGeoPositionMarker(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -8849,6 +9025,8 @@ class IAcadGeomapImage(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -8857,6 +9035,9 @@ class IAcadGeomapImage(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -8865,11 +9046,14 @@ class IAcadGeomapImage(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -9269,6 +9453,8 @@ class IAcadHatch(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -9277,6 +9463,9 @@ class IAcadHatch(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -9285,11 +9474,14 @@ class IAcadHatch(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -9471,6 +9663,8 @@ class IAcadHelix(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -9479,6 +9673,9 @@ class IAcadHelix(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -9487,11 +9684,14 @@ class IAcadHelix(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -9784,6 +9984,8 @@ class IAcadLWPolyline(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -9792,6 +9994,9 @@ class IAcadLWPolyline(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -9800,6 +10005,8 @@ class IAcadLWPolyline(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -9810,6 +10017,7 @@ class IAcadLWPolyline(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -10467,6 +10675,8 @@ class IAcadLeader(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -10475,6 +10685,9 @@ class IAcadLeader(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -10483,11 +10696,14 @@ class IAcadLeader(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -10655,6 +10871,8 @@ class IAcadLine(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -10663,6 +10881,9 @@ class IAcadLine(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -10671,6 +10892,8 @@ class IAcadLine(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -10681,6 +10904,7 @@ class IAcadLine(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -10990,6 +11214,8 @@ class IAcadLoftedSurface(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -10998,6 +11224,9 @@ class IAcadLoftedSurface(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11006,11 +11235,14 @@ class IAcadLoftedSurface(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -11210,6 +11442,8 @@ class IAcadMInsertBlock(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -11218,6 +11452,9 @@ class IAcadMInsertBlock(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11226,6 +11463,8 @@ class IAcadMInsertBlock(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -11235,6 +11474,7 @@ class IAcadMInsertBlock(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -11448,6 +11688,8 @@ class IAcadMLeader(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -11456,6 +11698,9 @@ class IAcadMLeader(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11464,6 +11709,8 @@ class IAcadMLeader(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -11479,6 +11726,7 @@ class IAcadMLeader(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -11885,6 +12133,8 @@ class IAcadMLine(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -11893,6 +12143,9 @@ class IAcadMLine(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11901,11 +12154,14 @@ class IAcadMLine(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -12053,6 +12309,8 @@ class IAcadMText(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12061,6 +12319,9 @@ class IAcadMText(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -12069,11 +12330,14 @@ class IAcadMText(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -13201,6 +13465,8 @@ class IAcadNurbSurface(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13209,6 +13475,9 @@ class IAcadNurbSurface(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -13217,11 +13486,14 @@ class IAcadNurbSurface(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -13426,6 +13698,8 @@ class IAcadOle(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13434,6 +13708,9 @@ class IAcadOle(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -13442,11 +13719,14 @@ class IAcadOle(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -13617,6 +13897,8 @@ class IAcadPViewport(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13625,6 +13907,9 @@ class IAcadPViewport(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -13633,11 +13918,14 @@ class IAcadPViewport(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -14523,6 +14811,8 @@ class IAcadPlaneSurface(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -14531,6 +14821,9 @@ class IAcadPlaneSurface(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -14539,11 +14832,14 @@ class IAcadPlaneSurface(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -14982,6 +15278,8 @@ class IAcadPoint(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -14990,6 +15288,9 @@ class IAcadPoint(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -14998,11 +15299,14 @@ class IAcadPoint(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -15154,6 +15458,8 @@ class IAcadPointCloud(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15162,6 +15468,9 @@ class IAcadPointCloud(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15170,11 +15479,14 @@ class IAcadPointCloud(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -15338,6 +15650,8 @@ class IAcadPointCloudEx(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15346,6 +15660,9 @@ class IAcadPointCloudEx(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15354,11 +15671,14 @@ class IAcadPointCloudEx(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -15515,6 +15835,8 @@ class IAcadPointCloudEx2(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15523,6 +15845,9 @@ class IAcadPointCloudEx2(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15531,11 +15856,14 @@ class IAcadPointCloudEx2(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -15699,6 +16027,8 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15707,6 +16037,9 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15715,11 +16048,14 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -15881,6 +16217,8 @@ class IAcadPolygonMesh(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15889,6 +16227,9 @@ class IAcadPolygonMesh(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15897,11 +16238,14 @@ class IAcadPolygonMesh(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -16082,6 +16426,8 @@ class IAcadPolyline(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -16090,6 +16436,9 @@ class IAcadPolyline(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -16098,6 +16447,8 @@ class IAcadPolyline(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -16108,6 +16459,7 @@ class IAcadPolyline(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -17006,6 +17358,8 @@ class IAcadRasterImage(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17014,6 +17368,9 @@ class IAcadRasterImage(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17022,11 +17379,14 @@ class IAcadRasterImage(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -17192,6 +17552,8 @@ class IAcadRay(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17200,6 +17562,9 @@ class IAcadRay(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17208,11 +17573,14 @@ class IAcadRay(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -17363,6 +17731,8 @@ class IAcadRegion(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17371,6 +17741,9 @@ class IAcadRegion(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17379,11 +17752,14 @@ class IAcadRegion(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -17672,6 +18048,8 @@ class IAcadRevolvedSurface(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17680,6 +18058,9 @@ class IAcadRevolvedSurface(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17688,11 +18069,14 @@ class IAcadRevolvedSurface(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -17877,6 +18261,8 @@ class IAcadSection(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17885,6 +18271,9 @@ class IAcadSection(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17893,6 +18282,8 @@ class IAcadSection(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -17903,6 +18294,7 @@ class IAcadSection(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -18100,6 +18492,8 @@ class IAcadSection2(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -18108,6 +18502,9 @@ class IAcadSection2(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -18116,6 +18513,8 @@ class IAcadSection2(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -18126,6 +18525,7 @@ class IAcadSection2(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -18910,6 +19310,8 @@ class IAcadShape(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -18918,6 +19320,9 @@ class IAcadShape(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -18926,11 +19331,14 @@ class IAcadShape(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -19088,6 +19496,8 @@ class IAcadSolid(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -19096,6 +19506,9 @@ class IAcadSolid(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -19104,11 +19517,14 @@ class IAcadSolid(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -19386,6 +19802,8 @@ class IAcadSpline(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -19394,6 +19812,9 @@ class IAcadSpline(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -19402,6 +19823,8 @@ class IAcadSpline(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -19420,6 +19843,7 @@ class IAcadSpline(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -19628,6 +20052,8 @@ class IAcadSubDMesh(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -19636,6 +20062,9 @@ class IAcadSubDMesh(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -19644,11 +20073,14 @@ class IAcadSubDMesh(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -20134,6 +20566,8 @@ class IAcadSurface(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -20142,6 +20576,9 @@ class IAcadSurface(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -20150,11 +20587,14 @@ class IAcadSurface(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -20305,6 +20745,8 @@ class IAcadSweptSurface(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -20313,6 +20755,9 @@ class IAcadSweptSurface(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -20321,11 +20766,14 @@ class IAcadSweptSurface(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -20991,6 +21439,8 @@ class IAcadTable(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -20999,6 +21449,9 @@ class IAcadTable(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -21007,6 +21460,8 @@ class IAcadTable(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -21036,6 +21491,7 @@ class IAcadTable(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -21944,6 +22400,8 @@ class IAcadText(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -21952,6 +22410,9 @@ class IAcadText(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -21960,11 +22421,14 @@ class IAcadText(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -22301,6 +22765,8 @@ class IAcadTolerance(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -22309,6 +22775,9 @@ class IAcadTolerance(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -22317,11 +22786,14 @@ class IAcadTolerance(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -22697,6 +23169,8 @@ class IAcadTrace(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -22705,6 +23179,9 @@ class IAcadTrace(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -22713,11 +23190,14 @@ class IAcadTrace(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -23023,6 +23503,8 @@ class IAcadUnderlay(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -23031,6 +23513,9 @@ class IAcadUnderlay(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -23039,11 +23524,14 @@ class IAcadUnderlay(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -23757,6 +24245,8 @@ class IAcadWipeout(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -23765,6 +24255,9 @@ class IAcadWipeout(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -23773,11 +24266,14 @@ class IAcadWipeout(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
@@ -24009,6 +24505,8 @@ class IAcadXline(DispatchBaseClass):
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Mirrors selected objects about a line.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -24017,6 +24515,9 @@ class IAcadXline(DispatchBaseClass):
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Mirrors selected objects about a plane defined by three points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -24025,6 +24526,8 @@ class IAcadXline(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -24035,6 +24538,7 @@ class IAcadXline(DispatchBaseClass):
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
