@@ -168,7 +168,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbAbstractViewTable {lvalue},class PyDbAbstractViewTableRecord)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -261,7 +261,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self, *args, **kwargs)-> bool :
@@ -278,7 +278,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -374,7 +374,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -389,7 +389,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -398,7 +398,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toDict (self, *args, **kwargs)-> dict :
@@ -425,7 +425,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -441,7 +441,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -558,13 +558,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getUcs (self: PyDbAbstractViewTableRecord)-> tuple :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -681,7 +681,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -747,7 +747,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setName (self: SymbolTableRecord,name: str)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPerspectiveEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -807,7 +807,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def sunId (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def target (self: PyDbAbstractViewTableRecord)-> PyGe.Point3d :
@@ -846,7 +846,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -1032,7 +1032,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -1271,13 +1271,13 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -1484,7 +1484,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -1738,7 +1738,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setOblique(class PyDbAlignedDimension {lvalue},double)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -1922,7 +1922,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def suppressZeroInches (self: Dimension)-> bool :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
@@ -1985,7 +1985,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def xLine1Point (self, *args, **kwargs)-> PyGe.Point3d :
@@ -2279,7 +2279,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,double,double,double)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -2491,13 +2491,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -2662,7 +2662,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -2719,7 +2719,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setNormal (self: Arc,val:PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -2765,7 +2765,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def startAngle (self: Arc)-> float :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def thickness (self: Arc)-> float :
@@ -2798,7 +2798,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -2839,7 +2839,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -3102,7 +3102,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
@@ -3114,7 +3114,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool hasLeader(class PyDbArcDimension {lvalue})'''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -3321,7 +3321,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -3605,7 +3605,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setNormal(class PyDbDimension {lvalue},class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -3789,7 +3789,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def suppressZeroInches (self: Dimension)-> bool :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
@@ -3852,7 +3852,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def xLine1Point (self, *args, **kwargs)-> PyGe.Point3d :
@@ -4023,7 +4023,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -4173,13 +4173,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -4386,7 +4386,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -4464,7 +4464,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setOblique (self: Text,val : float)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -4531,7 +4531,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def tag (self: AttributeDefinition)-> str :
@@ -4579,7 +4579,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -4610,7 +4610,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -4760,13 +4760,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -4973,7 +4973,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -5059,7 +5059,7 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setOblique (self: Text,val : float)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -5117,7 +5117,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def tag (self: AttributeReference)-> str :
@@ -5165,7 +5165,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -5181,7 +5181,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -5319,13 +5319,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -5475,7 +5475,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -5517,7 +5517,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -5551,7 +5551,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -5578,7 +5578,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -5594,7 +5594,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -5732,13 +5732,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -5888,7 +5888,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -5930,7 +5930,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -5964,7 +5964,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -5991,7 +5991,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -6022,7 +6022,7 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class PyDbObjectId)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -6169,13 +6169,13 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -6337,7 +6337,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -6394,7 +6394,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setNormal (self: BlockReference,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -6437,7 +6437,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -6467,7 +6467,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -6600,7 +6600,7 @@ class BlockTable:
     def add (self: BlockTable,block : BlockTableRecord)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -6681,7 +6681,7 @@ class BlockTable:
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self, *args, **kwargs)-> bool :
@@ -6698,7 +6698,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -6794,7 +6794,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -6809,7 +6809,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -6818,7 +6818,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toDict (self, *args, **kwargs)-> dict :
@@ -6845,7 +6845,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -6856,7 +6856,7 @@ class BlockTableRecord:
     def addAnnoScalestoBlkRefs (self: BlockTableRecord,scale : bool)-> None :
       '''                             '''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -6978,7 +6978,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def getPreviewIcon (self: BlockTableRecord)-> object :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasAttributeDefinitions (self: BlockTableRecord)-> bool :
@@ -6987,7 +6987,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasPreviewIcon (self: BlockTableRecord)-> bool :
@@ -7131,7 +7131,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -7179,7 +7179,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def setOrigin (self: BlockTableRecord,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPathName (self: BlockTableRecord,val : str)-> None :
@@ -7191,7 +7191,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -7212,7 +7212,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def xrefDatabase (self: BlockTableRecord,val : bool)-> PyDb.Database :
@@ -7244,7 +7244,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -7382,13 +7382,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -7538,7 +7538,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -7580,7 +7580,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -7614,7 +7614,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -7641,7 +7641,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -9073,7 +9073,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,double)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -9288,13 +9288,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -9456,7 +9456,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -9516,7 +9516,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setNormal (self: Circle,val:PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -9556,7 +9556,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def thickness (self: Circle)-> float :
@@ -9586,7 +9586,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -10350,11 +10350,8 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class PyDbObjectId namedObjDict()'''
     ...
-    def openDbEntities (self, *args, **kwargs)-> list :
-      '''openDbEntities( (list)arg1, (OpenMode)arg2, (bool)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list openDbEntities(class boost::python::list,enum AcDb::OpenMode,bool)'''
+    def openDbEntities (ids: list[PyDb.ObjectId],mode: OpenMode=kForRead,erased: bool=False)-> list :
+      '''                             '''
     ...
     def openDbEntity (self, *args, **kwargs)-> PyDb.Entity :
       '''openDbEntity( (ObjectId)arg1, (OpenMode)arg2, (bool)arg3) -> Entity :
@@ -10368,11 +10365,8 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class PyDbObject openDbObject(class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
-    def openDbObjects (self, *args, **kwargs)-> list :
-      '''openDbObjects( (list)arg1, (OpenMode)arg2, (bool)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list openDbObjects(class boost::python::list,enum AcDb::OpenMode,bool)'''
+    def openDbObjects (ids: list[PyDb.ObjectId],mode: OpenMode=kForRead,erased: bool=False)-> list :
+      '''                             '''
     ...
     def postDimAssoc (self, *args, **kwargs)-> PyDb.ObjectId :
       '''postDimAssoc( (ObjectId)arg1, (DimAssoc)arg2) -> ObjectId :
@@ -10535,7 +10529,7 @@ class Curve:
     def __init__ (self: Curve,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -10741,13 +10735,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -10903,7 +10897,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -10951,7 +10945,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -10985,7 +10979,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -11012,7 +11006,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -12620,10 +12614,10 @@ setCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2, (str)arg3, (str)arg4
     ...
 
 class DbObject:
-    def __init__ (self: DbObject,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+    def __init__ (self: DbObject,id: PyDb.ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -12698,13 +12692,13 @@ class DbObject:
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -12794,7 +12788,7 @@ class DbObject:
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -12809,7 +12803,7 @@ class DbObject:
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -12818,7 +12812,7 @@ class DbObject:
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -12839,7 +12833,7 @@ class DbObject:
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -12959,7 +12953,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -13216,13 +13210,13 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -13417,7 +13411,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -13677,7 +13671,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setNormal(class PyDbDimension {lvalue},class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -13849,7 +13843,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def suppressZeroInches (self: Dimension)-> bool :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
@@ -13912,7 +13906,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -14119,7 +14113,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -14200,7 +14194,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self: Dictionary,val : str|PyDb.ObjectId)-> bool :
@@ -14209,7 +14203,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -14321,7 +14315,7 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -14342,7 +14336,7 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def setName (self: Dictionary,old : str,new : str)-> bool :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -14351,7 +14345,7 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -14372,7 +14366,7 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -14403,7 +14397,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -14518,7 +14512,7 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
@@ -14530,7 +14524,7 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     C++ signature :
         bool hasOopsWatcher(class PyDbDimAssoc {lvalue})'''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -14672,7 +14666,7 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
     C++ signature :
         void removeOopsWatcher(class PyDbDimAssoc {lvalue})'''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePointRef (self, *args, **kwargs)-> None :
@@ -14717,7 +14711,7 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPointRef (self, *args, **kwargs)-> None :
@@ -14761,7 +14755,7 @@ startOopsWatcher( (DimAssoc)arg1, (bool)arg2) -> None :
     C++ signature :
         void startOopsWatcher(class PyDbDimAssoc {lvalue},bool)'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def swapReferences (self, *args, **kwargs)-> None :
@@ -14834,7 +14828,7 @@ updateDimension( (DimAssoc)arg1, (bool)arg2, (bool)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -15157,7 +15151,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbDimStyleTable {lvalue},class PyDbDimStyleTableRecord)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -15250,7 +15244,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self, *args, **kwargs)-> bool :
@@ -15267,7 +15261,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -15363,7 +15357,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -15378,7 +15372,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -15387,7 +15381,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toDict (self, *args, **kwargs)-> dict :
@@ -15414,7 +15408,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -15440,7 +15434,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -15758,13 +15752,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getName (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -15869,7 +15863,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -16124,7 +16118,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setName (self: SymbolTableRecord,name: str)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -16133,7 +16127,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -16154,7 +16148,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -16170,7 +16164,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -16403,13 +16397,13 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -16598,7 +16592,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -16828,7 +16822,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setNormal(class PyDbDimension {lvalue},class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -17000,7 +16994,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def suppressZeroInches (self: Dimension)-> bool :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
@@ -17063,7 +17057,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -18511,7 +18505,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -18729,13 +18723,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -18915,7 +18909,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -18989,7 +18983,7 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setMinorRadius (self: Ellipse,val : real)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -19035,7 +19029,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def startAngle (self: Ellipse)-> float :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -19062,7 +19056,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -19198,7 +19192,7 @@ class Entity:
     def __init__ (self: Entity,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -19324,13 +19318,13 @@ class Entity:
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -19480,7 +19474,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -19522,7 +19516,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -19556,7 +19550,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -19583,7 +19577,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -21933,7 +21927,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -22071,13 +22065,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -22233,7 +22227,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -22275,7 +22269,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -22309,7 +22303,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -22336,7 +22330,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -22382,7 +22376,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,bool,bool,bool,bool)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -22511,13 +22505,13 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def getVertexAt (self: Face,vIndex:int)-> PyGe.Point3d :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -22676,7 +22670,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -22718,7 +22712,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -22755,7 +22749,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -22782,7 +22776,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -22813,7 +22807,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -22942,13 +22936,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getVertexAt (self: FaceRecord,val : int)-> int :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -23107,7 +23101,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -23149,7 +23143,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -23186,7 +23180,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -23213,7 +23207,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -23244,7 +23238,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     C++ signature :
         void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -23403,13 +23397,13 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -23565,7 +23559,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -23643,7 +23637,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setOrientation (self: Fcf,normal:PyGe.Vector3d,direction:PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -23680,7 +23674,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def text (self: Fcf)-> str :
@@ -23713,7 +23707,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -23749,7 +23743,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -23905,13 +23899,13 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getValue(class PyDbField {lvalue})'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -24013,7 +24007,7 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -24052,7 +24046,7 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     C++ signature :
         void setInObject(class PyDbField {lvalue},class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -24067,7 +24061,7 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     C++ signature :
         enum AcDbField::State state(class PyDbField {lvalue})'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -24088,7 +24082,7 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -25548,7 +25542,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -25664,7 +25658,7 @@ append( (Group)arg1, (list)arg2) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbGroup {lvalue})'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self, *args, **kwargs)-> bool :
@@ -25676,7 +25670,7 @@ append( (Group)arg1, (list)arg2) -> None :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -25840,7 +25834,7 @@ removeAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -25942,7 +25936,7 @@ setMaterial( (Group)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setName(class PyDbGroup {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setSelectable (self, *args, **kwargs)-> None :
@@ -25963,7 +25957,7 @@ setMaterial( (Group)arg1, (ObjectId)arg2) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transfer (self, *args, **kwargs)-> None :
@@ -25990,7 +25984,7 @@ setMaterial( (Group)arg1, (ObjectId)arg2) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -26248,7 +26242,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -26547,13 +26541,13 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         enum AcDbHatch::GradientPatternType gradientType(class PyDbHatch {lvalue})'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -26829,7 +26823,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void removeLoopAt(class PyDbHatch {lvalue},int)'''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -26949,7 +26943,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setOriginPoint(class PyDbHatch {lvalue},class AcGePoint2d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPattern (self, *args, **kwargs)-> None :
@@ -27025,7 +27019,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -27052,7 +27046,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -27861,7 +27855,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -28127,7 +28121,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
@@ -28136,7 +28130,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def hasFitData (self: Spline)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -28342,7 +28336,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeFitPointAt (self: Spline,idx:int)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -28478,7 +28472,7 @@ setNurbsData( (Spline)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list
     C++ signature :
         void setNurbsData(class PyDbSpline {lvalue},int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list,double,double)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -28554,7 +28548,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         class AcGePoint3d startPoint(class PyDbHelix {lvalue})'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toPolyline (self: Spline)-> PyDb.Polyline :
@@ -28629,7 +28623,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -28836,7 +28830,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -28974,13 +28968,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -29130,7 +29124,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -29172,7 +29166,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -29206,7 +29200,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -29233,7 +29227,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -29862,7 +29856,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbLayerTable {lvalue},class PyDbLayerTableRecord)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -29955,7 +29949,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self, *args, **kwargs)-> bool :
@@ -29972,7 +29966,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -30068,7 +30062,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -30083,7 +30077,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -30092,7 +30086,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toDict (self, *args, **kwargs)-> dict :
@@ -30119,7 +30113,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -30148,7 +30142,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -30243,7 +30237,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def getName (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasAnyOverrides (self, *args, **kwargs)-> bool :
@@ -30261,7 +30255,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     C++ signature :
         bool hasOverrides(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -30453,7 +30447,7 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
     C++ signature :
         void removeLinetypeOverride(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removePlotStyleOverride (self, *args, **kwargs)-> None :
@@ -30559,7 +30553,7 @@ setLineWeight( (LayerTableRecord)arg1, (LineWeight)arg2, (ObjectId)arg3) -> None
     def setName (self: SymbolTableRecord,name: str)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -30606,7 +30600,7 @@ setTransparency( (LayerTableRecord)arg1, (Transparency)arg2, (ObjectId)arg3) -> 
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transparency (self, *args, **kwargs)-> PyDb.Transparency :
@@ -30638,7 +30632,7 @@ transparency( (LayerTableRecord)arg1, (ObjectId)arg2) -> Transparency :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -30664,7 +30658,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -30883,13 +30877,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::list getViewportArray(class PyDbLayout {lvalue})'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -31062,7 +31056,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -31107,7 +31101,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setLayoutName(class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotHidden (self, *args, **kwargs)-> None :
@@ -31235,7 +31229,7 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         enum AcDbPlotSettings::StdScaleType stdScaleType(class PyDbPlotSettings {lvalue})'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -31262,7 +31256,7 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -31483,7 +31477,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -31850,7 +31844,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         void goodbye(class PyDbLeader {lvalue},class PyDbObject)'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasArrowHead (self, *args, **kwargs)-> bool :
@@ -31868,7 +31862,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         bool hasHookLine(class PyDbLeader {lvalue})'''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -32060,7 +32054,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void removeLastVertex(class PyDbLeader {lvalue})'''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -32211,7 +32205,7 @@ setDimldrblk( (Leader)arg1, (str)arg2) -> None :
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlane (self, *args, **kwargs)-> None :
@@ -32275,7 +32269,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -32308,7 +32302,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -32339,7 +32333,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -32548,13 +32542,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -32713,7 +32707,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -32767,7 +32761,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setNormal (self: Line,val:PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -32810,7 +32804,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def startPoint (self: Line)-> PyGe.Point3d :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def thickness (self: Line)-> float :
@@ -32840,7 +32834,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -32881,7 +32875,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -33126,13 +33120,13 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -33321,7 +33315,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -33563,7 +33557,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setNormal(class PyDbDimension {lvalue},class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -33759,7 +33753,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def suppressZeroInches (self: Dimension)-> bool :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
@@ -33822,7 +33816,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def xLine1End (self, *args, **kwargs)-> PyGe.Point3d :
@@ -34187,7 +34181,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbLinetypeTable {lvalue},class PyDbLinetypeTableRecord)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -34280,7 +34274,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self, *args, **kwargs)-> bool :
@@ -34297,7 +34291,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -34393,7 +34387,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -34408,7 +34402,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -34417,7 +34411,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toDict (self, *args, **kwargs)-> dict :
@@ -34444,7 +34438,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -34470,7 +34464,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -34557,13 +34551,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getName (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -34671,7 +34665,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -34713,7 +34707,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setNumDashes(class PyDbLinetypeTableRecord {lvalue},int)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPatternLength (self, *args, **kwargs)-> None :
@@ -34818,7 +34812,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAt (self, *args, **kwargs)-> str :
@@ -34845,7 +34839,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -34871,7 +34865,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -35009,13 +35003,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -35171,7 +35165,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -35213,7 +35207,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -35247,7 +35241,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -35274,7 +35268,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -35305,7 +35299,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -35458,13 +35452,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -35626,7 +35620,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -35695,7 +35689,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setNormal (self: BlockReference,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -35744,7 +35738,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -35774,7 +35768,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -35830,7 +35824,7 @@ addLeaderLine( (MLeader)arg1, (Point3d)arg2) -> int :
     C++ signature :
         int addLeaderLine(class PyDbMLeader {lvalue},class AcGePoint3d)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -36193,7 +36187,7 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
     C++ signature :
         class AcGePoint3d getVertex(class PyDbMLeader {lvalue},int,int)'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasContent (self, *args, **kwargs)-> bool :
@@ -36205,7 +36199,7 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -36492,7 +36486,7 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
     C++ signature :
         void removeLeaderLineRefAssoc(class PyDbMLeader {lvalue},int)'''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -36747,7 +36741,7 @@ setOverride( (MLeader)arg1, (MLeaderPropertyOverrideType)arg2, (bool)arg3) -> No
     C++ signature :
         void setOverride(class PyDbMLeader {lvalue},enum AcDbMLeader::PropertyOverrideType,bool)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlane (self, *args, **kwargs)-> None :
@@ -36858,7 +36852,7 @@ setTextAttachmentType( (MLeader)arg1, (MLeaderTextAttachmentType)arg2, (MLeaderL
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAlignmentType (self, *args, **kwargs)-> PyDb.MLeaderTextAlignmentType :
@@ -36938,7 +36932,7 @@ textAttachmentType( (MLeader)arg1, (MLeaderLeaderDirectionType)arg2) -> MLeaderT
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -38082,7 +38076,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -38318,13 +38312,13 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbMLeaderStyle {lvalue})'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -38468,7 +38462,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -38696,7 +38690,7 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
     C++ signature :
         void setName(class PyDbMLeaderStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setScale (self, *args, **kwargs)-> None :
@@ -38765,7 +38759,7 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAlignAlwaysLeft (self, *args, **kwargs)-> bool :
@@ -38834,7 +38828,7 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -39369,7 +39363,7 @@ class MText:
     def actualWidth (self: MText)-> float :
       '''                             '''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -39558,13 +39552,13 @@ class MText:
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -39732,7 +39726,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -39849,7 +39843,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setNormal (self: MText,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -39901,7 +39895,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def text (self: MText)-> str :
@@ -39943,7 +39937,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -40661,7 +40655,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -40847,13 +40841,13 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -41039,7 +41033,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void removeLastSeg(class PyDbMline {lvalue},class AcGePoint3d {lvalue})'''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -41105,7 +41099,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setNormal(class PyDbMline {lvalue},class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -41181,7 +41175,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool supressStartCaps(class PyDbMline {lvalue})'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -41214,7 +41208,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -41380,7 +41374,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     C++ signature :
         int addElement(class PyDbMlineStyle {lvalue},double,class AcCmColor,class PyDbObjectId {lvalue},bool)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -41515,13 +41509,13 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -41635,7 +41629,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -41715,7 +41709,7 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
     C++ signature :
         void setName(class PyDbMlineStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setShowMiters (self, *args, **kwargs)-> None :
@@ -41784,7 +41778,7 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
     C++ signature :
         bool startSquareCap(class PyDbMlineStyle {lvalue})'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -41805,7 +41799,7 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -41831,7 +41825,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -41969,13 +41963,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -42131,7 +42125,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -42173,7 +42167,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -42207,7 +42201,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -42234,7 +42228,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -42536,7 +42530,7 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     C++ signature :
         void __init__(struct _object * __ptr64,bool,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -42775,13 +42769,13 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -42994,7 +42988,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -43242,7 +43236,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setOrigin(class PyDbOrdinateDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -43426,7 +43420,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def suppressZeroInches (self: Dimension)-> bool :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
@@ -43501,7 +43495,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -44219,7 +44213,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -44330,13 +44324,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getSourceFileName(class PyDbUnderlayDefinition {lvalue})'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -44443,7 +44437,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -44464,7 +44458,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     C++ signature :
         void setItemName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setSourceFileName (self, *args, **kwargs)-> None :
@@ -44479,7 +44473,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def unload (self, *args, **kwargs)-> None :
@@ -44506,7 +44500,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -44532,7 +44526,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -44736,13 +44730,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyUnderlayLayer getUnderlayLayer(class PyDbUnderlayReference {lvalue},int)'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -44952,7 +44946,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -45072,7 +45066,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setNormal(class PyDbUnderlayReference {lvalue},class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -45142,7 +45136,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transform (self, *args, **kwargs)-> PyGe.Matrix3d :
@@ -45187,7 +45181,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -45338,7 +45332,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -45476,13 +45470,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -45638,7 +45632,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -45680,7 +45674,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -45714,7 +45708,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -45741,7 +45735,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -46025,7 +46019,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -46190,13 +46184,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double getStdScale(class PyDbPlotSettings {lvalue})'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -46358,7 +46352,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -46385,7 +46379,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotHidden (self, *args, **kwargs)-> None :
@@ -46501,7 +46495,7 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         enum AcDbPlotSettings::StdScaleType stdScaleType(class PyDbPlotSettings {lvalue})'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -46528,7 +46522,7 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -46973,7 +46967,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -47102,13 +47096,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -47264,7 +47258,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -47312,7 +47306,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setNormal (self: Point,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -47352,7 +47346,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def thickness (self: Point)-> float :
@@ -47382,7 +47376,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -47423,7 +47417,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -47674,13 +47668,13 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -47869,7 +47863,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -48117,7 +48111,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setNormal(class PyDbDimension {lvalue},class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -48301,7 +48295,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def suppressZeroInches (self: Dimension)-> bool :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
@@ -48364,7 +48358,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def xLine1Point (self, *args, **kwargs)-> PyGe.Point3d :
@@ -48696,7 +48690,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -48822,13 +48816,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -48981,7 +48975,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -49023,7 +49017,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -49060,7 +49054,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -49087,7 +49081,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -49118,7 +49112,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -49244,13 +49238,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -49403,7 +49397,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -49445,7 +49439,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -49482,7 +49476,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -49512,7 +49506,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -49548,7 +49542,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -49790,7 +49784,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasBulges (self: Polyline)-> bool :
@@ -49799,7 +49793,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasPlinegen (self: Polyline)-> bool :
@@ -49985,7 +49979,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -50057,7 +50051,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setNormal (self: Polyline,val:PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlinegen (self: Polyline,val:bool)-> None :
@@ -50103,7 +50097,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def thickness (self: Polyline)-> float :
@@ -50142,7 +50136,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -50173,7 +50167,7 @@ __init__( (object)arg1, (Poly2dType)arg2, (list)arg3, (bool)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,enum AcDb::Poly2dType,class boost::python::list,bool)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -50420,13 +50414,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -50647,7 +50641,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -50743,7 +50737,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setNormal(class PyDb2dPolyline {lvalue},class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -50806,7 +50800,7 @@ splineFit( (Polyline2d)arg1, (Poly2dType)arg2, (DxfCode)arg3) -> None :
     C++ signature :
         void straighten(class PyDb2dPolyline {lvalue})'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def thickness (self, *args, **kwargs)-> float :
@@ -50851,7 +50845,7 @@ splineFit( (Polyline2d)arg1, (Poly2dType)arg2, (DxfCode)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -50882,7 +50876,7 @@ __init__( (object)arg1, (Poly3dType)arg2, (list)arg3, (bool)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,enum AcDb::Poly3dType,class boost::python::list,bool)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -51105,13 +51099,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -51314,7 +51308,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -51368,7 +51362,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -51425,7 +51419,7 @@ splineFit( (Polyline3d)arg1, (Poly3dType)arg2, (DxfCode)arg3) -> None :
     C++ signature :
         void straighten(class PyDb3dPolyline {lvalue})'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -51458,7 +51452,7 @@ splineFit( (Polyline3d)arg1, (Poly3dType)arg2, (DxfCode)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -51489,7 +51483,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -51615,13 +51609,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -51774,7 +51768,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -51816,7 +51810,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -51853,7 +51847,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -51883,7 +51877,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -51924,7 +51918,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -52181,13 +52175,13 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -52382,7 +52376,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -52642,7 +52636,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setNormal(class PyDbDimension {lvalue},class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -52814,7 +52808,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def suppressZeroInches (self: Dimension)-> bool :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
@@ -52877,7 +52871,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -52918,7 +52912,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -53175,13 +53169,13 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -53388,7 +53382,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -53672,7 +53666,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setOverrideCenterPP(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -53850,7 +53844,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def suppressZeroInches (self: Dimension)-> bool :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
@@ -53913,7 +53907,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -53939,7 +53933,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -54125,13 +54119,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::list getVertices(class PyDbRasterImage {lvalue})'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -54364,7 +54358,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -54478,7 +54472,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool setOrientation(class PyDbRasterImage {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -54542,7 +54536,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -54575,7 +54569,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -54607,7 +54601,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > activeFileName(class PyDbRasterImageDef {lvalue})'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -54718,13 +54712,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -54838,7 +54832,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -54877,7 +54871,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setResolutionMMPerPixel (self, *args, **kwargs)-> None :
@@ -54922,7 +54916,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > suggestName(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def unload (self, *args, **kwargs)-> None :
@@ -54960,7 +54954,7 @@ unload( (RasterImageDef)arg1, (bool)arg2) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -54986,7 +54980,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -55073,13 +55067,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -55169,7 +55163,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -55190,7 +55184,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -55199,7 +55193,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -55220,7 +55214,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -55242,7 +55236,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbRegAppTable {lvalue},class PyDbRegAppTableRecord)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -55335,7 +55329,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self, *args, **kwargs)-> bool :
@@ -55352,7 +55346,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -55448,7 +55442,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -55463,7 +55457,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -55472,7 +55466,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toDict (self, *args, **kwargs)-> dict :
@@ -55499,7 +55493,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -55525,7 +55519,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -55603,13 +55597,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getName (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -55708,7 +55702,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -55726,7 +55720,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setName (self: SymbolTableRecord,name: str)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -55735,7 +55729,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -55756,7 +55750,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -55782,7 +55776,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -55926,13 +55920,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -56088,7 +56082,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -56130,7 +56124,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -56164,7 +56158,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -56191,7 +56185,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -56599,7 +56593,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -56737,13 +56731,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -56899,7 +56893,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -56941,7 +56935,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -56975,7 +56969,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -57002,7 +56996,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -57168,7 +57162,7 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     C++ signature :
         void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -57407,13 +57401,13 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -57620,7 +57614,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -57880,7 +57874,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setOblique(class PyDbRotatedDimension {lvalue},double)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -58070,7 +58064,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def suppressZeroInches (self: Dimension)-> bool :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textAttachment (self: Dimension)-> PyDb.MTextAttachmentPoint :
@@ -58133,7 +58127,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def xLine1Point (self, *args, **kwargs)-> PyGe.Point3d :
@@ -58554,7 +58548,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -58692,13 +58686,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -58848,7 +58842,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -58890,7 +58884,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -58924,7 +58918,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -58951,7 +58945,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -59385,7 +59379,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -59731,13 +59725,13 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -59935,7 +59929,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -59983,7 +59977,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -60064,7 +60058,7 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
     C++ signature :
         void stlOut(class PyDb3dSolid {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,double)'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def taperFaces (self, *args, **kwargs)-> None :
@@ -60109,7 +60103,7 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -60205,7 +60199,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -60441,7 +60435,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
@@ -60450,7 +60444,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def hasFitData (self: Spline)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -60650,7 +60644,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeFitPointAt (self: Spline,idx:int)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -60748,7 +60742,7 @@ setNurbsData( (Spline)arg1, (int)arg2, (bool)arg3, (bool)arg4, (bool)arg5, (list
     C++ signature :
         void setNurbsData(class PyDbSpline {lvalue},int,bool,bool,bool,class boost::python::list,class boost::python::list,class boost::python::list,double,double)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -60788,7 +60782,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toPolyline (self: Spline)-> PyDb.Polyline :
@@ -60827,7 +60821,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -61619,7 +61613,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -61757,13 +61751,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -61919,7 +61913,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -61961,7 +61955,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -61995,7 +61989,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -62022,7 +62016,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -62542,7 +62536,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -62680,13 +62674,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -62842,7 +62836,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -62884,7 +62878,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -62918,7 +62912,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -62945,7 +62939,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -63238,7 +63232,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbSymbolTable {lvalue},class PyDbSymbolTableRecord)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -63331,7 +63325,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self, *args, **kwargs)-> bool :
@@ -63348,7 +63342,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -63444,7 +63438,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -63459,7 +63453,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -63468,7 +63462,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toDict (self, *args, **kwargs)-> dict :
@@ -63495,7 +63489,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -63503,7 +63497,7 @@ class SymbolTableRecord:
     def __init__ (self: SymbolTableRecord,id: ObjectId,mode: OpenMode=kForRead)-> None :
       '''                             '''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -63581,13 +63575,13 @@ class SymbolTableRecord:
     def getName (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -63686,7 +63680,7 @@ class SymbolTableRecord:
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -63704,7 +63698,7 @@ class SymbolTableRecord:
     def setName (self: SymbolTableRecord,name: str)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -63713,7 +63707,7 @@ class SymbolTableRecord:
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -63734,7 +63728,7 @@ class SymbolTableRecord:
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -63760,7 +63754,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -64358,7 +64352,7 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     C++ signature :
         enum AcDb::Visibility gridVisibility(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
@@ -64370,7 +64364,7 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     C++ signature :
         bool hasFormula(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasSubSelection (self, *args, **kwargs)-> bool :
@@ -64745,7 +64739,7 @@ removeDataLink( (Table)arg1, (int)arg2, (int)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -65170,7 +65164,7 @@ setOverride( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (GridPropert
     C++ signature :
         void setOverride(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,enum AcDb::GridProperty)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -65356,7 +65350,7 @@ setTextStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5) -> N
     C++ signature :
         void suppressTitleRow(class PyDbTable {lvalue},bool)'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def tableStyle (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -65486,7 +65480,7 @@ updateDataLink( (Table)arg1, (int)arg2, (int)arg3, (UpdateDirection)arg4, (Updat
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -66162,7 +66156,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -66442,13 +66436,13 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     C++ signature :
         enum AcDb::Visibility gridVisibility(class PyDbTableStyle {lvalue},enum AcDb::GridLineType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -66592,7 +66586,7 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -66795,7 +66789,7 @@ setGridVisibility( (TableStyle)arg1, (Visibility)arg2, (GridLineType)arg3, (str)
     C++ signature :
         void setName(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setRotation (self, *args, **kwargs)-> None :
@@ -66856,7 +66850,7 @@ setTextStyle( (TableStyle)arg1, (ObjectId)arg2, (str)arg3) -> None :
     C++ signature :
         void suppressTitleRow(class PyDbTableStyle {lvalue},bool)'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textHeight (self, *args, **kwargs)-> float :
@@ -66905,7 +66899,7 @@ textStyle( (TableStyle)arg1, (str)arg2) -> ObjectId :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -66941,7 +66935,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -67082,13 +67076,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -67274,7 +67268,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -67337,7 +67331,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setOblique (self: Text,val : float)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -67392,7 +67386,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textString (self: Text)-> str :
@@ -67434,7 +67428,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -67751,7 +67745,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbTextStyleTable {lvalue},class PyDbTextStyleTableRecord)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -67844,7 +67838,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self, *args, **kwargs)-> bool :
@@ -67861,7 +67855,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -67957,7 +67951,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -67972,7 +67966,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -67981,7 +67975,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toDict (self, *args, **kwargs)-> dict :
@@ -68008,7 +68002,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -68034,7 +68028,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -68124,13 +68118,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getName (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -68241,7 +68235,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -68301,7 +68295,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setObliquingAngle(class PyDbTextStyleTableRecord {lvalue},double)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPriorSize (self, *args, **kwargs)-> None :
@@ -68328,7 +68322,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def textSize (self: TextStyleTableRecord)-> float :
@@ -68352,7 +68346,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def xScale (self: TextStyleTableRecord)-> float :
@@ -69062,7 +69056,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId add(class PyDbUCSTable {lvalue},class PyDbUCSTableRecord)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -69155,7 +69149,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def has (self, *args, **kwargs)-> bool :
@@ -69172,7 +69166,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -69268,7 +69262,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -69283,7 +69277,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -69292,7 +69286,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def toDict (self, *args, **kwargs)-> dict :
@@ -69319,7 +69313,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -69345,7 +69339,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -69423,13 +69417,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getName (self: SymbolTableRecord)-> str :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -69531,7 +69525,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -69555,7 +69549,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setOrigin(class PyDbUCSTableRecord {lvalue},class AcGePoint3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setUcsBaseOrigin (self, *args, **kwargs)-> None :
@@ -69582,7 +69576,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def ucsBaseOrigin (self, *args, **kwargs)-> PyGe.Point3d :
@@ -69612,7 +69606,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def yAxis (self: UCSTableRecord)-> PyGe.Vector3d :
@@ -69631,7 +69625,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -69742,13 +69736,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getSourceFileName(class PyDbUnderlayDefinition {lvalue})'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -69855,7 +69849,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -69876,7 +69870,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     C++ signature :
         void setItemName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setSourceFileName (self, *args, **kwargs)-> None :
@@ -69891,7 +69885,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def unload (self, *args, **kwargs)-> None :
@@ -69918,7 +69912,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -69966,7 +69960,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -70170,13 +70164,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyUnderlayLayer getUnderlayLayer(class PyDbUnderlayReference {lvalue},int)'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -70386,7 +70380,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -70506,7 +70500,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setNormal(class PyDbUnderlayReference {lvalue},class AcGeVector3d)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -70576,7 +70570,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transform (self, *args, **kwargs)-> PyGe.Matrix3d :
@@ -70621,7 +70615,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -71107,7 +71101,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -71233,13 +71227,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -71389,7 +71383,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -71431,7 +71425,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -71465,7 +71459,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -71492,7 +71486,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -71528,7 +71522,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -71660,13 +71654,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -71825,7 +71819,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -71873,7 +71867,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -71925,7 +71919,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def startWidth (self: Vertex2d)-> float :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def tangent (self: Vertex2d)-> float :
@@ -71964,7 +71958,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -72118,7 +72112,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -72253,13 +72247,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getUcs (self: PyDbAbstractViewTableRecord)-> tuple :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -72391,7 +72385,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -72484,7 +72478,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setName (self: SymbolTableRecord,name: str)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setParametersFromViewport (self, *args, **kwargs)-> None :
@@ -72553,7 +72547,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def sunId (self: ViewTableRecord)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def target (self: PyDbAbstractViewTableRecord)-> PyGe.Point3d :
@@ -72592,7 +72586,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -72618,7 +72612,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -72894,13 +72888,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         unsigned short gridMajor(class PyDbViewport {lvalue})'''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -73288,7 +73282,7 @@ removeHiddenLines( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void removeModelView(class PyDbViewport {lvalue})'''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
@@ -73622,7 +73616,7 @@ setOff( (Viewport)arg1) -> None :
     C++ signature :
         void setOpaque(class PyDbViewport {lvalue})'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPerspectiveOff (self, *args, **kwargs)-> None :
@@ -73991,7 +73985,7 @@ setUcsIconVisible( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         class PyDbObjectId sunId(class PyDbViewport {lvalue})'''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def syncModelView (self, *args, **kwargs)-> None :
@@ -74090,7 +74084,7 @@ setUcsIconVisible( (Viewport)arg1, (bool)arg2) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -74116,7 +74110,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -74248,13 +74242,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def gridMajor (self: ViewportTableRecord)-> int :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -74415,7 +74409,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -74520,7 +74514,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def setName (self: SymbolTableRecord,name: str)-> None :
       '''                             '''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setPerspectiveEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -74630,7 +74624,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def sunId (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def target (self: PyDbAbstractViewTableRecord)-> PyGe.Point3d :
@@ -74675,7 +74669,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 
@@ -75082,7 +75076,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -75163,13 +75157,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
     ...
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
@@ -75282,7 +75276,7 @@ rbChain( (Xrecord)arg1, (Database)arg2) -> list :
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
@@ -75314,7 +75308,7 @@ setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> None :
     C++ signature :
         void setMergeStyle(class PyDbXrecord {lvalue},enum AcDb::DuplicateRecordCloning)'''
     ...
-    def setOwnerId (self: DbObject,owner: ObjectId)-> None :
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -75329,7 +75323,7 @@ setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> None :
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -75350,7 +75344,7 @@ setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> None :
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
-    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> None :
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
 

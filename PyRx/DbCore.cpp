@@ -81,9 +81,13 @@ void makeDbCoreWrapper()
         .def("loadMlineStyleFile", &DbCore::loadMlineStyleFile).staticmethod("loadMlineStyleFile")
         .def("namedObjDict", &DbCore::namedObjDict).staticmethod("namedObjDict")
         .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
-        .def("openDbObjects", &DbCore::openDbObjects).staticmethod("openDbObjects")
+        .def("openDbObjects", &DbCore::openDbObjects1)
+        .def("openDbObjects", &DbCore::openDbObjects2)
+        .def("openDbObjects", &DbCore::openDbObjects3, DS.SARGS({ "ids: list[PyDb.ObjectId]", "mode: OpenMode=kForRead", "erased: bool=False" })).staticmethod("openDbObjects")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
-        .def("openDbEntities", &DbCore::openDbEntities).staticmethod("openDbEntities")
+        .def("openDbEntities", &DbCore::openDbEntities1)
+        .def("openDbEntities", &DbCore::openDbEntities2)
+        .def("openDbEntities", &DbCore::openDbEntities3, DS.SARGS({ "ids: list[PyDb.ObjectId]", "mode: OpenMode=kForRead", "erased: bool=False" })).staticmethod("openDbEntities")
         .def("postDimAssoc", &DbCore::postDimAssoc1)
         .def("postDimAssoc", &DbCore::postDimAssoc2).staticmethod("postDimAssoc")
         .def("queueAnnotationEntitiesForRegen", &DbCore::queueAnnotationEntitiesForRegen).staticmethod("queueAnnotationEntitiesForRegen")
@@ -520,7 +524,17 @@ PyDbObject DbCore::openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, boo
     return PyDbObject{ pObj, true };
 }
 
-boost::python::list DbCore::openDbObjects(const boost::python::list& ids, AcDb::OpenMode mode, bool erased)
+boost::python::list DbCore::openDbObjects1(const boost::python::list& ids)
+{
+    return openDbObjects3(ids, AcDb::kForRead, false);
+}
+
+boost::python::list DbCore::openDbObjects2(const boost::python::list& ids, AcDb::OpenMode mode)
+{
+    return openDbObjects3(ids, mode, false);
+}
+
+boost::python::list DbCore::openDbObjects3(const boost::python::list& ids, AcDb::OpenMode mode, bool erased)
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -544,7 +558,17 @@ PyDbEntity DbCore::openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, boo
     throw PyNotThatKindOfClass();
 }
 
-boost::python::list DbCore::openDbEntities(const boost::python::list& ids, AcDb::OpenMode mode, bool erased)
+boost::python::list DbCore::openDbEntities1(const boost::python::list& ids)
+{
+    return openDbEntities3(ids, AcDb::kForRead, false);
+}
+
+boost::python::list DbCore::openDbEntities2(const boost::python::list& ids, AcDb::OpenMode mode)
+{
+    return openDbEntities3(ids, mode, false);
+}
+
+boost::python::list DbCore::openDbEntities3(const boost::python::list& ids, AcDb::OpenMode mode, bool erased)
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
