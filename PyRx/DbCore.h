@@ -74,9 +74,13 @@ public:
     static void                 loadMlineStyleFile(const std::string& ltname, const std::string& fname);
     static PyDbObjectId         namedObjDict();
     static PyDbObject           openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    static boost::python::list  openDbObjects(const boost::python::list& id, AcDb::OpenMode mode, bool erased);
+    static boost::python::list  openDbObjects1(const boost::python::list& ids);
+    static boost::python::list  openDbObjects2(const boost::python::list& ids, AcDb::OpenMode mode);
+    static boost::python::list  openDbObjects3(const boost::python::list& ids, AcDb::OpenMode mode, bool erased);
     static PyDbEntity           openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
-    static boost::python::list  openDbEntities(const boost::python::list& ids, AcDb::OpenMode mode, bool erased);
+    static boost::python::list  openDbEntities1(const boost::python::list& ids);
+    static boost::python::list  openDbEntities2(const boost::python::list& ids, AcDb::OpenMode mode);
+    static boost::python::list  openDbEntities3(const boost::python::list& ids, AcDb::OpenMode mode, bool erased);
     static PyDbObjectId         postDimAssoc1(const PyDbObjectId& dimId, PyDbDimAssoc& assos);
     static PyDbObjectId         postDimAssoc2(const PyDbObjectId& dimId, PyDbDimAssoc& assos, bool isActive);
     static void                 queueAnnotationEntitiesForRegen(PyDbDatabase& db);
