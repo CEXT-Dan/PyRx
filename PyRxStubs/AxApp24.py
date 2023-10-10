@@ -1263,6 +1263,7 @@ class IAcad3DPolyline(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(4, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -11114,6 +11115,7 @@ class IAcadLeader(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(67, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -16580,6 +16582,7 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(2, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -16773,6 +16776,7 @@ class IAcadPolygonMesh(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(11, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -16995,6 +16999,7 @@ class IAcadPolyline(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(17, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -17652,8 +17657,7 @@ class IAcadPreferencesProfiles(DispatchBaseClass):
 
     def DeleteProfile(self, ProfileName=defaultNamedNotOptArg):
         'Deletes the specified profile'
-        return self._oleobj_.InvokeTypes(1610743813, LCID, 1, (24, 0), ((8, 1),),ProfileName
-            )
+        return self._oleobj_.InvokeTypes(1610743813, LCID, 1, (24, 0), ((8, 1),),ProfileName)
 
     def ExportProfile(self, ProfileName=defaultNamedNotOptArg, RegFile=defaultNamedNotOptArg):
         'Exports the active profile so it can be shared with other users'
@@ -17662,8 +17666,7 @@ class IAcadPreferencesProfiles(DispatchBaseClass):
 
     def GetAllProfileNames(self, pNames=pythoncom.Missing):
         'Gets all available profiles for the system'
-        return self._ApplyTypes_(1610743817, 1, (24, 0), ((16396, 2),), 'GetAllProfileNames', None,pNames
-            )
+        return self._ApplyTypes_(1610743817, 1, (24, 0), ((16396, 2),), 'GetAllProfileNames', None,pNames)
 
     def ImportProfile(self, ProfileName=defaultNamedNotOptArg, RegFile=defaultNamedNotOptArg, IncludePathInfo=defaultNamedNotOptArg):
         'Imports a profile created by another user'
@@ -18075,8 +18078,7 @@ class IAcadRay(DispatchBaseClass):
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
         'Intersects with the input entity object.'
@@ -18811,12 +18813,12 @@ class IAcadSection(DispatchBaseClass):
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def HitTest(self, varPtHit=defaultNamedNotOptArg, pHit=pythoncom.Missing, pSegmentIndex=pythoncom.Missing, pPtOnSegment=pythoncom.Missing
             , pSubItem=pythoncom.Missing):
         'Does hit test on section plane'
+        varPtHit = VTVARArrayOrVal(varPtHit)
         return self._ApplyTypes_(17, 1, (24, 0), ((12, 1), (16395, 2), (16387, 2), (16396, 2), (16387, 2)), 'HitTest', None,varPtHit
             , pHit, pSegmentIndex, pPtOnSegment, pSubItem)
 
@@ -18855,8 +18857,7 @@ class IAcadSection(DispatchBaseClass):
 
     def RemoveVertex(self, nIndex=defaultNamedNotOptArg):
         'Removes a vertex in the section line'
-        return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((3, 1),),nIndex
-            )
+        return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((3, 1),),nIndex)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
@@ -18880,6 +18881,7 @@ class IAcadSection(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the co-ordinate of the specified vertex'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(14, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -19003,8 +19005,7 @@ class IAcadSection2(DispatchBaseClass):
     # The method Coordinate is actually a property, but must be used as a method to correctly pass the arguments
     def Coordinate(self, Index=defaultNamedNotOptArg):
         'Specifies the co-ordinate of the specified vertex'
-        return self._ApplyTypes_(14, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index
-            )
+        return self._ApplyTypes_(14, 2, (12, 0), ((3, 1),), 'Coordinate', None,Index)
 
     def Copy(self):
         'Copies the entity object.'
@@ -19015,8 +19016,8 @@ class IAcadSection2(DispatchBaseClass):
 
     def CreateJog(self, varPt=defaultNamedNotOptArg):
         'Creates a jog on the section plane'
-        return self._oleobj_.InvokeTypes(18, LCID, 1, (24, 0), ((12, 1),),varPt
-            )
+        varPt = VTR8ArrayOrVal(varPt)
+        return self._oleobj_.InvokeTypes(18, LCID, 1, (24, 0), ((12, 1),),varPt)
 
     def Delete(self):
         'Deletes a specified object'
@@ -19059,6 +19060,7 @@ class IAcadSection2(DispatchBaseClass):
     def HitTest(self, varPtHit=defaultNamedNotOptArg, pHit=pythoncom.Missing, pSegmentIndex=pythoncom.Missing, pPtOnSegment=pythoncom.Missing
             , pSubItem=pythoncom.Missing):
         'Does hit test on section plane'
+        varPtHit = VTVARArrayOrVal(varPtHit)
         return self._ApplyTypes_(17, 1, (24, 0), ((12, 1), (16395, 2), (16387, 2), (16396, 2), (16387, 2)), 'HitTest', None,varPtHit
             , pHit, pSegmentIndex, pPtOnSegment, pSubItem)
 
@@ -19122,6 +19124,7 @@ class IAcadSection2(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the co-ordinate of the specified vertex'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(14, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -20157,6 +20160,7 @@ class IAcadSolid(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(4, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -20173,6 +20177,17 @@ class IAcadSolid(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+      
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -20719,6 +20734,7 @@ class IAcadSubDMesh(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Returns the coordinate of the vertex at a given index'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(4, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -21992,6 +22008,8 @@ class IAcadTable(DispatchBaseClass):
 
     def HitTest(self, wpt=defaultNamedNotOptArg, wviewVec=defaultNamedNotOptArg, resultRowIndex=pythoncom.Missing, resultColumnIndex=pythoncom.Missing):
         'Hit test.'
+        wpt = VTR8ArrayOrVal(wpt)
+        wviewVec = VTR8ArrayOrVal(wviewVec)
         return self._ApplyTypes_(104, 1, (11, 0), ((12, 1), (12, 1), (16387, 2), (16387, 2)), 'HitTest', None,wpt
             , wviewVec, resultRowIndex, resultColumnIndex)
 
@@ -23860,6 +23878,7 @@ class IAcadTrace(DispatchBaseClass):
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the coordinate of a single vertex in the object'
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(4, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -24357,8 +24376,10 @@ class IAcadUtility(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
             , Prompt)
 
-    def GetEntity(self, Object=pythoncom.Missing, PickedPoint=pythoncom.Missing, Prompt=defaultNamedOptArg):
+    def GetEntity(self, Prompt=defaultNamedOptArg):
         'Gets an object interactively'
+        Object=pythoncom.Missing
+        PickedPoint=pythoncom.Missing
         return self._ApplyTypes_(1610743827, 1, (24, 0), ((16393, 2), (16396, 2), (12, 17)), 'GetEntity', None,Object
             , PickedPoint, Prompt)
 
@@ -24395,8 +24416,7 @@ class IAcadUtility(DispatchBaseClass):
 
     def GetReal(self, Prompt=defaultNamedOptArg):
         'Gets a real (double) value from the user'
-        return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (5, 0), ((12, 17),),Prompt
-            )
+        return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (5, 0), ((12, 17),),Prompt)
 
     def GetRemoteFile(self, URL=defaultNamedNotOptArg, LocalFile=pythoncom.Missing, IgnoreCache=defaultNamedNotOptArg):
         'Downloads the file specified by a URL'
@@ -24409,9 +24429,12 @@ class IAcadUtility(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743818, LCID, 1, (8, 0), ((3, 1), (12, 17)),HasSpaces
             , Prompt)
 
-    def GetSubEntity(self, Object=pythoncom.Missing, PickedPoint=pythoncom.Missing, transMatrix=pythoncom.Missing, ContextData=pythoncom.Missing
-            , Prompt=defaultNamedOptArg):
+    def GetSubEntity(self, Prompt=defaultNamedOptArg):
         'Gets an object or subentity interactively'
+        Object=pythoncom.Missing
+        PickedPoint=pythoncom.Missing
+        transMatrix=pythoncom.Missing
+        ContextData=pythoncom.Missing
         return self._ApplyTypes_(1610743829, 1, (24, 0), ((16393, 2), (16396, 2), (16396, 2), (16396, 2), (12, 17)), 'GetSubEntity', None,Object
             , PickedPoint, transMatrix, ContextData, Prompt)
 
@@ -24460,13 +24483,11 @@ class IAcadUtility(DispatchBaseClass):
 
     def SendModelessOperationEnded(self, Context=defaultNamedNotOptArg):
         'Indicates a modeless operation has ended.'
-        return self._oleobj_.InvokeTypes(1610743836, LCID, 1, (24, 0), ((8, 0),),Context
-            )
+        return self._oleobj_.InvokeTypes(1610743836, LCID, 1, (24, 0), ((8, 0),),Context)
 
     def SendModelessOperationStart(self, Context=defaultNamedNotOptArg):
         'Indicates a modeless operation will start.'
-        return self._oleobj_.InvokeTypes(1610743835, LCID, 1, (24, 0), ((8, 0),),Context
-            )
+        return self._oleobj_.InvokeTypes(1610743835, LCID, 1, (24, 0), ((8, 0),),Context)
 
     def TranslateCoordinates(self, Point=defaultNamedNotOptArg, FromCoordSystem=defaultNamedNotOptArg, ToCoordSystem=defaultNamedNotOptArg, Displacement=defaultNamedNotOptArg
             , OCSNormal=defaultNamedOptArg):
