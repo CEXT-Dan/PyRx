@@ -937,6 +937,15 @@ static AcGeMatrix3d AcGeMatrix3dplaneToWorld2(const AcGePlane& plane)
     return AcGeMatrix3d::planeToWorld(plane);
 }
 
+static AcGeMatrix3d& AcGeMatrix3dSetOrigin(AcGeMatrix3d& mat, const AcGePoint3d& orgin)
+{
+    AcGePoint3d o;
+    AcGeVector3d x, y, z;
+    mat.getCoordSystem(o, x, y, z);
+    mat.setCoordSystem(orgin, x, y, z);
+    return mat;
+}
+
 boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
 {
     PyAutoLockGIL lock;
@@ -1014,6 +1023,7 @@ void makePyGeMatrix3dWrapper()
         .def("setCoordSystem", &AcGeMatrix3d::setCoordSystem, DS.ARGS({ "origin:PyGe.Point3d","x:PyGe.Vector3d","y:PyGe.Vector3d","z:PyGe.Vector3d" }), return_self<>())
         .def("getCoordSystem", &AcGeMatrix3d::getCoordSystem, DS.ARGS({ "origin:PyGe.Point3d","x:PyGe.Vector3d","y:PyGe.Vector3d","z:PyGe.Vector3d" }))
         .def("setToTranslation", &AcGeMatrix3d::setToTranslation, DS.ARGS({ "val:PyGe.Vector3d" }), return_self<>())
+        .def("setOrigin", &AcGeMatrix3dSetOrigin, DS.ARGS({ "val:PyGe.Points3d" }), return_self<>())
 
         .def("setToRotation", &AcGeMatrix3d::setToRotation,
             DS.ARGS({ "angle:real", "axis:PyGe.Vector3d","center:PyGe.Point3d=kOrigin" }), return_self<>(), arg("AcGePoint3d") = AcGePoint3dkOrigin())
