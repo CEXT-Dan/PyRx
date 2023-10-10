@@ -1425,6 +1425,8 @@ class IAcad3DSolid(DispatchBaseClass):
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
         'Moves the entity object from source to destination.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -1450,6 +1452,9 @@ class IAcad3DSolid(DispatchBaseClass):
     # Result is of type IAcadRegion
     def SectionSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Create a section of the 3dsolid given three points that define the plane. Returns the Section as a Region object'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(10, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1464,6 +1469,9 @@ class IAcad3DSolid(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def SliceSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Negative=defaultNamedNotOptArg):
         'Create a slice of the 3dsolid given three points that define the plane. Returns the resulting array of 3dSolid object. '
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        Point3 = VTR8ArrayOrVal(Point3)
         ret = self._oleobj_.InvokeTypes(11, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (11, 1)),Point1
             , Point2, point3, Negative)
         if ret is not None:
@@ -1816,8 +1824,7 @@ class IAcadArc(DispatchBaseClass):
 
     def Offset(self, Distance=defaultNamedNotOptArg):
         'Offsets the arc to the given side'
-        return self._ApplyTypes_(10, 1, (12, 0), ((5, 1),), 'Offset', None,Distance
-            )
+        return self._ApplyTypes_(10, 1, (12, 0), ((5, 1),), 'Offset', None,Distance)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Rotates the entity object about a point.'
@@ -1851,6 +1858,20 @@ class IAcadArc(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #IAcadArc override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'StartPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -1929,8 +1950,7 @@ class IAcadAttribute(DispatchBaseClass):
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
         'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
-            , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
-            )
+            , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels)
 
     def Copy(self):
         'Copies the entity object.'
@@ -1967,8 +1987,7 @@ class IAcadAttribute(DispatchBaseClass):
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
         'Intersects with the input entity object.'
@@ -2039,6 +2058,18 @@ class IAcadAttribute(DispatchBaseClass):
     def UpdateMTextAttribute(self):
         'Updates multiline MText'
         return self._oleobj_.InvokeTypes(28, LCID, 1, (24, 0), (),)
+    
+    #IAcadAttribute override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'LockPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'TextAlignmentPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Alignment": (6, 2, (3, 0), (), "Alignment", None),
@@ -2268,6 +2299,21 @@ class IAcadAttributeReference(DispatchBaseClass):
     def UpdateMTextAttribute(self):
         'Updates attribute reference from the multiline mtext and vice versa'
         return self._oleobj_.InvokeTypes(29, LCID, 1, (24, 0), (),)
+    
+    #IAcadAttributeReference override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'LockPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'TextAlignmentPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+
 
     _prop_map_get_ = {
         "Alignment": (16, 2, (3, 0), (), "Alignment", None),
@@ -2410,8 +2456,8 @@ class IAcadBlock(DispatchBaseClass):
         return ret
 
     # Result is of type IAcadAttribute
-    def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
-            , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
+    def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg,
+                     InsertionPoint=defaultNamedNotOptArg, Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an attribute definition at the given location with the specified properties'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
@@ -2966,6 +3012,14 @@ class IAcadBlock(DispatchBaseClass):
     def Unload(self):
         'Unloads the menu group or external reference'
         return self._oleobj_.InvokeTypes(1591, LCID, 1, (24, 0), (),)
+    
+    #IAcadBlock override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -3289,6 +3343,16 @@ class IAcadBlockReference(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    # override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -3399,8 +3463,7 @@ class IAcadBlocks(DispatchBaseClass):
     # Result is of type IAcadBlock
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
-        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
-            )
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index)
         if ret is not None:
             ret = Dispatch(ret, 'Item', '{B77B7E91-EDDE-4AEA-A36E-A478DE36C405}')
         return ret
@@ -3465,8 +3528,7 @@ class IAcadCircle(DispatchBaseClass):
             , DistBetweenCols=defaultNamedNotOptArg, DistBetweenLevels=defaultNamedNotOptArg):
         'Creates an array of selected objects in a rectangular pattern.'
         return self._ApplyTypes_(1286, 1, (12, 0), ((3, 1), (3, 1), (3, 1), (5, 1), (5, 1), (5, 1)), 'ArrayRectangular', None,NumberOfRows
-            , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels
-            )
+            , NumberOfColumns, NumberOfLevels, DistBetweenRows, DistBetweenCols, DistBetweenLevels)
 
     def Copy(self):
         'Copies the entity object.'
@@ -3576,6 +3638,16 @@ class IAcadCircle(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    # override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -3786,6 +3858,16 @@ class IAcadComparedReference(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    # override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -4344,6 +4426,20 @@ class IAcadDim3PointAngular(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'TextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'ExtLine1EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'ExtLine2EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AngleFormat": (41, 2, (3, 0), (), "AngleFormat", None),
@@ -4646,6 +4742,20 @@ class IAcadDimAligned(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+        #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'TextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'ExtLine1EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'ExtLine2EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AltRoundDistance": (6, 2, (5, 0), (), "AltRoundDistance", None),
@@ -5002,6 +5112,20 @@ class IAcadDimAngular(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'TextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'ExtLine1EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'ExtLine2EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AngleFormat": (41, 2, (3, 0), (), "AngleFormat", None),
@@ -5306,6 +5430,24 @@ class IAcadDimArcLength(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'ArcPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'CenterPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'TextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'ExtLine1EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'ExtLine2EndPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AltRoundDistance": (6, 2, (5, 0), (), "AltRoundDistance", None),
@@ -5668,6 +5810,18 @@ class IAcadDimDiametric(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'TextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'VerticalTextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AltRoundDistance": (6, 2, (5, 0), (), "AltRoundDistance", None),
@@ -5991,6 +6145,14 @@ class IAcadDimOrdinate(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+        #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AltRoundDistance": (6, 2, (5, 0), (), "AltRoundDistance", None),
@@ -6287,6 +6449,18 @@ class IAcadDimRadial(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'TextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'VerticalTextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AltRoundDistance": (6, 2, (5, 0), (), "AltRoundDistance", None),
@@ -6604,6 +6778,20 @@ class IAcadDimRadialLarge(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+        #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'TextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'VerticalTextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AltRoundDistance": (6, 2, (5, 0), (), "AltRoundDistance", None),
@@ -6918,6 +7106,17 @@ class IAcadDimRotated(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'TextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'VerticalTextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AltRoundDistance": (6, 2, (5, 0), (), "AltRoundDistance", None),
@@ -7419,6 +7618,17 @@ class IAcadDimension(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'TextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'VerticalTextPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -7535,8 +7745,7 @@ class IAcadDocument(DispatchBaseClass):
 
     def AuditInfo(self, FixErr=defaultNamedNotOptArg):
         'Evaluates the integrity of the drawing'
-        return self._oleobj_.InvokeTypes(43, LCID, 1, (24, 0), ((11, 1),),FixErr
-            )
+        return self._oleobj_.InvokeTypes(43, LCID, 1, (24, 0), ((11, 1),),FixErr)
 
     def Close(self, SaveChanges=defaultNamedOptArg, FileName=defaultNamedOptArg):
         'Closes the specified drawing, or all open drawings'
@@ -7559,13 +7768,11 @@ class IAcadDocument(DispatchBaseClass):
 
     def GetVariable(self, Name=defaultNamedNotOptArg):
         'Gets the current setting of an AutoCAD system variable'
-        return self._ApplyTypes_(51, 1, (12, 0), ((8, 1),), 'GetVariable', None,Name
-            )
+        return self._ApplyTypes_(51, 1, (12, 0), ((8, 1),), 'GetVariable', None,Name)
 
     def HandleToObject(self, Handle=defaultNamedNotOptArg):
         'Gets the object that corresponds to the given handle'
-        ret = self._oleobj_.InvokeTypes(18, LCID, 1, (9, 0), ((8, 1),),Handle
-            )
+        ret = self._oleobj_.InvokeTypes(18, LCID, 1, (9, 0), ((8, 1),),Handle)
         if ret is not None:
             ret = Dispatch(ret, 'HandleToObject', None)
         return ret
@@ -7580,8 +7787,7 @@ class IAcadDocument(DispatchBaseClass):
 
     def LoadShapeFile(self, FullName=defaultNamedNotOptArg):
         'Loads a shape file (SHX)'
-        return self._oleobj_.InvokeTypes(53, LCID, 1, (24, 0), ((8, 1),),FullName
-            )
+        return self._oleobj_.InvokeTypes(53, LCID, 1, (24, 0), ((8, 1),),FullName)
 
     # Result is of type IAcadDocument
     def New(self, TemplateFileName=defaultNamedNotOptArg):
@@ -7611,8 +7817,7 @@ class IAcadDocument(DispatchBaseClass):
 
     def PostCommand(self, Command=defaultNamedNotOptArg):
         'Posts a command string from a VB or VBA application to the document for processing'
-        return self._oleobj_.InvokeTypes(75, LCID, 1, (24, 0), ((8, 1),),Command
-            )
+        return self._oleobj_.InvokeTypes(75, LCID, 1, (24, 0), ((8, 1),),Command)
 
     def PurgeAll(self):
         'Removes unused named references such as unused blocks or layers from the document'
@@ -7620,8 +7825,7 @@ class IAcadDocument(DispatchBaseClass):
 
     def Regen(self, WhichViewports=defaultNamedNotOptArg):
         'Regenerates the entire drawing and recomputes the screen coordinates and view resolution for all objects'
-        return self._oleobj_.InvokeTypes(54, LCID, 1, (24, 0), ((3, 1),),WhichViewports
-            )
+        return self._oleobj_.InvokeTypes(54, LCID, 1, (24, 0), ((3, 1),),WhichViewports)
 
     def Save(self):
         'Saves the document or menu group'
@@ -7634,8 +7838,7 @@ class IAcadDocument(DispatchBaseClass):
 
     def SendCommand(self, Command=defaultNamedNotOptArg):
         'Sends a command string from a VB or VBA application to the document for processing'
-        return self._oleobj_.InvokeTypes(63, LCID, 1, (24, 0), ((8, 1),),Command
-            )
+        return self._oleobj_.InvokeTypes(63, LCID, 1, (24, 0), ((8, 1),),Command)
 
     def SetVariable(self, Name=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Sets the value of an AutoCAD system variable'
@@ -7962,6 +8165,14 @@ class IAcadDwfUnderlay(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Position':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AdjustForBackground": (15, 2, (11, 0), (), "AdjustForBackground", None),
@@ -8198,6 +8409,16 @@ class IAcadEllipse(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -8585,6 +8806,16 @@ class IAcadExternalReference(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -8967,6 +9198,14 @@ class IAcadGeoPositionMarker(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Position':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Altitude": (18, 2, (5, 0), (), "Altitude", None),
@@ -9177,6 +9416,14 @@ class IAcadGeomapImage(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -9613,6 +9860,16 @@ class IAcadHatch(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -9821,6 +10078,14 @@ class IAcadHelix(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Position':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -10166,6 +10431,14 @@ class IAcadLWPolyline(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -10554,6 +10827,14 @@ class IAcadLayout(DispatchBaseClass):
         'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
+        
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'PlotOrigin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -10845,6 +11126,14 @@ class IAcadLeader(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         # Method 'Annotation' returns object of type 'IAcadEntity'
@@ -11619,6 +11908,16 @@ class IAcadMInsertBlock(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -12491,6 +12790,16 @@ class IAcadMText(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -13467,6 +13776,14 @@ class IAcadModelSpace(DispatchBaseClass):
     def Unload(self):
         'Unloads the menu group or external reference'
         return self._oleobj_.InvokeTypes(1591, LCID, 1, (24, 0), (),)
+    
+     #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -13886,6 +14203,14 @@ class IAcadOle(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -14102,6 +14427,14 @@ class IAcadPViewport(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -14822,6 +15155,14 @@ class IAcadPaperSpace(DispatchBaseClass):
     def Unload(self):
         'Unloads the menu group or external reference'
         return self._oleobj_.InvokeTypes(1591, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -15204,6 +15545,14 @@ class IAcadPlotConfiguration(DispatchBaseClass):
         'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
+        
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'PlotOrigin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -15973,8 +16322,7 @@ class IAcadPointCloudEx2(DispatchBaseClass):
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
         'Intersects with the input entity object.'
@@ -16662,6 +17010,14 @@ class IAcadPolyline(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -17576,6 +17932,14 @@ class IAcadRasterImage(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -17773,6 +18137,14 @@ class IAcadRay(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'BasePoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -17955,6 +18327,14 @@ class IAcadRegion(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -18275,6 +18655,14 @@ class IAcadRevolvedSurface(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'AxisPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -18502,6 +18890,14 @@ class IAcadSection(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -18736,6 +19132,14 @@ class IAcadSection2(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -19560,6 +19964,14 @@ class IAcadShape(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -21163,8 +21575,7 @@ class IAcadTable(DispatchBaseClass):
 
     def GetAlignment(self, rowType=defaultNamedNotOptArg):
         'Returns the cell alignment for the specified row type.'
-        return self._oleobj_.InvokeTypes(33, LCID, 1, (3, 0), ((3, 1),),rowType
-            )
+        return self._oleobj_.InvokeTypes(33, LCID, 1, (3, 0), ((3, 1),),rowType)
 
     def GetAttachmentPoint(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
         'Gets the attachment point for the specified row and column.'
@@ -21234,8 +21645,7 @@ class IAcadTable(DispatchBaseClass):
 
     def GetBreakHeight(self, nIndex=defaultNamedNotOptArg):
         'Returns the break height of the specified table when table breaking is enabled.'
-        return self._oleobj_.InvokeTypes(2309, LCID, 1, (5, 0), ((3, 1),),nIndex
-            )
+        return self._oleobj_.InvokeTypes(2309, LCID, 1, (5, 0), ((3, 1),),nIndex)
 
     def GetCellAlignment(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
         'Returns the alignment for the specified row and column.'
@@ -21267,8 +21677,8 @@ class IAcadTable(DispatchBaseClass):
 
     def GetCellDataType(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, pDataType=pythoncom.Missing, pUnitType=pythoncom.Missing):
         'Gets the cell data type and unit type for the specified row and column.'
-        return self._ApplyTypes_(1946, 1, (24, 0), ((3, 1), (3, 1), (16387, 2), (16387, 2)), 'GetCellDataType', None,row
-            , col, pDataType, pUnitType)
+        return self._ApplyTypes_(1946, 1, (24, 0), ((3, 1), (3, 1), (16387, 2), (16387, 2)),
+                    'GetCellDataType', None, row, col, pDataType, pUnitType)
 
     def GetCellExtents(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, bOuterCell=defaultNamedNotOptArg):
         'Gets the cell extents for the specified row and column.'
@@ -21340,19 +21750,16 @@ class IAcadTable(DispatchBaseClass):
     def GetColumnName(self, nIndex=defaultNamedNotOptArg):
         'Gets the columns name.'
         # Result is a Unicode object
-        return self._oleobj_.InvokeTypes(65528, LCID, 1, (8, 0), ((3, 1),),nIndex
-            )
+        return self._oleobj_.InvokeTypes(65528, LCID, 1, (8, 0), ((3, 1),),nIndex)
 
     def GetColumnWidth(self, col=defaultNamedNotOptArg):
         'Returns the column width for the specified column.'
-        return self._oleobj_.InvokeTypes(10, LCID, 1, (5, 0), ((3, 1),),col
-            )
+        return self._oleobj_.InvokeTypes(10, LCID, 1, (5, 0), ((3, 1),),col)
 
     # Result is of type IAcadAcCmColor
     def GetContentColor(self, rowType=defaultNamedNotOptArg):
         'Returns the true color value for the specified row type.'
-        ret = self._oleobj_.InvokeTypes(39, LCID, 1, (9, 0), ((3, 1),),rowType
-            )
+        ret = self._oleobj_.InvokeTypes(39, LCID, 1, (9, 0), ((3, 1),),rowType)
         if ret is not None:
             ret = Dispatch(ret, 'GetContentColor', '{3C282526-B9FD-4131-9B76-CBCCE8B94ACF}')
         return ret
@@ -21419,8 +21826,7 @@ class IAcadTable(DispatchBaseClass):
     def GetFormat(self, rowType=defaultNamedNotOptArg):
         'Gets the format for the specified row type.'
         # Result is a Unicode object
-        return self._oleobj_.InvokeTypes(119, LCID, 1, (8, 0), ((3, 1),),rowType
-            )
+        return self._oleobj_.InvokeTypes(119, LCID, 1, (8, 0), ((3, 1),),rowType)
 
     def GetFormula(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
         'Gets the formula if the content at the specified content index has a formula.'
@@ -21493,13 +21899,11 @@ class IAcadTable(DispatchBaseClass):
 
     def GetMinimumColumnWidth(self, col=defaultNamedNotOptArg):
         'Gets the minimum column width for the specified column.'
-        return self._oleobj_.InvokeTypes(26, LCID, 1, (5, 0), ((3, 1),),col
-            )
+        return self._oleobj_.InvokeTypes(26, LCID, 1, (5, 0), ((3, 1),),col)
 
     def GetMinimumRowHeight(self, row=defaultNamedNotOptArg):
         'Gets the minimum row height for the specified row.'
-        return self._oleobj_.InvokeTypes(27, LCID, 1, (5, 0), ((3, 1),),row
-            )
+        return self._oleobj_.InvokeTypes(27, LCID, 1, (5, 0), ((3, 1),),row)
 
     def GetOverride(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
         'Gets the override in cell, row, column, or content.'
@@ -21513,13 +21917,11 @@ class IAcadTable(DispatchBaseClass):
 
     def GetRowHeight(self, row=defaultNamedNotOptArg):
         'Returns the row height for the specified row.'
-        return self._oleobj_.InvokeTypes(13, LCID, 1, (5, 0), ((3, 1),),row
-            )
+        return self._oleobj_.InvokeTypes(13, LCID, 1, (5, 0), ((3, 1),),row)
 
     def GetRowType(self, row=defaultNamedNotOptArg):
         'Gets the row type for the specified row.'
-        return self._oleobj_.InvokeTypes(68, LCID, 1, (3, 0), ((3, 1),),row
-            )
+        return self._oleobj_.InvokeTypes(68, LCID, 1, (3, 0), ((3, 1),),row)
 
     def GetScale(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
         'Gets the scale of the content at the specified content index.'
@@ -21539,8 +21941,7 @@ class IAcadTable(DispatchBaseClass):
 
     def GetTextHeight(self, rowType=defaultNamedNotOptArg):
         'Returns the text height for the specified row type.'
-        return self._oleobj_.InvokeTypes(43, LCID, 1, (5, 0), ((3, 1),),rowType
-            )
+        return self._oleobj_.InvokeTypes(43, LCID, 1, (5, 0), ((3, 1),),rowType)
 
     def GetTextHeight2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
         'Returns the text height for the specified row and column  and nContent.'
@@ -21561,8 +21962,7 @@ class IAcadTable(DispatchBaseClass):
     def GetTextStyle(self, rowType=defaultNamedNotOptArg):
         'Returns the text style name for the specified row type.'
         # Result is a Unicode object
-        return self._oleobj_.InvokeTypes(41, LCID, 1, (8, 0), ((3, 1),),rowType
-            )
+        return self._oleobj_.InvokeTypes(41, LCID, 1, (8, 0), ((3, 1),),rowType)
 
     def GetTextStyle2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
         'Gets the text style name for the specified row and column  and nContent.'
@@ -21582,8 +21982,7 @@ class IAcadTable(DispatchBaseClass):
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def HitTest(self, wpt=defaultNamedNotOptArg, wviewVec=defaultNamedNotOptArg, resultRowIndex=pythoncom.Missing, resultColumnIndex=pythoncom.Missing):
         'Hit test.'
@@ -21639,8 +22038,7 @@ class IAcadTable(DispatchBaseClass):
             , minCol=pythoncom.Missing, maxCol=pythoncom.Missing):
         'is Merged Cell.'
         return self._ApplyTypes_(101, 1, (11, 0), ((3, 1), (3, 1), (16387, 2), (16387, 2), (16387, 2), (16387, 2)), 'IsMergedCell', None,row
-            , col, minRow, maxRow, minCol, maxCol
-            )
+            , col, minRow, maxRow, minCol, maxCol)
 
     def MergeCells(self, minRow=defaultNamedNotOptArg, maxRow=defaultNamedNotOptArg, minCol=defaultNamedNotOptArg, maxCol=defaultNamedNotOptArg):
         'merge cells.'
@@ -22086,6 +22484,18 @@ class IAcadTable(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Direction':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AllowManualHeights": (65525, 2, (11, 0), (), "AllowManualHeights", None),
@@ -22338,42 +22748,34 @@ class IAcadTableStyle(DispatchBaseClass):
             , gridLineType)
 
     def GetIsCellStyleInUse(self, pszCellStyle=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(36, LCID, 1, (11, 0), ((8, 1),),pszCellStyle
-            )
+        return self._oleobj_.InvokeTypes(36, LCID, 1, (11, 0), ((8, 1),),pszCellStyle)
 
     def GetIsMergeAllEnabled(self, bstrCellStyle=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1610809408, LCID, 1, (11, 0), ((8, 1),),bstrCellStyle
-            )
+        return self._oleobj_.InvokeTypes(1610809408, LCID, 1, (11, 0), ((8, 1),),bstrCellStyle)
 
     def GetRotation(self, bstrCellStyle=defaultNamedNotOptArg):
-        return self._oleobj_.InvokeTypes(1610809406, LCID, 1, (5, 0), ((8, 1),),bstrCellStyle
-            )
+        return self._oleobj_.InvokeTypes(1610809406, LCID, 1, (5, 0), ((8, 1),),bstrCellStyle)
 
     def GetTextHeight(self, rowType=defaultNamedNotOptArg):
         'Returns the text height for the specified row type.'
-        return self._oleobj_.InvokeTypes(11, LCID, 1, (5, 0), ((3, 1),),rowType
-            )
+        return self._oleobj_.InvokeTypes(11, LCID, 1, (5, 0), ((3, 1),),rowType)
 
     def GetTextHeight2(self, bstrCellStyle=defaultNamedNotOptArg):
         'Returns the text height for the specified cellStyle.'
-        return self._oleobj_.InvokeTypes(41, LCID, 1, (5, 0), ((8, 1),),bstrCellStyle
-            )
+        return self._oleobj_.InvokeTypes(41, LCID, 1, (5, 0), ((8, 1),),bstrCellStyle)
 
     def GetTextStyle(self, rowType=defaultNamedNotOptArg):
         'Returns the text style name for the specified row type.'
         # Result is a Unicode object
-        return self._oleobj_.InvokeTypes(9, LCID, 1, (8, 0), ((3, 1),),rowType
-            )
+        return self._oleobj_.InvokeTypes(9, LCID, 1, (8, 0), ((3, 1),),rowType)
 
     def GetTextStyleId(self, bstrCellStyle=defaultNamedNotOptArg):
         'Returns the text style name for the specified cellStyle.'
-        return self._oleobj_.InvokeTypes(39, LCID, 1, (20, 0), ((8, 1),),bstrCellStyle
-            )
+        return self._oleobj_.InvokeTypes(39, LCID, 1, (20, 0), ((8, 1),),bstrCellStyle)
 
     def GetUniqueCellStyleName(self, pszBaseName=defaultNamedNotOptArg):
         # Result is a Unicode object
-        return self._oleobj_.InvokeTypes(35, LCID, 1, (8, 0), ((8, 1),),pszBaseName
-            )
+        return self._oleobj_.InvokeTypes(35, LCID, 1, (8, 0), ((8, 1),),pszBaseName)
 
     def GetXData(self, AppName=defaultNamedNotOptArg, XDataType=pythoncom.Missing, XDataValue=pythoncom.Missing):
         'Gets the extended data (XData) associated with an object'
@@ -22603,8 +23005,7 @@ class IAcadText(DispatchBaseClass):
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
         'Intersects with the input entity object.'
@@ -22671,6 +23072,16 @@ class IAcadText(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Alignment": (3, 2, (3, 0), (), "Alignment", None),
@@ -23039,6 +23450,14 @@ class IAcadTolerance(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -23378,8 +23797,7 @@ class IAcadTrace(DispatchBaseClass):
 
     def Highlight(self, HighlightFlag=defaultNamedNotOptArg):
         'Highlights the entity object.'
-        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
-            )
+        return self._oleobj_.InvokeTypes(1287, LCID, 1, (24, 0), ((11, 1),),HighlightFlag)
 
     def IntersectWith(self, IntersectObject=defaultNamedNotOptArg, option=defaultNamedNotOptArg):
         'Intersects with the input entity object.'
@@ -23452,6 +23870,14 @@ class IAcadTrace(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -23539,6 +23965,18 @@ class IAcadUCS(DispatchBaseClass):
         'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
+        
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'XVector':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'YVector':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -23783,6 +24221,14 @@ class IAcadUnderlay(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Position':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "AdjustForBackground": (15, 2, (11, 0), (), "AdjustForBackground", None),
@@ -24064,6 +24510,16 @@ class IAcadView(DispatchBaseClass):
         'Sets the extended data (XData) associated with an object'
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
+        
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Direction':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -24166,6 +24622,16 @@ class IAcadViewport(DispatchBaseClass):
         'Splits a viewport into the given number of views'
         return self._oleobj_.InvokeTypes(17, LCID, 1, (24, 0), ((3, 1),),NumWins
             )
+        
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Direction':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -24528,6 +24994,14 @@ class IAcadWipeout(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -24796,6 +25270,14 @@ class IAcadXline(DispatchBaseClass):
     def Update(self):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'BasePoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
