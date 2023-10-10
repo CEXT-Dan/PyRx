@@ -1079,6 +1079,7 @@ class IAcad3DFace(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
@@ -1272,6 +1273,7 @@ class IAcad3DPolyline(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
@@ -1470,6 +1472,7 @@ class IAcad3DSolid(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
@@ -1842,8 +1845,8 @@ class IAcadArc(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -2026,8 +2029,8 @@ class IAcadAttribute(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -2255,8 +2258,8 @@ class IAcadAttributeReference(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -3280,8 +3283,8 @@ class IAcadBlockReference(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -3567,8 +3570,8 @@ class IAcadCircle(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -3777,8 +3780,8 @@ class IAcadComparedReference(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -4335,8 +4338,8 @@ class IAcadDim3PointAngular(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -4637,8 +4640,8 @@ class IAcadDimAligned(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -4993,8 +4996,8 @@ class IAcadDimAngular(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -5297,8 +5300,8 @@ class IAcadDimArcLength(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -5659,8 +5662,8 @@ class IAcadDimDiametric(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -5982,8 +5985,8 @@ class IAcadDimOrdinate(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -6278,8 +6281,8 @@ class IAcadDimRadial(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -6595,8 +6598,8 @@ class IAcadDimRadialLarge(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -6909,8 +6912,8 @@ class IAcadDimRotated(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -7410,8 +7413,8 @@ class IAcadDimension(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -7953,8 +7956,8 @@ class IAcadDwfUnderlay(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -8189,8 +8192,8 @@ class IAcadEllipse(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -8380,8 +8383,8 @@ class IAcadEntity(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -8576,8 +8579,8 @@ class IAcadExternalReference(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -8771,8 +8774,8 @@ class IAcadExtrudedSurface(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -8958,8 +8961,8 @@ class IAcadGeoPositionMarker(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -9168,8 +9171,8 @@ class IAcadGeomapImage(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -9604,8 +9607,8 @@ class IAcadHatch(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -9812,8 +9815,8 @@ class IAcadHelix(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -10157,8 +10160,8 @@ class IAcadLWPolyline(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -10836,8 +10839,8 @@ class IAcadLeader(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -11034,8 +11037,8 @@ class IAcadLine(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -11375,8 +11378,8 @@ class IAcadLoftedSurface(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -11610,8 +11613,8 @@ class IAcadMInsertBlock(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -11880,8 +11883,8 @@ class IAcadMLeader(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -12303,8 +12306,8 @@ class IAcadMLine(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -12482,8 +12485,8 @@ class IAcadMText(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -13641,8 +13644,8 @@ class IAcadNurbSurface(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -13877,8 +13880,8 @@ class IAcadOle(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -14093,8 +14096,8 @@ class IAcadPViewport(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -14996,8 +14999,8 @@ class IAcadPlaneSurface(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -15466,8 +15469,8 @@ class IAcadPoint(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -15649,8 +15652,8 @@ class IAcadPointCloud(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -15844,8 +15847,8 @@ class IAcadPointCloudEx(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -16032,8 +16035,8 @@ class IAcadPointCloudEx2(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -16233,8 +16236,8 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -16426,8 +16429,8 @@ class IAcadPolygonMesh(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -16653,8 +16656,8 @@ class IAcadPolyline(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -17567,8 +17570,8 @@ class IAcadRasterImage(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -17764,8 +17767,8 @@ class IAcadRay(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -17946,8 +17949,8 @@ class IAcadRegion(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -18266,8 +18269,8 @@ class IAcadRevolvedSurface(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -18493,8 +18496,8 @@ class IAcadSection(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -18727,8 +18730,8 @@ class IAcadSection2(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -19551,8 +19554,8 @@ class IAcadShape(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -19746,8 +19749,8 @@ class IAcadSolid(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -20077,8 +20080,8 @@ class IAcadSpline(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -20308,8 +20311,8 @@ class IAcadSubDMesh(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -20819,8 +20822,8 @@ class IAcadSurface(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -21001,8 +21004,8 @@ class IAcadSweptSurface(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -22072,8 +22075,8 @@ class IAcadTable(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def UnmergeCells(self, minRow=defaultNamedNotOptArg, maxRow=defaultNamedNotOptArg, minCol=defaultNamedNotOptArg, maxCol=defaultNamedNotOptArg):
         'Unmerge cells.'
@@ -22662,8 +22665,8 @@ class IAcadText(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -23030,8 +23033,8 @@ class IAcadTolerance(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -23443,8 +23446,8 @@ class IAcadTrace(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -23774,8 +23777,8 @@ class IAcadUnderlay(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -24519,8 +24522,8 @@ class IAcadWipeout(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
@@ -24787,8 +24790,8 @@ class IAcadXline(DispatchBaseClass):
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
         'Performs the specified transformation on the entity object.'
-        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
-            )
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
+        return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix)
 
     def Update(self):
         'Updates the graphics of the entity object.'
