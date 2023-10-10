@@ -10410,6 +10410,7 @@ class IAcadLWPolyline(DispatchBaseClass):
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        arg1 = VTR8ArrayOrVal(arg1)
         'Specifies the coordinate of a single vertex in the object'
         return self._oleobj_.InvokeTypes(14, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
@@ -10437,6 +10438,8 @@ class IAcadLWPolyline(DispatchBaseClass):
     def __setattr__(self, __name, __value):
         match __name:
             case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Coordinates':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case _:
                 DispatchBaseClass.__setattr__(self, __name, __value)
