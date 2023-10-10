@@ -2692,6 +2692,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a lightweight polyline from a list of vertices'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -13452,6 +13453,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a lightweight polyline from a list of vertices'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -14824,6 +14826,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a lightweight polyline from a list of vertices'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
