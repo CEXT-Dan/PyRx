@@ -19,7 +19,7 @@ from timeit import default_timer as timer
 # there's only one app, might as well cache it
 theApp = Ax.getApp()
 
-def PyRxCmd_sstest1():
+def PyRxCmd_sstestx():
     try:
 
         doc = theApp.ActiveDocument
@@ -33,7 +33,7 @@ def PyRxCmd_sstest1():
         
         #ass to the set
         entstoadd = [entres[0]]
-        ss.AddItems(AxUt.entlist(entstoadd))
+        ss.AddItems(entstoadd)
 
         # for loop
         print('\nway 1')
@@ -56,7 +56,7 @@ def PyRxCmd_sstest1():
     finally:
         ss.Delete()
 
-def PyRxCmd_comAddPolyline():
+def PyRxCmd_AddPolylineX():
     try:
         model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
         line = model.AddLightWeightPolyline([0,0,10,10,20,10])
@@ -75,7 +75,7 @@ def PyRxCmd_comAddPolyline():
     except Exception as err:
         traceback.print_exception(err)
 
-def PyRxCmd_comAddLine():
+def PyRxCmd_AddLineX():
     try:
         model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
         line = model.AddLine((0, 0, 0),(100, 100, 0))
@@ -95,7 +95,7 @@ def PyRxCmd_comAddLine():
         traceback.print_exception(err)
 
 
-def PyRxCmd_comMenuGroups():
+def PyRxCmd_MenuGroupsX():
     try:
         menuGroups: Ax.IAcadMenuGroups = theApp.MenuGroups
         print("Menu.Count",  menuGroups.Count)
@@ -110,7 +110,7 @@ def PyRxCmd_comMenuGroups():
         traceback.print_exception(err)
 
 
-def PyRxCmd_comGetEnt():
+def PyRxCmd_GetEntX():
     try:
         doc: Ax.IAcadDocument = theApp.ActiveDocument
         util: Ax.IAcadUtility = doc.Utility
@@ -120,7 +120,7 @@ def PyRxCmd_comGetEnt():
         traceback.print_exception(err)
 
 
-def PyRxCmd_comGetang():
+def PyRxCmd_getangx():
     try:
         ut = theApp.ActiveDocument.Utility
         pt1 = Ge.Point3d(100, 100, 0)
@@ -129,7 +129,24 @@ def PyRxCmd_comGetang():
     except Exception as err:
         traceback.print_exception(err)
         
-def PyRxCmd_comLayerState():
+def PyRxCmd_getpointwithbasex():
+    try:
+        ut = theApp.ActiveDocument.Utility
+        pt1 = Ge.Point3d(100, 100, 0)
+        retAngle = ut.GetPointWithBase(pt1.toList(), "\nGet Point with base:")
+        print(retAngle)
+    except Exception as err:
+        traceback.print_exception(err)
+        
+def PyRxCmd_getpointx():
+    try:
+        ut = theApp.ActiveDocument.Utility
+        retAngle = ut.GetPoint("\nGet point:")
+        print(retAngle)
+    except Exception as err:
+        traceback.print_exception(err)
+        
+def PyRxCmd_layerStateX():
     try:
         state : Ax.IAcadLayerStateManager = Ax.AcadLayerStateManager()
         state.SetDatabase(theApp.ActiveDocument.Database)
