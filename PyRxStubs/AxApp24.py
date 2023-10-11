@@ -32731,6 +32731,6 @@ def getApp() -> IAcadApplication:
     id = AcadApplication.CLSID
     return  win32com.client.Dispatch(id)
 
-def getDbx() -> IAxDbDocument:
+def getDbx() -> IAcadApplication:
     id = AxDbDocument.CLSID
     return win32com.client.Dispatch(id)
