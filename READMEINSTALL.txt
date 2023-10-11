@@ -1,4 +1,4 @@
-Install python python3.10.10 with PATH checkbox set to true.
+Install python (64 bit) python3.10.10 with PATH checkbox set to true.
 https://www.python.org/downloads/release/python-31010/
 
 install wxPython 4.2.0 from https://pypi.org/project/wxPython/
@@ -12,5 +12,8 @@ see env.png in this folder
 
 Installs a .bundle in %ProgramData\Autodesk\ApplicationPlugins\PyRx.bundle
 ./PyRxHelp
+./PyRxStubs
 ./PyRxSamples
-./PyRxSamples
+
+win32com must be installed if you would like to use the ActiveX libraries
+pip install pywin32
