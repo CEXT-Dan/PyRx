@@ -10,7 +10,6 @@ import PyEd as Ed
 # these are in the stub file
 # requires win32com
 import AxApp24 as Ax
-import AxAppUtils24 as AxUt
 
 import traceback
 from timeit import default_timer as timer
@@ -18,7 +17,7 @@ from timeit import default_timer as timer
 
 # optional, global instance of IAcadApplication
 # there's only one app, might as well cache it
-theApp = AxUt.getApp()
+theApp = Ax.getApp()
 
 def PyRxCmd_sstest1():
     try:
@@ -160,7 +159,7 @@ def PyRxCmd_comPerf():
         #ActiveX
 def PyRxCmd_moveToOriginX():
     try:
-        dbx = AxUt.getDbx()
+        dbx = Ax.getDbx()
         dbx.Open("e:\\06457Submittal.dwg")
         minpt = [float('inf'), float('inf'), float('inf')]
         

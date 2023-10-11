@@ -8,12 +8,10 @@ import PyEd as Ed
 import traceback
 
 import AxApp24 as Ax
-import AxAppUtils24 as AxUtils
-
 
 def PyRxCmd_docast():
     try:
-        acad = AxUtils.getApp()
+        acad = Ax.getApp()
         for layout in acad.ActiveDocument.Layouts:
             if layout.ModelType:
                 continue
