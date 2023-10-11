@@ -951,8 +951,10 @@ class IAcad3DFace(DispatchBaseClass):
     CLSID = IID('{9B8BE788-0D7C-4E0C-9DD2-FC6F901B55B9}')
     coclass_clsid = IID('{5CE57A82-0435-4196-8903-784464A922BC}')
 
-    def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+    def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, 
+                   AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -1152,6 +1154,7 @@ class IAcad3DPolyline(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(2, LCID, 1, (24, 0), ((12, 1),),vertex)
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         'Creates an array of selected objects in a polar pattern.'
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
@@ -1341,6 +1344,7 @@ class IAcad3DSolid(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -1744,6 +1748,7 @@ class IAcadArc(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -1944,6 +1949,7 @@ class IAcadAttribute(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -2183,6 +2189,7 @@ class IAcadAttributeReference(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -3204,6 +3211,7 @@ class IAcadBlockReference(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -3524,6 +3532,7 @@ class IAcadCircle(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -3719,6 +3728,7 @@ class IAcadComparedReference(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -4316,6 +4326,7 @@ class IAcadDim3PointAngular(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -4632,6 +4643,7 @@ class IAcadDimAligned(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -5002,6 +5014,7 @@ class IAcadDimAngular(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -5320,6 +5333,7 @@ class IAcadDimArcLength(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -5700,6 +5714,7 @@ class IAcadDimDiametric(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -6035,6 +6050,7 @@ class IAcadDimOrdinate(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -6339,6 +6355,7 @@ class IAcadDimRadial(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -6668,6 +6685,7 @@ class IAcadDimRadialLarge(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -6996,6 +7014,7 @@ class IAcadDimRotated(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -7508,6 +7527,7 @@ class IAcadDimension(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -8050,6 +8070,7 @@ class IAcadDwfUnderlay(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -8294,6 +8315,7 @@ class IAcadEllipse(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -8500,6 +8522,7 @@ class IAcadEntity(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -8667,6 +8690,7 @@ class IAcadExternalReference(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -8901,6 +8925,7 @@ class IAcadExtrudedSurface(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -9088,6 +9113,7 @@ class IAcadGeoPositionMarker(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -9301,6 +9327,7 @@ class IAcadGeomapImage(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -9731,6 +9758,7 @@ class IAcadHatch(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -9968,6 +9996,7 @@ class IAcadHelix(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -10280,6 +10309,7 @@ class IAcadLWPolyline(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -11003,6 +11033,7 @@ class IAcadLeader(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -11221,6 +11252,7 @@ class IAcadLine(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -11567,6 +11599,7 @@ class IAcadLoftedSurface(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -11773,6 +11806,7 @@ class IAcadMInsertBlock(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -12026,6 +12060,7 @@ class IAcadMLeader(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -12506,6 +12541,7 @@ class IAcadMLine(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -12680,6 +12716,7 @@ class IAcadMText(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -13865,6 +13902,7 @@ class IAcadNurbSurface(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -14101,6 +14139,7 @@ class IAcadOle(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -14296,6 +14335,7 @@ class IAcadPViewport(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -15246,6 +15286,7 @@ class IAcadPlaneSurface(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -15724,6 +15765,7 @@ class IAcadPoint(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -15907,6 +15949,7 @@ class IAcadPointCloud(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -16102,6 +16145,7 @@ class IAcadPointCloudEx(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -16290,6 +16334,7 @@ class IAcadPointCloudEx2(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -16478,6 +16523,7 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -16668,6 +16714,7 @@ class IAcadPolygonMesh(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -16871,6 +16918,7 @@ class IAcadPolyline(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -17828,6 +17876,7 @@ class IAcadRasterImage(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -18038,6 +18087,7 @@ class IAcadRay(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -18218,6 +18268,7 @@ class IAcadRegion(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -18555,6 +18606,7 @@ class IAcadRevolvedSurface(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -18755,6 +18807,7 @@ class IAcadSection(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -18997,6 +19050,7 @@ class IAcadSection2(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -19865,6 +19919,7 @@ class IAcadShape(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -20056,6 +20111,7 @@ class IAcadSolid(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -20358,6 +20414,7 @@ class IAcadSpline(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -20630,6 +20687,7 @@ class IAcadSubDMesh(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -21154,6 +21212,7 @@ class IAcadSurface(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -21336,6 +21395,7 @@ class IAcadSweptSurface(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -21527,6 +21587,7 @@ class IAcadTable(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -22984,6 +23045,7 @@ class IAcadText(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -23366,6 +23428,7 @@ class IAcadTolerance(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -23775,6 +23838,7 @@ class IAcadTrace(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -24133,6 +24197,7 @@ class IAcadUnderlay(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -24923,6 +24988,7 @@ class IAcadWipeout(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
@@ -25199,6 +25265,7 @@ class IAcadXline(DispatchBaseClass):
 
     def ArrayPolar(self, NumberOfObjects=defaultNamedNotOptArg, AngleToFill=defaultNamedNotOptArg, CenterPoint=defaultNamedNotOptArg):
         'Creates an array of selected objects in a polar pattern.'
+        CenterPoint = VTR8ArrayOrVal(CenterPoint)
         return self._ApplyTypes_(1285, 1, (12, 0), ((3, 1), (5, 1), (12, 1)), 'ArrayPolar', None,NumberOfObjects
             , AngleToFill, CenterPoint)
 
