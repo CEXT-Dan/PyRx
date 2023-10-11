@@ -2071,6 +2071,8 @@ class IAcadAttribute(DispatchBaseClass):
         match __name:
             case 'LockPosition':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case 'TextAlignmentPoint':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case 'Normal':
