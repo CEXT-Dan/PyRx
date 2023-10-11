@@ -166,13 +166,23 @@ def PyRxCmd_interx():
         line2 = model.AddLine((100, 0, 0),(0, 100, 0))
         res = line2.IntersectWith(line1,Ax.constants.acExtendNone)
         print(res)
-
         line3 = model.AddLine((0, 0, 0),(100, 100, 0))
         line4 = model.AddLine((0, 0, 0),(100, 100, 0))
         res2 = line3.IntersectWith(line4,Ax.constants.acExtendNone)
-        
         print(res2)
+    except Exception as err:
+        traceback.print_exception(err)
         
+def PyRxCmd_mleaderx():
+    try:
+        model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
+        pnts = [2,2,0,6,6,0,6,7,0]
+        res  = model.AddMLeader(pnts,0)
+        leader: Ax.IAcadMLeader = res[0]
+        leader.TextString = "Yeah Buddy Light weight baby"
+        leader.LeaderType = Ax.constants.acStraightLeader
+        leader.ArrowheadType = Ax.constants.acArrowClosed
+
     except Exception as err:
         traceback.print_exception(err)
 

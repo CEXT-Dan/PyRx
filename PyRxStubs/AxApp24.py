@@ -2728,14 +2728,15 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         'Creates a multileader'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{DD704BAE-4BEB-482E-8CD6-6FA8FD3803AE}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Creates a polyface mesh from a list of vertices'
-        ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
-            )
+        VertexList = VTR8ArrayOrVal(VertexList)
+        ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList)
         if ret is not None:
             ret = Dispatch(ret, 'AddMLine', '{37341D94-0544-4A89-9AFA-B7D604A1EEF5}')
         return ret
@@ -12178,6 +12179,7 @@ class IAcadMLeader(DispatchBaseClass):
 
     def SetLeaderLineVertices(self, leaderLineIndex=defaultNamedNotOptArg, pointArray=defaultNamedNotOptArg):
         'Specifies the vertices of leader line with specified index'
+        pointArray = VTR8ArrayOrVal(pointArray)
         return self._oleobj_.InvokeTypes(32, LCID, 1, (24, 0), ((3, 1), (12, 1)),leaderLineIndex
             , pointArray)
 
@@ -13493,12 +13495,14 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         'Creates a multileader'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{DD704BAE-4BEB-482E-8CD6-6FA8FD3803AE}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Creates a polyface mesh from a list of vertices'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
             )
         if ret is not None:
@@ -14867,14 +14871,15 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         'Creates a multileader'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{DD704BAE-4BEB-482E-8CD6-6FA8FD3803AE}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Creates a polyface mesh from a list of vertices'
-        ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
-            )
+        VertexList = VTR8ArrayOrVal(VertexList)
+        ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList)
         if ret is not None:
             ret = Dispatch(ret, 'AddMLine', '{37341D94-0544-4A89-9AFA-B7D604A1EEF5}')
         return ret
