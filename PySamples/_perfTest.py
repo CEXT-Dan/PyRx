@@ -10,8 +10,7 @@ import timeit
 #run this before release!!!
 #PySamples\dwg\TestPoints.dwg
 
-import AcadComTypes24 as Ac
-import ComAcadApplication24 as AcadApp
+import AxApp24 as Ax
 
 # calls Db.Point.desc() every loop
 def move_points_old():
@@ -58,13 +57,13 @@ def move_points_new():
         ent.transformBy(mat)
 
 
-theApp = Ac.getApp()
+theApp = Ax.getApp()
 
 def move_points_com():
     
         mat = Ge.Matrix3d()
         mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
-        comMat = Ac.comMatrix3d(mat)
+        comMat = mat.toList()
 
         for ent in theApp.ActiveDocument.ModelSpace:
             if ent.ObjectName == "AcDbPoint":
