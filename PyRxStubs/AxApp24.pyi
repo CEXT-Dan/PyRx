@@ -19000,3 +19000,6 @@ CLSIDToPackageMap: Incomplete
 VTablesToPackageMap: Incomplete
 VTablesToClassMap: Incomplete
 NamesToIIDMap: Incomplete
+
+def getApp(self) -> IAcadApplication: ...
+def getDbx(self) -> IAxDbDocument: ...
