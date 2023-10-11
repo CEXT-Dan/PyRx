@@ -10,7 +10,7 @@ import PyEd as Ed
 # these are in the stub file
 # requires win32com
 import AxApp24 as Ax
-import AxAppUtils24 as Axu
+import AxAppUtils24 as AxUt
 
 import traceback
 from timeit import default_timer as timer
@@ -18,7 +18,7 @@ from timeit import default_timer as timer
 
 # optional, global instance of IAcadApplication
 # there's only one app, might as well cache it
-theApp = Axu.getApp()
+theApp = AxUt.getApp()
 
 def PyRxCmd_sstest1():
     try:
@@ -27,15 +27,14 @@ def PyRxCmd_sstest1():
         ss = doc.SelectionSets.Add('mysset')
 
         #safe arrays
-        ss.SelectOnScreen(Axu.ssfilterType([0]),
-                          Axu.ssfilterData(["POINT"]))
+        ss.SelectOnScreen([0],["POINT"])
 
         # COM returns a tuple (ent, point)
-        entres = doc.Utility.GetEntity(None, None, "\nPick an ent: ")
+        entres = doc.Utility.GetEntity("\nPick an ent: ")
         
         #ass to the set
         entstoadd = [entres[0]]
-        ss.AddItems(Axu.entlist(entstoadd))
+        ss.AddItems(AxUt.entlist(entstoadd))
 
         # for loop
         print('\nway 1')
@@ -58,19 +57,35 @@ def PyRxCmd_sstest1():
     finally:
         ss.Delete()
 
-
-def PyRxCmd_comAddLine():
+def PyRxCmd_comAddPolyline():
     try:
         model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
-        line: Ax.IAcadLine = model.AddLine(
-            Axu.pnt3d(Ge.Point3d(0, 0, 0)),
-            Axu.pnt3d(Ge.Point3d(100, 100, 0)))
+        line = model.AddLightWeightPolyline([0,0,10,10,20,10])
 
         clr: Ax.IAcadAcCmColor = Ax.AcadAcCmColor()
         clr.SetRGB(255, 255, 0)
         line.TrueColor = clr
 
-        # convert to a wrapper
+        # convert to PyRx
+        newId = Db.ObjectId()
+        newId.setFromOldId(line.ObjectID)
+
+        rxLine = Db.Polyline(newId)
+        print(rxLine.toList())
+
+    except Exception as err:
+        traceback.print_exception(err)
+
+def PyRxCmd_comAddLine():
+    try:
+        model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
+        line = model.AddLine((0, 0, 0),(100, 100, 0))
+
+        clr: Ax.IAcadAcCmColor = Ax.AcadAcCmColor()
+        clr.SetRGB(255, 255, 0)
+        line.TrueColor = clr
+
+        # convert to PyRx
         newId = Db.ObjectId()
         newId.setFromOldId(line.ObjectID)
 
@@ -88,7 +103,6 @@ def PyRxCmd_comMenuGroups():
 
         menuGroup: Ax.IAcadMenuGroup = menuGroups.Item(0)
         pops: Ax.IAcadPopupMenus = menuGroup.Menus
-
         for i in range(pops.Count):
             pop: Ax.IAcadPopupMenu = pops.Item(i)
             print(pop.Name)
@@ -101,10 +115,7 @@ def PyRxCmd_comGetEnt():
     try:
         doc: Ax.IAcadDocument = theApp.ActiveDocument
         util: Ax.IAcadUtility = doc.Utility
-
-        ent: Ax.IAcadEntity = util.GetEntity(
-            None, None, "\nPick an ent: ")
-
+        ent: Ax.IAcadEntity = util.GetEntity("\nPick an ent: ")
         print(ent[0].ObjectName, ent[1])
     except Exception as err:
         traceback.print_exception(err)
@@ -112,13 +123,10 @@ def PyRxCmd_comGetEnt():
 
 def PyRxCmd_comGetang():
     try:
+        ut = theApp.ActiveDocument.Utility
         pt1 = Ge.Point3d(100, 100, 0)
-
-        retAngle = theApp.ActiveDocument.Utility.GetAngle(
-            Axu.pnt3d(pt1), "\nGet Angle with base:")
-
+        retAngle = ut.GetAngle(pt1.toList(), "\nGet Angle with base:")
         print(retAngle)
-
     except Exception as err:
         traceback.print_exception(err)
         
@@ -134,17 +142,43 @@ def PyRxCmd_comLayerState():
 def PyRxCmd_comPerf():
     try:
         start = timer()
-
         mat = Ge.Matrix3d()
         mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
-        comMat = Axu.matrix3d(mat)
+        coords = mat.toList()
 
         for ent in theApp.ActiveDocument.ModelSpace:
             if ent.ObjectName == "AcDbPoint":
-                ent.TransformBy(comMat)
+                ent.TransformBy(coords)
 
         end = timer()
         print(end - start)
 
+    except Exception as err:
+        traceback.print_exception(err)
+        
+        
+        #ActiveX
+def PyRxCmd_moveToOriginX():
+    try:
+        dbx = AxUt.getDbx()
+        dbx.Open("e:\\06457Submittal.dwg")
+        minpt = [float('inf'), float('inf'), float('inf')]
+        
+        ents = []
+        ent: Ax.IAcadEntity
+        for ent in dbx.ModelSpace:
+            try:
+                ents.append(ent)
+                minmax = ent.GetBoundingBox()
+                minpt[0] = min(minmax[0][0], minpt[0])
+                minpt[1] = min(minmax[0][1], minpt[1])
+                minpt[2] = min(minmax[0][2], minpt[2])
+            except:# 'Null extents'
+                continue
+            
+        for ent in ents:
+            ent.Move(minpt,  (0, 0, 0))
+            
+        dbx.SaveAs("e:\\06457Submittal2.dwg")
     except Exception as err:
         traceback.print_exception(err)
