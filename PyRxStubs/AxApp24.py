@@ -24338,6 +24338,8 @@ class IAcadUtility(DispatchBaseClass):
 
     def AngleFromXAxis(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Gets the angle of a line from the X axis'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         return self._oleobj_.InvokeTypes(1610743820, LCID, 1, (5, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
 
@@ -24363,16 +24365,19 @@ class IAcadUtility(DispatchBaseClass):
 
     def GetAngle(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
         'Gets the angle specified. Considers the setting of the ANGBASE system variable'
+        Point = VTR8ArrayOrVal(Point)
         return self._oleobj_.InvokeTypes(1610743819, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
             , Prompt)
 
     def GetCorner(self, Point=defaultNamedNotOptArg, Prompt=defaultNamedOptArg):
         'Gets a corner of a rectangle'
+        Point = VTR8ArrayOrVal(Point)
         return self._ApplyTypes_(1610743821, 1, (12, 0), ((12, 1), (12, 17)), 'GetCorner', None,Point
             , Prompt)
 
     def GetDistance(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
         'Gets the distance from the prompt line or a selected set of points on the screen'
+        Point = VTR8ArrayOrVal(Point)
         return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
             , Prompt)
 
@@ -24406,11 +24411,19 @@ class IAcadUtility(DispatchBaseClass):
 
     def GetOrientation(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
         'Gets the angle specified. Ignores the setting of the ANGBASE system variable'
+        Point = VTR8ArrayOrVal(Point)
         return self._oleobj_.InvokeTypes(1610743823, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
             , Prompt)
-
-    def GetPoint(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+        
+    def GetPoint(self,Prompt=defaultNamedOptArg):
         'Gets the point selected in AutoCAD'
+        Point = pythoncom.Empty
+        return self._ApplyTypes_(1610743824, 1, (12, 0), ((12, 17), (12, 17)), 
+                                'GetPoint', None, Point, Prompt)
+
+    def GetPointWithBase(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+        'Gets the point selected in AutoCAD'
+        Point = VTR8ArrayOrVal(Point)
         return self._ApplyTypes_(1610743824, 1, (12, 0), ((12, 17), (12, 17)), 'GetPoint', None,Point
             , Prompt)
 
@@ -24462,6 +24475,7 @@ class IAcadUtility(DispatchBaseClass):
 
     def PolarPoint(self, Point=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg, Distance=defaultNamedNotOptArg):
         'Gets the point at a specified angle and distance from a given point'
+        Point = VTR8ArrayOrVal(Point)
         return self._ApplyTypes_(1610743825, 1, (12, 0), ((12, 1), (5, 1), (5, 1)), 'PolarPoint', None,Point
             , Angle, Distance)
 
@@ -24492,6 +24506,7 @@ class IAcadUtility(DispatchBaseClass):
     def TranslateCoordinates(self, Point=defaultNamedNotOptArg, FromCoordSystem=defaultNamedNotOptArg, ToCoordSystem=defaultNamedNotOptArg, Displacement=defaultNamedNotOptArg
             , OCSNormal=defaultNamedOptArg):
         'Translates a point from one coordinate system to another coordinate system'
+        Point = VTI2ArrayOrVal(Point)
         return self._ApplyTypes_(1610743812, 1, (12, 0), ((12, 1), (3, 1), (3, 1), (3, 1), (12, 17)), 'TranslateCoordinates', None,Point
             , FromCoordSystem, ToCoordSystem, Displacement, OCSNormal)
 
