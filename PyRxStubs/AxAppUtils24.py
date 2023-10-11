@@ -2,17 +2,6 @@
 import PyGe as Ge
 import win32com.client
 import pythoncom
-import AxApp24
-
-def getApp() -> AxApp24.IAcadApplication:
-    id = AxApp24.AcadApplication.CLSID
-    app: AxApp24.IAcadApplication = win32com.client.Dispatch(id)
-    return app
-
-def getDbx() -> AxApp24.IAxDbDocument:
-    id = AxApp24.AxDbDocument.CLSID
-    dbx: AxApp24.IAxDbDocument = win32com.client.Dispatch(id)
-    return dbx
 
 def pnt2d(val: Ge.Point2d):
     return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, val.toList())
