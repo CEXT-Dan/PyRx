@@ -1,5 +1,6 @@
 from _typeshed import Incomplete
 from win32com.client import CoClassBaseClass, DispatchBaseClass
+import AxApp24
 
 makepy_version: str
 python_version: int
@@ -12,6 +13,8 @@ MinorVersion: int
 LibraryFlags: int
 LCID: int
 
+def getApp() -> IAcadApplication: ...
+def getDbx() -> IAxDbDocument: ...
 
 class constants:
     acCubicSpline3DPoly: int
@@ -20,7 +23,7 @@ class constants:
     acDemanLoadDisable: int
     acDemandLoadCmdInvoke: int
     acDemandLoadOnObjectDetect: int
-    acModelSpace: intFGet
+    acModelSpace: int
     acPaperSpace: int
     acAlignmentAligned: int
     acAlignmentBottomCenter: int
@@ -1900,7 +1903,9 @@ class IAcadAttributeReference(DispatchBaseClass):
 class IAcadBlock(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
-    def Add3DFace(self, Point1=..., Point2=..., point3=..., Point4=...)->IAcad3DFace: ...
+    def Add3DFace(self, Point1=..., Point2=..., point3=...,
+                  Point4=...) -> IAcad3DFace: ...
+
     def Add3DMesh(self, M=..., N=..., PointsMatrix=...): ...
     def Add3DPoly(self, PointsArray=...): ...
     def AddArc(self, Center=..., Radius=..., StartAngle=..., EndAngle=...): ...
@@ -1950,15 +1955,15 @@ class IAcadBlock(DispatchBaseClass):
                  Associativity=..., HatchObjectType=...): ...
 
     def AddLeader(self, PointsArray=..., Annotation=..., Type=...): ...
-    def AddLightWeightPolyline(self, VerticesList=...)->IAcadLWPolyline: ...
-    def AddLine(self, StartPoint=..., EndPoint=...)->IAcadLine: ...
+    def AddLightWeightPolyline(self, VerticesList=...) -> IAcadLWPolyline: ...
+    def AddLine(self, StartPoint=..., EndPoint=...) -> IAcadLine: ...
     def AddMInsertBlock(self, InsertionPoint=..., Name=..., Xscale=..., Yscale=..., Zscale=...,
                         Rotation=..., NumRows=..., NumColumns=..., RowSpacing=..., ColumnSpacing=..., Password=...): ...
 
     def AddMLeader(self, PointsArray=..., leaderLineIndex=...): ...
     def AddMLine(self, VertexList=...): ...
     def AddMText(self, InsertionPoint=..., Width=..., Text=...): ...
-    def AddPoint(self, Point=...)->IAcadPoint: ...
+    def AddPoint(self, Point=...) -> IAcadPoint: ...
     def AddPolyfaceMesh(self, VertexList=..., FaceList=...): ...
     def AddPolyline(self, VerticesList=...): ...
     def AddRaster(self, imageFileName=..., InsertionPoint=...,
@@ -2079,7 +2084,7 @@ class IAcadBlockReference(DispatchBaseClass):
     def Delete(self): ...
     def Erase(self): ...
     def Explode(self): ...
-    def GetAttributes(self)->IAcadAttribute: ...
+    def GetAttributes(self) -> IAcadAttribute: ...
     def GetBoundingBox(self, MinPoint=..., MaxPoint=...): ...
     def GetConstantAttributes(self): ...
     def GetDynamicBlockProperties(self): ...
@@ -2382,7 +2387,7 @@ class IAcadComparedReference(DispatchBaseClass):
     def Delete(self): ...
     def Erase(self): ...
     def Explode(self): ...
-    def GetAttributes(self)->IAcadAttribute: ...
+    def GetAttributes(self) -> IAcadAttribute: ...
     def GetBoundingBox(self, MinPoint=..., MaxPoint=...): ...
     def GetConstantAttributes(self): ...
     def GetDynamicBlockProperties(self): ...
@@ -10314,7 +10319,9 @@ class IAcadMenuGroups(DispatchBaseClass):
 class IAcadModelSpace(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
-    def Add3DFace(self, Point1=..., Point2=..., point3=..., Point4=...)->IAcad3DFace: ...
+    def Add3DFace(self, Point1=..., Point2=..., point3=...,
+                  Point4=...) -> IAcad3DFace: ...
+
     def Add3DMesh(self, M=..., N=..., PointsMatrix=...): ...
     def Add3DPoly(self, PointsArray=...): ...
     def AddArc(self, Center=..., Radius=..., StartAngle=..., EndAngle=...): ...
@@ -10364,15 +10371,15 @@ class IAcadModelSpace(DispatchBaseClass):
                  Associativity=..., HatchObjectType=...): ...
 
     def AddLeader(self, PointsArray=..., Annotation=..., Type=...): ...
-    def AddLightWeightPolyline(self, VerticesList=...)->IAcadLWPolyline: ...
-    def AddLine(self, StartPoint=..., EndPoint=...)->IAcadLine: ...
+    def AddLightWeightPolyline(self, VerticesList=...) -> IAcadLWPolyline: ...
+    def AddLine(self, StartPoint=..., EndPoint=...) -> IAcadLine: ...
     def AddMInsertBlock(self, InsertionPoint=..., Name=..., Xscale=..., Yscale=..., Zscale=...,
                         Rotation=..., NumRows=..., NumColumns=..., RowSpacing=..., ColumnSpacing=..., Password=...): ...
 
     def AddMLeader(self, PointsArray=..., leaderLineIndex=...): ...
     def AddMLine(self, VertexList=...): ...
     def AddMText(self, InsertionPoint=..., Width=..., Text=...): ...
-    def AddPoint(self, Point=...)->IAcadPoint: ...
+    def AddPoint(self, Point=...) -> IAcadPoint: ...
     def AddPolyfaceMesh(self, VertexList=..., FaceList=...): ...
     def AddPolyline(self, VerticesList=...): ...
     def AddRaster(self, imageFileName=..., InsertionPoint=...,
@@ -10975,7 +10982,9 @@ class IAcadPViewport(DispatchBaseClass):
 class IAcadPaperSpace(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
-    def Add3DFace(self, Point1=..., Point2=..., point3=..., Point4=...)->IAcad3DFace: ...
+    def Add3DFace(self, Point1=..., Point2=..., point3=...,
+                  Point4=...) -> IAcad3DFace: ...
+
     def Add3DMesh(self, M=..., N=..., PointsMatrix=...): ...
     def Add3DPoly(self, PointsArray=...): ...
     def AddArc(self, Center=..., Radius=..., StartAngle=..., EndAngle=...): ...
@@ -11025,8 +11034,8 @@ class IAcadPaperSpace(DispatchBaseClass):
                  Associativity=..., HatchObjectType=...): ...
 
     def AddLeader(self, PointsArray=..., Annotation=..., Type=...): ...
-    def AddLightWeightPolyline(self, VerticesList=...)->IAcadLWPolyline: ...
-    def AddLine(self, StartPoint=..., EndPoint=...)->IAcadLine: ...
+    def AddLightWeightPolyline(self, VerticesList=...) -> IAcadLWPolyline: ...
+    def AddLine(self, StartPoint=..., EndPoint=...) -> IAcadLine: ...
     def AddMInsertBlock(self, InsertionPoint=..., Name=..., Xscale=..., Yscale=..., Zscale=...,
                         Rotation=..., NumRows=..., NumColumns=..., RowSpacing=..., ColumnSpacing=..., Password=...): ...
 
@@ -11034,7 +11043,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     def AddMLine(self, VertexList=...): ...
     def AddMText(self, InsertionPoint=..., Width=..., Text=...): ...
     def AddPViewport(self, Center=..., Width=..., Height=...): ...
-    def AddPoint(self, Point=...)->IAcadPoint: ...
+    def AddPoint(self, Point=...) -> IAcadPoint: ...
     def AddPolyfaceMesh(self, VertexList=..., FaceList=...): ...
     def AddPolyline(self, VerticesList=...): ...
     def AddRaster(self, imageFileName=..., InsertionPoint=...,
@@ -14463,16 +14472,16 @@ class IAcadSelectionSet(DispatchBaseClass):
     @property
     def Application(self) -> IAcadApplication: ...
     @property
-    def Count(self)->int: ...
+    def Count(self) -> int: ...
     @property
-    def Name(self)->str: ...
+    def Name(self) -> str: ...
 
 
 class IAcadSelectionSets(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
-    def Add(self, Name=...)->IAcadSelectionSet: ...
-    def Item(self, Index=...)->IAcadSelectionSet: ...
+    def Add(self, Name=...) -> IAcadSelectionSet: ...
+    def Item(self, Index=...) -> IAcadSelectionSet: ...
     def __call__(self, Index=...): ...
     def __int__(self, *args) -> int: ...
     def __iter__(self): ...
@@ -14481,7 +14490,7 @@ class IAcadSelectionSets(DispatchBaseClass):
     @property
     def Application(self) -> IAcadApplication: ...
     @property
-    def Count(self)->int: ...
+    def Count(self) -> int: ...
 
 
 class IAcadShadowDisplay(DispatchBaseClass):
@@ -16998,7 +17007,7 @@ class IAcadUtility(DispatchBaseClass):
     def GetAngle(self, Point=..., Prompt=...): ...
     def GetCorner(self, Point=..., Prompt=...): ...
     def GetDistance(self, Point=..., Prompt=...): ...
-    def GetEntity(self,Prompt=...): ...
+    def GetEntity(self, Prompt=...): ...
     def GetInput(self): ...
     def GetInteger(self, Prompt=...): ...
     def GetKeyword(self, Prompt=...): ...
@@ -18688,319 +18697,3 @@ class AcadXline(CoClassBaseClass):
     coclass_interfaces: Incomplete
     default_interface = IAcadXline
 
-
-IAcad3DFace_vtables_dispatch_: int
-IAcad3DFace_vtables_: Incomplete
-IAcad3DPolyline_vtables_dispatch_: int
-IAcad3DPolyline_vtables_: Incomplete
-IAcad3DSolid_vtables_dispatch_: int
-IAcad3DSolid_vtables_: Incomplete
-IAcadAcCmColor_vtables_dispatch_: int
-IAcadAcCmColor_vtables_: Incomplete
-IAcadApplication_vtables_dispatch_: int
-IAcadApplication_vtables_: Incomplete
-IAcadArc_vtables_dispatch_: int
-IAcadArc_vtables_: Incomplete
-IAcadAttribute_vtables_dispatch_: int
-IAcadAttribute_vtables_: Incomplete
-IAcadAttributeReference_vtables_dispatch_: int
-IAcadAttributeReference_vtables_: Incomplete
-IAcadBlock_vtables_dispatch_: int
-IAcadBlock_vtables_: Incomplete
-IAcadBlockReference_vtables_dispatch_: int
-IAcadBlockReference_vtables_: Incomplete
-IAcadBlocks_vtables_dispatch_: int
-IAcadBlocks_vtables_: Incomplete
-IAcadCircle_vtables_dispatch_: int
-IAcadCircle_vtables_: Incomplete
-IAcadComparedReference_vtables_dispatch_: int
-IAcadComparedReference_vtables_: Incomplete
-IAcadDatabase_vtables_dispatch_: int
-IAcadDatabase_vtables_: Incomplete
-IAcadDatabasePreferences_vtables_dispatch_: int
-IAcadDatabasePreferences_vtables_: Incomplete
-IAcadDictionaries_vtables_dispatch_: int
-IAcadDictionaries_vtables_: Incomplete
-IAcadDictionary_vtables_dispatch_: int
-IAcadDictionary_vtables_: Incomplete
-IAcadDim3PointAngular_vtables_dispatch_: int
-IAcadDim3PointAngular_vtables_: Incomplete
-IAcadDimAligned_vtables_dispatch_: int
-IAcadDimAligned_vtables_: Incomplete
-IAcadDimAngular_vtables_dispatch_: int
-IAcadDimAngular_vtables_: Incomplete
-IAcadDimArcLength_vtables_dispatch_: int
-IAcadDimArcLength_vtables_: Incomplete
-IAcadDimDiametric_vtables_dispatch_: int
-IAcadDimDiametric_vtables_: Incomplete
-IAcadDimOrdinate_vtables_dispatch_: int
-IAcadDimOrdinate_vtables_: Incomplete
-IAcadDimRadial_vtables_dispatch_: int
-IAcadDimRadial_vtables_: Incomplete
-IAcadDimRadialLarge_vtables_dispatch_: int
-IAcadDimRadialLarge_vtables_: Incomplete
-IAcadDimRotated_vtables_dispatch_: int
-IAcadDimRotated_vtables_: Incomplete
-IAcadDimStyle_vtables_dispatch_: int
-IAcadDimStyle_vtables_: Incomplete
-IAcadDimStyles_vtables_dispatch_: int
-IAcadDimStyles_vtables_: Incomplete
-IAcadDimension_vtables_dispatch_: int
-IAcadDimension_vtables_: Incomplete
-IAcadDocument_vtables_dispatch_: int
-IAcadDocument_vtables_: Incomplete
-IAcadDocuments_vtables_dispatch_: int
-IAcadDocuments_vtables_: Incomplete
-IAcadDwfUnderlay_vtables_dispatch_: int
-IAcadDwfUnderlay_vtables_: Incomplete
-IAcadDynamicBlockReferenceProperty_vtables_dispatch_: int
-IAcadDynamicBlockReferenceProperty_vtables_: Incomplete
-IAcadEllipse_vtables_dispatch_: int
-IAcadEllipse_vtables_: Incomplete
-IAcadEntity_vtables_dispatch_: int
-IAcadEntity_vtables_: Incomplete
-IAcadExternalReference_vtables_dispatch_: int
-IAcadExternalReference_vtables_: Incomplete
-IAcadExtrudedSurface_vtables_dispatch_: int
-IAcadExtrudedSurface_vtables_: Incomplete
-IAcadGeoPositionMarker_vtables_dispatch_: int
-IAcadGeoPositionMarker_vtables_: Incomplete
-IAcadGeomapImage_vtables_dispatch_: int
-IAcadGeomapImage_vtables_: Incomplete
-IAcadGroup_vtables_dispatch_: int
-IAcadGroup_vtables_: Incomplete
-IAcadGroups_vtables_dispatch_: int
-IAcadGroups_vtables_: Incomplete
-IAcadHatch_vtables_dispatch_: int
-IAcadHatch_vtables_: Incomplete
-IAcadHelix_vtables_dispatch_: int
-IAcadHelix_vtables_: Incomplete
-IAcadHyperlink_vtables_dispatch_: int
-IAcadHyperlink_vtables_: Incomplete
-IAcadHyperlinks_vtables_dispatch_: int
-IAcadHyperlinks_vtables_: Incomplete
-IAcadIdPair_vtables_dispatch_: int
-IAcadIdPair_vtables_: Incomplete
-IAcadLWPolyline_vtables_dispatch_: int
-IAcadLWPolyline_vtables_: Incomplete
-IAcadLayer_vtables_dispatch_: int
-IAcadLayer_vtables_: Incomplete
-IAcadLayerStateManager_vtables_dispatch_: int
-IAcadLayerStateManager_vtables_: Incomplete
-IAcadLayers_vtables_dispatch_: int
-IAcadLayers_vtables_: Incomplete
-IAcadLayout_vtables_dispatch_: int
-IAcadLayout_vtables_: Incomplete
-IAcadLayouts_vtables_dispatch_: int
-IAcadLayouts_vtables_: Incomplete
-IAcadLeader_vtables_dispatch_: int
-IAcadLeader_vtables_: Incomplete
-IAcadLine_vtables_dispatch_: int
-IAcadLine_vtables_: Incomplete
-IAcadLineType_vtables_dispatch_: int
-IAcadLineType_vtables_: Incomplete
-IAcadLineTypes_vtables_dispatch_: int
-IAcadLineTypes_vtables_: Incomplete
-IAcadLoftedSurface_vtables_dispatch_: int
-IAcadLoftedSurface_vtables_: Incomplete
-IAcadMInsertBlock_vtables_dispatch_: int
-IAcadMInsertBlock_vtables_: Incomplete
-IAcadMLeader_vtables_dispatch_: int
-IAcadMLeader_vtables_: Incomplete
-IAcadMLeaderLeader_vtables_dispatch_: int
-IAcadMLeaderLeader_vtables_: Incomplete
-IAcadMLeaderStyle_vtables_dispatch_: int
-IAcadMLeaderStyle_vtables_: Incomplete
-IAcadMLine_vtables_dispatch_: int
-IAcadMLine_vtables_: Incomplete
-IAcadMText_vtables_dispatch_: int
-IAcadMText_vtables_: Incomplete
-IAcadMaterial_vtables_dispatch_: int
-IAcadMaterial_vtables_: Incomplete
-IAcadMaterials_vtables_dispatch_: int
-IAcadMaterials_vtables_: Incomplete
-IAcadMenuBar_vtables_dispatch_: int
-IAcadMenuBar_vtables_: Incomplete
-IAcadMenuGroup_vtables_dispatch_: int
-IAcadMenuGroup_vtables_: Incomplete
-IAcadMenuGroups_vtables_dispatch_: int
-IAcadMenuGroups_vtables_: Incomplete
-IAcadModelSpace_vtables_dispatch_: int
-IAcadModelSpace_vtables_: Incomplete
-IAcadNurbSurface_vtables_dispatch_: int
-IAcadNurbSurface_vtables_: Incomplete
-IAcadObject_vtables_dispatch_: int
-IAcadObject_vtables_: Incomplete
-IAcadObjectEvents_vtables_dispatch_: int
-IAcadObjectEvents_vtables_: Incomplete
-IAcadOle_vtables_dispatch_: int
-IAcadOle_vtables_: Incomplete
-IAcadPViewport_vtables_dispatch_: int
-IAcadPViewport_vtables_: Incomplete
-IAcadPaperSpace_vtables_dispatch_: int
-IAcadPaperSpace_vtables_: Incomplete
-IAcadPlaneSurface_vtables_dispatch_: int
-IAcadPlaneSurface_vtables_: Incomplete
-IAcadPlot_vtables_dispatch_: int
-IAcadPlot_vtables_: Incomplete
-IAcadPlotConfiguration_vtables_dispatch_: int
-IAcadPlotConfiguration_vtables_: Incomplete
-IAcadPlotConfigurations_vtables_dispatch_: int
-IAcadPlotConfigurations_vtables_: Incomplete
-IAcadPoint_vtables_dispatch_: int
-IAcadPoint_vtables_: Incomplete
-IAcadPointCloud_vtables_dispatch_: int
-IAcadPointCloud_vtables_: Incomplete
-IAcadPointCloudEx_vtables_dispatch_: int
-IAcadPointCloudEx_vtables_: Incomplete
-IAcadPointCloudEx2_vtables_dispatch_: int
-IAcadPointCloudEx2_vtables_: Incomplete
-IAcadPolyfaceMesh_vtables_dispatch_: int
-IAcadPolyfaceMesh_vtables_: Incomplete
-IAcadPolygonMesh_vtables_dispatch_: int
-IAcadPolygonMesh_vtables_: Incomplete
-IAcadPolyline_vtables_dispatch_: int
-IAcadPolyline_vtables_: Incomplete
-IAcadPopupMenu_vtables_dispatch_: int
-IAcadPopupMenu_vtables_: Incomplete
-IAcadPopupMenuItem_vtables_dispatch_: int
-IAcadPopupMenuItem_vtables_: Incomplete
-IAcadPopupMenus_vtables_dispatch_: int
-IAcadPopupMenus_vtables_: Incomplete
-IAcadPreferences_vtables_dispatch_: int
-IAcadPreferences_vtables_: Incomplete
-IAcadPreferencesDisplay_vtables_dispatch_: int
-IAcadPreferencesDisplay_vtables_: Incomplete
-IAcadPreferencesDrafting_vtables_dispatch_: int
-IAcadPreferencesDrafting_vtables_: Incomplete
-IAcadPreferencesFiles_vtables_dispatch_: int
-IAcadPreferencesFiles_vtables_: Incomplete
-IAcadPreferencesOpenSave_vtables_dispatch_: int
-IAcadPreferencesOpenSave_vtables_: Incomplete
-IAcadPreferencesOutput_vtables_dispatch_: int
-IAcadPreferencesOutput_vtables_: Incomplete
-IAcadPreferencesProfiles_vtables_dispatch_: int
-IAcadPreferencesProfiles_vtables_: Incomplete
-IAcadPreferencesSelection_vtables_dispatch_: int
-IAcadPreferencesSelection_vtables_: Incomplete
-IAcadPreferencesSystem_vtables_dispatch_: int
-IAcadPreferencesSystem_vtables_: Incomplete
-IAcadPreferencesUser_vtables_dispatch_: int
-IAcadPreferencesUser_vtables_: Incomplete
-IAcadRasterImage_vtables_dispatch_: int
-IAcadRasterImage_vtables_: Incomplete
-IAcadRay_vtables_dispatch_: int
-IAcadRay_vtables_: Incomplete
-IAcadRegion_vtables_dispatch_: int
-IAcadRegion_vtables_: Incomplete
-IAcadRegisteredApplication_vtables_dispatch_: int
-IAcadRegisteredApplication_vtables_: Incomplete
-IAcadRegisteredApplications_vtables_dispatch_: int
-IAcadRegisteredApplications_vtables_: Incomplete
-IAcadRevolvedSurface_vtables_dispatch_: int
-IAcadRevolvedSurface_vtables_: Incomplete
-IAcadSection_vtables_dispatch_: int
-IAcadSection_vtables_: Incomplete
-IAcadSection2_vtables_dispatch_: int
-IAcadSection2_vtables_: Incomplete
-IAcadSectionManager_vtables_dispatch_: int
-IAcadSectionManager_vtables_: Incomplete
-IAcadSectionSettings_vtables_dispatch_: int
-IAcadSectionSettings_vtables_: Incomplete
-IAcadSectionTypeSettings_vtables_dispatch_: int
-IAcadSectionTypeSettings_vtables_: Incomplete
-IAcadSectionTypeSettings2_vtables_dispatch_: int
-IAcadSectionTypeSettings2_vtables_: Incomplete
-IAcadSecurityParams_vtables_dispatch_: int
-IAcadSecurityParams_vtables_: Incomplete
-IAcadSelectionSet_vtables_dispatch_: int
-IAcadSelectionSet_vtables_: Incomplete
-IAcadSelectionSets_vtables_dispatch_: int
-IAcadSelectionSets_vtables_: Incomplete
-IAcadShadowDisplay_vtables_dispatch_: int
-IAcadShadowDisplay_vtables_: Incomplete
-IAcadShape_vtables_dispatch_: int
-IAcadShape_vtables_: Incomplete
-IAcadSolid_vtables_dispatch_: int
-IAcadSolid_vtables_: Incomplete
-IAcadSortentsTable_vtables_dispatch_: int
-IAcadSortentsTable_vtables_: Incomplete
-IAcadSpline_vtables_dispatch_: int
-IAcadSpline_vtables_: Incomplete
-IAcadState_vtables_dispatch_: int
-IAcadState_vtables_: Incomplete
-IAcadSubDMesh_vtables_dispatch_: int
-IAcadSubDMesh_vtables_: Incomplete
-IAcadSubDMeshEdge_vtables_dispatch_: int
-IAcadSubDMeshEdge_vtables_: Incomplete
-IAcadSubDMeshFace_vtables_dispatch_: int
-IAcadSubDMeshFace_vtables_: Incomplete
-IAcadSubDMeshVertex_vtables_dispatch_: int
-IAcadSubDMeshVertex_vtables_: Incomplete
-IAcadSubEntSolidEdge_vtables_dispatch_: int
-IAcadSubEntSolidEdge_vtables_: Incomplete
-IAcadSubEntSolidFace_vtables_dispatch_: int
-IAcadSubEntSolidFace_vtables_: Incomplete
-IAcadSubEntSolidNode_vtables_dispatch_: int
-IAcadSubEntSolidNode_vtables_: Incomplete
-IAcadSubEntSolidVertex_vtables_dispatch_: int
-IAcadSubEntSolidVertex_vtables_: Incomplete
-IAcadSubEntity_vtables_dispatch_: int
-IAcadSubEntity_vtables_: Incomplete
-IAcadSummaryInfo_vtables_dispatch_: int
-IAcadSummaryInfo_vtables_: Incomplete
-IAcadSurface_vtables_dispatch_: int
-IAcadSurface_vtables_: Incomplete
-IAcadSweptSurface_vtables_dispatch_: int
-IAcadSweptSurface_vtables_: Incomplete
-IAcadTable_vtables_dispatch_: int
-IAcadTable_vtables_: Incomplete
-IAcadTableStyle_vtables_dispatch_: int
-IAcadTableStyle_vtables_: Incomplete
-IAcadText_vtables_dispatch_: int
-IAcadText_vtables_: Incomplete
-IAcadTextStyle_vtables_dispatch_: int
-IAcadTextStyle_vtables_: Incomplete
-IAcadTextStyles_vtables_dispatch_: int
-IAcadTextStyles_vtables_: Incomplete
-IAcadTolerance_vtables_dispatch_: int
-IAcadTolerance_vtables_: Incomplete
-IAcadToolbar_vtables_dispatch_: int
-IAcadToolbar_vtables_: Incomplete
-IAcadToolbarItem_vtables_dispatch_: int
-IAcadToolbarItem_vtables_: Incomplete
-IAcadToolbars_vtables_dispatch_: int
-IAcadToolbars_vtables_: Incomplete
-IAcadTrace_vtables_dispatch_: int
-IAcadTrace_vtables_: Incomplete
-IAcadUCS_vtables_dispatch_: int
-IAcadUCS_vtables_: Incomplete
-IAcadUCSs_vtables_dispatch_: int
-IAcadUCSs_vtables_: Incomplete
-IAcadUnderlay_vtables_dispatch_: int
-IAcadUnderlay_vtables_: Incomplete
-IAcadUtility_vtables_dispatch_: int
-IAcadUtility_vtables_: Incomplete
-IAcadView_vtables_dispatch_: int
-IAcadView_vtables_: Incomplete
-IAcadViewport_vtables_dispatch_: int
-IAcadViewport_vtables_: Incomplete
-IAcadViewports_vtables_dispatch_: int
-IAcadViewports_vtables_: Incomplete
-IAcadViews_vtables_dispatch_: int
-IAcadViews_vtables_: Incomplete
-IAcadWipeout_vtables_dispatch_: int
-IAcadWipeout_vtables_: Incomplete
-IAcadXRecord_vtables_dispatch_: int
-IAcadXRecord_vtables_: Incomplete
-IAcadXline_vtables_dispatch_: int
-IAcadXline_vtables_: Incomplete
-RecordMap: Incomplete
-CLSIDToClassMap: Incomplete
-CLSIDToPackageMap: Incomplete
-VTablesToPackageMap: Incomplete
-VTablesToClassMap: Incomplete
-NamesToIIDMap: Incomplete
-
-def getApp(self) -> IAcadApplication: ...
-def getDbx(self) -> IAxDbDocument: ...
