@@ -133,8 +133,13 @@ def PyRxCmd_getpointwithbasex():
     try:
         ut = theApp.ActiveDocument.Utility
         pt1 = Ge.Point3d(100, 100, 0)
-        retAngle = ut.GetPointWithBase(pt1.toList(), "\nGet Point with base:")
-        print(retAngle)
+        retAngle = None
+        try:
+            retAngle = ut.GetPointWithBase(pt1.toList(), "\nGet Point with base:")
+        except:
+            pass
+        if retAngle is not None:
+            print(retAngle)
     except Exception as err:
         traceback.print_exception(err)
         
@@ -151,6 +156,23 @@ def PyRxCmd_layerStateX():
         state : Ax.IAcadLayerStateManager = Ax.AcadLayerStateManager()
         state.SetDatabase(theApp.ActiveDocument.Database)
         state.Export('WOOHOOSTATE','e:\\temp\\WOOHOOSTATE.txt')
+    except Exception as err:
+        traceback.print_exception(err)
+        
+def PyRxCmd_interx():
+    try:
+        model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
+        line1 = model.AddLine((0, 0, 0),(100, 100, 0))
+        line2 = model.AddLine((100, 0, 0),(0, 100, 0))
+        res = line2.IntersectWith(line1,Ax.constants.acExtendNone)
+        print(res)
+
+        line3 = model.AddLine((0, 0, 0),(100, 100, 0))
+        line4 = model.AddLine((0, 0, 0),(100, 100, 0))
+        res2 = line3.IntersectWith(line4,Ax.constants.acExtendNone)
+        
+        print(res2)
+        
     except Exception as err:
         traceback.print_exception(err)
 
