@@ -29345,6 +29345,12 @@ __init__( (object)arg1) -> None :
     C++ signature :
         enum AcDb::DuplicateRecordCloning duplicateRecordCloning(class PyDbIdMapping {lvalue})'''
     ...
+    def idPairs (self, *args, **kwargs)-> list :
+      '''idPairs( (IdMapping)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list idPairs(class PyDbIdMapping {lvalue})'''
+    ...
     def origDb (self, *args, **kwargs)-> PyDb.Database :
       '''origDb( (IdMapping)arg1) -> Database :
 
