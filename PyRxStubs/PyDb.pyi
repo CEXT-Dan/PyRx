@@ -219,6 +219,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -294,6 +297,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -383,6 +389,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -419,6 +428,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -426,6 +438,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -502,6 +517,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def defaultLightingType (self: PyDbAbstractViewTableRecord)-> object :
@@ -583,6 +601,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -688,6 +709,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAmbientLightColor (self: PyDbAbstractViewTableRecord,val : PyDb.Color)-> None :
@@ -837,6 +861,9 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def visualStyle (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def width (self: PyDbAbstractViewTableRecord)-> float :
       '''                             '''
     ...
@@ -847,6 +874,9 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -1134,6 +1164,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -1328,6 +1361,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -1500,6 +1536,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> None :
@@ -1979,6 +2018,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -1999,6 +2041,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
 
     C++ signature :
         class AcGePoint3d xLine2Point(class PyDbAlignedDimension {lvalue})'''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
+      '''                             '''
     ...
 
 class AnnoType:
@@ -2342,6 +2387,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -2536,6 +2584,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -2674,6 +2725,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -2792,6 +2846,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -2799,6 +2856,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -2969,6 +3029,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -3165,6 +3228,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -3337,6 +3403,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> None :
@@ -3846,6 +3915,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -3866,6 +3938,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
 
     C++ signature :
         class AcGePoint3d xLine2Point(class PyDbArcDimension {lvalue})'''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
+      '''                             '''
     ...
 
 class AssocFlags:
@@ -4095,6 +4170,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -4225,6 +4303,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -4396,6 +4477,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def rotation (self: Text)-> float :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
@@ -4570,6 +4654,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def widthFactor (self: Text)-> float :
       '''                             '''
     ...
@@ -4580,6 +4667,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -4680,6 +4770,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -4812,6 +4905,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -4985,6 +5081,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rotation (self: Text)-> float :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
@@ -5156,6 +5255,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def widthFactor (self: Text)-> float :
       '''                             '''
     ...
@@ -5166,6 +5268,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -5247,6 +5352,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -5362,6 +5470,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -5484,6 +5595,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -5572,6 +5686,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -5579,6 +5696,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -5660,6 +5780,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -5775,6 +5898,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -5897,6 +6023,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -5985,6 +6114,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -5992,6 +6124,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -6089,6 +6224,9 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -6212,6 +6350,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -6352,6 +6493,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def scaleFactors (self: BlockReference)-> PyGe.Scale3d :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -6461,6 +6605,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -6468,6 +6615,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -6642,6 +6792,9 @@ class BlockTable:
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -6714,6 +6867,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -6803,6 +6959,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -6839,6 +6998,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -6846,6 +7008,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -6917,6 +7082,9 @@ class BlockTableRecord:
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -7006,6 +7174,9 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isAnonymous (self: BlockTableRecord)-> bool :
@@ -7140,6 +7311,9 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -7206,6 +7380,9 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -7213,6 +7390,9 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
     def xrefDatabase (self: BlockTableRecord,val : bool)-> PyDb.Database :
@@ -7308,6 +7488,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -7425,6 +7608,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -7547,6 +7733,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -7635,6 +7824,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -7642,6 +7834,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -9139,6 +9334,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -9333,6 +9531,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -9468,6 +9669,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -9580,6 +9784,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -9587,6 +9794,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -10589,6 +10799,9 @@ class Curve:
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -10780,6 +10993,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -10909,6 +11125,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -11000,6 +11219,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -11007,6 +11229,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -12659,6 +12884,9 @@ class DbObject:
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -12714,6 +12942,9 @@ class DbObject:
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -12797,6 +13028,9 @@ class DbObject:
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -12827,6 +13061,9 @@ class DbObject:
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -12834,6 +13071,9 @@ class DbObject:
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -13061,6 +13301,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -13267,6 +13510,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -13427,6 +13673,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> None :
@@ -13900,6 +14149,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -13907,6 +14159,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -14158,6 +14413,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -14219,6 +14477,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -14324,6 +14585,9 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAt (self: Dictionary)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -14360,6 +14624,9 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -14367,6 +14634,9 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -14467,6 +14737,9 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -14540,6 +14813,9 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isAllGeomErased (self, *args, **kwargs)-> bool :
@@ -14693,6 +14969,9 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
     C++ signature :
         enum AcDbDimAssoc::RotatedDimType rotatedDimType(class PyDbDimAssoc {lvalue})'''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAssocFlag (self, *args, **kwargs)-> None :
       '''setAssocFlag( (DimAssoc)arg1, (int)arg2 [, (bool)arg3]) -> None :
 
@@ -14822,6 +15101,9 @@ updateDimension( (DimAssoc)arg1, (bool)arg2, (bool)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -14829,6 +15111,9 @@ updateDimension( (DimAssoc)arg1, (bool)arg2, (bool)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -15202,6 +15487,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -15277,6 +15565,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -15366,6 +15657,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -15402,6 +15696,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -15409,6 +15706,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -15480,6 +15780,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -15776,6 +16079,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -15870,6 +16176,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -16142,6 +16451,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -16149,6 +16461,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -16264,6 +16579,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -16454,6 +16772,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -16608,6 +16929,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> None :
@@ -17051,6 +17375,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -17058,6 +17385,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -18571,6 +18901,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -18768,6 +19101,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -18932,6 +19268,9 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     C++ signature :
         void set(class PyDbEllipse {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)'''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -19050,6 +19389,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -19057,6 +19399,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -19249,6 +19594,9 @@ class Entity:
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -19361,6 +19709,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -19483,6 +19834,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -19571,6 +19925,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -19578,6 +19935,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -21993,6 +22353,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -22108,6 +22471,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -22236,6 +22602,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -22324,6 +22693,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -22331,6 +22703,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -22431,6 +22806,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -22548,6 +22926,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -22679,6 +23060,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -22770,6 +23154,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -22777,6 +23164,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -22862,6 +23252,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -22979,6 +23372,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -23110,6 +23506,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -23201,6 +23600,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -23208,6 +23610,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -23293,6 +23698,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -23442,6 +23850,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -23566,6 +23977,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -23701,6 +24115,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -23708,6 +24125,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -23804,6 +24224,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -23923,6 +24346,9 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -24016,6 +24442,9 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -24076,6 +24505,9 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -24083,6 +24515,9 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -25607,6 +26042,9 @@ append( (Group)arg1, (list)arg2) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -25697,6 +26135,9 @@ insertAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isAnonymous (self, *args, **kwargs)-> bool :
@@ -25855,6 +26296,9 @@ removeAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAnonymous (self, *args, **kwargs)-> None :
       '''setAnonymous( (Group)arg1) -> None :
 
@@ -25978,6 +26422,9 @@ setMaterial( (Group)arg1, (ObjectId)arg2) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -25985,6 +26432,9 @@ setMaterial( (Group)arg1, (ObjectId)arg2) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -26338,6 +26788,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -26604,6 +27057,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -26832,6 +27288,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAssociative (self, *args, **kwargs)-> None :
       '''setAssociative( (Hatch)arg1, (bool)arg2) -> None :
 
@@ -27040,6 +27499,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -27047,6 +27509,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -27945,6 +28410,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def degree (self: Spline)-> int :
       '''                             '''
     ...
@@ -28192,6 +28660,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -28349,6 +28820,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void reverseCurve(class PyDbHelix {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -28614,6 +29088,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def weightAt (self: Spline,val : int)-> float :
       '''                             '''
     ...
@@ -28624,6 +29101,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -28896,6 +29376,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -29011,6 +29494,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -29133,6 +29619,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -29221,6 +29710,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -29228,6 +29720,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -29907,6 +30402,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -29982,6 +30480,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -30071,6 +30572,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -30107,6 +30611,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -30114,6 +30621,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -30195,6 +30705,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -30271,6 +30784,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -30474,6 +30990,9 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -30626,6 +31145,9 @@ transparency( (LayerTableRecord)arg1, (ObjectId)arg2) -> Transparency :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -30633,6 +31155,9 @@ transparency( (LayerTableRecord)arg1, (ObjectId)arg2) -> Transparency :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -30725,6 +31250,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -30912,6 +31440,9 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -31070,6 +31601,9 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         bool scaleLineweights(class PyDbPlotSettings {lvalue})'''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
     ...
     def setAnnoAllVisible (self, *args, **kwargs)-> None :
       '''setAnnoAllVisible( (Layout)arg1, (bool)arg2) -> None :
@@ -31250,6 +31784,9 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -31257,6 +31794,9 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -31594,6 +32134,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -31901,6 +32444,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -32064,6 +32610,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAnnotationObjId (self, *args, **kwargs)-> None :
@@ -32296,6 +32845,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -32303,6 +32855,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -32391,6 +32946,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -32587,6 +33145,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -32719,6 +33280,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -32828,6 +33392,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -32835,6 +33402,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -32981,6 +33551,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -33177,6 +33750,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -33331,6 +33907,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> None :
@@ -33810,6 +34389,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -33842,6 +34424,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
 
     C++ signature :
         class AcGePoint3d xLine2Start(class PyDb2LineAngularDimension {lvalue})'''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
+      '''                             '''
     ...
 
 class LineSpacingStyle:
@@ -34232,6 +34817,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -34307,6 +34895,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -34396,6 +34987,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -34432,6 +35026,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -34439,6 +35036,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -34515,6 +35115,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -34573,6 +35176,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -34672,6 +35278,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -34833,6 +35442,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -34840,6 +35452,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -34929,6 +35544,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -35046,6 +35664,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -35174,6 +35795,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -35262,6 +35886,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -35269,6 +35896,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -35372,6 +36002,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -35495,6 +36128,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -35641,6 +36277,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def scaleFactors (self: BlockReference)-> PyGe.Scale3d :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -35762,6 +36401,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -35769,6 +36411,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -35947,6 +36592,9 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -36238,6 +36886,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -36500,6 +37151,9 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
 
     C++ signature :
         double scale(class PyDbMLeader {lvalue})'''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
     ...
     def setArrowSize (self, *args, **kwargs)-> None :
       '''setArrowSize( (MLeader)arg1, (float)arg2) -> None :
@@ -36926,6 +37580,9 @@ textAttachmentType( (MLeader)arg1, (MLeaderLeaderDirectionType)arg2) -> MLeaderT
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -36933,6 +37590,9 @@ textAttachmentType( (MLeader)arg1, (MLeaderLeaderDirectionType)arg2) -> MLeaderT
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -38193,6 +38853,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def defaultMText (self, *args, **kwargs)-> PyDb.MText :
       '''defaultMText( (MLeaderStyle)arg1) -> MText :
 
@@ -38334,6 +38997,9 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -38482,6 +39148,9 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
 
     C++ signature :
         enum AcDbMLeaderStyle::SegmentAngleType secondSegmentAngleConstraint(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
     ...
     def setAlignSpace (self, *args, **kwargs)-> None :
       '''setAlignSpace( (MLeaderStyle)arg1, (float)arg2) -> None :
@@ -38822,6 +39491,9 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -38829,6 +39501,9 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -39441,6 +40116,9 @@ class MText:
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -39603,6 +40281,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -39736,6 +40417,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def rotation (self: MText)-> float :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAttachment (self: MText,val : PyDb.MTextAttachmentPoint)-> None :
@@ -39928,6 +40612,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def width (self: MText)-> float :
       '''                             '''
     ...
@@ -39938,6 +40625,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -40739,6 +41429,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -40884,6 +41577,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -41048,6 +41744,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         double scale(class PyDbMline {lvalue})'''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -41202,6 +41901,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -41209,6 +41911,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -41425,6 +42130,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -41539,6 +42247,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -41648,6 +42359,9 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void set(class PyDbMlineStyle {lvalue},class PyDbMlineStyle,bool)'''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -41793,6 +42507,9 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -41800,6 +42517,9 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -41889,6 +42609,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -42006,6 +42729,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -42134,6 +42860,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -42222,6 +42951,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -42229,6 +42961,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -42632,6 +43367,9 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def definingPoint (self, *args, **kwargs)-> PyGe.Point3d :
       '''definingPoint( (OrdinateDimension)arg1) -> Point3d :
 
@@ -42826,6 +43564,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -43004,6 +43745,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> None :
@@ -43489,6 +44233,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -43496,6 +44243,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -44264,6 +45014,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -44346,6 +45099,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -44446,6 +45202,9 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -44494,6 +45253,9 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -44501,6 +45263,9 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -44614,6 +45379,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def definitionId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -44779,6 +45547,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isAdjustedForBackground (self, *args, **kwargs)-> bool :
@@ -44966,6 +45737,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGeScale3d scaleFactors(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -45169,6 +45943,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def width (self, *args, **kwargs)-> float :
       '''width( (UnderlayReference)arg1) -> float :
 
@@ -45182,6 +45959,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -45398,6 +46178,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -45513,6 +46296,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -45641,6 +46427,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -45729,6 +46518,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -45736,6 +46528,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -46076,6 +46871,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -46206,6 +47004,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -46367,6 +47168,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool scaleLineweights(class PyDbPlotSettings {lvalue})'''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -46516,6 +47320,9 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -46523,6 +47330,9 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -47024,6 +47834,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -47139,6 +47952,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -47267,6 +48083,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -47370,6 +48189,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -47377,6 +48199,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -47529,6 +48354,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -47725,6 +48553,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -47879,6 +48710,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> None :
@@ -48352,6 +49186,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -48372,6 +49209,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
 
     C++ signature :
         class AcGePoint3d xLine2Point(class PyDb3PointAngularDimension {lvalue})'''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
+      '''                             '''
     ...
 
 class PointRef:
@@ -48747,6 +49587,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -48859,6 +49702,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -48984,6 +49830,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -49075,6 +49924,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -49082,6 +49934,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -49167,6 +50022,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -49281,6 +50139,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -49406,6 +50267,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -49500,6 +50364,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -49507,6 +50374,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -49603,6 +50473,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -49841,6 +50714,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -50000,6 +50876,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def segType (self: Polyline,idx:int)-> PyDb.SegType :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -50130,6 +51009,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -50137,6 +51019,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -50248,6 +51133,9 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def defaultEndWidth (self, *args, **kwargs)-> float :
@@ -50470,6 +51358,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -50651,6 +51542,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -50839,6 +51733,9 @@ splineFit( (Polyline2d)arg1, (Poly2dType)arg2, (DxfCode)arg3) -> None :
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -50846,6 +51743,9 @@ splineFit( (Polyline2d)arg1, (Poly2dType)arg2, (DxfCode)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -50951,6 +51851,9 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -51155,6 +52058,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -51320,6 +52226,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -51446,6 +52355,9 @@ splineFit( (Polyline3d)arg1, (Poly3dType)arg2, (DxfCode)arg3) -> None :
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -51453,6 +52365,9 @@ splineFit( (Polyline3d)arg1, (Poly3dType)arg2, (DxfCode)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -51538,6 +52453,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -51652,6 +52570,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -51777,6 +52698,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -51871,6 +52795,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -51878,6 +52805,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -52030,6 +52960,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -52232,6 +53165,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -52392,6 +53328,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> None :
@@ -52865,6 +53804,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -52872,6 +53814,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -53024,6 +53969,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -53226,6 +54174,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -53398,6 +54349,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> None :
@@ -53901,6 +54855,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -53908,6 +54865,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -54021,6 +54981,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -54197,6 +55160,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -54379,6 +55345,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class AcGeVector2d scale(class PyDbRasterImage {lvalue})'''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -54557,6 +55526,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def width (self, *args, **kwargs)-> float :
       '''width( (RasterImage)arg1) -> float :
 
@@ -54570,6 +55542,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -54658,6 +55633,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -54740,6 +55718,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -54859,6 +55840,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > searchForActivePath(class PyDbRasterImageDef {lvalue})'''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setActiveFileName (self, *args, **kwargs)-> None :
       '''setActiveFileName( (RasterImageDef)arg1, (str)arg2) -> None :
 
@@ -54948,6 +55932,9 @@ unload( (RasterImageDef)arg1, (bool)arg2) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -54955,6 +55942,9 @@ unload( (RasterImageDef)arg1, (bool)arg2) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -55031,6 +56021,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -55089,6 +56082,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -55172,6 +56168,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -55208,6 +56207,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -55215,6 +56217,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -55285,6 +56290,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -55362,6 +56370,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -55451,6 +56462,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -55487,6 +56501,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -55494,6 +56511,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -55561,6 +56581,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -55619,6 +56642,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -55711,6 +56737,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -55744,6 +56773,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -55751,6 +56783,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -55846,6 +56881,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class boost::python::list createFromCurves(class boost::python::list)'''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -55963,6 +57001,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -56091,6 +57132,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -56179,6 +57223,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -56186,6 +57233,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -56659,6 +57709,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -56774,6 +57827,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -56902,6 +57958,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -56990,6 +58049,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -56997,6 +58059,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -57264,6 +58329,9 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -57458,6 +58526,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -57637,6 +58708,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         double rotation(class PyDbRotatedDimension {lvalue})'''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
     ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> None :
       '''setAltSuppressLeadingZeros( (Dimension)arg1, (bool)arg2) -> None :
@@ -58121,6 +59195,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -58141,6 +59218,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
 
     C++ signature :
         class AcGePoint3d xLine2Point(class PyDbRotatedDimension {lvalue})'''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
+      '''                             '''
     ...
 
 class RotationAngle:
@@ -58614,6 +59694,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -58729,6 +59812,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -58851,6 +59937,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -58939,6 +60028,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -58946,6 +60038,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -59572,6 +60667,9 @@ createSweptSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Entity)arg4, (Sw
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -59776,6 +60874,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -59944,6 +61045,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list separateBody(class PyDb3dSolid {lvalue})'''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -60097,6 +61201,9 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -60104,6 +61211,9 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -60257,6 +61367,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def degree (self: Spline)-> int :
@@ -60500,6 +61613,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -60654,6 +61770,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
@@ -60812,6 +61931,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def weightAt (self: Spline,val : int)-> float :
       '''                             '''
     ...
@@ -60822,6 +61944,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -61679,6 +62804,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -61794,6 +62922,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -61922,6 +63053,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -62010,6 +63144,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -62017,6 +63154,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -62602,6 +63742,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -62717,6 +63860,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -62845,6 +63991,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -62933,6 +64082,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -62940,6 +64092,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -63283,6 +64438,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -63358,6 +64516,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -63447,6 +64608,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -63483,6 +64647,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -63490,6 +64657,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -63537,6 +64707,9 @@ class SymbolTableRecord:
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -63597,6 +64770,9 @@ class SymbolTableRecord:
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -63689,6 +64865,9 @@ class SymbolTableRecord:
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -63722,6 +64901,9 @@ class SymbolTableRecord:
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -63729,6 +64911,9 @@ class SymbolTableRecord:
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -64032,6 +65217,9 @@ dataFormat( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> str :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dataFormat(class PyDbTable {lvalue},int,int,int)'''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def deleteCellContent (self, *args, **kwargs)-> None :
@@ -64451,6 +65639,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isAutoScale (self, *args, **kwargs)-> bool :
       '''isAutoScale( (Table)arg1, (int)arg2, (int)arg3) -> bool :
 
@@ -64778,6 +65969,9 @@ rotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
         double scale(class PyDbTable {lvalue},int,int,int)'''
     ...
     def scaleFactors (self: BlockReference)-> PyGe.Scale3d :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAlignment (self, *args, **kwargs)-> None :
@@ -65468,6 +66662,9 @@ updateDataLink( (Table)arg1, (int)arg2, (int)arg3, (UpdateDirection)arg4, (Updat
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def width (self, *args, **kwargs)-> float :
       '''width( (Table)arg1) -> float :
 
@@ -65481,6 +66678,9 @@ updateDataLink( (Table)arg1, (int)arg2, (int)arg3, (UpdateDirection)arg4, (Updat
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -66274,6 +67474,9 @@ createCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def deleteCellStyle (self, *args, **kwargs)-> None :
       '''deleteCellStyle( (TableStyle)arg1, (str)arg2) -> None :
 
@@ -66466,6 +67669,9 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
     def isBackgroundColorNone (self, *args, **kwargs)-> bool :
       '''isBackgroundColorNone( (TableStyle)arg1, (RowType)arg2) -> bool :
 
@@ -66612,6 +67818,9 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
 
     C++ signature :
         double rotation(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
     ...
     def setAlignment (self, *args, **kwargs)-> None :
       '''setAlignment( (TableStyle)arg1, (CellAlignment)arg2, (RowType)arg3) -> None :
@@ -66893,6 +68102,9 @@ textStyle( (TableStyle)arg1, (str)arg2) -> ObjectId :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -66900,6 +68112,9 @@ textStyle( (TableStyle)arg1, (str)arg2) -> ObjectId :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -67002,6 +68217,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -67128,6 +68346,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -67280,6 +68501,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rotation (self: Text)-> float :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
@@ -67419,6 +68643,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def widthFactor (self: Text)-> float :
       '''                             '''
     ...
@@ -67429,6 +68656,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -67796,6 +69026,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -67871,6 +69104,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -67960,6 +69196,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -67996,6 +69235,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -68003,6 +69245,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -68073,6 +69318,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -68140,6 +69388,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -68244,6 +69495,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -68340,6 +69594,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -68350,6 +69607,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def xScale (self: TextStyleTableRecord)-> float :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -69107,6 +70367,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -69182,6 +70445,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -69271,6 +70537,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -69307,6 +70576,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -69314,6 +70586,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -69381,6 +70656,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -69439,6 +70717,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -69534,6 +70815,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -69597,6 +70881,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -69607,6 +70894,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
     def yAxis (self: UCSTableRecord)-> PyGe.Vector3d :
@@ -69674,6 +70964,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -69758,6 +71051,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -69858,6 +71154,9 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -69906,6 +71205,9 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -69913,6 +71215,9 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -70048,6 +71353,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def definitionId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -70213,6 +71521,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isAdjustedForBackground (self, *args, **kwargs)-> bool :
@@ -70400,6 +71711,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGeScale3d scaleFactors(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -70603,6 +71917,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def width (self, *args, **kwargs)-> float :
       '''width( (UnderlayReference)arg1) -> float :
 
@@ -70616,6 +71933,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -71158,6 +72478,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -71270,6 +72593,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -71392,6 +72718,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -71480,6 +72809,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -71487,6 +72819,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -71580,6 +72915,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -71700,6 +73038,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -71828,6 +73169,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -71952,6 +73296,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> PyDb.Visibility :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -71959,6 +73306,9 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -72181,6 +73531,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def defaultLightingType (self: PyDbAbstractViewTableRecord)-> object :
       '''                             '''
     ...
@@ -72272,6 +73625,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCameraPlottable (self: ViewTableRecord)-> bool :
@@ -72392,6 +73748,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAmbientLightColor (self: PyDbAbstractViewTableRecord,val : PyDb.Color)-> None :
@@ -72577,6 +73936,9 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def visualStyle (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def width (self: PyDbAbstractViewTableRecord)-> float :
       '''                             '''
     ...
@@ -72587,6 +73949,9 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -72736,6 +74101,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         double customScale(class PyDbViewport {lvalue})'''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def defaultLightingType (self, *args, **kwargs)-> object :
@@ -72943,6 +74311,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isBackClipOn (self, *args, **kwargs)-> bool :
@@ -73295,6 +74666,9 @@ removeHiddenLines( (Viewport)arg1, (bool)arg2) -> None :
         void removeSheetView(class PyDbViewport {lvalue})'''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAmbientLightColor (self, *args, **kwargs)-> None :
@@ -74072,6 +75446,9 @@ setUcsIconVisible( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         class PyDbObjectId visualStyle(class PyDbViewport {lvalue})'''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def width (self, *args, **kwargs)-> float :
       '''width( (Viewport)arg1) -> float :
 
@@ -74085,6 +75462,9 @@ setUcsIconVisible( (Viewport)arg1, (bool)arg2) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -74174,6 +75554,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
     def defaultLightingType (self: PyDbAbstractViewTableRecord)-> object :
@@ -74273,6 +75656,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -74416,6 +75802,9 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
     def setAmbientLightColor (self: PyDbAbstractViewTableRecord,val : PyDb.Color)-> None :
@@ -74660,6 +76049,9 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def visualStyle (self: PyDbAbstractViewTableRecord)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def width (self: PyDbAbstractViewTableRecord)-> float :
       '''                             '''
     ...
@@ -74670,6 +76062,9 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
@@ -75121,6 +76516,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
 
@@ -75179,6 +76577,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
@@ -75285,6 +76686,9 @@ rbChain( (Xrecord)arg1, (Database)arg2) -> list :
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
@@ -75338,6 +76742,9 @@ setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> None :
     def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
       '''                             '''
     ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
     ...
@@ -75345,6 +76752,9 @@ setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> None :
       '''                             '''
     ...
     def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
     ...
 
