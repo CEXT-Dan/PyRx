@@ -18,6 +18,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRx24.2", "PyRx\PyRx24.2.v
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRx24.3", "PyRx\PyRx24.3.vcxproj", "{6A54E0D3-8BBC-4F71-B700-42E03C617B0D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRx25.0", "PyRx\PyRx25.0.vcxproj", "{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -69,6 +71,14 @@ Global
 		{6A54E0D3-8BBC-4F71-B700-42E03C617B0D}.Release|x64.Build.0 = Release|x64
 		{6A54E0D3-8BBC-4F71-B700-42E03C617B0D}.Release|x86.ActiveCfg = Release|x64
 		{6A54E0D3-8BBC-4F71-B700-42E03C617B0D}.Release|x86.Build.0 = Release|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Debug|x64.ActiveCfg = Debug|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Debug|x64.Build.0 = Debug|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Debug|x86.ActiveCfg = Debug|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Debug|x86.Build.0 = Debug|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Release|x64.ActiveCfg = Release|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Release|x64.Build.0 = Release|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Release|x86.ActiveCfg = Release|x64
+		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Release|x86.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
