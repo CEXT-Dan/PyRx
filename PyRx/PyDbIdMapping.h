@@ -53,6 +53,8 @@ public:
     AcDb::DeepCloneType deepCloneContext() const;
     AcDb::DuplicateRecordCloning duplicateRecordCloning() const;
 
+    boost::python::list idPairs();
+
     AcDbIdMapping* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<AcDbIdMapping> m_pyImp;

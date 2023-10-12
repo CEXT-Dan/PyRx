@@ -111,6 +111,7 @@ void makePyDbIdMappingWrapper()
         .def("origDb", &PyDbIdMapping::origDb)
         .def("deepCloneContext", &PyDbIdMapping::deepCloneContext)
         .def("duplicateRecordCloning", &PyDbIdMapping::duplicateRecordCloning)
+        .def("idPairs", &PyDbIdMapping::idPairs)
         ;
 }
 
@@ -172,6 +173,20 @@ AcDb::DeepCloneType PyDbIdMapping::deepCloneContext() const
 AcDb::DuplicateRecordCloning PyDbIdMapping::duplicateRecordCloning() const
 {
     return impObj()->duplicateRecordCloning();
+}
+
+boost::python::list PyDbIdMapping::idPairs()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    AcDbIdMappingIter iMapIter(*impObj());
+    for (iMapIter.start(); !iMapIter.done(); iMapIter.next())
+    {
+        AcDbIdPair idPair;
+        if (iMapIter.getMap(idPair))
+            pylist.append(PyIdPair(idPair));
+    }
+    return pylist;
 }
 
 AcDbIdMapping* PyDbIdMapping::impObj(const std::source_location& src /*= std::source_location::current()*/) const
