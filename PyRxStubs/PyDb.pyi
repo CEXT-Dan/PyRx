@@ -11242,6 +11242,9 @@ class Database:
     def __init__ (self: Database,buildDefaultDrawing : bool=True,noDocument: bool=False)-> None :
       '''                             '''
     ...
+    def abortDeepClone (self: Database,idmap:PyDb.IdMapping)-> None :
+      '''                             '''
+    ...
     def addObject (self: Database,object : DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -11357,6 +11360,9 @@ class Database:
       '''                             '''
     ...
     def currentSpaceId (self: Database)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def deepCloneObjects (self: Database,ids:list[PyDb.ObjectId],owner:PyDb.ObjectId,idmap:PyDb.IdMapping,deferXlation:bool=False)-> None :
       '''                             '''
     ...
     def detailViewStyle (self: Database)-> PyDb.ObjectId :

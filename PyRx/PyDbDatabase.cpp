@@ -470,6 +470,12 @@ void makePyDbDatabaseWrapper()
         .def("wblock", &PyDbDatabase::wblock2)
         .def("wblock", &PyDbDatabase::wblock3)
         .def("wblock", &PyDbDatabase::wblock4)
+        .def("abortDeepClone", &PyDbDatabase::abortDeepClone,DS.ARGS({ "idmap:PyDb.IdMapping" }))
+
+        .def("deepCloneObjects", &PyDbDatabase::deepCloneObjects1)
+        .def("deepCloneObjects", &PyDbDatabase::deepCloneObjects2,
+                DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap:PyDb.IdMapping","deferXlation:bool=False" }))
+
         .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects1)
         .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects2,
             DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap:PyDb.IdMapping","drc:DuplicateRecordCloning","deferXlation:bool=False" }))
@@ -2845,6 +2851,17 @@ PyDbObjectId PyDbDatabase::visualStyleDictionaryId() const
     return PyDbObjectId(impObj()->visualStyleDictionaryId());
 }
 
+void PyDbDatabase::deepCloneObjects1(const boost::python::list& objectIds, const PyDbObjectId& owner, PyDbIdMapping& idMap)
+{
+    PyThrowBadEs(impObj()->deepCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj()));
+}
+
+
+void PyDbDatabase::deepCloneObjects2(const boost::python::list& objectIds, const PyDbObjectId& owner, PyDbIdMapping& idMap, bool deferXlation)
+{
+    PyThrowBadEs(impObj()->deepCloneObjects(PyListToObjectIdArray(objectIds), owner.m_id, *idMap.impObj(), deferXlation));
+}
+
 void PyDbDatabase::wblockCloneObjects1(const boost::python::list& objectIds,
     const PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc)
 {
@@ -2883,6 +2900,11 @@ PyDbDatabase PyDbDatabase::wblock4()
     AcDbDatabase* _pOutputDb = nullptr;
     PyThrowBadEs(impObj()->wblock(_pOutputDb));
     return PyDbDatabase(_pOutputDb, true);
+}
+
+void PyDbDatabase::abortDeepClone(PyDbIdMapping& idMap)
+{
+    impObj()->abortDeepClone(*idMap.impObj());
 }
 
 AcGePoint3d PyDbDatabase::worldPucsBaseOrigin(AcDb::OrthographicView orthoView) const
