@@ -25,7 +25,6 @@ def PyRxCmd_doit():
         jig.setDispPrompt("\nPick point: ")
         if jig.drag() != Ed.DragStatus.kNormal:
             print('oops')
-            return
     except Exception as err:
         traceback.print_exception(err)
         
