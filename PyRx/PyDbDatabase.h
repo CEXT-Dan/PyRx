@@ -491,10 +491,18 @@ public:
     PyDbDatabase	    wblock3(const PyDbObjectId& blockId);
     PyDbDatabase	    wblock4();
 
+    void                abortDeepClone(PyDbIdMapping& idMap);
+
+    void                deepCloneObjects1(const boost::python::list& objectIds,
+        const PyDbObjectId& owner, PyDbIdMapping& idMap);
+
+    void                deepCloneObjects2(const boost::python::list& objectIds,
+        const PyDbObjectId& owner, PyDbIdMapping& idMap, bool deferXlation);
+
     void                wblockCloneObjects1(const boost::python::list& objectIds, const
         PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc);
 
-    void                wblockCloneObjects2(const boost::python::list& objectIds, const 
+    void                wblockCloneObjects2(const boost::python::list& objectIds, const
         PyDbObjectId& owner, PyDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc, bool deferXlation);
 
     AcGePoint3d			worldPucsBaseOrigin(AcDb::OrthographicView orthoView) const;
