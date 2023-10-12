@@ -8,6 +8,7 @@ class PyDbHandle;
 class PyDbObjectReactor;
 class PyDbEntityReactor;
 class PyDbSnoopDwgFiler;
+class PyDbIdMapping;
 
 //----------------------------------------------------------------------------------------
 //PyDbObject
@@ -76,6 +77,13 @@ public:
     void                addReactor(PyDbObjectReactor& pReactor) const;
     void                removeReactor(PyDbObjectReactor& pReactor) const;
     void                snoop(PyDbSnoopDwgFiler& filer);
+    PyDbObject          deepClone1(PyDbObject& pOwnerObject, PyDbIdMapping& idMap);
+    PyDbObject          deepClone2(PyDbObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary);
+    PyDbObject          wblockClone1(PyRxObject& pOwnerObject, PyDbIdMapping& idMap);
+    PyDbObject          wblockClone2(PyRxObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary);
+    void                xmitPropagateModify() const;
+    void                setAcDbObjectIdsInFlux();
+    Adesk::Boolean      isAcDbObjectIdsInFlux() const;
     static PyRxClass    desc();
     static std::string  className();
     static PyDbObject   cloneFrom(const PyRxObject& src);

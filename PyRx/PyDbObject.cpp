@@ -6,6 +6,8 @@
 #include "ResultBuffer.h"
 #include "PyDbField.h"
 #include "PyDbFiler.h"
+#include "PyDbIdMapping.h"
+
 using namespace boost::python;
 
 void makePyDbObjectWrapper()
@@ -76,6 +78,13 @@ void makePyDbObjectWrapper()
         .def("addReactor", &PyDbObject::addReactor, DS.ARGS({ "reactor: DbObjectReactor" }))
         .def("removeReactor", &PyDbObject::removeReactor, DS.ARGS({ "reactor: DbObjectReactor" }))
         .def("snoop", &PyDbObject::snoop, DS.ARGS({ " filer : PyDb.SnoopDwgFiler" }))
+        .def("deepClone", &PyDbObject::deepClone1)
+        .def("deepClone", &PyDbObject::deepClone2, DS.ARGS({ "owner: PyDb.DbObject" ,"mapping: PyDb.IdMapping","isPrimary:bool=True" }))
+        .def("wblockClone", &PyDbObject::wblockClone1)
+        .def("wblockClone", &PyDbObject::wblockClone2, DS.ARGS({ "owner: PyRx.RxObject" ,"mapping: PyDb.IdMapping","isPrimary:bool=True" }))
+        .def("xmitPropagateModify", &PyDbObject::xmitPropagateModify, DS.ARGS())
+        .def("setAcDbObjectIdsInFlux", &PyDbObject::setAcDbObjectIdsInFlux, DS.ARGS())
+        .def("isAcDbObjectIdsInFlux", &PyDbObject::isAcDbObjectIdsInFlux, DS.ARGS())
         .def("desc", &PyDbObject::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyDbObject::className, DS.SARGS()).staticmethod("className")
         .def("cloneFrom", &PyDbObject::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -398,6 +407,45 @@ void PyDbObject::removeReactor(PyDbObjectReactor& pReactor) const
 void PyDbObject::snoop(PyDbSnoopDwgFiler& filer)
 {
     return PyThrowBadEs(impObj()->dwgOut(std::addressof(filer)));
+}
+
+PyDbObject PyDbObject::deepClone1(PyDbObject& pOwnerObject, PyDbIdMapping& idMap)
+{
+    return deepClone2(pOwnerObject, idMap, true);
+}
+
+PyDbObject PyDbObject::deepClone2(PyDbObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary)
+{
+    AcDbObject* pClonedObject = nullptr;
+    PyThrowBadEs(impObj()->deepClone(pOwnerObject.impObj(), pClonedObject, *idMap.impObj()));
+    return PyDbObject(pClonedObject, true);
+}
+
+PyDbObject PyDbObject::wblockClone1(PyRxObject& pOwnerObject, PyDbIdMapping& idMap)
+{
+    return wblockClone2(pOwnerObject, idMap, true);
+}
+
+PyDbObject PyDbObject::wblockClone2(PyRxObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary)
+{
+    AcDbObject* pClonedObject = nullptr;
+    PyThrowBadEs(impObj()->wblockClone(pOwnerObject.impObj(), pClonedObject, *idMap.impObj()));
+    return PyDbObject(pClonedObject, true);
+}
+
+void PyDbObject::xmitPropagateModify() const
+{
+    impObj()->xmitPropagateModify();
+}
+
+void PyDbObject::setAcDbObjectIdsInFlux()
+{
+    impObj()->setAcDbObjectIdsInFlux();
+}
+
+Adesk::Boolean PyDbObject::isAcDbObjectIdsInFlux() const
+{
+    return impObj()->isAcDbObjectIdsInFlux();
 }
 
 PyRxClass PyDbObject::desc()
