@@ -5,7 +5,7 @@ using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
 //PyRxObject wrapper
-void makeAcRxObjectWrapper()
+void makePyRxObjectWrapper()
 {
     PyDocString DS("RxObject");
     class_<PyRxObject>("RxObject", boost::python::no_init)
@@ -162,7 +162,7 @@ AcRxObject* PyRxObject::impObj(const std::source_location& src /*= std::source_l
 
 //-----------------------------------------------------------------------------------------
 //PyRxClass Wrapper
-void makeAcRxClassWrapper()
+void makePyRxClassWrapper()
 {
     PyDocString DS("RxClass");
     class_<PyRxClass, bases<PyRxObject>>("RxClass", boost::python::no_init)

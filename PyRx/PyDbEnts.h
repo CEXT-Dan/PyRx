@@ -301,7 +301,7 @@ public:
 
 //-------------------------------------------------------------------------------------------------------------
 //AcDb3dPolylineVertex
-void makePyAcDb3dPolylineVertexWrapper();
+void makePyDb3dPolylineVertexWrapper();
 class PyDb3dPolylineVertex : public PyDbVertex
 {
 public:
@@ -324,7 +324,7 @@ public:
 
 //-------------------------------------------------------------------------------------------------------------
 //AcDbPolygonMeshVertex
-void makePyAcDbPolygonMeshVertexWrapper();
+void makePyDbPolygonMeshVertexWrapper();
 class PyDbPolygonMeshVertex : public PyDbVertex
 {
 public:
@@ -369,7 +369,7 @@ public:
 
 //-------------------------------------------------------------------------------------------------------------
 //AcDbFaceRecord
-void makePyAcDbFaceRecordWrapper();
+void makePyDbFaceRecordWrapper();
 class PyDbFaceRecord : public PyDbVertex
 {
 public:

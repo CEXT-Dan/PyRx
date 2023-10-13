@@ -1146,7 +1146,6 @@ BOOST_PYTHON_MODULE(PyGe)
         .value("kNotDefinedKnotParam", AcGe::KnotParameterization::kNotDefinedKnotParam)
         .export_values()
         ;
-
     enum_<AcGe::ErrorCondition>("AcGeError")
         .value("kOk", AcGe::ErrorCondition::kOk)
         .value("k0This", AcGe::ErrorCondition::k0This)

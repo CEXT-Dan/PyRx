@@ -86,8 +86,8 @@ BOOST_PYTHON_MODULE(PyRx)
     boost::python::import("sys").attr("stdout") = make_stdout_redirector().get();
     boost::python::import("sys").attr("stderr") = make_stderr_redirector().get();
 
-    makeAcRxObjectWrapper();
-    makeAcRxClassWrapper();
+    makePyRxObjectWrapper();
+    makePyRxClassWrapper();
     makePyRxOverruleWrapper();
 
     enum_<LispType>("LispType")

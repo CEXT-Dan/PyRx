@@ -1411,7 +1411,7 @@ AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::sour
 
 //-------------------------------------------------------------------------------------------------------------
 //AcDb3dPolylineVertex
-void makePyAcDb3dPolylineVertexWrapper()
+void makePyDb3dPolylineVertexWrapper()
 {
     PyDocString DS("Polyline3dVertex");
     class_<PyDb3dPolylineVertex, bases<PyDbVertex>>("Polyline3dVertex")
@@ -1504,7 +1504,7 @@ AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& s
 
 //-------------------------------------------------------------------------------------------------------------
 //AcDbPolygonMeshVertex
-void makePyAcDbPolygonMeshVertexWrapper()
+void makePyDbPolygonMeshVertexWrapper()
 {
     PyDocString DS("PolygonMeshVertex");
     class_<PyDbPolygonMeshVertex, bases<PyDbVertex>>("PolygonMeshVertex")
@@ -1684,7 +1684,7 @@ AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_locatio
 
 //-------------------------------------------------------------------------------------------------------------
 //AcDbFaceRecord
-void makePyAcDbFaceRecordWrapper()
+void makePyDbFaceRecordWrapper()
 {
     PyDocString DS("FaceRecord");
     class_<PyDbFaceRecord, bases<PyDbVertex>>("FaceRecord")
