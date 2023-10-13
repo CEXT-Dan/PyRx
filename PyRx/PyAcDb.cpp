@@ -155,10 +155,10 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbViewportWrapper();
     makePyDbVertexWrapper();
     makePyDb2dVertexWrapper();
-    makePyAcDb3dPolylineVertexWrapper();
-    makePyAcDbPolygonMeshVertexWrapper();
+    makePyDb3dPolylineVertexWrapper();
+    makePyDbPolygonMeshVertexWrapper();
     makePyDbPolyFaceMeshVertexWrapper();
-    makePyAcDbFaceRecordWrapper();
+    makePyDbFaceRecordWrapper();
     makePyDbCurveWrapper();
     makePyDbPointWrapper();
     makePyDb2dPolylineWrapper();
@@ -246,7 +246,6 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbPlotSettingsValidatorWrapper();
     makePyDbDictUtilWrapper();
     makePyDbSnoopDwgFilerWrapper();
-
     makePyDbPointRefWrapper();
     makePyDbOsnapPointRefWrapper();
     makePyDbDimAssocWrapper();
@@ -273,7 +272,6 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kOsnapCentroid", AcDbPointRef::OsnapType::kOsnapCentroid)
         .export_values()
         ;
-
     enum_<AcDbDimAssoc::PointType>("DimAssocPointType")
         .value("kXline1Point", AcDbDimAssoc::PointType::kXline1Point)
         .value("kXline2Point", AcDbDimAssoc::PointType::kXline2Point)
@@ -294,7 +292,6 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kLeaderPoint", AcDbDimAssoc::PointType::kLeaderPoint)
         .export_values()
         ;
-
     enum_<AcDbDimAssoc::AssocFlags>("AssocFlags")
         .value("kFirstPointRef", AcDbDimAssoc::AssocFlags::kFirstPointRef)
         .value("kSecondPointRef", AcDbDimAssoc::AssocFlags::kSecondPointRef)
@@ -302,14 +299,12 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kFourthPointRef", AcDbDimAssoc::AssocFlags::kFourthPointRef)
         .export_values()
         ;
-
     enum_<AcDbDimAssoc::RotatedDimType>("RotatedDimType")
         .value("kUnknown", AcDbDimAssoc::RotatedDimType::kUnknown)
         .value("kParallel", AcDbDimAssoc::RotatedDimType::kParallel)
         .value("kPerpendicular", AcDbDimAssoc::RotatedDimType::kPerpendicular)
         .export_values()
         ;
-
     enum_<AcCm::DialogTabs >("AcCmDialogTabs")
         .value("kACITab", AcCm::DialogTabs::kACITab)
         .value("kTrueColorTab", AcCm::DialogTabs::kTrueColorTab)
@@ -321,7 +316,6 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kControlPoints", SplineType::kControlPoints)
         .export_values()
         ;
-
     enum_<AcDb::reservedStringEnumType >("ReservedStringEnumType")
         .value("kByLayer", AcDb::reservedStringEnumType::kByLayer)
         .value("kByBlock", AcDb::reservedStringEnumType::kByBlock)

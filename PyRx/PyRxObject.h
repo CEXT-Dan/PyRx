@@ -3,7 +3,7 @@ class PyRxClass;
 
 //-----------------------------------------------------------------------------------------
 //PyRxObject
-void makeAcRxObjectWrapper();
+void makePyRxObjectWrapper();
 
 class PyRxObject
 {
@@ -33,7 +33,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PyRxClass
-void makeAcRxClassWrapper();
+void makePyRxClassWrapper();
 
 class PyRxClass : public PyRxObject
 {

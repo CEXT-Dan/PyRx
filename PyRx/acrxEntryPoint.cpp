@@ -214,7 +214,6 @@ public:
         return true;
     }
 
-    //TODO: needs improvement 
     static void loadPyAppReactors(PyRxMethod& method)
     {
         method.OnPyInitApp = PyDict_GetItemString(method.mdict, "OnPyInitApp");

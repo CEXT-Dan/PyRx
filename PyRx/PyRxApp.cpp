@@ -186,6 +186,7 @@ bool PyRxApp::uninit()
 
 bool PyRxApp::setPyConfig()
 {
+    //append our module path to python
     WxPyAutoLock lock;
 
     AcString _modulePath = modulePath().c_str();
