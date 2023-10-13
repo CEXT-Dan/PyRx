@@ -1,9 +1,9 @@
-import PyRx
-import PyAp
-import PyGi
-import PyDb
-import PyGe
-import PyEd
+import PyRx as Rx
+import PyGe as Ge
+import PyGi as Gi
+import PyDb as Db
+import PyAp as Ap
+import PyEd as Ed
 
 def OnPyInitApp():
     print("\nadded command pyregedreactor")
@@ -12,9 +12,9 @@ def OnPyInitApp():
 def OnPyUnloadApp():
     PyRxCmd_pyunregedreactor()
     
-class EdReactor(PyEd.EditorReactor):
+class EdReactor(Ed.EditorReactor):
     def __init__(self):
-        PyEd.EditorReactor.__init__(self)
+        Ed.EditorReactor.__init__(self)
 
     def commandWillStart(self, cmdstr):
         print("\ncommandWillStart-{}".format(cmdstr))
