@@ -1,5 +1,6 @@
 env $(ARX2022) = path to ARXSDK 
 env $(WXWIN) = path to wxWidgets' 3.2.0 release tag. 
 env $(Py310) = path to python 3.10.10 headers and libraries 
-env $(BOOST) = path to boost_1_83_0
+env $(BOOST142) = path to boost_1_83_0_142 (ARX 2021- 2024)
+env $(BOOST143) = path to boost_1_83_0_143 (ARX 2025- 202x)
 env $(WXPYWIN) = wxPython 4.2.0 install dir (...\AppData\Local\Programs\Python\Python310\Lib\site-packages\wx
