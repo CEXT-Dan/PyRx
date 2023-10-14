@@ -278,7 +278,7 @@ static boost::python::tuple nEntSelP(const std::string& prompt, const AcGePoint3
                 pyIds.append(sid);
         }
     }
-    return boost::python::make_tuple(flag, id, xformres, pyIds);
+    return boost::python::make_tuple(flag, id, asPnt3d(pnt), xformres, pyIds);
 }
 
 boost::python::tuple PyAcEditor::nEntSelP1(const std::string& prompt)
@@ -320,7 +320,7 @@ static boost::python::tuple nEntSelPEx(const std::string& prompt, const AcGePoin
                 pyIds.append(sid);
         }
     }
-    return boost::python::make_tuple(flag, id, xformres, gsmarker, pyIds);
+    return boost::python::make_tuple(flag, id,asPnt3d(pnt), xformres, gsmarker, pyIds);
 }
 
 boost::python::tuple PyAcEditor::nEntSelPEx1(const std::string& prompt, int uTransSpaceFlag)

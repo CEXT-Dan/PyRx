@@ -3100,8 +3100,10 @@ class IAxDbDocument(DispatchBaseClass):
     CLSID = IID('{C051EBF3-1969-4A9B-B7D4-67CB03858885}')
     coclass_clsid = IID('{39C92898-2FBB-4629-8E1B-6968D3122EC4}')
 
-    def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg, IdPairs=defaultNamedOptArg):
+    def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg):
         'Duplicates multiple objects (deep cloning)'
+        Objects = VTDISPArrayOrVal(Objects)
+        IdPairs=defaultNamedOptArg
         return self._ApplyTypes_(4, 1, (12, 0), ((12, 1), (12, 17), (16396, 19)), 'CopyObjects', None,Objects
             , Owner, IdPairs)
 
@@ -3963,8 +3965,10 @@ class IAcadDatabase(DispatchBaseClass):
     CLSID = IID('{3280D375-1DE4-4DA2-89EE-591E860056DC}')
     coclass_clsid = IID('{C151302D-9E05-4645-BCA8-91BB6C2217C6}')
 
-    def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg, IdPairs=defaultNamedOptArg):
+    def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg):
         'Duplicates multiple objects (deep cloning)'
+        Objects = VTDISPArrayOrVal(Objects)
+        IdPairs=defaultNamedOptArg
         return self._ApplyTypes_(4, 1, (12, 0), ((12, 1), (12, 17), (16396, 19)), 'CopyObjects', None,Objects
             , Owner, IdPairs)
 
@@ -7777,8 +7781,10 @@ class IAcadDocument(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(58, LCID, 1, (24, 0), ((12, 17), (12, 17)),SaveChanges
             , FileName)
 
-    def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg, IdPairs=defaultNamedOptArg):
+    def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg):
         'Duplicates multiple objects (deep cloning)'
+        Objects = VTDISPArrayOrVal(Objects)
+        IdPairs=defaultNamedOptArg
         return self._ApplyTypes_(4, 1, (12, 0), ((12, 1), (12, 17), (16396, 19)), 'CopyObjects', None,Objects
             , Owner, IdPairs)
 
