@@ -12,6 +12,7 @@ def PyRxCmd_doit():
         db = Db.curDb()
         selres:tuple[Ed.PromptStatus,
                     Db.ObjectId,
+                    Ge.Point3d,
                     Ge.Matrix3d] = Ed.Editor.nEntSelP("\nselect: ")
         
         if selres[0] != Ed.PromptStatus.eNormal:
@@ -19,9 +20,9 @@ def PyRxCmd_doit():
         
         cloneId = doDeepClone(selres[1],db)
         clone = Db.Entity(cloneId,Db.OpenMode.kForWrite)
-        clone.transformBy(selres[2])
+        clone.transformBy(selres[3])
 
-        jig = MoveJig(clone, Ed.Core.getMousePositionUCS())
+        jig = MoveJig(clone, selres[2])
         jig.setDispPrompt("\nPick point: ")
         if jig.drag() != Ed.DragStatus.kNormal:
             print('oops')
