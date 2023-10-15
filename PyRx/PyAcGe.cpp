@@ -937,7 +937,37 @@ static AcGeMatrix3d AcGeMatrix3dplaneToWorld2(const AcGePlane& plane)
     return AcGeMatrix3d::planeToWorld(plane);
 }
 
-boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
+static boost::python::tuple AcGeMatrix3dToTuple(const AcGeMatrix3d& x)
+{
+    PyAutoLockGIL lock;
+    auto r0 = boost::python::make_tuple(
+        x.entry[0][0],
+        x.entry[0][1],
+        x.entry[0][2],
+        x.entry[0][3]);
+
+    auto r1 = boost::python::make_tuple(
+        x.entry[1][0],
+        x.entry[1][1],
+        x.entry[1][2],
+        x.entry[1][3]);
+
+    auto r2 = boost::python::make_tuple(
+        x.entry[2][0],
+        x.entry[2][1],
+        x.entry[2][2],
+        x.entry[2][3]);
+
+    auto r3 = boost::python::make_tuple(
+        x.entry[3][0],
+        x.entry[3][1],
+        x.entry[3][2],
+        x.entry[3][3]);
+
+    return boost::python::make_tuple(r0, r1, r2, r3);
+}
+
+static boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
 {
     PyAutoLockGIL lock;
     boost::python::list r0;
@@ -968,7 +998,7 @@ boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
     return m;
 }
 
-std::string AcGeMatrix3dToString(const AcGeMatrix3d& x)
+static std::string AcGeMatrix3dToString(const AcGeMatrix3d& x)
 {
     return std::format("(({0},{1},{2},{3}),({4},{5},{6},{7}),({8},{9},{10},{11}),({12},{13},{14},{15}))",
         x.entry[0][0], x.entry[0][1], x.entry[0][2], x.entry[0][3],
@@ -977,7 +1007,7 @@ std::string AcGeMatrix3dToString(const AcGeMatrix3d& x)
         x.entry[3][0], x.entry[3][1], x.entry[3][2], x.entry[3][3]);
 }
 
-std::string AcGeMatrix3dToStringRepr(const AcGeMatrix3d& x)
+static std::string AcGeMatrix3dToStringRepr(const AcGeMatrix3d& x)
 {
     return std::format("<{0}.Matrix3d(({1},{2},{3},{4}),({5},{6},{7},{8}),({9},{10},{11},{12}),({12},{14},{15},{16}))>",
         PyGeNamespace,
@@ -1014,7 +1044,7 @@ void makePyGeMatrix3dWrapper()
         .def("setCoordSystem", &AcGeMatrix3d::setCoordSystem, DS.ARGS({ "origin:PyGe.Point3d","x:PyGe.Vector3d","y:PyGe.Vector3d","z:PyGe.Vector3d" }), return_self<>())
         .def("getCoordSystem", &AcGeMatrix3d::getCoordSystem, DS.ARGS({ "origin:PyGe.Point3d","x:PyGe.Vector3d","y:PyGe.Vector3d","z:PyGe.Vector3d" }))
         .def("setToTranslation", &AcGeMatrix3d::setToTranslation, DS.ARGS({ "val:PyGe.Vector3d" }), return_self<>())
-       
+
         .def("setToRotation", &AcGeMatrix3d::setToRotation,
             DS.ARGS({ "angle:real", "axis:PyGe.Vector3d","center:PyGe.Point3d=kOrigin" }), return_self<>(), arg("AcGePoint3d") = AcGePoint3dkOrigin())
 
@@ -1055,6 +1085,7 @@ void makePyGeMatrix3dWrapper()
         .def<double(AcGeMatrix3d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix3d::operator())
         .def("toString", &AcGeMatrix3dToString)
         .def("toList", &AcGeMatrix3dToList)
+        .def("toTuple", &AcGeMatrix3dToTuple)
         .def("__str__", &AcGeMatrix3dToString)
         .def("__repr__", &AcGeMatrix3dToStringRepr)
         ;
