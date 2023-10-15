@@ -2810,6 +2810,7 @@ class IAcadBlock(DispatchBaseClass):
 
     def AddRegion(self, ObjectList=defaultNamedNotOptArg):
         'Creates a region from a set of entities. The given entities must form a closed coplanar region'
+        ObjectList = VTDISPArrayOrVal(ObjectList)
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
@@ -13618,6 +13619,7 @@ class IAcadModelSpace(DispatchBaseClass):
 
     def AddRegion(self, ObjectList=defaultNamedNotOptArg):
         'Creates a region from a set of entities. The given entities must form a closed coplanar region'
+        ObjectList = VTDISPArrayOrVal(ObjectList)
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
@@ -15002,6 +15004,7 @@ class IAcadPaperSpace(DispatchBaseClass):
 
     def AddRegion(self, ObjectList=defaultNamedNotOptArg):
         'Creates a region from a set of entities. The given entities must form a closed coplanar region'
+        ObjectList = VTDISPArrayOrVal(ObjectList)
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
