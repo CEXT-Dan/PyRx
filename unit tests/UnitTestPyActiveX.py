@@ -10,6 +10,7 @@ import PyEd as Ed
 
 #requires win32com.client
 import AxApp24 as Ax
+import AxAppUtils24 as AxUt
 
 print("testname = pyactivex")
 
@@ -31,6 +32,14 @@ class TestActiveX(unittest.TestCase):
         face = model.Add3DFace((0,0,0),(0,100,0),(100,100,0),(100,0,0))
         face.SetCoordinate(3,face.Coordinate(3))
         self.assertEqual(face.Coordinate(3), (100,0,0))
+        
+    def test_ent_copy(self): 
+        app = Ax.getApp()
+        model = app.ActiveDocument.ModelSpace
+        line = model.AddLine((0,0,0),(100,100,0))
+        lineCopy = line.Copy()
+        self.assertEqual(line.StartPoint,lineCopy.StartPoint)
+        self.assertEqual(line.EndPoint,lineCopy.EndPoint)
 
 def PyRxCmd_pyactivex():
     try:
