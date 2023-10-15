@@ -488,9 +488,26 @@ public:
     }
 
 #ifdef PYRXDEBUG
+    static std::wstring AcGeMatrix3dToString(const AcGeMatrix3d& x)
+    {
+        return std::format(L"(({0},{1},{2},{3}),({4},{5},{6},{7}),({8},{9},{10},{11}),({12},{13},{14},{15}))",
+            x.entry[0][0], x.entry[0][1], x.entry[0][2], x.entry[0][3],
+            x.entry[1][0], x.entry[1][1], x.entry[1][2], x.entry[1][3],
+            x.entry[2][0], x.entry[2][1], x.entry[2][2], x.entry[2][3],
+            x.entry[3][0], x.entry[3][1], x.entry[3][2], x.entry[3][3]);
+    }
+
     static void AcRxPyApp_idoit(void)
     {
-        acDocManager->curDocument()->database();
+        AcGeMatrix3d mat;
+        mat.setCoordSystem(
+            AcGePoint3d(100, 100, 0),
+            AcGeVector3d::kXAxis,
+            AcGeVector3d::kYAxis,
+            AcGeVector3d::kZAxis);
+
+        acutPrintf(AcGeMatrix3dToString(mat).c_str());
+
     }
 #endif
 };
