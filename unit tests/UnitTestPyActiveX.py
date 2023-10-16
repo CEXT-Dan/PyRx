@@ -23,6 +23,9 @@ class TestActiveX(unittest.TestCase):
         dbx = Ax.getDbx()
         path = ".\\testmedia\\06457.dwg"
         dbx.Open(path,None)
+        for ent in dbx.ModelSpace:
+            self.assertNotEqual(ent.ObjectID, 0)
+            
         self.assertEqual(dbx.Name, path)
         self.assertNotEqual(dbx.ModelSpace.Count, 0)
         
