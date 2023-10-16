@@ -24464,8 +24464,8 @@ class IAcadUtility(DispatchBaseClass):
 
     def GetEntity(self, Prompt=defaultNamedOptArg):
         'Gets an object interactively'
-        Object=pythoncom.Missing
-        PickedPoint=pythoncom.Empty
+        Object=None
+        PickedPoint=None
         return self._ApplyTypes_(1610743827, 1, (24, 0), ((16393, 2), (16396, 2), (12, 17)), 'GetEntity', None,Object
             , PickedPoint, Prompt)
 
