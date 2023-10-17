@@ -32744,5 +32744,5 @@ def getDbx() -> IAcadApplication:
     id = AxDbDocument.CLSID
     return win32com.client.Dispatch(id)
 
-def makeEventObject(obj, eventclass):
+def createEventObject(obj, eventclass):
     win32com.client.WithEvents(obj,eventclass)
