@@ -1751,16 +1751,16 @@ class Editor:
     C++ signature :
         class PyDbObjectId curViewportObjectId()'''
     ...
-    def duplicateSelectionsAllowed (doc : PyAp.Document)-> bool :
+    def duplicateSelectionsAllowed (doc: PyAp.Document)-> bool :
       '''                             '''
     ...
-    def entSel (prompt : str,desc : PyRx.RxClass=AcDbEntity)-> tuple :
+    def entSel (prompt: str,desc: PyRx.RxClass=AcDbEntity)-> tuple :
       '''                             '''
     ...
-    def getAngle (basePt : PyGe.Point3d,prompt : str)-> tuple :
+    def getAngle (basePt: PyGe.Point3d,prompt: str)-> tuple :
       '''                             '''
     ...
-    def getCorner (basePt : PyGe.Point3d,prompt : str)-> tuple :
+    def getCorner (basePt: PyGe.Point3d,prompt: str)-> tuple :
       '''                             '''
     ...
     def getCurrentSelectionSet ()-> list :
@@ -1769,76 +1769,76 @@ class Editor:
     def getCurrentUCS ()-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDist (basePt : PyGe.Point3d=None,prompt : str)-> tuple :
+    def getDist (basePt: PyGe.Point3d=None,prompt: str)-> tuple :
       '''                             '''
     ...
-    def getDouble (prompt : str)-> tuple :
+    def getDouble (prompt: str)-> tuple :
       '''                             '''
     ...
-    def getInteger (prompt : str)-> tuple :
+    def getInteger (prompt: str)-> tuple :
       '''                             '''
     ...
-    def getKword (keyword : str)-> tuple :
+    def getKword (keyword: str)-> tuple :
       '''                             '''
     ...
-    def getPoint (basePt : PyGe.Point3d=None,prompt : str)-> tuple :
+    def getPoint (basePt: PyGe.Point3d=None,prompt: str)-> tuple :
       '''                             '''
     ...
-    def getReal (prompt : str)-> tuple :
+    def getReal (prompt: str)-> tuple :
       '''                             '''
     ...
-    def getString (cronly : int,prompt : str)-> tuple :
+    def getString (cronly: int,prompt: str)-> tuple :
       '''                             '''
     ...
-    def getViewportNumber (ptx : int,pty : int)-> int :
+    def getViewportNumber (ptx: int,pty: int)-> int :
       '''                             '''
     ...
-    def initGet (val : int,keyword : str)-> PyEd.PromptStatus :
+    def initGet (val: int,keyword: str)-> PyEd.PromptStatus :
       '''                             '''
     ...
-    def nEntSelP (prompt : str,selpt : PyGe.Point3d=None)-> tuple :
+    def nEntSelP (prompt: str,selpt: PyGe.Point3d=None)-> tuple :
       '''                             '''
     ...
-    def nEntSelPEx (prompt : str,selpt : PyGe.Point3d=None,flags:int)-> tuple :
+    def nEntSelPEx (prompt: str,selpt: PyGe.Point3d=None,flags: int)-> tuple :
       '''                             '''
     ...
     def regen ()-> None :
       '''                             '''
     ...
-    def select (filer : list=None)-> tuple :
+    def select (filer: list=None)-> tuple :
       '''                             '''
     ...
-    def selectAll (filer : list=None)-> tuple :
+    def selectAll (filer: list=None)-> tuple :
       '''                             '''
     ...
-    def selectFence (points : list[PyGe.Point3d],filer : list=None)-> tuple :
+    def selectFence (points: list[PyGe.Point3d],filer: list=None)-> tuple :
       '''                             '''
     ...
-    def selectLast (filer : list=None)-> tuple :
+    def selectLast (filer: list=None)-> tuple :
       '''                             '''
     ...
-    def selectPrevious (filer : list=None)-> tuple :
+    def selectPrevious (filer: list=None)-> tuple :
       '''                             '''
     ...
-    def selectPrompt (addPromt : str,remPromt : str,filer : list=None)-> tuple :
+    def selectPrompt (addPromt: str,remPromt: str,filer: list=None)-> tuple :
       '''                             '''
     ...
-    def selectWindow (pt1 : PyGe.Point3d,pt2 : PyGe.Point3d,filer : list=None)-> tuple :
+    def selectWindow (pt1: PyGe.Point3d,pt2: PyGe.Point3d,filer: list=None)-> tuple :
       '''                             '''
     ...
-    def selectWindowPolygon (points : list[PyGe.Point3d],filer : list=None)-> tuple :
+    def selectWindowPolygon (points: list[PyGe.Point3d],filer: list=None)-> tuple :
       '''                             '''
     ...
-    def setAllowDuplicateSelection (doc : PyAp.Document,flag : bool)-> None :
+    def setAllowDuplicateSelection (doc: PyAp.Document,flag: bool)-> None :
       '''                             '''
     ...
-    def setCurrentUCS (ucs : PyGe.Matrix3d)-> None :
+    def setCurrentUCS (ucs: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def ssget (mode : str,arg1 : any,arg2 : any,filer : list=None)-> tuple :
+    def ssget (mode: str,arg1: any,arg2: any,filer: list=None)-> tuple :
       '''                             '''
     ...
-    def traceBoundary (point : PyGe.Point3d,detectIslands : bool)-> list :
+    def traceBoundary (point: PyGe.Point3d,detectIslands: bool)-> list :
       '''                             '''
     ...
     def ucsNormalVector ()-> PyGe.Vector3d :
