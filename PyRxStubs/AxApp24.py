@@ -23184,6 +23184,8 @@ class IAcadText(DispatchBaseClass):
         match __name:
             case 'InsertionPoint':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'TextAlignmentPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case 'Normal':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case _:
