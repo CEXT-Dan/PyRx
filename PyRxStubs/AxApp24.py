@@ -2440,6 +2440,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form 3D mesh, given the number of points in the M and N directions and the coordinates of the points in the M and N directions'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -2449,6 +2450,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a 3D polyline from the given array of coordinates'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1542, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -2873,6 +2875,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a quadratic or cubic NURBS (nonuniform rational B-spline) curve'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -12061,11 +12064,13 @@ class IAcadMLeader(DispatchBaseClass):
 
     def AddLeaderLine(self, leaderIndex=defaultNamedNotOptArg, pointArray=defaultNamedNotOptArg):
         'Adds a leader line to the leader cluster with specified index'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._oleobj_.InvokeTypes(29, LCID, 1, (3, 0), ((3, 1), (12, 1)),leaderIndex
             , pointArray)
 
     def AddLeaderLineEx(self, pointArray=defaultNamedNotOptArg):
         'Adds a new leader line to this multileader object determined by input point which will be the first point of new leader line'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._oleobj_.InvokeTypes(30, LCID, 1, (3, 0), ((12, 1),),pointArray
             )
 
@@ -13499,6 +13504,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadLeader
     def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
         'Creates a leader line, given the coordinates of the points'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
             , Annotation, Type)
         if ret is not None:
@@ -13684,6 +13690,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a quadratic or cubic NURBS (nonuniform rational B-spline) curve'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -13735,6 +13742,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a Trace object from an array of points'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -14879,6 +14887,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadLeader
     def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
         'Creates a leader line, given the coordinates of the points'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
             , Annotation, Type)
         if ret is not None:
@@ -14911,8 +14920,7 @@ class IAcadPaperSpace(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an array of blocks'
-        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
-            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -15070,6 +15078,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a quadratic or cubic NURBS (nonuniform rational B-spline) curve'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
