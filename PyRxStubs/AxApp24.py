@@ -2781,6 +2781,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline from a list of vertices'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -3449,6 +3450,7 @@ class IAcadBlocks(DispatchBaseClass):
     # Result is of type IAcadBlock
     def Add(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((12, 1), (8, 1)),InsertionPoint
             , Name)
         if ret is not None:
@@ -13587,6 +13589,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline from a list of vertices'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -14975,6 +14978,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline from a list of vertices'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
