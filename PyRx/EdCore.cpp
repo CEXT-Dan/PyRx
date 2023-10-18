@@ -35,11 +35,11 @@ void makePyUtilWrapper()
 {
     PyDocString DS("Util");
     class_<Util>("Util")
-        .def("angle", &Util::angle)
-        .def("cvUnit", &Util::cvUnit)
-        .def("distance", &Util::distance)
-        .def("polar", &Util::polar)
-        .def("wcMatch", &Util::wcMatch)
+        .def("angle", &Util::angle, DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d" })).staticmethod("angle")
+        .def("cvUnit", &Util::cvUnit, DS.SARGS({ "val: float","oldunit: str","newunit: str" })).staticmethod("cvUnit")
+        .def("distance", &Util::distance, DS.SARGS({ "pt1: PyGe.Point3d","pt2: PyGe.Point3d" })).staticmethod("distance")
+        .def("polar", &Util::polar, DS.SARGS({ "pt1: PyGe.Point3d","angle: float","dist: float" })).staticmethod("polar")
+        .def("wcMatch", &Util::wcMatch, DS.SARGS({ "string: str","pattern: str","ignoreCase: bool" })).staticmethod("wcMatch")
         ;
 }
 
@@ -132,7 +132,7 @@ void makePyEdCoreWrapper()
         .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
         .def("getLastCommandLines", &EdCore::getLastCommandLines).staticmethod("getLastCommandLines")
         .def("getBlockEditMode", &EdCore::getBlockEditMode).staticmethod("getBlockEditMode")
-        .def("getVar", &EdCore::getVar, DS.SARGS({ "name:str"})).staticmethod("getVar")
+        .def("getVar", &EdCore::getVar, DS.SARGS({ "name:str" })).staticmethod("getVar")
         .def("setVar", &EdCore::setVar, DS.SARGS({ "name:str","value : Any" })).staticmethod("setVar")
         .def("autoSetVar", &EdCore::autoSetVar, DS.SARGS({ "name:str","value : Any" })).staticmethod("autoSetVar")
         .def("getSysVars", &EdCore::getSysVars).staticmethod("getSysVars")
@@ -669,33 +669,33 @@ boost::python::dict EdCore::getSysVars()
         }
         switch (buf.restype)
         {
-        case RTSTR:
-        {
-            pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
-            acutDelString(buf.resval.rstring);
-            break;
-        }
-        case RTSHORT:
-        {
-            pydict[utf8Name] = buf.resval.rint;
-            break;
-        }
-        case RTLONG:
-        {
-            pydict[utf8Name] = buf.resval.rlong;
-            break;
-        }
-        case RTREAL:
-        {
-            pydict[utf8Name] = buf.resval.rreal;
-            break;
-        }
-        case RTPOINT:
-        case RT3DPOINT:
-        {
-            pydict[utf8Name] = asPnt3d(buf.resval.rpoint);
-            break;
-        }
+            case RTSTR:
+            {
+                pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
+                acutDelString(buf.resval.rstring);
+                break;
+            }
+            case RTSHORT:
+            {
+                pydict[utf8Name] = buf.resval.rint;
+                break;
+            }
+            case RTLONG:
+            {
+                pydict[utf8Name] = buf.resval.rlong;
+                break;
+            }
+            case RTREAL:
+            {
+                pydict[utf8Name] = buf.resval.rreal;
+                break;
+            }
+            case RTPOINT:
+            case RT3DPOINT:
+            {
+                pydict[utf8Name] = asPnt3d(buf.resval.rpoint);
+                break;
+            }
         }
     }
     return pydict;
@@ -713,38 +713,38 @@ boost::python::object EdCore::getVar(const std::string& sym)
         }
         switch (buf.restype)
         {
-        case RTSHORT:
-        {
-            return boost::python::object(buf.resval.rint);
-        }
-        case RTLONG:
-        {
-            return boost::python::object(buf.resval.rlong);
-        }
-        case RTREAL:
-        {
-            return boost::python::object(buf.resval.rreal);
-        }
-        case RTSTR:
-        {
-            std::string val = wstr_to_utf8(buf.resval.rstring);
-            acutDelString(buf.resval.rstring);
-            return boost::python::object(val);
-        }
-        case RTPOINT:
-        {
-            AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
-            return boost::python::object(pnt);
-        }
-        case RT3DPOINT:
-        {
-            AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
-            return boost::python::object(pnt);
-        }
-        default:
-        {
-            return boost::python::object();
-        }
+            case RTSHORT:
+            {
+                return boost::python::object(buf.resval.rint);
+            }
+            case RTLONG:
+            {
+                return boost::python::object(buf.resval.rlong);
+            }
+            case RTREAL:
+            {
+                return boost::python::object(buf.resval.rreal);
+            }
+            case RTSTR:
+            {
+                std::string val = wstr_to_utf8(buf.resval.rstring);
+                acutDelString(buf.resval.rstring);
+                return boost::python::object(val);
+            }
+            case RTPOINT:
+            {
+                AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
+                return boost::python::object(pnt);
+            }
+            case RT3DPOINT:
+            {
+                AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
+                return boost::python::object(pnt);
+            }
+            default:
+            {
+                return boost::python::object();
+            }
         }
     }
     catch (...)

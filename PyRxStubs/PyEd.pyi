@@ -3288,35 +3288,20 @@ class Util:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def angle (self, *args, **kwargs)-> float :
-      '''angle( (Point3d)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double angle(class AcGePoint3d,class AcGePoint3d)'''
+    def angle (pt1: PyGe.Point3d,pt2: PyGe.Point3d)-> float :
+      '''                             '''
     ...
-    def cvUnit (self, *args, **kwargs)-> float :
-      '''cvUnit( (float)arg1, (str)arg2, (str)arg3) -> float :
-
-    C++ signature :
-        double cvUnit(double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def cvUnit (val: float,oldunit: str,newunit: str)-> float :
+      '''                             '''
     ...
-    def distance (self, *args, **kwargs)-> float :
-      '''distance( (Point3d)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double distance(class AcGePoint3d,class AcGePoint3d)'''
+    def distance (pt1: PyGe.Point3d,pt2: PyGe.Point3d)-> float :
+      '''                             '''
     ...
-    def polar (self, *args, **kwargs)-> PyGe.Point3d :
-      '''polar( (Point3d)arg1, (float)arg2, (float)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d polar(class AcGePoint3d,double,double)'''
+    def polar (pt1: PyGe.Point3d,angle: float,dist: float)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def wcMatch (self, *args, **kwargs)-> bool :
-      '''wcMatch( (str)arg1, (str)arg2, (bool)arg3) -> bool :
-
-    C++ signature :
-        bool wcMatch(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    def wcMatch (string: str,pattern: str,ignoreCase: bool)-> bool :
+      '''                             '''
     ...
 
 class __loader__:
