@@ -129,9 +129,14 @@ public:
     static UINT_PTR             showHTMLModelessWindow1(UINT_PTR owner, const std::string& uriOfHtmlPage);
     static UINT_PTR             showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriOfHtmlPage, bool persistSizeAndPosition);
     static void                 skipXrefNotification(PyDbDatabase& db, const std::string& xrefName);
-
+    static void                 setFieldUpdateEnabled(PyApDocument& doc, bool enabled);
+    static int                  setFunHelp(const std::string& pszFunctionName, const std::string& pszHelpfile, const std::string& pszTopic, int iCmd);
+    static boost::python::tuple textBox(const boost::python::list& pyargs);
+    static void                 textPage();
+    static void                 textScr();
     static AcGePoint3d          trans(const AcGePoint3d& pt, const boost::python::list& from, const boost::python::list& to, int disp);
-
+    static bool                 unloadPartialMenu(const std::string& pszMenuFile);
+    static void                 unmarkForDelayXRefRelativePathResolve(const PyDbObjectId& xrefDefId);
     static int                  update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2);
     static void                 updateDisplay();
     static void                 updateDisplayPause(bool bEnable);
@@ -142,6 +147,7 @@ public:
     static void                 vports2VportTableRecords();
     static void                 vportTableRecords2Vports();
     static void                 xrefAttach1(const std::string& path, const std::string& name);
+
     static void                 xrefAttach2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid, AcGePoint3d& pt,
         AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd);
 
@@ -150,8 +156,10 @@ public:
     static void                 xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb);
     static bool                 xrefNotifyCheckFileChanged(const PyDbObjectId& id);
     static void                 xrefOverlay1(const std::string& path, const std::string& name);
+
     static void                 xrefOverlay2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid, AcGePoint3d& pt,
         AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd);
+
     static void                 xrefReload1(const boost::python::list& symbolIds);
     static void                 xrefReload2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
     static void                 xrefReload3(const std::string& name);
