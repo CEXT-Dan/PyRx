@@ -32,6 +32,7 @@ public:
     static PyDbCurve            convertGelibCurveToAcDbCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal);
     static PyDbCurve            convertGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol);
     static PyDbObjectId         createViewByViewport(PyDbDatabase& pDb, const PyDbObjectId& viewportId, const std::string& name, const std::string& categoryName, const PyDbObjectId& labelBlockId);
+    static std::string          canonicalToSystemRange(int eUnits, const std::string& strIn);
     static void                 detachXref(PyDbDatabase& pHostDb, const PyDbObjectId& xrefBlkId);
     static bool                 dictAdd(const PyDbObjectId& dictname, const std::string& symname, const PyDbObjectId& newobj);
     static boost::python::list  dictNext(const PyDbObjectId& dictname, int rewind);
@@ -63,6 +64,9 @@ public:
     static PyDbObjectId         getCurVportTableRecordId(PyDbDatabase& db);
     static PyDbObjectId         getDimAssocId(const PyDbObjectId& dimId);
     static boost::python::list  getDimAssocIds(const PyDbObjectId& id);
+    static PyDbObjectId         getDimStyleId(PyDbDatabase& db, const std::string& styleName, const std::string& lockName);
+    static PyDbObjectId         getDynDimStyleId(PyDbDatabase& db);
+    static boost::python::tuple getProxyInfo(const PyDbObject& obj);
     static std::string          getMappedFontName(const std::string& fontName);
     static std::string          getReservedString(AcDb::reservedStringEnumType reservedType, bool bGetLocalized);
     static double               getUnitsConversion(AcDb::UnitsValue from, AcDb::UnitsValue to);
@@ -88,6 +92,8 @@ public:
     static bool                 regApp(const std::string& app);
     static std::string          rtos(double, int unit, int prec);
     static void                 updateDimension(const PyDbObjectId& id);
+    void                        reloadXrefs1(PyDbDatabase& db, const boost::python::list& ids);
+    void                        reloadXrefs2(PyDbDatabase& db, const boost::python::list& ids, bool bQuiet);
     static boost::python::list  resbufTest(const boost::python::list& list);
     static bool                 snValid(const std::string& tbstr, int pipeTest);
     static PyDbSymUtilServices  symUtil();
