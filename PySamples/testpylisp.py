@@ -5,18 +5,14 @@ import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
 
-
 def OnPyInitApp():
     print("\nOnPyInitApp")
-
-
+    
 def OnPyUnloadApp():
    print("\nOnPyUnloadApp")
 
-
 def OnPyLoadDwg():
    print("\nOnPyLoadDwg")
-
 
 def OnPyUnloadDwg():
    print("\nOnPyUnloadDwg")
@@ -39,8 +35,6 @@ def PyRxLisp_pylisp(args):
         print(err)
 
 # (pylisp1)
-
-
 def PyRxLisp_pylisp1(args):
     try:
         return [(Rx.LispType.kText, "Text")]
