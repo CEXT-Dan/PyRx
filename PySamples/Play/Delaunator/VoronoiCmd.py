@@ -6,7 +6,7 @@ import PyAp as Ap
 import PyEd as Ed
 import traceback
 
-
+from time import perf_counter
 from Delaunator import Delaunator
 
 # PySamples\dwg\TestPoints.dwg
@@ -102,6 +102,8 @@ def get_2dpointd(pnt3ds):
 def PyRxCmd_pyvoronoiCCM():
     try:
         ss = do_select()
+        
+        t1_start = perf_counter()
 
         pnt3ds = get_3dpointds(ss.toList())
         pnt2ds = get_2dpointd(pnt3ds)
@@ -109,9 +111,11 @@ def PyRxCmd_pyvoronoiCCM():
         # doit
         d = Delaunator(pnt2ds)
 
-        print(len(d.triangles))
         for e in getVoronoiEdgesCCM(d, pnt3ds):
             Ed.Core.grDraw(e[0], e[1], 4, 0)
+            
+        t1_stop = perf_counter()
+        print("Elapsed time: {t:.4f}".format(t=t1_stop-t1_start))
 
     except Exception as err:
         traceback.print_exception(err)
@@ -119,6 +123,8 @@ def PyRxCmd_pyvoronoiCCM():
 def PyRxCmd_pyvoronoiCEN():
     try:
         ss = do_select()
+        
+        t1_start = perf_counter()
 
         pnt3ds = get_3dpointds(ss.toList())
         pnt2ds = get_2dpointd(pnt3ds)
@@ -126,9 +132,11 @@ def PyRxCmd_pyvoronoiCEN():
         # doit
         d = Delaunator(pnt2ds)
 
-        print(len(d.triangles))
         for e in getVoronoiEdgesCEN(d, pnt3ds):
             Ed.Core.grDraw(e[0], e[1], 3, 0)
+            
+        t1_stop = perf_counter()
+        print("Elapsed time: {t:.4f}".format(t=t1_stop-t1_start))
 
     except Exception as err:
         traceback.print_exception(err)
