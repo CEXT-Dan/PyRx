@@ -39,6 +39,10 @@ void makeDbCoreWrapper()
             DS.SARGS({ "geCurve:PyGe.Curve3d","norm:PyGe.Vector3d=kZAxis","tol:PyGe.Tol=tol" })).staticmethod("convertGelibCurveToAcDbCurve")
 
         .def("createViewByViewport", &DbCore::createViewByViewport).staticmethod("createViewByViewport")
+        .def("canonicalToSystemRange", &DbCore::canonicalToSystemRange).staticmethod("canonicalToSystemRange")
+
+
+
         .def("detachXref", &DbCore::detachXref).staticmethod("detachXref")
         .def("dictAdd", &DbCore::dictAdd).staticmethod("dictAdd")
         .def("dictNext", &DbCore::dictNext).staticmethod("dictNext")
@@ -70,6 +74,9 @@ void makeDbCoreWrapper()
         .def("getCurVportTableRecordId", &DbCore::getCurVportTableRecordId).staticmethod("getCurVportTableRecordId")
         .def("getDimAssocId", &DbCore::getDimAssocId).staticmethod("getDimAssocId")
         .def("getDimAssocIds", &DbCore::getDimAssocIds).staticmethod("getDimAssocIds")
+        .def("getDimStyleId", &DbCore::getDimStyleId).staticmethod("getDimStyleId")
+        .def("getDynDimStyleId", &DbCore::getDynDimStyleId).staticmethod("getDynDimStyleId")
+        .def("getProxyInfo", &DbCore::getProxyInfo).staticmethod("getProxyInfo")
         .def("getMappedFontName", &DbCore::getMappedFontName).staticmethod("getMappedFontName")
         .def("getReservedString", &DbCore::getReservedString).staticmethod("getReservedString")
         .def("getUnitsConversion", &DbCore::getUnitsConversion).staticmethod("getUnitsConversion")
@@ -93,6 +100,8 @@ void makeDbCoreWrapper()
         .def("queueAnnotationEntitiesForRegen", &DbCore::queueAnnotationEntitiesForRegen).staticmethod("queueAnnotationEntitiesForRegen")
         .def("queueForRegen", &DbCore::queueForRegen).staticmethod("queueForRegen")
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
+        .def("reloadXrefs", &DbCore::reloadXrefs1)
+        .def("reloadXrefs", &DbCore::reloadXrefs2).staticmethod("reloadXrefs")
         .def("rtos", &DbCore::rtos).staticmethod("rtos")
         .def("resbufTest", &DbCore::resbufTest).staticmethod("resbufTest")
         .def("snValid", &DbCore::snValid).staticmethod("snValid")
@@ -222,6 +231,13 @@ PyDbObjectId DbCore::createViewByViewport(PyDbDatabase& pDb, const PyDbObjectId&
     PyDbObjectId view;
     PyThrowBadEs(acdbCreateViewByViewport(pDb.impObj(), viewportId.m_id, utf8_to_wstr(name).c_str(), utf8_to_wstr(categoryName).c_str(), labelBlockId.m_id, view.m_id));
     return view;
+}
+
+std::string DbCore::canonicalToSystemRange(int eUnits, const std::string& strIn)
+{
+    AcString strOut;
+    acdbCanonicalToSystemRange(eUnits, utf8_to_wstr(strIn).c_str(), strOut);
+    return wstr_to_utf8(strOut);
 }
 
 void DbCore::detachXref(PyDbDatabase& pHostDb, const PyDbObjectId& xrefBlkId)
@@ -455,6 +471,35 @@ boost::python::list DbCore::getDimAssocIds(const PyDbObjectId& dimId)
     return pyIds;
 }
 
+PyDbObjectId DbCore::getDimStyleId(PyDbDatabase& db, const std::string& styleName, const std::string& lockName)
+{
+    return PyDbObjectId(acdbGetDimStyleId(db.impObj(), utf8_to_wstr(styleName).c_str(), utf8_to_wstr(lockName).c_str()));
+}
+
+PyDbObjectId DbCore::getDynDimStyleId(PyDbDatabase& db)
+{
+    return PyDbObjectId(acdbGetDynDimStyleId(db.impObj()));
+}
+
+boost::python::tuple DbCore::getProxyInfo(const PyDbObject& obj)
+{
+#if defined(_ARXTARGET) && (_ARXTARGET < 250)
+    PyAutoLockGIL lock;
+    RxAutoOutStr dxfName;
+    RxAutoOutStr className;
+    RxAutoOutStr appName;
+    PyThrowBadEs(acdbGetProxyInfo(obj.impObj(), dxfName.buf, className.buf, appName.buf));
+    return boost::python::make_tuple(dxfName.str(), className.str(), appName.str());
+#else
+    PyAutoLockGIL lock;
+    AcString dxfName;
+    AcString className;
+    AcString appName;
+    PyThrowBadEs(acdbGetProxyInfo(obj.impObj(), dxfName, className, appName));
+    return boost::python::make_tuple(wstr_to_utf8(dxfName), wstr_to_utf8(className), wstr_to_utf8(appName));
+#endif
+}
+
 std::string DbCore::getMappedFontName(const std::string& fontName)
 {
     return wstr_to_utf8(acdbGetMappedFontName(utf8_to_wstr(fontName).c_str()));
@@ -621,6 +666,16 @@ std::string DbCore::rtos(double val, int unit, int prec)
 void DbCore::updateDimension(const PyDbObjectId& id)
 {
     return PyThrowBadEs(acdbUpdateDimension(id.m_id));
+}
+
+void DbCore::reloadXrefs1(PyDbDatabase& db, const boost::python::list& ids)
+{
+    PyThrowBadEs(acdbReloadXrefs(db.impObj(), PyListToObjectIdArray(ids)));
+}
+
+void DbCore::reloadXrefs2(PyDbDatabase& db, const boost::python::list& ids, bool bQuiet)
+{
+    PyThrowBadEs(acdbReloadXrefs(db.impObj(), PyListToObjectIdArray(ids), bQuiet));
 }
 
 boost::python::list DbCore::resbufTest(const boost::python::list& list)
