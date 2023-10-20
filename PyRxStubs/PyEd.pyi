@@ -863,6 +863,18 @@ setColorDialogTrueColor( (Color)arg1, (bool)arg2, (Color)arg3, (AcCmDialogTabs)a
     C++ signature :
         void setEnv(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def setFieldUpdateEnabled (self, *args, **kwargs)-> None :
+      '''setFieldUpdateEnabled( (Document)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setFieldUpdateEnabled(class PyApDocument {lvalue},bool)'''
+    ...
+    def setFunHelp (self, *args, **kwargs)-> int :
+      '''setFunHelp( (str)arg1, (str)arg2, (str)arg3, (int)arg4) -> int :
+
+    C++ signature :
+        int setFunHelp(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
     def setStatusBarProgressMeter (self, *args, **kwargs)-> int :
       '''setStatusBarProgressMeter( (str)arg1, (int)arg2, (int)arg3) -> int :
 
@@ -918,11 +930,41 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     C++ signature :
         void skipXrefNotification(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def textBox (self, *args, **kwargs)-> tuple :
+      '''textBox( (list)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple textBox(class boost::python::list)'''
+    ...
+    def textPage (self, *args, **kwargs)-> None :
+      '''textPage() -> None :
+
+    C++ signature :
+        void textPage()'''
+    ...
+    def textScr (self, *args, **kwargs)-> None :
+      '''textScr() -> None :
+
+    C++ signature :
+        void textScr()'''
+    ...
     def trans (self, *args, **kwargs)-> PyGe.Point3d :
       '''trans( (Point3d)arg1, (list)arg2, (list)arg3, (int)arg4) -> Point3d :
 
     C++ signature :
         class AcGePoint3d trans(class AcGePoint3d,class boost::python::list,class boost::python::list,int)'''
+    ...
+    def unloadPartialMenu (self, *args, **kwargs)-> bool :
+      '''unloadPartialMenu( (str)arg1) -> bool :
+
+    C++ signature :
+        bool unloadPartialMenu(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def unmarkForDelayXRefRelativePathResolve (self, *args, **kwargs)-> None :
+      '''unmarkForDelayXRefRelativePathResolve( (ObjectId)arg1) -> None :
+
+    C++ signature :
+        void unmarkForDelayXRefRelativePathResolve(class PyDbObjectId)'''
     ...
     def update (self, *args, **kwargs)-> int :
       '''update( (int)arg1, (Point2d)arg2, (Point2d)arg3) -> int :
