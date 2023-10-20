@@ -43,7 +43,6 @@ void makePyUtilWrapper()
         ;
 }
 
-
 double Util::angle(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
 {
     return acutAngle(asDblArray(pt1), asDblArray(pt1));
@@ -72,7 +71,6 @@ bool Util::wcMatch(const std::string& string, const std::string& pattern, bool i
 {
     return acutWcMatchEx(utf8_to_wstr(string).c_str(), utf8_to_wstr(pattern).c_str(), ignoreCase);
 }
-
 
 //-----------------------------------------------------------------------------------------
 //EdCore
@@ -178,10 +176,14 @@ void makePyEdCoreWrapper()
         .def("showHTMLModelessWindow", &EdCore::showHTMLModelessWindow1)
         .def("showHTMLModelessWindow", &EdCore::showHTMLModelessWindow2).staticmethod("showHTMLModelessWindow")
         .def("skipXrefNotification", &EdCore::skipXrefNotification).staticmethod("skipXrefNotification")
-
+        .def("setFieldUpdateEnabled", &EdCore::setFieldUpdateEnabled).staticmethod("setFieldUpdateEnabled")
+        .def("setFunHelp", &EdCore::setFunHelp).staticmethod("setFunHelp")
+        .def("textBox", &EdCore::textBox).staticmethod("textBox")
+        .def("textPage", &EdCore::textPage).staticmethod("textPage")
+        .def("textScr", &EdCore::textScr).staticmethod("textScr")
         .def("trans", &EdCore::trans).staticmethod("trans")
-
-
+        .def("unloadPartialMenu", &EdCore::unloadPartialMenu).staticmethod("unloadPartialMenu")
+        .def("unmarkForDelayXRefRelativePathResolve", &EdCore::unmarkForDelayXRefRelativePathResolve).staticmethod("unmarkForDelayXRefRelativePathResolve")
         .def("update", &EdCore::update).staticmethod("update")
         .def("updateDisplay", &EdCore::updateDisplay).staticmethod("updateDisplay")
         .def("updateDisplayPause", &EdCore::updateDisplayPause).staticmethod("updateDisplayPause")
@@ -669,33 +671,33 @@ boost::python::dict EdCore::getSysVars()
         }
         switch (buf.restype)
         {
-            case RTSTR:
-            {
-                pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
-                acutDelString(buf.resval.rstring);
-                break;
-            }
-            case RTSHORT:
-            {
-                pydict[utf8Name] = buf.resval.rint;
-                break;
-            }
-            case RTLONG:
-            {
-                pydict[utf8Name] = buf.resval.rlong;
-                break;
-            }
-            case RTREAL:
-            {
-                pydict[utf8Name] = buf.resval.rreal;
-                break;
-            }
-            case RTPOINT:
-            case RT3DPOINT:
-            {
-                pydict[utf8Name] = asPnt3d(buf.resval.rpoint);
-                break;
-            }
+        case RTSTR:
+        {
+            pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
+            acutDelString(buf.resval.rstring);
+            break;
+        }
+        case RTSHORT:
+        {
+            pydict[utf8Name] = buf.resval.rint;
+            break;
+        }
+        case RTLONG:
+        {
+            pydict[utf8Name] = buf.resval.rlong;
+            break;
+        }
+        case RTREAL:
+        {
+            pydict[utf8Name] = buf.resval.rreal;
+            break;
+        }
+        case RTPOINT:
+        case RT3DPOINT:
+        {
+            pydict[utf8Name] = asPnt3d(buf.resval.rpoint);
+            break;
+        }
         }
     }
     return pydict;
@@ -713,38 +715,38 @@ boost::python::object EdCore::getVar(const std::string& sym)
         }
         switch (buf.restype)
         {
-            case RTSHORT:
-            {
-                return boost::python::object(buf.resval.rint);
-            }
-            case RTLONG:
-            {
-                return boost::python::object(buf.resval.rlong);
-            }
-            case RTREAL:
-            {
-                return boost::python::object(buf.resval.rreal);
-            }
-            case RTSTR:
-            {
-                std::string val = wstr_to_utf8(buf.resval.rstring);
-                acutDelString(buf.resval.rstring);
-                return boost::python::object(val);
-            }
-            case RTPOINT:
-            {
-                AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
-                return boost::python::object(pnt);
-            }
-            case RT3DPOINT:
-            {
-                AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
-                return boost::python::object(pnt);
-            }
-            default:
-            {
-                return boost::python::object();
-            }
+        case RTSHORT:
+        {
+            return boost::python::object(buf.resval.rint);
+        }
+        case RTLONG:
+        {
+            return boost::python::object(buf.resval.rlong);
+        }
+        case RTREAL:
+        {
+            return boost::python::object(buf.resval.rreal);
+        }
+        case RTSTR:
+        {
+            std::string val = wstr_to_utf8(buf.resval.rstring);
+            acutDelString(buf.resval.rstring);
+            return boost::python::object(val);
+        }
+        case RTPOINT:
+        {
+            AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
+            return boost::python::object(pnt);
+        }
+        case RT3DPOINT:
+        {
+            AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
+            return boost::python::object(pnt);
+        }
+        default:
+        {
+            return boost::python::object();
+        }
         }
     }
     catch (...)
@@ -1004,6 +1006,34 @@ void EdCore::skipXrefNotification(PyDbDatabase& db, const std::string& xrefName)
     PyThrowBadEs(acedSkipXrefNotification(db.impObj(), utf8_to_wstr(xrefName).c_str()));
 }
 
+void EdCore::setFieldUpdateEnabled(PyApDocument& doc, bool enabled)
+{
+    acedSetFieldUpdateEnabled(doc.impObj(), enabled);
+}
+
+int EdCore::setFunHelp(const std::string& pszFunctionName, const std::string& pszHelpfile, const std::string& pszTopic, int iCmd)
+{
+    return acedSetFunHelp(utf8_to_wstr(pszFunctionName).c_str(), utf8_to_wstr(pszHelpfile).c_str(), utf8_to_wstr(pszTopic).c_str(), iCmd);
+}
+
+boost::python::tuple EdCore::textBox(const boost::python::list& pyargs)
+{
+    AcResBufPtr ptr(listToResbuf(pyargs));
+    AcGePoint3d ll, ur;
+    PyThrowBadRt(acedTextBox(ptr.get(), asDblArray(ll), asDblArray(ur)));
+    return boost::python::make_tuple(ll, ur);
+}
+
+void EdCore::textPage()
+{
+    PyThrowBadRt(acedTextPage());
+}
+
+void EdCore::textScr()
+{
+    PyThrowBadRt(acedTextScr());
+}
+
 AcGePoint3d EdCore::trans(const AcGePoint3d& pt, const boost::python::list& from, const boost::python::list& to, int disp)
 {
     AcGePoint3d result;
@@ -1011,6 +1041,16 @@ AcGePoint3d EdCore::trans(const AcGePoint3d& pt, const boost::python::list& from
     AcResBufPtr pTo(listToResbuf(to));
     PyThrowBadRt(acedTrans(asDblArray(pt), pFrom.get(), pTo.get(), disp, asDblArray(result)));
     return result;
+}
+
+bool EdCore::unloadPartialMenu(const std::string& pszMenuFile)
+{
+    return acedUnloadPartialMenu(utf8_to_wstr(pszMenuFile).c_str());
+}
+
+void EdCore::unmarkForDelayXRefRelativePathResolve(const PyDbObjectId& xrefDefId)
+{
+    acedUnmarkForDelayXRefRelativePathResolve(xrefDefId.m_id);
 }
 
 int EdCore::update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2)
