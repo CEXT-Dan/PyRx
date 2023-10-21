@@ -10312,6 +10312,12 @@ bindXrefs( (Database)arg1, (list)arg2, (bool)arg3, (bool)arg4, (bool)arg5) -> No
     C++ signature :
         void bindXrefs(class PyDbDatabase {lvalue},class boost::python::list,bool,bool,bool)'''
     ...
+    def canonicalToSystemRange (self, *args, **kwargs)-> str :
+      '''canonicalToSystemRange( (int)arg1, (str)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > canonicalToSystemRange(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def clearSetupForLayouts (self, *args, **kwargs)-> None :
       '''clearSetupForLayouts( (int)arg1) -> None :
 
@@ -10494,11 +10500,29 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class boost::python::list getDimAssocIds(class PyDbObjectId)'''
     ...
+    def getDimStyleId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getDimStyleId( (Database)arg1, (str)arg2, (str)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getDimStyleId(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getDynDimStyleId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''getDynDimStyleId( (Database)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getDynDimStyleId(class PyDbDatabase {lvalue})'''
+    ...
     def getMappedFontName (self, *args, **kwargs)-> str :
       '''getMappedFontName( (str)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getMappedFontName(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getProxyInfo (self, *args, **kwargs)-> tuple :
+      '''getProxyInfo( (DbObject)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getProxyInfo(class PyDbObject)'''
     ...
     def getReservedString (self, *args, **kwargs)-> str :
       '''getReservedString( (ReservedStringEnumType)arg1, (bool)arg2) -> str :
@@ -10612,6 +10636,17 @@ postDimAssoc( (ObjectId)arg1, (DimAssoc)arg2, (bool)arg3) -> ObjectId :
 
     C++ signature :
         bool regApp(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def reloadXrefs (self, *args, **kwargs)-> None :
+      '''reloadXrefs( (Core)arg1, (Database)arg2, (list)arg3) -> None :
+
+    C++ signature :
+        void reloadXrefs(class DbCore {lvalue},class PyDbDatabase {lvalue},class boost::python::list)
+
+reloadXrefs( (Core)arg1, (Database)arg2, (list)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void reloadXrefs(class DbCore {lvalue},class PyDbDatabase {lvalue},class boost::python::list,bool)'''
     ...
     def resbufTest (self, *args, **kwargs)-> list :
       '''resbufTest( (list)arg1) -> list :

@@ -41,8 +41,6 @@ void makeDbCoreWrapper()
         .def("createViewByViewport", &DbCore::createViewByViewport).staticmethod("createViewByViewport")
         .def("canonicalToSystemRange", &DbCore::canonicalToSystemRange).staticmethod("canonicalToSystemRange")
 
-
-
         .def("detachXref", &DbCore::detachXref).staticmethod("detachXref")
         .def("dictAdd", &DbCore::dictAdd).staticmethod("dictAdd")
         .def("dictNext", &DbCore::dictNext).staticmethod("dictNext")
