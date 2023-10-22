@@ -286,6 +286,21 @@ struct AcGeVector2pickle : boost::python::pickle_suite
     }
 };
 
+boost::python::tuple AcGeVector2ToTuple(const AcGeVector2d& p)
+{
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(p.x, p.y);
+}
+
+boost::python::list AcGeVector2ToList(const AcGeVector2d& p)
+{
+    PyAutoLockGIL lock;
+    boost::python::list l;
+    l.append(p.x);
+    l.append(p.y);
+    return l;
+}
+
 std::string AcGeVector2ToString(const AcGeVector2d& p)
 {
     return std::format("({:.14f},{:.14f})", p.x, p.y);
@@ -396,6 +411,8 @@ void makePyGeVector2dWrapper()
         .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeVector2d&)>("__isub__", &AcGeVector2d::operator-=, return_self<>())
         .def_pickle(AcGeVector2pickle())
         .def("toString", &AcGeVector2ToString)
+        .def("toTuple", &AcGeVector2ToTuple)
+        .def("toList", &AcGeVector2ToList)
         .def("__str__", &AcGeVector2ToString)
         .def("__repr__", &AcGeVector2dToStringRepr)
         .def("__getitem__", &AcGeVector2dGetItem)
@@ -409,6 +426,46 @@ void makePyGeVector2dWrapper()
 static AcGeMatrix2d AcGeMatrix2dkIdentity()
 {
     return AcGeMatrix2d::kIdentity;
+}
+
+static boost::python::tuple AcGeMatrix2dToTuple(const AcGeMatrix2d& x)
+{
+    PyAutoLockGIL lock;
+    auto r0 = boost::python::make_tuple(
+        x.entry[0][0],
+        x.entry[0][1],
+        x.entry[0][2]);
+    auto r1 = boost::python::make_tuple(
+        x.entry[1][0],
+        x.entry[1][1],
+        x.entry[1][2]);
+    auto r2 = boost::python::make_tuple(
+        x.entry[2][0],
+        x.entry[2][1],
+        x.entry[2][2]);
+    return boost::python::make_tuple(r0, r1, r2);
+}
+
+static boost::python::list AcGeMatrix2dToList(const AcGeMatrix2d& x)
+{
+    PyAutoLockGIL lock;
+    boost::python::list r0;
+    r0.append(x.entry[0][0]);
+    r0.append(x.entry[0][1]);
+    r0.append(x.entry[0][2]);
+    boost::python::list r1;
+    r1.append(x.entry[1][0]);
+    r1.append(x.entry[1][1]);
+    r1.append(x.entry[1][2]);
+    boost::python::list r2;
+    r2.append(x.entry[2][0]);
+    r2.append(x.entry[2][1]);
+    r2.append(x.entry[2][2]);
+    boost::python::list m;
+    m.append(r0);
+    m.append(r1);
+    m.append(r2);
+    return m;
 }
 
 std::string AcGeMatrix2dToString(const AcGeMatrix2d& x)
@@ -505,6 +562,8 @@ static void makePyGeMatrix2dWrapper()
         .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__mul__", &AcGeMatrix2d::operator*)
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imul__", &AcGeMatrix2d::operator*=, return_self<>())
         .def("toString", &AcGeMatrix2dToString)
+        .def("toTuple", &AcGeMatrix2dToTuple)
+        .def("toList", &AcGeMatrix2dToList)
         .def("__str__", &AcGeMatrix2dToString)
         .def("__repr__", &AcGeMatrix2dToStringRepr)
         ;
