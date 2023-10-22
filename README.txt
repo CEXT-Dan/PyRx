@@ -8,7 +8,7 @@ Embeds Python (3.10.10) and wxPython(4.2.0) into a loadable ARX module
 Get the latest build from https://github.com/CEXT-Dan/PyRx/releases
 
 On loading the ARX module, the following commands are added to AutoCAD
-PYLOAD:
+PYLOAD: 
 Use this command to load your python modules.
 
 PYRELOAD:
@@ -19,6 +19,11 @@ Provides simple access to the python interpreter
 
 PYRXVER:
 Prints the ARX module version
+
+Autolisp:
+(pyload PATH) returns  T or nil
+(pyloaded) returns a list of loaded modules
+
 
 PyRx sample:
 #imports 
