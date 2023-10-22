@@ -626,9 +626,10 @@ void PyDbObjectReactorImpl::objectClosed(const AcDbObjectId id)
 
 PyDbObjectReactor* PyDbObjectReactorImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_backPtr == nullptr) [[unlikely]]
+    if (m_backPtr == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return m_backPtr;
+    }
+    return m_backPtr;
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -1050,9 +1051,10 @@ void AcDbEntityReactorImpl::dragCloneToBeDeleted(const AcDbEntity* pOriginalObj,
 
 PyDbEntityReactor* AcDbEntityReactorImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_backPtr == nullptr) [[unlikely]]
+    if (m_backPtr == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-        return m_backPtr;
+    }
+    return m_backPtr;
 }
 
 //---------------------------------------------------------------------------------------- -

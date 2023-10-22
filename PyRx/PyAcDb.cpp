@@ -37,6 +37,7 @@
 #include "PyDbEllipse.h"
 #include "PyDbDimAssoc.h"
 #include "PyDbPointRef.h"
+#include "PyDbDatabaseReactor.h"
 
 using namespace boost::python;
 
@@ -133,6 +134,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbObjectWrapper();
     makePyDbObjectReactorWrapper();
     makePyDbEntityReactorWrapper();
+    makePyDbDatabaseReactorWrapper();
     makePyDbFieldtWrapper();
     makePyDbEntityWrapper();
     makePyDbBlockBeginWrapper();

@@ -7,6 +7,7 @@ class PyDbHandle;
 class PyDbAnnotationScale;
 class PyDbDimStyleTableRecord;
 class PyDbIdMapping;
+class PyDbDatabaseReactor;
 
 void makePyDbDatabaseWrapper();
 class PyDbDatabase : public PyRxObject
@@ -19,6 +20,7 @@ public:
     virtual ~PyDbDatabase() override = default;
 
     PyDbObjectId        addAcDbObject(PyDbObject& obj);
+    void                addReactor(PyDbDatabaseReactor& pReactor) const;
     double              angbase() const;
     bool                angdir() const;
     bool                annoAllVisible() const;
@@ -212,7 +214,7 @@ public:
     void	            reclaimMemoryFromErasedObjects(const boost::python::list& erasedObjects);
     PyDbObjectId		regAppTableId() const;
     bool				regenmode() const;
-    //void removeReactor(AcDbDatabaseReactor* pReactor) const; TODO:
+    void                removeReactor(PyDbDatabaseReactor& pReactor) const;
     void                registerApp(const std::string& pszAppName);
     void                resetTimes();
     void                restoreForwardingXrefSymbols();
