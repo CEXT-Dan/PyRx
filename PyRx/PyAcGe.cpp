@@ -643,13 +643,11 @@ void makePyGeScale3dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGePoint3d
-
-//
 static AcGePoint3d PyIterableToAcGePoint3d(const boost::python::object& iterable)
 {
     return py_list_to_point3d(iterable);
 };
-//
+
 struct AcGePoint3dpickle : boost::python::pickle_suite
 {
     static boost::python::tuple getinitargs(const AcGePoint3d& p)

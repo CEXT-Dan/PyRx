@@ -295,9 +295,12 @@ inline AcGePoint3d py_list_to_point3d(const boost::python::object& iterable)
     PyAutoLockGIL lock;
     auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
         boost::python::stl_input_iterator<double>());
-    if (vec.size() < 3)
+    if (vec.size() <= 3)
+        return AcGePoint3d(vec[0], vec[1], vec[2]);
+    else if(vec.size() == 2)
+        return AcGePoint3d(vec[0], vec[1], 0.0);
+    else
         throw PyAcadErrorStatus(eInvalidInput);
-    return AcGePoint3d(vec[0], vec[1], vec[2]);
 }
 
 inline AcGePoint2d py_list_to_point2d(const boost::python::object& iterable)
