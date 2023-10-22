@@ -211,6 +211,38 @@ class TestGe(unittest.TestCase):
         self.assertEqual(pO.y, 13.0)
         self.assertEqual(pO.z, 14.0)
         
+    def test_point3dlist_getset(self):
+        iterable = [1, 2, 3]
+        pO = PyGe.Point3d.fromList(iterable)
+        x = pO[0]
+        y = pO[1]
+        z = pO[2]
+        self.assertEqual(x, 1.0)
+        self.assertEqual(y, 2.0)
+        self.assertEqual(z, 3.0)
+        pO[0] = 12
+        pO[1] = 13
+        pO[2] = 14
+        self.assertEqual(pO.x, 12.0)
+        self.assertEqual(pO.y, 13.0)
+        self.assertEqual(pO.z, 14.0)
+        
+    def test_point3dtuple_getset(self):
+        iterable = (1, 2, 3)
+        pO = PyGe.Point3d.fromTuple(iterable)
+        x = pO[0]
+        y = pO[1]
+        z = pO[2]
+        self.assertEqual(x, 1.0)
+        self.assertEqual(y, 2.0)
+        self.assertEqual(z, 3.0)
+        pO[0] = 12
+        pO[1] = 13
+        pO[2] = 14
+        self.assertEqual(pO.x, 12.0)
+        self.assertEqual(pO.y, 13.0)
+        self.assertEqual(pO.z, 14.0)
+        
     def test_matrix3d_set1(self):
         pO = PyGe.Point3d(1, 10, 100)
         vX = PyGe.Vector3d.kXAxis * 2
