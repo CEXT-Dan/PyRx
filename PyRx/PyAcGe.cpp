@@ -643,6 +643,13 @@ void makePyGeScale3dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGePoint3d
+
+//
+static AcGePoint3d PyIterableToAcGePoint3d(const boost::python::object& iterable)
+{
+    return py_list_to_point3d(iterable);
+};
+//
 struct AcGePoint3dpickle : boost::python::pickle_suite
 {
     static boost::python::tuple getinitargs(const AcGePoint3d& p)
@@ -764,6 +771,8 @@ void makePyGePoint3dWrapper()
         .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-)
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__isub__", &AcGePoint3d::operator-=, return_self<>())
         .def<AcGeVector3d(AcGePoint3d::*)(const AcGePoint3d&)const>("__sub__", &AcGePoint3d::operator-)
+        .def("fromList", &PyIterableToAcGePoint3d).staticmethod("fromList")
+        .def("fromTuple", &PyIterableToAcGePoint3d).staticmethod("fromTuple")
         .def_pickle(AcGePoint3dpickle())
         .def("toList", &AcGePoint3dToList)
         .def("toTuple", &AcGePoint3dToTuple)
