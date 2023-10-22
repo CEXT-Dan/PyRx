@@ -11280,7 +11280,10 @@ class Database:
     def abortDeepClone (self: Database,idmap:PyDb.IdMapping)-> None :
       '''                             '''
     ...
-    def addObject (self: Database,object : DbObject)-> PyDb.ObjectId :
+    def addObject (self: Database,object : PyDb.DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def addReactor (self: Database,reactor : PyDb.DatabaseReactor)-> None :
       '''                             '''
     ...
     def angbase (self: Database)-> float :
@@ -11891,6 +11894,9 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
     def registerApp (self: Database,appName : str)-> None :
+      '''                             '''
+    ...
+    def removeReactor (self: Database,reactor : PyDb.DatabaseReactor)-> None :
       '''                             '''
     ...
     def resetTimes (self: Database)-> None :
@@ -12690,6 +12696,79 @@ wblock( (Database)arg1 [, (ObjectId)arg2]) -> Database :
       '''                             '''
     ...
     def xrefEditEnabled (self: Database)-> bool :
+      '''                             '''
+    ...
+
+class DatabaseReactor:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def goodbye (self: DatabaseReactor,db: PyDb.Database)-> None :
+      '''                             '''
+    ...
+    def headerSysVarChanged (self: DatabaseReactor,db: PyDb.Database,name: str,success: bool)-> None :
+      '''                             '''
+    ...
+    def headerSysVarWillChange (self: DatabaseReactor,db: PyDb.Database,name: str)-> None :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def objectAppended (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def objectErased (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject,erased: bool)-> None :
+      '''                             '''
+    ...
+    def objectModified (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def objectOpenedForModify (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def objectReAppended (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def objectUnAppended (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def proxyResurrectionCompleted (self: DatabaseReactor,db: PyDb.Database,name: str,ids: list[PyDb.ObjectId])-> None :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
 

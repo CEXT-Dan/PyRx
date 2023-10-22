@@ -6,6 +6,7 @@
 #include "PyDbObjectContext.h"
 #include "PyDbSymbolTableRecord.h"
 #include "PyDbIdMapping.h"
+#include "PyDbDatabaseReactor.h"
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
@@ -16,7 +17,8 @@ void makePyDbDatabaseWrapper()
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())
         .def(init<bool, bool>(DS.ARGS({ "buildDefaultDrawing : bool=True", "noDocument: bool=False" })))
-        .def("addObject", &PyDbDatabase::addAcDbObject, DS.ARGS({ "object : DbObject" }))
+        .def("addObject", &PyDbDatabase::addAcDbObject, DS.ARGS({ "object : PyDb.DbObject" }))
+        .def("addReactor", &PyDbDatabase::addReactor, DS.ARGS({ "reactor : PyDb.DatabaseReactor" }))
         .def("angbase", &PyDbDatabase::angbase, DS.ARGS())
         .def("angdir", &PyDbDatabase::angdir, DS.ARGS())
         .def("annoAllVisible", &PyDbDatabase::annoAllVisible, DS.ARGS())
@@ -208,6 +210,7 @@ void makePyDbDatabaseWrapper()
         .def("regAppTableId", &PyDbDatabase::regAppTableId, DS.ARGS())
         .def("regenmode", &PyDbDatabase::regenmode, DS.ARGS())
         .def("registerApp", &PyDbDatabase::registerApp, DS.ARGS({ "appName : str" }))
+        .def("removeReactor", &PyDbDatabase::removeReactor, DS.ARGS({ "reactor : PyDb.DatabaseReactor" }))
         .def("resetTimes", &PyDbDatabase::resetTimes, DS.ARGS())
         .def("restoreForwardingXrefSymbols", &PyDbDatabase::restoreForwardingXrefSymbols, DS.ARGS())
         .def("restoreOriginalXrefSymbols", &PyDbDatabase::restoreOriginalXrefSymbols, DS.ARGS())
@@ -525,6 +528,11 @@ PyDbObjectId PyDbDatabase::addAcDbObject(PyDbObject& obj)
     if (auto es = impObj()->addAcDbObject(id.m_id, obj.impObj()); es != eOk)
         throw PyAcadErrorStatus(es);
     return id;
+}
+
+void PyDbDatabase::addReactor(PyDbDatabaseReactor& pReactor) const
+{
+    PyThrowBadEs(impObj()->addReactor(pReactor.impObj()));
 }
 
 double PyDbDatabase::angbase() const
@@ -1538,6 +1546,11 @@ PyDbObjectId PyDbDatabase::regAppTableId() const
 bool PyDbDatabase::regenmode() const
 {
     return impObj()->regenmode();
+}
+
+void PyDbDatabase::removeReactor(PyDbDatabaseReactor& pReactor) const
+{
+    PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
 }
 
 void PyDbDatabase::resetTimes()
