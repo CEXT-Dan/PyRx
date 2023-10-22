@@ -462,7 +462,7 @@ public:
 
     static int ads_adspyload(void)
     {
-        acutPrintf(_T("\nDepreciate, please use (pyload PATH):"));
+        //acutPrintf(_T("\nDepreciate, please use (pyload PATH):"));
         return ads_pyload();
     }
 
