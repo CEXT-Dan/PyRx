@@ -727,6 +727,22 @@ struct AcGeVector3dpickle : boost::python::pickle_suite
     }
 };
 
+boost::python::tuple AcGeVector3dToTuple(const AcGeVector3d& p)
+{
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(p.x, p.y, p.z);
+}
+
+boost::python::list AcGeVector3dToList(const AcGeVector3d& p)
+{
+    PyAutoLockGIL lock;
+    boost::python::list l;
+    l.append(p.x);
+    l.append(p.y);
+    l.append(p.z);
+    return l;
+}
+
 static AcGeVector3d AcGeVector3dkIdentity()
 {
     return AcGeVector3d::kIdentity;
@@ -861,6 +877,8 @@ static void makePyGeVector3dWrapper()
         .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&)const>("__sub__", &AcGeVector3d::operator-)
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeVector3d&)>("__isub__", &AcGeVector3d::operator-=, return_self<>())
         .def_pickle(AcGeVector3dpickle())
+        .def("toList", &AcGeVector3dToList)
+        .def("toTuple", &AcGeVector3dToTuple)
         .def("toString", &AcGeVector3dToString)
         .def("__str__", &AcGeVector3dToString)
         .def("__repr__", &AcGeVector3dToStringRepr)
