@@ -460,8 +460,13 @@ public:
         }
     }
 
-    //TODO: Fix this mess : |
     static int ads_adspyload(void)
+    {
+        acutPrintf(_T("\nDepreciate, please use (pyload PATH):"));
+        return ads_pyload();
+    }
+
+    static int ads_pyload(void)
     {
         std::filesystem::path pysyspath;
         std::filesystem::path pypath;
@@ -484,6 +489,20 @@ public:
             bool flag = doPyLoad(pathName, moduleName, pysyspath);
             flag ? acedRetT() : acedRetNil();
         }
+        return RSRSLT;
+    }
+
+    static int ads_pyloaded(void)
+    {
+        AcResBufPtr pArgs(acutNewRb(RTSTR));
+        resbuf* pTail = pArgs.get();
+        for (auto& item : PyRxApp::instance().funcNameMap)
+        {
+            acutNewString(item.first, pTail->resval.rstring);
+            pTail = pTail->rbnext = acutNewRb(RTSTR);
+        }
+        acutNewString(_T("PyRx"), pTail->resval.rstring);
+        acedRetList(pArgs.get());
         return RSRSLT;
     }
 
@@ -520,6 +539,8 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_T
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyloaded, false)
 #ifdef PYRXDEBUG
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_TRANSPARENT, NULL)
 #endif
