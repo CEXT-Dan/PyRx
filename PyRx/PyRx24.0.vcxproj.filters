@@ -310,6 +310,7 @@
     <ClCompile Include="PyDbPointRef.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbDatabaseReactor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -624,6 +625,7 @@
     <ClInclude Include="PyDbPointRef.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
+    <ClInclude Include="PyDbDatabaseReactor.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
