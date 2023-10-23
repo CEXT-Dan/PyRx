@@ -60,6 +60,7 @@ public:
     static int                  eatCommandThroat();
     static int                  editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs);
     static void                 enableUsrbrk();
+    static boost::python::list  evaluateLisp(const std::string& str);
     static std::string          findFile(const std::string& file);
     static std::string          findTrustedFile(const std::string& file);
     static boost::python::list  getPredefinedPattens();
