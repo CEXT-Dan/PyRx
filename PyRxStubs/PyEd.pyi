@@ -347,67 +347,35 @@ class Core:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def alert (self, *args, **kwargs)-> int :
-      '''alert( (str)arg1) -> int :
-
-    C++ signature :
-        int alert(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def alert (msg: str)-> int :
+      '''                             '''
     ...
-    def arxLoad (self, *args, **kwargs)-> int :
-      '''arxLoad( (str)arg1) -> int :
-
-    C++ signature :
-        int arxLoad(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def arxLoad (path: str)-> int :
+      '''                             '''
     ...
-    def arxLoaded (self, *args, **kwargs)-> list :
-      '''arxLoaded() -> list :
-
-    C++ signature :
-        class boost::python::list arxLoaded()'''
+    def arxLoaded ()-> list :
+      '''                             '''
     ...
-    def arxUnload (self, *args, **kwargs)-> int :
-      '''arxUnload( (str)arg1) -> int :
-
-    C++ signature :
-        int arxUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def arxUnload (app: str)-> int :
+      '''                             '''
     ...
-    def audit (self, *args, **kwargs)-> None :
-      '''audit( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void audit(class PyDbDatabase {lvalue},bool)
-
-audit( (Database)arg1, (bool)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void audit(class PyDbDatabase {lvalue},bool,bool)'''
+    def audit (db: PyDb.Database,fix: bool,echo: bool=False)-> None :
+      '''                             '''
     ...
     def autoSetVar (name:str,value : Any)-> PyEd.AutoSysVar :
       '''                             '''
     ...
-    def callBackOnCancel (self, *args, **kwargs)-> None :
-      '''callBackOnCancel() -> None :
-
-    C++ signature :
-        void callBackOnCancel()'''
+    def callBackOnCancel ()-> None :
+      '''                             '''
     ...
-    def clearOLELock (self, *args, **kwargs)-> bool :
-      '''clearOLELock( (int)arg1) -> bool :
-
-    C++ signature :
-        bool clearOLELock(int)'''
+    def clearOLELock (handle: int)-> bool :
+      '''                             '''
     ...
-    def clipFormatName (self, *args, **kwargs)-> str :
-      '''clipFormatName() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > clipFormatName()'''
+    def clipFormatName ()-> str :
+      '''                             '''
     ...
-    def cmdCWasCancelled (self, *args, **kwargs)-> bool :
-      '''cmdCWasCancelled() -> bool :
-
-    C++ signature :
-        bool cmdCWasCancelled()'''
+    def cmdCWasCancelled ()-> bool :
+      '''                             '''
     ...
     def cmdS (self, *args, **kwargs)-> bool :
       '''cmdS( (list)arg1) -> bool :
@@ -468,11 +436,8 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         void disableDefaultARXExceptionHandler(bool)'''
     ...
-    def disableUsrbrk (self, *args, **kwargs)-> None :
-      '''disableUsrbrk() -> None :
-
-    C++ signature :
-        void disableUsrbrk()'''
+    def disableUsrbrk ()-> None :
+      '''                             '''
     ...
     def displayBorder (self, *args, **kwargs)-> bool :
       '''displayBorder( (bool)arg1) -> bool :
@@ -486,11 +451,8 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         void drawOrderInherit(class PyDbObjectId {lvalue},class boost::python::list,enum AcEdDrawOrderCmdType)'''
     ...
-    def drawingStatusBarsVisible (self, *args, **kwargs)-> bool :
-      '''drawingStatusBarsVisible() -> bool :
-
-    C++ signature :
-        bool drawingStatusBarsVisible()'''
+    def drawingStatusBarsVisible ()-> bool :
+      '''                             '''
     ...
     def dropOpenFile (self, *args, **kwargs)-> None :
       '''dropOpenFile( (str)arg1) -> None :
@@ -498,11 +460,8 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         void dropOpenFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def eatCommandThroat (self, *args, **kwargs)-> int :
-      '''eatCommandThroat() -> int :
-
-    C++ signature :
-        int eatCommandThroat()'''
+    def eatCommandThroat ()-> int :
+      '''                             '''
     ...
     def editMTextInteractive (self, *args, **kwargs)-> int :
       '''editMTextInteractive( (MText)arg1, (bool)arg2, (bool)arg3) -> int :
@@ -510,11 +469,8 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         int editMTextInteractive(class PyDbMText {lvalue},bool,bool)'''
     ...
-    def enableUsrbrk (self, *args, **kwargs)-> None :
-      '''enableUsrbrk() -> None :
-
-    C++ signature :
-        void enableUsrbrk()'''
+    def enableUsrbrk ()-> None :
+      '''                             '''
     ...
     def evaluateLisp (self, *args, **kwargs)-> list :
       '''evaluateLisp( (str)arg1) -> list :
@@ -534,17 +490,11 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getAcadDockCmdLine (self, *args, **kwargs)-> int :
-      '''getAcadDockCmdLine() -> int :
-
-    C++ signature :
-        unsigned __int64 getAcadDockCmdLine()'''
+    def getAcadDockCmdLine ()-> int :
+      '''                             '''
     ...
-    def getAcadTextCmdLine (self, *args, **kwargs)-> int :
-      '''getAcadTextCmdLine() -> int :
-
-    C++ signature :
-        unsigned __int64 getAcadTextCmdLine()'''
+    def getAcadTextCmdLine ()-> int :
+      '''                             '''
     ...
     def getBlockEditMode (self, *args, **kwargs)-> int :
       '''getBlockEditMode() -> int :
@@ -570,29 +520,17 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCommandPromptString()'''
     ...
-    def getCommands (self, *args, **kwargs)-> dict :
-      '''getCommands() -> dict :
-
-    C++ signature :
-        class boost::python::dict getCommands()'''
+    def getCommands ()-> dict :
+      '''                             '''
     ...
-    def getCurVportPixelToDisplay (self, *args, **kwargs)-> tuple :
-      '''getCurVportPixelToDisplay() -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCurVportPixelToDisplay()'''
+    def getCurVportPixelToDisplay ()-> tuple :
+      '''                             '''
     ...
-    def getCurVportScreenToDisplay (self, *args, **kwargs)-> tuple :
-      '''getCurVportScreenToDisplay() -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCurVportScreenToDisplay()'''
+    def getCurVportScreenToDisplay ()-> tuple :
+      '''                             '''
     ...
-    def getCurrentSelectionSet (self, *args, **kwargs)-> list :
-      '''getCurrentSelectionSet() -> list :
-
-    C++ signature :
-        class boost::python::list getCurrentSelectionSet()'''
+    def getCurrentSelectionSet ()-> list :
+      '''                             '''
     ...
     def getEnv (self, *args, **kwargs)-> str :
       '''getEnv( (str)arg1) -> str :
@@ -618,23 +556,14 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class boost::python::list getLastCommandLines(int,bool)'''
     ...
-    def getMousePositionUCS (self, *args, **kwargs)-> PyGe.Point3d :
-      '''getMousePositionUCS() -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getMousePositionUCS()'''
+    def getMousePositionUCS ()-> PyGe.Point3d :
+      '''                             '''
     ...
-    def getMousePositionWCS (self, *args, **kwargs)-> PyGe.Point3d :
-      '''getMousePositionWCS() -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getMousePositionWCS()'''
+    def getMousePositionWCS ()-> PyGe.Point3d :
+      '''                             '''
     ...
-    def getPredefinedHatchPatterns (self, *args, **kwargs)-> list :
-      '''getPredefinedHatchPatterns() -> list :
-
-    C++ signature :
-        class boost::python::list getPredefinedHatchPatterns()'''
+    def getPredefinedHatchPatterns ()-> list :
+      '''                             '''
     ...
     def getSym (self, *args, **kwargs)-> list :
       '''getSym( (str)arg1) -> list :
@@ -642,11 +571,8 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class boost::python::list getSym(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getSysVars (self, *args, **kwargs)-> dict :
-      '''getSysVars() -> dict :
-
-    C++ signature :
-        class boost::python::dict getSysVars()'''
+    def getSysVars ()-> dict :
+      '''                             '''
     ...
     def getVar (name:str)-> object :
       '''                             '''
@@ -663,11 +589,8 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         int grDraw(class AcGePoint3d,class AcGePoint3d,int,int)'''
     ...
-    def graphScr (self, *args, **kwargs)-> None :
-      '''graphScr() -> None :
-
-    C++ signature :
-        void graphScr()'''
+    def graphScr ()-> None :
+      '''                             '''
     ...
     def initDialog (self, *args, **kwargs)-> bool :
       '''initDialog( (bool)arg1) -> bool :
@@ -681,23 +604,14 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class boost::python::list invoke(class boost::python::list)'''
     ...
-    def isDragging (self, *args, **kwargs)-> int :
-      '''isDragging() -> int :
-
-    C++ signature :
-        int isDragging()'''
+    def isDragging ()-> int :
+      '''                             '''
     ...
-    def isInBackgroundMode (self, *args, **kwargs)-> bool :
-      '''isInBackgroundMode() -> bool :
-
-    C++ signature :
-        bool isInBackgroundMode()'''
+    def isInBackgroundMode ()-> bool :
+      '''                             '''
     ...
-    def isInputPending (self, *args, **kwargs)-> bool :
-      '''isInputPending() -> bool :
-
-    C++ signature :
-        bool isInputPending()'''
+    def isInputPending ()-> bool :
+      '''                             '''
     ...
     def isMenuGroupLoaded (self, *args, **kwargs)-> bool :
       '''isMenuGroupLoaded( (str)arg1) -> bool :
@@ -705,23 +619,14 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         bool isMenuGroupLoaded(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def isOsnapOverride (self, *args, **kwargs)-> bool :
-      '''isOsnapOverride() -> bool :
-
-    C++ signature :
-        bool isOsnapOverride()'''
+    def isOsnapOverride ()-> bool :
+      '''                             '''
     ...
-    def isUpdateDisplayPaused (self, *args, **kwargs)-> bool :
-      '''isUpdateDisplayPaused() -> bool :
-
-    C++ signature :
-        bool isUpdateDisplayPaused()'''
+    def isUpdateDisplayPaused ()-> bool :
+      '''                             '''
     ...
-    def isUsrbrkDisabled (self, *args, **kwargs)-> bool :
-      '''isUsrbrkDisabled() -> bool :
-
-    C++ signature :
-        bool isUsrbrkDisabled()'''
+    def isUsrbrkDisabled ()-> bool :
+      '''                             '''
     ...
     def loadJSScript (self, *args, **kwargs)-> None :
       '''loadJSScript( (str)arg1) -> None :
@@ -735,11 +640,8 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         bool loadPartialMenu(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def mSpace (self, *args, **kwargs)-> None :
-      '''mSpace() -> None :
-
-    C++ signature :
-        void mSpace()'''
+    def mSpace ()-> None :
+      '''                             '''
     ...
     def markForDelayXRefRelativePathResolve (self, *args, **kwargs)-> None :
       '''markForDelayXRefRelativePathResolve( (ObjectId)arg1) -> None :
@@ -753,11 +655,8 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class AcGePoint3d osnap(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def pSpace (self, *args, **kwargs)-> None :
-      '''pSpace() -> None :
-
-    C++ signature :
-        void pSpace()'''
+    def pSpace ()-> None :
+      '''                             '''
     ...
     def postCommand (self, *args, **kwargs)-> None :
       '''postCommand( (str)arg1) -> None :
@@ -765,11 +664,8 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         void postCommand(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def postCommandPrompt (self, *args, **kwargs)-> None :
-      '''postCommandPrompt() -> None :
-
-    C++ signature :
-        void postCommandPrompt()'''
+    def postCommandPrompt ()-> None :
+      '''                             '''
     ...
     def prompt (self, *args, **kwargs)-> int :
       '''prompt( (str)arg1) -> int :
@@ -804,17 +700,11 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         void restoreCurrentView(class PyDbObjectId)'''
     ...
-    def restorePreviousUCS (self, *args, **kwargs)-> None :
-      '''restorePreviousUCS() -> None :
-
-    C++ signature :
-        void restorePreviousUCS()'''
+    def restorePreviousUCS ()-> None :
+      '''                             '''
     ...
-    def restoreStatusBar (self, *args, **kwargs)-> None :
-      '''restoreStatusBar() -> None :
-
-    C++ signature :
-        void restoreStatusBar()'''
+    def restoreStatusBar ()-> None :
+      '''                             '''
     ...
     def sendModelessOperationEnded (self, *args, **kwargs)-> None :
       '''sendModelessOperationEnded( (str)arg1) -> None :
@@ -942,17 +832,11 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     C++ signature :
         class boost::python::tuple textBox(class boost::python::list)'''
     ...
-    def textPage (self, *args, **kwargs)-> None :
-      '''textPage() -> None :
-
-    C++ signature :
-        void textPage()'''
+    def textPage ()-> None :
+      '''                             '''
     ...
-    def textScr (self, *args, **kwargs)-> None :
-      '''textScr() -> None :
-
-    C++ signature :
-        void textScr()'''
+    def textScr ()-> None :
+      '''                             '''
     ...
     def trans (self, *args, **kwargs)-> PyGe.Point3d :
       '''trans( (Point3d)arg1, (list)arg2, (list)arg3, (int)arg4) -> Point3d :
@@ -978,11 +862,8 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     C++ signature :
         int update(int,class AcGePoint2d,class AcGePoint2d)'''
     ...
-    def updateDisplay (self, *args, **kwargs)-> None :
-      '''updateDisplay() -> None :
-
-    C++ signature :
-        void updateDisplay()'''
+    def updateDisplay ()-> None :
+      '''                             '''
     ...
     def updateDisplayPause (self, *args, **kwargs)-> None :
       '''updateDisplayPause( (bool)arg1) -> None :
@@ -990,11 +871,8 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     C++ signature :
         void updateDisplayPause(bool)'''
     ...
-    def usrBrk (self, *args, **kwargs)-> bool :
-      '''usrBrk() -> bool :
-
-    C++ signature :
-        bool usrBrk()'''
+    def usrBrk ()-> bool :
+      '''                             '''
     ...
     def viewportIdFromNumber (self, *args, **kwargs)-> PyDb.ObjectId :
       '''viewportIdFromNumber( (int)arg1) -> ObjectId :
@@ -1014,11 +892,8 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     C++ signature :
         void vportTableRecords2Vports()'''
     ...
-    def vports (self, *args, **kwargs)-> list :
-      '''vports() -> list :
-
-    C++ signature :
-        class boost::python::list vports()'''
+    def vports ()-> list :
+      '''                             '''
     ...
     def vports2VportTableRecords (self, *args, **kwargs)-> None :
       '''vports2VportTableRecords() -> None :
