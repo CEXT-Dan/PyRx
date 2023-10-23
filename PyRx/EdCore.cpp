@@ -414,6 +414,25 @@ void EdCore::enableUsrbrk()
 
 boost::python::list EdCore::evaluateLisp(const std::string& str)
 {
+    int np = 0;
+    for (const auto item : str)
+    {
+        switch (item)
+        {
+        case '(':
+            np++;
+            break;
+        case ')':
+            np--;
+            break;
+        default:
+            break;
+        }
+    }
+    if (np != 0)
+    {
+        PyThrowBadEs(eInvalidInput);
+    }
     resbuf* pRb = nullptr;
     acedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
     AcResBufPtr pSafeRb(pRb);
