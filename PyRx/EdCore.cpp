@@ -27,6 +27,7 @@ EXTERN_C void                   acedGetCommandPromptString(CString&);
 EXTERN_C void                   acedDropOpenFile(const ACHAR*);
 extern void                     acedGetLastCommandLines(AcStringArray&, int, bool);
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
+int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
 #endif
 
 //-----------------------------------------------------------------------------------------
@@ -107,6 +108,7 @@ void makePyEdCoreWrapper()
         .def("eatCommandThroat", &EdCore::eatCommandThroat).staticmethod("eatCommandThroat")
         .def("editMTextInteractive", &EdCore::editMTextInteractive).staticmethod("editMTextInteractive")
         .def("enableUsrbrk", &EdCore::enableUsrbrk).staticmethod("enableUsrbrk")
+        .def("evaluateLisp", &EdCore::evaluateLisp).staticmethod("evaluateLisp")
         .def("findFile", &EdCore::findFile).staticmethod("findFile")
         .def("findTrustedFile", &EdCore::findTrustedFile).staticmethod("findTrustedFile")
         .def("getPredefinedHatchPatterns", &EdCore::getPredefinedPattens).staticmethod("getPredefinedHatchPatterns")
@@ -408,6 +410,14 @@ int EdCore::editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs
 void EdCore::enableUsrbrk()
 {
     return acedEnableUsrbrk();
+}
+
+boost::python::list EdCore::evaluateLisp(const std::string& str)
+{
+    resbuf* pRb = nullptr;
+    acedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
+    AcResBufPtr pSafeRb(pRb);
+    return resbufToList(pRb);
 }
 
 bool EdCore::cmdS(const boost::python::list& lst)
