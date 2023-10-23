@@ -285,7 +285,7 @@ public:
         }
     }
 
-    static bool doPyLoad(AcString& pathName, AcString& moduleName, std::filesystem::path& pypath)
+    static bool doPyLoad(AcString& pathName, AcString& moduleName, std::filesystem::path& pypath, bool silent = false)
     {
         if (PyRxApp::instance().funcNameMap.contains(moduleName))
         {
@@ -301,7 +301,10 @@ public:
             loadPyAppReactors(method);
             loadCommands(method, pypath, moduleName);
             PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
-            acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
+            if (!silent)
+            {
+                acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
+            }
             onLoadPyModule(moduleName);
             return true;
         }
@@ -480,7 +483,7 @@ public:
             pathName = pypath.filename().c_str();
             moduleName = pathName;
             moduleName.makeUpper();
-            bool flag = doPyLoad(pathName, moduleName, pysyspath);
+            bool flag = doPyLoad(pathName, moduleName, pysyspath, true);
             flag ? acedRetT() : acedRetNil();
         }
         return RSRSLT;
