@@ -516,6 +516,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         void enableUsrbrk()'''
     ...
+    def evaluateLisp (self, *args, **kwargs)-> list :
+      '''evaluateLisp( (str)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list evaluateLisp(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def findFile (self, *args, **kwargs)-> str :
       '''findFile( (str)arg1) -> str :
 
