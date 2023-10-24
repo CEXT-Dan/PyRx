@@ -1158,7 +1158,6 @@ void makePyGeMatrix3dWrapper()
         .def("setToProjection", &AcGeMatrix3d::setToProjection, return_self<>())
         .def("setToAlignCoordSys", &AcGeMatrix3d::setToAlignCoordSys, return_self<>())
 
-        //TODO
         .def("setToWorldToPlane", &AcGeMatrix3dworldToPlane)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToWorldToPlane", &AcGeMatrix3d::setToWorldToPlane, return_self<>())
         .def("setToPlaneToWorld", &AcGeMatrix3dplaneToWorld)

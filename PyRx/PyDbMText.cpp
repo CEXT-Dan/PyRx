@@ -40,6 +40,7 @@ void makePyDbMTextWrapper()
         .def("actualWidth", &PyDbMText::actualWidth, DS.ARGS())
         .def("correctSpelling", &PyDbMText::correctSpelling, DS.ARGS())
         .def("getBoundingPoints", &PyDbMText::getBoundingPoints, DS.ARGS())
+        .def("getBoundingPointsByLine", &PyDbMText::getBoundingPointsByLine, DS.ARGS())
         .def("hitTest", &PyDbMText::hitTest, DS.ARGS({ "val : PyGe.Point3d" }))
         .def("setLineSpacingStyle", &PyDbMText::setLineSpacingStyle, DS.ARGS({ "val : PyDb.LineSpacingStyle" }))
         .def("lineSpacingStyle", &PyDbMText::lineSpacingStyle, DS.ARGS())
@@ -304,6 +305,17 @@ boost::python::list PyDbMText::getBoundingPoints() const
     AcGePoint3dArray arr;
     impObj()->getBoundingPoints(arr);
     return Point3dArrayToPyList(arr);
+}
+
+boost::python::list PyDbMText::getBoundingPointsByLine() const
+{
+    PyAutoLockGIL lock;
+    AcArray<AcGePoint3dArray> data;
+    impObj()->getBoundingPointsByLine(data);
+    boost::python::list pylist;
+    for (const auto& item : data)
+        pylist.append(Point3dArrayToPyList(item));
+    return pylist;
 }
 
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
