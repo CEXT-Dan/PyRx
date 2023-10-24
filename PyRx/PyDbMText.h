@@ -77,6 +77,7 @@ public:
     void                convertFieldToText();
     double              height() const;
     void                setHeight(double val);
+    boost::python::list getFragments();
     static std::string  className();
     static PyRxClass    desc();
     static PyDbMText    cloneFrom(const PyRxObject& src);

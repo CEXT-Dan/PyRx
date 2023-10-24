@@ -2,6 +2,9 @@
 #include "PyDbMtext.h"
 #include "PyDbObjectId.h"
 using namespace boost::python;
+
+int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param);
+
 void makePyDbMTextWrapper()
 {
     PyDocString DS("MText");
@@ -75,6 +78,7 @@ void makePyDbMTextWrapper()
         .def("convertFieldToText", &PyDbMText::convertFieldToText, DS.ARGS())
         .def("height", &PyDbMText::height, DS.ARGS())
         .def("setHeight", &PyDbMText::setHeight, DS.ARGS({ "val : real" }))
+        .def("getFragments", &PyDbMText::getFragments, DS.ARGS())
         .def("className", &PyDbMText::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbMText::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbMText::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -508,6 +512,14 @@ void PyDbMText::setHeight(double val)
     return PyThrowBadEs(impObj()->setHeight(val));
 }
 
+boost::python::list PyDbMText::getFragments()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    impObj()->explodeFragments(AcDbMTextFragmentCallBack, &pylist, nullptr);
+    return pylist;
+}
+
 std::string PyDbMText::className()
 {
     return "AcDbMText";
@@ -541,3 +553,54 @@ AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_loc
     return static_cast<AcDbMText*>(m_pyImp.get());
 }
 
+//
+int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
+{
+    if (frag == nullptr || param == nullptr)
+        return 0;
+
+    PyAutoLockGIL lock;
+    boost::python::list* pylist = reinterpret_cast<boost::python::list*>(param);
+    boost::python::list pysublist;
+
+    pysublist.append(frag->location);
+    pysublist.append(frag->normal);
+    pysublist.append(frag->direction);
+    pysublist.append(wstr_to_utf8(frag->msText));
+    pysublist.append(wstr_to_utf8(frag->msFont));
+    pysublist.append(wstr_to_utf8(frag->msBigFont));
+    pysublist.append(frag->extents);
+    pysublist.append(frag->capsHeight);
+    pysublist.append(frag->widthFactor);
+    pysublist.append(frag->obliqueAngle);
+    pysublist.append(frag->trackingFactor);
+    pysublist.append(frag->color);
+    pysublist.append(frag->stackTop);
+    pysublist.append(frag->stackBottom);
+    pysublist.append(frag->underlined);
+    pysublist.append(frag->overlined);
+    pysublist.append(frag->strikethrough);
+
+    boost::python::list underPoints;
+    underPoints.append(frag->underPoints[0]);
+    underPoints.append(frag->underPoints[1]);
+    pysublist.append(underPoints);
+
+    boost::python::list overPoints;
+    overPoints.append(frag->overPoints[0]);
+    overPoints.append(frag->overPoints[1]);
+    pysublist.append(overPoints);
+
+    boost::python::list strikePoints;
+    strikePoints.append(frag->strikePoints[0]);
+    strikePoints.append(frag->strikePoints[1]);
+    pysublist.append(strikePoints);
+
+    pysublist.append(wstr_to_utf8(frag->msFontName));
+    pysublist.append(frag->bold);
+    pysublist.append(frag->italic);
+
+    //
+    pylist->append(pysublist);
+    return 1;
+}
