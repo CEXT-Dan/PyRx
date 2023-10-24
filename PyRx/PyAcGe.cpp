@@ -977,9 +977,9 @@ static AcGeMatrix3d AcGeMatrix3dscaling(double scaleAll, const AcGePoint3d& cent
     return AcGeMatrix3d::scaling(scaleAll, center);
 }
 
-static AcGeMatrix3d AcGeMatrix3dmirroring1(const AcGePlane& pln)
+static AcGeMatrix3d AcGeMatrix3dmirroring1(const PyGePlane& pln)
 {
-    return AcGeMatrix3d::mirroring(pln);
+    return AcGeMatrix3d::mirroring(*pln.impObj());
 }
 static AcGeMatrix3d AcGeMatrix3dmirroring2(const AcGePoint3d& pnt)
 {
@@ -989,9 +989,9 @@ static AcGeMatrix3d AcGeMatrix3dmirroring3(const AcGeLine3d& line)
 {
     return AcGeMatrix3d::mirroring(line);
 }
-static AcGeMatrix3d AcGeMatrix3dprojection(const AcGePlane& projectionPlane, const AcGeVector3d& projectDir)
+static AcGeMatrix3d AcGeMatrix3dprojection(const PyGePlane& projectionPlane, const AcGeVector3d& projectDir)
 {
-    return AcGeMatrix3d::projection(projectionPlane, projectDir);
+    return AcGeMatrix3d::projection(*projectionPlane.impObj(), projectDir);
 }
 static AcGeMatrix3d AcGeMatrix3dalignCoordSys(const AcGePoint3d& fromOrigin,
     const AcGeVector3d& fromXAxis,
@@ -1009,17 +1009,32 @@ static AcGeMatrix3d AcGeMatrix3dworldToPlane1(const AcGeVector3d& normal)
 {
     return AcGeMatrix3d::worldToPlane(normal);
 }
-static AcGeMatrix3d AcGeMatrix3dworldToPlane2(const AcGePlane& plane)
+static AcGeMatrix3d AcGeMatrix3dworldToPlane2(const PyGePlane& plane)
 {
-    return AcGeMatrix3d::worldToPlane(plane);
+    return AcGeMatrix3d::worldToPlane(*plane.impObj());
 }
 static AcGeMatrix3d AcGeMatrix3dplaneToWorld1(const AcGeVector3d& normal)
 {
     return AcGeMatrix3d::planeToWorld(normal);
 }
-static AcGeMatrix3d AcGeMatrix3dplaneToWorld2(const AcGePlane& plane)
+static AcGeMatrix3d AcGeMatrix3dplaneToWorld2(const PyGePlane& plane)
 {
-    return AcGeMatrix3d::planeToWorld(plane);
+    return AcGeMatrix3d::planeToWorld(*plane.impObj());
+}
+
+static void AcGeMatrix3dworldToPlane(AcGeMatrix3d& mat, const PyGePlane& plane)
+{
+    mat.setToWorldToPlane(*plane.impObj());
+}
+
+static void AcGeMatrix3dplaneToWorld(AcGeMatrix3d& mat, const PyGePlane& plane)
+{
+    mat.setToPlaneToWorld(*plane.impObj());
+}
+
+static void AcGeMatrix3dsetToMirroring(AcGeMatrix3d& mat, const PyGePlane& plane)
+{
+    mat.setToMirroring(*plane.impObj());
 }
 
 static boost::python::tuple AcGeMatrix3dToTuple(const AcGeMatrix3d& x)
@@ -1136,16 +1151,17 @@ void makePyGeMatrix3dWrapper()
         .def("setToScaling", &AcGeMatrix3d::setToScaling,
             DS.ARGS({ "val: real","center: PyGe.Point3d=kOrigin" }), return_self<>(), arg("AcGePoint3d") = AcGePoint3dkOrigin())
 
-        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePlane&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, return_self<>())
+        .def("setToMirroring", &AcGeMatrix3dsetToMirroring)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeLine3d&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, return_self<>())
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePoint3d&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, return_self<>())
 
         .def("setToProjection", &AcGeMatrix3d::setToProjection, return_self<>())
         .def("setToAlignCoordSys", &AcGeMatrix3d::setToAlignCoordSys, return_self<>())
 
-        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePlane&)>("setToWorldToPlane", &AcGeMatrix3d::setToWorldToPlane, return_self<>())
+        //TODO
+        .def("setToWorldToPlane", &AcGeMatrix3dworldToPlane)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToWorldToPlane", &AcGeMatrix3d::setToWorldToPlane, return_self<>())
-        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePlane&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, return_self<>())
+        .def("setToPlaneToWorld", &AcGeMatrix3dplaneToWorld)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, return_self<>())
 
         .def("scale", &AcGeMatrix3d::scale, DS.ARGS())
