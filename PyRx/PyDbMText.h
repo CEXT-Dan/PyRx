@@ -42,6 +42,7 @@ public:
     double              actualWidth() const;
     int                 correctSpelling();
     boost::python::list getBoundingPoints() const;
+    boost::python::list getBoundingPointsByLine() const;
     bool                hitTest(const AcGePoint3d& ptHit) const;
     void                setLineSpacingStyle(AcDb::LineSpacingStyle eStyle);
     AcDb::LineSpacingStyle lineSpacingStyle() const;
