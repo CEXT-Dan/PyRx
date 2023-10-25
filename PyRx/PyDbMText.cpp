@@ -126,6 +126,34 @@ void makePyDbMTextWrapper()
         .value("kDynamicColumns", AcDbMText::ColumnType::kDynamicColumns)
         .export_values()
         ;
+
+    enum_<PyRxMTextFragmentType>("MTextFragmentType")
+        .value("kLocation", PyRxMTextFragmentType::kLocation)
+        .value("kNormal", PyRxMTextFragmentType::kNormal)
+        .value("kDirection", PyRxMTextFragmentType::kDirection)
+        .value("kTextValue", PyRxMTextFragmentType::kTextValue)
+        .value("kFont", PyRxMTextFragmentType::kFont)
+        .value("kBigFont", PyRxMTextFragmentType::kBigFont)
+        .value("kExtents", PyRxMTextFragmentType::kExtents)
+        .value("kCapsHeight", PyRxMTextFragmentType::kCapsHeight)
+        .value("kWidthFactor", PyRxMTextFragmentType::kWidthFactor)
+        .value("kObliqueAngle", PyRxMTextFragmentType::kObliqueAngle)
+        .value("kTrackingFactor", PyRxMTextFragmentType::kTrackingFactor)
+        .value("kColor", PyRxMTextFragmentType::kColor)
+        .value("kStackTop", PyRxMTextFragmentType::kStackTop)
+        .value("kStackBottom", PyRxMTextFragmentType::kStackBottom)
+        .value("kUnderlined", PyRxMTextFragmentType::kUnderlined)
+        .value("kOverlined", PyRxMTextFragmentType::kOverlined)
+        .value("kStrikethrough", PyRxMTextFragmentType::kStrikethrough)
+        .value("kUnderPoints", PyRxMTextFragmentType::kUnderPoints)
+        .value("kOverPoints", PyRxMTextFragmentType::kOverPoints)
+        .value("kStrikePoints", PyRxMTextFragmentType::kStrikePoints)
+        .value("kFontname", PyRxMTextFragmentType::kFontname)
+        .value("kBold", PyRxMTextFragmentType::kBold)
+        .value("kItalic", PyRxMTextFragmentType::kItalic)
+        .value("kEndFragmentTypes", PyRxMTextFragmentType::kEndFragmentTypes)
+        .export_values()
+        ;
 }
 
 PyDbMText::PyDbMText()
@@ -553,7 +581,7 @@ AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_loc
     return static_cast<AcDbMText*>(m_pyImp.get());
 }
 
-//
+// preserve order!
 int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
 {
     if (frag != nullptr && param != nullptr)
