@@ -556,51 +556,68 @@ AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_loc
 //
 int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
 {
-    if (frag == nullptr || param == nullptr)
-        return 0;
+    if (frag != nullptr && param != nullptr)
+    {
+        PyAutoLockGIL lock;
+        boost::python::list* pylist = reinterpret_cast<boost::python::list*>(param);
+        boost::python::list pysublist;
 
-    PyAutoLockGIL lock;
-    boost::python::list* pylist = reinterpret_cast<boost::python::list*>(param);
-    boost::python::list pysublist;
+        pysublist.append(frag->location);
+        pysublist.append(frag->normal);
+        pysublist.append(frag->direction);
 
-    pysublist.append(frag->location);
-    pysublist.append(frag->normal);
-    pysublist.append(frag->direction);
-    pysublist.append(wstr_to_utf8(frag->msText));
-    pysublist.append(wstr_to_utf8(frag->msFont));
-    pysublist.append(wstr_to_utf8(frag->msBigFont));
-    pysublist.append(frag->extents);
-    pysublist.append(frag->capsHeight);
-    pysublist.append(frag->widthFactor);
-    pysublist.append(frag->obliqueAngle);
-    pysublist.append(frag->trackingFactor);
-    pysublist.append(frag->color);
-    pysublist.append(frag->stackTop);
-    pysublist.append(frag->stackBottom);
-    pysublist.append(frag->underlined);
-    pysublist.append(frag->overlined);
-    pysublist.append(frag->strikethrough);
+        if(!frag->msText.isEmpty())
+            pysublist.append(wstr_to_utf8(frag->msText));
+        else
+            pysublist.append(boost::python::object());
 
-    boost::python::list underPoints;
-    underPoints.append(frag->underPoints[0]);
-    underPoints.append(frag->underPoints[1]);
-    pysublist.append(underPoints);
+        if (!frag->msFont.isEmpty())
+            pysublist.append(wstr_to_utf8(frag->msFont));
+        else
+            pysublist.append(boost::python::object());
 
-    boost::python::list overPoints;
-    overPoints.append(frag->overPoints[0]);
-    overPoints.append(frag->overPoints[1]);
-    pysublist.append(overPoints);
+        if (!frag->msBigFont.isEmpty())
+            pysublist.append(wstr_to_utf8(frag->msBigFont));
+        else
+            pysublist.append(boost::python::object());
 
-    boost::python::list strikePoints;
-    strikePoints.append(frag->strikePoints[0]);
-    strikePoints.append(frag->strikePoints[1]);
-    pysublist.append(strikePoints);
+        pysublist.append(frag->extents);
+        pysublist.append(frag->capsHeight);
+        pysublist.append(frag->widthFactor);
+        pysublist.append(frag->obliqueAngle);
+        pysublist.append(frag->trackingFactor);
+        pysublist.append(frag->color);
+        pysublist.append(frag->stackTop);
+        pysublist.append(frag->stackBottom);
+        pysublist.append(frag->underlined);
+        pysublist.append(frag->overlined);
+        pysublist.append(frag->strikethrough);
 
-    pysublist.append(wstr_to_utf8(frag->msFontName));
-    pysublist.append(frag->bold);
-    pysublist.append(frag->italic);
+        boost::python::list underPoints;
+        underPoints.append(frag->underPoints[0]);
+        underPoints.append(frag->underPoints[1]);
+        pysublist.append(underPoints);
 
-    //
-    pylist->append(pysublist);
+        boost::python::list overPoints;
+        overPoints.append(frag->overPoints[0]);
+        overPoints.append(frag->overPoints[1]);
+        pysublist.append(overPoints);
+
+        boost::python::list strikePoints;
+        strikePoints.append(frag->strikePoints[0]);
+        strikePoints.append(frag->strikePoints[1]);
+        pysublist.append(strikePoints);
+
+        if (!frag->msFontName.isEmpty())
+            pysublist.append(wstr_to_utf8(frag->msFontName));
+        else
+            pysublist.append(boost::python::object());
+
+        pysublist.append(frag->bold);
+        pysublist.append(frag->italic);
+
+        //
+        pylist->append(pysublist);
+    }
     return 1;
 }
