@@ -1,6 +1,35 @@
 #pragma once
 #include "PyDbEntity.h"
 #include "PyDbMtext.h"
+
+enum class PyRxMTextFragmentType
+{
+    kLocation,
+    kNormal,
+    kDirection,
+    kTextValue,
+    kFont,
+    kBigFont,
+    kExtents,
+    kCapsHeight,
+    kWidthFactor,
+    kObliqueAngle,
+    kTrackingFactor,
+    kColor,
+    kStackTop,
+    kStackBottom,
+    kUnderlined,
+    kOverlined,
+    kStrikethrough,
+    kUnderPoints,
+    kOverPoints,
+    kStrikePoints,
+    kFontname,
+    kBold,
+    kItalic,
+    kEndFragmentTypes,
+};
+
 class PyDbObjectId;
 void makePyDbMTextWrapper();
 class PyDbMText : public PyDbEntity
