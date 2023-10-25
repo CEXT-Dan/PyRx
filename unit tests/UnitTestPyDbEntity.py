@@ -138,6 +138,9 @@ class TestDbEntity(unittest.TestCase):
             mt.attachment(), Db.MTextAttachmentPoint.kBottomCenter)
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(mt)
+        for frag in mt.getFragments():
+            self.assertEqual(len(frag) ,Db.MTextFragmentType.kEndFragmentTypes)
+        
 
     def test_dbleader(self):
         db = Db.HostApplicationServices().workingDatabase()
