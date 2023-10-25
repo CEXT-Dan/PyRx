@@ -41569,7 +41569,7 @@ Also known as the population count.
     def kDirection (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def kEndCecksum (self, *args, **kwargs)-> None :
+    def kEndFragmentTypes (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def kExtents (self, *args, **kwargs)-> None :
