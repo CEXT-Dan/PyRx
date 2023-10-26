@@ -81,6 +81,7 @@ public:
     static boost::python::list  getSym(const std::string& symname);
     static bool                 putSym(const std::string& symname, boost::python::list& buf);
     static int                  getWinNum(int ptx, int pty);
+    static boost::python::tuple getRGB(int idx);
     static void                 graphScr();
     static boost::python::dict  getSysVars();
     static boost::python::object getVar(const std::string& sym);
