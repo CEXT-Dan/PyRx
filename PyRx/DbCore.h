@@ -69,7 +69,6 @@ public:
     static boost::python::tuple getProxyInfo(const PyDbObject& obj);
     static std::string          getMappedFontName(const std::string& fontName);
     static std::string          getReservedString(AcDb::reservedStringEnumType reservedType, bool bGetLocalized);
-    static boost::python::tuple getRGB(int idx);
     static double               getUnitsConversion(AcDb::UnitsValue from, AcDb::UnitsValue to);
     static PyDbObjectId         getViewportVisualStyle();
     static PyDbObjectId         handEnt(const std::string& handle);

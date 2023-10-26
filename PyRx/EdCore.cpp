@@ -86,7 +86,7 @@ void makePyEdCoreWrapper()
         .def("audit", &EdCore::audit1)
         .def("audit", &EdCore::audit2, DS.SARGS({ "db: PyDb.Database", "fix: bool","echo: bool=False" })).staticmethod("audit")
         .def("callBackOnCancel", &EdCore::callBackOnCancel, DS.SARGS()).staticmethod("callBackOnCancel")
-        .def("clearOLELock", &EdCore::clearOLELock, DS.SARGS({"handle: int"})).staticmethod("clearOLELock")
+        .def("clearOLELock", &EdCore::clearOLELock, DS.SARGS({ "handle: int" })).staticmethod("clearOLELock")
         .def("clipFormatName", &EdCore::clipFormatName, DS.SARGS()).staticmethod("clipFormatName")
         .def("cmdCWasCancelled", &EdCore::cmdCWasCancelled, DS.SARGS()).staticmethod("cmdCWasCancelled")
         .def("cmdUndefine", &EdCore::cmdUndefine).staticmethod("cmdUndefine")
@@ -127,6 +127,7 @@ void makePyEdCoreWrapper()
         .def("getSym", &EdCore::getSym).staticmethod("getSym")
         .def("putSym", &EdCore::putSym).staticmethod("putSym")
         .def("getWinNum", &EdCore::getWinNum).staticmethod("getWinNum")
+        .def("getRGB", &EdCore::getRGB).staticmethod("getRGB")
         .def("graphScr", &EdCore::graphScr, DS.SARGS()).staticmethod("graphScr")
         .def("grDraw", &EdCore::grDraw).staticmethod("grDraw")
         .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
@@ -602,6 +603,15 @@ bool EdCore::putSym(const std::string& symname, boost::python::list& buf)
 int EdCore::getWinNum(int ptx, int pty)
 {
     return acedGetWinNum(ptx, pty);
+}
+
+boost::python::tuple EdCore::getRGB(int idx)
+{
+    PyAutoLockGIL lock;
+    auto clr = AcCmColor();
+    if (clr.setCOLORREF(acedGetRGB(idx)) == eOk)
+        return boost::python::make_tuple(clr.red(), clr.green(), clr.blue());
+    return boost::python::make_tuple(-1, -1, -1);
 }
 
 void EdCore::graphScr()

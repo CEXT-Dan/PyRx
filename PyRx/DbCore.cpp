@@ -77,7 +77,6 @@ void makeDbCoreWrapper()
         .def("getProxyInfo", &DbCore::getProxyInfo).staticmethod("getProxyInfo")
         .def("getMappedFontName", &DbCore::getMappedFontName).staticmethod("getMappedFontName")
         .def("getReservedString", &DbCore::getReservedString).staticmethod("getReservedString")
-        .def("getRGB", &DbCore::getRGB).staticmethod("getRGB")
         .def("getUnitsConversion", &DbCore::getUnitsConversion).staticmethod("getUnitsConversion")
         .def("getViewportVisualStyle", &DbCore::getViewportVisualStyle).staticmethod("getViewportVisualStyle")
         .def("handEnt", &DbCore::handEnt).staticmethod("handEnt")
@@ -507,15 +506,6 @@ std::string DbCore::getMappedFontName(const std::string& fontName)
 std::string DbCore::getReservedString(AcDb::reservedStringEnumType reservedType, bool bGetLocalized)
 {
     return wstr_to_utf8(acdbGetReservedString(reservedType, bGetLocalized));
-}
-
-boost::python::tuple DbCore::getRGB(int idx)
-{
-    PyAutoLockGIL lock;
-    auto clr = AcCmColor();
-    if(clr.setCOLORREF(acedGetRGB(idx)) == eOk)
-        return boost::python::make_tuple(clr.red(), clr.green(), clr.blue());
-    return boost::python::make_tuple(-1, -1, -1);
 }
 
 double DbCore::getUnitsConversion(AcDb::UnitsValue from, AcDb::UnitsValue to)
