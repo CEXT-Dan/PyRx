@@ -19,6 +19,9 @@ void makePyDbSurfaceWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("projectOnToSurface", &PyDbSurface::projectOnToSurface)
+
+        .def("createFrom", &PyDbSurface::createFrom).staticmethod("createFrom")
+
         .def("className", &PyDbSurface::className).staticmethod("className")
         .def("desc", &PyDbSurface::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbSurface::cloneFrom).staticmethod("cloneFrom")
@@ -55,6 +58,13 @@ boost::python::list PyDbSurface::projectOnToSurface(const PyDbEntity& ent, const
     for (auto item : projectedEntities)
         pyList.append(PyDbEntity(item, true));
     return pyList;
+}
+
+PyDbSurface PyDbSurface::createFrom(const PyDbEntity& pFromEntity)
+{
+    AcDbSurface* pNewSurface = nullptr;
+    PyThrowBadEs(AcDbSurface::createFrom(pFromEntity.impObj(), pNewSurface));
+    return PyDbSurface(pNewSurface, true);
 }
 
 std::string PyDbSurface::className()

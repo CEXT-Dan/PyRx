@@ -135,6 +135,7 @@
     <ClCompile Include="DocData.cpp" />
     <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="PlCore.cpp" />
+    <ClCompile Include="PyDb3dProfile.cpp" />
     <ClCompile Include="PyDbDatabaseReactor.cpp" />
     <ClCompile Include="PyDbDimAssoc.cpp" />
     <ClCompile Include="PyDbEllipse.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="DocData.h" />
     <ClInclude Include="EdCore.h" />
     <ClInclude Include="PlCore.h" />
+    <ClInclude Include="PyDb3dProfile.h" />
     <ClInclude Include="PyDbDatabaseReactor.h" />
     <ClInclude Include="PyDbDimAssoc.h" />
     <ClInclude Include="PyDbEllipse.h" />
