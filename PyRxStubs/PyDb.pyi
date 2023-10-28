@@ -22619,6 +22619,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFrom (self, *args, **kwargs)-> PyDb.Surface :
+      '''createFrom( (Entity)arg1) -> Surface :
+
+    C++ signature :
+        class PyDbSurface createFrom(class PyDbEntity)'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -35955,6 +35961,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFrom (self, *args, **kwargs)-> PyDb.Surface :
+      '''createFrom( (Entity)arg1) -> Surface :
+
+    C++ signature :
+        class PyDbSurface createFrom(class PyDbEntity)'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -43214,6 +43226,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFrom (self, *args, **kwargs)-> PyDb.Surface :
+      '''createFrom( (Entity)arg1) -> Surface :
+
+    C++ signature :
+        class PyDbSurface createFrom(class PyDbEntity)'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -46780,6 +46798,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
+    ...
+    def createFrom (self, *args, **kwargs)-> PyDb.Surface :
+      '''createFrom( (Entity)arg1) -> Surface :
+
+    C++ signature :
+        class PyDbSurface createFrom(class PyDbEntity)'''
     ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
@@ -53417,6 +53441,59 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
+class Profile3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Entity)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbEntity)
+
+__init__( (object)arg1, (object)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcDb3dProfile)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+
 class RadialDimension:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -58311,6 +58388,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
+    ...
+    def createFrom (self, *args, **kwargs)-> PyDb.Surface :
+      '''createFrom( (Entity)arg1) -> Surface :
+
+    C++ signature :
+        class PyDbSurface createFrom(class PyDbEntity)'''
     ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
@@ -63407,6 +63490,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFrom (self, *args, **kwargs)-> PyDb.Surface :
+      '''createFrom( (Entity)arg1) -> Surface :
+
+    C++ signature :
+        class PyDbSurface createFrom(class PyDbEntity)'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -64344,6 +64433,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
+    ...
+    def createFrom (self, *args, **kwargs)-> PyDb.Surface :
+      '''createFrom( (Entity)arg1) -> Surface :
+
+    C++ signature :
+        class PyDbSurface createFrom(class PyDbEntity)'''
     ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''

@@ -565,6 +565,9 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     def getPredefinedHatchPatterns ()-> list :
       '''                             '''
     ...
+    def getRGB (self: Core,colorIndex : int)-> tuple :
+      '''                             '''
+    ...
     def getSym (self, *args, **kwargs)-> list :
       '''getSym( (str)arg1) -> list :
 
