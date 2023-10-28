@@ -38,6 +38,7 @@
 #include "PyDbDimAssoc.h"
 #include "PyDbPointRef.h"
 #include "PyDbDatabaseReactor.h"
+#include "PyDb3dProfile.h"
 
 using namespace boost::python;
 
@@ -251,6 +252,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbPointRefWrapper();
     makePyDbOsnapPointRefWrapper();
     makePyDbDimAssocWrapper();
+    makePyDb3dProfileWrapper();
 
     makeDbCoreWrapper();//LAST?
 
