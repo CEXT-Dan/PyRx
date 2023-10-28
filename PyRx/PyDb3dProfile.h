@@ -1,5 +1,25 @@
 #pragma once
-class PyDb3dProfile
+#include "PyRxObject.h"
+
+class PyDbEntity;
+
+//-----------------------------------------------------------------------------------------
+//PyDb3dProfile
+void makePyDb3dProfileWrapper();
+
+class PyDb3dProfile : public PyRxObject
 {
+public:
+    PyDb3dProfile();
+    PyDb3dProfile(const PyDbEntity& pent);
+    PyDb3dProfile(const AcDb3dProfile& src);
+    PyDb3dProfile(AcDb3dProfile* ptr, bool autoDelete);
+    virtual ~PyDb3dProfile() override = default;
+ 
+    static PyRxClass    desc();
+    static std::string  className();
+
+public:
+    inline AcDb3dProfile* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
