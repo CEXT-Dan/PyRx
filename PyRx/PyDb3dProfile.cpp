@@ -12,8 +12,14 @@ void makePyDb3dProfileWrapper()
         .def(init<>())
         .def(init<const PyDbEntity&>())
         .def(init<const AcDb3dProfile&>())
-        .def("desc", &PyRxClass::desc, DS.SARGS()).staticmethod("desc")
-        .def("className", &PyRxClass::className, DS.SARGS()).staticmethod("className")
+        .def("isClosed", &PyDb3dProfile::isClosed, DS.ARGS())
+        .def("isPlanar", &PyDb3dProfile::isPlanar, DS.ARGS())
+        .def("isSubent", &PyDb3dProfile::isSubent, DS.ARGS())
+        .def("isFace", &PyDb3dProfile::isFace, DS.ARGS())
+        .def("isEdge", &PyDb3dProfile::isEdge, DS.ARGS())
+        .def("isValid", &PyDb3dProfile::isValid, DS.ARGS())
+        .def("desc", &PyDb3dProfile::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyDb3dProfile::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
@@ -30,6 +36,41 @@ PyDb3dProfile::PyDb3dProfile(const PyDbEntity& pent)
 PyDb3dProfile::PyDb3dProfile(const AcDb3dProfile& src)
     : PyDb3dProfile(new AcDb3dProfile(src), true)
 {
+}
+
+PyDbEntity PyDb3dProfile::entity() const
+{
+    return PyDbEntity(impObj()->entity(), true);
+}
+
+bool PyDb3dProfile::isClosed() const
+{
+    return impObj()->isClosed();
+}
+
+bool PyDb3dProfile::isPlanar() const
+{
+    return impObj()->isPlanar();
+}
+
+bool PyDb3dProfile::isSubent() const
+{
+    return impObj()->isSubent();
+}
+
+bool PyDb3dProfile::isFace() const
+{
+    return impObj()->isFace();
+}
+
+bool PyDb3dProfile::isEdge() const
+{
+    return impObj()->isEdge();
+}
+
+bool PyDb3dProfile::isValid() const
+{
+    return impObj()->isValid();
 }
 
 PyRxClass PyDb3dProfile::desc()
