@@ -24,7 +24,6 @@ void makePyDbSurfaceWrapper()
         .def("createFrom", &PyDbSurface::createFrom).staticmethod("createFrom")
         .def("createExtrudedSurface", &PyDbSurface::createExtrudedSurface).staticmethod("createExtrudedSurface")
 
-
         .def("className", &PyDbSurface::className).staticmethod("className")
         .def("desc", &PyDbSurface::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbSurface::cloneFrom).staticmethod("cloneFrom")
