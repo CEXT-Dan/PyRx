@@ -22619,6 +22619,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
+      '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
+
+    C++ signature :
+        class PyDbExtrudedSurface createExtrudedSurface(class PyDb3dProfile {lvalue},class AcGeVector3d,class PyDbSweepOptions {lvalue})'''
+    ...
     def createFrom (self, *args, **kwargs)-> PyDb.Surface :
       '''createFrom( (Entity)arg1) -> Surface :
 
@@ -35961,6 +35967,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
+      '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
+
+    C++ signature :
+        class PyDbExtrudedSurface createExtrudedSurface(class PyDb3dProfile {lvalue},class AcGeVector3d,class PyDbSweepOptions {lvalue})'''
+    ...
     def createFrom (self, *args, **kwargs)-> PyDb.Surface :
       '''createFrom( (Entity)arg1) -> Surface :
 
@@ -43226,6 +43238,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
+      '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
+
+    C++ signature :
+        class PyDbExtrudedSurface createExtrudedSurface(class PyDb3dProfile {lvalue},class AcGeVector3d,class PyDbSweepOptions {lvalue})'''
+    ...
     def createFrom (self, *args, **kwargs)-> PyDb.Surface :
       '''createFrom( (Entity)arg1) -> Surface :
 
@@ -46798,6 +46816,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
+    ...
+    def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
+      '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
+
+    C++ signature :
+        class PyDbExtrudedSurface createExtrudedSurface(class PyDb3dProfile {lvalue},class AcGeVector3d,class PyDbSweepOptions {lvalue})'''
     ...
     def createFrom (self, *args, **kwargs)-> PyDb.Surface :
       '''createFrom( (Entity)arg1) -> Surface :
@@ -53481,10 +53505,28 @@ __init__( (object)arg1, (object)arg2) -> None :
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
+    def isClosed (self: Profile3d)-> bool :
+      '''                             '''
+    ...
+    def isEdge (self: Profile3d)-> bool :
+      '''                             '''
+    ...
+    def isFace (self: Profile3d)-> bool :
+      '''                             '''
+    ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isPlanar (self: Profile3d)-> bool :
+      '''                             '''
+    ...
+    def isSubent (self: Profile3d)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: Profile3d)-> bool :
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None :
@@ -58388,6 +58430,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
+    ...
+    def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
+      '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
+
+    C++ signature :
+        class PyDbExtrudedSurface createExtrudedSurface(class PyDb3dProfile {lvalue},class AcGeVector3d,class PyDbSweepOptions {lvalue})'''
     ...
     def createFrom (self, *args, **kwargs)-> PyDb.Surface :
       '''createFrom( (Entity)arg1) -> Surface :
@@ -63490,6 +63538,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
+      '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
+
+    C++ signature :
+        class PyDbExtrudedSurface createExtrudedSurface(class PyDb3dProfile {lvalue},class AcGeVector3d,class PyDbSweepOptions {lvalue})'''
+    ...
     def createFrom (self, *args, **kwargs)-> PyDb.Surface :
       '''createFrom( (Entity)arg1) -> Surface :
 
@@ -64433,6 +64487,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
+    ...
+    def createExtrudedSurface (self, *args, **kwargs)-> PyDb.ExtrudedSurface :
+      '''createExtrudedSurface( (Profile3d)arg1, (Vector3d)arg2, (SweepOptions)arg3) -> ExtrudedSurface :
+
+    C++ signature :
+        class PyDbExtrudedSurface createExtrudedSurface(class PyDb3dProfile {lvalue},class AcGeVector3d,class PyDbSweepOptions {lvalue})'''
     ...
     def createFrom (self, *args, **kwargs)-> PyDb.Surface :
       '''createFrom( (Entity)arg1) -> Surface :
