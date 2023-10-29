@@ -5,6 +5,9 @@
 class PyDbObjectId;
 class AcDbLoftedSurface;
 class AcDbPlaneSurface;
+class PyDb3dProfile;
+class PyDbSweepOptions;
+class PyDbExtrudedSurface;
 
 //----------------------------------------------------------------------
 //PyDbSurface
@@ -18,10 +21,12 @@ public:
     PyDbSurface(const PyDbObjectId& id);
     PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
 
-    boost::python::list     projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection);
+    boost::python::list         projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection);
 
-    static PyDbSurface      createFrom(const PyDbEntity& pFromEntity);
 
+    static PyDbSurface          createFrom(const PyDbEntity& pFromEntity);
+    static PyDbExtrudedSurface  createExtrudedSurface(PyDb3dProfile& pSweep, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions);
+      
     static std::string      className();
     static PyRxClass        desc();
     static PyDbSurface		cloneFrom(const PyRxObject& src);

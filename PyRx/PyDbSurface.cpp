@@ -1,13 +1,14 @@
 #include "stdafx.h"
 #include "PyDbSurface.h"
 #include "PyDbObjectId.h"
-
+#include "PyDb3dSolid.h"
 #include "dbextrudedsurf.h"
 #include "dbloftedsurf.h"
 #include "dbnurbsurf.h"
 #include "dbplanesurf.h"
 #include "dbrevolvedsurf.h"
 #include "dbsweptsurf.h"
+#include "PyDb3dProfile.h"
 
 using namespace boost::python;
 //----------------------------------------------------------------------
@@ -21,6 +22,8 @@ void makePyDbSurfaceWrapper()
         .def("projectOnToSurface", &PyDbSurface::projectOnToSurface)
 
         .def("createFrom", &PyDbSurface::createFrom).staticmethod("createFrom")
+        .def("createExtrudedSurface", &PyDbSurface::createExtrudedSurface).staticmethod("createExtrudedSurface")
+
 
         .def("className", &PyDbSurface::className).staticmethod("className")
         .def("desc", &PyDbSurface::desc).staticmethod("desc")
@@ -65,6 +68,13 @@ PyDbSurface PyDbSurface::createFrom(const PyDbEntity& pFromEntity)
     AcDbSurface* pNewSurface = nullptr;
     PyThrowBadEs(AcDbSurface::createFrom(pFromEntity.impObj(), pNewSurface));
     return PyDbSurface(pNewSurface, true);
+}
+
+PyDbExtrudedSurface PyDbSurface::createExtrudedSurface(PyDb3dProfile& pSweep, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions)
+{
+    AcDbExtrudedSurface* newExtrudedSurface = nullptr;
+    PyThrowBadEs(AcDbSurface::createExtrudedSurface(pSweep.impObj(), directionVec, *sweepOptions.impObj(), newExtrudedSurface));
+    return PyDbExtrudedSurface(newExtrudedSurface, true);
 }
 
 std::string PyDbSurface::className()
