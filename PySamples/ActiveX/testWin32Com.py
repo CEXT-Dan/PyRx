@@ -19,19 +19,20 @@ from timeit import default_timer as timer
 # there's only one app, might as well cache it
 theApp = Ax.getApp()
 
+
 def PyRxCmd_sstestx():
     try:
 
         doc = theApp.ActiveDocument
         ss = doc.SelectionSets.Add('mysset')
 
-        #safe arrays
-        ss.SelectOnScreen([0],["POINT"])
+        # safe arrays
+        ss.SelectOnScreen([0], ["POINT"])
 
         # COM returns a tuple (ent, point)
         entres = doc.Utility.GetEntity("\nPick an ent: ")
-        
-        #ass to the set
+
+        # ass to the set
         entstoadd = [entres[0]]
         ss.AddItems(entstoadd)
 
@@ -56,10 +57,11 @@ def PyRxCmd_sstestx():
     finally:
         ss.Delete()
 
+
 def PyRxCmd_AddPolylineX():
     try:
         model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
-        line = model.AddLightWeightPolyline([0,0,10,10,20,10])
+        line = model.AddLightWeightPolyline([0, 0, 10, 10, 20, 10])
 
         clr: Ax.IAcadAcCmColor = Ax.AcadAcCmColor()
         clr.SetRGB(255, 255, 0)
@@ -75,10 +77,11 @@ def PyRxCmd_AddPolylineX():
     except Exception as err:
         traceback.print_exception(err)
 
+
 def PyRxCmd_AddLineX():
     try:
         model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
-        line = model.AddLine((0, 0, 0),(100, 100, 0))
+        line = model.AddLine((0, 0, 0), (100, 100, 0))
 
         clr: Ax.IAcadAcCmColor = Ax.AcadAcCmColor()
         clr.SetRGB(255, 255, 0)
@@ -128,21 +131,24 @@ def PyRxCmd_getangx():
         print(retAngle)
     except Exception as err:
         traceback.print_exception(err)
-        
+
+
 def PyRxCmd_getpointwithbasex():
     try:
         ut = theApp.ActiveDocument.Utility
         pt1 = Ge.Point3d(100, 100, 0)
         retAngle = None
         try:
-            retAngle = ut.GetPointWithBase(pt1.toList(), "\nGet Point with base:")
+            retAngle = ut.GetPointWithBase(
+                pt1.toList(), "\nGet Point with base:")
         except:
             pass
         if retAngle is not None:
             print(retAngle)
     except Exception as err:
         traceback.print_exception(err)
-        
+
+
 def PyRxCmd_getpointx():
     try:
         ut = theApp.ActiveDocument.Utility
@@ -150,34 +156,37 @@ def PyRxCmd_getpointx():
         print(retAngle)
     except Exception as err:
         traceback.print_exception(err)
-        
+
+
 def PyRxCmd_layerStateX():
     try:
-        state : Ax.IAcadLayerStateManager = Ax.AcadLayerStateManager()
+        state: Ax.IAcadLayerStateManager = Ax.AcadLayerStateManager()
         state.SetDatabase(theApp.ActiveDocument.Database)
-        state.Export('WOOHOOSTATE','e:\\temp\\WOOHOOSTATE.txt')
+        state.Export('WOOHOOSTATE', 'e:\\temp\\WOOHOOSTATE.txt')
     except Exception as err:
         traceback.print_exception(err)
-        
+
+
 def PyRxCmd_interx():
     try:
         model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
-        line1 = model.AddLine((0, 0, 0),(100, 100, 0))
-        line2 = model.AddLine((100, 0, 0),(0, 100, 0))
-        res = line2.IntersectWith(line1,Ax.constants.acExtendNone)
+        line1 = model.AddLine((0, 0, 0), (100, 100, 0))
+        line2 = model.AddLine((100, 0, 0), (0, 100, 0))
+        res = line2.IntersectWith(line1, Ax.constants.acExtendNone)
         print(res)
-        line3 = model.AddLine((0, 0, 0),(100, 100, 0))
-        line4 = model.AddLine((0, 0, 0),(100, 100, 0))
-        res2 = line3.IntersectWith(line4,Ax.constants.acExtendNone)
+        line3 = model.AddLine((0, 0, 0), (100, 100, 0))
+        line4 = model.AddLine((0, 0, 0), (100, 100, 0))
+        res2 = line3.IntersectWith(line4, Ax.constants.acExtendNone)
         print(res2)
     except Exception as err:
         traceback.print_exception(err)
-        
+
+
 def PyRxCmd_mleaderx():
     try:
         model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
-        pnts = [2,2,0,6,6,0,6,7,0]
-        res  = model.AddMLeader(pnts,0)
+        pnts = [2, 2, 0, 6, 6, 0, 6, 7, 0]
+        res = model.AddMLeader(pnts, 0)
         leader: Ax.IAcadMLeader = res[0]
         leader.TextString = "Yeah Buddy Light weight baby"
         leader.LeaderType = Ax.constants.acStraightLeader
@@ -187,6 +196,8 @@ def PyRxCmd_mleaderx():
         traceback.print_exception(err)
 
 # 0.9011179999997694!
+
+
 def PyRxCmd_comPerf():
     try:
         start = timer()
@@ -203,15 +214,15 @@ def PyRxCmd_comPerf():
 
     except Exception as err:
         traceback.print_exception(err)
-        
-        
-        #ActiveX
+
+
+# ActiveX
 def PyRxCmd_moveToOriginX():
     try:
         dbx = Ax.getDbx()
         dbx.Open("e:\\06457Submittal.dwg")
         minpt = [float('inf'), float('inf'), float('inf')]
-        
+
         ents = []
         ent: Ax.IAcadEntity
         for ent in dbx.ModelSpace:
@@ -221,12 +232,23 @@ def PyRxCmd_moveToOriginX():
                 minpt[0] = min(minmax[0][0], minpt[0])
                 minpt[1] = min(minmax[0][1], minpt[1])
                 minpt[2] = min(minmax[0][2], minpt[2])
-            except:# 'Null extents'
+            except:  # 'Null extents'
                 continue
-            
+
         for ent in ents:
             ent.Move(minpt,  (0, 0, 0))
-            
+
         dbx.SaveAs("e:\\06457Submittal2.dwg")
+    except Exception as err:
+        traceback.print_exception(err)
+
+# ActiveX
+def PyRxCmd_insertX():
+    try:
+        axApp = Ax.getApp()
+        path = "M:\\Dev\\Projects\\PyRxGit\\PySamples\\dwg\\18X36RP.dwg"
+        ref = axApp.ActiveDocument.ModelSpace.InsertBlock(
+            (0, 0, 0), path, 1, 1, 1, 0)
+        print(ref.Name)
     except Exception as err:
         traceback.print_exception(err)
