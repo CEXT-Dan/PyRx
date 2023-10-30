@@ -2,6 +2,7 @@
 #include "PyDbCurve.h"
 #include "PyDbObjectId.h"
 #include "PyGeCurve3d.h"
+#include "PyDbSpline.h"
 
 using namespace boost::python;
 
@@ -38,6 +39,7 @@ void makePyDbCurveWrapper()
         .def("getSplitCurvesAtParams", &PyDbCurve::getSplitCurvesAtParams, DS.ARGS({ "params: list" }))
         .def("getSplitCurvesAtPoint", &PyDbCurve::getSplitCurvesAtPoint, DS.ARGS({ "point: PyGe.Point3d" }))
         .def("getSplitCurvesAtPoints", &PyDbCurve::getSplitCurvesAtPoints, DS.ARGS({ "points: list" }))
+        .def("getSpline", &PyDbCurve::getSpline, DS.ARGS())
         .def("extend", &PyDbCurve::extend1)
         .def("extend", &PyDbCurve::extend2)
         .def("getArea", &PyDbCurve::getArea, DS.ARGS())
@@ -297,6 +299,13 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::list&
     for (auto ptr : offsetCurves)
         curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
     return curves;
+}
+
+PyDbSpline PyDbCurve::getSpline()
+{
+    AcDbSpline* _spline = nullptr;
+    PyThrowBadEs(impObj()->getSpline(_spline));
+    return PyDbSpline(_spline, true);
 }
 
 void PyDbCurve::extend1(double newParam)
