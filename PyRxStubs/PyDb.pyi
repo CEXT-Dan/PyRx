@@ -2491,6 +2491,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -2507,6 +2510,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -9441,6 +9447,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -9457,6 +9466,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -10941,6 +10953,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -10957,6 +10972,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -19286,6 +19304,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -19302,6 +19323,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -28834,6 +28858,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbSpline {lvalue},class AcGeVector3d,double)'''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -28850,6 +28877,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -32772,6 +32802,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -32788,6 +32821,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -33494,6 +33530,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getOffsetCurvesGivenPlaneNormal (self: Line,val:PyGe.Vector3d,offset:float)-> list :
       '''                             '''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -33510,6 +33549,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -51275,6 +51317,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -51297,6 +51342,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -51932,6 +51980,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -51948,6 +51999,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -52635,6 +52689,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -52651,6 +52708,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
@@ -62267,6 +62327,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbSpline {lvalue},class AcGeVector3d,double)'''
     ...
+    def getOrthoProjectedCurve (self: Curve,plane: PyGe.Plane)-> PyDb.Curve :
+      '''                             '''
+    ...
     def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
@@ -62283,6 +62346,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getPointAtParam (self: Curve,param: float)-> PyGe.Point3d :
+      '''                             '''
+    ...
+    def getProjectedCurve (self: Curve,plane: PyGe.Plane,projDir: PyGe.Vector3d)-> PyDb.Curve :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :

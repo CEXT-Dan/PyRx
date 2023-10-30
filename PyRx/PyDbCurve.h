@@ -3,6 +3,7 @@
 
 class PyGeCurve3d;
 class PyDbSpline;
+class PyGePlane;
 
 //-----------------------------------------------------------------------------------
 //PyDbCurve
@@ -47,6 +48,9 @@ public:
     boost::python::list getSplitCurvesAtParams(const boost::python::list& params) const;
     boost::python::list getSplitCurvesAtPoint(const AcGePoint3d& givenPnt) const;
     boost::python::list getSplitCurvesAtPoints(const boost::python::list& params) const;
+
+    PyDbCurve           getOrthoProjectedCurve(const PyGePlane& plane);
+    PyDbCurve           getProjectedCurve(const PyGePlane& plane, const AcGeVector3d& projDir);
 
     PyDbSpline          getSpline();
     void                extend1(double newParam);
