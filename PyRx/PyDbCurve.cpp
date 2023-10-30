@@ -3,6 +3,7 @@
 #include "PyDbObjectId.h"
 #include "PyGeCurve3d.h"
 #include "PyDbSpline.h"
+#include "PyGePlane.h"
 
 using namespace boost::python;
 
@@ -39,6 +40,8 @@ void makePyDbCurveWrapper()
         .def("getSplitCurvesAtParams", &PyDbCurve::getSplitCurvesAtParams, DS.ARGS({ "params: list" }))
         .def("getSplitCurvesAtPoint", &PyDbCurve::getSplitCurvesAtPoint, DS.ARGS({ "point: PyGe.Point3d" }))
         .def("getSplitCurvesAtPoints", &PyDbCurve::getSplitCurvesAtPoints, DS.ARGS({ "points: list" }))
+        .def("getOrthoProjectedCurve", &PyDbCurve::getOrthoProjectedCurve, DS.ARGS({ "plane: PyGe.Plane" }))
+        .def("getProjectedCurve", &PyDbCurve::getProjectedCurve, DS.ARGS({ "plane: PyGe.Plane","projDir: PyGe.Vector3d" }))
         .def("getSpline", &PyDbCurve::getSpline, DS.ARGS())
         .def("extend", &PyDbCurve::extend1)
         .def("extend", &PyDbCurve::extend2)
@@ -299,6 +302,20 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::list&
     for (auto ptr : offsetCurves)
         curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
     return curves;
+}
+
+PyDbCurve PyDbCurve::getOrthoProjectedCurve(const PyGePlane& plane)
+{
+    AcDbCurve* pCurve = nullptr;
+    PyThrowBadEs(impObj()->getOrthoProjectedCurve(*plane.impObj(), pCurve));
+    return PyDbCurve(pCurve, true);
+}
+
+PyDbCurve PyDbCurve::getProjectedCurve(const PyGePlane& plane, const AcGeVector3d& projDir)
+{
+    AcDbCurve* pCurve = nullptr;
+    PyThrowBadEs(impObj()->getProjectedCurve(*plane.impObj(), projDir,pCurve));
+    return PyDbCurve(pCurve, true);
 }
 
 PyDbSpline PyDbCurve::getSpline()
