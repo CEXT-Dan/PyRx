@@ -351,15 +351,16 @@ AcGeLine3d* PyGeLine3d::impObj(const std::source_location& src /*= std::source_l
 //PyGeLineSeg3d
 void makePyGeLineSeg3dWrapper()
 {
+    PyDocString DS("LineSeg3d");
     class_<PyGeLineSeg3d, bases<PyGeLinearEnt3d>>("LineSeg3d")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&>())
-        .def("getBisector", &PyGeLineSeg3d::getBisector)
+        .def("getBisector", &PyGeLineSeg3d::getBisector, DS.ARGS())
         .def("baryComb", &PyGeLineSeg3d::baryComb)
-        .def("startPoint", &PyGeLineSeg3d::startPoint)
-        .def("midPoint", &PyGeLineSeg3d::midPoint)
-        .def("endPoint", &PyGeLineSeg3d::endPoint)
+        .def("startPoint", &PyGeLineSeg3d::startPoint, DS.ARGS())
+        .def("midPoint", &PyGeLineSeg3d::midPoint, DS.ARGS())
+        .def("endPoint", &PyGeLineSeg3d::endPoint, DS.ARGS())
         .def("length", &PyGeLineSeg3d::length1)
         .def("length", &PyGeLineSeg3d::length2)
         .def("length", &PyGeLineSeg3d::length3)
