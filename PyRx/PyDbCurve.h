@@ -2,6 +2,7 @@
 #include "PyDbEntity.h"
 
 class PyGeCurve3d;
+class PyDbSpline;
 
 //-----------------------------------------------------------------------------------
 //PyDbCurve
@@ -46,6 +47,8 @@ public:
     boost::python::list getSplitCurvesAtParams(const boost::python::list& params) const;
     boost::python::list getSplitCurvesAtPoint(const AcGePoint3d& givenPnt) const;
     boost::python::list getSplitCurvesAtPoints(const boost::python::list& params) const;
+
+    PyDbSpline          getSpline();
     void                extend1(double newParam);
     void                extend2(Adesk::Boolean extendStart, const AcGePoint3d& toPoint);
     double              getArea() const;

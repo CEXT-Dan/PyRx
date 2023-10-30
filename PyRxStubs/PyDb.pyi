@@ -2512,6 +2512,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
+    def getSpline (self: Curve)-> PyDb.Spline :
+      '''                             '''
+    ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
@@ -9459,6 +9462,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
+    def getSpline (self: Curve)-> PyDb.Spline :
+      '''                             '''
+    ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
@@ -10954,6 +10960,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+      '''                             '''
+    ...
+    def getSpline (self: Curve)-> PyDb.Spline :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
@@ -19296,6 +19305,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+      '''                             '''
+    ...
+    def getSpline (self: Curve)-> PyDb.Spline :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
@@ -28843,6 +28855,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
+    def getSpline (self: Curve)-> PyDb.Spline :
+      '''                             '''
+    ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
@@ -32778,6 +32793,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
+    def getSpline (self: Curve)-> PyDb.Spline :
+      '''                             '''
+    ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
@@ -33495,6 +33513,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+      '''                             '''
+    ...
+    def getSpline (self: Curve)-> PyDb.Spline :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
@@ -51281,6 +51302,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
       '''                             '''
     ...
+    def getSpline (self: Curve)-> PyDb.Spline :
+      '''                             '''
+    ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
       '''                             '''
     ...
@@ -51927,6 +51951,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+      '''                             '''
+    ...
+    def getSpline (self: Curve)-> PyDb.Spline :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
@@ -52627,6 +52654,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+      '''                             '''
+    ...
+    def getSpline (self: Curve)-> PyDb.Spline :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
@@ -62256,6 +62286,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> PyGe.Vector3d :
+      '''                             '''
+    ...
+    def getSpline (self: Curve)-> PyDb.Spline :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
