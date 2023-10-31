@@ -10,7 +10,7 @@ void makePyGeEntity3dWrapper()
 {
     PyDocString DS("Entity3d");
     class_<PyGeEntity3d>("Entity3d", boost::python::no_init)
-        .def("isKindOf", &PyGeEntity3d::isKindOf)
+        .def("isKindOf", &PyGeEntity3d::isKindOf, DS.ARGS({ "val : PyGe.EntityId" }))
         .def("type", &PyGeEntity3d::type, DS.ARGS())
         .def("copy", &PyGeEntity3d::copy, DS.ARGS())
         .def("isEqualTo", &PyGeEntity3d::isEqualTo1)
