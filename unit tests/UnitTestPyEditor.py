@@ -33,6 +33,10 @@ class TestEditor(unittest.TestCase):
         autoSysVarHPORIGIN()
         self.assertEqual(Ed.Core.getVar("HPORIGIN"), Ge.Point2d(0, 0))
         
+    def test_evaluateDiesel(self):
+        val = Ed.Core.evaluateDiesel('$(eval,"Current layer: "$(getvar,clayer))')
+        self.assertEqual(val, "Current layer: 0")
+        
 def PyRxCmd_pyeditor():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestEditor)
