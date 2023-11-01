@@ -637,6 +637,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         void loadJSScript(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def loadMainMenu (self, *args, **kwargs)-> bool :
+      '''loadMainMenu( (str)arg1) -> bool :
+
+    C++ signature :
+        bool loadMainMenu(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def loadPartialMenu (self, *args, **kwargs)-> bool :
       '''loadPartialMenu( (str)arg1) -> bool :
 

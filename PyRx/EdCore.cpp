@@ -29,6 +29,7 @@ extern void                     acedGetLastCommandLines(AcStringArray&, int, boo
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
 int                             acedEvaluateDiesel(ACHAR const* __ptr64, ACHAR* __ptr64, unsigned __int64);
+bool                            acedLoadMainMenu(const ACHAR*);
 #endif
 
 //-----------------------------------------------------------------------------------------
@@ -152,6 +153,7 @@ void makePyEdCoreWrapper()
         .def("isUsrbrkDisabled", &EdCore::isUsrbrkDisabled, DS.SARGS()).staticmethod("isUsrbrkDisabled")
         .def("loadJSScript", &EdCore::loadJSScript).staticmethod("loadJSScript")
         .def("loadPartialMenu", &EdCore::loadPartialMenu).staticmethod("loadPartialMenu")
+        .def("loadMainMenu", &EdCore::loadMainMenu).staticmethod("loadMainMenu")
         .def("markForDelayXRefRelativePathResolve", &EdCore::markForDelayXRefRelativePathResolve).staticmethod("markForDelayXRefRelativePathResolve")
         .def("mSpace", &EdCore::mSpace, DS.SARGS()).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace, DS.SARGS()).staticmethod("pSpace")
@@ -676,6 +678,11 @@ void EdCore::loadJSScript(const std::string& pUriOfJSFile)
 bool EdCore::loadPartialMenu(const std::string& mnu)
 {
     return acedLoadPartialMenu(utf8_to_wstr(mnu).c_str());
+}
+
+bool EdCore::loadMainMenu(const std::string& mnu)
+{
+    return acedLoadMainMenu(utf8_to_wstr(mnu).c_str());
 }
 
 void EdCore::markForDelayXRefRelativePathResolve(const PyDbObjectId& id)

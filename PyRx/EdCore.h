@@ -102,6 +102,7 @@ public:
     static bool                 isUsrbrkDisabled();
     static void                 loadJSScript(const std::string& pUriOfJSFile);
     static bool                 loadPartialMenu(const std::string& mnu);
+    static bool                 loadMainMenu(const std::string& mnu);
     static void                 markForDelayXRefRelativePathResolve(const PyDbObjectId& id);
     static int                  menuCmd(const std::string& mnu);
     static void                 mSpace();
