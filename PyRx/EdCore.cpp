@@ -28,6 +28,7 @@ EXTERN_C void                   acedDropOpenFile(const ACHAR*);
 extern void                     acedGetLastCommandLines(AcStringArray&, int, bool);
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
+int                             acedEvaluateDiesel(ACHAR const* __ptr64, ACHAR* __ptr64, unsigned __int64);
 #endif
 
 //-----------------------------------------------------------------------------------------
@@ -108,7 +109,8 @@ void makePyEdCoreWrapper()
         .def("eatCommandThroat", &EdCore::eatCommandThroat, DS.SARGS()).staticmethod("eatCommandThroat")
         .def("editMTextInteractive", &EdCore::editMTextInteractive).staticmethod("editMTextInteractive")
         .def("enableUsrbrk", &EdCore::enableUsrbrk, DS.SARGS()).staticmethod("enableUsrbrk")
-        .def("evaluateLisp", &EdCore::evaluateLisp).staticmethod("evaluateLisp")
+        .def("evaluateLisp", &EdCore::evaluateLisp, DS.SARGS({"statement : str"})).staticmethod("evaluateLisp")
+        .def("evaluateDiesel", &EdCore::evaluateDiesel, DS.SARGS({ "statement : str" })).staticmethod("evaluateDiesel")
         .def("findFile", &EdCore::findFile).staticmethod("findFile")
         .def("findTrustedFile", &EdCore::findTrustedFile).staticmethod("findTrustedFile")
         .def("getPredefinedHatchPatterns", &EdCore::getPredefinedPattens, DS.SARGS()).staticmethod("getPredefinedHatchPatterns")
@@ -288,7 +290,7 @@ int EdCore::cmdUndefine(const std::string& name, int undefIt)
 
 boost::python::dict EdCore::getCommands()
 {
-    PyAutoLockGIL lock; //lock when creating python types
+    PyAutoLockGIL lock;
     boost::python::dict Pydict;
     std::map<std::string, boost::python::list> pyMap;
     std::unique_ptr<AcEdCommandIterator>iter(acedRegCmds->iterator());
@@ -438,6 +440,13 @@ boost::python::list EdCore::evaluateLisp(const std::string& str)
     acedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
     AcResBufPtr pSafeRb(pRb);
     return resbufToList(pRb);
+}
+
+std::string EdCore::evaluateDiesel(const std::string& str)
+{
+    std::array<ACHAR, 256> data;
+    acedEvaluateDiesel(utf8_to_wstr(str).c_str(), data.data(), data.size());
+    return wstr_to_utf8(data.data());
 }
 
 bool EdCore::cmdS(const boost::python::list& lst)
