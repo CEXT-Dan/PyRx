@@ -33,6 +33,9 @@ class CDocData {
 	//----- TODO: here you can add your variables
 
 public:
+	boost::python::dict m_dict;
+
+public:
 	CDocData () ;
 	CDocData (const CDocData &data) ;
 	~CDocData () ;

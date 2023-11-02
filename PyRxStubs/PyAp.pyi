@@ -1208,6 +1208,9 @@ This class cannot be instantiated from Python'''
     def getItemOfLispList (self: Document,index : int)-> tuple :
       '''                             '''
     ...
+    def getUserData (self: Document)-> dict :
+      '''                             '''
+    ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
@@ -1248,6 +1251,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def setDocTitle (self: Document,title : str)-> None :
+      '''                             '''
+    ...
+    def setUserData (self: Document,data : dict[])-> None :
       '''                             '''
     ...
     def transactionManager (self: Document)-> PyAp.TransactionManager :
