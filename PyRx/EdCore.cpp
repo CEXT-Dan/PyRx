@@ -142,6 +142,8 @@ void makePyEdCoreWrapper()
         .def("getSysVars", &EdCore::getSysVars, DS.SARGS()).staticmethod("getSysVars")
         .def("getMousePositionUCS", &EdCore::getMousePositionUCS, DS.SARGS()).staticmethod("getMousePositionUCS")
         .def("getMousePositionWCS", &EdCore::getMousePositionWCS, DS.SARGS()).staticmethod("getMousePositionWCS")
+        .def("getDpiScalingValue", &EdCore::getDpiScalingValue, DS.SARGS()).staticmethod("getDpiScalingValue")
+        .def("getUserFavoritesDir", &EdCore::getUserFavoritesDir, DS.SARGS()).staticmethod("getUserFavoritesDir")
         .def("invoke", &EdCore::invoke).staticmethod("invoke")
         .def("initDialog", &EdCore::initDialog).staticmethod("initDialog")
         .def("isDragging", &EdCore::isDragging, DS.SARGS()).staticmethod("isDragging")
@@ -564,6 +566,19 @@ boost::python::tuple EdCore::getCurVportScreenToDisplay()
 float EdCore::getDpiScalingValue()
 {
     return acedGetDpiScalingValue();
+}
+
+std::string EdCore::getUserFavoritesDir()
+{
+#if defined(_ARXTARGET) && (_ARXTARGET >= 242)
+    AcString sFavoritesDir;
+    acedGetUserFavoritesDir(sFavoritesDir);
+    return wstr_to_utf8(sFavoritesDir);
+#else
+    RxAutoOutStr buff;
+    acedGetUserFavoritesDir(buff.buf);
+    return buff.str();
+#endif
 }
 
 std::string EdCore::getEnv(const std::string& env)

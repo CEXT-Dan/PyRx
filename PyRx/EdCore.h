@@ -75,6 +75,7 @@ public:
     static boost::python::tuple getCurVportPixelToDisplay();
     static boost::python::tuple getCurVportScreenToDisplay();
     static float                getDpiScalingValue();
+    static std::string          getUserFavoritesDir();
     static std::string          getEnv(const std::string& str);
     static void                 setEnv(const std::string& sym, const std::string& val);
     static std::string          getCfg(const std::string& str);

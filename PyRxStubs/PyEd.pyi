@@ -532,6 +532,9 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     def getCurrentSelectionSet ()-> list :
       '''                             '''
     ...
+    def getDpiScalingValue ()-> float :
+      '''                             '''
+    ...
     def getEnv (self, *args, **kwargs)-> str :
       '''getEnv( (str)arg1) -> str :
 
@@ -575,6 +578,9 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
         class boost::python::list getSym(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getSysVars ()-> dict :
+      '''                             '''
+    ...
+    def getUserFavoritesDir ()-> str :
       '''                             '''
     ...
     def getVar (name:str)-> object :
