@@ -35,6 +35,8 @@ public:
     void                downgradeDocOpen(bool bPromptForSave);
     PyTransactionManager transactionManager();
     PyEdInputPointManager inputPointManager();
+    boost::python::dict getUserData();
+    void                setUserData(const boost::python::dict& data);
 
     static UINT_PTR     docWnd();
     static std::string  className();
