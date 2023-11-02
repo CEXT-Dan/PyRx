@@ -2,6 +2,7 @@
 #include "PyDbImage.h"
 #include "PyDbObjectId.h"
 #include "PyDbDictionary.h"
+#include "dbwipe.h"
 
 using namespace boost::python;
 
@@ -694,4 +695,126 @@ AcDbRasterImage* PyDbRasterImage::impObj(const std::source_location& src /*= std
         throw PyNullObject(src);
     }
     return static_cast<AcDbRasterImage*>(m_pyImp.get());
+}
+
+
+//-----------------------------------------------------------------------------------
+//AcDbRasterImage
+void makePyDbWipeoutWrapper()
+{
+    class_<PyDbWipeout, bases<PyDbRasterImage>>("Wipeout")
+        .def(init<>())
+        .def(init<const boost::python::list&, const AcGeVector3d&>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
+        .def("frame", &PyDbWipeout::frame)
+        .def("setFrom", &PyDbWipeout::setFrom)
+        .def("className", &PyDbWipeout::className).staticmethod("className")
+        .def("desc", &PyDbWipeout::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbWipeout::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbWipeout::cast).staticmethod("cast")
+        ;
+}
+
+static AcDbWipeout* PyDbWipeoutFactory()
+{
+    PyThrowBadEs(AcDbWipeout::createImageDefinition());
+    return new AcDbWipeout();
+}
+
+
+PyDbWipeout::PyDbWipeout()
+    : PyDbWipeout(PyDbWipeoutFactory(), true)
+{
+}
+
+PyDbWipeout::PyDbWipeout(const boost::python::list& pylist, const AcGeVector3d& vec)
+    : PyDbWipeout(PyDbWipeoutFactory(), true)
+{
+    setFrom(pylist, vec);
+}
+
+PyDbWipeout::PyDbWipeout(AcDbWipeout* ptr, bool autoDelete)
+    : PyDbRasterImage(ptr, autoDelete)
+{
+}
+
+PyDbWipeout::PyDbWipeout(const PyDbObjectId& id)
+    : PyDbWipeout(openAcDbObject<AcDbWipeout>(id, AcDb::kForRead), false)
+{
+}
+
+PyDbWipeout::PyDbWipeout(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbWipeout(openAcDbObject<AcDbWipeout>(id, mode), false)
+{
+}
+
+PyDbWipeout::PyDbWipeout(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbWipeout(openAcDbObject<AcDbWipeout>(id, mode, erased), false)
+{
+}
+
+Adesk::Boolean PyDbWipeout::frame() const
+{
+    return impObj()->frame();
+}
+
+void PyDbWipeout::setFrom(const boost::python::list& pylist, const AcGeVector3d& normal)
+{
+    double scale= normal.z;
+    AcGePoint2d minPoint(normal.x, normal.y);
+    auto pnts = PyListToPoint2dArray(pylist);
+
+    PyThrowBadEs(AcDbWipeout::fitPointsToImage(pnts, minPoint, scale, true));
+    PyThrowBadEs(impObj()->setClipBoundary(AcDbRasterImage::kPoly, pnts));
+
+    AcGeVector3d uCorner(scale, 0.0, 0.0);
+    AcGeVector3d vOnPlane(0.0, scale, 0.0);
+    AcGePoint3d origin; (minPoint.x, minPoint.y, 0.0);
+
+    ads_point tmp = { 0.0,0.0,0.0 };
+    acdbEcs2Wcs(asDblArray(origin), tmp, asDblArray(normal), false);
+    origin = asPnt3d(tmp);
+
+    acdbEcs2Wcs(asDblArray(uCorner), tmp, asDblArray(normal), true);
+    uCorner = asVec3d(tmp);
+
+    acdbEcs2Wcs(asDblArray(vOnPlane), tmp, asDblArray(normal), true);
+    vOnPlane = asVec3d(tmp);
+
+    impObj()->setOrientation(origin, uCorner, vOnPlane);
+}
+
+std::string PyDbWipeout::className()
+{
+    return "AcDbWipeout";
+}
+
+PyRxClass PyDbWipeout::desc()
+{
+    return PyRxClass(AcDbWipeout::desc(), false);
+}
+
+PyDbWipeout PyDbWipeout::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbWipeout::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbWipeout(static_cast<AcDbWipeout*>(src.impObj()->clone()), true);
+}
+
+PyDbWipeout PyDbWipeout::cast(const PyRxObject& src)
+{
+    PyDbWipeout dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbWipeout* PyDbWipeout::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbWipeout*>(m_pyImp.get());
 }

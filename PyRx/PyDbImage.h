@@ -1,6 +1,7 @@
 #pragma once
 #include "PyDbEntity.h"
 
+class AcDbWipeout;
 class PyDbObjectId;
 class PyDbDictionary;
 
@@ -149,4 +150,32 @@ public:
     static PyDbRasterImage    cast(const PyRxObject & src);
 public:
     AcDbRasterImage* impObj(const std::source_location & src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//AcDbRasterImage
+void makePyDbWipeoutWrapper();
+
+class PyDbWipeout : public PyDbRasterImage
+{
+public:
+    PyDbWipeout();
+    PyDbWipeout(const boost::python::list& pylist, const AcGeVector3d& vec);
+    PyDbWipeout(AcDbWipeout* ptr, bool autoDelete);
+    PyDbWipeout(const PyDbObjectId& id);
+    PyDbWipeout(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbWipeout(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    virtual ~PyDbWipeout() override = default;
+
+
+    Adesk::Boolean  frame() const;
+    void            setFrom(const boost::python::list& pylist, const AcGeVector3d& vec);
+
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbWipeout  cloneFrom(const PyRxObject& src);
+    static PyDbWipeout  cast(const PyRxObject& src);
+public:
+    AcDbWipeout* impObj(const std::source_location& src = std::source_location::current()) const;
 };

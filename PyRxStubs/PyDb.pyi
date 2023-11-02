@@ -77309,6 +77309,705 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class Wipeout:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,class AcGeVector3d)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
+      '''                             '''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def blockId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
+      '''                             '''
+    ...
+    def brightness (self, *args, **kwargs)-> int :
+      '''brightness( (RasterImage)arg1) -> int :
+
+    C++ signature :
+        signed char brightness(class PyDbRasterImage {lvalue})'''
+    ...
+    def cancel (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cast (self, *args, **kwargs)-> PyDb.Wipeout :
+      '''cast( (RxObject)arg1) -> Wipeout :
+
+    C++ signature :
+        class PyDbWipeout cast(class PyRxObject)'''
+    ...
+    def castShadows (self: Entity)-> bool :
+      '''                             '''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def clipBoundary (self, *args, **kwargs)-> list :
+      '''clipBoundary( (RasterImage)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list clipBoundary(class PyDbRasterImage {lvalue})'''
+    ...
+    def clipBoundaryType (self, *args, **kwargs)-> PyDb.ClipBoundaryType :
+      '''clipBoundaryType( (RasterImage)arg1) -> ClipBoundaryType :
+
+    C++ signature :
+        enum AcDbRasterImage::ClipBoundaryType clipBoundaryType(class PyDbRasterImage {lvalue})'''
+    ...
+    def cloneFrom (self, *args, **kwargs)-> PyDb.Wipeout :
+      '''cloneFrom( (RxObject)arg1) -> Wipeout :
+
+    C++ signature :
+        class PyDbWipeout cloneFrom(class PyRxObject)'''
+    ...
+    def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def collisionType (self: Entity)-> PyDb.CollisionType :
+      '''                             '''
+    ...
+    def color (self: Entity)-> PyDb.Color :
+      '''                             '''
+    ...
+    def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def contrast (self, *args, **kwargs)-> int :
+      '''contrast( (RasterImage)arg1) -> int :
+
+    C++ signature :
+        signed char contrast(class PyDbRasterImage {lvalue})'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+    def desc (self, *args, **kwargs)-> PyRx.RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def draw (self: Entity)-> None :
+      '''                             '''
+    ...
+    def drawableType (self: Drawable)-> PyGi.GiDrawableType :
+      '''                             '''
+    ...
+    def entityColor (self: Entity)-> PyDb.EntityColor :
+      '''                             '''
+    ...
+    def erase (self: DbObject,erasing : bool=True)-> None :
+      '''                             '''
+    ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def fade (self, *args, **kwargs)-> int :
+      '''fade( (RasterImage)arg1) -> int :
+
+    C++ signature :
+        signed char fade(class PyDbRasterImage {lvalue})'''
+    ...
+    def frame (self, *args, **kwargs)-> bool :
+      '''frame( (Wipeout)arg1) -> bool :
+
+    C++ signature :
+        bool frame(class PyDbWipeout {lvalue})'''
+    ...
+    def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def getEcs (self: Entity)-> PyGe.Matrix3d :
+      '''                             '''
+    ...
+    def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGripPoints (self, *args, **kwargs)-> None :
+      '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void getGripPoints(class PyDbEntity {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
+    def getHandle (self: DbObject)-> PyDb.Handle :
+      '''                             '''
+    ...
+    def getOrientation (self, *args, **kwargs)-> None :
+      '''getOrientation( (RasterImage)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
+
+    C++ signature :
+        void getOrientation(class PyDbRasterImage {lvalue},class AcGePoint3d {lvalue},class AcGeVector3d {lvalue},class AcGeVector3d {lvalue})'''
+    ...
+    def getPixelToModelTransform (self, *args, **kwargs)-> PyGe.Matrix3d :
+      '''getPixelToModelTransform( (RasterImage)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d getPixelToModelTransform(class PyDbRasterImage {lvalue})'''
+    ...
+    def getPlane (self: Entity)-> PyGe.Plane :
+      '''                             '''
+    ...
+    def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getStretchPoints (self: Entity)-> list :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
+      '''                             '''
+    ...
+    def getVertices (self, *args, **kwargs)-> list :
+      '''getVertices( (RasterImage)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getVertices(class PyDbRasterImage {lvalue})'''
+    ...
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def height (self, *args, **kwargs)-> float :
+      '''height( (RasterImage)arg1) -> float :
+
+    C++ signature :
+        double height(class PyDbRasterImage {lvalue})'''
+    ...
+    def id (self: Drawable)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def imageDefId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''imageDefId( (RasterImage)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId imageDefId(class PyDbRasterImage {lvalue})'''
+    ...
+    def imageHeight (self, *args, **kwargs)-> float :
+      '''imageHeight( (RasterImage)arg1) -> float :
+
+    C++ signature :
+        double imageHeight(class PyDbRasterImage {lvalue})'''
+    ...
+    def imageSize (self, *args, **kwargs)-> PyGe.Vector2d :
+      '''imageSize( (RasterImage)arg1) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d imageSize(class PyDbRasterImage {lvalue})
+
+imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d imageSize(class PyDbRasterImage {lvalue},bool)'''
+    ...
+    def imageWidth (self, *args, **kwargs)-> float :
+      '''imageWidth( (RasterImage)arg1) -> float :
+
+    C++ signature :
+        double imageWidth(class PyDbRasterImage {lvalue})'''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def intersectWith (self, *args, **kwargs)-> list :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (int)arg4, (int)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)arg5, (int)arg6) -> list :
+
+    C++ signature :
+        class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isClipInverted (self, *args, **kwargs)-> bool :
+      '''isClipInverted( (RasterImage)arg1) -> bool :
+
+    C++ signature :
+        bool isClipInverted(class PyDbRasterImage {lvalue})'''
+    ...
+    def isClipped (self, *args, **kwargs)-> bool :
+      '''isClipped( (RasterImage)arg1) -> bool :
+
+    C++ signature :
+        bool isClipped(class PyDbRasterImage {lvalue})'''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isImageShown (self, *args, **kwargs)-> bool :
+      '''isImageShown( (RasterImage)arg1) -> bool :
+
+    C++ signature :
+        bool isImageShown(class PyDbRasterImage {lvalue})'''
+    ...
+    def isImageTransparent (self, *args, **kwargs)-> bool :
+      '''isImageTransparent( (RasterImage)arg1) -> bool :
+
+    C++ signature :
+        bool isImageTransparent(class PyDbRasterImage {lvalue})'''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isPersistent (self: Drawable)-> bool :
+      '''                             '''
+    ...
+    def isPlanar (self: Entity)-> bool :
+      '''                             '''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isSetDisplayOpt (self, *args, **kwargs)-> bool :
+      '''isSetDisplayOpt( (RasterImage)arg1, (ImageDisplayOpt)arg2) -> bool :
+
+    C++ signature :
+        bool isSetDisplayOpt(class PyDbRasterImage {lvalue},enum AcDbRasterImage::ImageDisplayOpt)'''
+    ...
+    def isShownClipped (self, *args, **kwargs)-> bool :
+      '''isShownClipped( (RasterImage)arg1) -> bool :
+
+    C++ signature :
+        bool isShownClipped(class PyDbRasterImage {lvalue})'''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def layer (self: Entity)-> str :
+      '''                             '''
+    ...
+    def layerId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def lineWeight (self: Entity)-> PyDb.LineWeight :
+      '''                             '''
+    ...
+    def linetype (self: Entity)-> str :
+      '''                             '''
+    ...
+    def linetypeId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def linetypeScale (self: Entity)-> float :
+      '''                             '''
+    ...
+    def list (self: Entity)-> None :
+      '''                             '''
+    ...
+    def material (self: Entity)-> str :
+      '''                             '''
+    ...
+    def materialId (self: Entity)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def objectId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def position (self, *args, **kwargs)-> PyGe.Point3d :
+      '''position( (RasterImage)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d position(class PyDbRasterImage {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def reactorId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''reactorId( (RasterImage)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId reactorId(class PyDbRasterImage {lvalue})'''
+    ...
+    def receiveShadows (self: Entity)-> bool :
+      '''                             '''
+    ...
+    def recordGraphicsModified (self: Entity)-> None :
+      '''                             '''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
+      '''                             '''
+    ...
+    def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def rotation (self, *args, **kwargs)-> float :
+      '''rotation( (RasterImage)arg1) -> float :
+
+    C++ signature :
+        double rotation(class PyDbRasterImage {lvalue})'''
+    ...
+    def scale (self, *args, **kwargs)-> PyGe.Vector2d :
+      '''scale( (RasterImage)arg1) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d scale(class PyDbRasterImage {lvalue})'''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
+      '''                             '''
+    ...
+    def setBrightness (self, *args, **kwargs)-> None :
+      '''setBrightness( (RasterImage)arg1, (MlineJustification)arg2) -> None :
+
+    C++ signature :
+        void setBrightness(class PyDbRasterImage {lvalue},signed char)'''
+    ...
+    def setCastShadows (self: Entity,val: bool)-> None :
+      '''                             '''
+    ...
+    def setClipBoundaryToWholeImage (self, *args, **kwargs)-> None :
+      '''setClipBoundaryToWholeImage( (RasterImage)arg1, (Vector2d)arg2) -> None :
+
+    C++ signature :
+        void setClipBoundaryToWholeImage(class PyDbRasterImage {lvalue},class AcGeVector2d {lvalue})'''
+    ...
+    def setClipInverted (self, *args, **kwargs)-> None :
+      '''setClipInverted( (RasterImage)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setClipInverted(class PyDbRasterImage {lvalue},bool)'''
+    ...
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
+      '''                             '''
+    ...
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setContrast (self, *args, **kwargs)-> None :
+      '''setContrast( (RasterImage)arg1, (MlineJustification)arg2) -> None :
+
+    C++ signature :
+        void setContrast(class PyDbRasterImage {lvalue},signed char)'''
+    ...
+    def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
+      '''                             '''
+    ...
+    def setDisplayOpt (self, *args, **kwargs)-> None :
+      '''setDisplayOpt( (RasterImage)arg1, (ImageDisplayOpt)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setDisplayOpt(class PyDbRasterImage {lvalue},enum AcDbRasterImage::ImageDisplayOpt,bool)'''
+    ...
+    def setFade (self, *args, **kwargs)-> None :
+      '''setFade( (RasterImage)arg1, (MlineJustification)arg2) -> None :
+
+    C++ signature :
+        void setFade(class PyDbRasterImage {lvalue},signed char)'''
+    ...
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def setFrom (self, *args, **kwargs)-> None :
+      '''setFrom( (Wipeout)arg1, (list)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void setFrom(class PyDbWipeout {lvalue},class boost::python::list,class AcGeVector3d)'''
+    ...
+    def setHeight (self, *args, **kwargs)-> None :
+      '''setHeight( (RasterImage)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setHeight(class PyDbRasterImage {lvalue},double)'''
+    ...
+    def setImageDefId (self, *args, **kwargs)-> None :
+      '''setImageDefId( (RasterImage)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setImageDefId(class PyDbRasterImage {lvalue},class PyDbObjectId)'''
+    ...
+    def setImageTransparency (self, *args, **kwargs)-> None :
+      '''setImageTransparency( (RasterImage)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setImageTransparency(class PyDbRasterImage {lvalue},bool)'''
+    ...
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
+      '''                             '''
+    ...
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setOrientation (self, *args, **kwargs)-> bool :
+      '''setOrientation( (RasterImage)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> bool :
+
+    C++ signature :
+        bool setOrientation(class PyDbRasterImage {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)'''
+    ...
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def setPlotStyleName (self, *args, **kwargs)-> None :
+      '''setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
+    ...
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setReactorId (self, *args, **kwargs)-> None :
+      '''setReactorId( (RasterImage)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setReactorId(class PyDbRasterImage {lvalue},class PyDbObjectId)'''
+    ...
+    def setReceiveShadows (self: Entity,val: bool)-> None :
+      '''                             '''
+    ...
+    def setRotation (self, *args, **kwargs)-> None :
+      '''setRotation( (RasterImage)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setRotation(class PyDbRasterImage {lvalue},double)'''
+    ...
+    def setShowClipped (self, *args, **kwargs)-> None :
+      '''setShowClipped( (RasterImage)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setShowClipped(class PyDbRasterImage {lvalue},bool)'''
+    ...
+    def setShowImage (self, *args, **kwargs)-> None :
+      '''setShowImage( (RasterImage)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setShowImage(class PyDbRasterImage {lvalue},bool)'''
+    ...
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
+      '''                             '''
+    ...
+    def setWidth (self, *args, **kwargs)-> None :
+      '''setWidth( (RasterImage)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setWidth(class PyDbRasterImage {lvalue},double)'''
+    ...
+    def setXData (self: DbObject,xdata: list)-> None :
+      '''                             '''
+    ...
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
+      '''                             '''
+    ...
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
+      '''                             '''
+    ...
+    def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
+      '''                             '''
+    ...
+    def visibility (self: Entity)-> PyDb.Visibility :
+      '''                             '''
+    ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+    def width (self, *args, **kwargs)-> float :
+      '''width( (RasterImage)arg1) -> float :
+
+    C++ signature :
+        double width(class PyDbRasterImage {lvalue})'''
+    ...
+    def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
+      '''                             '''
+    ...
+
 class Xrecord:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :

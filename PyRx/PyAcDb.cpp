@@ -234,6 +234,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbRasterImageDefWrapper();
     makePyDbRasterImageDefReactorWrapper();
     makePyDbRasterImageWrapper();
+    makePyDbWipeoutWrapper();
     makePyIdPairWrapper();
     makePyDbIdMappingWrapper();
     makePyDbTransactionManager();
