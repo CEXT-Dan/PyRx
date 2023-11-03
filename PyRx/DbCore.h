@@ -113,8 +113,8 @@ public:
     static bool                 ucs2Wcs2(const AcGeVector3d& p, AcGeVector3d& q);
     static bool                 wcs2Ecs1(const AcGePoint3d& p, const AcGeVector3d& normal, AcGePoint3d& q);
     static bool                 wcs2Ecs2(const AcGeVector3d& p, const AcGeVector3d& normal, AcGeVector3d& q);
-    static bool                 ucs2Ucs1(const AcGePoint3d& p, AcGePoint3d& q);
-    static bool                 ucs2Ucs2(const AcGeVector3d& p, AcGeVector3d& q);
+    static bool                 wcs2Ucs1(const AcGePoint3d& p, AcGePoint3d& q);
+    static bool                 wcs2Ucs2(const AcGeVector3d& p, AcGeVector3d& q);
     static bool                 ecs2Wcs1(const AcGePoint3d& p, const AcGeVector3d& normal, AcGePoint3d& q);
     static bool                 ecs2Wcs2(const AcGeVector3d& p, const AcGeVector3d& normal, AcGeVector3d& q);
 };
