@@ -30,6 +30,9 @@ extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
 int                             acedEvaluateDiesel(const ACHAR*, ACHAR*, size_t);
 bool                            acedLoadMainMenu(const ACHAR*);
+
+//acedLinetypeDialog()
+//acedLineWeightDialog()
 #endif
 
 //-----------------------------------------------------------------------------------------

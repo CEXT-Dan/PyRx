@@ -121,8 +121,8 @@ void makeDbCoreWrapper()
         .def("ucs2Wcs", &DbCore::ucs2Wcs2).staticmethod("ucs2Wcs")
         .def("wcs2Ecs", &DbCore::wcs2Ecs1)
         .def("wcs2Ecs", &DbCore::wcs2Ecs2).staticmethod("wcs2Ecs")
-        .def("ucs2Ucs", &DbCore::ucs2Ucs1)
-        .def("ucs2Ucs", &DbCore::ucs2Ucs2).staticmethod("ucs2Ucs")
+        .def("wcs2Ucs", &DbCore::wcs2Ucs1)
+        .def("wcs2Ucs", &DbCore::wcs2Ucs2).staticmethod("wcs2Ucs")
         .def("ecs2Wcs", &DbCore::ecs2Wcs1)
         .def("ecs2Wcs", &DbCore::ecs2Wcs2).staticmethod("ecs2Wcs")
         ;
@@ -801,7 +801,7 @@ bool DbCore::wcs2Ecs2(const AcGeVector3d& p, const AcGeVector3d& normal, AcGeVec
     return flag;
 }
 
-bool DbCore::ucs2Ucs1(const AcGePoint3d& p, AcGePoint3d& q)
+bool DbCore::wcs2Ucs1(const AcGePoint3d& p, AcGePoint3d& q)
 {
     ads_point pnt;
     bool flag = acdbWcs2Ucs(asDblArray(p), pnt, false);
@@ -809,7 +809,7 @@ bool DbCore::ucs2Ucs1(const AcGePoint3d& p, AcGePoint3d& q)
     return flag;
 }
 
-bool DbCore::ucs2Ucs2(const AcGeVector3d& p, AcGeVector3d& q)
+bool DbCore::wcs2Ucs2(const AcGeVector3d& p, AcGeVector3d& q)
 {
     ads_point pnt;
     bool flag = acdbWcs2Ucs(asDblArray(p), pnt, true);
