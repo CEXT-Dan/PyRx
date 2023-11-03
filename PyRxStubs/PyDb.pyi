@@ -77371,20 +77371,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Wipeout :
-      '''cast( (RxObject)arg1) -> Wipeout :
-
-    C++ signature :
-        class PyDbWipeout cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Wipeout :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
     def clipBoundary (self, *args, **kwargs)-> list :
       '''clipBoundary( (RasterImage)arg1) -> list :
@@ -77398,11 +77392,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     C++ signature :
         enum AcDbRasterImage::ClipBoundaryType clipBoundaryType(class PyDbRasterImage {lvalue})'''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.Wipeout :
-      '''cloneFrom( (RxObject)arg1) -> Wipeout :
-
-    C++ signature :
-        class PyDbWipeout cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Wipeout :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -77434,11 +77425,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -77476,11 +77464,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     C++ signature :
         signed char fade(class PyDbRasterImage {lvalue})'''
     ...
-    def frame (self, *args, **kwargs)-> bool :
-      '''frame( (Wipeout)arg1) -> bool :
-
-    C++ signature :
-        bool frame(class PyDbWipeout {lvalue})'''
+    def frame (self: Wipeout)-> bool :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -77856,11 +77841,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFrom (self, *args, **kwargs)-> None :
-      '''setFrom( (Wipeout)arg1, (list)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setFrom(class PyDbWipeout {lvalue},class boost::python::list,class AcGeVector3d)'''
+    def setFrom (self: Wipeout,points : list[PyGe.Point2d],normal : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setHeight (self, *args, **kwargs)-> None :
       '''setHeight( (RasterImage)arg1, (float)arg2) -> None :

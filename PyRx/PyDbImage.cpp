@@ -702,18 +702,19 @@ AcDbRasterImage* PyDbRasterImage::impObj(const std::source_location& src /*= std
 //AcDbRasterImage
 void makePyDbWipeoutWrapper()
 {
+    PyDocString DS("Wipeout");
     class_<PyDbWipeout, bases<PyDbRasterImage>>("Wipeout")
         .def(init<>())
         .def(init<const boost::python::list&, const AcGeVector3d&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
-        .def("frame", &PyDbWipeout::frame)
-        .def("setFrom", &PyDbWipeout::setFrom)
-        .def("className", &PyDbWipeout::className).staticmethod("className")
-        .def("desc", &PyDbWipeout::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbWipeout::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbWipeout::cast).staticmethod("cast")
+        .def("frame", &PyDbWipeout::frame,DS.ARGS())
+        .def("setFrom", &PyDbWipeout::setFrom, DS.ARGS({ "points : list[PyGe.Point2d]", "normal : PyGe.Vector3d" }))
+        .def("className", &PyDbWipeout::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbWipeout::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbWipeout::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbWipeout::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
