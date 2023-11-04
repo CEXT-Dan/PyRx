@@ -1118,7 +1118,7 @@ static resbuf* transArgToResfBuf(const boost::python::object& arg)
     {
         PyDbObjectId val = extract<PyDbObjectId>(arg);
         ads_name name = { 0L };
-        acdbGetAdsName(name, val.m_id);
+        PyThrowBadEs(acdbGetAdsName(name, val.m_id));
         return acutBuildList(RTENAME, name, 0);
     }
     else if (extract<AcGePoint3d>(arg).check())
