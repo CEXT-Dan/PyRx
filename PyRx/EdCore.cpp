@@ -1107,13 +1107,49 @@ void EdCore::textScr()
     PyThrowBadRt(acedTextScr());
 }
 
-AcGePoint3d EdCore::trans(const AcGePoint3d& pt, const boost::python::list& from, const boost::python::list& to, int disp)
+static resbuf* transArgToResfBuf(const boost::python::object& arg)
 {
-    AcGePoint3d result;
-    AcResBufPtr pFrom(listToResbuf(from));
-    AcResBufPtr pTo(listToResbuf(to));
-    PyThrowBadRt(acedTrans(asDblArray(pt), pFrom.get(), pTo.get(), disp, asDblArray(result)));
-    return result;
+    if (PyLong_Check(arg.ptr()))
+    {
+        const int val = extract<int32_t>(arg);
+        return acutBuildList(RTSHORT, val, 0);
+    }
+    else if (extract<PyDbObjectId>(arg).check())
+    {
+        PyDbObjectId val = extract<PyDbObjectId>(arg);
+        ads_name name = { 0L };
+        acdbGetAdsName(name, val.m_id);
+        return acutBuildList(RTENAME, name, 0);
+    }
+    else if (extract<AcGePoint3d>(arg).check())
+    {
+        AcGePoint3d val = extract<AcGePoint3d>(arg);
+        return acutBuildList(RT3DPOINT, asDblArray(val), 0);
+    }
+    else if (extract<AcGeVector3d>(arg).check())
+    {
+        AcGeVector3d val = extract<AcGeVector3d>(arg);
+        return acutBuildList(RT3DPOINT, asDblArray(val), 0);
+    }
+    else if (PyList_Check(arg.ptr()))
+    {
+        const boost::python::list& pylist = extract<boost::python::list>(arg);
+        return listToResbuf(pylist);
+    }
+    else
+    {
+        return nullptr;
+    }
+}
+
+AcGePoint3d EdCore::trans(const AcGePoint3d& pt, const boost::python::object& from, const boost::python::object& to, int disp)
+{
+    PyAutoLockGIL lock;
+    AcResBufPtr fromBuf(transArgToResfBuf(from));
+    AcResBufPtr toBuf(transArgToResfBuf(to));
+    ads_point outpnt;
+    PyThrowBadRt(acedTrans(asDblArray(pt), fromBuf.get(), toBuf.get(), disp, outpnt));
+    return asPnt3d(outpnt);
 }
 
 bool EdCore::unloadPartialMenu(const std::string& pszMenuFile)
