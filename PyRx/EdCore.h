@@ -139,7 +139,7 @@ public:
     static boost::python::tuple textBox(const boost::python::list& pyargs);
     static void                 textPage();
     static void                 textScr();
-    static AcGePoint3d          trans(const AcGePoint3d& pt, const boost::python::object& from, const boost::python::object& to, int disp);
+    static AcGePoint3d          trans(const AcGePoint3d& pt, const boost::python::object& from, const boost::python::object& to, bool disp);
     static bool                 unloadPartialMenu(const std::string& pszMenuFile);
     static void                 unmarkForDelayXRefRelativePathResolve(const PyDbObjectId& xrefDefId);
     static int                  update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2);

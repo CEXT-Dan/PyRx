@@ -1142,13 +1142,13 @@ static resbuf* transArgToResfBuf(const boost::python::object& arg)
     }
 }
 
-AcGePoint3d EdCore::trans(const AcGePoint3d& pt, const boost::python::object& from, const boost::python::object& to, int disp)
+AcGePoint3d EdCore::trans(const AcGePoint3d& pt, const boost::python::object& from, const boost::python::object& to, bool disp)
 {
     PyAutoLockGIL lock;
     AcResBufPtr fromBuf(transArgToResfBuf(from));
     AcResBufPtr toBuf(transArgToResfBuf(to));
     ads_point outpnt;
-    PyThrowBadRt(acedTrans(asDblArray(pt), fromBuf.get(), toBuf.get(), disp, outpnt));
+    PyThrowBadRt(acedTrans(asDblArray(pt), fromBuf.get(), toBuf.get(), disp ? 1 : 0, outpnt));
     return asPnt3d(outpnt);
 }
 
