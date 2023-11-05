@@ -2,6 +2,8 @@
 #include "PyDbTextEditor.h"
 using namespace boost::python;
 
+#ifdef PYRX_IN_PROGRESS
+
 //-----------------------------------------------------------------------------------------
 //PyDbTextEditorLocation
 void makePyDbTextEditorLocationWrapper()
@@ -12,6 +14,7 @@ void makePyDbTextEditorLocationWrapper()
         ;
 }
 
+//TODO: TEST!
 struct PyDbTextEditorLocationDeleter
 {
     inline void operator()(AcDbTextEditorLocation* p) const
@@ -41,7 +44,6 @@ AcDbTextEditorLocation* PyDbTextEditorLocation::impObj(const std::source_locatio
 }
 
 
-
 //-----------------------------------------------------------------------------------------
 //PyDbTextEditorSelectable
 void makePyDbTextEditorSelectableWrapper()
@@ -52,6 +54,11 @@ void makePyDbTextEditorSelectableWrapper()
         .def("endOfText", &PyDbTextEditorSelectable::endOfText, DS.ARGS())
         .def("className", &PyDbTextEditorSelectable::className, DS.SARGS()).staticmethod("className")
         ;
+}
+
+PyDbTextEditorSelectable::PyDbTextEditorSelectable(AcDbTextEditorSelectable* ptr)
+    : m_pyImp(ptr)
+{
 }
 
 PyDbTextEditorLocation PyDbTextEditorSelectable::startOfText()
@@ -154,3 +161,89 @@ AcDbTextEditorCursor* PyDbTextEditorCursor::impObj(const std::source_location& s
 {
     static_cast<AcDbTextEditorCursor*>(__super::impObj());
 }
+
+//-----------------------------------------------------------------------------------------
+//PyDbTextEditorParagraphTab
+void makePyDbTextEditorParagraphTabWrapper()
+{
+    PyDocString DS("TextEditorParagraphTab");
+    class_<PyDbTextEditorParagraphTab>("TextEditorParagraphTab")
+        .def("className", &PyDbTextEditorParagraphTab::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyDbTextEditorParagraphTab::PyDbTextEditorParagraphTab()
+    : m_pyImp(new AcDbTextEditorParagraphTab())
+{
+}
+
+std::string PyDbTextEditorParagraphTab::className()
+{
+    return "AcDbTextEditorParagraphTab";
+}
+
+AcDbTextEditorParagraphTab* PyDbTextEditorParagraphTab::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return m_pyImp.get();
+}
+
+//-----------------------------------------------------------------------------------------
+//PyDbTextEditorParagraph
+void makePyDbTextEditorParagraphWrapper()
+{
+    PyDocString DS("TextEditorParagraph");
+    class_<PyDbTextEditorParagraph>("TextEditorParagraph", boost::python::no_init)
+        .def("className", &PyDbTextEditorParagraph::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyDbTextEditorParagraph::PyDbTextEditorParagraph(AcDbTextEditorSelectable* ptr)
+    : PyDbTextEditorSelectable(ptr)
+{
+}
+
+std::string PyDbTextEditorParagraph::className()
+{
+    return "AcDbTextEditorParagraph";
+}
+
+AcDbTextEditorParagraph* PyDbTextEditorParagraph::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbTextEditorParagraph*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyDbTextEditorColumn
+void makePyDbTextEditorColumnWrapper()
+{
+    PyDocString DS("PyDbTextEditorColumn");
+    class_<PyDbTextEditorColumn>("PyDbTextEditorColumn", boost::python::no_init)
+        .def("className", &PyDbTextEditorColumn::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyDbTextEditorColumn::PyDbTextEditorColumn(AcDbTextEditorColumn* ptr)
+    : PyDbTextEditorSelectable(ptr)
+{
+}
+
+std::string PyDbTextEditorColumn::className()
+{
+    return "AcDbTextEditorColumn";
+}
+
+AcDbTextEditorColumn* PyDbTextEditorColumn::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbTextEditorColumn*>(m_pyImp.get());
+}
+
+#endif//PYRX_IN_PROGRESS
