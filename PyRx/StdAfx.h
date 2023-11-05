@@ -128,8 +128,7 @@
 #include "RxPyString.h"
 #include "PyException.h"
 
-//#define PyRxDebug
-
+//#define PYRX_IN_PROGRESS
 
 #if defined(_ARXTARGET)
 #pragma comment( lib , "AcPal.lib" )

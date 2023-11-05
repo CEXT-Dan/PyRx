@@ -1,6 +1,7 @@
 #pragma once
-#include "dbtexteditor.h"
 
+#ifdef PYRX_IN_PROGRESS
+#include "dbtexteditor.h"
 
 //-----------------------------------------------------------------------------------------
 //PyDbTextEditorLocation
@@ -21,9 +22,9 @@ public:
 void makePyDbTextEditorSelectableWrapper();
 class PyDbTextEditorSelectable
 {
-private:
-    PyDbTextEditorSelectable() = default;
+
 public:
+    PyDbTextEditorSelectable(AcDbTextEditorSelectable* ptr);
     virtual ~PyDbTextEditorSelectable() = default;
     PyDbTextEditorLocation startOfText();
     PyDbTextEditorLocation endOfText();
@@ -42,7 +43,8 @@ void makePyDbTextEditorSelectionBaseWrapper();
 class PyDbTextEditorSelectionBase
 {
 public:
-    PyDbTextEditorSelectionBase(AcDbTextEditorSelectionBase* ptr);
+    explicit PyDbTextEditorSelectionBase(AcDbTextEditorSelectionBase* ptr);
+    virtual ~PyDbTextEditorSelectionBase() = default;
     static std::string className();
     inline AcDbTextEditorSelectionBase* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
@@ -55,11 +57,11 @@ void makePyDbTextEditorSelectionWrapper();
 class PyDbTextEditorSelection : public PyDbTextEditorSelectionBase
 {
 public:
-    PyDbTextEditorSelection(AcDbTextEditorSelection* ptr);
+    explicit PyDbTextEditorSelection(AcDbTextEditorSelection* ptr);
+    virtual ~PyDbTextEditorSelection() override = default;
     static std::string className();
     inline AcDbTextEditorSelection* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PyDbTextEditorCursor
@@ -71,3 +73,45 @@ public:
     static std::string className();
     inline AcDbTextEditorCursor* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//-----------------------------------------------------------------------------------------
+//PyDbTextEditorParagraphTab
+void makePyDbTextEditorParagraphTabWrapper();
+class PyDbTextEditorParagraphTab
+{
+public:
+    PyDbTextEditorParagraphTab();
+    ~PyDbTextEditorParagraphTab() = default;
+
+public:
+    static std::string className();
+    inline AcDbTextEditorParagraphTab* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<AcDbTextEditorParagraphTab> m_pyImp;
+};
+
+//-----------------------------------------------------------------------------------------
+//PyDbTextEditorParagraph
+void makePyDbTextEditorParagraphWrapper();
+class PyDbTextEditorParagraph : public PyDbTextEditorSelectable
+{
+public:
+    explicit PyDbTextEditorParagraph(AcDbTextEditorSelectable* ptr);
+    virtual ~PyDbTextEditorParagraph() override = default;
+    static std::string className();
+    inline AcDbTextEditorParagraph* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------------
+//AcDbTextEditorColumn
+void makePyDbTextEditorColumnWrapper();
+class PyDbTextEditorColumn : public PyDbTextEditorSelectable
+{
+public:
+    explicit PyDbTextEditorColumn(AcDbTextEditorColumn* ptr);
+    virtual ~PyDbTextEditorColumn() override = default;
+    static std::string className();
+    inline AcDbTextEditorColumn* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+#endif//PYRX_IN_PROGRESS
