@@ -2341,125 +2341,65 @@ class InputPoint:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def alignmentPaths (self, *args, **kwargs)-> list :
-      '''alignmentPaths( (InputPoint)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list alignmentPaths(class PyEdInputPoint {lvalue})'''
+    def alignmentPaths (self: InputPoint)-> list :
+      '''                             '''
     ...
-    def cartesianSnappedPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''cartesianSnappedPoint( (InputPoint)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d cartesianSnappedPoint(class PyEdInputPoint {lvalue})'''
+    def cartesianSnappedPoint (self: InputPoint)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def computedPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''computedPoint( (InputPoint)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d computedPoint(class PyEdInputPoint {lvalue})'''
+    def computedPoint (self: InputPoint)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def document (self, *args, **kwargs)-> PyAp.Document :
-      '''document( (InputPoint)arg1) -> Document :
-
-    C++ signature :
-        class PyApDocument document(class PyEdInputPoint {lvalue})'''
+    def document (self: InputPoint)-> PyAp.Document :
+      '''                             '''
     ...
-    def drawContext (self, *args, **kwargs)-> PyGi.ViewportDraw :
-      '''drawContext( (InputPoint)arg1) -> ViewportDraw :
-
-    C++ signature :
-        class PyGiViewportDraw drawContext(class PyEdInputPoint {lvalue})'''
+    def drawContext (self: InputPoint)-> PyGi.ViewportDraw :
+      '''                             '''
     ...
-    def grippedPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''grippedPoint( (InputPoint)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d grippedPoint(class PyEdInputPoint {lvalue})'''
+    def grippedPoint (self: InputPoint)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def gsSelectionMark (self, *args, **kwargs)-> list :
-      '''gsSelectionMark( (InputPoint)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list gsSelectionMark(class PyEdInputPoint {lvalue})'''
+    def gsSelectionMark (self: InputPoint)-> list :
+      '''                             '''
     ...
-    def history (self, *args, **kwargs)-> PyEd.AcEdPointHistory :
-      '''history( (InputPoint)arg1) -> AcEdPointHistory :
-
-    C++ signature :
-        enum Acad::PointHistory history(class PyEdInputPoint {lvalue})'''
+    def history (self: InputPoint)-> PyEd.AcEdPointHistory :
+      '''                             '''
     ...
-    def keyPointEntities (self, *args, **kwargs)-> list :
-      '''keyPointEntities( (InputPoint)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list keyPointEntities(class PyEdInputPoint {lvalue})'''
+    def keyPointEntities (self: InputPoint)-> list :
+      '''                             '''
     ...
-    def keyPointGsSelectionMark (self, *args, **kwargs)-> list :
-      '''keyPointGsSelectionMark( (InputPoint)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list keyPointGsSelectionMark(class PyEdInputPoint {lvalue})'''
+    def keyPointGsSelectionMark (self: InputPoint)-> list :
+      '''                             '''
     ...
-    def lastPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''lastPoint( (InputPoint)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d lastPoint(class PyEdInputPoint {lvalue})'''
+    def lastPoint (self: InputPoint)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def nestedKeyPointEntities (self, *args, **kwargs)-> list :
-      '''nestedKeyPointEntities( (InputPoint)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list nestedKeyPointEntities(class PyEdInputPoint {lvalue})'''
+    def nestedKeyPointEntities (self: InputPoint)-> list :
+      '''                             '''
     ...
-    def nestedPickedEntities (self, *args, **kwargs)-> list :
-      '''nestedPickedEntities( (InputPoint)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list nestedPickedEntities(class PyEdInputPoint {lvalue})'''
+    def nestedPickedEntities (self: InputPoint)-> list :
+      '''                             '''
     ...
-    def osnapMask (self, *args, **kwargs)-> PyDb.OsnapMask :
-      '''osnapMask( (InputPoint)arg1) -> OsnapMask :
-
-    C++ signature :
-        enum AcDb::OsnapMask osnapMask(class PyEdInputPoint {lvalue})'''
+    def osnapMask (self: InputPoint)-> PyDb.OsnapMask :
+      '''                             '''
     ...
-    def osnapOverrides (self, *args, **kwargs)-> PyDb.OsnapMask :
-      '''osnapOverrides( (InputPoint)arg1) -> OsnapMask :
-
-    C++ signature :
-        enum AcDb::OsnapMask osnapOverrides(class PyEdInputPoint {lvalue})'''
+    def osnapOverrides (self: InputPoint)-> PyDb.OsnapMask :
+      '''                             '''
     ...
-    def osnappedPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''osnappedPoint( (InputPoint)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d osnappedPoint(class PyEdInputPoint {lvalue})'''
+    def osnappedPoint (self: InputPoint)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def pickedEntities (self, *args, **kwargs)-> list :
-      '''pickedEntities( (InputPoint)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list pickedEntities(class PyEdInputPoint {lvalue})'''
+    def pickedEntities (self: InputPoint)-> list :
+      '''                             '''
     ...
-    def pointComputed (self, *args, **kwargs)-> bool :
-      '''pointComputed( (InputPoint)arg1) -> bool :
-
-    C++ signature :
-        bool pointComputed(class PyEdInputPoint {lvalue})'''
+    def pointComputed (self: InputPoint)-> bool :
+      '''                             '''
     ...
-    def rawPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''rawPoint( (InputPoint)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d rawPoint(class PyEdInputPoint {lvalue})'''
+    def rawPoint (self: InputPoint)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def tooltipString (self, *args, **kwargs)-> str :
-      '''tooltipString( (InputPoint)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > tooltipString(class PyEdInputPoint {lvalue})'''
+    def tooltipString (self: InputPoint)-> str :
+      '''                             '''
     ...
 
 class InputPointFilter:
@@ -2481,53 +2421,29 @@ class InputPointFilterResult:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def displayOsnapGlyph (self, *args, **kwargs)-> bool :
-      '''displayOsnapGlyph( (InputPointFilterResult)arg1) -> bool :
-
-    C++ signature :
-        bool displayOsnapGlyph(class PyEdInputPointFilterResult {lvalue})'''
+    def displayOsnapGlyph (self: InputPointFilterResult)-> bool :
+      '''                             '''
     ...
-    def newPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''newPoint( (InputPointFilterResult)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d newPoint(class PyEdInputPointFilterResult {lvalue})'''
+    def newPoint (self: InputPointFilterResult)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def newTooltipString (self, *args, **kwargs)-> str :
-      '''newTooltipString( (InputPointFilterResult)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > newTooltipString(class PyEdInputPointFilterResult {lvalue})'''
+    def newTooltipString (self: InputPointFilterResult)-> str :
+      '''                             '''
     ...
-    def retry (self, *args, **kwargs)-> bool :
-      '''retry( (InputPointFilterResult)arg1) -> bool :
-
-    C++ signature :
-        bool retry(class PyEdInputPointFilterResult {lvalue})'''
+    def retry (self: InputPointFilterResult)-> bool :
+      '''                             '''
     ...
-    def setDisplayOsnapGlyph (self, *args, **kwargs)-> None :
-      '''setDisplayOsnapGlyph( (InputPointFilterResult)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDisplayOsnapGlyph(class PyEdInputPointFilterResult {lvalue},bool)'''
+    def setDisplayOsnapGlyph (self: InputPointFilterResult,val : bool)-> None :
+      '''                             '''
     ...
-    def setNewPoint (self, *args, **kwargs)-> None :
-      '''setNewPoint( (InputPointFilterResult)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setNewPoint(class PyEdInputPointFilterResult {lvalue},class AcGePoint3d)'''
+    def setNewPoint (self: InputPointFilterResult,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setNewTooltipString (self, *args, **kwargs)-> None :
-      '''setNewTooltipString( (InputPointFilterResult)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setNewTooltipString(class PyEdInputPointFilterResult {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setNewTooltipString (self: InputPointFilterResult,val : str)-> None :
+      '''                             '''
     ...
-    def setRetry (self, *args, **kwargs)-> None :
-      '''setRetry( (InputPointFilterResult)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setRetry(class PyEdInputPointFilterResult {lvalue},bool)'''
+    def setRetry (self: InputPointFilterResult,val : bool)-> None :
+      '''                             '''
     ...
 
 class InputPointManager:
@@ -2535,89 +2451,47 @@ class InputPointManager:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def addPointMonitor (self, *args, **kwargs)-> None :
-      '''addPointMonitor( (InputPointManager)arg1, (InputPointMonitor)arg2) -> None :
-
-    C++ signature :
-        void addPointMonitor(class PyEdInputPointManager {lvalue},class PyEdInputPointMonitor {lvalue})'''
+    def addPointMonitor (self: InputPointManager,monitor : PyEd.InputPointMonitor)-> None :
+      '''                             '''
     ...
-    def disableSystemCursorGraphics (self, *args, **kwargs)-> bool :
-      '''disableSystemCursorGraphics( (InputPointManager)arg1) -> bool :
-
-    C++ signature :
-        bool disableSystemCursorGraphics(class PyEdInputPointManager {lvalue})'''
+    def disableSystemCursorGraphics (self: InputPointManager)-> bool :
+      '''                             '''
     ...
-    def enableMultiSubentPathSelection (self, *args, **kwargs)-> None :
-      '''enableMultiSubentPathSelection( (InputPointManager)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void enableMultiSubentPathSelection(class PyEdInputPointManager {lvalue},bool)'''
+    def enableMultiSubentPathSelection (self: InputPointManager)-> None :
+      '''                             '''
     ...
-    def enableSystemCursorGraphics (self, *args, **kwargs)-> bool :
-      '''enableSystemCursorGraphics( (InputPointManager)arg1) -> bool :
-
-    C++ signature :
-        bool enableSystemCursorGraphics(class PyEdInputPointManager {lvalue})'''
+    def enableSystemCursorGraphics (self: InputPointManager)-> bool :
+      '''                             '''
     ...
-    def forcedPickCount (self, *args, **kwargs)-> int :
-      '''forcedPickCount( (InputPointManager)arg1) -> int :
-
-    C++ signature :
-        int forcedPickCount(class PyEdInputPointManager {lvalue})'''
+    def forcedPickCount (self: InputPointManager)-> int :
+      '''                             '''
     ...
-    def hasFilter (self, *args, **kwargs)-> bool :
-      '''hasFilter( (InputPointManager)arg1) -> bool :
-
-    C++ signature :
-        bool hasFilter(class PyEdInputPointManager {lvalue})'''
+    def hasFilter (self: InputPointManager)-> bool :
+      '''                             '''
     ...
-    def mouseHasMoved (self, *args, **kwargs)-> int :
-      '''mouseHasMoved( (InputPointManager)arg1) -> int :
-
-    C++ signature :
-        int mouseHasMoved(class PyEdInputPointManager {lvalue})'''
+    def mouseHasMoved (self: InputPointManager)-> int :
+      '''                             '''
     ...
-    def registerPointFilter (self, *args, **kwargs)-> None :
-      '''registerPointFilter( (InputPointManager)arg1, (InputPointFilter)arg2) -> None :
-
-    C++ signature :
-        void registerPointFilter(class PyEdInputPointManager {lvalue},class PyEdInputPointFilter {lvalue})'''
+    def registerPointFilter (self: InputPointManager,filter : PyEd.InputPointFilter)-> None :
+      '''                             '''
     ...
-    def removePointMonitor (self, *args, **kwargs)-> None :
-      '''removePointMonitor( (InputPointManager)arg1, (InputPointMonitor)arg2) -> None :
-
-    C++ signature :
-        void removePointMonitor(class PyEdInputPointManager {lvalue},class PyEdInputPointMonitor {lvalue})'''
+    def removePointMonitor (self: InputPointManager,monitor : PyEd.InputPointMonitor)-> None :
+      '''                             '''
     ...
-    def revokePointFilter (self, *args, **kwargs)-> None :
-      '''revokePointFilter( (InputPointManager)arg1) -> None :
-
-    C++ signature :
-        void revokePointFilter(class PyEdInputPointManager {lvalue})'''
+    def revokePointFilter (self: InputPointManager)-> None :
+      '''                             '''
     ...
-    def systemCursorDisableCount (self, *args, **kwargs)-> int :
-      '''systemCursorDisableCount( (InputPointManager)arg1) -> int :
-
-    C++ signature :
-        int systemCursorDisableCount(class PyEdInputPointManager {lvalue})'''
+    def systemCursorDisableCount (self: InputPointManager)-> int :
+      '''                             '''
     ...
-    def turnOffForcedPick (self, *args, **kwargs)-> bool :
-      '''turnOffForcedPick( (InputPointManager)arg1) -> bool :
-
-    C++ signature :
-        bool turnOffForcedPick(class PyEdInputPointManager {lvalue})'''
+    def turnOffForcedPick (self: InputPointManager)-> bool :
+      '''                             '''
     ...
-    def turnOffSubentityWindowSelection (self, *args, **kwargs)-> bool :
-      '''turnOffSubentityWindowSelection( (InputPointManager)arg1) -> bool :
-
-    C++ signature :
-        bool turnOffSubentityWindowSelection(class PyEdInputPointManager {lvalue})'''
+    def turnOffSubentityWindowSelection (self: InputPointManager)-> bool :
+      '''                             '''
     ...
-    def turnOnSubentityWindowSelection (self, *args, **kwargs)-> bool :
-      '''turnOnSubentityWindowSelection( (InputPointManager)arg1) -> bool :
-
-    C++ signature :
-        bool turnOnSubentityWindowSelection(class PyEdInputPointManager {lvalue})'''
+    def turnOnSubentityWindowSelection (self: InputPointManager)-> bool :
+      '''                             '''
     ...
 
 class InputPointMonitor:
@@ -2627,11 +2501,8 @@ class InputPointMonitor:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def monitorInputPoint (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''monitorInputPoint( (InputPointMonitor)arg1, (InputPoint)arg2, (InputPointMonitorResult)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus monitorInputPoint(class PyEdInputPointMonitor {lvalue},class PyEdInputPoint,class PyEdInputPointMonitorResult {lvalue})'''
+    def monitorInputPoint (self: InputPointMonitor,input : PyEd.InputPoint,input : PyEd.InputPointMonitorResult)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
 
 class InputPointMonitorResult:
@@ -2639,23 +2510,14 @@ class InputPointMonitorResult:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def additionalTooltipString (self, *args, **kwargs)-> str :
-      '''additionalTooltipString( (InputPointMonitorResult)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > additionalTooltipString(class PyEdInputPointMonitorResult {lvalue})'''
+    def additionalTooltipString (self: InputPointMonitorResult)-> str :
+      '''                             '''
     ...
-    def appendToTooltipStr (self, *args, **kwargs)-> bool :
-      '''appendToTooltipStr( (InputPointMonitorResult)arg1) -> bool :
-
-    C++ signature :
-        bool appendToTooltipStr(class PyEdInputPointMonitorResult {lvalue})'''
+    def appendToTooltipStr (self: InputPointMonitorResult)-> bool :
+      '''                             '''
     ...
-    def setAdditionalTooltipString (self, *args, **kwargs)-> None :
-      '''setAdditionalTooltipString( (InputPointMonitorResult)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setAdditionalTooltipString(class PyEdInputPointMonitorResult {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setAdditionalTooltipString (self: InputPointMonitorResult,val : str)-> None :
+      '''                             '''
     ...
 
 class Jig:
