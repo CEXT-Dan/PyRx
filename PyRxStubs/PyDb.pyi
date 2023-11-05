@@ -10725,17 +10725,6 @@ textFind( (Database)arg1, (str)arg2, (str)arg3, (int)arg4, (list)arg5) -> list :
     C++ signature :
         class PyDbTransactionManager transactionManager()'''
     ...
-    def ucs2Ucs (self, *args, **kwargs)-> bool :
-      '''ucs2Ucs( (Point3d)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool ucs2Ucs(class AcGePoint3d,class AcGePoint3d {lvalue})
-
-ucs2Ucs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
-
-    C++ signature :
-        bool ucs2Ucs(class AcGeVector3d,class AcGeVector3d {lvalue})'''
-    ...
     def ucs2Wcs (self, *args, **kwargs)-> bool :
       '''ucs2Wcs( (Point3d)arg1, (Point3d)arg2) -> bool :
 
@@ -10786,6 +10775,17 @@ wcs2Ecs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
 
     C++ signature :
         bool wcs2Ecs(class AcGeVector3d,class AcGeVector3d,class AcGeVector3d {lvalue})'''
+    ...
+    def wcs2Ucs (self, *args, **kwargs)-> bool :
+      '''wcs2Ucs( (Point3d)arg1, (Point3d)arg2) -> bool :
+
+    C++ signature :
+        bool wcs2Ucs(class AcGePoint3d,class AcGePoint3d {lvalue})
+
+wcs2Ucs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
+
+    C++ signature :
+        bool wcs2Ucs(class AcGeVector3d,class AcGeVector3d {lvalue})'''
     ...
 
 class Curve:
@@ -27015,23 +27015,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def appendLoop (self, *args, **kwargs)-> None :
-      '''appendLoop( (Hatch)arg1, (int)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void appendLoop(class PyDbHatch {lvalue},int,class boost::python::list)'''
+    def appendLoop (self: Hatch,loopType : int,ids : list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
-    def appendLoopBulges (self, *args, **kwargs)-> None :
-      '''appendLoopBulges( (Hatch)arg1, (int)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void appendLoopBulges(class PyDbHatch {lvalue},int,class boost::python::list,class boost::python::list)'''
+    def appendLoopBulges (self: Hatch,loopType : int,vertices : list,bulges : list)-> None :
+      '''                             '''
     ...
-    def appendLoopEdges (self, *args, **kwargs)-> None :
-      '''appendLoopEdges( (Hatch)arg1, (int)arg2, (list)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void appendLoopEdges(class PyDbHatch {lvalue},int,class boost::python::list,class boost::python::list)'''
+    def appendLoopEdges (self: Hatch,loopType : int,edges : list,edgeTypes : list)-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -27042,17 +27033,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def associative (self, *args, **kwargs)-> bool :
-      '''associative( (Hatch)arg1) -> bool :
-
-    C++ signature :
-        bool associative(class PyDbHatch {lvalue})'''
+    def associative (self: Hatch)-> bool :
+      '''                             '''
     ...
-    def backgroundColor (self, *args, **kwargs)-> PyDb.Color :
-      '''backgroundColor( (Hatch)arg1) -> Color :
-
-    C++ signature :
-        class AcCmColor backgroundColor(class PyDbHatch {lvalue})'''
+    def backgroundColor (self: Hatch)-> PyDb.Color :
+      '''                             '''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
@@ -27063,26 +27048,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Hatch :
-      '''cast( (RxObject)arg1) -> Hatch :
-
-    C++ signature :
-        class PyDbHatch cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Hatch :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.Hatch :
-      '''cloneFrom( (RxObject)arg1) -> Hatch :
-
-    C++ signature :
-        class PyDbHatch cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Hatch :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -27108,11 +27084,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -27132,11 +27105,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float :
-      '''elevation( (Hatch)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbHatch {lvalue})'''
+    def elevation (self: Hatch)-> float :
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
@@ -27150,16 +27120,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class AcCmColor evaluateGradientColorAt(class PyDbHatch {lvalue},float)'''
     ...
-    def evaluateHatch (self, *args, **kwargs)-> None :
-      '''evaluateHatch( (Hatch)arg1) -> None :
-
-    C++ signature :
-        void evaluateHatch(class PyDbHatch {lvalue})
-
-evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void evaluateHatch(class PyDbHatch {lvalue},bool)'''
+    def evaluateHatch (self: Hatch,val : bool=False)-> None :
+      '''                             '''
     ...
     def evaluateHatchAllScales1 (self, *args, **kwargs)-> None :
       '''evaluateHatchAllScales1( (Hatch)arg1) -> None :
@@ -27167,11 +27129,8 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         void evaluateHatchAllScales1(class PyDbHatch {lvalue})'''
     ...
-    def evaluateHatchAllScales2 (self, *args, **kwargs)-> None :
-      '''evaluateHatchAllScales2( (Hatch)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void evaluateHatchAllScales2(class PyDbHatch {lvalue},bool)'''
+    def evaluateHatchAllScales2 (self: Hatch,val : bool=False)-> None :
+      '''                             '''
     ...
     def explode (self: Entity)-> list :
       '''                             '''
@@ -27179,17 +27138,11 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getArea (self, *args, **kwargs)-> float :
-      '''getArea( (Hatch)arg1) -> float :
-
-    C++ signature :
-        double getArea(class PyDbHatch {lvalue})'''
+    def getArea (self: Hatch)-> float :
+      '''                             '''
     ...
-    def getAssocObjIds (self, *args, **kwargs)-> list :
-      '''getAssocObjIds( (Hatch)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getAssocObjIds(class PyDbHatch {lvalue})'''
+    def getAssocObjIds (self: Hatch)-> list :
+      '''                             '''
     ...
     def getAssocObjIdsAt (self, *args, **kwargs)-> list :
       '''getAssocObjIdsAt( (Hatch)arg1, (int)arg2) -> list :
@@ -27212,17 +27165,11 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
-    def getGradientColors (self, *args, **kwargs)-> tuple :
-      '''getGradientColors( (Hatch)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getGradientColors(class PyDbHatch {lvalue})'''
+    def getGradientColors (self: Hatch)-> tuple :
+      '''                             '''
     ...
-    def getGradientOneColorMode (self, *args, **kwargs)-> bool :
-      '''getGradientOneColorMode( (Hatch)arg1) -> bool :
-
-    C++ signature :
-        bool getGradientOneColorMode(class PyDbHatch {lvalue})'''
+    def getGradientOneColorMode (self: Hatch)-> bool :
+      '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
@@ -27233,35 +27180,20 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getHatchLineDataAt (self, *args, **kwargs)-> tuple :
-      '''getHatchLineDataAt( (Hatch)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getHatchLineDataAt(class PyDbHatch {lvalue},int)'''
+    def getHatchLineDataAt (self: Hatch,val : int)-> tuple :
+      '''                             '''
     ...
-    def getHatchLinesData (self, *args, **kwargs)-> tuple :
-      '''getHatchLinesData( (Hatch)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getHatchLinesData(class PyDbHatch {lvalue})'''
+    def getHatchLinesData (self: Hatch)-> tuple :
+      '''                             '''
     ...
-    def getLoopBulgesAt (self, *args, **kwargs)-> tuple :
-      '''getLoopBulgesAt( (Hatch)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getLoopBulgesAt(class PyDbHatch {lvalue},int)'''
+    def getLoopBulgesAt (self: Hatch,val : int)-> tuple :
+      '''                             '''
     ...
-    def getLoopEdgesAt (self, *args, **kwargs)-> tuple :
-      '''getLoopEdgesAt( (Hatch)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getLoopEdgesAt(class PyDbHatch {lvalue},int)'''
+    def getLoopEdgesAt (self: Hatch,val : int)-> tuple :
+      '''                             '''
     ...
-    def getPatternDefinitionAt (self, *args, **kwargs)-> tuple :
-      '''getPatternDefinitionAt( (Hatch)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPatternDefinitionAt(class PyDbHatch {lvalue},int)'''
+    def getPatternDefinitionAt (self: Hatch,val : int)-> tuple :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
@@ -27269,17 +27201,11 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getRegionArea (self, *args, **kwargs)-> PyDb.Region :
-      '''getRegionArea( (Hatch)arg1) -> Region :
-
-    C++ signature :
-        class PyDbRegion getRegionArea(class PyDbHatch {lvalue})'''
+    def getRegionArea (self: Hatch)-> PyDb.Region :
+      '''                             '''
     ...
-    def getShadeTintValue (self, *args, **kwargs)-> float :
-      '''getShadeTintValue( (Hatch)arg1) -> float :
-
-    C++ signature :
-        float getShadeTintValue(class PyDbHatch {lvalue})'''
+    def getShadeTintValue (self: Hatch)-> float :
+      '''                             '''
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
@@ -27287,29 +27213,17 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def gradientAngle (self, *args, **kwargs)-> float :
-      '''gradientAngle( (Hatch)arg1) -> float :
-
-    C++ signature :
-        double gradientAngle(class PyDbHatch {lvalue})'''
+    def gradientAngle (self: Hatch)-> float :
+      '''                             '''
     ...
-    def gradientName (self, *args, **kwargs)-> str :
-      '''gradientName( (Hatch)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > gradientName(class PyDbHatch {lvalue})'''
+    def gradientName (self: Hatch)-> str :
+      '''                             '''
     ...
-    def gradientShift (self, *args, **kwargs)-> float :
-      '''gradientShift( (Hatch)arg1) -> float :
-
-    C++ signature :
-        float gradientShift(class PyDbHatch {lvalue})'''
+    def gradientShift (self: Hatch)-> float :
+      '''                             '''
     ...
-    def gradientType (self, *args, **kwargs)-> PyDb.HatchGradientPatternType :
-      '''gradientType( (Hatch)arg1) -> HatchGradientPatternType :
-
-    C++ signature :
-        enum AcDbHatch::GradientPatternType gradientType(class PyDbHatch {lvalue})'''
+    def gradientType (self: Hatch)-> PyDb.HatchGradientPatternType :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -27323,17 +27237,11 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def hatchObjectType (self, *args, **kwargs)-> PyDb.HatchObjectType :
-      '''hatchObjectType( (Hatch)arg1) -> HatchObjectType :
-
-    C++ signature :
-        enum AcDbHatch::HatchObjectType hatchObjectType(class PyDbHatch {lvalue})'''
+    def hatchObjectType (self: Hatch)-> PyDb.HatchObjectType :
+      '''                             '''
     ...
-    def hatchStyle (self, *args, **kwargs)-> PyDb.HatchStyle :
-      '''hatchStyle( (Hatch)arg1) -> HatchStyle :
-
-    C++ signature :
-        enum AcDbHatch::HatchStyle hatchStyle(class PyDbHatch {lvalue})'''
+    def hatchStyle (self: Hatch)-> PyDb.HatchStyle :
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
@@ -27341,11 +27249,8 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def insertLoopAt (self, *args, **kwargs)-> None :
-      '''insertLoopAt( (Hatch)arg1, (int)arg2, (int)arg3, (list)arg4) -> None :
-
-    C++ signature :
-        void insertLoopAt(class PyDbHatch {lvalue},int,int,class boost::python::list)'''
+    def insertLoopAt (self: Hatch,idx : int,loopType : int,ids : list[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -27386,17 +27291,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isGradient (self, *args, **kwargs)-> bool :
-      '''isGradient( (Hatch)arg1) -> bool :
-
-    C++ signature :
-        bool isGradient(class PyDbHatch {lvalue})'''
+    def isGradient (self: Hatch)-> bool :
+      '''                             '''
     ...
-    def isHatch (self, *args, **kwargs)-> bool :
-      '''isHatch( (Hatch)arg1) -> bool :
-
-    C++ signature :
-        bool isHatch(class PyDbHatch {lvalue})'''
+    def isHatch (self: Hatch)-> bool :
+      '''                             '''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
@@ -27434,11 +27333,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isSolidFill (self, *args, **kwargs)-> bool :
-      '''isSolidFill( (Hatch)arg1) -> bool :
-
-    C++ signature :
-        bool isSolidFill(class PyDbHatch {lvalue})'''
+    def isSolidFill (self: Hatch)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -27461,11 +27357,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def layerId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def lineGenerationEnabled (self, *args, **kwargs)-> bool :
-      '''lineGenerationEnabled( (Hatch)arg1) -> bool :
-
-    C++ signature :
-        bool lineGenerationEnabled(class PyDbHatch {lvalue})'''
+    def lineGenerationEnabled (self: Hatch)-> bool :
+      '''                             '''
     ...
     def lineWeight (self: Entity)-> PyDb.LineWeight :
       '''                             '''
@@ -27488,77 +27381,44 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (Hatch)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbHatch {lvalue})'''
+    def normal (self: Hatch)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def numHatchLines (self, *args, **kwargs)-> int :
-      '''numHatchLines( (Hatch)arg1) -> int :
-
-    C++ signature :
-        int numHatchLines(class PyDbHatch {lvalue})'''
+    def numHatchLines (self: Hatch)-> int :
+      '''                             '''
     ...
-    def numLoops (self, *args, **kwargs)-> int :
-      '''numLoops( (Hatch)arg1) -> int :
-
-    C++ signature :
-        int numLoops(class PyDbHatch {lvalue})'''
+    def numLoops (self: Hatch)-> int :
+      '''                             '''
     ...
-    def numPatternDefinitions (self, *args, **kwargs)-> int :
-      '''numPatternDefinitions( (Hatch)arg1) -> int :
-
-    C++ signature :
-        int numPatternDefinitions(class PyDbHatch {lvalue})'''
+    def numPatternDefinitions (self: Hatch)-> int :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def originPoint (self, *args, **kwargs)-> PyGe.Point2d :
-      '''originPoint( (Hatch)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d originPoint(class PyDbHatch {lvalue})'''
+    def originPoint (self: Hatch)-> PyGe.Point2d :
+      '''                             '''
     ...
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def patternAngle (self, *args, **kwargs)-> float :
-      '''patternAngle( (Hatch)arg1) -> float :
-
-    C++ signature :
-        double patternAngle(class PyDbHatch {lvalue})'''
+    def patternAngle (self: Hatch)-> float :
+      '''                             '''
     ...
-    def patternDouble (self, *args, **kwargs)-> bool :
-      '''patternDouble( (Hatch)arg1) -> bool :
-
-    C++ signature :
-        bool patternDouble(class PyDbHatch {lvalue})'''
+    def patternDouble (self: Hatch)-> bool :
+      '''                             '''
     ...
-    def patternName (self, *args, **kwargs)-> str :
-      '''patternName( (Hatch)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > patternName(class PyDbHatch {lvalue})'''
+    def patternName (self: Hatch)-> str :
+      '''                             '''
     ...
-    def patternScale (self, *args, **kwargs)-> float :
-      '''patternScale( (Hatch)arg1) -> float :
-
-    C++ signature :
-        double patternScale(class PyDbHatch {lvalue})'''
+    def patternScale (self: Hatch)-> float :
+      '''                             '''
     ...
-    def patternSpace (self, *args, **kwargs)-> float :
-      '''patternSpace( (Hatch)arg1) -> float :
-
-    C++ signature :
-        double patternSpace(class PyDbHatch {lvalue})'''
+    def patternSpace (self: Hatch)-> float :
+      '''                             '''
     ...
-    def patternType (self, *args, **kwargs)-> PyDb.HatchPatternType :
-      '''patternType( (Hatch)arg1) -> HatchPatternType :
-
-    C++ signature :
-        enum AcDbHatch::HatchPatternType patternType(class PyDbHatch {lvalue})'''
+    def patternType (self: Hatch)-> PyDb.HatchPatternType :
+      '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
       '''                             '''
@@ -27575,26 +27435,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeAssocObjIds (self, *args, **kwargs)-> None :
-      '''removeAssocObjIds( (Hatch)arg1) -> None :
-
-    C++ signature :
-        void removeAssocObjIds(class PyDbHatch {lvalue})'''
+    def removeAssocObjIds (self: Hatch)-> None :
+      '''                             '''
     ...
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removeHatchLines (self, *args, **kwargs)-> None :
-      '''removeHatchLines( (Hatch)arg1) -> None :
-
-    C++ signature :
-        void removeHatchLines(class PyDbHatch {lvalue})'''
+    def removeHatchLines (self: Hatch)-> None :
+      '''                             '''
     ...
-    def removeLoopAt (self, *args, **kwargs)-> None :
-      '''removeLoopAt( (Hatch)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void removeLoopAt(class PyDbHatch {lvalue},int)'''
+    def removeLoopAt (self: Hatch,idx : int)-> None :
+      '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -27608,20 +27459,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
-    def setAssociative (self, *args, **kwargs)-> None :
-      '''setAssociative( (Hatch)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setAssociative(class PyDbHatch {lvalue},bool)'''
+    def setAssociative (self: Hatch,val : bool)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBackgroundColor (self, *args, **kwargs)-> None :
-      '''setBackgroundColor( (Hatch)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setBackgroundColor(class PyDbHatch {lvalue},class AcCmColor)'''
+    def setBackgroundColor (self: Hatch,val : PyDb.AcCmColor)-> None :
+      '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -27635,11 +27480,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setElevation (self, *args, **kwargs)-> None :
-      '''setElevation( (Hatch)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setElevation(class PyDbHatch {lvalue},double)'''
+    def setElevation (self: Hatch,val : real)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
@@ -27650,29 +27492,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setGradient(class PyDbHatch {lvalue},enum AcDbHatch::GradientPatternType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setGradientAngle (self, *args, **kwargs)-> None :
-      '''setGradientAngle( (Hatch)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setGradientAngle(class PyDbHatch {lvalue},double)'''
+    def setGradientAngle (self: Hatch,val : real)-> None :
+      '''                             '''
     ...
-    def setGradientColors (self, *args, **kwargs)-> None :
-      '''setGradientColors( (Hatch)arg1, (list)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void setGradientColors(class PyDbHatch {lvalue},class boost::python::list,class boost::python::list)'''
+    def setGradientColors (self: Hatch,colors : list,values : list)-> None :
+      '''                             '''
     ...
-    def setGradientOneColorMode (self, *args, **kwargs)-> None :
-      '''setGradientOneColorMode( (Hatch)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGradientOneColorMode(class PyDbHatch {lvalue},bool)'''
+    def setGradientOneColorMode (self: Hatch,val : bool)-> None :
+      '''                             '''
     ...
-    def setGradientShift (self, *args, **kwargs)-> None :
-      '''setGradientShift( (Hatch)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setGradientShift(class PyDbHatch {lvalue},float)'''
+    def setGradientShift (self: Hatch,val : real)-> None :
+      '''                             '''
     ...
     def setHatchObjectType (self, *args, **kwargs)-> None :
       '''setHatchObjectType( (Hatch)arg1, (HatchObjectType)arg2) -> None :
@@ -27689,11 +27519,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineGenerationEnabled (self, *args, **kwargs)-> bool :
-      '''setLineGenerationEnabled( (Hatch)arg1, (bool)arg2) -> bool :
-
-    C++ signature :
-        bool setLineGenerationEnabled(class PyDbHatch {lvalue},bool)'''
+    def setLineGenerationEnabled (self: Hatch,val : bool)-> bool :
+      '''                             '''
     ...
     def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
@@ -27707,17 +27534,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (Hatch)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbHatch {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Hatch,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def setOriginPoint (self, *args, **kwargs)-> None :
-      '''setOriginPoint( (Hatch)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setOriginPoint(class PyDbHatch {lvalue},class AcGePoint2d)'''
+    def setOriginPoint (self: Hatch,val : PyGe.Point2d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -27728,29 +27549,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setPattern(class PyDbHatch {lvalue},enum AcDbHatch::HatchPatternType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPatternAngle (self, *args, **kwargs)-> None :
-      '''setPatternAngle( (Hatch)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPatternAngle(class PyDbHatch {lvalue},double)'''
+    def setPatternAngle (self: Hatch,val : real)-> None :
+      '''                             '''
     ...
-    def setPatternDouble (self, *args, **kwargs)-> None :
-      '''setPatternDouble( (Hatch)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPatternDouble(class PyDbHatch {lvalue},bool)'''
+    def setPatternDouble (self: Hatch,val : bool)-> None :
+      '''                             '''
     ...
-    def setPatternScale (self, *args, **kwargs)-> None :
-      '''setPatternScale( (Hatch)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPatternScale(class PyDbHatch {lvalue},double)'''
+    def setPatternScale (self: Hatch,val : real)-> None :
+      '''                             '''
     ...
-    def setPatternSpace (self, *args, **kwargs)-> None :
-      '''setPatternSpace( (Hatch)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPatternSpace(class PyDbHatch {lvalue},double)'''
+    def setPatternSpace (self: Hatch,val : real)-> None :
+      '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
       '''setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> None :
@@ -27774,11 +27583,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShadeTintValue (self, *args, **kwargs)-> None :
-      '''setShadeTintValue( (Hatch)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setShadeTintValue(class PyDbHatch {lvalue},float)'''
+    def setShadeTintValue (self: Hatch,val : real)-> None :
+      '''                             '''
     ...
     def setShadeTintValueAndColor2 (self, *args, **kwargs)-> None :
       '''setShadeTintValueAndColor2( (Hatch)arg1, (float)arg2) -> None :

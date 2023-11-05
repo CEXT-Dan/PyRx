@@ -854,10 +854,10 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
       '''                             '''
     ...
     def trans (self, *args, **kwargs)-> PyGe.Point3d :
-      '''trans( (Point3d)arg1, (list)arg2, (list)arg3, (int)arg4) -> Point3d :
+      '''trans( (Point3d)arg1, (object)arg2, (object)arg3, (bool)arg4) -> Point3d :
 
     C++ signature :
-        class AcGePoint3d trans(class AcGePoint3d,class boost::python::list,class boost::python::list,int)'''
+        class AcGePoint3d trans(class AcGePoint3d,class boost::python::api::object,class boost::python::api::object,bool)'''
     ...
     def unloadPartialMenu (self, *args, **kwargs)-> bool :
       '''unloadPartialMenu( (str)arg1) -> bool :
