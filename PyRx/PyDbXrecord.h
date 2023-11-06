@@ -15,6 +15,7 @@ public:
     PyDbXrecord(AcDbObject* ptr, bool autoDelete);
     PyDbXrecord(const PyDbObjectId& id);
     PyDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbXrecord() override = default;
 
     boost::python::list rbChain1() const;

@@ -13,6 +13,7 @@ void makePyDbXrecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
         .def("rbChain", &PyDbXrecord::rbChain1)
         .def("rbChain", &PyDbXrecord::rbChain2)
         .def("setFromRbChain", &PyDbXrecord::setFromRbChain1)
@@ -36,13 +37,18 @@ PyDbXrecord::PyDbXrecord(AcDbObject* ptr, bool autoDelete)
 {
 }
 
+PyDbXrecord::PyDbXrecord(const PyDbObjectId& id)
+    : PyDbXrecord(id, AcDb::OpenMode::kForRead)
+{
+}
+
 PyDbXrecord::PyDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbObject(openAcDbObject<AcDbXrecord>(id, mode), false)
 {
 }
 
-PyDbXrecord::PyDbXrecord(const PyDbObjectId& id)
-    : PyDbXrecord(id, AcDb::OpenMode::kForRead)
+PyDbXrecord::PyDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbObject(openAcDbObject<AcDbXrecord>(id, mode, erased), false)
 {
 }
 

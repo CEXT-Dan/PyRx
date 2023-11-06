@@ -11,6 +11,7 @@ void makePyDbViewportWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
         .def("annotationScale", &PyDbViewport::annotationScale)
         .def("setAnnotationScale", &PyDbViewport::setAnnotationScale)
         .def("setModelView", &PyDbViewport::setModelView)
@@ -260,13 +261,18 @@ PyDbViewport::PyDbViewport(AcDbViewport* ptr, bool autoDelete)
 {
 }
 
+PyDbViewport::PyDbViewport(const PyDbObjectId& id)
+    : PyDbViewport(id, AcDb::OpenMode::kForRead)
+{
+}
+
 PyDbViewport::PyDbViewport(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(openAcDbObject<AcDbViewport>(id, mode), false)
 {
 }
 
-PyDbViewport::PyDbViewport(const PyDbObjectId& id)
-    : PyDbViewport(id, AcDb::OpenMode::kForRead)
+PyDbViewport::PyDbViewport(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbViewport>(id, mode, erased), false)
 {
 }
 
