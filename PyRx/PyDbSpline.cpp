@@ -14,6 +14,7 @@ void makePyDbSplineWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
         .def(init<const boost::python::list&>())
         .def(init<const boost::python::list&, int, double>())
         .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&>())
@@ -85,12 +86,17 @@ PyDbSpline::PyDbSpline(AcDbSpline* ptr, bool autoDelete)
 }
 
 PyDbSpline::PyDbSpline(const PyDbObjectId& id)
-    : PyDbSpline(id, AcDb::kForRead)
+    : PyDbCurve(openAcDbObject<AcDbSpline>(id, AcDb::kForRead), false)
 {
 }
 
 PyDbSpline::PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbCurve(openAcDbObject<AcDbSpline>(id, mode), false)
+{
+}
+
+PyDbSpline::PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbCurve(openAcDbObject<AcDbSpline>(id, mode, erased), false)
 {
 }
 

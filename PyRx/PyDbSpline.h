@@ -15,6 +15,7 @@ public:
     PyDbSpline(AcDbSpline* ptr, bool autoDelete);
     PyDbSpline(const PyDbObjectId& id);
     PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
 
     PyDbSpline(const boost::python::list& fitPoints);
     PyDbSpline(const boost::python::list& fitPoints, int order, double  fitTolerance);
