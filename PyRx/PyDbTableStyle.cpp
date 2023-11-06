@@ -7,7 +7,9 @@ void makePyDbTableStyleWrapper()
 {
     class_<PyDbTableStyle, bases<PyDbObject>>("TableStyle")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>())
         .def("getName", &PyDbTableStyle::getName)
         .def("setName", &PyDbTableStyle::setName)
         .def("description", &PyDbTableStyle::description)
@@ -115,14 +117,21 @@ PyDbTableStyle::PyDbTableStyle(AcDbObject* ptr, bool autoDelete)
 {
 }
 
+
+PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id)
+    : PyDbObject(openAcDbObject<AcDbTableStyle>(id, AcDb::OpenMode::kForRead, false), false)
+{
+}
+
 PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbObject(openAcDbObject<AcDbTableStyle>(id, mode), false)
 {
 }
 
-PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id)
-    : PyDbTableStyle(id, AcDb::OpenMode::kForRead)
+PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbObject(openAcDbObject<AcDbTableStyle>(id, mode, erased), false)
 {
+
 }
 
 std::string PyDbTableStyle::getName()
