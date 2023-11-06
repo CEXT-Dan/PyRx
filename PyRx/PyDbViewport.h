@@ -14,6 +14,7 @@ public:
     PyDbViewport(AcDbViewport* ptr, bool autoDelete);
     PyDbViewport(const PyDbObjectId& id);
     PyDbViewport(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbViewport(const PyDbObjectId& id, AcDb::OpenMode mode,bool erased);
     virtual ~PyDbViewport() override = default;
     void                setModelView(const PyDbXrefObjectId& xrefObjId);
     PyDbXrefObjectId    getModelView() const;
