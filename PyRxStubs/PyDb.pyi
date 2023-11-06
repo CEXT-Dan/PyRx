@@ -68017,10 +68017,20 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
