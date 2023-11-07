@@ -156,13 +156,14 @@ static AcGeTol getTol()
 
 void makePyGeTolWrapper()
 {
+    PyDocString DS("Tol");
     class_<AcGeTol>("Tol")
         .def(init<>())
-        .def("equalPoint", &AcGeTol::equalPoint)
-        .def("equalVector", &AcGeTol::equalVector)
-        .def("setEqualPoint", &AcGeTol::setEqualPoint)
-        .def("setEqualVector", &AcGeTol::setEqualVector)
-        .add_static_property("current", &getTol)
+        .def("equalPoint", &AcGeTol::equalPoint, DS.ARGS())
+        .def("equalVector", &AcGeTol::equalVector, DS.ARGS())
+        .def("setEqualPoint", &AcGeTol::setEqualPoint, DS.ARGS({ "val : real" }))
+        .def("setEqualVector", &AcGeTol::setEqualVector, DS.ARGS({ "val : real" }))
+        .add_static_property("current", &getTol, DS.SARGS())
         ;
 }
 
