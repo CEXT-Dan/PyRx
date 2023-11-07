@@ -177,6 +177,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbHelixWrapper();
     makePyDbMlineWrapper();
     makePyDbHatchWrapper();
+    makePyDbMPolygonWrapper();
     makePyDbDictionaryWrapper();
     makePyDbSymbolTableWrapper();
     makePyDbSymbolTableRecordWrapper();

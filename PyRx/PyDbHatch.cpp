@@ -2,6 +2,7 @@
 #include "PyDbHatch.h"
 #include "PyDbObjectId.h"
 #include "PyGeCurve2d.h"
+#include "PyDbEnts.h"
 
 using namespace boost::python;
 
@@ -593,4 +594,291 @@ AcDbHatch* PyDbHatch::impObj(const std::source_location& src /*= std::source_loc
         throw PyNullObject(src);
     }
     return static_cast<AcDbHatch*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyDbMPolygon
+void makePyDbMPolygonWrapper()
+{
+    PyDocString DS("MPolygon");
+    class_<PyDbMPolygon, bases<PyDbEntity>>("MPolygon")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbMPolygon::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbMPolygon::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbMPolygon::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbMPolygon::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("loadModule", &PyDbMPolygon::loadModule, DS.SARGS()).staticmethod("loadModule")
+        ;
+
+    enum_<AcDbMPolygon::loopDir>("MPolygonloopDir")
+        .value("kExterior", AcDbMPolygon::loopDir::kExterior)
+        .value("kInterior", AcDbMPolygon::loopDir::kInterior)
+        .value("kAnnotation", AcDbMPolygon::loopDir::kAnnotation)
+        .export_values()
+        ;
+}
+
+PyDbMPolygon::PyDbMPolygon()
+    : m_loaded(PyDbMPolygon::loadModule()), PyDbEntity(new AcDbMPolygon(), true)
+{
+}
+
+PyDbMPolygon::PyDbMPolygon(AcDbMPolygon* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbMPolygon::PyDbMPolygon(const PyDbObjectId& id)
+    : m_loaded(PyDbMPolygon::loadModule()), PyDbEntity(openAcDbObject<AcDbMPolygon>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbMPolygon::PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : m_loaded(PyDbMPolygon::loadModule()), PyDbEntity(openAcDbObject<AcDbMPolygon>(id, mode), false)
+{
+}
+
+PyDbHatch PyDbMPolygon::hatch()
+{
+   PyDbHatch hatch(impObj()->hatch(), false);
+   hatch.forceKeepAlive(true);
+   return hatch;
+}
+
+double PyDbMPolygon::elevation() const
+{
+    return impObj()->elevation();
+}
+
+void PyDbMPolygon::setElevation(double elevation)
+{
+    PyThrowBadEs(impObj()->setElevation(elevation));
+}
+
+AcGeVector3d PyDbMPolygon::normal() const
+{
+    return impObj()->normal();
+}
+
+void PyDbMPolygon::setNormal(const AcGeVector3d& normal)
+{
+    PyThrowBadEs(impObj()->setNormal(normal));
+}
+
+void PyDbMPolygon::evaluateHatch1()
+{
+    PyThrowBadEs(impObj()->evaluateHatch());
+}
+
+void PyDbMPolygon::evaluateHatch2(bool bUnderestimateNumLines)
+{
+    PyThrowBadEs(impObj()->evaluateHatch(bUnderestimateNumLines));
+}
+
+AcDbHatch::HatchPatternType PyDbMPolygon::patternType() const
+{
+    return impObj()->patternType();
+}
+
+std::string PyDbMPolygon::patternName() const
+{
+    return wstr_to_utf8(impObj()->patternName());
+}
+
+void PyDbMPolygon::setPattern(AcDbHatch::HatchPatternType patType, const std::string& patName)
+{
+    PyThrowBadEs(impObj()->setPattern(patType, utf8_to_wstr(patName).c_str()));
+}
+
+double PyDbMPolygon::patternAngle() const
+{
+    return impObj()->patternAngle();
+}
+
+void PyDbMPolygon::setPatternAngle(double angle)
+{
+    PyThrowBadEs(impObj()->setPatternAngle(angle));
+}
+
+double PyDbMPolygon::patternSpace() const
+{
+    return impObj()->patternSpace();
+}
+
+void PyDbMPolygon::setPatternSpace(double space)
+{
+    PyThrowBadEs(impObj()->setPatternSpace(space));
+}
+
+double PyDbMPolygon::patternScale() const
+{
+    return impObj()->patternScale();
+}
+
+void PyDbMPolygon::setPatternScale(double scale)
+{
+    PyThrowBadEs(impObj()->setPatternScale(scale));
+}
+
+bool PyDbMPolygon::patternDouble() const
+{
+    return impObj()->patternDouble();
+}
+
+void PyDbMPolygon::setPatternDouble(bool isDouble)
+{
+    PyThrowBadEs(impObj()->setPatternDouble(isDouble));
+}
+
+int PyDbMPolygon::numPatternDefinitions() const
+{
+    return impObj()->numPatternDefinitions();
+}
+
+boost::python::tuple PyDbMPolygon::getPatternDefinitionAt(int index) const
+{
+    PyAutoLockGIL lock;
+    double angle;
+    double baseX;
+    double baseY;
+    double offsetX;
+    double offsetY;
+    AcGeDoubleArray dashes;
+    PyThrowBadEs(impObj()->getPatternDefinitionAt(index, angle, baseX, baseY, offsetX, offsetY, dashes));
+    return boost::python::make_tuple(angle, baseX, baseY, offsetX, offsetY, DoubleArrayToPyList(dashes));
+}
+
+void PyDbMPolygon::setGradientAngle(double angle)
+{
+    PyThrowBadEs(impObj()->setGradientAngle(angle));
+}
+
+void PyDbMPolygon::setGradientShift(float shiftValue)
+{
+    PyThrowBadEs(impObj()->setGradientShift(shiftValue));
+}
+
+void PyDbMPolygon::setGradientOneColorMode(Adesk::Boolean oneColorMode)
+{
+    PyThrowBadEs(impObj()->setGradientOneColorMode(oneColorMode));
+}
+
+void PyDbMPolygon::setGradientColors(const boost::python::list& colors, const boost::python::list& values)
+{
+    PyAutoLockGIL lock;
+    auto _colors = py_list_to_std_vector<AcCmColor>(colors);
+    auto _values = py_list_to_std_vector<float>(values);
+    if (_colors.size() != _values.size())
+        PyThrowBadEs(eInvalidInput);
+    return PyThrowBadEs(impObj()->setGradientColors(_colors.size(), _colors.data(), _values.data()));
+}
+
+void PyDbMPolygon::setGradient(AcDbHatch::GradientPatternType gradType, const std::string& gradName)
+{
+    PyThrowBadEs(impObj()->setGradient(gradType, utf8_to_wstr(gradName).c_str()));
+}
+
+AcCmColor PyDbMPolygon::patternColor() const
+{
+    return impObj()->patternColor();
+}
+
+void PyDbMPolygon::setPatternColor(const AcCmColor& pc)
+{
+    PyThrowBadEs(impObj()->setPatternColor(pc));
+}
+
+double PyDbMPolygon::getArea() const
+{
+    return impObj()->getArea();
+}
+
+double PyDbMPolygon::getPerimeter() const
+{
+    return impObj()->getPerimeter();
+}
+
+bool PyDbMPolygon::isBalanced() const
+{
+    return impObj()->isBalanced();
+}
+
+AcGeVector2d PyDbMPolygon::getOffsetVector() const
+{
+    return impObj()->getOffsetVector();
+}
+
+void PyDbMPolygon::appendLoopFromBoundary1(const PyDbCircle& pCircle, bool excludeCrossing, double tol)
+{
+    PyThrowBadEs(impObj()->appendLoopFromBoundary(pCircle.impObj(), excludeCrossing, tol));
+}
+
+void PyDbMPolygon::appendLoopFromBoundary2(const PyDbPolyline& pPoly, bool excludeCrossing, double tol)
+{
+    PyThrowBadEs(impObj()->appendLoopFromBoundary(pPoly.impObj(), excludeCrossing, tol));
+}
+
+void PyDbMPolygon::appendLoopFromBoundary3(const PyDb2dPolyline& pPoly, bool excludeCrossing, double tol)
+{
+    PyThrowBadEs(impObj()->appendLoopFromBoundary(pPoly.impObj(), excludeCrossing, tol));
+}
+
+int PyDbMPolygon::numMPolygonLoops() const
+{
+    return impObj()->numMPolygonLoops();
+}
+
+boost::python::tuple PyDbMPolygon::getMPolygonLoopAt(int loopIndex) const
+{
+    AcGePoint2dArray vertices;
+    AcGeDoubleArray bulges;
+    PyThrowBadEs(impObj()->getMPolygonLoopAt(loopIndex, vertices, bulges));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(Point2dArrayToPyList(vertices), DoubleArrayToPyList(bulges));
+}
+
+std::string PyDbMPolygon::className()
+{
+    return "AcDbMPolygon";
+}
+
+PyRxClass PyDbMPolygon::desc()
+{
+    return PyRxClass(AcDbMPolygon::desc(), false);
+}
+
+PyDbMPolygon PyDbMPolygon::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbMPolygon::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbMPolygon(static_cast<AcDbMPolygon*>(src.impObj()->clone()), true);
+}
+
+PyDbMPolygon PyDbMPolygon::cast(const PyRxObject& src)
+{
+    PyDbMPolygon dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+//TODO: autoload this?
+bool PyDbMPolygon::loadModule()
+{
+    if (!m_sAcDbMPolygonLoaded)
+    {
+        auto modname = std::format(_T("AcMPolygonObj{}.dbx"), acdbHostApplicationServices()->releaseMajorVersion());
+        m_sAcDbMPolygonLoaded = acrxLoadModule(modname.c_str(), false, false);
+    }
+    return m_sAcDbMPolygonLoaded;
+}
+
+AcDbMPolygon* PyDbMPolygon::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+    }
+    return static_cast<AcDbMPolygon*>(m_pyImp.get());
 }

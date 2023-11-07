@@ -1,8 +1,15 @@
 #pragma once
 #include "PyDbEntity.h"
 #include "PyDb3dSolid.h"
+#include "dbMPolygon.h"
 
 class PyDbObjectId;
+class PyDbCircle;
+class PyDbPolyline;
+class PyDb2dPolyline;
+
+//-----------------------------------------------------------------------------------------
+//PyDbHatch
 
 void makePyDbHatchWrapper();
 class PyDbHatch : public PyDbEntity
@@ -89,3 +96,67 @@ public:
     AcDbHatch* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+//-----------------------------------------------------------------------------------------
+//PyDbMPolygon
+void makePyDbMPolygonWrapper();
+class PyDbMPolygon : public PyDbEntity
+{
+public:
+    PyDbMPolygon();
+    PyDbMPolygon(AcDbMPolygon* ptr, bool autoDelete);
+    PyDbMPolygon(const PyDbObjectId& id);
+    PyDbMPolygon(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbMPolygon() override = default;
+
+    PyDbHatch               hatch();
+    double				    elevation() const;
+    void	                setElevation(double elevation);
+    AcGeVector3d		    normal() const;
+    void	                setNormal(const AcGeVector3d& normal);
+    void                    evaluateHatch1();
+    void                    evaluateHatch2(bool bUnderestimateNumLines);
+    AcDbHatch::HatchPatternType patternType() const;
+    std::string             patternName() const;
+    void                    setPattern(AcDbHatch::HatchPatternType patType, const std::string& patName);
+    double                  patternAngle() const;
+    void                    setPatternAngle(double angle);
+    double                  patternSpace() const;
+    void                    setPatternSpace(double space);
+    double                  patternScale() const;
+    void                    setPatternScale(double scale);
+    bool                    patternDouble() const;
+    void                    setPatternDouble(bool isDouble);
+    int                     numPatternDefinitions() const;
+    boost::python::tuple    getPatternDefinitionAt(int index) const;
+    void                    setGradientAngle(double angle);
+    void                    setGradientShift(float shiftValue);
+    void                    setGradientOneColorMode(Adesk::Boolean oneColorMode);
+    void	                setGradientColors(const boost::python::list& colors, const boost::python::list& values);
+    void                    setGradient(AcDbHatch::GradientPatternType gradType, const std::string& gradName);
+    AcCmColor               patternColor() const;
+    void                    setPatternColor(const AcCmColor& pc);
+    double                  getArea() const;
+    double                  getPerimeter() const;
+    bool                    isBalanced() const;
+    AcGeVector2d            getOffsetVector() const;
+    //Acad::ErrorStatus     getMPolygonTree(AcDbMPolygonNode*& loopNode) const;
+    //void                  deleteMPolygonTree(AcDbMPolygonNode* loopNode) const;
+    void                    appendLoopFromBoundary1(const PyDbCircle& pCircle,bool excludeCrossing, double tol);
+    void                    appendLoopFromBoundary2(const PyDbPolyline& pPoly, bool excludeCrossing, double tol);
+    void                    appendLoopFromBoundary3(const PyDb2dPolyline& pPoly, bool excludeCrossing, double tol);
+    int                     numMPolygonLoops() const;
+
+    boost::python::tuple    getMPolygonLoopAt(int loopIndex) const;
+
+    
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbMPolygon     cloneFrom(const PyRxObject& src);
+    static PyDbMPolygon     cast(const PyRxObject& src);
+    static bool             loadModule();
+public:
+    AcDbMPolygon* impObj(const std::source_location& src = std::source_location::current()) const;
+private:
+    bool m_loaded = false;
+    inline static bool m_sAcDbMPolygonLoaded = false;
+};

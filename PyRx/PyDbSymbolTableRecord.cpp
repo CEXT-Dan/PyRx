@@ -2212,6 +2212,8 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id)
 
 PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
 {
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     PyDbObjectId id;
     PyThrowBadEs(impObj()->appendAcDbEntity(id.m_id, ent.impObj()));
     return id;
@@ -2219,6 +2221,8 @@ PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
 
 boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python::list& entities)
 {
+    if (!impObj()->isWriteEnabled())
+        PyThrowBadEs(eNotOpenForWrite);
     PyAutoLockGIL lock;
     boost::python::list pylist;
     const auto& ents = py_list_to_std_vector<PyDbEntity>(entities);

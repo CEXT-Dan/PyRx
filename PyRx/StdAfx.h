@@ -134,6 +134,7 @@
 #pragma comment( lib , "AcPal.lib" )
 #pragma comment( lib , "acgeoment.lib" )
 #pragma comment( lib , "AcPublish_crx.lib" )
+#pragma comment( lib , "AcMPolygonObj.lib" )
 #endif
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
