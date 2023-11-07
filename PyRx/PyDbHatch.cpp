@@ -679,7 +679,7 @@ PyDbMPolygon::PyDbMPolygon()
 }
 
 PyDbMPolygon::PyDbMPolygon(AcDbMPolygon* ptr, bool autoDelete)
-    : PyDbEntity(ptr, autoDelete)
+    : m_loaded(PyDbMPolygon::loadModule()),PyDbEntity(ptr, autoDelete)
 {
 }
 
@@ -994,11 +994,13 @@ std::string PyDbMPolygon::className()
 
 PyRxClass PyDbMPolygon::desc()
 {
+    PyDbMPolygon::loadModule();
     return PyRxClass(AcDbMPolygon::desc(), false);
 }
 
 PyDbMPolygon PyDbMPolygon::cloneFrom(const PyRxObject& src)
 {
+    PyDbMPolygon::loadModule();
     if (!src.impObj()->isKindOf(AcDbMPolygon::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbMPolygon(static_cast<AcDbMPolygon*>(src.impObj()->clone()), true);
