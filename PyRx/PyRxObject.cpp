@@ -112,6 +112,8 @@ void PyRxObject::forceKeepAlive(bool flag)
     auto del_p = std::get_deleter<PyRxObjectDeleter>(m_pyImp);
     if (del_p != nullptr)
         del_p->m_forceKeepAlive = flag;
+    else
+        PyThrowBadEs(Acad::eNotApplicable);
 }
 
 void PyRxObject::dispose()
