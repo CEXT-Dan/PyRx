@@ -145,10 +145,24 @@ public:
     void                    appendLoopFromBoundary2(const PyDbPolyline& pPoly, bool excludeCrossing, double tol);
     void                    appendLoopFromBoundary3(const PyDb2dPolyline& pPoly, bool excludeCrossing, double tol);
     int                     numMPolygonLoops() const;
-
     boost::python::tuple    getMPolygonLoopAt(int loopIndex) const;
-
-    
+    void                    insertMPolygonLoopAt(int loopIndex, const boost::python::list& vertices, const boost::python::list& bulges,bool excludeCrossing, double tol);
+    void                    appendMPolygonLoop(const boost::python::list& vertices, const boost::python::list& bulges, bool excludeCrossing, double tol);
+    void                    removeMPolygonLoopAt(int loopIndex);
+    void                    balanceTree();
+    void                    balanceDisplay();
+    AcDbMPolygon::loopDir   getLoopDirection(int lindex) const;
+    void                    setLoopDirection(int lindex, AcDbMPolygon::loopDir dir);
+    int                     getLoopAtGsMarker(int gsMark) const;
+    boost::python::list     getChildLoops(int curLoop) const;
+    int                     getParentLoop(int curLoop) const;
+    int                     getClosestLoopTo(const AcGePoint3d& worldPt) const;
+    boost::python::list     isPointInsideMPolygon(const AcGePoint3d& worldPt, double tol) const;
+    bool                    isPointOnLoopBoundary(const AcGePoint3d& worldPt, int loop, double tol) const;
+    bool                    loopCrossesItself(const boost::python::list& vertexPts, const boost::python::list& vertexBulges, double tol) const;
+    bool                    selfCrosses(const boost::python::list& vertexPts, const boost::python::list& vertexBulges, double tol) const;
+    bool                    includesTouchingLoops(double tol) const;
+    boost::python::list     createLoopsFromBoundaries(const AcDbObjectIdArray& ids, bool excludeCrossing, double tol);
     static std::string      className();
     static PyRxClass        desc();
     static PyDbMPolygon     cloneFrom(const PyRxObject& src);

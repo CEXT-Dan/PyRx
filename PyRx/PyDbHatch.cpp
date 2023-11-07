@@ -605,6 +605,59 @@ void makePyDbMPolygonWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("hatch", &PyDbMPolygon::hatch)
+        .def("elevation", &PyDbMPolygon::elevation)
+        .def("setElevation", &PyDbMPolygon::setElevation)
+        .def("normal", &PyDbMPolygon::normal)
+        .def("setNormal", &PyDbMPolygon::setNormal)
+        .def("evaluateHatch1", &PyDbMPolygon::evaluateHatch1)
+        .def("evaluateHatch2", &PyDbMPolygon::evaluateHatch2)
+        .def("patternType", &PyDbMPolygon::patternType)
+        .def("patternName", &PyDbMPolygon::patternName)
+        .def("setPattern", &PyDbMPolygon::setPattern)
+        .def("patternAngle", &PyDbMPolygon::patternAngle)
+        .def("setPatternAngle", &PyDbMPolygon::setPatternAngle)
+        .def("patternSpace", &PyDbMPolygon::patternSpace)
+        .def("setPatternSpace", &PyDbMPolygon::setPatternSpace)
+        .def("patternScale", &PyDbMPolygon::patternScale)
+        .def("setPatternScale", &PyDbMPolygon::setPatternScale)
+        .def("patternDouble", &PyDbMPolygon::patternDouble)
+        .def("setPatternDouble", &PyDbMPolygon::setPatternDouble)
+        .def("numPatternDefinitions", &PyDbMPolygon::numPatternDefinitions)
+        .def("getPatternDefinitionAt", &PyDbMPolygon::getPatternDefinitionAt)
+        .def("setGradientAngle", &PyDbMPolygon::setGradientAngle)
+        .def("setGradientShift", &PyDbMPolygon::setGradientShift)
+        .def("setGradientOneColorMode", &PyDbMPolygon::setGradientOneColorMode)
+        .def("setGradientColors", &PyDbMPolygon::setGradientColors)
+        .def("setGradient", &PyDbMPolygon::setGradient)
+        .def("patternColor", &PyDbMPolygon::patternColor)
+        .def("setPatternColor", &PyDbMPolygon::setPatternColor)
+        .def("getArea", &PyDbMPolygon::getArea)
+        .def("getPerimeter", &PyDbMPolygon::getPerimeter)
+        .def("isBalanced", &PyDbMPolygon::isBalanced)
+        .def("getOffsetVector", &PyDbMPolygon::getOffsetVector)
+        .def("appendLoopFromBoundary", &PyDbMPolygon::appendLoopFromBoundary1)
+        .def("appendLoopFromBoundary", &PyDbMPolygon::appendLoopFromBoundary2)
+        .def("appendLoopFromBoundary", &PyDbMPolygon::appendLoopFromBoundary3)
+        .def("numMPolygonLoops", &PyDbMPolygon::numMPolygonLoops)
+        .def("getMPolygonLoopAt", &PyDbMPolygon::getMPolygonLoopAt)
+        .def("insertMPolygonLoopAt", &PyDbMPolygon::insertMPolygonLoopAt)
+        .def("appendMPolygonLoop", &PyDbMPolygon::appendMPolygonLoop)
+        .def("removeMPolygonLoopAt", &PyDbMPolygon::removeMPolygonLoopAt)
+        .def("balanceTree", &PyDbMPolygon::balanceTree)
+        .def("balanceDisplay", &PyDbMPolygon::balanceDisplay)
+        .def("getLoopDirection", &PyDbMPolygon::getLoopDirection)
+        .def("setLoopDirection", &PyDbMPolygon::setLoopDirection)
+        .def("getLoopAtGsMarker", &PyDbMPolygon::getLoopAtGsMarker)
+        .def("getChildLoops", &PyDbMPolygon::getChildLoops)
+        .def("getParentLoop", &PyDbMPolygon::getParentLoop)
+        .def("getClosestLoopTo", &PyDbMPolygon::getClosestLoopTo)
+        .def("isPointInsideMPolygon", &PyDbMPolygon::isPointInsideMPolygon)
+        .def("isPointOnLoopBoundary", &PyDbMPolygon::isPointOnLoopBoundary)
+        .def("loopCrossesItself", &PyDbMPolygon::loopCrossesItself)
+        .def("selfCrosses", &PyDbMPolygon::selfCrosses)
+        .def("includesTouchingLoops", &PyDbMPolygon::includesTouchingLoops)
+        .def("createLoopsFromBoundaries", &PyDbMPolygon::createLoopsFromBoundaries)
         .def("className", &PyDbMPolygon::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbMPolygon::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbMPolygon::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -837,6 +890,101 @@ boost::python::tuple PyDbMPolygon::getMPolygonLoopAt(int loopIndex) const
     PyThrowBadEs(impObj()->getMPolygonLoopAt(loopIndex, vertices, bulges));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(Point2dArrayToPyList(vertices), DoubleArrayToPyList(bulges));
+}
+
+void PyDbMPolygon::insertMPolygonLoopAt(int loopIndex, const boost::python::list& vertices, const boost::python::list& bulges, bool excludeCrossing, double tol)
+{
+    PyThrowBadEs(impObj()->insertMPolygonLoopAt(loopIndex, PyListToPoint2dArray(vertices), PyListToDoubleArray(bulges), excludeCrossing, tol));
+}
+
+void PyDbMPolygon::appendMPolygonLoop(const boost::python::list& vertices, const boost::python::list& bulges, bool excludeCrossing, double tol)
+{
+    PyThrowBadEs(impObj()->appendMPolygonLoop(PyListToPoint2dArray(vertices), PyListToDoubleArray(bulges), excludeCrossing, tol));
+}
+
+void PyDbMPolygon::removeMPolygonLoopAt(int loopIndex)
+{
+    PyThrowBadEs(impObj()->removeMPolygonLoopAt(loopIndex));
+}
+
+void PyDbMPolygon::balanceTree()
+{
+    PyThrowBadEs(impObj()->balanceTree());
+}
+
+void PyDbMPolygon::balanceDisplay()
+{
+    PyThrowBadEs(impObj()->balanceDisplay());
+}
+
+AcDbMPolygon::loopDir PyDbMPolygon::getLoopDirection(int lindex) const
+{
+    AcDbMPolygon::loopDir dir = AcDbMPolygon::kExterior;
+    PyThrowBadEs(impObj()->getLoopDirection(lindex, dir));
+    return dir;
+}
+
+void PyDbMPolygon::setLoopDirection(int lindex, AcDbMPolygon::loopDir dir)
+{
+    PyThrowBadEs(impObj()->setLoopDirection(lindex, dir));
+}
+
+int PyDbMPolygon::getLoopAtGsMarker(int gsMark) const
+{
+    int loop = -1;
+    PyThrowBadEs(impObj()->getLoopAtGsMarker(gsMark, loop));
+    return loop;
+}
+
+boost::python::list PyDbMPolygon::getChildLoops(int curLoop) const
+{
+    AcGeIntArray selectedLoopIndexes;
+    impObj()->getChildLoops(curLoop, selectedLoopIndexes);
+    return IntArrayToPyList(selectedLoopIndexes);
+}
+
+int PyDbMPolygon::getParentLoop(int curLoop) const
+{
+    return impObj()->getParentLoop(curLoop);
+}
+
+int PyDbMPolygon::getClosestLoopTo(const AcGePoint3d& worldPt) const
+{
+    return impObj()->getClosestLoopTo(worldPt);
+}
+
+boost::python::list PyDbMPolygon::isPointInsideMPolygon(const AcGePoint3d& worldPt, double tol) const
+{
+    AcGeIntArray loopsArray;
+    impObj()->isPointInsideMPolygon(worldPt, loopsArray,tol);
+    return IntArrayToPyList(loopsArray);
+}
+
+bool PyDbMPolygon::isPointOnLoopBoundary(const AcGePoint3d& worldPt, int loop, double tol) const
+{
+    return impObj()->isPointOnLoopBoundary(worldPt, loop, tol);
+}
+
+bool PyDbMPolygon::loopCrossesItself(const boost::python::list& vertexPts, const boost::python::list& vertexBulges, double tol) const
+{
+    return impObj()->loopCrossesItself(PyListToPoint2dArray(vertexPts),PyListToDoubleArray(vertexBulges), tol);
+}
+
+bool PyDbMPolygon::selfCrosses(const boost::python::list& vertexPts, const boost::python::list& vertexBulges, double tol) const
+{
+    return impObj()->selfCrosses(PyListToPoint2dArray(vertexPts), PyListToDoubleArray(vertexBulges), tol);
+}
+
+bool PyDbMPolygon::includesTouchingLoops(double tol) const
+{
+    return impObj()->includesTouchingLoops(tol);
+}
+
+boost::python::list PyDbMPolygon::createLoopsFromBoundaries(const AcDbObjectIdArray& ids, bool excludeCrossing, double tol)
+{
+    AcDbIntArray rejectedObjs;
+    PyThrowBadEs(impObj()->createLoopsFromBoundaries(ids, rejectedObjs, excludeCrossing, tol));
+    return IntArrayToPyList(rejectedObjs);
 }
 
 std::string PyDbMPolygon::className()
