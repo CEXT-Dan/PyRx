@@ -40392,17 +40392,11 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def balanceDisplay (self, *args, **kwargs)-> None :
-      '''balanceDisplay( (MPolygon)arg1) -> None :
-
-    C++ signature :
-        void balanceDisplay(class PyDbMPolygon {lvalue})'''
+    def balanceDisplay (self: MPolygon)-> None :
+      '''                             '''
     ...
-    def balanceTree (self, *args, **kwargs)-> None :
-      '''balanceTree( (MPolygon)arg1) -> None :
-
-    C++ signature :
-        void balanceTree(class PyDbMPolygon {lvalue})'''
+    def balanceTree (self: MPolygon)-> None :
+      '''                             '''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
@@ -40476,11 +40470,8 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevation (self, *args, **kwargs)-> float :
-      '''elevation( (MPolygon)arg1) -> float :
-
-    C++ signature :
-        double elevation(class PyDbMPolygon {lvalue})'''
+    def elevation (self: MPolygon)-> float :
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
@@ -40494,11 +40485,8 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     C++ signature :
         void evaluateHatch1(class PyDbMPolygon {lvalue})'''
     ...
-    def evaluateHatch2 (self, *args, **kwargs)-> None :
-      '''evaluateHatch2( (MPolygon)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void evaluateHatch2(class PyDbMPolygon {lvalue},bool)'''
+    def evaluateHatch2 (self: MPolygon,val : bool=False)-> None :
+      '''                             '''
     ...
     def explode (self: Entity)-> list :
       '''                             '''
@@ -40506,23 +40494,14 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getArea (self, *args, **kwargs)-> float :
-      '''getArea( (MPolygon)arg1) -> float :
-
-    C++ signature :
-        double getArea(class PyDbMPolygon {lvalue})'''
+    def getArea (self: MPolygon)-> float :
+      '''                             '''
     ...
-    def getChildLoops (self, *args, **kwargs)-> list :
-      '''getChildLoops( (MPolygon)arg1, (int)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getChildLoops(class PyDbMPolygon {lvalue},int)'''
+    def getChildLoops (self: MPolygon,val : int)-> list :
+      '''                             '''
     ...
-    def getClosestLoopTo (self, *args, **kwargs)-> int :
-      '''getClosestLoopTo( (MPolygon)arg1, (Point3d)arg2) -> int :
-
-    C++ signature :
-        int getClosestLoopTo(class PyDbMPolygon {lvalue},class AcGePoint3d)'''
+    def getClosestLoopTo (self: MPolygon,val : PyGe.Point3d)-> int :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -40548,47 +40527,26 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getLoopAtGsMarker (self, *args, **kwargs)-> int :
-      '''getLoopAtGsMarker( (MPolygon)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int getLoopAtGsMarker(class PyDbMPolygon {lvalue},int)'''
+    def getLoopAtGsMarker (self: MPolygon,val : int)-> int :
+      '''                             '''
     ...
-    def getLoopDirection (self, *args, **kwargs)-> PyDb.MPolygonloopDir :
-      '''getLoopDirection( (MPolygon)arg1, (int)arg2) -> MPolygonloopDir :
-
-    C++ signature :
-        enum AcDbMPolygon::loopDir getLoopDirection(class PyDbMPolygon {lvalue},int)'''
+    def getLoopDirection (self: MPolygon,val : int)-> PyDb.MPolygonloopDir :
+      '''                             '''
     ...
-    def getMPolygonLoopAt (self, *args, **kwargs)-> tuple :
-      '''getMPolygonLoopAt( (MPolygon)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getMPolygonLoopAt(class PyDbMPolygon {lvalue},int)'''
+    def getMPolygonLoopAt (self: MPolygon,val : int)-> tuple :
+      '''                             '''
     ...
-    def getOffsetVector (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''getOffsetVector( (MPolygon)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d getOffsetVector(class PyDbMPolygon {lvalue})'''
+    def getOffsetVector (self: MPolygon)-> PyGe.Vector2d :
+      '''                             '''
     ...
-    def getParentLoop (self, *args, **kwargs)-> int :
-      '''getParentLoop( (MPolygon)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        int getParentLoop(class PyDbMPolygon {lvalue},int)'''
+    def getParentLoop (self: MPolygon,val : int)-> int :
+      '''                             '''
     ...
-    def getPatternDefinitionAt (self, *args, **kwargs)-> tuple :
-      '''getPatternDefinitionAt( (MPolygon)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPatternDefinitionAt(class PyDbMPolygon {lvalue},int)'''
+    def getPatternDefinitionAt (self: MPolygon,val : int)-> tuple :
+      '''                             '''
     ...
-    def getPerimeter (self, *args, **kwargs)-> float :
-      '''getPerimeter( (MPolygon)arg1) -> float :
-
-    C++ signature :
-        double getPerimeter(class PyDbMPolygon {lvalue})'''
+    def getPerimeter (self: MPolygon)-> float :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
@@ -40614,11 +40572,8 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def hatch (self, *args, **kwargs)-> PyDb.Hatch :
-      '''hatch( (MPolygon)arg1) -> Hatch :
-
-    C++ signature :
-        class PyDbHatch hatch(class PyDbMPolygon {lvalue})'''
+    def hatch (self: MPolygon)-> PyDb.Hatch :
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
@@ -40626,11 +40581,8 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def includesTouchingLoops (self, *args, **kwargs)-> bool :
-      '''includesTouchingLoops( (MPolygon)arg1, (float)arg2) -> bool :
-
-    C++ signature :
-        bool includesTouchingLoops(class PyDbMPolygon {lvalue},double)'''
+    def includesTouchingLoops (self: MPolygon,val : real)-> bool :
+      '''                             '''
     ...
     def insertMPolygonLoopAt (self, *args, **kwargs)-> None :
       '''insertMPolygonLoopAt( (MPolygon)arg1, (int)arg2, (list)arg3, (list)arg4, (bool)arg5, (float)arg6) -> None :
@@ -40668,11 +40620,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isBalanced (self, *args, **kwargs)-> bool :
-      '''isBalanced( (MPolygon)arg1) -> bool :
-
-    C++ signature :
-        bool isBalanced(class PyDbMPolygon {lvalue})'''
+    def isBalanced (self: MPolygon)-> bool :
+      '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
@@ -40713,17 +40662,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isPlanar (self: Entity)-> bool :
       '''                             '''
     ...
-    def isPointInsideMPolygon (self, *args, **kwargs)-> list :
-      '''isPointInsideMPolygon( (MPolygon)arg1, (Point3d)arg2, (float)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list isPointInsideMPolygon(class PyDbMPolygon {lvalue},class AcGePoint3d,double)'''
+    def isPointInsideMPolygon (self: MPolygon,val : PyGe.Point3d,tol : real)-> list :
+      '''                             '''
     ...
-    def isPointOnLoopBoundary (self, *args, **kwargs)-> bool :
-      '''isPointOnLoopBoundary( (MPolygon)arg1, (Point3d)arg2, (int)arg3, (float)arg4) -> bool :
-
-    C++ signature :
-        bool isPointOnLoopBoundary(class PyDbMPolygon {lvalue},class AcGePoint3d,int,double)'''
+    def isPointOnLoopBoundary (self: MPolygon,val : PyGe.Point3d,loop : int,tol : real)-> bool :
+      '''                             '''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -40782,23 +40725,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (MPolygon)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbMPolygon {lvalue})'''
+    def normal (self: MPolygon)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def numMPolygonLoops (self, *args, **kwargs)-> int :
-      '''numMPolygonLoops( (MPolygon)arg1) -> int :
-
-    C++ signature :
-        int numMPolygonLoops(class PyDbMPolygon {lvalue})'''
+    def numMPolygonLoops (self: MPolygon)-> int :
+      '''                             '''
     ...
-    def numPatternDefinitions (self, *args, **kwargs)-> int :
-      '''numPatternDefinitions( (MPolygon)arg1) -> int :
-
-    C++ signature :
-        int numPatternDefinitions(class PyDbMPolygon {lvalue})'''
+    def numPatternDefinitions (self: MPolygon)-> int :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -40806,47 +40740,26 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def patternAngle (self, *args, **kwargs)-> float :
-      '''patternAngle( (MPolygon)arg1) -> float :
-
-    C++ signature :
-        double patternAngle(class PyDbMPolygon {lvalue})'''
+    def patternAngle (self: MPolygon)-> float :
+      '''                             '''
     ...
-    def patternColor (self, *args, **kwargs)-> PyDb.Color :
-      '''patternColor( (MPolygon)arg1) -> Color :
-
-    C++ signature :
-        class AcCmColor patternColor(class PyDbMPolygon {lvalue})'''
+    def patternColor (self: MPolygon)-> PyDb.Color :
+      '''                             '''
     ...
-    def patternDouble (self, *args, **kwargs)-> bool :
-      '''patternDouble( (MPolygon)arg1) -> bool :
-
-    C++ signature :
-        bool patternDouble(class PyDbMPolygon {lvalue})'''
+    def patternDouble (self: MPolygon)-> bool :
+      '''                             '''
     ...
-    def patternName (self, *args, **kwargs)-> str :
-      '''patternName( (MPolygon)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > patternName(class PyDbMPolygon {lvalue})'''
+    def patternName (self: MPolygon)-> str :
+      '''                             '''
     ...
-    def patternScale (self, *args, **kwargs)-> float :
-      '''patternScale( (MPolygon)arg1) -> float :
-
-    C++ signature :
-        double patternScale(class PyDbMPolygon {lvalue})'''
+    def patternScale (self: MPolygon)-> float :
+      '''                             '''
     ...
-    def patternSpace (self, *args, **kwargs)-> float :
-      '''patternSpace( (MPolygon)arg1) -> float :
-
-    C++ signature :
-        double patternSpace(class PyDbMPolygon {lvalue})'''
+    def patternSpace (self: MPolygon)-> float :
+      '''                             '''
     ...
-    def patternType (self, *args, **kwargs)-> PyDb.HatchPatternType :
-      '''patternType( (MPolygon)arg1) -> HatchPatternType :
-
-    C++ signature :
-        enum AcDbHatch::HatchPatternType patternType(class PyDbMPolygon {lvalue})'''
+    def patternType (self: MPolygon)-> PyDb.HatchPatternType :
+      '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
       '''                             '''
@@ -40866,11 +40779,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removeMPolygonLoopAt (self, *args, **kwargs)-> None :
-      '''removeMPolygonLoopAt( (MPolygon)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void removeMPolygonLoopAt(class PyDbMPolygon {lvalue},int)'''
+    def removeMPolygonLoopAt (self: MPolygon,val : int)-> None :
+      '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -40905,11 +40815,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setElevation (self, *args, **kwargs)-> None :
-      '''setElevation( (MPolygon)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setElevation(class PyDbMPolygon {lvalue},double)'''
+    def setElevation (self: MPolygon,val : real)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
@@ -40920,11 +40827,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setGradient(class PyDbMPolygon {lvalue},enum AcDbHatch::GradientPatternType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setGradientAngle (self, *args, **kwargs)-> None :
-      '''setGradientAngle( (MPolygon)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setGradientAngle(class PyDbMPolygon {lvalue},double)'''
+    def setGradientAngle (self: MPolygon,val : real)-> None :
+      '''                             '''
     ...
     def setGradientColors (self, *args, **kwargs)-> None :
       '''setGradientColors( (MPolygon)arg1, (list)arg2, (list)arg3) -> None :
@@ -40932,17 +40836,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setGradientColors(class PyDbMPolygon {lvalue},class boost::python::list,class boost::python::list)'''
     ...
-    def setGradientOneColorMode (self, *args, **kwargs)-> None :
-      '''setGradientOneColorMode( (MPolygon)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGradientOneColorMode(class PyDbMPolygon {lvalue},bool)'''
+    def setGradientOneColorMode (self: MPolygon,val : bool)-> None :
+      '''                             '''
     ...
-    def setGradientShift (self, *args, **kwargs)-> None :
-      '''setGradientShift( (MPolygon)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setGradientShift(class PyDbMPolygon {lvalue},float)'''
+    def setGradientShift (self: MPolygon,val : real)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -40965,11 +40863,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (MPolygon)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbMPolygon {lvalue},class AcGeVector3d)'''
+    def setNormal (self: MPolygon,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -40980,11 +40875,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setPattern(class PyDbMPolygon {lvalue},enum AcDbHatch::HatchPatternType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPatternAngle (self, *args, **kwargs)-> None :
-      '''setPatternAngle( (MPolygon)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPatternAngle(class PyDbMPolygon {lvalue},double)'''
+    def setPatternAngle (self: MPolygon,val : real)-> None :
+      '''                             '''
     ...
     def setPatternColor (self, *args, **kwargs)-> None :
       '''setPatternColor( (MPolygon)arg1, (Color)arg2) -> None :
@@ -40992,23 +40884,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setPatternColor(class PyDbMPolygon {lvalue},class AcCmColor)'''
     ...
-    def setPatternDouble (self, *args, **kwargs)-> None :
-      '''setPatternDouble( (MPolygon)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPatternDouble(class PyDbMPolygon {lvalue},bool)'''
+    def setPatternDouble (self: MPolygon,val : real)-> None :
+      '''                             '''
     ...
-    def setPatternScale (self, *args, **kwargs)-> None :
-      '''setPatternScale( (MPolygon)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPatternScale(class PyDbMPolygon {lvalue},double)'''
+    def setPatternScale (self: MPolygon,val : real)-> None :
+      '''                             '''
     ...
-    def setPatternSpace (self, *args, **kwargs)-> None :
-      '''setPatternSpace( (MPolygon)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPatternSpace(class PyDbMPolygon {lvalue},double)'''
+    def setPatternSpace (self: MPolygon,val : real)-> None :
+      '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
       '''setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> None :
