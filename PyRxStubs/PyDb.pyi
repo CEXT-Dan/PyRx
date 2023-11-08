@@ -66911,6 +66911,12 @@ getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     C++ signature :
         class boost::python::list getCellExtents(class PyDbTable {lvalue},int,int,bool)'''
     ...
+    def getCellOverride (self, *args, **kwargs)-> PyDb.CellProperty :
+      '''getCellOverride( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> CellProperty :
+
+    C++ signature :
+        enum AcDb::CellProperty getCellOverride(class PyDbTable {lvalue},int,int,int)'''
+    ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
@@ -66960,6 +66966,12 @@ getDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> tuple :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGridOverride (self, *args, **kwargs)-> PyDb.GridProperty :
+      '''getGridOverride( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> GridProperty :
+
+    C++ signature :
+        enum AcDb::GridProperty getGridOverride(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
+    ...
     def getGridProperty (self, *args, **kwargs)-> object :
       '''getGridProperty( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> object :
 
@@ -66997,17 +67009,6 @@ getIterator( (Table)arg1, (CellRange)arg2 [, (TableIteratorOption)arg3]) -> list
     C++ signature :
         struct AcCellRange getMergeRange(class PyDbTable {lvalue},int,int)'''
     ...
-    def getOverride (self, *args, **kwargs)-> PyDb.CellProperty :
-      '''getOverride( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> CellProperty :
-
-    C++ signature :
-        enum AcDb::CellProperty getOverride(class PyDbTable {lvalue},int,int,int)
-
-getOverride( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> GridProperty :
-
-    C++ signature :
-        enum AcDb::GridProperty getOverride(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
-    ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
     ...
@@ -67032,11 +67033,6 @@ getOverride( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> GridPrope
     C++ signature :
         class AcCmColor gridColor(class PyDbTable {lvalue},enum AcDb::GridLineType,enum AcDb::RowType)
 
-gridColor( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4) -> Color :
-
-    C++ signature :
-        class AcCmColor gridColor(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask)
-
 gridColor( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Color :
 
     C++ signature :
@@ -67047,6 +67043,24 @@ gridColor( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Color :
 
     C++ signature :
         double gridDoubleLineSpacing(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
+    ...
+    def gridEdgeColor (self, *args, **kwargs)-> PyDb.Color :
+      '''gridEdgeColor( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4) -> Color :
+
+    C++ signature :
+        class AcCmColor gridEdgeColor(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask)'''
+    ...
+    def gridEdgeLineWeight (self, *args, **kwargs)-> PyDb.LineWeight :
+      '''gridEdgeLineWeight( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4) -> LineWeight :
+
+    C++ signature :
+        enum AcDb::LineWeight gridEdgeLineWeight(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask)'''
+    ...
+    def gridEdgeVisibility (self, *args, **kwargs)-> PyDb.Visibility :
+      '''gridEdgeVisibility( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4) -> Visibility :
+
+    C++ signature :
+        enum AcDb::Visibility gridEdgeVisibility(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask)'''
     ...
     def gridLineStyle (self, *args, **kwargs)-> PyDb.GridLineStyle :
       '''gridLineStyle( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> GridLineStyle :
@@ -67059,11 +67073,6 @@ gridColor( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Color :
 
     C++ signature :
         enum AcDb::LineWeight gridLineWeight(class PyDbTable {lvalue},enum AcDb::GridLineType,enum AcDb::RowType)
-
-gridLineWeight( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4) -> LineWeight :
-
-    C++ signature :
-        enum AcDb::LineWeight gridLineWeight(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask)
 
 gridLineWeight( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> LineWeight :
 
@@ -67081,11 +67090,6 @@ gridLineWeight( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> LineWe
 
     C++ signature :
         enum AcDb::Visibility gridVisibility(class PyDbTable {lvalue},enum AcDb::GridLineType,enum AcDb::RowType)
-
-gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4) -> Visibility :
-
-    C++ signature :
-        enum AcDb::Visibility gridVisibility(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask)
 
 gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibility :
 
@@ -67646,6 +67650,12 @@ setBlockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)a
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
+    def setCellOverride (self, *args, **kwargs)-> None :
+      '''setCellOverride( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (CellProperty)arg5) -> None :
+
+    C++ signature :
+        void setCellOverride(class PyDbTable {lvalue},int,int,int,enum AcDb::CellProperty)'''
+    ...
     def setCellState (self, *args, **kwargs)-> None :
       '''setCellState( (Table)arg1, (int)arg2, (int)arg3, (CellState)arg4) -> None :
 
@@ -67788,11 +67798,6 @@ setFieldId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5, (objec
     C++ signature :
         void setGridColor(class PyDbTable {lvalue},class AcCmColor,int,int)
 
-setGridColor( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4, (Color)arg5) -> None :
-
-    C++ signature :
-        void setGridColor(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask,class AcCmColor)
-
 setGridColor( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (Color)arg5) -> None :
 
     C++ signature :
@@ -67803,6 +67808,24 @@ setGridColor( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (Color)arg5
 
     C++ signature :
         void setGridDoubleLineSpacing(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,double)'''
+    ...
+    def setGridEdgeColor (self, *args, **kwargs)-> None :
+      '''setGridEdgeColor( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4, (Color)arg5) -> None :
+
+    C++ signature :
+        void setGridEdgeColor(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask,class AcCmColor)'''
+    ...
+    def setGridEdgeLineWeight (self, *args, **kwargs)-> None :
+      '''setGridEdgeLineWeight( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4, (LineWeight)arg5) -> None :
+
+    C++ signature :
+        void setGridEdgeLineWeight(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask,enum AcDb::LineWeight)'''
+    ...
+    def setGridEdgeVisibility (self, *args, **kwargs)-> None :
+      '''setGridEdgeVisibility( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4, (Visibility)arg5) -> None :
+
+    C++ signature :
+        void setGridEdgeVisibility(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask,enum AcDb::Visibility)'''
     ...
     def setGridLineStyle (self, *args, **kwargs)-> None :
       '''setGridLineStyle( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (GridLineStyle)arg5) -> None :
@@ -67816,11 +67839,6 @@ setGridColor( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (Color)arg5
     C++ signature :
         void setGridLineWeight(class PyDbTable {lvalue},enum AcDb::LineWeight,int,int)
 
-setGridLineWeight( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4, (LineWeight)arg5) -> None :
-
-    C++ signature :
-        void setGridLineWeight(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask,enum AcDb::LineWeight)
-
 setGridLineWeight( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (LineWeight)arg5) -> None :
 
     C++ signature :
@@ -67831,6 +67849,12 @@ setGridLineWeight( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (LineW
 
     C++ signature :
         void setGridLinetype(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,class PyDbObjectId)'''
+    ...
+    def setGridOverride (self, *args, **kwargs)-> None :
+      '''setGridOverride( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (GridProperty)arg5) -> None :
+
+    C++ signature :
+        void setGridOverride(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,enum AcDb::GridProperty)'''
     ...
     def setGridProperty (self, *args, **kwargs)-> None :
       '''setGridProperty( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (object)arg5) -> None :
@@ -67847,12 +67871,7 @@ setGridProperty( (Table)arg1, (CellRange)arg2, (GridLineType)arg3, (object)arg4)
       '''setGridVisibility( (Table)arg1, (Visibility)arg2, (int)arg3, (int)arg4) -> None :
 
     C++ signature :
-        void setGridVisibility(class PyDbTable {lvalue},enum AcDb::Visibility,int,int)
-
-setGridVisibility( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4, (Visibility)arg5) -> None :
-
-    C++ signature :
-        void setGridVisibility(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask,enum AcDb::Visibility)'''
+        void setGridVisibility(class PyDbTable {lvalue},enum AcDb::Visibility,int,int)'''
     ...
     def setGridVisibility3 (self, *args, **kwargs)-> None :
       '''setGridVisibility3( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (Visibility)arg5) -> None :
@@ -67898,17 +67917,6 @@ setGridVisibility( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4, (Visib
 
     C++ signature :
         void setNormal(class PyDbTable {lvalue},class AcGeVector3d)'''
-    ...
-    def setOverride (self, *args, **kwargs)-> None :
-      '''setOverride( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (CellProperty)arg5) -> None :
-
-    C++ signature :
-        void setOverride(class PyDbTable {lvalue},int,int,int,enum AcDb::CellProperty)
-
-setOverride( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (GridProperty)arg5) -> None :
-
-    C++ signature :
-        void setOverride(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,enum AcDb::GridProperty)'''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -68139,20 +68147,21 @@ textHeight( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbTable {lvalue},int,int)
 
-textString( (Table)arg1, (int)arg2, (int)arg3, (FormatOption)arg4) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbTable {lvalue},int,int,enum AcValue::FormatOption)
-
 textString( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbTable {lvalue},int,int,int)
-
-textString( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (FormatOption)arg5) -> str :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbTable {lvalue},int,int,int)'''
+    ...
+    def textStringFmt (self, *args, **kwargs)-> str :
+      '''textStringFmt( (Table)arg1, (int)arg2, (int)arg3, (FormatOption)arg4) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbTable {lvalue},int,int,int,enum AcValue::FormatOption)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textStringFmt(class PyDbTable {lvalue},int,int,enum AcValue::FormatOption)
+
+textStringFmt( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (FormatOption)arg5) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textStringFmt(class PyDbTable {lvalue},int,int,int,enum AcValue::FormatOption)'''
     ...
     def textStyle (self, *args, **kwargs)-> PyDb.ObjectId :
       '''textStyle( (Table)arg1, (RowType)arg2) -> ObjectId :
