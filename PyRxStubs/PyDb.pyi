@@ -7975,7 +7975,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Cell:
-    def __init__ (self: CellRange,row : int=-1,column : int=-1)-> None :
+    def __init__ (self: Cell,row : int=-1,column : int=-1)-> None :
       '''                             '''
     ...
     def column (self, *args, **kwargs)-> None :
