@@ -199,9 +199,9 @@ public:
     void                setContentLayout(int row, int col, AcDb::CellContentLayout nLayout);
     bool                isMergeAllEnabled(int nRow, int nCol) const;
     void                enableMergeAll(int nRow, int nCol, bool bEnable);
-    AcDb::CellProperty  getOverride(int nRow, int nCol, int nContent) const;
+    AcDb::CellProperty  getCellOverride(int nRow, int nCol, int nContent) const;
     AcDb::GridProperty  getGridOverride(int nRow, int nCol, AcDb::GridLineType nGridLineType) const;
-    void                setOverride(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride);
+    void                setCellOverride(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride);
     void                setGridOverride(int nRow, int nCol, AcDb::GridLineType nGridLineType, AcDb::GridProperty nOverride);
     void                removeAllOverrides(int nRow, int nCol);
     AcDb::GridLineStyle gridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineType) const;
