@@ -22,6 +22,13 @@ def create_dbPoint():
 
 
 class TestDbEntity(unittest.TestCase):
+    
+    def __init__(self, *args, **kwargs):
+        super(TestDbEntity, self).__init__(*args, **kwargs)
+        # open and keep open for all 06457 tests
+        self.db06457 = Db.Database(False, True)
+        self.db06457.readDwgFile("./testmedia/06457.dwg")
+        self.db06457.closeInput(True)
 
     def test_dbpointopenctor1(self):
         id = create_dbPoint()
@@ -280,7 +287,27 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(len(pline.toPoint3dList()),5)
         self.assertEqual(len(pline.toList()),5)
         model.appendAcDbEntity(pline)
+        
+    def test_table_iterator1(self):
+        objHnd = Db.Handle("2c8cc9")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        table = Db.Table(objId)
+        iter = table.getIterator()
+        self.assertEqual(len(iter),1044)
 
+    def test_table_getstring(self):
+        objHnd = Db.Handle("2c8cc9")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        table = Db.Table(objId)
+        self.assertEqual(table.textString(4,0), '{\\fMS Sans Serif|b0|i0|c0;R380')
+        self.assertEqual(table.textString(4,0,0), '{\\fMS Sans Serif|b0|i0|c0;R380')
+        opt = Db.FormatOption.kIgnoreMtextFormat
+        self.assertEqual(table.textStringFmt(4,0,opt), "R380")
+        self.assertEqual(table.textStringFmt(4,0,0,opt), "R380")
+        
+        
 def PyRxCmd_pyentity():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbEntity)
