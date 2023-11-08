@@ -818,7 +818,7 @@ void PyDbTable::setFormat(int row, int col, const std::string& pszFormat)
 
 std::string PyDbTable::textString(int row, int col) const
 {
-    return wstr_to_utf8(impObj()->textStringConst(row, col));
+    return wstr_to_utf8(impObj()->textString(row, col));
 }
 
 std::string PyDbTable::textString2(int row, int col, int nContent) const
