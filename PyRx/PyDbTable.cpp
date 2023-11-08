@@ -186,8 +186,11 @@ void makePyDbTableWrapper()
         .def("setDataType", &PyDbTable::setDataType3)
         .def("setFormat", &PyDbTable::setFormat)
         .def("textString", &PyDbTable::textString)
+        .def("textString", &PyDbTable::textString3)
         .def("textStringFmt", &PyDbTable::textStringFmt1)
+        .def("textStringFmt", &PyDbTable::textStringFmt3)
         .def("setTextString", &PyDbTable::setTextString)
+        .def("setTextString", &PyDbTable::setTextString3)
         .def("fieldId", &PyDbTable::fieldId)
         .def("setFieldId", &PyDbTable::setFieldId)
         .def("textStyle", &PyDbTable::textStyle2)
@@ -901,6 +904,11 @@ std::string PyDbTable::textString2(int row, int col, int nContent) const
     return wstr_to_utf8(impObj()->textString(row, col, nContent));
 }
 
+std::string PyDbTable::textString3(const AcCell& cell) const
+{
+    return wstr_to_utf8(impObj()->textString(cell.mnRow, cell.mnColumn));
+}
+
 std::string PyDbTable::textStringFmt1(int row, int col, AcValue::FormatOption nOption) const
 {
     AcString str;
@@ -915,6 +923,13 @@ std::string PyDbTable::textStringFmt2(int row, int col, int nContent, AcValue::F
     return wstr_to_utf8(str);
 }
 
+std::string PyDbTable::textStringFmt3(const AcCell& cell, AcValue::FormatOption nOption) const
+{
+    AcString str;
+    PyThrowBadEs(impObj()->textString(cell.mnRow, cell.mnColumn, nOption, str));
+    return wstr_to_utf8(str);
+}
+
 void PyDbTable::setTextString(int row, int col, const std::string& text)
 {
     return PyThrowBadEs(impObj()->setTextString(row, col, utf8_to_wstr(text).c_str()));
@@ -923,6 +938,11 @@ void PyDbTable::setTextString(int row, int col, const std::string& text)
 void PyDbTable::setTextString2(int row, int col, int nContent, const std::string& text)
 {
     return PyThrowBadEs(impObj()->setTextString(row, col, nContent, utf8_to_wstr(text).c_str()));
+}
+
+void PyDbTable::setTextString3(const AcCell& cell, const std::string& text)
+{
+    return PyThrowBadEs(impObj()->setTextString(cell.mnRow, cell.mnColumn, utf8_to_wstr(text).c_str()));
 }
 
 PyDbObjectId PyDbTable::textStyle(AcDb::RowType type) const
