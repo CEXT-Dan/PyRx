@@ -11,6 +11,7 @@
 
 using namespace boost::python;
 
+#ifdef ARXAPP
 void ads_regen(void);
 
 extern int acedNEntSelPEx(
@@ -22,6 +23,7 @@ extern int acedNEntSelPEx(
     struct resbuf** refstkres,
     unsigned int uTransSpaceFlag,
     Adesk::GsMarker* gsmarker);
+#endif
 //-----------------------------------------------------------------------------------------
 //helpers
 
