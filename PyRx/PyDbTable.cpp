@@ -7,7 +7,7 @@ using namespace boost::python;
 // AcCell helpers
 static boost::shared_ptr<AcCell> AcCellInit1()
 {
-    return boost::shared_ptr<AcCell>(new AcCell{ -1 , -1});
+    return boost::shared_ptr<AcCell>(new AcCell{ -1 , -1 });
 }
 
 static boost::shared_ptr<AcCell> AcCellInit2(int tr, int lc)
@@ -60,7 +60,6 @@ void AcCellSetItem(AcCell& cell, int idx, int val)
 
 //-----------------------------------------------------------------------------------
 //  AcCellRange helpers
-// 
 static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
 {
     return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
@@ -370,8 +369,7 @@ void makePyDbTableWrapper()
         .def("cloneFrom", &PyDbTable::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbTable::cast).staticmethod("cast")
         ;
-
-    PyDocString DSCELL("CellRange");
+    PyDocString DSCELL("Cell");
     class_ <AcCell>("Cell")
         .def_readwrite("row", &AcCell::mnRow)
         .def_readwrite("column", &AcCell::mnColumn)
@@ -384,7 +382,6 @@ void makePyDbTableWrapper()
         .def("__init__", make_constructor(&AcCellInit1))
         .def("__init__", make_constructor(&AcCellInit2), DSCELL.ARGS({ "row : int=-1","column : int=-1" }))
         ;
-
     PyDocString DSCR("CellRange");
     class_ <AcCellRange>("CellRange")
         .def_readwrite("topRow", &AcCellRange::mnTopRow)
@@ -399,7 +396,6 @@ void makePyDbTableWrapper()
         .def("__ne__", &AcCellRangeNotEquals)
         .def("__init__", make_constructor(&AcCellRangeInit1))
         .def("__init__", make_constructor(&AcCellRangeInit2), DSCR.ARGS({ "topRow : int=-1","leftColumn : int=-1","bottomRow : int=-1","rightColumn : int=-1" }))
-
         ;
     enum_<AcDb::FlowDirection>("TableFlowDirection")
         .value("kTtoB", AcDb::FlowDirection::kTtoB)
