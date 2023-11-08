@@ -10,6 +10,16 @@ static std::string AcCellToString(const AcCell& cell)
     return std::format("({},{})", cell.mnRow, cell.mnColumn);
 }
 
+static bool AcCellEquals(const AcCell& cell, const AcCell& other)
+{
+    return cell.mnRow == other.mnRow && cell.mnColumn == other.mnColumn;
+}
+
+static bool AcCellNotEquals(const AcCell& cell, const AcCell& other)
+{
+    return !AcCellEquals(cell, other);
+}
+
 int AcCellGetItem(const AcCell& cell, int idx)
 {
     switch (idx)
@@ -37,6 +47,63 @@ void AcCellSetItem(AcCell& cell, int idx, int val)
         throw PyAcadErrorStatus(eOutOfRange);
     }
 }
+//
+static std::string AcCellRangeToString(const AcCellRange& range)
+{
+    return std::format("({},{},{},{})", range.mnTopRow, range.mnLeftColumn, range.mnBottomRow, range.mnRightColumn);
+}
+
+static bool AcCellRangeEquals(const AcCellRange& range, const AcCellRange& other)
+{
+    return  range.mnTopRow == other.mnTopRow &&
+        range.mnLeftColumn == other.mnLeftColumn &&
+        range.mnBottomRow == other.mnBottomRow &&
+        range.mnRightColumn == other.mnRightColumn;
+}
+
+static bool AcCellRangeNotEquals(const AcCellRange& range, const AcCellRange& other)
+{
+    return !AcCellRangeEquals(range, other);
+}
+
+int AcCellRangeGetItem(const AcCellRange& range, int idx)
+{
+    switch (idx)
+    {
+    case 0:
+        return range.mnTopRow;
+    case 1:
+        return range.mnLeftColumn;
+    case 2:
+        return range.mnBottomRow;
+    case 3:
+        return range.mnRightColumn;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
+void AcCellRangeSetItem(AcCellRange& range, int idx, int val)
+{
+    switch (idx)
+    {
+    case 0:
+        range.mnTopRow = val;
+        break;
+    case 1:
+        range.mnLeftColumn = val;
+        break;
+    case 2:
+        range.mnBottomRow = val;
+        break;
+    case 3:
+        range.mnRightColumn = val;
+        break;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
 
 //-----------------------------------------------------------------------------------
 //PyDbTable
@@ -283,12 +350,20 @@ void makePyDbTableWrapper()
         .def("__repr__", &AcCellToString)
         .def("__getitem__", &AcCellGetItem)
         .def("__setitem__", &AcCellSetItem)
+        .def("__eq__", &AcCellEquals)
+        .def("__ne__", &AcCellNotEquals)
         ;
     class_ <AcCellRange>("CellRange")
         .def_readwrite("topRow", &AcCellRange::mnTopRow)
         .def_readwrite("leftColumn", &AcCellRange::mnLeftColumn)
         .def_readwrite("bottomRow", &AcCellRange::mnBottomRow)
         .def_readwrite("rightColumn", &AcCellRange::mnRightColumn)
+        .def("__str__", &AcCellRangeToString)
+        .def("__repr__", &AcCellRangeToString)
+        .def("__getitem__", &AcCellRangeGetItem)
+        .def("__setitem__", &AcCellRangeSetItem)
+        .def("__eq__", &AcCellRangeEquals)
+        .def("__ne__", AcCellRangeNotEquals)
         ;
     enum_<AcDb::FlowDirection>("TableFlowDirection")
         .value("kTtoB", AcDb::FlowDirection::kTtoB)
