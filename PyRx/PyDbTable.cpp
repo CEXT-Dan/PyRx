@@ -137,12 +137,12 @@ void makePyDbTableWrapper()
         .def("setBlockScale", &PyDbTable::setBlockScale)
         .def("blockRotation", &PyDbTable::blockRotation)
         .def("setBlockRotation", &PyDbTable::setBlockRotation)
-        .def("gridColor", &PyDbTable::gridColor2)
-        .def("setGridColor", &PyDbTable::setGridColor2)
-        .def("gridVisibility", &PyDbTable::gridVisibility2)
-        .def("setGridVisibility", &PyDbTable::setGridVisibility2)
-        .def("gridLineWeight", &PyDbTable::gridLineWeight2)
-        .def("setGridLineWeight", &PyDbTable::setGridLineWeight2)
+        .def("gridEdgeColor", &PyDbTable::gridEdgeColor)
+        .def("setGridEdgeColor", &PyDbTable::setGridEdgeColor)
+        .def("gridEdgeVisibility", &PyDbTable::gridEdgeVisibility)
+        .def("setGridEdgeVisibility", &PyDbTable::setGridEdgeVisibility)
+        .def("gridEdgeLineWeight", &PyDbTable::gridEdgeLineWeight)
+        .def("setGridEdgeLineWeight", &PyDbTable::setGridEdgeLineWeight)
         .def("insertColumns", &PyDbTable::insertColumns)
         .def("deleteColumns", &PyDbTable::deleteColumns)
         .def("insertRows", &PyDbTable::insertRows)
@@ -233,14 +233,14 @@ void makePyDbTableWrapper()
         .def("removeAllOverrides", &PyDbTable::removeAllOverrides)
         .def("gridLineStyle", &PyDbTable::gridLineStyle)
         .def("setGridLineStyle", &PyDbTable::setGridLineStyle)
-        .def("gridLineWeight", &PyDbTable::gridLineWeight3)
-        .def("setGridLineWeight", &PyDbTable::setGridLineWeight3)
+        .def("gridLineWeight", &PyDbTable::gridLineWeight2)
+        .def("setGridLineWeight", &PyDbTable::setGridLineWeight2)
         .def("gridLinetype", &PyDbTable::gridLinetype)
         .def("setGridLinetype", &PyDbTable::setGridLinetype)
-        .def("gridColor", &PyDbTable::gridColor3)
-        .def("setGridColor", &PyDbTable::setGridColor3)
-        .def("gridVisibility", &PyDbTable::gridVisibility3)
-        .def("setGridVisibility3", &PyDbTable::setGridVisibility3)
+        .def("gridColor", &PyDbTable::gridColor2)
+        .def("setGridColor", &PyDbTable::setGridColor2)
+        .def("gridVisibility", &PyDbTable::gridVisibility2)
+        .def("setGridVisibility3", &PyDbTable::setGridVisibility2)
         .def("gridDoubleLineSpacing", &PyDbTable::gridDoubleLineSpacing)
         .def("setGridDoubleLineSpacing", &PyDbTable::setGridDoubleLineSpacing)
         .def("getGridProperty", &PyDbTable::getGridProperty)
@@ -915,12 +915,12 @@ AcDb::LineWeight PyDbTable::gridLineWeight(AcDb::GridLineType gridlineType, AcDb
     return impObj()->gridLineWeight(gridlineType, type);
 }
 
-AcDb::LineWeight PyDbTable::gridLineWeight2(int row, int col, AcDb::CellEdgeMask iEdge) const
+AcDb::LineWeight PyDbTable::gridEdgeLineWeight(int row, int col, AcDb::CellEdgeMask iEdge) const
 {
     return impObj()->gridLineWeight(row, col, iEdge);
 }
 
-AcDb::LineWeight PyDbTable::gridLineWeight3(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+AcDb::LineWeight PyDbTable::gridLineWeight2(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
     return impObj()->gridLineWeight(nRow, nCol, nGridLineType);
 }
@@ -930,12 +930,12 @@ void PyDbTable::setGridLineWeight(AcDb::LineWeight lwt, int nBorders, int nRows)
     return PyThrowBadEs(impObj()->setGridLineWeight(lwt, nBorders, nRows));
 }
 
-void PyDbTable::setGridLineWeight2(int row, int col, AcDb::CellEdgeMask nEdges, AcDb::LineWeight value)
+void PyDbTable::setGridEdgeLineWeight(int row, int col, AcDb::CellEdgeMask nEdges, AcDb::LineWeight value)
 {
     return PyThrowBadEs(impObj()->setGridLineWeight(row, col, nEdges, value));
 }
 
-void PyDbTable::setGridLineWeight3(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::LineWeight nLineWeight)
+void PyDbTable::setGridLineWeight2(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::LineWeight nLineWeight)
 {
     return PyThrowBadEs(impObj()->setGridLineWeight(nRow, nCol, nGridLineTypes, nLineWeight));
 }
@@ -945,12 +945,12 @@ AcCmColor PyDbTable::gridColor(AcDb::GridLineType gridlineType, AcDb::RowType ty
     return impObj()->gridColor(gridlineType, type);
 }
 
-AcCmColor PyDbTable::gridColor2(int row, int col, AcDb::CellEdgeMask iEdge) const
+AcCmColor PyDbTable::gridEdgeColor(int row, int col, AcDb::CellEdgeMask iEdge) const
 {
     return impObj()->gridColor(row, col, iEdge);
 }
 
-AcCmColor PyDbTable::gridColor3(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+AcCmColor PyDbTable::gridColor2(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
     return impObj()->gridColor(nRow, nCol, nGridLineType);
 }
@@ -960,12 +960,12 @@ void PyDbTable::setGridColor(const AcCmColor& color, int nBorders, int nRows)
     return PyThrowBadEs(impObj()->setGridColor(color, nBorders, nRows));
 }
 
-void PyDbTable::setGridColor2(int row, int col, AcDb::CellEdgeMask nEdges, const AcCmColor& color)
+void PyDbTable::setGridEdgeColor(int row, int col, AcDb::CellEdgeMask nEdges, const AcCmColor& color)
 {
     return PyThrowBadEs(impObj()->setGridColor(row, col, nEdges, color));
 }
 
-void PyDbTable::setGridColor3(int nRow, int nCol, AcDb::GridLineType nGridlineTypes, const AcCmColor& color)
+void PyDbTable::setGridColor2(int nRow, int nCol, AcDb::GridLineType nGridlineTypes, const AcCmColor& color)
 {
     return PyThrowBadEs(impObj()->setGridColor(nRow, nCol, nGridlineTypes, color));
 }
@@ -975,12 +975,12 @@ AcDb::Visibility PyDbTable::gridVisibility(AcDb::GridLineType gridlineType, AcDb
     return impObj()->gridVisibility(gridlineType, type);
 }
 
-AcDb::Visibility PyDbTable::gridVisibility2(int row, int col, AcDb::CellEdgeMask iEdge) const
+AcDb::Visibility PyDbTable::gridEdgeVisibility(int row, int col, AcDb::CellEdgeMask iEdge) const
 {
     return impObj()->gridVisibility(row, col, iEdge);
 }
 
-AcDb::Visibility PyDbTable::gridVisibility3(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+AcDb::Visibility PyDbTable::gridVisibility2(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
     return impObj()->gridVisibility(nRow, nCol, nGridLineType);
 }
@@ -990,12 +990,12 @@ void PyDbTable::setGridVisibility(AcDb::Visibility visible, int nBorders, int nR
     return PyThrowBadEs(impObj()->setGridVisibility(visible, nBorders, nRows));
 }
 
-void PyDbTable::setGridVisibility2(int row, int col, AcDb::CellEdgeMask iEdge, AcDb::Visibility value)
+void PyDbTable::setGridEdgeVisibility(int row, int col, AcDb::CellEdgeMask iEdge, AcDb::Visibility value)
 {
     return PyThrowBadEs(impObj()->setGridVisibility(row, col, iEdge, value));
 }
 
-void PyDbTable::setGridVisibility3(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::Visibility nVisibility)
+void PyDbTable::setGridVisibility2(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::Visibility nVisibility)
 {
     return PyThrowBadEs(impObj()->setGridVisibility(nRow, nCol, nGridLineTypes, nVisibility));
 }
