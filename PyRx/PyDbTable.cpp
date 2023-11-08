@@ -2,6 +2,42 @@
 #include "PyDbTable.h"
 #include "PyDbObjectId.h"
 using namespace boost::python;
+
+//-----------------------------------------------------------------------------------
+//helpers
+static std::string AcCellToString(const AcCell& cell)
+{
+    return std::format("({},{})", cell.mnRow, cell.mnColumn);
+}
+
+int AcCellGetItem(const AcCell& cell, int idx)
+{
+    switch (idx)
+    {
+    case 0:
+        return cell.mnRow;
+    case 1:
+        return cell.mnColumn;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
+void AcCellSetItem(AcCell& cell, int idx, int val)
+{
+    switch (idx)
+    {
+    case 0:
+        cell.mnRow = val;
+        break;
+    case 1:
+        cell.mnColumn = val;
+        break;
+    default:
+        throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
 //-----------------------------------------------------------------------------------
 //PyDbTable
 void makePyDbTableWrapper()
@@ -243,6 +279,10 @@ void makePyDbTableWrapper()
     class_ <AcCell>("Cell")
         .def_readwrite("row", &AcCell::mnRow)
         .def_readwrite("column", &AcCell::mnColumn)
+        .def("__str__", &AcCellToString)
+        .def("__repr__", &AcCellToString)
+        .def("__getitem__", &AcCellGetItem)
+        .def("__setitem__", &AcCellSetItem)
         ;
     class_ <AcCellRange>("CellRange")
         .def_readwrite("topRow", &AcCellRange::mnTopRow)
@@ -430,6 +470,14 @@ void makePyDbTableWrapper()
         .value("kTextCell", AcDb::CellType::kTextCell)
         .value("kBlockCell", AcDb::CellType::kBlockCell)
         .value("kMultipleContentCell", AcDb::CellType::kMultipleContentCell)
+        .export_values()
+        ;
+    enum_<AcValue::FormatOption>("FormatOption")
+        .value("kFormatOptionNone", AcValue::FormatOption::kFormatOptionNone)
+        .value("kForEditing", AcValue::FormatOption::kForEditing)
+        .value("kForExpression", AcValue::FormatOption::kForExpression)
+        .value("kUseMaximumPrecision", AcValue::FormatOption::kUseMaximumPrecision)
+        .value("kIgnoreMtextFormat", AcValue::FormatOption::kIgnoreMtextFormat)
         .export_values()
         ;
 }
