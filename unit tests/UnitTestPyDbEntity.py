@@ -295,6 +295,23 @@ class TestDbEntity(unittest.TestCase):
         table = Db.Table(objId)
         iter = table.getIterator()
         self.assertEqual(len(iter),1044)
+        
+    def test_table_iterator2(self):
+        objHnd = Db.Handle("2c8cc9")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        table = Db.Table(objId)
+        cr = Db.CellRange(1,1,3,3)
+        iter = table.getIterator(cr)
+        self.assertEqual(len(iter),9)
+        
+    def test_table_iterator3(self):
+        objHnd = Db.Handle("2c8cc9")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        table = Db.Table(objId)
+        iter = table.getIterator(Db.CellRange(1,1,3,3))
+        self.assertEqual(len(iter),9)
 
     def test_table_getstring(self):
         objHnd = Db.Handle("2c8cc9")
@@ -307,7 +324,26 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(table.textStringFmt(4,0,opt), "R380")
         self.assertEqual(table.textStringFmt(4,0,0,opt), "R380")
         
+    def test_table_AcCell(self):
+        cell1 = Db.Cell()
+        self.assertEqual(cell1.row , -1)
+        self.assertEqual(cell1.column , -1)
+        cell2 = Db.Cell(1,1)
+        self.assertEqual(cell2.row , 1)
+        self.assertEqual(cell2.column ,1)
         
+    def test_table_AcCellRange(self):
+        cr = Db.CellRange()
+        self.assertEqual(cr.topRow , -1)
+        self.assertEqual(cr.leftColumn , -1)
+        self.assertEqual(cr.bottomRow , -1)
+        self.assertEqual(cr.rightColumn , -1)
+        cr2 = Db.CellRange(1,2,3,4)
+        self.assertEqual(cr2.topRow , 1)
+        self.assertEqual(cr2.leftColumn , 2)
+        self.assertEqual(cr2.bottomRow , 3)
+        self.assertEqual(cr2.rightColumn , 4)
+ 
 def PyRxCmd_pyentity():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbEntity)

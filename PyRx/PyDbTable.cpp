@@ -4,7 +4,17 @@
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
-//helpers
+// AcCell helpers
+static boost::shared_ptr<AcCell> AcCellInit1()
+{
+    return boost::shared_ptr<AcCell>(new AcCell{ -1 , -1});
+}
+
+static boost::shared_ptr<AcCell> AcCellInit2(int tr, int lc)
+{
+    return boost::shared_ptr<AcCell>(new AcCell{ tr, lc });
+}
+
 static std::string AcCellToString(const AcCell& cell)
 {
     return std::format("({},{})", cell.mnRow, cell.mnColumn);
@@ -47,7 +57,20 @@ void AcCellSetItem(AcCell& cell, int idx, int val)
         throw PyAcadErrorStatus(eOutOfRange);
     }
 }
-//
+
+//-----------------------------------------------------------------------------------
+//  AcCellRange helpers
+// 
+static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
+{
+    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
+}
+
+static boost::shared_ptr<AcCellRange> AcCellRangeInit2(int tr, int lc, int br, int rc)
+{
+    return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr, lc, br, rc });
+}
+
 static std::string AcCellRangeToString(const AcCellRange& range)
 {
     return std::format("({},{},{},{})", range.mnTopRow, range.mnLeftColumn, range.mnBottomRow, range.mnRightColumn);
@@ -109,6 +132,7 @@ void AcCellRangeSetItem(AcCellRange& range, int idx, int val)
 //PyDbTable
 void makePyDbTableWrapper()
 {
+    PyDocString DS("Table");
     class_<PyDbTable, bases<PyDbBlockReference>>("Table")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -346,6 +370,8 @@ void makePyDbTableWrapper()
         .def("cloneFrom", &PyDbTable::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbTable::cast).staticmethod("cast")
         ;
+
+    PyDocString DSCELL("CellRange");
     class_ <AcCell>("Cell")
         .def_readwrite("row", &AcCell::mnRow)
         .def_readwrite("column", &AcCell::mnColumn)
@@ -355,7 +381,11 @@ void makePyDbTableWrapper()
         .def("__setitem__", &AcCellSetItem)
         .def("__eq__", &AcCellEquals)
         .def("__ne__", &AcCellNotEquals)
+        .def("__init__", make_constructor(&AcCellInit1))
+        .def("__init__", make_constructor(&AcCellInit2), DSCELL.ARGS({ "row : int=-1","column : int=-1" }))
         ;
+
+    PyDocString DSCR("CellRange");
     class_ <AcCellRange>("CellRange")
         .def_readwrite("topRow", &AcCellRange::mnTopRow)
         .def_readwrite("leftColumn", &AcCellRange::mnLeftColumn)
@@ -366,7 +396,10 @@ void makePyDbTableWrapper()
         .def("__getitem__", &AcCellRangeGetItem)
         .def("__setitem__", &AcCellRangeSetItem)
         .def("__eq__", &AcCellRangeEquals)
-        .def("__ne__", AcCellRangeNotEquals)
+        .def("__ne__", &AcCellRangeNotEquals)
+        .def("__init__", make_constructor(&AcCellRangeInit1))
+        .def("__init__", make_constructor(&AcCellRangeInit2), DSCR.ARGS({ "topRow : int=-1","leftColumn : int=-1","bottomRow : int=-1","rightColumn : int=-1" }))
+
         ;
     enum_<AcDb::FlowDirection>("TableFlowDirection")
         .value("kTtoB", AcDb::FlowDirection::kTtoB)

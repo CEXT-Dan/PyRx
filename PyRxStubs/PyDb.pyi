@@ -7975,11 +7975,8 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Cell:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self: CellRange,row : int=-1,column : int=-1)-> None :
+      '''                             '''
     ...
     def column (self, *args, **kwargs)-> None :
       '''None'''
@@ -8835,11 +8832,8 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CellRange:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self: CellRange,topRow : int=-1,leftColumn : int=-1,bottomRow : int=-1,rightColumn : int=-1)-> None :
+      '''                             '''
     ...
     def bottomRow (self, *args, **kwargs)-> None :
       '''None'''
@@ -68038,6 +68032,11 @@ setTextHeight( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (float)arg5) -> Non
     C++ signature :
         void setTextString(class PyDbTable {lvalue},int,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
+setTextString( (Table)arg1, (Cell)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void setTextString(class PyDbTable {lvalue},struct AcCell,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
 setTextString( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (str)arg5) -> None :
 
     C++ signature :
@@ -68147,6 +68146,11 @@ textHeight( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbTable {lvalue},int,int)
 
+textString( (Table)arg1, (Cell)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbTable {lvalue},struct AcCell)
+
 textString( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> str :
 
     C++ signature :
@@ -68157,6 +68161,11 @@ textString( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textStringFmt(class PyDbTable {lvalue},int,int,enum AcValue::FormatOption)
+
+textStringFmt( (Table)arg1, (Cell)arg2, (FormatOption)arg3) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textStringFmt(class PyDbTable {lvalue},struct AcCell,enum AcValue::FormatOption)
 
 textStringFmt( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (FormatOption)arg5) -> str :
 
