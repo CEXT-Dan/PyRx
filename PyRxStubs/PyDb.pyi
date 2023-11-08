@@ -66542,17 +66542,11 @@ backgroundColor( (Table)arg1, (int)arg2, (int)arg3) -> Color :
     def blockId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def blockRotation (self, *args, **kwargs)-> float :
-      '''blockRotation( (Table)arg1, (int)arg2, (int)arg3) -> float :
-
-    C++ signature :
-        double blockRotation(class PyDbTable {lvalue},int,int)'''
+    def blockRotation (self: Table,row: int,col: int)-> float :
+      '''                             '''
     ...
-    def blockScale (self, *args, **kwargs)-> float :
-      '''blockScale( (Table)arg1, (int)arg2, (int)arg3) -> float :
-
-    C++ signature :
-        double blockScale(class PyDbTable {lvalue},int,int)'''
+    def blockScale (self: Table,row: int,col: int)-> float :
+      '''                             '''
     ...
     def blockTableRecord (self: BlockReference)-> PyDb.ObjectId :
       '''                             '''
@@ -66580,11 +66574,8 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         enum AcDb::TableBreakFlowDirection breakFlowDirection(class PyDbTable {lvalue})'''
     ...
-    def breakHeight (self, *args, **kwargs)-> float :
-      '''breakHeight( (Table)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double breakHeight(class PyDbTable {lvalue},int)'''
+    def breakHeight (self: Table,val : int)-> float :
+      '''                             '''
     ...
     def breakOffset (self, *args, **kwargs)-> PyGe.Vector3d :
       '''breakOffset( (Table)arg1, (int)arg2) -> Vector3d :
@@ -66592,59 +66583,35 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         class AcGeVector3d breakOffset(class PyDbTable {lvalue},int)'''
     ...
-    def breakOption (self, *args, **kwargs)-> PyDb.TableBreakOption :
-      '''breakOption( (Table)arg1) -> TableBreakOption :
-
-    C++ signature :
-        enum AcDb::TableBreakOption breakOption(class PyDbTable {lvalue})'''
+    def breakOption (self: Table)-> PyDb.TableBreakOption :
+      '''                             '''
     ...
-    def breakSpacing (self, *args, **kwargs)-> float :
-      '''breakSpacing( (Table)arg1) -> float :
-
-    C++ signature :
-        double breakSpacing(class PyDbTable {lvalue})'''
+    def breakSpacing (self: Table)-> float :
+      '''                             '''
     ...
-    def canDelete (self, *args, **kwargs)-> bool :
-      '''canDelete( (Table)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
-
-    C++ signature :
-        bool canDelete(class PyDbTable {lvalue},int,int,bool)'''
+    def canDelete (self: Table,row: int,col: int,brow : bool)-> bool :
+      '''                             '''
     ...
-    def canInsert (self, *args, **kwargs)-> bool :
-      '''canInsert( (Table)arg1, (int)arg2, (bool)arg3) -> bool :
-
-    C++ signature :
-        bool canInsert(class PyDbTable {lvalue},int,bool)'''
+    def canInsert (self: Table,index: int,brow: bool)-> bool :
+      '''                             '''
     ...
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Table :
-      '''cast( (RxObject)arg1) -> Table :
-
-    C++ signature :
-        class PyDbTable cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Table :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def cellRange (self, *args, **kwargs)-> PyDb.CellRange :
-      '''cellRange( (Table)arg1) -> CellRange :
-
-    C++ signature :
-        struct AcCellRange cellRange(class PyDbTable {lvalue})'''
+    def cellRange (self: Table)-> PyDb.CellRange :
+      '''                             '''
     ...
-    def cellState (self, *args, **kwargs)-> PyDb.CellState :
-      '''cellState( (Table)arg1, (int)arg2, (int)arg3) -> CellState :
-
-    C++ signature :
-        enum AcDb::CellState cellState(class PyDbTable {lvalue},int,int)'''
+    def cellState (self: Table,row: int,col: int)-> PyDb.CellState :
+      '''                             '''
     ...
-    def cellStyle (self, *args, **kwargs)-> str :
-      '''cellStyle( (Table)arg1, (int)arg2, (int)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > cellStyle(class PyDbTable {lvalue},int,int)'''
+    def cellStyle (self: Table,row: int,col: int)-> str :
+      '''                             '''
     ...
     def cellStyleOverrides (self, *args, **kwargs)-> list :
       '''cellStyleOverrides( (Table)arg1, (int)arg2, (int)arg3) -> list :
@@ -66658,11 +66625,8 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         enum AcDb::CellType cellType(class PyDbTable {lvalue},int,int)'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
     def clearCellOverrides (self, *args, **kwargs)-> None :
       '''clearCellOverrides( (Table)arg1, (int)arg2, (int)arg3) -> None :
@@ -66670,11 +66634,8 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         void clearCellOverrides(class PyDbTable {lvalue},int,int)'''
     ...
-    def clearSubSelection (self, *args, **kwargs)-> None :
-      '''clearSubSelection( (Table)arg1) -> None :
-
-    C++ signature :
-        void clearSubSelection(class PyDbTable {lvalue})'''
+    def clearSubSelection (self: Table)-> None :
+      '''                             '''
     ...
     def clearTableStyleOverrides (self, *args, **kwargs)-> None :
       '''clearTableStyleOverrides( (Table)arg1) -> None :
@@ -66682,11 +66643,8 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         void clearTableStyleOverrides(class PyDbTable {lvalue})'''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.Table :
-      '''cloneFrom( (RxObject)arg1) -> Table :
-
-    C++ signature :
-        class PyDbTable cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Table :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -66700,11 +66658,8 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def columnWidth (self, *args, **kwargs)-> float :
-      '''columnWidth( (Table)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double columnWidth(class PyDbTable {lvalue},int)'''
+    def columnWidth (self: Table,col : int)-> float :
+      '''                             '''
     ...
     def contentColor (self, *args, **kwargs)-> PyDb.Color :
       '''contentColor( (Table)arg1, (RowType)arg2) -> Color :
@@ -66722,11 +66677,8 @@ contentColor( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> Color :
     C++ signature :
         class AcCmColor contentColor(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def contentLayout (self, *args, **kwargs)-> PyDb.CellContentLayout :
-      '''contentLayout( (Table)arg1, (int)arg2, (int)arg3) -> CellContentLayout :
-
-    C++ signature :
-        enum AcDb::CellContentLayout contentLayout(class PyDbTable {lvalue},int,int)'''
+    def contentLayout (self: Table,row: int,col: int)-> PyDb.CellContentLayout :
+      '''                             '''
     ...
     def contentType (self, *args, **kwargs)-> PyDb.CellContentType :
       '''contentType( (Table)arg1, (int)arg2, (int)arg3) -> CellContentType :
@@ -66742,11 +66694,8 @@ contentType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> CellContentType :
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def createContent (self, *args, **kwargs)-> int :
-      '''createContent( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> int :
-
-    C++ signature :
-        int createContent(class PyDbTable {lvalue},int,int,int)'''
+    def createContent (self: Table,row: int,col: int,idx: int)-> int :
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -66774,11 +66723,8 @@ dataFormat( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> str :
     C++ signature :
         void deleteCellContent(class PyDbTable {lvalue},int,int)'''
     ...
-    def deleteColumns (self, *args, **kwargs)-> None :
-      '''deleteColumns( (Table)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void deleteColumns(class PyDbTable {lvalue},int,int)'''
+    def deleteColumns (self: Table,row: int,nCols: int)-> None :
+      '''                             '''
     ...
     def deleteContent (self, *args, **kwargs)-> None :
       '''deleteContent( (Table)arg1, (int)arg2, (int)arg3) -> None :
@@ -66796,23 +66742,14 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> None :
     C++ signature :
         void deleteContent(class PyDbTable {lvalue},struct AcCellRange)'''
     ...
-    def deleteRows (self, *args, **kwargs)-> None :
-      '''deleteRows( (Table)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void deleteRows(class PyDbTable {lvalue},int,int)'''
+    def deleteRows (self: Table,row: int,nRows: int)-> None :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
-    def direction (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''direction( (Table)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d direction(class PyDbTable {lvalue})'''
+    def direction (self: Table)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -66832,17 +66769,11 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def enableBreak (self, *args, **kwargs)-> None :
-      '''enableBreak( (Table)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void enableBreak(class PyDbTable {lvalue},bool)'''
+    def enableBreak (self: Table,val : bool)-> None :
+      '''                             '''
     ...
-    def enableMergeAll (self, *args, **kwargs)-> None :
-      '''enableMergeAll( (Table)arg1, (int)arg2, (int)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void enableMergeAll(class PyDbTable {lvalue},int,int,bool)'''
+    def enableMergeAll (self: Table,row: int,col: int,val : bool)-> None :
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
@@ -66870,17 +66801,11 @@ fieldId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         class PyDbObjectId fieldId(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def flowDirection (self, *args, **kwargs)-> PyDb.TableFlowDirection :
-      '''flowDirection( (Table)arg1) -> TableFlowDirection :
-
-    C++ signature :
-        enum AcDb::FlowDirection flowDirection(class PyDbTable {lvalue})'''
+    def flowDirection (self: Table)-> PyDb.TableFlowDirection :
+      '''                             '''
     ...
-    def generateLayout (self, *args, **kwargs)-> None :
-      '''generateLayout( (Table)arg1) -> None :
-
-    C++ signature :
-        void generateLayout(class PyDbTable {lvalue})'''
+    def generateLayout (self: Table)-> None :
+      '''                             '''
     ...
     def geomExtentsBestFit (self: BlockReference,val : PyGe.Matrix3d=kIdentity)-> PyDb.Extents :
       '''                             '''
@@ -66905,26 +66830,17 @@ getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     C++ signature :
         class boost::python::list getCellExtents(class PyDbTable {lvalue},int,int,bool)'''
     ...
-    def getCellOverride (self, *args, **kwargs)-> PyDb.CellProperty :
-      '''getCellOverride( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> CellProperty :
-
-    C++ signature :
-        enum AcDb::CellProperty getCellOverride(class PyDbTable {lvalue},int,int,int)'''
+    def getCellOverride (self: Table,row: int,col: int,content: int)-> PyDb.CellProperty :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDataLink (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''getDataLink( (Table)arg1, (int)arg2, (int)arg3) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getDataLink(class PyDbTable {lvalue},int,int)'''
+    def getDataLink (self: Table,row: int,col: int)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def getDataLinkRange (self, *args, **kwargs)-> PyDb.CellRange :
-      '''getDataLinkRange( (Table)arg1, (int)arg2, (int)arg3) -> CellRange :
-
-    C++ signature :
-        struct AcCellRange getDataLinkRange(class PyDbTable {lvalue},int,int)'''
+    def getDataLinkRange (self: Table,row: int,col: int)-> PyDb.CellRange :
+      '''                             '''
     ...
     def getDataType (self, *args, **kwargs)-> tuple :
       '''getDataType( (Table)arg1, (RowType)arg2) -> tuple :
@@ -66951,20 +66867,14 @@ getDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> tuple :
     def getFieldDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getFormula (self, *args, **kwargs)-> str :
-      '''getFormula( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFormula(class PyDbTable {lvalue},int,int,int)'''
+    def getFormula (self: Table,row: int,col: int,content: int)-> str :
+      '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
-    def getGridOverride (self, *args, **kwargs)-> PyDb.GridProperty :
-      '''getGridOverride( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> GridProperty :
-
-    C++ signature :
-        enum AcDb::GridProperty getGridOverride(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
+    def getGridOverride (self: Table,row: int,col: int,nGridLineType: PyDb.GridLineType)-> PyDb.GridProperty :
+      '''                             '''
     ...
     def getGridProperty (self, *args, **kwargs)-> object :
       '''getGridProperty( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> object :
@@ -66997,11 +66907,8 @@ getIterator( (Table)arg1, (CellRange)arg2 [, (TableIteratorOption)arg3]) -> list
     C++ signature :
         class boost::python::list getIterator(class PyDbTable {lvalue},struct AcCellRange [,enum AcDb::TableIteratorOption])'''
     ...
-    def getMergeRange (self, *args, **kwargs)-> PyDb.CellRange :
-      '''getMergeRange( (Table)arg1, (int)arg2, (int)arg3) -> CellRange :
-
-    C++ signature :
-        struct AcCellRange getMergeRange(class PyDbTable {lvalue},int,int)'''
+    def getMergeRange (self: Table,row: int,col: int)-> PyDb.CellRange :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
@@ -67012,11 +66919,8 @@ getIterator( (Table)arg1, (CellRange)arg2 [, (TableIteratorOption)arg3]) -> list
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
     ...
-    def getSubSelection (self, *args, **kwargs)-> PyDb.CellRange :
-      '''getSubSelection( (Table)arg1) -> CellRange :
-
-    C++ signature :
-        struct AcCellRange getSubSelection(class PyDbTable {lvalue})'''
+    def getSubSelection (self: Table)-> PyDb.CellRange :
+      '''                             '''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -67056,11 +66960,8 @@ gridColor( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Color :
     C++ signature :
         enum AcDb::Visibility gridEdgeVisibility(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask)'''
     ...
-    def gridLineStyle (self, *args, **kwargs)-> PyDb.GridLineStyle :
-      '''gridLineStyle( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> GridLineStyle :
-
-    C++ signature :
-        enum AcDb::GridLineStyle gridLineStyle(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
+    def gridLineStyle (self: Table,row: int,col: int,nGridLineType: PyDb.GridLineType)-> PyDb.GridLineStyle :
+      '''                             '''
     ...
     def gridLineWeight (self, *args, **kwargs)-> PyDb.LineWeight :
       '''gridLineWeight( (Table)arg1, (GridLineType)arg2, (RowType)arg3) -> LineWeight :
@@ -67073,11 +66974,8 @@ gridLineWeight( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> LineWe
     C++ signature :
         enum AcDb::LineWeight gridLineWeight(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
     ...
-    def gridLinetype (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''gridLinetype( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId gridLinetype(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
+    def gridLinetype (self: Table,row: int,col: int,nGridLineType: PyDb.GridLineType)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def gridVisibility (self, *args, **kwargs)-> PyDb.Visibility :
       '''gridVisibility( (Table)arg1, (GridLineType)arg2, (RowType)arg3) -> Visibility :
@@ -67096,20 +66994,14 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     def hasFields (self: DbObject)-> bool :
       '''                             '''
     ...
-    def hasFormula (self, *args, **kwargs)-> bool :
-      '''hasFormula( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> bool :
-
-    C++ signature :
-        bool hasFormula(class PyDbTable {lvalue},int,int,int)'''
+    def hasFormula (self: Table,row: int,col: int,content: int)-> bool :
+      '''                             '''
     ...
     def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def hasSubSelection (self, *args, **kwargs)-> bool :
-      '''hasSubSelection( (Table)arg1) -> bool :
-
-    C++ signature :
-        bool hasSubSelection(class PyDbTable {lvalue})'''
+    def hasSubSelection (self: Table)-> bool :
+      '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
@@ -67120,17 +67012,11 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     C++ signature :
         double height(class PyDbTable {lvalue})'''
     ...
-    def hitTest (self, *args, **kwargs)-> tuple :
-      '''hitTest( (Table)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple hitTest(class PyDbTable {lvalue},class AcGePoint3d,class AcGeVector3d,double,double)'''
+    def hitTest (self: Table,wpt: PyGe.Point3d,viewvec: PyGe.Vector3d,wx: real=0.0,wy: real=0.0)-> tuple :
+      '''                             '''
     ...
-    def horzCellMargin (self, *args, **kwargs)-> float :
-      '''horzCellMargin( (Table)arg1) -> float :
-
-    C++ signature :
-        double horzCellMargin(class PyDbTable {lvalue})'''
+    def horzCellMargin (self: Table)-> float :
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
@@ -67138,29 +67024,17 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def insertColumns (self, *args, **kwargs)-> None :
-      '''insertColumns( (Table)arg1, (int)arg2, (float)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void insertColumns(class PyDbTable {lvalue},int,double,int)'''
+    def insertColumns (self: Table,row: int,width : real,nCols: int)-> None :
+      '''                             '''
     ...
-    def insertColumnsAndInherit (self, *args, **kwargs)-> None :
-      '''insertColumnsAndInherit( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void insertColumnsAndInherit(class PyDbTable {lvalue},int,int,int)'''
+    def insertColumnsAndInherit (self: Table,nIndex: int,nInheritFrom: int,nNumCols: int)-> None :
+      '''                             '''
     ...
-    def insertRows (self, *args, **kwargs)-> None :
-      '''insertRows( (Table)arg1, (int)arg2, (float)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void insertRows(class PyDbTable {lvalue},int,double,int)'''
+    def insertRows (self: Table,row: int,height : real,nRows: int)-> None :
+      '''                             '''
     ...
-    def insertRowsAndInherit (self, *args, **kwargs)-> None :
-      '''insertRowsAndInherit( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> None :
-
-    C++ signature :
-        void insertRowsAndInherit(class PyDbTable {lvalue},int,int,int)'''
+    def insertRowsAndInherit (self: Table,nIndex: int,nInheritFrom: int,nNumRows: int)-> None :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -67214,26 +67088,17 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     C++ signature :
         bool isBackgroundColorNone(class PyDbTable {lvalue},int,int)'''
     ...
-    def isBreakEnabled (self, *args, **kwargs)-> bool :
-      '''isBreakEnabled( (Table)arg1) -> bool :
-
-    C++ signature :
-        bool isBreakEnabled(class PyDbTable {lvalue})'''
+    def isBreakEnabled (self: Table)-> bool :
+      '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isContentEditable (self, *args, **kwargs)-> bool :
-      '''isContentEditable( (Table)arg1, (int)arg2, (int)arg3) -> bool :
-
-    C++ signature :
-        bool isContentEditable(class PyDbTable {lvalue},int,int)'''
+    def isContentEditable (self: Table,row: int,col: int)-> bool :
+      '''                             '''
     ...
-    def isEmpty (self, *args, **kwargs)-> bool :
-      '''isEmpty( (Table)arg1, (int)arg2, (int)arg3) -> bool :
-
-    C++ signature :
-        bool isEmpty(class PyDbTable {lvalue},int,int)'''
+    def isEmpty (self: Table,row: int,col: int)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -67241,38 +67106,23 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isFormatEditable (self, *args, **kwargs)-> bool :
-      '''isFormatEditable( (Table)arg1, (int)arg2, (int)arg3) -> bool :
-
-    C++ signature :
-        bool isFormatEditable(class PyDbTable {lvalue},int,int)'''
+    def isFormatEditable (self: Table,row: int,col: int)-> bool :
+      '''                             '''
     ...
-    def isHeaderSuppressed (self, *args, **kwargs)-> bool :
-      '''isHeaderSuppressed( (Table)arg1) -> bool :
-
-    C++ signature :
-        bool isHeaderSuppressed(class PyDbTable {lvalue})'''
+    def isHeaderSuppressed (self: Table)-> bool :
+      '''                             '''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isLinked (self, *args, **kwargs)-> bool :
-      '''isLinked( (Table)arg1, (int)arg2, (int)arg3) -> bool :
-
-    C++ signature :
-        bool isLinked(class PyDbTable {lvalue},int,int)'''
+    def isLinked (self: Table,row: int,col: int)-> bool :
+      '''                             '''
     ...
-    def isMergeAllEnabled (self, *args, **kwargs)-> bool :
-      '''isMergeAllEnabled( (Table)arg1, (int)arg2, (int)arg3) -> bool :
-
-    C++ signature :
-        bool isMergeAllEnabled(class PyDbTable {lvalue},int,int)'''
+    def isMergeAllEnabled (self: Table,row: int,col: int)-> bool :
+      '''                             '''
     ...
-    def isMergedCell (self, *args, **kwargs)-> tuple :
-      '''isMergedCell( (Table)arg1, (int)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple isMergedCell(class PyDbTable {lvalue},int,int)'''
+    def isMergedCell (self: Table,row: int,col: int)-> tuple :
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
       '''                             '''
@@ -67307,17 +67157,11 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRegenerateTableSuppressed (self, *args, **kwargs)-> bool :
-      '''isRegenerateTableSuppressed( (Table)arg1) -> bool :
-
-    C++ signature :
-        bool isRegenerateTableSuppressed(class PyDbTable {lvalue})'''
+    def isRegenerateTableSuppressed (self: Table)-> bool :
+      '''                             '''
     ...
-    def isTitleSuppressed (self, *args, **kwargs)-> bool :
-      '''isTitleSuppressed( (Table)arg1) -> bool :
-
-    C++ signature :
-        bool isTitleSuppressed(class PyDbTable {lvalue})'''
+    def isTitleSuppressed (self: Table)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -67355,11 +67199,8 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def list (self: Entity)-> None :
       '''                             '''
     ...
-    def margin (self, *args, **kwargs)-> float :
-      '''margin( (Table)arg1, (int)arg2, (int)arg3, (CellMargin)arg4) -> float :
-
-    C++ signature :
-        double margin(class PyDbTable {lvalue},int,int,enum AcDb::CellMargin)'''
+    def margin (self: Table,row: int,col: int,nMargin: PyDb.CellMargin)-> float :
+      '''                             '''
     ...
     def material (self: Entity)-> str :
       '''                             '''
@@ -67367,41 +67208,23 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def mergeCells (self, *args, **kwargs)-> None :
-      '''mergeCells( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (int)arg5) -> None :
-
-    C++ signature :
-        void mergeCells(class PyDbTable {lvalue},int,int,int,int)'''
+    def mergeCells (self: Table,minRow: int,maxRow: int,minCol: int,maxCol: int)-> None :
+      '''                             '''
     ...
-    def minimumColumnWidth (self, *args, **kwargs)-> float :
-      '''minimumColumnWidth( (Table)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double minimumColumnWidth(class PyDbTable {lvalue},int)'''
+    def minimumColumnWidth (self: Table,col: int)-> float :
+      '''                             '''
     ...
-    def minimumRowHeight (self, *args, **kwargs)-> float :
-      '''minimumRowHeight( (Table)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double minimumRowHeight(class PyDbTable {lvalue},int)'''
+    def minimumRowHeight (self: Table,row: int)-> float :
+      '''                             '''
     ...
-    def minimumTableHeight (self, *args, **kwargs)-> float :
-      '''minimumTableHeight( (Table)arg1) -> float :
-
-    C++ signature :
-        double minimumTableHeight(class PyDbTable {lvalue})'''
+    def minimumTableHeight (self: Table)-> float :
+      '''                             '''
     ...
-    def minimumTableWidth (self, *args, **kwargs)-> float :
-      '''minimumTableWidth( (Table)arg1) -> float :
-
-    C++ signature :
-        double minimumTableWidth(class PyDbTable {lvalue})'''
+    def minimumTableWidth (self: Table)-> float :
+      '''                             '''
     ...
-    def moveContent (self, *args, **kwargs)-> None :
-      '''moveContent( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (int)arg5) -> None :
-
-    C++ signature :
-        void moveContent(class PyDbTable {lvalue},int,int,int,int)'''
+    def moveContent (self: Table,row: int,col: int,from: int,to: int)-> None :
+      '''                             '''
     ...
     def nonAnnotationBlockTransform (self: BlockReference)-> PyGe.Matrix3d :
       '''                             '''
@@ -67412,23 +67235,14 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def normal (self: BlockReference)-> PyGe.Vector3d :
       '''                             '''
     ...
-    def numColumns (self, *args, **kwargs)-> int :
-      '''numColumns( (Table)arg1) -> int :
-
-    C++ signature :
-        unsigned int numColumns(class PyDbTable {lvalue})'''
+    def numColumns (self: Table)-> int :
+      '''                             '''
     ...
-    def numContents (self, *args, **kwargs)-> int :
-      '''numContents( (Table)arg1, (int)arg2, (int)arg3) -> int :
-
-    C++ signature :
-        int numContents(class PyDbTable {lvalue},int,int)'''
+    def numContents (self: Table,row: int,col: int)-> int :
+      '''                             '''
     ...
-    def numRows (self, *args, **kwargs)-> int :
-      '''numRows( (Table)arg1) -> int :
-
-    C++ signature :
-        unsigned int numRows(class PyDbTable {lvalue})'''
+    def numRows (self: Table)-> int :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -67448,11 +67262,8 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def recomputeTableBlock (self, *args, **kwargs)-> None :
-      '''recomputeTableBlock( (Table)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void recomputeTableBlock(class PyDbTable {lvalue},bool)'''
+    def recomputeTableBlock (self: Table)-> None :
+      '''                             '''
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
@@ -67460,11 +67271,8 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeAllOverrides (self, *args, **kwargs)-> None :
-      '''removeAllOverrides( (Table)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void removeAllOverrides(class PyDbTable {lvalue},int,int)'''
+    def removeAllOverrides (self: Table,row: int,col: int)-> None :
+      '''                             '''
     ...
     def removeDataLink (self, *args, **kwargs)-> None :
       '''removeDataLink( (Table)arg1) -> None :
@@ -67500,11 +67308,8 @@ rotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
     C++ signature :
         double rotation(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def rowHeight (self, *args, **kwargs)-> float :
-      '''rowHeight( (Table)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double rowHeight(class PyDbTable {lvalue},int)'''
+    def rowHeight (self: Table,row : int)-> float :
+      '''                             '''
     ...
     def rowType (self, *args, **kwargs)-> PyDb.RowType :
       '''rowType( (Table)arg1, (int)arg2) -> RowType :
@@ -67512,11 +67317,8 @@ rotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
     C++ signature :
         enum AcDb::RowType rowType(class PyDbTable {lvalue},int)'''
     ...
-    def scale (self, *args, **kwargs)-> float :
-      '''scale( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
-
-    C++ signature :
-        double scale(class PyDbTable {lvalue},int,int,int)'''
+    def scale (self: Table,row: int,col: int,content: int)-> float :
+      '''                             '''
     ...
     def scaleFactors (self: BlockReference)-> PyGe.Scale3d :
       '''                             '''
@@ -67582,17 +67384,11 @@ setBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     C++ signature :
         void setBlockAttributeValue(class PyDbTable {lvalue},int,int,int,class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setBlockRotation (self, *args, **kwargs)-> None :
-      '''setBlockRotation( (Table)arg1, (int)arg2, (int)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void setBlockRotation(class PyDbTable {lvalue},int,int,double)'''
+    def setBlockRotation (self: Table,row: int,col: int,rotAng : real)-> None :
+      '''                             '''
     ...
-    def setBlockScale (self, *args, **kwargs)-> None :
-      '''setBlockScale( (Table)arg1, (int)arg2, (int)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void setBlockScale(class PyDbTable {lvalue},int,int,double)'''
+    def setBlockScale (self: Table,row: int,col: int,scale : real)-> None :
+      '''                             '''
     ...
     def setBlockTableRecord (self: BlockReference,val : ObjectId)-> None :
       '''                             '''
@@ -67617,11 +67413,8 @@ setBlockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)a
     C++ signature :
         void setBreakFlowDirection(class PyDbTable {lvalue},enum AcDb::TableBreakFlowDirection)'''
     ...
-    def setBreakHeight (self, *args, **kwargs)-> None :
-      '''setBreakHeight( (Table)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void setBreakHeight(class PyDbTable {lvalue},int,double)'''
+    def setBreakHeight (self: Table,val : int,height : real)-> None :
+      '''                             '''
     ...
     def setBreakOffset (self, *args, **kwargs)-> None :
       '''setBreakOffset( (Table)arg1, (int)arg2, (Vector3d)arg3) -> None :
@@ -67635,32 +67428,20 @@ setBlockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)a
     C++ signature :
         void setBreakOption(class PyDbTable {lvalue},enum AcDb::TableBreakOption)'''
     ...
-    def setBreakSpacing (self, *args, **kwargs)-> None :
-      '''setBreakSpacing( (Table)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBreakSpacing(class PyDbTable {lvalue},double)'''
+    def setBreakSpacing (self: Table,val : real)-> None :
+      '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setCellOverride (self, *args, **kwargs)-> None :
-      '''setCellOverride( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (CellProperty)arg5) -> None :
-
-    C++ signature :
-        void setCellOverride(class PyDbTable {lvalue},int,int,int,enum AcDb::CellProperty)'''
+    def setCellOverride (self: Table,row: int,col: int,content: int,nOverride: PyDb.CellProperty)-> None :
+      '''                             '''
     ...
-    def setCellState (self, *args, **kwargs)-> None :
-      '''setCellState( (Table)arg1, (int)arg2, (int)arg3, (CellState)arg4) -> None :
-
-    C++ signature :
-        void setCellState(class PyDbTable {lvalue},int,int,enum AcDb::CellState)'''
+    def setCellState (self: Table,row: int,col: int,val : PyDb.CellState)-> None :
+      '''                             '''
     ...
-    def setCellStyle (self, *args, **kwargs)-> None :
-      '''setCellStyle( (Table)arg1, (int)arg2, (int)arg3, (str)arg4) -> None :
-
-    C++ signature :
-        void setCellStyle(class PyDbTable {lvalue},int,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setCellStyle (self: Table,row: int,col: int,style: str)-> None :
+      '''                             '''
     ...
     def setCellType (self, *args, **kwargs)-> None :
       '''setCellType( (Table)arg1, (int)arg2, (int)arg3, (CellType)arg4) -> None :
@@ -67701,11 +67482,8 @@ setContentColor( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (Color)arg5) -> N
     C++ signature :
         void setContentColor(class PyDbTable {lvalue},int,int,int,class AcCmColor)'''
     ...
-    def setContentLayout (self, *args, **kwargs)-> None :
-      '''setContentLayout( (Table)arg1, (int)arg2, (int)arg3, (CellContentLayout)arg4) -> None :
-
-    C++ signature :
-        void setContentLayout(class PyDbTable {lvalue},int,int,enum AcDb::CellContentLayout)'''
+    def setContentLayout (self: Table,row: int,col: int,val: PyDb.CellContentLayout)-> None :
+      '''                             '''
     ...
     def setDataFormat (self, *args, **kwargs)-> None :
       '''setDataFormat( (Table)arg1, (int)arg2, (int)arg3, (str)arg4) -> None :
@@ -67718,11 +67496,8 @@ setDataFormat( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (str)arg5) -> None 
     C++ signature :
         void setDataFormat(class PyDbTable {lvalue},int,int,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setDataLink (self, *args, **kwargs)-> None :
-      '''setDataLink( (Table)arg1, (CellRange)arg2, (ObjectId)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void setDataLink(class PyDbTable {lvalue},struct AcCellRange,class PyDbObjectId,bool)'''
+    def setDataLink (self: Table,row: int,col: int,id : PyDb.ObjectId,update : bool)-> None :
+      '''                             '''
     ...
     def setDataType (self, *args, **kwargs)-> None :
       '''setDataType( (Table)arg1, (object)arg2, (object)arg3) -> None :
@@ -67748,11 +67523,8 @@ setDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (object)arg5, (object
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDirection (self, *args, **kwargs)-> None :
-      '''setDirection( (Table)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setDirection(class PyDbTable {lvalue},class AcGeVector3d)'''
+    def setDirection (self: Table,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
@@ -67768,11 +67540,8 @@ setFieldId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5, (objec
     C++ signature :
         void setFieldId(class PyDbTable {lvalue},int,int,int,class PyDbObjectId,enum AcDb::CellOption)'''
     ...
-    def setFlowDirection (self, *args, **kwargs)-> None :
-      '''setFlowDirection( (Table)arg1, (TableFlowDirection)arg2) -> None :
-
-    C++ signature :
-        void setFlowDirection(class PyDbTable {lvalue},enum AcDb::FlowDirection)'''
+    def setFlowDirection (self: Table,val : PyDb.TableFlowDirection)-> None :
+      '''                             '''
     ...
     def setFormat (self, *args, **kwargs)-> None :
       '''setFormat( (Table)arg1, (int)arg2, (int)arg3, (str)arg4) -> None :
@@ -67780,11 +67549,8 @@ setFieldId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5, (objec
     C++ signature :
         void setFormat(class PyDbTable {lvalue},int,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setFormula (self, *args, **kwargs)-> None :
-      '''setFormula( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (str)arg5) -> None :
-
-    C++ signature :
-        void setFormula(class PyDbTable {lvalue},int,int,int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setFormula (self: Table,row: int,col: int,content: int,val: str)-> None :
+      '''                             '''
     ...
     def setGridColor (self, *args, **kwargs)-> None :
       '''setGridColor( (Table)arg1, (Color)arg2, (int)arg3, (int)arg4) -> None :
@@ -67821,11 +67587,8 @@ setGridColor( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (Color)arg5
     C++ signature :
         void setGridEdgeVisibility(class PyDbTable {lvalue},int,int,enum AcDb::CellEdgeMask,enum AcDb::Visibility)'''
     ...
-    def setGridLineStyle (self, *args, **kwargs)-> None :
-      '''setGridLineStyle( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (GridLineStyle)arg5) -> None :
-
-    C++ signature :
-        void setGridLineStyle(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,enum AcDb::GridLineStyle)'''
+    def setGridLineStyle (self: Table,row: int,col: int,nGridLineType: PyDb.GridLineTypes,nLineStyle: PyDb.GridLineStyle)-> None :
+      '''                             '''
     ...
     def setGridLineWeight (self, *args, **kwargs)-> None :
       '''setGridLineWeight( (Table)arg1, (LineWeight)arg2, (int)arg3, (int)arg4) -> None :
@@ -67838,17 +67601,11 @@ setGridLineWeight( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (LineW
     C++ signature :
         void setGridLineWeight(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,enum AcDb::LineWeight)'''
     ...
-    def setGridLinetype (self, *args, **kwargs)-> None :
-      '''setGridLinetype( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (ObjectId)arg5) -> None :
-
-    C++ signature :
-        void setGridLinetype(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,class PyDbObjectId)'''
+    def setGridLinetype (self: Table,row: int,col: int,nGridLineType: PyDb.GridLineTypes,idLinetype: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setGridOverride (self, *args, **kwargs)-> None :
-      '''setGridOverride( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (GridProperty)arg5) -> None :
-
-    C++ signature :
-        void setGridOverride(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,enum AcDb::GridProperty)'''
+    def setGridOverride (self: Table,row: int,col: int,nGridLineType: PyDb.GridLineType,nOverride: PyDb.GridProperty)-> None :
+      '''                             '''
     ...
     def setGridProperty (self, *args, **kwargs)-> None :
       '''setGridProperty( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4, (object)arg5) -> None :
@@ -67873,17 +67630,11 @@ setGridProperty( (Table)arg1, (CellRange)arg2, (GridLineType)arg3, (object)arg4)
     C++ signature :
         void setGridVisibility3(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,enum AcDb::Visibility)'''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (Table)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbTable {lvalue},double)'''
+    def setHeight (self: Table,val : real)-> None :
+      '''                             '''
     ...
-    def setHorzCellMargin (self, *args, **kwargs)-> None :
-      '''setHorzCellMargin( (Table)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHorzCellMargin(class PyDbTable {lvalue},double)'''
+    def setHorzCellMargin (self: Table,val : real)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -67897,20 +67648,14 @@ setGridProperty( (Table)arg1, (CellRange)arg2, (GridLineType)arg3, (object)arg4)
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMargin (self, *args, **kwargs)-> None :
-      '''setMargin( (Table)arg1, (int)arg2, (int)arg3, (CellMargin)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void setMargin(class PyDbTable {lvalue},int,int,enum AcDb::CellMargin,double)'''
+    def setMargin (self: Table,row: int,col: int,nMargin: PyDb.CellMargin,val : real)-> None :
+      '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (Table)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbTable {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Table,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -67931,11 +67676,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (Table)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbTable {lvalue},class AcGePoint3d)'''
+    def setPosition (self: Table,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -67943,17 +67685,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRecomputeTableBlock (self, *args, **kwargs)-> None :
-      '''setRecomputeTableBlock( (Table)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setRecomputeTableBlock(class PyDbTable {lvalue},bool)'''
+    def setRecomputeTableBlock (self: Table,val : bool)-> None :
+      '''                             '''
     ...
-    def setRegen (self, *args, **kwargs)-> None :
-      '''setRegen( (Table)arg1) -> None :
-
-    C++ signature :
-        void setRegen(class PyDbTable {lvalue})'''
+    def setRegen (self: Table)-> None :
+      '''                             '''
     ...
     def setRotation (self, *args, **kwargs)-> None :
       '''setRotation( (Table)arg1, (float)arg2) -> None :
@@ -67977,32 +67713,20 @@ setRowHeight( (Table)arg1, (float)arg2) -> None :
     C++ signature :
         void setRowHeight(class PyDbTable {lvalue},double)'''
     ...
-    def setScale (self, *args, **kwargs)-> None :
-      '''setScale( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void setScale(class PyDbTable {lvalue},int,int,int,double)'''
+    def setScale (self: Table,row: int,col: int,content: int,val : real)-> None :
+      '''                             '''
     ...
     def setScaleFactors (self: BlockReference,val : PyGe.Scale3d)-> None :
       '''                             '''
     ...
-    def setSize (self, *args, **kwargs)-> None :
-      '''setSize( (Table)arg1, (int)arg2, (int)arg3) -> None :
-
-    C++ signature :
-        void setSize(class PyDbTable {lvalue},int,int)'''
+    def setSize (self: Table,rows: int,cols: int)-> None :
+      '''                             '''
     ...
-    def setSubSelection (self, *args, **kwargs)-> None :
-      '''setSubSelection( (Table)arg1, (CellRange)arg2) -> None :
-
-    C++ signature :
-        void setSubSelection(class PyDbTable {lvalue},struct AcCellRange)'''
+    def setSubSelection (self: Table,val : PyDb.CellRange)-> None :
+      '''                             '''
     ...
-    def setTableStyle (self, *args, **kwargs)-> None :
-      '''setTableStyle( (Table)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setTableStyle(class PyDbTable {lvalue},class PyDbObjectId)'''
+    def setTableStyle (self: Table,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def setTextHeight (self, *args, **kwargs)-> None :
       '''setTextHeight( (Table)arg1, (float)arg2, (RowType)arg3) -> None :
@@ -68058,20 +67782,14 @@ setTextStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5) -> N
     C++ signature :
         void setTextStyle(class PyDbTable {lvalue},int,int,int,class PyDbObjectId)'''
     ...
-    def setVertCellMargin (self, *args, **kwargs)-> None :
-      '''setVertCellMargin( (Table)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setVertCellMargin(class PyDbTable {lvalue},double)'''
+    def setVertCellMargin (self: Table,val : real)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidth (self, *args, **kwargs)-> None :
-      '''setWidth( (Table)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidth(class PyDbTable {lvalue},double)'''
+    def setWidth (self: Table,val : real)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -68079,38 +67797,23 @@ setTextStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5) -> N
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def suppressHeaderRow (self, *args, **kwargs)-> None :
-      '''suppressHeaderRow( (Table)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void suppressHeaderRow(class PyDbTable {lvalue},bool)'''
+    def suppressHeaderRow (self: Table,val : bool)-> None :
+      '''                             '''
     ...
-    def suppressInvisibleGrid (self, *args, **kwargs)-> None :
-      '''suppressInvisibleGrid( (Table)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void suppressInvisibleGrid(class PyDbTable {lvalue},bool)'''
+    def suppressInvisibleGrid (self: Table,val : bool)-> None :
+      '''                             '''
     ...
-    def suppressRegenerateTable (self, *args, **kwargs)-> None :
-      '''suppressRegenerateTable( (Table)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void suppressRegenerateTable(class PyDbTable {lvalue},bool)'''
+    def suppressRegenerateTable (self: Table,val : bool)-> None :
+      '''                             '''
     ...
-    def suppressTitleRow (self, *args, **kwargs)-> None :
-      '''suppressTitleRow( (Table)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void suppressTitleRow(class PyDbTable {lvalue},bool)'''
+    def suppressTitleRow (self: Table,val : bool)-> None :
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def tableStyle (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''tableStyle( (Table)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId tableStyle(class PyDbTable {lvalue})'''
+    def tableStyle (self: Table)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def tableStyleOverrides (self, *args, **kwargs)-> list :
       '''tableStyleOverrides( (Table)arg1) -> list :
@@ -68194,11 +67897,8 @@ textStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     def treatAsAcDbBlockRefForExplode (self: BlockReference)-> bool :
       '''                             '''
     ...
-    def unmergeCells (self, *args, **kwargs)-> None :
-      '''unmergeCells( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (int)arg5) -> None :
-
-    C++ signature :
-        void unmergeCells(class PyDbTable {lvalue},int,int,int,int)'''
+    def unmergeCells (self: Table,minRow: int,maxRow: int,minCol: int,maxCol: int)-> None :
+      '''                             '''
     ...
     def updateDataLink (self, *args, **kwargs)-> None :
       '''updateDataLink( (Table)arg1, (UpdateDirection)arg2, (UpdateOption)arg3) -> None :
@@ -68217,11 +67917,8 @@ updateDataLink( (Table)arg1, (int)arg2, (int)arg3, (UpdateDirection)arg4, (Updat
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
     ...
-    def vertCellMargin (self, *args, **kwargs)-> float :
-      '''vertCellMargin( (Table)arg1) -> float :
-
-    C++ signature :
-        double vertCellMargin(class PyDbTable {lvalue})'''
+    def vertCellMargin (self: Table)-> float :
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -68235,11 +67932,8 @@ updateDataLink( (Table)arg1, (int)arg2, (int)arg3, (UpdateDirection)arg4, (Updat
     def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def width (self, *args, **kwargs)-> float :
-      '''width( (Table)arg1) -> float :
-
-    C++ signature :
-        double width(class PyDbTable {lvalue})'''
+    def width (self: Table)-> float :
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''

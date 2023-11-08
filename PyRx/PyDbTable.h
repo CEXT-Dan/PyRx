@@ -177,7 +177,8 @@ public:
     boost::python::tuple  isMergedCell(int row, int col);
     void                generateLayout();
     void                recomputeTableBlock(bool forceUpdate);
-    boost::python::tuple  hitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec, double wxaper, double wyaper);
+    boost::python::tuple  hitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec);
+    boost::python::tuple  hitTest2(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec, double wxaper, double wyaper);
     AcCellRange         getSubSelection(void) const;
     void                setSubSelection(const AcCellRange& range);
     void                clearSubSelection();
