@@ -83,7 +83,7 @@ public:
     void                setDataType3(int row, int col, AcValue::DataType nDataType, AcValue::UnitType nUnitType);
     void                setFormat(int row, int col, const std::string& pszFormat);
     std::string         textString(int row, int col) const;
-    std::string         textString3(int row, int col, AcValue::FormatOption nOption) const;
+    std::string         textStringFmt1(int row, int col, AcValue::FormatOption nOption) const;
     void                setTextString(int row, int col, const std::string& text);
     PyDbObjectId        fieldId(int row, int col) const;
     void                setFieldId(int row, int col, const PyDbObjectId& fieldId);
@@ -164,7 +164,7 @@ public:
     void                setDataFormat1(int row, int col, const std::string& pszFormat);
     void                setDataFormat2(int row, int col, int nContent, const std::string& pszFormat);
     std::string         textString2(int row, int col, int nContent) const;
-    std::string         textString4(int row, int col, int nContent, AcValue::FormatOption nOption) const;
+    std::string         textStringFmt2(int row, int col, int nContent, AcValue::FormatOption nOption) const;
     void                setTextString2(int row, int col, int nContent, const  std::string& text);
     bool                hasFormula(int nRow, int nCol, int nContent) const;
     std::string         getFormula(int nRow, int nCol, int nContent) const;

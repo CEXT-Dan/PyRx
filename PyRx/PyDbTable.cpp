@@ -119,7 +119,7 @@ void makePyDbTableWrapper()
         .def("setDataType", &PyDbTable::setDataType3)
         .def("setFormat", &PyDbTable::setFormat)
         .def("textString", &PyDbTable::textString)
-        .def("textString", &PyDbTable::textString3)
+        .def("textStringFmt", &PyDbTable::textStringFmt1)
         .def("setTextString", &PyDbTable::setTextString)
         .def("fieldId", &PyDbTable::fieldId)
         .def("setFieldId", &PyDbTable::setFieldId)
@@ -188,7 +188,7 @@ void makePyDbTableWrapper()
         .def("setDataFormat", &PyDbTable::setDataFormat1)
         .def("setDataFormat", &PyDbTable::setDataFormat2)
         .def("textString", &PyDbTable::textString2)
-        .def("textString", &PyDbTable::textString4)
+        .def("textStringFmt", &PyDbTable::textStringFmt2)
         .def("setTextString", &PyDbTable::setTextString2)
         .def("hasFormula", &PyDbTable::hasFormula)
         .def("getFormula", &PyDbTable::getFormula)
@@ -826,14 +826,14 @@ std::string PyDbTable::textString2(int row, int col, int nContent) const
     return wstr_to_utf8(impObj()->textString(row, col, nContent));
 }
 
-std::string PyDbTable::textString3(int row, int col, AcValue::FormatOption nOption) const
+std::string PyDbTable::textStringFmt1(int row, int col, AcValue::FormatOption nOption) const
 {
     AcString str;
     PyThrowBadEs(impObj()->textString(row, col, nOption, str));
     return wstr_to_utf8(str);
 }
 
-std::string PyDbTable::textString4(int row, int col, int nContent, AcValue::FormatOption nOption) const
+std::string PyDbTable::textStringFmt2(int row, int col, int nContent, AcValue::FormatOption nOption) const
 {
     AcString str;
     PyThrowBadEs(impObj()->textString(row, col, nContent, nOption, str));
