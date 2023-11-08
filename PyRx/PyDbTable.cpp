@@ -226,10 +226,10 @@ void makePyDbTableWrapper()
         .def("setContentLayout", &PyDbTable::setContentLayout)
         .def("isMergeAllEnabled", &PyDbTable::isMergeAllEnabled)
         .def("enableMergeAll", &PyDbTable::enableMergeAll)
-        .def("getOverride", &PyDbTable::getOverride1)
-        .def("getOverride", &PyDbTable::getOverride2)
-        .def("setOverride", &PyDbTable::setOverride1)
-        .def("setOverride", &PyDbTable::setOverride2)
+        .def("getOverride", &PyDbTable::getOverride)
+        .def("getGridOverride", &PyDbTable::getGridOverride)
+        .def("setOverride", &PyDbTable::setOverride)
+        .def("setGridOverride", &PyDbTable::setGridOverride)
         .def("removeAllOverrides", &PyDbTable::removeAllOverrides)
         .def("gridLineStyle", &PyDbTable::gridLineStyle)
         .def("setGridLineStyle", &PyDbTable::setGridLineStyle)
@@ -1514,22 +1514,22 @@ void PyDbTable::enableMergeAll(int nRow, int nCol, bool bEnable)
     return PyThrowBadEs(impObj()->enableMergeAll(nRow, nCol, bEnable));
 }
 
-AcDb::CellProperty PyDbTable::getOverride1(int nRow, int nCol, int nContent) const
+AcDb::CellProperty PyDbTable::getOverride(int nRow, int nCol, int nContent) const
 {
     return impObj()->getOverride(nRow, nCol, nContent);
 }
 
-AcDb::GridProperty PyDbTable::getOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+AcDb::GridProperty PyDbTable::getGridOverride(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
     return impObj()->getOverride(nRow, nCol, nGridLineType);
 }
 
-void PyDbTable::setOverride1(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride)
+void PyDbTable::setOverride(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride)
 {
     return PyThrowBadEs(impObj()->setOverride(nRow, nCol, nContent, nOverride));
 }
 
-void PyDbTable::setOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType, AcDb::GridProperty nOverride)
+void PyDbTable::setGridOverride(int nRow, int nCol, AcDb::GridLineType nGridLineType, AcDb::GridProperty nOverride)
 {
     return PyThrowBadEs(impObj()->setOverride(nRow, nCol, nGridLineType, nOverride));
 }
