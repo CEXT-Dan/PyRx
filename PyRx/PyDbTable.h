@@ -135,9 +135,6 @@ public:
     bool                canDelete(int nIndex, int nCount, bool bRow) const;
     bool                isEmpty(int nRow, int nCol) const;
     AcCellRange         getMergeRange(int nRow, int nCol) const;
-    //TODO; just return a list of AcCell?
-    //AcDbTableIterator* getIterator(void) const;
-    //AcDbTableIterator* getIterator(const AcCellRange* pRange, AcDb::TableIteratorOption nOption) const;
     boost::python::list getIterator1();
     boost::python::list getIterator2(AcDb::TableIteratorOption nOption) const;
     boost::python::list getIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const;
@@ -202,10 +199,10 @@ public:
     void                setContentLayout(int row, int col, AcDb::CellContentLayout nLayout);
     bool                isMergeAllEnabled(int nRow, int nCol) const;
     void                enableMergeAll(int nRow, int nCol, bool bEnable);
-    AcDb::CellProperty  getOverride1(int nRow, int nCol, int nContent) const;
-    AcDb::GridProperty  getOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType) const;
-    void                setOverride1(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride);
-    void                setOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType, AcDb::GridProperty nOverride);
+    AcDb::CellProperty  getOverride(int nRow, int nCol, int nContent) const;
+    AcDb::GridProperty  getGridOverride(int nRow, int nCol, AcDb::GridLineType nGridLineType) const;
+    void                setOverride(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride);
+    void                setGridOverride(int nRow, int nCol, AcDb::GridLineType nGridLineType, AcDb::GridProperty nOverride);
     void                removeAllOverrides(int nRow, int nCol);
     AcDb::GridLineStyle gridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineType) const;
     void                setGridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::GridLineStyle nLineStyle);
