@@ -226,9 +226,9 @@ void makePyDbTableWrapper()
         .def("setContentLayout", &PyDbTable::setContentLayout)
         .def("isMergeAllEnabled", &PyDbTable::isMergeAllEnabled)
         .def("enableMergeAll", &PyDbTable::enableMergeAll)
-        .def("getOverride", &PyDbTable::getOverride)
+        .def("getCellOverride", &PyDbTable::getCellOverride)
         .def("getGridOverride", &PyDbTable::getGridOverride)
-        .def("setOverride", &PyDbTable::setOverride)
+        .def("setCellOverride", &PyDbTable::setCellOverride)
         .def("setGridOverride", &PyDbTable::setGridOverride)
         .def("removeAllOverrides", &PyDbTable::removeAllOverrides)
         .def("gridLineStyle", &PyDbTable::gridLineStyle)
@@ -1514,7 +1514,7 @@ void PyDbTable::enableMergeAll(int nRow, int nCol, bool bEnable)
     return PyThrowBadEs(impObj()->enableMergeAll(nRow, nCol, bEnable));
 }
 
-AcDb::CellProperty PyDbTable::getOverride(int nRow, int nCol, int nContent) const
+AcDb::CellProperty PyDbTable::getCellOverride(int nRow, int nCol, int nContent) const
 {
     return impObj()->getOverride(nRow, nCol, nContent);
 }
@@ -1524,7 +1524,7 @@ AcDb::GridProperty PyDbTable::getGridOverride(int nRow, int nCol, AcDb::GridLine
     return impObj()->getOverride(nRow, nCol, nGridLineType);
 }
 
-void PyDbTable::setOverride(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride)
+void PyDbTable::setCellOverride(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride)
 {
     return PyThrowBadEs(impObj()->setOverride(nRow, nCol, nContent, nOverride));
 }
