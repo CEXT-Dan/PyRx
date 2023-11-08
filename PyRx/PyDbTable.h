@@ -133,12 +133,16 @@ public:
 
     std::string         textString(int row, int col) const;
     std::string         textString2(int row, int col, int nContent) const;
+    std::string         textString3(const AcCell& cell) const;//
 
     std::string         textStringFmt1(int row, int col, AcValue::FormatOption nOption) const;
     std::string         textStringFmt2(int row, int col, int nContent, AcValue::FormatOption nOption) const;
+    std::string         textStringFmt3(const AcCell& cell, AcValue::FormatOption nOption) const;//
+
 
     void                setTextString(int row, int col, const std::string& text);
     void                setTextString2(int row, int col, int nContent, const  std::string& text);
+    void                setTextString3(const AcCell& cell, const std::string& text);
 
     PyDbObjectId        fieldId(int row, int col) const;
     void                setFieldId(int row, int col, const PyDbObjectId& fieldId);
