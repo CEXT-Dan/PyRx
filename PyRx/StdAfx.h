@@ -313,7 +313,7 @@ inline AcGePoint2d py_list_to_point2d(const boost::python::object& iterable)
     return AcGePoint2d(vec[0], vec[1]);
 }
 
-AcGeVector3d py_list_to_vector3d(const boost::python::object& iterable)
+inline AcGeVector3d py_list_to_vector3d(const boost::python::object& iterable)
 {
     PyAutoLockGIL lock;
     auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
@@ -321,6 +321,16 @@ AcGeVector3d py_list_to_vector3d(const boost::python::object& iterable)
     if (vec.size() < 3)
         throw PyAcadErrorStatus(eInvalidInput);
     return AcGeVector3d(vec[0], vec[1], vec[2]);
+}
+
+inline AcGeVector2d py_list_to_vector2d(const boost::python::object& iterable)
+{
+    PyAutoLockGIL lock;
+    auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
+        boost::python::stl_input_iterator<double>());
+    if (vec.size() < 2)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return AcGeVector2d(vec[0], vec[1]);
 }
 
 template<typename T>
