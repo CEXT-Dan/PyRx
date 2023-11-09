@@ -235,6 +235,11 @@ void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
     }
 }
 
+static boost::shared_ptr<AcGePoint2d> PyGePoint2dInitTuple(const boost::python::object& iterable)
+{
+    return boost::shared_ptr<AcGePoint2d>(new AcGePoint2d(py_list_to_point2d(iterable)));
+}
+
 void makePyGePoint2dWrapper()
 {
     class_<AcGePoint2d>("Point2d")
@@ -274,6 +279,7 @@ void makePyGePoint2dWrapper()
         .def("__hash__", &AcGePoint2dHash)
         .def("__getitem__", &AcGePoint2dGetItem)
         .def("__setitem__", &AcGePoint2dSetItem)
+        .def("__init__", make_constructor(&PyGePoint2dInitTuple))
         ;
 }
 
@@ -365,6 +371,11 @@ void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
     }
 }
 
+static boost::shared_ptr<AcGeVector2d> PyGeVector2dInitTuple(const boost::python::object& iterable)
+{
+    return boost::shared_ptr<AcGeVector2d>(new AcGeVector2d(py_list_to_vector2d(iterable)));
+}
+
 void makePyGeVector2dWrapper()
 {
     class_<AcGeVector2d>("Vector2d")
@@ -419,6 +430,7 @@ void makePyGeVector2dWrapper()
         .def("__getitem__", &AcGeVector2dGetItem)
         .def("__setitem__", &AcGeVector2dSetItem)
         .def("__hash__", &AcGeVector2dHash)
+        .def("__init__", make_constructor(&PyGeVector2dInitTuple))
         ;
 }
 
@@ -731,6 +743,11 @@ void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
     }
 }
 
+static boost::shared_ptr<AcGePoint3d> PyGePoint3dInitTuple(const boost::python::object& iterable)
+{
+    return boost::shared_ptr<AcGePoint3d>(new AcGePoint3d(py_list_to_point3d(iterable)));
+}
+
 void makePyGePoint3dWrapper()
 {
     PyDocString DS("Point3d");
@@ -771,8 +788,6 @@ void makePyGePoint3dWrapper()
         .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-)
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__isub__", &AcGePoint3d::operator-=, return_self<>())
         .def<AcGeVector3d(AcGePoint3d::*)(const AcGePoint3d&)const>("__sub__", &AcGePoint3d::operator-)
-        .def("fromList", &PyIterableToAcGePoint3d, DS.SARGS({ "lst : list[float]" })).staticmethod("fromList")
-        .def("fromTuple", &PyIterableToAcGePoint3d, DS.SARGS({ "tpl : tuple[float]" })).staticmethod("fromTuple")
         .def_pickle(AcGePoint3dpickle())
         .def("toList", &AcGePoint3dToList, DS.ARGS())
         .def("toTuple", &AcGePoint3dToTuple, DS.ARGS())
@@ -782,6 +797,7 @@ void makePyGePoint3dWrapper()
         .def("__hash__", &AcGePoint3dHash)
         .def("__getitem__", &AcGePoint3dGetItem)
         .def("__setitem__", &AcGePoint3dSetItem)
+        .def("__init__", make_constructor(&PyGePoint3dInitTuple))
         ;
 }
 
@@ -884,6 +900,11 @@ void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
     }
 }
 
+static boost::shared_ptr<AcGeVector3d> PyGeVector3dInitTuple(const boost::python::object& iterable)
+{
+    return boost::shared_ptr<AcGeVector3d>(new AcGeVector3d(py_list_to_vector3d(iterable)));
+}
+
 static void makePyGeVector3dWrapper()
 {
     PyDocString DS("Vector3d");
@@ -953,6 +974,7 @@ static void makePyGeVector3dWrapper()
         .def("__hash__", AcGeVector3dHash)
         .def("__getitem__", &AcGeVector3dGetItem)
         .def("__setitem__", &AcGeVector3dSetItem)
+        .def("__init__", make_constructor(&PyGeVector3dInitTuple))
         ;
 }
 

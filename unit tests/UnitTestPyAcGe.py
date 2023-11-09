@@ -62,12 +62,11 @@ class TestGe(unittest.TestCase):
     def test_point2d_arg_ctor(self):
         point = PyGe.Point2d(100, 100)
         self.assertEqual(point, PyGe.Point2d(100, 100))
-
-    def test_point2d_copy_ctor(self):
-        point = PyGe.Point2d(100, 100)
-        pointCpy = PyGe.Point2d(point)
-        self.assertEqual(point, pointCpy)
-
+        point2 = PyGe.Point2d([300,400])
+        self.assertEqual(point2, PyGe.Point2d(300, 400))
+        point3 = PyGe.Point2d((400,500))
+        self.assertEqual(point3, PyGe.Point2d(400, 500))
+        
     def test_point2d_add(self):
         point = PyGe.Point2d(100, 100)
         p = point + PyGe.Vector2d.kXAxis
@@ -213,7 +212,7 @@ class TestGe(unittest.TestCase):
         
     def test_point3dlist_getset(self):
         iterable = [1, 2, 3]
-        pO = PyGe.Point3d.fromList(iterable)
+        pO = PyGe.Point3d(iterable)
         x = pO[0]
         y = pO[1]
         z = pO[2]
@@ -229,7 +228,7 @@ class TestGe(unittest.TestCase):
         
     def test_point3dtuple_getset(self):
         iterable = (1, 2, 3)
-        pO = PyGe.Point3d.fromTuple(iterable)
+        pO = PyGe.Point3d(iterable)
         x = pO[0]
         y = pO[1]
         z = pO[2]
