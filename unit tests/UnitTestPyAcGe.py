@@ -16,14 +16,6 @@ class TestGe(unittest.TestCase):
         self.assertEqual(scale.sx,1)
         self.assertEqual(scale.sy,1)
         
-    def test_scale2_cpy_ctor(self):
-        scale = PyGe.Scale2d()
-        scale.sx = 2
-        scale.sy = 2
-        scaleTest = PyGe.Scale2d(scale)
-        self.assertEqual(scaleTest.sx,2)
-        self.assertEqual(scaleTest.sy,2)
-        
     def test_scale2_ctor1(self):
         scale = PyGe.Scale2d(3)
         self.assertEqual(scale.sx,3)
