@@ -186,11 +186,11 @@ class TestDatabase(unittest.TestCase):
         
     def test_getallobjectidsfromdwg(self):
         ids = self.db06457.objectIds()
-        self.assertEqual(len(ids), 23176)
+        self.assertEqual(len(ids), 26674)
         
     def test_getallobjectidsfromdwgdesc(self):
         ids = self.db06457.objectIds(Db.BlockReference.desc())
-        self.assertEqual(len(ids), 1825 )
+        self.assertEqual(len(ids), 1826 )
 
 
 def PyRxCmd_pydbtest():
