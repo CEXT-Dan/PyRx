@@ -75200,11 +75200,8 @@ class Viewport:
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def freezeLayersInViewport (self, *args, **kwargs)-> None :
-      '''freezeLayersInViewport( (Viewport)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void freezeLayersInViewport(class PyDbViewport {lvalue},class boost::python::list)'''
+    def freezeLayersInViewport (self: Viewport,ids : List[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
     def frontClipDistance (self: Viewport)-> float :
       '''                             '''
@@ -75365,11 +75362,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isLayerFrozenInViewport (self, *args, **kwargs)-> bool :
-      '''isLayerFrozenInViewport( (Viewport)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool isLayerFrozenInViewport(class PyDbViewport {lvalue},class PyDbObjectId)'''
+    def isLayerFrozenInViewport (self: Viewport,val : PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
     def isLocked (self: Viewport)-> bool :
       '''                             '''
@@ -75600,11 +75594,8 @@ removeHiddenLines( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setBackClipDistance(class PyDbViewport {lvalue},double)'''
     ...
-    def setBackClipOff (self, *args, **kwargs)-> None :
-      '''setBackClipOff( (Viewport)arg1) -> None :
-
-    C++ signature :
-        void setBackClipOff(class PyDbViewport {lvalue})'''
+    def setBackClipOff (self: Viewport)-> None :
+      '''                             '''
     ...
     def setBackClipOn (self, *args, **kwargs)-> None :
       '''setBackClipOn( (Viewport)arg1) -> None :
@@ -75617,32 +75608,20 @@ setBackClipOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setBackClipOn(class PyDbViewport {lvalue},bool)'''
     ...
-    def setBackground (self, *args, **kwargs)-> None :
-      '''setBackground( (Viewport)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setBackground(class PyDbViewport {lvalue},class PyDbObjectId {lvalue})'''
+    def setBackground (self: Viewport,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setBrightness (self, *args, **kwargs)-> None :
-      '''setBrightness( (Viewport)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBrightness(class PyDbViewport {lvalue},double)'''
+    def setBrightness (self: Viewport,val : real)-> None :
+      '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setCenterPoint (self, *args, **kwargs)-> None :
-      '''setCenterPoint( (Viewport)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setCenterPoint(class PyDbViewport {lvalue},class AcGePoint3d)'''
+    def setCenterPoint (self: Viewport,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setCircleSides (self, *args, **kwargs)-> None :
-      '''setCircleSides( (Viewport)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setCircleSides(class PyDbViewport {lvalue},unsigned short)'''
+    def setCircleSides (self: Viewport,val : int)-> None :
+      '''                             '''
     ...
     def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
@@ -75650,11 +75629,8 @@ setBackClipOn( (Viewport)arg1, (bool)arg2) -> None :
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setContrast (self, *args, **kwargs)-> None :
-      '''setContrast( (Viewport)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setContrast(class PyDbViewport {lvalue},double)'''
+    def setContrast (self: Viewport,val : real)-> None :
+      '''                             '''
     ...
     def setCustomScale (self, *args, **kwargs)-> None :
       '''setCustomScale( (Viewport)arg1, (float)arg2) -> None :
@@ -75665,11 +75641,8 @@ setBackClipOn( (Viewport)arg1, (bool)arg2) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDefaultLightingOn (self, *args, **kwargs)-> None :
-      '''setDefaultLightingOn( (Viewport)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDefaultLightingOn(class PyDbViewport {lvalue},bool)'''
+    def setDefaultLightingOn (self: Viewport,val : bool)-> None :
+      '''                             '''
     ...
     def setDefaultLightingType (self, *args, **kwargs)-> None :
       '''setDefaultLightingType( (Viewport)arg1, (object)arg2) -> None :
@@ -75683,11 +75656,8 @@ setBackClipOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setElevation(class PyDbViewport {lvalue},double)'''
     ...
-    def setFastZoomOff (self, *args, **kwargs)-> None :
-      '''setFastZoomOff( (Viewport)arg1) -> None :
-
-    C++ signature :
-        void setFastZoomOff(class PyDbViewport {lvalue})'''
+    def setFastZoomOff (self: Viewport)-> None :
+      '''                             '''
     ...
     def setFastZoomOn (self, *args, **kwargs)-> None :
       '''setFastZoomOn( (Viewport)arg1) -> None :
@@ -75723,11 +75693,8 @@ setFrontClipAtEyeOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setFrontClipDistance(class PyDbViewport {lvalue},double)'''
     ...
-    def setFrontClipOff (self, *args, **kwargs)-> None :
-      '''setFrontClipOff( (Viewport)arg1) -> None :
-
-    C++ signature :
-        void setFrontClipOff(class PyDbViewport {lvalue})'''
+    def setFrontClipOff (self: Viewport)-> None :
+      '''                             '''
     ...
     def setFrontClipOn (self, *args, **kwargs)-> None :
       '''setFrontClipOn( (Viewport)arg1) -> None :
@@ -75740,41 +75707,23 @@ setFrontClipOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setFrontClipOn(class PyDbViewport {lvalue},bool)'''
     ...
-    def setGridAdaptive (self, *args, **kwargs)-> None :
-      '''setGridAdaptive( (Viewport)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGridAdaptive(class PyDbViewport {lvalue},bool)'''
+    def setGridAdaptive (self: Viewport,val : bool)-> None :
+      '''                             '''
     ...
-    def setGridBoundToLimits (self, *args, **kwargs)-> None :
-      '''setGridBoundToLimits( (Viewport)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGridBoundToLimits(class PyDbViewport {lvalue},bool)'''
+    def setGridBoundToLimits (self: Viewport,val : bool)-> None :
+      '''                             '''
     ...
-    def setGridFollow (self, *args, **kwargs)-> None :
-      '''setGridFollow( (Viewport)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGridFollow(class PyDbViewport {lvalue},bool)'''
+    def setGridFollow (self: Viewport,val : bool)-> None :
+      '''                             '''
     ...
-    def setGridIncrement (self, *args, **kwargs)-> None :
-      '''setGridIncrement( (Viewport)arg1, (Vector2d)arg2) -> None :
-
-    C++ signature :
-        void setGridIncrement(class PyDbViewport {lvalue},class AcGeVector2d)'''
+    def setGridIncrement (self: Viewport,val : PyGe.Vector2d)-> None :
+      '''                             '''
     ...
-    def setGridMajor (self, *args, **kwargs)-> None :
-      '''setGridMajor( (Viewport)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setGridMajor(class PyDbViewport {lvalue},unsigned short)'''
+    def setGridMajor (self: Viewport,val : int)-> None :
+      '''                             '''
     ...
-    def setGridOff (self, *args, **kwargs)-> None :
-      '''setGridOff( (Viewport)arg1) -> None :
-
-    C++ signature :
-        void setGridOff(class PyDbViewport {lvalue})'''
+    def setGridOff (self: Viewport)-> None :
+      '''                             '''
     ...
     def setGridOn (self, *args, **kwargs)-> None :
       '''setGridOn( (Viewport)arg1) -> None :
@@ -75787,35 +75736,23 @@ setGridOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setGridOn(class PyDbViewport {lvalue},bool)'''
     ...
-    def setGridSubdivisionRestricted (self, *args, **kwargs)-> None :
-      '''setGridSubdivisionRestricted( (Viewport)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGridSubdivisionRestricted(class PyDbViewport {lvalue},bool)'''
+    def setGridSubdivisionRestricted (self: Viewport,val : bool)-> None :
+      '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (Viewport)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbViewport {lvalue},double)'''
+    def setHeight (self: Viewport,val : real)-> None :
+      '''                             '''
     ...
     def setIsOn (self: Viewport,val : bool)-> None :
       '''                             '''
     ...
-    def setLabelBlock (self, *args, **kwargs)-> None :
-      '''setLabelBlock( (Viewport)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setLabelBlock(class PyDbViewport {lvalue},class PyDbObjectId {lvalue})'''
+    def setLabelBlock (self: Viewport,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLensLength (self, *args, **kwargs)-> None :
-      '''setLensLength( (Viewport)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLensLength(class PyDbViewport {lvalue},double)'''
+    def setLensLength (self: Viewport,val : real)-> None :
+      '''                             '''
     ...
     def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
@@ -75852,11 +75789,8 @@ setLocked( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setNonRectClipEntityId(class PyDbViewport {lvalue},class PyDbObjectId)'''
     ...
-    def setNonRectClipOff (self, *args, **kwargs)-> None :
-      '''setNonRectClipOff( (Viewport)arg1) -> None :
-
-    C++ signature :
-        void setNonRectClipOff(class PyDbViewport {lvalue})'''
+    def setNonRectClipOff (self: Viewport)-> None :
+      '''                             '''
     ...
     def setNonRectClipOn (self, *args, **kwargs)-> None :
       '''setNonRectClipOn( (Viewport)arg1) -> None :
@@ -75914,11 +75848,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPlotStyleSheet (self, *args, **kwargs)-> None :
-      '''setPlotStyleSheet( (Viewport)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setPlotStyleSheet(class PyDbViewport {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setPlotStyleSheet (self: Viewport,val : str)-> None :
+      '''                             '''
     ...
     def setPreviousBackground (self, *args, **kwargs)-> None :
       '''setPreviousBackground( (Viewport)arg1, (ObjectId)arg2) -> None :
@@ -75953,35 +75884,20 @@ setShadePlot( (Viewport)arg1, (VpShadePlotType)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         void setShadePlot(class PyDbViewport {lvalue},enum AcDbViewport::ShadePlotType,class PyDbObjectId)'''
     ...
-    def setSheetView (self, *args, **kwargs)-> None :
-      '''setSheetView( (Viewport)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setSheetView(class PyDbViewport {lvalue},class PyDbObjectId)'''
+    def setSheetView (self: Viewport,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setSnapAngle (self, *args, **kwargs)-> None :
-      '''setSnapAngle( (Viewport)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setSnapAngle(class PyDbViewport {lvalue},double)'''
+    def setSnapAngle (self: Viewport,val : real)-> None :
+      '''                             '''
     ...
-    def setSnapBasePoint (self, *args, **kwargs)-> None :
-      '''setSnapBasePoint( (Viewport)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setSnapBasePoint(class PyDbViewport {lvalue},class AcGePoint2d)'''
+    def setSnapBasePoint (self: Viewport,val : PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setSnapIncrement (self, *args, **kwargs)-> None :
-      '''setSnapIncrement( (Viewport)arg1, (Vector2d)arg2) -> None :
-
-    C++ signature :
-        void setSnapIncrement(class PyDbViewport {lvalue},class AcGeVector2d)'''
+    def setSnapIncrement (self: Viewport,val : PyGe.Vector2d)-> None :
+      '''                             '''
     ...
-    def setSnapIsoPair (self, *args, **kwargs)-> None :
-      '''setSnapIsoPair( (Viewport)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setSnapIsoPair(class PyDbViewport {lvalue},unsigned short)'''
+    def setSnapIsoPair (self: Viewport,val : int)-> None :
+      '''                             '''
     ...
     def setSnapIsometric (self, *args, **kwargs)-> None :
       '''setSnapIsometric( (Viewport)arg1) -> None :
@@ -75994,11 +75910,8 @@ setSnapIsometric( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setSnapIsometric(class PyDbViewport {lvalue},bool)'''
     ...
-    def setSnapOff (self, *args, **kwargs)-> None :
-      '''setSnapOff( (Viewport)arg1) -> None :
-
-    C++ signature :
-        void setSnapOff(class PyDbViewport {lvalue})'''
+    def setSnapOff (self: Viewport)-> None :
+      '''                             '''
     ...
     def setSnapOn (self, *args, **kwargs)-> None :
       '''setSnapOn( (Viewport)arg1) -> None :
@@ -76042,11 +75955,8 @@ setTransparent( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setTransparent(class PyDbViewport {lvalue},bool)'''
     ...
-    def setTwistAngle (self, *args, **kwargs)-> None :
-      '''setTwistAngle( (Viewport)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTwistAngle(class PyDbViewport {lvalue},double)'''
+    def setTwistAngle (self: Viewport,val : real)-> None :
+      '''                             '''
     ...
     def setUcs (self, *args, **kwargs)-> None :
       '''setUcs( (Viewport)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
@@ -76081,11 +75991,8 @@ setUcsFollowModeOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setUcsFollowModeOn(class PyDbViewport {lvalue},bool)'''
     ...
-    def setUcsIconAtCorner (self, *args, **kwargs)-> None :
-      '''setUcsIconAtCorner( (Viewport)arg1) -> None :
-
-    C++ signature :
-        void setUcsIconAtCorner(class PyDbViewport {lvalue})'''
+    def setUcsIconAtCorner (self: Viewport)-> None :
+      '''                             '''
     ...
     def setUcsIconAtOrigin (self, *args, **kwargs)-> None :
       '''setUcsIconAtOrigin( (Viewport)arg1) -> None :
@@ -76098,11 +76005,8 @@ setUcsIconAtOrigin( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setUcsIconAtOrigin(class PyDbViewport {lvalue},bool)'''
     ...
-    def setUcsIconInvisible (self, *args, **kwargs)-> None :
-      '''setUcsIconInvisible( (Viewport)arg1) -> None :
-
-    C++ signature :
-        void setUcsIconInvisible(class PyDbViewport {lvalue})'''
+    def setUcsIconInvisible (self: Viewport)-> None :
+      '''                             '''
     ...
     def setUcsIconVisible (self, *args, **kwargs)-> None :
       '''setUcsIconVisible( (Viewport)arg1) -> None :
@@ -76127,50 +76031,34 @@ setUcsIconVisible( (Viewport)arg1, (bool)arg2) -> None :
     def setUnlocked (self: Viewport)-> None :
       '''                             '''
     ...
-    def setViewCenter (self, *args, **kwargs)-> None :
-      '''setViewCenter( (Viewport)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setViewCenter(class PyDbViewport {lvalue},class AcGePoint2d)'''
+    def setViewCenter (self: Viewport,val : PyGe.Point2d)-> None :
+      '''                             '''
     ...
     def setViewDirection (self, *args, **kwargs)-> None :
-      '''setViewDirection( (Viewport)arg1, (OrthographicView)arg2) -> None :
+      '''setViewDirection( (Viewport)arg1, (Vector3d)arg2) -> None :
+
+    C++ signature :
+        void setViewDirection(class PyDbViewport {lvalue},class AcGeVector3d)
+
+setViewDirection( (Viewport)arg1, (OrthographicView)arg2) -> None :
 
     C++ signature :
         void setViewDirection(class PyDbViewport {lvalue},enum AcDb::OrthographicView)'''
     ...
-    def setViewDirection1 (self, *args, **kwargs)-> None :
-      '''setViewDirection1( (Viewport)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setViewDirection1(class PyDbViewport {lvalue},class AcGeVector3d)'''
+    def setViewHeight (self: Viewport,val : real)-> None :
+      '''                             '''
     ...
-    def setViewHeight (self, *args, **kwargs)-> None :
-      '''setViewHeight( (Viewport)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setViewHeight(class PyDbViewport {lvalue},double)'''
-    ...
-    def setViewTarget (self, *args, **kwargs)-> None :
-      '''setViewTarget( (Viewport)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setViewTarget(class PyDbViewport {lvalue},class AcGePoint3d)'''
+    def setViewTarget (self: Viewport,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setVisualStyle (self, *args, **kwargs)-> None :
-      '''setVisualStyle( (Viewport)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setVisualStyle(class PyDbViewport {lvalue},class PyDbObjectId)'''
+    def setVisualStyle (self: Viewport,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setWidth (self, *args, **kwargs)-> None :
-      '''setWidth( (Viewport)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidth(class PyDbViewport {lvalue},double)'''
+    def setWidth (self: Viewport,val : real)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -76220,11 +76108,8 @@ setUcsIconVisible( (Viewport)arg1, (bool)arg2) -> None :
     def thawAllLayersInViewport (self: Viewport)-> None :
       '''                             '''
     ...
-    def thawLayersInViewport (self, *args, **kwargs)-> None :
-      '''thawLayersInViewport( (Viewport)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void thawLayersInViewport(class PyDbViewport {lvalue},class boost::python::list)'''
+    def thawLayersInViewport (self: Viewport,ids : List[PyDb.ObjectId])-> None :
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
