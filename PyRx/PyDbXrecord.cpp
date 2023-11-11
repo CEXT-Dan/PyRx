@@ -9,21 +9,22 @@ using namespace boost::python;
 //makePyDbXrecordWrapper
 void makePyDbXrecordWrapper()
 {
+    PyDocString DS("Xrecord");
     class_<PyDbXrecord, bases<PyDbObject>>("Xrecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
         .def("rbChain", &PyDbXrecord::rbChain1)
-        .def("rbChain", &PyDbXrecord::rbChain2)
+        .def("rbChain", &PyDbXrecord::rbChain2, DS.ARGS({ "auxDb : PyDb.Database = None " }))
         .def("setFromRbChain", &PyDbXrecord::setFromRbChain1)
-        .def("setFromRbChain", &PyDbXrecord::setFromRbChain2)
-        .def("isXlateReferences", &PyDbXrecord::isXlateReferences)
-        .def("setXlateReferences", &PyDbXrecord::setXlateReferences)
-        .def("mergeStyle", &PyDbXrecord::mergeStyle)
-        .def("setMergeStyle", &PyDbXrecord::setMergeStyle)
-        .def("className", &PyDbXrecord::className).staticmethod("className")
-        .def("desc", &PyDbXrecord::desc).staticmethod("desc")
+        .def("setFromRbChain", &PyDbXrecord::setFromRbChain2, DS.ARGS({"resbuf : list", "auxDb : PyDb.Database = None " }))
+        .def("isXlateReferences", &PyDbXrecord::isXlateReferences, DS.ARGS())
+        .def("setXlateReferences", &PyDbXrecord::setXlateReferences, DS.ARGS({ "val : bool" }))
+        .def("mergeStyle", &PyDbXrecord::mergeStyle, DS.ARGS())
+        .def("setMergeStyle", &PyDbXrecord::setMergeStyle, DS.ARGS({ "style: PyDb.DuplicateRecordCloning" }))
+        .def("className", &PyDbXrecord::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbXrecord::desc, DS.SARGS()).staticmethod("desc")
         ;
 }
 
