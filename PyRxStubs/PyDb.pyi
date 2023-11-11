@@ -78236,31 +78236,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class Xrecord:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    def __init__ (self: Xrecord,id: PyDb.ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -78286,11 +78263,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def cast (otherObject: PyRx.RxObject)-> PyDb.DbObject :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.DbObject :
       '''                             '''
@@ -78310,11 +78284,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -78427,20 +78398,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isXlateReferences (self, *args, **kwargs)-> bool :
-      '''isXlateReferences( (Xrecord)arg1) -> bool :
-
-    C++ signature :
-        bool isXlateReferences(class PyDbXrecord {lvalue})'''
+    def isXlateReferences (self: Xrecord)-> bool :
+      '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None :
       '''                             '''
     ...
-    def mergeStyle (self, *args, **kwargs)-> PyDb.DuplicateRecordCloning :
-      '''mergeStyle( (Xrecord)arg1) -> DuplicateRecordCloning :
-
-    C++ signature :
-        enum AcDb::DuplicateRecordCloning mergeStyle(class PyDbXrecord {lvalue})'''
+    def mergeStyle (self: Xrecord)-> PyDb.DuplicateRecordCloning :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -78451,16 +78416,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def rbChain (self, *args, **kwargs)-> list :
-      '''rbChain( (Xrecord)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list rbChain(class PyDbXrecord {lvalue})
-
-rbChain( (Xrecord)arg1, (Database)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list rbChain(class PyDbXrecord {lvalue},class PyDbDatabase {lvalue})'''
+    def rbChain (self: Xrecord,auxDb : PyDb.Database = None )-> list :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -78486,22 +78443,11 @@ rbChain( (Xrecord)arg1, (Database)arg2) -> list :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFromRbChain (self, *args, **kwargs)-> None :
-      '''setFromRbChain( (Xrecord)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void setFromRbChain(class PyDbXrecord {lvalue},class boost::python::list)
-
-setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> None :
-
-    C++ signature :
-        void setFromRbChain(class PyDbXrecord {lvalue},class boost::python::list,class PyDbDatabase {lvalue})'''
+    def setFromRbChain (self: Xrecord,resbuf : list,auxDb : PyDb.Database = None )-> None :
+      '''                             '''
     ...
-    def setMergeStyle (self, *args, **kwargs)-> None :
-      '''setMergeStyle( (Xrecord)arg1, (DuplicateRecordCloning)arg2) -> None :
-
-    C++ signature :
-        void setMergeStyle(class PyDbXrecord {lvalue},enum AcDb::DuplicateRecordCloning)'''
+    def setMergeStyle (self: Xrecord,style: PyDb.DuplicateRecordCloning)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -78509,11 +78455,8 @@ setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def setXlateReferences (self, *args, **kwargs)-> None :
-      '''setXlateReferences( (Xrecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setXlateReferences(class PyDbXrecord {lvalue},bool)'''
+    def setXlateReferences (self: Xrecord,val : bool)-> None :
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
