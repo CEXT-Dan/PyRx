@@ -10,9 +10,9 @@ static boost::shared_ptr<AcCell> AcCellInit1()
     return boost::shared_ptr<AcCell>(new AcCell{ -1 , -1 });
 }
 
-static boost::shared_ptr<AcCell> AcCellInit2(int tr, int lc)
+static boost::shared_ptr<AcCell> AcCellInit2(int r, int c)
 {
-    return boost::shared_ptr<AcCell>(new AcCell{ tr, lc });
+    return boost::shared_ptr<AcCell>(new AcCell{ r, c });
 }
 
 static std::string AcCellToString(const AcCell& cell)

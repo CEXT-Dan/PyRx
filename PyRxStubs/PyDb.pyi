@@ -20241,49 +20241,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
 
 class EntityColor:
-    def ByBlock (self, *args, **kwargs)-> PyDb.EntityColor :
-      '''ByBlock() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor ByBlock()
-
-ByBlock() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor ByBlock()'''
+    def ByBlock (self: EntityColor)-> PyDb.EntityColor :
+      '''                             '''
     ...
-    def ByLayer (self, *args, **kwargs)-> PyDb.EntityColor :
-      '''ByLayer() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor ByLayer()
-
-ByLayer() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor ByLayer()'''
+    def ByLayer (self: EntityColor)-> PyDb.EntityColor :
+      '''                             '''
     ...
-    def Foreground (self, *args, **kwargs)-> PyDb.EntityColor :
-      '''Foreground() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor Foreground()
-
-Foreground() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor Foreground()'''
+    def Foreground (self: EntityColor)-> PyDb.EntityColor :
+      '''                             '''
     ...
-    def None (self, *args, **kwargs)-> PyDb.EntityColor :
-      '''None() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor None()
-
-None() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor None()'''
+    def None (self: EntityColor)-> PyDb.EntityColor :
+      '''                             '''
     ...
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -20296,202 +20264,101 @@ __init__( (object)arg1, (int)arg2, (int)arg3, (int)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,unsigned char,unsigned char,unsigned char)'''
     ...
-    def black (self, *args, **kwargs)-> PyDb.EntityColor :
-      '''black() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor black()
-
-black() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor black()'''
+    def black (self: EntityColor)-> PyDb.EntityColor :
+      '''                             '''
     ...
-    def blue (self, *args, **kwargs)-> int :
-      '''blue( (EntityColor)arg1) -> int :
-
-    C++ signature :
-        unsigned char blue(class AcCmEntityColor {lvalue})'''
+    def blue (self: EntityColor)-> int :
+      '''                             '''
     ...
-    def canResolveRGB (self, *args, **kwargs)-> bool :
-      '''canResolveRGB( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool canResolveRGB(class AcCmEntityColor {lvalue})'''
+    def canResolveRGB (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def colorIndex (self, *args, **kwargs)-> int :
-      '''colorIndex( (EntityColor)arg1) -> int :
-
-    C++ signature :
-        short colorIndex(class AcCmEntityColor {lvalue})'''
+    def colorIndex (self: EntityColor)-> int :
+      '''                             '''
     ...
-    def colorMethod (self, *args, **kwargs)-> PyDb.ColorMethod :
-      '''colorMethod( (EntityColor)arg1) -> ColorMethod :
-
-    C++ signature :
-        enum AcCmEntityColor::ColorMethod colorMethod(class AcCmEntityColor {lvalue})'''
+    def colorMethod (self: EntityColor)-> PyDb.ColorMethod :
+      '''                             '''
     ...
-    def getCOLORREF (self, *args, **kwargs)-> int :
-      '''getCOLORREF( (EntityColor)arg1) -> int :
-
-    C++ signature :
-        unsigned int getCOLORREF(class AcCmEntityColor {lvalue})'''
+    def getCOLORREF (self: EntityColor)-> int :
+      '''                             '''
     ...
-    def getRGB (self, *args, **kwargs)-> int :
-      '''getRGB( (EntityColor)arg1) -> int :
-
-    C++ signature :
-        unsigned int getRGB(class AcCmEntityColor {lvalue})'''
+    def getRGB (self: EntityColor)-> int :
+      '''                             '''
     ...
-    def getRGBM (self, *args, **kwargs)-> int :
-      '''getRGBM( (EntityColor)arg1) -> int :
-
-    C++ signature :
-        unsigned int getRGBM(class AcCmEntityColor {lvalue})'''
+    def getRGBM (self: EntityColor)-> int :
+      '''                             '''
     ...
-    def green (self, *args, **kwargs)-> int :
-      '''green( (EntityColor)arg1) -> int :
-
-    C++ signature :
-        unsigned char green(class AcCmEntityColor {lvalue})'''
+    def green (self: EntityColor)-> int :
+      '''                             '''
     ...
-    def isByACI (self, *args, **kwargs)-> bool :
-      '''isByACI( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool isByACI(class AcCmEntityColor {lvalue})'''
+    def isByACI (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def isByBlock (self, *args, **kwargs)-> bool :
-      '''isByBlock( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool isByBlock(class AcCmEntityColor {lvalue})'''
+    def isByBlock (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def isByColor (self, *args, **kwargs)-> bool :
-      '''isByColor( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool isByColor(class AcCmEntityColor {lvalue})'''
+    def isByColor (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def isByLayer (self, *args, **kwargs)-> bool :
-      '''isByLayer( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool isByLayer(class AcCmEntityColor {lvalue})'''
+    def isByLayer (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def isByPen (self, *args, **kwargs)-> bool :
-      '''isByPen( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool isByPen(class AcCmEntityColor {lvalue})'''
+    def isByPen (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def isForeground (self, *args, **kwargs)-> bool :
-      '''isForeground( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool isForeground(class AcCmEntityColor {lvalue})'''
+    def isForeground (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def isLayerFrozen (self, *args, **kwargs)-> bool :
-      '''isLayerFrozen( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool isLayerFrozen(class AcCmEntityColor {lvalue})'''
+    def isLayerFrozen (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def isLayerFrozenOrOff (self, *args, **kwargs)-> bool :
-      '''isLayerFrozenOrOff( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool isLayerFrozenOrOff(class AcCmEntityColor {lvalue})'''
+    def isLayerFrozenOrOff (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def isLayerOff (self, *args, **kwargs)-> bool :
-      '''isLayerOff( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool isLayerOff(class AcCmEntityColor {lvalue})'''
+    def isLayerOff (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def isNone (self, *args, **kwargs)-> bool :
-      '''isNone( (EntityColor)arg1) -> bool :
-
-    C++ signature :
-        bool isNone(class AcCmEntityColor {lvalue})'''
+    def isNone (self: EntityColor)-> bool :
+      '''                             '''
     ...
-    def layerIndex (self, *args, **kwargs)-> int :
-      '''layerIndex( (EntityColor)arg1) -> int :
-
-    C++ signature :
-        int layerIndex(class AcCmEntityColor {lvalue})'''
+    def layerIndex (self: EntityColor)-> int :
+      '''                             '''
     ...
-    def makeTrueColor (self, *args, **kwargs)-> PyDb.EntityColor :
-      '''makeTrueColor( (EntityColor)arg1) -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor makeTrueColor(class AcCmEntityColor {lvalue})'''
+    def makeTrueColor (self: EntityColor)-> PyDb.EntityColor :
+      '''                             '''
     ...
-    def penIndex (self, *args, **kwargs)-> int :
-      '''penIndex( (EntityColor)arg1) -> int :
-
-    C++ signature :
-        unsigned short penIndex(class AcCmEntityColor {lvalue})'''
+    def penIndex (self: EntityColor)-> int :
+      '''                             '''
     ...
-    def red (self, *args, **kwargs)-> int :
-      '''red( (EntityColor)arg1) -> int :
-
-    C++ signature :
-        unsigned char red(class AcCmEntityColor {lvalue})'''
+    def red (self: EntityColor)-> int :
+      '''                             '''
     ...
-    def setByBlock (self, *args, **kwargs)-> None :
-      '''setByBlock( (EntityColor)arg1) -> None :
-
-    C++ signature :
-        void setByBlock(class AcCmEntityColor {lvalue})'''
+    def setByBlock (self: EntityColor)-> None :
+      '''                             '''
     ...
-    def setByLayer (self, *args, **kwargs)-> None :
-      '''setByLayer( (EntityColor)arg1) -> None :
-
-    C++ signature :
-        void setByLayer(class AcCmEntityColor {lvalue})'''
+    def setByLayer (self: EntityColor)-> None :
+      '''                             '''
     ...
-    def setCOLORREF (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''setCOLORREF( (EntityColor)arg1, (SubentType)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setCOLORREF(class AcCmEntityColor {lvalue},unsigned int)'''
+    def setCOLORREF (self: EntityColor,val : int)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def setColorIndex (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''setColorIndex( (EntityColor)arg1, (DxfCode)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setColorIndex(class AcCmEntityColor {lvalue},short)'''
+    def setColorIndex (self: EntityColor,val : int)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def setForeground (self, *args, **kwargs)-> None :
-      '''setForeground( (EntityColor)arg1) -> None :
-
-    C++ signature :
-        void setForeground(class AcCmEntityColor {lvalue})'''
+    def setForeground (self: EntityColor)-> None :
+      '''                             '''
     ...
-    def setLayerIndex (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''setLayerIndex( (EntityColor)arg1, (int)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLayerIndex(class AcCmEntityColor {lvalue},int)'''
+    def setLayerIndex (self: EntityColor,val : int)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def setLayerOff (self, *args, **kwargs)-> None :
-      '''setLayerOff( (EntityColor)arg1) -> None :
-
-    C++ signature :
-        void setLayerOff(class AcCmEntityColor {lvalue})'''
+    def setLayerOff (self: EntityColor)-> None :
+      '''                             '''
     ...
-    def setNone (self, *args, **kwargs)-> None :
-      '''setNone( (EntityColor)arg1) -> None :
-
-    C++ signature :
-        void setNone(class AcCmEntityColor {lvalue})'''
+    def setNone (self: EntityColor)-> None :
+      '''                             '''
     ...
-    def setPenIndex (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''setPenIndex( (EntityColor)arg1, (int)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setPenIndex(class AcCmEntityColor {lvalue},unsigned short)'''
+    def setPenIndex (self: EntityColor,val : int)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
     def setRGB (self, *args, **kwargs)-> PyDb.ErrorStatus :
       '''setRGB( (EntityColor)arg1, (SubentType)arg2) -> ErrorStatus :
@@ -20504,22 +20371,11 @@ setRGB( (EntityColor)arg1, (int)arg2, (int)arg3, (int)arg4) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setRGB(class AcCmEntityColor {lvalue},unsigned char,unsigned char,unsigned char)'''
     ...
-    def setRGBM (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''setRGBM( (EntityColor)arg1, (SubentType)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setRGBM(class AcCmEntityColor {lvalue},unsigned int)'''
+    def setRGBM (self: EntityColor,val : int)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def white (self, *args, **kwargs)-> PyDb.EntityColor :
-      '''white() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor white()
-
-white() -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor white()'''
+    def white (self: EntityColor)-> PyDb.EntityColor :
+      '''                             '''
     ...
 
 class EntityReactor:
@@ -71383,65 +71239,35 @@ __init__( (object)arg1, (float)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,double)'''
     ...
-    def alpha (self, *args, **kwargs)-> int :
-      '''alpha( (Transparency)arg1) -> int :
-
-    C++ signature :
-        unsigned char alpha(class AcCmTransparency {lvalue})'''
+    def alpha (self: Transparency)-> int :
+      '''                             '''
     ...
-    def alphaPercent (self, *args, **kwargs)-> float :
-      '''alphaPercent( (Transparency)arg1) -> float :
-
-    C++ signature :
-        double alphaPercent(class AcCmTransparency {lvalue})'''
+    def alphaPercent (self: Transparency)-> float :
+      '''                             '''
     ...
-    def isByAlpha (self, *args, **kwargs)-> bool :
-      '''isByAlpha( (Transparency)arg1) -> bool :
-
-    C++ signature :
-        bool isByAlpha(class AcCmTransparency {lvalue})'''
+    def isByAlpha (self: Transparency)-> bool :
+      '''                             '''
     ...
-    def isByBlock (self, *args, **kwargs)-> bool :
-      '''isByBlock( (Transparency)arg1) -> bool :
-
-    C++ signature :
-        bool isByBlock(class AcCmTransparency {lvalue})'''
+    def isByBlock (self: Transparency)-> bool :
+      '''                             '''
     ...
-    def isByLayer (self, *args, **kwargs)-> bool :
-      '''isByLayer( (Transparency)arg1) -> bool :
-
-    C++ signature :
-        bool isByLayer(class AcCmTransparency {lvalue})'''
+    def isByLayer (self: Transparency)-> bool :
+      '''                             '''
     ...
-    def isClear (self, *args, **kwargs)-> bool :
-      '''isClear( (Transparency)arg1) -> bool :
-
-    C++ signature :
-        bool isClear(class AcCmTransparency {lvalue})'''
+    def isClear (self: Transparency)-> bool :
+      '''                             '''
     ...
-    def isInvalid (self, *args, **kwargs)-> bool :
-      '''isInvalid( (Transparency)arg1) -> bool :
-
-    C++ signature :
-        bool isInvalid(class AcCmTransparency {lvalue})'''
+    def isInvalid (self: Transparency)-> bool :
+      '''                             '''
     ...
-    def isSolid (self, *args, **kwargs)-> bool :
-      '''isSolid( (Transparency)arg1) -> bool :
-
-    C++ signature :
-        bool isSolid(class AcCmTransparency {lvalue})'''
+    def isSolid (self: Transparency)-> bool :
+      '''                             '''
     ...
-    def setAlpha (self, *args, **kwargs)-> None :
-      '''setAlpha( (Transparency)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setAlpha(class AcCmTransparency {lvalue},unsigned char)'''
+    def setAlpha (self: Transparency,alpha : int)-> None :
+      '''                             '''
     ...
-    def setAlphaPercent (self, *args, **kwargs)-> None :
-      '''setAlphaPercent( (Transparency)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setAlphaPercent(class AcCmTransparency {lvalue},double)'''
+    def setAlphaPercent (self: Transparency,alphaPercent : float)-> None :
+      '''                             '''
     ...
 
 class TransparencyMethod:
