@@ -46572,11 +46572,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def clipBoundary (self, *args, **kwargs)-> list :
-      '''clipBoundary( (UnderlayReference)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list clipBoundary(class PyDbUnderlayReference {lvalue})'''
+    def clipBoundary (self: UnderlayReference)-> list :
+      '''                             '''
     ...
     def cloneFrom (self, *args, **kwargs)-> PyDb.PdfReference :
       '''cloneFrom( (RxObject)arg1) -> PdfReference :
@@ -46596,23 +46593,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def contrast (self, *args, **kwargs)-> int :
-      '''contrast( (UnderlayReference)arg1) -> int :
-
-    C++ signature :
-        unsigned char contrast(class PyDbUnderlayReference {lvalue})'''
+    def contrast (self: UnderlayReference)-> int :
+      '''                             '''
     ...
-    def contrastDefault (self, *args, **kwargs)-> int :
-      '''contrastDefault() -> int :
-
-    C++ signature :
-        unsigned char contrastDefault()'''
+    def contrastDefault ()-> int :
+      '''                             '''
     ...
-    def contrastLowerLimit (self, *args, **kwargs)-> int :
-      '''contrastLowerLimit() -> int :
-
-    C++ signature :
-        unsigned char contrastLowerLimit()'''
+    def contrastLowerLimit ()-> int :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
@@ -46626,11 +46614,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def definitionId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''definitionId( (UnderlayReference)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId definitionId(class PyDbUnderlayReference {lvalue})'''
+    def definitionId (self: UnderlayReference)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
@@ -46668,35 +46653,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fade (self, *args, **kwargs)-> int :
-      '''fade( (UnderlayReference)arg1) -> int :
-
-    C++ signature :
-        unsigned char fade(class PyDbUnderlayReference {lvalue})'''
+    def fade (self: UnderlayReference)-> int :
+      '''                             '''
     ...
-    def fadeDefault (self, *args, **kwargs)-> int :
-      '''fadeDefault() -> int :
-
-    C++ signature :
-        unsigned char fadeDefault()'''
+    def fadeDefault ()-> int :
+      '''                             '''
     ...
-    def fadeLowerLimit (self, *args, **kwargs)-> int :
-      '''fadeLowerLimit() -> int :
-
-    C++ signature :
-        unsigned char fadeLowerLimit()'''
+    def fadeLowerLimit ()-> int :
+      '''                             '''
     ...
-    def fadeUpperLimit (self, *args, **kwargs)-> int :
-      '''fadeUpperLimit() -> int :
-
-    C++ signature :
-        unsigned char fadeUpperLimit()'''
+    def fadeUpperLimit ()-> int :
+      '''                             '''
     ...
-    def generateClipBoundaryFromPline (self, *args, **kwargs)-> None :
-      '''generateClipBoundaryFromPline( (UnderlayReference)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void generateClipBoundaryFromPline(class PyDbUnderlayReference {lvalue},class PyDbObjectId {lvalue})'''
+    def generateClipBoundaryFromPline (self: UnderlayReference,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -46734,11 +46704,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def getUnderlayLayer (self, *args, **kwargs)-> PyDb.UnderlayLayer :
-      '''getUnderlayLayer( (UnderlayReference)arg1, (int)arg2) -> UnderlayLayer :
-
-    C++ signature :
-        class PyUnderlayLayer getUnderlayLayer(class PyDbUnderlayReference {lvalue},int)'''
+    def getUnderlayLayer (self: UnderlayReference,val : int)-> PyDb.UnderlayLayer :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -46752,11 +46719,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float :
-      '''height( (UnderlayReference)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbUnderlayReference {lvalue})'''
+    def height (self: UnderlayReference)-> float :
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
@@ -46794,26 +46758,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isAdjustedForBackground (self, *args, **kwargs)-> bool :
-      '''isAdjustedForBackground( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isAdjustedForBackground(class PyDbUnderlayReference {lvalue})'''
+    def isAdjustedForBackground (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isClipInverted (self, *args, **kwargs)-> bool :
-      '''isClipInverted( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isClipInverted(class PyDbUnderlayReference {lvalue})'''
+    def isClipInverted (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
-    def isClipped (self, *args, **kwargs)-> bool :
-      '''isClipped( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isClipped(class PyDbUnderlayReference {lvalue})'''
+    def isClipped (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -46821,17 +46776,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isFramePlottable (self, *args, **kwargs)-> bool :
-      '''isFramePlottable( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isFramePlottable(class PyDbUnderlayReference {lvalue})'''
+    def isFramePlottable (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
-    def isFrameVisible (self, *args, **kwargs)-> bool :
-      '''isFrameVisible( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isFrameVisible(class PyDbUnderlayReference {lvalue})'''
+    def isFrameVisible (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
@@ -46845,11 +46794,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isModifiedXData (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isMonochrome (self, *args, **kwargs)-> bool :
-      '''isMonochrome( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isMonochrome(class PyDbUnderlayReference {lvalue})'''
+    def isMonochrome (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
     def isNewObject (self: DbObject)-> bool :
       '''                             '''
@@ -46863,11 +46809,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isOn(class PyDbUnderlayReference {lvalue})'''
+    def isOn (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
     def isPersistent (self: Drawable)-> bool :
       '''                             '''
@@ -46923,11 +46866,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (UnderlayReference)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbUnderlayReference {lvalue})'''
+    def normal (self: UnderlayReference)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -46938,11 +46878,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> PyGe.Point3d :
-      '''position( (UnderlayReference)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbUnderlayReference {lvalue})'''
+    def position (self: UnderlayReference)-> PyGe.Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -46968,17 +46905,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (UnderlayReference)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbUnderlayReference {lvalue})'''
+    def rotation (self: UnderlayReference)-> float :
+      '''                             '''
     ...
-    def scaleFactors (self, *args, **kwargs)-> PyGe.Scale3d :
-      '''scaleFactors( (UnderlayReference)arg1) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d scaleFactors(class PyDbUnderlayReference {lvalue})'''
+    def scaleFactors (self: UnderlayReference)-> PyGe.Scale3d :
+      '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
@@ -46989,17 +46920,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setClipBoundary (self, *args, **kwargs)-> None :
-      '''setClipBoundary( (UnderlayReference)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void setClipBoundary(class PyDbUnderlayReference {lvalue},class boost::python::list)'''
+    def setClipBoundary (self: UnderlayReference,pnts : List[PyGe.Point2d])-> None :
+      '''                             '''
     ...
-    def setClipInverted (self, *args, **kwargs)-> None :
-      '''setClipInverted( (UnderlayReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setClipInverted(class PyDbUnderlayReference {lvalue},bool)'''
+    def setClipInverted (self: UnderlayReference,val : bool)-> None :
+      '''                             '''
     ...
     def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
@@ -47007,59 +46932,35 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setContrast (self, *args, **kwargs)-> None :
-      '''setContrast( (UnderlayReference)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setContrast(class PyDbUnderlayReference {lvalue},unsigned char)'''
+    def setContrast (self: UnderlayReference,val : int)-> None :
+      '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDefinitionId (self, *args, **kwargs)-> None :
-      '''setDefinitionId( (UnderlayReference)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDefinitionId(class PyDbUnderlayReference {lvalue},class PyDbObjectId)'''
+    def setDefinitionId (self: UnderlayReference,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setFade (self, *args, **kwargs)-> None :
-      '''setFade( (UnderlayReference)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setFade(class PyDbUnderlayReference {lvalue},unsigned char)'''
+    def setFade (self: UnderlayReference,val : int)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (UnderlayReference)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbUnderlayReference {lvalue},double)'''
+    def setHeight (self: UnderlayReference,val : real)-> None :
+      '''                             '''
     ...
-    def setIsAdjustedForBackground (self, *args, **kwargs)-> None :
-      '''setIsAdjustedForBackground( (UnderlayReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsAdjustedForBackground(class PyDbUnderlayReference {lvalue},bool)'''
+    def setIsAdjustedForBackground (self: UnderlayReference,val : bool)-> None :
+      '''                             '''
     ...
-    def setIsClipped (self, *args, **kwargs)-> None :
-      '''setIsClipped( (UnderlayReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsClipped(class PyDbUnderlayReference {lvalue},bool)'''
+    def setIsClipped (self: UnderlayReference,val : bool)-> None :
+      '''                             '''
     ...
-    def setIsMonochrome (self, *args, **kwargs)-> None :
-      '''setIsMonochrome( (UnderlayReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsMonochrome(class PyDbUnderlayReference {lvalue},bool)'''
+    def setIsMonochrome (self: UnderlayReference,val : bool)-> None :
+      '''                             '''
     ...
-    def setIsOn (self, *args, **kwargs)-> None :
-      '''setIsOn( (UnderlayReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsOn(class PyDbUnderlayReference {lvalue},bool)'''
+    def setIsOn (self: UnderlayReference,val : bool)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -47076,11 +46977,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (UnderlayReference)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbUnderlayReference {lvalue},class AcGeVector3d)'''
+    def setNormal (self: UnderlayReference,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -47101,11 +46999,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (UnderlayReference)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbUnderlayReference {lvalue},class AcGePoint3d)'''
+    def setPosition (self: UnderlayReference,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -47113,38 +47008,23 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self, *args, **kwargs)-> None :
-      '''setRotation( (UnderlayReference)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbUnderlayReference {lvalue},double)'''
+    def setRotation (self: UnderlayReference,val : real)-> None :
+      '''                             '''
     ...
-    def setScaleFactors (self, *args, **kwargs)-> None :
-      '''setScaleFactors( (UnderlayReference)arg1, (Scale3d)arg2) -> None :
-
-    C++ signature :
-        void setScaleFactors(class PyDbUnderlayReference {lvalue},class AcGeScale3d)'''
+    def setScaleFactors (self: UnderlayReference,val : PyGe.Scale3d)-> None :
+      '''                             '''
     ...
-    def setTransform (self, *args, **kwargs)-> None :
-      '''setTransform( (UnderlayReference)arg1, (Matrix3d)arg2) -> None :
-
-    C++ signature :
-        void setTransform(class PyDbUnderlayReference {lvalue},class AcGeMatrix3d)'''
+    def setTransform (self: UnderlayReference,val : PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
-    def setUnderlayLayer (self, *args, **kwargs)-> None :
-      '''setUnderlayLayer( (UnderlayReference)arg1, (int)arg2, (UnderlayLayer)arg3) -> None :
-
-    C++ signature :
-        void setUnderlayLayer(class PyDbUnderlayReference {lvalue},int,class PyUnderlayLayer)'''
+    def setUnderlayLayer (self: UnderlayReference,val : int,layer : PyDb.UnderlayLayer)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidth (self, *args, **kwargs)-> None :
-      '''setWidth( (UnderlayReference)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidth(class PyDbUnderlayReference {lvalue},double)'''
+    def setWidth (self: UnderlayReference,val : real)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -47155,20 +47035,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transform (self, *args, **kwargs)-> PyGe.Matrix3d :
-      '''transform( (UnderlayReference)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d transform(class PyDbUnderlayReference {lvalue})'''
+    def transform (self: UnderlayReference)-> PyGe.Matrix3d :
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def underlayLayerCount (self, *args, **kwargs)-> int :
-      '''underlayLayerCount( (UnderlayReference)arg1) -> int :
-
-    C++ signature :
-        unsigned int underlayLayerCount(class PyDbUnderlayReference {lvalue})'''
+    def underlayLayerCount (self: UnderlayReference)-> int :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -47188,11 +47062,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def width (self, *args, **kwargs)-> float :
-      '''width( (UnderlayReference)arg1) -> float :
-
-    C++ signature :
-        double width(class PyDbUnderlayReference {lvalue})'''
+    def width (self: UnderlayReference)-> float :
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
@@ -72354,16 +72225,8 @@ class UnderlayLayer:
     ...
 
 class UnderlayReference:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self: UnderlayReference,id: PyDb.ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -72389,32 +72252,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.UnderlayReference :
-      '''cast( (RxObject)arg1) -> UnderlayReference :
-
-    C++ signature :
-        class PyDbUnderlayReference cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.UnderlayReference :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def clipBoundary (self, *args, **kwargs)-> list :
-      '''clipBoundary( (UnderlayReference)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list clipBoundary(class PyDbUnderlayReference {lvalue})'''
+    def clipBoundary (self: UnderlayReference)-> list :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.UnderlayReference :
-      '''cloneFrom( (RxObject)arg1) -> UnderlayReference :
-
-    C++ signature :
-        class PyDbUnderlayReference cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.UnderlayReference :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -72428,23 +72279,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def contrast (self, *args, **kwargs)-> int :
-      '''contrast( (UnderlayReference)arg1) -> int :
-
-    C++ signature :
-        unsigned char contrast(class PyDbUnderlayReference {lvalue})'''
+    def contrast (self: UnderlayReference)-> int :
+      '''                             '''
     ...
-    def contrastDefault (self, *args, **kwargs)-> int :
-      '''contrastDefault() -> int :
-
-    C++ signature :
-        unsigned char contrastDefault()'''
+    def contrastDefault ()-> int :
+      '''                             '''
     ...
-    def contrastLowerLimit (self, *args, **kwargs)-> int :
-      '''contrastLowerLimit() -> int :
-
-    C++ signature :
-        unsigned char contrastLowerLimit()'''
+    def contrastLowerLimit ()-> int :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
@@ -72458,17 +72300,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def definitionId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''definitionId( (UnderlayReference)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId definitionId(class PyDbUnderlayReference {lvalue})'''
+    def definitionId (self: UnderlayReference)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -72500,35 +72336,20 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def fade (self, *args, **kwargs)-> int :
-      '''fade( (UnderlayReference)arg1) -> int :
-
-    C++ signature :
-        unsigned char fade(class PyDbUnderlayReference {lvalue})'''
+    def fade (self: UnderlayReference)-> int :
+      '''                             '''
     ...
-    def fadeDefault (self, *args, **kwargs)-> int :
-      '''fadeDefault() -> int :
-
-    C++ signature :
-        unsigned char fadeDefault()'''
+    def fadeDefault ()-> int :
+      '''                             '''
     ...
-    def fadeLowerLimit (self, *args, **kwargs)-> int :
-      '''fadeLowerLimit() -> int :
-
-    C++ signature :
-        unsigned char fadeLowerLimit()'''
+    def fadeLowerLimit ()-> int :
+      '''                             '''
     ...
-    def fadeUpperLimit (self, *args, **kwargs)-> int :
-      '''fadeUpperLimit() -> int :
-
-    C++ signature :
-        unsigned char fadeUpperLimit()'''
+    def fadeUpperLimit ()-> int :
+      '''                             '''
     ...
-    def generateClipBoundaryFromPline (self, *args, **kwargs)-> None :
-      '''generateClipBoundaryFromPline( (UnderlayReference)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void generateClipBoundaryFromPline(class PyDbUnderlayReference {lvalue},class PyDbObjectId {lvalue})'''
+    def generateClipBoundaryFromPline (self: UnderlayReference,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -72566,11 +72387,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def getUnderlayLayer (self, *args, **kwargs)-> PyDb.UnderlayLayer :
-      '''getUnderlayLayer( (UnderlayReference)arg1, (int)arg2) -> UnderlayLayer :
-
-    C++ signature :
-        class PyUnderlayLayer getUnderlayLayer(class PyDbUnderlayReference {lvalue},int)'''
+    def getUnderlayLayer (self: UnderlayReference,val : int)-> PyDb.UnderlayLayer :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -72584,11 +72402,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float :
-      '''height( (UnderlayReference)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbUnderlayReference {lvalue})'''
+    def height (self: UnderlayReference)-> float :
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
@@ -72626,26 +72441,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isAdjustedForBackground (self, *args, **kwargs)-> bool :
-      '''isAdjustedForBackground( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isAdjustedForBackground(class PyDbUnderlayReference {lvalue})'''
+    def isAdjustedForBackground (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isClipInverted (self, *args, **kwargs)-> bool :
-      '''isClipInverted( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isClipInverted(class PyDbUnderlayReference {lvalue})'''
+    def isClipInverted (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
-    def isClipped (self, *args, **kwargs)-> bool :
-      '''isClipped( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isClipped(class PyDbUnderlayReference {lvalue})'''
+    def isClipped (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -72653,17 +72459,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isFramePlottable (self, *args, **kwargs)-> bool :
-      '''isFramePlottable( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isFramePlottable(class PyDbUnderlayReference {lvalue})'''
+    def isFramePlottable (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
-    def isFrameVisible (self, *args, **kwargs)-> bool :
-      '''isFrameVisible( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isFrameVisible(class PyDbUnderlayReference {lvalue})'''
+    def isFrameVisible (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
@@ -72677,11 +72477,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isModifiedXData (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isMonochrome (self, *args, **kwargs)-> bool :
-      '''isMonochrome( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isMonochrome(class PyDbUnderlayReference {lvalue})'''
+    def isMonochrome (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
     def isNewObject (self: DbObject)-> bool :
       '''                             '''
@@ -72695,11 +72492,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def isOn (self, *args, **kwargs)-> bool :
-      '''isOn( (UnderlayReference)arg1) -> bool :
-
-    C++ signature :
-        bool isOn(class PyDbUnderlayReference {lvalue})'''
+    def isOn (self: UnderlayReference)-> bool :
+      '''                             '''
     ...
     def isPersistent (self: Drawable)-> bool :
       '''                             '''
@@ -72755,11 +72549,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (UnderlayReference)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbUnderlayReference {lvalue})'''
+    def normal (self: UnderlayReference)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -72770,11 +72561,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> PyGe.Point3d :
-      '''position( (UnderlayReference)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbUnderlayReference {lvalue})'''
+    def position (self: UnderlayReference)-> PyGe.Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -72800,17 +72588,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (UnderlayReference)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbUnderlayReference {lvalue})'''
+    def rotation (self: UnderlayReference)-> float :
+      '''                             '''
     ...
-    def scaleFactors (self, *args, **kwargs)-> PyGe.Scale3d :
-      '''scaleFactors( (UnderlayReference)arg1) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d scaleFactors(class PyDbUnderlayReference {lvalue})'''
+    def scaleFactors (self: UnderlayReference)-> PyGe.Scale3d :
+      '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
@@ -72821,17 +72603,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setClipBoundary (self, *args, **kwargs)-> None :
-      '''setClipBoundary( (UnderlayReference)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void setClipBoundary(class PyDbUnderlayReference {lvalue},class boost::python::list)'''
+    def setClipBoundary (self: UnderlayReference,pnts : List[PyGe.Point2d])-> None :
+      '''                             '''
     ...
-    def setClipInverted (self, *args, **kwargs)-> None :
-      '''setClipInverted( (UnderlayReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setClipInverted(class PyDbUnderlayReference {lvalue},bool)'''
+    def setClipInverted (self: UnderlayReference,val : bool)-> None :
+      '''                             '''
     ...
     def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
@@ -72839,59 +72615,35 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setContrast (self, *args, **kwargs)-> None :
-      '''setContrast( (UnderlayReference)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setContrast(class PyDbUnderlayReference {lvalue},unsigned char)'''
+    def setContrast (self: UnderlayReference,val : int)-> None :
+      '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setDefinitionId (self, *args, **kwargs)-> None :
-      '''setDefinitionId( (UnderlayReference)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDefinitionId(class PyDbUnderlayReference {lvalue},class PyDbObjectId)'''
+    def setDefinitionId (self: UnderlayReference,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setFade (self, *args, **kwargs)-> None :
-      '''setFade( (UnderlayReference)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setFade(class PyDbUnderlayReference {lvalue},unsigned char)'''
+    def setFade (self: UnderlayReference,val : int)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (UnderlayReference)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbUnderlayReference {lvalue},double)'''
+    def setHeight (self: UnderlayReference,val : real)-> None :
+      '''                             '''
     ...
-    def setIsAdjustedForBackground (self, *args, **kwargs)-> None :
-      '''setIsAdjustedForBackground( (UnderlayReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsAdjustedForBackground(class PyDbUnderlayReference {lvalue},bool)'''
+    def setIsAdjustedForBackground (self: UnderlayReference,val : bool)-> None :
+      '''                             '''
     ...
-    def setIsClipped (self, *args, **kwargs)-> None :
-      '''setIsClipped( (UnderlayReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsClipped(class PyDbUnderlayReference {lvalue},bool)'''
+    def setIsClipped (self: UnderlayReference,val : bool)-> None :
+      '''                             '''
     ...
-    def setIsMonochrome (self, *args, **kwargs)-> None :
-      '''setIsMonochrome( (UnderlayReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsMonochrome(class PyDbUnderlayReference {lvalue},bool)'''
+    def setIsMonochrome (self: UnderlayReference,val : bool)-> None :
+      '''                             '''
     ...
-    def setIsOn (self, *args, **kwargs)-> None :
-      '''setIsOn( (UnderlayReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsOn(class PyDbUnderlayReference {lvalue},bool)'''
+    def setIsOn (self: UnderlayReference,val : bool)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -72908,11 +72660,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (UnderlayReference)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbUnderlayReference {lvalue},class AcGeVector3d)'''
+    def setNormal (self: UnderlayReference,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -72933,11 +72682,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (UnderlayReference)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbUnderlayReference {lvalue},class AcGePoint3d)'''
+    def setPosition (self: UnderlayReference,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -72945,38 +72691,23 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self, *args, **kwargs)-> None :
-      '''setRotation( (UnderlayReference)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbUnderlayReference {lvalue},double)'''
+    def setRotation (self: UnderlayReference,val : real)-> None :
+      '''                             '''
     ...
-    def setScaleFactors (self, *args, **kwargs)-> None :
-      '''setScaleFactors( (UnderlayReference)arg1, (Scale3d)arg2) -> None :
-
-    C++ signature :
-        void setScaleFactors(class PyDbUnderlayReference {lvalue},class AcGeScale3d)'''
+    def setScaleFactors (self: UnderlayReference,val : PyGe.Scale3d)-> None :
+      '''                             '''
     ...
-    def setTransform (self, *args, **kwargs)-> None :
-      '''setTransform( (UnderlayReference)arg1, (Matrix3d)arg2) -> None :
-
-    C++ signature :
-        void setTransform(class PyDbUnderlayReference {lvalue},class AcGeMatrix3d)'''
+    def setTransform (self: UnderlayReference,val : PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
-    def setUnderlayLayer (self, *args, **kwargs)-> None :
-      '''setUnderlayLayer( (UnderlayReference)arg1, (int)arg2, (UnderlayLayer)arg3) -> None :
-
-    C++ signature :
-        void setUnderlayLayer(class PyDbUnderlayReference {lvalue},int,class PyUnderlayLayer)'''
+    def setUnderlayLayer (self: UnderlayReference,val : int,layer : PyDb.UnderlayLayer)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidth (self, *args, **kwargs)-> None :
-      '''setWidth( (UnderlayReference)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidth(class PyDbUnderlayReference {lvalue},double)'''
+    def setWidth (self: UnderlayReference,val : real)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -72987,20 +72718,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transform (self, *args, **kwargs)-> PyGe.Matrix3d :
-      '''transform( (UnderlayReference)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d transform(class PyDbUnderlayReference {lvalue})'''
+    def transform (self: UnderlayReference)-> PyGe.Matrix3d :
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def underlayLayerCount (self, *args, **kwargs)-> int :
-      '''underlayLayerCount( (UnderlayReference)arg1) -> int :
-
-    C++ signature :
-        unsigned int underlayLayerCount(class PyDbUnderlayReference {lvalue})'''
+    def underlayLayerCount (self: UnderlayReference)-> int :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -73020,11 +72745,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def width (self, *args, **kwargs)-> float :
-      '''width( (UnderlayReference)arg1) -> float :
-
-    C++ signature :
-        double width(class PyDbUnderlayReference {lvalue})'''
+    def width (self: UnderlayReference)-> float :
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
