@@ -6972,7 +6972,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def objectIds (self: BlockTableRecord,desc:PyRx.RxClass=AcDbEntity)-> list :
+    def objectIds (self: BlockTableRecord)-> list :
       '''                             '''
     ...
     def openBlockBegin (self, *args, **kwargs)-> None :
@@ -68896,20 +68896,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBigFontFileName (self, *args, **kwargs)-> None :
-      '''setBigFontFileName( (TextStyleTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setBigFontFileName(class PyDbTextStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setBigFontFileName (self: TextStyleTableRecord,val : str)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setFileName (self, *args, **kwargs)-> None :
-      '''setFileName( (TextStyleTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setFileName(class PyDbTextStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setFileName (self: TextStyleTableRecord,val : str)-> None :
+      '''                             '''
     ...
     def setFlagBits (self, *args, **kwargs)-> None :
       '''setFlagBits( (TextStyleTableRecord)arg1, (int)arg2) -> None :
@@ -68923,50 +68917,32 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setFont(class PyDbTextStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,int,int,int,bool)'''
     ...
-    def setIsShapeFile (self, *args, **kwargs)-> None :
-      '''setIsShapeFile( (TextStyleTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsShapeFile(class PyDbTextStyleTableRecord {lvalue},bool)'''
+    def setIsShapeFile (self: TextStyleTableRecord,val : bool)-> None :
+      '''                             '''
     ...
-    def setIsVertical (self, *args, **kwargs)-> None :
-      '''setIsVertical( (TextStyleTableRecord)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsVertical(class PyDbTextStyleTableRecord {lvalue},bool)'''
+    def setIsVertical (self: TextStyleTableRecord,val : bool)-> None :
+      '''                             '''
     ...
     def setName (self: SymbolTableRecord,name: str)-> None :
       '''                             '''
     ...
-    def setObliquingAngle (self, *args, **kwargs)-> None :
-      '''setObliquingAngle( (TextStyleTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setObliquingAngle(class PyDbTextStyleTableRecord {lvalue},double)'''
+    def setObliquingAngle (self: TextStyleTableRecord,val : real)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setPriorSize (self, *args, **kwargs)-> None :
-      '''setPriorSize( (TextStyleTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPriorSize(class PyDbTextStyleTableRecord {lvalue},double)'''
+    def setPriorSize (self: TextStyleTableRecord,val : int)-> None :
+      '''                             '''
     ...
-    def setTextSize (self, *args, **kwargs)-> None :
-      '''setTextSize( (TextStyleTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTextSize(class PyDbTextStyleTableRecord {lvalue},double)'''
+    def setTextSize (self: TextStyleTableRecord,val : real)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def setXScale (self, *args, **kwargs)-> None :
-      '''setXScale( (TextStyleTableRecord)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setXScale(class PyDbTextStyleTableRecord {lvalue},double)'''
+    def setXScale (self: TextStyleTableRecord,val : real)-> None :
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
@@ -70192,35 +70168,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setName (self: SymbolTableRecord,name: str)-> None :
       '''                             '''
     ...
-    def setOrigin (self, *args, **kwargs)-> None :
-      '''setOrigin( (UCSTableRecord)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setOrigin(class PyDbUCSTableRecord {lvalue},class AcGePoint3d)'''
+    def setOrigin (self: UCSTableRecord,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setUcsBaseOrigin (self, *args, **kwargs)-> None :
-      '''setUcsBaseOrigin( (UCSTableRecord)arg1, (Point3d)arg2, (OrthographicView)arg3) -> None :
-
-    C++ signature :
-        void setUcsBaseOrigin(class PyDbUCSTableRecord {lvalue},class AcGePoint3d,enum AcDb::OrthographicView)'''
+    def setUcsBaseOrigin (self: UCSTableRecord,val : PyGe.Point3d,view : PyDb.OrthographicView)-> None :
+      '''                             '''
     ...
-    def setXAxis (self, *args, **kwargs)-> None :
-      '''setXAxis( (UCSTableRecord)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setXAxis(class PyDbUCSTableRecord {lvalue},class AcGeVector3d)'''
+    def setXAxis (self: UCSTableRecord,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def setYAxis (self, *args, **kwargs)-> None :
-      '''setYAxis( (UCSTableRecord)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setYAxis(class PyDbUCSTableRecord {lvalue},class AcGeVector3d)'''
+    def setYAxis (self: UCSTableRecord,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
@@ -70228,11 +70192,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def ucsBaseOrigin (self, *args, **kwargs)-> PyGe.Point3d :
-      '''ucsBaseOrigin( (UCSTableRecord)arg1, (OrthographicView)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d ucsBaseOrigin(class PyDbUCSTableRecord {lvalue},enum AcDb::OrthographicView)'''
+    def ucsBaseOrigin (self: UCSTableRecord,view : PyDb.OrthographicView)-> PyGe.Point3d :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
