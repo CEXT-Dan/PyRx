@@ -70,6 +70,7 @@ public:
     PyDbUnderlayReference(AcDbUnderlayReference* ptr, bool autoDelete);
     PyDbUnderlayReference(const PyDbObjectId& id);
     PyDbUnderlayReference(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbUnderlayReference(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     virtual ~PyDbUnderlayReference() override = default;
     AcGePoint3d         position() const;
     void                setPosition(const AcGePoint3d& position);
