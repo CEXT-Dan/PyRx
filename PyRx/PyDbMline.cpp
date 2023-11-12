@@ -8,40 +8,43 @@ using namespace boost::python;
 
 void makePyDbMlineWrapper()
 {
+    PyDocString DS("Mline");
     class_<PyDbMline, bases<PyDbEntity>>("Mline")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("setStyle", &PyDbMline::setStyle)
-        .def("style", &PyDbMline::style)
-        .def("setJustification", &PyDbMline::setJustification)
-        .def("justification", &PyDbMline::justification)
-        .def("setScale", &PyDbMline::setScale)
-        .def("scale", &PyDbMline::scale)
-        .def("normal", &PyDbMline::normal)
-        .def("setNormal", &PyDbMline::setNormal)
-        .def("appendSeg", &PyDbMline::appendSeg)
-        .def("removeLastSeg", &PyDbMline::removeLastSeg)
-        .def("moveVertexAt", &PyDbMline::moveVertexAt)
-        .def("setClosedMline", &PyDbMline::setClosedMline)
-        .def("closedMline", &PyDbMline::closedMline)
-        .def("setSupressStartCaps", &PyDbMline::setSupressStartCaps)
-        .def("supressStartCaps", &PyDbMline::supressStartCaps)
-        .def("setSupressEndCaps", &PyDbMline::setSupressEndCaps)
-        .def("supressEndCaps", &PyDbMline::supressEndCaps)
-        .def("numVertices", &PyDbMline::numVertices)
-        .def("element", &PyDbMline::element)
-        .def("vertexAt", &PyDbMline::vertexAt)
-        .def("axisAt", &PyDbMline::axisAt)
-        .def("miterAt", &PyDbMline::miterAt)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def("setStyle", &PyDbMline::setStyle, DS.ARGS({ "val : PyDb.ObjectId" }))
+        .def("style", &PyDbMline::style, DS.ARGS())
+        .def("setJustification", &PyDbMline::setJustification, DS.ARGS({ "val : MlineJustification" }))
+        .def("justification", &PyDbMline::justification, DS.ARGS())
+        .def("setScale", &PyDbMline::setScale, DS.ARGS({ "val : real" }))
+        .def("scale", &PyDbMline::scale, DS.ARGS())
+        .def("normal", &PyDbMline::normal, DS.ARGS())
+        .def("setNormal", &PyDbMline::setNormal, DS.ARGS({ "val : PyGe.Vector3d" }))
+        .def("appendSeg", &PyDbMline::appendSeg, DS.ARGS({ "val : PyGe.Point3d" }))
+        .def("removeLastSeg", &PyDbMline::removeLastSeg, DS.ARGS({ "val : PyGe.Point3d" }))
+        .def("moveVertexAt", &PyDbMline::moveVertexAt, DS.ARGS({ "index : int","val : PyGe.Point3d" }))
+        .def("setClosedMline", &PyDbMline::setClosedMline, DS.ARGS({ "val : bool" }))
+        .def("closedMline", &PyDbMline::closedMline, DS.ARGS())
+        .def("setSupressStartCaps", &PyDbMline::setSupressStartCaps, DS.ARGS({ "val : bool" }))
+        .def("supressStartCaps", &PyDbMline::supressStartCaps, DS.ARGS())
+        .def("setSupressEndCaps", &PyDbMline::setSupressEndCaps, DS.ARGS({ "val : bool" }))
+        .def("supressEndCaps", &PyDbMline::supressEndCaps, DS.ARGS())
+        .def("numVertices", &PyDbMline::numVertices, DS.ARGS())
+        .def("element", &PyDbMline::element, DS.ARGS({ "val : PyGe.Point3d" }))
+        .def("vertexAt", &PyDbMline::vertexAt, DS.ARGS({ "val : int" }))
+        .def("axisAt", &PyDbMline::axisAt, DS.ARGS({ "val : int" }))
+        .def("miterAt", &PyDbMline::miterAt, DS.ARGS({ "val : int" }))
         .def("getClosestPointTo", &PyDbMline::getClosestPointTo1)
         .def("getClosestPointTo", &PyDbMline::getClosestPointTo2)
         .def("getClosestPointTo", &PyDbMline::getClosestPointTo3)
         .def("getClosestPointTo", &PyDbMline::getClosestPointTo4)
-        .def("getPlane", &PyDbMline::getPlane)
-        .def("className", &PyDbMline::className).staticmethod("className")
-        .def("desc", &PyDbMline::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbMline::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbMline::cast).staticmethod("cast")
+        .def("getPlane", &PyDbMline::getPlane, DS.ARGS())
+        .def("className", &PyDbMline::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbMline::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbMline::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbMline::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 
     enum_<Mline::MlineJustification>("MlineJustification")
@@ -65,8 +68,18 @@ PyDbMline::PyDbMline(AcDbMline* ptr, bool autoDelete)
 {
 }
 
+PyDbMline::PyDbMline(const PyDbObjectId& id)
+    : PyDbEntity(openAcDbObject<AcDbMline>(id, AcDb::kForRead), false)
+{
+}
+
 PyDbMline::PyDbMline(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(openAcDbObject<AcDbMline>(id, mode), false)
+{
+}
+
+PyDbMline::PyDbMline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbEntity(openAcDbObject<AcDbMline>(id, mode, erased), false)
 {
 }
 

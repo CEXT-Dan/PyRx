@@ -12,7 +12,9 @@ class PyDbMline : public PyDbEntity
 public:
     PyDbMline();
     PyDbMline(AcDbMline* ptr, bool autoDelete);
+    PyDbMline(const PyDbObjectId& id);
     PyDbMline(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbMline(const PyDbObjectId& id, AcDb::OpenMode mode, bool);
     void              setStyle(const PyDbObjectId& newStyleId);
     PyDbObjectId      style() const;
     void              setJustification(Mline::MlineJustification newJust);
