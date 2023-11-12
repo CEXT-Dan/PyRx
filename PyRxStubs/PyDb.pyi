@@ -41797,21 +41797,8 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Mline:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self: Mline,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -41819,11 +41806,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def appendSeg (self, *args, **kwargs)-> None :
-      '''appendSeg( (Mline)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void appendSeg(class PyDbMline {lvalue},class AcGePoint3d)'''
+    def appendSeg (self: Mline,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -41834,11 +41818,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def axisAt (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''axisAt( (Mline)arg1, (int)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d axisAt(class PyDbMline {lvalue},int)'''
+    def axisAt (self: Mline,val : int)-> PyGe.Vector3d :
+      '''                             '''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
@@ -41849,35 +41830,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.Mline :
-      '''cast( (RxObject)arg1) -> Mline :
-
-    C++ signature :
-        class PyDbMline cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.Mline :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.Mline :
-      '''cloneFrom( (RxObject)arg1) -> Mline :
-
-    C++ signature :
-        class PyDbMline cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Mline :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def closedMline (self, *args, **kwargs)-> bool :
-      '''closedMline( (Mline)arg1) -> bool :
-
-    C++ signature :
-        bool closedMline(class PyDbMline {lvalue})'''
+    def closedMline (self: Mline)-> bool :
+      '''                             '''
     ...
     def collisionType (self: Entity)-> PyDb.CollisionType :
       '''                             '''
@@ -41900,11 +41869,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -41924,11 +41890,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def element (self, *args, **kwargs)-> int :
-      '''element( (Mline)arg1, (Point3d)arg2) -> int :
-
-    C++ signature :
-        int element(class PyDbMline {lvalue},class AcGePoint3d)'''
+    def element (self: Mline,val : PyGe.Point3d)-> int :
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
@@ -41987,11 +41950,8 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getPlane (self, *args, **kwargs)-> PyGe.Plane :
-      '''getPlane( (Mline)arg1) -> Plane :
-
-    C++ signature :
-        class PyGePlane getPlane(class PyDbMline {lvalue})'''
+    def getPlane (self: Mline)-> PyGe.Plane :
+      '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
@@ -42107,11 +42067,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def justification (self, *args, **kwargs)-> int :
-      '''justification( (Mline)arg1) -> int :
-
-    C++ signature :
-        signed char justification(class PyDbMline {lvalue})'''
+    def justification (self: Mline)-> int :
+      '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None :
       '''                             '''
@@ -42143,29 +42100,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def miterAt (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''miterAt( (Mline)arg1, (int)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d miterAt(class PyDbMline {lvalue},int)'''
+    def miterAt (self: Mline,val : int)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def moveVertexAt (self, *args, **kwargs)-> None :
-      '''moveVertexAt( (Mline)arg1, (int)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void moveVertexAt(class PyDbMline {lvalue},int,class AcGePoint3d)'''
+    def moveVertexAt (self: Mline,index : int,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''normal( (Mline)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbMline {lvalue})'''
+    def normal (self: Mline)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def numVertices (self, *args, **kwargs)-> int :
-      '''numVertices( (Mline)arg1) -> int :
-
-    C++ signature :
-        int numVertices(class PyDbMline {lvalue})'''
+    def numVertices (self: Mline)-> int :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -42191,11 +42136,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removeLastSeg (self, *args, **kwargs)-> None :
-      '''removeLastSeg( (Mline)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void removeLastSeg(class PyDbMline {lvalue},class AcGePoint3d {lvalue})'''
+    def removeLastSeg (self: Mline,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -42206,11 +42148,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def scale (self, *args, **kwargs)-> float :
-      '''scale( (Mline)arg1) -> float :
-
-    C++ signature :
-        double scale(class PyDbMline {lvalue})'''
+    def scale (self: Mline)-> float :
+      '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
@@ -42221,11 +42160,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setClosedMline (self, *args, **kwargs)-> None :
-      '''setClosedMline( (Mline)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setClosedMline(class PyDbMline {lvalue},bool)'''
+    def setClosedMline (self: Mline,val : bool)-> None :
+      '''                             '''
     ...
     def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
@@ -42239,11 +42175,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setJustification (self, *args, **kwargs)-> None :
-      '''setJustification( (Mline)arg1, (MlineJustification)arg2) -> None :
-
-    C++ signature :
-        void setJustification(class PyDbMline {lvalue},signed char)'''
+    def setJustification (self: Mline,val : MlineJustification)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -42260,11 +42193,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (Mline)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbMline {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Mline,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -42291,29 +42221,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setScale (self, *args, **kwargs)-> None :
-      '''setScale( (Mline)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setScale(class PyDbMline {lvalue},double)'''
+    def setScale (self: Mline,val : real)-> None :
+      '''                             '''
     ...
-    def setStyle (self, *args, **kwargs)-> None :
-      '''setStyle( (Mline)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setStyle(class PyDbMline {lvalue},class PyDbObjectId)'''
+    def setStyle (self: Mline,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setSupressEndCaps (self, *args, **kwargs)-> None :
-      '''setSupressEndCaps( (Mline)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSupressEndCaps(class PyDbMline {lvalue},bool)'''
+    def setSupressEndCaps (self: Mline,val : bool)-> None :
+      '''                             '''
     ...
-    def setSupressStartCaps (self, *args, **kwargs)-> None :
-      '''setSupressStartCaps( (Mline)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSupressStartCaps(class PyDbMline {lvalue},bool)'''
+    def setSupressStartCaps (self: Mline,val : bool)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
@@ -42324,23 +42242,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def style (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''style( (Mline)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId style(class PyDbMline {lvalue})'''
+    def style (self: Mline)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def supressEndCaps (self, *args, **kwargs)-> bool :
-      '''supressEndCaps( (Mline)arg1) -> bool :
-
-    C++ signature :
-        bool supressEndCaps(class PyDbMline {lvalue})'''
+    def supressEndCaps (self: Mline)-> bool :
+      '''                             '''
     ...
-    def supressStartCaps (self, *args, **kwargs)-> bool :
-      '''supressStartCaps( (Mline)arg1) -> bool :
-
-    C++ signature :
-        bool supressStartCaps(class PyDbMline {lvalue})'''
+    def supressStartCaps (self: Mline)-> bool :
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
@@ -42354,11 +42263,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
     ...
-    def vertexAt (self, *args, **kwargs)-> PyGe.Point3d :
-      '''vertexAt( (Mline)arg1, (int)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d vertexAt(class PyDbMline {lvalue},int)'''
+    def vertexAt (self: Mline,val : int)-> PyGe.Point3d :
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
