@@ -161,7 +161,7 @@ void PyDbDatabaseReactor::objectAppended(const PyDbDatabase& pDb, const PyDbObje
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("objectAppended"))
+        if (const override& f = this->get_override("objectAppended"))
             f(pDb, pObj);
         else
             reg_objectAppended = false;
@@ -178,7 +178,7 @@ void PyDbDatabaseReactor::objectUnAppended(const PyDbDatabase& pDb, const PyDbOb
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("objectUnAppended"))
+        if (const override& f = this->get_override("objectUnAppended"))
             f(pDb, pObj);
         else
             reg_objectUnAppended = false;
@@ -195,7 +195,7 @@ void PyDbDatabaseReactor::objectReAppended(const PyDbDatabase& pDb, const PyDbOb
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("objectReAppended"))
+        if (const override& f = this->get_override("objectReAppended"))
             f(pDb, pObj);
         else
             reg_objectReAppended = false;
@@ -212,7 +212,7 @@ void PyDbDatabaseReactor::objectOpenedForModify(const PyDbDatabase& pDb, const P
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("objectOpenedForModify"))
+        if (const override& f = this->get_override("objectOpenedForModify"))
             f(pDb, pObj);
         else
             reg_objectOpenedForModify = false;
@@ -229,7 +229,7 @@ void PyDbDatabaseReactor::objectModified(const PyDbDatabase& pDb, const PyDbObje
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("objectModified"))
+        if (const override& f = this->get_override("objectModified"))
             f(pDb, pObj);
         else
             reg_objectModified = false;
@@ -246,7 +246,7 @@ void PyDbDatabaseReactor::objectErased(const PyDbDatabase& pDb, const PyDbObject
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("objectErased"))
+        if (const override& f = this->get_override("objectErased"))
             f(pDb, pObj, bErased);
         else
             reg_objectErased = false;
@@ -263,7 +263,7 @@ void PyDbDatabaseReactor::headerSysVarWillChange(const PyDbDatabase& pDb, const 
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("headerSysVarWillChange"))
+        if (const override& f = this->get_override("headerSysVarWillChange"))
             f(pDb, name);
         else
             reg_headerSysVarWillChange = false;
@@ -280,7 +280,7 @@ void PyDbDatabaseReactor::headerSysVarChanged(const PyDbDatabase& pDb, const std
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("headerSysVarChanged"))
+        if (const override& f = this->get_override("headerSysVarChanged"))
             f(pDb, name, bSuccess);
         else
             reg_headerSysVarChanged = false;
@@ -297,7 +297,7 @@ void PyDbDatabaseReactor::proxyResurrectionCompleted(const PyDbDatabase& pDb, co
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("proxyResurrectionCompleted"))
+        if (const override& f = this->get_override("proxyResurrectionCompleted"))
             f(pDb, appname, objects);
         else
             reg_proxyResurrectionCompleted = false;
@@ -314,7 +314,7 @@ void PyDbDatabaseReactor::goodbye(const PyDbDatabase& pDb)
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("goodbye"))
+        if (const override& f = this->get_override("goodbye"))
             f(pDb);
         else
             reg_goodbye = false;

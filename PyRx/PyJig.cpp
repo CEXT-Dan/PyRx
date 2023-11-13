@@ -134,7 +134,7 @@ AcEdJig::DragStatus PyJig::sampler()
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("sampler"))
+        if (const override& f = this->get_override("sampler"))
             return f();
     }
     catch (...)
@@ -149,7 +149,7 @@ Adesk::Boolean PyJig::update()
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("update"))
+        if (const override& f = this->get_override("update"))
             return f();
     }
     catch (...)
@@ -320,7 +320,7 @@ AcEdJig::DragStatus PyDrawJig::sampler()
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("sampler"))
+        if (const override& f = this->get_override("sampler"))
             return f();
     }
     catch (...)
@@ -335,7 +335,7 @@ Adesk::Boolean PyDrawJig::update()
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("update"))
+        if (const override& f = this->get_override("update"))
             return f();
     }
     catch (...)

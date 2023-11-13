@@ -178,7 +178,7 @@ Acad::ErrorStatus PyEdInputPointFilter::processInputPoint(const PyEdInputPoint& 
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("processInputPoint"))
+        if (const override& f = this->get_override("processInputPoint"))
             f(input, output);
     }
     catch (...)
@@ -216,7 +216,7 @@ Acad::ErrorStatus PyEdInputPointMonitor::monitorInputPoint(const PyEdInputPoint&
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("monitorInputPoint"))
+        if (const override& f = this->get_override("monitorInputPoint"))
             f(input, output);
     }
     catch (...)

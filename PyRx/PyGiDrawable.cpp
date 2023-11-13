@@ -153,7 +153,7 @@ void makePyGiDrawableOverruleWrapper()
 }
 
 PyGiDrawableOverrule::PyGiDrawableOverrule()
-    : PyRxOverrule(this, false)
+    : PyRxOverrule(this)
 {
 }
 
@@ -167,7 +167,7 @@ bool PyGiDrawableOverrule::isApplicableWr(PyRxObject& pOverruledSubject) const
     PyAutoLockGIL lock;
     try
     {
-        if (override f = get_override("isApplicable"))
+        if (const override& f = get_override("isApplicable"))
         {
             return f(pOverruledSubject);
         }
@@ -189,7 +189,7 @@ Adesk::Boolean PyGiDrawableOverrule::worldDrawWr(PyGiDrawable& pSubject, PyGiWor
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("worldDraw"))
+        if (const override& f = this->get_override("worldDraw"))
         {
             return f(pSubject, wd);
         }
@@ -211,7 +211,7 @@ void PyGiDrawableOverrule::viewportDrawWr(PyGiDrawable& pSubject, PyGiViewportDr
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("viewportDraw"))
+        if (const override& f = this->get_override("viewportDraw"))
         {
             f(pSubject, vd);
         }
@@ -232,7 +232,7 @@ Adesk::UInt32 PyGiDrawableOverrule::viewportDrawLogicalFlagsWr(PyGiDrawable& pSu
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("viewportDrawLogicalFlags"))
+        if (const override& f = this->get_override("viewportDrawLogicalFlags"))
         {
             return f(pSubject, vd);
         }
