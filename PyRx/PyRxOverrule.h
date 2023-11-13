@@ -8,7 +8,7 @@ void makePyRxOverruleWrapper();
 class PyRxOverrule :public PyRxObject
 {
 public:
-	PyRxOverrule(AcRxOverrule* ptr, bool autoDelete);
+	PyRxOverrule(AcRxOverrule* ptr);
 	virtual ~PyRxOverrule() override = default;
 public:
 	static void addOverrule1(PyRxClass& pClass, PyRxOverrule& pOverrule);

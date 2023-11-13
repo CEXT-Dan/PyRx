@@ -155,12 +155,6 @@ void makePyGiDrawableOverruleWrapper()
 PyGiDrawableOverrule::PyGiDrawableOverrule()
     : PyRxOverrule(this, false)
 {
-    //this->resetImp(this, false, false);
-}
-
-PyGiDrawableOverrule::PyGiDrawableOverrule(AcGiDrawableOverrule* ptr, bool autoDelete)
-    : PyRxOverrule(ptr, autoDelete)
-{
 }
 
 Adesk::UInt32 PyGiDrawableOverrule::setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits)

@@ -40,7 +40,7 @@ class MyDrawableOverrule(PyGi.DrawableOverrule):
 
             # circle info
             seg = PyGe.LineSeg3d(line.endPoint(), line.startPoint())
-            cen = PyGe.Point3d(seg.midPoint())
+            cen = seg.midPoint()
             rad = seg.length() * 0.3
 
             # draw circle
