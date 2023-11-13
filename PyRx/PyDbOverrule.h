@@ -4,9 +4,12 @@
 #include "PyRxOverrule.h"
 #include "dbobjectoverrule.h"
 
+
 #ifdef PYRXDEBUG
 
 class PyDbObjectId;
+class PyDbObject;
+class PyDbIdMapping;
 class PyDbDimension;
 class PyDbDimStyleTableRecord;
 class PyDbObjectOverrule;
@@ -25,21 +28,20 @@ public:
     virtual Acad::ErrorStatus   deepClone(const AcDbObject* pSubject,AcDbObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary) override;
     virtual Acad::ErrorStatus   wblockClone(const AcDbObject* pSubject, AcRxObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary) override;
 
+    bool			    isApplicableWr(const PyRxObject& pOverruledSubject) const;
+    Acad::ErrorStatus   openWr(PyDbObject& pSubject, AcDb::OpenMode mode);
+    Acad::ErrorStatus   closeWr(PyDbObject& pSubject);
+    Acad::ErrorStatus   cancelWr(PyDbObject& pSubject);
+    Acad::ErrorStatus   eraseWr(PyDbObject& pSubject, Adesk::Boolean erasing);
+    Acad::ErrorStatus   deepCloneWr(const PyDbObject& pSubject, PyDbObject& pOwnerObject, PyDbObject& pClonedObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary);
+    Acad::ErrorStatus   wblockCloneWr(const PyDbObject& pSubject, PyDbObject& pOwnerObject, PyDbObject& pClonedObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary);
 
-    bool			    isApplicableWr(const AcRxObject* pOverruledSubject) const;
-    Acad::ErrorStatus   openWr(AcDbObject* pSubject, AcDb::OpenMode mode);
-    Acad::ErrorStatus   closeWr(AcDbObject* pSubject);
-    Acad::ErrorStatus   cancelWr(AcDbObject* pSubject);
-    Acad::ErrorStatus   eraseWr(AcDbObject* pSubject, Adesk::Boolean erasing);
-    Acad::ErrorStatus   deepCloneWr(const AcDbObject* pSubject, AcDbObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary);
-    Acad::ErrorStatus   wblockCloneWr(const AcDbObject* pSubject, AcRxObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary);
-
-    Acad::ErrorStatus   baseOpen(AcDbObject* pSubject, AcDb::OpenMode mode);
-    Acad::ErrorStatus   baseClose(AcDbObject* pSubject);
-    Acad::ErrorStatus   baseCancel(AcDbObject* pSubject);
-    Acad::ErrorStatus   baseErase(AcDbObject* pSubject, Adesk::Boolean erasing);
-    Acad::ErrorStatus   baseDeepClone(const AcDbObject* pSubject, AcDbObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary);
-    Acad::ErrorStatus   baseWblockClone(const AcDbObject* pSubject, AcRxObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary);
+    Acad::ErrorStatus   baseOpen(PyDbObject& pSubject, AcDb::OpenMode mode);
+    Acad::ErrorStatus   baseClose(PyDbObject& pSubject);
+    Acad::ErrorStatus   baseCancel(PyDbObject& pSubject);
+    Acad::ErrorStatus   baseErase(PyDbObject& pSubject, Adesk::Boolean erasing);
+    Acad::ErrorStatus   baseDeepClone(const PyDbObject& pSubject, PyDbObject& pOwnerObject, PyDbObject& pClonedObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary);
+    Acad::ErrorStatus   baseWblockClone(const PyDbObject& pSubject, PyDbObject& pOwnerObject, PyDbObject& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary);
 
 public:
     AcDbObjectOverrule* impObj(const std::source_location& src = std::source_location::current()) const;
