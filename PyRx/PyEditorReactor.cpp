@@ -921,7 +921,7 @@ void PyEditorReactor::commandWillStartWr(const std::string& cmdStr)
 {
     try
     {
-        if (override pyFunc = this->get_override("commandWillStart"))
+        if (const override& pyFunc = this->get_override("commandWillStart"))
             pyFunc(cmdStr);
         else
             reg_commandWillStart = false;
@@ -937,7 +937,7 @@ void PyEditorReactor::commandEndedWr(const std::string& cmdStr)
 {
     try
     {
-        if (override pyFunc = this->get_override("commandEnded"))
+        if (const override& pyFunc = this->get_override("commandEnded"))
             pyFunc(cmdStr);
         else
             reg_commandEnded = false;
@@ -953,7 +953,7 @@ void PyEditorReactor::commandCancelledWr(const std::string& cmdStr)
 {
     try
     {
-        if (override pyFunc = this->get_override("commandCancelled"))
+        if (const override& pyFunc = this->get_override("commandCancelled"))
             pyFunc(cmdStr);
         else
             reg_commandCancelled = false;
@@ -969,7 +969,7 @@ void PyEditorReactor::commandFailedWr(const std::string& cmdStr)
 {
     try
     {
-        if (override pyFunc = this->get_override("commandCancelled"))
+        if (const override& pyFunc = this->get_override("commandCancelled"))
             pyFunc(cmdStr);
         else
             reg_commandFailed = false;
@@ -985,7 +985,7 @@ void PyEditorReactor::lispWillStartWr(const std::string& firstLine)
 {
     try
     {
-        if (override pyFunc = this->get_override("lispWillStart"))
+        if (const override& pyFunc = this->get_override("lispWillStart"))
             pyFunc(firstLine);
         else
             reg_lispWillStart = false;
@@ -1001,7 +1001,7 @@ void PyEditorReactor::lispEndedWr()
 {
     try
     {
-        if (override pyFunc = this->get_override("lispEnded"))
+        if (const override& pyFunc = this->get_override("lispEnded"))
             pyFunc();
         else
             reg_lispEnded = false;
@@ -1017,7 +1017,7 @@ void PyEditorReactor::lispCancelledWr()
 {
     try
     {
-        if (override pyFunc = this->get_override("lispCancelled"))
+        if (const override& pyFunc = this->get_override("lispCancelled"))
             pyFunc();
         else
             reg_lispCancelled = false;
@@ -1033,7 +1033,7 @@ void PyEditorReactor::beginDxfInWr(PyDbDatabase& db)
 {
     try
     {
-        if (override pyFunc = this->get_override("beginDxfIn"))
+        if (const override& pyFunc = this->get_override("beginDxfIn"))
             pyFunc(db);
         else
             reg_beginDxfIn = false;
@@ -1049,7 +1049,7 @@ void PyEditorReactor::abortDxfInWr(PyDbDatabase& db)
 {
     try
     {
-        if (override pyFunc = this->get_override("abortDxfIn"))
+        if (const override& pyFunc = this->get_override("abortDxfIn"))
             pyFunc(db);
         else
             reg_abortDxfIn = false;
@@ -1065,7 +1065,7 @@ void PyEditorReactor::dxfInCompleteWr(PyDbDatabase& db)
 {
     try
     {
-        if (override pyFunc = this->get_override("dxfInComplete"))
+        if (const override& pyFunc = this->get_override("dxfInComplete"))
             pyFunc(db);
         else
             reg_dxfInComplete = false;
@@ -1081,7 +1081,7 @@ void PyEditorReactor::beginDxfOutWr(PyDbDatabase& db)
 {
     try
     {
-        if (override pyFunc = this->get_override("beginDxfOut"))
+        if (const override& pyFunc = this->get_override("beginDxfOut"))
             pyFunc(db);
         else
             reg_beginDxfOut = false;
@@ -1097,7 +1097,7 @@ void PyEditorReactor::abortDxfOutWr(PyDbDatabase& db)
 {
     try
     {
-        if (override pyFunc = this->get_override("abortDxfOut"))
+        if (const override& pyFunc = this->get_override("abortDxfOut"))
             pyFunc(db);
         else
             reg_abortDxfOut = false;
@@ -1113,7 +1113,7 @@ void PyEditorReactor::dxfOutCompleteWr(PyDbDatabase& db)
 {
     try
     {
-        if (override pyFunc = this->get_override("dxfOutComplete"))
+        if (const override& pyFunc = this->get_override("dxfOutComplete"))
             pyFunc(db);
         else
             reg_dxfOutComplete = false;
@@ -1129,7 +1129,7 @@ void PyEditorReactor::beginDwgOpenWr(const std::string& filename)
 {
     try
     {
-        if (override pyFunc = this->get_override("beginDwgOpen"))
+        if (const override& pyFunc = this->get_override("beginDwgOpen"))
             pyFunc(filename);
         else
             reg_beginDwgOpen = false;
@@ -1145,7 +1145,7 @@ void PyEditorReactor::endDwgOpenWr(const std::string& filename, PyDbDatabase& db
 {
     try
     {
-        if (override pyFunc = this->get_override("endDwgOpen"))
+        if (const override& pyFunc = this->get_override("endDwgOpen"))
             pyFunc(filename, db);
         else
             reg_endDwgOpen = false;
@@ -1161,7 +1161,7 @@ void PyEditorReactor::initialDwgFileOpenCompleteWr(PyDbDatabase& db)
 {
     try
     {
-        if (override pyFunc = this->get_override("initialDwgFileOpenComplete"))
+        if (const override& pyFunc = this->get_override("initialDwgFileOpenComplete"))
             pyFunc(db);
         else
             reg_initialDwgFileOpenComplete = false;
@@ -1177,7 +1177,7 @@ void PyEditorReactor::databaseConstructedWr(PyDbDatabase& db)
 {
     try
     {
-        if (override pyFunc = this->get_override("databaseConstructed"))
+        if (const override& pyFunc = this->get_override("databaseConstructed"))
             pyFunc(db);
         else
             reg_databaseConstructed = false;
@@ -1193,7 +1193,7 @@ void PyEditorReactor::databaseToBeDestroyedWr(PyDbDatabase& db)
 {
     try
     {
-        if (override pyFunc = this->get_override("databaseToBeDestroyed"))
+        if (const override& pyFunc = this->get_override("databaseToBeDestroyed"))
             pyFunc(db);
         else
             reg_databaseToBeDestroyed = false;
@@ -1209,7 +1209,7 @@ void PyEditorReactor::beginSaveWr(PyDbDatabase& db, const std::string& pIntended
 {
     try
     {
-        if (override pyFunc = this->get_override("beginSave"))
+        if (const override& pyFunc = this->get_override("beginSave"))
             pyFunc(db, pIntendedName);
         else
             reg_beginSave = false;
@@ -1225,7 +1225,7 @@ void PyEditorReactor::saveCompleteWr(PyDbDatabase& db, const std::string& pActua
 {
     try
     {
-        if (override pyFunc = this->get_override("saveComplete"))
+        if (const override& pyFunc = this->get_override("saveComplete"))
             pyFunc(db, pActualName);
         else
             reg_saveComplete = false;
@@ -1241,7 +1241,7 @@ void PyEditorReactor::abortSaveWr(PyDbDatabase& db)
 {
     try
     {
-        if (override pyFunc = this->get_override("abortSave"))
+        if (const override& pyFunc = this->get_override("abortSave"))
             pyFunc(db);
         else
             reg_abortSave = false;
@@ -1257,7 +1257,7 @@ void PyEditorReactor::beginInsertWr1(PyDbDatabase& pTo, const std::string& pBloc
 {
     try
     {
-        if (override pyFunc = this->get_override("beginInsert"))
+        if (const override& pyFunc = this->get_override("beginInsert"))
             pyFunc(pTo, pBlockName, pFrom);
         else
             reg_beginInsert1 = false;
@@ -1273,7 +1273,7 @@ void PyEditorReactor::beginInsertWr2(PyDbDatabase& pTo, const AcGeMatrix3d& xfor
 {
     try
     {
-        if (override pyFunc = this->get_override("beginInsert"))
+        if (const override& pyFunc = this->get_override("beginInsert"))
             pyFunc(pTo, xform, pFrom);
         else
             reg_beginInsert2 = false;
@@ -1289,7 +1289,7 @@ void PyEditorReactor::otherInsertWr(PyDbDatabase& pTo, PyDbIdMapping& idMap, PyD
 {
     try
     {
-        if (override pyFunc = this->get_override("otherInsert"))
+        if (const override& pyFunc = this->get_override("otherInsert"))
             pyFunc(pTo, idMap, pFrom);
         else
             reg_otherInsert = false;
@@ -1305,7 +1305,7 @@ void PyEditorReactor::abortInsertWr(PyDbDatabase& pTo)
 {
     try
     {
-        if (override pyFunc = this->get_override("abortInsert"))
+        if (const override& pyFunc = this->get_override("abortInsert"))
             pyFunc(pTo);
         else
             reg_otherInsert = false;
@@ -1321,7 +1321,7 @@ void PyEditorReactor::endInsertWr(PyDbDatabase& pTo)
 {
     try
     {
-        if (override pyFunc = this->get_override("endInsert"))
+        if (const override& pyFunc = this->get_override("endInsert"))
             pyFunc(pTo);
         else
             reg_endInsert = false;
@@ -1337,7 +1337,7 @@ void PyEditorReactor::wblockNoticeWr(PyDbDatabase& pDb)
 {
     try
     {
-        if (override pyFunc = this->get_override("wblockNotice"))
+        if (const override& pyFunc = this->get_override("wblockNotice"))
             pyFunc(pDb);
         else
             reg_wblockNotice = false;
@@ -1353,7 +1353,7 @@ void PyEditorReactor::beginWblockWr(PyDbDatabase& pTo, PyDbDatabase& pFrom, PyDb
 {
     try
     {
-        if (override pyFunc = this->get_override("beginWblock"))
+        if (const override& pyFunc = this->get_override("beginWblock"))
             pyFunc(pTo, pFrom, blockId);
         else
             reg_beginWblock = false;
@@ -1369,7 +1369,7 @@ void PyEditorReactor::otherWblockWr(PyDbDatabase& pTo, PyDbIdMapping& mapping, P
 {
     try
     {
-        if (override pyFunc = this->get_override("otherWblock"))
+        if (const override& pyFunc = this->get_override("otherWblock"))
             pyFunc(pTo, mapping, pFrom);
         else
             reg_otherWblock = false;
@@ -1385,7 +1385,7 @@ void PyEditorReactor::abortWblockWr(PyDbDatabase& pTo)
 {
     try
     {
-        if (override pyFunc = this->get_override("abortWblock"))
+        if (const override& pyFunc = this->get_override("abortWblock"))
             pyFunc(pTo);
         else
             reg_abortWblock = false;
@@ -1401,7 +1401,7 @@ void PyEditorReactor::endWblockWr(PyDbDatabase& pTo)
 {
     try
     {
-        if (override pyFunc = this->get_override("endWblock"))
+        if (const override& pyFunc = this->get_override("endWblock"))
             pyFunc(pTo);
         else
             reg_endWblock = false;
@@ -1417,7 +1417,7 @@ void PyEditorReactor::beginDeepCloneWr(PyDbDatabase& pTo, PyDbIdMapping& mapping
 {
     try
     {
-        if (override pyFunc = this->get_override("endWblock"))
+        if (const override& pyFunc = this->get_override("endWblock"))
             pyFunc(pTo, mapping);
         else
             reg_beginDeepClone = false;
@@ -1433,7 +1433,7 @@ Acad::ErrorStatus PyEditorReactor::beginDeepCloneXlationWr(PyDbIdMapping& mappin
 {
     try
     {
-        if (override pyFunc = this->get_override("beginDeepCloneXlation"))
+        if (const override& pyFunc = this->get_override("beginDeepCloneXlation"))
             return pyFunc(mapping);
         else
             reg_beginDeepCloneXlation = false;
@@ -1451,7 +1451,7 @@ void PyEditorReactor::abortDeepCloneWr(PyDbIdMapping& mapping)
 {
     try
     {
-        if (override pyFunc = this->get_override("abortDeepClone"))
+        if (const override& pyFunc = this->get_override("abortDeepClone"))
             pyFunc(mapping);
         else
             reg_abortDeepClone = false;
@@ -1467,7 +1467,7 @@ void PyEditorReactor::endDeepCloneWr(PyDbIdMapping& mapping)
 {
     try
     {
-        if (override pyFunc = this->get_override("endDeepClone"))
+        if (const override& pyFunc = this->get_override("endDeepClone"))
             pyFunc(mapping);
         else
             reg_endDeepClone = false;
@@ -1483,7 +1483,7 @@ void PyEditorReactor::sysVarChangedWr(const std::string& varName, bool success)
 {
     try
     {
-        if (override pyFunc = this->get_override("sysVarChanged"))
+        if (const override& pyFunc = this->get_override("sysVarChanged"))
             pyFunc(varName, success);
         else
             reg_sysVarChanged = false;
@@ -1499,7 +1499,7 @@ void PyEditorReactor::sysVarWillChangeWr(const std::string& varName)
 {
     try
     {
-        if (override pyFunc = this->get_override("sysVarWillChange"))
+        if (const override& pyFunc = this->get_override("sysVarWillChange"))
             pyFunc(varName);
         else
             reg_sysVarWillChange = false;
@@ -1515,7 +1515,7 @@ void PyEditorReactor::beginAttachWr(PyDbDatabase& pTo, const std::string& str, P
 {
     try
     {
-        if (override pyFunc = this->get_override("beginAttach"))
+        if (const override& pyFunc = this->get_override("beginAttach"))
             pyFunc(pTo, str, pFrom);
         else
             reg_beginAttach = false;
@@ -1531,7 +1531,7 @@ void PyEditorReactor::otherAttachWr(PyDbDatabase& pTo, PyDbDatabase& pFrom)
 {
     try
     {
-        if (override pyFunc = this->get_override("otherAttach"))
+        if (const override& pyFunc = this->get_override("otherAttach"))
             pyFunc(pTo, pFrom);
         else
             reg_otherAttach = false;
@@ -1547,7 +1547,7 @@ void PyEditorReactor::abortAttachWr(PyDbDatabase& pFrom)
 {
     try
     {
-        if (override pyFunc = this->get_override("abortAttach"))
+        if (const override& pyFunc = this->get_override("abortAttach"))
             pyFunc(pFrom);
         else
             reg_abortAttach = false;
@@ -1563,7 +1563,7 @@ void PyEditorReactor::endAttachWr(PyDbDatabase& pTo)
 {
     try
     {
-        if (override pyFunc = this->get_override("endAttach"))
+        if (const override& pyFunc = this->get_override("endAttach"))
             pyFunc(pTo);
         else
             reg_endAttach = false;
@@ -1579,7 +1579,7 @@ void PyEditorReactor::redirectedWr(PyDbObjectId& newId, PyDbObjectId& oldId)
 {
     try
     {
-        if (override pyFunc = this->get_override("redirected"))
+        if (const override& pyFunc = this->get_override("redirected"))
             pyFunc(newId, oldId);
         else
             reg_redirected = false;
@@ -1595,7 +1595,7 @@ void PyEditorReactor::comandeeredWr(PyDbDatabase& pTo, PyDbObjectId& id, PyDbDat
 {
     try
     {
-        if (override pyFunc = this->get_override("comandeered"))
+        if (const override& pyFunc = this->get_override("comandeered"))
             pyFunc(pTo, id, pFrom);
         else
             reg_comandeered = false;
@@ -1611,7 +1611,7 @@ void PyEditorReactor::beginRestoreWr(PyDbDatabase& pTo, const std::string& str, 
 {
     try
     {
-        if (override pyFunc = this->get_override("beginRestore"))
+        if (const override& pyFunc = this->get_override("beginRestore"))
             pyFunc(pTo, str, pFrom);
         else
             reg_beginRestore = false;
@@ -1627,7 +1627,7 @@ void PyEditorReactor::abortRestoreWr(PyDbDatabase& pTo)
 {
     try
     {
-        if (override pyFunc = this->get_override("abortRestore"))
+        if (const override& pyFunc = this->get_override("abortRestore"))
             pyFunc(pTo);
         else
             reg_abortRestore = false;
@@ -1643,7 +1643,7 @@ void PyEditorReactor::endRestoreWr(PyDbDatabase& pTo)
 {
     try
     {
-        if (override pyFunc = this->get_override("endRestore"))
+        if (const override& pyFunc = this->get_override("endRestore"))
             pyFunc(pTo);
         else
             reg_endRestore = false;
@@ -1659,7 +1659,7 @@ void PyEditorReactor::xrefSubcommandBindItemWr(PyDbDatabase& pHost, int activity
 {
     try
     {
-        if (override pyFunc = this->get_override("xrefSubcommandBindItem"))
+        if (const override& pyFunc = this->get_override("xrefSubcommandBindItem"))
             pyFunc(pHost, activity, blockId);
         else
             reg_xrefSubcommandBindItem = false;
@@ -1675,7 +1675,7 @@ void PyEditorReactor::xrefSubcommandAttachItemWr(PyDbDatabase& pHost, int activi
 {
     try
     {
-        if (override pyFunc = this->get_override("xrefSubcommandAttachItem"))
+        if (const override& pyFunc = this->get_override("xrefSubcommandAttachItem"))
             pyFunc(pHost, activity, pPath);
         else
             reg_xrefSubcommandAttachItem = false;
@@ -1691,7 +1691,7 @@ void PyEditorReactor::xrefSubcommandOverlayItemWr(PyDbDatabase& pHost, int activ
 {
     try
     {
-        if (override pyFunc = this->get_override("xrefSubcommandOverlayItem"))
+        if (const override& pyFunc = this->get_override("xrefSubcommandOverlayItem"))
             pyFunc(pHost, activity, pPath);
         else
             reg_xrefSubcommandOverlayItem = false;
@@ -1707,7 +1707,7 @@ void PyEditorReactor::xrefSubcommandDetachItemWr(PyDbDatabase& pHost, int activi
 {
     try
     {
-        if (override pyFunc = this->get_override("xrefSubcommandDetachItem"))
+        if (const override& pyFunc = this->get_override("xrefSubcommandDetachItem"))
             pyFunc(pHost, activity, blockId);
         else
             reg_xrefSubcommandDetachItem = false;
@@ -1723,7 +1723,7 @@ void PyEditorReactor::xrefSubcommandPathItemWr(int activity, PyDbObjectId& block
 {
     try
     {
-        if (override pyFunc = this->get_override("xrefSubcommandPathItem"))
+        if (const override& pyFunc = this->get_override("xrefSubcommandPathItem"))
             pyFunc(activity, blockId, pNewPath);
         else
             reg_xrefSubcommandPathItem = false;
@@ -1739,7 +1739,7 @@ void PyEditorReactor::xrefSubcommandReloadItemWr(PyDbDatabase& pHost, int activi
 {
     try
     {
-        if (override pyFunc = this->get_override("xrefSubcommandReloadItem"))
+        if (const override& pyFunc = this->get_override("xrefSubcommandReloadItem"))
             pyFunc(pHost, activity, blockId);
         else
             reg_xrefSubcommandReloadItem = false;
@@ -1755,7 +1755,7 @@ void PyEditorReactor::xrefSubcommandUnloadItemWr(PyDbDatabase& pHost, int activi
 {
     try
     {
-        if (override pyFunc = this->get_override("xrefSubcommandUnloadItem"))
+        if (const override& pyFunc = this->get_override("xrefSubcommandUnloadItem"))
             pyFunc(pHost, activity, blockId);
         else
             reg_xrefSubcommandUnloadItem = false;
@@ -1771,7 +1771,7 @@ void PyEditorReactor::undoSubcommandAutoWr(int activity, bool state)
 {
     try
     {
-        if (override pyFunc = this->get_override("xrefSubcommandUnloadItem"))
+        if (const override& pyFunc = this->get_override("xrefSubcommandUnloadItem"))
             pyFunc(activity, state);
         else
             reg_undoSubcommandAuto = false;
@@ -1787,7 +1787,7 @@ void PyEditorReactor::undoSubcommandControlWr(int activity, int option)
 {
     try
     {
-        if (override pyFunc = this->get_override("xrefSubcommandUnloadItem"))
+        if (const override& pyFunc = this->get_override("xrefSubcommandUnloadItem"))
             pyFunc(activity, option);
         else
             reg_undoSubcommandControl = false;
@@ -1803,7 +1803,7 @@ void PyEditorReactor::undoSubcommandBeginWr(int activity)
 {
     try
     {
-        if (override pyFunc = this->get_override("undoSubcommandBegin"))
+        if (const override& pyFunc = this->get_override("undoSubcommandBegin"))
             pyFunc(activity);
         else
             reg_undoSubcommandBegin = false;
@@ -1819,7 +1819,7 @@ void PyEditorReactor::undoSubcommandEndWr(int activity)
 {
     try
     {
-        if (override pyFunc = this->get_override("undoSubcommandEnd"))
+        if (const override& pyFunc = this->get_override("undoSubcommandEnd"))
             pyFunc(activity);
         else
             reg_undoSubcommandEnd = false;
@@ -1835,7 +1835,7 @@ void PyEditorReactor::undoSubcommandMarkWr(int activity)
 {
     try
     {
-        if (override pyFunc = this->get_override("undoSubcommandMark"))
+        if (const override& pyFunc = this->get_override("undoSubcommandMark"))
             pyFunc(activity);
         else
             reg_undoSubcommandMark = false;
@@ -1851,7 +1851,7 @@ void PyEditorReactor::undoSubcommandBackWr(int activity)
 {
     try
     {
-        if (override pyFunc = this->get_override("undoSubcommandBack"))
+        if (const override& pyFunc = this->get_override("undoSubcommandBack"))
             pyFunc(activity);
         else
             reg_undoSubcommandBack = false;
@@ -1867,7 +1867,7 @@ void PyEditorReactor::undoSubcommandNumberWr(int activity, int num)
 {
     try
     {
-        if (override pyFunc = this->get_override("undoSubcommandNumber"))
+        if (const override& pyFunc = this->get_override("undoSubcommandNumber"))
             pyFunc(activity, num);
         else
             reg_undoSubcommandNumber = false;
@@ -1883,7 +1883,7 @@ void PyEditorReactor::pickfirstModifiedWr()
 {
     try
     {
-        if (override pyFunc = this->get_override("pickfirstModified"))
+        if (const override& pyFunc = this->get_override("pickfirstModified"))
             pyFunc();
         else
             reg_pickfirstModified = false;
@@ -1899,7 +1899,7 @@ void PyEditorReactor::layoutSwitchedWr(const std::string& newLayoutName)
 {
     try
     {
-        if (override pyFunc = this->get_override("layoutSwitched"))
+        if (const override& pyFunc = this->get_override("layoutSwitched"))
             pyFunc(newLayoutName);
         else
             reg_layoutSwitched = false;
@@ -1915,7 +1915,7 @@ void PyEditorReactor::layoutToBeSwitchedWr(const std::string& oldLayoutName, con
 {
     try
     {
-        if (override pyFunc = this->get_override("layoutToBeSwitched"))
+        if (const override& pyFunc = this->get_override("layoutToBeSwitched"))
             pyFunc(oldLayoutName, newLayoutName);
         else
             reg_layoutToBeSwitched = false;
@@ -1931,7 +1931,7 @@ void PyEditorReactor::dwgViewResizedWr(Adesk::LongPtr hwndDwgView)
 {
     try
     {
-        if (override pyFunc = this->get_override("dwgViewResized"))
+        if (const override& pyFunc = this->get_override("dwgViewResized"))
             pyFunc(hwndDwgView);
         else
             reg_dwgViewResized = false;
@@ -1947,7 +1947,7 @@ void PyEditorReactor::fullRegenEndedWr(PyDbDatabase& pDb, const boost::python::l
 {
     try
     {
-        if (override pyFunc = this->get_override("fullRegenEnded"))
+        if (const override& pyFunc = this->get_override("fullRegenEnded"))
             pyFunc(pDb, regenedViewports);
         else
             reg_fullRegenEnded = false;
@@ -1963,7 +1963,7 @@ void PyEditorReactor::docFrameMovedOrResizedWr(Adesk::LongPtr hwndDocFrame, bool
 {
     try
     {
-        if (override pyFunc = this->get_override("docFrameMovedOrResized"))
+        if (const override& pyFunc = this->get_override("docFrameMovedOrResized"))
             pyFunc(hwndDocFrame, bMoved);
         else
             reg_docFrameMovedOrResized = false;
@@ -1979,7 +1979,7 @@ void PyEditorReactor::mainFrameMovedOrResizedWr(Adesk::LongPtr hwndMainFrame, bo
 {
     try
     {
-        if (override pyFunc = this->get_override("mainFrameMovedOrResized"))
+        if (const override& pyFunc = this->get_override("mainFrameMovedOrResized"))
             pyFunc(hwndMainFrame, bMoved);
         else
             reg_mainFrameMovedOrResized = false;
@@ -1995,7 +1995,7 @@ void PyEditorReactor::beginDoubleClickWr(const AcGePoint3d& clickPoint)
 {
     try
     {
-        if (override pyFunc = this->get_override("beginDoubleClick"))
+        if (const override& pyFunc = this->get_override("beginDoubleClick"))
             pyFunc(clickPoint);
         else
             reg_beginDoubleClick = false;
@@ -2011,7 +2011,7 @@ void PyEditorReactor::beginRightClickWr(const AcGePoint3d& clickPoint)
 {
     try
     {
-        if (override pyFunc = this->get_override("beginRightClick"))
+        if (const override& pyFunc = this->get_override("beginRightClick"))
             pyFunc(clickPoint);
         else
             reg_beginRightClick = false;
@@ -2027,7 +2027,7 @@ void PyEditorReactor::toolbarBitmapSizeWillChangeWr(bool bLarge)
 {
     try
     {
-        if (override pyFunc = this->get_override("toolbarBitmapSizeWillChange"))
+        if (const override& pyFunc = this->get_override("toolbarBitmapSizeWillChange"))
             pyFunc(bLarge);
         else
             reg_toolbarBitmapSizeWillChange = false;
@@ -2043,7 +2043,7 @@ void PyEditorReactor::toolbarBitmapSizeChangedWr(bool bLarge)
 {
     try
     {
-        if (override pyFunc = this->get_override("toolbarBitmapSizeChanged"))
+        if (const override& pyFunc = this->get_override("toolbarBitmapSizeChanged"))
             pyFunc(bLarge);
         else
             reg_toolbarBitmapSizeChanged = false;
@@ -2059,7 +2059,7 @@ void PyEditorReactor::beginWblockObjectsWr(PyDbDatabase& pFrom, PyDbIdMapping& m
 {
     try
     {
-        if (override pyFunc = this->get_override("toolbarBitmapSizeChanged"))
+        if (const override& pyFunc = this->get_override("toolbarBitmapSizeChanged"))
             pyFunc(pFrom, mapping);
         else
             reg_beginWblockObjects = false;
@@ -2075,7 +2075,7 @@ void PyEditorReactor::partialOpenNoticeWr(PyDbDatabase& pDb)
 {
     try
     {
-        if (override pyFunc = this->get_override("partialOpenNotice"))
+        if (const override& pyFunc = this->get_override("partialOpenNotice"))
             pyFunc(pDb);
         else
             reg_partialOpenNotice = false;
@@ -2091,7 +2091,7 @@ void PyEditorReactor::objectsLazyLoadedWr(const boost::python::list& idArray)
 {
     try
     {
-        if (override pyFunc = this->get_override("objectsLazyLoaded"))
+        if (const override& pyFunc = this->get_override("objectsLazyLoaded"))
             pyFunc(idArray);
         else
             reg_objectsLazyLoaded = false;
@@ -2107,7 +2107,7 @@ void PyEditorReactor::beginDocCloseWr(PyDbDatabase& pDwg)
 {
     try
     {
-        if (override pyFunc = this->get_override("beginDocClose"))
+        if (const override& pyFunc = this->get_override("beginDocClose"))
             pyFunc(pDwg);
         else
             reg_beginDocClose = false;
@@ -2123,7 +2123,7 @@ void PyEditorReactor::docCloseAbortedWr(PyDbDatabase& pDwg)
 {
     try
     {
-        if (override pyFunc = this->get_override("docCloseAborted"))
+        if (const override& pyFunc = this->get_override("docCloseAborted"))
             pyFunc(pDwg);
         else
             reg_docCloseAborted = false;
@@ -2139,7 +2139,7 @@ void PyEditorReactor::docCloseWillStartWr(PyDbDatabase& pDwg)
 {
     try
     {
-        if (override pyFunc = this->get_override("docCloseWillStart"))
+        if (const override& pyFunc = this->get_override("docCloseWillStart"))
             pyFunc(pDwg);
         else
             reg_docCloseWillStart = false;
@@ -2155,7 +2155,7 @@ void PyEditorReactor::beginCloseAllWr()
 {
     try
     {
-        if (override pyFunc = this->get_override("beginCloseAll"))
+        if (const override& pyFunc = this->get_override("beginCloseAll"))
             pyFunc();
         else
             reg_beginCloseAll = false;
@@ -2171,7 +2171,7 @@ void PyEditorReactor::beginQuitWr()
 {
     try
     {
-        if (override pyFunc = this->get_override("beginQuit"))
+        if (const override& pyFunc = this->get_override("beginQuit"))
             pyFunc();
         else
             reg_beginQuit = false;
@@ -2187,7 +2187,7 @@ void PyEditorReactor::quitAbortedWr()
 {
     try
     {
-        if (override pyFunc = this->get_override("quitAborted"))
+        if (const override& pyFunc = this->get_override("quitAborted"))
             pyFunc();
         else
             reg_quitAborted = false;
@@ -2203,7 +2203,7 @@ void PyEditorReactor::quitWillStartWr()
 {
     try
     {
-        if (override pyFunc = this->get_override("quitWillStart"))
+        if (const override& pyFunc = this->get_override("quitWillStart"))
             pyFunc();
         else
             reg_quitWillStart = false;
@@ -2219,7 +2219,7 @@ void PyEditorReactor::modelessOperationWillStartWr(const std::string& contextStr
 {
     try
     {
-        if (override pyFunc = this->get_override("modelessOperationWillStart"))
+        if (const override& pyFunc = this->get_override("modelessOperationWillStart"))
             pyFunc(contextStr);
         else
             reg_modelessOperationWillStart = false;
@@ -2235,7 +2235,7 @@ void PyEditorReactor::modelessOperationEndedWr(const std::string& contextStr)
 {
     try
     {
-        if (override pyFunc = this->get_override("modelessOperationEnded"))
+        if (const override& pyFunc = this->get_override("modelessOperationEnded"))
             pyFunc(contextStr);
         else
             reg_modelessOperationEnded = false;
@@ -2251,7 +2251,7 @@ void PyEditorReactor::cmdIUnkModifiedWr(const std::string& strCommand)
 {
     try
     {
-        if (override pyFunc = this->get_override("cmdIUnkModified"))
+        if (const override& pyFunc = this->get_override("cmdIUnkModified"))
             pyFunc(strCommand);
         else
             reg_cmdIUnkModified = false;
@@ -2267,7 +2267,7 @@ void PyEditorReactor::preXrefLockFileWr(PyDbObjectId& btrId)
 {
     try
     {
-        if (override pyFunc = this->get_override("preXrefLockFile"))
+        if (const override& pyFunc = this->get_override("preXrefLockFile"))
             pyFunc(btrId);
         else
             reg_preXrefLockFile = false;
@@ -2283,7 +2283,7 @@ void PyEditorReactor::viewChangedWr()
 {
     try
     {
-        if (override pyFunc = this->get_override("viewChanged"))
+        if (const override& pyFunc = this->get_override("viewChanged"))
             pyFunc();
         else
             reg_viewChanged = false;
@@ -2299,7 +2299,7 @@ void PyEditorReactor::fullRegenWillStartWr(PyDbDatabase& pDb)
 {
     try
     {
-        if (override pyFunc = this->get_override("fullRegenWillStart"))
+        if (const override& pyFunc = this->get_override("fullRegenWillStart"))
             pyFunc(pDb);
         else
             reg_fullRegenWillStart = false;

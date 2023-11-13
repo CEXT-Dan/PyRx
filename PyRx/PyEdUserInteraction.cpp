@@ -232,7 +232,7 @@ boost::python::object PyEdUIContext::getMenuContextWr(const PyRxClass& pyclass, 
     boost::python::object val;
     try
     {
-        if (override f = this->get_override("getMenuContext"))
+        if (const override& f = this->get_override("getMenuContext"))
         {
             val = f(pyclass, pyids);
             return val;
@@ -250,7 +250,7 @@ void PyEdUIContext::onCommandWr(Adesk::UInt32 cmd)
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("onCommand"))
+        if (const override& f = this->get_override("onCommand"))
             f(cmd);
     }
     catch (...)
@@ -264,7 +264,7 @@ void PyEdUIContext::OnUpdateMenuWr()
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("OnUpdateMenu"))
+        if (const override& f = this->get_override("OnUpdateMenu"))
             f();
     }
     catch (...)
