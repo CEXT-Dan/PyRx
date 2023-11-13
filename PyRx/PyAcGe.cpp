@@ -236,6 +236,8 @@ void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
 
 static boost::shared_ptr<AcGePoint2d> PyGePoint2dInitTuple(const boost::python::object& iterable)
 {
+    if (extract<AcGePoint2d>(iterable).check())
+        return boost::shared_ptr<AcGePoint2d>(new AcGePoint2d(extract<AcGePoint2d>(iterable)));
     return boost::shared_ptr<AcGePoint2d>(new AcGePoint2d(py_list_to_point2d(iterable)));
 }
 
@@ -371,6 +373,8 @@ void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
 
 static boost::shared_ptr<AcGeVector2d> PyGeVector2dInitTuple(const boost::python::object& iterable)
 {
+    if (extract<AcGeVector2d>(iterable).check())
+        return  boost::shared_ptr<AcGeVector2d>(new AcGeVector2d(extract<AcGeVector2d>(iterable)));
     return boost::shared_ptr<AcGeVector2d>(new AcGeVector2d(py_list_to_vector2d(iterable)));
 }
 
@@ -743,6 +747,8 @@ void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
 
 static boost::shared_ptr<AcGePoint3d> PyGePoint3dInitTuple(const boost::python::object& iterable)
 {
+    if (extract<AcGePoint3d>(iterable).check())
+        return boost::shared_ptr<AcGePoint3d>(new AcGePoint3d(extract<AcGePoint3d>(iterable)));
     return boost::shared_ptr<AcGePoint3d>(new AcGePoint3d(py_list_to_point3d(iterable)));
 }
 
@@ -899,6 +905,8 @@ void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
 
 static boost::shared_ptr<AcGeVector3d> PyGeVector3dInitTuple(const boost::python::object& iterable)
 {
+    if (extract<AcGeVector3d>(iterable).check())
+        return boost::shared_ptr<AcGeVector3d>(new AcGeVector3d(extract<AcGeVector3d>(iterable)));
     return boost::shared_ptr<AcGeVector3d>(new AcGeVector3d(py_list_to_vector3d(iterable)));
 }
 
