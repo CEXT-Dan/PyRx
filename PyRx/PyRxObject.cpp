@@ -23,17 +23,6 @@ void makePyRxObjectWrapper()
         ;
 }
 
-// TODO: cleanup on isle one! kind of ugly 
-// intent 
-// -- do nothing
-// -- close but don't delete
-// -- delete 
-// -- allow for the class the change this state
-// 
-// if the object is dbo, close it and return out
-// objects that derived from PyDbObject have m_isDbObject set to true
-//
-// note: PyDbObject::cast resets the pointer, which calls this, but it's not a double delete
 struct PyRxObjectDeleter
 {
     inline PyRxObjectDeleter(bool autoDelete, bool isDbObject)
@@ -178,8 +167,6 @@ void makePyRxClassWrapper()
         ;
 }
 
-//-----------------------------------------------------------------------------------------
-//PrRxClass
 PyRxClass::PyRxClass(AcRxClass* ptr, bool autoDelete)
     :PyRxObject(ptr, autoDelete, false)
 {
