@@ -38,7 +38,6 @@ class PyGiDrawableOverrule : public PyRxOverrule, public AcGiDrawableOverrule, p
 {
 public:
 	PyGiDrawableOverrule();
-	PyGiDrawableOverrule(AcGiDrawableOverrule* ptr, bool autoDelete);
 	virtual ~PyGiDrawableOverrule() override = default;
 
 	Adesk::UInt32	setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits);

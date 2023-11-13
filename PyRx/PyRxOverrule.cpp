@@ -19,7 +19,7 @@ void makePyRxOverruleWrapper()
         ;
 }
 
-PyRxOverrule::PyRxOverrule(AcRxOverrule* ptr, bool autoDelete)
+PyRxOverrule::PyRxOverrule(AcRxOverrule* ptr)
     : PyRxObject(ptr, false, false)
 {
 }
