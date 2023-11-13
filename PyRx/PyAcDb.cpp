@@ -39,6 +39,7 @@
 #include "PyDbPointRef.h"
 #include "PyDbDatabaseReactor.h"
 #include "PyDb3dProfile.h"
+#include "PyDbOverrule.h"
 
 using namespace boost::python;
 
@@ -255,6 +256,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbOsnapPointRefWrapper();
     makePyDbDimAssocWrapper();
     makePyDb3dProfileWrapper();
+    makePyDbObjectOverrulerapper();
 
     makeDbCoreWrapper();//LAST?
 

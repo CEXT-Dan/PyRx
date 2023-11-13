@@ -31,7 +31,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------
-//PyGiDrawable
+//PyGiDrawableOverrule
 void makePyGiDrawableOverruleWrapper();
 
 class PyGiDrawableOverrule : public PyRxOverrule, public AcGiDrawableOverrule, public boost::python::wrapper<PyGiDrawableOverrule>
