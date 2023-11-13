@@ -3,6 +3,7 @@
 #include "PyDbObjectId.h"
 #include "PyDbDimension.h"
 #include "PyDbSymbolTableRecord.h"
+#include "PyDbIdMapping.h"
 
 using namespace boost::python;
 
