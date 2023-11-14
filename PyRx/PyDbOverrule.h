@@ -34,13 +34,16 @@ public:
     Acad::ErrorStatus   closeWr(PyDbObject& pSubject);
     Acad::ErrorStatus   cancelWr(PyDbObject& pSubject);
     Acad::ErrorStatus   eraseWr(PyDbObject& pSubject, Adesk::Boolean erasing);
-    Acad::ErrorStatus   deepCloneWr(const PyDbObject& pSubject, PyDbObject& pOwnerObject, PyDbObject& pClonedObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary);
-    Acad::ErrorStatus   wblockCloneWr(const PyDbObject& pSubject, PyRxObject& pOwnerObject, PyDbObject& pClonedObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary);
+    Acad::ErrorStatus   deepCloneWr(const AcDbObject* pSubject, AcDbObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary);
+    Acad::ErrorStatus   wblockCloneWr(const AcDbObject* pSubject, AcRxObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary);
 
     Acad::ErrorStatus   baseOpen(PyDbObject& pSubject, AcDb::OpenMode mode);
     Acad::ErrorStatus   baseClose(PyDbObject& pSubject);
     Acad::ErrorStatus   baseCancel(PyDbObject& pSubject);
     Acad::ErrorStatus   baseErase(PyDbObject& pSubject, Adesk::Boolean erasing);
+
+    PyDbObject          baseDeepClone(const PyDbObject& pSubject, PyDbObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary);
+    PyDbObject          baseWblockClone(const PyDbObject& pSubject, PyRxObject& pOwnerObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary);
 
     static std::string  className();
     static PyRxClass    desc();
