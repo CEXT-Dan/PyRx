@@ -25,34 +25,25 @@ class MyDboOverrule(PyDb.DbObjectOverrule):
         return True
 
     # override
-    def close(self, subject : PyDb.DbObject):
+    # def close(self, subject : PyDb.DbObject):
+    #     try:
+    #         return self.baseClose(subject)
+    #     except Exception as err:
+    #         print(err)
+            
+    def deepClone(self, subject, pOwnerObject, idMap,isPrimary):
         try:
-            # if(subject.isWriteEnabled()):
-            #     ent = PyDb.Entity.cast(subject)
-            #     ent.setColorIndex(1)
-            return self.baseClose(subject)
+            clonedObject = self.baseDeepClone(subject,pOwnerObject, idMap,isPrimary)
+            return clonedObject
         except Exception as err:
             print(err)
             
-    def deepClone(self, subject, pOwnerObject,pClonedObject,idMap,isPrimary):
+    def wblockClone(self, subject, pOwnerObject,idMap,isPrimary):
         try:
-            # if(pClonedObject.isWriteEnabled()):
-            #     ent = PyDb.Entity.cast(pClonedObject)
-            #     ent.setColorIndex(2)
-            return PyDb.ErrorStatus.eOk
+            clonedObject = self.baseWblockClone(subject,pOwnerObject,idMap,isPrimary)
+            return clonedObject
         except Exception as err:
             print(err)
-            return PyDb.ErrorStatus.eInvalidInput
-            
-    def wblockClone(self, subject, pOwnerObject,pClonedObject,idMap,isPrimary):
-        try:
-            # if(pClonedObject.isWriteEnabled()):
-            #     ent = PyDb.Entity.cast(pClonedObject)
-            #     ent.setColorIndex(3)
-            return PyDb.ErrorStatus.eOk
-        except Exception as err:
-            print(err)
-            return PyDb.ErrorStatus.eInvalidInput
 
 overrule = None
 
