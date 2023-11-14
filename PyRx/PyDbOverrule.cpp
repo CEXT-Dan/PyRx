@@ -16,9 +16,8 @@ void makePyDbObjectOverrulerapper()
         .def("close", &PyDbObjectOverrule::closeWr, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("cancel", &PyDbObjectOverrule::cancelWr, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("erase", &PyDbObjectOverrule::eraseWr, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
-
-        .def("deepClone", &PyDbObjectOverrule::deepCloneWr)
-        .def("wblockClone", &PyDbObjectOverrule::wblockCloneWr)
+        .def("deepClone", &PyDbObjectOverrule::baseDeepClone)
+        .def("wblockClone", &PyDbObjectOverrule::baseWblockClone)
 
         .def("baseOpen", &PyDbObjectOverrule::baseOpen, DS.ARGS({ "object: PyDb.DbObject","mode: OpenMode" }))
         .def("baseClose", &PyDbObjectOverrule::baseClose, DS.ARGS({ "object: PyDb.DbObject" }))
@@ -235,7 +234,6 @@ Acad::ErrorStatus PyDbObjectOverrule::deepCloneWr(const AcDbObject* pSubject, Ac
             PyDbObject result = f(pySubject, pyOwnerObject, pyMapping, isPrimary);
             if (result.isNullObj())
                 return eInvalidInput;
-            result.forceKeepAlive(true);
             pClonedObject = result.impObj();
             return eOk;
         }
@@ -271,7 +269,6 @@ Acad::ErrorStatus PyDbObjectOverrule::wblockCloneWr(const AcDbObject* pSubject, 
             PyDbObject result = f(pySubject, pyOwnerObject, pyMapping, isPrimary);
             if (result.isNullObj())
                 return eInvalidInput;
-            result.forceKeepAlive(true);
             pClonedObject = result.impObj();
             return eOk;
         }
@@ -314,7 +311,7 @@ PyDbObject PyDbObjectOverrule::baseDeepClone(const PyDbObject& pSubject, PyDbObj
     AcDbObject* pClone = nullptr;
     PyThrowBadEs(AcDbObjectOverrule::deepClone(pSubject.impObj(), pOwnerObject.impObj(), pClone, *idMap.impObj(), isPrimary));
     PyDbObject pyClonedObject(const_cast<AcDbObject*>(pClone), false);
-    //pyClonedObject.forceKeepAlive(true);
+    pyClonedObject.forceKeepAlive(true);
     return pyClonedObject;
 }
 
@@ -323,7 +320,7 @@ PyDbObject PyDbObjectOverrule::baseWblockClone(const PyDbObject& pSubject, PyRxO
     AcDbObject* pClone = nullptr;
     PyThrowBadEs(AcDbObjectOverrule::wblockClone(pSubject.impObj(), pOwnerObject.impObj(), pClone, *idMap.impObj(), isPrimary));
     PyDbObject pyClonedObject(const_cast<AcDbObject*>(pClone), false);
-    //pyClonedObject.forceKeepAlive(true);
+    pyClonedObject.forceKeepAlive(true);
     return pyClonedObject;
 }
 

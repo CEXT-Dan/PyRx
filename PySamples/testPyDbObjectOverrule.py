@@ -15,25 +15,44 @@ def OnPyUnloadApp():
     # please exit cleanly
     PyRxCmd_pystopdbooverrule()
 
-
 class MyDboOverrule(PyDb.DbObjectOverrule):
     def __init__(self):
         PyDb.DbObjectOverrule.__init__(self)
 
-    # override
+    # must override
     def isApplicable(self, subject):
         return True
 
-    # override
-    # def close(self, subject : PyDb.DbObject):
-    #     try:
-    #         return self.baseClose(subject)
-    #     except Exception as err:
-    #         print(err)
+    # optional override
+    def open(self, subject : PyDb.DbObject, mode : PyDb.OpenMode)->PyDb.ErrorStatus:
+        try:
+            return self.baseOpen(subject,mode)
+        except Exception as err:
+            print(err)
             
-    def deepClone(self, subject, pOwnerObject, idMap,isPrimary):
+    def close(self, subject : PyDb.DbObject)->PyDb.ErrorStatus:
+        try:
+            return self.baseClose(subject)
+        except Exception as err:
+            print(err)
+            
+    def cancel(self, subject : PyDb.DbObject)->PyDb.ErrorStatus:
+        try:
+            return self.baseCancel(subject)
+        except Exception as err:
+            print(err)
+            
+    def erase(self, subject : PyDb.DbObject, erasing:bool)->PyDb.ErrorStatus:
+        try:
+            return self.baseErase(subject,erasing)
+        except Exception as err:
+            print(err)
+            
+    def deepClone(self, subject, pOwnerObject, idMap, isPrimary):
         try:
             clonedObject = self.baseDeepClone(subject,pOwnerObject, idMap,isPrimary)
+            #line = PyDb.Line.cast(clonedObject)
+            #line.setColorIndex(2)
             return clonedObject
         except Exception as err:
             print(err)
@@ -41,6 +60,8 @@ class MyDboOverrule(PyDb.DbObjectOverrule):
     def wblockClone(self, subject, pOwnerObject,idMap,isPrimary):
         try:
             clonedObject = self.baseWblockClone(subject,pOwnerObject,idMap,isPrimary)
+            line = PyDb.Line.cast(clonedObject)
+            line.setColorIndex(1)
             return clonedObject
         except Exception as err:
             print(err)

@@ -115,15 +115,33 @@ void makePyDbIdMappingWrapper()
         ;
 }
 
+struct PyDbIdMappingDeleter
+{
+    inline PyDbIdMappingDeleter(bool forceKeepAlive = false)
+        : m_forceKeepAlive(forceKeepAlive)
+    {
+    }
+
+    inline void operator()(AcDbIdMapping* p) const
+    {
+        if (p == nullptr)
+            return;
+        else if (m_forceKeepAlive)
+            return;
+        else
+            delete p;
+    }
+    bool m_forceKeepAlive = false;
+};
+
 PyDbIdMapping::PyDbIdMapping()
-    : m_pyImp(new AcDbIdMapping())
+    : m_pyImp(new AcDbIdMapping(), PyDbIdMappingDeleter())
 {
 }
 
 PyDbIdMapping::PyDbIdMapping(const AcDbIdMapping& mapping)
-    : m_pyImp(new AcDbIdMapping())
+    : m_pyImp(const_cast<AcDbIdMapping*>(std::addressof(mapping)), PyDbIdMappingDeleter(true))
 {
-    PyThrowBadEs(impObj()->copyFrom(&mapping));
 }
 
 void PyDbIdMapping::assign(const PyIdPair& idpair)
