@@ -27,10 +27,34 @@ class MyDboOverrule(PyDb.DbObjectOverrule):
     # override
     def close(self, subject : PyDb.DbObject):
         try:
-            if(subject.isWriteEnabled()):
-                ent = PyDb.Entity.cast(subject)
-                ent.setColorIndex(1)
+            # if(subject.isWriteEnabled()):
+            #     ent = PyDb.Entity.cast(subject)
+            #     ent.setColorIndex(1)
             return self.baseClose(subject)
+        except Exception as err:
+            print(err)
+            
+    def deepClone(self, subject, pOwnerObject,pClonedObject,idMap,isPrimary):
+        try:
+            #print("deepClone",subject,pOwnerObject,pClonedObject,idMap,isPrimary)
+            
+            # if(pClonedObject.isWriteEnabled()):
+            #     ent = PyDb.Entity.cast(pClonedObject)
+            #     ent.setColorIndex(2)
+                
+            return PyDb.ErrorStatus.eOk
+        except Exception as err:
+            print(err)
+            
+    def wblockClone(self, subject, pOwnerObject,pClonedObject,idMap,isPrimary):
+        try:
+            print("wblockClone",subject,pOwnerObject,pClonedObject,idMap,isPrimary)
+            
+            if(pClonedObject.isWriteEnabled()):
+                ent = PyDb.Entity.cast(pClonedObject)
+                ent.setColorIndex(3)
+                
+            return PyDb.ErrorStatus.eOk
         except Exception as err:
             print(err)
 

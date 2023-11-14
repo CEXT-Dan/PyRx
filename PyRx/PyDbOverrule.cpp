@@ -16,10 +16,15 @@ void makePyDbObjectOverrulerapper()
         .def("close", &PyDbObjectOverrule::closeWr, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("cancel", &PyDbObjectOverrule::cancelWr, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("erase", &PyDbObjectOverrule::eraseWr, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
+
+        .def("deepClone", &PyDbObjectOverrule::deepCloneWr)
+        .def("wblockClone", &PyDbObjectOverrule::wblockCloneWr)
+
         .def("baseOpen", &PyDbObjectOverrule::baseOpen, DS.ARGS({ "object: PyDb.DbObject","mode: OpenMode" }))
         .def("baseClose", &PyDbObjectOverrule::baseClose, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("baseCancel", &PyDbObjectOverrule::baseCancel, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("baseErase", &PyDbObjectOverrule::baseErase, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
+
         .def("className", &PyDbObjectOverrule::className).staticmethod("className")
         .def("desc", &PyDbObjectOverrule::desc).staticmethod("desc")
         ;
@@ -72,6 +77,46 @@ Acad::ErrorStatus PyDbObjectOverrule::erase(AcDbObject* pSubject, Adesk::Boolean
     PyDbObject obj(pSubject, false);
     obj.forceKeepAlive(true);
     return this->eraseWr(obj, erasing);
+}
+
+Acad::ErrorStatus PyDbObjectOverrule::deepClone(const AcDbObject* pSubject, AcDbObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary)
+{
+    auto es = AcDbObjectOverrule::deepClone(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);
+    if (!reg_deepClone || es != eOk)
+        return es;
+
+    PyDbObject pySubject(const_cast<AcDbObject*>(pSubject),false);
+    pySubject.forceKeepAlive(true);
+
+    PyDbObject pyOwnerObject(const_cast<AcDbObject*>(pOwnerObject), false);
+    pyOwnerObject.forceKeepAlive(true);
+
+    PyDbObject pyClonedObject(const_cast<AcDbObject*>(pClonedObject), false);
+    pyClonedObject.forceKeepAlive(true);
+
+    PyDbIdMapping mapping(idMap);
+
+    return deepCloneWr(pySubject, pyOwnerObject, pyClonedObject, mapping, isPrimary);
+}
+
+Acad::ErrorStatus PyDbObjectOverrule::wblockClone(const AcDbObject* pSubject, AcRxObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary)
+{
+    auto es = AcDbObjectOverrule::wblockClone(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);
+    if (!reg_deepClone || es != eOk)
+        return es;
+
+    PyDbObject pySubject(const_cast<AcDbObject*>(pSubject), false);
+    pySubject.forceKeepAlive(true);
+
+    PyRxObject pyOwnerObject(const_cast<AcRxObject*>(pOwnerObject), false,false);
+    pyOwnerObject.forceKeepAlive(true);
+
+    PyDbObject pyClonedObject(const_cast<AcDbObject*>(pClonedObject), false);
+    pyClonedObject.forceKeepAlive(true);
+
+    PyDbIdMapping mapping(idMap);
+
+    return wblockCloneWr(pySubject, pyOwnerObject, pyClonedObject, mapping, isPrimary);
 }
 
 bool PyDbObjectOverrule::isApplicableWr(const PyRxObject& pOverruledSubject) const
@@ -185,6 +230,52 @@ Acad::ErrorStatus PyDbObjectOverrule::eraseWr(PyDbObject& pSubject, Adesk::Boole
     {
         printExceptionMsg();
         reg_erase = false;
+    }
+    return eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbObjectOverrule::deepCloneWr(const PyDbObject& pSubject, PyDbObject& pOwnerObject, PyDbObject& pClonedObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = get_override("deepClone"))
+        {
+            return f(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);
+        }
+        else
+        {
+            reg_deepClone = false;
+            return eOk;
+        }
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+        reg_deepClone = false;
+    }
+    return eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbObjectOverrule::wblockCloneWr(const PyDbObject& pSubject, PyRxObject& pOwnerObject, PyDbObject& pClonedObject, PyDbIdMapping& idMap, Adesk::Boolean isPrimary)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (const override& f = get_override("wblockClone"))
+        {
+            return f(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);
+        }
+        else
+        {
+            reg_deepClone = false;
+            return eOk;
+        }
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+        reg_deepClone = false;
     }
     return eInvalidInput;
 }
