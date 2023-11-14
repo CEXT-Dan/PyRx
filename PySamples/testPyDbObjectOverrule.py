@@ -36,27 +36,23 @@ class MyDboOverrule(PyDb.DbObjectOverrule):
             
     def deepClone(self, subject, pOwnerObject,pClonedObject,idMap,isPrimary):
         try:
-            #print("deepClone",subject,pOwnerObject,pClonedObject,idMap,isPrimary)
-            
             # if(pClonedObject.isWriteEnabled()):
             #     ent = PyDb.Entity.cast(pClonedObject)
             #     ent.setColorIndex(2)
-                
             return PyDb.ErrorStatus.eOk
         except Exception as err:
             print(err)
+            return PyDb.ErrorStatus.eInvalidInput
             
     def wblockClone(self, subject, pOwnerObject,pClonedObject,idMap,isPrimary):
         try:
-            print("wblockClone",subject,pOwnerObject,pClonedObject,idMap,isPrimary)
-            
-            if(pClonedObject.isWriteEnabled()):
-                ent = PyDb.Entity.cast(pClonedObject)
-                ent.setColorIndex(3)
-                
+            # if(pClonedObject.isWriteEnabled()):
+            #     ent = PyDb.Entity.cast(pClonedObject)
+            #     ent.setColorIndex(3)
             return PyDb.ErrorStatus.eOk
         except Exception as err:
             print(err)
+            return PyDb.ErrorStatus.eInvalidInput
 
 overrule = None
 
