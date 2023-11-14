@@ -9,16 +9,17 @@ using namespace boost::python;
 
 void makePyDbObjectOverrulerapper()
 {
+    PyDocString DS("DbObjectOverrule");
     class_<PyDbObjectOverrule, bases<PyRxOverrule>>("DbObjectOverrule")
-        .def("isApplicable", &PyDbObjectOverrule::isApplicableWr)
-        .def("open", &PyDbObjectOverrule::openWr)
-        .def("close", &PyDbObjectOverrule::closeWr)
-        .def("cancel", &PyDbObjectOverrule::cancelWr)
-        .def("erase", &PyDbObjectOverrule::eraseWr)
-        .def("baseOpen", &PyDbObjectOverrule::baseOpen)
-        .def("baseClose", &PyDbObjectOverrule::baseClose)
-        .def("baseCancel", &PyDbObjectOverrule::baseCancel)
-        .def("baseErase", &PyDbObjectOverrule::baseErase)
+        .def("isApplicable", &PyDbObjectOverrule::isApplicableWr, DS.ARGS({ "object: PyRx.RxObject" }))
+        .def("open", &PyDbObjectOverrule::openWr, DS.ARGS({ "object: PyDb.DbObject","mode: OpenMode" }))
+        .def("close", &PyDbObjectOverrule::closeWr, DS.ARGS({ "object: PyDb.DbObject" }))
+        .def("cancel", &PyDbObjectOverrule::cancelWr, DS.ARGS({ "object: PyDb.DbObject" }))
+        .def("erase", &PyDbObjectOverrule::eraseWr, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
+        .def("baseOpen", &PyDbObjectOverrule::baseOpen, DS.ARGS({ "object: PyDb.DbObject","mode: OpenMode" }))
+        .def("baseClose", &PyDbObjectOverrule::baseClose, DS.ARGS({ "object: PyDb.DbObject" }))
+        .def("baseCancel", &PyDbObjectOverrule::baseCancel, DS.ARGS({ "object: PyDb.DbObject" }))
+        .def("baseErase", &PyDbObjectOverrule::baseErase, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
         .def("className", &PyDbObjectOverrule::className).staticmethod("className")
         .def("desc", &PyDbObjectOverrule::desc).staticmethod("desc")
         ;
@@ -90,6 +91,7 @@ bool PyDbObjectOverrule::isApplicableWr(const PyRxObject& pOverruledSubject) con
     }
     catch (...)
     {
+        printExceptionMsg();
         reg_isApplicable = false;
     }
     return false;
@@ -107,11 +109,12 @@ Acad::ErrorStatus PyDbObjectOverrule::openWr(PyDbObject& pSubject, AcDb::OpenMod
         else
         {
             reg_open = false;
-            return AcDbObjectOverrule::open(pSubject.impObj(), mode);
+            return baseOpen(pSubject, mode);
         }
     }
     catch (...)
     {
+        printExceptionMsg();
         reg_open = false;
     }
     return eInvalidInput;
@@ -129,7 +132,7 @@ Acad::ErrorStatus PyDbObjectOverrule::closeWr(PyDbObject& pSubject)
         else
         {
             reg_close = false;
-            return AcDbObjectOverrule::close(pSubject.impObj());
+            return baseClose(pSubject);
         }
     }
     catch (...)
@@ -152,11 +155,12 @@ Acad::ErrorStatus PyDbObjectOverrule::cancelWr(PyDbObject& pSubject)
         else
         {
             reg_cancel = false;
-            return AcDbObjectOverrule::cancel(pSubject.impObj());
+            return baseCancel(pSubject);
         }
     }
     catch (...)
     {
+        printExceptionMsg();
         reg_cancel = false;
     }
     return eInvalidInput;
@@ -174,11 +178,12 @@ Acad::ErrorStatus PyDbObjectOverrule::eraseWr(PyDbObject& pSubject, Adesk::Boole
         else
         {
             reg_erase = false;
-            return AcDbObjectOverrule::erase(pSubject.impObj(), erasing);
+            return baseErase(pSubject, erasing);
         }
     }
     catch (...)
     {
+        printExceptionMsg();
         reg_erase = false;
     }
     return eInvalidInput;

@@ -1295,6 +1295,9 @@ Also known as the population count.
     def kDrawNoForceByLayer (self, *args, **kwargs)-> None :
       '''None'''
     ...
+    def kDrawNoImageFrame (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
     def kDrawNoLineWeight (self, *args, **kwargs)-> None :
       '''None'''
     ...

@@ -12937,35 +12937,20 @@ class DbObjectOverrule:
     C++ signature :
         void addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
-    def baseCancel (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''baseCancel( (DbObjectOverrule)arg1, (DbObject)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus baseCancel(class PyDbObjectOverrule {lvalue},class PyDbObject {lvalue})'''
+    def baseCancel (self: DbObjectOverrule,object: PyDb.DbObject)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def baseClose (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''baseClose( (DbObjectOverrule)arg1, (DbObject)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus baseClose(class PyDbObjectOverrule {lvalue},class PyDbObject {lvalue})'''
+    def baseClose (self: DbObjectOverrule,object: PyDb.DbObject)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def baseErase (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''baseErase( (DbObjectOverrule)arg1, (DbObject)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus baseErase(class PyDbObjectOverrule {lvalue},class PyDbObject {lvalue},bool)'''
+    def baseErase (self: DbObjectOverrule,object: PyDb.DbObject,erased : bool)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def baseOpen (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''baseOpen( (DbObjectOverrule)arg1, (DbObject)arg2, (OpenMode)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus baseOpen(class PyDbObjectOverrule {lvalue},class PyDbObject {lvalue},enum AcDb::OpenMode)'''
+    def baseOpen (self: DbObjectOverrule,object: PyDb.DbObject,mode: OpenMode)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
-    def cancel (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''cancel( (DbObjectOverrule)arg1, (DbObject)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus cancel(class PyDbObjectOverrule {lvalue},class PyDbObject {lvalue})'''
+    def cancel (self: DbObjectOverrule,object: PyDb.DbObject)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -12973,11 +12958,8 @@ class DbObjectOverrule:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def close (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''close( (DbObjectOverrule)arg1, (DbObject)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus close(class PyDbObjectOverrule {lvalue},class PyDbObject {lvalue})'''
+    def close (self: DbObjectOverrule,object: PyDb.DbObject)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
@@ -12991,11 +12973,8 @@ class DbObjectOverrule:
     def dispose (self: RxObject)-> None :
       '''                             '''
     ...
-    def erase (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''erase( (DbObjectOverrule)arg1, (DbObject)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObjectOverrule {lvalue},class PyDbObject {lvalue},bool)'''
+    def erase (self: DbObjectOverrule,object: PyDb.DbObject,erased : bool)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
     def hasOverrule (self, *args, **kwargs)-> bool :
       '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
@@ -13009,11 +12988,8 @@ class DbObjectOverrule:
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isApplicable (self, *args, **kwargs)-> bool :
-      '''isApplicable( (DbObjectOverrule)arg1, (RxObject)arg2) -> bool :
-
-    C++ signature :
-        bool isApplicable(class PyDbObjectOverrule {lvalue},class PyRxObject)'''
+    def isApplicable (self: DbObjectOverrule,object: PyRx.RxObject)-> bool :
+      '''                             '''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
@@ -13030,11 +13006,8 @@ class DbObjectOverrule:
     def keepAlive (self: RxObject,flag:bool)-> None :
       '''                             '''
     ...
-    def open (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''open( (DbObjectOverrule)arg1, (DbObject)arg2, (OpenMode)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus open(class PyDbObjectOverrule {lvalue},class PyDbObject {lvalue},enum AcDb::OpenMode)'''
+    def open (self: DbObjectOverrule,object: PyDb.DbObject,mode: OpenMode)-> PyDb.ErrorStatus :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
