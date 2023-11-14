@@ -15,6 +15,10 @@ void makePyDbObjectOverrulerapper()
         .def("close", &PyDbObjectOverrule::closeWr)
         .def("cancel", &PyDbObjectOverrule::cancelWr)
         .def("erase", &PyDbObjectOverrule::eraseWr)
+        .def("baseOpen", &PyDbObjectOverrule::baseOpen)
+        .def("baseClose", &PyDbObjectOverrule::baseClose)
+        .def("baseCancel", &PyDbObjectOverrule::baseCancel)
+        .def("baseErase", &PyDbObjectOverrule::baseErase)
         .def("className", &PyDbObjectOverrule::className).staticmethod("className")
         .def("desc", &PyDbObjectOverrule::desc).staticmethod("desc")
         ;
@@ -36,7 +40,7 @@ bool PyDbObjectOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 Acad::ErrorStatus PyDbObjectOverrule::open(AcDbObject* pSubject, AcDb::OpenMode mode)
 {
     if (!reg_open)
-        return eInvalidInput;
+        return AcDbObjectOverrule::open(pSubject, mode);
     PyDbObject obj(pSubject,false);
     obj.forceKeepAlive(true);
     return this->openWr(obj,mode);
@@ -45,7 +49,7 @@ Acad::ErrorStatus PyDbObjectOverrule::open(AcDbObject* pSubject, AcDb::OpenMode 
 Acad::ErrorStatus PyDbObjectOverrule::close(AcDbObject* pSubject)
 {
     if (!reg_close)
-        return eInvalidInput;
+        return AcDbObjectOverrule::close(pSubject);
     PyDbObject obj(pSubject, false);
     obj.forceKeepAlive(true);
     return this->closeWr(obj);
@@ -54,7 +58,7 @@ Acad::ErrorStatus PyDbObjectOverrule::close(AcDbObject* pSubject)
 Acad::ErrorStatus PyDbObjectOverrule::cancel(AcDbObject* pSubject)
 {
     if (!reg_cancel)
-        return eInvalidInput;
+        return AcDbObjectOverrule::cancel(pSubject);
     PyDbObject obj(pSubject, false);
     obj.forceKeepAlive(true);
     return this->cancelWr(obj);
@@ -63,7 +67,7 @@ Acad::ErrorStatus PyDbObjectOverrule::cancel(AcDbObject* pSubject)
 Acad::ErrorStatus PyDbObjectOverrule::erase(AcDbObject* pSubject, Adesk::Boolean erasing)
 {
     if (!reg_erase)
-        return eInvalidInput;
+        return AcDbObjectOverrule::erase(pSubject, erasing);
     PyDbObject obj(pSubject, false);
     obj.forceKeepAlive(true);
     return this->eraseWr(obj, erasing);
@@ -103,7 +107,7 @@ Acad::ErrorStatus PyDbObjectOverrule::openWr(PyDbObject& pSubject, AcDb::OpenMod
         else
         {
             reg_open = false;
-            return eInvalidInput;
+            return AcDbObjectOverrule::open(pSubject.impObj(), mode);
         }
     }
     catch (...)
@@ -125,11 +129,12 @@ Acad::ErrorStatus PyDbObjectOverrule::closeWr(PyDbObject& pSubject)
         else
         {
             reg_close = false;
-            return eInvalidInput;
+            return AcDbObjectOverrule::close(pSubject.impObj());
         }
     }
     catch (...)
     {
+        printExceptionMsg();
         reg_close = false;
     }
     return eInvalidInput;
@@ -147,7 +152,7 @@ Acad::ErrorStatus PyDbObjectOverrule::cancelWr(PyDbObject& pSubject)
         else
         {
             reg_cancel = false;
-            return eInvalidInput;
+            return AcDbObjectOverrule::cancel(pSubject.impObj());
         }
     }
     catch (...)
@@ -169,7 +174,7 @@ Acad::ErrorStatus PyDbObjectOverrule::eraseWr(PyDbObject& pSubject, Adesk::Boole
         else
         {
             reg_erase = false;
-            return eInvalidInput;
+            return AcDbObjectOverrule::erase(pSubject.impObj(), erasing);
         }
     }
     catch (...)
