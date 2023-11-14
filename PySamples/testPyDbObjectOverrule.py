@@ -30,8 +30,6 @@ class MyDboOverrule(PyDb.DbObjectOverrule):
             if(subject.isWriteEnabled()):
                 ent = PyDb.Entity.cast(subject)
                 ent.setColorIndex(1)
-                
-
             return self.baseClose(subject)
         except Exception as err:
             print(err)
