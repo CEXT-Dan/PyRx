@@ -12976,11 +12976,11 @@ class DbObjectOverrule:
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def deepClone (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''deepClone( (DbObjectOverrule)arg1, (DbObject)arg2, (DbObject)arg3, (IdMapping)arg4, (bool)arg5) -> ErrorStatus :
+    def deepClone (self, *args, **kwargs)-> PyDb.DbObject :
+      '''deepClone( (DbObjectOverrule)arg1, (DbObject)arg2, (DbObject)arg3, (IdMapping)arg4, (bool)arg5) -> DbObject :
 
     C++ signature :
-        enum Acad::ErrorStatus deepClone(class PyDbObjectOverrule {lvalue},class PyDbObject,class PyDbObject {lvalue},class PyDbIdMapping {lvalue},bool)'''
+        class PyDbObject deepClone(class PyDbObjectOverrule {lvalue},class PyDbObject,class PyDbObject {lvalue},class PyDbIdMapping {lvalue},bool)'''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
@@ -13042,11 +13042,11 @@ class DbObjectOverrule:
     C++ signature :
         void setIsOverruling(bool)'''
     ...
-    def wblockClone (self, *args, **kwargs)-> PyDb.ErrorStatus :
-      '''wblockClone( (DbObjectOverrule)arg1, (DbObject)arg2, (RxObject)arg3, (IdMapping)arg4, (bool)arg5) -> ErrorStatus :
+    def wblockClone (self, *args, **kwargs)-> PyDb.DbObject :
+      '''wblockClone( (DbObjectOverrule)arg1, (DbObject)arg2, (RxObject)arg3, (IdMapping)arg4, (bool)arg5) -> DbObject :
 
     C++ signature :
-        enum Acad::ErrorStatus wblockClone(class PyDbObjectOverrule {lvalue},class PyDbObject,class PyRxObject {lvalue},class PyDbIdMapping {lvalue},bool)'''
+        class PyDbObject wblockClone(class PyDbObjectOverrule {lvalue},class PyDbObject,class PyRxObject {lvalue},class PyDbIdMapping {lvalue},bool)'''
     ...
 
 class DbObjectReactor:

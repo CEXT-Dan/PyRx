@@ -34,6 +34,7 @@ public:
 //----------------------------------------------------------------------------------------
 //PyDbIdMapping
 
+//TODO copy?
 void makePyDbIdMappingWrapper();
 
 class PyDbIdMapping
