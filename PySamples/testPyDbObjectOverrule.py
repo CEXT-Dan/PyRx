@@ -5,13 +5,16 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 
+
 def OnPyInitApp():
     print("\ncommand = pydbooverrule")
     print("\ncommand = pystopdbooverrule")
 
+
 def OnPyUnloadApp():
     # please exit cleanly
     PyRxCmd_pystopdbooverrule()
+
 
 class MyDboOverrule(PyDb.DbObjectOverrule):
     def __init__(self):
@@ -64,7 +67,9 @@ class MyDboOverrule(PyDb.DbObjectOverrule):
         except Exception as err:
             print(err)
 
+
 overrule = None
+
 
 def PyRxCmd_pydbooverrule():
     try:
@@ -76,6 +81,7 @@ def PyRxCmd_pydbooverrule():
         overrule.setIsOverruling(True)
     except Exception as err:
         print(err)
+
 
 def PyRxCmd_pystopdbooverrule():
     try:
