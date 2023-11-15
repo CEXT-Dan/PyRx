@@ -8,20 +8,21 @@ using namespace boost::python;
 //PyIdPair
 void makePyIdPairWrapper()
 {
+    PyDocString DS("IdPair");
     class_<PyIdPair>("IdPair")
         .def(init<>())
-        .def(init<const PyDbObjectId&, const PyDbObjectId &, bool>())
-        .def(init<const PyDbObjectId&, const PyDbObjectId&, bool,bool,bool>())
-        .def("key", &PyIdPair::key)
-        .def("value", &PyIdPair::value)
-        .def("isCloned", &PyIdPair::isCloned)
-        .def("isPrimary", &PyIdPair::isPrimary)
-        .def("isOwnerXlated", &PyIdPair::isOwnerXlated)
-        .def("setKey", &PyIdPair::setKey)
-        .def("setValue", &PyIdPair::setValue)
-        .def("setIsCloned", &PyIdPair::setIsCloned)
-        .def("setIsPrimary", &PyIdPair::setIsPrimary)
-        .def("setIsOwnerXlated", &PyIdPair::setIsOwnerXlated)
+        .def(init<const PyDbObjectId&, const PyDbObjectId&, bool>())
+        .def(init<const PyDbObjectId&, const PyDbObjectId&, bool, bool, bool>())
+        .def("key", &PyIdPair::key, DS.ARGS())
+        .def("value", &PyIdPair::value, DS.ARGS())
+        .def("isCloned", &PyIdPair::isCloned, DS.ARGS())
+        .def("isPrimary", &PyIdPair::isPrimary, DS.ARGS())
+        .def("isOwnerXlated", &PyIdPair::isOwnerXlated, DS.ARGS())
+        .def("setKey", &PyIdPair::setKey, DS.ARGS({ "val : PyDb.ObjectId" }))
+        .def("setValue", &PyIdPair::setValue, DS.ARGS({ "val : PyDb.ObjectId" }))
+        .def("setIsCloned", &PyIdPair::setIsCloned, DS.ARGS({ "val : bool" }))
+        .def("setIsPrimary", &PyIdPair::setIsPrimary, DS.ARGS({ "val : bool" }))
+        .def("setIsOwnerXlated", &PyIdPair::setIsOwnerXlated, DS.ARGS({ "val : bool" }))
         ;
 }
 
@@ -98,18 +99,19 @@ void PyIdPair::setIsOwnerXlated(bool isOwnerXlated)
 //PyDbIdMapping
 void makePyDbIdMappingWrapper()
 {
+    PyDocString DS("IdMapping");
     class_<PyDbIdMapping>("IdMapping")
         .def(init<>())
-        .def("assign", &PyDbIdMapping::assign)
-        .def("compute", &PyDbIdMapping::compute)
-        .def("change", &PyDbIdMapping::change)
-        .def("del", &PyDbIdMapping::del)
-        .def("destDb", &PyDbIdMapping::destDb)
-        .def("setDestDb", &PyDbIdMapping::setDestDb)
-        .def("origDb", &PyDbIdMapping::origDb)
-        .def("deepCloneContext", &PyDbIdMapping::deepCloneContext)
-        .def("duplicateRecordCloning", &PyDbIdMapping::duplicateRecordCloning)
-        .def("idPairs", &PyDbIdMapping::idPairs)
+        .def("assign", &PyDbIdMapping::assign, DS.ARGS({ "pair: PyDb.IdPair" }))
+        .def("compute", &PyDbIdMapping::compute, DS.ARGS({ "pair: PyDb.IdPair" }))
+        .def("change", &PyDbIdMapping::change, DS.ARGS({ "pair: PyDb.IdPair" }))
+        .def("del", &PyDbIdMapping::del, DS.ARGS({ "key: PyDb.ObjectId" }))
+        .def("destDb", &PyDbIdMapping::destDb, DS.ARGS())
+        .def("setDestDb", &PyDbIdMapping::setDestDb, DS.ARGS({ "dest: PyDb.Database" }))
+        .def("origDb", &PyDbIdMapping::origDb, DS.ARGS())
+        .def("deepCloneContext", &PyDbIdMapping::deepCloneContext, DS.ARGS())
+        .def("duplicateRecordCloning", &PyDbIdMapping::duplicateRecordCloning, DS.ARGS())
+        .def("idPairs", &PyDbIdMapping::idPairs, DS.ARGS())
         ;
 }
 
@@ -157,7 +159,7 @@ void PyDbIdMapping::assign(const PyIdPair& idpair)
 
 bool PyDbIdMapping::compute(PyIdPair& idpair) const
 {
-   return impObj()->compute(idpair.m_imp);
+    return impObj()->compute(idpair.m_imp);
 }
 
 bool PyDbIdMapping::change(const PyIdPair& idpair) const
