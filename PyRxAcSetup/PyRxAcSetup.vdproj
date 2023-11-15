@@ -339,12 +339,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_62C646041AC240548DAF1979687B036A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_64227B5EBA6A41649AD392238AF27D44"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -508,12 +502,6 @@
         "Entry"
         {
         "MsmKey" = "8:_CA8EE224396D4969850ED7A097F78263"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D71670A719E043F18522260ECEC7E1CA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1392,26 +1380,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_62C646041AC240548DAF1979687B036A"
-            {
-            "SourcePath" = "8:..\\PyRxStubs\\AxSmcomponents24.py"
-            "TargetName" = "8:AxSmcomponents24.py"
-            "Tag" = "8:"
-            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_64227B5EBA6A41649AD392238AF27D44"
             {
             "SourcePath" = "8:..\\PyRxStubs\\AxApp24.py"
@@ -1758,26 +1726,6 @@
             "TargetName" = "8:testwxpyxrcmodeless.py"
             "Tag" = "8:"
             "Folder" = "8:_06078400ED084CE0A7DA84A75985A75E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D71670A719E043F18522260ECEC7E1CA"
-            {
-            "SourcePath" = "8:..\\PyRxStubs\\AxETransmit20.py"
-            "TargetName" = "8:AxETransmit20.py"
-            "Tag" = "8:"
-            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
