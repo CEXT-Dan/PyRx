@@ -26,7 +26,7 @@ public:
     virtual Acad::ErrorStatus   close(AcDbObject* pSubject) override;
     virtual Acad::ErrorStatus   cancel(AcDbObject* pSubject) override;
     virtual Acad::ErrorStatus   erase(AcDbObject* pSubject, Adesk::Boolean erasing) override;
-    virtual Acad::ErrorStatus   deepClone(const AcDbObject* pSubject,AcDbObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary) override;
+    virtual Acad::ErrorStatus   deepClone(const AcDbObject* pSubject, AcDbObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary) override;
     virtual Acad::ErrorStatus   wblockClone(const AcDbObject* pSubject, AcRxObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary) override;
 
     bool			    isApplicableWr(const PyRxObject& pOverruledSubject) const;
