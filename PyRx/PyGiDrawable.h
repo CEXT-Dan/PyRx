@@ -43,7 +43,7 @@ public:
     Adesk::UInt32	setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits);
 
     //python subclasses these
-    bool			isApplicableWr(PyRxObject& pOverruledSubject) const;
+    bool		    isApplicableWr(PyRxObject& pOverruledSubject) const;
     Adesk::Boolean  worldDrawWr(PyGiDrawable& pSubject, PyGiWorldDraw& wd);
     void            viewportDrawWr(PyGiDrawable& pSubject, PyGiViewportDraw& vd);
     Adesk::UInt32   viewportDrawLogicalFlagsWr(PyGiDrawable& pSubject, PyGiViewportDraw& vd);
@@ -54,10 +54,10 @@ public:
     Adesk::UInt32   baseViewportDrawLogicalFlags(PyGiDrawable& pSubject, PyGiViewportDraw& vd);
 
     //these call into their wrapper 'Wr' counterparts
-    virtual bool			isApplicable(const AcRxObject* pOverruledSubject) const override;
+    virtual bool            isApplicable(const AcRxObject* pOverruledSubject) const override;
     virtual Adesk::Boolean	worldDraw(AcGiDrawable* pSubject, AcGiWorldDraw* wd) override;
-    virtual void			viewportDraw(AcGiDrawable* pSubject, AcGiViewportDraw* vd) override;
-    virtual Adesk::UInt32	viewportDrawLogicalFlags(AcGiDrawable* pSubject, AcGiViewportDraw* vd);
+    virtual void            viewportDraw(AcGiDrawable* pSubject, AcGiViewportDraw* vd) override;
+    virtual Adesk::UInt32   viewportDrawLogicalFlags(AcGiDrawable* pSubject, AcGiViewportDraw* vd);
 
     static std::string className();
     static PyRxClass desc();
