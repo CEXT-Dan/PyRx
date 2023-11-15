@@ -5,11 +5,6 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRx24.0", "PyRx\PyRx24.0.vcxproj", "{254ED7F5-4891-44D2-A6BD-F5B3891CCCBF}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PyRxSetup", "PyRxSetup\PyRxSetup.vdproj", "{1EA1BA00-4857-45D9-91F4-D0E1CC641062}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0E9D9CE9-1030-4CE7-BD55-420D1EF83708} = {0E9D9CE9-1030-4CE7-BD55-420D1EF83708}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RxInstall", "RxInstall\RxInstall.vcxproj", "{0E9D9CE9-1030-4CE7-BD55-420D1EF83708}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRx24.1", "PyRx\PyRx24.1.vcxproj", "{48A60272-E506-4ED1-821D-D2A3562D4293}"
@@ -19,6 +14,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRx24.3", "PyRx\PyRx24.3.vcxproj", "{6A54E0D3-8BBC-4F71-B700-42E03C617B0D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRx25.0", "PyRx\PyRx25.0.vcxproj", "{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PyRxAcSetup", "PyRxAcSetup\PyRxAcSetup.vdproj", "{4D3A410A-C474-4F93-8737-748114201186}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,12 +31,6 @@ Global
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCBF}.Release|x64.ActiveCfg = Release|x64
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCBF}.Release|x64.Build.0 = Release|x64
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCBF}.Release|x86.ActiveCfg = Release|x64
-		{1EA1BA00-4857-45D9-91F4-D0E1CC641062}.Debug|x64.ActiveCfg = Debug
-		{1EA1BA00-4857-45D9-91F4-D0E1CC641062}.Debug|x86.ActiveCfg = Debug
-		{1EA1BA00-4857-45D9-91F4-D0E1CC641062}.Debug|x86.Build.0 = Debug
-		{1EA1BA00-4857-45D9-91F4-D0E1CC641062}.Release|x64.ActiveCfg = Release
-		{1EA1BA00-4857-45D9-91F4-D0E1CC641062}.Release|x86.ActiveCfg = Release
-		{1EA1BA00-4857-45D9-91F4-D0E1CC641062}.Release|x86.Build.0 = Release
 		{0E9D9CE9-1030-4CE7-BD55-420D1EF83708}.Debug|x64.ActiveCfg = Debug|x64
 		{0E9D9CE9-1030-4CE7-BD55-420D1EF83708}.Debug|x86.ActiveCfg = Debug|Win32
 		{0E9D9CE9-1030-4CE7-BD55-420D1EF83708}.Debug|x86.Build.0 = Debug|Win32
@@ -79,6 +70,14 @@ Global
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Release|x64.Build.0 = Release|x64
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Release|x86.ActiveCfg = Release|x64
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Release|x86.Build.0 = Release|x64
+		{4D3A410A-C474-4F93-8737-748114201186}.Debug|x64.ActiveCfg = Debug
+		{4D3A410A-C474-4F93-8737-748114201186}.Debug|x64.Build.0 = Debug
+		{4D3A410A-C474-4F93-8737-748114201186}.Debug|x86.ActiveCfg = Debug
+		{4D3A410A-C474-4F93-8737-748114201186}.Debug|x86.Build.0 = Debug
+		{4D3A410A-C474-4F93-8737-748114201186}.Release|x64.ActiveCfg = Release
+		{4D3A410A-C474-4F93-8737-748114201186}.Release|x64.Build.0 = Release
+		{4D3A410A-C474-4F93-8737-748114201186}.Release|x86.ActiveCfg = Release
+		{4D3A410A-C474-4F93-8737-748114201186}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
