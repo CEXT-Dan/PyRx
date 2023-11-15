@@ -28917,65 +28917,35 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def assign (self, *args, **kwargs)-> None :
-      '''assign( (IdMapping)arg1, (IdPair)arg2) -> None :
-
-    C++ signature :
-        void assign(class PyDbIdMapping {lvalue},class PyIdPair)'''
+    def assign (self: IdMapping,pair: PyDb.IdPair)-> None :
+      '''                             '''
     ...
-    def change (self, *args, **kwargs)-> bool :
-      '''change( (IdMapping)arg1, (IdPair)arg2) -> bool :
-
-    C++ signature :
-        bool change(class PyDbIdMapping {lvalue},class PyIdPair)'''
+    def change (self: IdMapping,pair: PyDb.IdPair)-> bool :
+      '''                             '''
     ...
-    def compute (self, *args, **kwargs)-> bool :
-      '''compute( (IdMapping)arg1, (IdPair)arg2) -> bool :
-
-    C++ signature :
-        bool compute(class PyDbIdMapping {lvalue},class PyIdPair {lvalue})'''
+    def compute (self: IdMapping,pair: PyDb.IdPair)-> bool :
+      '''                             '''
     ...
-    def deepCloneContext (self, *args, **kwargs)-> PyDb.DeepCloneType :
-      '''deepCloneContext( (IdMapping)arg1) -> DeepCloneType :
-
-    C++ signature :
-        enum AcDb::DeepCloneType deepCloneContext(class PyDbIdMapping {lvalue})'''
+    def deepCloneContext (self: IdMapping)-> PyDb.DeepCloneType :
+      '''                             '''
     ...
-    def del (self, *args, **kwargs)-> bool :
-      '''del( (IdMapping)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool del(class PyDbIdMapping {lvalue},class PyDbObjectId)'''
+    def del (self: IdMapping,key: PyDb.ObjectId)-> bool :
+      '''                             '''
     ...
-    def destDb (self, *args, **kwargs)-> PyDb.Database :
-      '''destDb( (IdMapping)arg1) -> Database :
-
-    C++ signature :
-        class PyDbDatabase destDb(class PyDbIdMapping {lvalue})'''
+    def destDb (self: IdMapping)-> PyDb.Database :
+      '''                             '''
     ...
-    def duplicateRecordCloning (self, *args, **kwargs)-> PyDb.DuplicateRecordCloning :
-      '''duplicateRecordCloning( (IdMapping)arg1) -> DuplicateRecordCloning :
-
-    C++ signature :
-        enum AcDb::DuplicateRecordCloning duplicateRecordCloning(class PyDbIdMapping {lvalue})'''
+    def duplicateRecordCloning (self: IdMapping)-> PyDb.DuplicateRecordCloning :
+      '''                             '''
     ...
-    def idPairs (self, *args, **kwargs)-> list :
-      '''idPairs( (IdMapping)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list idPairs(class PyDbIdMapping {lvalue})'''
+    def idPairs (self: IdMapping)-> list :
+      '''                             '''
     ...
-    def origDb (self, *args, **kwargs)-> PyDb.Database :
-      '''origDb( (IdMapping)arg1) -> Database :
-
-    C++ signature :
-        class PyDbDatabase origDb(class PyDbIdMapping {lvalue})'''
+    def origDb (self: IdMapping)-> PyDb.Database :
+      '''                             '''
     ...
-    def setDestDb (self, *args, **kwargs)-> None :
-      '''setDestDb( (IdMapping)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void setDestDb(class PyDbIdMapping {lvalue},class PyDbDatabase)'''
+    def setDestDb (self: IdMapping,dest: PyDb.Database)-> None :
+      '''                             '''
     ...
 
 class IdPair:
@@ -29000,65 +28970,35 @@ __init__( (object)arg1, (ObjectId)arg2, (ObjectId)arg3, (bool)arg4, (bool)arg5, 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,class PyDbObjectId,bool,bool,bool)'''
     ...
-    def isCloned (self, *args, **kwargs)-> bool :
-      '''isCloned( (IdPair)arg1) -> bool :
-
-    C++ signature :
-        bool isCloned(class PyIdPair {lvalue})'''
+    def isCloned (self: IdPair)-> bool :
+      '''                             '''
     ...
-    def isOwnerXlated (self, *args, **kwargs)-> bool :
-      '''isOwnerXlated( (IdPair)arg1) -> bool :
-
-    C++ signature :
-        bool isOwnerXlated(class PyIdPair {lvalue})'''
+    def isOwnerXlated (self: IdPair)-> bool :
+      '''                             '''
     ...
-    def isPrimary (self, *args, **kwargs)-> bool :
-      '''isPrimary( (IdPair)arg1) -> bool :
-
-    C++ signature :
-        bool isPrimary(class PyIdPair {lvalue})'''
+    def isPrimary (self: IdPair)-> bool :
+      '''                             '''
     ...
-    def key (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''key( (IdPair)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId key(class PyIdPair {lvalue})'''
+    def key (self: IdPair)-> PyDb.ObjectId :
+      '''                             '''
     ...
-    def setIsCloned (self, *args, **kwargs)-> None :
-      '''setIsCloned( (IdPair)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsCloned(class PyIdPair {lvalue},bool)'''
+    def setIsCloned (self: IdPair,val : bool)-> None :
+      '''                             '''
     ...
-    def setIsOwnerXlated (self, *args, **kwargs)-> None :
-      '''setIsOwnerXlated( (IdPair)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsOwnerXlated(class PyIdPair {lvalue},bool)'''
+    def setIsOwnerXlated (self: IdPair,val : bool)-> None :
+      '''                             '''
     ...
-    def setIsPrimary (self, *args, **kwargs)-> None :
-      '''setIsPrimary( (IdPair)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setIsPrimary(class PyIdPair {lvalue},bool)'''
+    def setIsPrimary (self: IdPair,val : bool)-> None :
+      '''                             '''
     ...
-    def setKey (self, *args, **kwargs)-> None :
-      '''setKey( (IdPair)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setKey(class PyIdPair {lvalue},class PyDbObjectId)'''
+    def setKey (self: IdPair,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setValue (self, *args, **kwargs)-> None :
-      '''setValue( (IdPair)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setValue(class PyIdPair {lvalue},class PyDbObjectId)'''
+    def setValue (self: IdPair,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def value (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''value( (IdPair)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId value(class PyIdPair {lvalue})'''
+    def value (self: IdPair)-> PyDb.ObjectId :
+      '''                             '''
     ...
 
 class Image:
