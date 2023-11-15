@@ -12943,11 +12943,8 @@ class DbObjectOverrule:
     def baseClose (self: DbObjectOverrule,object: PyDb.DbObject)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def baseDeepClone (self, *args, **kwargs)-> PyDb.DbObject :
-      '''baseDeepClone( (DbObjectOverrule)arg1, (DbObject)arg2, (DbObject)arg3, (IdMapping)arg4, (bool)arg5) -> DbObject :
-
-    C++ signature :
-        class PyDbObject baseDeepClone(class PyDbObjectOverrule {lvalue},class PyDbObject,class PyDbObject {lvalue},class PyDbIdMapping {lvalue},bool)'''
+    def baseDeepClone (self: DbObjectOverrule,subject: PyDb.DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary : bool)-> PyDb.DbObject :
+      '''                             '''
     ...
     def baseErase (self: DbObjectOverrule,object: PyDb.DbObject,erased : bool)-> PyDb.ErrorStatus :
       '''                             '''
@@ -12955,11 +12952,8 @@ class DbObjectOverrule:
     def baseOpen (self: DbObjectOverrule,object: PyDb.DbObject,mode: OpenMode)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def baseWblockClone (self, *args, **kwargs)-> PyDb.DbObject :
-      '''baseWblockClone( (DbObjectOverrule)arg1, (DbObject)arg2, (RxObject)arg3, (IdMapping)arg4, (bool)arg5) -> DbObject :
-
-    C++ signature :
-        class PyDbObject baseWblockClone(class PyDbObjectOverrule {lvalue},class PyDbObject,class PyRxObject {lvalue},class PyDbIdMapping {lvalue},bool)'''
+    def baseWblockClone (self: DbObjectOverrule,subject: PyDb.DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary : bool)-> PyDb.DbObject :
+      '''                             '''
     ...
     def cancel (self: DbObjectOverrule,object: PyDb.DbObject)-> PyDb.ErrorStatus :
       '''                             '''
@@ -12976,11 +12970,8 @@ class DbObjectOverrule:
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def deepClone (self, *args, **kwargs)-> PyDb.DbObject :
-      '''deepClone( (DbObjectOverrule)arg1, (DbObject)arg2, (DbObject)arg3, (IdMapping)arg4, (bool)arg5) -> DbObject :
-
-    C++ signature :
-        class PyDbObject deepClone(class PyDbObjectOverrule {lvalue},class PyDbObject,class PyDbObject {lvalue},class PyDbIdMapping {lvalue},bool)'''
+    def deepClone (self: DbObjectOverrule,subject: PyDb.DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary : bool)-> PyDb.DbObject :
+      '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
       '''desc() -> RxClass :
@@ -13042,11 +13033,8 @@ class DbObjectOverrule:
     C++ signature :
         void setIsOverruling(bool)'''
     ...
-    def wblockClone (self, *args, **kwargs)-> PyDb.DbObject :
-      '''wblockClone( (DbObjectOverrule)arg1, (DbObject)arg2, (RxObject)arg3, (IdMapping)arg4, (bool)arg5) -> DbObject :
-
-    C++ signature :
-        class PyDbObject wblockClone(class PyDbObjectOverrule {lvalue},class PyDbObject,class PyRxObject {lvalue},class PyDbIdMapping {lvalue},bool)'''
+    def wblockClone (self: DbObjectOverrule,subject: PyDb.DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary : bool)-> PyDb.DbObject :
+      '''                             '''
     ...
 
 class DbObjectReactor:

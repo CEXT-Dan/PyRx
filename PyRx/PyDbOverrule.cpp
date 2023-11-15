@@ -16,14 +16,14 @@ void makePyDbObjectOverrulerapper()
         .def("close", &PyDbObjectOverrule::closeWr, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("cancel", &PyDbObjectOverrule::cancelWr, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("erase", &PyDbObjectOverrule::eraseWr, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
-        .def("deepClone", &PyDbObjectOverrule::baseDeepClone)
-        .def("wblockClone", &PyDbObjectOverrule::baseWblockClone)
+        .def("deepClone", &PyDbObjectOverrule::baseDeepClone,  DS.ARGS({ "subject: PyDb.DbObject","owner: PyDb.DbObject","mapping: PyDb.IdMapping","isPrimary : bool" }))
+        .def("wblockClone", &PyDbObjectOverrule::baseWblockClone, DS.ARGS({ "subject: PyDb.DbObject","owner: PyRx.RxObject","mapping: PyDb.IdMapping","isPrimary : bool" }))
         .def("baseOpen", &PyDbObjectOverrule::baseOpen, DS.ARGS({ "object: PyDb.DbObject","mode: OpenMode" }))
         .def("baseClose", &PyDbObjectOverrule::baseClose, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("baseCancel", &PyDbObjectOverrule::baseCancel, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("baseErase", &PyDbObjectOverrule::baseErase, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
-        .def("baseDeepClone", &PyDbObjectOverrule::baseDeepClone)
-        .def("baseWblockClone", &PyDbObjectOverrule::baseWblockClone)
+        .def("baseDeepClone", &PyDbObjectOverrule::baseDeepClone, DS.ARGS({ "subject: PyDb.DbObject","owner: PyDb.DbObject","mapping: PyDb.IdMapping","isPrimary : bool" }))
+        .def("baseWblockClone", &PyDbObjectOverrule::baseWblockClone, DS.ARGS({ "subject: PyDb.DbObject","owner: PyRx.RxObject","mapping: PyDb.IdMapping","isPrimary : bool" }))
         .def("className", &PyDbObjectOverrule::className).staticmethod("className")
         .def("desc", &PyDbObjectOverrule::desc).staticmethod("desc")
         ;
@@ -203,7 +203,7 @@ Acad::ErrorStatus PyDbObjectOverrule::deepCloneWr(const AcDbObject* pSubject, Ac
         {
             PyDbObject result = f(pySubject, pyOwnerObject, pyMapping, isPrimary);
             if (result.isNullObj())
-                return eInvalidInput;
+                return eNotApplicable;
             pClonedObject = result.impObj();
             return eOk;
         }
@@ -233,7 +233,7 @@ Acad::ErrorStatus PyDbObjectOverrule::wblockCloneWr(const AcDbObject* pSubject, 
         {
             PyDbObject result = f(pySubject, pyOwnerObject, pyMapping, isPrimary);
             if (result.isNullObj())
-                return eInvalidInput;
+                return eNotApplicable;
             pClonedObject = result.impObj();
             return eOk;
         }
