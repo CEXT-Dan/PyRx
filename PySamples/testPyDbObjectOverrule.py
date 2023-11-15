@@ -48,7 +48,7 @@ class MyDboOverrule(PyDb.DbObjectOverrule):
         except Exception as err:
             print(err)
             
-    def deepClone(self, subject, pOwnerObject, idMap, isPrimary):
+    def deepClone(self, subject, pOwnerObject, idMap, isPrimary)->PyDb.DbObject:
         try:
             clonedObject = self.baseDeepClone(subject,pOwnerObject, idMap,isPrimary)
             #line = PyDb.Line.cast(clonedObject)
@@ -57,7 +57,7 @@ class MyDboOverrule(PyDb.DbObjectOverrule):
         except Exception as err:
             print(err)
             
-    def wblockClone(self, subject, pOwnerObject,idMap,isPrimary):
+    def wblockClone(self, subject, pOwnerObject,idMap,isPrimary)->PyDb.DbObject:
         try:
             clonedObject = self.baseWblockClone(subject,pOwnerObject,idMap,isPrimary)
             line = PyDb.Line.cast(clonedObject)
