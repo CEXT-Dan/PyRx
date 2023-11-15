@@ -76,6 +76,7 @@
 #include <format>
 #include <set>
 #include <array>
+#include <mutex>
 
 //-----------------------------------------------------------------------------
 #include <afxwin.h>				//- MFC core and standard components

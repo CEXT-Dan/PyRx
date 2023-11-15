@@ -42,7 +42,7 @@ public:
     void        documentToBeDestroyedWr(PyApDocument& pDocToDestroy);
     void        documentDestroyedWr(const std::string& fileName);
     void        documentCreateCanceledWr(PyApDocument& pDocCreateCancelled);
-    
+
     void        documentLockModeWillChangeWr(PyApDocument& doc,
         AcAp::DocLockMode myCurrentMode,
         AcAp::DocLockMode myNewMode,
@@ -111,21 +111,21 @@ public:
 
     void                setCurDocument1(PyApDocument& pDoc);
     void                setCurDocument2(PyApDocument& pDoc, AcAp::DocLockMode, bool activate);
-                        
+
     void                activateDocument1(PyApDocument& pAcTargetDocument);
     void                activateDocument2(PyApDocument& pAcTargetDocument, bool bPassScript);
-                        
+
     void                sendStringToExecute1(PyApDocument& pAcTargetDocument, const std::string& pszExecute);
     void                sendStringToExecute2(PyApDocument& pAcTargetDocument, const std::string& pszExecute, bool bActivate, bool bWrapUpInactiveDoc, bool bEchoString);
-                        
+
     void                appContextNewDocument(const std::string& pszTemplateName);
     void                appContextOpenDocument(const std::string& pszDrawingName);
     void                appContextRecoverDocument(const std::string& pszDrawingName);
-                        
+
     void                appContextPromptNewDocument();
     void                appContextPromptOpenDocument();
     void                appContextCloseDocument(PyApDocument& pDoc);
-                        
+
     void                newDocument();
     void                openDocument();
     void                closeDocument(PyApDocument& pAcTargetDocument);

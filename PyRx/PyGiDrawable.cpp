@@ -168,14 +168,9 @@ bool PyGiDrawableOverrule::isApplicableWr(PyRxObject& pOverruledSubject) const
     try
     {
         if (const override& f = get_override("isApplicable"))
-        {
             return f(pOverruledSubject);
-        }
-        else
-        {
-            isApplicableOverride = false;
-            return false;
-        }
+        isApplicableOverride = false;
+        return false;
     }
     catch (...)
     {
@@ -190,13 +185,8 @@ Adesk::Boolean PyGiDrawableOverrule::worldDrawWr(PyGiDrawable& pSubject, PyGiWor
     try
     {
         if (const override& f = this->get_override("worldDraw"))
-        {
             return f(pSubject, wd);
-        }
-        else
-        {
-            return baseWorldDraw(pSubject, wd);
-        }
+        return baseWorldDraw(pSubject, wd);
     }
     catch (...)
     {
@@ -212,13 +202,8 @@ void PyGiDrawableOverrule::viewportDrawWr(PyGiDrawable& pSubject, PyGiViewportDr
     try
     {
         if (const override& f = this->get_override("viewportDraw"))
-        {
             f(pSubject, vd);
-        }
-        else
-        {
-            baseViewportDraw(pSubject, vd);
-        }
+        baseViewportDraw(pSubject, vd);
     }
     catch (...)
     {
@@ -233,14 +218,9 @@ Adesk::UInt32 PyGiDrawableOverrule::viewportDrawLogicalFlagsWr(PyGiDrawable& pSu
     try
     {
         if (const override& f = this->get_override("viewportDrawLogicalFlags"))
-        {
             return f(pSubject, vd);
-        }
-        else
-        {
-            isViewportDrawLogicalFlagsOverride = false;
-            return baseViewportDrawLogicalFlags(pSubject, vd);
-        }
+        isViewportDrawLogicalFlagsOverride = false;
+        return baseViewportDrawLogicalFlags(pSubject, vd);
     }
     catch (...)
     {
