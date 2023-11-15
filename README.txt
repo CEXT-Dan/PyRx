@@ -1,7 +1,7 @@
 Python (cPython)
 bindings for AutoCAD® ObjectARX® 2021-2024
 bindings for AutoCAD® ActiveX  2021-2024
-uses wxPython for the GUI ,Dialogs and CAdUiPalette wrapper
+uses wxPython for the GUI, Dialogs and CAdUiPalette wrapper
 
 Embeds Python (3.10.10) and wxPython(4.2.0) into a loadable ARX module
 
