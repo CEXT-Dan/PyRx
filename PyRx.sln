@@ -16,6 +16,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRx25.0", "PyRx\PyRx25.0.vcxproj", "{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PyRxAcSetup", "PyRxAcSetup\PyRxAcSetup.vdproj", "{4D3A410A-C474-4F93-8737-748114201186}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0E9D9CE9-1030-4CE7-BD55-420D1EF83708} = {0E9D9CE9-1030-4CE7-BD55-420D1EF83708}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,7 +74,6 @@ Global
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Release|x86.ActiveCfg = Release|x64
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}.Release|x86.Build.0 = Release|x64
 		{4D3A410A-C474-4F93-8737-748114201186}.Debug|x64.ActiveCfg = Debug
-		{4D3A410A-C474-4F93-8737-748114201186}.Debug|x64.Build.0 = Debug
 		{4D3A410A-C474-4F93-8737-748114201186}.Debug|x86.ActiveCfg = Debug
 		{4D3A410A-C474-4F93-8737-748114201186}.Debug|x86.Build.0 = Debug
 		{4D3A410A-C474-4F93-8737-748114201186}.Release|x64.ActiveCfg = Release
