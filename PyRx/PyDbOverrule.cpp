@@ -18,15 +18,12 @@ void makePyDbObjectOverrulerapper()
         .def("erase", &PyDbObjectOverrule::eraseWr, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
         .def("deepClone", &PyDbObjectOverrule::baseDeepClone)
         .def("wblockClone", &PyDbObjectOverrule::baseWblockClone)
-
         .def("baseOpen", &PyDbObjectOverrule::baseOpen, DS.ARGS({ "object: PyDb.DbObject","mode: OpenMode" }))
         .def("baseClose", &PyDbObjectOverrule::baseClose, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("baseCancel", &PyDbObjectOverrule::baseCancel, DS.ARGS({ "object: PyDb.DbObject" }))
         .def("baseErase", &PyDbObjectOverrule::baseErase, DS.ARGS({ "object: PyDb.DbObject","erased : bool" }))
-
         .def("baseDeepClone", &PyDbObjectOverrule::baseDeepClone)
         .def("baseWblockClone", &PyDbObjectOverrule::baseWblockClone)
-
         .def("className", &PyDbObjectOverrule::className).staticmethod("className")
         .def("desc", &PyDbObjectOverrule::desc).staticmethod("desc")
         ;
@@ -49,9 +46,9 @@ Acad::ErrorStatus PyDbObjectOverrule::open(AcDbObject* pSubject, AcDb::OpenMode 
 {
     if (!reg_open)
         return AcDbObjectOverrule::open(pSubject, mode);
-    PyDbObject obj(pSubject,false);
+    PyDbObject obj(pSubject, false);
     obj.forceKeepAlive(true);
-    return this->openWr(obj,mode);
+    return this->openWr(obj, mode);
 }
 
 Acad::ErrorStatus PyDbObjectOverrule::close(AcDbObject* pSubject)
@@ -84,7 +81,7 @@ Acad::ErrorStatus PyDbObjectOverrule::erase(AcDbObject* pSubject, Adesk::Boolean
 Acad::ErrorStatus PyDbObjectOverrule::deepClone(const AcDbObject* pSubject, AcDbObject* pOwnerObject, AcDbObject*& pClonedObject, AcDbIdMapping& idMap, Adesk::Boolean isPrimary)
 {
     if (!reg_deepClone)
-       return AcDbObjectOverrule::deepClone(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);
+        return AcDbObjectOverrule::deepClone(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);
     auto es = deepCloneWr(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);
     if (es == eNotImplemented)
         return AcDbObjectOverrule::deepClone(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);;
@@ -96,7 +93,7 @@ Acad::ErrorStatus PyDbObjectOverrule::wblockClone(const AcDbObject* pSubject, Ac
     if (!reg_deepClone)
         return AcDbObjectOverrule::wblockClone(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);
     auto es = wblockCloneWr(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);
-    if(es == eNotImplemented)
+    if (es == eNotImplemented)
         return AcDbObjectOverrule::wblockClone(pSubject, pOwnerObject, pClonedObject, idMap, isPrimary);
     return es;
 }
@@ -107,14 +104,9 @@ bool PyDbObjectOverrule::isApplicableWr(const PyRxObject& pOverruledSubject) con
     try
     {
         if (const override& f = get_override("isApplicable"))
-        {
             return f(pOverruledSubject);
-        }
-        else
-        {
-            reg_isApplicable = false;
-            return false;
-        }
+        reg_isApplicable = false;
+        return false;
     }
     catch (...)
     {
@@ -130,14 +122,9 @@ Acad::ErrorStatus PyDbObjectOverrule::openWr(PyDbObject& pSubject, AcDb::OpenMod
     try
     {
         if (const override& f = get_override("open"))
-        {
             return f(pSubject, mode);
-        }
-        else
-        {
-            reg_open = false;
-            return baseOpen(pSubject, mode);
-        }
+        reg_open = false;
+        return baseOpen(pSubject, mode);
     }
     catch (...)
     {
@@ -153,14 +140,9 @@ Acad::ErrorStatus PyDbObjectOverrule::closeWr(PyDbObject& pSubject)
     try
     {
         if (const override& f = get_override("close"))
-        {
             return f(pSubject);
-        }
-        else
-        {
-            reg_close = false;
-            return baseClose(pSubject);
-        }
+        reg_close = false;
+        return baseClose(pSubject);
     }
     catch (...)
     {
@@ -176,14 +158,9 @@ Acad::ErrorStatus PyDbObjectOverrule::cancelWr(PyDbObject& pSubject)
     try
     {
         if (const override& f = get_override("cancel"))
-        {
             return f(pSubject);
-        }
-        else
-        {
-            reg_cancel = false;
-            return baseCancel(pSubject);
-        }
+        reg_cancel = false;
+        return baseCancel(pSubject);
     }
     catch (...)
     {
@@ -199,14 +176,9 @@ Acad::ErrorStatus PyDbObjectOverrule::eraseWr(PyDbObject& pSubject, Adesk::Boole
     try
     {
         if (const override& f = get_override("erase"))
-        {
             return f(pSubject, erasing);
-        }
-        else
-        {
-            reg_erase = false;
-            return baseErase(pSubject, erasing);
-        }
+        reg_erase = false;
+        return baseErase(pSubject, erasing);
     }
     catch (...)
     {
@@ -223,10 +195,8 @@ Acad::ErrorStatus PyDbObjectOverrule::deepCloneWr(const AcDbObject* pSubject, Ac
     {
         PyDbObject pySubject(const_cast<AcDbObject*>(pSubject), false);
         pySubject.forceKeepAlive(true);
-
         PyDbObject pyOwnerObject(const_cast<AcDbObject*>(pOwnerObject), false);
         pyOwnerObject.forceKeepAlive(true);
-
         PyDbIdMapping pyMapping(idMap);
 
         if (const override& f = get_override("deepClone"))
@@ -237,11 +207,8 @@ Acad::ErrorStatus PyDbObjectOverrule::deepCloneWr(const AcDbObject* pSubject, Ac
             pClonedObject = result.impObj();
             return eOk;
         }
-        else
-        {
-            reg_deepClone = false;
-            return eNotImplemented;
-        }
+        reg_deepClone = false;
+        return eNotImplemented;
     }
     catch (...)
     {
@@ -258,10 +225,8 @@ Acad::ErrorStatus PyDbObjectOverrule::wblockCloneWr(const AcDbObject* pSubject, 
     {
         PyDbObject pySubject(const_cast<AcDbObject*>(pSubject), false);
         pySubject.forceKeepAlive(true);
-
         PyRxObject pyOwnerObject(pOwnerObject, false, false);
         pyOwnerObject.forceKeepAlive(true);
-
         PyDbIdMapping pyMapping(idMap);
 
         if (const override& f = get_override("wblockClone"))
@@ -272,11 +237,8 @@ Acad::ErrorStatus PyDbObjectOverrule::wblockCloneWr(const AcDbObject* pSubject, 
             pClonedObject = result.impObj();
             return eOk;
         }
-        else
-        {
-            reg_wblockClone = false;
-            return eNotImplemented;
-        }
+        reg_wblockClone = false;
+        return eNotImplemented;
     }
     catch (...)
     {
