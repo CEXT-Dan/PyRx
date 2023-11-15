@@ -33,15 +33,15 @@ public:
 
 //----------------------------------------------------------------------------------------
 //PyDbIdMapping
-
-// TODO copyFrom doesn't work?
-// ctor may have U
 void makePyDbIdMappingWrapper();
 
 class PyDbIdMapping
 {
 public:
     PyDbIdMapping();
+
+    // TODO AcDbIdMapping::copyFrom doesn't work?
+    // ctor may have UB
     PyDbIdMapping(const AcDbIdMapping& mapping);
 
     void            assign(const PyIdPair& idpair);
