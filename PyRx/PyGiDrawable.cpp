@@ -175,6 +175,7 @@ bool PyGiDrawableOverrule::isApplicableWr(PyRxObject& pOverruledSubject) const
     catch (...)
     {
         isApplicableOverride = false;
+        printExceptionMsg();
     }
     return false;
 }
@@ -191,7 +192,7 @@ Adesk::Boolean PyGiDrawableOverrule::worldDrawWr(PyGiDrawable& pSubject, PyGiWor
     catch (...)
     {
         isWorldDrawOverride = false;
-        acutPrintf(_T("Exception @ %ls: "), __FUNCTIONW__);
+        printExceptionMsg();
     }
     return false;
 }
@@ -208,7 +209,7 @@ void PyGiDrawableOverrule::viewportDrawWr(PyGiDrawable& pSubject, PyGiViewportDr
     catch (...)
     {
         isViewportDrawOverride = false;
-        acutPrintf(_T("Exception @ %ls: "), __FUNCTIONW__);
+        printExceptionMsg();
     }
 }
 
@@ -225,7 +226,7 @@ Adesk::UInt32 PyGiDrawableOverrule::viewportDrawLogicalFlagsWr(PyGiDrawable& pSu
     catch (...)
     {
         isViewportDrawLogicalFlagsOverride = false;
-        acutPrintf(_T("Exception @ %ls: "), __FUNCTIONW__);
+        printExceptionMsg();
     }
     return 0;
 }
