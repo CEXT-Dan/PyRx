@@ -34,7 +34,8 @@ public:
 //----------------------------------------------------------------------------------------
 //PyDbIdMapping
 
-//TODO copy?
+// TODO copyFrom doesn't work?
+// ctor may have U
 void makePyDbIdMappingWrapper();
 
 class PyDbIdMapping

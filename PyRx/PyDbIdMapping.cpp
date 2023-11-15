@@ -25,7 +25,6 @@ void makePyIdPairWrapper()
         ;
 }
 
-
 PyIdPair::PyIdPair()
 {
 }
@@ -97,7 +96,6 @@ void PyIdPair::setIsOwnerXlated(bool isOwnerXlated)
 
 //----------------------------------------------------------------------------------------
 //PyDbIdMapping
-
 void makePyDbIdMappingWrapper()
 {
     class_<PyDbIdMapping>("IdMapping")
