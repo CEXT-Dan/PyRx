@@ -33,3 +33,6 @@
 /PySamples/_geo.py
 /PySamples/_axdoit.py
 /PyRxSetup/Include/python-3.10.10-amd64.exe
+/PyRxAcSetup/Release
+/PyRxAcSetup/Debug
+/PyRxAcSetup/Include/python-3.10.10-amd64.exe
