@@ -137,8 +137,16 @@ PyDbIdMapping::PyDbIdMapping()
 {
 }
 
+//TODO: test! AutoCAD .NET seems to have a memcpy 
 PyDbIdMapping::PyDbIdMapping(const AcDbIdMapping& mapping)
-    : m_pyImp(const_cast<AcDbIdMapping*>(std::addressof(mapping)), PyDbIdMappingDeleter(true))
+    : m_pyImp(new AcDbIdMapping(), PyDbIdMappingDeleter())
+{
+    memcpy_s(m_pyImp.get(), sizeof(AcDbIdMapping), std::addressof(mapping), sizeof(AcDbIdMapping));
+}
+
+//TODO: test for UB this is for PyDbObjectOverrule where we know the scope.
+PyDbIdMapping::PyDbIdMapping(const AcDbIdMapping& mapping, bool forceKeepAlive)
+    : m_pyImp(const_cast<AcDbIdMapping*>(std::addressof(mapping)), PyDbIdMappingDeleter(forceKeepAlive))
 {
 }
 
@@ -203,6 +211,15 @@ boost::python::list PyDbIdMapping::idPairs()
             pylist.append(PyIdPair(idPair));
     }
     return pylist;
+}
+
+void PyDbIdMapping::forceKeepAlive(bool flag)
+{
+    auto del_p = std::get_deleter<PyDbIdMappingDeleter>(m_pyImp);
+    if (del_p != nullptr)
+        del_p->m_forceKeepAlive = flag;
+    else
+        PyThrowBadEs(Acad::eNotApplicable);
 }
 
 AcDbIdMapping* PyDbIdMapping::impObj(const std::source_location& src /*= std::source_location::current()*/) const

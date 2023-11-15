@@ -197,7 +197,7 @@ Acad::ErrorStatus PyDbObjectOverrule::deepCloneWr(const AcDbObject* pSubject, Ac
         pySubject.forceKeepAlive(true);
         PyDbObject pyOwnerObject(const_cast<AcDbObject*>(pOwnerObject), false);
         pyOwnerObject.forceKeepAlive(true);
-        PyDbIdMapping pyMapping(idMap);
+        PyDbIdMapping pyMapping(idMap,true);
 
         if (const override& f = get_override("deepClone"))
         {
@@ -227,7 +227,7 @@ Acad::ErrorStatus PyDbObjectOverrule::wblockCloneWr(const AcDbObject* pSubject, 
         pySubject.forceKeepAlive(true);
         PyRxObject pyOwnerObject(pOwnerObject, false, false);
         pyOwnerObject.forceKeepAlive(true);
-        PyDbIdMapping pyMapping(idMap);
+        PyDbIdMapping pyMapping(idMap,true);
 
         if (const override& f = get_override("wblockClone"))
         {

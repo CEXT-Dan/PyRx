@@ -39,10 +39,8 @@ class PyDbIdMapping
 {
 public:
     PyDbIdMapping();
-
-    // TODO AcDbIdMapping::copyFrom doesn't work?
-    // ctor may have UB
     PyDbIdMapping(const AcDbIdMapping& mapping);
+    PyDbIdMapping(const AcDbIdMapping& mapping, bool forceKeepAlive);
 
     void            assign(const PyIdPair& idpair);
     bool            compute(PyIdPair& idpair) const;
@@ -56,6 +54,8 @@ public:
     AcDb::DuplicateRecordCloning duplicateRecordCloning() const;
 
     boost::python::list idPairs();
+
+    void forceKeepAlive(bool flag);
 
     AcDbIdMapping* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
