@@ -403,10 +403,20 @@ public:
 
     static AcString commandForCurDocument()
     {
+#ifdef _ZRXTARGET 
+        RxAutoOutStr cmd;
+        AcString pGlobalCmdName;
+        if (auto es = acedGetCommandForDocument(curDoc(), cmd.buf); es != eOk)
+            return pGlobalCmdName;
+        pGlobalCmdName = cmd.buf;
+        return pGlobalCmdName.makeUpper();
+#else
+
         AcString pGlobalCmdName;
         if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
             return pGlobalCmdName;
         return pGlobalCmdName.makeUpper();
+#endif
     }
 
     static void AcRxPyApp_pyfunc(void)
