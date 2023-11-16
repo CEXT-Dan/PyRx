@@ -334,21 +334,32 @@ void PyCAdUiPaletteSet::updateTabs()
 
 COLORREF PyCAdUiPaletteSet::paletteBackgroundColor() const
 {
-
+#ifdef _BRXTARGET 
+    return RGB(45, 48, 53);
+#endif
+#ifdef _ZRXTARGET 
+    return RGB(49, 56, 66);
+#endif
+#ifdef _ARXTARGET
     auto theme = impObj()->GetTheme();
     if (theme == nullptr) [[unlikely]] {
         throw PyNullObject();
     }
     return theme->GetColor(kPaletteBackground);
+#endif
 }
 
 COLORREF PyCAdUiPaletteSet::paletteTabTextColor() const
 {
+#ifndef _ARXTARGET
+    return 0xFFBEC0C5;
+#else
     auto theme = impObj()->GetTheme();
     if (theme == nullptr) [[unlikely]] {
         throw PyNullObject();
     }
     return theme->GetColor(kPaletteTabText);
+#endif
 }
 
 PyCAdUiPaletteSetImpl* PyCAdUiPaletteSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
