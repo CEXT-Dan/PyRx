@@ -4,6 +4,8 @@
 
 using namespace boost::python;
 
+#ifndef _BRXTARGET 
+
 
 void makePyPlPlotConfigManagerWrapper()
 {
@@ -138,3 +140,5 @@ AcPlPlotConfigManager* PyPlPlotConfigManager::impObj(const std::source_location&
     }
     return m_imp;
 }
+
+#endif

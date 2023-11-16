@@ -1,5 +1,7 @@
 #pragma once
 
+#ifndef _BRXTARGET 
+
 class PyPlPlotConfig;
 
 //-----------------------------------------------------------------------------------------
@@ -27,3 +29,4 @@ public:
     AcPlPlotConfigManager* m_imp = nullptr;
 };
 
+#endif

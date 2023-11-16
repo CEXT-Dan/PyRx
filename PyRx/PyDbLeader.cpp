@@ -163,7 +163,11 @@ void PyDbLeader::disableArrowHead()
 
 void PyDbLeader::setHasArrowHead(Adesk::Boolean bEnable)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->setHasArrowHead(bEnable);
+#endif
 }
 
 Adesk::Boolean PyDbLeader::hasHookLine() const
@@ -188,7 +192,11 @@ Adesk::Boolean PyDbLeader::isSplined() const
 
 void PyDbLeader::setSplined(Adesk::Boolean bSplined)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->setSplined(bSplined);
+#endif
 }
 
 PyDbHardPointerId PyDbLeader::dimensionStyle() const
@@ -223,7 +231,11 @@ PyDbObjectId PyDbLeader::annotationObjId() const
 
 void PyDbLeader::setAnnotationObjId(const PyDbObjectId& annoId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setAnnotationObjId(annoId.m_id));
+#endif
 }
 
 void PyDbLeader::evaluateLeader()
@@ -368,7 +380,11 @@ void PyDbLeader::modified(const PyDbObject& obj)
 
 void PyDbLeader::erased1(const PyDbObject& obj)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->erased(obj.impObj());
+#endif
 }
 
 void PyDbLeader::erased2(const PyDbObject& obj, Adesk::Boolean val)
@@ -1562,9 +1578,15 @@ PyDbMLeaderStyle::PyDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 std::string PyDbMLeaderStyle::getName() const
 {
+#ifdef _BRXTARGET 
+    RxAutoOutStr  name;
+    PyThrowBadEs(impObj()->getName(name.buf));
+    return name.str();
+#else
     AcString name;
     PyThrowBadEs(impObj()->getName(name));
     return wstr_to_utf8(name);
+#endif
 }
 
 void PyDbMLeaderStyle::setName(const std::string& pszName)

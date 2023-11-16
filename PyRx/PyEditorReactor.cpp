@@ -629,6 +629,7 @@ void PyEditorReactor::xrefSubcommandUnloadItem(AcDbDatabase* pHost, int activity
     xrefSubcommandUnloadItemWr(host, activity, id);
 }
 
+#ifndef _BRXTARGET 
 void PyEditorReactor::undoSubcommandAuto(int activity, bool state)
 {
     if (reg_undoSubcommandAuto == false)
@@ -636,6 +637,7 @@ void PyEditorReactor::undoSubcommandAuto(int activity, bool state)
     PyAutoLockGIL lock;
     undoSubcommandAutoWr(activity, state);
 }
+#endif
 
 void PyEditorReactor::undoSubcommandControl(int activity, int option)
 {
@@ -717,6 +719,7 @@ void PyEditorReactor::dwgViewResized(Adesk::LongPtr hwndDwgView)
     dwgViewResizedWr(hwndDwgView);
 }
 
+#ifndef _BRXTARGET 
 void PyEditorReactor::fullRegenEnded(AcDbDatabase* pDb, const AcDbIntArray& regenedViewports)
 {
     if (reg_fullRegenEnded == false)
@@ -728,6 +731,7 @@ void PyEditorReactor::fullRegenEnded(AcDbDatabase* pDb, const AcDbIntArray& rege
     PyDbDatabase host(pDb);
     fullRegenEndedWr(host, _list);
 }
+#endif
 
 void PyEditorReactor::docFrameMovedOrResized(Adesk::LongPtr hwndDocFrame, bool bMoved)
 {
@@ -761,6 +765,7 @@ void PyEditorReactor::beginRightClick(const AcGePoint3d& clickPoint)
     beginRightClickWr(clickPoint);
 }
 
+#ifndef _BRXTARGET 
 void PyEditorReactor::toolbarBitmapSizeWillChange(bool bLarge)
 {
     if (reg_toolbarBitmapSizeWillChange == false)
@@ -768,7 +773,9 @@ void PyEditorReactor::toolbarBitmapSizeWillChange(bool bLarge)
     PyAutoLockGIL lock;
     toolbarBitmapSizeWillChangeWr(bLarge);
 }
+#endif
 
+#ifndef _BRXTARGET 
 void PyEditorReactor::toolbarBitmapSizeChanged(bool bLarge)
 {
     if (reg_toolbarBitmapSizeChanged == false)
@@ -776,6 +783,7 @@ void PyEditorReactor::toolbarBitmapSizeChanged(bool bLarge)
     PyAutoLockGIL lock;
     toolbarBitmapSizeChangedWr(bLarge);
 }
+#endif
 
 void PyEditorReactor::beginWblockObjects(AcDbDatabase* pFrom, AcDbIdMapping& idMap)
 {
@@ -834,6 +842,7 @@ void PyEditorReactor::docCloseWillStart(AcDbDatabase* pDwg)
     docCloseWillStartWr(dwg);
 }
 
+#ifndef _BRXTARGET 
 void PyEditorReactor::beginCloseAll()
 {
     if (reg_beginCloseAll == false)
@@ -841,6 +850,7 @@ void PyEditorReactor::beginCloseAll()
     PyAutoLockGIL lock;
     beginCloseAllWr();
 }
+#endif
 
 void PyEditorReactor::beginQuit()
 {
@@ -907,6 +917,7 @@ void PyEditorReactor::viewChanged()
     viewChangedWr();
 }
 
+#ifndef _BRXTARGET 
 void PyEditorReactor::fullRegenWillStart(AcDbDatabase* pDb)
 {
     if (reg_fullRegenWillStart == false)
@@ -915,6 +926,7 @@ void PyEditorReactor::fullRegenWillStart(AcDbDatabase* pDb)
     PyDbDatabase dwg(pDb);
     fullRegenWillStartWr(dwg);
 }
+#endif
 
 //--begin wrapper
 void PyEditorReactor::commandWillStartWr(const std::string& cmdStr)
