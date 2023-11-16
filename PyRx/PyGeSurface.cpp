@@ -991,7 +991,7 @@ void PyGeSphere::set2(double radius, const AcGePoint3d& center, const AcGeVector
     impObj()->set(radius, center, northAxis, refAxis, startAngleU, endAngleU, startAngleV, endAngleV);
 }
 
-Adesk::Boolean PyGeSphere::intersectWith1(const PyGeLinearEnt3d& ent) const
+boost::python::tuple PyGeSphere::intersectWith1(const PyGeLinearEnt3d& ent) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -1000,7 +1000,7 @@ Adesk::Boolean PyGeSphere::intersectWith1(const PyGeLinearEnt3d& ent) const
     return boost::python::make_tuple(intn, p1, p2);
 }
 
-Adesk::Boolean PyGeSphere::intersectWith2(const PyGeLinearEnt3d&, const AcGeTol& tol) const
+boost::python::tuple PyGeSphere::intersectWith2(const PyGeLinearEnt3d&, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     int intn = 0;

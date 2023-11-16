@@ -274,8 +274,8 @@ public:
         double startAngleU, double endAngleU,
         double startAngleV, double endAngleV);
 
-    Adesk::Boolean intersectWith1(const PyGeLinearEnt3d& ent) const;
-    Adesk::Boolean intersectWith2(const PyGeLinearEnt3d&, const AcGeTol& tol) const;
+    boost::python::tuple intersectWith1(const PyGeLinearEnt3d& ent) const;
+    boost::python::tuple intersectWith2(const PyGeLinearEnt3d&, const AcGeTol& tol) const;
 
     static PyGeSphere cast(const PyGeEntity3d& src);
     static PyGeSphere copycast(const PyGeEntity3d& src);
