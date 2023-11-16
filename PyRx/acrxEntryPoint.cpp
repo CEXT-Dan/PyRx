@@ -403,7 +403,7 @@ public:
 
     static AcString commandForCurDocument()
     {
-#ifdef _ZRXTARGET 
+#if defined(_ZRXTARGET) && (_ZRXTARGET == 240)
         RxAutoOutStr cmd;
         AcString pGlobalCmdName;
         if (auto es = acedGetCommandForDocument(curDoc(), cmd.buf); es != eOk)
@@ -411,7 +411,6 @@ public:
         pGlobalCmdName = cmd.buf;
         return pGlobalCmdName.makeUpper();
 #else
-
         AcString pGlobalCmdName;
         if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
             return pGlobalCmdName;
