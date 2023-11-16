@@ -47,7 +47,7 @@ class MyDrawJig(PyEd.DrawJig):
         try:
             mat = PyGe.Matrix3d.translation(self.curpoint-self.basepoint)
             geo = wd.geometry()
-            geo.pushModelTransform()
+            geo.pushModelTransform(mat)
             geo.draw(self.line)
             geo.draw(self.circle)
             geo.popModelTransform()
