@@ -2,12 +2,6 @@
 #include "PyDbSurface.h"
 #include "PyDbObjectId.h"
 #include "PyDb3dSolid.h"
-#include "dbextrudedsurf.h"
-#include "dbloftedsurf.h"
-#include "dbnurbsurf.h"
-#include "dbplanesurf.h"
-#include "dbrevolvedsurf.h"
-#include "dbsweptsurf.h"
 #include "PyDb3dProfile.h"
 
 using namespace boost::python;
@@ -20,10 +14,8 @@ void makePyDbSurfaceWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("projectOnToSurface", &PyDbSurface::projectOnToSurface)
-
         .def("createFrom", &PyDbSurface::createFrom).staticmethod("createFrom")
         .def("createExtrudedSurface", &PyDbSurface::createExtrudedSurface).staticmethod("createExtrudedSurface")
-
         .def("className", &PyDbSurface::className).staticmethod("className")
         .def("desc", &PyDbSurface::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbSurface::cloneFrom).staticmethod("cloneFrom")
@@ -311,7 +303,6 @@ AcDbNurbSurface* PyDbNurbSurface::impObj(const std::source_location& src /*= std
     }
     return static_cast<AcDbNurbSurface*>(m_pyImp.get());
 }
-
 //----------------------------------------------------------------------
 //AcDbPlaneSurface  
 void makePyDbPlaneSurfaceWrapper()
@@ -515,4 +506,3 @@ AcDbSweptSurface* PyDbSweptSurface::impObj(const std::source_location& src /*= s
     }
     return static_cast<AcDbSweptSurface*>(m_pyImp.get());
 }
-

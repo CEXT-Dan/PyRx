@@ -561,19 +561,32 @@ void PyPlDSDData::setPromptForPassword(bool bPromptForPassword)
 
 bool PyPlDSDData::initializeLayouts() const
 {
-#if defined(_ARXTARGET) && (_ARXTARGET <= 240)
+#ifdef _ZRXTARGET 
+    throw PyNotimplementedByHost();
+#endif
+
+#ifdef _ARXTARGET
+#if _ARXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
     return impObj()->initializeLayouts();
 #endif
+#endif
+
 }
 
 void PyPlDSDData::setInitializeLayouts(bool initLayouts)
 {
-#if defined(_ARXTARGET) && (_ARXTARGET <= 240)
+#ifdef _ZRXTARGET 
+    throw PyNotimplementedByHost();
+#endif
+
+#ifdef _ARXTARGET
+#if _ARXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
     return impObj()->setInitializeLayouts(initLayouts);
+#endif
 #endif
 }
 
@@ -737,10 +750,16 @@ std::string PyPlDSDEntry::orgSheetPath() const
 
 std::string PyPlDSDEntry::traceSession() const
 {
-#if defined(_ARXTARGET) && (_ARXTARGET <= 240)
+#ifdef _ZRXTARGET 
+    throw PyNotimplementedByHost();
+#endif
+
+#ifdef _ARXTARGET
+#if _ARXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->traceSession());
+#endif
 #endif
 }
 

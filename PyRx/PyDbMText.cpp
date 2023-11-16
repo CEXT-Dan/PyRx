@@ -341,6 +341,9 @@ boost::python::list PyDbMText::getBoundingPoints() const
 
 boost::python::list PyDbMText::getBoundingPointsByLine() const
 {
+#ifdef _ZRXTARGET 
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcArray<AcGePoint3dArray> data;
     impObj()->getBoundingPointsByLine(data);
@@ -348,11 +351,16 @@ boost::python::list PyDbMText::getBoundingPointsByLine() const
     for (const auto& item : data)
         pylist.append(Point3dArrayToPyList(item));
     return pylist;
+#endif
 }
 
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 {
+#ifdef _ZRXTARGET 
+    throw PyNotimplementedByHost();
+#else
     return impObj()->hitTest(ptHit);
+#endif
 }
 
 void PyDbMText::setLineSpacingStyle(AcDb::LineSpacingStyle eStyle)

@@ -1,7 +1,7 @@
 #pragma once
 #include "PyDbEntity.h"
+#include "dbwipe.h"
 
-class AcDbWipeout;
 class PyDbObjectId;
 class PyDbDictionary;
 

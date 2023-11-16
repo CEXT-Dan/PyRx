@@ -2,7 +2,6 @@
 #include "PyDbImage.h"
 #include "PyDbObjectId.h"
 #include "PyDbDictionary.h"
-#include "dbwipe.h"
 
 using namespace boost::python;
 

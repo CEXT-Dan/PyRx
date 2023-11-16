@@ -28,11 +28,13 @@ void makePyCmColorWrapper()
 {
     PyDocString DS("Color");
     class_<AcCmColor>("Color")
+ #ifndef _ZRXTARGET
         .def("setNone", &AcCmColor::setNone, DS.ARGS())
         .def("setByBlock", &AcCmColor::setByBlock, DS.ARGS())
         .def("setForeground", &AcCmColor::setForeground, DS.ARGS())
         .def("setLayerOff", &AcCmColor::setLayerOff, DS.ARGS())
         .def("setByLayer", &AcCmColor::setByLayer, DS.ARGS())
+#endif
         .def("isByColor", &AcCmColor::isByColor, DS.ARGS())
         .def("isByLayer", &AcCmColor::isByLayer, DS.ARGS())
         .def("isByBlock", &AcCmColor::isByBlock, DS.ARGS())
@@ -40,16 +42,20 @@ void makePyCmColorWrapper()
         .def("isByPen", &AcCmColor::isByPen, DS.ARGS())
         .def("isForeground", &AcCmColor::isForeground, DS.ARGS())
         .def("isNone", &AcCmColor::isNone, DS.ARGS())
+#ifndef _ZRXTARGET
         .def<Acad::ErrorStatus(AcCmColor::*)(Adesk::RGBQuad)>("setRGB", &AcCmColor::setRGB, DS.ARGS({ "val : int" }))
+#endif
         .def<Acad::ErrorStatus(AcCmColor::*)(Adesk::UInt8, Adesk::UInt8, Adesk::UInt8)>("setRGB", &AcCmColor::setRGB, DS.ARGS({ "red : int","green : int","blue : int" }))
         .def("red", &AcCmColor::red, DS.ARGS())
         .def("green", &AcCmColor::green, DS.ARGS())
         .def("blue", &AcCmColor::blue, DS.ARGS())
+#ifndef _ZRXTARGET
         .def("setCOLORREF", &AcCmColor::setCOLORREF, DS.ARGS({ "val : int" }))
         .def("getCOLORREF", &AcCmColor::getCOLORREF, DS.ARGS())
         .def("getRGB", &AcCmColor::getRGB, DS.ARGS())
         .def("setRGBM", &AcCmColor::setRGBM, DS.ARGS({ "val : int" }))
         .def("getRGBM", &AcCmColor::getRGBM, DS.ARGS())
+#endif
         .def("colorIndex", &AcCmColor::colorIndex, DS.ARGS())
         .def("setColorIndex", &AcCmColor::setColorIndex, DS.ARGS({ "val : int" }))
         .def("penIndex", &AcCmColor::penIndex, DS.ARGS())
@@ -101,6 +107,7 @@ void makePyCmEntityColorWrapper()
     PyDocString DS("EntityColor");
     class_<AcCmEntityColor>("EntityColor")
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>())
+#ifndef _ZRXTARGET 
         .def("setNone", &AcCmEntityColor::setNone,DS.ARGS())
         .def("setByBlock", &AcCmEntityColor::setByBlock, DS.ARGS())
         .def("setForeground", &AcCmEntityColor::setForeground, DS.ARGS())
@@ -147,6 +154,7 @@ void makePyCmEntityColorWrapper()
         .def("Foreground", &AcCmEntityColor::Foreground, DS.SARGS()).staticmethod("Foreground")
         .def("white", &AcCmEntityColor::white, DS.SARGS()).staticmethod("white")
         .def("black", &AcCmEntityColor::black, DS.SARGS()).staticmethod("black")
+#endif
         .def("__eq__", &AcCmEntityColor::operator==)
         .def("__ne__", &AcCmEntityColor::operator!=)
         ;
