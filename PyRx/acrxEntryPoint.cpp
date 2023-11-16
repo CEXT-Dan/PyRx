@@ -462,8 +462,11 @@ public:
             acutPrintf(_T("\nOops, something went wrong: "));
         }
     }
-
+#ifdef _ZRXTARGET 
+    static int zds_pyload(void)
+#else
     static int ads_pyload(void)
+#endif
     {
         std::filesystem::path pysyspath;
         std::filesystem::path pypath;
@@ -489,7 +492,11 @@ public:
         return RSRSLT;
     }
 
+#ifdef _ZRXTARGET 
+    static int zds_pyloaded(void)
+#else
     static int ads_pyloaded(void)
+#endif
     {
         AcResBufPtr pArgs(acutNewRb(RTSTR));
         resbuf* pTail = pArgs.get();

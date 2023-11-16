@@ -8,7 +8,8 @@
 using namespace boost::python;
 void makePyDbJoinEntityPEWrapper()
 {
-    PyDocString DS("RxClass");
+#ifndef _ZRXTARGET 
+    PyDocString DS("JoinEntityPE");
     class_<PyDbJoinEntityPE, bases<PyRxObject>>("JoinEntityPE", boost::python::no_init)
         .def(init<const PyRxObject&>())
         .def("joinEntity", &PyDbJoinEntityPE::joinEntity1)
@@ -18,8 +19,10 @@ void makePyDbJoinEntityPEWrapper()
         .def("desc", &PyDbJoinEntityPE::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyDbJoinEntityPE::className, DS.SARGS()).staticmethod("className")
         ;
+#endif
 }
 
+#ifndef _ZRXTARGET 
 PyDbJoinEntityPE::PyDbJoinEntityPE(const PyRxObject& PE)
     :PyDbJoinEntityPE((AcDbJoinEntityPE*)PE.impObj(), false)
 {
@@ -78,3 +81,4 @@ AcDbJoinEntityPE* PyDbJoinEntityPE::impObj(const std::source_location& src /*= s
         throw PyNullObject(src);
     return static_cast<AcDbJoinEntityPE*>(m_pyImp.get());
 }
+#endif

@@ -8,6 +8,7 @@ class AcDbJoinEntityPE;
 //PyDbJoinEntityPE
 void makePyDbJoinEntityPEWrapper();
 
+#ifndef _ZRXTARGET 
 class PyDbJoinEntityPE : public PyRxObject
 {
 public:
@@ -24,3 +25,4 @@ public:
 public:
     AcDbJoinEntityPE* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+#endif

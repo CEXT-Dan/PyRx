@@ -274,11 +274,18 @@ void PyDbText::convertFieldToText()
 
 bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 {
+#ifdef _ZRXTARGET 
+    throw PyNotimplementedByHost();
+#else
     return impObj()->hitTest(ptHit);
+#endif
 }
 
 boost::python::list PyDbText::getBoundingPoints() const
 {
+#ifdef _ZRXTARGET 
+    throw PyNotimplementedByHost();
+#else
     AcGePoint3dArray boundingPoints;
     impObj()->getBoundingPoints(boundingPoints);
     if (boundingPoints.length() == 0)
@@ -287,6 +294,7 @@ boost::python::list PyDbText::getBoundingPoints() const
         impObj()->getBoundingPoints(boundingPoints);
     }
     return Point3dArrayToPyList(boundingPoints);
+#endif
 }
 
 AcDbText::AcTextAlignment PyDbText::justification() const

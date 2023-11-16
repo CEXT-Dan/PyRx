@@ -186,10 +186,20 @@ void PyJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyJig::acquireStringWr()
 {
+#ifdef _ZRXTARGET 
+    PyAutoLockGIL lock; 
+    wchar_t value[2049];
+    auto result = this->acquireString(value);
+    return boost::python::make_tuple(result, wstr_to_utf8(value));
+#endif
+
+#ifdef _ARXTARGET
     PyAutoLockGIL lock;
     AcString value;
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
+#endif
+ 
 }
 
 boost::python::tuple PyJig::acquireAngleWr1()
@@ -367,10 +377,19 @@ void PyDrawJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyDrawJig::acquireStringWr()
 {
+#ifdef _ZRXTARGET 
+    PyAutoLockGIL lock;
+    wchar_t value[2049];
+    auto result = this->acquireString(value);
+    return boost::python::make_tuple(result, wstr_to_utf8(value));
+#endif
+
+#ifdef _ARXTARGET 
     PyAutoLockGIL lock;
     AcString value;
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
+#endif
 }
 
 boost::python::tuple PyDrawJig::acquireAngleWr1()

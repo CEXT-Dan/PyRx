@@ -277,7 +277,9 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kOsnapNear", AcDbPointRef::OsnapType::kOsnapNear)
         .value("kOsnapApint", AcDbPointRef::OsnapType::kOsnapApint)
         .value("kOsnapStart", AcDbPointRef::OsnapType::kOsnapStart)
+#ifndef _ZRXTARGET 
         .value("kOsnapCentroid", AcDbPointRef::OsnapType::kOsnapCentroid)
+#endif
         .export_values()
         ;
     enum_<AcDbDimAssoc::PointType>("DimAssocPointType")

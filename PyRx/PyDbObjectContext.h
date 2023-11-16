@@ -1,8 +1,8 @@
 #pragma once
 #include "PyRxObject.h"
+#include "dbAnnotationScale.h"
+#include "dbObjContext.h"
 
-class AcDbObjectContext;
-class AcDbAnnotationScale;
 
 //-----------------------------------------------------------------------------------------
 //PyDbObjectContext

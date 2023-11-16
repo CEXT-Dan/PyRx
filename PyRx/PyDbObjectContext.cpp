@@ -1,7 +1,5 @@
 #include "stdafx.h"
 #include "PyDbObjectContext.h"
-#include "dbAnnotationScale.h"
-#include "dbObjContext.h"
 
 using namespace boost::python;
 

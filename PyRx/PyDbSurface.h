@@ -1,10 +1,14 @@
 #pragma once
 
 #include "PyDbEntity.h"
+#include "dbextrudedsurf.h"
+#include "dbloftedsurf.h"
+#include "dbnurbsurf.h"
+#include "dbplanesurf.h"
+#include "dbrevolvedsurf.h"
+#include "dbsweptsurf.h"
 
 class PyDbObjectId;
-class AcDbLoftedSurface;
-class AcDbPlaneSurface;
 class PyDb3dProfile;
 class PyDbSweepOptions;
 class PyDbExtrudedSurface;
@@ -57,6 +61,7 @@ public:
 //----------------------------------------------------------------------
 //AcDbLoftedSurface 
 void makePyDbLoftedSurfaceWrapper();
+
 class PyDbLoftedSurface : public PyDbSurface
 {
 public:
@@ -111,6 +116,7 @@ public:
     AcDbPlaneSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
 //----------------------------------------------------------------------
 //PyDbRevolvedSurface  
 void makePyDbRevolvedSurfaceWrapper();
@@ -130,6 +136,7 @@ public:
     AcDbRevolvedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
 //----------------------------------------------------------------------
 //AcDbSweptSurface  
 void makePyDbSweptSurfaceWrapper();
@@ -148,4 +155,5 @@ public:
 public:
     AcDbSweptSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 

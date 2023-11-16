@@ -296,6 +296,9 @@ boost::python::tuple PyAcEditor::nEntSelP2(const std::string& prompt, const AcGe
 
 static boost::python::tuple nEntSelPEx(const std::string& prompt, const AcGePoint3d& ptres, int opt, unsigned int uTransSpaceFlag)
 {
+#ifdef _ZRXTARGET 
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     PyEdUserInteraction ui;
     ads_point pnt = { ptres.x,ptres.y, ptres.z };
@@ -323,6 +326,7 @@ static boost::python::tuple nEntSelPEx(const std::string& prompt, const AcGePoin
         }
     }
     return boost::python::make_tuple(flag, id, asPnt3d(pnt), xformres, gsmarker, pyIds);
+#endif
 }
 
 boost::python::tuple PyAcEditor::nEntSelPEx1(const std::string& prompt, int uTransSpaceFlag)

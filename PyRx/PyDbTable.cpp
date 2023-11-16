@@ -62,12 +62,37 @@ void AcCellSetItem(AcCell& cell, int idx, int val)
 //  AcCellRange helpers
 static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
 {
+#ifdef _ARXTARGET
     return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
+#endif
+
+#ifdef _ZRXTARGET
+    return boost::shared_ptr<AcCellRange>(new AcCellRange());
+#endif
+
+#ifdef _BRXTARGET
+    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
+#endif
 }
 
 static boost::shared_ptr<AcCellRange> AcCellRangeInit2(int tr, int lc, int br, int rc)
 {
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr, lc, br, rc });
+#ifdef _ARXTARGET
+    return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr , lc, br, rc });
+#endif
+
+#ifdef _ZRXTARGET
+    AcCellRange range;
+    range.mnTopRow = tr;
+    range.mnLeftColumn = lc;
+    range.mnBottomRow = br;
+    range.mnRightColumn = rc;
+    return boost::shared_ptr<AcCellRange>(new AcCellRange(range));
+#endif
+
+#ifdef _BRXTARGET
+    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
+#endif
 }
 
 static std::string AcCellRangeToString(const AcCellRange& range)
