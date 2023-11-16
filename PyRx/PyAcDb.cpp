@@ -277,7 +277,7 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kOsnapNear", AcDbPointRef::OsnapType::kOsnapNear)
         .value("kOsnapApint", AcDbPointRef::OsnapType::kOsnapApint)
         .value("kOsnapStart", AcDbPointRef::OsnapType::kOsnapStart)
-#ifndef _ZRXTARGET 
+#if defined(_ZRXTARGET) && (_ZRXTARGET > 240)
         .value("kOsnapCentroid", AcDbPointRef::OsnapType::kOsnapCentroid)
 #endif
         .export_values()
