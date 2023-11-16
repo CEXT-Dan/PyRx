@@ -11,7 +11,6 @@ BOOST_PYTHON_MODULE(PyPl)
 {
     docstring_options local_docstring_options(true, true, true);
 
-#ifndef _BRXTARGET 
     makePyPlObjectWrapper();
     makePyPlDSDDataWrapper();
     makePyPlDSDEntryWrapper();
@@ -26,7 +25,6 @@ BOOST_PYTHON_MODULE(PyPl)
     makePyPlPrecisionEntryWrapper();
     makePyPlPlotConfigManagerWrapper();
     makePyPlCoreWrapper();
-#endif
 }
 
 void initPyPlModule()

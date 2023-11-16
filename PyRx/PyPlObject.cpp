@@ -7,7 +7,6 @@
 
 using namespace boost::python;
 
-#ifndef _BRXTARGET 
 //-----------------------------------------------------------------------------------------
 //AcPlPlotFactory
 void makeAcPlPlotFactoryWrapper()
@@ -1608,4 +1607,3 @@ AcPlPlotConfigInfo* PyPlPlotConfigInfo::impObj(const std::source_location& src /
     }
     return static_cast<AcPlPlotConfigInfo*>(m_pyImp.get());
 }
-#endif

@@ -341,7 +341,7 @@ boost::python::list PyDbMText::getBoundingPoints() const
 
 boost::python::list PyDbMText::getBoundingPointsByLine() const
 {
-#if _ZRXTARGET == 240 || _BRXTARGET == 240
+#ifdef _ZRXTARGET 
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -356,7 +356,7 @@ boost::python::list PyDbMText::getBoundingPointsByLine() const
 
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 {
-#if _ZRXTARGET == 240 || _BRXTARGET == 240
+#ifdef _ZRXTARGET 
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -592,9 +592,6 @@ AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_loc
 // preserve order!
 int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     if (frag != nullptr && param != nullptr)
     {
         PyAutoLockGIL lock;
@@ -658,6 +655,5 @@ int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
         //
         pylist->append(pysublist);
     }
-#endif
     return 1;
 }

@@ -1123,7 +1123,7 @@ bool EdCore::showHTMLModalWindow1(UINT_PTR hwnd, const std::string& uriOfHtmlPag
 
 bool EdCore::showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
 {
-#if _ZRXTARGET == 240 || _BRXTARGET == 240
+#ifdef _ZRXTARGET 
     throw PyNotimplementedByHost();
 #else
     return acedShowHTMLModalWindow((HWND)hwnd, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
@@ -1137,7 +1137,7 @@ UINT_PTR EdCore::showHTMLModelessWindow1(UINT_PTR owner, const std::string& uriO
 
 UINT_PTR EdCore::showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
 {
-#if _ZRXTARGET == 240 || _BRXTARGET == 240
+#ifdef _ZRXTARGET 
     throw PyNotimplementedByHost();
 #else
     return (UINT_PTR)acedShowHTMLModelessWindow((HWND)owner, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
@@ -1146,16 +1146,12 @@ UINT_PTR EdCore::showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriO
 
 void EdCore::skipXrefNotification(PyDbDatabase& db, const std::string& xrefName)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(acedSkipXrefNotification(db.impObj(), utf8_to_wstr(xrefName).c_str()));
-#endif
 }
 
 void EdCore::setFieldUpdateEnabled(PyApDocument& doc, bool enabled)
 {
-#if _ZRXTARGET == 240 || _BRXTARGET == 240
+#ifdef _ZRXTARGET 
     throw PyNotimplementedByHost();
 #else
     acedSetFieldUpdateEnabled(doc.impObj(), enabled);
@@ -1237,11 +1233,7 @@ bool EdCore::unloadPartialMenu(const std::string& pszMenuFile)
 
 void EdCore::unmarkForDelayXRefRelativePathResolve(const PyDbObjectId& xrefDefId)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     acedUnmarkForDelayXRefRelativePathResolve(xrefDefId.m_id);
-#endif
 }
 
 int EdCore::update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2)
@@ -1337,15 +1329,10 @@ void EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbData
 
 bool EdCore::xrefNotifyCheckFileChanged(const PyDbObjectId& id)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     bool flag = false;
     if (auto es = acedXrefNotifyCheckFileChanged(id.m_id, flag); es != eOk)
         throw PyAcadErrorStatus(es);
     return flag;
-#endif
-
 }
 
 void EdCore::xrefOverlay1(const std::string& path, const std::string& name)

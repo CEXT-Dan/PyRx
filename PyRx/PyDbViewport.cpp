@@ -384,11 +384,7 @@ void PyDbViewport::setOff()
 
 void PyDbViewport::setIsOn(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setIsOn(bOn));
-#endif
 }
 
 AcGePoint3d PyDbViewport::viewTarget() const
@@ -508,11 +504,7 @@ void PyDbViewport::setFrontClipOn1()
 
 void PyDbViewport::setFrontClipOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setFrontClipOn(bOn));
-#endif
 }
 
 bool PyDbViewport::isBackClipOn() const
@@ -532,11 +524,7 @@ void PyDbViewport::setBackClipOn1()
 
 void PyDbViewport::setBackClipOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setBackClipOn(bOn));
-#endif
 }
 
 bool PyDbViewport::isFrontClipAtEyeOn() const
@@ -556,11 +544,7 @@ void PyDbViewport::setFrontClipAtEyeOff()
 
 void PyDbViewport::setFrontClipAtEyeOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setFrontClipAtEyeOn(bOn));
-#endif
 }
 
 double PyDbViewport::frontClipDistance() const
@@ -600,11 +584,7 @@ void PyDbViewport::setPerspectiveOff()
 
 void PyDbViewport::setPerspectiveOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setPerspectiveOn(bOn));
-#endif
 }
 
 bool PyDbViewport::isUcsFollowModeOn() const
@@ -624,11 +604,7 @@ void PyDbViewport::setUcsFollowModeOff()
 
 void PyDbViewport::setUcsFollowModeOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setUcsFollowModeOn(bOn));
-#endif
 }
 
 bool PyDbViewport::isUcsIconVisible() const
@@ -648,11 +624,7 @@ void PyDbViewport::setUcsIconInvisible()
 
 void PyDbViewport::setUcsIconVisible2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setUcsIconVisible(bOn));
-#endif
 }
 
 bool PyDbViewport::isUcsIconAtOrigin() const
@@ -672,11 +644,7 @@ void PyDbViewport::setUcsIconAtCorner()
 
 void PyDbViewport::setUcsIconAtOrigin2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setUcsIconAtOrigin(bOn));
-#endif
 }
 
 bool PyDbViewport::isFastZoomOn() const
@@ -701,11 +669,7 @@ void PyDbViewport::setFastZoomOff()
 
 void PyDbViewport::setFastZoomOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setFastZoomOn(bOn));
-#endif
 }
 
 Adesk::UInt16 PyDbViewport::circleSides() const
@@ -735,11 +699,7 @@ void PyDbViewport::setSnapOff()
 
 void PyDbViewport::setSnapOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setSnapOn(bOn));
-#endif
 }
 
 bool PyDbViewport::isSnapIsometric() const
@@ -759,11 +719,7 @@ void PyDbViewport::setSnapStandard()
 
 void PyDbViewport::setSnapIsometric2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setSnapIsometric(bOn));
-#endif
 }
 
 double PyDbViewport::snapAngle() const
@@ -823,11 +779,7 @@ void PyDbViewport::setGridOff()
 
 void PyDbViewport::setGridOn2(bool val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setGridOn(val));
-#endif
 }
 
 bool PyDbViewport::isGridBoundToLimits() const
@@ -907,11 +859,7 @@ void PyDbViewport::removeHiddenLines1()
 
 void PyDbViewport::removeHiddenLines2(bool val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->removeHiddenLines(val));
-#endif
 }
 
 void PyDbViewport::freezeLayersInViewport(const boost::python::list& pyids)
@@ -960,56 +908,32 @@ void PyDbViewport::setBackground(PyDbObjectId& backgroundId)
 
 PyDbObjectId PyDbViewport::previousBackground1() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->previousBackground());
-#endif
 }
 
 PyDbObjectId PyDbViewport::previousBackground2(AcGiDrawable::DrawableType type) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->previousBackground(type));
-#endif
 }
 
 void PyDbViewport::setPreviousBackground1(PyDbObjectId& backgroundId)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id));
-#endif
 }
 
 void PyDbViewport::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id, type));
-#endif
 }
 
 void PyDbViewport::setPreviousBackground3(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool force)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id, type, force));
-#endif
 }
 
 bool PyDbViewport::previousBackgroundForcedSwitch(void) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->previousBackgroundForcedSwitch();
-#endif
 }
 
 PyDbObjectId PyDbViewport::visualStyle() const
@@ -1084,11 +1008,7 @@ void PyDbViewport::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
 
 void PyDbViewport::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun));
-#endif
 }
 
 bool PyDbViewport::isLocked() const
@@ -1108,11 +1028,7 @@ void PyDbViewport::setUnlocked()
 
 void PyDbViewport::setLocked2(bool val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setLocked(val));
-#endif
 }
 
 PyDbAnnotationScale PyDbViewport::annotationScale() const
@@ -1142,11 +1058,7 @@ void PyDbViewport::setOpaque()
 
 void PyDbViewport::setTransparent2(bool val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setTransparent(val));
-#endif
 }
 
 double PyDbViewport::customScale() const
@@ -1205,11 +1117,7 @@ void PyDbViewport::setNonRectClipOff()
 
 void PyDbViewport::setNonRectClipOn2(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setNonRectClipOn(bOn));
-#endif
 }
 
 PyDbObjectId PyDbViewport::nonRectClipEntityId() const
