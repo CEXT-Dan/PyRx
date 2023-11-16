@@ -471,7 +471,7 @@ boost::python::list DbCore::getDimAssocIds(const PyDbObjectId& dimId)
 
 PyDbObjectId DbCore::getDimStyleId(PyDbDatabase& db, const std::string& styleName, const std::string& lockName)
 {
-#ifdef _ZRXTARGET 
+#if defined(_ZRXTARGET) && (_ZRXTARGET == 240)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(acdbGetDimStyleId(db.impObj(), utf8_to_wstr(styleName).c_str(), utf8_to_wstr(lockName).c_str()));
