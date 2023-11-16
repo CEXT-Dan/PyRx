@@ -131,15 +131,8 @@ PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, bool periodic)
 }
 
 PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, bool periodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance)
-#ifdef _BRXTARGET 
-    : PyDbSpline(new AcDbSpline(), true)
-#else
     : PyDbSpline(new AcDbSpline(PyListToPoint3dArray(fitPoints), periodic, knotParam, degree, fitTolerance), true)
-#endif
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#endif
 }
 
 PyDbSpline::PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam)
@@ -427,29 +420,17 @@ PyDbPolyline PyDbSpline::toPolyline()
 
 void PyDbSpline::insertControlPointAt1(double knotParam, const AcGePoint3d& ctrlPt)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(impObj()->insertControlPointAt(knotParam, ctrlPt));
-#endif
 }
 
 void PyDbSpline::insertControlPointAt2(double knotParam, const AcGePoint3d& ctrlPt, double weight)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(impObj()->insertControlPointAt(knotParam, ctrlPt, weight));
-#endif
 }
 
 void PyDbSpline::removeControlPointAt(int index)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(impObj()->removeControlPointAt(index));
-#endif
 }
 
 SplineType PyDbSpline::type() const
@@ -464,11 +445,7 @@ void PyDbSpline::setType(SplineType type)
 
 void PyDbSpline::rebuild(int degree, int numCtrlPts)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(impObj()->rebuild(degree, numCtrlPts));
-#endif
 }
 
 PyGeNurbCurve3d PyDbSpline::getAcGeCurve1() const

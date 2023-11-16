@@ -445,9 +445,7 @@ void makePyDbTableWrapper()
         .value("kDataRow", AcDb::RowType::kDataRow)
         .value("kTitleRow", AcDb::RowType::kTitleRow)
         .value("kHeaderRow", AcDb::RowType::kHeaderRow)
-#ifndef _BRXTARGET 
         .value("kAllRowTypes", AcDb::RowType::kAllRowTypes)
-#endif
         .export_values()
         ;
     enum_<AcDb::TableHitItem>("TableHitItem")
@@ -1406,11 +1404,7 @@ void PyDbTable::suppressRegenerateTable(bool bSuppress)
 
 void PyDbTable::setRecomputeTableBlock(bool newVal)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setRecomputeTableBlock(newVal);
-#endif
 }
 
 void PyDbTable::setSize(int nRows, int nCols)
