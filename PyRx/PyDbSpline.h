@@ -25,6 +25,7 @@ public:
 
     PyDbSpline(const boost::python::list& fitPoints, bool periodic);
     PyDbSpline(const boost::python::list& fitPoints, bool periodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
+
     PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam);
     PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
     PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam);

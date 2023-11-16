@@ -40,7 +40,11 @@ bool PyDbJoinEntityPE::joinEntity1(PyDbEntity& pPrimaryEntity, PyDbEntity& pSeco
 
 bool PyDbJoinEntityPE::joinEntity2(PyDbEntity& pPrimaryEntity, PyDbEntity& pSecondaryEntity, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->joinEntity(pPrimaryEntity.impObj(), pSecondaryEntity.impObj(), tol) == eOk;
+#endif
 }
 
 boost::python::list PyDbJoinEntityPE::joinEntities1(PyDbEntity& pPrimaryEntity, const boost::python::list& otherEntities) const

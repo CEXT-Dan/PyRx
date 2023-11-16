@@ -1,6 +1,8 @@
 #pragma once
 #include "PyRxObject.h"
 
+#ifndef _BRXTARGET 
+
 class PyDbObjectId;
 class PyPlDSDEntry;
 class PyDbPlotSettings;
@@ -344,3 +346,4 @@ public:
     inline AcPlPlotConfigInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+#endif

@@ -439,9 +439,15 @@ PyDbDatabaseSummaryInfo::PyDbDatabaseSummaryInfo(AcDbDatabaseSummaryInfo* ptr)
 
 std::string PyDbDatabaseSummaryInfo::getTitle() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr str;
+    PyThrowBadEs(impObj()->getTitle(str.buf));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(impObj()->getTitle(str));
     return wstr_to_utf8(str);
+#endif
 }
 
 void PyDbDatabaseSummaryInfo::setTitle(const std::string& title)
@@ -451,9 +457,15 @@ void PyDbDatabaseSummaryInfo::setTitle(const std::string& title)
 
 std::string PyDbDatabaseSummaryInfo::getSubject() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr str;
+    PyThrowBadEs(impObj()->getSubject(str.buf));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(impObj()->getSubject(str));
     return wstr_to_utf8(str);
+#endif
 }
 
 void PyDbDatabaseSummaryInfo::setSubject(const std::string& subject)
@@ -463,9 +475,15 @@ void PyDbDatabaseSummaryInfo::setSubject(const std::string& subject)
 
 std::string PyDbDatabaseSummaryInfo::getAuthor() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr str;
+    PyThrowBadEs(impObj()->getAuthor(str.buf));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(impObj()->getAuthor(str));
     return wstr_to_utf8(str);
+#endif
 }
 
 void PyDbDatabaseSummaryInfo::setAuthor(const std::string& author)
@@ -475,9 +493,15 @@ void PyDbDatabaseSummaryInfo::setAuthor(const std::string& author)
 
 std::string PyDbDatabaseSummaryInfo::getKeywords() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr str;
+    PyThrowBadEs(impObj()->getKeywords(str.buf));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(impObj()->getKeywords(str));
     return wstr_to_utf8(str);
+#endif
 }
 
 void PyDbDatabaseSummaryInfo::setKeywords(const std::string& keywordlist)
@@ -487,9 +511,15 @@ void PyDbDatabaseSummaryInfo::setKeywords(const std::string& keywordlist)
 
 std::string PyDbDatabaseSummaryInfo::getComments() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr str;
+    PyThrowBadEs(impObj()->getComments(str.buf));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(impObj()->getComments(str));
     return wstr_to_utf8(str);
+#endif
 }
 
 void PyDbDatabaseSummaryInfo::setComments(const std::string& comments)
@@ -499,9 +529,15 @@ void PyDbDatabaseSummaryInfo::setComments(const std::string& comments)
 
 std::string PyDbDatabaseSummaryInfo::getLastSavedBy() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr str;
+    PyThrowBadEs(impObj()->getLastSavedBy(str.buf));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(impObj()->getLastSavedBy(str));
     return wstr_to_utf8(str);
+#endif
 }
 
 void PyDbDatabaseSummaryInfo::setLastSavedBy(const std::string& lastSavedBy)
@@ -511,9 +547,15 @@ void PyDbDatabaseSummaryInfo::setLastSavedBy(const std::string& lastSavedBy)
 
 std::string PyDbDatabaseSummaryInfo::getRevisionNumber() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr str;
+    PyThrowBadEs(impObj()->getRevisionNumber(str.buf));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(impObj()->getRevisionNumber(str));
     return wstr_to_utf8(str);
+#endif
 }
 
 void PyDbDatabaseSummaryInfo::setRevisionNumber(const std::string& revisionNumber)
@@ -523,9 +565,15 @@ void PyDbDatabaseSummaryInfo::setRevisionNumber(const std::string& revisionNumbe
 
 std::string PyDbDatabaseSummaryInfo::getHyperlinkBase() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr str;
+    PyThrowBadEs(impObj()->getHyperlinkBase(str.buf));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(impObj()->getHyperlinkBase(str));
     return wstr_to_utf8(str);
+#endif
 }
 
 void PyDbDatabaseSummaryInfo::setHyperlinkBase(const std::string& HyperlinkBase)
@@ -555,19 +603,34 @@ void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo2(const std::string& key)
 
 boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo1(const std::string& customInfoKey) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr value;
+    PyThrowBadEs(impObj()->getCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), value.buf));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(customInfoKey, value.str());
+#else
     AcString value;
     PyThrowBadEs(impObj()->getCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), value));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(customInfoKey, wstr_to_utf8(value));
+#endif
 }
 
 boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo2(int index) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  key;
+    RxAutoOutStr  value;
+    PyThrowBadEs(impObj()->getCustomSummaryInfo(index, key.buf, value.buf));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(key.str(), value.str());
+#else
     AcString key;
     AcString value;
     PyThrowBadEs(impObj()->getCustomSummaryInfo(index, key, value));
     PyAutoLockGIL lock;
     return boost::python::make_tuple(wstr_to_utf8(key), wstr_to_utf8(value));
+#endif
 }
 
 void PyDbDatabaseSummaryInfo::setCustomSummaryInfo1(const std::string& customInfoKey, const std::string& value)
@@ -582,8 +645,13 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryInfo2(int index, const std::string
 
 static bool hasKey(AcDbDatabaseSummaryInfo* imp, const TCHAR* key)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr dummy;
+    return imp->getCustomSummaryInfo(key, dummy.buf) == eOk;
+#else
     AcString dummy;
     return imp->getCustomSummaryInfo(key, dummy) == eOk;
+#endif
 }
 
 void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydict)
@@ -608,6 +676,22 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydi
 
 boost::python::dict PyDbDatabaseSummaryInfo::asDict() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    PyAutoLockGIL lock;
+    boost::python::dict sinfoDict;
+    for (int idx = 0; idx < this->numCustomInfo(); idx++)
+    {
+        RxAutoOutStr key;
+        RxAutoOutStr value;
+        if (impObj()->getCustomSummaryInfo(idx, key.buf, value.buf) == eOk)
+        {
+            std::string sdtkey = key.str();
+            std::string stdvalue = value.str();
+            sinfoDict[sdtkey] = stdvalue;
+        }
+    }
+    return sinfoDict;
+#else
     PyAutoLockGIL lock;
     boost::python::dict sinfoDict;
     for (int idx = 0; idx < this->numCustomInfo(); idx++)
@@ -622,6 +706,7 @@ boost::python::dict PyDbDatabaseSummaryInfo::asDict() const
         }
     }
     return sinfoDict;
+#endif
 }
 
 std::string PyDbDatabaseSummaryInfo::className()
@@ -868,16 +953,28 @@ void makePyDbDictUtilWrapper()
 
 std::string PyDbDictUtil::dictionaryNameAt1(const PyDbObjectId& itemId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr str;
+    PyThrowBadEs(AcDbDictUtil::dictionaryNameAt(str.buf, itemId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::dictionaryNameAt(str, itemId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 std::string PyDbDictUtil::dictionaryNameAt2(const PyDbObjectId& itemId, const PyDbObjectId& ownerDictId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  str;
+    PyThrowBadEs(AcDbDictUtil::dictionaryNameAt(str.buf, itemId.m_id, ownerDictId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::dictionaryNameAt(str, itemId.m_id, ownerDictId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 PyDbObjectId PyDbDictUtil::dictionaryGetAt(const std::string& name, const PyDbObjectId& ownerDictId)
@@ -889,9 +986,15 @@ PyDbObjectId PyDbDictUtil::dictionaryGetAt(const std::string& name, const PyDbOb
 
 std::string PyDbDictUtil::getColorName(const PyDbObjectId& itemId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  str;
+    PyThrowBadEs(AcDbDictUtil::getColorName(str.buf, itemId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::getColorName(str, itemId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 PyDbObjectId PyDbDictUtil::getGroupId(const std::string& name, const PyDbDatabase& db)
@@ -903,9 +1006,15 @@ PyDbObjectId PyDbDictUtil::getGroupId(const std::string& name, const PyDbDatabas
 
 std::string PyDbDictUtil::getGroupName(const PyDbObjectId& itemId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  str;
+    PyThrowBadEs(AcDbDictUtil::getGroupName(str.buf, itemId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::getGroupName(str, itemId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 PyDbObjectId PyDbDictUtil::getLayoutId(const std::string& name, const PyDbDatabase& db)
@@ -917,9 +1026,15 @@ PyDbObjectId PyDbDictUtil::getLayoutId(const std::string& name, const PyDbDataba
 
 std::string PyDbDictUtil::getLayoutName(const PyDbObjectId& itemId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  str;
+    PyThrowBadEs(AcDbDictUtil::getLayoutName(str.buf, itemId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::getLayoutName(str, itemId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 PyDbObjectId PyDbDictUtil::getMaterialId(const std::string& name, const PyDbDatabase& db)
@@ -931,9 +1046,15 @@ PyDbObjectId PyDbDictUtil::getMaterialId(const std::string& name, const PyDbData
 
 std::string PyDbDictUtil::getMaterialName(const PyDbObjectId& itemId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  str;
+    PyThrowBadEs(AcDbDictUtil::getMaterialName(str.buf, itemId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::getMaterialName(str, itemId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 PyDbObjectId PyDbDictUtil::getMLStyleId(const std::string& name, const PyDbDatabase& db)
@@ -945,9 +1066,15 @@ PyDbObjectId PyDbDictUtil::getMLStyleId(const std::string& name, const PyDbDatab
 
 std::string PyDbDictUtil::getMLStyleName(const PyDbObjectId& itemId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  str;
+    PyThrowBadEs(AcDbDictUtil::getMLStyleName(str.buf, itemId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::getMLStyleName(str, itemId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 PyDbObjectId PyDbDictUtil::getPlotSettingsId(const std::string& name, const PyDbDatabase& db)
@@ -959,9 +1086,15 @@ PyDbObjectId PyDbDictUtil::getPlotSettingsId(const std::string& name, const PyDb
 
 std::string PyDbDictUtil::getPlotSettingsName(const PyDbObjectId& itemId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  str;
+    PyThrowBadEs(AcDbDictUtil::getPlotSettingsName(str.buf, itemId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::getPlotSettingsName(str, itemId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 PyDbObjectId PyDbDictUtil::getPlotStyleNameId(const std::string& name, const PyDbDatabase& db)
@@ -973,9 +1106,15 @@ PyDbObjectId PyDbDictUtil::getPlotStyleNameId(const std::string& name, const PyD
 
 std::string PyDbDictUtil::getPlotStyleNameName(const PyDbObjectId& itemId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  str;
+    PyThrowBadEs(AcDbDictUtil::getPlotStyleNameName(str.buf, itemId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::getPlotStyleNameName(str, itemId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 PyDbObjectId PyDbDictUtil::getTableStyleId(const std::string& name, const PyDbDatabase& db)
@@ -987,9 +1126,15 @@ PyDbObjectId PyDbDictUtil::getTableStyleId(const std::string& name, const PyDbDa
 
 std::string PyDbDictUtil::getTableStyleName(const PyDbObjectId& itemId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  str;
+    PyThrowBadEs(AcDbDictUtil::getTableStyleName(str.buf, itemId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::getTableStyleName(str, itemId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 PyDbObjectId PyDbDictUtil::getVisualStyleId(const std::string& name, const PyDbDatabase& db)
@@ -1001,9 +1146,15 @@ PyDbObjectId PyDbDictUtil::getVisualStyleId(const std::string& name, const PyDbD
 
 std::string PyDbDictUtil::getVisualStyleName(const PyDbObjectId& itemId)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET == 240)
+    RxAutoOutStr  str;
+    PyThrowBadEs(AcDbDictUtil::getVisualStyleName(str.buf, itemId.m_id));
+    return str.str();
+#else
     AcString str;
     PyThrowBadEs(AcDbDictUtil::getVisualStyleName(str, itemId.m_id));
     return wstr_to_utf8(str);
+#endif
 }
 
 bool PyDbDictUtil::hasColor(const std::string& name, const PyDbDatabase& db)
