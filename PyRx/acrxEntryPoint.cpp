@@ -147,7 +147,6 @@ public:
         }
     }
 
-
     static AcString GETVER()
     {
         constexpr TCHAR MAJOR1 = '1';
