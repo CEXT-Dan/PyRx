@@ -471,7 +471,7 @@ boost::python::list DbCore::getDimAssocIds(const PyDbObjectId& dimId)
 
 PyDbObjectId DbCore::getDimStyleId(PyDbDatabase& db, const std::string& styleName, const std::string& lockName)
 {
-#if defined(_ZRXTARGET) && (_ZRXTARGET == 240)
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(acdbGetDimStyleId(db.impObj(), utf8_to_wstr(styleName).c_str(), utf8_to_wstr(lockName).c_str()));
@@ -485,7 +485,7 @@ PyDbObjectId DbCore::getDynDimStyleId(PyDbDatabase& db)
 
 boost::python::tuple DbCore::getProxyInfo(const PyDbObject& obj)
 {
-#if defined(_ARXTARGET) && (_ARXTARGET < 250) || (_ZRXTARGET == 240) 
+#if defined(_ARXTARGET) && (_ARXTARGET < 250) || (_ZRXTARGET == 240)  || (_GRXTARGET == 240) 
     PyAutoLockGIL lock;
     RxAutoOutStr dxfName;
     RxAutoOutStr className;

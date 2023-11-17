@@ -274,7 +274,7 @@ void PyDbText::convertFieldToText()
 
 bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 {
-#ifdef _ZRXTARGET 
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -283,7 +283,7 @@ bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 
 boost::python::list PyDbText::getBoundingPoints() const
 {
-#ifdef _ZRXTARGET 
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     AcGePoint3dArray boundingPoints;
@@ -2187,7 +2187,11 @@ AcGePoint3d PyDb2dPolyline::vertexPosition(const AcDb2dVertex& vert) const
 
 void PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
 {
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
+#endif
 }
 
 std::string PyDb2dPolyline::className()
@@ -3248,7 +3252,11 @@ Adesk::Boolean PyDbPolyline::hasWidth() const
 
 void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
 {
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
+#endif
 }
 
 PyGeCompositeCurve3d PyDbPolyline::getAcGeCurve1() const

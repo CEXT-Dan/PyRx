@@ -45,7 +45,11 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acdbModelerStart();
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+        acedRegisterOnIdleWinMsg(GRXOnIdleMsgFnOnce);
+#else
         acedRegisterOnIdleWinMsg(AcedOnIdleMsgFnOnce);
+#endif
         acrxLockApplication(pkt);
         PyRxApp::instance().appPkt = pkt;
         return (retCode);
@@ -130,6 +134,19 @@ public:
             acutPrintf(_T("\nPyInit Failed"));
         acedRemoveOnIdleWinMsg(AcedOnIdleMsgFnOnce);
     }
+
+    static void GRXOnIdleMsgFnOnce()
+    {
+        static bool doneOnce = false;
+        if (!doneOnce)
+        {
+            PRINTVER();
+            if (!PyRxApp::instance().init())
+                acutPrintf(_T("\nPyInit Failed"));
+            doneOnce = true;
+        }
+    }
+
 
     static AcString GETVER()
     {
@@ -471,10 +488,15 @@ public:
             acutPrintf(_T("\nOops, something went wrong: "));
         }
     }
+
 #ifdef _ZRXTARGET 
-    static int zds_pyload(void)
-#else
-    static int ads_pyload(void)
+        static int zds_pyload(void)
+#endif
+#ifdef _GRXTARGET 
+        static int gds_pyload(void)
+#endif
+#ifdef _ARXTARGET 
+        static int ads_pyload(void)
 #endif
     {
         std::filesystem::path pysyspath;
@@ -501,9 +523,14 @@ public:
         return RSRSLT;
     }
 
+
 #ifdef _ZRXTARGET 
     static int zds_pyloaded(void)
-#else
+#endif
+#ifdef _GRXTARGET 
+    static int gds_pyloaded(void)
+#endif
+#ifdef _ARXTARGET 
     static int ads_pyloaded(void)
 #endif
     {

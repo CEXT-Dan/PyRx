@@ -66,12 +66,8 @@ static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
     return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
 #endif
 
-#ifdef _ZRXTARGET
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     return boost::shared_ptr<AcCellRange>(new AcCellRange());
-#endif
-
-#ifdef _BRXTARGET
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
 #endif
 }
 
@@ -81,17 +77,13 @@ static boost::shared_ptr<AcCellRange> AcCellRangeInit2(int tr, int lc, int br, i
     return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr , lc, br, rc });
 #endif
 
-#ifdef _ZRXTARGET
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     AcCellRange range;
     range.mnTopRow = tr;
     range.mnLeftColumn = lc;
     range.mnBottomRow = br;
     range.mnRightColumn = rc;
     return boost::shared_ptr<AcCellRange>(new AcCellRange(range));
-#endif
-
-#ifdef _BRXTARGET
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
 #endif
 }
 

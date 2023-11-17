@@ -334,13 +334,10 @@ void PyCAdUiPaletteSet::updateTabs()
 
 COLORREF PyCAdUiPaletteSet::paletteBackgroundColor() const
 {
-#ifdef _BRXTARGET 
-    return RGB(45, 48, 53);
-#endif
-#ifdef _ZRXTARGET 
+
+#ifndef _ARXTARGET
     return RGB(49, 56, 66);
-#endif
-#ifdef _ARXTARGET
+#else
     auto theme = impObj()->GetTheme();
     if (theme == nullptr) [[unlikely]] {
         throw PyNullObject();

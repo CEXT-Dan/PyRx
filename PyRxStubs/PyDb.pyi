@@ -29895,10 +29895,10 @@ class JoinEntityPE:
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def joinEntities (self: RxClass,primaryEntity : PyDb.Entity,secondaryEntities : list[PyDb.Entity],tol : PyGe.Tol=default)-> list :
+    def joinEntities (self: JoinEntityPE,primaryEntity : PyDb.Entity,secondaryEntities : list[PyDb.Entity],tol : PyGe.Tol=default)-> list :
       '''                             '''
     ...
-    def joinEntity (self: RxClass,primaryEntity : PyDb.Entity,secondaryEntity : PyDb.Entity,tol : PyGe.Tol=default)-> bool :
+    def joinEntity (self: JoinEntityPE,primaryEntity : PyDb.Entity,secondaryEntity : PyDb.Entity,tol : PyGe.Tol=default)-> bool :
       '''                             '''
     ...
     def keepAlive (self: RxObject,flag:bool)-> None :
