@@ -88,10 +88,12 @@ void makePyCAdUiPaletteSetWrapper()
 }
 
 PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name)
-    : m_pyImp(nullptr)
 {
     CAcModuleResourceOverride resourceOverride;
     m_pyImp.reset(new PyCAdUiPaletteSetImpl(this));
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+    return;
+#endif
     impObj()->SetName(utf8_to_wstr(name).c_str());
 
 #ifdef NEVER  //TODO, test if this is the case!
@@ -105,6 +107,9 @@ PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name, const std::string&
 {
     CAcModuleResourceOverride resourceOverride;
     m_pyImp.reset(new PyCAdUiPaletteSetImpl(this));
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+    return;
+#endif
     impObj()->SetName(utf8_to_wstr(name).c_str());
 
     GUID id;
