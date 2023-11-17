@@ -9,15 +9,13 @@ int PyLispService::execLispFunc()
 {
     try
     {
-        PyAutoLockGIL lock;
         const int fcode = acedGetFunCode();
         if (fcode == -1 || fcode == RTERROR)
             return RSERR;
-
         const auto& lisplispService = PyRxApp::instance().lispService;
         if (lisplispService.lispFuncCodes.contains(fcode))
         {
-            WxPyAutoLock lock;
+            PyAutoLockGIL lock;
             auto method = lisplispService.lispFuncCodes.at(fcode);
             if (PyCallable_Check(method))
             {
