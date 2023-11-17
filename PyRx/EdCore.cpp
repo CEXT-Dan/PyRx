@@ -18,12 +18,20 @@
 using namespace boost::python;
 
 
-#ifdef GRXAPP
+
 void                            ads_regen(void);
-#endif 
+
+#ifdef ZRXAPP
+int                             zcedEvaluateLisp(ACHAR const* str, resbuf*& result);
+#endif
+
+#ifdef GRXAPP
+int                             gcedEvaluateLisp(ACHAR const* str, resbuf*& result);
+#endif
 
 #ifdef ARXAPP
-void                            ads_regen(void);
+int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
+int                             acedEvaluateDiesel(const ACHAR*, ACHAR*, size_t);
 EXTERN_C void                   acedLoadJSScript(const ACHAR* pUriOfJSFile);
 EXTERN_C bool                   acedGetPredefinedPattens(AcStringArray& patterns);
 EXTERN_C Acad::ErrorStatus      acedSetUndoMark(bool);
@@ -31,8 +39,8 @@ EXTERN_C void                   acedGetCommandPromptString(CString&);
 EXTERN_C void                   acedDropOpenFile(const ACHAR*);
 extern void                     acedGetLastCommandLines(AcStringArray&, int, bool);
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
-int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
-int                             acedEvaluateDiesel(const ACHAR*, ACHAR*, size_t);
+//int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
+//int                             acedEvaluateDiesel(const ACHAR*, ACHAR*, size_t);
 bool                            acedLoadMainMenu(const ACHAR*);
 
 //acedLinetypeDialog()
@@ -444,9 +452,9 @@ void EdCore::enableUsrbrk()
 
 boost::python::list EdCore::evaluateLisp(const std::string& str)
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240
+    //#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
-#else
+    //#else
     int np = 0;
     for (const auto item : str)
     {
@@ -467,10 +475,18 @@ boost::python::list EdCore::evaluateLisp(const std::string& str)
         PyThrowBadEs(eInvalidInput);
     }
     resbuf* pRb = nullptr;
+#ifdef _ZRXTARGET 
+    zcedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
+#endif
+#ifdef _GRXTARGET 
+    gcedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
+#endif
+#ifdef _ARXTARGET 
     acedEvaluateLisp(utf8_to_wstr(str).c_str(), pRb);
+#endif
     AcResBufPtr pSafeRb(pRb);
     return resbufToList(pRb);
-#endif
+    //#endif
 }
 
 std::string EdCore::evaluateDiesel(const std::string& str)

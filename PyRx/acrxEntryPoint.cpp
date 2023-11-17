@@ -248,6 +248,7 @@ public:
 
     static void loadCommands(PyRxMethod& method, const std::filesystem::path& pyPath, const AcString& moduleName)
     {
+        auto& rxApp = PyRxApp::instance();
         PyObject* pKey = nullptr, * pValue = nullptr;
         for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
         {
@@ -258,20 +259,21 @@ public:
                 if (PyFunction_Check(pValue))
                 {
                     const int commandFlags = PyCmd::getCommandFlags(pValue);
-                    PyRxApp::instance().commands.emplace(commandName, pValue);
-                    PyRxApp::instance().pathForCommand.emplace(commandName, pyPath);
+                    rxApp.commands.emplace(commandName, pValue);
+                    rxApp.pathForCommand.emplace(commandName, pyPath);
                     acedRegCmds->addCommand(formatFileNameforCommandGroup(moduleName), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
                 }
             }
             if (key.find(PyLispFuncPrefix) != -1)
             {
-                PyRxApp::instance().lispService.tryAddFunc(key, pValue);
+                rxApp.lispService.tryAddFunc(key, pValue);
             }
         }
     }
 
     static void reloadCommands(PyRxMethod& method, const std::filesystem::path& pypath, const AcString& moduleName)
     {
+        auto& rxApp = PyRxApp::instance();
         PyObject* pKey = nullptr, * pValue = nullptr;
         for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
         {
@@ -281,29 +283,30 @@ public:
                 const AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1).makeUpper();
                 if (PyFunction_Check(pValue))
                 {
-                    if (PyRxApp::instance().commands.contains(commandName))
+                    if (rxApp.commands.contains(commandName))
                     {
-                        PyRxApp::instance().commands[commandName] = pValue;
+                        rxApp.commands[commandName] = pValue;
                     }
                     else
                     {
                         const int commandFlags = PyCmd::getCommandFlags(pValue);
-                        PyRxApp::instance().commands.emplace(commandName, pValue);
-                        PyRxApp::instance().pathForCommand.emplace(commandName, pypath);
+                        rxApp.commands.emplace(commandName, pValue);
+                        rxApp.pathForCommand.emplace(commandName, pypath);
                         acedRegCmds->addCommand(formatFileNameforCommandGroup(moduleName), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
                     }
                 }
             }
             if (key.find(PyLispFuncPrefix) != -1)
             {
-                PyRxApp::instance().lispService.tryAddFunc(key, pValue);
+                rxApp.lispService.tryAddFunc(key, pValue);
             }
         }
     }
 
     static bool doPyLoad(AcString& pathName, AcString& moduleName, std::filesystem::path& pypath, bool silent = false)
     {
-        if (PyRxApp::instance().funcNameMap.contains(moduleName))
+        auto& rxApp = PyRxApp::instance();
+        if (rxApp.funcNameMap.contains(moduleName))
         {
             acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)moduleName);
             return true;
@@ -316,7 +319,7 @@ public:
             method.mdict = PyModule_GetDict(method.mod.get());
             loadPyAppReactors(method);
             loadCommands(method, pypath, moduleName);
-            PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
+            rxApp.funcNameMap.emplace(moduleName, std::move(method));
             if (!silent)
             {
                 acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
@@ -332,29 +335,30 @@ public:
                 return false;
             }
             acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)moduleName);
-            PyRxApp::instance().funcNameMap.erase(moduleName);
+            rxApp.funcNameMap.erase(moduleName);
         }
         return false;
     }
 
     static void doPyReload(AcString& pathName, AcString& moduleName, std::filesystem::path& pysyspath)
     {
-        if (PyRxApp::instance().funcNameMap.contains(moduleName))
+        auto& rxApp = PyRxApp::instance();
+        if (rxApp.funcNameMap.contains(moduleName))
         {
-            PyRxMethod& method = PyRxApp::instance().funcNameMap.at(moduleName);
+            PyRxMethod& method = rxApp.funcNameMap.at(moduleName);
             method.mod.reset(PyImport_ReloadModule(method.mod.get()));
             if (method.mod != nullptr)
             {
                 method.mdict = PyModule_GetDict(method.mod.get());
                 loadPyAppReactors(method);
                 reloadCommands(method, pysyspath, moduleName);
-                PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
+                rxApp.funcNameMap.emplace(moduleName, std::move(method));
                 acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)moduleName);
                 onLoadPyModule(moduleName);
             }
             else
             {
-                PyRxApp::instance().funcNameMap.erase(moduleName);
+                rxApp.funcNameMap.erase(moduleName);
                 if (PyErr_Occurred() != NULL)
                 {
                     acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
@@ -438,15 +442,16 @@ public:
     {
         if (curDoc() != nullptr)
         {
+            auto& rxApp = PyRxApp::instance();
             const AcString cmdName = commandForCurDocument();
-            if (PyRxApp::instance().commands.contains(cmdName))
+            if (rxApp.commands.contains(cmdName))
             {
                 try
                 {
-                    if (PyRxApp::instance().pathForCommand.contains(cmdName))
-                        std::filesystem::current_path(PyRxApp::instance().pathForCommand.at(cmdName));
+                    if (rxApp.pathForCommand.contains(cmdName))
+                        std::filesystem::current_path(rxApp.pathForCommand.at(cmdName));
 
-                    PyObject* pMethod = PyRxApp::instance().commands.at(cmdName);
+                    PyObject* pMethod = rxApp.commands.at(cmdName);
                     if (pMethod != nullptr)
                     {
                         WxPyAutoLock lock;
@@ -555,8 +560,8 @@ public:
 //-----------------------------------------------------------------------------
 #pragma warning( disable: 4838 )
 IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_TRANSPARENT, NULL)
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_SESSION, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_SESSION, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
