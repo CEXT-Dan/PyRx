@@ -106,6 +106,7 @@ int PyLispService::execLispFunc()
 
 bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
 {
+    constexpr const int startFunCode = 16383;
     WxPyAutoLock lock;
     const AcString lispFuncName = pythonFuncName.substr(PyLispFuncPrefix.length(), pythonFuncName.length() - 1);
     if (PyFunction_Check(method))
@@ -117,12 +118,12 @@ bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
         }
         else
         {
-            const funcode code = lispFuncCodes.size() + 1;
+            const funcode code = lispFuncCodes.size() + startFunCode;
             lispFuncs.emplace(lispFuncName, code);
             lispFuncCodes.emplace(code, method);
-            if (int res = acedDefun(lispFuncName, code); res != RTNORM)
+            if (int res = acedDefunEx(lispFuncName, lispFuncName, code); res != RTNORM)
                 acutPrintf(_T("\nFailed @ tryAddFunc acedDefun"));
-            if (int res = ads_regfunc(PyLispService::execLispFunc, code); res != RTNORM)
+            if (int res = acedRegFunc(PyLispService::execLispFunc, code); res != RTNORM)
                 acutPrintf(_T("\nFailed @ tryAddFunc ads_regfunc"));
         }
         return lispFuncs.size() == lispFuncCodes.size();
@@ -136,9 +137,9 @@ void PyLispService::On_kLoadDwgMsg()
     {
         for (const auto& item : lispFuncs)
         {
-            if (int res = acedDefun(item.first, item.second);  res != RTNORM)
+            if (int res = acedDefunEx(item.first, item.first, item.second);  res != RTNORM)
                 acutPrintf(_T("\nFailed @ On_kLoadDwgMsg acedDefun"));
-            if (int res = ads_regfunc(PyLispService::execLispFunc, item.second); res != RTNORM)
+            if (int res = acedRegFunc(PyLispService::execLispFunc, item.second); res != RTNORM)
                 acutPrintf(_T("\nFailed @ On_kLoadDwgMsg ads_regfunc"));
         }
     }
