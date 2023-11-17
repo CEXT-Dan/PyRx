@@ -107,7 +107,7 @@ void makePyCmEntityColorWrapper()
     PyDocString DS("EntityColor");
     class_<AcCmEntityColor>("EntityColor")
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>())
-#ifdef _ZRXTARGET
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(AcCmEntityColor::ColorMethod)>("setColorMethod", &AcCmEntityColor::setColorMethod)
         .def<AcCmEntityColor::ColorMethod(AcCmEntityColor::*)()const>("colorMethod", &AcCmEntityColor::colorMethod)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::UInt32)>("setColor", &AcCmEntityColor::setColor)
@@ -136,9 +136,11 @@ void makePyCmEntityColorWrapper()
         .def<bool(AcCmEntityColor::*)()const>("isNone", &AcCmEntityColor::isNone)
         .def<bool(AcCmEntityColor::*)()const>("isLayerFrozenOrOff", &AcCmEntityColor::isLayerFrozenOrOff)
         .def<Adesk::UInt32(AcCmEntityColor::*)()const>("trueColor", &AcCmEntityColor::trueColor)
+#if defined(_GRXTARGET) && (_ZRXTARGET > 240)
         .def<Adesk::UInt8(AcCmEntityColor::*)()const>("trueColorMethod", &AcCmEntityColor::trueColorMethod)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)()>("setTrueColor", &AcCmEntityColor::setTrueColor)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)()>("setTrueColorMethod", &AcCmEntityColor::setTrueColorMethod)
+#endif
 #else
         .def("setNone", &AcCmEntityColor::setNone,DS.ARGS())
         .def("setByBlock", &AcCmEntityColor::setByBlock, DS.ARGS())

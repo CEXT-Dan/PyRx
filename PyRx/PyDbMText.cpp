@@ -341,7 +341,7 @@ boost::python::list PyDbMText::getBoundingPoints() const
 
 boost::python::list PyDbMText::getBoundingPointsByLine() const
 {
-#ifdef _ZRXTARGET 
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -356,7 +356,7 @@ boost::python::list PyDbMText::getBoundingPointsByLine() const
 
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 {
-#ifdef _ZRXTARGET 
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);

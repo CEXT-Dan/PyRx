@@ -8,7 +8,7 @@ class AcDbJoinEntityPE;
 //PyDbJoinEntityPE
 void makePyDbJoinEntityPEWrapper();
 
-#ifndef _ZRXTARGET 
+#if _ZRXTARGET > 240 || _GRXTARGET > 240
 class PyDbJoinEntityPE : public PyRxObject
 {
 public:

@@ -138,6 +138,25 @@
 #pragma comment( lib , "AcMPolygonObj.lib" )
 #endif
 
+#if defined(_GRXTARGET)
+#pragma comment( lib , "gcad.lib" )
+#pragma comment( lib , "gcbase.lib" )
+#pragma comment( lib , "gcbr.lib" )
+#pragma comment( lib , "gccore.lib" )
+#pragma comment( lib , "gcdb.lib" )
+#pragma comment( lib , "GcDbConstraints.lib" )
+#pragma comment( lib , "GcDbPointCloudObj.lib" )
+#pragma comment( lib , "gcdyn.lib" )
+#pragma comment( lib , "GcGeolocationObj.lib" )
+#pragma comment( lib , "gcgs.lib" )
+#pragma comment( lib , "GcHlrApi.lib" )
+#pragma comment( lib , "GcImaging.lib" )
+#pragma comment( lib , "GcModelDocObj.lib" )
+#pragma comment( lib , "gplot.lib" )
+#pragma comment( lib , "gcax.lib" )
+#endif
+
+
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
 static inline const AcString PyLispFuncPrefix = _T("PyRxLisp_");
 static inline const AcString PyCommandFlagPrefix = _T("cmdflags=");

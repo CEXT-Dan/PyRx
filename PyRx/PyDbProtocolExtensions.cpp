@@ -8,7 +8,7 @@
 using namespace boost::python;
 void makePyDbJoinEntityPEWrapper()
 {
-#ifndef _ZRXTARGET 
+#if _ZRXTARGET > 240 || _GRXTARGET > 240
     PyDocString DS("JoinEntityPE");
     class_<PyDbJoinEntityPE, bases<PyRxObject>>("JoinEntityPE", boost::python::no_init)
         .def(init<const PyRxObject&>())
@@ -22,7 +22,7 @@ void makePyDbJoinEntityPEWrapper()
 #endif
 }
 
-#ifndef _ZRXTARGET 
+#if _ZRXTARGET > 240 || _GRXTARGET > 240
 PyDbJoinEntityPE::PyDbJoinEntityPE(const PyRxObject& PE)
     :PyDbJoinEntityPE((AcDbJoinEntityPE*)PE.impObj(), false)
 {

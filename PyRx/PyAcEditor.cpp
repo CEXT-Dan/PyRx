@@ -11,6 +11,10 @@
 
 using namespace boost::python;
 
+#ifdef GRXAPP
+void ads_regen(void);
+#endif
+
 #ifdef ARXAPP
 void ads_regen(void);
 
@@ -296,7 +300,7 @@ boost::python::tuple PyAcEditor::nEntSelP2(const std::string& prompt, const AcGe
 
 static boost::python::tuple nEntSelPEx(const std::string& prompt, const AcGePoint3d& ptres, int opt, unsigned int uTransSpaceFlag)
 {
-#ifdef _ZRXTARGET 
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;

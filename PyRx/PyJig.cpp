@@ -10,7 +10,6 @@ using namespace boost::python;
 //-----------------------------------------------------------------------------------------------------------------------------------
 void makePyEdJigWrapper()
 {
-
     class_<PyJig, boost::noncopyable>("Jig", boost::python::no_init)
         .def(init<const PyDbEntity&>())
         .def("drag", &PyJig::dragwr1)
@@ -186,7 +185,7 @@ void PyJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyJig::acquireStringWr()
 {
-#ifdef _ZRXTARGET 
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     PyAutoLockGIL lock; 
     wchar_t value[2049];
     auto result = this->acquireString(value);
@@ -199,7 +198,6 @@ boost::python::tuple PyJig::acquireStringWr()
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
 #endif
- 
 }
 
 boost::python::tuple PyJig::acquireAngleWr1()
@@ -377,7 +375,7 @@ void PyDrawJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyDrawJig::acquireStringWr()
 {
-#ifdef _ZRXTARGET 
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     PyAutoLockGIL lock;
     wchar_t value[2049];
     auto result = this->acquireString(value);

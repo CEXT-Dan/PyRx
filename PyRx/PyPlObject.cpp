@@ -561,7 +561,7 @@ void PyPlDSDData::setPromptForPassword(bool bPromptForPassword)
 
 bool PyPlDSDData::initializeLayouts() const
 {
-#ifdef _ZRXTARGET 
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #endif
 
@@ -577,7 +577,7 @@ bool PyPlDSDData::initializeLayouts() const
 
 void PyPlDSDData::setInitializeLayouts(bool initLayouts)
 {
-#ifdef _ZRXTARGET 
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #endif
 
@@ -745,12 +745,16 @@ void PyPlDSDEntry::setSetupType(AcPlDSDEntry::SetupType eType)
 
 std::string PyPlDSDEntry::orgSheetPath() const
 {
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+    throw PyNotimplementedByHost();
+#else
     return wstr_to_utf8(impObj()->orgSheetPath());
+#endif
 }
 
 std::string PyPlDSDEntry::traceSession() const
 {
-#ifdef _ZRXTARGET 
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #endif
 
@@ -1582,12 +1586,21 @@ void PyPlPlotConfigInfo::setDeviceType(DeviceType devType)
 
 std::string PyPlPlotConfigInfo::deviceId() const
 {
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+    throw PyNotimplementedByHost();
+#else
     return wstr_to_utf8(impObj()->deviceId());
+#endif
 }
 
 void PyPlPlotConfigInfo::setDeviceId(const std::string& pDevId)
 {
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->setDeviceId(utf8_to_wstr(pDevId).c_str());
+#endif
+
 }
 
 PyRxClass PyPlPlotConfigInfo::desc()
