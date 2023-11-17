@@ -494,7 +494,7 @@ public:
     }
 
 #ifdef _ZRXTARGET 
-        static int zds_pyload(void)
+    static int zds_pyload(void)
 #endif
 #ifdef _GRXTARGET 
         static int gds_pyload(void)
@@ -503,6 +503,7 @@ public:
         static int ads_pyload(void)
 #endif
     {
+        acutPrintf(_T("%ld"), acedGetFunCode());
         std::filesystem::path pysyspath;
         std::filesystem::path pypath;
         AcString pathName;
@@ -532,12 +533,13 @@ public:
     static int zds_pyloaded(void)
 #endif
 #ifdef _GRXTARGET 
-    static int gds_pyloaded(void)
+        static int gds_pyloaded(void)
 #endif
 #ifdef _ARXTARGET 
-    static int ads_pyloaded(void)
+        static int ads_pyloaded(void)
 #endif
     {
+        acutPrintf(_T("%ld"), acedGetFunCode());
         AcResBufPtr pArgs(acutNewRb(RTSTR));
         resbuf* pTail = pArgs.get();
         for (auto& item : PyRxApp::instance().funcNameMap)
@@ -551,8 +553,30 @@ public:
     }
 
 #ifdef PYRXDEBUG
+    static int execLispFunc()
+    {
+        const int fcode = acedGetFunCode();
+        if (fcode == -1 || fcode == RTERROR)
+        {
+            acedRetNil();
+            return RSERR;
+        }
+        else
+        {
+            acedRetT();
+            return RSRSLT;
+        }
+    }
+    //(PYTHONTESTFUNC)
     static void AcRxPyApp_idoit(void)
     {
+        constexpr const int startFunCode = 16383;
+        if (int res = acedDefunEx(_T("PYTHONTESTFUNC"), _T("PYTHONTESTFUNC"), startFunCode); res != RTNORM)
+            acutPrintf(_T("\nFailed @ tryAddFunc acedDefun"));
+        if (int res = acedRegFunc(AcRxPyApp::execLispFunc, startFunCode); res != RTNORM)
+            acutPrintf(_T("\nFailed @ tryAddFunc ads_regfunc"));
+
+        acutPrintf(_T("\nSuccess, added lisp function (PYTHONTESTFUNC)"));
     }
 #endif
 };
@@ -567,6 +591,6 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyload, false)
 ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, pyloaded, false)
 #ifdef PYRXDEBUG
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _idoit, idoit, ACRX_CMD_SESSION, NULL)
 #endif
 #pragma warning( pop )
