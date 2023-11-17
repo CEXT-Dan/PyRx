@@ -121,7 +121,7 @@ bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
             const funcode code = lispFuncCodes.size() + startFunCode;
             lispFuncs.emplace(lispFuncName, code);
             lispFuncCodes.emplace(code, method);
-            if (int res = acedDefunEx(lispFuncName, lispFuncName, code); res != RTNORM)
+            if (int res = acedDefun(lispFuncName, code); res != RTNORM)
                 acutPrintf(_T("\nFailed @ tryAddFunc acedDefun"));
             if (int res = acedRegFunc(PyLispService::execLispFunc, code); res != RTNORM)
                 acutPrintf(_T("\nFailed @ tryAddFunc ads_regfunc"));
@@ -137,7 +137,7 @@ void PyLispService::On_kLoadDwgMsg()
     {
         for (const auto& item : lispFuncs)
         {
-            if (int res = acedDefunEx(item.first, item.first, item.second);  res != RTNORM)
+            if (int res = acedDefun(item.first, item.second);  res != RTNORM)
                 acutPrintf(_T("\nFailed @ On_kLoadDwgMsg acedDefun"));
             if (int res = acedRegFunc(PyLispService::execLispFunc, item.second); res != RTNORM)
                 acutPrintf(_T("\nFailed @ On_kLoadDwgMsg ads_regfunc"));
