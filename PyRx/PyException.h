@@ -3,6 +3,15 @@
 
 static std::string appHostName()
 {
+#ifdef _ZRXTARGET 
+    return "ZRX";
+#endif
+#ifdef _GRXTARGET 
+    return "GRX";
+#endif
+#ifdef _BRXTARGET 
+    return "BRX";
+#endif
     return "ARX";
 }
 
