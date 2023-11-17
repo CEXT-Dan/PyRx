@@ -571,11 +571,10 @@ public:
     static void AcRxPyApp_idoit(void)
     {
         constexpr const int startFunCode = 16383;
-        if (int res = acedDefunEx(_T("PYTHONTESTFUNC"), _T("PYTHONTESTFUNC"), startFunCode); res != RTNORM)
+        if (int res = acedDefun(_T("PYTHONTESTFUNC"), startFunCode); res != RTNORM)
             acutPrintf(_T("\nFailed @ tryAddFunc acedDefun"));
         if (int res = acedRegFunc(AcRxPyApp::execLispFunc, startFunCode); res != RTNORM)
             acutPrintf(_T("\nFailed @ tryAddFunc ads_regfunc"));
-
         acutPrintf(_T("\nSuccess, added lisp function (PYTHONTESTFUNC)"));
     }
 #endif
