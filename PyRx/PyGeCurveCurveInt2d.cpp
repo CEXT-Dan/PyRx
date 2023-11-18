@@ -17,8 +17,8 @@ void makePyGeCurveCurveInt2dWrapper()
         .def(init<const PyGeCurve2d&, const PyGeCurve2d&, const AcGeTol&>())
         .def(init<const PyGeCurve2d&, const PyGeCurve2d&, const PyGeInterval&, const PyGeInterval&>())
         .def(init<const PyGeCurve2d&, const PyGeCurve2d&, const PyGeInterval&, const PyGeInterval&, const AcGeTol&>())
-        .def("curve1", &PyGeCurveCurveInt2d::curve1)
-        .def("curve2", &PyGeCurveCurveInt2d::curve2)
+        .def("curve1", &PyGeCurveCurveInt2d::curve1)//not overload
+        .def("curve2", &PyGeCurveCurveInt2d::curve2)//not overload
         .def("getIntRanges", &PyGeCurveCurveInt2d::getIntRanges)
         .def("tolerance", &PyGeCurveCurveInt2d::tolerance)
         .def("numIntPoints", &PyGeCurveCurveInt2d::numIntPoints)
@@ -34,8 +34,8 @@ void makePyGeCurveCurveInt2dWrapper()
         .def("overlapDirection", &PyGeCurveCurveInt2d::overlapDirection)
         .def("getOverlapRanges", &PyGeCurveCurveInt2d::getOverlapRanges)
         .def("changeCurveOrder", &PyGeCurveCurveInt2d::changeCurveOrder)
-        .def("orderWrt1", &PyGeCurveCurveInt2d::orderWrt1)
-        .def("orderWrt2", &PyGeCurveCurveInt2d::orderWrt2)
+        .def("orderWrt1", &PyGeCurveCurveInt2d::orderWrt1)//not overload
+        .def("orderWrt2", &PyGeCurveCurveInt2d::orderWrt2)//not overload
         .def("cast", &PyGeCurveCurveInt2d::cast).staticmethod("cast")
         .def("copycast", &PyGeCurveCurveInt2d::copycast).staticmethod("copycast")
         .def("className", &PyGeCurveCurveInt2d::className).staticmethod("className")

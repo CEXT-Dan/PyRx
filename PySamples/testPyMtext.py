@@ -14,6 +14,7 @@ def PyRxCmd_pycreate_mtext():
         db = Ap.Application().docManager().curDocument().database()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         mtext = Db.MText()
+        mtext.setDatabaseDefaults(db)
         mtext.setLocation(Ge.Point3d(100,100,0))
         mtext.setContents("This is a test")
         print(mtext.contents())
