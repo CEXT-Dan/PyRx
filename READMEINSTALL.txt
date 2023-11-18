@@ -17,3 +17,7 @@ Installs a .bundle in %ProgramData\Autodesk\ApplicationPlugins\PyRx.bundle
 
 win32com must be installed if you would like to use the ActiveX libraries
 pip install pywin32
+
+****ZwCAD and GstarCAD****
+ZRX and GRX libraries are installed in same folder. Use the appload command and navigate to load the files. 
+The GRX / ZRX modules may be moved to another location 

@@ -1,6 +1,12 @@
 Python (cPython)
+
 bindings for AutoCAD® ObjectARX® 2021-2024
+bindings for ZwCAD® ZRX® 2024
+bindings for GstarCAD® GRX® 2024
+
 bindings for AutoCAD® ActiveX  2021-2024
+** ActiveX bindings for ZwCAD and GstarCAD are on the TODO list
+
 uses wxPython for the GUI, Dialogs and CAdUiPalette wrapper
 
 Embeds Python (3.10.10) and wxPython(4.2.0) into a loadable ARX module
@@ -8,7 +14,7 @@ Embeds Python (3.10.10) and wxPython(4.2.0) into a loadable ARX module
 Get the latest build from https://github.com/CEXT-Dan/PyRx/releases
 or https://github.com/CEXT-Dan/PyRx/tags
 
-On loading the ARX module, the following commands are added to AutoCAD
+On loading the ARX/GRX/ZRX module, the following commands are added to AutoCAD
 PYLOAD: 
 Use this command to load your python modules.
 
