@@ -106,8 +106,8 @@ int PyLispService::execLispFunc()
 
 bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
 {
-    constexpr const int startFunCode = 16383;
     WxPyAutoLock lock;
+    constexpr const int startFunCode = 16383;
     const AcString lispFuncName = pythonFuncName.substr(PyLispFuncPrefix.length(), pythonFuncName.length() - 1);
     if (PyFunction_Check(method))
     {
