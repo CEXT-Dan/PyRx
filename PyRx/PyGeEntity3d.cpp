@@ -32,11 +32,9 @@ void makePyGeEntity3dWrapper()
         ;
 }
 
-//AcGeSurfSurfInt returns const AcGeSurface*
-//we don't want to delete this, hence this
-struct PyGeObjectDeleter
+struct PyGePyGeEntity3dDeleter
 {
-    inline PyGeObjectDeleter(bool autoDelete)
+    inline PyGePyGeEntity3dDeleter(bool autoDelete)
         : m_autoDelete(autoDelete)
     {
     }
@@ -54,12 +52,12 @@ struct PyGeObjectDeleter
 };
 
 PyGeEntity3d::PyGeEntity3d(AcGeEntity3d* pEnt)
-    : m_imp(pEnt, PyGeObjectDeleter(true))
+    : m_imp(pEnt, PyGePyGeEntity3dDeleter(true))
 {
 }
 
 PyGeEntity3d::PyGeEntity3d(const AcGeEntity3d* pEnt)
-    : m_imp(const_cast<AcGeEntity3d*>(pEnt), PyGeObjectDeleter(false))
+    : m_imp(const_cast<AcGeEntity3d*>(pEnt), PyGePyGeEntity3dDeleter(false))
 {
 }
 

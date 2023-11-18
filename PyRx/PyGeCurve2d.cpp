@@ -75,6 +75,11 @@ PyGeCurve2d::PyGeCurve2d(AcGeEntity2d* pEnt)
 {
 }
 
+PyGeCurve2d::PyGeCurve2d(const AcGeEntity2d* pEnt)
+    : PyGeEntity2d(pEnt)
+{
+}
+
 PyGeInterval PyGeCurve2d::getInterval() const
 {
     AcGeInterval iv;

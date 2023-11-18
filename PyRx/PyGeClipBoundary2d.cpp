@@ -32,7 +32,7 @@ PyGeClipBoundary2d::PyGeClipBoundary2d(const AcGePoint2d& cornerA, const AcGePoi
 }
 
 PyGeClipBoundary2d::PyGeClipBoundary2d(const boost::python::list& clipBoundary)
-    : PyGeEntity2d(nullptr)
+    : PyGeEntity2d()
 {
     PyAutoLockGIL lock;
     auto vec = py_list_to_std_vector<AcGePoint2d>(clipBoundary);
