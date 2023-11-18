@@ -98,8 +98,8 @@ public:
         const  PyGeInterval& height,
         double startAngle, double endAngle);
 
-    Adesk::Boolean      intersectWith1(const PyGeLinearEnt3d& linEnt) const;
-    Adesk::Boolean      intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const;
+    boost::python::tuple intersectWith1(const PyGeLinearEnt3d& linEnt) const;
+    boost::python::tuple intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const;
 
     static PyGeCone     cast(const PyGeEntity3d& src);
     static PyGeCone     copycast(const PyGeEntity3d& src);

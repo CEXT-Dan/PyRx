@@ -367,7 +367,7 @@ void PyGeCone::set2(double cosineAngle, double sineAngle, const AcGePoint3d& bas
     impObj()->set(cosineAngle, sineAngle, baseCenter, baseRadius, axisOfSymmetry, refAxis, height.imp, startAngle, endAngle);
 }
 
-Adesk::Boolean PyGeCone::intersectWith1(const PyGeLinearEnt3d& linEnt) const
+boost::python::tuple PyGeCone::intersectWith1(const PyGeLinearEnt3d& linEnt) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -377,7 +377,7 @@ Adesk::Boolean PyGeCone::intersectWith1(const PyGeLinearEnt3d& linEnt) const
     return boost::python::make_tuple(intn, p1, p2);
 }
 
-Adesk::Boolean PyGeCone::intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const
+boost::python::tuple PyGeCone::intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     int intn = 0;
@@ -386,7 +386,6 @@ Adesk::Boolean PyGeCone::intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& 
     impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2, tol);
     return boost::python::make_tuple(intn, p1, p2);
 }
-
 
 PyGeCone PyGeCone::cast(const PyGeEntity3d& src)
 {
