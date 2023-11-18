@@ -10,7 +10,7 @@ import timeit
 #run this before release!!!
 #PySamples\dwg\TestPoints.dwg
 
-import AxApp24 as Ax
+#import AxApp24 as Ax
 
 # calls Db.Point.desc() every loop
 def move_points_old():
@@ -57,17 +57,17 @@ def move_points_new():
         ent.transformBy(mat)
 
 
-theApp = Ax.getApp()
+# theApp = Ax.getApp()
 
-def move_points_com():
+# def move_points_com():
     
-        mat = Ge.Matrix3d()
-        mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
-        comMat = mat.toList()
+#         mat = Ge.Matrix3d()
+#         mat.setToTranslation(Ge.Point3d(100, 100, 0).asVector())
+#         comMat = mat.toList()
 
-        for ent in theApp.ActiveDocument.ModelSpace:
-            if ent.ObjectName == "AcDbPoint":
-                ent.TransformBy(comMat)
+#         for ent in theApp.ActiveDocument.ModelSpace:
+#             if ent.ObjectName == "AcDbPoint":
+#                 ent.TransformBy(comMat)
 
 
 print("OldTest:..")
@@ -83,7 +83,7 @@ def PyRxCmd_pyperftest():
         print("test move_points_new....\t time = {}".format(timeit.timeit(move_points_new, number=20)))
         print("test move_points........\t time = {}".format(timeit.timeit(move_points, number=20)))
         print("test move_points_old....\t time = {}".format(timeit.timeit(move_points_old, number=20)))
-        print("test move_points_com....\t time = {}".format(timeit.timeit(move_points_com, number=20)))
+        #print("test move_points_com....\t time = {}".format(timeit.timeit(move_points_com, number=20)))
     except Exception as err:
         print(err)
 
