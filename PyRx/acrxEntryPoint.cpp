@@ -32,6 +32,14 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
+#if _ZRXTARGET > 1
+#define ADSPREFIX(x) zds_ ## x
+#elif _GRXTARGET > 1
+#define ADSPREFIX(x) gds_ ## x
+#else
+#define ADSPREFIX(x) ads_ ## x
+#endif
+
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
@@ -493,15 +501,7 @@ public:
         }
     }
 
-#ifdef _ZRXTARGET 
-    static int zds_pyload(void)
-#endif
-#ifdef _GRXTARGET 
-        static int gds_pyload(void)
-#endif
-#ifdef _ARXTARGET 
-        static int ads_pyload(void)
-#endif
+    static int ADSPREFIX(pyload(void))
     {
         acutPrintf(_T("%ld"), acedGetFunCode());
         std::filesystem::path pysyspath;
@@ -528,16 +528,7 @@ public:
         return RSRSLT;
     }
 
-
-#ifdef _ZRXTARGET 
-    static int zds_pyloaded(void)
-#endif
-#ifdef _GRXTARGET 
-        static int gds_pyloaded(void)
-#endif
-#ifdef _ARXTARGET 
-        static int ads_pyloaded(void)
-#endif
+    static int ADSPREFIX(pyloaded(void))
     {
         acutPrintf(_T("%ld"), acedGetFunCode());
         AcResBufPtr pArgs(acutNewRb(RTSTR));
