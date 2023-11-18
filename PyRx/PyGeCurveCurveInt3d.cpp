@@ -6,6 +6,7 @@
 
 using namespace boost::python;
 
+//NOTE curve1, curve2 are not overloads
 void makePyGeCurveCurveInt3dWrapper()
 {
     class_<PyGeCurveCurveInt3d, bases<PyGeEntity3d>>("CurveCurveInt3d")
