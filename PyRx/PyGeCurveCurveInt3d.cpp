@@ -135,7 +135,7 @@ PyGePointOnCurve3d PyGeCurveCurveInt3d::getPointOnCurve1(int intNum) const
 PyGePointOnCurve3d PyGeCurveCurveInt3d::getPointOnCurve2(int intNum) const
 {
     AcGePointOnCurve3d pntOnCrv;
-    impObj()->getPointOnCurve1(intNum, pntOnCrv);
+    impObj()->getPointOnCurve2(intNum, pntOnCrv);
     return PyGePointOnCurve3d(pntOnCrv);
 }
 

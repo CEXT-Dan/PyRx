@@ -31,8 +31,32 @@ void makePyGeEntity2dWrapper()
         ;
 }
 
+struct PyGePyGeEntity2dDeleter
+{
+    inline PyGePyGeEntity2dDeleter(bool autoDelete)
+        : m_autoDelete(autoDelete)
+    {
+    }
+
+    inline void operator()(AcGeEntity2d* p) const
+    {
+        if (p == nullptr)
+            return;
+        else if (!m_autoDelete)
+            return;
+        else
+            delete p;
+    }
+    bool m_autoDelete = true;
+};
+
 PyGeEntity2d::PyGeEntity2d(AcGeEntity2d* pEnt)
-    : m_imp(pEnt)
+    : m_imp(pEnt, PyGePyGeEntity2dDeleter(true))
+{
+}
+
+PyGeEntity2d::PyGeEntity2d(const AcGeEntity2d* pEnt)
+  : m_imp(const_cast<AcGeEntity2d*>(pEnt),PyGePyGeEntity2dDeleter(false))
 {
 }
 

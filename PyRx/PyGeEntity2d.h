@@ -11,6 +11,7 @@ protected:
     PyGeEntity2d() = default;
 public:
     PyGeEntity2d(AcGeEntity2d* pEnt);
+    PyGeEntity2d(const AcGeEntity2d* pEnt);
     bool operator==(PyGeEntity2d const& rhs) const;
     bool operator!=(PyGeEntity2d const& rhs) const;
     Adesk::Boolean      isKindOf(AcGe::EntityId entType) const;

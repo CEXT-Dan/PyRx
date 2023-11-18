@@ -11,6 +11,7 @@ class PyGeCurve2d : public PyGeEntity2d
 {
 public:
     PyGeCurve2d(AcGeEntity2d* pEnt);
+    PyGeCurve2d(const AcGeEntity2d* pEnt);
     PyGeInterval            getInterval() const;
     AcGePoint2d             getStartPoint() const;
     AcGePoint2d             getEndPoint() const;
