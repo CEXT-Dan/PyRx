@@ -2049,9 +2049,6 @@ Also known as the population count.
     def kDrawableViewIndependentViewportDraw (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def kThreadedWorldDrawViewportDraw (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...

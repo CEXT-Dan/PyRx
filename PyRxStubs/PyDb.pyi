@@ -9775,15 +9775,6 @@ class Color:
     def entityColor (self: Color)-> PyDb.EntityColor :
       '''                             '''
     ...
-    def getCOLORREF (self: Color)-> int :
-      '''                             '''
-    ...
-    def getRGB (self: Color)-> int :
-      '''                             '''
-    ...
-    def getRGBM (self: Color)-> int :
-      '''                             '''
-    ...
     def green (self: Color)-> int :
       '''                             '''
     ...
@@ -9814,34 +9805,13 @@ class Color:
     def red (self: Color)-> int :
       '''                             '''
     ...
-    def setByBlock (self: Color)-> None :
-      '''                             '''
-    ...
-    def setByLayer (self: Color)-> None :
-      '''                             '''
-    ...
-    def setCOLORREF (self: Color,val : int)-> PyDb.ErrorStatus :
-      '''                             '''
-    ...
     def setColorIndex (self: Color,val : int)-> PyDb.ErrorStatus :
-      '''                             '''
-    ...
-    def setForeground (self: Color)-> None :
-      '''                             '''
-    ...
-    def setLayerOff (self: Color)-> None :
-      '''                             '''
-    ...
-    def setNone (self: Color)-> None :
       '''                             '''
     ...
     def setPenIndex (self: Color,val : int)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def setRGB (self: Color,val : int)-> PyDb.ErrorStatus :
-      '''                             '''
-    ...
-    def setRGBM (self: Color,val : int)-> PyDb.ErrorStatus :
+    def setRGB (self: Color,red : int,green : int,blue : int)-> PyDb.ErrorStatus :
       '''                             '''
     ...
 
@@ -29864,50 +29834,6 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
-class JoinEntityPE:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (RxObject)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyRxObject)'''
-    ...
-    def className ()-> str :
-      '''                             '''
-    ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
-      '''                             '''
-    ...
-    def desc ()-> PyRx.RxClass :
-      '''                             '''
-    ...
-    def dispose (self: RxObject)-> None :
-      '''                             '''
-    ...
-    def implRefCount (self: RxObject)-> int :
-      '''                             '''
-    ...
-    def isA (self: RxObject)-> PyRx.RxClass :
-      '''                             '''
-    ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
-      '''                             '''
-    ...
-    def isNullObj (self: RxObject)-> bool :
-      '''                             '''
-    ...
-    def joinEntities (self: JoinEntityPE,primaryEntity : PyDb.Entity,secondaryEntities : list[PyDb.Entity],tol : PyGe.Tol=default)-> list :
-      '''                             '''
-    ...
-    def joinEntity (self: JoinEntityPE,primaryEntity : PyDb.Entity,secondaryEntity : PyDb.Entity,tol : PyGe.Tol=default)-> bool :
-      '''                             '''
-    ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
-      '''                             '''
-    ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
-      '''                             '''
-    ...
-
 class JoinStyle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -45143,9 +45069,6 @@ Also known as the population count.
       '''None'''
     ...
     def kOsnapCen (self, *args, **kwargs)-> None :
-      '''None'''
-    ...
-    def kOsnapCentroid (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def kOsnapEnd (self, *args, **kwargs)-> None :
