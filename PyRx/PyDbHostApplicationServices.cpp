@@ -293,11 +293,22 @@ std::string PyDbSymUtilServices::viewportActiveName() const
 
 int PyDbSymUtilServices::compareSymbolName(const std::string& thisName, const std::string& otherName) const
 {
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+    if (thisName == otherName)
+        return 0;
+    else if (thisName > otherName)
+        return 1;
+    else
+        return -1;
+#endif
     return imp->compareSymbolName(utf8_to_wstr(thisName).c_str(), utf8_to_wstr(otherName).c_str());
 }
 
 bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
 {
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+    return name.find('|') != std::string::npos;
+#endif
     return imp->hasVerticalBar(utf8_to_wstr(name).c_str());
 }
 
