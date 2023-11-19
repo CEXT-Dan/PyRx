@@ -3,6 +3,10 @@
 #include "PyGeCurve3d.h"
 
 class PyGeKnotVector;
+class PyGePolyline3d;
+class PyGeEllipArc3d;
+class PyGeLineSeg3d;
+
 //-----------------------------------------------------------------------------------------
 //PyGeSplineEnt3d wrapper
 void makePyGeSplineEnt3dWrapper();
@@ -56,7 +60,36 @@ class PyGeNurbCurve3d : public PyGeSplineEnt3d
 {
 public:
     PyGeNurbCurve3d();
+    PyGeNurbCurve3d(const AcGeNurbCurve3d& src);
+    PyGeNurbCurve3d(int degree, const PyGeKnotVector& knots, const boost::python::list& cntrlPnts, Adesk::Boolean isPeriodic);
+    PyGeNurbCurve3d(int degree, const PyGePolyline3d& fitPolyline, Adesk::Boolean isPeriodic);
+    PyGeNurbCurve3d(const boost::python::list& fitPoints, const AcGeVector3d& startTangent,
+        const AcGeVector3d& endTangent, Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined, const AcGeTol& fitTolerance);
+    PyGeNurbCurve3d(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent,
+        Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined, AcGe::KnotParameterization knotParam, const AcGeTol& fitTolerance);
+    PyGeNurbCurve3d(const boost::python::list& fitPoints, const AcGeTol& fitTolerance);
+    PyGeNurbCurve3d(const boost::python::list& fitPoints, const boost::python::list& fitTangents, const AcGeTol& fitTolerance, Adesk::Boolean isPeriodic);
+    PyGeNurbCurve3d(const PyGeCurve3d& curve, double epsilon);
+    PyGeNurbCurve3d(const PyGeEllipArc3d& ellipse);
+    PyGeNurbCurve3d(const PyGeLineSeg3d& linSeg);
     PyGeNurbCurve3d(AcGeEntity3d* pEnt);
+
+    int                     numFitPoints() const;
+    boost::python::tuple    getFitPointAt(int index) const;
+    boost::python::tuple    getFitTolerance() const;
+    boost::python::tuple    getFitTangents() const;
+    boost::python::tuple    getFitData() const;
+    boost::python::tuple    getDefinitionData() const;
+    int                     numWeights() const;
+    double                  weightAt(int idx) const;
+    Adesk::Boolean          evalMode() const;
+
+    boost::python::tuple    getParamsOfC1Discontinuity(const AcGeTol& tol);
+    boost::python::tuple    getParamsOfG1Discontinuity(const AcGeTol& tol);
+
+
+
+
     static PyGeNurbCurve3d cast(const PyGeEntity3d& src);
     static PyGeNurbCurve3d copycast(const PyGeEntity3d& src);
     static std::string className();
