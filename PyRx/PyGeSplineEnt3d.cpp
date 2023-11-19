@@ -352,6 +352,31 @@ boost::python::tuple PyGeNurbCurve3d::getParamsOfG1Discontinuity(const AcGeTol& 
     return boost::python::make_tuple(res, DoubleArrayToPyList(params));
 }
 
+Adesk::Boolean PyGeNurbCurve3d::setFitPointAt(int index, const AcGePoint3d& point)
+{
+    return impObj()->setFitPointAt(index, point);
+}
+
+Adesk::Boolean PyGeNurbCurve3d::addFitPointAt(int index, const AcGePoint3d& point)
+{
+    return impObj()->addFitPointAt(index, point);
+}
+
+Adesk::Boolean PyGeNurbCurve3d::deleteFitPointAt(int index)
+{
+    return impObj()->deleteFitPointAt(index);
+}
+
+Adesk::Boolean PyGeNurbCurve3d::setFitTolerance(const AcGeTol& fitTol)
+{
+    return impObj()->setFitTolerance(fitTol);
+}
+
+Adesk::Boolean PyGeNurbCurve3d::setFitTangents(const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
+{
+    return impObj()->setFitTangents(startTangent, endTangent);
+}
+
 PyGeNurbCurve3d PyGeNurbCurve3d::cast(const PyGeEntity3d& src)
 {
     if (!src.impObj()->isKindOf(AcGe::EntityId::kNurbCurve3d))
