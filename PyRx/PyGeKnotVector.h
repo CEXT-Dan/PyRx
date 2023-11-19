@@ -10,6 +10,7 @@ public:
     PyGeKnotVector();
     PyGeKnotVector(const AcGeKnotVector& src);
     ~PyGeKnotVector() = default;
+    int                 append(double val);
 
     static std::string className();
 public:
