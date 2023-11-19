@@ -87,6 +87,12 @@ public:
     boost::python::tuple    getParamsOfC1Discontinuity(const AcGeTol& tol);
     boost::python::tuple    getParamsOfG1Discontinuity(const AcGeTol& tol);
 
+    Adesk::Boolean          setFitPointAt(int index, const AcGePoint3d& point);
+    Adesk::Boolean          addFitPointAt(int index, const AcGePoint3d& point);
+    Adesk::Boolean          deleteFitPointAt(int index);
+    Adesk::Boolean          setFitTolerance(const AcGeTol& fitTol);
+    Adesk::Boolean          setFitTangents(const AcGeVector3d& startTangent,const AcGeVector3d& endTangent);
+
 
 
 
