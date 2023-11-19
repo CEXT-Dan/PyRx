@@ -202,6 +202,55 @@ AcGeCubicSplineCurve3d* PyGeCubicSplineCurve3d::impObj(const std::source_locatio
 void makePyGeNurbCurve3dWrapper()
 {
     class_<PyGeNurbCurve3d, bases<PyGeSplineEnt3d>>("NurbCurve3d")
+        .def(init<>())
+        .def(init<int, const PyGeKnotVector&, const boost::python::list&, Adesk::Boolean>())
+        .def(init<int, const PyGePolyline3d&, Adesk::Boolean>())
+        .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&, Adesk::Boolean, Adesk::Boolean, const AcGeTol&>())
+        .def(init<const boost::python::list&, const AcGeVector3d&, const AcGeVector3d&, Adesk::Boolean, Adesk::Boolean, AcGe::KnotParameterization, const AcGeTol&>())
+        .def(init<const boost::python::list&, const AcGeTol&>())
+        .def(init<const boost::python::list&, const boost::python::list&, const AcGeTol&, Adesk::Boolean>())
+        .def(init<const PyGeCurve3d&, double>())
+        .def(init<const PyGeEllipArc3d&>())
+        .def(init<const PyGeLineSeg3d&>())
+        .def("numFitPoints", &PyGeNurbCurve3d::numFitPoints)
+        .def("getFitPointAt", &PyGeNurbCurve3d::getFitPointAt)
+        .def("getFitTolerance", &PyGeNurbCurve3d::getFitTolerance)
+        .def("getFitTangents", &PyGeNurbCurve3d::getFitTangents)
+        .def("getFitData", &PyGeNurbCurve3d::getFitData)
+        .def("getDefinitionData", &PyGeNurbCurve3d::getDefinitionData)
+        .def("numWeights", &PyGeNurbCurve3d::numWeights)
+        .def("weightAt", &PyGeNurbCurve3d::weightAt)
+        .def("evalMode", &PyGeNurbCurve3d::evalMode)
+        .def("getParamsOfC1Discontinuity", &PyGeNurbCurve3d::getParamsOfC1Discontinuity)
+        .def("getParamsOfG1Discontinuity", &PyGeNurbCurve3d::getParamsOfG1Discontinuity)
+        .def("setFitPointAt", &PyGeNurbCurve3d::setFitPointAt)
+        .def("addFitPointAt", &PyGeNurbCurve3d::addFitPointAt)
+        .def("deleteFitPointAt", &PyGeNurbCurve3d::deleteFitPointAt)
+        .def("setFitTolerance", &PyGeNurbCurve3d::setFitTolerance)
+        .def("setFitTangents", &PyGeNurbCurve3d::setFitTangents1)
+        .def("setFitTangents", &PyGeNurbCurve3d::setFitTangents2)
+        .def("setFitKnotParameterization", &PyGeNurbCurve3d::setFitKnotParameterization)
+        .def("setFitData", &PyGeNurbCurve3d::setFitData1)
+        .def("setFitData", &PyGeNurbCurve3d::setFitData2)
+        .def("setFitData", &PyGeNurbCurve3d::setFitData3)
+        .def("setFitData", &PyGeNurbCurve3d::setFitData4)
+        .def("purgeFitData", &PyGeNurbCurve3d::purgeFitData)
+        .def("buildFitData", &PyGeNurbCurve3d::buildFitData1)
+        .def("buildFitData", &PyGeNurbCurve3d::buildFitData2)
+        .def("addKnot", &PyGeNurbCurve3d::addKnot)
+        .def("insertKnot", &PyGeNurbCurve3d::insertKnot)
+        .def("setWeightAt", &PyGeNurbCurve3d::setWeightAt)
+        .def("setEvalMode", &PyGeNurbCurve3d::setEvalMode)
+        .def("joinWith", &PyGeNurbCurve3d::joinWith)
+        .def("hardTrimByParams", &PyGeNurbCurve3d::hardTrimByParams)
+        .def("makeRational", &PyGeNurbCurve3d::makeRational)
+        .def("makeClosed", &PyGeNurbCurve3d::makeClosed)
+        .def("makePeriodic", &PyGeNurbCurve3d::makePeriodic)
+        .def("makeNonPeriodic", &PyGeNurbCurve3d::makeNonPeriodic)
+        .def("makeOpen", &PyGeNurbCurve3d::makeOpen)
+        .def("elevateDegree", &PyGeNurbCurve3d::elevateDegree)
+        .def("addControlPointAt", &PyGeNurbCurve3d::addControlPointAt)
+        .def("deleteControlPointAt", &PyGeNurbCurve3d::deleteControlPointAt)
         .def("cast", &PyGeNurbCurve3d::cast).staticmethod("cast")
         .def("copycast", &PyGeNurbCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeNurbCurve3d::className).staticmethod("className")
@@ -372,9 +421,128 @@ Adesk::Boolean PyGeNurbCurve3d::setFitTolerance(const AcGeTol& fitTol)
     return impObj()->setFitTolerance(fitTol);
 }
 
-Adesk::Boolean PyGeNurbCurve3d::setFitTangents(const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
+Adesk::Boolean PyGeNurbCurve3d::setFitTangents1(const AcGeVector3d& startTangent, const AcGeVector3d& endTangent)
 {
     return impObj()->setFitTangents(startTangent, endTangent);
+}
+
+Adesk::Boolean PyGeNurbCurve3d::setFitTangents2(const AcGeVector3d& startTangent,
+    const AcGeVector3d& endTangent, Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined)
+{
+    return impObj()->setFitTangents(startTangent, endTangent, startTangentDefined, endTangentDefined);
+}
+
+Adesk::Boolean PyGeNurbCurve3d::setFitKnotParameterization(KnotParameterization knotParam)
+{
+    return impObj()->setFitKnotParameterization(knotParam);
+}
+
+void PyGeNurbCurve3d::setFitData1(const boost::python::list& fitPoints, const AcGeVector3d& startTangent,
+    const AcGeVector3d& endTangent, const AcGeTol& fitTol)
+{
+    impObj()->setFitData(PyListToPoint3dArray(fitPoints), startTangent, endTangent, fitTol);
+}
+
+void PyGeNurbCurve3d::setFitData2(const boost::python::list& fitPoints, const AcGeVector3d& startTangent,
+    const AcGeVector3d& endTangent, KnotParameterization knotParam, const AcGeTol& fitTol)
+{
+    impObj()->setFitData(PyListToPoint3dArray(fitPoints), startTangent, endTangent, knotParam, fitTol);
+}
+
+void PyGeNurbCurve3d::setFitData3(const PyGeKnotVector& fitKnots, const boost::python::list& fitPoints, const AcGeVector3d& startTangent,
+    const AcGeVector3d& endTangent, const AcGeTol& fitTol, Adesk::Boolean isPeriodic)
+{
+    impObj()->setFitData(fitKnots.m_imp, PyListToPoint3dArray(fitPoints), startTangent, endTangent, fitTol, isPeriodic);
+}
+
+void PyGeNurbCurve3d::setFitData4(int degree, const boost::python::list& fitPoints, const AcGeTol& fitTol)
+{
+    impObj()->setFitData(degree, PyListToPoint3dArray(fitPoints), fitTol);
+}
+
+Adesk::Boolean PyGeNurbCurve3d::purgeFitData()
+{
+    return impObj()->purgeFitData();
+}
+
+Adesk::Boolean PyGeNurbCurve3d::buildFitData1()
+{
+    return impObj()->buildFitData();
+}
+
+Adesk::Boolean PyGeNurbCurve3d::buildFitData2(KnotParameterization kp)
+{
+    return impObj()->buildFitData(kp);
+}
+
+void PyGeNurbCurve3d::addKnot(double newKnot)
+{
+    impObj()->addKnot(newKnot);
+}
+
+void PyGeNurbCurve3d::insertKnot(double newKnot)
+{
+    impObj()->insertKnot(newKnot);
+}
+
+void PyGeNurbCurve3d::setWeightAt(int idx, double val)
+{
+    impObj()->setWeightAt(idx, val);
+}
+
+void PyGeNurbCurve3d::setEvalMode(Adesk::Boolean evalMode)
+{
+    impObj()->setEvalMode(evalMode);
+}
+
+void PyGeNurbCurve3d::joinWith(const PyGeNurbCurve3d& curve)
+{
+    impObj()->joinWith(*curve.impObj());
+}
+
+void PyGeNurbCurve3d::hardTrimByParams(double newStartParam, double newEndParam)
+{
+    impObj()->hardTrimByParams(newStartParam, newEndParam);
+}
+
+void PyGeNurbCurve3d::makeRational(double weight)
+{
+    impObj()->makeRational(weight);
+}
+
+void PyGeNurbCurve3d::makeClosed()
+{
+    impObj()->makeClosed();
+}
+
+void PyGeNurbCurve3d::makePeriodic()
+{
+    impObj()->makePeriodic();
+}
+
+void PyGeNurbCurve3d::makeNonPeriodic()
+{
+    impObj()->makeNonPeriodic();
+}
+
+void PyGeNurbCurve3d::makeOpen()
+{
+    impObj()->makeOpen();
+}
+
+void PyGeNurbCurve3d::elevateDegree(int plusDegree)
+{
+    impObj()->elevateDegree(plusDegree);
+}
+
+Adesk::Boolean PyGeNurbCurve3d::addControlPointAt(double newKnot, const AcGePoint3d& point, double weight)
+{
+    return impObj()->addControlPointAt(newKnot, point, weight);
+}
+
+Adesk::Boolean PyGeNurbCurve3d::deleteControlPointAt(int index)
+{
+   return impObj()->deleteControlPointAt(index);
 }
 
 PyGeNurbCurve3d PyGeNurbCurve3d::cast(const PyGeEntity3d& src)
