@@ -91,10 +91,43 @@ public:
     Adesk::Boolean          addFitPointAt(int index, const AcGePoint3d& point);
     Adesk::Boolean          deleteFitPointAt(int index);
     Adesk::Boolean          setFitTolerance(const AcGeTol& fitTol);
-    Adesk::Boolean          setFitTangents(const AcGeVector3d& startTangent,const AcGeVector3d& endTangent);
 
+    Adesk::Boolean          setFitTangents1(const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
+    Adesk::Boolean          setFitTangents2(const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, 
+        Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined);
 
+    Adesk::Boolean          setFitKnotParameterization(KnotParameterization knotParam);
 
+    void                    setFitData1(const boost::python::list& fitPoints,
+        const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, const AcGeTol& fitTol);
+
+    void                    setFitData2(const boost::python::list& fitPoints,
+        const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, KnotParameterization knotParam, const AcGeTol& fitTol);
+
+    void                    setFitData3(const PyGeKnotVector& fitKnots, const boost::python::list& fitPoints,
+        const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, const AcGeTol& fitTol, Adesk::Boolean isPeriodic);
+
+    void                    setFitData4(int degree, const boost::python::list& fitPoints, const AcGeTol& fitTol);
+
+    Adesk::Boolean          purgeFitData();
+    Adesk::Boolean          buildFitData1();
+    Adesk::Boolean          buildFitData2(KnotParameterization kp);
+
+    void                    addKnot(double newKnot);
+    void                    insertKnot(double newKnot);
+    void                    setWeightAt(int idx, double val);
+    void                    setEvalMode(Adesk::Boolean evalMode);
+    void                    joinWith(const PyGeNurbCurve3d& curve);
+    void                    hardTrimByParams(double newStartParam, double newEndParam);
+    void                    makeRational(double weight);
+    void                    makeClosed();
+    void                    makePeriodic();
+    void                    makeNonPeriodic();
+    void                    makeOpen();
+    void                    elevateDegree(int plusDegree);
+
+    Adesk::Boolean          addControlPointAt(double newKnot, const AcGePoint3d& point, double weight);
+    Adesk::Boolean          deleteControlPointAt(int index);
 
     static PyGeNurbCurve3d cast(const PyGeEntity3d& src);
     static PyGeNurbCurve3d copycast(const PyGeEntity3d& src);
