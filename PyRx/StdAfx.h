@@ -459,6 +459,16 @@ inline AcGeVector3dArray PyListToVector3dArray(const boost::python::object& iter
     return arr;
 }
 
+inline AcGeVector2dArray PyListToVector2dArray(const boost::python::object& iterable)
+{
+    const auto& vec = py_list_to_std_vector<AcGeVector2d>(iterable);
+    AcGeVector2dArray arr;
+    arr.setPhysicalLength(vec.size());
+    for (const auto& item : vec)
+        arr.append(item);
+    return arr;
+}
+
 inline AcArray<int> PyListToIntArray(const boost::python::object& iterable)
 {
     const auto& vec = py_list_to_std_vector<int>(iterable);

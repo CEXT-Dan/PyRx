@@ -44,7 +44,18 @@ class PyGeCubicSplineCurve2d : public PyGeSplineEnt2d
 {
 public:
     PyGeCubicSplineCurve2d();
+    PyGeCubicSplineCurve2d(const PyGeCurve2d& curve, double epsilon);
+    PyGeCubicSplineCurve2d(const boost::python::list& fitPnts, const AcGeTol& tol);
+    PyGeCubicSplineCurve2d(const boost::python::list& fitPnts, const AcGeVector2d& startDeriv, const AcGeVector2d& endDeriv, const AcGeTol& tol);
+    PyGeCubicSplineCurve2d(const PyGeKnotVector& knots, const boost::python::list& fitPnts, const boost::python::list& firstDerivs, Adesk::Boolean isPeriodic);
     PyGeCubicSplineCurve2d(AcGeEntity2d* pEnt);
+
+    int                     numFitPoints() const;
+    AcGePoint2d             fitPointAt(int idx) const;
+    void                    setFitPointAt(int idx, const AcGePoint2d& point);
+    AcGeVector2d            firstDerivAt(int idx) const;
+    void                    setFirstDerivAt(int idx, const AcGeVector2d& deriv);
+
     static PyGeCubicSplineCurve2d copycast(const PyGeEntity2d& src);
     static std::string className();
 public:
