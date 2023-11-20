@@ -188,7 +188,11 @@ void PyGeKnotVector::setRange(double lower, double upper)
 
 double PyGeKnotVector::tolerance() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return m_imp.tolerance();
+#endif
 }
 
 void PyGeKnotVector::setTolerance(double tol)

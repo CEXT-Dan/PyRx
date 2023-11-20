@@ -712,25 +712,41 @@ void PyGeCircArc2d::setRefVec(const AcGeVector2d& vec)
 
 void PyGeCircArc2d::set1(const AcGePoint2d& cent, double radius)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cent, radius);
+#endif
 }
 
 void  PyGeCircArc2d::set2(const AcGePoint2d& cent, double radius, double ang1, double ang2, const AcGeVector2d& refVec, Adesk::Boolean isClockWise)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cent, radius, ang1, ang2, refVec, isClockWise);
+#endif
 }
 
 void PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, const AcGePoint2d& endPoint)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGeError err;
     impObj()->set(startPoint, pnt, endPoint, err);
     if (err != AcGe::kOk)
         throw PyAcadErrorStatus(eInvalidInput);
+#endif
 }
 
 void PyGeCircArc2d::set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, Adesk::Boolean bulgeFlag)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(startPoint, endPoint, bulge, bulgeFlag);
+#endif
 }
 
 void  PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius)
@@ -965,17 +981,29 @@ void PyGeEllipArc2d::setAngles(double startAngle, double endAngle)
 
 void PyGeEllipArc2d::set1(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius);
+#endif
 }
 
 void PyGeEllipArc2d::set2(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle);
+#endif
 }
 
 void PyGeEllipArc2d::set3(const PyGeCircArc2d& arc)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(*arc.impObj());
+#endif
 }
 
 PyGeEllipArc2d PyGeEllipArc2d::cast(const PyGeEntity2d& src)

@@ -196,22 +196,38 @@ bool PyCAdUiPaletteSet::autoRollupStyle()
 
 bool PyCAdUiPaletteSet::propertiesMenuStyle()
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->PropertiesMenuStyle() == TRUE;
+#endif
 }
 
 bool PyCAdUiPaletteSet::closeButtonStyle()
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->CloseButtonStyle() == TRUE;
+#endif
 }
 
 bool PyCAdUiPaletteSet::singlePaletteTabStyle()
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->SinglePaletteTabStyle() == TRUE;
+#endif
 }
 
 bool PyCAdUiPaletteSet::useSinglePaletteTabNameStyle()
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->UseSinglePaletteTabNameStyle() == TRUE;
+#endif
 }
 
 bool PyCAdUiPaletteSet::editNameStyle()
@@ -221,7 +237,11 @@ bool PyCAdUiPaletteSet::editNameStyle()
 
 bool PyCAdUiPaletteSet::snapStyle()
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->SnapStyle() == TRUE;
+#endif
 }
 
 bool PyCAdUiPaletteSet::showRollupButtonStyle()

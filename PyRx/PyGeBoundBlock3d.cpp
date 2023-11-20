@@ -15,14 +15,14 @@ void makePyGeBoundBlock3dWrapper()
         .def("getDirection1", &PyGeBoundBlock3d::getDirection1)
         .def("getDirection3", &PyGeBoundBlock3d::getDirection3)
         .def("getDirection3", &PyGeBoundBlock3d::getDirection3)
-        .def("set", &PyGeBoundBlock3d::set1, return_self<>())
-        .def("set", &PyGeBoundBlock3d::set2, return_self<>())
-        .def("extend", &PyGeBoundBlock3d::extend, return_self<>())
-        .def("swell", &PyGeBoundBlock3d::swell, return_self<>())
+        .def("set", &PyGeBoundBlock3d::set1)
+        .def("set", &PyGeBoundBlock3d::set2)
+        .def("extend", &PyGeBoundBlock3d::extend)
+        .def("swell", &PyGeBoundBlock3d::swell)
         .def("contains", &PyGeBoundBlock3d::contains)
         .def("isDisjoint", &PyGeBoundBlock3d::isDisjoint)
         .def("isBox", &PyGeBoundBlock3d::isBox)
-        .def("setToBox", &PyGeBoundBlock3d::setToBox, return_self<>())
+        .def("setToBox", &PyGeBoundBlock3d::setToBox)
         .def("cast", &PyGeBoundBlock3d::cast).staticmethod("cast")
         .def("copycast", &PyGeBoundBlock3d::copycast).staticmethod("copycast")
         .def("className", &PyGeBoundBlock3d::className).staticmethod("className")
@@ -92,12 +92,20 @@ AcGeVector3d PyGeBoundBlock3d::getDirection3() const
 
 void PyGeBoundBlock3d::set1(const AcGePoint3d& point1, const AcGePoint3d& point2)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(point1, point2);
+#endif
 }
 
 void PyGeBoundBlock3d::set2(const AcGePoint3d& base, const AcGeVector3d& dir1, const AcGeVector3d& dir2, const AcGeVector3d& dir3)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(base, dir1, dir2, dir3);
+#endif
 }
 
 void PyGeBoundBlock3d::extend(const AcGePoint3d& point)

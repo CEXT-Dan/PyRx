@@ -123,22 +123,38 @@ double PyGeInterval::length() const
 
 double PyGeInterval::tolerance() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return imp.tolerance();
+#endif
 }
 
 void PyGeInterval::set1(double lower, double upper)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     imp.set(lower, upper);
+#endif
 }
 
 void PyGeInterval::set2(Adesk::Boolean boundedBelow, double bound)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     imp.set(boundedBelow, bound);
+#endif
 }
 
 void PyGeInterval::set3()
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     imp.set();
+#endif
 }
 
 void PyGeInterval::setUpper(double upper)
