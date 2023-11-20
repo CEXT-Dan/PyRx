@@ -153,6 +153,16 @@ AcGeSplineEnt2d* PyGeSplineEnt2d::impObj(const std::source_location& src /*= std
 void makePyGeCubicSplineCurve2dWrapper()
 {
     class_<PyGeCubicSplineCurve2d, bases<PyGeSplineEnt2d>>("CubicSplineCurve2d")
+        .def(init<>())
+        .def(init<const PyGeCurve2d&, double>())
+        .def(init<const boost::python::list&, const AcGeTol&>())
+        .def(init<const boost::python::list&, const AcGeVector2d&, const AcGeVector2d&, const AcGeTol&>())
+        .def(init<const PyGeKnotVector&, const boost::python::list&, const boost::python::list&, Adesk::Boolean>())
+        .def("numFitPoints", &PyGeCubicSplineCurve2d::numFitPoints)
+        .def("fitPointAt", &PyGeCubicSplineCurve2d::fitPointAt)
+        .def("setFitPointAt", &PyGeCubicSplineCurve2d::setFitPointAt)
+        .def("firstDerivAt", &PyGeCubicSplineCurve2d::firstDerivAt)
+        .def("setFirstDerivAt", &PyGeCubicSplineCurve2d::setFirstDerivAt)
         .def("cast", &PyGeCubicSplineCurve2d::cast).staticmethod("cast")
         .def("copycast", &PyGeCubicSplineCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGeCubicSplineCurve2d::className).staticmethod("className")
@@ -162,6 +172,51 @@ void makePyGeCubicSplineCurve2dWrapper()
 PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d()
     : PyGeSplineEnt2d(new AcGeCubicSplineCurve2d())
 {
+}
+
+PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d(const PyGeCurve2d& curve, double epsilon)
+    : PyGeSplineEnt2d(new AcGeCubicSplineCurve2d(*curve.impObj(), epsilon))
+{
+}
+
+PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d(const boost::python::list& fitPnts, const AcGeTol& tol)
+    : PyGeSplineEnt2d(new AcGeCubicSplineCurve2d(PyListToPoint2dArray(fitPnts), tol))
+{
+}
+
+PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d(const boost::python::list& fitPnts, const AcGeVector2d& startDeriv, const AcGeVector2d& endDeriv, const AcGeTol& tol)
+    : PyGeSplineEnt2d(new AcGeCubicSplineCurve2d(PyListToPoint2dArray(fitPnts), startDeriv, endDeriv, tol))
+{
+}
+
+PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d(const PyGeKnotVector& knots, const boost::python::list& fitPnts, const boost::python::list& firstDerivs, Adesk::Boolean isPeriodic)
+    : PyGeSplineEnt2d(new AcGeCubicSplineCurve2d(knots.m_imp, PyListToPoint2dArray(fitPnts), PyListToVector2dArray(firstDerivs), isPeriodic))
+{
+}
+
+int PyGeCubicSplineCurve2d::numFitPoints() const
+{
+    return impObj()->numFitPoints();
+}
+
+AcGePoint2d PyGeCubicSplineCurve2d::fitPointAt(int idx) const
+{
+    return impObj()->fitPointAt(idx);
+}
+
+void PyGeCubicSplineCurve2d::setFitPointAt(int idx, const AcGePoint2d& point)
+{
+    impObj()->setFitPointAt(idx, point);
+}
+
+AcGeVector2d PyGeCubicSplineCurve2d::firstDerivAt(int idx) const
+{
+    return impObj()->firstDerivAt(idx);
+}
+
+void PyGeCubicSplineCurve2d::setFirstDerivAt(int idx, const AcGeVector2d& deriv)
+{
+    impObj()->setFirstDerivAt(idx, deriv);
 }
 
 PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d(AcGeEntity2d* pEnt)
