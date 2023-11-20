@@ -30,22 +30,18 @@ PyApDocManager PyApApplication::docManager()
 void PyApApplication::applyHostIcon(UINT_PTR _hwnd)
 {
     HICON hIcon = 0;
-
-#if _ZRXTARGET == 240
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(31233));
+#elif defined(_ZRXTARGET) && _ZRXTARGET <= 240
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(20001));
-#endif
-
-#if _GRXTARGET == 240
+#elif defined(_GRXTARGET) && _GRXTARGET <= 240
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(1017));
-#endif
-
-#if _ARXTARGET > 1
+#else
     auto main = CWnd::FromHandle(adsw_acadMainWnd());
     if (main == nullptr)
         return;
     hIcon = main->GetIcon(TRUE);
 #endif
-
     if (hIcon == 0)
         return;
     auto child = CWnd::FromHandle((HWND)_hwnd);
