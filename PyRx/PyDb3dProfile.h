@@ -9,6 +9,7 @@ void makePyDb3dProfileWrapper();
 
 class PyDb3dProfile : public PyRxObject
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyDb3dProfile();
     PyDb3dProfile(const PyDbEntity& pent);
@@ -29,5 +30,6 @@ public:
 
 public:
     inline AcDb3dProfile* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 

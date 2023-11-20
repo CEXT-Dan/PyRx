@@ -104,11 +104,13 @@ void makePyDbHatchWrapper()
         .value("kSelfIntersecting", AcDbHatch::HatchLoopType::kSelfIntersecting)
         .value("kTextIsland", AcDbHatch::HatchLoopType::kTextIsland)
         .value("kDuplicate", AcDbHatch::HatchLoopType::kDuplicate)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .value("kIsAnnotative", AcDbHatch::HatchLoopType::kIsAnnotative)
         .value("kDoesNotSupportScale", AcDbHatch::HatchLoopType::kDoesNotSupportScale)
         .value("kForceAnnoAllVisible", AcDbHatch::HatchLoopType::kForceAnnoAllVisible)
         .value("kOrientToPaper", AcDbHatch::HatchLoopType::kOrientToPaper)
         .value("kIsAnnotativeBlock", AcDbHatch::HatchLoopType::kIsAnnotativeBlock)
+#endif
         .export_values()
         ;
 
@@ -490,12 +492,20 @@ void PyDbHatch::evaluateHatch2(bool bUnderestimateNumLines)
 
 void PyDbHatch::evaluateHatchAllScales1()
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->evaluateHatchAllScales());
+#endif
 }
 
 void PyDbHatch::evaluateHatchAllScales2(bool bUnderestimateNumLines)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->evaluateHatchAllScales(bUnderestimateNumLines));
+#endif
 }
 
 bool PyDbHatch::lineGenerationEnabled() const

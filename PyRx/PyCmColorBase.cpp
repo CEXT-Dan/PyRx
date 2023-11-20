@@ -84,7 +84,9 @@ void makePyCmTransparencyWrapper()
         .def("isByAlpha", &AcCmTransparency::isByAlpha, DS.ARGS())
         .def("isByBlock", &AcCmTransparency::isByBlock, DS.ARGS())
         .def("isByLayer", &AcCmTransparency::isByLayer, DS.ARGS())
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .def("isInvalid", &AcCmTransparency::isInvalid, DS.ARGS())
+#endif
         .def("isClear", &AcCmTransparency::isClear, DS.ARGS())
         .def("isSolid", &AcCmTransparency::isSolid, DS.ARGS())
         //operators
@@ -107,15 +109,19 @@ void makePyCmEntityColorWrapper()
     PyDocString DS("EntityColor");
     class_<AcCmEntityColor>("EntityColor")
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>())
-#if _ZRXTARGET == 240 || _GRXTARGET == 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(AcCmEntityColor::ColorMethod)>("setColorMethod", &AcCmEntityColor::setColorMethod)
         .def<AcCmEntityColor::ColorMethod(AcCmEntityColor::*)()const>("colorMethod", &AcCmEntityColor::colorMethod)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::UInt32)>("setColor", &AcCmEntityColor::setColor)
         .def<Adesk::UInt32(AcCmEntityColor::*)()const>("color", &AcCmEntityColor::color)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::Int16)>("setColorIndex", &AcCmEntityColor::setColorIndex)
         .def<Adesk::Int16(AcCmEntityColor::*)()const>("colorIndex", &AcCmEntityColor::colorIndex)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::Int32)>("setLayerIndex", &AcCmEntityColor::setLayerIndex)
+#endif
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .def<Adesk::Int32(AcCmEntityColor::*)()const>("layerIndex", &AcCmEntityColor::layerIndex)
+#endif
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::UInt16)>("setPenIndex", &AcCmEntityColor::setPenIndex)
         .def<Adesk::UInt16(AcCmEntityColor::*)()const>("penIndex", &AcCmEntityColor::penIndex)
         .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::UInt8, Adesk::UInt8, Adesk::UInt8)>("setRGB", &AcCmEntityColor::setRGB)

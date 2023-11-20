@@ -13,7 +13,9 @@ void makePyEdJigWrapper()
     class_<PyJig, boost::noncopyable>("Jig", boost::python::no_init)
         .def(init<const PyDbEntity&>())
         .def("drag", &PyJig::dragwr1)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .def("drag", &PyJig::dragwr2)
+#endif
         .def("sampler", &PyJig::sampler)
         .def("update", &PyJig::update)
         .def("append", &PyJig::appendwr)
@@ -93,6 +95,7 @@ void makePyEdJigWrapper()
         .export_values()
         ;
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<AcEdDragStyle>("DragStyle")
         .def(init<>())
         .def(init<AcEdDragStyle::StyleType, AcEdDragStyle::StyleType>())
@@ -101,6 +104,9 @@ void makePyEdJigWrapper()
         .def("setStyleTypeForOriginal", &AcEdDragStyle::setStyleTypeForOriginal)
         .def("setStyleTypeForDragged", &AcEdDragStyle::setStyleTypeForDragged)
         ;
+#endif
+
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     enum_<AcEdDragStyle::StyleType>("DragStyleType")
         .value("kNone", AcEdDragStyle::StyleType::kNone)
         .value("kHide", AcEdDragStyle::StyleType::kHide)
@@ -111,6 +117,7 @@ void makePyEdJigWrapper()
         .value("kNotSet", AcEdDragStyle::StyleType::kNotSet)
         .export_values()
         ;
+#endif
 }
 
 PyJig::PyJig(const PyDbEntity& ent)
@@ -123,10 +130,13 @@ AcEdJig::DragStatus PyJig::dragwr1()
     return this->drag();
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 AcEdJig::DragStatus PyJig::dragwr2(const AcEdDragStyle& style)
 {
     return  this->drag(style);
 }
+#endif
+
 
 AcEdJig::DragStatus PyJig::sampler()
 {
@@ -185,15 +195,20 @@ void PyJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyJig::acquireStringWr()
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240
-    PyAutoLockGIL lock; 
+    PyAutoLockGIL lock;
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
     wchar_t value[2049];
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
-#endif
-
-#ifdef _ARXTARGET
-    PyAutoLockGIL lock;
+#elif defined(_ZRXTARGET) && _ZRXTARGET <= 240
+    wchar_t value[2049];
+    auto result = this->acquireString(value);
+    return boost::python::make_tuple(result, wstr_to_utf8(value));
+#elif defined(_GRXTARGET) && _GRXTARGET <= 240
+    wchar_t value[2049];
+    auto result = this->acquireString(value);
+    return boost::python::make_tuple(result, wstr_to_utf8(value));
+#else
     AcString value;
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
@@ -284,7 +299,9 @@ void makePyEdDrawJigWrapper()
 {
     class_<PyDrawJig, boost::noncopyable>("DrawJig")
         .def("drag", &PyDrawJig::dragwr1)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .def("drag", &PyDrawJig::dragwr2)
+#endif
         .def("sampler", &PyDrawJig::sampler)
         .def("update", &PyDrawJig::update)
         .def("keywordList", &PyDrawJig::keywordListWr)
@@ -318,10 +335,13 @@ AcEdJig::DragStatus PyDrawJig::dragwr1()
     return this->drag();
 }
 
+
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 AcEdJig::DragStatus PyDrawJig::dragwr2(const AcEdDragStyle& style)
 {
     return this->drag(style);
 }
+#endif
 
 AcEdJig::DragStatus PyDrawJig::sampler()
 {
@@ -375,15 +395,20 @@ void PyDrawJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyDrawJig::acquireStringWr()
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240
     PyAutoLockGIL lock;
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
     wchar_t value[2049];
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
-#endif
-
-#ifdef _ARXTARGET 
-    PyAutoLockGIL lock;
+#elif defined(_ZRXTARGET) && _ZRXTARGET <= 240
+    wchar_t value[2049];
+    auto result = this->acquireString(value);
+    return boost::python::make_tuple(result, wstr_to_utf8(value));
+#elif defined(_GRXTARGET) && _GRXTARGET <= 240
+    wchar_t value[2049];
+    auto result = this->acquireString(value);
+    return boost::python::make_tuple(result, wstr_to_utf8(value));
+#else
     AcString value;
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));

@@ -7,6 +7,7 @@ using namespace boost::python;
 //PyDb3dProfile
 void makePyDb3dProfileWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     PyDocString DS("Profile3d");
     class_<PyDb3dProfile, bases<PyRxObject>>("Profile3d")
         .def(init<>())
@@ -21,8 +22,10 @@ void makePyDb3dProfileWrapper()
         .def("desc", &PyDb3dProfile::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyDb3dProfile::className, DS.SARGS()).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyDb3dProfile::PyDb3dProfile()
     : PyDb3dProfile(new AcDb3dProfile(), true)
 {
@@ -95,3 +98,4 @@ AcDb3dProfile* PyDb3dProfile::impObj(const std::source_location& src /*= std::so
     }
     return static_cast<AcDb3dProfile*>(m_pyImp.get());
 }
+#endif

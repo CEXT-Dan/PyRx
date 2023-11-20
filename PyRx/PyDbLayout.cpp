@@ -244,12 +244,20 @@ void PyDbPlotSettings::setPlotViewportBorders(Adesk::Boolean plotViewportBorders
 
 Adesk::Boolean PyDbPlotSettings::plotTransparency() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->plotTransparency();
+#endif
 }
 
 void PyDbPlotSettings::setPlotTransparency(Adesk::Boolean plotTransparency)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->setPlotTransparency(plotTransparency);
+#endif
 }
 
 Adesk::Boolean PyDbPlotSettings::plotPlotStyles() const
