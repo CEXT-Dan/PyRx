@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyGeSplineEnt2d.h"
 #include "PyGeKnotVector.h"
+#include "PyGeLinearEnt2d.h"
 
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
@@ -247,7 +248,55 @@ AcGeCubicSplineCurve2d* PyGeCubicSplineCurve2d::impObj(const std::source_locatio
 //AcGeNurbCurve2d  wrapper
 void makePyGeNurbCurve2dWrapper()
 {
-    class_<PyGeNurbCurve2d, bases<PyGeSplineEnt2d>>("NurbCurve2d")
+   class_<PyGeNurbCurve2d, bases<PyGeSplineEnt2d>>("NurbCurve2d")
+        .def(init<>())
+        .def(init<const PyGeEllipArc2d&>())
+        .def(init<const PyGeLineSeg2d&>())
+        .def(init<const PyGeCurve2d&, double>())
+        .def(init<const boost::python::list&, const AcGeTol&>())
+        .def(init<int, const PyGePolyline2d&, Adesk::Boolean>())
+        .def(init<int, const PyGeKnotVector&, const boost::python::list&, Adesk::Boolean>())
+        .def(init<const boost::python::list&, const boost::python::list&, const AcGeTol&, Adesk::Boolean>())
+        .def(init<const boost::python::list&, const AcGeVector2d&, const AcGeVector2d&, Adesk::Boolean, Adesk::Boolean, const AcGeTol&>())
+        .def(init<const boost::python::list&, const AcGeVector2d&, const AcGeVector2d&, Adesk::Boolean, Adesk::Boolean, AcGe::KnotParameterization, const AcGeTol&>())
+        .def("numFitPoints", &PyGeNurbCurve2d::numFitPoints)
+        .def("getFitPointAt", &PyGeNurbCurve2d::getFitPointAt)
+        .def("getFitTolerance", &PyGeNurbCurve2d::getFitTolerance)
+        .def("getFitTangents", &PyGeNurbCurve2d::getFitTangents)
+        .def("getFitData", &PyGeNurbCurve2d::getFitData)
+        .def("getDefinitionData", &PyGeNurbCurve2d::getDefinitionData)
+        .def("numWeights", &PyGeNurbCurve2d::numWeights)
+        .def("weightAt", &PyGeNurbCurve2d::weightAt)
+        .def("evalMode", &PyGeNurbCurve2d::evalMode)
+        .def("getParamsOfC1Discontinuity", &PyGeNurbCurve2d::getParamsOfC1Discontinuity)
+        .def("getParamsOfG1Discontinuity", &PyGeNurbCurve2d::getParamsOfG1Discontinuity)
+        .def("setFitPointAt", &PyGeNurbCurve2d::setFitPointAt)
+        .def("addFitPointAt", &PyGeNurbCurve2d::addFitPointAt)
+        .def("deleteFitPointAt", &PyGeNurbCurve2d::deleteFitPointAt)
+        .def("setFitTolerance", &PyGeNurbCurve2d::setFitTolerance)
+        .def("setFitTangents", &PyGeNurbCurve2d::setFitTangents)
+        .def("setFitKnotParameterization", &PyGeNurbCurve2d::setFitKnotParameterization)
+        .def("setFitData", &PyGeNurbCurve2d::setFitData1)
+        .def("setFitData", &PyGeNurbCurve2d::setFitData2)
+        .def("setFitData", &PyGeNurbCurve2d::setFitData3)
+        .def("setFitData", &PyGeNurbCurve2d::setFitData4)
+        .def("purgeFitData", &PyGeNurbCurve2d::purgeFitData)
+        .def("buildFitData", &PyGeNurbCurve2d::buildFitData1)
+        .def("buildFitData", &PyGeNurbCurve2d::buildFitData2)
+        .def("addKnot", &PyGeNurbCurve2d::addKnot)
+        .def("insertKnot", &PyGeNurbCurve2d::insertKnot)
+        .def("setWeightAt", &PyGeNurbCurve2d::setWeightAt)
+        .def("setEvalMode", &PyGeNurbCurve2d::setEvalMode)
+        .def("joinWith", &PyGeNurbCurve2d::joinWith)
+        .def("hardTrimByParams", &PyGeNurbCurve2d::hardTrimByParams)
+        .def("makeRational", &PyGeNurbCurve2d::makeRational)
+        .def("makeClosed", &PyGeNurbCurve2d::makeClosed)
+        .def("makePeriodic", &PyGeNurbCurve2d::makePeriodic)
+        .def("makeNonPeriodic", &PyGeNurbCurve2d::makeNonPeriodic)
+        .def("makeOpen", &PyGeNurbCurve2d::makeOpen)
+        .def("elevateDegree", &PyGeNurbCurve2d::elevateDegree)
+        .def("addControlPointAt", &PyGeNurbCurve2d::addControlPointAt)
+        .def("deleteControlPointAt", &PyGeNurbCurve2d::deleteControlPointAt)
         .def("cast", &PyGeNurbCurve2d::cast).staticmethod("cast")
         .def("copycast", &PyGeNurbCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGeNurbCurve2d::className).staticmethod("className")
@@ -262,6 +311,276 @@ PyGeNurbCurve2d::PyGeNurbCurve2d()
 PyGeNurbCurve2d::PyGeNurbCurve2d(AcGeEntity2d* pEnt)
     : PyGeSplineEnt2d(pEnt)
 {
+}
+
+PyGeNurbCurve2d::PyGeNurbCurve2d(const AcGeNurbCurve2d& src)
+    : PyGeSplineEnt2d(new AcGeNurbCurve2d(src))
+{
+}
+
+PyGeNurbCurve2d::PyGeNurbCurve2d(int degree, const PyGeKnotVector& knots, const boost::python::list& cntrlPnts, Adesk::Boolean isPeriodic)
+    : PyGeSplineEnt2d(new AcGeNurbCurve2d(degree, knots.m_imp, PyListToPoint2dArray(cntrlPnts), isPeriodic))
+{
+}
+
+PyGeNurbCurve2d::PyGeNurbCurve2d(int degree, const PyGePolyline2d& fitPolyline, Adesk::Boolean isPeriodic)
+    : PyGeSplineEnt2d(new AcGeNurbCurve2d(degree, *fitPolyline.impObj(), isPeriodic))
+{
+}
+
+PyGeNurbCurve2d::PyGeNurbCurve2d(const boost::python::list& fitPoints, const AcGeVector2d& startTangent, const AcGeVector2d& endTangent,
+    Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined, const AcGeTol& fitTolerance)
+    : PyGeSplineEnt2d(new AcGeNurbCurve2d(PyListToPoint2dArray(fitPoints), startTangent, endTangent, endTangentDefined, endTangentDefined, fitTolerance))
+{
+}
+
+PyGeNurbCurve2d::PyGeNurbCurve2d(const boost::python::list& fitPoints, const AcGeVector2d& startTangent, const AcGeVector2d& endTangent,
+    Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined, AcGe::KnotParameterization knotParam, const AcGeTol& fitTolerance)
+    : PyGeSplineEnt2d(new AcGeNurbCurve2d(PyListToPoint2dArray(fitPoints), startTangent, endTangent, endTangentDefined, endTangentDefined, knotParam, fitTolerance))
+{
+}
+
+PyGeNurbCurve2d::PyGeNurbCurve2d(const boost::python::list& fitPoints, const AcGeTol& fitTolerance)
+    : PyGeSplineEnt2d(new AcGeNurbCurve2d(PyListToPoint2dArray(fitPoints), fitTolerance))
+{
+}
+
+PyGeNurbCurve2d::PyGeNurbCurve2d(const boost::python::list& fitPoints, const boost::python::list& fitTangents, const AcGeTol& fitTolerance, Adesk::Boolean isPeriodic)
+    : PyGeSplineEnt2d(new AcGeNurbCurve2d(PyListToPoint2dArray(fitPoints), PyListToVector2dArray(fitPoints), fitTolerance, isPeriodic))
+{
+}
+
+PyGeNurbCurve2d::PyGeNurbCurve2d(const PyGeCurve2d& curve, double epsilon)
+    : PyGeSplineEnt2d(new AcGeNurbCurve2d(*curve.impObj(), epsilon))
+{
+}
+
+PyGeNurbCurve2d::PyGeNurbCurve2d(const PyGeEllipArc2d& ellipse)
+    : PyGeSplineEnt2d(new AcGeNurbCurve2d(*ellipse.impObj()))
+{
+}
+
+PyGeNurbCurve2d::PyGeNurbCurve2d(const PyGeLineSeg2d& linSeg)
+    : PyGeSplineEnt2d(new AcGeNurbCurve2d(*linSeg.impObj()))
+{
+}
+
+int PyGeNurbCurve2d::numFitPoints() const
+{
+    return impObj()->numFitPoints();
+}
+
+boost::python::tuple PyGeNurbCurve2d::getFitPointAt(int index) const
+{
+    AcGePoint2d point;
+    auto res = impObj()->getFitPointAt(index, point);
+    return boost::python::make_tuple(res, point);
+}
+
+boost::python::tuple PyGeNurbCurve2d::getFitTolerance() const
+{
+    AcGeTol fitTolerance;
+    auto res = impObj()->getFitTolerance(fitTolerance);
+    return boost::python::make_tuple(res, fitTolerance);
+}
+
+boost::python::tuple PyGeNurbCurve2d::getFitTangents() const
+{
+    AcGeVector2d startTangent;
+    AcGeVector2d endTangent;
+    auto res = impObj()->getFitTangents(startTangent, endTangent);
+    return boost::python::make_tuple(res, startTangent, endTangent);
+}
+
+boost::python::tuple PyGeNurbCurve2d::getFitData() const
+{
+    AcGePoint2dArray fitPoints;
+    AcGeTol fitTolerance;
+    Adesk::Boolean tangentsExist;
+    AcGeVector2d startTangent;
+    AcGeVector2d endTangent;
+    KnotParameterization knotParam;
+    auto res = impObj()->getFitData(fitPoints, fitTolerance, tangentsExist, startTangent, endTangent, knotParam);
+    return boost::python::make_tuple(res, Point2dArrayToPyList(fitPoints), fitTolerance, tangentsExist, startTangent, endTangent, knotParam);
+}
+
+boost::python::tuple PyGeNurbCurve2d::getDefinitionData() const
+{
+    int degree;
+    Adesk::Boolean rational;
+    Adesk::Boolean periodic;
+    AcGeKnotVector knots;
+    AcGePoint2dArray controlPoints;
+    AcGeDoubleArray weights;
+    impObj()->getDefinitionData(degree, rational, periodic, knots, controlPoints, weights);
+    return boost::python::make_tuple(degree, rational, periodic, PyGeKnotVector(knots), Point2dArrayToPyList(controlPoints), DoubleArrayToPyList(weights));
+}
+
+int PyGeNurbCurve2d::numWeights() const
+{
+    return impObj()->numWeights();
+}
+
+double PyGeNurbCurve2d::weightAt(int idx) const
+{
+    return impObj()->weightAt(idx);
+}
+
+Adesk::Boolean PyGeNurbCurve2d::evalMode() const
+{
+    return impObj()->evalMode();
+}
+
+boost::python::tuple PyGeNurbCurve2d::getParamsOfC1Discontinuity(const AcGeTol& tol)
+{
+    AcGeDoubleArray params;
+    auto res = impObj()->getParamsOfC1Discontinuity(params, tol);
+    return boost::python::make_tuple(res, DoubleArrayToPyList(params));
+}
+
+boost::python::tuple PyGeNurbCurve2d::getParamsOfG1Discontinuity(const AcGeTol& tol)
+{
+    AcGeDoubleArray params;
+    auto res = impObj()->getParamsOfG1Discontinuity(params, tol);
+    return boost::python::make_tuple(res, DoubleArrayToPyList(params));
+}
+
+Adesk::Boolean PyGeNurbCurve2d::setFitPointAt(int index, const AcGePoint2d& point)
+{
+    return impObj()->setFitPointAt(index, point);
+}
+
+Adesk::Boolean PyGeNurbCurve2d::addFitPointAt(int index, const AcGePoint2d& point)
+{
+    return impObj()->addFitPointAt(index, point);
+}
+
+Adesk::Boolean PyGeNurbCurve2d::deleteFitPointAt(int index)
+{
+    return impObj()->deleteFitPointAt(index);
+}
+
+Adesk::Boolean PyGeNurbCurve2d::setFitTolerance(const AcGeTol& fitTol)
+{
+    return impObj()->setFitTolerance(fitTol);
+}
+
+Adesk::Boolean PyGeNurbCurve2d::setFitTangents(const AcGeVector2d& startTangent, const AcGeVector2d& endTangent)
+{
+    return impObj()->setFitTangents(startTangent, endTangent);
+}
+
+Adesk::Boolean PyGeNurbCurve2d::setFitKnotParameterization(KnotParameterization knotParam)
+{
+    return impObj()->setFitKnotParameterization(knotParam);
+}
+
+void PyGeNurbCurve2d::setFitData1(const boost::python::list& fitPoints, const AcGeVector2d& startTangent,
+    const AcGeVector2d& endTangent, const AcGeTol& fitTol)
+{
+    impObj()->setFitData(PyListToPoint2dArray(fitPoints), startTangent, endTangent, fitTol);
+}
+
+void PyGeNurbCurve2d::setFitData2(const boost::python::list& fitPoints, const AcGeVector2d& startTangent,
+    const AcGeVector2d& endTangent, KnotParameterization knotParam, const AcGeTol& fitTol)
+{
+    impObj()->setFitData(PyListToPoint2dArray(fitPoints), startTangent, endTangent, knotParam, fitTol);
+}
+
+void PyGeNurbCurve2d::setFitData3(const PyGeKnotVector& fitKnots, const boost::python::list& fitPoints, const AcGeVector2d& startTangent,
+    const AcGeVector2d& endTangent, const AcGeTol& fitTol, Adesk::Boolean isPeriodic)
+{
+    impObj()->setFitData(fitKnots.m_imp, PyListToPoint2dArray(fitPoints), startTangent, endTangent, fitTol, isPeriodic);
+}
+
+void PyGeNurbCurve2d::setFitData4(int degree, const boost::python::list& fitPoints, const AcGeTol& fitTol)
+{
+    impObj()->setFitData(degree, PyListToPoint2dArray(fitPoints), fitTol);
+}
+
+Adesk::Boolean PyGeNurbCurve2d::purgeFitData()
+{
+    return impObj()->purgeFitData();
+}
+
+Adesk::Boolean PyGeNurbCurve2d::buildFitData1()
+{
+    return impObj()->buildFitData();
+}
+
+Adesk::Boolean PyGeNurbCurve2d::buildFitData2(KnotParameterization kp)
+{
+    return impObj()->buildFitData(kp);
+}
+
+void PyGeNurbCurve2d::addKnot(double newKnot)
+{
+    impObj()->addKnot(newKnot);
+}
+
+void PyGeNurbCurve2d::insertKnot(double newKnot)
+{
+    impObj()->insertKnot(newKnot);
+}
+
+void PyGeNurbCurve2d::setWeightAt(int idx, double val)
+{
+    impObj()->setWeightAt(idx, val);
+}
+
+void PyGeNurbCurve2d::setEvalMode(Adesk::Boolean evalMode)
+{
+    impObj()->setEvalMode(evalMode);
+}
+
+void PyGeNurbCurve2d::joinWith(const PyGeNurbCurve2d& curve)
+{
+    impObj()->joinWith(*curve.impObj());
+}
+
+void PyGeNurbCurve2d::hardTrimByParams(double newStartParam, double newEndParam)
+{
+    impObj()->hardTrimByParams(newStartParam, newEndParam);
+}
+
+void PyGeNurbCurve2d::makeRational(double weight)
+{
+    impObj()->makeRational(weight);
+}
+
+void PyGeNurbCurve2d::makeClosed()
+{
+    impObj()->makeClosed();
+}
+
+void PyGeNurbCurve2d::makePeriodic()
+{
+    impObj()->makePeriodic();
+}
+
+void PyGeNurbCurve2d::makeNonPeriodic()
+{
+    impObj()->makeNonPeriodic();
+}
+
+void PyGeNurbCurve2d::makeOpen()
+{
+    impObj()->makeOpen();
+}
+
+void PyGeNurbCurve2d::elevateDegree(int plusDegree)
+{
+    impObj()->elevateDegree(plusDegree);
+}
+
+Adesk::Boolean PyGeNurbCurve2d::addControlPointAt(double newKnot, const AcGePoint2d& point, double weight)
+{
+    return impObj()->addControlPointAt(newKnot, point, weight);
+}
+
+Adesk::Boolean PyGeNurbCurve2d::deleteControlPointAt(int index)
+{
+    return impObj()->deleteControlPointAt(index);
 }
 
 PyGeNurbCurve2d PyGeNurbCurve2d::copycast(const PyGeEntity2d& src)
