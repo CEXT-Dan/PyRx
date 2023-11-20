@@ -70,7 +70,9 @@ public:
     virtual void xrefSubcommandPathItem(int activity, AcDbObjectId blockId, const ACHAR* pNewPath) override;
     virtual void xrefSubcommandReloadItem(AcDbDatabase* pHost, int activity, AcDbObjectId blockId) override;
     virtual void xrefSubcommandUnloadItem(AcDbDatabase* pHost, int activity, AcDbObjectId blockId) override;
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     virtual void undoSubcommandAuto(int activity, bool state) override;
+#endif
     virtual void undoSubcommandControl(int activity, int option) override;
     virtual void undoSubcommandBegin(int activity)override;
     virtual void undoSubcommandEnd(int activity)override;
@@ -81,20 +83,28 @@ public:
     virtual void layoutSwitched(const ACHAR* newLayoutName) override;
     virtual void layoutToBeSwitched(const ACHAR* oldLayoutName, const ACHAR* newLayoutName) override;
     virtual void dwgViewResized(Adesk::LongPtr hwndDwgView) override;
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     virtual void fullRegenEnded(AcDbDatabase* pDb, const AcDbIntArray& regenedViewports)override;
+#endif
     virtual void docFrameMovedOrResized(Adesk::LongPtr hwndDocFrame, bool bMoved) override;
     virtual void mainFrameMovedOrResized(Adesk::LongPtr hwndMainFrame, bool bMoved) override;
     virtual void beginDoubleClick(const AcGePoint3d& clickPoint) override;
     virtual void beginRightClick(const AcGePoint3d& clickPoint) override;
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     virtual void toolbarBitmapSizeWillChange(bool bLarge) override;
+#endif
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     virtual void toolbarBitmapSizeChanged(bool bLarge) override;
+#endif
     virtual void beginWblockObjects(AcDbDatabase* pFrom, AcDbIdMapping& mapping) override;
     virtual void partialOpenNotice(AcDbDatabase* pDb) override;
     virtual void objectsLazyLoaded(const AcDbObjectIdArray& idArray) override;
     virtual void beginDocClose(AcDbDatabase* pDwg) override;
     virtual void docCloseAborted(AcDbDatabase* pDwg) override;
     virtual void docCloseWillStart(AcDbDatabase* pDwg) override;
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     virtual void beginCloseAll() override;
+#endif
     virtual void beginQuit() override;
     virtual void quitAborted() override;
     virtual void quitWillStart() override;
@@ -103,7 +113,9 @@ public:
     virtual void cmdIUnkModified(const ACHAR* strCommand) override;
     virtual void preXrefLockFile(AcDbObjectId btrId) override;
     virtual void viewChanged() override;
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     virtual void fullRegenWillStart(AcDbDatabase* pDb) override;
+#endif
 
     //wrapper
     virtual void commandWillStartWr(const std::string& cmdStr);

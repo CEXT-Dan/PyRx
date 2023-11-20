@@ -63,9 +63,13 @@ PyDbSurface PyDbSurface::createFrom(const PyDbEntity& pFromEntity)
 
 PyDbExtrudedSurface PyDbSurface::createExtrudedSurface(PyDb3dProfile& pSweep, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcDbExtrudedSurface* newExtrudedSurface = nullptr;
     PyThrowBadEs(AcDbSurface::createExtrudedSurface(pSweep.impObj(), directionVec, *sweepOptions.impObj(), newExtrudedSurface));
     return PyDbExtrudedSurface(newExtrudedSurface, true);
+#endif
 }
 
 std::string PyDbSurface::className()

@@ -45,13 +45,13 @@
     <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
     <OutDir>$(SolutionDir)\Bin\$(ProjectName)\$(PlatformName)\$(Configuration)/</OutDir>
     <LinkIncremental>true</LinkIncremental>
-    <TargetExt>.arx</TargetExt>
+    <TargetExt>.brx</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
     <OutDir>$(SolutionDir)\Bin\$(ProjectName)\$(PlatformName)\$(Configuration)/</OutDir>
-    <TargetExt>.arx</TargetExt>
+    <TargetExt>.brx</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -69,7 +69,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;BRXAPP;_BRXTARGET=240;PYRXDEBUG=1;__WXMSW__;WXUSINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ARX2021)\inc;$(ARX2021)\inc-$(PlatformName);$(ARX2021)\utils\brep\inc;$(Py310)\include;$(BOOST142);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BRX24)\inc;$(BRX24)\inc-$(PlatformName);$(BRX24)\utils\brep\inc;$(Py310)\include;$(BOOST142);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>

@@ -107,7 +107,7 @@ public:
     virtual ~PyDbObjectReactorImpl() override = default;
     virtual void    cancelled(const AcDbObject* pObj) override;
     virtual void    copied(const AcDbObject* src, const AcDbObject* newObj) override;
-    virtual void    erased(const AcDbObject*, bool bErasing) override;
+    virtual void    erased(const AcDbObject*, Adesk::Boolean bErasing) override;
     virtual void    goodbye(const AcDbObject* ptr) override;
     virtual void    openedForModify(const AcDbObject* ptr) override;
     virtual void    modified(const AcDbObject* ptr)override;
@@ -134,7 +134,7 @@ public:
     virtual ~PyDbObjectReactor() = default;
     void        cancelled(const PyDbObject& pObj);
     void        copied(const PyDbObject& src, const PyDbObject& newObj);
-    void        erased(const PyDbObject& src, bool bErasing);
+    void        erased(const PyDbObject& src, Adesk::Boolean bErasing);
     void        goodbye(const PyDbObject& ptr);
     void        openedForModify(const PyDbObject& ptr);
     void        modified(const PyDbObject& ptr);
@@ -176,7 +176,7 @@ public:
     virtual ~AcDbEntityReactorImpl() override = default;
     virtual void        cancelled(const AcDbObject* pObj) override;
     virtual void        copied(const AcDbObject* src, const AcDbObject* newObj) override;
-    virtual void        erased(const AcDbObject*, bool bErasing) override;
+    virtual void        erased(const AcDbObject*, Adesk::Boolean bErasing) override;
     virtual void        goodbye(const AcDbObject* ptr) override;
     virtual void        openedForModify(const AcDbObject* ptr) override;
     virtual void        modified(const AcDbObject* ptr)override;
@@ -204,7 +204,7 @@ public:
     virtual ~PyDbEntityReactor() = default;
     void        cancelled(const PyDbObject& pObj);
     void        copied(const PyDbObject& src, const PyDbObject& newObj);
-    void        erased(const PyDbObject& src, bool bErasing);
+    void        erased(const PyDbObject& src, Adesk::Boolean bErasing);
     void        goodbye(const PyDbObject& ptr);
     void        openedForModify(const PyDbObject& ptr);
     void        modified(const PyDbObject& ptr);

@@ -54,6 +54,7 @@ void makePyPlPlotConfigManagerWrapper()
         .value("kPublishToWebDWF", AcPlPlotConfigManager::StdConfigs::kPublishToWebDWF)
         .value("kPublishToWebJPG", AcPlPlotConfigManager::StdConfigs::kPublishToWebJPG)
         .value("kPublishToWebPNG", AcPlPlotConfigManager::StdConfigs::kPublishToWebPNG)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .value("kDWFxePlot", AcPlPlotConfigManager::StdConfigs::kDWFxePlot)
         .value("kPublishToWebDWFx", AcPlPlotConfigManager::StdConfigs::kPublishToWebDWFx)
         .value("kPDFePlot", AcPlPlotConfigManager::StdConfigs::kPDFePlot)
@@ -62,6 +63,7 @@ void makePyPlPlotConfigManagerWrapper()
         .value("kPDFePlotSmallerFile", AcPlPlotConfigManager::StdConfigs::kPDFePlotSmallerFile)
         .value("kPDFePlotWebMobile", AcPlPlotConfigManager::StdConfigs::kPDFePlotWebMobile)
         .value("kSVFePlot", AcPlPlotConfigManager::StdConfigs::kSVFePlot)
+#endif
         .export_values()
         ;
 }

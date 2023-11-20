@@ -40,7 +40,9 @@ void makePyDbFieldtWrapper()
         .value("kModified", AcDbField::State::kModified)
         .value("kEvaluated", AcDbField::State::kEvaluated)
         .value("kHasCache", AcDbField::State::kHasCache)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .value("kHasFormattedString", AcDbField::State::kHasFormattedString)
+#endif
         .export_values()
         ;
     enum_<AcDbField::EvalOption>("FieldEvalOption")
@@ -85,10 +87,12 @@ void makePyDbFieldtWrapper()
         .value("kStripOptions", AcDbField::FieldCodeFlag::kStripOptions)
         .value("kPreserveFields", AcDbField::FieldCodeFlag::kPreserveFields)
         .value("kTextField", AcDbField::FieldCodeFlag::kTextField)
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .value("kPreserveOptions", AcDbField::FieldCodeFlag::kPreserveOptions)
         .value("kDetachChildren", AcDbField::FieldCodeFlag::kDetachChildren)
         .value("kChildObjectReference", AcDbField::FieldCodeFlag::kChildObjectReference)
         .value("kForExpression", AcDbField::FieldCodeFlag::kForExpression)
+#endif
         .export_values()
         ;
 }

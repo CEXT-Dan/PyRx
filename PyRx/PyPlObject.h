@@ -293,6 +293,7 @@ public:
 void makePyPlPrecisionEntryWrapper();
 class PyPlPrecisionEntry : public PyPlObject
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyPlPrecisionEntry();
     PyPlPrecisionEntry(const AcPlPrecisionEntry& entry);
@@ -318,6 +319,7 @@ public:
     static std::string  className();
 public:
     inline AcPlPrecisionEntry* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 //-----------------------------------------------------------------------------------------
 //PylPlotConfigInfo
