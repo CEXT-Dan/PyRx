@@ -358,13 +358,21 @@ void PyGeCone::setHeight(const PyGeInterval& height)
 
 void PyGeCone::set1(double cosineAngle, double sineAngle, const AcGePoint3d& baseCenter, double baseRadius, const AcGeVector3d& axisOfSymmetry)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cosineAngle, sineAngle, baseCenter, baseRadius, axisOfSymmetry);
+#endif
 }
 
 void PyGeCone::set2(double cosineAngle, double sineAngle, const AcGePoint3d& baseCenter, double baseRadius,
     const AcGeVector3d& axisOfSymmetry, const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cosineAngle, sineAngle, baseCenter, baseRadius, axisOfSymmetry, refAxis, height.imp, startAngle, endAngle);
+#endif
 }
 
 boost::python::tuple PyGeCone::intersectWith1(const PyGeLinearEnt3d& linEnt) const
@@ -549,13 +557,21 @@ void PyGeCylinder::setHeight(const PyGeInterval& height)
 
 void PyGeCylinder::set1(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(radius, origin, axisOfSym);
+#endif
 }
 
 void PyGeCylinder::set2(double radius, const AcGePoint3d& origin, const AcGeVector3d& axisOfSym,
     const AcGeVector3d& refAxis, const PyGeInterval& height, double startAngle, double endAngle)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(radius, origin, axisOfSym, refAxis, height.imp, startAngle, endAngle);
+#endif
 }
 
 boost::python::tuple PyGeCylinder::intersectWith1(const PyGeLinearEnt3d& linEnt) const
@@ -981,13 +997,21 @@ void PyGeSphere::setAnglesInV(double start, double end)
 
 void PyGeSphere::set1(double radius, const AcGePoint3d& center)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(radius, center);
+#endif
 }
 
 void PyGeSphere::set2(double radius, const AcGePoint3d& center, const AcGeVector3d& northAxis, const AcGeVector3d& refAxis,
     double startAngleU, double endAngleU, double startAngleV, double endAngleV)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(radius, center, northAxis, refAxis, startAngleU, endAngleU, startAngleV, endAngleV);
+#endif
 }
 
 boost::python::tuple PyGeSphere::intersectWith1(const PyGeLinearEnt3d& ent) const

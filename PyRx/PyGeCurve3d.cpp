@@ -889,31 +889,50 @@ void PyGeCircArc3d::setAngles(double startAngle, double endAngle)
 
 void PyGeCircArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cent, nrm, radius);
+#endif
 }
 
 void PyGeCircArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cent, nrm, refVec, radius, startAngle, endAngle);
+#endif
 }
 
 void PyGeCircArc3d::set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(startPoint, pnt, endPoint);
+#endif
 }
 
 void PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     double param1;
     double param2;
     Adesk::Boolean success;
     impObj()->set(*curve1.impObj(), *curve2.impObj(), radius, param1, param2, success);
     if (success == false)
         throw PyAcadErrorStatus(eInvalidInput);
+#endif
 }
 
 void PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     double param1;
     double param2;
     double param3;
@@ -921,6 +940,7 @@ void PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, c
     impObj()->set(*curve1.impObj(), *curve2.impObj(), *curve3.impObj(), param1, param2, param3, success);
     if (success == false)
         throw PyAcadErrorStatus(eInvalidInput);
+#endif
 }
 
 PyGeCircArc3d PyGeCircArc3d::cast(const PyGeEntity3d& src)
@@ -1303,17 +1323,29 @@ void PyGeEllipArc3d::setAngles(double startAngle, double endAngle)
 
 void PyGeEllipArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius);
+#endif
 }
 
 void PyGeEllipArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle);
+#endif
 }
 
 void PyGeEllipArc3d::set3(const PyGeCircArc3d& arc)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(*arc.impObj());
+#endif
 }
 
 PyGeEllipArc3d PyGeEllipArc3d::cast(const PyGeEntity3d& src)
