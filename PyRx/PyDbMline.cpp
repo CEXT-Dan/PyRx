@@ -332,20 +332,12 @@ void PyDbMlineStyle::initMlineStyle()
 
 void PyDbMlineStyle::set1(const PyDbMlineStyle& src)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(*src.impObj());
-#endif
 }
 
 void PyDbMlineStyle::set2(const PyDbMlineStyle& src, bool checkIfReferenced)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(*src.impObj(), checkIfReferenced);
-#endif
 }
 
 void PyDbMlineStyle::setDescription(const std::string& description)

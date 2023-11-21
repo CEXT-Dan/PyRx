@@ -95,20 +95,12 @@ AcGeVector2d PyGeBoundBlock2d::getDirection2() const
 
 void PyGeBoundBlock2d::set1(const AcGePoint2d& point1, const AcGePoint2d& point2)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(point1, point2);
-#endif
 }
 
 void PyGeBoundBlock2d::set2(const AcGePoint2d& base, const AcGeVector2d& dir1, const AcGeVector2d& dir2)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(base, dir1, dir2);
-#endif
 }
 
 void PyGeBoundBlock2d::extend(const AcGePoint2d& point)

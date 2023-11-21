@@ -954,11 +954,7 @@ PyPlPlotConfig PyPlPlotInfo::validatedConfig() const
 
 void PyPlPlotInfo::setValidatedConfig(const PyPlPlotConfig& pConfig)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setValidatedConfig(pConfig.impObj());
-#endif
 }
 
 PyPlPlotConfig PyPlPlotInfo::deviceOverride() const
@@ -968,11 +964,7 @@ PyPlPlotConfig PyPlPlotInfo::deviceOverride() const
 
 bool PyPlPlotInfo::isCompatibleDocument(const PyPlPlotInfo& pOtherInfo) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isCompatibleDocument(pOtherInfo.impObj());
-#endif
 }
 
 bool PyPlPlotInfo::isValidated() const
@@ -1339,20 +1331,12 @@ void PyPlPlotInfoValidator::setMediaMatchingPolicy(AcPlPlotInfoValidator::Matchi
 
 void PyPlPlotInfoValidator::setMediaGroupWeight(unsigned int weight)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setMediaGroupWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefMediaGroupWeight()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setMediaGroupWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::mediaGroupWeight() const
@@ -1362,20 +1346,12 @@ unsigned int PyPlPlotInfoValidator::mediaGroupWeight() const
 
 void PyPlPlotInfoValidator::setSheetMediaGroupWeight(unsigned int weight)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setSheetMediaGroupWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefSheetMediaGroupWeight()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setSheetMediaGroupWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::sheetMediaGroupWeight() const
@@ -1385,20 +1361,12 @@ unsigned int PyPlPlotInfoValidator::sheetMediaGroupWeight() const
 
 void PyPlPlotInfoValidator::setMediaBoundsWeight(unsigned int weight)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setMediaBoundsWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefMediaBoundsWeight()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setMediaBoundsWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::mediaBoundsWeight() const
@@ -1408,20 +1376,12 @@ unsigned int PyPlPlotInfoValidator::mediaBoundsWeight() const
 
 void PyPlPlotInfoValidator::setPrintableBoundsWeight(unsigned int weight)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setPrintableBoundsWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefPrintableBoundsWeight()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setPrintableBoundsWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::printableBoundsWeight() const
@@ -1431,20 +1391,12 @@ unsigned int PyPlPlotInfoValidator::printableBoundsWeight() const
 
 void PyPlPlotInfoValidator::setDimensionalWeight(unsigned int weight)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setDimensionalWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefDimensionalWeight()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setDimensionalWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::dimensionalWeight() const
@@ -1454,20 +1406,12 @@ unsigned int PyPlPlotInfoValidator::dimensionalWeight() const
 
 void PyPlPlotInfoValidator::setSheetDimensionalWeight(unsigned int weight)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setSheetDimensionalWeight(weight);
-#endif
 }
 
 void PyPlPlotInfoValidator::setDefSheetDimensionalWeight()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setSheetDimensionalWeight();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::sheetDimensionalWeight() const
@@ -1477,11 +1421,7 @@ unsigned int PyPlPlotInfoValidator::sheetDimensionalWeight() const
 
 void PyPlPlotInfoValidator::setDefMediaMatchingThreshold()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setMediaMatchingThreshold();
-#endif
 }
 
 unsigned int PyPlPlotInfoValidator::mediaMatchingThreshold() const
@@ -1491,11 +1431,7 @@ unsigned int PyPlPlotInfoValidator::mediaMatchingThreshold() const
 
 void PyPlPlotInfoValidator::setMediaMatchingThreshold(unsigned int threshold)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setMediaMatchingThreshold(threshold);
-#endif
 }
 
 PyRxClass PyPlPlotInfoValidator::desc()
