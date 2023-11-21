@@ -191,20 +191,12 @@ boost::python::tuple PyDbEllipse::get() const
 
 void PyDbEllipse::set1(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(impObj()->set(center, unitNormal, majorAxis, radiusRatio));
-#endif
 }
 
 void PyDbEllipse::set2(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio, double startAngle, double endAngle)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(impObj()->set(center, unitNormal, majorAxis, radiusRatio, startAngle, endAngle));
-#endif
 }
 
 Adesk::Boolean PyDbEllipse::isNull() const

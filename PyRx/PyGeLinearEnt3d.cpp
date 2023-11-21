@@ -312,20 +312,12 @@ PyGeLine3d PyGeLine3d::kZAxis()
 
 void PyGeLine3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(pnt, vec);
-#endif
 }
 
 void PyGeLine3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(pnt1, pnt2);
-#endif
 }
 
 PyGeLine3d PyGeLine3d::cast(const PyGeEntity3d& src)
@@ -449,20 +441,12 @@ double PyGeLineSeg3d::length3(double fromParam, double toParam, double tol) cons
 
 void PyGeLineSeg3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(pnt, vec);
-#endif
 }
 
 void PyGeLineSeg3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(pnt1, pnt2);
-#endif
 }
 
 PyGeLineSeg3d PyGeLineSeg3d::cast(const PyGeEntity3d& src)
@@ -535,20 +519,12 @@ PyGeRay3d::PyGeRay3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 
 void PyGeRay3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(pnt, vec);
-#endif
 }
 
 void PyGeRay3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(pnt1, pnt2);
-#endif
 }
 
 PyGeRay3d PyGeRay3d::cast(const PyGeEntity3d& src)
