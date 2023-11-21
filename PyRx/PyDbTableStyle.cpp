@@ -136,15 +136,9 @@ PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode, bool
 
 std::string PyDbTableStyle::getName()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    RxAutoOutStr name;
-    PyThrowBadEs(impObj()->getName(name.buf));
-    return wstr_to_utf8(name.buf);
-#else
     AcString name;
     PyThrowBadEs(impObj()->getName(name));
     return wstr_to_utf8(name);
-#endif
 }
 
 void PyDbTableStyle::setName(const std::string& pszName)

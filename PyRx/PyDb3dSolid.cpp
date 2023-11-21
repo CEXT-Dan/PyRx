@@ -404,11 +404,7 @@ void PyDb3dSolid::filletEdges(const boost::python::list& edgeSubentIds, boost::p
 
 bool PyDb3dSolid::usesGraphicsCache()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->usesGraphicsCache();
-#endif
 }
 
 void PyDb3dSolid::createSculptedSolid(const boost::python::list& limitingBodies, const boost::python::list& limitingFlags)
@@ -420,9 +416,6 @@ void PyDb3dSolid::createSculptedSolid(const boost::python::list& limitingBodies,
 
 boost::python::list PyDb3dSolid::projectOnToSolid(const PyDbEntity& pEntityToProject, const AcGeVector3d& projectionDirection) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     AcArray<AcDbEntity*> projectedEntities;
     PyThrowBadEs(impObj()->projectOnToSolid(pEntityToProject.impObj(), projectionDirection, projectedEntities));
@@ -430,7 +423,6 @@ boost::python::list PyDb3dSolid::projectOnToSolid(const PyDbEntity& pEntityToPro
     for (auto item : projectedEntities)
         pyList.append(PyDbEntity(item, true));
     return pyList;
-#endif
 }
 
 std::string PyDb3dSolid::className()

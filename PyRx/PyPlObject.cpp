@@ -307,9 +307,6 @@ void PyPlDSDData::setDSDEntries(const boost::python::list& val)
 
 boost::python::list PyPlDSDData::getPrecisionEntries() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     boost::python::list pyList;
     AcPlPrecisionEntries entries;
@@ -317,20 +314,15 @@ boost::python::list PyPlDSDData::getPrecisionEntries() const
     for (const auto& entry : entries)
         pyList.append(PyPlPrecisionEntry(entry));
     return pyList;
-#endif
 }
 
 void PyPlDSDData::setPrecisionEntries(const boost::python::list& val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     AcPlPrecisionEntries entries;
     const auto& vec = py_list_to_std_vector<PyPlPrecisionEntry>(val);
     for (const auto& entry : vec)
         entries.append(*entry.impObj());
     impObj()->setPrecisionEntries(entries);
-#endif
 }
 
 int PyPlDSDData::numberOfDSDEntries() const
@@ -365,9 +357,6 @@ void PyPlDSDData::setPassword(const std::string& pVal)
 
 void PyPlDSDData::getUnrecognizedData(boost::python::list& sectionArray, boost::python::list& dataArray) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     AcStringArray _sectionArray;
     AcStringArray _dataArray;
     impObj()->getUnrecognizedData(_sectionArray, _dataArray);
@@ -375,7 +364,6 @@ void PyPlDSDData::getUnrecognizedData(boost::python::list& sectionArray, boost::
         sectionArray.append(wstr_to_utf8(item));
     for (const auto& item : _dataArray)
         dataArray.append(wstr_to_utf8(item));
-#endif
 }
 
 void PyPlDSDData::setUnrecognizedData1(const std::string& pSectionName, const std::string& pSectionData)
@@ -385,11 +373,7 @@ void PyPlDSDData::setUnrecognizedData1(const std::string& pSectionName, const st
 
 void PyPlDSDData::setUnrecognizedData2(const boost::python::list& sectionArray, const boost::python::list& dataArray)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setUnrecognizedData(PyListAcStringArray(sectionArray), PyListAcStringArray(dataArray));
-#endif
 }
 
 unsigned int PyPlDSDData::majorVersion() const
@@ -464,20 +448,12 @@ void PyPlDSDData::setPlotStampOn(bool bOn)
 
 bool PyPlDSDData::viewFile() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->viewFile();
-#endif
 }
 
 void PyPlDSDData::setViewFile(bool bViewFile)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setViewFile(bViewFile);
-#endif
 }
 
 std::string PyPlDSDData::selectionSetName() const
@@ -525,141 +501,92 @@ void PyPlDSDData::set3dDwfOptions(bool bGroupByXrefHierarchy, bool bPublishWithM
 
 bool PyPlDSDData::includeLayerInfo() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->includeLayerInfo();
-#endif
-
 }
 
 void PyPlDSDData::setIncludeLayerInfo(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setIncludeLayerInfo(bOn);
-#endif
-
 }
 
 bool PyPlDSDData::lineMerge() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->lineMerge();
-#endif
 }
 
 void PyPlDSDData::setLineMerge(bool bOn)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setLineMerge(bOn);
-#endif
 }
 
 std::string PyPlDSDData::currentPrecision() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return wstr_to_utf8(impObj()->currentPrecision());
-#endif
 }
 
 void PyPlDSDData::setCurrentPrecision(const std::string& pCurrentPrecision)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setCurrentPrecision(utf8_to_wstr(pCurrentPrecision).c_str());
-#endif
 }
 
 bool PyPlDSDData::promptForDwfName() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->promptForDwfName();
-#endif
 }
 
 void PyPlDSDData::setPromptForDwfName(bool bPromptForDwfName)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setPromptForDwfName(bPromptForDwfName);
-#endif
 }
 
 bool PyPlDSDData::pwdProtectPublishedDWF() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->pwdProtectPublishedDWF();
-#endif
 }
 
 void PyPlDSDData::setPwdProtectPublishedDWF(bool bPwdProtectPublishedDWF)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setPwdProtectPublishedDWF(bPwdProtectPublishedDWF);
-#endif
 }
 
 bool PyPlDSDData::promptForPassword() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->promptForPassword();
-#endif
 }
 
 void PyPlDSDData::setPromptForPassword(bool bPromptForPassword)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->setPromptForPassword(bPromptForPassword);
-#endif
 }
 
 bool PyPlDSDData::initializeLayouts() const
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
-#elif defined(_ZRXTARGET) && _ZRXTARGET <= 240
-    throw PyNotimplementedByHost();
-#elif defined(_GRXTARGET) && _GRXTARGET <= 240
-    throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET) && _ARXTARGET <= 240
+#endif
+
+#ifdef _ARXTARGET
+#if _ARXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
     return impObj()->initializeLayouts();
 #endif
+#endif
+
 }
 
 void PyPlDSDData::setInitializeLayouts(bool initLayouts)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
-#elif defined(_ZRXTARGET) && _ZRXTARGET <= 240
-    throw PyNotimplementedByHost();
-#elif defined(_GRXTARGET) && _GRXTARGET <= 240
-    throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET) && _ARXTARGET <= 240
+#endif
+
+#ifdef _ARXTARGET
+#if _ARXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
     return impObj()->setInitializeLayouts(initLayouts);
+#endif
 #endif
 }
 
@@ -716,10 +643,8 @@ void makePyPlDSDEntryWrapper()
         .value("kMultiDWFx", AcPlDSDEntry::SheetType::kMultiDWFx)
         .value("kSinglePDF", AcPlDSDEntry::SheetType::kSinglePDF)
         .value("kMultiPDF", AcPlDSDEntry::SheetType::kMultiPDF)
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .value("kSingleSVF", AcPlDSDEntry::SheetType::kSingleSVF)
         .value("kMultiSVF", AcPlDSDEntry::SheetType::kMultiSVF)
-#endif
         .export_values()
         ;
 
@@ -829,17 +754,16 @@ std::string PyPlDSDEntry::orgSheetPath() const
 
 std::string PyPlDSDEntry::traceSession() const
 {
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
+    throw PyNotimplementedByHost();
+#endif
 
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
-    throw PyNotimplementedByHost();
-#elif defined(_ZRXTARGET) && _ZRXTARGET <= 240
-    throw PyNotimplementedByHost();
-#elif defined(_GRXTARGET) && _GRXTARGET <= 240
-    throw PyNotimplementedByHost();
-#elif defined(_ARXTARGET) && _ARXTARGET <= 240
+#ifdef _ARXTARGET
+#if _ARXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->traceSession());
+#endif
 #endif
 }
 
@@ -979,12 +903,8 @@ unsigned long PyPlPlotInfo::mergeStatus() const
 
 std::string PyPlPlotInfo::OrgFilePath()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     AcString str = impObj()->OrgFilePath();
     return wstr_to_utf8(str);
-#endif
 }
 
 PyRxClass PyPlPlotInfo::desc()
@@ -1456,7 +1376,6 @@ AcPlPlotInfoValidator* PyPlPlotInfoValidator::impObj(const std::source_location&
 //PyPlPrecisionEntry
 void makePyPlPrecisionEntryWrapper()
 {
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     PyDocString DS("PrecisionEntry");
     class_<PyPlPrecisionEntry, bases<PyPlObject>>("PrecisionEntry")
         .def(init<>())
@@ -1479,10 +1398,8 @@ void makePyPlPrecisionEntryWrapper()
         .def("desc", &PyPlPrecisionEntry::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyPlPrecisionEntry::className, DS.SARGS()).staticmethod("className")
         ;
-#endif
 }
 
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyPlPrecisionEntry::PyPlPrecisionEntry()
     : PyPlObject(new AcPlPrecisionEntry(), true)
 {
@@ -1595,7 +1512,6 @@ AcPlPrecisionEntry* PyPlPrecisionEntry::impObj(const std::source_location& src /
     }
     return static_cast<AcPlPrecisionEntry*>(m_pyImp.get());
 }
-#endif
 
 //-----------------------------------------------------------------------------------------
 //PylPlotConfigInfo
@@ -1672,8 +1588,6 @@ std::string PyPlPlotConfigInfo::deviceId() const
 {
 #if defined(_GRXTARGET) && (_GRXTARGET == 240)
     throw PyNotimplementedByHost();
-#elif  defined(_BRXTARGET) && _BRXTARGET <= 240
-    throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->deviceId());
 #endif
@@ -1681,9 +1595,7 @@ std::string PyPlPlotConfigInfo::deviceId() const
 
 void PyPlPlotConfigInfo::setDeviceId(const std::string& pDevId)
 {
-#if defined(_GRXTARGET) && (_GRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#elif  defined(_BRXTARGET) && _BRXTARGET <= 240
+#if defined(_GRXTARGET) && (_GRXTARGET == 240)
     throw PyNotimplementedByHost();
 #else
     impObj()->setDeviceId(utf8_to_wstr(pDevId).c_str());

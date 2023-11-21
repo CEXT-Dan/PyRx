@@ -1156,9 +1156,7 @@ void makePyGeMatrix3dWrapper()
         .def("setToProduct", &AcGeMatrix3d::setToProduct, DS.ARGS({ "mat1: PyGe.Matrix3d","mat2: PyGe.Matrix3d" }), return_self<>())
         .def("invert", &AcGeMatrix3d::invert, DS.ARGS(), return_self<>())
         .def<AcGeMatrix3d(AcGeMatrix3d::*)(void)const>("inverse", &AcGeMatrix3d::inverse)
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeTol&)const>("inverse", &AcGeMatrix3d::inverse)
-#endif
         .def<Adesk::Boolean(AcGeMatrix3d::*)(AcGeMatrix3d&, double)const>("inverse", &AcGeMatrix3d::inverse)
         .def("isSingular", &AcGeMatrix3d::isSingular, DS.ARGS({ "val: PyGe.Tol=default" }))
         .def("transposeIt", &AcGeMatrix3d::transposeIt, DS.ARGS(), return_self<>())
@@ -1407,9 +1405,7 @@ BOOST_PYTHON_MODULE(PyGe)
         .value("kExternalObject", AcGe::EntityId::kExternalObject)
         .value("kCurveSurfaceInt", AcGe::EntityId::kCurveSurfaceInt)
         .value("kSurfaceSurfaceInt", AcGe::EntityId::kSurfaceSurfaceInt)
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .value("Helix", AcGe::EntityId::kHelix)
-#endif
         .export_values()
         ;
 };

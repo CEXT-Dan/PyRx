@@ -513,7 +513,7 @@ void PyDbObjectReactorImpl::copied(const AcDbObject* src, const AcDbObject* newO
 }
 
 
-void PyDbObjectReactorImpl::erased(const AcDbObject* src, Adesk::Boolean bErasing)
+void PyDbObjectReactorImpl::erased(const AcDbObject* src, bool bErasing)
 {
     const auto imp = impObj();
     if (imp->reg_erased)
@@ -695,7 +695,7 @@ void PyDbObjectReactor::copied(const PyDbObject& src, const PyDbObject& newObj)
     }
 }
 
-void PyDbObjectReactor::erased(const PyDbObject& src, Adesk::Boolean bErasing)
+void PyDbObjectReactor::erased(const PyDbObject& src, bool bErasing)
 {
     PyAutoLockGIL lock;
     try
@@ -914,7 +914,7 @@ void AcDbEntityReactorImpl::copied(const AcDbObject* src, const AcDbObject* newO
     }
 }
 
-void AcDbEntityReactorImpl::erased(const AcDbObject* src, Adesk::Boolean bErasing)
+void AcDbEntityReactorImpl::erased(const AcDbObject* src, bool bErasing)
 {
     const auto imp = impObj();
     if (imp->reg_erased)
@@ -1122,7 +1122,7 @@ void PyDbEntityReactor::copied(const PyDbObject& src, const PyDbObject& newObj)
     }
 }
 
-void PyDbEntityReactor::erased(const PyDbObject& src, Adesk::Boolean bErasing)
+void PyDbEntityReactor::erased(const PyDbObject& src, bool bErasing)
 {
     PyAutoLockGIL lock;
     try

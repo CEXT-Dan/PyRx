@@ -612,11 +612,7 @@ double PyDbDatabase::cameraHeight() const
 
 Adesk::Int16 PyDbDatabase::cDynDisplayMode() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->cDynDisplayMode();
-#endif
 }
 
 double PyDbDatabase::celtscale() const
@@ -706,20 +702,12 @@ Adesk::Int16 PyDbDatabase::coords() const
 
 Adesk::UInt32 PyDbDatabase::countEmptyObjects(const Adesk::Int32 flags)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->countEmptyObjects(flags);
-#endif
 }
 
 PyDbObjectId PyDbDatabase::detailViewStyle() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->detailViewStyle());
-#endif
 }
 
 PyDbObjectId PyDbDatabase::detailViewStyleDictionaryId() const
@@ -819,11 +807,7 @@ double PyDbDatabase::elevation() const
 
 Adesk::UInt32 PyDbDatabase::eraseEmptyObjects(const Adesk::Int32 flags)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->eraseEmptyObjects(flags);
-#endif
 }
 
 AcGePoint3d PyDbDatabase::extmax() const
@@ -858,20 +842,12 @@ void PyDbDatabase::forceWblockDatabaseCopy()
 
 std::string PyDbDatabase::geoCoordinateSystemId() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return wstr_to_utf8(impObj()->geoCoordinateSystemId());
-#endif
 }
 
 bool PyDbDatabase::geoMarkerVisibility() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->geoMarkerVisibility();
-#endif
 }
 
 double PyDbDatabase::get3dDwfPrec() const
@@ -1047,11 +1023,7 @@ PyDbHandle PyDbDatabase::handseed() const
 
 bool PyDbDatabase::hasClass(const PyRxClass& pClass) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->hasClass(pClass.impObj());
-#endif
 }
 
 Adesk::UInt8 PyDbDatabase::hideText() const
@@ -1071,11 +1043,7 @@ AcGePoint2d PyDbDatabase::hpOrigin() const
 
 Adesk::UInt8 PyDbDatabase::indexctl() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->indexctl();
-#endif
 }
 
 AcDb::UnitsValue PyDbDatabase::insunits() const
@@ -1100,11 +1068,7 @@ Adesk::UInt8 PyDbDatabase::intersectDisplay() const
 
 bool PyDbDatabase::isBeingDestroyed() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isBeingDestroyed();
-#endif
 }
 
 bool PyDbDatabase::isEMR() const
@@ -1164,20 +1128,12 @@ double PyDbDatabase::latitude() const
 
 Adesk::UInt8 PyDbDatabase::layerEval() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->layerEval();
-#endif
 }
 
 Adesk::Int16 PyDbDatabase::layerNotify() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->layerNotify();
-#endif
 }
 
 PyDbObjectId PyDbDatabase::layerTableId() const
@@ -1207,20 +1163,12 @@ Adesk::UInt8 PyDbDatabase::lightGlyphDisplay() const
 
 Adesk::UInt8 PyDbDatabase::lightingUnits() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->lightingUnits();
-#endif
 }
 
 bool PyDbDatabase::lightsInBlocks() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->lightsInBlocks();
-#endif
 }
 
 bool PyDbDatabase::limcheck() const
@@ -1369,11 +1317,7 @@ bool PyDbDatabase::msltscale() const
 
 double PyDbDatabase::msOleScale() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->msOleScale();
-#endif
 }
 
 PyDbObjectId PyDbDatabase::namedObjectsDictionaryId() const
@@ -1383,11 +1327,7 @@ PyDbObjectId PyDbDatabase::namedObjectsDictionaryId() const
 
 bool PyDbDatabase::needsRecovery() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->needsRecovery();
-#endif
 }
 
 double PyDbDatabase::northDirection() const
@@ -1452,11 +1392,7 @@ PyDbObjectId PyDbDatabase::paperSpaceVportId() const
 
 Adesk::Int8 PyDbDatabase::pdfframe() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->pdfframe();
-#endif
 }
 
 Adesk::Int16 PyDbDatabase::pdmode() const
@@ -1541,11 +1477,7 @@ PyDbObjectId PyDbDatabase::plotStyleNameDictionaryId() const
 
 Adesk::Int16 PyDbDatabase::previewType() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->previewType();
-#endif
 }
 
 bool PyDbDatabase::psltscale() const
@@ -1623,11 +1555,7 @@ void PyDbDatabase::removeReactor(PyDbDatabaseReactor& pReactor) const
 
 void PyDbDatabase::resetTimes()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->resetTimes());
-#endif
 }
 
 void PyDbDatabase::restoreForwardingXrefSymbols()
@@ -1657,11 +1585,7 @@ PyDbObjectId PyDbDatabase::scaleListDictionaryId() const
 
 PyDbObjectId PyDbDatabase::sectionViewStyle() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->sectionViewStyle());
-#endif
 }
 
 PyDbObjectId PyDbDatabase::sectionViewStyleDictionaryId() const
@@ -1736,11 +1660,7 @@ void PyDbDatabase::setCannoscale(PyDbAnnotationScale& val)
 
 void PyDbDatabase::setCDynDisplayMode(Adesk::Int16 val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setCDynDisplayMode(val));
-#endif
 }
 
 void PyDbDatabase::setCecolor(const AcCmColor& color)
@@ -1950,11 +1870,7 @@ void PyDbDatabase::setFingerprintGuid(const std::string& newGuid)
 
 void PyDbDatabase::setFullSaveRequired()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setFullSaveRequired();
-#endif
 }
 
 void PyDbDatabase::readDwgFile(const char* fileName)
@@ -1995,11 +1911,7 @@ PyDbObjectId PyDbDatabase::modelSpaceId() const
 
 void PyDbDatabase::setGeoMarkerVisibility(bool value)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setGeoMarkerVisibility(value));
-#endif
 }
 
 void PyDbDatabase::setHaloGap(Adesk::UInt8 val)
@@ -2034,11 +1946,7 @@ void PyDbDatabase::setHyperlinkBase(const std::string& val)
 
 void PyDbDatabase::setIndexctl(Adesk::UInt8 val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setIndexctl(val));
-#endif
 }
 
 void PyDbDatabase::setInsbase(const AcGePoint3d& base)
@@ -2093,20 +2001,12 @@ void PyDbDatabase::setLatitude(double lat)
 
 void PyDbDatabase::setLayerEval(Adesk::UInt8 val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setLayerEval(val));
-#endif
 }
 
 void PyDbDatabase::setLayerNotify(Adesk::Int16 val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setLayerNotify(val));
-#endif
 }
 
 void PyDbDatabase::setLensLength(const double _lensLength)
@@ -2121,20 +2021,12 @@ void PyDbDatabase::setLightGlyphDisplay(Adesk::UInt8 val)
 
 void PyDbDatabase::setLightingUnits(Adesk::UInt8 val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setLightingUnits(val));
-#endif
 }
 
 void PyDbDatabase::setLightsInBlocks(bool val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setLightsInBlocks(val));
-#endif
 }
 
 void PyDbDatabase::setLimcheck(bool check)
@@ -2239,11 +2131,7 @@ void PyDbDatabase::setMsltscale(bool val)
 
 void PyDbDatabase::setMsOleScale(double val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setMsOleScale(val));
-#endif
 }
 
 void PyDbDatabase::setNorthDirection(double northdir)
@@ -2273,11 +2161,7 @@ void PyDbDatabase::setOrthomode(bool mode)
 
 void PyDbDatabase::setPdfframe(Adesk::Int8 val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setPdfframe(val));
-#endif
 }
 
 void PyDbDatabase::setPdmode(Adesk::Int16 mode)
@@ -2347,12 +2231,7 @@ void PyDbDatabase::setPlinewid(double width)
 
 void PyDbDatabase::setPreviewType(Adesk::Int16 val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setPreviewType(val));
-#endif
-
 }
 
 void PyDbDatabase::setProjectName(const std::string& val)
@@ -2417,11 +2296,7 @@ void PyDbDatabase::setSaveproxygraphics(Adesk::Int16 saveimg)
 
 void PyDbDatabase::setSectionViewStyle(const PyDbObjectId& objId)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setSectionViewStyle(objId.m_id));
-#endif
 }
 
 void PyDbDatabase::setShadedge(Adesk::Int16 mode)
@@ -2586,11 +2461,7 @@ void PyDbDatabase::setUcsBase(const PyDbObjectId& ucsid)
 
 void PyDbDatabase::setUcsname(const PyDbObjectId& ucsRecId)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setUcsname(ucsRecId.m_id));
-#endif
 }
 
 void PyDbDatabase::setUnitmode(Adesk::Int16 mode)
@@ -2600,11 +2471,7 @@ void PyDbDatabase::setUnitmode(Adesk::Int16 mode)
 
 void PyDbDatabase::setUpdateThumbnail(Adesk::UInt8 val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setUpdateThumbnail(val));
-#endif
 }
 
 void PyDbDatabase::setUseri1(Adesk::Int16 val)
@@ -2694,11 +2561,7 @@ void PyDbDatabase::setWorldview(bool view)
 
 void PyDbDatabase::setXclipFrame(Adesk::UInt8 disp)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setXclipFrame(disp));
-#endif
 }
 
 void PyDbDatabase::setXrefEditEnabled(bool enable)
@@ -2918,11 +2781,7 @@ void PyDbDatabase::updateExt(bool doBestFit)
 
 Adesk::UInt8 PyDbDatabase::updateThumbnail() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->updateThumbnail();
-#endif
 }
 
 Adesk::Int16 PyDbDatabase::useri1() const
@@ -3078,11 +2937,7 @@ bool PyDbDatabase::worldview() const
 
 Adesk::UInt8 PyDbDatabase::xclipFrame() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->xclipFrame();
-#endif
 }
 
 PyDbObjectId PyDbDatabase::xrefBlockId() const

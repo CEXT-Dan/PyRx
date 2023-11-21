@@ -436,13 +436,9 @@ void DbCore::forceTextAdjust(const boost::python::list& ids)
 
 PyDbObjectId DbCore::getCurUserViewportId(PyDbDatabase& db)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyDbObjectId id;
     PyThrowBadEs(acdbGetCurUserViewportId(db.impObj(), id.m_id));
     return id;
-#endif
 }
 
 PyDbObjectId DbCore::getCurVportId(PyDbDatabase& db)
@@ -475,7 +471,7 @@ boost::python::list DbCore::getDimAssocIds(const PyDbObjectId& dimId)
 
 PyDbObjectId DbCore::getDimStyleId(PyDbDatabase& db, const std::string& styleName, const std::string& lockName)
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(acdbGetDimStyleId(db.impObj(), utf8_to_wstr(styleName).c_str(), utf8_to_wstr(lockName).c_str()));
@@ -489,7 +485,7 @@ PyDbObjectId DbCore::getDynDimStyleId(PyDbDatabase& db)
 
 boost::python::tuple DbCore::getProxyInfo(const PyDbObject& obj)
 {
-#if defined(_ARXTARGET) && (_ARXTARGET < 250) || (_ZRXTARGET == 240)  || (_GRXTARGET == 240) || (_BRXTARGET == 240)
+#if defined(_ARXTARGET) && (_ARXTARGET < 250) || (_ZRXTARGET == 240)  || (_GRXTARGET == 240) 
     PyAutoLockGIL lock;
     RxAutoOutStr dxfName;
     RxAutoOutStr className;
@@ -508,11 +504,7 @@ boost::python::tuple DbCore::getProxyInfo(const PyDbObject& obj)
 
 std::string DbCore::getMappedFontName(const std::string& fontName)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return wstr_to_utf8(acdbGetMappedFontName(utf8_to_wstr(fontName).c_str()));
-#endif
 }
 
 std::string DbCore::getReservedString(AcDb::reservedStringEnumType reservedType, bool bGetLocalized)
@@ -652,12 +644,7 @@ PyDbObjectId DbCore::postDimAssoc2(const PyDbObjectId& dimId, PyDbDimAssoc& asso
 
 void DbCore::queueAnnotationEntitiesForRegen(PyDbDatabase& db)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyThrowBadEs(acdbQueueAnnotationEntitiesForRegen(db.impObj()));
-#endif
-
 }
 
 int DbCore::queueForRegen(const boost::python::list& pyids)
@@ -783,11 +770,7 @@ void DbCore::putSummaryInfo(PyDbDatabaseSummaryInfo& info, PyDbDatabase& db)
 
 bool DbCore::validateCustomSummaryInfoKey(const std::string& key, PyDbDatabaseSummaryInfo& info)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return acdbValidateCustomSummaryInfoKey(utf8_to_wstr(key).c_str(), info.impObj()) == eOk;
-#endif
 }
 
 bool DbCore::ucs2Wcs1(const AcGePoint3d& p, AcGePoint3d& q)

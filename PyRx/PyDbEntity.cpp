@@ -155,13 +155,9 @@ void PyDbEntity::setLayer6(const PyDbObjectId& newVal, bool doSubents, bool allo
 
 std::string PyDbEntity::plotStyleName() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    return wstr_to_utf8(impObj()->plotStyleName());
-#else
     AcString str;
     PyThrowBadEs(impObj()->plotStyleName(str));
     return wstr_to_utf8(str);
-#endif
 }
 
 PyDbObjectId PyDbEntity::getPlotStyleNameId() const
