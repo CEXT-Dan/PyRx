@@ -458,12 +458,20 @@ PyGePosition3d::PyGePosition3d(double x, double y, double z)
 
 void PyGePosition3d::set1(const AcGePoint3d& pnt)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(pnt);
+#endif
 }
 
 void PyGePosition3d::set2(double x, double y, double z)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(x, y, x);
+#endif
 }
 
 PyGePosition3d PyGePosition3d::cast(const PyGeEntity3d& src)

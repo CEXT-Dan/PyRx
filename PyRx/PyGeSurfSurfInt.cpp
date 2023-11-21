@@ -58,26 +58,42 @@ PyGeSurfSurfInt::PyGeSurfSurfInt(AcGeEntity3d* pEnt)
 
 PyGeSurface PyGeSurfSurfInt::surface1() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyGeSurface(impObj()->surface1());
+#endif
 }
 
 PyGeSurface PyGeSurfSurfInt::surface2() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyGeSurface(impObj()->surface2());
+#endif
 }
 
 AcGeTol PyGeSurfSurfInt::tolerance() const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->tolerance();
+#endif
 }
 
 int PyGeSurfSurfInt::numResults()
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     int result = impObj()->numResults(err);
     if (err != AcGe::kXXOk)
         throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
     return result;
+#endif
 }
 
 PyGeCurve3d PyGeSurfSurfInt::intCurve(int intNum, Adesk::Boolean isExternal) const
@@ -109,6 +125,9 @@ AcGePoint3d PyGeSurfSurfInt::intPoint(int intNum) const
 
 boost::python::tuple PyGeSurfSurfInt::getIntPointParams(int intNum) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGePoint2d param1;
     AcGePoint2d param2;
@@ -117,10 +136,14 @@ boost::python::tuple PyGeSurfSurfInt::getIntPointParams(int intNum) const
     if (err != AcGe::kXXOk)
         throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
     return boost::python::make_tuple(param1, param2);
+#endif
 }
 
 boost::python::tuple PyGeSurfSurfInt::getIntConfigs(int intNum) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGe::ssiConfig surf1Left = AcGe::ssiConfig::kSSIUnknown;
     AcGe::ssiConfig surf1Right = AcGe::ssiConfig::kSSIUnknown;
@@ -133,16 +156,21 @@ boost::python::tuple PyGeSurfSurfInt::getIntConfigs(int intNum) const
     if (err != AcGe::kXXOk)
         throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
     return boost::python::make_tuple((int)surf1Left, (int)surf1Right, (int)surf2Left, (int)surf2Right, dim);
+#endif
 }
 
 
 int PyGeSurfSurfInt::getDimension(int intNum) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGe::AcGeIntersectError err = AcGe::kXXOk;
     int result = impObj()->getDimension(intNum, err);
     if (err != AcGe::kXXOk)
         throw PyAcadErrorStatus(static_cast<Acad::ErrorStatus>(err));
     return result;
+#endif
 }
 
 int PyGeSurfSurfInt::getType(int intNum) const
