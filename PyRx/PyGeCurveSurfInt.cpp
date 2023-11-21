@@ -136,12 +136,20 @@ boost::python::tuple PyGeCurveSurfInt::getIntConfigs(int intNum) const
 
 void PyGeCurveSurfInt::set1(const PyGeCurve3d& cvr, const PyGeSurface& srf)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(*cvr.impObj(), *srf.impObj());
+#endif
 }
 
 void PyGeCurveSurfInt::set2(const PyGeCurve3d& cvr, const PyGeSurface& srf, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(*cvr.impObj(), *srf.impObj(), tol);
+#endif
 }
 
 PyGeCurveSurfInt PyGeCurveSurfInt::cast(const PyGeEntity3d& src)
