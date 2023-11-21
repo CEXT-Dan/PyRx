@@ -274,7 +274,7 @@ void PyDbText::convertFieldToText()
 
 bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -283,7 +283,7 @@ bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 
 boost::python::list PyDbText::getBoundingPoints() const
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     AcGePoint3dArray boundingPoints;
@@ -703,11 +703,7 @@ void PyDbAttribute::updateMTextAttribute()
 
 bool PyDbAttribute::isReallyLocked() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isReallyLocked();
-#endif
 }
 
 std::string PyDbAttribute::className()
@@ -1246,9 +1242,7 @@ void makePyDb2dVertexWrapper()
     class_<PyDb2dVertex, bases<PyDbVertex>>("Vertex2d")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .def(init<const AcGePoint3d&, double, double, double, double, Adesk::Int32>())
-#endif
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("vertexType", &PyDb2dVertex::vertexType, DS.ARGS())
@@ -1285,12 +1279,11 @@ PyDb2dVertex::PyDb2dVertex(const AcGePoint3d& pos)
 {
 }
 
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyDb2dVertex::PyDb2dVertex(const AcGePoint3d& pos, double bulge, double startWidth, double endWidth, double tangent, Adesk::Int32 vertexIdentifier)
     : PyDb2dVertex(new AcDb2dVertex(pos, bulge, startWidth, endWidth, tangent, vertexIdentifier), true)
 {
 }
-#endif
+
 PyDb2dVertex::PyDb2dVertex(AcDb2dVertex* ptr, bool autoDelete)
     : PyDbVertex(ptr, autoDelete)
 {
@@ -1368,11 +1361,7 @@ void PyDb2dVertex::ignoreTangent()
 
 void PyDb2dVertex::setTangentUsed(Adesk::Boolean val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setTangentUsed(val));
-#endif
 }
 
 double PyDb2dVertex::tangent() const
@@ -1387,20 +1376,12 @@ void PyDb2dVertex::setTangent(double newVal)
 
 void PyDb2dVertex::setVertexIdentifier(Adesk::Int32 suggestedValue)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setVertexIdentifier(suggestedValue));
-#endif
 }
 
 int PyDb2dVertex::vertexIdentifier() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->vertexIdentifier();
-#endif
 }
 
 std::string PyDb2dVertex::className()
@@ -2208,8 +2189,6 @@ void PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
 {
 #if defined(_GRXTARGET) && (_GRXTARGET == 240)
     throw PyNotimplementedByHost();
-#elif defined(_BRXTARGET) && _BRXTARGET <= 240
-    throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
 #endif
@@ -2712,38 +2691,22 @@ void PyDbCircle::setNormal(const AcGeVector3d& val)
 
 double PyDbCircle::circumference() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->circumference();
-#endif
 }
 
 void PyDbCircle::setCircumference(double val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setCircumference(val));
-#endif
 }
 
 double PyDbCircle::diameter() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->diameter();
-#endif
 }
 
 void PyDbCircle::setDiameter(double val)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setDiameter(val));
-#endif
 }
 
 PyGeCircArc3d PyDbCircle::getAcGeCurve1() const
@@ -3290,8 +3253,6 @@ Adesk::Boolean PyDbPolyline::hasWidth() const
 void PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
 {
 #if defined(_GRXTARGET) && (_GRXTARGET == 240)
-    throw PyNotimplementedByHost();
-#elif  defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));

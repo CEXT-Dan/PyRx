@@ -66,11 +66,7 @@ bool PyDbSymbolTableRecord::isResolved() const
 
 bool PyDbSymbolTableRecord::isRenamable() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->isRenamable();
-#endif
 }
 
 std::string PyDbSymbolTableRecord::className()
@@ -1458,11 +1454,7 @@ void PyDbAbstractViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
 
 void PyDbAbstractViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun));
-#endif
 }
 
 boost::python::tuple PyDbAbstractViewTableRecord::getUcs() const
@@ -1866,47 +1858,27 @@ void PyDbViewportTableRecord::setBackground(const PyDbObjectId& backgroundId)
 
 PyDbObjectId PyDbViewportTableRecord::previousBackground1() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->previousBackground());
-#endif
 }
 
 PyDbObjectId PyDbViewportTableRecord::previousBackground2(AcGiDrawable::DrawableType type) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyDbObjectId(impObj()->previousBackground(type));
-#endif
 }
 
 void PyDbViewportTableRecord::setPreviousBackground1(PyDbObjectId& backgroundId)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id));
-#endif
 }
 
 void PyDbViewportTableRecord::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool bForcedSwitch)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id, type, bForcedSwitch));
-#endif
 }
 
 bool PyDbViewportTableRecord::previousBackgroundForcedSwitch(void) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->previousBackgroundForcedSwitch();
-#endif
 }
 
 std::string PyDbViewportTableRecord::className()
@@ -2029,15 +2001,9 @@ void PyDbViewTableRecord::disassociateUcsFromView()
 
 std::string PyDbViewTableRecord::getCategoryName() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    RxAutoOutStr str;
-    PyThrowBadEs(impObj()->getCategoryName(str.buf));
-    return wstr_to_utf8(str.buf);
-#else
     AcString str;
     PyThrowBadEs(impObj()->getCategoryName(str));
     return wstr_to_utf8(str);
-#endif
 }
 
 void PyDbViewTableRecord::setCategoryName(const std::string& categoryName)
@@ -2047,16 +2013,9 @@ void PyDbViewTableRecord::setCategoryName(const std::string& categoryName)
 
 std::string PyDbViewTableRecord::getLayerState() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    RxAutoOutStr str;
-    PyThrowBadEs(impObj()->getLayerState(str.buf));
-    return wstr_to_utf8(str.buf);
-#else
     AcString str;
     PyThrowBadEs(impObj()->getLayerState(str));
     return wstr_to_utf8(str);
-#endif
-
 }
 
 void PyDbViewTableRecord::setLayerState(const std::string& layerStateName)
@@ -2138,11 +2097,7 @@ void PyDbViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
 
 void PyDbViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun));
-#endif
 }
 
 std::string PyDbViewTableRecord::className()
@@ -2313,15 +2268,9 @@ boost::python::list PyDbBlockTableRecord::objectIdsOfType(const PyRxClass& _clas
 
 std::string PyDbBlockTableRecord::comments()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    RxAutoOutStr str;
-    impObj()->comments(str.buf);
-    return wstr_to_utf8(str.buf);
-#else
     AcString str;
     impObj()->comments(str);
     return wstr_to_utf8(str);
-#endif
 }
 
 void PyDbBlockTableRecord::setComments(const std::string& pString)
@@ -2331,15 +2280,9 @@ void PyDbBlockTableRecord::setComments(const std::string& pString)
 
 std::string PyDbBlockTableRecord::pathName()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    RxAutoOutStr str;
-    impObj()->pathName(str.buf);
-    return wstr_to_utf8(str.buf);
-#else
     AcString str;
     impObj()->pathName(str);
     return wstr_to_utf8(str);
-#endif
 }
 
 void PyDbBlockTableRecord::setPathName(const std::string& pString)
@@ -2440,11 +2383,7 @@ bool PyDbBlockTableRecord::isFromOverlayReference() const
 
 void PyDbBlockTableRecord::setIsFromOverlayReference(bool bIsOverlay)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return PyThrowBadEs(impObj()->setIsFromOverlayReference(bIsOverlay));
-#endif
 }
 
 bool PyDbBlockTableRecord::isLayout() const
@@ -2814,11 +2753,7 @@ PyDbObjectId PyDbLayerTableRecord::linetypeObjectId() const
 
 void PyDbLayerTableRecord::setLinetypeObjectId(const PyDbObjectId& id)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    impObj()->setLinetypeObjectId(id.m_id);
-#else
     return PyThrowBadEs(impObj()->setLinetypeObjectId(id.m_id));
-#endif
 }
 
 PyDbObjectId PyDbLayerTableRecord::materialId() const
@@ -3111,15 +3046,9 @@ void PyDbTextStyleTableRecord::setPriorSize(double priorSize)
 
 std::string PyDbTextStyleTableRecord::fileName()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    RxAutoOutStr path;
-    PyThrowBadEs(impObj()->fileName(path.buf));
-    return wstr_to_utf8(path.buf);
-#else
     AcString path;
     PyThrowBadEs(impObj()->fileName(path));
     return wstr_to_utf8(path);
-#endif
 }
 
 void PyDbTextStyleTableRecord::setFileName(const std::string& path)
@@ -3153,8 +3082,8 @@ void PyDbTextStyleTableRecord::setFont(const std::string& pTypeface, bool bold, 
 boost::python::tuple PyDbTextStyleTableRecord::font()
 {
     PyAutoLockGIL lock;
-    Adesk::Boolean bold = false;
-    Adesk::Boolean italic = false;
+    bool bold = false;
+    bool italic = false;
     Charset charset = kAnsiCharset;
     AcString sTypeface;
     Autodesk::AutoCAD::PAL::FontUtils::FontPitch pitch = Autodesk::AutoCAD::PAL::FontUtils::FontPitch::kDefault;

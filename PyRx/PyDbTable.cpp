@@ -62,29 +62,36 @@ void AcCellSetItem(AcCell& cell, int idx, int val)
 //  AcCellRange helpers
 static boost::shared_ptr<AcCellRange> AcCellRangeInit1()
 {
+#ifdef _ARXTARGET
+    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
+#endif
 
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
+#if _GRXTARGET == 240
     return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
-#elif defined(_ZRXTARGET) && _ZRXTARGET <= 240
+#endif
+
+#if _ZRXTARGET == 240
     return boost::shared_ptr<AcCellRange>(new AcCellRange());
-#elif defined(_GRXTARGET) && _GRXTARGET <= 240
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
-#else
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ -1 , -1, -1, -1 });
 #endif
 }
 
 static boost::shared_ptr<AcCellRange> AcCellRangeInit2(int tr, int lc, int br, int rc)
 {
-#if defined(_ZRXTARGET) && (_ZRXTARGET <= 240)
+#ifdef _ARXTARGET
+    return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr , lc, br, rc });
+#endif
+
+#if _GRXTARGET == 240
+    return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr , lc, br, rc });
+#endif
+
+#if _ZRXTARGET == 240
     AcCellRange range;
     range.mnTopRow = tr;
     range.mnLeftColumn = lc;
     range.mnBottomRow = br;
     range.mnRightColumn = rc;
     return boost::shared_ptr<AcCellRange>(new AcCellRange(range));
-#else
-    return boost::shared_ptr<AcCellRange>(new AcCellRange{ tr , lc, br, rc });
 #endif
 }
 
@@ -438,9 +445,7 @@ void makePyDbTableWrapper()
         .value("kDataRow", AcDb::RowType::kDataRow)
         .value("kTitleRow", AcDb::RowType::kTitleRow)
         .value("kHeaderRow", AcDb::RowType::kHeaderRow)
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .value("kAllRowTypes", AcDb::RowType::kAllRowTypes)
-#endif
         .export_values()
         ;
     enum_<AcDb::TableHitItem>("TableHitItem")
@@ -1399,11 +1404,7 @@ void PyDbTable::suppressRegenerateTable(bool bSuppress)
 
 void PyDbTable::setRecomputeTableBlock(bool newVal)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->setRecomputeTableBlock(newVal);
-#endif
 }
 
 void PyDbTable::setSize(int nRows, int nCols)

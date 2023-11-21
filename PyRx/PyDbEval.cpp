@@ -339,11 +339,7 @@ bool PyDbDynBlockReferenceProperty::show() const
 
 bool PyDbDynBlockReferenceProperty::visibleInCurrentVisibilityState() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->visibleInCurrentVisibilityState();
-#endif
 }
 
 std::string PyDbDynBlockReferenceProperty::description() const
