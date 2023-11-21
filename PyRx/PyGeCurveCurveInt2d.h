@@ -11,7 +11,6 @@ void makePyGeCurveCurveInt2dWrapper();
 
 class PyGeCurveCurveInt2d : public PyGeEntity2d
 {
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyGeCurveCurveInt2d();
     PyGeCurveCurveInt2d(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2);
@@ -48,6 +47,5 @@ public:
     static std::string className();
 public:
     AcGeCurveCurveInt2d* impObj() const;
-#endif
 };
 

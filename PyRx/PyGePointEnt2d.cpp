@@ -57,7 +57,6 @@ AcGePointEnt2d* PyGePointEnt2d::impObj(const std::source_location& src /*= std::
 //PyGePointOnCurve2d wrapper
 void makePyGePointOnCurve2dWrapper()
 {
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGePointOnCurve2d, bases<PyGePointEnt2d>>("PointOnCurve2d")
         .def(init<>())
         .def(init<const PyGeCurve2d&>())
@@ -76,10 +75,8 @@ void makePyGePointOnCurve2dWrapper()
         .def("copycast", &PyGePointOnCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGePointOnCurve2d::className).staticmethod("className")
         ;
-#endif
 }
 
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGePointOnCurve2d::PyGePointOnCurve2d()
     : PyGePointEnt2d(new AcGePointOnCurve2d())
 {
@@ -230,13 +227,11 @@ AcGePointOnCurve2d* PyGePointOnCurve2d::impObj(const std::source_location& src /
     }
     return static_cast<AcGePointOnCurve2d*>(m_imp.get());
 }
-#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGePosition2d wrapper
 void makePyGePosition2dWrapper()
 {
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGePosition2d, bases<PyGePointEnt2d>>("Position2d")
         .def(init<>())
         .def(init<const AcGePoint2d&>())
@@ -247,10 +242,8 @@ void makePyGePosition2dWrapper()
         .def("copycast", &PyGePosition2d::copycast).staticmethod("copycast")
         .def("className", &PyGePosition2d::className).staticmethod("className")
         ;
-#endif
 }
 
-#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGePosition2d::PyGePosition2d()
     : PyGePointEnt2d(new AcGePosition2d())
 {
@@ -278,12 +271,20 @@ PyGePosition2d::PyGePosition2d(const AcGePosition2d& pos)
 
 void PyGePosition2d::set1(const AcGePoint2d& pnt)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(pnt);
+#endif
 }
 
 void PyGePosition2d::set2(double x, double y)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(x, y);
+#endif
 }
 
 PyGePosition2d PyGePosition2d::cast(const PyGeEntity2d& src)
@@ -309,4 +310,3 @@ AcGePosition2d* PyGePosition2d::impObj(const std::source_location& src /*= std::
 {
     return static_cast<AcGePosition2d*>(m_imp.get());
 }
-#endif

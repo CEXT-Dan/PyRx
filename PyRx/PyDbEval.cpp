@@ -201,9 +201,6 @@ std::string PyDbEvalVariant::getString()
 
 PyDbObjectId PyDbEvalVariant::getObjectId()
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyDbObjectId val;
     switch (impObj()->getType())
     {
@@ -217,7 +214,6 @@ PyDbObjectId PyDbEvalVariant::getObjectId()
         throw PyAcadErrorStatus(eInvalidInput);
     }
     return val;
-#endif
 }
 
 AcGePoint2d PyDbEvalVariant::getPoint2d()
@@ -250,11 +246,7 @@ void PyDbEvalVariant::copyFrom(const PyRxObject& pOther)
 
 AcDb::DwgDataType PyDbEvalVariant::getType() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->getType();
-#endif
 }
 
 PyRxClass PyDbEvalVariant::desc()
