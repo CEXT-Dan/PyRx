@@ -113,11 +113,7 @@ int PyGeCurveCurveInt3d::numIntPoints() const
 
 AcGePoint3d PyGeCurveCurveInt3d::intPoint(int intNum) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return  impObj()->intPoint(intNum);
-#endif
 }
 
 boost::python::tuple PyGeCurveCurveInt3d::getIntParams(int intNum) const
@@ -131,24 +127,16 @@ boost::python::tuple PyGeCurveCurveInt3d::getIntParams(int intNum) const
 
 PyGePointOnCurve3d PyGeCurveCurveInt3d::getPointOnCurve1(int intNum) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     AcGePointOnCurve3d pntOnCrv;
     impObj()->getPointOnCurve1(intNum, pntOnCrv);
     return PyGePointOnCurve3d(pntOnCrv);
-#endif
 }
 
 PyGePointOnCurve3d PyGeCurveCurveInt3d::getPointOnCurve2(int intNum) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     AcGePointOnCurve3d pntOnCrv;
     impObj()->getPointOnCurve2(intNum, pntOnCrv);
     return PyGePointOnCurve3d(pntOnCrv);
-#endif
 }
 
 boost::python::tuple PyGeCurveCurveInt3d::getIntConfigs(int intNum) const

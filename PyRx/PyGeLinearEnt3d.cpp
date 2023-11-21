@@ -50,50 +50,34 @@ PyGeLinearEnt3d::PyGeLinearEnt3d(AcGeEntity3d* pEnt)
 
 boost::python::tuple PyGeLinearEnt3d::intersectWith1(const PyGeLinearEnt3d& line) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     AcGePoint3d intPt;
     auto res = impObj()->intersectWith(*line.impObj(), intPt);
     return boost::python::make_tuple(res, intPt);
-#endif
 }
 
 boost::python::tuple PyGeLinearEnt3d::intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     AcGePoint3d intPt;
     auto res = impObj()->intersectWith(*line.impObj(), intPt, tol);
     return boost::python::make_tuple(res, intPt);
-#endif
 }
 
 boost::python::tuple PyGeLinearEnt3d::intersectWith3(const PyGePlanarEnt& line) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     AcGePoint3d intPt;
     auto res = impObj()->intersectWith(*line.impObj(), intPt);
     return boost::python::make_tuple(res, intPt);
-#endif
 }
 
 boost::python::tuple PyGeLinearEnt3d::intersectWith4(const PyGePlanarEnt& line, const AcGeTol& tol) const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     AcGePoint3d intPt;
     auto res = impObj()->intersectWith(*line.impObj(), intPt, tol);
     return boost::python::make_tuple(res, intPt);
-#endif
 }
 
 boost::python::tuple PyGeLinearEnt3d::projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir) const
