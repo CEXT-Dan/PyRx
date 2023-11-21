@@ -271,12 +271,20 @@ PyGePosition2d::PyGePosition2d(const AcGePosition2d& pos)
 
 void PyGePosition2d::set1(const AcGePoint2d& pnt)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(pnt);
+#endif
 }
 
 void PyGePosition2d::set2(double x, double y)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(x, y);
+#endif
 }
 
 PyGePosition2d PyGePosition2d::cast(const PyGeEntity2d& src)
