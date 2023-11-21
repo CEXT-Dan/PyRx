@@ -147,8 +147,22 @@ class TestDbEntity(unittest.TestCase):
         model.appendAcDbEntity(mt)
         for frag in mt.getFragments():
             self.assertEqual(len(frag) ,Db.MTextFragmentType.kEndFragmentTypes)
-        
-
+            
+    def test_dbmtext_fragtextvalue(self):
+        objHnd = Db.Handle("2c91ef")
+        objId = self.db06457.getObjectId(False, objHnd)
+        self.assertEqual(objId.isValid(), True)
+        mt = Db.MText(objId)
+        for i , frag in enumerate(mt.getFragments()):
+            if i == 0:
+                self.assertEqual(frag[Db.MTextFragmentType.kTextValue] ,"Test1")
+            elif i == 1:
+                self.assertEqual(frag[Db.MTextFragmentType.kTextValue] ,"Test2")
+            elif i == 2:
+                self.assertEqual(frag[Db.MTextFragmentType.kTextValue] ,"Test3")
+            else:
+                pass
+            
     def test_dbleader(self):
         db = Db.HostApplicationServices().workingDatabase()
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
