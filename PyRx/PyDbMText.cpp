@@ -602,6 +602,22 @@ int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
         pysublist.append(frag->normal);
         pysublist.append(frag->direction);
 
+#if _GRXTARGET > 0 || _ZRXTARGET  > 0
+        if (frag->text != nullptr)
+            pysublist.append(wstr_to_utf8(frag->text));
+        else
+            pysublist.append(boost::python::object());
+
+        if (frag->font != nullptr)
+            pysublist.append(wstr_to_utf8(frag->font));
+        else
+            pysublist.append(boost::python::object());
+
+        if (frag->bigfont != nullptr)
+            pysublist.append(wstr_to_utf8(frag->bigfont));
+        else
+            pysublist.append(boost::python::object());
+#else
         if(!frag->msText.isEmpty())
             pysublist.append(wstr_to_utf8(frag->msText));
         else
@@ -616,6 +632,7 @@ int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
             pysublist.append(wstr_to_utf8(frag->msBigFont));
         else
             pysublist.append(boost::python::object());
+#endif
 
         pysublist.append(frag->extents);
         pysublist.append(frag->capsHeight);
@@ -644,10 +661,17 @@ int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
         strikePoints.append(frag->strikePoints[1]);
         pysublist.append(strikePoints);
 
+#if _GRXTARGET > 0 ||_ZRXTARGET > 0
+        if (frag->fontname != nullptr)
+            pysublist.append(wstr_to_utf8(frag->fontname));
+        else
+            pysublist.append(boost::python::object());
+#else
         if (!frag->msFontName.isEmpty())
             pysublist.append(wstr_to_utf8(frag->msFontName));
         else
             pysublist.append(boost::python::object());
+#endif
 
         pysublist.append(frag->bold);
         pysublist.append(frag->italic);
