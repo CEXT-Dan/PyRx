@@ -187,32 +187,48 @@ boost::python::tuple PyGeCurve3d::closestPointTo4(const PyGeCurve3d& curve2d, co
 
 PyGePointOnCurve3d PyGeCurve3d::getClosestPointTo1(const AcGePoint3d& pnt)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGePointOnCurve3d curve;
     impObj()->getClosestPointTo(pnt, curve);
     return PyGePointOnCurve3d(curve);
+#endif
 }
 
 PyGePointOnCurve3d PyGeCurve3d::getClosestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGePointOnCurve3d curve;
     impObj()->getClosestPointTo(pnt, curve, tol);
     return PyGePointOnCurve3d(curve);
+#endif
 }
 
 boost::python::tuple PyGeCurve3d::getClosestPointsTo1(const PyGeCurve3d& curve)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGePointOnCurve3d curvea, curveb;
     impObj()->getClosestPointTo(*curve.impObj(), curvea, curveb);
     return make_tuple(PyGePointOnCurve3d(curvea), PyGePointOnCurve3d(curveb));
+#endif
 }
 
 boost::python::tuple PyGeCurve3d::getClosestPointsTo2(const PyGeCurve3d& curve, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGePointOnCurve3d curvea, curveb;
     impObj()->getClosestPointTo(*curve.impObj(), curvea, curveb, tol);
     return make_tuple(PyGePointOnCurve3d(curvea), PyGePointOnCurve3d(curveb));
+#endif
 }
 
 AcGePoint3d PyGeCurve3d::projClosestPointTo1(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection) const
@@ -243,48 +259,72 @@ boost::python::tuple PyGeCurve3d::projClosestPointsTo2(const PyGeCurve3d& curve3
 
 PyGePointOnCurve3d PyGeCurve3d::getProjClosestPointTo1(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGePointOnCurve3d curve;
     impObj()->getProjClosestPointTo(pnt, projectDirection, curve);
     return PyGePointOnCurve3d(curve);
+#endif
 }
 
 PyGePointOnCurve3d PyGeCurve3d::getProjClosestPointTo2(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGePointOnCurve3d curve;
     impObj()->getProjClosestPointTo(pnt, projectDirection, curve, tol);
     return PyGePointOnCurve3d(curve);
+#endif
 }
 
 boost::python::tuple PyGeCurve3d::getProjClosestPointsTo1(const PyGeCurve3d& curve3d, const AcGeVector3d& projectDirection) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGePointOnCurve3d curvea, curveb;
     impObj()->getProjClosestPointTo(*curve3d.impObj(), projectDirection, curvea, curveb);
     return make_tuple(PyGePointOnCurve3d(curvea), PyGePointOnCurve3d(curveb));
+#endif
 }
 
 boost::python::tuple PyGeCurve3d::getProjClosestPointsTo2(const PyGeCurve3d& curve3d, const AcGeVector3d& projectDirection, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGePointOnCurve3d curvea, curveb;
     impObj()->getProjClosestPointTo(*curve3d.impObj(), projectDirection, curvea, curveb);
     return make_tuple(PyGePointOnCurve3d(curvea), PyGePointOnCurve3d(curveb), tol);
+#endif
 }
 
 PyGePointOnCurve3d PyGeCurve3d::getNormalPoint1(const AcGePoint3d& pnt)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGePointOnCurve3d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve); flag == false)
         throw PyAcadErrorStatus(eInvalidInput);
     return PyGePointOnCurve3d(curve);
+#endif
 }
 
 PyGePointOnCurve3d PyGeCurve3d::getNormalPoint2(const AcGePoint3d& pnt, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGePointOnCurve3d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve, tol); flag == false)
         throw PyAcadErrorStatus(eInvalidInput);
     return PyGePointOnCurve3d(curve);
+#endif
 }
 
 PyGeBoundBlock3d PyGeCurve3d::boundBlock1() const
@@ -723,74 +763,106 @@ boost::python::tuple PyGeCircArc3d::closestPointToPlane2(const PyGePlanarEnt& pl
 
 boost::python::tuple PyGeCircArc3d::intersectWith1(const PyGeLinearEnt3d& line)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn = 0;
     AcGePoint3d p1, p2;
     auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
     return boost::python::make_tuple(result, intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCircArc3d::intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn = 0;
     AcGePoint3d p1, p2;
     auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);
     return boost::python::make_tuple(result, intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCircArc3d::intersectWith3(const PyGeCircArc3d& line)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn = 0;
     AcGePoint3d p1, p2;
     auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
     return boost::python::make_tuple(result, intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCircArc3d::intersectWith4(const PyGeCircArc3d& line, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn = 0;
     AcGePoint3d p1, p2;
     auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);
     return boost::python::make_tuple(result, intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCircArc3d::intersectWith5(const PyGePlanarEnt& line)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn = 0;
     AcGePoint3d p1, p2;
     auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
     return boost::python::make_tuple(result, intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCircArc3d::intersectWith6(const PyGePlanarEnt& line, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn = 0;
     AcGePoint3d p1, p2;
     auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);
     return boost::python::make_tuple(result, intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCircArc3d::projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn = 0;
     AcGePoint3d p1, p2, p3, p4;
     auto result = impObj()->projIntersectWith(*line.impObj(), projDir, intn, p1, p2, p3, p4);
     return boost::python::make_tuple(result, intn, p1, p2, p3, p4);
+#endif
 }
 
 boost::python::tuple PyGeCircArc3d::projIntersectWith2(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn = 0;
     AcGePoint3d p1, p2, p3, p4;
     auto result = impObj()->projIntersectWith(*line.impObj(), projDir, intn, p1, p2, p3, p4, tol);
     return boost::python::make_tuple(result, intn, p1, p2, p3, p4);
+#endif
 }
 
 boost::python::tuple PyGeCircArc3d::tangent1(const AcGePoint3d& pnt) const

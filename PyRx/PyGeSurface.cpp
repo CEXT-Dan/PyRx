@@ -576,22 +576,30 @@ void PyGeCylinder::set2(double radius, const AcGePoint3d& origin, const AcGeVect
 
 boost::python::tuple PyGeCylinder::intersectWith1(const PyGeLinearEnt3d& linEnt) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn = 0;
     AcGePoint3d p1;
     AcGePoint3d p2;
     impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2);
     return boost::python::make_tuple(intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCylinder::intersectWith2(const PyGeLinearEnt3d& linEnt, AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn = 0;
     AcGePoint3d p1;
     AcGePoint3d p2;
     impObj()->intersectWith(*linEnt.impObj(), intn, p1, p2, tol);
     return boost::python::make_tuple(intn, p1, p2);
+#endif
 }
 
 PyGeCylinder PyGeCylinder::cast(const PyGeEntity3d& src)

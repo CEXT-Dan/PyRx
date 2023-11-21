@@ -646,8 +646,12 @@ void makePyGeScale3dWrapper()
         .def<AcGeScale3d& (AcGeScale3d::*)(double)>("__imul__", &AcGeScale3d::operator*=, return_self<>())
         .def<AcGeScale3d(AcGeScale3d::*)(const AcGeScale3d&)const>("__mul__", &AcGeScale3d::operator*)
         .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&)>("__imul__", &AcGeScale3d::operator*=, return_self<>())
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .def("preMultBy", &AcGeScale3d::preMultBy, return_self<>())
+#endif
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
         .def("postMultBy", &AcGeScale3d::postMultBy, return_self<>())
+#endif
         .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&, double)>("setToProduct", &AcGeScale3d::setToProduct, return_self<>())
         .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&, const AcGeScale3d&)>("setToProduct", &AcGeScale3d::setToProduct, return_self<>())
         .def("__eq__", &AcGeScale3d::operator==)

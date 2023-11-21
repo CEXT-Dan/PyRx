@@ -154,6 +154,7 @@ AcGeSplineEnt3d* PyGeSplineEnt3d::impObj(const std::source_location& src /*= std
 //AcGeCubicSplineCurve3d wrapper
 void makePyGeCubicSplineCurve3dWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGeCubicSplineCurve3d, bases<PyGeSplineEnt3d>>("CubicSplineCurve3d")
         .def(init<>())
         .def(init<const PyGeCurve3d&, double>())
@@ -169,8 +170,10 @@ void makePyGeCubicSplineCurve3dWrapper()
         .def("copycast", &PyGeCubicSplineCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeCubicSplineCurve3d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGeCubicSplineCurve3d::PyGeCubicSplineCurve3d()
     : PyGeSplineEnt3d(new AcGeCubicSplineCurve3d())
 {
@@ -251,11 +254,13 @@ AcGeCubicSplineCurve3d* PyGeCubicSplineCurve3d::impObj(const std::source_locatio
         throw PyNullObject(src);
     return static_cast<AcGeCubicSplineCurve3d*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve3d  wrapper
 void makePyGeNurbCurve3dWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGeNurbCurve3d, bases<PyGeSplineEnt3d>>("NurbCurve3d")
         .def(init<>())
         .def(init<const PyGeEllipArc3d&>())
@@ -310,8 +315,10 @@ void makePyGeNurbCurve3dWrapper()
         .def("copycast", &PyGeNurbCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeNurbCurve3d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGeNurbCurve3d::PyGeNurbCurve3d()
     : PyGeSplineEnt3d(new AcGeNurbCurve3d())
 {
@@ -592,20 +599,12 @@ void PyGeNurbCurve3d::elevateDegree(int plusDegree)
 
 Adesk::Boolean PyGeNurbCurve3d::addControlPointAt(double newKnot, const AcGePoint3d& point, double weight)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->addControlPointAt(newKnot, point, weight);
-#endif
 }
 
 Adesk::Boolean PyGeNurbCurve3d::deleteControlPointAt(int index)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->deleteControlPointAt(index);
-#endif
 }
 
 PyGeNurbCurve3d PyGeNurbCurve3d::cast(const PyGeEntity3d& src)
@@ -634,11 +633,13 @@ AcGeNurbCurve3d* PyGeNurbCurve3d::impObj(const std::source_location& src /*= std
     }
     return static_cast<AcGeNurbCurve3d*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve3d  wrapper
 void makePyGePolyline3dWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGePolyline3d, bases<PyGeSplineEnt3d>>("Polyline3d")
         .def(init<>())
         .def(init<const boost::python::list&>())
@@ -651,8 +652,10 @@ void makePyGePolyline3dWrapper()
         .def("copycast", &PyGePolyline3d::copycast).staticmethod("copycast")
         .def("className", &PyGePolyline3d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGePolyline3d::PyGePolyline3d()
     : PyGeSplineEnt3d(new AcGePolyline3d())
 {
@@ -724,3 +727,4 @@ AcGePolyline3d* PyGePolyline3d::impObj(const std::source_location& src /*= std::
     }
     return static_cast<AcGePolyline3d*>(m_imp.get());
 }
+#endif

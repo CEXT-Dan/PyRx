@@ -23,6 +23,7 @@ void makePyGePointOnCurve2dWrapper();
 
 class PyGePointOnCurve2d : public PyGePointEnt2d
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyGePointOnCurve2d();
     PyGePointOnCurve2d(const AcGePointOnCurve2d& src);
@@ -54,6 +55,7 @@ public:
     static std::string className();
 public:
     AcGePointOnCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
@@ -62,6 +64,7 @@ void makePyGePosition2dWrapper();
 
 class PyGePosition2d : public PyGePointEnt2d
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyGePosition2d();
     PyGePosition2d(const AcGePoint2d& pnt);
@@ -75,6 +78,7 @@ public:
     static std::string className();
 public:
     AcGePosition2d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 

@@ -382,77 +382,138 @@ std::string PyDbTableStyle::format3(const std::string& pszCellStyle) const
 
 void PyDbTableStyle::setFormat1(const std::string& pszFormat)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str()));
+#endif
+
 }
 
 void PyDbTableStyle::setFormat2(const std::string& pszFormat, AcDb::RowType type)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str(), type));
+#endif
 }
 
 void PyDbTableStyle::setFormat3(const std::string& pszFormat, const std::string& pszCellStyle)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str(), utf8_to_wstr(pszCellStyle).c_str()));
+#endif
 }
 
 AcDb::LineWeight PyDbTableStyle::gridLineWeight(AcDb::GridLineType gridLineType, AcDb::RowType rowType) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->gridLineWeight(gridLineType, rowType);
+#endif
 }
 
 AcDb::LineWeight PyDbTableStyle::gridLineWeight2(AcDb::GridLineType gridLineType, const std::string& pszCellStyle) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->gridLineWeight(gridLineType, utf8_to_wstr(pszCellStyle).c_str());
+#endif
 }
 
 void PyDbTableStyle::setGridLineWeight(AcDb::LineWeight lineWeight, AcDb::GridLineType gridLineType, AcDb::RowType rowType)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridLineWeight(lineWeight, gridLineType, rowType));
+#endif
 }
 
 void PyDbTableStyle::setGridLineWeight2(AcDb::LineWeight lineWeight, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridLineWeight(lineWeight, gridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+#endif
 }
 
 AcCmColor PyDbTableStyle::gridColor(AcDb::GridLineType gridLineType, AcDb::RowType rowType) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->gridColor(gridLineType, rowType);
+#endif
 }
 
 AcCmColor PyDbTableStyle::gridColor2(AcDb::GridLineType gridLineType, const std::string& pszCellStyle) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->gridColor(gridLineType, utf8_to_wstr(pszCellStyle).c_str());
+#endif
 }
 
 void PyDbTableStyle::setGridColor(const AcCmColor& color, AcDb::GridLineType gridLineType, AcDb::RowType rowType)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridColor(color, gridLineType, rowType));
+#endif
 }
 
 void PyDbTableStyle::setGridColor2(const AcCmColor& color, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridColor(color, gridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+#endif
 }
 
 AcDb::Visibility PyDbTableStyle::gridVisibility(AcDb::GridLineType gridLineType, AcDb::RowType rowType) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->gridVisibility(gridLineType, rowType);
+#endif
 }
 
 AcDb::Visibility PyDbTableStyle::gridVisibility2(AcDb::GridLineType gridLineType, const std::string& pszCellStyle) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->gridVisibility(gridLineType, utf8_to_wstr(pszCellStyle).c_str());
+#endif
 }
 
 void PyDbTableStyle::setGridVisibility(AcDb::Visibility visible, AcDb::GridLineType gridLineType, AcDb::RowType rowType)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridVisibility(visible, gridLineType, rowType));
+#endif
 }
 
 void PyDbTableStyle::setGridVisibility2(AcDb::Visibility visible, AcDb::GridLineType gridLineTypes, const std::string& pszCellStyle)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridVisibility(visible, gridLineTypes, utf8_to_wstr(pszCellStyle).c_str()));
+#endif
 }
 
 PyDbObjectId PyDbTableStyle::postTableStyleToDb(PyDbDatabase& pDb, const std::string& styleName)
@@ -521,12 +582,20 @@ void PyDbTableStyle::setCellClass(int nClass, const std::string& pszCellStyle)
 
 double PyDbTableStyle::rotation(const std::string& pszCellStyle) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->rotation(utf8_to_wstr(pszCellStyle).c_str());
+#endif
 }
 
 void PyDbTableStyle::setRotation(double fRotation, const std::string& pszCellStyle)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setRotation(fRotation, utf8_to_wstr(pszCellStyle).c_str()));
+#endif
 }
 
 bool PyDbTableStyle::isMergeAllEnabled(const std::string& pszCellStyle) const
@@ -593,12 +662,20 @@ void PyDbTableStyle::setGridProperty(const AcGridProperty& gridProp, AcDb::GridL
 
 PyDbObjectId PyDbTableStyle::getTemplate(void) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyDbObjectId(impObj()->getTemplate());
+#endif
 }
 
 void PyDbTableStyle::setTemplate(const PyDbObjectId& templateId, AcDb::MergeCellStyleOption nOption)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setTemplate(templateId.m_id, nOption));
+#endif
 }
 
 PyDbObjectId PyDbTableStyle::removeTemplate(void)
