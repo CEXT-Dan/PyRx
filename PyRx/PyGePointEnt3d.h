@@ -24,6 +24,7 @@ public:
 void makePyGePointOnCurve3dWrapper();
 class PyGePointOnCurve3d : public PyGePointEnt3d
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyGePointOnCurve3d();
     PyGePointOnCurve3d(const PyGeCurve3d& crv);
@@ -55,6 +56,7 @@ public:
     static std::string  className();
 public:
     AcGePointOnCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-------------------------------------------------------------------------------------------------------
@@ -62,6 +64,7 @@ public:
 void makePyGePointOnSurfaceWrapper();
 class PyGePointOnSurface : public PyGePointEnt3d
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyGePointOnSurface();
     PyGePointOnSurface(const PyGeSurface& surf);
@@ -108,6 +111,7 @@ public:
     static std::string className();
 public:
     AcGePointOnSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-------------------------------------------------------------------------------------------------------
@@ -115,6 +119,7 @@ public:
 void makePyGePosition3dWrapper();
 class PyGePosition3d : public PyGePointEnt3d
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyGePosition3d();
     PyGePosition3d(const AcGePoint3d& pnt);
@@ -128,4 +133,6 @@ public:
     static std::string className();
 public:
     AcGePosition3d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
+
 };

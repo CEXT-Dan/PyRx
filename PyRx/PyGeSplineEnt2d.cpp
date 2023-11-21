@@ -8,6 +8,7 @@ using namespace boost::python;
 //PyGeSplineEnt2d wrapper
 void makePyGeSplineEnt2dWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGeSplineEnt2d, bases<PyGeCurve2d>>("SplineEnt2d", boost::python::no_init)
         .def("isRational", &PyGeSplineEnt2d::isRational)
         .def("degree", &PyGeSplineEnt2d::degree)
@@ -30,8 +31,11 @@ void makePyGeSplineEnt2dWrapper()
         .def("copycast", &PyGeSplineEnt2d::copycast).staticmethod("copycast")
         .def("className", &PyGeSplineEnt2d::className).staticmethod("className")
         ;
+#endif
 }
 
+
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGeSplineEnt2d::PyGeSplineEnt2d(AcGeEntity2d* pEnt)
     : PyGeCurve2d(pEnt)
 {
@@ -148,11 +152,13 @@ AcGeSplineEnt2d* PyGeSplineEnt2d::impObj(const std::source_location& src /*= std
     }
     return static_cast<AcGeSplineEnt2d*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeCubicSplineCurve2d wrapper
 void makePyGeCubicSplineCurve2dWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGeCubicSplineCurve2d, bases<PyGeSplineEnt2d>>("CubicSplineCurve2d")
         .def(init<>())
         .def(init<const PyGeCurve2d&, double>())
@@ -168,8 +174,10 @@ void makePyGeCubicSplineCurve2dWrapper()
         .def("copycast", &PyGeCubicSplineCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGeCubicSplineCurve2d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d()
     : PyGeSplineEnt2d(new AcGeCubicSplineCurve2d())
 {
@@ -243,11 +251,12 @@ AcGeCubicSplineCurve2d* PyGeCubicSplineCurve2d::impObj(const std::source_locatio
         throw PyNullObject(src);
     return static_cast<AcGeCubicSplineCurve2d*>(m_imp.get());
 }
-
+#endif
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve2d  wrapper
 void makePyGeNurbCurve2dWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
    class_<PyGeNurbCurve2d, bases<PyGeSplineEnt2d>>("NurbCurve2d")
         .def(init<>())
         .def(init<const PyGeEllipArc2d&>())
@@ -301,8 +310,10 @@ void makePyGeNurbCurve2dWrapper()
         .def("copycast", &PyGeNurbCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGeNurbCurve2d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGeNurbCurve2d::PyGeNurbCurve2d()
     : PyGeSplineEnt2d(new AcGeNurbCurve2d())
 {
@@ -575,20 +586,12 @@ void PyGeNurbCurve2d::elevateDegree(int plusDegree)
 
 Adesk::Boolean PyGeNurbCurve2d::addControlPointAt(double newKnot, const AcGePoint2d& point, double weight)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->addControlPointAt(newKnot, point, weight);
-#endif
 }
 
 Adesk::Boolean PyGeNurbCurve2d::deleteControlPointAt(int index)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     return impObj()->deleteControlPointAt(index);
-#endif
 }
 
 PyGeNurbCurve2d PyGeNurbCurve2d::copycast(const PyGeEntity2d& src)
@@ -609,11 +612,13 @@ AcGeNurbCurve2d* PyGeNurbCurve2d::impObj(const std::source_location& src /*= std
         throw PyNullObject(src);
     return static_cast<AcGeNurbCurve2d*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve2d  wrapper
 void makePyGePolyline2dWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGePolyline2d, bases<PyGeSplineEnt2d>>("Polyline2d")
         .def(init<>())
         .def(init<const boost::python::list&>())
@@ -626,8 +631,10 @@ void makePyGePolyline2dWrapper()
         .def("copycast", &PyGePolyline2d::copycast).staticmethod("copycast")
         .def("className", &PyGePolyline2d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGePolyline2d::PyGePolyline2d()
     : PyGeSplineEnt2d(new AcGePolyline2d())
 {
@@ -692,3 +699,4 @@ AcGePolyline2d* PyGePolyline2d::impObj(const std::source_location& src /*= std::
     }
     return static_cast<AcGePolyline2d*>(m_imp.get());
 }
+#endif

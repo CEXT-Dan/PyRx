@@ -166,48 +166,72 @@ boost::python::tuple  PyGeCurve2d::closestPointTo4(const PyGeCurve2d& curve2d, c
 
 PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo1(const AcGePoint2d& pnt)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGePointOnCurve2d curve;
     impObj()->getClosestPointTo(pnt, curve);
     return PyGePointOnCurve2d(curve);
+#endif
 }
 
 PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo2(const AcGePoint2d& pnt, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGePointOnCurve2d curve;
     impObj()->getClosestPointTo(pnt, curve, tol);
     return PyGePointOnCurve2d(curve);
+#endif
 }
 
 boost::python::tuple PyGeCurve2d::getClosestPointsTo1(const PyGeCurve2d& curve)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGePointOnCurve2d curvea, curveb;
     impObj()->getClosestPointTo(*curve.impObj(), curvea, curveb);
     return make_tuple(PyGePointOnCurve2d(curvea), PyGePointOnCurve2d(curveb));
+#endif
 }
 
 boost::python::tuple PyGeCurve2d::getClosestPointsTo2(const PyGeCurve2d& curve, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGePointOnCurve2d curvea, curveb;
     impObj()->getClosestPointTo(*curve.impObj(), curvea, curveb, tol);
     return make_tuple(PyGePointOnCurve2d(curvea), PyGePointOnCurve2d(curveb));
+#endif
 }
 
 PyGePointOnCurve2d PyGeCurve2d::getNormalPoint1(const AcGePoint2d& pnt)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGePointOnCurve2d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve); flag == false)
         throw PyAcadErrorStatus(eInvalidInput);
     return PyGePointOnCurve2d(curve);
+#endif
 }
 
 PyGePointOnCurve2d PyGeCurve2d::getNormalPoint2(const AcGePoint2d& pnt, const AcGeTol& tol)
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     AcGePointOnCurve2d curve;
     if (auto flag = impObj()->getNormalPoint(pnt, curve, tol); flag == false)
         throw PyAcadErrorStatus(eInvalidInput);
     return PyGePointOnCurve2d(curve);
+#endif
 }
 
 boost::python::tuple PyGeCurve2d::isOn1(const AcGePoint2d& pnt) const
@@ -583,38 +607,54 @@ PyGeCircArc2d::PyGeCircArc2d(const AcGePoint2d& startPoint, const AcGePoint2d& e
 
 boost::python::tuple PyGeCircArc2d::intersectWith1(const PyGeLinearEnt2d& line) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn;
     AcGePoint2d p1, p2;
     bool flag = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
     return make_tuple(flag, intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCircArc2d::intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn;
     AcGePoint2d p1, p2;
     bool flag = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);
     return make_tuple(flag, intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCircArc2d::intersectWith3(const PyGeCircArc2d& arc) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn;
     AcGePoint2d p1, p2;
     bool flag = impObj()->intersectWith(*arc.impObj(), intn, p1, p2);
     return make_tuple(flag, intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCircArc2d::intersectWith4(const PyGeCircArc2d& arc, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int intn;
     AcGePoint2d p1, p2;
     bool flag = impObj()->intersectWith(*arc.impObj(), intn, p1, p2, tol);
     return make_tuple(flag, intn, p1, p2);
+#endif
 }
 
 boost::python::tuple PyGeCircArc2d::tangent1(const AcGePoint2d& pnt) const

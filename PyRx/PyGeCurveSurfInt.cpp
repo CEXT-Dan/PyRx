@@ -8,6 +8,7 @@ using namespace boost::python;
 
 void makePyGeCurveSurfIntWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGeCurveSurfInt, bases<PyGeEntity3d>>("CurveSurfInt")
         .def(init<>())
         .def(init<const PyGeCurve3d&, const PyGeSurface&>())
@@ -27,8 +28,10 @@ void makePyGeCurveSurfIntWrapper()
         .def("copycast", &PyGeCurveSurfInt::copycast).staticmethod("copycast")
         .def("className", &PyGeCurveSurfInt::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGeCurveSurfInt::PyGeCurveSurfInt(AcGeEntity3d* pEnt)
     : PyGeEntity3d(pEnt)
 {
@@ -136,20 +139,12 @@ boost::python::tuple PyGeCurveSurfInt::getIntConfigs(int intNum) const
 
 void PyGeCurveSurfInt::set1(const PyGeCurve3d& cvr, const PyGeSurface& srf)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(*cvr.impObj(), *srf.impObj());
-#endif
 }
 
 void PyGeCurveSurfInt::set2(const PyGeCurve3d& cvr, const PyGeSurface& srf, const AcGeTol& tol)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(*cvr.impObj(), *srf.impObj(), tol);
-#endif
 }
 
 PyGeCurveSurfInt PyGeCurveSurfInt::cast(const PyGeEntity3d& src)
@@ -178,3 +173,4 @@ AcGeCurveSurfInt* PyGeCurveSurfInt::impObj(const std::source_location& src /*= s
     }
     return static_cast<AcGeCurveSurfInt*>(m_imp.get());
 }
+#endif

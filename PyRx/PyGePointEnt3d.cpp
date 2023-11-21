@@ -58,6 +58,7 @@ AcGePointEnt3d* PyGePointEnt3d::impObj(const std::source_location& src /*= std::
 //PyGePointOnCurve3d
 void makePyGePointOnCurve3dWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGePointOnCurve3d, bases<PyGePointEnt3d>>("PointOnCurve3d")
         .def(init<>())
         .def(init<const PyGeCurve3d&>())
@@ -79,8 +80,10 @@ void makePyGePointOnCurve3dWrapper()
         .def("copycast", &PyGePointOnCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGePointOnCurve3d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGePointOnCurve3d::PyGePointOnCurve3d()
     : PyGePointEnt3d(new AcGePointOnCurve3d())
 {
@@ -203,11 +206,13 @@ AcGePointOnCurve3d* PyGePointOnCurve3d::impObj(const std::source_location& src /
     }
     return static_cast<AcGePointOnCurve3d*>(m_imp.get());
 }
+#endif
 
 //-------------------------------------------------------------------------------------------------------
 //PyGePointOnSurface
 void makePyGePointOnSurfaceWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGePointOnSurface, bases<PyGePointEnt3d>>("PointOnSurface")
         .def(init<>())
         .def(init<const PyGeSurface&>())
@@ -241,8 +246,10 @@ void makePyGePointOnSurfaceWrapper()
         .def("copycast", &PyGePointOnSurface::copycast).staticmethod("copycast")
         .def("className", &PyGePointOnSurface::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGePointOnSurface::PyGePointOnSurface()
     : PyGePointEnt3d(new AcGePointOnSurface())
 {
@@ -419,11 +426,13 @@ AcGePointOnSurface* PyGePointOnSurface::impObj(const std::source_location& src /
     }
     return static_cast<AcGePointOnSurface*>(m_imp.get());
 }
+#endif
 
 //-------------------------------------------------------------------------------------------------------
 //PyGePosition3d
 void makePyGePosition3dWrapper()
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
     class_<PyGePosition3d, bases<PyGePointEnt3d>>("Position3d")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
@@ -434,8 +443,10 @@ void makePyGePosition3dWrapper()
         .def("copycast", &PyGePosition3d::copycast).staticmethod("copycast")
         .def("className", &PyGePosition3d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 PyGePosition3d::PyGePosition3d()
     : PyGePointEnt3d(new AcGePosition3d())
 {
@@ -458,20 +469,12 @@ PyGePosition3d::PyGePosition3d(double x, double y, double z)
 
 void PyGePosition3d::set1(const AcGePoint3d& pnt)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(pnt);
-#endif
 }
 
 void PyGePosition3d::set2(double x, double y, double z)
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
-    throw PyNotimplementedByHost();
-#else
     impObj()->set(x, y, x);
-#endif
 }
 
 PyGePosition3d PyGePosition3d::cast(const PyGeEntity3d& src)
@@ -500,3 +503,4 @@ AcGePosition3d* PyGePosition3d::impObj(const std::source_location& src /*= std::
     }
     return static_cast<AcGePosition3d*>(m_imp.get());
 }
+#endif

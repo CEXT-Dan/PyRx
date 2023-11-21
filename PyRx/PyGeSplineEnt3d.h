@@ -43,6 +43,7 @@ public:
 void makePyGeCubicSplineCurve3dWrapper();
 class PyGeCubicSplineCurve3d : public PyGeSplineEnt3d
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyGeCubicSplineCurve3d();
     PyGeCubicSplineCurve3d(const PyGeCurve3d& curve, double epsilon);
@@ -62,6 +63,7 @@ public:
     static std::string className();
 public:
     AcGeCubicSplineCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
@@ -69,6 +71,7 @@ public:
 void makePyGeNurbCurve3dWrapper();
 class PyGeNurbCurve3d : public PyGeSplineEnt3d
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyGeNurbCurve3d();
     PyGeNurbCurve3d(const AcGeNurbCurve3d& src);
@@ -145,6 +148,7 @@ public:
     static std::string className();
 public:
     AcGeNurbCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
@@ -152,6 +156,7 @@ public:
 void makePyGePolyline3dWrapper();
 class PyGePolyline3d : public PyGeSplineEnt3d
 {
+#if !defined(_BRXTARGET) || (_BRXTARGET > 240)
 public:
     PyGePolyline3d();
     PyGePolyline3d(AcGeEntity3d* pEnt);
@@ -169,5 +174,6 @@ public:
     static std::string className();
 public:
     AcGePolyline3d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
