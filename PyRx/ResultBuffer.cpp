@@ -70,10 +70,20 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                 }
                 case AcDb::kDwg3Real:
                 {
-                    const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
-                    pTail->rbnext = acutBuildList(code, val, 0);
-                    if (pTail->rbnext != nullptr)
-                        pTail = pTail->rbnext;
+                    if (extract<AcGePoint3d>(tpl[1]).check())
+                    {
+                        const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
+                        pTail->rbnext = acutBuildList(code, val, 0);
+                        if (pTail->rbnext != nullptr)
+                            pTail = pTail->rbnext;
+                    }
+                    else if (extract<AcGeVector3d>(tpl[1]).check())
+                    {
+                        const auto val = asDblArray(extract<AcGeVector3d>(tpl[1]));
+                        pTail->rbnext = acutBuildList(code, val, 0);
+                        if (pTail->rbnext != nullptr)
+                            pTail = pTail->rbnext;
+                    }
                     break;
                 }
                 case AcDb::kDwgHandle:
@@ -124,18 +134,38 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                 case RTORINT:
                 case RT3DPOINT:
                 {
-                    const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
-                    pTail->rbnext = acutBuildList(code, val, 0);
-                    if (pTail->rbnext != nullptr)
-                        pTail = pTail->rbnext;
+                    if (extract<AcGePoint3d>(tpl[1]).check())
+                    {
+                        const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
+                        pTail->rbnext = acutBuildList(code, val, 0);
+                        if (pTail->rbnext != nullptr)
+                            pTail = pTail->rbnext;
+                    }
+                    else if (extract<AcGeVector3d>(tpl[1]).check())
+                    {
+                        const auto val = asDblArray(extract<AcGeVector3d>(tpl[1]));
+                        pTail->rbnext = acutBuildList(code, val, 0);
+                        if (pTail->rbnext != nullptr)
+                            pTail = pTail->rbnext;
+                    }
                     break;
                 }
                 case RTPOINT:
                 {
-                    const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
-                    pTail->rbnext = acutBuildList(code, val, 0);
-                    if (pTail->rbnext != nullptr)
-                        pTail = pTail->rbnext;
+                    if (extract<AcGePoint2d>(tpl[1]).check())
+                    {
+                        const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
+                        pTail->rbnext = acutBuildList(code, val, 0);
+                        if (pTail->rbnext != nullptr)
+                            pTail = pTail->rbnext;
+                    }
+                    else if (extract<AcGeVector2d>(tpl[1]).check())
+                    {
+                        const auto val = asDblArray(extract<AcGeVector2d>(tpl[1]));
+                        pTail->rbnext = acutBuildList(code, val, 0);
+                        if (pTail->rbnext != nullptr)
+                            pTail = pTail->rbnext;
+                    }
                     break;
                 }
                 case RTSHORT:
@@ -205,7 +235,7 @@ resbuf* listToResbuf(const boost::python::list& bpl)
     }
     catch (...)
     {
-        //TODO: throw something here
+        printExceptionMsg();
     }
     return nullptr;
 }
