@@ -5,6 +5,34 @@ using namespace boost::python;
 
 int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param);
 
+enum class PyRxMTextFragmentType
+{
+    kLocation,
+    kNormal,
+    kDirection,
+    kTextValue,
+    kFont,
+    kBigFont,
+    kExtents,
+    kCapsHeight,
+    kWidthFactor,
+    kObliqueAngle,
+    kTrackingFactor,
+    kColor,
+    kStackTop,
+    kStackBottom,
+    kUnderlined,
+    kOverlined,
+    kStrikethrough,
+    kUnderPoints,
+    kOverPoints,
+    kStrikePoints,
+    kFontname,
+    kBold,
+    kItalic,
+    kEndFragmentTypes,
+};
+
 void makePyDbMTextWrapper()
 {
     PyDocString DS("MText");
