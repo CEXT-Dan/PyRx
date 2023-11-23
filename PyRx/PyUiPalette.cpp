@@ -58,7 +58,8 @@ void makePyCAdUiPaletteSetWrapper()
         .def("showRollupButtonStyle", &PyCAdUiPaletteSet::showRollupButtonStyle, DS.ARGS())
         .def("showIconStyle", &PyCAdUiPaletteSet::showIconStyle, DS.ARGS())
         .def("getName", &PyCAdUiPaletteSet::getName, DS.ARGS())
-        .def("setName", &PyCAdUiPaletteSet::setName, DS.ARGS({ "val : str" }))
+        .def("setName", &PyCAdUiPaletteSet::setName, DS.ARGS({ "name : str" }))
+        .def("setToolId", &PyCAdUiPaletteSet::setToolId, DS.ARGS({ "guid : str" }))
         .def("getOpacity", &PyCAdUiPaletteSet::getOpacity, DS.ARGS())
         .def("setOpacity", &PyCAdUiPaletteSet::setOpacity, DS.ARGS({ "val : int" }))
         .def("getRolloverOpacity", &PyCAdUiPaletteSet::getRolloverOpacity, DS.ARGS())
@@ -242,6 +243,20 @@ std::string PyCAdUiPaletteSet::getName()
 bool PyCAdUiPaletteSet::setName(const std::string& name)
 {
     return impObj()->SetName(utf8_to_wstr(name).c_str()) == TRUE;
+}
+
+bool PyCAdUiPaletteSet::setToolId(const std::string& guid)
+{
+    GUID id;
+    CString sguid = utf8_to_wstr(guid).c_str();
+    HRESULT hr = CLSIDFromString(sguid, (LPCLSID)&id);
+    if (hr != S_OK)
+    {
+        acutPrintf(_T("BAD GUID"));
+        return false;
+    }
+    impObj()->SetToolID(&id);
+    return true;
 }
 
 int PyCAdUiPaletteSet::getOpacity() const

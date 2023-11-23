@@ -53,6 +53,7 @@ public:
     bool        showIconStyle();
     std::string getName();
     bool        setName(const std::string& name);
+    bool        setToolId(const std::string& guid);
     int         getOpacity() const;
     bool        setOpacity(int nOpacity);
     int         getRolloverOpacity() const;
