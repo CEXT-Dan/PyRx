@@ -131,3 +131,7 @@ def PyRxCmd_hitTest():
         
     finally:
         axSs.Delete()
+		
+		
+Blogs: https://pyarx.blogspot.com/
+Discussion forum:  https://www.theswamp.org/index.php?board=76.0
