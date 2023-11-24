@@ -25341,11 +25341,8 @@ __init__( (object)arg1, (list)arg2, (SubentId)arg3) -> None :
     def kNull (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def objectIds (self, *args, **kwargs)-> list :
-      '''objectIds( (FullSubentPath)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list objectIds(class PyDbFullSubentPath {lvalue})'''
+    def objectIds (self: FullSubentPath)-> list :
+      '''                             '''
     ...
     def setObjectIds (self, *args, **kwargs)-> None :
       '''setObjectIds( (FullSubentPath)arg1, (list)arg2) -> None :
@@ -25353,16 +25350,8 @@ __init__( (object)arg1, (list)arg2, (SubentId)arg3) -> None :
     C++ signature :
         void setObjectIds(class PyDbFullSubentPath {lvalue},class boost::python::list)'''
     ...
-    def setSubentId (self, *args, **kwargs)-> None :
-      '''setSubentId( (FullSubentPath)arg1, (SubentId)arg2) -> None :
-
-    C++ signature :
-        void setSubentId(class PyDbFullSubentPath {lvalue},class PyDbSubentId)
-
-setSubentId( (FullSubentPath)arg1) -> SubentId :
-
-    C++ signature :
-        class PyDbSubentId setSubentId(class PyDbFullSubentPath {lvalue})'''
+    def setSubentId (self: FullSubentPath)-> None :
+      '''                             '''
     ...
 
 class GridLineStyle:
@@ -62220,11 +62209,8 @@ __init__( (object)arg1, (RxClass)arg2, (int)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class PyRxClass {lvalue},__int64)'''
     ...
-    def index (self, *args, **kwargs)-> int :
-      '''index( (SubentId)arg1) -> int :
-
-    C++ signature :
-        __int64 index(class PyDbSubentId {lvalue})'''
+    def index (self: SubentId)-> int :
+      '''                             '''
     ...
     def kNull (self, *args, **kwargs)-> None :
       '''None'''
@@ -62247,17 +62233,11 @@ __init__( (object)arg1, (RxClass)arg2, (int)arg3) -> None :
     C++ signature :
         void setTypeClass(class PyDbSubentId {lvalue},class PyRxClass {lvalue})'''
     ...
-    def type (self, *args, **kwargs)-> int :
-      '''type( (SubentId)arg1) -> int :
-
-    C++ signature :
-        unsigned int type(class PyDbSubentId {lvalue})'''
+    def type (self: SubentId)-> int :
+      '''                             '''
     ...
-    def typeClass (self, *args, **kwargs)-> PyRx.RxClass :
-      '''typeClass( (SubentId)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass typeClass(class PyDbSubentId {lvalue})'''
+    def typeClass (self: SubentId)-> PyRx.RxClass :
+      '''                             '''
     ...
 
 class SubentType:

@@ -740,17 +740,18 @@ AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std
 //PyDbSubentId
 void makePyDbSubentIdWrapper()
 {
+    PyDocString DS("SubentId");
     class_<PyDbSubentId>("SubentId")
         .def(init<>())
         .def(init<AcDb::SubentType, Adesk::GsMarker>())
         .def(init<PyRxClass&, Adesk::GsMarker>())
-        .def("type", &PyDbSubentId::type)
+        .def("type", &PyDbSubentId::type, DS.ARGS())
         .def("setType", &PyDbSubentId::setType)
-        .def("typeClass", &PyDbSubentId::typeClass)
+        .def("typeClass", &PyDbSubentId::typeClass, DS.ARGS())
         .def("setTypeClass", &PyDbSubentId::setTypeClass)
-        .def("index", &PyDbSubentId::index)
+        .def("index", &PyDbSubentId::index, DS.ARGS())
         .def("setIndex", &PyDbSubentId::setIndex)
-        .add_static_property("kNull", &PyDbSubentId::kNull)
+        .add_static_property("kNull", &PyDbSubentId::kNull, DS.SARGS())
         //operators
         .def("__eq__", &PyDbSubentId::operator==)
         .def("__ne__", &PyDbSubentId::operator!=)
@@ -834,6 +835,7 @@ AcDbSubentId* PyDbSubentId::impObj(const std::source_location& src /*= std::sour
 //PyDbFullSubentPath
 void makePyDbFullSubentPathWrapper()
 {
+    PyDocString DS("FullSubentPath");
     class_<PyDbFullSubentPath>("FullSubentPath")
         .def(init<>())
         .def(init<AcDb::SubentType, Adesk::GsMarker>())
@@ -841,10 +843,10 @@ void makePyDbFullSubentPathWrapper()
         .def(init<const PyDbObjectId&, const PyDbSubentId&>())
         .def(init<const boost::python::list&, const PyDbSubentId&>())
         .def("setObjectIds", &PyDbFullSubentPath::setObjectIds)
-        .def("objectIds", &PyDbFullSubentPath::objectIds)
+        .def("objectIds", &PyDbFullSubentPath::objectIds, DS.ARGS())
         .def("setSubentId", &PyDbFullSubentPath::setSubentId)
-        .def("setSubentId", &PyDbFullSubentPath::subentId)
-        .add_static_property("kNull", &PyDbSubentId::kNull)
+        .def("setSubentId", &PyDbFullSubentPath::subentId, DS.ARGS())
+        .add_static_property("kNull", &PyDbSubentId::kNull, DS.SARGS())
         //operators
         .def("__eq__", &PyDbFullSubentPath::operator==)
         .def("__ne__", &PyDbFullSubentPath::operator!=)
