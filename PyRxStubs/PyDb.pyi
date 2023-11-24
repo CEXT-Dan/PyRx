@@ -25306,6 +25306,65 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class FullSubentPath:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (SubentType)arg2, (int)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,unsigned int,__int64)
+
+__init__( (object)arg1, (ObjectId)arg2, (SubentType)arg3, (int)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,unsigned int,__int64)
+
+__init__( (object)arg1, (ObjectId)arg2, (SubentId)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,class PyDbSubentId)
+
+__init__( (object)arg1, (list)arg2, (SubentId)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list,class PyDbSubentId)'''
+    ...
+    def kNull (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def objectIds (self, *args, **kwargs)-> list :
+      '''objectIds( (FullSubentPath)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list objectIds(class PyDbFullSubentPath {lvalue})'''
+    ...
+    def setObjectIds (self, *args, **kwargs)-> None :
+      '''setObjectIds( (FullSubentPath)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void setObjectIds(class PyDbFullSubentPath {lvalue},class boost::python::list)'''
+    ...
+    def setSubentId (self, *args, **kwargs)-> None :
+      '''setSubentId( (FullSubentPath)arg1, (SubentId)arg2) -> None :
+
+    C++ signature :
+        void setSubentId(class PyDbFullSubentPath {lvalue},class PyDbSubentId)
+
+setSubentId( (FullSubentPath)arg1) -> SubentId :
+
+    C++ signature :
+        class PyDbSubentId setSubentId(class PyDbFullSubentPath {lvalue})'''
+    ...
+
 class GridLineStyle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''

@@ -1837,7 +1837,7 @@ class PaletteSet:
     def setAutoRollup (self: PaletteSet,val : bool)-> bool :
       '''                             '''
     ...
-    def setName (self: PaletteSet,val : str)-> bool :
+    def setName (self: PaletteSet,name : str)-> bool :
       '''                             '''
     ...
     def setOpacity (self: PaletteSet,val : int)-> bool :
@@ -1850,6 +1850,9 @@ class PaletteSet:
       '''                             '''
     ...
     def setTitleBarLocation (self: PaletteSet,val : AdUiTitleBarLocation)-> None :
+      '''                             '''
+    ...
+    def setToolId (self: PaletteSet,guid : str)-> bool :
       '''                             '''
     ...
     def setVisible (self: PaletteSet,val : bool)-> None :

@@ -168,6 +168,7 @@ class PyDbSubentId
 {
 public:
     PyDbSubentId();
+    PyDbSubentId(const AcDbSubentId& src);
     PyDbSubentId(AcDb::SubentType type, Adesk::GsMarker index);
     PyDbSubentId(PyRxClass& pTypeClass, Adesk::GsMarker index);
     bool        operator ==(const PyDbSubentId& id) const;
@@ -193,3 +194,35 @@ inline AcArray<AcDbSubentId*> PyListToPyDbSubentIdPtrArray(const boost::python::
         arr.append(item.impObj());
     return arr;
 }
+
+
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDbFullSubentPath
+void makePyDbFullSubentPathWrapper();
+class PyDbFullSubentPath
+{
+public:
+    PyDbFullSubentPath();
+    PyDbFullSubentPath(const AcDbFullSubentPath& src);
+
+    PyDbFullSubentPath(AcDb::SubentType type, Adesk::GsMarker index);
+    PyDbFullSubentPath(const PyDbObjectId& entId, AcDb::SubentType type, Adesk::GsMarker index);
+    PyDbFullSubentPath(const PyDbObjectId& entId, const PyDbSubentId& subId);
+    PyDbFullSubentPath(const boost::python::list& objectIds, const PyDbSubentId& subId);
+
+    bool        operator ==(const PyDbFullSubentPath& id) const;
+    bool        operator !=(const PyDbFullSubentPath& id) const;
+
+    void                setObjectIds(const boost::python::list& objectIds);
+    boost::python::list objectIds() const;
+    void                setSubentId(const PyDbSubentId& subentId);
+    PyDbSubentId        subentId() const;
+
+    static              PyDbFullSubentPath kNull();
+
+
+
+public:
+    AcDbFullSubentPath m_pyImp;
+};
