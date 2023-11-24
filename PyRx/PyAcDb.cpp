@@ -120,6 +120,7 @@ BOOST_PYTHON_MODULE(PyDb)
 
     //create in class order!
     makePyDbSubentIdWrapper();
+    makePyDbFullSubentPathWrapper();
     makePyDbExtents2dWrapper();
     makePyDbExtentsWrapper();
     makePyCmColorWrapper();
