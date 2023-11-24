@@ -89,6 +89,9 @@ public:
     void                removeReactor(PyDbEntityReactor& pReactor) const;
     boost::python::list getStretchPoints() const;
     void                getGripPoints1(boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds)const;
+    void                addSubentPaths(const boost::python::list& newPaths);
+    boost::python::list getSubentPathsAtGsMarker1(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform);
+    boost::python::list getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform,int numInserts,PyDbObjectId& entAndInsertStack);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbEntity   cloneFrom(const PyRxObject& src);
@@ -196,7 +199,6 @@ inline AcArray<AcDbSubentId*> PyListToPyDbSubentIdPtrArray(const boost::python::
 }
 
 
-
 //-------------------------------------------------------------------------------------------------------------
 //PyDbFullSubentPath
 void makePyDbFullSubentPathWrapper();
@@ -221,8 +223,15 @@ public:
 
     static              PyDbFullSubentPath kNull();
 
-
-
 public:
     AcDbFullSubentPath m_pyImp;
 };
+
+inline AcArray<AcDbFullSubentPath> PyListToPyDbFullSubentPathArray(const boost::python::object& iterable)
+{
+    AcArray<AcDbFullSubentPath> arr;
+    const auto& vec = py_list_to_std_vector<PyDbFullSubentPath>(iterable);
+    for (const auto& item : vec)
+        arr.append(item.m_pyImp);
+    return arr;
+}

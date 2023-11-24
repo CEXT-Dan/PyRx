@@ -1068,6 +1068,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def altSuppressLeadingZeros (self: Dimension)-> bool :
       '''                             '''
     ...
@@ -1294,6 +1300,17 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -2180,6 +2197,12 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -2394,6 +2417,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -2764,6 +2798,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def altSuppressLeadingZeros (self: Dimension)-> bool :
       '''                             '''
     ...
@@ -3014,6 +3054,17 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -3813,6 +3864,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def adjustAlignment (self: AttributeDefinition,val : Database)-> None :
       '''                             '''
     ...
@@ -3956,6 +4013,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -4415,6 +4483,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def adjustAlignment (self: Text,val : Database)-> None :
       '''                             '''
     ...
@@ -4558,6 +4632,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -5001,6 +5086,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -5132,6 +5223,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -5429,6 +5531,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -5560,6 +5668,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -5872,6 +5991,12 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def appendAttribute (self: BlockReference,val : Attribute)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -6012,6 +6137,17 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -7139,6 +7275,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -7270,6 +7412,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -8977,6 +9130,12 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -9194,6 +9353,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -10462,6 +10632,12 @@ class Curve:
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -10670,6 +10846,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -13278,6 +13465,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def altSuppressLeadingZeros (self: Dimension)-> bool :
       '''                             '''
     ...
@@ -13522,6 +13715,17 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -16414,6 +16618,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def altSuppressLeadingZeros (self: Dimension)-> bool :
       '''                             '''
     ...
@@ -16622,6 +16832,17 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -18608,6 +18829,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def angleAtParam (self: Ellipse,val : real)-> float :
       '''                             '''
     ...
@@ -18828,6 +19055,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -19319,6 +19557,12 @@ class Entity:
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -19438,6 +19682,17 @@ class Entity:
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -21925,6 +22180,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -22068,6 +22329,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -22401,6 +22673,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -22520,6 +22798,17 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -22847,6 +23136,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -22966,6 +23261,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -23293,6 +23599,12 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -23445,6 +23757,17 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -26521,6 +26844,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def appendLoop (self: Hatch,loopType : int,ids : list[PyDb.ObjectId])-> None :
       '''                             '''
     ...
@@ -26715,6 +27044,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -27955,6 +28295,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -28223,6 +28569,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -29037,6 +29394,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -29168,6 +29531,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -31700,6 +32074,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def annoHeight (self, *args, **kwargs)-> float :
       '''annoHeight( (Leader)arg1) -> float :
 
@@ -32063,6 +32443,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -32580,6 +32971,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -32791,6 +33188,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -33146,6 +33554,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def altSuppressLeadingZeros (self: Dimension)-> bool :
       '''                             '''
     ...
@@ -33378,6 +33792,17 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -35031,6 +35456,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -35174,6 +35605,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -35492,6 +35934,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def appendAttribute (self: BlockReference,val : Attribute)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -35638,6 +36086,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -36032,6 +36491,12 @@ addLeaderLine( (MLeader)arg1, (Point3d)arg2) -> int :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def arrowSize (self, *args, **kwargs)-> float :
       '''arrowSize( (MLeader)arg1) -> float :
 
@@ -36370,6 +36835,17 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTextLocation (self, *args, **kwargs)-> PyGe.Point3d :
       '''getTextLocation( (MLeader)arg1) -> Point3d :
@@ -39613,6 +40089,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def appendLoopFromBoundary (self, *args, **kwargs)-> None :
       '''appendLoopFromBoundary( (MPolygon)arg1, (Circle)arg2, (bool)arg3, (float)arg4) -> None :
 
@@ -39808,6 +40290,17 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -40351,6 +40844,12 @@ class MText:
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def ascent (self: MText)-> float :
       '''                             '''
     ...
@@ -40539,6 +41038,17 @@ class MText:
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -41839,6 +42349,12 @@ class Mline:
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def appendSeg (self: Mline,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
@@ -41991,6 +42507,17 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -42958,6 +43485,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -43101,6 +43634,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -43690,6 +44234,12 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def altSuppressLeadingZeros (self: Dimension)-> bool :
       '''                             '''
     ...
@@ -43916,6 +44466,17 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -45563,6 +46124,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -45724,6 +46291,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -46255,6 +46833,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -46398,6 +46982,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -47932,6 +48527,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -48054,6 +48655,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -48397,6 +49009,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def altSuppressLeadingZeros (self: Dimension)-> bool :
       '''                             '''
     ...
@@ -48635,6 +49253,17 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -49535,6 +50164,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -49654,6 +50289,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -49972,6 +50618,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -50091,6 +50743,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -50417,6 +51080,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def addVertexAt (self: Polyline,idx:int,pt2d:PyGe.Point2d,bulge:float=0.0,startWidth:float=0.0,endWidth:float=0.0)-> None :
       '''                             '''
     ...
@@ -50661,6 +51330,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -51066,6 +51746,12 @@ __init__( (object)arg1, (Poly2dType)arg2, (list)arg3, (bool)arg4) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def appendVertex (self, *args, **kwargs)-> None :
       '''appendVertex( (Polyline2d)arg1, (Vertex2d)arg2) -> None :
 
@@ -51315,6 +52001,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -51799,6 +52496,12 @@ __init__( (object)arg1, (Poly3dType)arg2, (list)arg3, (bool)arg4) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def appendVertex (self, *args, **kwargs)-> None :
       '''appendVertex( (Polyline3d)arg1, (Polyline3dVertex)arg2) -> None :
 
@@ -52024,6 +52727,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -52430,6 +53144,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -52549,6 +53269,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -52951,6 +53682,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def altSuppressLeadingZeros (self: Dimension)-> bool :
       '''                             '''
     ...
@@ -53195,6 +53932,17 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -53810,6 +54558,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def altSuppressLeadingZeros (self: Dimension)-> bool :
       '''                             '''
     ...
@@ -54054,6 +54808,17 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -54696,6 +55461,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -54869,6 +55640,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -56614,6 +57396,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -56751,6 +57539,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -57446,6 +58245,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -57589,6 +58394,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -58042,6 +58858,12 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def altSuppressLeadingZeros (self: Dimension)-> bool :
       '''                             '''
     ...
@@ -58268,6 +59090,17 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -59293,6 +60126,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -59424,6 +60263,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -60139,6 +60989,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -60478,6 +61334,17 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
 
     C++ signature :
         class PyDbObjectId getSubentMaterial(class PyDb3dSolid {lvalue},class PyDbSubentId)'''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -60979,6 +61846,12 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -61217,6 +62090,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -62408,6 +63292,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -62551,6 +63441,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -63358,6 +64259,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -63501,6 +64408,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -64633,6 +65551,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def alignment (self, *args, **kwargs)-> PyDb.CellAlignment :
       '''alignment( (Table)arg1, (RowType)arg2) -> CellAlignment :
 
@@ -65063,6 +65987,17 @@ getIterator( (Table)arg1, (CellRange)arg2 [, (TableIteratorOption)arg3]) -> list
     ...
     def getSubSelection (self: Table)-> PyDb.CellRange :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -67572,6 +68507,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def adjustAlignment (self: Text,val : Database)-> None :
       '''                             '''
     ...
@@ -67706,6 +68647,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -70610,6 +71562,12 @@ class UnderlayReference:
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -70759,6 +71717,17 @@ class UnderlayReference:
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -71625,6 +72594,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -71744,6 +72719,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -72061,6 +73047,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -72186,6 +73178,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -73163,6 +74166,12 @@ class Viewport:
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def ambientLightColor (self: Viewport)-> PyDb.Color :
       '''                             '''
     ...
@@ -73348,6 +74357,17 @@ class Viewport:
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
@@ -75289,6 +76309,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def addSubentPaths (self, *args, **kwargs)-> None :
+      '''addSubentPaths( (Entity)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -75453,6 +76479,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
+    ...
+    def getSubentPathsAtGsMarker (self, *args, **kwargs)-> list :
+      '''getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d)
+
+getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)arg4, (Matrix3d)arg5, (int)arg6, (ObjectId)arg7) -> list :
+
+    C++ signature :
+        class boost::python::list getSubentPathsAtGsMarker(class PyDbEntity {lvalue},unsigned int,__int64,class AcGePoint3d,class AcGeMatrix3d,int,class PyDbObjectId {lvalue})'''
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
