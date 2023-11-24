@@ -84,6 +84,9 @@ void makePyDbEntityWrapper()
         .def("removeReactor", &PyDbEntity::removeReactor, DS.ARGS({ "reactor: EntityReactor" }))
         .def("getStretchPoints", &PyDbEntity::getStretchPoints, DS.ARGS())
         .def("getGripPoints", &PyDbEntity::getGripPoints1)
+        .def("addSubentPaths", &PyDbEntity::addSubentPaths)
+        .def("getSubentPathsAtGsMarker", &PyDbEntity::getSubentPathsAtGsMarker1)
+        .def("getSubentPathsAtGsMarker", &PyDbEntity::getSubentPathsAtGsMarker2)
         .def("className", &PyDbEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -515,6 +518,37 @@ void PyDbEntity::getGripPoints1(boost::python::list& gripPoints, boost::python::
         osnapModes.append(item);
     for (auto& item : _geomIds)
         geomIds.append(item);
+}
+
+void PyDbEntity::addSubentPaths(const boost::python::list& newPaths)
+{
+    PyThrowBadEs(impObj()->addSubentPaths(PyListToPyDbFullSubentPathArray(newPaths)));
+}
+
+boost::python::list PyDbEntity::getSubentPathsAtGsMarker1(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform)
+{
+    int numIds = 0;
+    AcDbFullSubentPath* subentIds = nullptr;
+    PyThrowBadEs(impObj()->getSubentPathsAtGsMarker(type, gsMark, pickPoint, viewXform, numIds, subentIds));
+
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    for (int idx = 0; idx < numIds; idx++)
+        pyList.append(PyDbFullSubentPath(subentIds[idx]));
+    return pyList;
+}
+
+boost::python::list PyDbEntity::getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack)
+{
+    int numIds = 0;
+    AcDbFullSubentPath* subentIds = nullptr;
+    PyThrowBadEs(impObj()->getSubentPathsAtGsMarker(type, gsMark, pickPoint, viewXform, numIds, subentIds, numInserts, &entAndInsertStack.m_id));
+
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    for (int idx = 0; idx < numIds; idx++)
+        pyList.append(PyDbFullSubentPath(subentIds[idx]));
+    return pyList;
 }
 
 std::string PyDbEntity::className()
