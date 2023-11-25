@@ -4,7 +4,7 @@ https://www.python.org/downloads/release/python-31010/
 install wxPython 4.2.0 from https://pypi.org/project/wxPython/
 pip install wxPython==4.2.0
 
-Run the PyRxSetup installer
+Run the PyRxSetup installer https://github.com/CEXT-Dan/PyRx/releases or https://github.com/CEXT-Dan/PyRx/tags
 This setup writes two values to the registry, adds wxPython to PATH, adds autocomplete stubs path to PYTHONPATH.
 The stub files are for intellisense in Visual studio code
 
