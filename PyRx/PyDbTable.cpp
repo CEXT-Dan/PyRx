@@ -1849,7 +1849,16 @@ void PyDbTable::setBreakSpacing(double fSpacing)
 
 AcCellRange PyDbTable::cellRange() const
 {
+#if defined(_GRXTARGET) || defined(_ZRXTARGET)
+    auto range = AcCellRange{};
+    range.mnTopRow = 0;
+    range.mnLeftColumn = 0;
+	range.mnBottomRow = impObj()->numRows()-1;
+	range.mnRightColumn = impObj()->numColumns() - 1;
+    return range;
+#else
     return impObj()->cellRange();
+#endif
 }
 
 std::string PyDbTable::className()
