@@ -198,6 +198,15 @@ inline AcArray<AcDbSubentId*> PyListToPyDbSubentIdPtrArray(const boost::python::
     return arr;
 }
 
+inline boost::python::list SubentIdArrayToPyList(const AcArray<AcDbSubentId>& subEntIds)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for(const auto& item : subEntIds)
+        pylist.append(PyDbSubentId(item));
+    return pylist;
+}
+
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbFullSubentPath

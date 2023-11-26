@@ -13,6 +13,8 @@ void makePyDbSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("extendEdges", &PyDbSurface::extendEdges)
+        .def("rayTest", &PyDbSurface::rayTest)
         .def("projectOnToSurface", &PyDbSurface::projectOnToSurface)
         .def("createFrom", &PyDbSurface::createFrom).staticmethod("createFrom")
         .def("createExtrudedSurface", &PyDbSurface::createExtrudedSurface).staticmethod("createExtrudedSurface")
@@ -41,6 +43,21 @@ PyDbSurface::PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbSurface::PyDbSurface(const PyDbObjectId& id)
     : PyDbSurface(id, AcDb::OpenMode::kForRead)
 {
+}
+
+void PyDbSurface::extendEdges(boost::python::list& edges, double extDist, int extOption, bool bAssociativeEnabled)
+{
+    auto _edges = PyListToPyDbFullSubentPathArray(edges);
+    PyThrowBadEs(impObj()->extendEdges(_edges, extDist, AcDbSurface::EdgeExtensionType(extOption), bAssociativeEnabled));
+}
+
+boost::python::tuple PyDbSurface::rayTest(const AcGePoint3d& rayBasePoint, const AcGeVector3d& rayDir, double rayRadius) const
+{
+    PyAutoLockGIL lock;
+    AcArray<AcDbSubentId> subEntIds;
+    AcGeDoubleArray parameters;
+    PyThrowBadEs(impObj()->rayTest(rayBasePoint, rayDir, rayRadius, subEntIds, parameters));
+    return boost::python::make_tuple(SubentIdArrayToPyList(subEntIds), DoubleArrayToPyList(parameters));
 }
 
 boost::python::list PyDbSurface::projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection)
