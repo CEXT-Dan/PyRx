@@ -28310,23 +28310,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def axisPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''axisPoint( (Helix)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d axisPoint(class PyDbHelix {lvalue})'''
+    def axisPoint (self: Helix)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def axisVector (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''axisVector( (Helix)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d axisVector(class PyDbHelix {lvalue})'''
+    def axisVector (self: Helix)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def baseRadius (self, *args, **kwargs)-> float :
-      '''baseRadius( (Helix)arg1) -> float :
-
-    C++ signature :
-        double baseRadius(class PyDbHelix {lvalue})'''
+    def baseRadius (self: Helix)-> float :
+      '''                             '''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
@@ -28361,11 +28352,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def constrain (self, *args, **kwargs)-> PyDb.HelixConstrainType :
-      '''constrain( (Helix)arg1) -> HelixConstrainType :
-
-    C++ signature :
-        enum AcDbHelix::ConstrainType constrain(class PyDbHelix {lvalue})'''
+    def constrain (self: Helix)-> PyDb.HelixConstrainType :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
@@ -28376,11 +28364,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
-    def createHelix (self, *args, **kwargs)-> None :
-      '''createHelix( (Helix)arg1) -> None :
-
-    C++ signature :
-        void createHelix(class PyDbHelix {lvalue})'''
+    def createHelix (self: Helix)-> None :
+      '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
@@ -28599,11 +28584,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float :
-      '''height( (Helix)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbHelix {lvalue})'''
+    def height (self: Helix)-> float :
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
@@ -28808,11 +28790,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def reverseCurve (self, *args, **kwargs)-> None :
-      '''reverseCurve( (Helix)arg1) -> None :
-
-    C++ signature :
-        void reverseCurve(class PyDbHelix {lvalue})'''
+    def reverseCurve (self: Helix)-> None :
+      '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
@@ -28823,28 +28802,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setAxisPoint (self, *args, **kwargs)-> None :
-      '''setAxisPoint( (Helix)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setAxisPoint(class PyDbHelix {lvalue},class AcGePoint3d)
-
-setAxisPoint( (Helix)arg1, (Point3d)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setAxisPoint(class PyDbHelix {lvalue},class AcGePoint3d,bool)'''
+    def setAxisPoint (self: Helix,axisPoint : PyGe.Point3d,bMoveStartPoint : bool = True)-> None :
+      '''                             '''
     ...
-    def setAxisVector (self, *args, **kwargs)-> None :
-      '''setAxisVector( (Helix)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setAxisVector(class PyDbHelix {lvalue},class AcGeVector3d)'''
+    def setAxisVector (self: Helix,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def setBaseRadius (self, *args, **kwargs)-> None :
-      '''setBaseRadius( (Helix)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBaseRadius(class PyDbHelix {lvalue},double)'''
+    def setBaseRadius (self: Helix,val : real)-> None :
+      '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -28855,11 +28820,8 @@ setAxisPoint( (Helix)arg1, (Point3d)arg2, (bool)arg3) -> None :
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstrain (self, *args, **kwargs)-> None :
-      '''setConstrain( (Helix)arg1, (HelixConstrainType)arg2) -> None :
-
-    C++ signature :
-        void setConstrain(class PyDbHelix {lvalue},enum AcDbHelix::ConstrainType)'''
+    def setConstrain (self: Helix,val : PyDb.HelixConstrainType)-> None :
+      '''                             '''
     ...
     def setControlPointAt (self: Spline,idx:int,pnt:PyGe.Point3d)-> None :
       '''                             '''
@@ -28909,11 +28871,8 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (Helix)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbHelix {lvalue},double)'''
+    def setHeight (self: Helix,val : real)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -28966,35 +28925,20 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setStartPoint (self, *args, **kwargs)-> None :
-      '''setStartPoint( (Helix)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setStartPoint(class PyDbHelix {lvalue},class AcGePoint3d)'''
+    def setStartPoint (self: Helix,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setTopRadius (self, *args, **kwargs)-> None :
-      '''setTopRadius( (Helix)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTopRadius(class PyDbHelix {lvalue},double)'''
+    def setTopRadius (self: Helix,val : real)-> None :
+      '''                             '''
     ...
-    def setTurnHeight (self, *args, **kwargs)-> None :
-      '''setTurnHeight( (Helix)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTurnHeight(class PyDbHelix {lvalue},double)'''
+    def setTurnHeight (self: Helix,val : real)-> None :
+      '''                             '''
     ...
-    def setTurns (self, *args, **kwargs)-> None :
-      '''setTurns( (Helix)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTurns(class PyDbHelix {lvalue},double)'''
+    def setTurns (self: Helix,val : real)-> None :
+      '''                             '''
     ...
-    def setTwist (self, *args, **kwargs)-> None :
-      '''setTwist( (Helix)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setTwist(class PyDbHelix {lvalue},bool)'''
+    def setTwist (self: Helix,val : bool)-> None :
+      '''                             '''
     ...
     def setType (self, *args, **kwargs)-> None :
       '''setType( (Spline)arg1, (SplineType)arg2) -> None :
@@ -29011,11 +28955,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def startPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''startPoint( (Helix)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d startPoint(class PyDbHelix {lvalue})'''
+    def startPoint (self: Helix)-> PyGe.Point3d :
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
@@ -29023,44 +28964,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def toPolyline (self: Spline)-> PyDb.Polyline :
       '''                             '''
     ...
-    def topRadius (self, *args, **kwargs)-> float :
-      '''topRadius( (Helix)arg1) -> float :
-
-    C++ signature :
-        double topRadius(class PyDbHelix {lvalue})'''
+    def topRadius (self: Helix)-> float :
+      '''                             '''
     ...
-    def totalLength (self, *args, **kwargs)-> float :
-      '''totalLength( (Helix)arg1) -> float :
-
-    C++ signature :
-        double totalLength(class PyDbHelix {lvalue})'''
+    def totalLength (self: Helix)-> float :
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def turnHeight (self, *args, **kwargs)-> float :
-      '''turnHeight( (Helix)arg1) -> float :
-
-    C++ signature :
-        double turnHeight(class PyDbHelix {lvalue})'''
+    def turnHeight (self: Helix)-> float :
+      '''                             '''
     ...
-    def turnSlope (self, *args, **kwargs)-> float :
-      '''turnSlope( (Helix)arg1) -> float :
-
-    C++ signature :
-        double turnSlope(class PyDbHelix {lvalue})'''
+    def turnSlope (self: Helix)-> float :
+      '''                             '''
     ...
-    def turns (self, *args, **kwargs)-> float :
-      '''turns( (Helix)arg1) -> float :
-
-    C++ signature :
-        double turns(class PyDbHelix {lvalue})'''
+    def turns (self: Helix)-> float :
+      '''                             '''
     ...
-    def twist (self, *args, **kwargs)-> bool :
-      '''twist( (Helix)arg1) -> bool :
-
-    C++ signature :
-        bool twist(class PyDbHelix {lvalue})'''
+    def twist (self: Helix)-> bool :
+      '''                             '''
     ...
     def type (self: Spline)-> PyDb.SplineType :
       '''                             '''

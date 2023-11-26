@@ -32,9 +32,9 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
-#if _ZRXTARGET > 1
+#if defined(_ZRXTARGET)
 #define ADSPREFIX(x) zds_ ## x
-#elif _GRXTARGET > 1
+#elif defined(_GRXTARGET)
 #define ADSPREFIX(x) gds_ ## x
 #else
 #define ADSPREFIX(x) ads_ ## x
@@ -53,7 +53,7 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acdbModelerStart();
-#if defined(_GRXTARGET) && (_GRXTARGET == 240)
+#if defined(_GRXTARGET) && (_GRXTARGET <= 240)
         acedRegisterOnIdleWinMsg(GRXOnIdleMsgFnOnce);
 #else
         acedRegisterOnIdleWinMsg(AcedOnIdleMsgFnOnce);
@@ -431,7 +431,7 @@ public:
 
     static AcString commandForCurDocument()
     {
-#if defined(_ZRXTARGET) && (_ZRXTARGET == 240)
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 240)
         RxAutoOutStr cmd;
         AcString pGlobalCmdName;
         if (auto es = acedGetCommandForDocument(curDoc(), cmd.buf); es != eOk)
