@@ -22294,6 +22294,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def explode (self: Entity)-> list :
       '''                             '''
     ...
+    def extendEdges (self, *args, **kwargs)-> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+
+    C++ signature :
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+    ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -22496,6 +22502,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
+    ...
+    def rayTest (self, *args, **kwargs)-> tuple :
+      '''rayTest( (Surface)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple rayTest(class PyDbSurface {lvalue},class AcGePoint3d,class AcGeVector3d,double)'''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -35493,6 +35505,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def explode (self: Entity)-> list :
       '''                             '''
     ...
+    def extendEdges (self, *args, **kwargs)-> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+
+    C++ signature :
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+    ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -35695,6 +35713,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
+    ...
+    def rayTest (self, *args, **kwargs)-> tuple :
+      '''rayTest( (Surface)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple rayTest(class PyDbSurface {lvalue},class AcGePoint3d,class AcGeVector3d,double)'''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -43522,6 +43546,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def explode (self: Entity)-> list :
       '''                             '''
     ...
+    def extendEdges (self, *args, **kwargs)-> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+
+    C++ signature :
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+    ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -43724,6 +43754,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
+    ...
+    def rayTest (self, *args, **kwargs)-> tuple :
+      '''rayTest( (Surface)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple rayTest(class PyDbSurface {lvalue},class AcGePoint3d,class AcGeVector3d,double)'''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -46870,6 +46906,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def explode (self: Entity)-> list :
       '''                             '''
     ...
+    def extendEdges (self, *args, **kwargs)-> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+
+    C++ signature :
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+    ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -47072,6 +47114,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
+    ...
+    def rayTest (self, *args, **kwargs)-> tuple :
+      '''rayTest( (Surface)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple rayTest(class PyDbSurface {lvalue},class AcGePoint3d,class AcGeVector3d,double)'''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -58282,6 +58330,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def explode (self: Entity)-> list :
       '''                             '''
     ...
+    def extendEdges (self, *args, **kwargs)-> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+
+    C++ signature :
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+    ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -58484,6 +58538,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
+    ...
+    def rayTest (self, *args, **kwargs)-> tuple :
+      '''rayTest( (Surface)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple rayTest(class PyDbSurface {lvalue},class AcGePoint3d,class AcGeVector3d,double)'''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -63329,6 +63389,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def explode (self: Entity)-> list :
       '''                             '''
     ...
+    def extendEdges (self, *args, **kwargs)-> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+
+    C++ signature :
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+    ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -63531,6 +63597,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
+    ...
+    def rayTest (self, *args, **kwargs)-> tuple :
+      '''rayTest( (Surface)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple rayTest(class PyDbSurface {lvalue},class AcGePoint3d,class AcGeVector3d,double)'''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -64296,6 +64368,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def explode (self: Entity)-> list :
       '''                             '''
     ...
+    def extendEdges (self, *args, **kwargs)-> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+
+    C++ signature :
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+    ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -64498,6 +64576,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
+    ...
+    def rayTest (self, *args, **kwargs)-> tuple :
+      '''rayTest( (Surface)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple rayTest(class PyDbSurface {lvalue},class AcGePoint3d,class AcGeVector3d,double)'''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''

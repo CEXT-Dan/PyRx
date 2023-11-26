@@ -25,11 +25,19 @@ public:
     PyDbSurface(const PyDbObjectId& id);
     PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
 
-    boost::python::list         projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection);
+
+
+	void                    extendEdges(boost::python::list& edges, double extDist, int extOption, bool  bAssociativeEnabled);
+    boost::python::tuple    rayTest(const AcGePoint3d& rayBasePoint, const AcGeVector3d& rayDir,double rayRadius) const;
+
+    // Acad::ErrorStatus ACDB_PORT convertToNurbSurface(AcDbNurbSurfaceArray& nsArray);
+    boost::python::list projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection);
 
 
     static PyDbSurface          createFrom(const PyDbEntity& pFromEntity);
     static PyDbExtrudedSurface  createExtrudedSurface(PyDb3dProfile& pSweep, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions);
+
+
       
     static std::string      className();
     static PyRxClass        desc();
