@@ -22300,6 +22300,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbSurface createFrom(class PyDbEntity)'''
     ...
+    def creationActionBodyId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''creationActionBodyId( (Surface)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -22340,13 +22346,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extendEdges (self, *args, **kwargs)-> None :
-      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (SurfaceEdgeExtensionType)arg4, (bool)arg5) -> None :
 
     C++ signature :
-        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def getArea (self, *args, **kwargs)-> float :
+      '''getArea( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getArea(class PyDbSurface {lvalue})'''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -22372,6 +22384,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
+    def getPerimeter (self, *args, **kwargs)-> float :
+      '''getPerimeter( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getPerimeter(class PyDbSurface {lvalue})'''
+    ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
     ...
@@ -22394,6 +22412,12 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
+    ...
+    def getWireframeType (self, *args, **kwargs)-> PyDb.SurfaceWireframeType :
+      '''getWireframeType( (Surface)arg1) -> SurfaceWireframeType :
+
+    C++ signature :
+        enum AcDbSurface::WireframeType getWireframeType(class PyDbSurface {lvalue})'''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -22533,6 +22557,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def modificationActionBodyIds (self, *args, **kwargs)-> list :
+      '''modificationActionBodyIds( (Surface)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -22639,8 +22669,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
+    def setUIsolineDensity (self, *args, **kwargs)-> None :
+      '''setUIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setUIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
+    def setVIsolineDensity (self, *args, **kwargs)-> None :
+      '''setVIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
+    ...
+    def setWireframeType (self, *args, **kwargs)-> None :
+      '''setWireframeType( (Surface)arg1, (SurfaceWireframeType)arg2) -> None :
+
+    C++ signature :
+        void setWireframeType(class PyDbSurface {lvalue},enum AcDbSurface::WireframeType)'''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -22654,11 +22702,23 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
+    def uIsolineDensity (self, *args, **kwargs)-> int :
+      '''uIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
+    ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
+    ...
+    def vIsolineDensity (self, *args, **kwargs)-> int :
+      '''vIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short vIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -35541,6 +35601,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbSurface createFrom(class PyDbEntity)'''
     ...
+    def creationActionBodyId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''creationActionBodyId( (Surface)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -35581,13 +35647,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extendEdges (self, *args, **kwargs)-> None :
-      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (SurfaceEdgeExtensionType)arg4, (bool)arg5) -> None :
 
     C++ signature :
-        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def getArea (self, *args, **kwargs)-> float :
+      '''getArea( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getArea(class PyDbSurface {lvalue})'''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -35613,6 +35685,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
+    def getPerimeter (self, *args, **kwargs)-> float :
+      '''getPerimeter( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getPerimeter(class PyDbSurface {lvalue})'''
+    ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
     ...
@@ -35635,6 +35713,12 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
+    ...
+    def getWireframeType (self, *args, **kwargs)-> PyDb.SurfaceWireframeType :
+      '''getWireframeType( (Surface)arg1) -> SurfaceWireframeType :
+
+    C++ signature :
+        enum AcDbSurface::WireframeType getWireframeType(class PyDbSurface {lvalue})'''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -35774,6 +35858,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def modificationActionBodyIds (self, *args, **kwargs)-> list :
+      '''modificationActionBodyIds( (Surface)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -35880,8 +35970,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
+    def setUIsolineDensity (self, *args, **kwargs)-> None :
+      '''setUIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setUIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
+    def setVIsolineDensity (self, *args, **kwargs)-> None :
+      '''setVIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
+    ...
+    def setWireframeType (self, *args, **kwargs)-> None :
+      '''setWireframeType( (Surface)arg1, (SurfaceWireframeType)arg2) -> None :
+
+    C++ signature :
+        void setWireframeType(class PyDbSurface {lvalue},enum AcDbSurface::WireframeType)'''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -35895,11 +36003,23 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
+    def uIsolineDensity (self, *args, **kwargs)-> int :
+      '''uIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
+    ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
+    ...
+    def vIsolineDensity (self, *args, **kwargs)-> int :
+      '''vIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short vIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -43600,6 +43720,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbSurface createFrom(class PyDbEntity)'''
     ...
+    def creationActionBodyId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''creationActionBodyId( (Surface)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -43640,13 +43766,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extendEdges (self, *args, **kwargs)-> None :
-      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (SurfaceEdgeExtensionType)arg4, (bool)arg5) -> None :
 
     C++ signature :
-        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def getArea (self, *args, **kwargs)-> float :
+      '''getArea( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getArea(class PyDbSurface {lvalue})'''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -43672,6 +43804,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
+    def getPerimeter (self, *args, **kwargs)-> float :
+      '''getPerimeter( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getPerimeter(class PyDbSurface {lvalue})'''
+    ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
     ...
@@ -43694,6 +43832,12 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
+    ...
+    def getWireframeType (self, *args, **kwargs)-> PyDb.SurfaceWireframeType :
+      '''getWireframeType( (Surface)arg1) -> SurfaceWireframeType :
+
+    C++ signature :
+        enum AcDbSurface::WireframeType getWireframeType(class PyDbSurface {lvalue})'''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -43833,6 +43977,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def modificationActionBodyIds (self, *args, **kwargs)-> list :
+      '''modificationActionBodyIds( (Surface)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -43939,8 +44089,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
+    def setUIsolineDensity (self, *args, **kwargs)-> None :
+      '''setUIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setUIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
+    def setVIsolineDensity (self, *args, **kwargs)-> None :
+      '''setVIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
+    ...
+    def setWireframeType (self, *args, **kwargs)-> None :
+      '''setWireframeType( (Surface)arg1, (SurfaceWireframeType)arg2) -> None :
+
+    C++ signature :
+        void setWireframeType(class PyDbSurface {lvalue},enum AcDbSurface::WireframeType)'''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -43954,11 +44122,23 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
+    def uIsolineDensity (self, *args, **kwargs)-> int :
+      '''uIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
+    ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
+    ...
+    def vIsolineDensity (self, *args, **kwargs)-> int :
+      '''vIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short vIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -46969,6 +47149,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbSurface createFrom(class PyDbEntity)'''
     ...
+    def creationActionBodyId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''creationActionBodyId( (Surface)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -47009,13 +47195,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extendEdges (self, *args, **kwargs)-> None :
-      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (SurfaceEdgeExtensionType)arg4, (bool)arg5) -> None :
 
     C++ signature :
-        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def getArea (self, *args, **kwargs)-> float :
+      '''getArea( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getArea(class PyDbSurface {lvalue})'''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -47041,6 +47233,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
+    def getPerimeter (self, *args, **kwargs)-> float :
+      '''getPerimeter( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getPerimeter(class PyDbSurface {lvalue})'''
+    ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
     ...
@@ -47063,6 +47261,12 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
+    ...
+    def getWireframeType (self, *args, **kwargs)-> PyDb.SurfaceWireframeType :
+      '''getWireframeType( (Surface)arg1) -> SurfaceWireframeType :
+
+    C++ signature :
+        enum AcDbSurface::WireframeType getWireframeType(class PyDbSurface {lvalue})'''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -47202,6 +47406,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def modificationActionBodyIds (self, *args, **kwargs)-> list :
+      '''modificationActionBodyIds( (Surface)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -47308,8 +47518,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
+    def setUIsolineDensity (self, *args, **kwargs)-> None :
+      '''setUIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setUIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
+    def setVIsolineDensity (self, *args, **kwargs)-> None :
+      '''setVIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
+    ...
+    def setWireframeType (self, *args, **kwargs)-> None :
+      '''setWireframeType( (Surface)arg1, (SurfaceWireframeType)arg2) -> None :
+
+    C++ signature :
+        void setWireframeType(class PyDbSurface {lvalue},enum AcDbSurface::WireframeType)'''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -47323,11 +47551,23 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
+    def uIsolineDensity (self, *args, **kwargs)-> int :
+      '''uIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
+    ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
+    ...
+    def vIsolineDensity (self, *args, **kwargs)-> int :
+      '''vIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short vIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -58432,6 +58672,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbSurface createFrom(class PyDbEntity)'''
     ...
+    def creationActionBodyId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''creationActionBodyId( (Surface)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -58472,13 +58718,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extendEdges (self, *args, **kwargs)-> None :
-      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (SurfaceEdgeExtensionType)arg4, (bool)arg5) -> None :
 
     C++ signature :
-        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def getArea (self, *args, **kwargs)-> float :
+      '''getArea( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getArea(class PyDbSurface {lvalue})'''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -58504,6 +58756,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
+    def getPerimeter (self, *args, **kwargs)-> float :
+      '''getPerimeter( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getPerimeter(class PyDbSurface {lvalue})'''
+    ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
     ...
@@ -58526,6 +58784,12 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
+    ...
+    def getWireframeType (self, *args, **kwargs)-> PyDb.SurfaceWireframeType :
+      '''getWireframeType( (Surface)arg1) -> SurfaceWireframeType :
+
+    C++ signature :
+        enum AcDbSurface::WireframeType getWireframeType(class PyDbSurface {lvalue})'''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -58665,6 +58929,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def modificationActionBodyIds (self, *args, **kwargs)-> list :
+      '''modificationActionBodyIds( (Surface)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -58771,8 +59041,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
+    def setUIsolineDensity (self, *args, **kwargs)-> None :
+      '''setUIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setUIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
+    def setVIsolineDensity (self, *args, **kwargs)-> None :
+      '''setVIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
+    ...
+    def setWireframeType (self, *args, **kwargs)-> None :
+      '''setWireframeType( (Surface)arg1, (SurfaceWireframeType)arg2) -> None :
+
+    C++ signature :
+        void setWireframeType(class PyDbSurface {lvalue},enum AcDbSurface::WireframeType)'''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -58786,11 +59074,23 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
+    def uIsolineDensity (self, *args, **kwargs)-> int :
+      '''uIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
+    ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
+    ...
+    def vIsolineDensity (self, *args, **kwargs)-> int :
+      '''vIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short vIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -63506,6 +63806,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbSurface createFrom(class PyDbEntity)'''
     ...
+    def creationActionBodyId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''creationActionBodyId( (Surface)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -63546,13 +63852,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extendEdges (self, *args, **kwargs)-> None :
-      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (SurfaceEdgeExtensionType)arg4, (bool)arg5) -> None :
 
     C++ signature :
-        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def getArea (self, *args, **kwargs)-> float :
+      '''getArea( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getArea(class PyDbSurface {lvalue})'''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -63578,6 +63890,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
+    def getPerimeter (self, *args, **kwargs)-> float :
+      '''getPerimeter( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getPerimeter(class PyDbSurface {lvalue})'''
+    ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
     ...
@@ -63600,6 +63918,12 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
+    ...
+    def getWireframeType (self, *args, **kwargs)-> PyDb.SurfaceWireframeType :
+      '''getWireframeType( (Surface)arg1) -> SurfaceWireframeType :
+
+    C++ signature :
+        enum AcDbSurface::WireframeType getWireframeType(class PyDbSurface {lvalue})'''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -63739,6 +64063,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def modificationActionBodyIds (self, *args, **kwargs)-> list :
+      '''modificationActionBodyIds( (Surface)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -63845,8 +64175,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
+    def setUIsolineDensity (self, *args, **kwargs)-> None :
+      '''setUIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setUIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
+    def setVIsolineDensity (self, *args, **kwargs)-> None :
+      '''setVIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
+    ...
+    def setWireframeType (self, *args, **kwargs)-> None :
+      '''setWireframeType( (Surface)arg1, (SurfaceWireframeType)arg2) -> None :
+
+    C++ signature :
+        void setWireframeType(class PyDbSurface {lvalue},enum AcDbSurface::WireframeType)'''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -63860,11 +64208,23 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
+    def uIsolineDensity (self, *args, **kwargs)-> int :
+      '''uIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
+    ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
+    ...
+    def vIsolineDensity (self, *args, **kwargs)-> int :
+      '''vIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short vIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -63889,6 +64249,250 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
     def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
+    ...
+
+class SurfaceEdgeExtensionType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kExtendEdge (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kStretchEdge (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class SurfaceWireframeType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def kIsolines (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kIsoparms (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class SweepAlignOption:
@@ -64488,6 +65092,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbSurface createFrom(class PyDbEntity)'''
     ...
+    def creationActionBodyId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''creationActionBodyId( (Surface)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId creationActionBodyId(class PyDbSurface {lvalue})'''
+    ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
     ...
@@ -64528,13 +65138,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def extendEdges (self, *args, **kwargs)-> None :
-      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (int)arg4, (bool)arg5) -> None :
+      '''extendEdges( (Surface)arg1, (list)arg2, (float)arg3, (SurfaceEdgeExtensionType)arg4, (bool)arg5) -> None :
 
     C++ signature :
-        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,int,bool)'''
+        void extendEdges(class PyDbSurface {lvalue},class boost::python::list {lvalue},double,enum AcDbSurface::EdgeExtensionType,bool)'''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def getArea (self, *args, **kwargs)-> float :
+      '''getArea( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getArea(class PyDbSurface {lvalue})'''
     ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -64560,6 +65176,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
+    def getPerimeter (self, *args, **kwargs)-> float :
+      '''getPerimeter( (Surface)arg1) -> float :
+
+    C++ signature :
+        double getPerimeter(class PyDbSurface {lvalue})'''
+    ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
     ...
@@ -64582,6 +65204,12 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
+    ...
+    def getWireframeType (self, *args, **kwargs)-> PyDb.SurfaceWireframeType :
+      '''getWireframeType( (Surface)arg1) -> SurfaceWireframeType :
+
+    C++ signature :
+        enum AcDbSurface::WireframeType getWireframeType(class PyDbSurface {lvalue})'''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -64721,6 +65349,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def modificationActionBodyIds (self, *args, **kwargs)-> list :
+      '''modificationActionBodyIds( (Surface)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list modificationActionBodyIds(class PyDbSurface {lvalue})'''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -64827,8 +65461,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
+    def setUIsolineDensity (self, *args, **kwargs)-> None :
+      '''setUIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setUIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
+    def setVIsolineDensity (self, *args, **kwargs)-> None :
+      '''setVIsolineDensity( (Surface)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setVIsolineDensity(class PyDbSurface {lvalue},unsigned short)'''
+    ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
+    ...
+    def setWireframeType (self, *args, **kwargs)-> None :
+      '''setWireframeType( (Surface)arg1, (SurfaceWireframeType)arg2) -> None :
+
+    C++ signature :
+        void setWireframeType(class PyDbSurface {lvalue},enum AcDbSurface::WireframeType)'''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -64842,11 +65494,23 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
+    def uIsolineDensity (self, *args, **kwargs)-> int :
+      '''uIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short uIsolineDensity(class PyDbSurface {lvalue})'''
+    ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
+    ...
+    def vIsolineDensity (self, *args, **kwargs)-> int :
+      '''vIsolineDensity( (Surface)arg1) -> int :
+
+    C++ signature :
+        unsigned short vIsolineDensity(class PyDbSurface {lvalue})'''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''

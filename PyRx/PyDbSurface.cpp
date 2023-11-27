@@ -13,6 +13,17 @@ void makePyDbSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+
+        .def("getArea", &PyDbSurface::getArea)
+        .def("uIsolineDensity", &PyDbSurface::uIsolineDensity)
+        .def("setUIsolineDensity", &PyDbSurface::setUIsolineDensity)
+        .def("vIsolineDensity", &PyDbSurface::vIsolineDensity)
+        .def("setVIsolineDensity", &PyDbSurface::setVIsolineDensity)
+        .def("getWireframeType", &PyDbSurface::getWireframeType)
+        .def("setWireframeType", &PyDbSurface::setWireframeType)
+        .def("getPerimeter", &PyDbSurface::getPerimeter)
+        .def("creationActionBodyId", &PyDbSurface::creationActionBodyId)
+        .def("modificationActionBodyIds", &PyDbSurface::modificationActionBodyIds)
         .def("extendEdges", &PyDbSurface::extendEdges)
         .def("rayTest", &PyDbSurface::rayTest)
         .def("projectOnToSurface", &PyDbSurface::projectOnToSurface)
@@ -22,6 +33,19 @@ void makePyDbSurfaceWrapper()
         .def("desc", &PyDbSurface::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbSurface::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbSurface::cast).staticmethod("cast")
+        ;
+
+
+    //enums
+    enum_<AcDbSurface::EdgeExtensionType>("SurfaceEdgeExtensionType")
+        .value("kExtendEdge", AcDbSurface::EdgeExtensionType::kExtendEdge)
+        .value("kStretchEdge", AcDbSurface::EdgeExtensionType::kStretchEdge)
+        .export_values()
+        ;
+    enum_<AcDbSurface::WireframeType>("SurfaceWireframeType")
+        .value("kIsolines", AcDbSurface::WireframeType::kIsolines)
+        .value("kIsoparms", AcDbSurface::WireframeType::kIsoparms)
+        .export_values()
         ;
 }
 
@@ -45,10 +69,66 @@ PyDbSurface::PyDbSurface(const PyDbObjectId& id)
 {
 }
 
-void PyDbSurface::extendEdges(boost::python::list& edges, double extDist, int extOption, bool bAssociativeEnabled)
+double PyDbSurface::getArea() const
+{
+    double area = 0;
+    PyThrowBadEs(impObj()->getArea(area));
+    return area;
+}
+
+Adesk::UInt16 PyDbSurface::uIsolineDensity() const
+{
+    return impObj()->uIsolineDensity();
+}
+
+void PyDbSurface::setUIsolineDensity(Adesk::UInt16 numIsolines)
+{
+    PyThrowBadEs(impObj()->setUIsolineDensity(numIsolines));
+}
+
+Adesk::UInt16 PyDbSurface::vIsolineDensity() const
+{
+    return impObj()->vIsolineDensity();
+}
+
+void PyDbSurface::setVIsolineDensity(Adesk::UInt16 numIsolines)
+{
+    PyThrowBadEs(impObj()->setVIsolineDensity(numIsolines));
+}
+
+AcDbSurface::WireframeType PyDbSurface::getWireframeType() const
+{
+   return impObj()->getWireframeType();
+}
+
+void PyDbSurface::setWireframeType(AcDbSurface::WireframeType type)
+{
+    PyThrowBadEs(impObj()->setWireframeType(type));
+}
+
+double PyDbSurface::getPerimeter() const
+{
+    double perimeter = 0;
+    PyThrowBadEs(impObj()->getPerimeter(perimeter));
+    return perimeter;
+}
+
+PyDbObjectId PyDbSurface::creationActionBodyId() const
+{
+    return PyDbObjectId(impObj()->creationActionBodyId());
+}
+
+boost::python::list PyDbSurface::modificationActionBodyIds() const
+{
+    AcDbObjectIdArray modificationActionBodyIds;
+    PyThrowBadEs(impObj()->modificationActionBodyIds(modificationActionBodyIds));
+    return ObjectIdArrayToPyList(modificationActionBodyIds);
+}
+
+void PyDbSurface::extendEdges(boost::python::list& edges, double extDist, AcDbSurface::EdgeExtensionType extOption, bool bAssociativeEnabled)
 {
     auto _edges = PyListToPyDbFullSubentPathArray(edges);
-    PyThrowBadEs(impObj()->extendEdges(_edges, extDist, AcDbSurface::EdgeExtensionType(extOption), bAssociativeEnabled));
+    PyThrowBadEs(impObj()->extendEdges(_edges, extDist, extOption, bAssociativeEnabled));
 }
 
 boost::python::tuple PyDbSurface::rayTest(const AcGePoint3d& rayBasePoint, const AcGeVector3d& rayDir, double rayRadius) const
