@@ -26,8 +26,17 @@ public:
     PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
 
 
-
-	void                    extendEdges(boost::python::list& edges, double extDist, int extOption, bool  bAssociativeEnabled);
+    double                  getArea() const;
+    Adesk::UInt16           uIsolineDensity() const;
+    void                    setUIsolineDensity(Adesk::UInt16 numIsolines);
+    Adesk::UInt16           vIsolineDensity() const;
+    void                    setVIsolineDensity(Adesk::UInt16 numIsolines);
+    AcDbSurface::WireframeType  getWireframeType() const;
+    void                    setWireframeType(AcDbSurface::WireframeType type);
+    double                  getPerimeter() const;
+    PyDbObjectId            creationActionBodyId() const;
+    boost::python::list     modificationActionBodyIds() const;
+	void                    extendEdges(boost::python::list& edges, double extDist, AcDbSurface::EdgeExtensionType extOption, bool  bAssociativeEnabled);
     boost::python::tuple    rayTest(const AcGePoint3d& rayBasePoint, const AcGeVector3d& rayDir,double rayRadius) const;
 
     // Acad::ErrorStatus ACDB_PORT convertToNurbSurface(AcDbNurbSurfaceArray& nsArray);
