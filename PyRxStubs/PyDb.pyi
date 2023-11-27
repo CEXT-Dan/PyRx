@@ -1327,6 +1327,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def horizontalRotation (self: Dimension)-> float :
       '''                             '''
     ...
@@ -2444,6 +2447,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -3085,6 +3091,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float :
@@ -4043,6 +4052,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def height (self: Text)-> float :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def hitTest (self: Text,val : PyGe.Point3d)-> bool :
       '''                             '''
     ...
@@ -4662,6 +4674,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def height (self: Text)-> float :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def hitTest (self: Text,val : PyGe.Point3d)-> bool :
       '''                             '''
     ...
@@ -5250,6 +5265,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -5693,6 +5711,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -6162,6 +6183,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -7437,6 +7461,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -9380,6 +9407,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -10871,6 +10901,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -13740,6 +13773,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float :
@@ -16859,6 +16895,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def horizontalRotation (self: Dimension)-> float :
       '''                             '''
     ...
@@ -19082,6 +19121,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -19707,6 +19749,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -22362,6 +22407,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -22840,6 +22888,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -23301,6 +23352,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -23794,6 +23848,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -27101,6 +27158,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hatchStyle (self: Hatch)-> PyDb.HatchStyle :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -28599,6 +28659,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def height (self: Helix)-> float :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -29491,6 +29554,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -32423,6 +32489,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -33150,6 +33219,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -33752,6 +33824,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float :
@@ -35573,6 +35648,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -36058,6 +36136,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -36831,6 +36912,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -40267,6 +40351,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hatch (self: MPolygon)-> PyDb.Hatch :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -41013,6 +41100,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def height (self: MText)-> float :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def hitTest (self: MText,val : PyGe.Point3d)-> bool :
@@ -42481,6 +42571,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -43614,6 +43707,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -44450,6 +44546,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float :
@@ -46283,6 +46382,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def height (self: UnderlayReference)-> float :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -46972,6 +47074,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -48653,6 +48758,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -49249,6 +49357,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float :
@@ -50287,6 +50398,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -50739,6 +50853,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -51338,6 +51455,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -51997,6 +52117,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -52725,6 +52848,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -53265,6 +53391,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -53928,6 +54057,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float :
@@ -54806,6 +54938,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def horizontalRotation (self: Dimension)-> float :
       '''                             '''
     ...
@@ -55649,6 +55784,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
 
     C++ signature :
         double height(class PyDbRasterImage {lvalue})'''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
@@ -57537,6 +57675,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -58398,6 +58539,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -59098,6 +59242,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def horizontalRotation (self: Dimension)-> float :
@@ -60273,6 +60420,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -61344,6 +61494,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -62101,6 +62254,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -63457,6 +63613,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -64434,6 +64593,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -66095,6 +66257,9 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
 
     C++ signature :
         double height(class PyDbTable {lvalue})'''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
     ...
     def hitTest (self: Table,wpt: PyGe.Point3d,viewvec: PyGe.Vector3d,wx: real=0.0,wy: real=0.0)-> tuple :
       '''                             '''
@@ -68682,6 +68847,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def height (self: Text)-> float :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def hitTest (self: Text,val : PyGe.Point3d)-> bool :
@@ -71757,6 +71925,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def height (self: UnderlayReference)-> float :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -72753,6 +72924,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
+    ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -73210,6 +73384,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -74407,6 +74584,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
       '''                             '''
     ...
     def hiddenLinesRemoved (self: Viewport)-> bool :
+      '''                             '''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
@@ -76524,6 +76704,9 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
 
     C++ signature :
         double height(class PyDbRasterImage {lvalue})'''
+    ...
+    def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''

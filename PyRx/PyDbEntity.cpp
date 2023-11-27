@@ -87,6 +87,8 @@ void makePyDbEntityWrapper()
         .def("addSubentPaths", &PyDbEntity::addSubentPaths)
         .def("getSubentPathsAtGsMarker", &PyDbEntity::getSubentPathsAtGsMarker1)
         .def("getSubentPathsAtGsMarker", &PyDbEntity::getSubentPathsAtGsMarker2)
+        .def("highlight", &PyDbEntity::highlight1)
+        .def("highlight", &PyDbEntity::highlight2, DS.ARGS({ "path: PyDb.FullSubentPath = None","highlightAll : bool = False" }))
         .def("className", &PyDbEntity::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom, DS.SARGS({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -549,6 +551,16 @@ boost::python::list PyDbEntity::getSubentPathsAtGsMarker2(AcDb::SubentType type,
     for (int idx = 0; idx < numIds; idx++)
         pyList.append(PyDbFullSubentPath(subentIds[idx]));
     return pyList;
+}
+
+void PyDbEntity::highlight1() const
+{
+    PyThrowBadEs(impObj()->highlight());
+}
+
+void PyDbEntity::highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolean highlightAll) const
+{
+    PyThrowBadEs(impObj()->highlight(subId.m_pyImp, highlightAll));
 }
 
 std::string PyDbEntity::className()

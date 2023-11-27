@@ -2,6 +2,7 @@
 #include "PyDbObject.h"
 class PyCmColor;
 class PyGePlane;
+class PyDbFullSubentPath;
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbEntity
@@ -91,7 +92,12 @@ public:
     void                getGripPoints1(boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds)const;
     void                addSubentPaths(const boost::python::list& newPaths);
     boost::python::list getSubentPathsAtGsMarker1(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform);
-    boost::python::list getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform,int numInserts,PyDbObjectId& entAndInsertStack);
+    boost::python::list getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack);
+
+    void                highlight1() const;
+    void                highlight2(const PyDbFullSubentPath& subId, const Adesk::Boolean highlightAll)const;
+
+
     static std::string  className();
     static PyRxClass    desc();
     static PyDbEntity   cloneFrom(const PyRxObject& src);
@@ -202,7 +208,7 @@ inline boost::python::list SubentIdArrayToPyList(const AcArray<AcDbSubentId>& su
 {
     PyAutoLockGIL lock;
     boost::python::list pylist;
-    for(const auto& item : subEntIds)
+    for (const auto& item : subEntIds)
         pylist.append(PyDbSubentId(item));
     return pylist;
 }
