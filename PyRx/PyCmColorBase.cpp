@@ -7,11 +7,15 @@ using namespace boost::python;
 //wrapper
 std::string AcCmColorToString(const AcCmColor& s)
 {
+    if(s.isByACI())
+        return std::format("({})", s.colorIndex());
     return std::format("({},{},{})", s.red(), s.green(), s.blue());
 }
 
 std::string AcCmColorToStringRepr(const AcCmColor& s)
 {
+    if (s.isByACI())
+        return std::format("<{}.ColorIndex({})>", PyDbNamespace, s.colorIndex());
     return std::format("<{}.Color({},{},{})>", PyDbNamespace, s.red(), s.green(), s.blue());
 }
 
