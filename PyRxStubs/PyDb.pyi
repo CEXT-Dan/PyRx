@@ -6884,7 +6884,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
 
 class BlockTableRecord:
-    def __init__ (self: BlockTableRecord,id: ObjectId=kNull,mode: OpenMode=kForRead)-> None :
+    def __init__ (self: BlockTableRecord,id: ObjectId=kNull,mode: PyDb.OpenMode=kForRead)-> None :
       '''                             '''
     ...
     def addAnnoScalestoBlkRefs (self: BlockTableRecord,scale : bool)-> None :
@@ -6983,16 +6983,8 @@ class BlockTableRecord:
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getBlockReferenceIds (self, *args, **kwargs)-> list :
-      '''getBlockReferenceIds( (BlockTableRecord)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getBlockReferenceIds(class PyDbBlockTableRecord {lvalue})
-
-getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getBlockReferenceIds(class PyDbBlockTableRecord {lvalue},bool,bool)'''
+    def getBlockReferenceIds (self: BlockTableRecord,directOnly : bool = True,bForceValidity : bool = False)-> list :
+      '''                             '''
     ...
     def getErasedBlockReferenceIds (self: BlockTableRecord)-> list :
       '''                             '''
@@ -7132,20 +7124,14 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def objectIds (self: BlockTableRecord)-> list :
+    def objectIds (self: BlockTableRecord,desc:PyRx.RxClass=AcDbEntity)-> list :
       '''                             '''
     ...
-    def openBlockBegin (self, *args, **kwargs)-> None :
-      '''openBlockBegin( (BlockTableRecord)arg1, (BlockBegin)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void openBlockBegin(class PyDbBlockTableRecord {lvalue},class PyDbBlockBegin {lvalue},enum AcDb::OpenMode)'''
+    def openBlockBegin (self: BlockTableRecord,val: PyDb.BlockBegin,mode: PyDb.OpenMode)-> None :
+      '''                             '''
     ...
-    def openBlockEnd (self, *args, **kwargs)-> None :
-      '''openBlockEnd( (BlockTableRecord)arg1, (BlockEnd)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void openBlockEnd(class PyDbBlockTableRecord {lvalue},class PyDbBlockEnd {lvalue},enum AcDb::OpenMode)'''
+    def openBlockEnd (self: BlockTableRecord,val: PyDb.BlockEnd,mode: PyDb.OpenMode)-> None :
+      '''                             '''
     ...
     def origin (self: BlockTableRecord)-> PyGe.Point3d :
       '''                             '''
@@ -7156,11 +7142,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def pathName (self: BlockTableRecord)-> str :
       '''                             '''
     ...
-    def postProcessAnnotativeBTR (self, *args, **kwargs)-> int :
-      '''postProcessAnnotativeBTR( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> int :
-
-    C++ signature :
-        int postProcessAnnotativeBTR(class PyDbBlockTableRecord {lvalue},bool,bool)'''
+    def postProcessAnnotativeBTR (self: BlockTableRecord,bqueryOnly  : bool = False,bScale : bool = True)-> int :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -7186,17 +7169,11 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBlockInsertUnits (self, *args, **kwargs)-> None :
-      '''setBlockInsertUnits( (BlockTableRecord)arg1, (UnitsValue)arg2) -> None :
-
-    C++ signature :
-        void setBlockInsertUnits(class PyDbBlockTableRecord {lvalue},enum AcDb::UnitsValue)'''
+    def setBlockInsertUnits (self: BlockTableRecord,val : PyDb.UnitsValue)-> None :
+      '''                             '''
     ...
-    def setBlockScaling (self, *args, **kwargs)-> None :
-      '''setBlockScaling( (BlockTableRecord)arg1, (BlockScaling)arg2) -> None :
-
-    C++ signature :
-        void setBlockScaling(class PyDbBlockTableRecord {lvalue},enum AcDbBlockTableRecord::BlockScaling)'''
+    def setBlockScaling (self: BlockTableRecord,val : PyDb.BlockScaling)-> None :
+      '''                             '''
     ...
     def setComments (self: BlockTableRecord,val : str)-> None :
       '''                             '''
