@@ -119,7 +119,7 @@
 #define PY_SSIZE_T_CLEAN
 
 #include <Python.h>
-#pragma comment( lib , "python310.lib" )
+#pragma comment( lib , "python312.lib" )
 
 #include <boost/python.hpp>
 #include <boost/python/list.hpp>
