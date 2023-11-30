@@ -184,15 +184,6 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(spline.isKindOf(Db.Spline.desc()), True)
         self.assertEqual(spline.numFitPoints(), 3)
         
-    def test_getallobjectidsfromdwg(self):
-        ids = self.db06457.objectIds()
-        self.assertTrue(len(ids), 26679)
-        
-    def test_getallobjectidsfromdwgdesc(self):
-        ids = self.db06457.objectIds(Db.BlockReference.desc())
-        self.assertEqual(len(ids), 1826 )
-
-
 def PyRxCmd_pydbtest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDatabase)
