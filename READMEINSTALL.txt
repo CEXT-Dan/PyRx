@@ -1,8 +1,6 @@
-Install python (64 bit) python3.10.10 with PATH checkbox set to true.
-https://www.python.org/downloads/release/python-31010/
+Install python (64 bit) python3.12.0 with PATH checkbox set to true.
 
-install wxPython 4.2.0 from https://pypi.org/project/wxPython/
-pip install wxPython==4.2.0
+install wxPython 4.2.1 from https://pypi.org/project/wxPython/
 
 Run the PyRxSetup installer https://github.com/CEXT-Dan/PyRx/releases or https://github.com/CEXT-Dan/PyRx/tags
 This setup writes two values to the registry, adds wxPython to PATH, adds autocomplete stubs path to PYTHONPATH.
