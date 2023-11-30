@@ -138,7 +138,7 @@ double PyDbCurve::getDistAtParam(double param) const
 {
     double dist = 0;
     PyThrowBadEs(impObj()->getDistAtParam(param, dist));
-    return param;
+    return dist;
 }
 
 double PyDbCurve::getParamAtDist(double dist) const
