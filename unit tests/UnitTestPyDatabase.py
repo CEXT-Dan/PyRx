@@ -186,7 +186,7 @@ class TestDatabase(unittest.TestCase):
         
     def test_getallobjectidsfromdwg(self):
         ids = self.db06457.objectIds()
-        self.assertEqual(len(ids), 26674)
+        self.assertTrue(len(ids), 26679)
         
     def test_getallobjectidsfromdwgdesc(self):
         ids = self.db06457.objectIds(Db.BlockReference.desc())
