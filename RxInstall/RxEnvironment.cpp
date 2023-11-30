@@ -75,9 +75,9 @@ std::wstring RxEnvironment::findPythonPath()
 			split(result.second, ';', elems);
 			for (auto& item : elems)
 			{
-				if (item.ends_with(L"python310\\") || item.ends_with(L"python310/") || item.ends_with(L"python310"))
+				if (item.ends_with(L"python312\\") || item.ends_with(L"python312/") || item.ends_with(L"python312"))
 					res = item;
-				else if (item.ends_with(L"Python310\\") || item.ends_with(L"Python310/") || item.ends_with(L"Python310"))
+				else if (item.ends_with(L"python312\\") || item.ends_with(L"python312/") || item.ends_with(L"python312"))
 					res = item;
 			}
 		}
