@@ -21,44 +21,44 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_16BE379A90F64D7B6215A22AEC630E53"
+        "MsmKey" = "8:_17B55E98DF6B4908A0B6F0E55A5D0AD4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1C2320BB62CB5B6F4125FEFF4C780D39"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_16BE379A90F64D7B6215A22AEC630E53"
+        "MsmKey" = "8:_1C2320BB62CB5B6F4125FEFF4C780D39"
         "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_16BE379A90F64D7B6215A22AEC630E53"
+        "MsmKey" = "8:_1C2320BB62CB5B6F4125FEFF4C780D39"
         "OwnerKey" = "8:_D9BD5CE14044416AA23239BD59541E48"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_16BE379A90F64D7B6215A22AEC630E53"
+        "MsmKey" = "8:_1C2320BB62CB5B6F4125FEFF4C780D39"
         "OwnerKey" = "8:_A44C97D6863C4AFFA8F9215066B50CDB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_16BE379A90F64D7B6215A22AEC630E53"
+        "MsmKey" = "8:_1C2320BB62CB5B6F4125FEFF4C780D39"
         "OwnerKey" = "8:_984A47D038684218B56637F570893F36"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_16BE379A90F64D7B6215A22AEC630E53"
+        "MsmKey" = "8:_1C2320BB62CB5B6F4125FEFF4C780D39"
         "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_17B55E98DF6B4908A0B6F0E55A5D0AD4"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -417,42 +417,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7FBD1656E0A0B238A830CEAF07D344B8"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7FBD1656E0A0B238A830CEAF07D344B8"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7FBD1656E0A0B238A830CEAF07D344B8"
-        "OwnerKey" = "8:_D9BD5CE14044416AA23239BD59541E48"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7FBD1656E0A0B238A830CEAF07D344B8"
-        "OwnerKey" = "8:_A44C97D6863C4AFFA8F9215066B50CDB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7FBD1656E0A0B238A830CEAF07D344B8"
-        "OwnerKey" = "8:_984A47D038684218B56637F570893F36"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7FBD1656E0A0B238A830CEAF07D344B8"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_8780DCDE49FAA2FA19FBD5C7C16D5E72"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
@@ -495,8 +459,80 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_970062AA6BABB311890B26C5F3CEC939"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_970062AA6BABB311890B26C5F3CEC939"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_970062AA6BABB311890B26C5F3CEC939"
+        "OwnerKey" = "8:_D9BD5CE14044416AA23239BD59541E48"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_970062AA6BABB311890B26C5F3CEC939"
+        "OwnerKey" = "8:_A44C97D6863C4AFFA8F9215066B50CDB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_970062AA6BABB311890B26C5F3CEC939"
+        "OwnerKey" = "8:_984A47D038684218B56637F570893F36"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_970062AA6BABB311890B26C5F3CEC939"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_984A47D038684218B56637F570893F36"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F98F28001F9FFEB3BECB3842E519348"
+        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F98F28001F9FFEB3BECB3842E519348"
+        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F98F28001F9FFEB3BECB3842E519348"
+        "OwnerKey" = "8:_D9BD5CE14044416AA23239BD59541E48"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F98F28001F9FFEB3BECB3842E519348"
+        "OwnerKey" = "8:_A44C97D6863C4AFFA8F9215066B50CDB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F98F28001F9FFEB3BECB3842E519348"
+        "OwnerKey" = "8:_984A47D038684218B56637F570893F36"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F98F28001F9FFEB3BECB3842E519348"
+        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -550,42 +586,6 @@
         "Entry"
         {
         "MsmKey" = "8:_DA910765F44BB081D675C5032231DDDB"
-        "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E356953AC9BB8DAEF96927AA8CD0F3C5"
-        "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E356953AC9BB8DAEF96927AA8CD0F3C5"
-        "OwnerKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E356953AC9BB8DAEF96927AA8CD0F3C5"
-        "OwnerKey" = "8:_D9BD5CE14044416AA23239BD59541E48"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E356953AC9BB8DAEF96927AA8CD0F3C5"
-        "OwnerKey" = "8:_A44C97D6863C4AFFA8F9215066B50CDB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E356953AC9BB8DAEF96927AA8CD0F3C5"
-        "OwnerKey" = "8:_984A47D038684218B56637F570893F36"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E356953AC9BB8DAEF96927AA8CD0F3C5"
         "OwnerKey" = "8:_418B15E112A24E08AE5FC6F1B9FFA1CF"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -822,26 +822,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_16BE379A90F64D7B6215A22AEC630E53"
-            {
-            "SourcePath" = "8:python310.dll"
-            "TargetName" = "8:python310.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_17B55E98DF6B4908A0B6F0E55A5D0AD4"
             {
             "SourcePath" = "8:..\\PySamples\\template.py"
@@ -860,6 +840,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1C2320BB62CB5B6F4125FEFF4C780D39"
+            {
+            "SourcePath" = "8:python312.dll"
+            "TargetName" = "8:python312.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1E9F44A2DDD546238C585CE743F1E782"
@@ -1302,26 +1302,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7FBD1656E0A0B238A830CEAF07D344B8"
-            {
-            "SourcePath" = "8:wxmsw32u_core_vc140_x64.dll"
-            "TargetName" = "8:wxmsw32u_core_vc140_x64.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8780DCDE49FAA2FA19FBD5C7C16D5E72"
             {
             "SourcePath" = "8:mfc140u.dll"
@@ -1362,6 +1342,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_970062AA6BABB311890B26C5F3CEC939"
+            {
+            "SourcePath" = "8:wxmsw32u_core_vc140_x64.dll"
+            "TargetName" = "8:wxmsw32u_core_vc140_x64.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9F98F28001F9FFEB3BECB3842E519348"
+            {
+            "SourcePath" = "8:wxbase32u_vc140_x64.dll"
+            "TargetName" = "8:wxbase32u_vc140_x64.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B06B76D482B7414B9AF78487272D70BC"
             {
             "SourcePath" = "8:..\\PyRxStubs\\PyPl.html"
@@ -1386,26 +1406,6 @@
             {
             "SourcePath" = "8:api-ms-win-crt-convert-l1-1-0.dll"
             "TargetName" = "8:api-ms-win-crt-convert-l1-1-0.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E356953AC9BB8DAEF96927AA8CD0F3C5"
-            {
-            "SourcePath" = "8:wxbase32u_vc140_x64.dll"
-            "TargetName" = "8:wxbase32u_vc140_x64.dll"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
             "Condition" = "8:"
@@ -1609,7 +1609,7 @@
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.149"
+        "ProductVersion" = "8:1.1.150"
         "Manufacturer" = "8:Daniel Marcotte"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -2066,7 +2066,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_22609B8BBEE94276AB14821CED2955B3"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Debug\\PyRx24.1.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Release\\PyRx24.1.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2094,7 +2094,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_418B15E112A24E08AE5FC6F1B9FFA1CF"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Debug\\PyRx24.3.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Release\\PyRx24.3.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2122,7 +2122,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_984A47D038684218B56637F570893F36"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Debug\\PyRx24.2.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Release\\PyRx24.2.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2150,7 +2150,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A44C97D6863C4AFFA8F9215066B50CDB"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxG24.0\\x64\\Debug\\PyRxG24.0.grx"
+            "SourcePath" = "8:..\\Bin\\PyRxG24.0\\x64\\Release\\PyRxG24.0.grx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2178,7 +2178,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D9BD5CE14044416AA23239BD59541E48"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxZ24.0\\x64\\Debug\\PyRxZ24.0.zrx"
+            "SourcePath" = "8:..\\Bin\\PyRxZ24.0\\x64\\Release\\PyRxZ24.0.zrx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2206,7 +2206,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FB5365C0C70E4357B09AFE0841C5C631"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Debug\\PyRx24.0.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Release\\PyRx24.0.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
