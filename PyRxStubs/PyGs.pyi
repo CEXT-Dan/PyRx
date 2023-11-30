@@ -46,15 +46,6 @@ errors defaults to 'strict'.'''
     def exec_module (module) :
       '''Exec a built-in module'''
     ...
-    def find_module (fullname, path=None) :
-      '''Find the built-in module.
-
-        If 'path' is ever specified then the search is considered a failure.
-
-        This method is deprecated.  Use find_spec() instead.
-
-        '''
-    ...
     def find_spec (fullname, path=None, target=None) :
       '''None'''
     ...
@@ -73,11 +64,4 @@ errors defaults to 'strict'.'''
     This method is deprecated.  Use loader.exec_module() instead.
 
     '''
-    ...
-    def module_repr (module) :
-      '''Return repr for the module.
-
-        The method is deprecated.  The import machinery does the job itself.
-
-        '''
     ...

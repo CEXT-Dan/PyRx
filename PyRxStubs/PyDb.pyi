@@ -12,10 +12,9 @@ class ACIcolorMethod:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -48,7 +47,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -61,12 +60,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kACIbyBlock (self, *args, **kwargs)-> None :
       '''None'''
@@ -118,18 +120,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -885,10 +888,9 @@ class AcCmDialogTabs:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -921,7 +923,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -934,12 +936,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kACITab (self, *args, **kwargs)-> None :
       '''None'''
@@ -973,18 +978,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -1921,10 +1927,9 @@ class AnnoType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -1957,7 +1962,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -1970,12 +1975,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBlockRef (self, *args, **kwargs)-> None :
       '''None'''
@@ -2012,18 +2020,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -3717,10 +3726,9 @@ class AssocFlags:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -3753,7 +3761,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -3766,12 +3774,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kFirstPointRef (self, *args, **kwargs)-> None :
       '''None'''
@@ -3808,18 +3819,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -6495,10 +6507,9 @@ class BlockScaling:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -6531,7 +6542,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -6544,12 +6555,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAny (self, *args, **kwargs)-> None :
       '''None'''
@@ -6580,18 +6594,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -7711,10 +7726,9 @@ class BoolOperType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -7747,7 +7761,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -7760,12 +7774,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBoolIntersect (self, *args, **kwargs)-> None :
       '''None'''
@@ -7799,18 +7816,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -7847,10 +7865,9 @@ class CellAlignment:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -7883,7 +7900,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -7896,12 +7913,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBottomCenter (self, *args, **kwargs)-> None :
       '''None'''
@@ -7953,18 +7973,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -7990,10 +8011,9 @@ class CellContentLayout:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -8026,7 +8046,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -8039,12 +8059,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kCellContentLayoutStackedHorizontal (self, *args, **kwargs)-> None :
       '''None'''
@@ -8078,18 +8101,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -8115,10 +8139,9 @@ class CellContentType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -8151,7 +8174,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -8164,12 +8187,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kCellContentTypeBlock (self, *args, **kwargs)-> None :
       '''None'''
@@ -8206,18 +8232,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -8243,10 +8270,9 @@ class CellEdgeMask:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -8279,7 +8305,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -8292,12 +8318,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBottomMask (self, *args, **kwargs)-> None :
       '''None'''
@@ -8334,18 +8363,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -8371,10 +8401,9 @@ class CellMargin:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -8407,7 +8436,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -8420,12 +8449,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kCellMarginBottom (self, *args, **kwargs)-> None :
       '''None'''
@@ -8468,18 +8500,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -8505,10 +8538,9 @@ class CellProperty:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -8541,7 +8573,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -8554,12 +8586,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kCellPropAlignment (self, *args, **kwargs)-> None :
       '''None'''
@@ -8656,18 +8691,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -8710,10 +8746,9 @@ class CellState:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -8746,7 +8781,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -8759,12 +8794,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAllCellStates (self, *args, **kwargs)-> None :
       '''None'''
@@ -8816,18 +8854,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -8853,10 +8892,9 @@ class CellType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -8889,7 +8927,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -8902,12 +8940,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBlockCell (self, *args, **kwargs)-> None :
       '''None'''
@@ -8944,18 +8985,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -8981,10 +9023,9 @@ class CenterMarkType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -9017,7 +9058,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -9030,12 +9071,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kLine (self, *args, **kwargs)-> None :
       '''None'''
@@ -9069,18 +9113,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -9694,10 +9739,9 @@ class ClipBoundaryType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -9730,7 +9774,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -9743,12 +9787,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kInvalid (self, *args, **kwargs)-> None :
       '''None'''
@@ -9782,18 +9829,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -9819,10 +9867,9 @@ class CollisionType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -9855,7 +9902,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -9868,12 +9915,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kCollisionTypeNone (self, *args, **kwargs)-> None :
       '''None'''
@@ -9904,18 +9954,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -9997,10 +10048,9 @@ class ColorMethod:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -10033,7 +10083,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -10046,12 +10096,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kByACI (self, *args, **kwargs)-> None :
       '''None'''
@@ -10103,18 +10156,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -13288,10 +13342,9 @@ class DeepCloneType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -13324,7 +13377,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -13337,12 +13390,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDcBlock (self, *args, **kwargs)-> None :
       '''None'''
@@ -13400,18 +13456,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -15268,10 +15325,9 @@ class DimAssocPointType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -15304,7 +15360,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -15317,12 +15373,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAngLineEnd (self, *args, **kwargs)-> None :
       '''None'''
@@ -15398,18 +15457,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -15435,10 +15495,9 @@ class DimInspect:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -15471,7 +15530,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -15484,12 +15543,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kShapeAngular (self, *args, **kwargs)-> None :
       '''None'''
@@ -15532,18 +15594,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -17400,10 +17463,9 @@ class DrawLeaderOrderType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -17436,7 +17498,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -17449,12 +17511,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDrawLeaderHeadFirst (self, *args, **kwargs)-> None :
       '''None'''
@@ -17485,18 +17550,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -17522,10 +17588,9 @@ class DrawMLeaderOrderType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -17558,7 +17623,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -17571,12 +17636,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDrawContentFirst (self, *args, **kwargs)-> None :
       '''None'''
@@ -17607,18 +17675,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -17644,10 +17713,9 @@ class DuplicateRecordCloning:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -17680,7 +17748,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -17693,12 +17761,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDrcIgnore (self, *args, **kwargs)-> None :
       '''None'''
@@ -17741,18 +17812,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -17778,10 +17850,9 @@ class DwgDataType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -17814,7 +17885,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -17827,12 +17898,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDwg3Real (self, *args, **kwargs)-> None :
       '''None'''
@@ -17902,18 +17976,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -17939,10 +18014,9 @@ class DxfCode:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -17975,7 +18049,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -17988,12 +18062,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDxfAlpha (self, *args, **kwargs)-> None :
       '''None'''
@@ -18525,18 +18602,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -18679,10 +18757,9 @@ class DynUnitsType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -18715,7 +18792,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -18728,12 +18805,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAngular (self, *args, **kwargs)-> None :
       '''None'''
@@ -18770,18 +18850,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -19443,10 +19524,9 @@ class EndCaps:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -19479,7 +19559,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -19492,12 +19572,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kEndCapAngle (self, *args, **kwargs)-> None :
       '''None'''
@@ -19534,18 +19617,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -20225,10 +20309,9 @@ class ErrorStatus:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -21791,7 +21874,7 @@ Also known as the population count.
     def eXrefReloaded (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -21804,12 +21887,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def name (self, *args, **kwargs)-> None :
       '''None'''
@@ -21834,18 +21920,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -24599,10 +24686,9 @@ class FieldCodeFlag:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -24635,7 +24721,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -24648,12 +24734,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAddMarkers (self, *args, **kwargs)-> None :
       '''None'''
@@ -24717,18 +24806,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -24754,10 +24844,9 @@ class FieldEvalContext:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -24790,7 +24879,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -24803,12 +24892,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDemand (self, *args, **kwargs)-> None :
       '''None'''
@@ -24857,18 +24949,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -24894,10 +24987,9 @@ class FieldEvalOption:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -24930,7 +25022,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -24943,12 +25035,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAutomatic (self, *args, **kwargs)-> None :
       '''None'''
@@ -24997,18 +25092,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -25034,10 +25130,9 @@ class FieldEvalStatus:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -25070,7 +25165,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -25083,12 +25178,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kEvaluatorNotFound (self, *args, **kwargs)-> None :
       '''None'''
@@ -25134,18 +25232,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -25171,10 +25270,9 @@ class FieldState:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -25207,7 +25305,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -25220,12 +25318,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kCompiled (self, *args, **kwargs)-> None :
       '''None'''
@@ -25268,18 +25369,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -25305,10 +25407,9 @@ class FilerType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -25341,7 +25442,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -25354,12 +25455,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBagFiler (self, *args, **kwargs)-> None :
       '''None'''
@@ -25414,18 +25518,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -25451,10 +25556,9 @@ class FindFileHint:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -25487,7 +25591,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -25500,12 +25604,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kARXApplication (self, *args, **kwargs)-> None :
       '''None'''
@@ -25572,18 +25679,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -25609,10 +25717,9 @@ class FormatOption:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -25645,7 +25752,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -25658,12 +25765,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kForEditing (self, *args, **kwargs)-> None :
       '''None'''
@@ -25703,18 +25813,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -25788,10 +25899,9 @@ class GridLineStyle:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -25824,7 +25934,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -25837,12 +25947,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kGridLineStyleDouble (self, *args, **kwargs)-> None :
       '''None'''
@@ -25873,18 +25986,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -25910,10 +26024,9 @@ class GridLineType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -25946,7 +26059,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -25959,12 +26072,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAllGridLineTypes (self, *args, **kwargs)-> None :
       '''None'''
@@ -26025,18 +26141,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -26062,10 +26179,9 @@ class GridProperty:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -26098,7 +26214,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -26111,12 +26227,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kGridPropAll (self, *args, **kwargs)-> None :
       '''None'''
@@ -26165,18 +26284,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -27598,10 +27718,9 @@ class HatchEdgeType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -27634,7 +27753,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -27647,12 +27766,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kCirArc (self, *args, **kwargs)-> None :
       '''None'''
@@ -27689,18 +27811,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -27726,10 +27849,9 @@ class HatchGradientPatternType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -27762,7 +27884,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -27775,12 +27897,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kPreDefinedGradient (self, *args, **kwargs)-> None :
       '''None'''
@@ -27811,18 +27936,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -27848,10 +27974,9 @@ class HatchLoopType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -27884,7 +28009,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -27897,12 +28022,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDefault (self, *args, **kwargs)-> None :
       '''None'''
@@ -27972,18 +28100,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -28009,10 +28138,9 @@ class HatchObjectType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -28045,7 +28173,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -28058,12 +28186,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kGradientObject (self, *args, **kwargs)-> None :
       '''None'''
@@ -28094,18 +28225,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -28131,10 +28263,9 @@ class HatchPatternType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -28167,7 +28298,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -28180,12 +28311,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kCustomDefined (self, *args, **kwargs)-> None :
       '''None'''
@@ -28219,18 +28353,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -28256,10 +28391,9 @@ class HatchStyle:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -28292,7 +28426,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -28305,12 +28439,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kIgnore (self, *args, **kwargs)-> None :
       '''None'''
@@ -28344,18 +28481,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -29142,10 +29280,9 @@ class HelixConstrainType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -29178,7 +29315,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -29191,12 +29328,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kHeight (self, *args, **kwargs)-> None :
       '''None'''
@@ -29230,18 +29370,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -29864,10 +30005,9 @@ class ImageDisplayOpt:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -29900,7 +30040,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -29913,12 +30053,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kClip (self, *args, **kwargs)-> None :
       '''None'''
@@ -29955,18 +30098,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -29992,10 +30136,9 @@ class ImageUnits:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -30028,7 +30171,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -30041,12 +30184,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAngstroms (self, *args, **kwargs)-> None :
       '''None'''
@@ -30134,18 +30280,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -30171,10 +30318,9 @@ class Intersect:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -30207,7 +30353,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -30220,12 +30366,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kExtendArg (self, *args, **kwargs)-> None :
       '''None'''
@@ -30262,18 +30411,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -30299,10 +30449,9 @@ class JoinStyle:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -30335,7 +30484,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -30348,12 +30497,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kJnStylAngle (self, *args, **kwargs)-> None :
       '''None'''
@@ -30390,18 +30542,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -34451,10 +34604,9 @@ class LineSpacingStyle:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -34487,7 +34639,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -34500,12 +34652,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAtLeast (self, *args, **kwargs)-> None :
       '''None'''
@@ -34536,18 +34691,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -34573,10 +34729,9 @@ class LineWeight:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -34609,7 +34764,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -34622,12 +34777,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kLnWt000 (self, *args, **kwargs)-> None :
       '''None'''
@@ -34733,18 +34891,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -37762,10 +37921,9 @@ class MLeaderBlockConnectionType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -37798,7 +37956,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -37811,12 +37969,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kConnectBase (self, *args, **kwargs)-> None :
       '''None'''
@@ -37847,18 +38008,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -37884,10 +38046,9 @@ class MLeaderContentType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -37920,7 +38081,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -37933,12 +38094,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBlockContent (self, *args, **kwargs)-> None :
       '''None'''
@@ -37975,18 +38139,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -38012,10 +38177,9 @@ class MLeaderGsMarkType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -38048,7 +38212,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -38061,12 +38225,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kArrowMark (self, *args, **kwargs)-> None :
       '''None'''
@@ -38118,18 +38285,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -38155,10 +38323,9 @@ class MLeaderLeaderDirectionType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -38191,7 +38358,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -38204,12 +38371,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBottomLeader (self, *args, **kwargs)-> None :
       '''None'''
@@ -38249,18 +38419,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -38286,10 +38457,9 @@ class MLeaderLeaderType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -38322,7 +38492,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -38335,12 +38505,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kInVisibleLeader (self, *args, **kwargs)-> None :
       '''None'''
@@ -38374,18 +38547,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -38411,10 +38585,9 @@ class MLeaderMoveType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -38447,7 +38620,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -38460,12 +38633,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kMoveAllExceptArrowHeaderPoints (self, *args, **kwargs)-> None :
       '''None'''
@@ -38499,18 +38675,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -38536,10 +38713,9 @@ class MLeaderPropertyOverrideType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -38572,7 +38748,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -38585,12 +38761,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kArrowSize (self, *args, **kwargs)-> None :
       '''None'''
@@ -38711,18 +38890,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -38748,10 +38928,9 @@ class MLeaderSegmentAngleType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -38784,7 +38963,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -38797,12 +38976,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def k15 (self, *args, **kwargs)-> None :
       '''None'''
@@ -38848,18 +39030,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -39673,10 +39856,9 @@ class MLeaderTextAlignmentType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -39709,7 +39891,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -39722,12 +39904,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kCenterAlignment (self, *args, **kwargs)-> None :
       '''None'''
@@ -39761,18 +39946,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -39798,10 +39984,9 @@ class MLeaderTextAngleType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -39834,7 +40019,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -39847,12 +40032,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAlwaysRightReadingAngle (self, *args, **kwargs)-> None :
       '''None'''
@@ -39886,18 +40074,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -39923,10 +40112,9 @@ class MLeaderTextAttachmentDirection:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -39959,7 +40147,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -39972,12 +40160,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAttachmentHorizontal (self, *args, **kwargs)-> None :
       '''None'''
@@ -40008,18 +40199,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -40045,10 +40237,9 @@ class MLeaderTextAttachmentType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -40081,7 +40272,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -40094,12 +40285,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAttachmentAllLine (self, *args, **kwargs)-> None :
       '''None'''
@@ -40157,18 +40351,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -40839,10 +41034,9 @@ class MPolygonloopDir:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -40875,7 +41069,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -40888,12 +41082,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAnnotation (self, *args, **kwargs)-> None :
       '''None'''
@@ -40927,18 +41124,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -41593,10 +41791,9 @@ class MTextAttachmentPoint:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -41629,7 +41826,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -41642,12 +41839,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBaseAlign (self, *args, **kwargs)-> None :
       '''None'''
@@ -41744,18 +41944,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -41781,10 +41982,9 @@ class MTextColumnType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -41817,7 +42017,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -41830,12 +42030,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDynamicColumns (self, *args, **kwargs)-> None :
       '''None'''
@@ -41869,18 +42072,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -41906,10 +42110,9 @@ class MTextFlowDirection:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -41942,7 +42145,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -41955,12 +42158,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBtoT (self, *args, **kwargs)-> None :
       '''None'''
@@ -42000,18 +42206,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -42037,10 +42244,9 @@ class MTextFragmentType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -42073,7 +42279,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -42086,12 +42292,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBigFont (self, *args, **kwargs)-> None :
       '''None'''
@@ -42188,18 +42397,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -42225,10 +42435,9 @@ class MeasurementValue:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -42261,7 +42470,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -42274,12 +42483,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kEnglish (self, *args, **kwargs)-> None :
       '''None'''
@@ -42310,18 +42522,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -42347,10 +42560,9 @@ class MergeCellStyleOption:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -42383,7 +42595,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -42396,12 +42608,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kMergeCellStyleConvertDuplicatesToOverrides (self, *args, **kwargs)-> None :
       '''None'''
@@ -42441,18 +42656,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -42993,10 +43209,9 @@ class MlineJustification:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -43029,7 +43244,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -43042,12 +43257,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBottom (self, *args, **kwargs)-> None :
       '''None'''
@@ -43090,18 +43308,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -44283,10 +44502,9 @@ class OpenMode:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -44319,7 +44537,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -44332,12 +44550,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kForNotify (self, *args, **kwargs)-> None :
       '''None'''
@@ -44371,18 +44592,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -45299,10 +45521,9 @@ class OrthographicView:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -45335,7 +45556,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -45348,12 +45569,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBackView (self, *args, **kwargs)-> None :
       '''None'''
@@ -45399,18 +45623,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -45436,10 +45661,9 @@ class OsnapMask:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -45472,7 +45696,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -45485,12 +45709,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kOsMaskAllowTan (self, *args, **kwargs)-> None :
       '''None'''
@@ -45572,18 +45799,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -45609,10 +45837,9 @@ class OsnapMode:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -45645,7 +45872,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -45658,12 +45885,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kOsModeCen (self, *args, **kwargs)-> None :
       '''None'''
@@ -45718,18 +45948,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -45833,10 +46064,9 @@ class OsnapType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -45869,7 +46099,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -45882,12 +46112,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kOsnapApint (self, *args, **kwargs)-> None :
       '''None'''
@@ -45951,18 +46184,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -46903,10 +47137,9 @@ class Planarity:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -46939,7 +47172,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -46952,12 +47185,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kLinear (self, *args, **kwargs)-> None :
       '''None'''
@@ -46991,18 +47227,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -47576,10 +47813,9 @@ class PlotPaperUnits:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -47612,7 +47848,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -47625,12 +47861,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kInches (self, *args, **kwargs)-> None :
       '''None'''
@@ -47664,18 +47903,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -47701,10 +47941,9 @@ class PlotRotation:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -47737,7 +47976,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -47750,12 +47989,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def k0degrees (self, *args, **kwargs)-> None :
       '''None'''
@@ -47792,18 +48034,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -48530,10 +48773,9 @@ class PlotStyleNameType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -48566,7 +48808,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -48579,12 +48821,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kPlotStyleNameByBlock (self, *args, **kwargs)-> None :
       '''None'''
@@ -48621,18 +48866,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -48658,10 +48904,9 @@ class PlotType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -48694,7 +48939,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -48707,12 +48952,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDisplay (self, *args, **kwargs)-> None :
       '''None'''
@@ -48755,18 +49003,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -50182,10 +50431,9 @@ class Poly2dType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -50218,7 +50466,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -50231,12 +50479,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def k2dCubicSplinePoly (self, *args, **kwargs)-> None :
       '''None'''
@@ -50273,18 +50524,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -50310,10 +50562,9 @@ class Poly3dType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -50346,7 +50597,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -50359,12 +50610,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def k3dCubicSplinePoly (self, *args, **kwargs)-> None :
       '''None'''
@@ -50398,18 +50652,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -58169,10 +58424,9 @@ class RemapFileContext:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -58205,7 +58459,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -58218,12 +58472,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAfterXrefResolution (self, *args, **kwargs)-> None :
       '''None'''
@@ -58260,18 +58517,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -58297,10 +58555,9 @@ class ReservedStringEnumType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -58333,7 +58590,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -58346,12 +58603,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kByBlock (self, *args, **kwargs)-> None :
       '''None'''
@@ -58454,18 +58714,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -59099,10 +59360,9 @@ class RotatedDimType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -59135,7 +59395,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -59148,12 +59408,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kParallel (self, *args, **kwargs)-> None :
       '''None'''
@@ -59187,18 +59450,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -60127,10 +60391,9 @@ class RotationAngle:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -60163,7 +60426,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -60176,12 +60439,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kDegrees000 (self, *args, **kwargs)-> None :
       '''None'''
@@ -60221,18 +60487,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -60258,10 +60525,9 @@ class RowType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -60294,7 +60560,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -60307,12 +60573,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAllRowTypes (self, *args, **kwargs)-> None :
       '''None'''
@@ -60352,18 +60621,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -60389,10 +60659,9 @@ class SegType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -60425,7 +60694,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -60438,12 +60707,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kArc (self, *args, **kwargs)-> None :
       '''None'''
@@ -60483,18 +60755,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -60968,10 +61241,9 @@ class ShadePlotResLevel:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -61004,7 +61276,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -61017,12 +61289,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAsDisplayed (self, *args, **kwargs)-> None :
       '''None'''
@@ -61065,18 +61340,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -61102,10 +61378,9 @@ class ShadePlotType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -61138,7 +61413,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -61151,12 +61426,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAsDisplayed (self, *args, **kwargs)-> None :
       '''None'''
@@ -61199,18 +61477,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -62928,10 +63207,9 @@ class SplineType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -62964,7 +63242,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -62977,12 +63255,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kControlPoints (self, *args, **kwargs)-> None :
       '''None'''
@@ -63013,18 +63294,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -63050,10 +63332,9 @@ class StandardScaleType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -63086,7 +63367,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -63099,12 +63380,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def k100_1 (self, *args, **kwargs)-> None :
       '''None'''
@@ -63234,18 +63518,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -63271,10 +63556,9 @@ class StdScaleType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -63307,7 +63591,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -63320,12 +63604,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def k1000_1 (self, *args, **kwargs)-> None :
       '''None'''
@@ -63455,18 +63742,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -63545,10 +63833,9 @@ class SubentType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -63581,7 +63868,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -63594,12 +63881,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAxisSubentType (self, *args, **kwargs)-> None :
       '''None'''
@@ -63648,18 +63938,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -64233,10 +64524,9 @@ class SurfaceEdgeExtensionType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -64269,7 +64559,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -64282,12 +64572,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kExtendEdge (self, *args, **kwargs)-> None :
       '''None'''
@@ -64318,18 +64611,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -64355,10 +64649,9 @@ class SurfaceWireframeType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -64391,7 +64684,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -64404,12 +64697,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kIsolines (self, *args, **kwargs)-> None :
       '''None'''
@@ -64440,18 +64736,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -64477,10 +64774,9 @@ class SweepAlignOption:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -64513,7 +64809,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -64526,12 +64822,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAlignSweepEntityToPath (self, *args, **kwargs)-> None :
       '''None'''
@@ -64568,18 +64867,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -64605,10 +64905,9 @@ class SweepMiterOption:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -64641,7 +64940,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -64654,12 +64953,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kBendMiter (self, *args, **kwargs)-> None :
       '''None'''
@@ -64699,18 +65001,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -67843,10 +68146,9 @@ class TableBreakFlowDirection:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -67879,7 +68181,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -67892,12 +68194,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kTableBreakFlowDownOrUp (self, *args, **kwargs)-> None :
       '''None'''
@@ -67931,18 +68236,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -67968,10 +68274,9 @@ class TableBreakOption:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -68004,7 +68309,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -68017,12 +68322,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kTableBreakAllowManualHeights (self, *args, **kwargs)-> None :
       '''None'''
@@ -68065,18 +68373,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -68102,10 +68411,9 @@ class TableFlowDirection:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -68138,7 +68446,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -68151,12 +68459,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kExactly (self, *args, **kwargs)-> None :
       '''None'''
@@ -68187,18 +68498,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -68224,10 +68536,9 @@ class TableHitItem:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -68260,7 +68571,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -68273,12 +68584,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kTableHitCell (self, *args, **kwargs)-> None :
       '''None'''
@@ -68318,18 +68632,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -68355,10 +68670,9 @@ class TableIteratorOption:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -68391,7 +68705,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -68404,12 +68718,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kTableIteratorIterateColumns (self, *args, **kwargs)-> None :
       '''None'''
@@ -68461,18 +68778,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -69851,10 +70169,9 @@ class TextAlignment:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -69887,7 +70204,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -69900,12 +70217,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kTextAlignmentAligned (self, *args, **kwargs)-> None :
       '''None'''
@@ -69975,18 +70295,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -70012,10 +70333,9 @@ class TextHorzMode:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -70048,7 +70368,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -70061,12 +70381,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kTextAlign (self, *args, **kwargs)-> None :
       '''None'''
@@ -70109,18 +70432,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -70778,10 +71102,9 @@ class TimeZone:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -70814,7 +71137,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -70827,12 +71150,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAbuDhabi (self, *args, **kwargs)-> None :
       '''None'''
@@ -71085,18 +71411,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -71305,10 +71632,9 @@ class TransparencyMethod:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -71341,7 +71667,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -71354,12 +71680,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kByAlpha (self, *args, **kwargs)-> None :
       '''None'''
@@ -71396,18 +71725,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -72930,10 +73260,9 @@ class UnitsValue:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -72966,7 +73295,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -72979,12 +73308,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kUnitsAngstroms (self, *args, **kwargs)-> None :
       '''None'''
@@ -73087,18 +73419,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -73124,10 +73457,9 @@ class UpdateDirection:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -73160,7 +73492,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -73173,12 +73505,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kUpdateDirDataToSource (self, *args, **kwargs)-> None :
       '''None'''
@@ -73209,18 +73544,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -73246,10 +73582,9 @@ class UpdateOption:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -73282,7 +73617,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -73295,12 +73630,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kSkipFormatAfterFirstUpdate (self, *args, **kwargs)-> None :
       '''None'''
@@ -73358,18 +73696,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -74343,10 +74682,9 @@ class Vertex2dType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -74379,7 +74717,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -74392,12 +74730,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def k2dCurveFitVertex (self, *args, **kwargs)-> None :
       '''None'''
@@ -74434,18 +74775,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -76723,10 +77065,9 @@ class Visibility:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -76759,7 +77100,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -76772,12 +77113,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kInvisible (self, *args, **kwargs)-> None :
       '''None'''
@@ -76808,18 +77152,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -76845,10 +77190,9 @@ class VpFreezeOps:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -76881,7 +77225,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -76894,12 +77238,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kFreeze (self, *args, **kwargs)-> None :
       '''None'''
@@ -76933,18 +77280,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -76970,10 +77318,9 @@ class VpShadePlotType:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -77006,7 +77353,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -77019,12 +77366,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kAsDisplayed (self, *args, **kwargs)-> None :
       '''None'''
@@ -77067,18 +77417,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -78129,10 +78480,9 @@ class XrefStatus:
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /) :
-      '''Return integer ratio.
+      '''Return a pair of integers, whose ratio is equal to the original int.
 
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
+The ratio is in lowest terms and has a positive denominator.
 
 >>> (10).as_integer_ratio()
 (10, 1)
@@ -78165,7 +78515,7 @@ Also known as the population count.
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder, *, signed=False) :
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
       '''Return the integer represented by the given array of bytes.
 
   bytes
@@ -78178,12 +78528,15 @@ Also known as the population count.
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
     ...
     def kXrfFileNotFound (self, *args, **kwargs)-> None :
       '''None'''
@@ -78226,18 +78579,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length, byteorder, *, signed=False) :
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
       '''Return an array of bytes representing an integer.
 
   length
     Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
   byteorder
     The byte order used to represent the integer.  If byteorder is 'big',
     the most significant byte is at the beginning of the byte array.  If
     byteorder is 'little', the most significant byte is at the end of the
     byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
   signed
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
@@ -78289,15 +78643,6 @@ errors defaults to 'strict'.'''
     def exec_module (module) :
       '''Exec a built-in module'''
     ...
-    def find_module (fullname, path=None) :
-      '''Find the built-in module.
-
-        If 'path' is ever specified then the search is considered a failure.
-
-        This method is deprecated.  Use find_spec() instead.
-
-        '''
-    ...
     def find_spec (fullname, path=None, target=None) :
       '''None'''
     ...
@@ -78316,13 +78661,6 @@ errors defaults to 'strict'.'''
     This method is deprecated.  Use loader.exec_module() instead.
 
     '''
-    ...
-    def module_repr (module) :
-      '''Return repr for the module.
-
-        The method is deprecated.  The import machinery does the job itself.
-
-        '''
     ...
 
 function curDb:
