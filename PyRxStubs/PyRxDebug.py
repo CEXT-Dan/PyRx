@@ -1,8 +1,10 @@
 import wx
+import os
 import sys
 import debugpy
 import traceback
 
+#pip install debugpy
 
 def startListener():
     try:
@@ -22,17 +24,14 @@ def startListener():
         DEBUG_HOST = "127.0.0.1"
         DEBUG_PORT = 5678
         PYTHON_PATH = sys.prefix + "\\python.exe"
-
+        
+        os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = "1"
         debugpy.configure(python=PYTHON_PATH)
         debugpy.listen((DEBUG_HOST, DEBUG_PORT))
+        print("dubugger running...")
         
     except Exception as err:
         traceback.print_exception(err)
-
-
-def PyRxCmd_pystartdebuglistener():
-    startListener()
-
 
 # sample config
 #  {
