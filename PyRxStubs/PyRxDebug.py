@@ -1,3 +1,4 @@
+import wx
 import sys
 import debugpy
 
@@ -5,9 +6,15 @@ import debugpy
 def startListener():
     oldpath = sys.executable
     try:
-        # this needs to be set or python will launch autocad
-        print("Now is a good time to run your debugger:")
-        print(".....")
+        result = wx.MessageDialog(
+            None,
+            'Now is a good time to run your debugger:',
+            'Confirm',
+            wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION
+            ).ShowModal()
+
+        if result != wx.ID_YES:
+            return
         sys.executable = sys.prefix + "\\python.exe"
         debugpy.listen(("localhost", 5678))
         debugpy.wait_for_client()
