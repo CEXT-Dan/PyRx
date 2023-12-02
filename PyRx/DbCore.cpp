@@ -10,6 +10,7 @@
 #include "PyDbHostApplicationServices.h"
 #include "PyDbTransactionManager.h"
 #include "PyDbDimAssoc.h"
+#include "AcPointCloud.h"
 
 using namespace boost::python;
 
@@ -17,6 +18,7 @@ void makeDbCoreWrapper()
 {
     PyDocString DS("Core");
     class_<DbCore>("Core")
+        .def("attachPointCloudExEntity", &DbCore::attachPointCloudExEntity, DS.SARGS()).staticmethod("attachPointCloudExEntity")
         .def("activeDatabaseArray", &DbCore::activeDatabaseArray, DS.SARGS()).staticmethod("activeDatabaseArray")
         .def("angToF", &DbCore::angToF, DS.SARGS({ "value:str","unit:int" })).staticmethod("angToF")
         .def("angToS", &DbCore::angToS, DS.SARGS({ "value:float","unit:int","prec:int" })).staticmethod("angToS")
@@ -126,6 +128,14 @@ void makeDbCoreWrapper()
         .def("ecs2Wcs", &DbCore::ecs2Wcs1)
         .def("ecs2Wcs", &DbCore::ecs2Wcs2).staticmethod("ecs2Wcs")
         ;
+}
+
+PyDbObjectId DbCore::attachPointCloudExEntity(const std::string& pointCloudFile, AcGePoint3d& location, double scale, double rotation, PyDbDatabase& pDb)
+{
+    PyDbObjectId newPointCloudExId;
+    AcString str = utf8_to_wstr(pointCloudFile).c_str();
+    PyThrowBadEs(acdbAttachPointCloudExEntity(newPointCloudExId.m_id, str, location, scale, rotation, pDb.impObj()));
+    return newPointCloudExId;
 }
 
 boost::python::list DbCore::activeDatabaseArray()

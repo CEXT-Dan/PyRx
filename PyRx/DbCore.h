@@ -16,6 +16,7 @@ void makeDbCoreWrapper();
 class DbCore
 {
 public:
+    static PyDbObjectId         attachPointCloudExEntity(const std::string& pointCloudFile, AcGePoint3d& location, double scale, double rotation, PyDbDatabase& pDb);
     static boost::python::list  activeDatabaseArray();
     static double               angToF(const std::string& str, int unit);
     static std::string          angToS(double, int unit, int prec);
