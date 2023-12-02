@@ -814,6 +814,12 @@ boost::python::list PyDbPointCloudEx::getCustomOsnapInfo(AcDbPointCloudEx::Point
 
 PyDbObjectId PyDbPointCloudEx::attachPointCloud(const std::string& pointCloudFile, AcGePoint3d& location, double scale, double rotation, PyDbDatabase& pDb)
 {
+    static bool sAcDbMPolygonLoaded = false;
+    if (!sAcDbMPolygonLoaded)
+    {
+        acrxLoadModule(_T("AcDbPointCloudObj.dbx"), false, false);
+        sAcDbMPolygonLoaded = true;
+    }
     PyDbObjectId newPointCloudExId;
     AcString str = utf8_to_wstr(pointCloudFile).c_str();
     PyThrowBadEs(acdbAttachPointCloudExEntity(newPointCloudExId.m_id, str, location, scale, rotation, pDb.impObj()));
