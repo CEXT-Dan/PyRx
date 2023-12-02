@@ -140,6 +140,7 @@
     <ClCompile Include="PyDbDimAssoc.cpp" />
     <ClCompile Include="PyDbEllipse.cpp" />
     <ClCompile Include="PyDbOverrule.cpp" />
+    <ClCompile Include="PyDbPointCloudEx.cpp" />
     <ClCompile Include="PyDbPointRef.cpp" />
     <ClCompile Include="PyDbTextEditor.cpp" />
     <ClCompile Include="PyGeSurface.cpp" />
@@ -250,6 +251,7 @@
     <ClInclude Include="PyDbDimAssoc.h" />
     <ClInclude Include="PyDbEllipse.h" />
     <ClInclude Include="PyDbOverrule.h" />
+    <ClInclude Include="PyDbPointCloudEx.h" />
     <ClInclude Include="PyDbPointRef.h" />
     <ClInclude Include="PyDbTextEditor.h" />
     <ClInclude Include="PyGeSurface.h" />

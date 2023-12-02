@@ -40,6 +40,7 @@
 #include "PyDbDatabaseReactor.h"
 #include "PyDb3dProfile.h"
 #include "PyDbOverrule.h"
+#include "PyDbPointCloudEx.h"
 
 using namespace boost::python;
 
@@ -258,6 +259,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbDimAssocWrapper();
     makePyDb3dProfileWrapper();
     makePyDbObjectOverrulerapper();
+    makePyDbPointCloudDefExWrapper();
+    makePyDbPointCloudExWrapper();
 
     makeDbCoreWrapper();//LAST?
 
