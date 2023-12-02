@@ -817,8 +817,7 @@ PyDbObjectId PyDbPointCloudEx::attachPointCloud(const std::string& pointCloudFil
     static bool sAcDbMPolygonLoaded = false;
     if (!sAcDbMPolygonLoaded)
     {
-        acrxLoadModule(_T("AcDbPointCloudObj.dbx"), false, false);
-        sAcDbMPolygonLoaded = true;
+        sAcDbMPolygonLoaded =  acrxLoadModule(_T("AcDbPointCloudObj.dbx"), false, false);
     }
     PyDbObjectId newPointCloudExId;
     AcString str = utf8_to_wstr(pointCloudFile).c_str();
