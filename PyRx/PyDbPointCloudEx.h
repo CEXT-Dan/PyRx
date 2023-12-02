@@ -3,6 +3,9 @@
 #include "AcDbPointCloudEx.h"
 #include "AcDbPointCloudDefEx.h"
 
+class PyDbObjectId;
+class PyDbDatabase;
+
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudDefEx
 void makePyDbPointCloudDefExWrapper();
@@ -16,6 +19,31 @@ public:
     PyDbPointCloudDefEx(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     PyDbPointCloudDefEx(AcDbPointCloudDefEx* ptr, bool autoDelete);
     virtual ~PyDbPointCloudDefEx() override = default;
+
+    void                        load();
+    void                        unload();
+    Adesk::Boolean              isLoaded() const;
+    boost::python::tuple        entityCount() const;
+    void                        setSourceFileName(const std::string& pPathName);
+    std::string                 sourceFileName() const;
+    void                        setActiveFileName(const std::string& pPathName);
+    std::string                 activeFileName() const;
+    std::string                 fileType() const;
+    unsigned long long          totalPointsCount() const;
+    int                         totalRegionsCount() const;
+    int                         totalScansCount() const;
+    double                      defaultWidth() const;
+    double                      defaultLength() const;
+    double                      defaultHeight() const;
+    AcDbPointCloudDefEx::PropState hasProperty(AcDbPointCloudDefEx::Property prop) const;
+    AcDbExtents                 extents() const;
+    std::string                 coordinateSystemName() const;
+    std::string                 getRcsFilePath(const std::string& guid) const;
+    boost::python::list         getAllRcsFilePaths() const;
+
+    static PyDbObjectId         pointCloudExDictionary(PyDbDatabase& pDb);
+    static void                 createPointCloudExDictionary(PyDbDatabase& pDb, PyDbObjectId& dictId);
+    static int                  classVersion();
 
 public:
     static std::string          className();
