@@ -10208,6 +10208,9 @@ class Core:
     def assignGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,dbCurve:PyDb.Curve,norm:PyGe.Vector3d=kZAxis,tol:PyGe.Tol=tol)-> None :
       '''                             '''
     ...
+    def attachPointCloudExEntity ()-> PyDb.ObjectId :
+      '''                             '''
+    ...
     def attachXref (self, *args, **kwargs)-> None :
       '''attachXref( (Database)arg1, (str)arg2, (str)arg3, (ObjectId)arg4) -> None :
 
@@ -50941,6 +50944,9 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''                             '''
     ...
     def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def attachPointCloud ()-> PyDb.ObjectId :
       '''                             '''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
