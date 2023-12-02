@@ -50779,6 +50779,134 @@ class PointCloudDefEx:
       '''                             '''
     ...
 
+class PointCloudDispOptionOutOfRange:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return a pair of integers, whose ratio is equal to the original int.
+
+The ratio is in lowest terms and has a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def kHidePoints (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kUseMinMaxColors (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kUseRGBScanColors (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class PointCloudEx:
     def __init__ (self: PointCloudEx,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
@@ -50794,6 +50922,17 @@ class PointCloudEx:
 
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
+    ...
+    def applyGeoLocation (self, *args, **kwargs)-> None :
+      '''applyGeoLocation( (PointCloudEx)arg1) -> None :
+
+    C++ signature :
+        void applyGeoLocation(class PyDbPointCloudEx {lvalue})
+
+applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void applyGeoLocation(class PyDbPointCloudEx {lvalue},bool,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -50821,6 +50960,24 @@ class PointCloudEx:
     ...
     def className ()-> str :
       '''                             '''
+    ...
+    def clearAttributeFilters (self, *args, **kwargs)-> None :
+      '''clearAttributeFilters( (PointCloudEx)arg1) -> None :
+
+    C++ signature :
+        void clearAttributeFilters(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def clearCropping (self, *args, **kwargs)-> None :
+      '''clearCropping( (PointCloudEx)arg1) -> None :
+
+    C++ signature :
+        void clearCropping(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def clearSpatialFilters (self, *args, **kwargs)-> None :
+      '''clearSpatialFilters( (PointCloudEx)arg1) -> None :
+
+    C++ signature :
+        void clearSpatialFilters(class PyDbPointCloudEx {lvalue})'''
     ...
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PointCloudEx :
       '''                             '''
@@ -50852,6 +51009,12 @@ class PointCloudEx:
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
+    def detectPointBelonger (self, *args, **kwargs)-> tuple :
+      '''detectPointBelonger( (PointCloudEx)arg1, (Point3d)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple detectPointBelonger(class PyDbPointCloudEx {lvalue},class AcGePoint3d)'''
+    ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
     ...
@@ -50870,6 +51033,18 @@ class PointCloudEx:
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
+    def elevationApplyToFixedRange (self, *args, **kwargs)-> bool :
+      '''elevationApplyToFixedRange( (PointCloudEx)arg1) -> bool :
+
+    C++ signature :
+        bool elevationApplyToFixedRange(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def elevationOutOfRangeBehavior (self, *args, **kwargs)-> PyDb.PointCloudDispOptionOutOfRange :
+      '''elevationOutOfRangeBehavior( (PointCloudEx)arg1) -> PointCloudDispOptionOutOfRange :
+
+    C++ signature :
+        enum AcDbPointCloudEx::DispOptionOutOfRange elevationOutOfRangeBehavior(class PyDbPointCloudEx {lvalue})'''
+    ...
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
     ...
@@ -50882,8 +51057,68 @@ class PointCloudEx:
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def geolocate (self, *args, **kwargs)-> bool :
+      '''geolocate( (PointCloudEx)arg1) -> bool :
+
+    C++ signature :
+        bool geolocate(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def getActiveFileName (self, *args, **kwargs)-> tuple :
+      '''getActiveFileName( (PointCloudEx)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getActiveFileName(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def getCandidatePlane (self, *args, **kwargs)-> tuple :
+      '''getCandidatePlane( (PointCloudEx)arg1, (int)arg2, (int)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getCandidatePlane(class PyDbPointCloudEx {lvalue},int,int)'''
+    ...
+    def getColorSchemeForStylization (self, *args, **kwargs)-> str :
+      '''getColorSchemeForStylization( (PointCloudEx)arg1, (PointCloudStylizationType)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getColorSchemeForStylization(class PyDbPointCloudEx {lvalue},enum AcDbPointCloudEx::StylizationType)'''
+    ...
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
+    ...
+    def getCroppingCount (self, *args, **kwargs)-> int :
+      '''getCroppingCount( (PointCloudEx)arg1) -> int :
+
+    C++ signature :
+        int getCroppingCount(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def getCroppingInvert (self, *args, **kwargs)-> bool :
+      '''getCroppingInvert( (PointCloudEx)arg1) -> bool :
+
+    C++ signature :
+        bool getCroppingInvert(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def getCurrentColorScheme (self, *args, **kwargs)-> str :
+      '''getCurrentColorScheme( (PointCloudEx)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCurrentColorScheme(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def getCustomOsnapInfo (self, *args, **kwargs)-> list :
+      '''getCustomOsnapInfo( (PointCloudEx)arg1, (PointCloudOSnapMode)arg2, (Point3d)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getCustomOsnapInfo(class PyDbPointCloudEx {lvalue},enum AcDbPointCloudEx::PointCloudOSnapMode,class AcGePoint3d,class AcGePoint3d,class AcGeMatrix3d)'''
+    ...
+    def getCylinderAt (self, *args, **kwargs)-> tuple :
+      '''getCylinderAt( (PointCloudEx)arg1, (Matrix3d)arg2, (Point3d)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getCylinderAt(class PyDbPointCloudEx {lvalue},class AcGeMatrix3d,class AcGePoint3d)'''
+    ...
+    def getDisplayedVisiblePointCount (self, *args, **kwargs)-> int :
+      '''getDisplayedVisiblePointCount( (PointCloudEx)arg1) -> int :
+
+    C++ signature :
+        unsigned int getDisplayedVisiblePointCount(class PyDbPointCloudEx {lvalue})'''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -50906,11 +51141,53 @@ class PointCloudEx:
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
+    def getLoadedVisiblePointCount (self, *args, **kwargs)-> int :
+      '''getLoadedVisiblePointCount( (PointCloudEx)arg1) -> int :
+
+    C++ signature :
+        unsigned int getLoadedVisiblePointCount(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def getMinDistPrecision (self, *args, **kwargs)-> float :
+      '''getMinDistPrecision( (PointCloudEx)arg1) -> float :
+
+    C++ signature :
+        double getMinDistPrecision(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def getNativeCloudExtent (self, *args, **kwargs)-> PyDb.Extents :
+      '''getNativeCloudExtent( (PointCloudEx)arg1) -> Extents :
+
+    C++ signature :
+        class AcDbExtents getNativeCloudExtent(class PyDbPointCloudEx {lvalue})'''
+    ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
     ...
+    def getPlaneBoundaryAt (self, *args, **kwargs)-> tuple :
+      '''getPlaneBoundaryAt( (PointCloudEx)arg1, (Matrix3d)arg2, (Point3d)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlaneBoundaryAt(class PyDbPointCloudEx {lvalue},class AcGeMatrix3d,class AcGePoint3d)'''
+    ...
+    def getPlaneOrPointAt (self, *args, **kwargs)-> tuple :
+      '''getPlaneOrPointAt( (PointCloudEx)arg1, (Matrix3d)arg2, (Point3d)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlaneOrPointAt(class PyDbPointCloudEx {lvalue},class AcGeMatrix3d,class AcGePoint3d)'''
+    ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def getPointCloudName (self, *args, **kwargs)-> str :
+      '''getPointCloudName( (PointCloudEx)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPointCloudName(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def getScanViewInfo (self, *args, **kwargs)-> tuple :
+      '''getScanViewInfo( (PointCloudEx)arg1, (str)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getScanViewInfo(class PyDbPointCloudEx {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getStretchPoints (self: Entity)-> list :
       '''                             '''
@@ -50928,6 +51205,12 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
+    ...
+    def getVisiblePointCount (self, *args, **kwargs)-> int :
+      '''getVisiblePointCount( (PointCloudEx)arg1) -> int :
+
+    C++ signature :
+        unsigned int getVisiblePointCount(class PyDbPointCloudEx {lvalue})'''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -50949,6 +51232,12 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
+    ...
+    def intensityOutOfRangeBehavior (self, *args, **kwargs)-> PyDb.PointCloudDispOptionOutOfRange :
+      '''intensityOutOfRangeBehavior( (PointCloudEx)arg1) -> PointCloudDispOptionOutOfRange :
+
+    C++ signature :
+        enum AcDbPointCloudEx::DispOptionOutOfRange intensityOutOfRangeBehavior(class PyDbPointCloudEx {lvalue})'''
     ...
     def intersectWith (self, *args, **kwargs)-> list :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -51061,14 +51350,56 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None :
       '''                             '''
     ...
+    def location (self, *args, **kwargs)-> PyGe.Point3d :
+      '''location( (PointCloudEx)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d location(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def locked (self, *args, **kwargs)-> bool :
+      '''locked( (PointCloudEx)arg1) -> bool :
+
+    C++ signature :
+        bool locked(class PyDbPointCloudEx {lvalue})'''
+    ...
     def material (self: Entity)-> str :
       '''                             '''
     ...
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def maxElevation (self, *args, **kwargs)-> float :
+      '''maxElevation( (PointCloudEx)arg1) -> float :
+
+    C++ signature :
+        double maxElevation(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def maxIntensity (self, *args, **kwargs)-> int :
+      '''maxIntensity( (PointCloudEx)arg1) -> int :
+
+    C++ signature :
+        int maxIntensity(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def minElevation (self, *args, **kwargs)-> float :
+      '''minElevation( (PointCloudEx)arg1) -> float :
+
+    C++ signature :
+        double minElevation(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def minIntensity (self, *args, **kwargs)-> int :
+      '''minIntensity( (PointCloudEx)arg1) -> int :
+
+    C++ signature :
+        int minIntensity(class PyDbPointCloudEx {lvalue})'''
+    ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def objectToWorldMatrix (self, *args, **kwargs)-> PyGe.Matrix3d :
+      '''objectToWorldMatrix( (PointCloudEx)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d objectToWorldMatrix(class PyDbPointCloudEx {lvalue})'''
     ...
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -51076,8 +51407,20 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
+    def pointCloudDefExId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''pointCloudDefExId( (PointCloudEx)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId pointCloudDefExId(class PyDbPointCloudEx {lvalue})'''
+    ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
+    ...
+    def reactorId (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''reactorId( (PointCloudEx)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId reactorId(class PyDbPointCloudEx {lvalue})'''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -51091,17 +51434,93 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
+    def removeLastCropping (self, *args, **kwargs)-> None :
+      '''removeLastCropping( (PointCloudEx)arg1) -> None :
+
+    C++ signature :
+        void removeLastCropping(class PyDbPointCloudEx {lvalue})'''
+    ...
     def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
+    def resetLimitBox (self, *args, **kwargs)-> None :
+      '''resetLimitBox( (PointCloudEx)arg1) -> None :
+
+    C++ signature :
+        void resetLimitBox(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def resetScanRegionVisibility (self, *args, **kwargs)-> None :
+      '''resetScanRegionVisibility( (PointCloudEx)arg1) -> None :
+
+    C++ signature :
+        void resetScanRegionVisibility(class PyDbPointCloudEx {lvalue})'''
+    ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
+    def rotation (self, *args, **kwargs)-> float :
+      '''rotation( (PointCloudEx)arg1) -> float :
+
+    C++ signature :
+        double rotation(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def scale (self, *args, **kwargs)-> float :
+      '''scale( (PointCloudEx)arg1) -> float :
+
+    C++ signature :
+        double scale(class PyDbPointCloudEx {lvalue})'''
+    ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
+    ...
+    def setActiveFileName (self, *args, **kwargs)-> bool :
+      '''setActiveFileName( (PointCloudEx)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool setActiveFileName(class PyDbPointCloudEx {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setAllRegionHighlight (self, *args, **kwargs)-> None :
+      '''setAllRegionHighlight( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setAllRegionHighlight(class PyDbPointCloudEx {lvalue},bool)
+
+setAllRegionHighlight( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setAllRegionHighlight(class PyDbPointCloudEx {lvalue},bool,bool)'''
+    ...
+    def setAllRegionsVisibility (self, *args, **kwargs)-> None :
+      '''setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setAllRegionsVisibility(class PyDbPointCloudEx {lvalue},bool)
+
+setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setAllRegionsVisibility(class PyDbPointCloudEx {lvalue},bool,bool)'''
+    ...
+    def setAllScanHighlight (self, *args, **kwargs)-> None :
+      '''setAllScanHighlight( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setAllScanHighlight(class PyDbPointCloudEx {lvalue},bool)'''
+    ...
+    def setAllScansVisibility (self, *args, **kwargs)-> None :
+      '''setAllScansVisibility( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setAllScansVisibility(class PyDbPointCloudEx {lvalue},bool)'''
+    ...
+    def setAllScansVisibilityByRegion (self, *args, **kwargs)-> None :
+      '''setAllScansVisibilityByRegion( (PointCloudEx)arg1, (int)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setAllScansVisibilityByRegion(class PyDbPointCloudEx {lvalue},int,bool)'''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -51115,11 +51534,59 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
+    def setColorSchemeForStylization (self, *args, **kwargs)-> None :
+      '''setColorSchemeForStylization( (PointCloudEx)arg1, (str)arg2, (PointCloudStylizationType)arg3) -> None :
+
+    C++ signature :
+        void setColorSchemeForStylization(class PyDbPointCloudEx {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,enum AcDbPointCloudEx::StylizationType)'''
+    ...
+    def setCroppingInvert (self, *args, **kwargs)-> None :
+      '''setCroppingInvert( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setCroppingInvert(class PyDbPointCloudEx {lvalue},bool)'''
+    ...
+    def setCurrentColorScheme (self, *args, **kwargs)-> None :
+      '''setCurrentColorScheme( (PointCloudEx)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setCurrentColorScheme(class PyDbPointCloudEx {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
+    def setElevationApplyToFixedRange (self, *args, **kwargs)-> None :
+      '''setElevationApplyToFixedRange( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setElevationApplyToFixedRange(class PyDbPointCloudEx {lvalue},bool)'''
+    ...
+    def setElevationOutOfRangeBehavior (self, *args, **kwargs)-> None :
+      '''setElevationOutOfRangeBehavior( (PointCloudEx)arg1, (PointCloudDispOptionOutOfRange)arg2) -> None :
+
+    C++ signature :
+        void setElevationOutOfRangeBehavior(class PyDbPointCloudEx {lvalue},enum AcDbPointCloudEx::DispOptionOutOfRange)'''
+    ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def setHighlightLimitboxBoundary (self, *args, **kwargs)-> None :
+      '''setHighlightLimitboxBoundary( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setHighlightLimitboxBoundary(class PyDbPointCloudEx {lvalue},bool)'''
+    ...
+    def setInCreatingCroppingMode (self, *args, **kwargs)-> None :
+      '''setInCreatingCroppingMode( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setInCreatingCroppingMode(class PyDbPointCloudEx {lvalue},bool)'''
+    ...
+    def setIntensityOutOfRangeBehavior (self, *args, **kwargs)-> None :
+      '''setIntensityOutOfRangeBehavior( (PointCloudEx)arg1, (PointCloudDispOptionOutOfRange)arg2) -> None :
+
+    C++ signature :
+        void setIntensityOutOfRangeBehavior(class PyDbPointCloudEx {lvalue},enum AcDbPointCloudEx::DispOptionOutOfRange)'''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -51133,8 +51600,32 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
+    def setLocation (self, *args, **kwargs)-> None :
+      '''setLocation( (PointCloudEx)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void setLocation(class PyDbPointCloudEx {lvalue},class AcGePoint3d)'''
+    ...
+    def setLocked (self, *args, **kwargs)-> None :
+      '''setLocked( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setLocked(class PyDbPointCloudEx {lvalue},bool)'''
+    ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
+    ...
+    def setMinMaxElevation (self, *args, **kwargs)-> None :
+      '''setMinMaxElevation( (PointCloudEx)arg1, (float)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void setMinMaxElevation(class PyDbPointCloudEx {lvalue},double,double)'''
+    ...
+    def setMinMaxIntensity (self, *args, **kwargs)-> None :
+      '''setMinMaxIntensity( (PointCloudEx)arg1, (int)arg2, (int)arg3) -> None :
+
+    C++ signature :
+        void setMinMaxIntensity(class PyDbPointCloudEx {lvalue},int,int)'''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
@@ -51155,11 +51646,71 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
+    def setPointCloudDefExId (self, *args, **kwargs)-> None :
+      '''setPointCloudDefExId( (PointCloudEx)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setPointCloudDefExId(class PyDbPointCloudEx {lvalue},class PyDbObjectId)'''
+    ...
+    def setPointCloudName (self, *args, **kwargs)-> None :
+      '''setPointCloudName( (PointCloudEx)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setPointCloudName(class PyDbPointCloudEx {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
+    def setReactorId (self, *args, **kwargs)-> None :
+      '''setReactorId( (PointCloudEx)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void setReactorId(class PyDbPointCloudEx {lvalue},class PyDbObjectId)'''
+    ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
+    ...
+    def setRegionVisibility (self, *args, **kwargs)-> None :
+      '''setRegionVisibility( (PointCloudEx)arg1, (int)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setRegionVisibility(class PyDbPointCloudEx {lvalue},int,bool)'''
+    ...
+    def setRotation (self, *args, **kwargs)-> None :
+      '''setRotation( (PointCloudEx)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setRotation(class PyDbPointCloudEx {lvalue},double)'''
+    ...
+    def setScale (self, *args, **kwargs)-> None :
+      '''setScale( (PointCloudEx)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setScale(class PyDbPointCloudEx {lvalue},double)'''
+    ...
+    def setScanVisibility (self, *args, **kwargs)-> None :
+      '''setScanVisibility( (PointCloudEx)arg1, (str)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setScanVisibility(class PyDbPointCloudEx {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    ...
+    def setShowElevationAsGradient (self, *args, **kwargs)-> None :
+      '''setShowElevationAsGradient( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setShowElevationAsGradient(class PyDbPointCloudEx {lvalue},bool)'''
+    ...
+    def setShowIntensityAsGradient (self, *args, **kwargs)-> None :
+      '''setShowIntensityAsGradient( (PointCloudEx)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setShowIntensityAsGradient(class PyDbPointCloudEx {lvalue},bool)'''
+    ...
+    def setStylizationType (self, *args, **kwargs)-> None :
+      '''setStylizationType( (PointCloudEx)arg1, (PointCloudStylizationType)arg2) -> None :
+
+    C++ signature :
+        void setStylizationType(class PyDbPointCloudEx {lvalue},enum AcDbPointCloudEx::StylizationType)'''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
@@ -51167,14 +51718,44 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
+    def showCropped (self, *args, **kwargs)-> bool :
+      '''showCropped( (PointCloudEx)arg1) -> bool :
+
+    C++ signature :
+        bool showCropped(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def showElevationAsGradient (self, *args, **kwargs)-> bool :
+      '''showElevationAsGradient( (PointCloudEx)arg1) -> bool :
+
+    C++ signature :
+        bool showElevationAsGradient(class PyDbPointCloudEx {lvalue})'''
+    ...
+    def showIntensityAsGradient (self, *args, **kwargs)-> bool :
+      '''showIntensityAsGradient( (PointCloudEx)arg1) -> bool :
+
+    C++ signature :
+        bool showIntensityAsGradient(class PyDbPointCloudEx {lvalue})'''
+    ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
+    ...
+    def stylizationType (self, *args, **kwargs)-> PyDb.PointCloudStylizationType :
+      '''stylizationType( (PointCloudEx)arg1) -> PointCloudStylizationType :
+
+    C++ signature :
+        enum AcDbPointCloudEx::StylizationType stylizationType(class PyDbPointCloudEx {lvalue})'''
     ...
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
+    ...
+    def updateGeoLocation (self, *args, **kwargs)-> None :
+      '''updateGeoLocation( (PointCloudEx)arg1) -> None :
+
+    C++ signature :
+        void updateGeoLocation(class PyDbPointCloudEx {lvalue})'''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -51205,6 +51786,149 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     ...
     def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
+    ...
+
+class PointCloudOSnapMode:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return a pair of integers, whose ratio is equal to the original int.
+
+The ratio is in lowest terms and has a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def kOsModePCL (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsModePCorner (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsModePEdgeNea (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsModePEdgePer (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsModePInt (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsModePNea (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsModePNod (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kOsModePPer (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class PointCloudProperty:
@@ -51414,6 +52138,143 @@ Also known as the population count.
       '''None'''
     ...
     def kSome (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class PointCloudStylizationType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return a pair of integers, whose ratio is equal to the original int.
+
+The ratio is in lowest terms and has a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def kClassificationRamp (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kHeightRamp (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kIntensityRamp (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kNormalRamp (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kSingleColor (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kTrueColor (self, *args, **kwargs)-> None :
       '''None'''
     ...
     def name (self, *args, **kwargs)-> None :
