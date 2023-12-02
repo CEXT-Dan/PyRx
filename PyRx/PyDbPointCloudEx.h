@@ -169,6 +169,7 @@ public:
     boost::python::list         getCustomOsnapInfo(AcDbPointCloudEx::PointCloudOSnapMode snapMode, const AcGePoint3d& pickPoint, const AcGePoint3d& lastPoint, const AcGeMatrix3d& viewXform);
 
 
+    static PyDbObjectId         attachPointCloud(const std::string& pointCloudFile, AcGePoint3d& location, double scale, double rotation, PyDbDatabase& pDb);
     static std::string          className();
     static PyRxClass            desc();
     static PyDbPointCloudEx     cloneFrom(const PyRxObject& src);

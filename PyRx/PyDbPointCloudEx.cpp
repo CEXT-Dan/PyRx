@@ -3,6 +3,7 @@
 #include "PyDbObjectId.h"
 #include "PyDbDatabase.h"
 #include "PyGePlane.h"
+#include "AcPointCloud.h"
 
 using namespace boost::python;
 
@@ -331,6 +332,7 @@ void makePyDbPointCloudExWrapper()
         .def("getMinDistPrecision", &PyDbPointCloudEx::getMinDistPrecision)
         .def("detectPointBelonger", &PyDbPointCloudEx::detectPointBelonger)
         .def("getCustomOsnapInfo", &PyDbPointCloudEx::getCustomOsnapInfo)
+        .def("attachPointCloud", &PyDbPointCloudEx::attachPointCloud, DS.SARGS()).staticmethod("attachPointCloud")
         .def("className", &PyDbPointCloudEx::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPointCloudEx::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbPointCloudEx::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -808,6 +810,14 @@ boost::python::list PyDbPointCloudEx::getCustomOsnapInfo(AcDbPointCloudEx::Point
     AcGePoint3dArray snapPoints;
     PyThrowBadEs(impObj()->getCustomOsnapInfo(snapMode, pickPoint, lastPoint, viewXform, snapPoints));
     return Point3dArrayToPyList(snapPoints);
+}
+
+PyDbObjectId PyDbPointCloudEx::attachPointCloud(const std::string& pointCloudFile, AcGePoint3d& location, double scale, double rotation, PyDbDatabase& pDb)
+{
+    PyDbObjectId newPointCloudExId;
+    AcString str = utf8_to_wstr(pointCloudFile).c_str();
+    PyThrowBadEs(acdbAttachPointCloudExEntity(newPointCloudExId.m_id, str, location, scale, rotation, pDb.impObj()));
+    return newPointCloudExId;
 }
 
 std::string PyDbPointCloudEx::className()
