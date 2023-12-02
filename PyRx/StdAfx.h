@@ -136,6 +136,7 @@
 #pragma comment( lib , "acgeoment.lib" )
 #pragma comment( lib , "AcPublish_crx.lib" )
 #pragma comment( lib , "AcMPolygonObj.lib" )
+#pragma comment( lib , "AcDbPointCloudObj.lib" )
 #endif
 
 #if defined(_GRXTARGET)
