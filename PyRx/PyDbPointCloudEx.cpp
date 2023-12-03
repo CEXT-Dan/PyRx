@@ -30,7 +30,7 @@ void makePyDbPointCloudColorMapWrapper()
         .def("hasClassificationScheme", &PyDbPointCloudColorMap::hasClassificationScheme)
         .def("deleteClassificationScheme", &PyDbPointCloudColorMap::deleteClassificationScheme)
         .def("getColorSchemeInUse", &PyDbPointCloudColorMap::getColorSchemeInUse)
-
+        .def("getClassificationColorSchemeInUse", &PyDbPointCloudColorMap::getClassificationColorSchemeInUse)
 
         .def("getColorMap", &PyDbPointCloudColorMap::getColorMap, DS.SARGS({ "val : PyDb.Database" })).staticmethod("getColorMap")
         .def("className", &PyDbPointCloudColorMap::className, DS.SARGS()).staticmethod("className")
@@ -134,6 +134,17 @@ boost::python::list PyDbPointCloudColorMap::getColorSchemeInUse() const
     boost::python::list pylist;
     AcArray<AcString> GUIDs;
     impObj()->getColorSchemeInUse(GUIDs);
+    for (const auto& item : GUIDs)
+        pylist.append(wstr_to_utf8(item));
+    return pylist;
+}
+
+boost::python::list PyDbPointCloudColorMap::getClassificationColorSchemeInUse() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    AcArray<AcString> GUIDs;
+    impObj()->getClassificationColorSchemeInUse(GUIDs);
     for (const auto& item : GUIDs)
         pylist.append(wstr_to_utf8(item));
     return pylist;
