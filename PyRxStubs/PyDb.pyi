@@ -10208,7 +10208,7 @@ class Core:
     def assignGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,dbCurve:PyDb.Curve,norm:PyGe.Vector3d=kZAxis,tol:PyGe.Tol=tol)-> None :
       '''                             '''
     ...
-    def attachPointCloudExEntity ()-> PyDb.ObjectId :
+    def attachPointCloudExEntity (self: Core,path: str,pos: PyGe.Point3d,scale: real,rotation: real,db: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
     def attachXref (self, *args, **kwargs)-> None :
@@ -50865,11 +50865,8 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def attachPointCloud (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''attachPointCloud( (str)arg1, (Point3d)arg2, (float)arg3, (float)arg4, (Database)arg5) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId attachPointCloud(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d {lvalue},double,double,class PyDbDatabase {lvalue})'''
+    def attachPointCloud (self: PointCloudEx,path: str,pos: PyGe.Point3d,scale: real,rotation: real,db: PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
