@@ -50397,11 +50397,8 @@ class PointCloudDefEx:
     def __init__ (self: PointCloudDefEx,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
-    def activeFileName (self, *args, **kwargs)-> str :
-      '''activeFileName( (PointCloudDefEx)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > activeFileName(class PyDbPointCloudDefEx {lvalue})'''
+    def activeFileName (self: PointCloudDefEx)-> str :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -50424,38 +50421,23 @@ class PointCloudDefEx:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.PointCloudDefEx :
-      '''cast( (RxObject)arg1) -> PointCloudDefEx :
-
-    C++ signature :
-        class PyDbPointCloudDefEx cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.PointCloudDefEx :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def classVersion (self, *args, **kwargs)-> int :
-      '''classVersion() -> int :
-
-    C++ signature :
-        int classVersion()'''
+    def classVersion ()-> int :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.PointCloudDefEx :
-      '''cloneFrom( (RxObject)arg1) -> PointCloudDefEx :
-
-    C++ signature :
-        class PyDbPointCloudDefEx cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PointCloudDefEx :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def coordinateSystemName (self, *args, **kwargs)-> str :
-      '''coordinateSystemName( (PointCloudDefEx)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > coordinateSystemName(class PyDbPointCloudDefEx {lvalue})'''
+    def coordinateSystemName (self: PointCloudDefEx)-> str :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
@@ -50463,11 +50445,8 @@ class PointCloudDefEx:
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def createPointCloudExDictionary (self, *args, **kwargs)-> None :
-      '''createPointCloudExDictionary( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void createPointCloudExDictionary(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue})'''
+    def createPointCloudExDictionary (val : PyDb.Database,id : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def database (self: DbObject)-> PyDb.Database :
       '''                             '''
@@ -50475,29 +50454,17 @@ class PointCloudDefEx:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def defaultHeight (self, *args, **kwargs)-> float :
-      '''defaultHeight( (PointCloudDefEx)arg1) -> float :
-
-    C++ signature :
-        double defaultHeight(class PyDbPointCloudDefEx {lvalue})'''
+    def defaultHeight (self: PointCloudDefEx)-> float :
+      '''                             '''
     ...
-    def defaultLength (self, *args, **kwargs)-> float :
-      '''defaultLength( (PointCloudDefEx)arg1) -> float :
-
-    C++ signature :
-        double defaultLength(class PyDbPointCloudDefEx {lvalue})'''
+    def defaultLength (self: PointCloudDefEx)-> float :
+      '''                             '''
     ...
-    def defaultWidth (self, *args, **kwargs)-> float :
-      '''defaultWidth( (PointCloudDefEx)arg1) -> float :
-
-    C++ signature :
-        double defaultWidth(class PyDbPointCloudDefEx {lvalue})'''
+    def defaultWidth (self: PointCloudDefEx)-> float :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -50514,11 +50481,8 @@ class PointCloudDefEx:
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def entityCount (self, *args, **kwargs)-> tuple :
-      '''entityCount( (PointCloudDefEx)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple entityCount(class PyDbPointCloudDefEx {lvalue})'''
+    def entityCount (self: PointCloudDefEx)-> tuple :
+      '''                             '''
     ...
     def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
@@ -50526,23 +50490,14 @@ class PointCloudDefEx:
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def extents (self, *args, **kwargs)-> PyDb.Extents :
-      '''extents( (PointCloudDefEx)arg1) -> Extents :
-
-    C++ signature :
-        class AcDbExtents extents(class PyDbPointCloudDefEx {lvalue})'''
+    def extents (self: PointCloudDefEx)-> PyDb.Extents :
+      '''                             '''
     ...
-    def fileType (self, *args, **kwargs)-> str :
-      '''fileType( (PointCloudDefEx)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > fileType(class PyDbPointCloudDefEx {lvalue})'''
+    def fileType (self: PointCloudDefEx)-> str :
+      '''                             '''
     ...
-    def getAllRcsFilePaths (self, *args, **kwargs)-> list :
-      '''getAllRcsFilePaths( (PointCloudDefEx)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getAllRcsFilePaths(class PyDbPointCloudDefEx {lvalue})'''
+    def getAllRcsFilePaths (self: PointCloudDefEx)-> list :
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
       '''                             '''
@@ -50553,11 +50508,8 @@ class PointCloudDefEx:
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getRcsFilePath (self, *args, **kwargs)-> str :
-      '''getRcsFilePath( (PointCloudDefEx)arg1, (str)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getRcsFilePath(class PyDbPointCloudDefEx {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getRcsFilePath (self: PointCloudDefEx,guid : str)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -50568,11 +50520,8 @@ class PointCloudDefEx:
     def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def hasProperty (self, *args, **kwargs)-> PyDb.PointCloudPropertyState :
-      '''hasProperty( (PointCloudDefEx)arg1, (PointCloudProperty)arg2) -> PointCloudPropertyState :
-
-    C++ signature :
-        enum AcDbPointCloudDefEx::PropState hasProperty(class PyDbPointCloudDefEx {lvalue},enum AcDbPointCloudDefEx::Property)'''
+    def hasProperty (self: PointCloudDefEx,prop : PyDb.PointCloudProperty)-> PyDb.PointCloudPropertyState :
+      '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
@@ -50604,11 +50553,8 @@ class PointCloudDefEx:
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isLoaded (self, *args, **kwargs)-> bool :
-      '''isLoaded( (PointCloudDefEx)arg1) -> bool :
-
-    C++ signature :
-        bool isLoaded(class PyDbPointCloudDefEx {lvalue})'''
+    def isLoaded (self: PointCloudDefEx)-> bool :
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
       '''                             '''
@@ -50655,11 +50601,8 @@ class PointCloudDefEx:
     def keepAlive (self: RxObject,flag:bool)-> None :
       '''                             '''
     ...
-    def load (self, *args, **kwargs)-> None :
-      '''load( (PointCloudDefEx)arg1) -> None :
-
-    C++ signature :
-        void load(class PyDbPointCloudDefEx {lvalue})'''
+    def load (self: PointCloudDefEx)-> None :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -50667,11 +50610,8 @@ class PointCloudDefEx:
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def pointCloudExDictionary (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''pointCloudExDictionary( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId pointCloudExDictionary(class PyDbDatabase {lvalue})'''
+    def pointCloudExDictionary (val : PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -50694,11 +50634,8 @@ class PointCloudDefEx:
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
     ...
-    def setActiveFileName (self, *args, **kwargs)-> None :
-      '''setActiveFileName( (PointCloudDefEx)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setActiveFileName(class PyDbPointCloudDefEx {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setActiveFileName (self: PointCloudDefEx,path : str)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -50709,11 +50646,8 @@ class PointCloudDefEx:
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setSourceFileName (self, *args, **kwargs)-> None :
-      '''setSourceFileName( (PointCloudDefEx)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setSourceFileName(class PyDbPointCloudDefEx {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setSourceFileName (self: PointCloudDefEx,path : str)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -50721,38 +50655,23 @@ class PointCloudDefEx:
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def sourceFileName (self, *args, **kwargs)-> str :
-      '''sourceFileName( (PointCloudDefEx)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > sourceFileName(class PyDbPointCloudDefEx {lvalue})'''
+    def sourceFileName (self: PointCloudDefEx)-> str :
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def totalPointsCount (self, *args, **kwargs)-> int :
-      '''totalPointsCount( (PointCloudDefEx)arg1) -> int :
-
-    C++ signature :
-        unsigned __int64 totalPointsCount(class PyDbPointCloudDefEx {lvalue})'''
+    def totalPointsCount (self: PointCloudDefEx)-> int :
+      '''                             '''
     ...
-    def totalRegionsCount (self, *args, **kwargs)-> int :
-      '''totalRegionsCount( (PointCloudDefEx)arg1) -> int :
-
-    C++ signature :
-        int totalRegionsCount(class PyDbPointCloudDefEx {lvalue})'''
+    def totalRegionsCount (self: PointCloudDefEx)-> int :
+      '''                             '''
     ...
-    def totalScansCount (self, *args, **kwargs)-> int :
-      '''totalScansCount( (PointCloudDefEx)arg1) -> int :
-
-    C++ signature :
-        int totalScansCount(class PyDbPointCloudDefEx {lvalue})'''
+    def totalScansCount (self: PointCloudDefEx)-> int :
+      '''                             '''
     ...
-    def unload (self, *args, **kwargs)-> None :
-      '''unload( (PointCloudDefEx)arg1) -> None :
-
-    C++ signature :
-        void unload(class PyDbPointCloudDefEx {lvalue})'''
+    def unload (self: PointCloudDefEx)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -50946,8 +50865,11 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def attachPointCloud ()-> PyDb.ObjectId :
-      '''                             '''
+    def attachPointCloud (self, *args, **kwargs)-> PyDb.ObjectId :
+      '''attachPointCloud( (str)arg1, (Point3d)arg2, (float)arg3, (float)arg4, (Database)arg5) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId attachPointCloud(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d {lvalue},double,double,class PyDbDatabase {lvalue})'''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
@@ -50967,23 +50889,14 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def className ()-> str :
       '''                             '''
     ...
-    def clearAttributeFilters (self, *args, **kwargs)-> None :
-      '''clearAttributeFilters( (PointCloudEx)arg1) -> None :
-
-    C++ signature :
-        void clearAttributeFilters(class PyDbPointCloudEx {lvalue})'''
+    def clearAttributeFilters (self: PointCloudEx)-> None :
+      '''                             '''
     ...
-    def clearCropping (self, *args, **kwargs)-> None :
-      '''clearCropping( (PointCloudEx)arg1) -> None :
-
-    C++ signature :
-        void clearCropping(class PyDbPointCloudEx {lvalue})'''
+    def clearCropping (self: PointCloudEx)-> None :
+      '''                             '''
     ...
-    def clearSpatialFilters (self, *args, **kwargs)-> None :
-      '''clearSpatialFilters( (PointCloudEx)arg1) -> None :
-
-    C++ signature :
-        void clearSpatialFilters(class PyDbPointCloudEx {lvalue})'''
+    def clearSpatialFilters (self: PointCloudEx)-> None :
+      '''                             '''
     ...
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PointCloudEx :
       '''                             '''
@@ -51039,17 +50952,11 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def drawableType (self: Drawable)-> PyGi.GiDrawableType :
       '''                             '''
     ...
-    def elevationApplyToFixedRange (self, *args, **kwargs)-> bool :
-      '''elevationApplyToFixedRange( (PointCloudEx)arg1) -> bool :
-
-    C++ signature :
-        bool elevationApplyToFixedRange(class PyDbPointCloudEx {lvalue})'''
+    def elevationApplyToFixedRange (self: PointCloudEx)-> bool :
+      '''                             '''
     ...
-    def elevationOutOfRangeBehavior (self, *args, **kwargs)-> PyDb.PointCloudDispOptionOutOfRange :
-      '''elevationOutOfRangeBehavior( (PointCloudEx)arg1) -> PointCloudDispOptionOutOfRange :
-
-    C++ signature :
-        enum AcDbPointCloudEx::DispOptionOutOfRange elevationOutOfRangeBehavior(class PyDbPointCloudEx {lvalue})'''
+    def elevationOutOfRangeBehavior (self: PointCloudEx)-> PyDb.PointCloudDispOptionOutOfRange :
+      '''                             '''
     ...
     def entityColor (self: Entity)-> PyDb.EntityColor :
       '''                             '''
@@ -51063,17 +50970,11 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def geolocate (self, *args, **kwargs)-> bool :
-      '''geolocate( (PointCloudEx)arg1) -> bool :
-
-    C++ signature :
-        bool geolocate(class PyDbPointCloudEx {lvalue})'''
+    def geolocate (self: PointCloudEx)-> bool :
+      '''                             '''
     ...
-    def getActiveFileName (self, *args, **kwargs)-> tuple :
-      '''getActiveFileName( (PointCloudEx)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getActiveFileName(class PyDbPointCloudEx {lvalue})'''
+    def getActiveFileName (self: PointCloudEx)-> tuple :
+      '''                             '''
     ...
     def getCandidatePlane (self, *args, **kwargs)-> tuple :
       '''getCandidatePlane( (PointCloudEx)arg1, (int)arg2, (int)arg3) -> tuple :
@@ -51090,23 +50991,14 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def getCompoundObjectTransform (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getCroppingCount (self, *args, **kwargs)-> int :
-      '''getCroppingCount( (PointCloudEx)arg1) -> int :
-
-    C++ signature :
-        int getCroppingCount(class PyDbPointCloudEx {lvalue})'''
+    def getCroppingCount (self: PointCloudEx)-> int :
+      '''                             '''
     ...
-    def getCroppingInvert (self, *args, **kwargs)-> bool :
-      '''getCroppingInvert( (PointCloudEx)arg1) -> bool :
-
-    C++ signature :
-        bool getCroppingInvert(class PyDbPointCloudEx {lvalue})'''
+    def getCroppingInvert (self: PointCloudEx)-> bool :
+      '''                             '''
     ...
-    def getCurrentColorScheme (self, *args, **kwargs)-> str :
-      '''getCurrentColorScheme( (PointCloudEx)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCurrentColorScheme(class PyDbPointCloudEx {lvalue})'''
+    def getCurrentColorScheme (self: PointCloudEx)-> str :
+      '''                             '''
     ...
     def getCustomOsnapInfo (self, *args, **kwargs)-> list :
       '''getCustomOsnapInfo( (PointCloudEx)arg1, (PointCloudOSnapMode)arg2, (Point3d)arg3, (Point3d)arg4, (Matrix3d)arg5) -> list :
@@ -51120,11 +51012,8 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     C++ signature :
         class boost::python::tuple getCylinderAt(class PyDbPointCloudEx {lvalue},class AcGeMatrix3d,class AcGePoint3d)'''
     ...
-    def getDisplayedVisiblePointCount (self, *args, **kwargs)-> int :
-      '''getDisplayedVisiblePointCount( (PointCloudEx)arg1) -> int :
-
-    C++ signature :
-        unsigned int getDisplayedVisiblePointCount(class PyDbPointCloudEx {lvalue})'''
+    def getDisplayedVisiblePointCount (self: PointCloudEx)-> int :
+      '''                             '''
     ...
     def getEcs (self: Entity)-> PyGe.Matrix3d :
       '''                             '''
@@ -51147,23 +51036,14 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getLoadedVisiblePointCount (self, *args, **kwargs)-> int :
-      '''getLoadedVisiblePointCount( (PointCloudEx)arg1) -> int :
-
-    C++ signature :
-        unsigned int getLoadedVisiblePointCount(class PyDbPointCloudEx {lvalue})'''
+    def getLoadedVisiblePointCount (self: PointCloudEx)-> int :
+      '''                             '''
     ...
-    def getMinDistPrecision (self, *args, **kwargs)-> float :
-      '''getMinDistPrecision( (PointCloudEx)arg1) -> float :
-
-    C++ signature :
-        double getMinDistPrecision(class PyDbPointCloudEx {lvalue})'''
+    def getMinDistPrecision (self: PointCloudEx)-> float :
+      '''                             '''
     ...
-    def getNativeCloudExtent (self, *args, **kwargs)-> PyDb.Extents :
-      '''getNativeCloudExtent( (PointCloudEx)arg1) -> Extents :
-
-    C++ signature :
-        class AcDbExtents getNativeCloudExtent(class PyDbPointCloudEx {lvalue})'''
+    def getNativeCloudExtent (self: PointCloudEx)-> PyDb.Extents :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> PyGe.Plane :
       '''                             '''
@@ -51183,11 +51063,8 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getPointCloudName (self, *args, **kwargs)-> str :
-      '''getPointCloudName( (PointCloudEx)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPointCloudName(class PyDbPointCloudEx {lvalue})'''
+    def getPointCloudName (self: PointCloudEx)-> str :
+      '''                             '''
     ...
     def getScanViewInfo (self, *args, **kwargs)-> tuple :
       '''getScanViewInfo( (PointCloudEx)arg1, (str)arg2) -> tuple :
@@ -51212,11 +51089,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def getVisiblePointCount (self, *args, **kwargs)-> int :
-      '''getVisiblePointCount( (PointCloudEx)arg1) -> int :
-
-    C++ signature :
-        unsigned int getVisiblePointCount(class PyDbPointCloudEx {lvalue})'''
+    def getVisiblePointCount (self: PointCloudEx)-> int :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -51239,11 +51113,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intensityOutOfRangeBehavior (self, *args, **kwargs)-> PyDb.PointCloudDispOptionOutOfRange :
-      '''intensityOutOfRangeBehavior( (PointCloudEx)arg1) -> PointCloudDispOptionOutOfRange :
-
-    C++ signature :
-        enum AcDbPointCloudEx::DispOptionOutOfRange intensityOutOfRangeBehavior(class PyDbPointCloudEx {lvalue})'''
+    def intensityOutOfRangeBehavior (self: PointCloudEx)-> PyDb.PointCloudDispOptionOutOfRange :
+      '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3) -> list :
@@ -51356,17 +51227,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None :
       '''                             '''
     ...
-    def location (self, *args, **kwargs)-> PyGe.Point3d :
-      '''location( (PointCloudEx)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d location(class PyDbPointCloudEx {lvalue})'''
+    def location (self: PointCloudEx)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def locked (self, *args, **kwargs)-> bool :
-      '''locked( (PointCloudEx)arg1) -> bool :
-
-    C++ signature :
-        bool locked(class PyDbPointCloudEx {lvalue})'''
+    def locked (self: PointCloudEx)-> bool :
+      '''                             '''
     ...
     def material (self: Entity)-> str :
       '''                             '''
@@ -51374,38 +51239,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def maxElevation (self, *args, **kwargs)-> float :
-      '''maxElevation( (PointCloudEx)arg1) -> float :
-
-    C++ signature :
-        double maxElevation(class PyDbPointCloudEx {lvalue})'''
+    def maxElevation (self: PointCloudEx)-> float :
+      '''                             '''
     ...
-    def maxIntensity (self, *args, **kwargs)-> int :
-      '''maxIntensity( (PointCloudEx)arg1) -> int :
-
-    C++ signature :
-        int maxIntensity(class PyDbPointCloudEx {lvalue})'''
+    def maxIntensity (self: PointCloudEx)-> int :
+      '''                             '''
     ...
-    def minElevation (self, *args, **kwargs)-> float :
-      '''minElevation( (PointCloudEx)arg1) -> float :
-
-    C++ signature :
-        double minElevation(class PyDbPointCloudEx {lvalue})'''
+    def minElevation (self: PointCloudEx)-> float :
+      '''                             '''
     ...
-    def minIntensity (self, *args, **kwargs)-> int :
-      '''minIntensity( (PointCloudEx)arg1) -> int :
-
-    C++ signature :
-        int minIntensity(class PyDbPointCloudEx {lvalue})'''
+    def minIntensity (self: PointCloudEx)-> int :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def objectToWorldMatrix (self, *args, **kwargs)-> PyGe.Matrix3d :
-      '''objectToWorldMatrix( (PointCloudEx)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d objectToWorldMatrix(class PyDbPointCloudEx {lvalue})'''
+    def objectToWorldMatrix (self: PointCloudEx)-> PyGe.Matrix3d :
+      '''                             '''
     ...
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -51413,20 +51263,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def pointCloudDefExId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''pointCloudDefExId( (PointCloudEx)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId pointCloudDefExId(class PyDbPointCloudEx {lvalue})'''
+    def pointCloudDefExId (self: PointCloudEx)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def reactorId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''reactorId( (PointCloudEx)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId reactorId(class PyDbPointCloudEx {lvalue})'''
+    def reactorId (self: PointCloudEx)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -51440,11 +51284,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
-    def removeLastCropping (self, *args, **kwargs)-> None :
-      '''removeLastCropping( (PointCloudEx)arg1) -> None :
-
-    C++ signature :
-        void removeLastCropping(class PyDbPointCloudEx {lvalue})'''
+    def removeLastCropping (self: PointCloudEx)-> None :
+      '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -51452,32 +51293,20 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
-    def resetLimitBox (self, *args, **kwargs)-> None :
-      '''resetLimitBox( (PointCloudEx)arg1) -> None :
-
-    C++ signature :
-        void resetLimitBox(class PyDbPointCloudEx {lvalue})'''
+    def resetLimitBox (self: PointCloudEx)-> None :
+      '''                             '''
     ...
-    def resetScanRegionVisibility (self, *args, **kwargs)-> None :
-      '''resetScanRegionVisibility( (PointCloudEx)arg1) -> None :
-
-    C++ signature :
-        void resetScanRegionVisibility(class PyDbPointCloudEx {lvalue})'''
+    def resetScanRegionVisibility (self: PointCloudEx)-> None :
+      '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (PointCloudEx)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbPointCloudEx {lvalue})'''
+    def rotation (self: PointCloudEx)-> float :
+      '''                             '''
     ...
-    def scale (self, *args, **kwargs)-> float :
-      '''scale( (PointCloudEx)arg1) -> float :
-
-    C++ signature :
-        double scale(class PyDbPointCloudEx {lvalue})'''
+    def scale (self: PointCloudEx)-> float :
+      '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
@@ -51561,11 +51390,8 @@ setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setElevationApplyToFixedRange (self, *args, **kwargs)-> None :
-      '''setElevationApplyToFixedRange( (PointCloudEx)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setElevationApplyToFixedRange(class PyDbPointCloudEx {lvalue},bool)'''
+    def setElevationApplyToFixedRange (self: PointCloudEx)-> None :
+      '''                             '''
     ...
     def setElevationOutOfRangeBehavior (self, *args, **kwargs)-> None :
       '''setElevationOutOfRangeBehavior( (PointCloudEx)arg1, (PointCloudDispOptionOutOfRange)arg2) -> None :
@@ -51612,11 +51438,8 @@ setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
     C++ signature :
         void setLocation(class PyDbPointCloudEx {lvalue},class AcGePoint3d)'''
     ...
-    def setLocked (self, *args, **kwargs)-> None :
-      '''setLocked( (PointCloudEx)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setLocked(class PyDbPointCloudEx {lvalue},bool)'''
+    def setLocked (self: PointCloudEx,val : bool)-> None :
+      '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
@@ -51652,11 +51475,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPointCloudDefExId (self, *args, **kwargs)-> None :
-      '''setPointCloudDefExId( (PointCloudEx)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setPointCloudDefExId(class PyDbPointCloudEx {lvalue},class PyDbObjectId)'''
+    def setPointCloudDefExId (self: PointCloudEx,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def setPointCloudName (self, *args, **kwargs)-> None :
       '''setPointCloudName( (PointCloudEx)arg1, (str)arg2) -> None :
@@ -51667,11 +51487,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setReactorId (self, *args, **kwargs)-> None :
-      '''setReactorId( (PointCloudEx)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setReactorId(class PyDbPointCloudEx {lvalue},class PyDbObjectId)'''
+    def setReactorId (self: PointCloudEx,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -51724,32 +51541,20 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def showCropped (self, *args, **kwargs)-> bool :
-      '''showCropped( (PointCloudEx)arg1) -> bool :
-
-    C++ signature :
-        bool showCropped(class PyDbPointCloudEx {lvalue})'''
+    def showCropped (self: PointCloudEx)-> bool :
+      '''                             '''
     ...
-    def showElevationAsGradient (self, *args, **kwargs)-> bool :
-      '''showElevationAsGradient( (PointCloudEx)arg1) -> bool :
-
-    C++ signature :
-        bool showElevationAsGradient(class PyDbPointCloudEx {lvalue})'''
+    def showElevationAsGradient (self: PointCloudEx)-> bool :
+      '''                             '''
     ...
-    def showIntensityAsGradient (self, *args, **kwargs)-> bool :
-      '''showIntensityAsGradient( (PointCloudEx)arg1) -> bool :
-
-    C++ signature :
-        bool showIntensityAsGradient(class PyDbPointCloudEx {lvalue})'''
+    def showIntensityAsGradient (self: PointCloudEx)-> bool :
+      '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
-    def stylizationType (self, *args, **kwargs)-> PyDb.PointCloudStylizationType :
-      '''stylizationType( (PointCloudEx)arg1) -> PointCloudStylizationType :
-
-    C++ signature :
-        enum AcDbPointCloudEx::StylizationType stylizationType(class PyDbPointCloudEx {lvalue})'''
+    def stylizationType (self: PointCloudEx)-> PyDb.PointCloudStylizationType :
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
@@ -51757,11 +51562,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def updateGeoLocation (self, *args, **kwargs)-> None :
-      '''updateGeoLocation( (PointCloudEx)arg1) -> None :
-
-    C++ signature :
-        void updateGeoLocation(class PyDbPointCloudEx {lvalue})'''
+    def updateGeoLocation (self: PointCloudEx)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
