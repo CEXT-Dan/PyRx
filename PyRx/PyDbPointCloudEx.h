@@ -39,6 +39,12 @@ public:
     bool                        hasClassificationScheme(const std::string& GUID) const;
     bool                        deleteClassificationScheme(const std::string& GUID);
     boost::python::list         getColorSchemeInUse() const;
+    boost::python::list         getClassificationColorSchemeInUse() const;
+
+    //bool                            colorScheme(const wchar_t* GUID, AcDbPointCloudColorRamp& target) const;
+    //bool                            setColorScheme(const wchar_t* GUID, const AcDbPointCloudColorRamp& source);
+    //bool                            classificationScheme(const wchar_t* GUID, AcDbPointCloudClassificationColorRamp& target) const;
+    //bool                            setClassificationScheme(const wchar_t* GUID, const AcDbPointCloudClassificationColorRamp& source);
 
   
     static PyDbObjectId         getColorMap(PyDbDatabase& pDb);
