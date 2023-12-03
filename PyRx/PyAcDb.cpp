@@ -261,6 +261,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbObjectOverrulerapper();
     makePyDbPointCloudDefExWrapper();
     makePyDbPointCloudExWrapper();
+    makePyDbPointCloudColorMapWrapper();
 
     makeDbCoreWrapper();//LAST?
 

@@ -3,16 +3,189 @@
 #include "PyDbObjectId.h"
 #include "PyDbDatabase.h"
 #include "PyGePlane.h"
-#include "AcPointCloud.h"
+
 
 using namespace boost::python;
+
+//-----------------------------------------------------------------------------------
+//PyDbPointCloudColorMap
+void makePyDbPointCloudColorMapWrapper()
+{
+    PyDocString DS("PointCloudColorMap");
+    class_<PyDbPointCloudColorMap, bases<PyDbObject>>("PointCloudColorMap", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+
+        .def("defaultIntensityColorScheme", &PyDbPointCloudColorMap::defaultIntensityColorScheme)
+        .def("setDefaultIntensityColorScheme", &PyDbPointCloudColorMap::setDefaultIntensityColorScheme)
+        .def("defaultElevationColorScheme", &PyDbPointCloudColorMap::defaultElevationColorScheme)
+        .def("setDefaultElevationColorScheme", &PyDbPointCloudColorMap::setDefaultElevationColorScheme)
+        .def("defaultClassificationColorScheme", &PyDbPointCloudColorMap::defaultClassificationColorScheme)
+        .def("setDefaultClassificationColorScheme", &PyDbPointCloudColorMap::setDefaultClassificationColorScheme)
+        .def("colorSchemeGUIDs", &PyDbPointCloudColorMap::colorSchemeGUIDs)
+        .def("hasColorScheme", &PyDbPointCloudColorMap::hasColorScheme)
+        .def("deleteColorScheme", &PyDbPointCloudColorMap::deleteColorScheme)
+        .def("classificationSchemeGUIDs", &PyDbPointCloudColorMap::classificationSchemeGUIDs)
+        .def("hasClassificationScheme", &PyDbPointCloudColorMap::hasClassificationScheme)
+        .def("deleteClassificationScheme", &PyDbPointCloudColorMap::deleteClassificationScheme)
+        .def("getColorSchemeInUse", &PyDbPointCloudColorMap::getColorSchemeInUse)
+
+
+        .def("getColorMap", &PyDbPointCloudColorMap::getColorMap, DS.SARGS({ "val : PyDb.Database" })).staticmethod("getColorMap")
+        .def("className", &PyDbPointCloudColorMap::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbPointCloudColorMap::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbPointCloudColorMap::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbPointCloudColorMap::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbPointCloudColorMap::PyDbPointCloudColorMap(const PyDbObjectId& id)
+    : PyDbPointCloudColorMap(openAcDbObject<AcDbPointCloudColorMap>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbPointCloudColorMap::PyDbPointCloudColorMap(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbPointCloudColorMap(openAcDbObject<AcDbPointCloudColorMap>(id, mode), false)
+{
+}
+
+PyDbPointCloudColorMap::PyDbPointCloudColorMap(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbPointCloudColorMap(openAcDbObject<AcDbPointCloudColorMap>(id, mode, erased), false)
+{
+}
+
+PyDbPointCloudColorMap::PyDbPointCloudColorMap(AcDbPointCloudColorMap* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
+{
+}
+
+std::string PyDbPointCloudColorMap::defaultIntensityColorScheme() const
+{
+    return wstr_to_utf8(impObj()->defaultIntensityColorScheme());
+}
+
+bool PyDbPointCloudColorMap::setDefaultIntensityColorScheme(const std::string& GUID)
+{
+    return impObj()->setDefaultIntensityColorScheme(utf8_to_wstr(GUID).c_str());
+}
+
+std::string PyDbPointCloudColorMap::defaultElevationColorScheme() const
+{
+    return wstr_to_utf8(impObj()->defaultElevationColorScheme());
+}
+
+bool PyDbPointCloudColorMap::setDefaultElevationColorScheme(const std::string& GUID)
+{
+    return impObj()->setDefaultElevationColorScheme(utf8_to_wstr(GUID).c_str());
+}
+
+std::string PyDbPointCloudColorMap::defaultClassificationColorScheme() const
+{
+    return wstr_to_utf8(impObj()->defaultClassificationColorScheme());
+}
+
+bool PyDbPointCloudColorMap::setDefaultClassificationColorScheme(const std::string& GUID)
+{
+    return impObj()->setDefaultClassificationColorScheme(utf8_to_wstr(GUID).c_str());
+}
+
+boost::python::list PyDbPointCloudColorMap::colorSchemeGUIDs() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->colorSchemeGUIDs())
+        pylist.append(wstr_to_utf8(item));
+    return pylist;
+}
+
+bool PyDbPointCloudColorMap::hasColorScheme(const std::string& GUID) const
+{
+    return impObj()->hasColorScheme(utf8_to_wstr(GUID).c_str());
+}
+
+bool PyDbPointCloudColorMap::deleteColorScheme(const std::string& GUID)
+{
+    return impObj()->deleteColorScheme(utf8_to_wstr(GUID).c_str());
+}
+
+boost::python::list PyDbPointCloudColorMap::classificationSchemeGUIDs() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    for (const auto& item : impObj()->classificationSchemeGUIDs())
+        pylist.append(wstr_to_utf8(item));
+    return pylist;
+}
+
+bool PyDbPointCloudColorMap::hasClassificationScheme(const std::string& GUID) const
+{
+    return impObj()->hasClassificationScheme(utf8_to_wstr(GUID).c_str());
+}
+
+bool PyDbPointCloudColorMap::deleteClassificationScheme(const std::string& GUID)
+{
+    return impObj()->deleteClassificationScheme(utf8_to_wstr(GUID).c_str());
+}
+
+boost::python::list PyDbPointCloudColorMap::getColorSchemeInUse() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pylist;
+    AcArray<AcString> GUIDs;
+    impObj()->getColorSchemeInUse(GUIDs);
+    for (const auto& item : GUIDs)
+        pylist.append(wstr_to_utf8(item));
+    return pylist;
+}
+
+PyDbObjectId PyDbPointCloudColorMap::getColorMap(PyDbDatabase& pDb)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(AcDbPointCloudColorMap::getColorMap(id.m_id, pDb.impObj()));
+    return id;
+}
+
+std::string PyDbPointCloudColorMap::className()
+{
+    return "AcDbPointCloudColorMap";
+}
+
+PyRxClass PyDbPointCloudColorMap::desc()
+{
+    return PyRxClass(AcDbPointCloudColorMap::desc(), false);
+}
+
+PyDbPointCloudColorMap PyDbPointCloudColorMap::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbPointCloudColorMap::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbPointCloudColorMap(static_cast<AcDbPointCloudColorMap*>(src.impObj()->clone()), true);
+}
+
+PyDbPointCloudColorMap PyDbPointCloudColorMap::cast(const PyRxObject& src)
+{
+    PyDbPointCloudColorMap dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbPointCloudColorMap* PyDbPointCloudColorMap::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbPointCloudColorMap*>(m_pyImp.get());
+}
+
 
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudDefEx
 void makePyDbPointCloudDefExWrapper()
 {
     PyDocString DS("PointCloudDefEx");
-    class_<PyDbPointCloudDefEx, bases<PyDbObject>>("PointCloudDefEx", boost::python::no_init)
+    class_<PyDbPointCloudDefEx, bases<PyDbObject>>("PointCloudDefEx")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())

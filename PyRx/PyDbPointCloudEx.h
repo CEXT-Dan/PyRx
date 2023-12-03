@@ -1,13 +1,55 @@
 #pragma once
+#include "PyDbObject.h"
 #include "PyDbEntity.h"
+
+#include "AcPointCloud.h"
+#include "AcDbPointCloudColorMap.h"
 #include "AcDbPointCloudEx.h"
 #include "AcDbPointCloudDefEx.h"
 
+
+class PyRxObject;
 class PyDbObjectId;
 class PyDbDatabase;
 
 
-//AcDbPointCloudColorMap
+//-----------------------------------------------------------------------------------
+//PyDbPointCloudColorMap
+void makePyDbPointCloudColorMapWrapper();
+
+class PyDbPointCloudColorMap : public PyDbObject
+{
+public:
+    PyDbPointCloudColorMap(const PyDbObjectId& id);
+    PyDbPointCloudColorMap(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbPointCloudColorMap(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbPointCloudColorMap(AcDbPointCloudColorMap* ptr, bool autoDelete);
+    virtual ~PyDbPointCloudColorMap() override = default;
+
+    std::string                 defaultIntensityColorScheme() const;
+    bool                        setDefaultIntensityColorScheme(const std::string& GUID);
+    std::string                 defaultElevationColorScheme() const;
+    bool                        setDefaultElevationColorScheme(const std::string& GUID);
+    std::string                 defaultClassificationColorScheme() const;
+    bool                        setDefaultClassificationColorScheme(const std::string& GUID);
+    boost::python::list         colorSchemeGUIDs() const;
+    bool                        hasColorScheme(const std::string& GUID) const;
+    bool                        deleteColorScheme(const std::string& GUID);
+    boost::python::list         classificationSchemeGUIDs() const;
+    bool                        hasClassificationScheme(const std::string& GUID) const;
+    bool                        deleteClassificationScheme(const std::string& GUID);
+    boost::python::list         getColorSchemeInUse() const;
+
+  
+    static PyDbObjectId         getColorMap(PyDbDatabase& pDb);
+public:
+    static std::string          className();
+    static PyRxClass            desc();
+    static PyDbPointCloudColorMap  cloneFrom(const PyRxObject& src);
+    static PyDbPointCloudColorMap  cast(const PyRxObject& src);
+public:
+    AcDbPointCloudColorMap* impObj(const std::source_location& src = std::source_location::current()) const;
+};
 
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudDefEx
