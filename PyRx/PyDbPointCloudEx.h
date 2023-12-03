@@ -6,6 +6,9 @@
 class PyDbObjectId;
 class PyDbDatabase;
 
+
+//AcDbPointCloudColorMap
+
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudDefEx
 void makePyDbPointCloudDefExWrapper();
