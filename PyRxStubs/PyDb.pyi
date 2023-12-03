@@ -50393,6 +50393,326 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
+class PointCloudColorMap:
+    def __init__ (self: PointCloudColorMap,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+      '''                             '''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cast (otherObject: PyRx.RxObject)-> PyDb.PointCloudColorMap :
+      '''                             '''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def classificationSchemeGUIDs (self, *args, **kwargs)-> list :
+      '''classificationSchemeGUIDs( (PointCloudColorMap)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list classificationSchemeGUIDs(class PyDbPointCloudColorMap {lvalue})'''
+    ...
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PointCloudColorMap :
+      '''                             '''
+    ...
+    def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def colorSchemeGUIDs (self, *args, **kwargs)-> list :
+      '''colorSchemeGUIDs( (PointCloudColorMap)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list colorSchemeGUIDs(class PyDbPointCloudColorMap {lvalue})'''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+    def defaultClassificationColorScheme (self, *args, **kwargs)-> str :
+      '''defaultClassificationColorScheme( (PointCloudColorMap)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > defaultClassificationColorScheme(class PyDbPointCloudColorMap {lvalue})'''
+    ...
+    def defaultElevationColorScheme (self, *args, **kwargs)-> str :
+      '''defaultElevationColorScheme( (PointCloudColorMap)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > defaultElevationColorScheme(class PyDbPointCloudColorMap {lvalue})'''
+    ...
+    def defaultIntensityColorScheme (self, *args, **kwargs)-> str :
+      '''defaultIntensityColorScheme( (PointCloudColorMap)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > defaultIntensityColorScheme(class PyDbPointCloudColorMap {lvalue})'''
+    ...
+    def deleteClassificationScheme (self, *args, **kwargs)-> bool :
+      '''deleteClassificationScheme( (PointCloudColorMap)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool deleteClassificationScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def deleteColorScheme (self, *args, **kwargs)-> bool :
+      '''deleteColorScheme( (PointCloudColorMap)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool deleteColorScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def drawableType (self: Drawable)-> PyGi.GiDrawableType :
+      '''                             '''
+    ...
+    def erase (self: DbObject,erasing : bool=True)-> None :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getColorMap (val : PyDb.Database)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getColorSchemeInUse (self, *args, **kwargs)-> list :
+      '''getColorSchemeInUse( (PointCloudColorMap)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getColorSchemeInUse(class PyDbPointCloudColorMap {lvalue})'''
+    ...
+    def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getHandle (self: DbObject)-> PyDb.Handle :
+      '''                             '''
+    ...
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def hasClassificationScheme (self, *args, **kwargs)-> bool :
+      '''hasClassificationScheme( (PointCloudColorMap)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool hasClassificationScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def hasColorScheme (self, *args, **kwargs)-> bool :
+      '''hasColorScheme( (PointCloudColorMap)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool hasColorScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
+      '''                             '''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def id (self: Drawable)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isPersistent (self: Drawable)-> bool :
+      '''                             '''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def objectId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+      '''                             '''
+    ...
+    def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
+      '''                             '''
+    ...
+    def setDefaultClassificationColorScheme (self, *args, **kwargs)-> bool :
+      '''setDefaultClassificationColorScheme( (PointCloudColorMap)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool setDefaultClassificationColorScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDefaultElevationColorScheme (self, *args, **kwargs)-> bool :
+      '''setDefaultElevationColorScheme( (PointCloudColorMap)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool setDefaultElevationColorScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDefaultIntensityColorScheme (self, *args, **kwargs)-> bool :
+      '''setDefaultIntensityColorScheme( (PointCloudColorMap)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool setDefaultIntensityColorScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def setXData (self: DbObject,xdata: list)-> None :
+      '''                             '''
+    ...
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
+      '''                             '''
+    ...
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
+      '''                             '''
+    ...
+    def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
+      '''                             '''
+    ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+    def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
+      '''                             '''
+    ...
+
 class PointCloudDefEx:
     def __init__ (self: PointCloudDefEx,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
