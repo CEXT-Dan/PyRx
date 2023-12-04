@@ -92,12 +92,18 @@ bool WxRxApp::Init_wxPython()
 
 //------------------------------------------------------------------------------------------------
 // helper function to initWxApp
+
+//TODO: Find out why BricsCAD is wonkey, with AfxGetInstanceHandle
 bool initWxApp()
 {
     wxApp::SetInstance(&WxRxApp::instance());
     if (wxInitialize())
     {
+#ifdef BRXAP
+        HINSTANCE hInst = _hdllInstance
+#else
         HINSTANCE hInst = AfxGetInstanceHandle();
+#endif // BRXAP
         if (hInst == nullptr)
             return false;
         if (!wxEntryStart(hInst))
