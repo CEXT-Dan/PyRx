@@ -369,7 +369,7 @@ boost::python::list PyDbMText::getBoundingPoints() const
 
 boost::python::list PyDbMText::getBoundingPointsByLine() const
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -384,7 +384,7 @@ boost::python::list PyDbMText::getBoundingPointsByLine() const
 
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240 || _BRXTARGET == 240
     throw PyNotimplementedByHost();
 #else
     return impObj()->hitTest(ptHit);
@@ -630,7 +630,7 @@ int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
         pysublist.append(frag->normal);
         pysublist.append(frag->direction);
 
-#if _GRXTARGET > 0 || _ZRXTARGET  > 0
+#if _GRXTARGET > 0 || _ZRXTARGET  > 0 || _BRXTARGET > 0
         if (frag->text != nullptr)
             pysublist.append(wstr_to_utf8(frag->text));
         else
@@ -689,7 +689,7 @@ int AcDbMTextFragmentCallBack(AcDbMTextFragment* frag, void* param)
         strikePoints.append(frag->strikePoints[1]);
         pysublist.append(strikePoints);
 
-#if _GRXTARGET > 0 ||_ZRXTARGET > 0
+#if _GRXTARGET > 0 ||_ZRXTARGET > 0 || _BRXTARGET > 0
         if (frag->fontname != nullptr)
             pysublist.append(wstr_to_utf8(frag->fontname));
         else
