@@ -62,22 +62,38 @@ AcGePoint2d PyGeSurface::paramOfTol(const AcGePoint3d& pnt, const AcGeTol& tol) 
 
 Adesk::Boolean PyGeSurface::isOn1(const AcGePoint3d& pnt) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isOn(pnt);
+#endif
 }
 
 Adesk::Boolean PyGeSurface::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isOn(pnt, tol);
+#endif
 }
 
 Adesk::Boolean PyGeSurface::isOn3(const AcGePoint3d& pnt, AcGePoint2d& paramPoint) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isOn(pnt, paramPoint);
+#endif
 }
 
 Adesk::Boolean PyGeSurface::isOn4(const AcGePoint3d& pnt, AcGePoint2d& paramPoint, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isOn(pnt, paramPoint, tol);
+#endif
 }
 
 AcGePoint3d PyGeSurface::closestPointTo1(const AcGePoint3d& pnt) const
@@ -205,6 +221,7 @@ AcGeSurface* PyGeSurface::impObj(const std::source_location& src /*= std::source
 //AcGeCone wrapper
 void makePyGeConeWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeCone, bases<PyGeSurface>>("Cone")
         .def(init<>())
         .def(init<double, double, const  AcGePoint3d&, double, const AcGeVector3d&>())
@@ -233,8 +250,10 @@ void makePyGeConeWrapper()
         .def("copycast", &PyGeCone::copycast).staticmethod("copycast")
         .def("className", &PyGeCone::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeCone::PyGeCone()
     : PyGeSurface(new AcGeCone())
 {
@@ -413,6 +432,7 @@ AcGeCone* PyGeCone::impObj(const std::source_location& src /*= std::source_locat
     }
     return static_cast<AcGeCone*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeCylinder wrapper
@@ -504,7 +524,11 @@ PyGeInterval PyGeCylinder::getHeight() const
 
 double PyGeCylinder::heightAt(double u) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->heightAt(u);
+#endif
 }
 
 AcGeVector3d PyGeCylinder::axisOfSymmetry() const
@@ -524,12 +548,20 @@ Adesk::Boolean PyGeCylinder::isOuterNormal() const
 
 Adesk::Boolean PyGeCylinder::isClosed1() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isClosed();
+#endif
 }
 
 Adesk::Boolean PyGeCylinder::isClosed2(const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isClosed(tol);
+#endif
 }
 
 void PyGeCylinder::setRadius(double radius)
@@ -609,13 +641,16 @@ AcGeCylinder* PyGeCylinder::impObj(const std::source_location& src /*= std::sour
 //AcGeExternalBoundedSurface wrapper
 void makePyGeExternalBoundedSurfaceWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeExternalBoundedSurface, bases<PyGeSurface>>("ExternalBoundedSurface")
         .def("cast", &PyGeExternalBoundedSurface::cast).staticmethod("cast")
         .def("copycast", &PyGeExternalBoundedSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeExternalBoundedSurface::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeExternalBoundedSurface::PyGeExternalBoundedSurface()
     : PyGeSurface(new AcGeExternalBoundedSurface())
 {
@@ -663,18 +698,22 @@ AcGeExternalBoundedSurface* PyGeExternalBoundedSurface::impObj(const std::source
     }
     return static_cast<AcGeExternalBoundedSurface*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeExternalSurface wrapper
 void makePyGeExternalSurfaceWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeExternalSurface, bases<PyGeSurface>>("ExternalSurface")
         .def("cast", &PyGeExternalSurface::cast).staticmethod("cast")
         .def("copycast", &PyGeExternalSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeExternalSurface::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeExternalSurface::PyGeExternalSurface()
     : PyGeSurface(new AcGeExternalSurface())
 {
@@ -721,18 +760,22 @@ AcGeExternalSurface* PyGeExternalSurface::impObj(const std::source_location& src
     }
     return static_cast<AcGeExternalSurface*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeNurbSurface wrapper
 void makePyGeNurbSurfaceWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeNurbSurface, bases<PyGeSurface>>("NurbSurface")
         .def("cast", &PyGeNurbSurface::cast).staticmethod("cast")
         .def("copycast", &PyGeNurbSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeNurbSurface::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeNurbSurface::PyGeNurbSurface()
     : PyGeSurface(new AcGeNurbSurface())
 {
@@ -779,18 +822,22 @@ AcGeNurbSurface* PyGeNurbSurface::impObj(const std::source_location& src /*= std
     }
     return static_cast<AcGeNurbSurface*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeOffsetSurface wrapper
 void makePyGeOffsetSurfaceWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeOffsetSurface, bases<PyGeSurface>>("OffsetSurface")
         .def("cast", &PyGeOffsetSurface::cast).staticmethod("cast")
         .def("copycast", &PyGeOffsetSurface::copycast).staticmethod("copycast")
         .def("className", &PyGeOffsetSurface::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeOffsetSurface::PyGeOffsetSurface()
     : PyGeSurface(new AcGeOffsetSurface())
 {
@@ -837,6 +884,7 @@ AcGeOffsetSurface* PyGeOffsetSurface::impObj(const std::source_location& src /*=
     }
     return static_cast<AcGeOffsetSurface*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeSphere wrapper

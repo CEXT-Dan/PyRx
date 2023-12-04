@@ -50,6 +50,7 @@ public:
 void makePyGeConeWrapper();
 class PyGeCone : public PyGeSurface
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeCone();
 
@@ -106,6 +107,8 @@ public:
     static std::string  className();
 public:
     AcGeCone* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
+
 };
 
 //-----------------------------------------------------------------------------------------
@@ -167,6 +170,7 @@ public:
 void makePyGeExternalBoundedSurfaceWrapper();
 class PyGeExternalBoundedSurface : public PyGeSurface
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeExternalBoundedSurface();
     PyGeExternalBoundedSurface(AcGeEntity3d* src);
@@ -178,6 +182,7 @@ public:
     static std::string  className();
 public:
     AcGeExternalBoundedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
@@ -185,6 +190,7 @@ public:
 void makePyGeExternalSurfaceWrapper();
 class PyGeExternalSurface : public PyGeSurface
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeExternalSurface();
     PyGeExternalSurface(AcGeEntity3d* src);
@@ -196,6 +202,7 @@ public:
     static std::string  className();
 public:
     AcGeExternalSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
@@ -203,6 +210,7 @@ public:
 void makePyGeNurbSurfaceWrapper();
 class PyGeNurbSurface : public PyGeSurface
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeNurbSurface();
     PyGeNurbSurface(AcGeEntity3d* src);
@@ -214,6 +222,7 @@ public:
     static std::string  className();
 public:
     AcGeNurbSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
@@ -221,6 +230,7 @@ public:
 void makePyGeOffsetSurfaceWrapper();
 class PyGeOffsetSurface : public PyGeSurface
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeOffsetSurface();
     PyGeOffsetSurface(AcGeOffsetSurface* src);
@@ -232,6 +242,7 @@ public:
     static std::string  className();
 public:
     AcGeOffsetSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
