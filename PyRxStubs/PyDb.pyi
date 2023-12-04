@@ -50508,6 +50508,12 @@ class PointCloudColorMap:
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
+    def getClassificationColorSchemeInUse (self, *args, **kwargs)-> list :
+      '''getClassificationColorSchemeInUse( (PointCloudColorMap)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getClassificationColorSchemeInUse(class PyDbPointCloudColorMap {lvalue})'''
+    ...
     def getColorMap (val : PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
