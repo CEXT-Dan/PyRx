@@ -53,7 +53,7 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acdbModelerStart();
-#if defined(_GRXTARGET) && (_GRXTARGET <= 240)
+#if _GRXTARGET240
         acedRegisterOnIdleWinMsg(GRXOnIdleMsgFnOnce);
 #else
         acedRegisterOnIdleWinMsg(AcedOnIdleMsgFnOnce);
@@ -431,7 +431,7 @@ public:
 
     static AcString commandForCurDocument()
     {
-#if defined(_ZRXTARGET) && (_ZRXTARGET <= 240)
+#ifdef _ZRXTARGET240
         RxAutoOutStr cmd;
         AcString pGlobalCmdName;
         if (auto es = acedGetCommandForDocument(curDoc(), cmd.buf); es != eOk)
