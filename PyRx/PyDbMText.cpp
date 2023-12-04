@@ -357,7 +357,11 @@ double PyDbMText::actualWidth() const
 
 int PyDbMText::correctSpelling()
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->correctSpelling();
+#endif
 }
 
 boost::python::list PyDbMText::getBoundingPoints() const
@@ -563,7 +567,11 @@ void PyDbMText::setColumnHeight(int idx, double val)
 
 void PyDbMText::convertFieldToText()
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->convertFieldToText());
+#endif
 }
 
 double PyDbMText::height() const

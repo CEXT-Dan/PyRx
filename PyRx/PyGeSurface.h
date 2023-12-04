@@ -300,6 +300,7 @@ public:
 void makePyGeTorusWrapper();
 class PyGeTorus : public PyGeSurface
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeTorus();
     PyGeTorus(AcGeEntity3d* src);
@@ -311,4 +312,5 @@ public:
     static std::string  className();
 public:
     AcGeTorus* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };

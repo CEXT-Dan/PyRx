@@ -259,7 +259,11 @@ void PyDbText::setVerticalMode(AcDb::TextVertMode val)
 
 int PyDbText::correctSpelling()
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->correctSpelling();
+#endif
 }
 
 void PyDbText::adjustAlignment(const PyDbDatabase& pDb)
@@ -269,7 +273,11 @@ void PyDbText::adjustAlignment(const PyDbDatabase& pDb)
 
 void PyDbText::convertFieldToText()
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->convertFieldToText());
+#endif
 }
 
 bool PyDbText::hitTest(const AcGePoint3d& ptHit) const

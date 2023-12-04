@@ -1029,13 +1029,21 @@ void PyGeSphere::setAnglesInV(double start, double end)
 
 void PyGeSphere::set1(double radius, const AcGePoint3d& center)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(radius, center);
+#endif
 }
 
 void PyGeSphere::set2(double radius, const AcGePoint3d& center, const AcGeVector3d& northAxis, const AcGeVector3d& refAxis,
     double startAngleU, double endAngleU, double startAngleV, double endAngleV)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(radius, center, northAxis, refAxis, startAngleU, endAngleU, startAngleV, endAngleV);
+#endif
 }
 
 boost::python::tuple PyGeSphere::intersectWith1(const PyGeLinearEnt3d& ent) const
@@ -1087,13 +1095,16 @@ AcGeSphere* PyGeSphere::impObj(const std::source_location& src /*= std::source_l
 //AcGeTorus wrapper
 void makePyGeTorusWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeTorus, bases<PyGeSurface>>("Torus")
         .def("cast", &PyGeTorus::cast).staticmethod("cast")
         .def("copycast", &PyGeTorus::copycast).staticmethod("copycast")
         .def("className", &PyGeTorus::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeTorus::PyGeTorus()
     : PyGeSurface(new AcGeTorus())
 {
@@ -1140,3 +1151,4 @@ AcGeTorus* PyGeTorus::impObj(const std::source_location& src /*= std::source_loc
     }
     return static_cast<AcGeTorus*>(m_imp.get());
 }
+#endif

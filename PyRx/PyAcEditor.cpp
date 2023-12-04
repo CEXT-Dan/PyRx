@@ -594,12 +594,20 @@ boost::python::list PyAcEditor::getCurrentSelectionSet()
 
 void PyAcEditor::setAllowDuplicateSelection(PyApDocument& doc, bool flag)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(::setAllowDuplicateSelection(doc.impObj(), flag));
+#endif
 }
 
 bool PyAcEditor::duplicateSelectionsAllowed(PyApDocument& doc)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return ::duplicateSelectionsAllowed(doc.impObj());
+#endif
 }
 
 void PyAcEditor::regen()

@@ -602,12 +602,20 @@ PyDbObjectId PyDbDatabase::byLayerMaterial() const
 
 bool PyDbDatabase::cameraDisplay() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->cameraDisplay();
+#endif
 }
 
 double PyDbDatabase::cameraHeight() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->cameraHeight();
+#endif
 }
 
 Adesk::Int16 PyDbDatabase::cDynDisplayMode() const
@@ -656,7 +664,11 @@ double PyDbDatabase::chamferd() const
 
 std::string PyDbDatabase::classDxfName(const PyRxClass& pClass)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return wstr_to_utf8(impObj()->classDxfName(pClass.impObj()));
+#endif
 }
 
 PyDbObjectId PyDbDatabase::clayer() const
@@ -784,7 +796,11 @@ Adesk::Int16 PyDbDatabase::dragmode() const
 
 PyDbObjectId PyDbDatabase::dragVisStyle() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyDbObjectId(impObj()->dragVisStyle());
+#endif
 }
 
 Adesk::UInt8 PyDbDatabase::drawOrderCtl() const
@@ -876,7 +892,11 @@ bool PyDbDatabase::geoMarkerVisibility() const
 
 double PyDbDatabase::get3dDwfPrec() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->get3dDwfPrec();
+#endif
 }
 
 static boost::python::list PyDbDatabaseObjectIds(AcDbDatabase* pDb, AcRxClass* pClass)
@@ -1035,7 +1055,11 @@ void PyDbDatabase::insert3(const AcGeMatrix3d& xform, PyDbDatabase& db, bool pre
 
 Adesk::UInt8 PyDbDatabase::haloGap() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->haloGap();
+#endif
 }
 
 PyDbHandle PyDbDatabase::handseed() const
@@ -1056,7 +1080,11 @@ bool PyDbDatabase::hasClass(const PyRxClass& pClass) const
 
 Adesk::UInt8 PyDbDatabase::hideText() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->hideText();
+#endif
 }
 
 bool PyDbDatabase::hpInherit() const
@@ -1085,17 +1113,29 @@ AcDb::UnitsValue PyDbDatabase::insunits() const
 
 PyDbObjectId PyDbDatabase::interfereVpVisStyle() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyDbObjectId(impObj()->interfereVpVisStyle());
+#endif
 }
 
 Adesk::UInt16 PyDbDatabase::intersectColor() const
 {
-    return impObj()->intersectDisplay();
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->intersectColor();
+#endif
 }
 
 Adesk::UInt8 PyDbDatabase::intersectDisplay() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->intersectDisplay();
+#endif
 }
 
 bool PyDbDatabase::isBeingDestroyed() const
@@ -1114,7 +1154,11 @@ bool PyDbDatabase::isEMR() const
 
 bool PyDbDatabase::isObjectNonPersistent(const PyDbObjectId& id)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return AcDbDatabase::isObjectNonPersistent(id.m_id);
+#endif
 }
 
 Adesk::Int16 PyDbDatabase::isolines() const
@@ -1197,12 +1241,20 @@ PyDbObjectId PyDbDatabase::layoutDictionaryId() const
 
 double PyDbDatabase::lensLength() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->lensLength();
+#endif
 }
 
 Adesk::UInt8 PyDbDatabase::lightGlyphDisplay() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->lightGlyphDisplay();
+#endif
 }
 
 Adesk::UInt8 PyDbDatabase::lightingUnits() const
@@ -1319,7 +1371,11 @@ int PyDbDatabase::maintenanceReleaseVersion() const
 
 void PyDbDatabase::markObjectNonPersistent(const PyDbObjectId& id, bool value)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(AcDbDatabase::markObjectNonPersistent(id.m_id, value));
+#endif
 }
 
 PyDbObjectId PyDbDatabase::materialDictionaryId() const
@@ -1402,12 +1458,20 @@ Adesk::Int32 PyDbDatabase::numberOfSaves() const
 
 Adesk::UInt16 PyDbDatabase::obscuredColor() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->obscuredColor();
+#endif
 }
 
 Adesk::UInt8 PyDbDatabase::obscuredLineType() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->obscuredLineType();
+#endif
 }
 
 bool PyDbDatabase::oleStartUp() const
@@ -1555,12 +1619,20 @@ bool PyDbDatabase::psltscale() const
 
 double PyDbDatabase::psolHeight() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->psolHeight();
+#endif
 }
 
 double PyDbDatabase::psolWidth() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->psolWidth();
+#endif
 }
 
 PyDbObjectId PyDbDatabase::pucsBase() const
@@ -1671,7 +1743,11 @@ PyDbObjectId PyDbDatabase::sectionViewStyleDictionaryId() const
 
 void PyDbDatabase::set3dDwfPrec(double DwfPrec)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->set3dDwfPrec(DwfPrec));
+#endif
 }
 
 void PyDbDatabase::setAngbase(double angle)
@@ -1721,12 +1797,20 @@ void PyDbDatabase::setBlipmode(bool mode)
 
 void PyDbDatabase::setCameraDisplay(bool cameraDisplay)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setCameraDisplay(cameraDisplay));
+#endif
 }
 
 void PyDbDatabase::setCameraHeight(double cameraHeight)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setCameraHeight(cameraHeight));
+#endif
 }
 
 void PyDbDatabase::setCannoscale(PyDbAnnotationScale& val)
@@ -1825,7 +1909,11 @@ void PyDbDatabase::setCoords(Adesk::Int16 _coords)
 
 void PyDbDatabase::setCshadow(Adesk::UInt8 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setCshadow(val));
+#endif
 }
 
 void PyDbDatabase::setDelUsedObj(Adesk::Int16 deleteObj)
@@ -1835,7 +1923,11 @@ void PyDbDatabase::setDelUsedObj(Adesk::Int16 deleteObj)
 
 void PyDbDatabase::setDgnframe(Adesk::UInt8 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setDgnframe(val));
+#endif
 }
 
 void PyDbDatabase::setDimaso(bool aso)
@@ -1890,7 +1982,11 @@ void PyDbDatabase::setDragmode(Adesk::Int16 mode)
 
 void PyDbDatabase::setDragVisStyle(const PyDbObjectId& id)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setDragVisStyle(id.m_id));
+#endif
 }
 
 void PyDbDatabase::setDrawOrderCtl(Adesk::UInt8 val)
@@ -2004,17 +2100,29 @@ void PyDbDatabase::setGeoMarkerVisibility(bool value)
 
 void PyDbDatabase::setHaloGap(Adesk::UInt8 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setHaloGap(val));
+#endif
 }
 
 void PyDbDatabase::setHandseed(const PyDbHandle& handle)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setHandseed(handle.m_hnd));
+#endif
 }
 
 void PyDbDatabase::setHideText(Adesk::UInt8 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setHideText(val));
+#endif
 }
 
 void PyDbDatabase::setHpInherit(const bool inherit)
@@ -2053,27 +2161,47 @@ void PyDbDatabase::setInsunits(const AcDb::UnitsValue units)
 
 void PyDbDatabase::setInterfereColor(const AcCmColor& color)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setInterfereColor(color));
+#endif
 }
 
 void PyDbDatabase::setInterfereObjVisStyle(const PyDbObjectId& id)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setInterfereObjVisStyle(id.m_id));
+#endif
 }
 
 void PyDbDatabase::setInterfereVpVisStyle(const PyDbObjectId& id)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setInterfereVpVisStyle(id.m_id));
+#endif
 }
 
 void PyDbDatabase::setIntersectColor(Adesk::UInt16 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setIntersectColor(val));
+#endif
 }
 
 void PyDbDatabase::setIntersectDisplay(Adesk::UInt8 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setIntersectDisplay(val));
+#endif
 }
 
 void PyDbDatabase::setIsolines(Adesk::Int16 isolines)
@@ -2111,12 +2239,20 @@ void PyDbDatabase::setLayerNotify(Adesk::Int16 val)
 
 void PyDbDatabase::setLensLength(const double _lensLength)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setLensLength(_lensLength));
+#endif
 }
 
 void PyDbDatabase::setLightGlyphDisplay(Adesk::UInt8 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setLightGlyphDisplay(val));
+#endif
 }
 
 void PyDbDatabase::setLightingUnits(Adesk::UInt8 val)
@@ -2253,12 +2389,20 @@ void PyDbDatabase::setNorthDirection(double northdir)
 
 void PyDbDatabase::setObscuredColor(Adesk::UInt16 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setObscuredColor(val));
+#endif
 }
 
 void PyDbDatabase::setObscuredLineType(Adesk::UInt8 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setObscuredLineType(val));
+#endif
 }
 
 void PyDbDatabase::setOleStartUp(bool val)
@@ -2367,12 +2511,20 @@ void PyDbDatabase::setPsltscale(bool scale)
 
 void PyDbDatabase::setPsolHeight(double height)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setPsolHeight(height));
+#endif
 }
 
 void PyDbDatabase::setPsolWidth(double width)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setPsolWidth(width));
+#endif
 }
 
 void PyDbDatabase::setPucs(const AcGePoint3d& ucsOrigin, const AcGeVector3d& ucsXDir, const AcGeVector3d& ucsYDir)
@@ -2387,7 +2539,11 @@ void PyDbDatabase::setPucsBase(const PyDbObjectId& ucsid)
 
 void PyDbDatabase::setPucsname(const PyDbObjectId& ucsRecId)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setPucsname(ucsRecId.m_id));
+#endif
 }
 
 void PyDbDatabase::setQtextmode(bool mode)
@@ -2397,7 +2553,11 @@ void PyDbDatabase::setQtextmode(bool mode)
 
 void PyDbDatabase::setRealWorldScale(const bool realWorldScale)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setRealWorldScale(realWorldScale));
+#endif
 }
 
 void PyDbDatabase::setRegenmode(bool mode)
@@ -2436,12 +2596,20 @@ void PyDbDatabase::setShadedif(Adesk::Int16 dif)
 
 void PyDbDatabase::setShadowPlaneLocation(double val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setShadowPlaneLocation(val));
+#endif
 }
 
 void PyDbDatabase::setShowHist(Adesk::UInt8 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setShowHist(val));
+#endif
 }
 
 void PyDbDatabase::setSketchinc(double inc)
@@ -2456,7 +2624,11 @@ void PyDbDatabase::setSkpoly(bool asPoly)
 
 void PyDbDatabase::setSolidHist(Adesk::UInt8 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setSolidHist(val));
+#endif
 }
 
 void PyDbDatabase::setSortEnts(Adesk::UInt8 sortEnts)
@@ -2481,12 +2653,20 @@ void PyDbDatabase::setSplinetype(Adesk::Int16 type)
 
 void PyDbDatabase::setStepSize(double stepSize)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setStepSize(stepSize));
+#endif
 }
 
 void PyDbDatabase::setStepsPerSec(double stepsPerSec)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setStepsPerSec(stepsPerSec));
+#endif
 }
 
 void PyDbDatabase::setStyleSheet(const std::string& val)
@@ -2551,7 +2731,11 @@ void PyDbDatabase::setTimeZone(AcDb::TimeZone tz)
 
 void PyDbDatabase::setTimeZoneAsUtcOffset(double offset)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setTimeZoneAsUtcOffset(offset));
+#endif
 }
 
 void PyDbDatabase::setTracewid(double width)
@@ -2664,7 +2848,11 @@ void PyDbDatabase::setUsrtimer(bool timer)
 
 void PyDbDatabase::setVersionGuid(const std::string& pNewGuid)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setVersionGuid(utf8_to_wstr(pNewGuid).c_str()));
+#endif
 }
 
 void PyDbDatabase::setViewportScaleDefault(double newDefaultVPScale)
@@ -2679,12 +2867,20 @@ void PyDbDatabase::setVisretain(bool retain)
 
 void PyDbDatabase::setWorldPucsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView orthoView)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setWorldPucsBaseOrigin(origin, orthoView));
+#endif
 }
 
 void PyDbDatabase::setWorldUcsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView orthoView)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setWorldUcsBaseOrigin(origin, orthoView));
+#endif
 }
 
 void PyDbDatabase::setWorldview(bool view)
@@ -2718,12 +2914,20 @@ Adesk::Int16 PyDbDatabase::shadedif() const
 
 double PyDbDatabase::shadowPlaneLocation() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->shadowPlaneLocation();
+#endif
 }
 
 Adesk::UInt8 PyDbDatabase::showHist() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->showHist();
+#endif
 }
 
 double PyDbDatabase::sketchinc() const
@@ -2738,7 +2942,11 @@ bool PyDbDatabase::skpoly() const
 
 Adesk::UInt8 PyDbDatabase::solidHist() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->solidHist();
+#endif
 }
 
 Adesk::UInt8 PyDbDatabase::sortEnts() const
@@ -2763,12 +2971,20 @@ Adesk::Int16 PyDbDatabase::splinetype() const
 
 double PyDbDatabase::stepSize() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->stepSize();
+#endif
 }
 
 double PyDbDatabase::stepsPerSec() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->stepsPerSec();
+#endif
 }
 
 Adesk::Int16 PyDbDatabase::surftab1() const
@@ -2833,7 +3049,11 @@ bool PyDbDatabase::tilemode() const
 
 Adesk::UInt8 PyDbDatabase::tileModeLightSynch() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->tileModeLightSynch();
+#endif
 }
 
 AcDb::TimeZone PyDbDatabase::timeZone() const
@@ -3063,12 +3283,20 @@ void PyDbDatabase::abortDeepClone(PyDbIdMapping& idMap)
 
 AcGePoint3d PyDbDatabase::worldPucsBaseOrigin(AcDb::OrthographicView orthoView) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->worldPucsBaseOrigin(orthoView);
+#endif
 }
 
 AcGePoint3d PyDbDatabase::worldUcsBaseOrigin(AcDb::OrthographicView orthoView) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->worldUcsBaseOrigin(orthoView);
+#endif
 }
 
 bool PyDbDatabase::worldview() const
