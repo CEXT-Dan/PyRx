@@ -128,12 +128,16 @@ PyDbPointRef PyDbDimAssoc::pointRef(int ptType) const
 
 PyDbOsnapPointRef PyDbDimAssoc::osnapPointRef(int ptType) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     const AcDbPointRef* ref = impObj()->pointRef(ptType);
     if (ref == nullptr)
         throw PyNullObject();
     if (!ref->isKindOf(AcDbOsnapPointRef::desc()))
         PyThrowBadEs(eNotThatKindOfClass);
     return PyDbOsnapPointRef(static_cast<const AcDbOsnapPointRef*>(impObj()->pointRef(ptType)));
+#endif
 }
 
 void PyDbDimAssoc::setRotatedDimType(AcDbDimAssoc::RotatedDimType dimType)

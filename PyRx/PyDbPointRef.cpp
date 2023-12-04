@@ -45,6 +45,7 @@ AcDbPointRef* PyDbPointRef::impObj(const std::source_location& src /*= std::sour
 //PyDbOsnapPointRef
 void makePyDbOsnapPointRefWrapper()
 {
+#if !defined(_BRXTARGET240)
     PyDocString DS("OsnapPointRef");
     class_<PyDbOsnapPointRef, bases<PyDbPointRef>>("OsnapPointRef")
         .def(init<>())
@@ -57,8 +58,10 @@ void makePyDbOsnapPointRefWrapper()
         .def("desc", &PyDbOsnapPointRef::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyDbOsnapPointRef::className, DS.SARGS()).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyDbOsnapPointRef::PyDbOsnapPointRef()
     : PyDbOsnapPointRef(new AcDbOsnapPointRef(), true)
 {
@@ -122,3 +125,4 @@ AcDbOsnapPointRef* PyDbOsnapPointRef::impObj(const std::source_location& src /*=
     }
     return static_cast<AcDbOsnapPointRef*>(m_pyImp.get());
 }
+#endif
