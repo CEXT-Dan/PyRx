@@ -18,6 +18,7 @@ void makePyApApplictionWrapper()
         .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.SARGS({ "wnd : int" })).staticmethod("applyHostIcon")
         .def("acadGetIDispatch", &PyApApplication::acadGetIDispatch, DS.SARGS()).staticmethod("acadGetIDispatch")
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
+        .def("host", &PyApApplication::host, DS.SARGS()).staticmethod("host")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -90,6 +91,11 @@ PyObject* PyApApplication::getwxApp()
     if (_wxapp == nullptr)
         throw PyNullObject();
     return _wxapp;
+}
+
+std::string PyApApplication::host()
+{
+    return wstr_to_utf8(getappname());
 }
 
 //-----------------------------------------------------------------------------------------
