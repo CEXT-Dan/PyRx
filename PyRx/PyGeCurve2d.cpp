@@ -340,18 +340,26 @@ double PyGeCurve2d::area2(double startParam, double endParam, const AcGeTol& tol
 
 boost::python::tuple PyGeCurve2d::isDegenerate1() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGeEntity2d* pEnt = nullptr;
     bool flag = impObj()->isDegenerate(pEnt);
     return boost::python::make_tuple(flag, PyGeEntity2d(pEnt));
+#endif
 }
 
 boost::python::tuple PyGeCurve2d::isDegenerate2(const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGeEntity2d* pEnt = nullptr;
     bool flag = impObj()->isDegenerate(pEnt, tol);
     return boost::python::make_tuple(flag, PyGeEntity2d(pEnt));
+#endif
 }
 
 //TODO: Test ... leak... looks wonky?
@@ -619,20 +627,28 @@ boost::python::tuple PyGeCircArc2d::intersectWith4(const PyGeCircArc2d& arc, con
 
 boost::python::tuple PyGeCircArc2d::tangent1(const AcGePoint2d& pnt) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGeError err;
     AcGeLine2d line;
     bool flag = impObj()->tangent(pnt, line, AcGeContext::gTol, err);
     return make_tuple(flag, PyGeLine2d(line), err);
+#endif
 }
 
 boost::python::tuple PyGeCircArc2d::tangent2(const AcGePoint2d& pnt, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGeError err;
     AcGeLine2d line;
     bool flag = impObj()->tangent(pnt, line, tol, err);
     return make_tuple(flag, PyGeLine2d(line), err);
+#endif
 }
 
 Adesk::Boolean PyGeCircArc2d::isInside1(const AcGePoint2d& pnt) const
@@ -712,39 +728,62 @@ void PyGeCircArc2d::setRefVec(const AcGeVector2d& vec)
 
 void PyGeCircArc2d::set1(const AcGePoint2d& cent, double radius)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cent, radius);
+#endif
 }
 
 void  PyGeCircArc2d::set2(const AcGePoint2d& cent, double radius, double ang1, double ang2, const AcGeVector2d& refVec, Adesk::Boolean isClockWise)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(cent, radius, ang1, ang2, refVec, isClockWise);
+#endif
 }
 
 void PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, const AcGePoint2d& endPoint)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     AcGeError err;
     impObj()->set(startPoint, pnt, endPoint, err);
     if (err != AcGe::kOk)
         throw PyAcadErrorStatus(eInvalidInput);
+#endif
 }
 
 void PyGeCircArc2d::set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, Adesk::Boolean bulgeFlag)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(startPoint, endPoint, bulge, bulgeFlag);
+#endif
 }
 
 void  PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     double param1 = 0.0;
     double param2 = 0.0;
     Adesk::Boolean success = false;
     impObj()->set(*curve1.impObj(), *curve2.impObj(), radius, param1, param2, success);
     if (success == false)
         throw PyAcadErrorStatus(eInvalidInput);
+#endif
 }
 
 void PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, const PyGeCurve2d& curve3)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     double param1 = 0.0;
     double param2 = 0.0;
     double param3 = 0.0;
@@ -752,6 +791,7 @@ void PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, c
     impObj()->set(*curve1.impObj(), *curve2.impObj(), *curve3.impObj(), param1, param2, param3, success);
     if (success == false)
         throw PyAcadErrorStatus(eInvalidInput);
+#endif
 }
 
 PyGeCircArc2d PyGeCircArc2d::cast(const PyGeEntity2d& src)
@@ -785,6 +825,7 @@ AcGeCircArc2d* PyGeCircArc2d::impObj(const std::source_location& src /*= std::so
 //AcGeCircArc2d wrapper
 void makePyGeEllipArc2Wrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeEllipArc2d, bases<PyGeCurve2d>>("EllipArc2d")
         .def(init<>())
         .def(init<const PyGeCircArc2d&>())
@@ -818,8 +859,10 @@ void makePyGeEllipArc2Wrapper()
         .def("copycast", &PyGeEllipArc2d::copycast).staticmethod("copycast")
         .def("className", &PyGeEllipArc2d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeEllipArc2d::PyGeEllipArc2d()
     : PyGeCurve2d(new AcGeEllipArc2d())
 {
@@ -1004,18 +1047,21 @@ AcGeEllipArc2d* PyGeEllipArc2d::impObj(const std::source_location& src /*= std::
     }
     return static_cast<AcGeEllipArc2d*>(m_imp.get());
 }
-
+#endif
 //-----------------------------------------------------------------------------------------
 //PyGeExternalCurve2d wrapper
 void makePyGeExternalCurve2dWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeExternalCurve2d, bases<PyGeCurve2d>>("ExternalCurve2d", boost::python::no_init)
         .def("cast", &PyGeExternalCurve2d::cast).staticmethod("cast")
         .def("copycast", &PyGeExternalCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGeExternalCurve2d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeExternalCurve2d::PyGeExternalCurve2d(AcGeEntity2d* pEnt)
     : PyGeCurve2d(pEnt)
 {
@@ -1047,19 +1093,24 @@ AcGeExternalCurve2d* PyGeExternalCurve2d::impObj(const std::source_location& src
     }
     return static_cast<AcGeExternalCurve2d*>(m_imp.get());
 }
+#endif
+
 
 //-----------------------------------------------------------------------------------------
 //AcGeOffsetCurve2d wrapper
 void makePyGeOffsetCurve2dWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d", boost::python::no_init)
         .def(init<const PyGeCurve2d&, double>())
         .def("cast", &PyGeOffsetCurve2d::cast).staticmethod("cast")
         .def("copycast", &PyGeOffsetCurve2d::copycast).staticmethod("copycast")
         .def("className", &PyGeOffsetCurve2d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeOffsetCurve2d::PyGeOffsetCurve2d(const PyGeCurve2d& baseCurve, double offsetDistance)
     : PyGeCurve2d(new AcGeOffsetCurve2d(*baseCurve.impObj(), offsetDistance))
 {
@@ -1096,6 +1147,7 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*=
     }
     return static_cast<AcGeOffsetCurve2d*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeCompositeCurve2d wrapper

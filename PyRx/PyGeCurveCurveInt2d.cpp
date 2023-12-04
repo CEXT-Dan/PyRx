@@ -11,6 +11,7 @@ using namespace boost::python;
 //NOTE curve1, curve2 are not overloads
 void makePyGeCurveCurveInt2dWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeCurveCurveInt2d, bases<PyGeEntity2d>>("CurveCurveInt2d")
         .def(init<>())
         .def(init<const PyGeCurve2d&, const PyGeCurve2d&>())
@@ -40,8 +41,10 @@ void makePyGeCurveCurveInt2dWrapper()
         .def("copycast", &PyGeCurveCurveInt2d::copycast).staticmethod("copycast")
         .def("className", &PyGeCurveCurveInt2d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeCurveCurveInt2d::PyGeCurveCurveInt2d()
     : PyGeEntity2d(new AcGeCurveCurveInt2d())
 {
@@ -215,3 +218,4 @@ AcGeCurveCurveInt2d* PyGeCurveCurveInt2d::impObj() const
 {
     return static_cast<AcGeCurveCurveInt2d*>(m_imp.get());
 }
+#endif

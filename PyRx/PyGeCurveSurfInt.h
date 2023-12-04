@@ -7,6 +7,7 @@ class PyGeSurface;
 void makePyGeCurveSurfIntWrapper();
 class PyGeCurveSurfInt : public PyGeEntity3d
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeCurveSurfInt();
     PyGeCurveSurfInt(const AcGeCurveSurfInt& src);
@@ -33,5 +34,7 @@ public:
     static std::string className();
 public:
     AcGeCurveSurfInt* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
+
 };
 

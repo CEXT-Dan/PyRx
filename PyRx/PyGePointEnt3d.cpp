@@ -50,7 +50,7 @@ AcGePointEnt3d* PyGePointEnt3d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGePointEnt3d*>(m_imp.get());
 }
 
@@ -123,12 +123,20 @@ AcGePoint3d PyGePointOnCurve3d::point1() const
 
 AcGePoint3d PyGePointOnCurve3d::point2(double param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->point(param);
+#endif
 }
 
 AcGePoint3d PyGePointOnCurve3d::point3(const PyGeCurve3d& crv, double param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->point(*crv.impObj(), param);
+#endif
 }
 
 AcGeVector3d PyGePointOnCurve3d::deriv1(int order) const
@@ -143,28 +151,44 @@ AcGeVector3d PyGePointOnCurve3d::deriv2(int order, double param)
 
 AcGeVector3d PyGePointOnCurve3d::deriv3(int order, const PyGeCurve3d& crv, double param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->deriv(order, *crv.impObj(), param);
+#endif
 }
 
 Adesk::Boolean PyGePointOnCurve3d::isSingular() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isSingular();
+#endif
 }
 
 double PyGePointOnCurve3d::curvature1()
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     double res = 0;
     if (!impObj()->curvature(res))
         throw PyAcadErrorStatus(Acad::eNotApplicable);
     return res;
+#endif
 }
 
 double PyGePointOnCurve3d::curvature2(double param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     double res = 0;
     if (!impObj()->curvature(param, res))
         throw PyAcadErrorStatus(Acad::eNotApplicable);
     return res;
+#endif
 }
 
 void PyGePointOnCurve3d::setCurve(const PyGeCurve3d& crv)
@@ -200,7 +224,7 @@ AcGePointOnCurve3d* PyGePointOnCurve3d::impObj(const std::source_location& src /
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGePointOnCurve3d*>(m_imp.get());
 }
 
@@ -270,7 +294,11 @@ PyGePointOnSurface::PyGePointOnSurface(const AcGePointOnSurface& src)
 
 PyGeSurface PyGePointOnSurface::surface() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyGeSurface(impObj()->surface());
+#endif
 }
 
 AcGePoint2d PyGePointOnSurface::parameter() const
@@ -285,12 +313,20 @@ AcGePoint3d PyGePointOnSurface::point1() const
 
 AcGePoint3d PyGePointOnSurface::point2(const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->point(param);
+#endif
 }
 
 AcGePoint3d PyGePointOnSurface::point3(const PyGeSurface& surf, const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->point(*surf.impObj(), param);
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::normal1() const
@@ -310,77 +346,138 @@ AcGeVector3d PyGePointOnSurface::normal3(const PyGeSurface& surf, const AcGePoin
 
 AcGeVector3d PyGePointOnSurface::uDeriv1(int order) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->uDeriv(order);
+#endif
+
 }
 
 AcGeVector3d PyGePointOnSurface::uDeriv2(int order, const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->uDeriv(order, param);
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::uDeriv3(int order, const PyGeSurface& surf, const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->uDeriv(order, *surf.impObj(), param);
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::vDeriv1(int order) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->vDeriv(order);
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::vDeriv2(int order, const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->vDeriv(order, param);
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::vDeriv3(int order, const PyGeSurface& surf, const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->vDeriv(order, *surf.impObj(), param);
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::mixedPartial1() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->mixedPartial();
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::mixedPartial2(const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->mixedPartial(param);
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::mixedPartial3(const PyGeSurface& surf, const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->mixedPartial(*surf.impObj(), param);
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::tangentVector1(const AcGeVector2d& vec) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->tangentVector(vec);
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::tangentVector2(const AcGeVector2d& vec, const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->tangentVector(vec, param);
+#endif
 }
 
 AcGeVector3d PyGePointOnSurface::tangentVector3(const AcGeVector2d& vec, const PyGeSurface& vecSurf, const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->tangentVector(vec, *vecSurf.impObj(), param);
+#endif
 }
 
 AcGeVector2d PyGePointOnSurface::inverseTangentVector1(const AcGeVector3d& vec) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->inverseTangentVector(vec);
+#endif
 }
 
 AcGeVector2d PyGePointOnSurface::inverseTangentVector2(const AcGeVector3d& vec, const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->inverseTangentVector(vec, param);
+#endif
 }
 
 AcGeVector2d PyGePointOnSurface::inverseTangentVector3(const AcGeVector3d& vec, const PyGeSurface& surf, const AcGePoint2d& param)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->inverseTangentVector(vec, *surf.impObj(), param);
+#endif
 }
 
 void PyGePointOnSurface::setSurface(const PyGeSurface& surf)
@@ -416,7 +513,7 @@ AcGePointOnSurface* PyGePointOnSurface::impObj(const std::source_location& src /
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGePointOnSurface*>(m_imp.get());
 }
 
@@ -458,12 +555,20 @@ PyGePosition3d::PyGePosition3d(double x, double y, double z)
 
 void PyGePosition3d::set1(const AcGePoint3d& pnt)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(pnt);
+#endif
 }
 
 void PyGePosition3d::set2(double x, double y, double z)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     impObj()->set(x, y, x);
+#endif
 }
 
 PyGePosition3d PyGePosition3d::cast(const PyGeEntity3d& src)
@@ -489,6 +594,6 @@ AcGePosition3d* PyGePosition3d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGePosition3d*>(m_imp.get());
 }

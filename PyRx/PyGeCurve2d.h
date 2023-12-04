@@ -125,6 +125,8 @@ public:
 void makePyGeEllipArc2Wrapper();
 class PyGeEllipArc2d : public PyGeCurve2d
 {
+#if !defined(_BRXTARGET240)
+
 public:
     PyGeEllipArc2d();
     PyGeEllipArc2d(const AcGeEllipArc2d& ell);
@@ -161,12 +163,14 @@ public:
     static std::string      className();
 public:
     AcGeEllipArc2d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 //-----------------------------------------------------------------------------------------
 //PyGeExternalCurve2d wrapper
 void makePyGeExternalCurve2dWrapper();
 class PyGeExternalCurve2d : public PyGeCurve2d
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeExternalCurve2d(AcGeEntity2d* pEnt);
     static PyGeExternalCurve2d cast(const PyGeEntity2d& src);
@@ -174,12 +178,14 @@ public:
     static std::string className();
 public:
     AcGeExternalCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 //-----------------------------------------------------------------------------------------
 //AcGeOffsetCurve2d wrapper
 void makePyGeOffsetCurve2dWrapper();
 class PyGeOffsetCurve2d : public PyGeCurve2d
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeOffsetCurve2d(const PyGeCurve2d& baseCurve, double offsetDistance);
     PyGeOffsetCurve2d(AcGeEntity2d* pEnt);
@@ -188,6 +194,7 @@ public:
     static std::string className();
 public:
     AcGeOffsetCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 //-----------------------------------------------------------------------------------------
 //AcGeCompositeCurve2d wrapper

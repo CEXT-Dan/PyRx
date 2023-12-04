@@ -8,6 +8,7 @@ using namespace boost::python;
 
 void makePyGeCurveSurfIntWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeCurveSurfInt, bases<PyGeEntity3d>>("CurveSurfInt")
         .def(init<>())
         .def(init<const PyGeCurve3d&, const PyGeSurface&>())
@@ -27,8 +28,10 @@ void makePyGeCurveSurfIntWrapper()
         .def("copycast", &PyGeCurveSurfInt::copycast).staticmethod("copycast")
         .def("className", &PyGeCurveSurfInt::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeCurveSurfInt::PyGeCurveSurfInt(AcGeEntity3d* pEnt)
     : PyGeEntity3d(pEnt)
 {
@@ -170,3 +173,4 @@ AcGeCurveSurfInt* PyGeCurveSurfInt::impObj(const std::source_location& src /*= s
     }
     return static_cast<AcGeCurveSurfInt*>(m_imp.get());
 }
+#endif

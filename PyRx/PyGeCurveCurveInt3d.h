@@ -11,6 +11,7 @@ void makePyGeCurveCurveInt3dWrapper();
 
 class PyGeCurveCurveInt3d : public PyGeEntity3d
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeCurveCurveInt3d();
     PyGeCurveCurveInt3d(const AcGeCurveCurveInt3d& src);
@@ -47,5 +48,6 @@ public:
     static std::string className();
 public:
     AcGeCurveCurveInt3d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
