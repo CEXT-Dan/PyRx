@@ -16,9 +16,9 @@ public:
     virtual void objectReAppended(const AcDbDatabase* pDb, const AcDbObject* pObj) override;
     virtual void objectOpenedForModify(const AcDbDatabase* pDb, const AcDbObject* pObj)override;
     virtual void objectModified(const AcDbDatabase* pDb, const AcDbObject* pObj) override;
-    virtual void objectErased(const AcDbDatabase* pDb, const AcDbObject* pObj, bool bErased) override;
+    virtual void objectErased(const AcDbDatabase* pDb, const AcDbObject* pObj, Adesk::Boolean bErased) override;
     virtual void headerSysVarWillChange(const AcDbDatabase* pDb, const ACHAR* name) override;
-    virtual void headerSysVarChanged(const AcDbDatabase* pDb, const ACHAR* name, bool bSuccess) override;
+    virtual void headerSysVarChanged(const AcDbDatabase* pDb, const ACHAR* name, Adesk::Boolean bSuccess) override;
     virtual void proxyResurrectionCompleted(const AcDbDatabase* pDb, const ACHAR* appname, AcDbObjectIdArray& objects) override;
     virtual void goodbye(const AcDbDatabase* pDb) override;
 

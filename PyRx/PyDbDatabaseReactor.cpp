@@ -89,7 +89,7 @@ void PyDbDatabaseReactorImpl::objectModified(const AcDbDatabase* pDb, const AcDb
     }
 }
 
-void PyDbDatabaseReactorImpl::objectErased(const AcDbDatabase* pDb, const AcDbObject* pObj, bool bErased)
+void PyDbDatabaseReactorImpl::objectErased(const AcDbDatabase* pDb, const AcDbObject* pObj, Adesk::Boolean bErased)
 {
     const auto imp = impObj();
     if (imp->reg_objectErased)
@@ -111,7 +111,7 @@ void PyDbDatabaseReactorImpl::headerSysVarWillChange(const AcDbDatabase* pDb, co
     }
 }
 
-void PyDbDatabaseReactorImpl::headerSysVarChanged(const AcDbDatabase* pDb, const ACHAR* name, bool bSuccess)
+void PyDbDatabaseReactorImpl::headerSysVarChanged(const AcDbDatabase* pDb, const ACHAR* name, Adesk::Boolean bSuccess)
 {
     const auto imp = impObj();
     if (imp->reg_headerSysVarChanged)

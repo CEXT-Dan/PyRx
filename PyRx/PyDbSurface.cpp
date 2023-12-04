@@ -28,7 +28,9 @@ void makePyDbSurfaceWrapper()
         .def("rayTest", &PyDbSurface::rayTest)
         .def("projectOnToSurface", &PyDbSurface::projectOnToSurface)
         .def("createFrom", &PyDbSurface::createFrom).staticmethod("createFrom")
+#if !defined(_BRXTARGET240)
         .def("createExtrudedSurface", &PyDbSurface::createExtrudedSurface).staticmethod("createExtrudedSurface")
+#endif
         .def("className", &PyDbSurface::className).staticmethod("className")
         .def("desc", &PyDbSurface::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbSurface::cloneFrom).staticmethod("cloneFrom")
@@ -158,12 +160,14 @@ PyDbSurface PyDbSurface::createFrom(const PyDbEntity& pFromEntity)
     return PyDbSurface(pNewSurface, true);
 }
 
+#if !defined(_BRXTARGET240)
 PyDbExtrudedSurface PyDbSurface::createExtrudedSurface(PyDb3dProfile& pSweep, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions)
 {
     AcDbExtrudedSurface* newExtrudedSurface = nullptr;
     PyThrowBadEs(AcDbSurface::createExtrudedSurface(pSweep.impObj(), directionVec, *sweepOptions.impObj(), newExtrudedSurface));
     return PyDbExtrudedSurface(newExtrudedSurface, true);
 }
+#endif
 
 std::string PyDbSurface::className()
 {

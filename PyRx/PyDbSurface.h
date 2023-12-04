@@ -9,7 +9,9 @@
 #include "dbsweptsurf.h"
 
 class PyDbObjectId;
+#if !defined(_BRXTARGET240)
 class PyDb3dProfile;
+#endif
 class PyDbSweepOptions;
 class PyDbExtrudedSurface;
 
@@ -44,7 +46,9 @@ public:
 
 
     static PyDbSurface          createFrom(const PyDbEntity& pFromEntity);
+#if !defined(_BRXTARGET240)
     static PyDbExtrudedSurface  createExtrudedSurface(PyDb3dProfile& pSweep, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions);
+#endif
 
 
       

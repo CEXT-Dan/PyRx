@@ -2,7 +2,7 @@
 #include "PyRxObject.h"
 
 class PyDbEntity;
-
+#if !defined(_BRXTARGET240)
 //-----------------------------------------------------------------------------------------
 //PyDb3dProfile
 void makePyDb3dProfileWrapper();
@@ -30,4 +30,4 @@ public:
 public:
     inline AcDb3dProfile* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
+#endif
