@@ -252,6 +252,9 @@ Adesk::UInt32 PyGiDrawableOverrule::baseViewportDrawLogicalFlags(PyGiDrawable& p
 
 bool PyGiDrawableOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 {
+#ifdef BRXAPP
+    std::lock_guard<std::mutex> lk(PyGiDrawableOverruleMutex);
+#endif // BRXAPP
     if (!isApplicableOverride)
         return false;
     PyRxObject obj(pOverruledSubject);
