@@ -193,7 +193,7 @@ void PyJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyJig::acquireStringWr()
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240  || _BRXTARGET == 240
     PyAutoLockGIL lock; 
     wchar_t value[2049];
     auto result = this->acquireString(value);
@@ -387,7 +387,7 @@ void PyDrawJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyDrawJig::acquireStringWr()
 {
-#if _ZRXTARGET == 240 || _GRXTARGET == 240
+#if _ZRXTARGET == 240 || _GRXTARGET == 240  || _BRXTARGET == 240
     PyAutoLockGIL lock;
     wchar_t value[2049];
     auto result = this->acquireString(value);
