@@ -7,7 +7,7 @@
 
 using namespace boost::python;
 
-std::mutex PyDbObjectOverruleMutex;
+static std::mutex PyDbObjectOverruleMutex;
 void makePyDbObjectOverrulerapper()
 {
     PyDocString DS("DbObjectOverrule");
