@@ -392,9 +392,13 @@ void PyDbHatch::setGradientShift(float shiftValue)
 
 AcCmColor PyDbHatch::evaluateGradientColorAt(float value)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     AcCmColor clr;
     PyThrowBadEs(impObj()->evaluateGradientColorAt(value, clr));
     return clr;
+#endif
 }
 
 AcDbHatch::HatchPatternType PyDbHatch::patternType() const
@@ -510,12 +514,20 @@ void PyDbHatch::evaluateHatchAllScales2(bool bUnderestimateNumLines)
 
 bool PyDbHatch::lineGenerationEnabled() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->lineGenerationEnabled();
+#endif
 }
 
 bool PyDbHatch::setLineGenerationEnabled(bool bEnable)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->setLineGenerationEnabled(bEnable);
+#endif
 }
 
 int PyDbHatch::numHatchLines() const

@@ -438,7 +438,11 @@ Adesk::Boolean PyDbPlotSettings::modelType() const
 
 PyDbObjectId PyDbPlotSettings::shadePlotId() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyDbObjectId(impObj()->shadePlotId());
+#endif
 }
 
 std::string PyDbPlotSettings::className()
@@ -594,11 +598,15 @@ boost::python::tuple PyDbLayout::getLimits() const
 
 boost::python::tuple PyDbLayout::getExtents() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcGePoint3d extMin;
     AcGePoint3d extMax;
     impObj()->getExtents(extMin, extMax);
     return boost::python::make_tuple(extMin, extMax);
+#endif
 }
 
 void PyDbLayout::initialize1()

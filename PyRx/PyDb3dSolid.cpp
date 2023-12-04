@@ -699,12 +699,16 @@ boost::python::tuple PyDbRevolveOptions::checkRevolveCurve1(PyDbEntity& ent, con
 
 boost::python::tuple PyDbRevolveOptions::checkRevolveCurve2(PyDbEntity& ent, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, bool displayErrorMessages)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     bool closed = false;
     bool planar = false;
     bool endPointsOnAxis = false;
     PyThrowBadEs(impObj()->checkRevolveCurve(ent.impObj(), axisPnt, axisDir, closed, endPointsOnAxis, planar, displayErrorMessages));
     return boost::python::make_tuple(closed, endPointsOnAxis, planar);
+#endif
 }
 
 AcDbRevolveOptions* PyDbRevolveOptions::impObj(const std::source_location& src /*= std::source_location::current()*/) const

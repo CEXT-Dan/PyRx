@@ -129,7 +129,11 @@ PyDbField::PyDbField(const PyDbObjectId& id)
 
 void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setInObject(pObj.impObj(), utf8_to_wstr(pszPropName).c_str()));
+#endif
 }
 
 void PyDbField::postInDatabase(PyDbDatabase& pDb)
@@ -174,7 +178,11 @@ bool PyDbField::isTextField(void) const
 
 void PyDbField::convertToTextField(void)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->convertToTextField());
+#endif
 }
 
 int PyDbField::childCount(void) const

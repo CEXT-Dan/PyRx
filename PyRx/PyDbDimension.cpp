@@ -449,17 +449,29 @@ void PyDbDimension::setDimExt2Linetype(const PyDbObjectId& linetype)
 
 void PyDbDimension::removeTextField()
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->removeTextField());
+#endif
 }
 
 void PyDbDimension::fieldToMText(PyDbMText& pDimMText)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->fieldToMText(pDimMText.impObj()));
+#endif
 }
 
 void PyDbDimension::fieldFromMText(PyDbMText& pDimMText)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->fieldFromMText(pDimMText.impObj()));
+#endif
 }
 
 bool PyDbDimension::isHorizontalRefTextRotation() const
@@ -1597,12 +1609,20 @@ void PyDbArcDimension::setCenterPoint(const AcGePoint3d& ctrPt)
 
 bool PyDbArcDimension::isPartial() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isPartial();
+#endif
 }
 
 void PyDbArcDimension::setIsPartial(bool partial)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setIsPartial(partial));
+#endif
 }
 
 double PyDbArcDimension::arcStartParam() const
@@ -1793,22 +1813,38 @@ void PyDbDiametricDimension::setFarChordPoint(const AcGePoint3d& val)
 
 double PyDbDiametricDimension::extArcStartAngle() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->extArcStartAngle();
+#endif
 }
 
 void PyDbDiametricDimension::setExtArcStartAngle(double newAngle)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setExtArcStartAngle(newAngle));
+#endif
 }
 
 double PyDbDiametricDimension::extArcEndAngle() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->extArcEndAngle();
+#endif
 }
 
 void PyDbDiametricDimension::setExtArcEndAngle(double newAngle)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setExtArcEndAngle(newAngle));
+#endif
 }
 
 std::string PyDbDiametricDimension::className()
@@ -2280,37 +2316,65 @@ void PyDbRadialDimensionLarge::setJogAngle(double jogAngle)
 
 void PyDbRadialDimensionLarge::setOverrideCenterPP(const AcGePoint3d& overrideCenterPointPP)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setOverrideCenterPP(overrideCenterPointPP));
+#endif
 }
 
 void PyDbRadialDimensionLarge::setJogPointPP(const AcGePoint3d& jogPointPP)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setJogPointPP(jogPointPP));
+#endif
 }
 
 void PyDbRadialDimensionLarge::setTextPositionPP(const AcGePoint3d& textPointPP)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setTextPositionPP(textPointPP));
+#endif
 }
 
 double PyDbRadialDimensionLarge::extArcStartAngle() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->extArcStartAngle();
+#endif
 }
 
 void PyDbRadialDimensionLarge::setExtArcStartAngle(double newAngle)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setExtArcStartAngle(newAngle));
+#endif
 }
 
 double PyDbRadialDimensionLarge::extArcEndAngle() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->extArcEndAngle();
+#endif
 }
 
 void PyDbRadialDimensionLarge::setExtArcEndAngle(double newAngle)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setExtArcEndAngle(newAngle));
+#endif
 }
 
 std::string PyDbRadialDimensionLarge::className()
