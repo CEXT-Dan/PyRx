@@ -2,6 +2,7 @@
 #include "PyDb3dProfile.h"
 #include "PyDbEntity.h"
 
+#if !defined(_BRXTARGET240)
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
 //PyDb3dProfile
@@ -95,3 +96,4 @@ AcDb3dProfile* PyDb3dProfile::impObj(const std::source_location& src /*= std::so
     }
     return static_cast<AcDb3dProfile*>(m_pyImp.get());
 }
+#endif
