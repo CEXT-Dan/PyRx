@@ -16,7 +16,9 @@ public:
     PyJig(const PyDbEntity& ent);
     virtual ~PyJig() = default;
     AcEdJig::DragStatus         dragwr1();
+#if !defined(_BRXTARGET240)
     AcEdJig::DragStatus         dragwr2(const AcEdDragStyle& style);
+#endif
     virtual AcEdJig::DragStatus sampler() override;
     virtual Adesk::Boolean      update() override;
     virtual AcDbEntity* entity() const override;
@@ -51,7 +53,10 @@ class PyDrawJig : public AcEdJig, public AcDbEntity, public boost::python::wrapp
 public:
     PyDrawJig();
     AcEdJig::DragStatus         dragwr1();
+
+#if !defined(_BRXTARGET240)
     AcEdJig::DragStatus         dragwr2(const AcEdDragStyle& style);
+#endif
     virtual AcEdJig::DragStatus sampler() override;
     virtual Adesk::Boolean      update() override;
     std::string                 keywordListWr();

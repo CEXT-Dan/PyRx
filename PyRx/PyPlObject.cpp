@@ -7,6 +7,9 @@
 
 using namespace boost::python;
 
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+//
+#else
 //-----------------------------------------------------------------------------------------
 //AcPlPlotFactory
 void makeAcPlPlotFactoryWrapper()
@@ -1620,3 +1623,4 @@ AcPlPlotConfigInfo* PyPlPlotConfigInfo::impObj(const std::source_location& src /
     }
     return static_cast<AcPlPlotConfigInfo*>(m_pyImp.get());
 }
+#endif

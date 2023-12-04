@@ -1,5 +1,8 @@
 #pragma once
 
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+// dead
+#else
 class PyPlDSDData;
 class PyPlPlotConfig;
 
@@ -13,3 +16,4 @@ public:
     static std::string className();
 };
 
+#endif

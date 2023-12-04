@@ -1,6 +1,11 @@
 #pragma once
 #include "PyRxObject.h"
 
+
+#if defined(_BRXTARGET) && (_BRXTARGET <= 240)
+//
+#else
+
 class PyDbObjectId;
 class PyPlDSDEntry;
 class PyDbPlotSettings;
@@ -10,7 +15,6 @@ class PyPlPlotInfo;
 class PyPlPlotPageInfo;
 class PyPlPlotProgressDialog;
 class PyGeBoundBlock2d;
-
 
 //-----------------------------------------------------------------------------------------
 //AcPlPlotFactory
@@ -319,6 +323,7 @@ public:
 public:
     inline AcPlPrecisionEntry* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
 //-----------------------------------------------------------------------------------------
 //PylPlotConfigInfo
 void makePyPlPlotConfigInfoWrapper();
@@ -344,3 +349,4 @@ public:
     inline AcPlPlotConfigInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+#endif

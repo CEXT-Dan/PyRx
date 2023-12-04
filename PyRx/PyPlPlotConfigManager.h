@@ -1,5 +1,9 @@
 #pragma once
 
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+// dead
+#else
+
 class PyPlPlotConfig;
 
 //-----------------------------------------------------------------------------------------
@@ -27,3 +31,4 @@ public:
     AcPlPlotConfigManager* m_imp = nullptr;
 };
 
+#endif

@@ -10,7 +10,9 @@ using namespace boost::python;
 BOOST_PYTHON_MODULE(PyPl)
 {
     docstring_options local_docstring_options(true, true, true);
-
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    // dead
+#else
     makePyPlObjectWrapper();
     makePyPlDSDDataWrapper();
     makePyPlDSDEntryWrapper();
@@ -25,6 +27,7 @@ BOOST_PYTHON_MODULE(PyPl)
     makePyPlPrecisionEntryWrapper();
     makePyPlPlotConfigManagerWrapper();
     makePyPlCoreWrapper();
+#endif
 }
 
 void initPyPlModule()
