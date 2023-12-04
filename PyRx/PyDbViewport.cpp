@@ -278,15 +278,24 @@ PyDbViewport::PyDbViewport(const PyDbObjectId& id, AcDb::OpenMode mode, bool era
 
 void PyDbViewport::setModelView(const PyDbXrefObjectId& xrefObjId)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setModelView(xrefObjId.m_imp));
+#endif
 }
 
 PyDbXrefObjectId PyDbViewport::getModelView() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyDbXrefObjectId id;
     PyThrowBadEs(impObj()->getModelView(id.m_imp));
     return id;
+#endif
 }
+
 
 void PyDbViewport::removeModelView(void)
 {

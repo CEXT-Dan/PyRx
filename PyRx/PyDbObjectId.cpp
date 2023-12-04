@@ -473,6 +473,7 @@ bool PyDbHandle::operator==(const PyDbHandle& rhs) const
 // PyDbXrefObjectId
 void makePyDbXrefObjectIdWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyDbXrefObjectId>("XrefObjectId")
         .def(init<>())
         .def("isValid", &PyDbXrefObjectId::isValid)
@@ -488,8 +489,10 @@ void makePyDbXrefObjectIdWrapper()
         .def("__eq__", &PyDbXrefObjectId::operator==)
         .def("__ne__", &PyDbXrefObjectId::operator!=)
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyDbXrefObjectId::PyDbXrefObjectId()
 {
 }
@@ -553,3 +556,4 @@ bool PyDbXrefObjectId::operator==(const PyDbXrefObjectId& other) const
 {
     return m_imp == other.m_imp;
 }
+#endif

@@ -399,7 +399,11 @@ double PyDbSpline::weightAt(int index) const
 
 void PyDbSpline::setWeightAt(int index, double weight)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(impObj()->setWeightAt(index, weight));
+#endif
 }
 
 void PyDbSpline::insertKnot(double param)

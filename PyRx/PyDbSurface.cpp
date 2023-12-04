@@ -100,12 +100,20 @@ void PyDbSurface::setVIsolineDensity(Adesk::UInt16 numIsolines)
 
 AcDbSurface::WireframeType PyDbSurface::getWireframeType() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
    return impObj()->getWireframeType();
+#endif
 }
 
 void PyDbSurface::setWireframeType(AcDbSurface::WireframeType type)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(impObj()->setWireframeType(type));
+#endif
 }
 
 double PyDbSurface::getPerimeter() const
@@ -117,29 +125,45 @@ double PyDbSurface::getPerimeter() const
 
 PyDbObjectId PyDbSurface::creationActionBodyId() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyDbObjectId(impObj()->creationActionBodyId());
+#endif
 }
 
 boost::python::list PyDbSurface::modificationActionBodyIds() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     AcDbObjectIdArray modificationActionBodyIds;
     PyThrowBadEs(impObj()->modificationActionBodyIds(modificationActionBodyIds));
     return ObjectIdArrayToPyList(modificationActionBodyIds);
+#endif
 }
 
 void PyDbSurface::extendEdges(boost::python::list& edges, double extDist, AcDbSurface::EdgeExtensionType extOption, bool bAssociativeEnabled)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     auto _edges = PyListToPyDbFullSubentPathArray(edges);
     PyThrowBadEs(impObj()->extendEdges(_edges, extDist, extOption, bAssociativeEnabled));
+#endif
 }
 
 boost::python::tuple PyDbSurface::rayTest(const AcGePoint3d& rayBasePoint, const AcGeVector3d& rayDir, double rayRadius) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcArray<AcDbSubentId> subEntIds;
     AcGeDoubleArray parameters;
     PyThrowBadEs(impObj()->rayTest(rayBasePoint, rayDir, rayRadius, subEntIds, parameters));
     return boost::python::make_tuple(SubentIdArrayToPyList(subEntIds), DoubleArrayToPyList(parameters));
+#endif
 }
 
 boost::python::list PyDbSurface::projectOnToSurface(const PyDbEntity& ent, const AcGeVector3d& projectionDirection)

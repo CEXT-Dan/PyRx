@@ -310,26 +310,42 @@ void PyDbUnderlayReference::setDefinitionId(const PyDbObjectId& id)
 
 void PyDbUnderlayReference::setWidth(double width)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setWidth(width));
+#endif
 }
 
 double PyDbUnderlayReference::width() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     double val = 0;
     PyThrowBadEs(impObj()->width(val));
     return val;
+#endif
 }
 
 void PyDbUnderlayReference::setHeight(double width)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setHeight(width));
+#endif
 }
 
 double PyDbUnderlayReference::height() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     double val = 0;
     PyThrowBadEs(impObj()->height(val));
     return val;
+#endif
 }
 
 boost::python::list PyDbUnderlayReference::clipBoundary() const
