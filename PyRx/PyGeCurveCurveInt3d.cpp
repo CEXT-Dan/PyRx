@@ -9,6 +9,7 @@ using namespace boost::python;
 //NOTE curve1, curve2 are not overloads
 void makePyGeCurveCurveInt3dWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeCurveCurveInt3d, bases<PyGeEntity3d>>("CurveCurveInt3d")
         .def(init<>())
         .def(init<const PyGeCurve3d&, const PyGeCurve3d&>())
@@ -39,8 +40,10 @@ void makePyGeCurveCurveInt3dWrapper()
         .def("copycast", &PyGeCurveCurveInt3d::copycast).staticmethod("copycast")
         .def("className", &PyGeCurveCurveInt3d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeCurveCurveInt3d::PyGeCurveCurveInt3d()
     : PyGeEntity3d(new AcGeCurveCurveInt3d())
 {
@@ -222,3 +225,4 @@ AcGeCurveCurveInt3d* PyGeCurveCurveInt3d::impObj(const std::source_location& src
         throw PyNullObject(src);
     return static_cast<AcGeCurveCurveInt3d*>(m_imp.get());
 }
+#endif

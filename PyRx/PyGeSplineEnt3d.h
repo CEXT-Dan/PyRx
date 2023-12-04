@@ -43,6 +43,7 @@ public:
 void makePyGeCubicSplineCurve3dWrapper();
 class PyGeCubicSplineCurve3d : public PyGeSplineEnt3d
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeCubicSplineCurve3d();
     PyGeCubicSplineCurve3d(const PyGeCurve3d& curve, double epsilon);
@@ -62,6 +63,7 @@ public:
     static std::string className();
 public:
     AcGeCubicSplineCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
@@ -69,6 +71,7 @@ public:
 void makePyGeNurbCurve3dWrapper();
 class PyGeNurbCurve3d : public PyGeSplineEnt3d
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeNurbCurve3d();
     PyGeNurbCurve3d(const AcGeNurbCurve3d& src);
@@ -145,6 +148,7 @@ public:
     static std::string className();
 public:
     AcGeNurbCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };
 
 //-----------------------------------------------------------------------------------------
@@ -158,7 +162,9 @@ public:
     PyGePolyline3d(const AcGePolyline3d& src);
     PyGePolyline3d(const boost::python::list& points);
     PyGePolyline3d(const PyGeKnotVector& knots, const boost::python::list& points);
+#if !defined(_BRXTARGET240)
     PyGePolyline3d(const PyGeCurve3d& crv, double apprEps);
+#endif
 
     int              numFitPoints() const;
     AcGePoint3d      fitPointAt(int idx) const;

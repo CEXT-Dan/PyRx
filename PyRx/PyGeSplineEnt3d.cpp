@@ -60,7 +60,11 @@ int PyGeSplineEnt3d::numKnots() const
 
 PyGeKnotVector PyGeSplineEnt3d::knots() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyGeKnotVector(impObj()->knots());
+#endif
 }
 
 int PyGeSplineEnt3d::numControlPoints() const
@@ -70,12 +74,20 @@ int PyGeSplineEnt3d::numControlPoints() const
 
 int PyGeSplineEnt3d::continuityAtKnot1(int idx) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->continuityAtKnot(idx);
+#endif
 }
 
 int PyGeSplineEnt3d::continuityAtKnot2(int idx, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->continuityAtKnot(idx, tol);
+#endif
 }
 
 double PyGeSplineEnt3d::startParam() const
@@ -110,7 +122,11 @@ double PyGeSplineEnt3d::knotAt(int idx) const
 
 void PyGeSplineEnt3d::setKnotAt(int idx, double val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     impObj()->setKnotAt(idx, val);
+#endif
 }
 
 AcGePoint3d PyGeSplineEnt3d::controlPointAt(int idx) const
@@ -154,6 +170,7 @@ AcGeSplineEnt3d* PyGeSplineEnt3d::impObj(const std::source_location& src /*= std
 //AcGeCubicSplineCurve3d wrapper
 void makePyGeCubicSplineCurve3dWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeCubicSplineCurve3d, bases<PyGeSplineEnt3d>>("CubicSplineCurve3d")
         .def(init<>())
         .def(init<const PyGeCurve3d&, double>())
@@ -169,8 +186,10 @@ void makePyGeCubicSplineCurve3dWrapper()
         .def("copycast", &PyGeCubicSplineCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeCubicSplineCurve3d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeCubicSplineCurve3d::PyGeCubicSplineCurve3d()
     : PyGeSplineEnt3d(new AcGeCubicSplineCurve3d())
 {
@@ -251,11 +270,13 @@ AcGeCubicSplineCurve3d* PyGeCubicSplineCurve3d::impObj(const std::source_locatio
         throw PyNullObject(src);
     return static_cast<AcGeCubicSplineCurve3d*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve3d  wrapper
 void makePyGeNurbCurve3dWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeNurbCurve3d, bases<PyGeSplineEnt3d>>("NurbCurve3d")
         .def(init<>())
         .def(init<const PyGeEllipArc3d&>())
@@ -310,8 +331,10 @@ void makePyGeNurbCurve3dWrapper()
         .def("copycast", &PyGeNurbCurve3d::copycast).staticmethod("copycast")
         .def("className", &PyGeNurbCurve3d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeNurbCurve3d::PyGeNurbCurve3d()
     : PyGeSplineEnt3d(new AcGeNurbCurve3d())
 {
@@ -634,6 +657,7 @@ AcGeNurbCurve3d* PyGeNurbCurve3d::impObj(const std::source_location& src /*= std
     }
     return static_cast<AcGeNurbCurve3d*>(m_imp.get());
 }
+#endif
 
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve3d  wrapper
@@ -643,7 +667,9 @@ void makePyGePolyline3dWrapper()
         .def(init<>())
         .def(init<const boost::python::list&>())
         .def(init<const PyGeKnotVector&, const boost::python::list&>())
+#if !defined(_BRXTARGET240)
         .def(init<const PyGeCurve3d&, double>())
+#endif
         .def("numFitPoints", &PyGePolyline3d::numFitPoints)
         .def("fitPointAt", &PyGePolyline3d::fitPointAt)
         .def("setFitPointAt", &PyGePolyline3d::setFitPointAt)
@@ -678,10 +704,12 @@ PyGePolyline3d::PyGePolyline3d(const PyGeKnotVector& knots, const boost::python:
 {
 }
 
+#if !defined(_BRXTARGET240)
 PyGePolyline3d::PyGePolyline3d(const PyGeCurve3d& crv, double apprEps)
     : PyGeSplineEnt3d(new AcGePolyline3d(*crv.impObj(), apprEps))
 {
 }
+#endif
 
 int PyGePolyline3d::numFitPoints() const
 {

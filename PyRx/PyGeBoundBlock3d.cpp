@@ -6,6 +6,7 @@ using namespace boost::python;
 //PyGeBoundBlock3d
 void makePyGeBoundBlock3dWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeBoundBlock3d, bases<PyGeEntity3d>>("BoundBlock3d")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, const AcGeVector3d&>())
@@ -27,8 +28,10 @@ void makePyGeBoundBlock3dWrapper()
         .def("copycast", &PyGeBoundBlock3d::copycast).staticmethod("copycast")
         .def("className", &PyGeBoundBlock3d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeBoundBlock3d::PyGeBoundBlock3d()
     :PyGeEntity3d(new AcGeBoundBlock3d())
 {
@@ -156,3 +159,4 @@ AcGeBoundBlock3d* PyGeBoundBlock3d::impObj(const std::source_location& src /*= s
     }
     return static_cast<AcGeBoundBlock3d*>(m_imp.get());
 }
+#endif

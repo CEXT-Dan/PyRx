@@ -172,9 +172,11 @@ class PyGeEllipArc3d : public PyGeCurve3d
 {
 public:
     PyGeEllipArc3d();
-    PyGeEllipArc3d(const AcGeEllipArc3d& ell);
     PyGeEllipArc3d(AcGeEntity3d* pEnt);
+#if !defined(_BRXTARGET240)
+    PyGeEllipArc3d(const AcGeEllipArc3d& ell);
     PyGeEllipArc3d(const PyGeCircArc3d& arc);
+#endif
     PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius);
     PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double ang1, double ang2);
     boost::python::tuple    closestPointToPlane1(const PyGePlanarEnt& plane);

@@ -6,6 +6,7 @@ using namespace boost::python;
 //PyGeClipBoundary2d wrapper
 void makePyGeClipBoundary2dWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeClipBoundary2d, bases<PyGeEntity2d>>("ClipBoundary2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
@@ -14,8 +15,10 @@ void makePyGeClipBoundary2dWrapper()
         .def("copycast", &PyGeClipBoundary2d::copycast).staticmethod("copycast")
         .def("className", &PyGeClipBoundary2d::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeClipBoundary2d::PyGeClipBoundary2d()
     : PyGeEntity2d(new AcGeClipBoundary2d())
 {
@@ -70,3 +73,4 @@ AcGeClipBoundary2d* PyGeClipBoundary2d::impObj() const
 {
     return static_cast<AcGeClipBoundary2d*>(m_imp.get());
 }
+#endif

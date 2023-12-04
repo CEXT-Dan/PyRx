@@ -6,6 +6,7 @@ void makePyGeKnotVectorWrapper();
 
 class PyGeKnotVector
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeKnotVector();
     PyGeKnotVector(int size, int growSize);
@@ -45,6 +46,7 @@ public:
     int                     growLength() const;
     void                    setGrowLength(int len);
     static std::string      className();
+#endif
 public:
     AcGeKnotVector m_imp;
 };

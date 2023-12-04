@@ -6,6 +6,7 @@ using namespace boost::python;
 
 void makePyGeKnotVectorWrapper()
 {
+#if !defined(_BRXTARGET240)
     class_<PyGeKnotVector>("KnotVector")
         .def(init<>())
         .def(init<int, int>())
@@ -44,8 +45,10 @@ void makePyGeKnotVectorWrapper()
         .def("setGrowLength", &PyGeKnotVector::setGrowLength)
         .def("className", &PyGeKnotVector::className).staticmethod("className")
         ;
+#endif
 }
 
+#if !defined(_BRXTARGET240)
 PyGeKnotVector::PyGeKnotVector()
     : m_imp()
 {
@@ -240,3 +243,4 @@ std::string PyGeKnotVector::className()
 {
     return "AcGeKnotVector";
 }
+#endif

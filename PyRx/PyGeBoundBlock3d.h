@@ -6,6 +6,7 @@
 void makePyGeBoundBlock3dWrapper();
 class PyGeBoundBlock3d : public PyGeEntity3d
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeBoundBlock3d();
     PyGeBoundBlock3d(const AcGePoint3d& base, const AcGeVector3d& dir1, const AcGeVector3d& dir2, const AcGeVector3d& dir3);
@@ -29,4 +30,5 @@ public:
     static std::string className();
 public:
     AcGeBoundBlock3d* impObj(const std::source_location& src = std::source_location::current()) const;
+#endif
 };

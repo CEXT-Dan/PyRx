@@ -299,46 +299,78 @@ PyDbXrefObjectId PyDbViewport::getModelView() const
 
 void PyDbViewport::removeModelView(void)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->removeModelView());
+#endif
 }
 
 void PyDbViewport::setSheetView(PyDbObjectId objId)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setSheetView(objId.m_id));
+#endif
 }
 
 PyDbObjectId PyDbViewport::getSheetView() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyDbObjectId id;
     PyThrowBadEs(impObj()->getSheetView(id.m_id));
     return id;
+#endif
 }
 
 void PyDbViewport::removeSheetView(void)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->removeSheetView());
+#endif
 }
 
 void PyDbViewport::setLabelBlock(PyDbObjectId& objId)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setLabelBlock(objId.m_id));
+#endif
 }
 
 PyDbObjectId PyDbViewport::getLabelBlock() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyDbObjectId id;
     PyThrowBadEs(impObj()->getLabelBlock(id.m_id));
     return id;
+#endif
 }
 
 void PyDbViewport::removeLabelBlock(void)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->removeLabelBlock());
+#endif
 }
 
 void PyDbViewport::syncModelView(void)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->syncModelView());
+#endif
 }
 
 double PyDbViewport::height() const
@@ -422,7 +454,11 @@ void PyDbViewport::setViewDirection1(const AcGeVector3d& val)
 
 void PyDbViewport::setViewDirection2(AcDb::OrthographicView view)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setViewDirection(view));
+#endif
 }
 
 bool PyDbViewport::isUcsSavedWithViewport() const
@@ -452,12 +488,20 @@ void PyDbViewport::setShadePlot2(const AcDbViewport::ShadePlotType type, const P
 
 bool PyDbViewport::plotWireframe() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->plotWireframe();
+#endif
 }
 
 bool PyDbViewport::plotAsRaster() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->plotAsRaster();
+#endif
 }
 
 PyDbObjectId PyDbViewport::shadePlotId() const
@@ -843,62 +887,110 @@ void PyDbViewport::setGridOn2(bool val)
 
 bool PyDbViewport::isGridBoundToLimits() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isGridBoundToLimits();
+#endif
 }
 
 void PyDbViewport::setGridBoundToLimits(bool bNewVal)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridBoundToLimits(bNewVal));
+#endif
 }
 
 bool PyDbViewport::isGridAdaptive() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isGridAdaptive();
+#endif
 }
 
 void PyDbViewport::setGridAdaptive(bool bNewVal)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridAdaptive(bNewVal));
+#endif
 }
 
 bool PyDbViewport::isGridSubdivisionRestricted() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isGridSubdivisionRestricted();
+#endif
 }
 
 void PyDbViewport::setGridSubdivisionRestricted(bool bNewVal)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridSubdivisionRestricted(bNewVal));
+#endif
 }
 
 bool PyDbViewport::isGridFollow() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->isGridFollow();
+#endif
 }
 
 void PyDbViewport::setGridFollow(bool bNewVal)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridFollow(bNewVal));
+#endif
 }
 
 Adesk::UInt16 PyDbViewport::gridMajor() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->gridMajor();
+#endif
 }
 
 void PyDbViewport::setGridMajor(Adesk::UInt16 val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridMajor(val));
+#endif
 }
 
 AcGeVector2d PyDbViewport::gridIncrement() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->gridIncrement();
+#endif
 }
 
 void PyDbViewport::setGridIncrement(const AcGeVector2d& val)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setGridIncrement(val));
+#endif
 }
 
 bool PyDbViewport::hiddenLinesRemoved() const

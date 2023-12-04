@@ -1058,7 +1058,9 @@ void makePyGeEllipArc3dWrapper()
 {
     class_<PyGeEllipArc3d, bases<PyGeCurve3d>>("EllipArc3d")
         .def(init<>())
+#if !defined(_BRXTARGET240)
         .def(init<const PyGeCircArc3d&>())
+#endif
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double, double>())
         .def("closestPointToPlane", &PyGeEllipArc3d::closestPointToPlane1)
@@ -1108,6 +1110,8 @@ PyGeEllipArc3d::PyGeEllipArc3d(AcGeEntity3d* pEnt)
 {
 }
 
+
+#if !defined(_BRXTARGET240)
 PyGeEllipArc3d::PyGeEllipArc3d(const AcGeEllipArc3d& ell)
     : PyGeCurve3d(new AcGeEllipArc3d(ell))
 {
@@ -1117,6 +1121,7 @@ PyGeEllipArc3d::PyGeEllipArc3d(const PyGeCircArc3d& arc)
     : PyGeCurve3d(new AcGeEllipArc3d(*arc.impObj()))
 {
 }
+#endif
 
 PyGeEllipArc3d::PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius)
     : PyGeCurve3d(new AcGeEllipArc3d(cent, majorAxis, minorAxis, majorRadius, minorRadius))

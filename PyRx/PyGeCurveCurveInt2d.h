@@ -11,6 +11,7 @@ void makePyGeCurveCurveInt2dWrapper();
 
 class PyGeCurveCurveInt2d : public PyGeEntity2d
 {
+#if !defined(_BRXTARGET240)
 public:
     PyGeCurveCurveInt2d();
     PyGeCurveCurveInt2d(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2);
@@ -20,7 +21,7 @@ public:
     PyGeCurveCurveInt2d(const AcGeCurveCurveInt2d& src);
     PyGeCurveCurveInt2d(AcGeEntity2d* pEnt);
 
-   
+
     PyGeCurve2d             curve1() const;
     PyGeCurve2d             curve2() const;
     boost::python::tuple    getIntRanges() const;
@@ -38,7 +39,7 @@ public:
     Adesk::Boolean	        overlapDirection() const;
     boost::python::tuple    getOverlapRanges(int overlapNum) const;
     void                    changeCurveOrder();
-  
+
     PyGeCurveCurveInt2d     orderWrt1();
     PyGeCurveCurveInt2d     orderWrt2();
 
@@ -47,5 +48,5 @@ public:
     static std::string className();
 public:
     AcGeCurveCurveInt2d* impObj() const;
+#endif
 };
-
