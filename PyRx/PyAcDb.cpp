@@ -263,9 +263,11 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDb3dProfileWrapper();
 #endif
     makePyDbObjectOverrulerapper();
+#if !defined(_BRXTARGET240)
     makePyDbPointCloudDefExWrapper();
     makePyDbPointCloudExWrapper();
     makePyDbPointCloudColorMapWrapper();
+#endif
 
     makeDbCoreWrapper();//LAST?
 

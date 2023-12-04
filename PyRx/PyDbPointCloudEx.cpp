@@ -5,6 +5,8 @@
 #include "PyGePlane.h"
 
 
+#if !defined(_BRXTARGET240)
+
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
@@ -1041,3 +1043,4 @@ AcDbPointCloudEx* PyDbPointCloudEx::impObj(const std::source_location& src /*= s
         }
     return static_cast<AcDbPointCloudEx*>(m_pyImp.get());
 }
+#endif

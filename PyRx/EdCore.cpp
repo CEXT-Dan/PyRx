@@ -385,7 +385,7 @@ bool EdCore::coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt, boost::p
 
 bool EdCore::createInternetShortcut(const std::string& szURL, const std::string& szShortcutPath)
 {
-#ifdef _ZRXTARGET 
+#if defined(_ZRXTARGET240) || defined(_BRXTARGET240)
     throw PyNotimplementedByHost();
 #else
     return acedCreateInternetShortcut(utf8_to_wstr(szURL).c_str(), utf8_to_wstr(szShortcutPath).c_str());
@@ -394,9 +394,13 @@ bool EdCore::createInternetShortcut(const std::string& szURL, const std::string&
 
 PyDbObjectId EdCore::createViewportByView(PyDbDatabase& db, PyDbObjectId& view, const AcGePoint2d& location, double scale)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyDbObjectId id;
     PyThrowBadEs(acedCreateViewportByView(db.impObj(), view.m_id, location, scale, id.m_id));
     return id;
+#endif
 }
 
 int EdCore::defun(const std::string& pszName, int nFuncNum)
@@ -547,9 +551,13 @@ std::string EdCore::findFile(const std::string& file)
 
 std::string EdCore::findTrustedFile(const std::string& file)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     std::array<wchar_t, MAX_PATH> data;
     acedFindTrustedFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
     return wstr_to_utf8(data.data());
+#endif
 }
 
 boost::python::list EdCore::getPredefinedPattens()
@@ -1511,12 +1519,20 @@ void EdCore::xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool 
 
 void EdCore::xrefXBind1(const boost::python::list& symbolIds)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
     return PyThrowBadEs(acedXrefXBind(ids));
+#endif
 }
 
 void EdCore::xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
     return PyThrowBadEs(acedXrefXBind(ids, bQuiet, pHostDb.impObj()));
+#endif
 }
