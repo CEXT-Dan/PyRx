@@ -176,7 +176,7 @@ public:
     virtual ~AcDbEntityReactorImpl() override = default;
     virtual void        cancelled(const AcDbObject* pObj) override;
     virtual void        copied(const AcDbObject* src, const AcDbObject* newObj) override;
-    virtual void        erased(const AcDbObject*, bool bErasing) override;
+    virtual void        erased(const AcDbObject*, Adesk::Boolean bErasing) override;
     virtual void        goodbye(const AcDbObject* ptr) override;
     virtual void        openedForModify(const AcDbObject* ptr) override;
     virtual void        modified(const AcDbObject* ptr)override;

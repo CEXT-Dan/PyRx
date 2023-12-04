@@ -5,6 +5,9 @@
 using namespace boost::python;
 
 
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+// dead
+#else
 void makePyPlPlotConfigManagerWrapper()
 {
     PyDocString DS("PlotConfigManager");
@@ -138,3 +141,4 @@ AcPlPlotConfigManager* PyPlPlotConfigManager::impObj(const std::source_location&
     }
     return m_imp;
 }
+#endif

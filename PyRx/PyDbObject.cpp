@@ -914,7 +914,7 @@ void AcDbEntityReactorImpl::copied(const AcDbObject* src, const AcDbObject* newO
     }
 }
 
-void AcDbEntityReactorImpl::erased(const AcDbObject* src, bool bErasing)
+void AcDbEntityReactorImpl::erased(const AcDbObject* src, Adesk::Boolean bErasing)
 {
     const auto imp = impObj();
     if (imp->reg_erased)
