@@ -956,7 +956,11 @@ void PyDbTable::setDataType4(int row, int col, int nContent, AcValue::DataType n
 
 void PyDbTable::setFormat(int row, int col, const std::string& pszFormat)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setFormat(row, col, utf8_to_wstr(pszFormat).c_str()));
+#endif
 }
 
 std::string PyDbTable::textString(int row, int col) const
@@ -1602,11 +1606,15 @@ std::string PyDbTable::getBlockAttributeValue1(int row, int col, const PyDbObjec
 
 std::string PyDbTable::getBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     ACHAR* val = nullptr;
     PyThrowBadEs(impObj()->getBlockAttributeValue(row, col, nContent, attdefId.m_id, val));
     std::string sval = wstr_to_utf8(val);
     acutDelString(val);
     return sval;
+#endif
 }
 
 void PyDbTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId, const std::string& value)
@@ -1616,7 +1624,11 @@ void PyDbTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& at
 
 void PyDbTable::setBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId, const std::string& value)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(impObj()->setBlockAttributeValue(row, col, nContent, attdefId.m_id, utf8_to_wstr(value).c_str()));
+#endif
 }
 
 const std::string PyDbTable::cellStyle(int nRow, int nCol) const
@@ -1863,7 +1875,7 @@ void PyDbTable::setBreakSpacing(double fSpacing)
 
 AcCellRange PyDbTable::cellRange() const
 {
-#if defined(_GRXTARGET) || defined(_ZRXTARGET)
+#if defined(_GRXTARGET240) || defined(_ZRXTARGET240) || defined(_BRXTARGET240)
     auto range = AcCellRange{};
     range.mnTopRow = 0;
     range.mnLeftColumn = 0;
