@@ -1,4 +1,7 @@
 #pragma once
+
+#if !defined(_BRXTARGET240)
+
 #include "PyDbObject.h"
 #include "PyDbEntity.h"
 
@@ -229,3 +232,4 @@ public:
     inline AcDbPointCloudEx* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+#endif

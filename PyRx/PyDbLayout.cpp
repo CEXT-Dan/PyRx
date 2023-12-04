@@ -838,14 +838,22 @@ int PyDbLayoutManager::countLayouts2(PyDbDatabase& pDb)
 
 Adesk::ULongPtr PyDbLayoutManager::setupForLayouts(PyDbDatabase& pDb)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     Adesk::ULongPtr contextHandle = 0;
     PyThrowBadEs(acdbDoSetupForLayouts(pDb.impObj(), contextHandle));
     return contextHandle;
+#endif
 }
 
 void PyDbLayoutManager::clearSetupForLayouts(Adesk::ULongPtr contextHandle)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(acdbClearSetupForLayouts(contextHandle));
+#endif
 }
 
 PyRxClass PyDbLayoutManager::desc()

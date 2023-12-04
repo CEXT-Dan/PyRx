@@ -138,12 +138,20 @@ PyDbOsnapPointRef PyDbDimAssoc::osnapPointRef(int ptType) const
 
 void PyDbDimAssoc::setRotatedDimType(AcDbDimAssoc::RotatedDimType dimType)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(impObj()->setRotatedDimType(dimType));
+#endif
 }
 
 AcDbDimAssoc::RotatedDimType PyDbDimAssoc::rotatedDimType() const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->rotatedDimType();
+#endif
 }
 
 void PyDbDimAssoc::addToPointRefReactor()
@@ -208,27 +216,47 @@ void PyDbDimAssoc::startCmdWatcher()
 
 void PyDbDimAssoc::startOopsWatcher1()
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(impObj()->startOopsWatcher());
+#endif
 }
 
 void PyDbDimAssoc::startOopsWatcher2(bool bAddAll)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(impObj()->startOopsWatcher(bAddAll));
+#endif
 }
 
 void PyDbDimAssoc::removeOopsWatcher(void)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     impObj()->removeOopsWatcher();
+#endif
 }
 
 void PyDbDimAssoc::restoreAssocFromOopsWatcher(void)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(impObj()->restoreAssocFromOopsWatcher());
+#endif
 }
 
 bool PyDbDimAssoc::hasOopsWatcher(void) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->hasOopsWatcher();
+#endif
 }
 
 PyDbObjectId PyDbDimAssoc::post1(const PyDbObjectId& dimId)
@@ -264,27 +292,47 @@ void PyDbDimAssoc::swapReferences(const PyDbIdMapping& idMap)
 
 void PyDbDimAssoc::updateFillet(const boost::python::list& ids)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(impObj()->updateFillet(PyListToObjectIdArray(ids)));
+#endif
 }
 
 void PyDbDimAssoc::updateAssociativity(const boost::python::list& ids)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(impObj()->updateAssociativity(PyListToObjectIdArray(ids)));
+#endif
 }
 
 void PyDbDimAssoc::updateXrefSubentPath()
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(impObj()->updateXrefSubentPath());
+#endif
 }
 
 void PyDbDimAssoc::updateSubentPath(PyDbIdMapping& idMap)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyThrowBadEs(impObj()->updateSubentPath(*idMap.impObj()));
+#endif
 }
 
 void PyDbDimAssoc::updateDueToMirror(bool wasInMirror)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     impObj()->updateDueToMirror(wasInMirror);
+#endif
 }
 
 PyRxClass PyDbDimAssoc::desc()

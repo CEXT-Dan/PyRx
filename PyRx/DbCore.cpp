@@ -196,7 +196,11 @@ void DbCore::bindXrefs2(PyDbDatabase& pHostDb, const boost::python::list& xrefBl
 
 void DbCore::clearSetupForLayouts(UINT_PTR contextHandle)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyThrowBadEs(acdbClearSetupForLayouts(contextHandle));
+#endif
 }
 
 PyGeCurve3d DbCore::convertAcDbCurveToGelibCurve1(const PyDbCurve& dbCurve)
@@ -236,16 +240,24 @@ PyDbCurve DbCore::convertGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, AcGe
 
 PyDbObjectId DbCore::createViewByViewport(PyDbDatabase& pDb, const PyDbObjectId& viewportId, const std::string& name, const std::string& categoryName, const PyDbObjectId& labelBlockId)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyDbObjectId view;
     PyThrowBadEs(acdbCreateViewByViewport(pDb.impObj(), viewportId.m_id, utf8_to_wstr(name).c_str(), utf8_to_wstr(categoryName).c_str(), labelBlockId.m_id, view.m_id));
     return view;
+#endif
 }
 
 std::string DbCore::canonicalToSystemRange(int eUnits, const std::string& strIn)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     AcString strOut;
     acdbCanonicalToSystemRange(eUnits, utf8_to_wstr(strIn).c_str(), strOut);
     return wstr_to_utf8(strOut);
+#endif
 }
 
 void DbCore::detachXref(PyDbDatabase& pHostDb, const PyDbObjectId& xrefBlkId)
@@ -309,14 +321,22 @@ double DbCore::disToF(const std::string& str, int unit)
 
 UINT_PTR DbCore::doSetupForLayouts(PyDbDatabase& pDatabase)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     Adesk::ULongPtr contextHandle = 0;
     PyThrowBadEs(acdbDoSetupForLayouts(pDatabase.impObj(), contextHandle));
     return contextHandle;
+#endif
 }
 
 bool DbCore::dwkFileExists(const std::string& pszDwgfilename)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return acdbDwkFileExists(utf8_to_wstr(pszDwgfilename).c_str());
+#endif
 }
 
 void DbCore::dxfOutAs2000(PyDbDatabase& pDb, const std::string& fileName, int precision)
@@ -431,17 +451,25 @@ void DbCore::fail(const std::string& msg)
 
 boost::python::tuple DbCore::findField(const std::string& pszText, int iSearchFrom)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     int nStartPos = -1;
     int nEndPos = -1;
     auto flag = acdbFindField(utf8_to_wstr(pszText).c_str(), iSearchFrom, nStartPos, nEndPos);
     return boost::python::make_tuple(flag, nStartPos, nEndPos);
+#endif
 }
 
 void DbCore::forceTextAdjust(const boost::python::list& ids)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     auto _ids = PyListToObjectIdArray(ids);
     PyThrowBadEs(acdbForceTextAdjust(_ids));
+#endif
 }
 
 PyDbObjectId DbCore::getCurUserViewportId(PyDbDatabase& db)
@@ -474,6 +502,9 @@ PyDbObjectId DbCore::getDimAssocId(const PyDbObjectId& dimId)
 
 boost::python::list DbCore::getDimAssocIds(const PyDbObjectId& dimId)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     PyAutoLockGIL lock;
     AcDbObjectIdArray dimAssocIds;
     PyThrowBadEs(acdbGetDimAssocIds(dimId.m_id, dimAssocIds));
@@ -481,6 +512,7 @@ boost::python::list DbCore::getDimAssocIds(const PyDbObjectId& dimId)
     for (auto item : dimAssocIds)
         pyIds.append(PyDbObjectId(item));
     return pyIds;
+#endif
 }
 
 PyDbObjectId DbCore::getDimStyleId(PyDbDatabase& db, const std::string& styleName, const std::string& lockName)
@@ -494,7 +526,11 @@ PyDbObjectId DbCore::getDimStyleId(PyDbDatabase& db, const std::string& styleNam
 
 PyDbObjectId DbCore::getDynDimStyleId(PyDbDatabase& db)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return PyDbObjectId(acdbGetDynDimStyleId(db.impObj()));
+#endif
 }
 
 boost::python::tuple DbCore::getProxyInfo(const PyDbObject& obj)
@@ -742,17 +778,25 @@ boost::python::list DbCore::tblSearch(const std::string& tblname, const std::str
 
 boost::python::list DbCore::textFind1(PyDbDatabase& db, const std::string& findString)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     AcDbObjectIdArray resultSet;
     acdbTextFind(db.impObj(), resultSet, utf8_to_wstr(findString).c_str());
     return ObjectIdArrayToPyList(resultSet);
+#endif
 }
 
 boost::python::list DbCore::textFind2(PyDbDatabase& db, const std::string& findString, const std::string& replaceString, Adesk::UInt8 searchOptions, const boost::python::list& selSet)
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     AcDbObjectIdArray resultSet;
     auto set = PyListToObjectIdArray(selSet);
     acdbTextFind(db.impObj(), resultSet, utf8_to_wstr(findString).c_str(), utf8_to_wstr(replaceString).c_str(), searchOptions, resultSet);
     return ObjectIdArrayToPyList(resultSet);
+#endif
 }
 
 PyDbTransactionManager DbCore::transactionManager()
