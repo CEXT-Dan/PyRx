@@ -7,6 +7,7 @@
 
 using namespace boost::python;
 
+std::mutex PyDbObjectOverruleMutex;
 void makePyDbObjectOverrulerapper()
 {
     PyDocString DS("DbObjectOverrule");
@@ -36,6 +37,9 @@ PyDbObjectOverrule::PyDbObjectOverrule()
 
 bool PyDbObjectOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 {
+#ifdef BRXAPP
+    std::lock_guard<std::mutex> lk(PyDbObjectOverruleMutex);
+#endif // BRXAPP
     if (!reg_isApplicable)
         return false;
     PyRxObject obj(pOverruledSubject);

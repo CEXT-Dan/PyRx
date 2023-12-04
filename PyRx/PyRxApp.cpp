@@ -99,8 +99,8 @@ bool initWxApp()
     wxApp::SetInstance(&WxRxApp::instance());
     if (wxInitialize())
     {
-#ifdef BRXAP
-        HINSTANCE hInst = _hdllInstance
+#ifdef BRXAPP
+        HINSTANCE hInst = _hdllInstance;
 #else
         HINSTANCE hInst = AfxGetInstanceHandle();
 #endif // BRXAP
