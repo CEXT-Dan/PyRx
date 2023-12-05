@@ -64509,6 +64509,322 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
       '''                             '''
     ...
 
+class SpatialFilter:
+    def __init__ (self: SpatialFilter,id: PyDb.ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
+      '''                             '''
+    ...
+    def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+      '''                             '''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cast (otherObject: PyRx.RxObject)-> PyDb.SpatialFilter :
+      '''                             '''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def clipVolumeIntersectsExtents (self, *args, **kwargs)-> bool :
+      '''clipVolumeIntersectsExtents( (SpatialFilter)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool clipVolumeIntersectsExtents(class PyDbSpatialFilter {lvalue},class AcDbExtents)'''
+    ...
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.SpatialFilter :
+      '''                             '''
+    ...
+    def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> PyDb.Database :
+      '''                             '''
+    ...
+    def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def drawableType (self: Drawable)-> PyGi.GiDrawableType :
+      '''                             '''
+    ...
+    def erase (self: DbObject,erasing : bool=True)-> None :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getClipSpaceToWCSMatrix (self, *args, **kwargs)-> PyGe.Matrix3d :
+      '''getClipSpaceToWCSMatrix( (SpatialFilter)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d getClipSpaceToWCSMatrix(class PyDbSpatialFilter {lvalue})'''
+    ...
+    def getDefinition (self, *args, **kwargs)-> tuple :
+      '''getDefinition( (SpatialFilter)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getDefinition(class PyDbSpatialFilter {lvalue})'''
+    ...
+    def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def getHandle (self: DbObject)-> PyDb.Handle :
+      '''                             '''
+    ...
+    def getOriginalInverseBlockXform (self, *args, **kwargs)-> PyGe.Matrix3d :
+      '''getOriginalInverseBlockXform( (SpatialFilter)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d getOriginalInverseBlockXform(class PyDbSpatialFilter {lvalue})'''
+    ...
+    def getVolume (self, *args, **kwargs)-> tuple :
+      '''getVolume( (SpatialFilter)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getVolume(class PyDbSpatialFilter {lvalue})'''
+    ...
+    def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
+      '''                             '''
+    ...
+    def hasPerspectiveCamera (self, *args, **kwargs)-> bool :
+      '''hasPerspectiveCamera( (SpatialFilter)arg1) -> bool :
+
+    C++ signature :
+        bool hasPerspectiveCamera(class PyDbSpatialFilter {lvalue})'''
+    ...
+    def hasXData (self: DbObject,appname: str)-> bool :
+      '''                             '''
+    ...
+    def id (self: Drawable)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def indexClass (self, *args, **kwargs)-> PyRx.RxClass :
+      '''indexClass( (SpatialFilter)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass indexClass(class PyDbSpatialFilter {lvalue})'''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isAcDbObjectIdsInFlux (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isInverted (self, *args, **kwargs)-> bool :
+      '''isInverted( (SpatialFilter)arg1) -> bool :
+
+    C++ signature :
+        bool isInverted(class PyDbSpatialFilter {lvalue})'''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def isPersistent (self: Drawable)-> bool :
+      '''                             '''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def objectId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def queryBounds (self, *args, **kwargs)-> PyDb.Extents :
+      '''queryBounds( (SpatialFilter)arg1) -> Extents :
+
+    C++ signature :
+        class AcDbExtents queryBounds(class PyDbSpatialFilter {lvalue})
+
+queryBounds( (SpatialFilter)arg1, (BlockReference)arg2) -> Extents :
+
+    C++ signature :
+        class AcDbExtents queryBounds(class PyDbSpatialFilter {lvalue},class PyDbBlockReference)'''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+      '''                             '''
+    ...
+    def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
+    ...
+    def setAcDbObjectIdsInFlux (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
+      '''                             '''
+    ...
+    def setDefinition (self, *args, **kwargs)-> None :
+      '''setDefinition( (SpatialFilter)arg1, (list)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (bool)arg7) -> None :
+
+    C++ signature :
+        void setDefinition(class PyDbSpatialFilter {lvalue},class boost::python::list,class AcGeVector3d,double,double,double,bool)'''
+    ...
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def setInverted (self, *args, **kwargs)-> None :
+      '''setInverted( (SpatialFilter)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setInverted(class PyDbSpatialFilter {lvalue},bool)'''
+    ...
+    def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def setPerspectiveCamera (self, *args, **kwargs)-> None :
+      '''setPerspectiveCamera( (SpatialFilter)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void setPerspectiveCamera(class PyDbSpatialFilter {lvalue},class AcGePoint3d)'''
+    ...
+    def setXData (self: DbObject,xdata: list)-> None :
+      '''                             '''
+    ...
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
+      '''                             '''
+    ...
+    def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
+      '''                             '''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
+      '''                             '''
+    ...
+    def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
+      '''                             '''
+    ...
+    def wblockClone (self: DbObject,owner: PyRx.RxObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
+      '''                             '''
+    ...
+    def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def xmitPropagateModify (self: DbObject)-> None :
+      '''                             '''
+    ...
+
 class Spline:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
