@@ -140,6 +140,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyAdsNameWrapper();
     makePyDbObjectWrapper();
     makePyDbSpatialFilterWrapper();
+    makePyDbLayerFilterWrapper();
     makePyDbObjectReactorWrapper();
     makePyDbEntityReactorWrapper();
     makePyDbDatabaseReactorWrapper();
