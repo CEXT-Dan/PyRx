@@ -291,7 +291,7 @@ PyRxClass PyDbLayerFilter::desc()
 
 std::string PyDbLayerFilter::className()
 {
-    return "AcDbSpatialFilter";
+    return "AcDbLayerFilter";
 }
 
 PyDbLayerFilter PyDbLayerFilter::cloneFrom(const PyRxObject& src)
