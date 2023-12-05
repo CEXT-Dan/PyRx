@@ -202,3 +202,117 @@ AcDbSpatialFilter* PyDbSpatialFilter::impObj(const std::source_location& src /*=
         }
     return static_cast<AcDbSpatialFilter*>(m_pyImp.get());
 }
+
+
+//----------------------------------------------------------------------------------------
+//PyDbLayerFilter
+void makePyDbLayerFilterWrapper()
+{
+    PyDocString DS("LayerFilter");
+    class_<PyDbLayerFilter, bases<PyDbObject>>("LayerFilter")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def("indexClass", &PyDbLayerFilter::indexClass, DS.ARGS())
+        .def("isValid", &PyDbLayerFilter::isValid, DS.ARGS())
+        .def("add", &PyDbLayerFilter::add, DS.ARGS({ "val : str" }))
+        .def("remove", &PyDbLayerFilter::remove, DS.ARGS({ "val : str" }))
+        .def("getAt", &PyDbLayerFilter::getAt, DS.ARGS({ "val : int" }))
+        .def("layerCount", &PyDbLayerFilter::layerCount, DS.ARGS())
+        .def("desc", &PyDbLayerFilter::desc, DS.SARGS()).staticmethod("desc")
+        .def("className", &PyDbLayerFilter::className, DS.SARGS()).staticmethod("className")
+        .def("cloneFrom", &PyDbLayerFilter::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbLayerFilter::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        ;
+}
+
+PyDbLayerFilter::PyDbLayerFilter()
+    : PyDbLayerFilter(new AcDbLayerFilter(), true)
+{
+}
+
+PyDbLayerFilter::PyDbLayerFilter(const PyDbObjectId& id)
+    : PyDbLayerFilter(openAcDbObject<AcDbLayerFilter>(id, AcDb::OpenMode::kForRead), false)
+{
+}
+
+PyDbLayerFilter::PyDbLayerFilter(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbLayerFilter(openAcDbObject<AcDbLayerFilter>(id, mode), false)
+{
+}
+
+PyDbLayerFilter::PyDbLayerFilter(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
+    : PyDbLayerFilter(openAcDbObject<AcDbLayerFilter>(id, mode, erased), false)
+{
+}
+
+PyDbLayerFilter::PyDbLayerFilter(AcDbLayerFilter* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
+{
+}
+
+PyRxClass PyDbLayerFilter::indexClass() const
+{
+    return PyRxClass(impObj()->indexClass(), false);
+}
+
+Adesk::Boolean PyDbLayerFilter::isValid() const
+{
+    return impObj()->isValid();
+}
+
+void PyDbLayerFilter::add(const std::string& pLayer)
+{
+    PyThrowBadEs(impObj()->add(utf8_to_wstr(pLayer).c_str()));
+}
+
+void PyDbLayerFilter::remove(const std::string& pLayer)
+{
+    PyThrowBadEs(impObj()->remove(utf8_to_wstr(pLayer).c_str()));
+}
+
+std::string PyDbLayerFilter::getAt(int index) const
+{
+    const ACHAR* buf = nullptr;
+    PyThrowBadEs(impObj()->getAt(index, buf));
+    return wstr_to_utf8(buf);
+}
+
+int PyDbLayerFilter::layerCount() const
+{
+    return impObj()->layerCount();
+}
+
+PyRxClass PyDbLayerFilter::desc()
+{
+    return PyRxClass(AcDbSpatialFilter::desc(), false);
+}
+
+std::string PyDbLayerFilter::className()
+{
+    return "AcDbSpatialFilter";
+}
+
+PyDbLayerFilter PyDbLayerFilter::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbLayerFilter::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbLayerFilter(static_cast<AcDbLayerFilter*>(src.impObj()->clone()), true);
+}
+
+PyDbLayerFilter PyDbLayerFilter::cast(const PyRxObject& src)
+{
+    PyDbLayerFilter dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbLayerFilter* PyDbLayerFilter::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return static_cast<AcDbLayerFilter*>(m_pyImp.get());
+}

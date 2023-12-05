@@ -59,3 +59,30 @@ public:
     inline AcDbSpatialFilter* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
+//----------------------------------------------------------------------------------------
+//PyDbLayerFilter
+void makePyDbLayerFilterWrapper();
+
+class PyDbLayerFilter : public PyDbObject
+{
+public:
+    PyDbLayerFilter();
+    PyDbLayerFilter(const PyDbObjectId&);
+    PyDbLayerFilter(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbLayerFilter(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
+    PyDbLayerFilter(AcDbLayerFilter* ptr, bool autoDelete);
+    PyRxClass                 indexClass() const;
+    Adesk::Boolean            isValid() const;
+    void                      add(const std::string& pLayer);
+    void                      remove(const std::string& pLayer);
+    std::string               getAt(int index) const;
+    int                       layerCount() const;
+    static PyRxClass          desc();
+    static std::string        className();
+    static PyDbLayerFilter    cloneFrom(const PyRxObject& src);
+    static PyDbLayerFilter    cast(const PyRxObject& src);
+public:
+    inline AcDbLayerFilter* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
