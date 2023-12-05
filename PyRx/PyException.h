@@ -119,9 +119,9 @@ struct PyNotimplementedByHost
 
     inline std::string format() const
     {
-        static constexpr const char* fmtstr = "\nException, Not implemented in {}, in function {} {}: ";
+        static constexpr const char* fmtstr = "\nException, Not implemented in {}!, function {} ,Line {}, File {}: ";
         const std::filesystem::path file = m_src.file_name();
-        return std::format(fmtstr, appHostName(), m_src.function_name(), file.filename().string());
+        return std::format(fmtstr, appHostName(), m_src.function_name(), m_src.line(), file.filename().string());
     }
 
     inline static void translator(PyNotimplementedByHost const& x)
