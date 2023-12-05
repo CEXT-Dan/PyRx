@@ -41,6 +41,7 @@
 #include "PyDb3dProfile.h"
 #include "PyDbOverrule.h"
 #include "PyDbPointCloudEx.h"
+#include "PyDbSpatialFilter.h"
 
 using namespace boost::python;
 
@@ -138,6 +139,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbXrefObjectIdWrapper();
     makePyAdsNameWrapper();
     makePyDbObjectWrapper();
+    makePyDbSpatialFilterWrapper();
     makePyDbObjectReactorWrapper();
     makePyDbEntityReactorWrapper();
     makePyDbDatabaseReactorWrapper();
