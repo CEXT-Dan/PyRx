@@ -64540,11 +64540,8 @@ class SpatialFilter:
     def className ()-> str :
       '''                             '''
     ...
-    def clipVolumeIntersectsExtents (self, *args, **kwargs)-> bool :
-      '''clipVolumeIntersectsExtents( (SpatialFilter)arg1, (Extents)arg2) -> bool :
-
-    C++ signature :
-        bool clipVolumeIntersectsExtents(class PyDbSpatialFilter {lvalue},class AcDbExtents)'''
+    def clipVolumeIntersectsExtents (self: SpatialFilter,val : PyDb.Extents)-> bool :
+      '''                             '''
     ...
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.SpatialFilter :
       '''                             '''
@@ -64588,17 +64585,11 @@ class SpatialFilter:
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getClipSpaceToWCSMatrix (self, *args, **kwargs)-> PyGe.Matrix3d :
-      '''getClipSpaceToWCSMatrix( (SpatialFilter)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d getClipSpaceToWCSMatrix(class PyDbSpatialFilter {lvalue})'''
+    def getClipSpaceToWCSMatrix (self: SpatialFilter)-> PyGe.Matrix3d :
+      '''                             '''
     ...
-    def getDefinition (self, *args, **kwargs)-> tuple :
-      '''getDefinition( (SpatialFilter)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getDefinition(class PyDbSpatialFilter {lvalue})'''
+    def getDefinition (self: SpatialFilter)-> tuple :
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
       '''                             '''
@@ -64609,17 +64600,11 @@ class SpatialFilter:
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getOriginalInverseBlockXform (self, *args, **kwargs)-> PyGe.Matrix3d :
-      '''getOriginalInverseBlockXform( (SpatialFilter)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d getOriginalInverseBlockXform(class PyDbSpatialFilter {lvalue})'''
+    def getOriginalInverseBlockXform (self: SpatialFilter)-> PyGe.Matrix3d :
+      '''                             '''
     ...
-    def getVolume (self, *args, **kwargs)-> tuple :
-      '''getVolume( (SpatialFilter)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getVolume(class PyDbSpatialFilter {lvalue})'''
+    def getVolume (self: SpatialFilter)-> tuple :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -64630,11 +64615,8 @@ class SpatialFilter:
     def hasPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
-    def hasPerspectiveCamera (self, *args, **kwargs)-> bool :
-      '''hasPerspectiveCamera( (SpatialFilter)arg1) -> bool :
-
-    C++ signature :
-        bool hasPerspectiveCamera(class PyDbSpatialFilter {lvalue})'''
+    def hasPerspectiveCamera (self: SpatialFilter)-> bool :
+      '''                             '''
     ...
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
@@ -64645,11 +64627,8 @@ class SpatialFilter:
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def indexClass (self, *args, **kwargs)-> PyRx.RxClass :
-      '''indexClass( (SpatialFilter)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass indexClass(class PyDbSpatialFilter {lvalue})'''
+    def indexClass (self: SpatialFilter)-> PyRx.RxClass :
+      '''                             '''
     ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
@@ -64669,11 +64648,8 @@ class SpatialFilter:
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isInverted (self, *args, **kwargs)-> bool :
-      '''isInverted( (SpatialFilter)arg1) -> bool :
-
-    C++ signature :
-        bool isInverted(class PyDbSpatialFilter {lvalue})'''
+    def isInverted (self: SpatialFilter)-> bool :
+      '''                             '''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
@@ -64729,16 +64705,8 @@ class SpatialFilter:
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryBounds (self, *args, **kwargs)-> PyDb.Extents :
-      '''queryBounds( (SpatialFilter)arg1) -> Extents :
-
-    C++ signature :
-        class AcDbExtents queryBounds(class PyDbSpatialFilter {lvalue})
-
-queryBounds( (SpatialFilter)arg1, (BlockReference)arg2) -> Extents :
-
-    C++ signature :
-        class AcDbExtents queryBounds(class PyDbSpatialFilter {lvalue},class PyDbBlockReference)'''
+    def queryBounds (self: SpatialFilter,ref : PyDbBlockReference=None)-> PyDb.Extents :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
@@ -64764,29 +64732,20 @@ queryBounds( (SpatialFilter)arg1, (BlockReference)arg2) -> Extents :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setDefinition (self, *args, **kwargs)-> None :
-      '''setDefinition( (SpatialFilter)arg1, (list)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (bool)arg7) -> None :
-
-    C++ signature :
-        void setDefinition(class PyDbSpatialFilter {lvalue},class boost::python::list,class AcGeVector3d,double,double,double,bool)'''
+    def setDefinition (self: SpatialFilter,pnt2d: List[PyGe.Point2d],normal: PyGe.Vector3d,elev: real,frontclip: real,backclip: real,enabled: bool)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setInverted (self, *args, **kwargs)-> None :
-      '''setInverted( (SpatialFilter)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setInverted(class PyDbSpatialFilter {lvalue},bool)'''
+    def setInverted (self: SpatialFilter,val : bool)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setPerspectiveCamera (self, *args, **kwargs)-> None :
-      '''setPerspectiveCamera( (SpatialFilter)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPerspectiveCamera(class PyDbSpatialFilter {lvalue},class AcGePoint3d)'''
+    def setPerspectiveCamera (self: SpatialFilter,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
