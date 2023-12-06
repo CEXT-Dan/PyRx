@@ -183,6 +183,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3DAD8A4DB0D74D8BABBBD527F4A44CAB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3DAE9E9978354FFBBEB4E2ED907FDB4E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -346,6 +352,12 @@
         "Entry"
         {
         "MsmKey" = "8:_59855E00CB434952BCE71643EAC6FD84"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5BD740F422954A8DA61D1DBF4226D281"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -519,6 +531,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8D8FC8602D5E4F0F9D4AFEA6453E25DB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_950C9885E27C4AD194E45E23A242C934"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -622,6 +640,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B06B76D482B7414B9AF78487272D70BC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B1EC0C0F9B014CD7A1B8D9A7E4B1B49D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -954,7 +978,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:FALSE"
+            "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -1064,6 +1088,26 @@
             "TargetName" = "8:PyGe.html"
             "Tag" = "8:"
             "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3DAD8A4DB0D74D8BABBBD527F4A44CAB"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\BxDb24.py"
+            "TargetName" = "8:BxDb24.py"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1242,6 +1286,26 @@
             {
             "SourcePath" = "8:..\\PyRxStubs\\PyGs.pyi"
             "TargetName" = "8:PyGs.pyi"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5BD740F422954A8DA61D1DBF4226D281"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\BxApp24.py"
+            "TargetName" = "8:BxApp24.py"
             "Tag" = "8:"
             "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
             "Condition" = "8:"
@@ -1438,6 +1502,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8D8FC8602D5E4F0F9D4AFEA6453E25DB"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\BxDb24.pyi"
+            "TargetName" = "8:BxDb24.pyi"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_950C9885E27C4AD194E45E23A242C934"
             {
             "SourcePath" = "8:..\\PyRxStubs\\PyPl.pyi"
@@ -1504,6 +1588,26 @@
             "TargetName" = "8:PyPl.html"
             "Tag" = "8:"
             "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B1EC0C0F9B014CD7A1B8D9A7E4B1B49D"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\BxApp24.pyi"
+            "TargetName" = "8:BxApp24.pyi"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2182,7 +2286,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_22609B8BBEE94276AB14821CED2955B3"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Release\\PyRx24.1.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.1\\x64\\Debug\\PyRx24.1.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2210,7 +2314,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_418B15E112A24E08AE5FC6F1B9FFA1CF"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Release\\PyRx24.3.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.3\\x64\\Debug\\PyRx24.3.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2238,7 +2342,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_838E2B6344B24E2AAC075D0FA0016466"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxV24.0\\x64\\Release\\PyRxV24.0.brx"
+            "SourcePath" = "8:..\\Bin\\PyRxV24.0\\x64\\Debug\\PyRxV24.0.brx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2266,7 +2370,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_984A47D038684218B56637F570893F36"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Release\\PyRx24.2.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.2\\x64\\Debug\\PyRx24.2.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2294,7 +2398,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A44C97D6863C4AFFA8F9215066B50CDB"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxG24.0\\x64\\Release\\PyRxG24.0.grx"
+            "SourcePath" = "8:..\\Bin\\PyRxG24.0\\x64\\Debug\\PyRxG24.0.grx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2322,7 +2426,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D9BD5CE14044416AA23239BD59541E48"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxZ24.0\\x64\\Release\\PyRxZ24.0.zrx"
+            "SourcePath" = "8:..\\Bin\\PyRxZ24.0\\x64\\Debug\\PyRxZ24.0.zrx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2350,7 +2454,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FB5365C0C70E4357B09AFE0841C5C631"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Release\\PyRx24.0.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24.0\\x64\\Debug\\PyRx24.0.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
