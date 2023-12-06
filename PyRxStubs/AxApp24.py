@@ -6873,7 +6873,7 @@ class IAcadDimRadialLarge(DispatchBaseClass):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
     
-        #override properties
+    #override properties
     def __setattr__(self, __name, __value):
         match __name:
             case 'Center':
@@ -7719,6 +7719,7 @@ class IAcadDimension(DispatchBaseClass):
         'Updates the graphics of the entity object.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
     
+    #override
     def __setattr__(self, __name, __value):
         match __name:
             case 'TextPosition':
