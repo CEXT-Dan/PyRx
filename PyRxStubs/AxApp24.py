@@ -2872,6 +2872,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a Shape object based on a template identified by name, at the given insertion point, scale factor, and rotation'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -2956,6 +2957,7 @@ class IAcadBlock(DispatchBaseClass):
     # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a Trace object from an array of points'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
