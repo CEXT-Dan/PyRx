@@ -2238,7 +2238,7 @@ class IAcadUtility(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743823, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
             , Prompt)
 
-    def GetPoint(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+    def GetPoint(self, Prompt=defaultNamedOptArg):
         'Gets the point selected in the application'
         Point = pythoncom.Empty
         return self._ApplyTypes_(1610743824, 1, (12, 0), ((12, 17), (12, 17)), 'GetPoint', None,Point
