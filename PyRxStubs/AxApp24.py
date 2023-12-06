@@ -13660,8 +13660,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object at a given location'
-        if isinstance(Point, list) or isinstance(Point, tuple):
-            Point = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point)
+        Point = VTR8ArrayOrVal(Point)
         ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point)
         if ret is not None:
             ret = Dispatch(ret, 'AddPoint', '{EBA657C9-D850-4172-B4C4-7925D6481D70}')
@@ -13690,8 +13689,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a new raster image based on an existing image file'
-        if isinstance(InsertionPoint, list) or isinstance(InsertionPoint, tuple):
-            InsertionPoint = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, InsertionPoint)
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -13701,10 +13699,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two unique points'
-        if isinstance(Point1, list) or isinstance(Point1, tuple):
-            Point1 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point1)
-        if isinstance(Point2, list) or isinstance(Point2, tuple):
-            Point2 = win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, Point2)
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13743,6 +13739,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a Shape object based on a template identified by name, at the given insertion point, scale factor, and rotation'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -14721,6 +14718,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form 3D mesh, given the number of points in the M and N directions and the coordinates of the points in the M and N directions'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -15135,6 +15133,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a Shape object based on a template identified by name, at the given insertion point, scale factor, and rotation'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -15219,6 +15218,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a Trace object from an array of points'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -15330,6 +15330,14 @@ class IAcadPaperSpace(DispatchBaseClass):
             case _:
                 DispatchBaseClass.__setattr__(self, __name, __value)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BlockScaling": (1600, 2, (3, 0), (), "BlockScaling", None),
@@ -20570,6 +20578,7 @@ class IAcadSpline(DispatchBaseClass):
 
     def AddFitPoint(self, Index=defaultNamedNotOptArg, fitPoint=defaultNamedNotOptArg):
         'Adds the fit point to the spline at a given index'
+        fitPoint = VTR8ArrayOrVal(fitPoint)
         return self._oleobj_.InvokeTypes(20, LCID, 1, (24, 0), ((3, 1), (12, 1)),Index
             , fitPoint)
 
@@ -20716,11 +20725,13 @@ class IAcadSpline(DispatchBaseClass):
 
     def SetControlPoint(self, Index=defaultNamedNotOptArg, controlPoint=defaultNamedNotOptArg):
         'Sets the indexed control point of the spline at a specified point'
+        controlPoint = VTR8ArrayOrVal(controlPoint)
         return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), ((3, 1), (12, 1)),Index
             , controlPoint)
 
     def SetFitPoint(self, Index=defaultNamedNotOptArg, fitPoint=defaultNamedNotOptArg):
         'Sets the indexed fit point of the spline at a specified point'
+        fitPoint = VTR8ArrayOrVal(fitPoint)
         return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((3, 1), (12, 1)),Index
             , fitPoint)
 
@@ -22396,6 +22407,9 @@ class IAcadTable(DispatchBaseClass):
     def Select(self, wpt=defaultNamedNotOptArg, wvwVec=defaultNamedNotOptArg, wvwxVec=defaultNamedNotOptArg, wxaper=defaultNamedNotOptArg
             , wyaper=defaultNamedNotOptArg, allowOutside=defaultNamedNotOptArg, resultRowIndex=pythoncom.Missing, resultColumnIndex=pythoncom.Missing):
         'Select.'
+        wpt = VTR8ArrayOrVal(wpt)
+        wvwVec = VTR8ArrayOrVal(wvwVec)
+        wvwxVec = VTR8ArrayOrVal(wvwxVec)
         return self._ApplyTypes_(105, 1, (24, 0), ((12, 1), (12, 1), (12, 1), (5, 1), (5, 1), (11, 1), (16387, 2), (16387, 2)), 'Select', None,wpt
             , wvwVec, wvwxVec, wxaper, wyaper, allowOutside
             , resultRowIndex, resultColumnIndex)
@@ -22404,6 +22418,10 @@ class IAcadTable(DispatchBaseClass):
             , seltype=defaultNamedNotOptArg, bIncludeCurrentSelection=defaultNamedNotOptArg, rowMin=pythoncom.Missing, rowMax=pythoncom.Missing, colMin=pythoncom.Missing
             , colMax=pythoncom.Missing):
         'Select SubRegion.'
+        wpt1 = VTR8ArrayOrVal(wpt1)
+        wpt2 = VTR8ArrayOrVal(wpt2)
+        wvwVec = VTR8ArrayOrVal(wvwVec)
+        wvwxVec = VTR8ArrayOrVal(wvwxVec)
         return self._ApplyTypes_(106, 1, (24, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (3, 1), (11, 1), (16387, 2), (16387, 2), (16387, 2), (16387, 2)), 'SelectSubRegion', None,wpt1
             , wpt2, wvwVec, wvwxVec, seltype, bIncludeCurrentSelection
             , rowMin, rowMax, colMin, colMax)
@@ -24821,11 +24839,13 @@ class IAcadView(DispatchBaseClass):
         match __name:
             case 'Center':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Target':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case 'Direction':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case _:
                 DispatchBaseClass.__setattr__(self, __name, __value)
-
+                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "CategoryName": (7, 2, (8, 0), (), "CategoryName", None),
@@ -24934,6 +24954,8 @@ class IAcadViewport(DispatchBaseClass):
             case 'Center':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case 'Direction':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Target':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case 'SnapBasePoint':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))

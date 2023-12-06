@@ -12252,6 +12252,10 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -12261,6 +12265,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a PolyfaceMesh object and adds it to modelspace, paperspace, or a block.'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -12270,6 +12275,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a 3DPolyline object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1542, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -12279,6 +12285,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an Arc object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -12289,6 +12296,7 @@ class IAcadModelSpace(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an Attribute object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -12299,6 +12307,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box and adds it to modelspace, paperspace, or a block.'
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -12308,6 +12317,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a Circle object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -12317,6 +12327,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -12334,6 +12345,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -12343,6 +12355,9 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3-point angular dimension object and adds it to modelspace, paperspace, or a block.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -12352,6 +12367,9 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension object and adds it to modelspace, paperspace, or a block.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -12361,6 +12379,9 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension object and adds it to modelspace, paperspace, or a block.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -12370,6 +12391,10 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         'Creates an arc length dimension object and adds it to modelspace, paperspace, or a block.'
+        ArcCenter = VTR8ArrayOrVal(ArcCenter)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        ArcPoint = VTR8ArrayOrVal(ArcPoint)
         ret = self._oleobj_.InvokeTypes(1602, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),ArcCenter
             , FirstEndPoint, SecondEndPoint, ArcPoint)
         if ret is not None:
@@ -12379,6 +12404,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension object and adds it to modelspace, paperspace, or a block.'
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        FarChordPoint = VTR8ArrayOrVal(FarChordPoint)
         ret = self._oleobj_.InvokeTypes(1551, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),ChordPoint
             , FarChordPoint, LeaderLength)
         if ret is not None:
@@ -12388,6 +12415,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension object and adds it to modelspace, paperspace, or a block.'
+        DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
+        LeaderEndPoint = VTR8ArrayOrVal(LeaderEndPoint)
         ret = self._oleobj_.InvokeTypes(1553, LCID, 1, (9, 0), ((12, 1), (12, 1), (3, 1)),DefinitionPoint
             , LeaderEndPoint, UseXAxis)
         if ret is not None:
@@ -12397,6 +12426,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
         ret = self._oleobj_.InvokeTypes(1554, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, LeaderLength)
         if ret is not None:
@@ -12407,6 +12438,10 @@ class IAcadModelSpace(DispatchBaseClass):
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         'Creates a jogged radial dimension object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        OverrideCenter = VTR8ArrayOrVal(OverrideCenter)
+        JogPoint = VTR8ArrayOrVal(JogPoint)
         ret = self._oleobj_.InvokeTypes(1603, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, OverrideCenter, JogPoint, JogAngle)
         if ret is not None:
@@ -12416,6 +12451,9 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a rotated linear dimension object and adds it to modelspace, paperspace, or a block.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        DimLineLocation = VTR8ArrayOrVal(DimLineLocation)
         ret = self._oleobj_.InvokeTypes(1552, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (5, 1)),ExtLine1Point
             , ExtLine2Point, DimLineLocation, RotationAngle)
         if ret is not None:
@@ -12425,6 +12463,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an Ellipse object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -12434,6 +12473,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cone object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -12443,6 +12483,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cylinder object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -12452,6 +12493,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadOle
     def AddEmbeddedRaster(self, ImagePath=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, Width=defaultNamedNotOptArg):
         'Embed raster as an OLE item.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1792, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),ImagePath
             , InsertionPoint, Height, Width)
         if ret is not None:
@@ -12488,6 +12530,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadLeader
     def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
         'Creates a Leader object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
             , Annotation, Type)
         if ret is not None:
@@ -12497,6 +12540,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a Lightweight Polyline object and adds it to modelspace, paperspace, or a block.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -12506,6 +12550,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a Line object and adds it to modelspace, paperspace, or a block.'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -12517,6 +12563,7 @@ class IAcadModelSpace(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Adds an array of blocks to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -12528,12 +12575,14 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         'Creates a multileader'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{A2F0013E-ACE4-41C5-9015-37587663DD30}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Creates a Multiline object and adds it to modelspace, paperspace, or a block.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
             )
         if ret is not None:
@@ -12543,6 +12592,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates an Multiline Text object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -12552,6 +12602,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object and adds it to modelspace, paperspace, or a block.'
+        Point = VTR8ArrayOrVal(Point)
         ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
             )
         if ret is not None:
@@ -12561,6 +12612,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Creates a Polyface Mesh object and adds it to modelspace, paperspace, or a block.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1586, LCID, 1, (9, 0), ((12, 1), (12, 1)),VertexList
             , FaceList)
         if ret is not None:
@@ -12570,6 +12622,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a Polyline object and adds it to modelspace, paperspace, or a block.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -12579,6 +12632,9 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Adds a raster image as a Raster object to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -12588,6 +12644,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a Ray object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12603,6 +12661,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid object and adds it to modelspace, paperspace, or a block.'
+        AxisPoint = VTR8ArrayOrVal(AxisPoint)
+        AxisDir = VTR8ArrayOrVal(AxisDir)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -12612,6 +12672,9 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         'Creates a Section object and adds it to modelspace, paperspace, or a block.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
+        planeVector = VTR8ArrayOrVal(planeVector)        
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -12621,6 +12684,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a Shape object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -12630,6 +12694,10 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 2D solid polygon object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1569, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -12639,6 +12707,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a Sphere object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1570, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -12648,6 +12717,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a Spline object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -12658,6 +12728,7 @@ class IAcadModelSpace(DispatchBaseClass):
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a Table object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1595, LCID, 1, (9, 0), ((12, 1), (3, 1), (3, 1), (5, 1), (5, 1)),InsertionPoint
             , NumRows, NumColumns, RowHeight, ColWidth)
         if ret is not None:
@@ -12667,6 +12738,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a Text object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1572, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),TextString
             , InsertionPoint, Height)
         if ret is not None:
@@ -12676,6 +12748,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a Tolerance object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
+        Direction = VTR8ArrayOrVal(Direction)
         ret = self._oleobj_.InvokeTypes(1573, LCID, 1, (9, 0), ((8, 1), (12, 1), (12, 1)),Text
             , InsertionPoint, Direction)
         if ret is not None:
@@ -12685,6 +12759,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a Torus object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1574, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , TorusRadius, TubeRadius)
         if ret is not None:
@@ -12694,6 +12769,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a Trace object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -12703,6 +12779,7 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a Wedge object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1576, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Length, Width, Height)
         if ret is not None:
@@ -12712,6 +12789,8 @@ class IAcadModelSpace(DispatchBaseClass):
     # Result is of type IAcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an XLine object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1577, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12722,6 +12801,7 @@ class IAcadModelSpace(DispatchBaseClass):
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attaches an external reference to a drawing.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1590, LCID, 1, (9, 0), ((8, 1), (8, 1), (12, 1), (5, 1), (5, 1), (5, 1), (5, 1), (11, 1), (12, 17)),PathName
             , Name, InsertionPoint, Xscale, Yscale, Zscale
             , Rotation, bOverlay, Password)
@@ -12763,6 +12843,7 @@ class IAcadModelSpace(DispatchBaseClass):
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts a drawing or named block to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1578, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , Password)
@@ -12791,6 +12872,13 @@ class IAcadModelSpace(DispatchBaseClass):
     def Unload(self):
         'Unloads an external reference from a drawing.'
         return self._oleobj_.InvokeTypes(1591, LCID, 1, (24, 0), (),)
+    
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -13032,6 +13120,14 @@ class IAcadOle(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         # Method 'Database' returns object of type 'IAcadDatabase'
@@ -13250,6 +13346,16 @@ class IAcadPViewport(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'SnapBasePoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -13368,6 +13474,10 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -13377,6 +13487,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a PolyfaceMesh object and adds it to modelspace, paperspace, or a block.'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -13386,6 +13497,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a 3DPolyline object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1542, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -13395,6 +13507,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an Arc object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -13404,6 +13517,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadAttribute
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         'Creates an Attribute object and adds it to modelspace, paperspace, or a block.'
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
@@ -13415,6 +13529,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box and adds it to modelspace, paperspace, or a block.'
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -13424,6 +13539,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a Circle object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -13433,6 +13549,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -13450,6 +13567,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -13459,6 +13577,9 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3-point angular dimension object and adds it to modelspace, paperspace, or a block.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -13468,6 +13589,9 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension object and adds it to modelspace, paperspace, or a block.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -13477,6 +13601,9 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension object and adds it to modelspace, paperspace, or a block.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -13486,6 +13613,10 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         'Creates an arc length dimension object and adds it to modelspace, paperspace, or a block.'
+        ArcCenter = VTR8ArrayOrVal(ArcCenter)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        ArcPoint = VTR8ArrayOrVal(ArcPoint)
         ret = self._oleobj_.InvokeTypes(1602, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),ArcCenter
             , FirstEndPoint, SecondEndPoint, ArcPoint)
         if ret is not None:
@@ -13495,6 +13626,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension object and adds it to modelspace, paperspace, or a block.'
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        FarChordPoint = VTR8ArrayOrVal(FarChordPoint)
         ret = self._oleobj_.InvokeTypes(1551, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),ChordPoint
             , FarChordPoint, LeaderLength)
         if ret is not None:
@@ -13504,6 +13637,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension object and adds it to modelspace, paperspace, or a block.'
+        DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
+        LeaderEndPoint = VTR8ArrayOrVal(LeaderEndPoint)
         ret = self._oleobj_.InvokeTypes(1553, LCID, 1, (9, 0), ((12, 1), (12, 1), (3, 1)),DefinitionPoint
             , LeaderEndPoint, UseXAxis)
         if ret is not None:
@@ -13513,6 +13648,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
         ret = self._oleobj_.InvokeTypes(1554, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, LeaderLength)
         if ret is not None:
@@ -13523,6 +13660,10 @@ class IAcadPaperSpace(DispatchBaseClass):
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         'Creates a jogged radial dimension object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        OverrideCenter = VTR8ArrayOrVal(OverrideCenter)
+        JogPoint = VTR8ArrayOrVal(JogPoint)
         ret = self._oleobj_.InvokeTypes(1603, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, OverrideCenter, JogPoint, JogAngle)
         if ret is not None:
@@ -13532,6 +13673,9 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a rotated linear dimension object and adds it to modelspace, paperspace, or a block.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        DimLineLocation = VTR8ArrayOrVal(DimLineLocation)
         ret = self._oleobj_.InvokeTypes(1552, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (5, 1)),ExtLine1Point
             , ExtLine2Point, DimLineLocation, RotationAngle)
         if ret is not None:
@@ -13541,6 +13685,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an Ellipse object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -13550,6 +13695,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cone object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -13559,6 +13705,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cylinder object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -13568,6 +13715,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadOle
     def AddEmbeddedRaster(self, ImagePath=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, Width=defaultNamedNotOptArg):
         'Embed raster as an OLE item.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1792, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),ImagePath
             , InsertionPoint, Height, Width)
         if ret is not None:
@@ -13604,6 +13752,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadLeader
     def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
         'Creates a Leader object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
             , Annotation, Type)
         if ret is not None:
@@ -13613,6 +13762,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a Lightweight Polyline object and adds it to modelspace, paperspace, or a block.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -13622,6 +13772,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a Line object and adds it to modelspace, paperspace, or a block.'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -13633,6 +13785,7 @@ class IAcadPaperSpace(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Adds an array of blocks to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -13644,12 +13797,14 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         'Creates a multileader'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{A2F0013E-ACE4-41C5-9015-37587663DD30}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Creates a Multiline object and adds it to modelspace, paperspace, or a block.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
             )
         if ret is not None:
@@ -13659,6 +13814,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates an Multiline Text object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -13668,6 +13824,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadPViewport
     def AddPViewport(self, Center=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Adds a paperspace viewport to paperspace.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Width, Height)
         if ret is not None:
@@ -13677,6 +13834,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object and adds it to modelspace, paperspace, or a block.'
+        Point = VTR8ArrayOrVal(Point)
         ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
             )
         if ret is not None:
@@ -13686,6 +13844,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Creates a Polyface Mesh object and adds it to modelspace, paperspace, or a block.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1586, LCID, 1, (9, 0), ((12, 1), (12, 1)),VertexList
             , FaceList)
         if ret is not None:
@@ -13695,6 +13854,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a Polyline object and adds it to modelspace, paperspace, or a block.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -13704,6 +13864,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Adds a raster image as a Raster object to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -13713,6 +13874,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a Ray object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13728,6 +13891,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid object and adds it to modelspace, paperspace, or a block.'
+        AxisPoint = VTR8ArrayOrVal(AxisPoint)
+        AxisDir = VTR8ArrayOrVal(AxisDir)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -13737,6 +13902,9 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         'Creates a Section object and adds it to modelspace, paperspace, or a block.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
+        planeVector = VTR8ArrayOrVal(planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -13746,6 +13914,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a Shape object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -13755,6 +13924,10 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 2D solid polygon object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1569, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -13764,6 +13937,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a Sphere object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1570, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -13773,6 +13947,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a Spline object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -13783,6 +13958,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a Table object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1595, LCID, 1, (9, 0), ((12, 1), (3, 1), (3, 1), (5, 1), (5, 1)),InsertionPoint
             , NumRows, NumColumns, RowHeight, ColWidth)
         if ret is not None:
@@ -13792,6 +13968,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a Text object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1572, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),TextString
             , InsertionPoint, Height)
         if ret is not None:
@@ -13801,6 +13978,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a Tolerance object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1573, LCID, 1, (9, 0), ((8, 1), (12, 1), (12, 1)),Text
             , InsertionPoint, Direction)
         if ret is not None:
@@ -13810,6 +13988,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a Torus object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1574, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , TorusRadius, TubeRadius)
         if ret is not None:
@@ -13819,6 +13998,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a Trace object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -13828,6 +14008,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a Wedge object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1576, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Length, Width, Height)
         if ret is not None:
@@ -13837,6 +14018,8 @@ class IAcadPaperSpace(DispatchBaseClass):
     # Result is of type IAcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an XLine object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1577, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13847,6 +14030,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attaches an external reference to a drawing.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1590, LCID, 1, (9, 0), ((8, 1), (8, 1), (12, 1), (5, 1), (5, 1), (5, 1), (5, 1), (11, 1), (12, 17)),PathName
             , Name, InsertionPoint, Xscale, Yscale, Zscale
             , Rotation, bOverlay, Password)
@@ -13888,6 +14072,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts a drawing or named block to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1578, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , Password)
@@ -13916,6 +14101,14 @@ class IAcadPaperSpace(DispatchBaseClass):
     def Unload(self):
         'Unloads an external reference from a drawing.'
         return self._oleobj_.InvokeTypes(1591, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -14520,6 +14713,16 @@ class IAcadPoint(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #IAcadPoint override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
@@ -14708,6 +14911,14 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
@@ -14904,6 +15115,14 @@ class IAcadPolygonMesh(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
@@ -15134,6 +15353,16 @@ class IAcadPolyline(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Area": (16, 2, (5, 0), (), "Area", None),
@@ -15327,6 +15556,14 @@ class IAcadRasterImage(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Brightness": (1, 2, (3, 0), (), "Brightness", None),
@@ -15527,6 +15764,16 @@ class IAcadRay(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'BasePoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'SecondPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BasePoint": (1, 2, (12, 0), (), "BasePoint", None),
@@ -15711,6 +15958,14 @@ class IAcadRegion(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -16038,6 +16293,14 @@ class IAcadRevolvedSurface(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'AxisPosition':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -16259,6 +16522,14 @@ class IAcadSection(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BottomHeight": (11, 2, (5, 0), (), "BottomHeight", None),
@@ -16859,7 +17130,16 @@ class IAcadShape(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
-
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         # Method 'Database' returns object of type 'IAcadDatabase'
@@ -17057,6 +17337,16 @@ class IAcadSolid(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -17221,6 +17511,7 @@ class IAcadSpline(DispatchBaseClass):
 
     def AddFitPoint(self, Index=defaultNamedNotOptArg, fitPoint=defaultNamedNotOptArg):
         'Adds a fit point to a spline.'
+        fitPoint = VTR8ArrayOrVal(fitPoint)
         return self._oleobj_.InvokeTypes(20, LCID, 1, (24, 0), ((3, 1), (12, 1)),Index
             , fitPoint)
 
@@ -17366,11 +17657,13 @@ class IAcadSpline(DispatchBaseClass):
 
     def SetControlPoint(self, Index=defaultNamedNotOptArg, controlPoint=defaultNamedNotOptArg):
         'Specifies the coordinates for a control point of a spline.'
+        controlPoint = VTR8ArrayOrVal(controlPoint)
         return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), ((3, 1), (12, 1)),Index
             , controlPoint)
 
     def SetFitPoint(self, Index=defaultNamedNotOptArg, fitPoint=defaultNamedNotOptArg):
         'Specifies the fit point of a spline.'
+        fitPoint = VTR8ArrayOrVal(fitPoint)
         return self._oleobj_.InvokeTypes(16, LCID, 1, (24, 0), ((3, 1), (12, 1)),Index
             , fitPoint)
 
@@ -17393,6 +17686,16 @@ class IAcadSpline(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'ControlPoints':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'FitPoints':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -18557,6 +18860,8 @@ class IAcadTable(DispatchBaseClass):
 
     def HitTest(self, wpt=defaultNamedNotOptArg, wviewVec=defaultNamedNotOptArg, resultRowIndex=pythoncom.Missing, resultColumnIndex=pythoncom.Missing):
         'Not implemented. Determines whether a vertex is on a table.'
+        wpt = VTR8ArrayOrVal(wpt)
+        wviewVec = VTR8ArrayOrVal(wviewVec)
         return self._ApplyTypes_(104, 1, (11, 0), ((12, 1), (12, 1), (16387, 2), (16387, 2)), 'HitTest', None,wpt
             , wviewVec, resultRowIndex, resultColumnIndex)
 
@@ -18691,6 +18996,9 @@ class IAcadTable(DispatchBaseClass):
     def Select(self, wpt=defaultNamedNotOptArg, wvwVec=defaultNamedNotOptArg, wvwxVec=defaultNamedNotOptArg, wxaper=defaultNamedNotOptArg
             , wyaper=defaultNamedNotOptArg, allowOutside=defaultNamedNotOptArg, resultRowIndex=pythoncom.Missing, resultColumnIndex=pythoncom.Missing):
         'Not implemented. Selects a cell in a table.'
+        wpt = VTR8ArrayOrVal(wpt)
+        wvwVec = VTR8ArrayOrVal(wvwVec)
+        wvwxVec = VTR8ArrayOrVal(wvwxVec)
         return self._ApplyTypes_(105, 1, (12, 0), ((12, 1), (12, 1), (12, 1), (5, 1), (5, 1), (11, 1), (16387, 2), (16387, 2)), 'Select', None,wpt
             , wvwVec, wvwxVec, wxaper, wyaper, allowOutside
             , resultRowIndex, resultColumnIndex)
@@ -18699,6 +19007,10 @@ class IAcadTable(DispatchBaseClass):
             , seltype=defaultNamedNotOptArg, bIncludeCurrentSelection=defaultNamedNotOptArg, rowMin=pythoncom.Missing, rowMax=pythoncom.Missing, colMin=pythoncom.Missing
             , colMax=pythoncom.Missing):
         'Not implemented. Selects a subregion in a table.'
+        wpt1 = VTR8ArrayOrVal(wpt1)
+        wpt2 = VTR8ArrayOrVal(wpt2)
+        wvwVec = VTR8ArrayOrVal(wvwVec)
+        wvwxVec = VTR8ArrayOrVal(wvwxVec)
         return self._ApplyTypes_(106, 1, (12, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (3, 1), (11, 1), (16387, 2), (16387, 2), (16387, 2), (16387, 2)), 'SelectSubRegion', None,wpt1
             , wpt2, wvwVec, wvwxVec, seltype, bIncludeCurrentSelection
             , rowMin, rowMax, colMin, colMax)
@@ -19089,6 +19401,18 @@ class IAcadTable(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Direction':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "AllowManualHeights": (65525, 2, (11, 0), (), "AllowManualHeights", None),
         "AllowManualPositions": (65524, 2, (11, 0), (), "AllowManualPositions", None),
@@ -19692,6 +20016,18 @@ class IAcadText(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'TextAlignmentPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Alignment": (3, 2, (3, 0), (), "Alignment", None),
@@ -20067,6 +20403,16 @@ class IAcadTolerance(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -20270,6 +20616,16 @@ class IAcadTrace(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Normal':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
@@ -20359,6 +20715,18 @@ class IAcadUCS(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'XVector':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'YVector':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         # Method 'Database' returns object of type 'IAcadDatabase'
@@ -20608,6 +20976,14 @@ class IAcadUnderlay(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Position':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "AdjustForBackground": (15, 2, (11, 0), (), "AdjustForBackground", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -20717,6 +21093,18 @@ class IAcadView(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Target':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Direction':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "CategoryName": (7, 2, (8, 0), (), "CategoryName", None),
@@ -20823,6 +21211,20 @@ class IAcadViewport(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(17, LCID, 1, (24, 0), ((3, 1),),NumWins
             )
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Center':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Direction':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Target':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'SnapBasePoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ArcSmoothness": (23, 2, (3, 0), (), "ArcSmoothness", None),
@@ -21192,6 +21594,14 @@ class IAcadWipeout(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Brightness": (1, 2, (3, 0), (), "Brightness", None),
@@ -21464,6 +21874,16 @@ class IAcadXline(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'BasePoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'SecondPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -21527,6 +21947,10 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -21536,6 +21960,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a PolyfaceMesh object and adds it to modelspace, paperspace, or a block.'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -21545,6 +21970,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a 3DPolyline object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1542, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -21554,6 +21980,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an Arc object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -21564,6 +21991,7 @@ class IOdaBlock(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an Attribute object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -21574,6 +22002,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box and adds it to modelspace, paperspace, or a block.'
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -21583,6 +22012,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a Circle object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -21592,6 +22022,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -21609,6 +22040,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -21618,6 +22050,9 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3-point angular dimension object and adds it to modelspace, paperspace, or a block.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -21627,6 +22062,9 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension object and adds it to modelspace, paperspace, or a block.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -21636,6 +22074,9 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension object and adds it to modelspace, paperspace, or a block.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -21645,6 +22086,10 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         'Creates an arc length dimension object and adds it to modelspace, paperspace, or a block.'
+        ArcCenter = VTR8ArrayOrVal(ArcCenter)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        ArcPoint = VTR8ArrayOrVal(ArcPoint)
         ret = self._oleobj_.InvokeTypes(1602, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),ArcCenter
             , FirstEndPoint, SecondEndPoint, ArcPoint)
         if ret is not None:
@@ -21654,6 +22099,8 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension object and adds it to modelspace, paperspace, or a block.'
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        FarChordPoint = VTR8ArrayOrVal(FarChordPoint)
         ret = self._oleobj_.InvokeTypes(1551, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),ChordPoint
             , FarChordPoint, LeaderLength)
         if ret is not None:
@@ -21663,6 +22110,8 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension object and adds it to modelspace, paperspace, or a block.'
+        DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
+        LeaderEndPoint = VTR8ArrayOrVal(LeaderEndPoint)
         ret = self._oleobj_.InvokeTypes(1553, LCID, 1, (9, 0), ((12, 1), (12, 1), (3, 1)),DefinitionPoint
             , LeaderEndPoint, UseXAxis)
         if ret is not None:
@@ -21672,6 +22121,8 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
         ret = self._oleobj_.InvokeTypes(1554, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, LeaderLength)
         if ret is not None:
@@ -21682,6 +22133,10 @@ class IOdaBlock(DispatchBaseClass):
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         'Creates a jogged radial dimension object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        OverrideCenter = VTR8ArrayOrVal(OverrideCenter)
+        JogPoint = VTR8ArrayOrVal(JogPoint)
         ret = self._oleobj_.InvokeTypes(1603, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, OverrideCenter, JogPoint, JogAngle)
         if ret is not None:
@@ -21691,6 +22146,9 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a rotated linear dimension object and adds it to modelspace, paperspace, or a block.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        DimLineLocation = VTR8ArrayOrVal(DimLineLocation)
         ret = self._oleobj_.InvokeTypes(1552, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (5, 1)),ExtLine1Point
             , ExtLine2Point, DimLineLocation, RotationAngle)
         if ret is not None:
@@ -21700,6 +22158,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an Ellipse object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -21709,6 +22168,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cone object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -21718,6 +22178,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cylinder object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -21727,6 +22188,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadOle
     def AddEmbeddedRaster(self, ImagePath=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, Width=defaultNamedNotOptArg):
         'Embed raster as an OLE item.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1792, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),ImagePath
             , InsertionPoint, Height, Width)
         if ret is not None:
@@ -21763,6 +22225,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadLeader
     def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
         'Creates a Leader object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
             , Annotation, Type)
         if ret is not None:
@@ -21772,6 +22235,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a Lightweight Polyline object and adds it to modelspace, paperspace, or a block.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -21781,6 +22245,8 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a Line object and adds it to modelspace, paperspace, or a block.'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -21792,6 +22258,7 @@ class IOdaBlock(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Adds an array of blocks to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -21803,12 +22270,14 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         'Creates a multileader'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{A2F0013E-ACE4-41C5-9015-37587663DD30}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Creates a Multiline object and adds it to modelspace, paperspace, or a block.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
             )
         if ret is not None:
@@ -21818,6 +22287,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates an Multiline Text object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -21827,6 +22297,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object and adds it to modelspace, paperspace, or a block.'
+        Point = VTR8ArrayOrVal(Point)
         ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
             )
         if ret is not None:
@@ -21836,6 +22307,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Creates a Polyface Mesh object and adds it to modelspace, paperspace, or a block.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1586, LCID, 1, (9, 0), ((12, 1), (12, 1)),VertexList
             , FaceList)
         if ret is not None:
@@ -21845,6 +22317,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a Polyline object and adds it to modelspace, paperspace, or a block.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -21854,6 +22327,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Adds a raster image as a Raster object to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -21863,6 +22337,8 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a Ray object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -21878,6 +22354,8 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid object and adds it to modelspace, paperspace, or a block.'
+        AxisPoint = VTR8ArrayOrVal(AxisPoint)
+        AxisDir = VTR8ArrayOrVal(AxisDir)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -21887,6 +22365,9 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         'Creates a Section object and adds it to modelspace, paperspace, or a block.'
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
+        planeVector = VTR8ArrayOrVal(planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -21896,6 +22377,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a Shape object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -21905,6 +22387,10 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 2D solid polygon object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1569, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -21914,6 +22400,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a Sphere object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1570, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -21923,6 +22410,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a Spline object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -21933,6 +22421,7 @@ class IOdaBlock(DispatchBaseClass):
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a Table object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1595, LCID, 1, (9, 0), ((12, 1), (3, 1), (3, 1), (5, 1), (5, 1)),InsertionPoint
             , NumRows, NumColumns, RowHeight, ColWidth)
         if ret is not None:
@@ -21942,6 +22431,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a Text object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1572, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),TextString
             , InsertionPoint, Height)
         if ret is not None:
@@ -21951,6 +22441,8 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a Tolerance object and adds it to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
+        Direction = VTR8ArrayOrVal(Direction)
         ret = self._oleobj_.InvokeTypes(1573, LCID, 1, (9, 0), ((8, 1), (12, 1), (12, 1)),Text
             , InsertionPoint, Direction)
         if ret is not None:
@@ -21960,6 +22452,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a Torus object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1574, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , TorusRadius, TubeRadius)
         if ret is not None:
@@ -21969,6 +22462,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a Trace object and adds it to modelspace, paperspace, or a block.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -21978,6 +22472,7 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a Wedge object and adds it to modelspace, paperspace, or a block.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1576, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Length, Width, Height)
         if ret is not None:
@@ -21987,6 +22482,8 @@ class IOdaBlock(DispatchBaseClass):
     # Result is of type IAcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an XLine object and adds it to modelspace, paperspace, or a block.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1577, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -21997,6 +22494,7 @@ class IOdaBlock(DispatchBaseClass):
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attaches an external reference to a drawing.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1590, LCID, 1, (9, 0), ((8, 1), (8, 1), (12, 1), (5, 1), (5, 1), (5, 1), (5, 1), (11, 1), (12, 17)),PathName
             , Name, InsertionPoint, Xscale, Yscale, Zscale
             , Rotation, bOverlay, Password)
@@ -22042,6 +22540,7 @@ class IOdaBlock(DispatchBaseClass):
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts a drawing or named block to modelspace, paperspace, or a block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1578, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , Password)
@@ -22076,6 +22575,14 @@ class IOdaBlock(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1798, LCID, 1, (24, 0), ((11, 1),),bOverlaid
             )
 
+    #IAcadBlock override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BlockScaling": (1600, 2, (3, 0), (), "BlockScaling", None),
@@ -22266,6 +22773,16 @@ class IOdaCamera(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #IOdaCamera override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Location':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Target':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BackPlane": (11, 2, (5, 0), (), "BackPlane", None),
@@ -22460,6 +22977,16 @@ class IOdaLight(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Position':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'Target':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "AttenuationType": (13, 2, (8, 0), (), "AttenuationType", None),
@@ -23088,6 +23615,14 @@ class IOdaOle(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'InsertionPoint':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         # Method 'Database' returns object of type 'IAcadDatabase'
@@ -23296,6 +23831,14 @@ class IOdaPolyfaceMesh(DispatchBaseClass):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
 
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Coordinates':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+            
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
@@ -23475,6 +24018,15 @@ class IOdaRasterImage(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'Origin':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
@@ -23741,7 +24293,17 @@ class IOdaSpline(DispatchBaseClass):
     def Update(self):
         'Not implemented. Updates the display of an entity.'
         return self._oleobj_.InvokeTypes(1296, LCID, 1, (24, 0), (),)
-
+    
+    #override properties
+    def __setattr__(self, __name, __value):
+        match __name:
+            case 'ControlPoints':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'FitPoints':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case _:
+                DispatchBaseClass.__setattr__(self, __name, __value)
+                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Area": (13, 2, (5, 0), (), "Area", None),
