@@ -15,7 +15,7 @@ def makeComAcadDBX24():
     comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\ARX2021\inc-x64\axdb24enu.tlb"
     sys.argv = ["makepy", "-o", outputFile, comTypeLibraryOrDLL]
     makepy.main ()
-
+    
 def makeComETransmit20():
     outputFile = r"M:\Dev\Projects\PyRxGit\PyRxStubs\AxETransmit20.py"
     comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\ARX2021\inc-x64\AcETransmit20.tlb"
@@ -28,10 +28,25 @@ def makeComSmcomponents24():
     sys.argv = ["makepy", "-o", outputFile, comTypeLibraryOrDLL]
     makepy.main ()
     
+
+def makeComBcadApplication24():
+    outputFile = r"M:\Dev\Projects\PyRxGit\PyRxStubs\BxApp24.py"
+    comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\BRXSDKV24\inc-x64\axbricscadapp1.tlb"
+    sys.argv = ["makepy", "-o", outputFile, comTypeLibraryOrDLL]
+    makepy.main ()
+    
+def makeComBcadDB24():
+    outputFile = r"M:\Dev\Projects\PyRxGit\PyRxStubs\BxDb24.py"
+    comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\BRXSDKV24\inc-x64\axbricscaddb1.tlb"
+    sys.argv = ["makepy", "-o", outputFile, comTypeLibraryOrDLL]
+    makepy.main ()
+    
 def PyRxCmd_makeComWrappers():
-    makeComAcadApplication24()
-    makeComAcadDBX24()
+    #makeComAcadApplication24()
+    #makeComAcadDBX24()
     #makeComETransmit20()
     #makeComSmcomponents24()
+    makeComBcadApplication24()
+    makeComBcadDB24()
     print("done")
 
