@@ -41,12 +41,19 @@ def makeComBcadDB24():
     sys.argv = ["makepy", "-o", outputFile, comTypeLibraryOrDLL]
     makepy.main ()
     
+def makeComZcadApp24():
+    outputFile = r"M:\Dev\Projects\PyRxGit\PyRxStubs\ZxApp24.py"
+    comTypeLibraryOrDLL = r"M:\Dev\ArxSdk\ZWCAD_2024_ZRXSDK\lib-x64\zwcad21.tlb"
+    sys.argv = ["makepy", "-o", outputFile, comTypeLibraryOrDLL]
+    makepy.main ()
+    
 def PyRxCmd_makeComWrappers():
     #makeComAcadApplication24()
     #makeComAcadDBX24()
     #makeComETransmit20()
     #makeComSmcomponents24()
-    makeComBcadApplication24()
-    makeComBcadDB24()
+    #makeComBcadApplication24()
+    #makeComBcadDB24()
+    makeComZcadApp24()
     print("done")
 
