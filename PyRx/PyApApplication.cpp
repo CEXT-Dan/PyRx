@@ -19,7 +19,7 @@ void makePyApApplictionWrapper()
         .def("acadGetIDispatch", &PyApApplication::acadGetIDispatch, DS.SARGS()).staticmethod("acadGetIDispatch")
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
-        .def("hostAPIVER", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPIVER")
+        .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
