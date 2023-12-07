@@ -135,6 +135,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2B5EC5952090417C9A1F08E7B90DE3CF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2EB02F1D8AF8A73D32795DFA684B9D31"
         "OwnerKey" = "8:_22609B8BBEE94276AB14821CED2955B3"
         "MsmSig" = "8:_UNDEFINED"
@@ -292,6 +298,12 @@
         "Entry"
         {
         "MsmKey" = "8:_4C302FC2FEDC4484B50C7BD7C6D08C36"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_51821DC5BF0746F9A60801F4BD4ABBE7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -646,6 +658,18 @@
         "Entry"
         {
         "MsmKey" = "8:_B1EC0C0F9B014CD7A1B8D9A7E4B1B49D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B73C7223C97F4CAE8BFB7E9E49D31164"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D330A751BCB5400999A3650473E8E970"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1062,6 +1086,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2B5EC5952090417C9A1F08E7B90DE3CF"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\GxApp24.py"
+            "TargetName" = "8:GxApp24.py"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2EB02F1D8AF8A73D32795DFA684B9D31"
             {
             "SourcePath" = "8:api-ms-win-crt-math-l1-1-0.dll"
@@ -1208,6 +1252,26 @@
             "TargetName" = "8:PyGs.html"
             "Tag" = "8:"
             "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_51821DC5BF0746F9A60801F4BD4ABBE7"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\ZxApp24.py"
+            "TargetName" = "8:ZxApp24.py"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1606,6 +1670,46 @@
             {
             "SourcePath" = "8:..\\PyRxStubs\\BxApp24.pyi"
             "TargetName" = "8:BxApp24.pyi"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B73C7223C97F4CAE8BFB7E9E49D31164"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\ZxApp24.pyi"
+            "TargetName" = "8:ZxApp24.pyi"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D330A751BCB5400999A3650473E8E970"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\GxApp24.pyi"
+            "TargetName" = "8:GxApp24.pyi"
             "Tag" = "8:"
             "Folder" = "8:_EAA49D00F3CB4A38AF073F908AEB795B"
             "Condition" = "8:"
