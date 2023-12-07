@@ -24046,6 +24046,8 @@ class IZcadUtility(DispatchBaseClass):
 
     def GetEntity(self, Object=pythoncom.Missing, PickedPoint=pythoncom.Missing, Prompt=defaultNamedOptArg):
         'Returns the point selected and the object at that point.'
+        Object=None
+        PickedPoint=None
         return self._ApplyTypes_(1610743827, 1, (24, 0), ((16393, 2), (16396, 2), (12, 17)), 'GetEntity', None,Object
             , PickedPoint, Prompt)
 
