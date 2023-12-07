@@ -21425,6 +21425,12 @@ class IGcadSelectionSet(DispatchBaseClass):
             ret = Dispatch(ret, '__call__', '{D78C594E-0412-4D7A-919A-2B6D1662D337}')
         return ret
 
+    def __getitem__(self, *args): 
+        try:
+            return self.__call__(*args)
+        except:
+            raise IndexError
+        
     def __str__(self, *args):
         return str(self.__call__(*args))
     def __int__(self, *args):
