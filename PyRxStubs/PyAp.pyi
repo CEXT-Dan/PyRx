@@ -154,6 +154,9 @@ class Application:
     def hostAPI ()-> str :
       '''                             '''
     ...
+    def hostAPIVER ()-> str :
+      '''                             '''
+    ...
     def mainWnd ()-> int :
       '''                             '''
     ...
