@@ -29407,11 +29407,8 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class HostApplicationServices:
-    def LayoutManager (self, *args, **kwargs)-> PyAp.LayoutManager :
-      '''LayoutManager( (HostApplicationServices)arg1) -> LayoutManager :
-
-    C++ signature :
-        class PyDbLayoutManager LayoutManager(class PyDbHostApplicationServices {lvalue})'''
+    def LayoutManager (self: HostApplicationServices)-> PyAp.LayoutManager :
+      '''                             '''
     ...
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -29423,6 +29420,9 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
+    ...
+    def companyName (self: HostApplicationServices)-> str :
+      '''                             '''
     ...
     def findFile (self, *args, **kwargs)-> str :
       '''findFile( (HostApplicationServices)arg1, (str)arg2) -> str :
@@ -29440,23 +29440,32 @@ findFile( (HostApplicationServices)arg1, (str)arg2, (Database)arg3, (FindFileHin
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findFile(class PyDbHostApplicationServices {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase,enum AcDbHostApplicationServices::FindFileHint)'''
     ...
-    def product (self, *args, **kwargs)-> str :
-      '''product( (HostApplicationServices)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > product(class PyDbHostApplicationServices {lvalue})'''
+    def getMachineRegistryProductRootKey (self: HostApplicationServices)-> str :
+      '''                             '''
     ...
-    def setWorkingDatabase (self, *args, **kwargs)-> None :
-      '''setWorkingDatabase( (HostApplicationServices)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void setWorkingDatabase(class PyDbHostApplicationServices {lvalue},class PyDbDatabase {lvalue})'''
+    def getUserRegistryProductRootKey (self: HostApplicationServices)-> str :
+      '''                             '''
     ...
-    def workingDatabase (self, *args, **kwargs)-> PyDb.Database :
-      '''workingDatabase( (HostApplicationServices)arg1) -> Database :
-
-    C++ signature :
-        class PyDbDatabase workingDatabase(class PyDbHostApplicationServices {lvalue})'''
+    def product (self: HostApplicationServices)-> str :
+      '''                             '''
+    ...
+    def program (self: HostApplicationServices)-> str :
+      '''                             '''
+    ...
+    def releaseMajorMinorString (self: HostApplicationServices)-> str :
+      '''                             '''
+    ...
+    def releaseMarketVersion (self: HostApplicationServices)-> str :
+      '''                             '''
+    ...
+    def setWorkingDatabase (self: HostApplicationServices,val : PyDb.Database)-> None :
+      '''                             '''
+    ...
+    def versionString (self: HostApplicationServices)-> str :
+      '''                             '''
+    ...
+    def workingDatabase (self: HostApplicationServices)-> PyDb.Database :
+      '''                             '''
     ...
 
 class IdMapping:

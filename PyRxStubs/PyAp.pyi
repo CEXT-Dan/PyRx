@@ -151,7 +151,7 @@ class Application:
     def docManager ()-> PyAp.DocManager :
       '''                             '''
     ...
-    def host ()-> str :
+    def hostAPI ()-> str :
       '''                             '''
     ...
     def mainWnd ()-> int :
