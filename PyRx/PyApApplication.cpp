@@ -19,6 +19,7 @@ void makePyApApplictionWrapper()
         .def("acadGetIDispatch", &PyApApplication::acadGetIDispatch, DS.SARGS()).staticmethod("acadGetIDispatch")
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
+        .def("hostAPIVER", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPIVER")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -96,6 +97,11 @@ PyObject* PyApApplication::getwxApp()
 std::string PyApApplication::hostAPI()
 {
     return wstr_to_utf8(getappname());
+}
+
+std::string PyApApplication::hostAPIVER()
+{
+    return std::format("{}{}", wstr_to_utf8(getappname()), acdbHostApplicationServices()->releaseMajorVersion());
 }
 
 //-----------------------------------------------------------------------------------------
