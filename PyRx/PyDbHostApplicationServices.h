@@ -17,7 +17,25 @@ public:
     std::string findFile1(const std::string& fileName);
     std::string findFile2(const std::string& fileName, const PyDbDatabase& db);
     std::string findFile3(const std::string& fileName, const PyDbDatabase& db, AcDbHostApplicationServices::FindFileHint hint);
+
+    std::string getRoamableRootFolder();
+    std::string getLocalRootFolder();
+    std::string getAllUsersRootFolder();
+
+
+    int         releaseMajorVersion();
+    int         releaseMinorVersion();
+
     std::string product() const;
+    std::string program();
+    std::string companyName();
+ 
+    std::string releaseMajorMinorString();
+    std::string versionString();
+    std::string getMachineRegistryProductRootKey();
+    std::string getUserRegistryProductRootKey();
+    std::string releaseMarketVersion();
+
     PyDbLayoutManager dbLayoutManager();
 
 protected:

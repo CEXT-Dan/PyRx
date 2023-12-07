@@ -10,15 +10,23 @@ using namespace boost::python;
 //PyDbHostApplicationServices
 void makePyDbHostApplicationServicesWrapper()
 {
+    PyDocString DS("HostApplicationServices");
     class_<PyDbHostApplicationServices>("HostApplicationServices")
         .def(init<>())
-        .def("workingDatabase", &PyDbHostApplicationServices::workingDatabase)
-        .def("setWorkingDatabase", &PyDbHostApplicationServices::setWorkingDatabase)
+        .def("workingDatabase", &PyDbHostApplicationServices::workingDatabase, DS.ARGS())
+        .def("setWorkingDatabase", &PyDbHostApplicationServices::setWorkingDatabase, DS.ARGS({ "val : PyDb.Database" }))
         .def("findFile", &PyDbHostApplicationServices::findFile1)
         .def("findFile", &PyDbHostApplicationServices::findFile2)
         .def("findFile", &PyDbHostApplicationServices::findFile3)
-        .def("product", &PyDbHostApplicationServices::product)
-        .def("LayoutManager", &PyDbHostApplicationServices::dbLayoutManager)
+        .def("product", &PyDbHostApplicationServices::product, DS.ARGS())
+        .def("program", &PyDbHostApplicationServices::program, DS.ARGS())
+        .def("companyName", &PyDbHostApplicationServices::companyName, DS.ARGS())
+        .def("releaseMajorMinorString", &PyDbHostApplicationServices::releaseMajorMinorString, DS.ARGS())
+        .def("versionString", &PyDbHostApplicationServices::versionString, DS.ARGS())
+        .def("getMachineRegistryProductRootKey", &PyDbHostApplicationServices::getMachineRegistryProductRootKey, DS.ARGS())
+        .def("getUserRegistryProductRootKey", &PyDbHostApplicationServices::getUserRegistryProductRootKey, DS.ARGS())
+        .def("releaseMarketVersion", &PyDbHostApplicationServices::releaseMarketVersion, DS.ARGS())
+        .def("LayoutManager", &PyDbHostApplicationServices::dbLayoutManager, DS.ARGS())
         ;
 
     enum_<AcDbHostApplicationServices::FindFileHint>("FindFileHint")
@@ -79,9 +87,75 @@ std::string PyDbHostApplicationServices::findFile3(const std::string& fileName, 
     return wstr_to_utf8(fileOut);
 }
 
+std::string PyDbHostApplicationServices::getRoamableRootFolder()
+{
+    const TCHAR* val = nullptr;
+    PyThrowBadEs(pDbHostApp->getRoamableRootFolder(val));
+    return wstr_to_utf8(val);
+}
+
+std::string PyDbHostApplicationServices::getLocalRootFolder()
+{
+    const TCHAR* val = nullptr;
+    PyThrowBadEs(pDbHostApp->getLocalRootFolder(val));
+    return wstr_to_utf8(val);
+}
+
+std::string PyDbHostApplicationServices::getAllUsersRootFolder()
+{
+    const TCHAR* val = nullptr;
+    PyThrowBadEs(pDbHostApp->getAllUsersRootFolder(val));
+    return wstr_to_utf8(val);
+}
+
+int PyDbHostApplicationServices::releaseMajorVersion()
+{
+    return pDbHostApp->releaseMajorVersion();
+}
+
+int PyDbHostApplicationServices::releaseMinorVersion()
+{
+    return pDbHostApp->releaseMinorVersion();
+}
+
 std::string PyDbHostApplicationServices::product() const
 {
     return  wstr_to_utf8(pDbHostApp->product());
+}
+
+std::string PyDbHostApplicationServices::program()
+{
+    return  wstr_to_utf8(pDbHostApp->program());
+}
+
+std::string PyDbHostApplicationServices::companyName()
+{
+    return  wstr_to_utf8(pDbHostApp->companyName());
+}
+
+std::string PyDbHostApplicationServices::releaseMajorMinorString()
+{
+    return  wstr_to_utf8(pDbHostApp->releaseMajorMinorString());
+}
+
+std::string PyDbHostApplicationServices::versionString()
+{
+    return  wstr_to_utf8(pDbHostApp->versionString());
+}
+
+std::string PyDbHostApplicationServices::getMachineRegistryProductRootKey()
+{
+    return  wstr_to_utf8(pDbHostApp->getMachineRegistryProductRootKey());
+}
+
+std::string PyDbHostApplicationServices::getUserRegistryProductRootKey()
+{
+    return  wstr_to_utf8(pDbHostApp->getUserRegistryProductRootKey());
+}
+
+std::string PyDbHostApplicationServices::releaseMarketVersion()
+{
+    return  wstr_to_utf8(pDbHostApp->getUserRegistryProductRootKey());
 }
 
 PyDbLayoutManager PyDbHostApplicationServices::dbLayoutManager()
@@ -724,7 +798,7 @@ AcDbDatabaseSummaryInfo* PyDbDatabaseSummaryInfo::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbDatabaseSummaryInfo*>(m_pyImp.get());
 }
 
