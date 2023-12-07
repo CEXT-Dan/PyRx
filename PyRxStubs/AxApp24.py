@@ -23747,6 +23747,8 @@ class IAcadTolerance(DispatchBaseClass):
         match __name:
             case 'InsertionPoint':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'DirectionVector':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case 'Normal':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case _:
