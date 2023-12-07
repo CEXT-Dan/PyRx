@@ -1,9 +1,9 @@
 # -*- coding: mbcs -*-
 # Created by makepy.py version 0.5.01
 # By python version 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]
-# From type library 'zwauto21.tlb'
-# On Thu Dec  7 13:03:53 2023
-'ZWCAD Type Library'
+# From type library 'zwcad21.tlb'
+# On Thu Dec  7 14:41:38 2023
+'ZWCAD 2021 Type Library'
 makepy_version = '0.5.01'
 python_version = 0x30c00f0
 
@@ -18,7 +18,7 @@ defaultNamedOptArg=pythoncom.Empty
 defaultNamedNotOptArg=pythoncom.Empty
 defaultUnnamedArg=pythoncom.Empty
 
-CLSID = IID('{2F671CA0-669F-11E7-91B7-BC5FF42AC839}')
+CLSID = IID('{2F671C10-669F-11E7-91B7-BC5FF42AC839}')
 MajorVersion = 1
 MinorVersion = 0
 LibraryFlags = 8
@@ -887,42 +887,42 @@ class constants:
     zcZoomScaledAbsolute          =0          # from enum ZcZoomScaleType
     zcZoomScaledRelative          =1          # from enum ZcZoomScaleType
     zcZoomScaledRelativePSpace    =2          # from enum ZcZoomScaleType
-    zcChord                       =0          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0001
-    zcCustomParameterization      =15         # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0001
-    zcSqrtChord                   =1          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0001
-    zcUniformParam                =2          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0001
-    zcHide                        =1          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0002
-    zcShow                        =0          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0002
-    zcControlVertices             =1          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0003
-    zcFit                         =0          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0003
-    zcIsolines                    =0          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0004
-    zcIsoparms                    =1          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0004
-    zcAlwaysCrease                =1          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0005
-    zcCreaseByLevel               =2          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0005
-    zcNoneCrease                  =0          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0005
-    zcByColor                     =1          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0006
-    zcTrueColor                   =0          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0006
-    zcIntensity                   =3          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0007
-    zcNormal                      =2          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0007
-    zcObjectColor                 =1          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0007
-    zcScanColor                   =0          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0007
-    zcIntensityBlue               =4          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0008
-    zcIntensityEditableFlag       =5          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0008
-    zcIntensityGrayscale          =0          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0008
-    zcIntensityGreen              =3          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0008
-    zcIntensityRainbow            =1          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0008
-    zcIntensityRed                =2          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0008
-    zcClassification              =5          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0009
-    zcElevation                   =4          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0009
-    zcIntensities                 =3          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0009
-    zcNormals                     =2          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0009
-    zcObject                      =1          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0009
-    zcRGB                         =0          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0009
-    ZCADSECURITYPARAMS_ADD_TIMESTAMP=32         # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0010
-    ZCADSECURITYPARAMS_ENCRYPT_DATA=1          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0010
-    ZCADSECURITYPARAMS_ENCRYPT_PROPS=2          # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0010
-    ZCADSECURITYPARAMS_SIGN_DATA  =16         # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0010
-    ZCADSECURITYPARAMS_ALGID_RC4  =26625      # from enum __MIDL___MIDL_itf_zwauto_0000_0000_0011
+    zcChord                       =0          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0001
+    zcCustomParameterization      =15         # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0001
+    zcSqrtChord                   =1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0001
+    zcUniformParam                =2          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0001
+    zcHide                        =1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0002
+    zcShow                        =0          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0002
+    zcControlVertices             =1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0003
+    zcFit                         =0          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0003
+    zcIsolines                    =0          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0004
+    zcIsoparms                    =1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0004
+    zcAlwaysCrease                =1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0005
+    zcCreaseByLevel               =2          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0005
+    zcNoneCrease                  =0          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0005
+    zcByColor                     =1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0006
+    zcTrueColor                   =0          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0006
+    zcIntensity                   =3          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0007
+    zcNormal                      =2          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0007
+    zcObjectColor                 =1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0007
+    zcScanColor                   =0          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0007
+    zcIntensityBlue               =4          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0008
+    zcIntensityEditableFlag       =5          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0008
+    zcIntensityGrayscale          =0          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0008
+    zcIntensityGreen              =3          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0008
+    zcIntensityRainbow            =1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0008
+    zcIntensityRed                =2          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0008
+    zcClassification              =5          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0009
+    zcElevation                   =4          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0009
+    zcIntensities                 =3          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0009
+    zcNormals                     =2          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0009
+    zcObject                      =1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0009
+    zcRGB                         =0          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0009
+    ZCADSECURITYPARAMS_ADD_TIMESTAMP=32         # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
+    ZCADSECURITYPARAMS_ENCRYPT_DATA=1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
+    ZCADSECURITYPARAMS_ENCRYPT_PROPS=2          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
+    ZCADSECURITYPARAMS_SIGN_DATA  =16         # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
+    ZCADSECURITYPARAMS_ALGID_RC4  =26625      # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0011
 
 from win32com.client import DispatchBaseClass
 class IArcTextObj(DispatchBaseClass):
@@ -1598,6 +1598,159 @@ class IZcad3DSolid(DispatchBaseClass):
         "TrueColor": ((1302, LCID, 4, 0),()),
         "Visible": ((1284, LCID, 4, 0),()),
         "color": ((1280, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadApplication(DispatchBaseClass):
+    'ZWCAD Application Interface'
+    CLSID = IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{2F671EB3-669F-11E7-91B7-BC5FF42AC839}')
+
+    def Eval(self, Expression=defaultNamedNotOptArg):
+        'Evaluate an expression in VBA.'
+        return self._oleobj_.InvokeTypes(33, LCID, 1, (24, 0), ((8, 1),),Expression
+            )
+
+    def GetInterfaceObject(self, ProgID=defaultNamedNotOptArg):
+        'Loads and returns the specified object given its ProgId.'
+        ret = self._oleobj_.InvokeTypes(20, LCID, 1, (9, 0), ((8, 1),),ProgID
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'GetInterfaceObject', None)
+        return ret
+
+    def GetLicenseSerial(self, retType=pythoncom.Missing, Serial=pythoncom.Missing, chkLock=defaultNamedNotOptArg, retIsNet=pythoncom.Missing):
+        return self._ApplyTypes_(45, 1, (24, 0), ((16387, 2), (16392, 2), (3, 1), (16387, 2)), 'GetLicenseSerial', None,retType
+            , Serial, chkLock, retIsNet)
+
+    # Result is of type IZcadState
+    def GetZcadState(self):
+        ret = self._oleobj_.InvokeTypes(42, LCID, 1, (9, 0), (),)
+        if ret is not None:
+            ret = Dispatch(ret, 'GetZcadState', '{EC923162-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def ListZrx(self):
+        'Lists the currently loaded ZRX application.'
+        return self._ApplyTypes_(18, 1, (12, 0), (), 'ListZrx', None,)
+
+    def LoadZVB(self, Name=defaultNamedNotOptArg):
+        'Loads the specified VBA project.'
+        return self._oleobj_.InvokeTypes(30, LCID, 1, (24, 0), ((8, 1),),Name
+            )
+
+    def LoadZrx(self, Name=defaultNamedNotOptArg):
+        'Loads the specified ZRX application.'
+        return self._oleobj_.InvokeTypes(19, LCID, 1, (24, 0), ((8, 1),),Name
+            )
+
+    def Quit(self):
+        'Quits the application.'
+        return self._oleobj_.InvokeTypes(25, LCID, 1, (24, 0), (),)
+
+    def RunMacro(self, MacroPath=defaultNamedNotOptArg):
+        'Run the specified VBA macro.'
+        return self._oleobj_.InvokeTypes(35, LCID, 1, (24, 0), ((8, 1),),MacroPath
+            )
+
+    # The method StatusId is actually a property, but must be used as a method to correctly pass the arguments
+    def StatusId(self, VportObj=defaultNamedNotOptArg):
+        'Returns the status id of the viewport.'
+        return self._oleobj_.InvokeTypes(17, LCID, 2, (11, 0), ((9, 1),),VportObj
+            )
+
+    def UnloadZVB(self, Name=defaultNamedNotOptArg):
+        'Unloads the specified VBA project.'
+        return self._oleobj_.InvokeTypes(31, LCID, 1, (24, 0), ((8, 1),),Name
+            )
+
+    def UnloadZrx(self, Name=defaultNamedNotOptArg):
+        'Unloads the specified ZRX application.'
+        return self._oleobj_.InvokeTypes(23, LCID, 1, (24, 0), ((8, 1),),Name
+            )
+
+    def Update(self):
+        'Update the graphics.'
+        return self._oleobj_.InvokeTypes(24, LCID, 1, (24, 0), (),)
+
+    def Zoom(self, Type=defaultNamedNotOptArg, vParams=defaultNamedNotOptArg):
+        'Zoom '
+        return self._oleobj_.InvokeTypes(26, LCID, 1, (24, 0), ((3, 1), (16396, 1)),Type
+            , vParams)
+
+    def ZoomAll(self):
+        'Zoom extents or limits. Whichever is bigger.'
+        return self._oleobj_.InvokeTypes(37, LCID, 1, (24, 0), (),)
+
+    def ZoomCenter(self, Center=defaultNamedNotOptArg, Magnify=defaultNamedNotOptArg):
+        'Zoom center point to magnification.'
+        return self._oleobj_.InvokeTypes(38, LCID, 1, (24, 0), ((12, 1), (5, 1)),Center
+            , Magnify)
+
+    def ZoomExtents(self):
+        'Zoom to the extents of the drawing.'
+        return self._oleobj_.InvokeTypes(36, LCID, 1, (24, 0), (),)
+
+    def ZoomPickWindow(self):
+        'Zoom window with ZCAD interaction.'
+        return self._oleobj_.InvokeTypes(41, LCID, 1, (24, 0), (),)
+
+    def ZoomPrevious(self):
+        'Zooms the current viewport to its previous extents.'
+        return self._oleobj_.InvokeTypes(43, LCID, 1, (24, 0), (),)
+
+    def ZoomScaled(self, scale=defaultNamedNotOptArg, ScaleType=defaultNamedNotOptArg):
+        'Scaled zoom.'
+        return self._oleobj_.InvokeTypes(39, LCID, 1, (24, 0), ((5, 1), (3, 1)),scale
+            , ScaleType)
+
+    def ZoomWindow(self, LowerLeft=defaultNamedNotOptArg, UpperRight=defaultNamedNotOptArg):
+        'Zoom window within enclosed corners.'
+        return self._oleobj_.InvokeTypes(40, LCID, 1, (24, 0), ((12, 1), (12, 1)),LowerLeft
+            , UpperRight)
+
+    _prop_map_get_ = {
+        # Method 'ActiveDocument' returns object of type 'IZcadDocument'
+        "ActiveDocument": (5, 2, (9, 0), (), "ActiveDocument", '{EC923156-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (4, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Caption": (3, 2, (8, 0), (), "Caption", None),
+        # Method 'Documents' returns object of type 'IZcadDocuments'
+        "Documents": (32, 2, (9, 0), (), "Documents", '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}'),
+        "FullName": (6, 2, (8, 0), (), "FullName", None),
+        "HWND": (44, 2, (20, 0), (), "HWND", None),
+        "Height": (7, 2, (3, 0), (), "Height", None),
+        "LocaleId": (10, 2, (3, 0), (), "LocaleId", None),
+        # Method 'MenuBar' returns object of type 'IZcadMenuBar'
+        "MenuBar": (29, 2, (9, 0), (), "MenuBar", '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'MenuGroups' returns object of type 'IZcadMenuGroups'
+        "MenuGroups": (28, 2, (9, 0), (), "MenuGroups", '{EC923155-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Name": (2, 2, (8, 0), (), "Name", None),
+        "Path": (9, 2, (8, 0), (), "Path", None),
+        # Method 'Preferences' returns object of type 'IZcadPreferences'
+        "Preferences": (14, 2, (9, 0), (), "Preferences", '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}'),
+        "VBE": (27, 2, (9, 0), (), "VBE", None),
+        "Version": (12, 2, (8, 0), (), "Version", None),
+        "Visible": (1, 2, (11, 0), (), "Visible", None),
+        "Width": (13, 2, (3, 0), (), "Width", None),
+        "WindowLeft": (8, 2, (3, 0), (), "WindowLeft", None),
+        "WindowState": (34, 2, (3, 0), (), "WindowState", None),
+        "WindowTop": (11, 2, (3, 0), (), "WindowTop", None),
+    }
+    _prop_map_put_ = {
+        "ActiveDocument": ((5, LCID, 4, 0),()),
+        "Height": ((7, LCID, 4, 0),()),
+        "Visible": ((1, LCID, 4, 0),()),
+        "Width": ((13, LCID, 4, 0),()),
+        "WindowLeft": ((8, LCID, 4, 0),()),
+        "WindowState": ((34, LCID, 4, 0),()),
+        "WindowTop": ((11, LCID, 4, 0),()),
     }
     def __iter__(self):
         "Return a Python iterator for this object"
@@ -6614,6 +6767,332 @@ class IZcadDimension(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
+class IZcadDocument(DispatchBaseClass):
+    'ZWCAD Document Interface'
+    CLSID = IID('{EC923156-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{2F671DA0-669F-11E7-91B7-BC5FF42AC839}')
+
+    def Activate(self):
+        'Make document the active document.'
+        return self._oleobj_.InvokeTypes(57, LCID, 1, (24, 0), (),)
+
+    def AuditInfo(self, FixErr=defaultNamedNotOptArg):
+        'Evaluates the integrity of the drawing'
+        return self._oleobj_.InvokeTypes(43, LCID, 1, (24, 0), ((11, 1),),FixErr
+            )
+
+    def Close(self, SaveChanges=defaultNamedOptArg, FileName=defaultNamedOptArg):
+        'Close the drawing.'
+        return self._oleobj_.InvokeTypes(58, LCID, 1, (24, 0), ((12, 17), (12, 17)),SaveChanges
+            , FileName)
+
+    def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg, IdPairs=defaultNamedOptArg):
+        'Copies multiple objects in the database.'
+        return self._ApplyTypes_(4, 1, (12, 0), ((12, 1), (12, 17), (16396, 19)), 'CopyObjects', None,Objects
+            , Owner, IdPairs)
+
+    def EndUndoMark(self):
+        'Ends the undo mark to where being mark was set.'
+        return self._oleobj_.InvokeTypes(69, LCID, 1, (24, 0), (),)
+
+    def Export(self, FileName=defaultNamedNotOptArg, Extension=defaultNamedNotOptArg, SelectionSet=defaultNamedNotOptArg):
+        'Exports the file in a different format (DXF, SAT, etc.).'
+        return self._oleobj_.InvokeTypes(45, LCID, 1, (24, 0), ((8, 1), (8, 1), (9, 1)),FileName
+            , Extension, SelectionSet)
+
+    def GetVariable(self, Name=defaultNamedNotOptArg):
+        'Returns the current setting of a variable.'
+        return self._ApplyTypes_(51, 1, (12, 0), ((8, 1),), 'GetVariable', None,Name
+            )
+
+    def HandleToObject(self, Handle=defaultNamedNotOptArg):
+        'Return an object given a handle.  Applies to current dwg'
+        ret = self._oleobj_.InvokeTypes(18, LCID, 1, (9, 0), ((8, 1),),Handle
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'HandleToObject', None)
+        return ret
+
+    def Import(self, FileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        'Imports a different format file (DXF, SAT, etc.)into ZWCAD.'
+        ret = self._oleobj_.InvokeTypes(44, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),FileName
+            , InsertionPoint, ScaleFactor)
+        if ret is not None:
+            ret = Dispatch(ret, 'Import', None)
+        return ret
+
+    def LoadShapeFile(self, FullName=defaultNamedNotOptArg):
+        'Loads the given shape file.'
+        return self._oleobj_.InvokeTypes(53, LCID, 1, (24, 0), ((8, 1),),FullName
+            )
+
+    # Result is of type IZcadDocument
+    def New(self, TemplateFileName=defaultNamedNotOptArg):
+        'Starts a new drawing.'
+        ret = self._oleobj_.InvokeTypes(46, LCID, 1, (9, 0), ((8, 1),),TemplateFileName
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'New', '{EC923156-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def ObjectIdToObject(self, ObjectID=defaultNamedNotOptArg):
+        'Given an objectId return the object. Applies to current database'
+        ret = self._oleobj_.InvokeTypes(19, LCID, 1, (9, 0), ((20, 1),),ObjectID
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'ObjectIdToObject', None)
+        return ret
+
+    # Result is of type IZcadDocument
+    def Open(self, FullName=defaultNamedNotOptArg, Password=defaultNamedOptArg):
+        'Opens a drawing file.'
+        ret = self._oleobj_.InvokeTypes(42, LCID, 1, (9, 0), ((8, 1), (12, 17)),FullName
+            , Password)
+        if ret is not None:
+            ret = Dispatch(ret, 'Open', '{EC923156-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def PostCommand(self, Command=defaultNamedNotOptArg):
+        return self._oleobj_.InvokeTypes(75, LCID, 1, (24, 0), ((8, 1),),Command
+            )
+
+    def PurgeAll(self):
+        'Removes all unused named references from the database.'
+        return self._oleobj_.InvokeTypes(50, LCID, 1, (24, 0), (),)
+
+    def Regen(self, WhichViewports=defaultNamedNotOptArg):
+        'Regen all viewports or active viewport'
+        return self._oleobj_.InvokeTypes(54, LCID, 1, (24, 0), ((3, 1),),WhichViewports
+            )
+
+    def Save(self):
+        'Saves changes to the active drawing file.'
+        return self._oleobj_.InvokeTypes(47, LCID, 1, (24, 0), (),)
+
+    def SaveAs(self, FullFileName=defaultNamedNotOptArg, SaveAsType=defaultNamedOptArg, vSecurityParams=defaultNamedOptArg):
+        'Saves changes to a user specified file.'
+        return self._oleobj_.InvokeTypes(48, LCID, 1, (24, 0), ((8, 1), (12, 17), (12, 17)),FullFileName
+            , SaveAsType, vSecurityParams)
+
+    def SendCommand(self, Command=defaultNamedNotOptArg):
+        'Sends a command string to the document.'
+        return self._oleobj_.InvokeTypes(63, LCID, 1, (24, 0), ((8, 1),),Command
+            )
+
+    def SetVariable(self, Name=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
+        'Sets value to a current variable.'
+        return self._oleobj_.InvokeTypes(52, LCID, 1, (24, 0), ((8, 1), (12, 1)),Name
+            , Value)
+
+    def StartUndoMark(self):
+        'Starts the undo mark for subsequent automation calls.'
+        return self._oleobj_.InvokeTypes(68, LCID, 1, (24, 0), (),)
+
+    def Wblock(self, FileName=defaultNamedNotOptArg, SelectionSet=defaultNamedNotOptArg):
+        'Passing in a filename and selection set, write it out.'
+        return self._oleobj_.InvokeTypes(49, LCID, 1, (24, 0), ((8, 1), (9, 1)),FileName
+            , SelectionSet)
+
+    _prop_map_get_ = {
+        "Active": (56, 2, (11, 0), (), "Active", None),
+        # Method 'ActiveDimStyle' returns object of type 'IZcadDimStyle'
+        "ActiveDimStyle": (26, 2, (9, 0), (), "ActiveDimStyle", '{EC923160-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'ActiveLayer' returns object of type 'IZcadLayer'
+        "ActiveLayer": (24, 2, (9, 0), (), "ActiveLayer", '{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'ActiveLayout' returns object of type 'IZcadLayout'
+        "ActiveLayout": (62, 2, (9, 0), (), "ActiveLayout", '{EC923115-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'ActiveLinetype' returns object of type 'IZcadLineType'
+        "ActiveLinetype": (25, 2, (9, 0), (), "ActiveLinetype", '{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'ActiveMaterial' returns object of type 'IZcadMaterial'
+        "ActiveMaterial": (74, 2, (9, 0), (), "ActiveMaterial", '{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'ActivePViewport' returns object of type 'IZcadPViewport'
+        "ActivePViewport": (30, 2, (9, 0), (), "ActivePViewport", '{EC923139-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'ActiveSelectionSet' returns object of type 'IZcadSelectionSet'
+        "ActiveSelectionSet": (33, 2, (9, 0), (), "ActiveSelectionSet", '{EC923124-5A21-11E7-B72E-BC5FF42AC839}'),
+        "ActiveSpace": (31, 2, (3, 0), (), "ActiveSpace", None),
+        # Method 'ActiveTextStyle' returns object of type 'IZcadTextStyle'
+        "ActiveTextStyle": (27, 2, (9, 0), (), "ActiveTextStyle", '{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'ActiveUCS' returns object of type 'IZcadUCS'
+        "ActiveUCS": (28, 2, (9, 0), (), "ActiveUCS", '{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'ActiveViewport' returns object of type 'IZcadViewport'
+        "ActiveViewport": (29, 2, (9, 0), (), "ActiveViewport", '{EC92303D-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (66, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Blocks' returns object of type 'IZcadBlocks'
+        "Blocks": (3, 2, (9, 0), (), "Blocks", '{EC923166-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Database' returns object of type 'IZcadDatabase'
+        "Database": (67, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Dictionaries' returns object of type 'IZcadDictionaries'
+        "Dictionaries": (9, 2, (9, 0), (), "Dictionaries", '{EC92309D-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'DimStyles' returns object of type 'IZcadDimStyles'
+        "DimStyles": (6, 2, (9, 0), (), "DimStyles", '{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}'),
+        "ElevationModelSpace": (15, 2, (5, 0), (), "ElevationModelSpace", None),
+        "ElevationPaperSpace": (16, 2, (5, 0), (), "ElevationPaperSpace", None),
+        # Method 'FileDependencies' returns object of type 'IZcadFileDependencies'
+        "FileDependencies": (70, 2, (9, 0), (), "FileDependencies", '{EC92302A-5A21-11E7-B72E-BC5FF42AC839}'),
+        "FullName": (34, 2, (8, 0), (), "FullName", None),
+        # Method 'Groups' returns object of type 'IZcadGroups'
+        "Groups": (5, 2, (9, 0), (), "Groups", '{EC92316B-5A21-11E7-B72E-BC5FF42AC839}'),
+        "HWND": (64, 2, (20, 0), (), "HWND", None),
+        "Height": (61, 2, (3, 0), (), "Height", None),
+        # Method 'Layers' returns object of type 'IZcadLayers'
+        "Layers": (7, 2, (9, 0), (), "Layers", '{EC923043-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Layouts' returns object of type 'IZcadLayouts'
+        "Layouts": (20, 2, (9, 0), (), "Layouts", '{EC92312D-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Limits": (17, 2, (12, 0), (), "Limits", None),
+        # Method 'Linetypes' returns object of type 'IZcadLineTypes'
+        "Linetypes": (8, 2, (9, 0), (), "Linetypes", '{EC923098-5A21-11E7-B72E-BC5FF42AC839}'),
+        "MSpace": (40, 2, (11, 0), (), "MSpace", None),
+        # Method 'Materials' returns object of type 'IZcadMaterials'
+        "Materials": (73, 2, (9, 0), (), "Materials", '{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'ModelSpace' returns object of type 'IZcadModelSpace'
+        "ModelSpace": (1, 2, (9, 0), (), "ModelSpace", '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Name": (35, 2, (8, 0), (), "Name", None),
+        "ObjectSnapMode": (37, 2, (11, 0), (), "ObjectSnapMode", None),
+        # Method 'PaperSpace' returns object of type 'IZcadPaperSpace'
+        "PaperSpace": (2, 2, (9, 0), (), "PaperSpace", '{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Path": (36, 2, (8, 0), (), "Path", None),
+        # Method 'PickfirstSelectionSet' returns object of type 'IZcadSelectionSet'
+        "PickfirstSelectionSet": (55, 2, (9, 0), (), "PickfirstSelectionSet", '{EC923124-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Plot' returns object of type 'IZcadPlot'
+        "Plot": (23, 2, (9, 0), (), "Plot", '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'PlotConfigurations' returns object of type 'IZcadPlotConfigurations'
+        "PlotConfigurations": (21, 2, (9, 0), (), "PlotConfigurations", '{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Preferences' returns object of type 'IZcadDatabasePreferences'
+        "Preferences": (22, 2, (9, 0), (), "Preferences", '{EC923099-5A21-11E7-B72E-BC5FF42AC839}'),
+        "ReadOnly": (38, 2, (11, 0), (), "ReadOnly", None),
+        # Method 'RegisteredApplications' returns object of type 'IZcadRegisteredApplications'
+        "RegisteredApplications": (10, 2, (9, 0), (), "RegisteredApplications", '{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Saved": (39, 2, (11, 0), (), "Saved", None),
+        # Method 'SectionManager' returns object of type 'IZcadSectionManager'
+        "SectionManager": (72, 2, (9, 0), (), "SectionManager", '{EC923035-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'SelectionSets' returns object of type 'IZcadSelectionSets'
+        "SelectionSets": (32, 2, (9, 0), (), "SelectionSets", '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'SummaryInfo' returns object of type 'IZcadSummaryInfo'
+        "SummaryInfo": (71, 2, (9, 0), (), "SummaryInfo", '{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'TextStyles' returns object of type 'IZcadTextStyles'
+        "TextStyles": (11, 2, (9, 0), (), "TextStyles", '{EC923131-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'UserCoordinateSystems' returns object of type 'IZcadUCSs'
+        "UserCoordinateSystems": (12, 2, (9, 0), (), "UserCoordinateSystems", '{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Utility' returns object of type 'IZcadUtility'
+        "Utility": (41, 2, (9, 0), (), "Utility", '{EC923126-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Viewports' returns object of type 'IZcadViewports'
+        "Viewports": (14, 2, (9, 0), (), "Viewports", '{EC923149-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Views' returns object of type 'IZcadViews'
+        "Views": (13, 2, (9, 0), (), "Views", '{EC92318D-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Width": (60, 2, (3, 0), (), "Width", None),
+        "WindowState": (59, 2, (3, 0), (), "WindowState", None),
+        "WindowTitle": (65, 2, (8, 0), (), "WindowTitle", None),
+    }
+    _prop_map_put_ = {
+        "ActiveDimStyle": ((26, LCID, 4, 0),()),
+        "ActiveLayer": ((24, LCID, 4, 0),()),
+        "ActiveLayout": ((62, LCID, 4, 0),()),
+        "ActiveLinetype": ((25, LCID, 4, 0),()),
+        "ActiveMaterial": ((74, LCID, 4, 0),()),
+        "ActivePViewport": ((30, LCID, 4, 0),()),
+        "ActiveSpace": ((31, LCID, 4, 0),()),
+        "ActiveTextStyle": ((27, LCID, 4, 0),()),
+        "ActiveUCS": ((28, LCID, 4, 0),()),
+        "ActiveViewport": ((29, LCID, 4, 0),()),
+        "ElevationModelSpace": ((15, LCID, 4, 0),()),
+        "ElevationPaperSpace": ((16, LCID, 4, 0),()),
+        "Height": ((61, LCID, 4, 0),()),
+        "Limits": ((17, LCID, 4, 0),()),
+        "MSpace": ((40, LCID, 4, 0),()),
+        "ObjectSnapMode": ((37, LCID, 4, 0),()),
+        "Width": ((60, LCID, 4, 0),()),
+        "WindowState": ((59, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadDocuments(DispatchBaseClass):
+    'ZWCAD Documents Collection Interface'
+    CLSID = IID('{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC9231BB-5A21-11E7-B72E-BC5FF42AC839}')
+
+    # Result is of type IZcadDocument
+    def Add(self, TemplateName=defaultNamedOptArg):
+        'Adds a document to the documents collection.'
+        ret = self._oleobj_.InvokeTypes(1610743812, LCID, 1, (9, 0), ((12, 17),),TemplateName
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Add', '{EC923156-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def Close(self):
+        'Closes all documents in the documents collection.'
+        return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), (),)
+
+    def CloseAll(self, AskSave=True):
+        'Closes all documents in the collection and removes them from the collection.'
+        return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (24, 0), ((11, 49),),AskSave
+            )
+
+    # Result is of type IZcadDocument
+    def Item(self, Index=defaultNamedNotOptArg):
+        'Given the index, returns one of the documents in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Item', '{EC923156-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    # Result is of type IZcadDocument
+    def Open(self, File=defaultNamedNotOptArg, ReadOnly=defaultNamedOptArg, Password=defaultNamedOptArg):
+        'Opens an existing document and add it to the collection.'
+        ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1), (12, 17), (12, 17)),File
+            , ReadOnly, Password)
+        if ret is not None:
+            ret = Dispatch(ret, 'Open', '{EC923156-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def SaveAll(self):
+        'Saves all documents in the collection.'
+        return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (24, 0), (),)
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Count": (1610743810, 2, (3, 0), (), "Count", None),
+        # Method 'Parent' returns object of type 'IZcadApplication'
+        "Parent": (1610743815, 2, (9, 0), (), "Parent", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+    }
+    _prop_map_put_ = {
+    }
+    # Default method for this class is 'Item'
+    def __call__(self, Index=defaultNamedNotOptArg):
+        'Given the index, returns one of the documents in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, '__call__', '{EC923156-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def __str__(self, *args):
+        return str(self.__call__(*args))
+    def __int__(self, *args):
+        return int(self.__call__(*args))
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, '{EC923156-5A21-11E7-B72E-BC5FF42AC839}')
+    #This class has Count() property - allow len(ob) to provide this
+    def __len__(self):
+        return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
+    #This class has a __len__ - this is needed so 'if object:' always returns TRUE.
+    def __nonzero__(self):
+        return True
+
 class IZcadDwfUnderlay(DispatchBaseClass):
     CLSID = IID('{EC92319C-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92312A-5A21-11E7-B72E-BC5FF42AC839}')
@@ -11092,6 +11571,157 @@ class IZcadMaterials(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
+class IZcadMenuBar(DispatchBaseClass):
+    'ZWCAD MenuBar Interface'
+    CLSID = IID('{EC92305B-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC922FED-5A21-11E7-B72E-BC5FF42AC839}')
+
+    # Result is of type IZcadPopupMenu
+    def Item(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Item', '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Count": (1610743810, 2, (3, 0), (), "Count", None),
+        # Method 'Parent' returns object of type 'IZcadApplication'
+        "Parent": (1610743812, 2, (9, 0), (), "Parent", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+    }
+    _prop_map_put_ = {
+    }
+    # Default method for this class is 'Item'
+    def __call__(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, '__call__', '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def __str__(self, *args):
+        return str(self.__call__(*args))
+    def __int__(self, *args):
+        return int(self.__call__(*args))
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')
+    #This class has Count() property - allow len(ob) to provide this
+    def __len__(self):
+        return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
+    #This class has a __len__ - this is needed so 'if object:' always returns TRUE.
+    def __nonzero__(self):
+        return True
+
+class IZcadMenuGroup(DispatchBaseClass):
+    'ZWCAD MenuGroup Interface'
+    CLSID = IID('{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC9231F6-5A21-11E7-B72E-BC5FF42AC839}')
+
+    def Save(self, MenuFileType=defaultNamedNotOptArg):
+        'Saves the menu group.'
+        return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (24, 0), ((3, 1),),MenuFileType
+            )
+
+    def SaveAs(self, MenuFileName=defaultNamedNotOptArg, MenuFileType=defaultNamedNotOptArg):
+        'Saves the menu group to a named file.'
+        return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (24, 0), ((8, 1), (3, 1)),MenuFileName
+            , MenuFileType)
+
+    def Unload(self):
+        'Unloads the menu group.'
+        return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), (),)
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "MenuFileName": (1610743812, 2, (8, 0), (), "MenuFileName", None),
+        # Method 'Menus' returns object of type 'IZcadPopupMenus'
+        "Menus": (1610743813, 2, (9, 0), (), "Menus", '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Name": (1610743810, 2, (8, 0), (), "Name", None),
+        # Method 'Parent' returns object of type 'IZcadMenuGroups'
+        "Parent": (1610743809, 2, (9, 0), (), "Parent", '{EC923155-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Toolbars' returns object of type 'IZcadToolbars'
+        "Toolbars": (1610743814, 2, (9, 0), (), "Toolbars", '{EC923003-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Type": (1610743811, 2, (3, 0), (), "Type", None),
+    }
+    _prop_map_put_ = {
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadMenuGroups(DispatchBaseClass):
+    'ZWCAD MenuGroups Interface'
+    CLSID = IID('{EC923155-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC923146-5A21-11E7-B72E-BC5FF42AC839}')
+
+    # Result is of type IZcadMenuGroup
+    def Item(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Item', '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    # Result is of type IZcadMenuGroup
+    def Load(self, MenuFileName=defaultNamedNotOptArg, BaseMenu=defaultNamedOptArg):
+        'Loads the specified menu group.'
+        ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1), (12, 17)),MenuFileName
+            , BaseMenu)
+        if ret is not None:
+            ret = Dispatch(ret, 'Load', '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Count": (1610743810, 2, (3, 0), (), "Count", None),
+        # Method 'Parent' returns object of type 'IZcadApplication'
+        "Parent": (1610743812, 2, (9, 0), (), "Parent", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+    }
+    _prop_map_put_ = {
+    }
+    # Default method for this class is 'Item'
+    def __call__(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, '__call__', '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def __str__(self, *args):
+        return str(self.__call__(*args))
+    def __int__(self, *args):
+        return int(self.__call__(*args))
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')
+    #This class has Count() property - allow len(ob) to provide this
+    def __len__(self):
+        return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
+    #This class has a __len__ - this is needed so 'if object:' always returns TRUE.
+    def __nonzero__(self):
+        return True
+
 class IZcadModelSpace(DispatchBaseClass):
     'ZWCAD ModelSpace Interface'
     CLSID = IID('{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}')
@@ -13641,6 +14271,56 @@ class IZcadPlaneSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
+class IZcadPlot(DispatchBaseClass):
+    'ZWCAD Plot Interface'
+    CLSID = IID('{EC92301B-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC92315F-5A21-11E7-B72E-BC5FF42AC839}')
+
+    def DisplayPlotPreview(self, Preview=defaultNamedNotOptArg):
+        'Bring up plot preview dialog.'
+        return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), ((3, 1),),Preview
+            )
+
+    def PlotToDevice(self, plotConfig=defaultNamedOptArg):
+        'Plot to a device.'
+        return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (11, 0), ((12, 17),),plotConfig
+            )
+
+    def PlotToFile(self, plotFile=defaultNamedNotOptArg, plotConfig=defaultNamedOptArg):
+        'Plot to a file.'
+        return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (11, 0), ((8, 1), (12, 17)),plotFile
+            , plotConfig)
+
+    def SetLayoutsToPlot(self, layoutList=defaultNamedNotOptArg):
+        'Specify layouts to plot'
+        return self._oleobj_.InvokeTypes(1610743818, LCID, 1, (24, 0), ((12, 1),),layoutList
+            )
+
+    def StartBatchMode(self, entryCount=defaultNamedNotOptArg):
+        'Start batch plot mode'
+        return self._oleobj_.InvokeTypes(1610743819, LCID, 1, (24, 0), ((3, 1),),entryCount
+            )
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "BatchPlotProgress": (1610743813, 2, (11, 0), (), "BatchPlotProgress", None),
+        "NumberOfCopies": (1610743811, 2, (3, 0), (), "NumberOfCopies", None),
+        "QuietErrorMode": (1610743809, 2, (11, 0), (), "QuietErrorMode", None),
+    }
+    _prop_map_put_ = {
+        "BatchPlotProgress": ((1610743813, LCID, 4, 0),()),
+        "NumberOfCopies": ((1610743811, LCID, 4, 0),()),
+        "QuietErrorMode": ((1610743809, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
 class IZcadPlotConfiguration(DispatchBaseClass):
     'ZWCAD PlotConfiguration Interface'
     CLSID = IID('{EC9231DB-5A21-11E7-B72E-BC5FF42AC839}')
@@ -15039,6 +15719,730 @@ class IZcadPolyline(DispatchBaseClass):
         "Type": ((13, LCID, 4, 0),()),
         "Visible": ((1284, LCID, 4, 0),()),
         "color": ((1280, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPopupMenu(DispatchBaseClass):
+    'ZWCAD PopupMenu Interface'
+    CLSID = IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC923008-5A21-11E7-B72E-BC5FF42AC839}')
+
+    # Result is of type IZcadPopupMenuItem
+    def AddMenuItem(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg):
+        'Adds a popup menu item.'
+        ret = self._oleobj_.InvokeTypes(1610743818, LCID, 1, (9, 0), ((12, 1), (8, 1), (8, 1)),Index
+            , Label, Macro)
+        if ret is not None:
+            ret = Dispatch(ret, 'AddMenuItem', '{EC923050-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    # Result is of type IZcadPopupMenuItem
+    def AddSeparator(self, Index=defaultNamedNotOptArg):
+        'Adds a popup menu separator.'
+        ret = self._oleobj_.InvokeTypes(1610743820, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'AddSeparator', '{EC923050-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    # Result is of type IZcadPopupMenu
+    def AddSubMenu(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg):
+        'Adds a submenu as a popup menu item.'
+        ret = self._oleobj_.InvokeTypes(1610743819, LCID, 1, (9, 0), ((12, 1), (8, 1)),Index
+            , Label)
+        if ret is not None:
+            ret = Dispatch(ret, 'AddSubMenu', '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def InsertInMenuBar(self, Index=defaultNamedNotOptArg):
+        'Inserts the menu to ZWCAD menu bar.'
+        return self._oleobj_.InvokeTypes(1610743821, LCID, 1, (24, 0), ((12, 1),),Index
+            )
+
+    # Result is of type IZcadPopupMenuItem
+    def Item(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Item', '{EC923050-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def RemoveFromMenuBar(self):
+        'Removes the menu from ZWCAD menu bar.'
+        return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (24, 0), (),)
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Count": (1610743810, 2, (3, 0), (), "Count", None),
+        "Name": (1610743813, 2, (8, 0), (), "Name", None),
+        "NameNoMnemonic": (1610743815, 2, (8, 0), (), "NameNoMnemonic", None),
+        "OnMenuBar": (1610743817, 2, (11, 0), (), "OnMenuBar", None),
+        "Parent": (1610743812, 2, (9, 0), (), "Parent", None),
+        "ShortcutMenu": (1610743816, 2, (11, 0), (), "ShortcutMenu", None),
+        "TagString": (1610743823, 2, (8, 0), (), "TagString", None),
+    }
+    _prop_map_put_ = {
+        "Name": ((1610743813, LCID, 4, 0),()),
+    }
+    # Default method for this class is 'Item'
+    def __call__(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, '__call__', '{EC923050-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def __str__(self, *args):
+        return str(self.__call__(*args))
+    def __int__(self, *args):
+        return int(self.__call__(*args))
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, '{EC923050-5A21-11E7-B72E-BC5FF42AC839}')
+    #This class has Count() property - allow len(ob) to provide this
+    def __len__(self):
+        return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
+    #This class has a __len__ - this is needed so 'if object:' always returns TRUE.
+    def __nonzero__(self):
+        return True
+
+class IZcadPopupMenuItem(DispatchBaseClass):
+    'ZWCAD PopupMenuItem Interface'
+    CLSID = IID('{EC923050-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC9230D4-5A21-11E7-B72E-BC5FF42AC839}')
+
+    def Delete(self):
+        'Deletes the menu item.'
+        return self._oleobj_.InvokeTypes(1610743826, LCID, 1, (24, 0), (),)
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Caption": (1610743823, 2, (8, 0), (), "Caption", None),
+        "Check": (1610743816, 2, (11, 0), (), "Check", None),
+        "Enable": (1610743814, 2, (11, 0), (), "Enable", None),
+        "EndSubMenuLevel": (1610743827, 2, (3, 0), (), "EndSubMenuLevel", None),
+        "HelpString": (1610743824, 2, (8, 0), (), "HelpString", None),
+        "Index": (1610743822, 2, (3, 0), (), "Index", None),
+        "Label": (1610743810, 2, (8, 0), (), "Label", None),
+        "Macro": (1610743820, 2, (8, 0), (), "Macro", None),
+        # Method 'Parent' returns object of type 'IZcadPopupMenu'
+        "Parent": (1610743809, 2, (9, 0), (), "Parent", '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'SubMenu' returns object of type 'IZcadPopupMenu'
+        "SubMenu": (1610743819, 2, (9, 0), (), "SubMenu", '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}'),
+        "TagString": (1610743812, 2, (8, 0), (), "TagString", None),
+        "Type": (1610743818, 2, (3, 0), (), "Type", None),
+    }
+    _prop_map_put_ = {
+        "Check": ((1610743816, LCID, 4, 0),()),
+        "Enable": ((1610743814, LCID, 4, 0),()),
+        "EndSubMenuLevel": ((1610743827, LCID, 4, 0),()),
+        "HelpString": ((1610743824, LCID, 4, 0),()),
+        "Label": ((1610743810, LCID, 4, 0),()),
+        "Macro": ((1610743820, LCID, 4, 0),()),
+        "TagString": ((1610743812, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPopupMenus(DispatchBaseClass):
+    'ZWCAD PopupMenus Interface'
+    CLSID = IID('{EC92318C-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC922FD9-5A21-11E7-B72E-BC5FF42AC839}')
+
+    # Result is of type IZcadPopupMenu
+    def Add(self, MenuName=defaultNamedNotOptArg):
+        'Adds a popup menu.'
+        ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1),),MenuName
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Add', '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def InsertMenuInMenuBar(self, MenuName=defaultNamedNotOptArg, Index=defaultNamedNotOptArg):
+        'Inserts a popup menu to ZWCAD menu bar.'
+        return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), ((8, 1), (12, 1)),MenuName
+            , Index)
+
+    # Result is of type IZcadPopupMenu
+    def Item(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Item', '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def RemoveMenuFromMenuBar(self, Index=defaultNamedNotOptArg):
+        'Removes a popup menu from ZWCAD menu bar.'
+        return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), ((12, 1),),Index
+            )
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Count": (1610743810, 2, (3, 0), (), "Count", None),
+        # Method 'Parent' returns object of type 'IZcadMenuGroup'
+        "Parent": (1610743812, 2, (9, 0), (), "Parent", '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}'),
+    }
+    _prop_map_put_ = {
+    }
+    # Default method for this class is 'Item'
+    def __call__(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, '__call__', '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def __str__(self, *args):
+        return str(self.__call__(*args))
+    def __int__(self, *args):
+        return int(self.__call__(*args))
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')
+    #This class has Count() property - allow len(ob) to provide this
+    def __len__(self):
+        return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
+    #This class has a __len__ - this is needed so 'if object:' always returns TRUE.
+    def __nonzero__(self):
+        return True
+
+class IZcadPreferences(DispatchBaseClass):
+    'ZWCAD Preferences Interface'
+    CLSID = IID('{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC922FC7-5A21-11E7-B72E-BC5FF42AC839}')
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Display' returns object of type 'IZcadPreferencesDisplay'
+        "Display": (1610743810, 2, (9, 0), (), "Display", '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Drafting' returns object of type 'IZcadPreferencesDrafting'
+        "Drafting": (1610743815, 2, (9, 0), (), "Drafting", '{EC923186-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Files' returns object of type 'IZcadPreferencesFiles'
+        "Files": (1610743809, 2, (9, 0), (), "Files", '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'OpenSave' returns object of type 'IZcadPreferencesOpenSave'
+        "OpenSave": (1610743811, 2, (9, 0), (), "OpenSave", '{EC923128-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Output' returns object of type 'IZcadPreferencesOutput'
+        "Output": (1610743812, 2, (9, 0), (), "Output", '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Profiles' returns object of type 'IZcadPreferencesProfiles'
+        "Profiles": (1610743817, 2, (9, 0), (), "Profiles", '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'Selection' returns object of type 'IZcadPreferencesSelection'
+        "Selection": (1610743816, 2, (9, 0), (), "Selection", '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'System' returns object of type 'IZcadPreferencesSystem'
+        "System": (1610743813, 2, (9, 0), (), "System", '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}'),
+        # Method 'User' returns object of type 'IZcadPreferencesUser'
+        "User": (1610743814, 2, (9, 0), (), "User", '{EC923038-5A21-11E7-B72E-BC5FF42AC839}'),
+    }
+    _prop_map_put_ = {
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPreferencesDisplay(DispatchBaseClass):
+    'ZWCAD PreferencesDisplay Interface'
+    CLSID = IID('{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC92300A-5A21-11E7-B72E-BC5FF42AC839}')
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "AutoTrackingVecColor": (1610743841, 2, (19, 0), (), "AutoTrackingVecColor", None),
+        "CursorSize": (1610743823, 2, (3, 0), (), "CursorSize", None),
+        "DisplayLayoutTabs": (1610743853, 2, (11, 0), (), "DisplayLayoutTabs", None),
+        "DisplayScreenMenu": (1610743821, 2, (11, 0), (), "DisplayScreenMenu", None),
+        "DisplayScrollBars": (1610743819, 2, (11, 0), (), "DisplayScrollBars", None),
+        "DockedVisibleLines": (1610743825, 2, (3, 0), (), "DockedVisibleLines", None),
+        "GraphicsWinLayoutBackgrndColor": (1610743833, 2, (19, 0), (), "GraphicsWinLayoutBackgrndColor", None),
+        "GraphicsWinModelBackgrndColor": (1610743829, 2, (19, 0), (), "GraphicsWinModelBackgrndColor", None),
+        "HistoryLines": (1610743849, 2, (3, 0), (), "HistoryLines", None),
+        "ImageFrameHighlight": (1610743855, 2, (11, 0), (), "ImageFrameHighlight", None),
+        "LayoutCreateViewport": (1610743817, 2, (11, 0), (), "LayoutCreateViewport", None),
+        "LayoutCrosshairColor": (1610743839, 2, (19, 0), (), "LayoutCrosshairColor", None),
+        "LayoutDisplayMargins": (1610743809, 2, (11, 0), (), "LayoutDisplayMargins", None),
+        "LayoutDisplayPaper": (1610743811, 2, (11, 0), (), "LayoutDisplayPaper", None),
+        "LayoutDisplayPaperShadow": (1610743813, 2, (11, 0), (), "LayoutDisplayPaperShadow", None),
+        "LayoutShowPlotSetup": (1610743815, 2, (11, 0), (), "LayoutShowPlotSetup", None),
+        "MaxZWCADWindow": (1610743851, 2, (11, 0), (), "MaxZWCADWindow", None),
+        "ModelCrosshairColor": (1610743831, 2, (19, 0), (), "ModelCrosshairColor", None),
+        "ShowRasterImage": (1610743827, 2, (11, 0), (), "ShowRasterImage", None),
+        "TextFont": (1610743843, 2, (8, 0), (), "TextFont", None),
+        "TextFontSize": (1610743847, 2, (3, 0), (), "TextFontSize", None),
+        "TextFontStyle": (1610743845, 2, (3, 0), (), "TextFontStyle", None),
+        "TextWinBackgrndColor": (1610743835, 2, (19, 0), (), "TextWinBackgrndColor", None),
+        "TextWinTextColor": (1610743837, 2, (19, 0), (), "TextWinTextColor", None),
+        "TrueColorImages": (1610743857, 2, (11, 0), (), "TrueColorImages", None),
+        "XRefFadeIntensity": (1610743859, 2, (3, 0), (), "XRefFadeIntensity", None),
+    }
+    _prop_map_put_ = {
+        "AutoTrackingVecColor": ((1610743841, LCID, 4, 0),()),
+        "CursorSize": ((1610743823, LCID, 4, 0),()),
+        "DisplayLayoutTabs": ((1610743853, LCID, 4, 0),()),
+        "DisplayScreenMenu": ((1610743821, LCID, 4, 0),()),
+        "DisplayScrollBars": ((1610743819, LCID, 4, 0),()),
+        "DockedVisibleLines": ((1610743825, LCID, 4, 0),()),
+        "GraphicsWinLayoutBackgrndColor": ((1610743833, LCID, 4, 0),()),
+        "GraphicsWinModelBackgrndColor": ((1610743829, LCID, 4, 0),()),
+        "HistoryLines": ((1610743849, LCID, 4, 0),()),
+        "ImageFrameHighlight": ((1610743855, LCID, 4, 0),()),
+        "LayoutCreateViewport": ((1610743817, LCID, 4, 0),()),
+        "LayoutCrosshairColor": ((1610743839, LCID, 4, 0),()),
+        "LayoutDisplayMargins": ((1610743809, LCID, 4, 0),()),
+        "LayoutDisplayPaper": ((1610743811, LCID, 4, 0),()),
+        "LayoutDisplayPaperShadow": ((1610743813, LCID, 4, 0),()),
+        "LayoutShowPlotSetup": ((1610743815, LCID, 4, 0),()),
+        "MaxZWCADWindow": ((1610743851, LCID, 4, 0),()),
+        "ModelCrosshairColor": ((1610743831, LCID, 4, 0),()),
+        "ShowRasterImage": ((1610743827, LCID, 4, 0),()),
+        "TextFont": ((1610743843, LCID, 4, 0),()),
+        "TextFontSize": ((1610743847, LCID, 4, 0),()),
+        "TextFontStyle": ((1610743845, LCID, 4, 0),()),
+        "TextWinBackgrndColor": ((1610743835, LCID, 4, 0),()),
+        "TextWinTextColor": ((1610743837, LCID, 4, 0),()),
+        "TrueColorImages": ((1610743857, LCID, 4, 0),()),
+        "XRefFadeIntensity": ((1610743859, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPreferencesDrafting(DispatchBaseClass):
+    'ZWCAD PreferencesDrafting Interface'
+    CLSID = IID('{EC923186-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC9231EB-5A21-11E7-B72E-BC5FF42AC839}')
+
+    _prop_map_get_ = {
+        "AlignmentPointAcquisition": (1610743829, 2, (3, 0), (), "AlignmentPointAcquisition", None),
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "AutoSnapAperture": (1610743815, 2, (11, 0), (), "AutoSnapAperture", None),
+        "AutoSnapApertureSize": (1610743817, 2, (3, 0), (), "AutoSnapApertureSize", None),
+        "AutoSnapMagnet": (1610743811, 2, (11, 0), (), "AutoSnapMagnet", None),
+        "AutoSnapMarker": (1610743809, 2, (11, 0), (), "AutoSnapMarker", None),
+        "AutoSnapMarkerColor": (1610743819, 2, (3, 0), (), "AutoSnapMarkerColor", None),
+        "AutoSnapMarkerSize": (1610743821, 2, (3, 0), (), "AutoSnapMarkerSize", None),
+        "AutoSnapTooltip": (1610743813, 2, (11, 0), (), "AutoSnapTooltip", None),
+        "AutoTrackTooltip": (1610743827, 2, (11, 0), (), "AutoTrackTooltip", None),
+        "FullScreenTrackingVector": (1610743825, 2, (11, 0), (), "FullScreenTrackingVector", None),
+        "PolarTrackingVector": (1610743823, 2, (11, 0), (), "PolarTrackingVector", None),
+    }
+    _prop_map_put_ = {
+        "AlignmentPointAcquisition": ((1610743829, LCID, 4, 0),()),
+        "AutoSnapAperture": ((1610743815, LCID, 4, 0),()),
+        "AutoSnapApertureSize": ((1610743817, LCID, 4, 0),()),
+        "AutoSnapMagnet": ((1610743811, LCID, 4, 0),()),
+        "AutoSnapMarker": ((1610743809, LCID, 4, 0),()),
+        "AutoSnapMarkerColor": ((1610743819, LCID, 4, 0),()),
+        "AutoSnapMarkerSize": ((1610743821, LCID, 4, 0),()),
+        "AutoSnapTooltip": ((1610743813, LCID, 4, 0),()),
+        "AutoTrackTooltip": ((1610743827, LCID, 4, 0),()),
+        "FullScreenTrackingVector": ((1610743825, LCID, 4, 0),()),
+        "PolarTrackingVector": ((1610743823, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPreferencesFiles(DispatchBaseClass):
+    'ZWCAD PreferencesFiles Interface'
+    CLSID = IID('{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC9230A0-5A21-11E7-B72E-BC5FF42AC839}')
+
+    def GetProjectFilePath(self, ProjectName=defaultNamedNotOptArg):
+        'Gets the Project File path for a given project Name.'
+        # Result is a Unicode object
+        return self._oleobj_.InvokeTypes(1610743858, LCID, 1, (8, 0), ((8, 1),),ProjectName
+            )
+
+    def SetProjectFilePath(self, ProjectName=defaultNamedNotOptArg, ProjectFilePath=defaultNamedNotOptArg):
+        'Set the Project file path for a given project Name.'
+        return self._oleobj_.InvokeTypes(1610743857, LCID, 1, (24, 0), ((8, 1), (8, 1)),ProjectName
+            , ProjectFilePath)
+
+    _prop_map_get_ = {
+        "ActiveInvProject": (1610743879, 2, (8, 0), (), "ActiveInvProject", None),
+        "AltFontFile": (1610743831, 2, (8, 0), (), "AltFontFile", None),
+        "AltTabletMenuFile": (1610743855, 2, (8, 0), (), "AltTabletMenuFile", None),
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "AutoSavePath": (1610743843, 2, (8, 0), (), "AutoSavePath", None),
+        "ColorBookPath": (1610743869, 2, (8, 0), (), "ColorBookPath", None),
+        "ConfigFile": (1610743823, 2, (8, 0), (), "ConfigFile", None),
+        "CustomDictionary": (1610743829, 2, (8, 0), (), "CustomDictionary", None),
+        "CustomIconPath": (1610743817, 2, (8, 0), (), "CustomIconPath", None),
+        "DefaultInternetURL": (1610743821, 2, (8, 0), (), "DefaultInternetURL", None),
+        "DriversPath": (1610743811, 2, (8, 0), (), "DriversPath", None),
+        "EnterpriseMenuFile": (1610743815, 2, (8, 0), (), "EnterpriseMenuFile", None),
+        "FontFileMap": (1610743833, 2, (8, 0), (), "FontFileMap", None),
+        "HelpFilePath": (1610743819, 2, (8, 0), (), "HelpFilePath", None),
+        "LicenseServer": (1610743824, 2, (8, 0), (), "LicenseServer", None),
+        "LogFilePath": (1610743847, 2, (8, 0), (), "LogFilePath", None),
+        "MainDictionary": (1610743827, 2, (8, 0), (), "MainDictionary", None),
+        "MenuFile": (1610743813, 2, (8, 0), (), "MenuFile", None),
+        "ObjectZRXPath": (1610743867, 2, (8, 0), (), "ObjectZRXPath", None),
+        "PageSetupOverridesTemplateFile": (1610743877, 2, (8, 0), (), "PageSetupOverridesTemplateFile", None),
+        "PlotLogFilePath": (1610743875, 2, (8, 0), (), "PlotLogFilePath", None),
+        "PostScriptPrologFile": (1610743839, 2, (8, 0), (), "PostScriptPrologFile", None),
+        "PrintFile": (1610743835, 2, (8, 0), (), "PrintFile", None),
+        "PrintSpoolExecutable": (1610743837, 2, (8, 0), (), "PrintSpoolExecutable", None),
+        "PrintSpoolerPath": (1610743841, 2, (8, 0), (), "PrintSpoolerPath", None),
+        "PrinterConfigPath": (1610743859, 2, (8, 0), (), "PrinterConfigPath", None),
+        "PrinterDescPath": (1610743861, 2, (8, 0), (), "PrinterDescPath", None),
+        "PrinterStyleSheetPath": (1610743863, 2, (8, 0), (), "PrinterStyleSheetPath", None),
+        "QNewTemplateFile": (1610743873, 2, (8, 0), (), "QNewTemplateFile", None),
+        "SupportPath": (0, 2, (8, 0), (), "SupportPath", None),
+        "TempFilePath": (1610743849, 2, (8, 0), (), "TempFilePath", None),
+        "TempXrefPath": (1610743851, 2, (8, 0), (), "TempXrefPath", None),
+        "TemplateDwgPath": (1610743845, 2, (8, 0), (), "TemplateDwgPath", None),
+        "TextEditor": (1610743825, 2, (8, 0), (), "TextEditor", None),
+        "TextureMapPath": (1610743853, 2, (8, 0), (), "TextureMapPath", None),
+        "ToolPalettePath": (1610743871, 2, (8, 0), (), "ToolPalettePath", None),
+        "WorkspacePath": (1610743865, 2, (8, 0), (), "WorkspacePath", None),
+    }
+    _prop_map_put_ = {
+        "ActiveInvProject": ((1610743879, LCID, 4, 0),()),
+        "AltFontFile": ((1610743831, LCID, 4, 0),()),
+        "AltTabletMenuFile": ((1610743855, LCID, 4, 0),()),
+        "AutoSavePath": ((1610743843, LCID, 4, 0),()),
+        "ColorBookPath": ((1610743869, LCID, 4, 0),()),
+        "CustomDictionary": ((1610743829, LCID, 4, 0),()),
+        "CustomIconPath": ((1610743817, LCID, 4, 0),()),
+        "DefaultInternetURL": ((1610743821, LCID, 4, 0),()),
+        "DriversPath": ((1610743811, LCID, 4, 0),()),
+        "EnterpriseMenuFile": ((1610743815, LCID, 4, 0),()),
+        "FontFileMap": ((1610743833, LCID, 4, 0),()),
+        "HelpFilePath": ((1610743819, LCID, 4, 0),()),
+        "LogFilePath": ((1610743847, LCID, 4, 0),()),
+        "MainDictionary": ((1610743827, LCID, 4, 0),()),
+        "MenuFile": ((1610743813, LCID, 4, 0),()),
+        "ObjectZRXPath": ((1610743867, LCID, 4, 0),()),
+        "PageSetupOverridesTemplateFile": ((1610743877, LCID, 4, 0),()),
+        "PlotLogFilePath": ((1610743875, LCID, 4, 0),()),
+        "PostScriptPrologFile": ((1610743839, LCID, 4, 0),()),
+        "PrintFile": ((1610743835, LCID, 4, 0),()),
+        "PrintSpoolExecutable": ((1610743837, LCID, 4, 0),()),
+        "PrintSpoolerPath": ((1610743841, LCID, 4, 0),()),
+        "PrinterConfigPath": ((1610743859, LCID, 4, 0),()),
+        "PrinterDescPath": ((1610743861, LCID, 4, 0),()),
+        "PrinterStyleSheetPath": ((1610743863, LCID, 4, 0),()),
+        "QNewTemplateFile": ((1610743873, LCID, 4, 0),()),
+        "SupportPath": ((0, LCID, 4, 0),()),
+        "TempFilePath": ((1610743849, LCID, 4, 0),()),
+        "TempXrefPath": ((1610743851, LCID, 4, 0),()),
+        "TemplateDwgPath": ((1610743845, LCID, 4, 0),()),
+        "TextEditor": ((1610743825, LCID, 4, 0),()),
+        "TextureMapPath": ((1610743853, LCID, 4, 0),()),
+        "ToolPalettePath": ((1610743871, LCID, 4, 0),()),
+        "WorkspacePath": ((1610743865, LCID, 4, 0),()),
+    }
+    # Default property for this class is 'SupportPath'
+    def __call__(self):
+        return self._ApplyTypes_(*(0, 2, (8, 0), (), "SupportPath", None))
+    def __str__(self, *args):
+        return str(self.__call__(*args))
+    def __int__(self, *args):
+        return int(self.__call__(*args))
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPreferencesOpenSave(DispatchBaseClass):
+    'ZWCAD PreferencesOpenSave Interface'
+    CLSID = IID('{EC923128-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC92304A-5A21-11E7-B72E-BC5FF42AC839}')
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "AutoAudit": (1610743831, 2, (11, 0), (), "AutoAudit", None),
+        "AutoSaveInterval": (1610743813, 2, (3, 0), (), "AutoSaveInterval", None),
+        "CreateBackup": (1610743815, 2, (11, 0), (), "CreateBackup", None),
+        "DemandLoadZRXApp": (1610743825, 2, (3, 0), (), "DemandLoadZRXApp", None),
+        "FullCRCValidation": (1610743817, 2, (11, 0), (), "FullCRCValidation", None),
+        "IncrementalSavePercent": (1610743811, 2, (3, 0), (), "IncrementalSavePercent", None),
+        "LogFileOn": (1610743819, 2, (11, 0), (), "LogFileOn", None),
+        "MRUNumber": (1610743835, 2, (3, 0), (), "MRUNumber", None),
+        "ProxyImage": (1610743827, 2, (3, 0), (), "ProxyImage", None),
+        "SaveAsType": (1610743833, 2, (3, 0), (), "SaveAsType", None),
+        "SavePreviewThumbnail": (1610743809, 2, (11, 0), (), "SavePreviewThumbnail", None),
+        "ShowProxyDialogBox": (1610743829, 2, (11, 0), (), "ShowProxyDialogBox", None),
+        "TempFileExtension": (1610743821, 2, (8, 0), (), "TempFileExtension", None),
+        "XrefDemandLoad": (1610743823, 2, (3, 0), (), "XrefDemandLoad", None),
+    }
+    _prop_map_put_ = {
+        "AutoAudit": ((1610743831, LCID, 4, 0),()),
+        "AutoSaveInterval": ((1610743813, LCID, 4, 0),()),
+        "CreateBackup": ((1610743815, LCID, 4, 0),()),
+        "DemandLoadZRXApp": ((1610743825, LCID, 4, 0),()),
+        "FullCRCValidation": ((1610743817, LCID, 4, 0),()),
+        "IncrementalSavePercent": ((1610743811, LCID, 4, 0),()),
+        "LogFileOn": ((1610743819, LCID, 4, 0),()),
+        "ProxyImage": ((1610743827, LCID, 4, 0),()),
+        "SaveAsType": ((1610743833, LCID, 4, 0),()),
+        "SavePreviewThumbnail": ((1610743809, LCID, 4, 0),()),
+        "ShowProxyDialogBox": ((1610743829, LCID, 4, 0),()),
+        "TempFileExtension": ((1610743821, LCID, 4, 0),()),
+        "XrefDemandLoad": ((1610743823, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPreferencesOutput(DispatchBaseClass):
+    'ZWCAD PreferencesOutput Interface'
+    CLSID = IID('{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC9230F0-5A21-11E7-B72E-BC5FF42AC839}')
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "AutomaticPlotLog": (1610743831, 2, (11, 0), (), "AutomaticPlotLog", None),
+        "ContinuousPlotLog": (1610743829, 2, (11, 0), (), "ContinuousPlotLog", None),
+        "DefaultOutputDevice": (1610743809, 2, (8, 0), (), "DefaultOutputDevice", None),
+        "DefaultPlotStyleForLayer": (1610743827, 2, (8, 0), (), "DefaultPlotStyleForLayer", None),
+        "DefaultPlotStyleForObjects": (1610743825, 2, (8, 0), (), "DefaultPlotStyleForObjects", None),
+        "DefaultPlotStyleTable": (1610743823, 2, (8, 0), (), "DefaultPlotStyleTable", None),
+        "DefaultPlotToFilePath": (1610743833, 2, (8, 0), (), "DefaultPlotToFilePath", None),
+        "OLEQuality": (1610743817, 2, (3, 0), (), "OLEQuality", None),
+        "PlotLegacy": (1610743815, 2, (11, 0), (), "PlotLegacy", None),
+        "PlotPolicy": (1610743821, 2, (3, 0), (), "PlotPolicy", None),
+        "PrinterPaperSizeAlert": (1610743813, 2, (11, 0), (), "PrinterPaperSizeAlert", None),
+        "PrinterSpoolAlert": (1610743811, 2, (3, 0), (), "PrinterSpoolAlert", None),
+        "UseLastPlotSettings": (1610743819, 2, (11, 0), (), "UseLastPlotSettings", None),
+    }
+    _prop_map_put_ = {
+        "AutomaticPlotLog": ((1610743831, LCID, 4, 0),()),
+        "ContinuousPlotLog": ((1610743829, LCID, 4, 0),()),
+        "DefaultOutputDevice": ((1610743809, LCID, 4, 0),()),
+        "DefaultPlotStyleForLayer": ((1610743827, LCID, 4, 0),()),
+        "DefaultPlotStyleForObjects": ((1610743825, LCID, 4, 0),()),
+        "DefaultPlotStyleTable": ((1610743823, LCID, 4, 0),()),
+        "DefaultPlotToFilePath": ((1610743833, LCID, 4, 0),()),
+        "OLEQuality": ((1610743817, LCID, 4, 0),()),
+        "PlotLegacy": ((1610743815, LCID, 4, 0),()),
+        "PlotPolicy": ((1610743821, LCID, 4, 0),()),
+        "PrinterPaperSizeAlert": ((1610743813, LCID, 4, 0),()),
+        "PrinterSpoolAlert": ((1610743811, LCID, 4, 0),()),
+        "UseLastPlotSettings": ((1610743819, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPreferencesProfiles(DispatchBaseClass):
+    'ZWCAD PreferencesProfiles Interface'
+    CLSID = IID('{EC92314B-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC9231F7-5A21-11E7-B72E-BC5FF42AC839}')
+
+    def CopyProfile(self, oldProfileName=defaultNamedNotOptArg, newProfileName=defaultNamedNotOptArg):
+        'CopyProfile.'
+        return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (24, 0), ((8, 1), (8, 1)),oldProfileName
+            , newProfileName)
+
+    def DeleteProfile(self, ProfileName=defaultNamedNotOptArg):
+        'DeleteProfile.'
+        return self._oleobj_.InvokeTypes(1610743813, LCID, 1, (24, 0), ((8, 1),),ProfileName
+            )
+
+    def ExportProfile(self, ProfileName=defaultNamedNotOptArg, RegFile=defaultNamedNotOptArg):
+        'ExportProfile.'
+        return self._oleobj_.InvokeTypes(1610743812, LCID, 1, (24, 0), ((8, 1), (8, 1)),ProfileName
+            , RegFile)
+
+    def GetAllProfileNames(self, pNames=pythoncom.Missing):
+        'GetAllProfileNames.'
+        return self._ApplyTypes_(1610743817, 1, (24, 0), ((16396, 2),), 'GetAllProfileNames', None,pNames
+            )
+
+    def ImportProfile(self, ProfileName=defaultNamedNotOptArg, RegFile=defaultNamedNotOptArg, IncludePathInfo=defaultNamedNotOptArg):
+        'ImportProfile.'
+        return self._oleobj_.InvokeTypes(1610743811, LCID, 1, (24, 0), ((8, 1), (8, 1), (11, 1)),ProfileName
+            , RegFile, IncludePathInfo)
+
+    def RenameProfile(self, origProfileName=defaultNamedNotOptArg, newProfileName=defaultNamedNotOptArg):
+        'RenameProfile.'
+        return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), ((8, 1), (8, 1)),origProfileName
+            , newProfileName)
+
+    def ResetProfile(self, Profile=defaultNamedNotOptArg):
+        'ResetProfile.'
+        return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), ((8, 1),),Profile
+            )
+
+    _prop_map_get_ = {
+        "ActiveProfile": (1610743809, 2, (8, 0), (), "ActiveProfile", None),
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+    }
+    _prop_map_put_ = {
+        "ActiveProfile": ((1610743809, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPreferencesSelection(DispatchBaseClass):
+    'ZWCAD PreferencesSelection Interface'
+    CLSID = IID('{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC9230A7-5A21-11E7-B72E-BC5FF42AC839}')
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "DisplayGrips": (1610743819, 2, (11, 0), (), "DisplayGrips", None),
+        "DisplayGripsWithinBlocks": (1610743821, 2, (11, 0), (), "DisplayGripsWithinBlocks", None),
+        "GripColorSelected": (1610743823, 2, (3, 0), (), "GripColorSelected", None),
+        "GripColorUnselected": (1610743825, 2, (3, 0), (), "GripColorUnselected", None),
+        "GripSize": (1610743827, 2, (3, 0), (), "GripSize", None),
+        "PickAdd": (1610743811, 2, (11, 0), (), "PickAdd", None),
+        "PickAuto": (1610743815, 2, (11, 0), (), "PickAuto", None),
+        "PickBoxSize": (1610743817, 2, (3, 0), (), "PickBoxSize", None),
+        "PickDrag": (1610743813, 2, (11, 0), (), "PickDrag", None),
+        "PickFirst": (1610743809, 2, (11, 0), (), "PickFirst", None),
+        "PickGroup": (1610743829, 2, (11, 0), (), "PickGroup", None),
+    }
+    _prop_map_put_ = {
+        "DisplayGrips": ((1610743819, LCID, 4, 0),()),
+        "DisplayGripsWithinBlocks": ((1610743821, LCID, 4, 0),()),
+        "GripColorSelected": ((1610743823, LCID, 4, 0),()),
+        "GripColorUnselected": ((1610743825, LCID, 4, 0),()),
+        "GripSize": ((1610743827, LCID, 4, 0),()),
+        "PickAdd": ((1610743811, LCID, 4, 0),()),
+        "PickAuto": ((1610743815, LCID, 4, 0),()),
+        "PickBoxSize": ((1610743817, LCID, 4, 0),()),
+        "PickDrag": ((1610743813, LCID, 4, 0),()),
+        "PickFirst": ((1610743809, LCID, 4, 0),()),
+        "PickGroup": ((1610743829, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPreferencesSystem(DispatchBaseClass):
+    'ZWCAD PreferencesSystem Interface'
+    CLSID = IID('{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC923185-5A21-11E7-B72E-BC5FF42AC839}')
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "BeepOnError": (1610743819, 2, (11, 0), (), "BeepOnError", None),
+        "DisplayOLEScale": (1610743811, 2, (11, 0), (), "DisplayOLEScale", None),
+        "EnableStartupDialog": (1610743817, 2, (11, 0), (), "EnableStartupDialog", None),
+        "LoadZcadLspInAllDocuments": (1610743823, 2, (11, 0), (), "LoadZcadLspInAllDocuments", None),
+        "ShowWarningMessages": (1610743821, 2, (11, 0), (), "ShowWarningMessages", None),
+        "SingleDocumentMode": (1610743809, 2, (11, 0), (), "SingleDocumentMode", None),
+        "StoreSQLIndex": (1610743813, 2, (11, 0), (), "StoreSQLIndex", None),
+        "TablesReadOnly": (1610743815, 2, (11, 0), (), "TablesReadOnly", None),
+    }
+    _prop_map_put_ = {
+        "BeepOnError": ((1610743819, LCID, 4, 0),()),
+        "DisplayOLEScale": ((1610743811, LCID, 4, 0),()),
+        "EnableStartupDialog": ((1610743817, LCID, 4, 0),()),
+        "LoadZcadLspInAllDocuments": ((1610743823, LCID, 4, 0),()),
+        "ShowWarningMessages": ((1610743821, LCID, 4, 0),()),
+        "SingleDocumentMode": ((1610743809, LCID, 4, 0),()),
+        "StoreSQLIndex": ((1610743813, LCID, 4, 0),()),
+        "TablesReadOnly": ((1610743815, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadPreferencesUser(DispatchBaseClass):
+    'ZWCAD PreferencesUser Interface'
+    CLSID = IID('{EC923038-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC9231A8-5A21-11E7-B72E-BC5FF42AC839}')
+
+    _prop_map_get_ = {
+        "ADCInsertUnitsDefaultSource": (1610743817, 2, (3, 0), (), "ADCInsertUnitsDefaultSource", None),
+        "ADCInsertUnitsDefaultTarget": (1610743819, 2, (3, 0), (), "ADCInsertUnitsDefaultTarget", None),
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "HyperlinkDisplayCursor": (1610743813, 2, (11, 0), (), "HyperlinkDisplayCursor", None),
+        "KeyboardAccelerator": (1610743809, 2, (3, 0), (), "KeyboardAccelerator", None),
+        "KeyboardPriority": (1610743811, 2, (3, 0), (), "KeyboardPriority", None),
+        "SCMCommandMode": (1610743827, 2, (3, 0), (), "SCMCommandMode", None),
+        "SCMDefaultMode": (1610743823, 2, (3, 0), (), "SCMDefaultMode", None),
+        "SCMEditMode": (1610743825, 2, (3, 0), (), "SCMEditMode", None),
+        "SCMTimeMode": (1610743829, 2, (11, 0), (), "SCMTimeMode", None),
+        "SCMTimeValue": (1610743831, 2, (3, 0), (), "SCMTimeValue", None),
+        "ShortCutMenuDisplay": (1610743821, 2, (11, 0), (), "ShortCutMenuDisplay", None),
+    }
+    _prop_map_put_ = {
+        "ADCInsertUnitsDefaultSource": ((1610743817, LCID, 4, 0),()),
+        "ADCInsertUnitsDefaultTarget": ((1610743819, LCID, 4, 0),()),
+        "HyperlinkDisplayCursor": ((1610743813, LCID, 4, 0),()),
+        "KeyboardAccelerator": ((1610743809, LCID, 4, 0),()),
+        "KeyboardPriority": ((1610743811, LCID, 4, 0),()),
+        "SCMCommandMode": ((1610743827, LCID, 4, 0),()),
+        "SCMDefaultMode": ((1610743823, LCID, 4, 0),()),
+        "SCMEditMode": ((1610743825, LCID, 4, 0),()),
+        "SCMTimeMode": ((1610743829, LCID, 4, 0),()),
+        "SCMTimeValue": ((1610743831, LCID, 4, 0),()),
+        "ShortCutMenuDisplay": ((1610743821, LCID, 4, 0),()),
     }
     def __iter__(self):
         "Return a Python iterator for this object"
@@ -16678,6 +18082,164 @@ class IZcadSecurityParams(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
+class IZcadSelectionSet(DispatchBaseClass):
+    'IZwcadSelectionSet Interface'
+    CLSID = IID('{EC923124-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC923000-5A21-11E7-B72E-BC5FF42AC839}')
+
+    def AddItems(self, pSelSet=defaultNamedNotOptArg):
+        'Adds items to the selection set.'
+        return self._oleobj_.InvokeTypes(7, LCID, 1, (24, 0), ((12, 1),),pSelSet
+            )
+
+    def Clear(self):
+        'Clears the selection set.'
+        return self._oleobj_.InvokeTypes(9, LCID, 1, (24, 0), (),)
+
+    def Delete(self):
+        'Deletes the object.'
+        return self._oleobj_.InvokeTypes(14, LCID, 1, (24, 0), (),)
+
+    def Erase(self):
+        'Erases all entities in the selection set.'
+        return self._oleobj_.InvokeTypes(4, LCID, 1, (24, 0), (),)
+
+    def Highlight(self, bFlag=defaultNamedNotOptArg):
+        'Highlights all entities in the selection set.'
+        return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((11, 1),),bFlag
+            )
+
+    # Result is of type IZcadEntity
+    def Item(self, Index=defaultNamedNotOptArg):
+        'Given an Index, returns an entity in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Item', '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def RemoveItems(self, Objects=defaultNamedNotOptArg):
+        'Removes items from the selection set'
+        return self._oleobj_.InvokeTypes(8, LCID, 1, (24, 0), ((12, 1),),Objects
+            )
+
+    def Select(self, Mode=defaultNamedNotOptArg, Point1=defaultNamedOptArg, Point2=defaultNamedOptArg, FilterType=defaultNamedOptArg
+            , FilterData=defaultNamedOptArg):
+        'Selects entities given two corners and a mode, and adds them to the selection set.'
+        return self._oleobj_.InvokeTypes(10, LCID, 1, (24, 0), ((3, 1), (12, 17), (12, 17), (12, 17), (12, 17)),Mode
+            , Point1, Point2, FilterType, FilterData)
+
+    def SelectAtPoint(self, Point=defaultNamedNotOptArg, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
+        'Selects entities passing through a given point and adds them to the selection set.'
+        return self._oleobj_.InvokeTypes(11, LCID, 1, (24, 0), ((12, 1), (12, 17), (12, 17)),Point
+            , FilterType, FilterData)
+
+    def SelectByPolygon(self, Mode=defaultNamedNotOptArg, PointsList=defaultNamedNotOptArg, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
+        'Selects entities given a mode and a points list and adds them to the selection-set.'
+        return self._oleobj_.InvokeTypes(12, LCID, 1, (24, 0), ((3, 1), (12, 1), (12, 17), (12, 17)),Mode
+            , PointsList, FilterType, FilterData)
+
+    def SelectOnScreen(self, FilterType=defaultNamedOptArg, FilterData=defaultNamedOptArg):
+        'Prompts the user to select the entities on the ZWCAD screen.'
+        return self._oleobj_.InvokeTypes(13, LCID, 1, (24, 0), ((12, 17), (12, 17)),FilterType
+            , FilterData)
+
+    def Update(self):
+        'Updates the graphics of all entities in the selection set.'
+        return self._oleobj_.InvokeTypes(5, LCID, 1, (24, 0), (),)
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (6, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Count": (1, 2, (3, 0), (), "Count", None),
+        "Name": (2, 2, (8, 0), (), "Name", None),
+    }
+    _prop_map_put_ = {
+    }
+    # Default method for this class is 'Item'
+    def __call__(self, Index=defaultNamedNotOptArg):
+        'Given an Index, returns an entity in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, '__call__', '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def __str__(self, *args):
+        return str(self.__call__(*args))
+    def __int__(self, *args):
+        return int(self.__call__(*args))
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}')
+    #This class has Count() property - allow len(ob) to provide this
+    def __len__(self):
+        return self._ApplyTypes_(*(1, 2, (3, 0), (), "Count", None))
+    #This class has a __len__ - this is needed so 'if object:' always returns TRUE.
+    def __nonzero__(self):
+        return True
+
+class IZcadSelectionSets(DispatchBaseClass):
+    'IZwcadSelectionSets Interface'
+    CLSID = IID('{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC923150-5A21-11E7-B72E-BC5FF42AC839}')
+
+    # Result is of type IZcadSelectionSet
+    def Add(self, Name=defaultNamedNotOptArg):
+        'Adds a selection set to the collection.'
+        ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Add', '{EC923124-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    # Result is of type IZcadSelectionSet
+    def Item(self, Index=defaultNamedNotOptArg):
+        'Given an Index, returns an item in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Item', '{EC923124-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Count": (1, 2, (3, 0), (), "Count", None),
+    }
+    _prop_map_put_ = {
+    }
+    # Default method for this class is 'Item'
+    def __call__(self, Index=defaultNamedNotOptArg):
+        'Given an Index, returns an item in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, '__call__', '{EC923124-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def __str__(self, *args):
+        return str(self.__call__(*args))
+    def __int__(self, *args):
+        return int(self.__call__(*args))
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, '{EC923124-5A21-11E7-B72E-BC5FF42AC839}')
+    #This class has Count() property - allow len(ob) to provide this
+    def __len__(self):
+        return self._ApplyTypes_(*(1, 2, (3, 0), (), "Count", None))
+    #This class has a __len__ - this is needed so 'if object:' always returns TRUE.
+    def __nonzero__(self):
+        return True
+
 class IZcadShadowDisplay(DispatchBaseClass):
     'ZWCAD ShadowDisplay Interface'
     CLSID = IID('{EC923137-5A21-11E7-B72E-BC5FF42AC839}')
@@ -17324,6 +18886,26 @@ class IZcadSpline(DispatchBaseClass):
         "Visible": ((1284, LCID, 4, 0),()),
         "Weights": ((27, LCID, 4, 0),()),
         "color": ((1280, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadState(DispatchBaseClass):
+    'ZWCAD State Interface'
+    CLSID = IID('{EC923162-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC922FCC-5A21-11E7-B72E-BC5FF42AC839}')
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "IsQuiescent": (2, 2, (11, 0), (), "IsQuiescent", None),
+    }
+    _prop_map_put_ = {
     }
     def __iter__(self):
         "Return a Python iterator for this object"
@@ -19937,6 +21519,220 @@ class IZcadTolerance(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
+class IZcadToolbar(DispatchBaseClass):
+    'ZWCAD Toolbar Interface'
+    CLSID = IID('{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC922FF3-5A21-11E7-B72E-BC5FF42AC839}')
+
+    # Result is of type IZcadToolbarItem
+    def AddSeparator(self, Index=defaultNamedNotOptArg):
+        'Adds a toolbar separator.'
+        ret = self._oleobj_.InvokeTypes(1610743830, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'AddSeparator', '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    # Result is of type IZcadToolbarItem
+    def AddToolbarButton(self, Index=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, HelpString=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg
+            , FlyoutButton=defaultNamedOptArg):
+        'Adds a toolbar item.'
+        ret = self._oleobj_.InvokeTypes(1610743829, LCID, 1, (9, 0), ((12, 1), (8, 1), (8, 1), (8, 1), (12, 17)),Index
+            , Name, HelpString, Macro, FlyoutButton)
+        if ret is not None:
+            ret = Dispatch(ret, 'AddToolbarButton', '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def Delete(self):
+        'Deletes the toolbar.'
+        return self._oleobj_.InvokeTypes(1610743833, LCID, 1, (24, 0), (),)
+
+    def Dock(self, Side=defaultNamedNotOptArg):
+        'Docks the toolbar to the given side.'
+        return self._oleobj_.InvokeTypes(1610743831, LCID, 1, (24, 0), ((3, 1),),Side
+            )
+
+    def Float(self, top=defaultNamedNotOptArg, left=defaultNamedNotOptArg, NumberFloatRows=defaultNamedNotOptArg):
+        'Floats the toolbar to the given location.'
+        return self._oleobj_.InvokeTypes(1610743832, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),top
+            , left, NumberFloatRows)
+
+    # Result is of type IZcadToolbarItem
+    def Item(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Item', '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Count": (1610743810, 2, (3, 0), (), "Count", None),
+        "DockStatus": (1610743817, 2, (3, 0), (), "DockStatus", None),
+        "FloatingRows": (1610743825, 2, (3, 0), (), "FloatingRows", None),
+        "Height": (1610743824, 2, (3, 0), (), "Height", None),
+        "HelpString": (1610743827, 2, (8, 0), (), "HelpString", None),
+        "LargeButtons": (1610743818, 2, (11, 0), (), "LargeButtons", None),
+        "Name": (1610743813, 2, (8, 0), (), "Name", None),
+        "Parent": (1610743812, 2, (9, 0), (), "Parent", None),
+        "TagString": (1610743834, 2, (8, 0), (), "TagString", None),
+        "Visible": (1610743815, 2, (11, 0), (), "Visible", None),
+        "Width": (1610743823, 2, (3, 0), (), "Width", None),
+        "left": (1610743819, 2, (3, 0), (), "left", None),
+        "top": (1610743821, 2, (3, 0), (), "top", None),
+    }
+    _prop_map_put_ = {
+        "FloatingRows": ((1610743825, LCID, 4, 0),()),
+        "HelpString": ((1610743827, LCID, 4, 0),()),
+        "Name": ((1610743813, LCID, 4, 0),()),
+        "Visible": ((1610743815, LCID, 4, 0),()),
+        "left": ((1610743819, LCID, 4, 0),()),
+        "top": ((1610743821, LCID, 4, 0),()),
+    }
+    # Default method for this class is 'Item'
+    def __call__(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, '__call__', '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def __str__(self, *args):
+        return str(self.__call__(*args))
+    def __int__(self, *args):
+        return int(self.__call__(*args))
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')
+    #This class has Count() property - allow len(ob) to provide this
+    def __len__(self):
+        return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
+    #This class has a __len__ - this is needed so 'if object:' always returns TRUE.
+    def __nonzero__(self):
+        return True
+
+class IZcadToolbarItem(DispatchBaseClass):
+    'ZWCAD ToolbarItem Interface'
+    CLSID = IID('{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC9230E9-5A21-11E7-B72E-BC5FF42AC839}')
+
+    def AttachToolbarToFlyout(self, MenuGroupName=defaultNamedNotOptArg, ToolbarName=defaultNamedNotOptArg):
+        'Attaches a flyout toolbar to the button.'
+        return self._oleobj_.InvokeTypes(1610743823, LCID, 1, (24, 0), ((8, 1), (8, 1)),MenuGroupName
+            , ToolbarName)
+
+    def Delete(self):
+        'Deletes the toolbar item.'
+        return self._oleobj_.InvokeTypes(1610743824, LCID, 1, (24, 0), (),)
+
+    def GetBitmaps(self, SmallIconName=pythoncom.Missing, LargeIconName=pythoncom.Missing):
+        'Gets the toolbar button bitmaps.'
+        return self._ApplyTypes_(1610743821, 1, (24, 0), ((16392, 2), (16392, 2)), 'GetBitmaps', None,SmallIconName
+            , LargeIconName)
+
+    def SetBitmaps(self, SmallIconName=defaultNamedNotOptArg, LargeIconName=defaultNamedNotOptArg):
+        'Sets the toolbar button bitmaps.'
+        return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (24, 0), ((8, 1), (8, 1)),SmallIconName
+            , LargeIconName)
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "CommandDisplayName": (1610743825, 2, (8, 0), (), "CommandDisplayName", None),
+        # Method 'Flyout' returns object of type 'IZcadToolbar'
+        "Flyout": (1610743815, 2, (9, 0), (), "Flyout", '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}'),
+        "HelpString": (1610743819, 2, (8, 0), (), "HelpString", None),
+        "Index": (1610743818, 2, (3, 0), (), "Index", None),
+        "Macro": (1610743816, 2, (8, 0), (), "Macro", None),
+        "Name": (1610743810, 2, (8, 0), (), "Name", None),
+        # Method 'Parent' returns object of type 'IZcadToolbar'
+        "Parent": (1610743809, 2, (9, 0), (), "Parent", '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}'),
+        "TagString": (1610743812, 2, (8, 0), (), "TagString", None),
+        "Type": (1610743814, 2, (3, 0), (), "Type", None),
+    }
+    _prop_map_put_ = {
+        "CommandDisplayName": ((1610743825, LCID, 4, 0),()),
+        "HelpString": ((1610743819, LCID, 4, 0),()),
+        "Macro": ((1610743816, LCID, 4, 0),()),
+        "Name": ((1610743810, LCID, 4, 0),()),
+        "TagString": ((1610743812, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadToolbars(DispatchBaseClass):
+    'ZWCAD Toolbars Interface'
+    CLSID = IID('{EC923003-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC923086-5A21-11E7-B72E-BC5FF42AC839}')
+
+    # Result is of type IZcadToolbar
+    def Add(self, ToolbarName=defaultNamedNotOptArg):
+        'Adds a toolbar.'
+        ret = self._oleobj_.InvokeTypes(1610743815, LCID, 1, (9, 0), ((8, 1),),ToolbarName
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Add', '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    # Result is of type IZcadToolbar
+    def Item(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, 'Item', '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    _prop_map_get_ = {
+        # Method 'Application' returns object of type 'IZcadApplication'
+        "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
+        "Count": (1610743810, 2, (3, 0), (), "Count", None),
+        "LargeButtons": (1610743813, 2, (11, 0), (), "LargeButtons", None),
+        # Method 'Parent' returns object of type 'IZcadMenuGroup'
+        "Parent": (1610743812, 2, (9, 0), (), "Parent", '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}'),
+    }
+    _prop_map_put_ = {
+        "LargeButtons": ((1610743813, LCID, 4, 0),()),
+    }
+    # Default method for this class is 'Item'
+    def __call__(self, Index=defaultNamedNotOptArg):
+        'Returns an element in the collection.'
+        ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
+            )
+        if ret is not None:
+            ret = Dispatch(ret, '__call__', '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')
+        return ret
+
+    def __str__(self, *args):
+        return str(self.__call__(*args))
+    def __int__(self, *args):
+        return int(self.__call__(*args))
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,2,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')
+    #This class has Count() property - allow len(ob) to provide this
+    def __len__(self):
+        return self._ApplyTypes_(*(1610743810, 2, (3, 0), (), "Count", None))
+    #This class has a __len__ - this is needed so 'if object:' always returns TRUE.
+    def __nonzero__(self):
+        return True
+
 class IZcadTrace(DispatchBaseClass):
     'ZWCAD Trace Interface'
     CLSID = IID('{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}')
@@ -20415,6 +22211,178 @@ class IZcadUnderlay(DispatchBaseClass):
         "Visible": ((1284, LCID, 4, 0),()),
         "Width": ((5, LCID, 4, 0),()),
         "color": ((1280, LCID, 4, 0),()),
+    }
+    def __iter__(self):
+        "Return a Python iterator for this object"
+        try:
+            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
+        except pythoncom.error:
+            raise TypeError("This object does not support enumeration")
+        return win32com.client.util.Iterator(ob, None)
+
+class IZcadUtility(DispatchBaseClass):
+    'ZWCAD Utility Interface'
+    CLSID = IID('{EC923126-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{EC922FFC-5A21-11E7-B72E-BC5FF42AC839}')
+
+    def AngleFromXAxis(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
+        'Returns the angle of the line from the X-axis.'
+        return self._oleobj_.InvokeTypes(1610743820, LCID, 1, (5, 0), ((12, 1), (12, 1)),StartPoint
+            , EndPoint)
+
+    def AngleToReal(self, Angle=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg):
+        'Converts angle to real.'
+        return self._oleobj_.InvokeTypes(1610743808, LCID, 1, (5, 0), ((8, 1), (3, 1)),Angle
+            , Unit)
+
+    def AngleToString(self, Angle=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg, precision=defaultNamedNotOptArg):
+        'Converts angle to string.'
+        # Result is a Unicode object
+        return self._oleobj_.InvokeTypes(1610743809, LCID, 1, (8, 0), ((5, 1), (3, 1), (3, 1)),Angle
+            , Unit, precision)
+
+    def CreateTypedArray(self, *args):
+        'Returns a variant containing an array of typed arguments.'
+        return self._get_good_object_(self._oleobj_.Invoke(*((1610743826,0,1,1)+args)),'CreateTypedArray')
+
+    def DistanceToReal(self, Distance=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg):
+        'Converts distance to real.'
+        return self._oleobj_.InvokeTypes(1610743810, LCID, 1, (5, 0), ((8, 1), (3, 1)),Distance
+            , Unit)
+
+    def GetAngle(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+        'Returns the angle specified. Considers the setting of ANGBASE variable.'
+        return self._oleobj_.InvokeTypes(1610743819, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
+            , Prompt)
+
+    def GetCorner(self, Point=defaultNamedNotOptArg, Prompt=defaultNamedOptArg):
+        'Returns two corners of a rectangle.'
+        return self._ApplyTypes_(1610743821, 1, (12, 0), ((12, 1), (12, 17)), 'GetCorner', None,Point
+            , Prompt)
+
+    def GetDistance(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+        'Returns the distance.'
+        return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
+            , Prompt)
+
+    def GetEntity(self, Object=pythoncom.Missing, PickedPoint=pythoncom.Missing, Prompt=defaultNamedOptArg):
+        'Returns the point selected and the object at that point.'
+        return self._ApplyTypes_(1610743827, 1, (24, 0), ((16393, 2), (16396, 2), (12, 17)), 'GetEntity', None,Object
+            , PickedPoint, Prompt)
+
+    def GetInput(self):
+        'Returns an input string.'
+        # Result is a Unicode object
+        return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (8, 0), (),)
+
+    def GetInteger(self, Prompt=defaultNamedOptArg):
+        'Returns an integer.'
+        return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (3, 0), ((12, 17),),Prompt
+            )
+
+    def GetKeyword(self, Prompt=defaultNamedOptArg):
+        'Returns an keyword.'
+        # Result is a Unicode object
+        return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (8, 0), ((12, 17),),Prompt
+            )
+
+    def GetObjectIdString(self, Object=defaultNamedNotOptArg, bHex=defaultNamedNotOptArg):
+        # Result is a Unicode object
+        return self._oleobj_.InvokeTypes(1610743837, LCID, 1, (8, 0), ((9, 1), (11, 1)),Object
+            , bHex)
+
+    def GetOrientation(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+        'Returns the angle specified. Ignores the setting of ANGBASE variable.'
+        return self._oleobj_.InvokeTypes(1610743823, LCID, 1, (5, 0), ((12, 17), (12, 17)),Point
+            , Prompt)
+
+    def GetPoint(self, Point=defaultNamedOptArg, Prompt=defaultNamedOptArg):
+        'Returns the selected point.'
+        return self._ApplyTypes_(1610743824, 1, (12, 0), ((12, 17), (12, 17)), 'GetPoint', None,Point
+            , Prompt)
+
+    def GetReal(self, Prompt=defaultNamedOptArg):
+        'Returns an real number.'
+        return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (5, 0), ((12, 17),),Prompt
+            )
+
+    def GetRemoteFile(self, URL=defaultNamedNotOptArg, LocalFile=pythoncom.Missing, IgnoreCache=defaultNamedNotOptArg):
+        'Downloads file from a remote server on the Internet.'
+        return self._ApplyTypes_(1610743831, 1, (24, 0), ((8, 1), (16392, 2), (11, 1)), 'GetRemoteFile', None,URL
+            , LocalFile, IgnoreCache)
+
+    def GetString(self, HasSpaces=defaultNamedNotOptArg, Prompt=defaultNamedOptArg):
+        'Returns an string.'
+        # Result is a Unicode object
+        return self._oleobj_.InvokeTypes(1610743818, LCID, 1, (8, 0), ((3, 1), (12, 17)),HasSpaces
+            , Prompt)
+
+    def GetSubEntity(self, Object=pythoncom.Missing, PickedPoint=pythoncom.Missing, transMatrix=pythoncom.Missing, ContextData=pythoncom.Missing
+            , Prompt=defaultNamedOptArg):
+        'Returns the point selected and the object or subentity at that point.'
+        return self._ApplyTypes_(1610743829, 1, (24, 0), ((16393, 2), (16396, 2), (16396, 2), (16396, 2), (12, 17)), 'GetSubEntity', None,Object
+            , PickedPoint, transMatrix, ContextData, Prompt)
+
+    def InitializeUserInput(self, Bits=defaultNamedNotOptArg, KeyWordList=defaultNamedOptArg):
+        'Initialize get functions.'
+        return self._oleobj_.InvokeTypes(1610743813, LCID, 1, (24, 0), ((3, 1), (12, 17)),Bits
+            , KeyWordList)
+
+    def IsRemoteFile(self, LocalFile=defaultNamedNotOptArg, URL=pythoncom.Missing):
+        'Returns a boolean indicating whether the specified file was downloaded from the Internet.'
+        return self._ApplyTypes_(1610743833, 1, (11, 0), ((8, 1), (16392, 2)), 'IsRemoteFile', None,LocalFile
+            , URL)
+
+    def IsURL(self, URL=defaultNamedNotOptArg):
+        'Returns a boolean indicating whether the input string is a valid URL.'
+        return self._oleobj_.InvokeTypes(1610743830, LCID, 1, (11, 0), ((8, 1),),URL
+            )
+
+    def LaunchBrowserDialog(self, SelectedURL=pythoncom.Missing, DialogTitle=defaultNamedNotOptArg, OpenButtonCaption=defaultNamedNotOptArg, StartPageURL=defaultNamedNotOptArg
+            , RegistryRootKey=defaultNamedNotOptArg, OpenButtonAlwaysEnabled=defaultNamedNotOptArg):
+        'Launches the Web Browser Dialog.'
+        return self._ApplyTypes_(1610743834, 1, (11, 0), ((16392, 2), (8, 1), (8, 1), (8, 1), (8, 1), (11, 1)), 'LaunchBrowserDialog', None,SelectedURL
+            , DialogTitle, OpenButtonCaption, StartPageURL, RegistryRootKey, OpenButtonAlwaysEnabled
+            )
+
+    def PolarPoint(self, Point=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg, Distance=defaultNamedNotOptArg):
+        'Returns the point at specified angle and distance from a given point.'
+        return self._ApplyTypes_(1610743825, 1, (12, 0), ((12, 1), (5, 1), (5, 1)), 'PolarPoint', None,Point
+            , Angle, Distance)
+
+    def Prompt(self, Message=defaultNamedNotOptArg):
+        'Prompts the message at the Zwcad command window.'
+        return self._oleobj_.InvokeTypes(1610743828, LCID, 1, (24, 0), ((8, 1),),Message
+            )
+
+    def PutRemoteFile(self, URL=defaultNamedNotOptArg, LocalFile=defaultNamedNotOptArg):
+        'Uploads file to a remote server on the Internet.'
+        return self._oleobj_.InvokeTypes(1610743832, LCID, 1, (24, 0), ((8, 1), (8, 1)),URL
+            , LocalFile)
+
+    def RealToString(self, Value=defaultNamedNotOptArg, Unit=defaultNamedNotOptArg, precision=defaultNamedNotOptArg):
+        'Converts real to string.'
+        # Result is a Unicode object
+        return self._oleobj_.InvokeTypes(1610743811, LCID, 1, (8, 0), ((5, 1), (3, 1), (3, 1)),Value
+            , Unit, precision)
+
+    def SendModelessOperationEnded(self, Context=defaultNamedNotOptArg):
+        return self._oleobj_.InvokeTypes(1610743836, LCID, 1, (24, 0), ((8, 0),),Context
+            )
+
+    def SendModelessOperationStart(self, Context=defaultNamedNotOptArg):
+        return self._oleobj_.InvokeTypes(1610743835, LCID, 1, (24, 0), ((8, 0),),Context
+            )
+
+    def TranslateCoordinates(self, Point=defaultNamedNotOptArg, FromCoordSystem=defaultNamedNotOptArg, ToCoordSystem=defaultNamedNotOptArg, Displacement=defaultNamedNotOptArg
+            , OCSNormal=defaultNamedOptArg):
+        'Translates a point from one coordinate system to another coordinate system.'
+        return self._ApplyTypes_(1610743812, 1, (12, 0), ((12, 1), (3, 1), (3, 1), (3, 1), (12, 17)), 'TranslateCoordinates', None,Point
+            , FromCoordSystem, ToCoordSystem, Displacement, OCSNormal)
+
+    _prop_map_get_ = {
+    }
+    _prop_map_put_ = {
     }
     def __iter__(self):
         "Return a Python iterator for this object"
@@ -21233,113 +23201,228 @@ class IZcadZcCmColor(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZxDbDocument(DispatchBaseClass):
-    'ZxDbDocument Interface'
-    CLSID = IID('{30FDAC07-01CB-4245-9A81-6EAE0E8D498E}')
-    coclass_clsid = IID('{EC92306E-5A21-11E7-B72E-BC5FF42AC839}')
+class _DZcadApplicationEvents:
+    'ZWCAD Application Event Interface'
+    CLSID = CLSID_Sink = IID('{EC923092-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{2F671EB3-669F-11E7-91B7-BC5FF42AC839}')
+    _public_methods_ = [] # For COM Server support
+    _dispid_to_func_ = {
+                1 : "OnSysVarChanged",
+                2 : "OnNewDrawing",
+                3 : "OnAppActivate",
+                4 : "OnAppDeactivate",
+                5 : "OnWindowMovedOrResized",
+                6 : "OnBeginModal",
+                7 : "OnEndModal",
+                8 : "OnBeginQuit",
+               10 : "OnBeginFileDrop",
+               11 : "OnZRXLoaded",
+               12 : "OnZRXUnloaded",
+               13 : "OnBeginPlot",
+               14 : "OnEndPlot",
+               19 : "OnBeginSave",
+               20 : "OnEndSave",
+               21 : "OnBeginOpen",
+               22 : "OnEndOpen",
+               17 : "OnBeginCommand",
+               18 : "OnEndCommand",
+               15 : "OnBeginLisp",
+               16 : "OnEndLisp",
+               24 : "OnLispCancelled",
+               25 : "OnWindowChanged",
+        }
 
-    def CopyObjects(self, Objects=defaultNamedNotOptArg, Owner=defaultNamedOptArg, IdPairs=defaultNamedOptArg):
-        'Copies multiple objects in the database.'
-        return self._ApplyTypes_(4, 1, (12, 0), ((12, 1), (12, 17), (16396, 19)), 'CopyObjects', None,Objects
-            , Owner, IdPairs)
-
-    def DxfIn(self, FileName=defaultNamedNotOptArg, LogFileName=defaultNamedOptArg):
-        return self._oleobj_.InvokeTypes(260, LCID, 1, (24, 0), ((8, 1), (12, 17)),FileName
-            , LogFileName)
-
-    def DxfOut(self, FileName=defaultNamedNotOptArg, precision=defaultNamedOptArg, SaveThumbnailImage=defaultNamedOptArg):
-        return self._oleobj_.InvokeTypes(261, LCID, 1, (24, 0), ((8, 1), (12, 17), (12, 17)),FileName
-            , precision, SaveThumbnailImage)
-
-    def HandleToObject(self, Handle=defaultNamedNotOptArg):
-        'Return an object given a handle.  Applies to current dwg'
-        ret = self._oleobj_.InvokeTypes(18, LCID, 1, (9, 0), ((8, 1),),Handle
-            )
-        if ret is not None:
-            ret = Dispatch(ret, 'HandleToObject', None)
-        return ret
-
-    def ObjectIdToObject(self, ObjectID=defaultNamedNotOptArg):
-        'Given an objectId return the object. Applies to current database'
-        ret = self._oleobj_.InvokeTypes(19, LCID, 1, (9, 0), ((20, 1),),ObjectID
-            )
-        if ret is not None:
-            ret = Dispatch(ret, 'ObjectIdToObject', None)
-        return ret
-
-    def Open(self, FileName=defaultNamedNotOptArg, Password=defaultNamedOptArg):
-        return self._oleobj_.InvokeTypes(257, LCID, 1, (24, 0), ((8, 1), (12, 17)),FileName
-            , Password)
-
-    def Save(self):
-        return self._oleobj_.InvokeTypes(258, LCID, 1, (24, 0), (),)
-
-    def SaveAs(self, FileName=defaultNamedNotOptArg, vSecurityParams=defaultNamedOptArg):
-        return self._oleobj_.InvokeTypes(259, LCID, 1, (24, 0), ((8, 1), (12, 17)),FileName
-            , vSecurityParams)
-
-    _prop_map_get_ = {
-        "Application": (262, 2, (9, 0), (), "Application", None),
-        # Method 'Blocks' returns object of type 'IZcadBlocks'
-        "Blocks": (3, 2, (9, 0), (), "Blocks", '{EC923166-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Database' returns object of type 'IZcadDatabase'
-        "Database": (263, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Dictionaries' returns object of type 'IZcadDictionaries'
-        "Dictionaries": (9, 2, (9, 0), (), "Dictionaries", '{EC92309D-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'DimStyles' returns object of type 'IZcadDimStyles'
-        "DimStyles": (6, 2, (9, 0), (), "DimStyles", '{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}'),
-        "ElevationModelSpace": (15, 2, (5, 0), (), "ElevationModelSpace", None),
-        "ElevationPaperSpace": (16, 2, (5, 0), (), "ElevationPaperSpace", None),
-        # Method 'FileDependencies' returns object of type 'IZcadFileDependencies'
-        "FileDependencies": (70, 2, (9, 0), (), "FileDependencies", '{EC92302A-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Groups' returns object of type 'IZcadGroups'
-        "Groups": (5, 2, (9, 0), (), "Groups", '{EC92316B-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Layers' returns object of type 'IZcadLayers'
-        "Layers": (7, 2, (9, 0), (), "Layers", '{EC923043-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Layouts' returns object of type 'IZcadLayouts'
-        "Layouts": (20, 2, (9, 0), (), "Layouts", '{EC92312D-5A21-11E7-B72E-BC5FF42AC839}'),
-        "Limits": (17, 2, (12, 0), (), "Limits", None),
-        # Method 'Linetypes' returns object of type 'IZcadLineTypes'
-        "Linetypes": (8, 2, (9, 0), (), "Linetypes", '{EC923098-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Materials' returns object of type 'IZcadMaterials'
-        "Materials": (73, 2, (9, 0), (), "Materials", '{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ModelSpace' returns object of type 'IZcadModelSpace'
-        "ModelSpace": (1, 2, (9, 0), (), "ModelSpace", '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}'),
-        "Name": (256, 2, (8, 0), (), "Name", None),
-        # Method 'PaperSpace' returns object of type 'IZcadPaperSpace'
-        "PaperSpace": (2, 2, (9, 0), (), "PaperSpace", '{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'PlotConfigurations' returns object of type 'IZcadPlotConfigurations'
-        "PlotConfigurations": (21, 2, (9, 0), (), "PlotConfigurations", '{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Preferences' returns object of type 'IZcadDatabasePreferences'
-        "Preferences": (22, 2, (9, 0), (), "Preferences", '{EC923099-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'RegisteredApplications' returns object of type 'IZcadRegisteredApplications'
-        "RegisteredApplications": (10, 2, (9, 0), (), "RegisteredApplications", '{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'SectionManager' returns object of type 'IZcadSectionManager'
-        "SectionManager": (72, 2, (9, 0), (), "SectionManager", '{EC923035-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'SummaryInfo' returns object of type 'IZcadSummaryInfo'
-        "SummaryInfo": (71, 2, (9, 0), (), "SummaryInfo", '{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'TextStyles' returns object of type 'IZcadTextStyles'
-        "TextStyles": (11, 2, (9, 0), (), "TextStyles", '{EC923131-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'UserCoordinateSystems' returns object of type 'IZcadUCSs'
-        "UserCoordinateSystems": (12, 2, (9, 0), (), "UserCoordinateSystems", '{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Viewports' returns object of type 'IZcadViewports'
-        "Viewports": (14, 2, (9, 0), (), "Viewports", '{EC923149-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Views' returns object of type 'IZcadViews'
-        "Views": (13, 2, (9, 0), (), "Views", '{EC92318D-5A21-11E7-B72E-BC5FF42AC839}'),
-    }
-    _prop_map_put_ = {
-        "ElevationModelSpace": ((15, LCID, 4, 0),()),
-        "ElevationPaperSpace": ((16, LCID, 4, 0),()),
-        "Limits": ((17, LCID, 4, 0),()),
-        "Name": ((256, LCID, 4, 0),()),
-    }
-    def __iter__(self):
-        "Return a Python iterator for this object"
+    def __init__(self, oobj = None):
+        if oobj is None:
+            self._olecp = None
+        else:
+            import win32com.server.util
+            from win32com.server.policy import EventHandlerPolicy
+            cpc=oobj._oleobj_.QueryInterface(pythoncom.IID_IConnectionPointContainer)
+            cp=cpc.FindConnectionPoint(self.CLSID_Sink)
+            cookie=cp.Advise(win32com.server.util.wrap(self, usePolicy=EventHandlerPolicy))
+            self._olecp,self._olecp_cookie = cp,cookie
+    def __del__(self):
         try:
-            ob = self._oleobj_.InvokeTypes(-4,LCID,3,(13, 10),())
-        except pythoncom.error:
-            raise TypeError("This object does not support enumeration")
-        return win32com.client.util.Iterator(ob, None)
+            self.close()
+        except pythoncom.com_error:
+            pass
+    def close(self):
+        if self._olecp is not None:
+            cp,cookie,self._olecp,self._olecp_cookie = self._olecp,self._olecp_cookie,None,None
+            cp.Unadvise(cookie)
+    def _query_interface_(self, iid):
+        import win32com.server.util
+        if iid==self.CLSID_Sink: return win32com.server.util.wrap(self)
+
+    # Event Handlers
+    # If you create handlers, they should have the following prototypes:
+#	def OnSysVarChanged(self, SysvarName=defaultNamedNotOptArg, newVal=defaultNamedNotOptArg):
+#		'Happens when a system variable changes.'
+#	def OnNewDrawing(self):
+#		'Happens just before a new drawing is created.'
+#	def OnAppActivate(self):
+#		'Happens when the main frame window is activated.'
+#	def OnAppDeactivate(self):
+#		'Happens when the main frame window is deactivated.'
+#	def OnWindowMovedOrResized(self, HWNDFrame=defaultNamedNotOptArg, bMoved=defaultNamedNotOptArg):
+#		'Happens when the main frame window is moved or resized'
+#	def OnBeginModal(self):
+#		'Happens just before a modal dialog is shown.'
+#	def OnEndModal(self):
+#		'Happens just after a modal dialog is shown.'
+#	def OnBeginQuit(self, Cancel=defaultNamedNotOptArg):
+#		'Happens immediately before the application exits.'
+#	def OnBeginFileDrop(self, FileName=defaultNamedNotOptArg, Cancel=defaultNamedNotOptArg):
+#		'Happens when a file is dropped in in the main frame window.'
+#	def OnZRXLoaded(self, AppName=defaultNamedNotOptArg):
+#		'Happens when an ZRX application is loaded.'
+#	def OnZRXUnloaded(self, AppName=defaultNamedNotOptArg):
+#		'Happens when an ZRX application is unloaded.'
+#	def OnBeginPlot(self, DrawingName=defaultNamedNotOptArg):
+#		'Happens just before a drawing is plotted.'
+#	def OnEndPlot(self, DrawingName=defaultNamedNotOptArg):
+#		'Happens just before a drawing is plotted.'
+#	def OnBeginSave(self, FileName=defaultNamedNotOptArg):
+#		'Happens immediately before the drawing is saved.'
+#	def OnEndSave(self, FileName=defaultNamedNotOptArg):
+#		'Happens immediately after the drawing is saved.'
+#	def OnBeginOpen(self, FileName=defaultNamedNotOptArg):
+#		'Happens immediately before a drawing is opened.'
+#	def OnEndOpen(self, FileName=defaultNamedNotOptArg):
+#		'Happens immediately after a drawing is opened.'
+#	def OnBeginCommand(self, CommandName=defaultNamedNotOptArg):
+#		'Happens immediately before a command is issued.'
+#	def OnEndCommand(self, CommandName=defaultNamedNotOptArg):
+#		'Happens immediately after a command is issued.'
+#	def OnBeginLisp(self, FirstLine=defaultNamedNotOptArg):
+#		'Happens immediately before a LISP expression is evaluated.'
+#	def OnEndLisp(self):
+#		'Happens immediately after a LISP expression is evaluated.'
+#	def OnLispCancelled(self):
+#		'Happens when a LISP expression evaluation is cancelled.'
+#	def OnWindowChanged(self, WindowState=defaultNamedNotOptArg):
+#		'Happens when the main frame window state changes.'
+
+
+class _DZcadDocumentEvents:
+    'ZWCAD Document Event Interface'
+    CLSID = CLSID_Sink = IID('{EC923172-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_clsid = IID('{2F671DA0-669F-11E7-91B7-BC5FF42AC839}')
+    _public_methods_ = [] # For COM Server support
+    _dispid_to_func_ = {
+                1 : "OnBeginSave",
+                2 : "OnEndSave",
+                6 : "OnBeginCommand",
+                7 : "OnEndCommand",
+                8 : "OnBeginLisp",
+                9 : "OnEndLisp",
+               10 : "OnLispCancelled",
+               11 : "OnSelectionChanged",
+               12 : "OnActivate",
+               13 : "OnDeactivate",
+               14 : "OnBeginRightClick",
+               15 : "OnBeginShortcutMenuDefault",
+               16 : "OnBeginShortcutMenuEdit",
+               17 : "OnBeginShortcutMenuCommand",
+               18 : "OnBeginShortcutMenuGrip",
+               19 : "OnBeginShortcutMenuOsnap",
+               30 : "OnEndShortcutMenu",
+               20 : "OnBeginDoubleClick",
+               21 : "OnObjectAdded",
+               22 : "OnObjectErased",
+               23 : "OnObjectModified",
+               24 : "OnBeginPlot",
+               25 : "OnEndPlot",
+               29 : "OnWindowMovedOrResized",
+               31 : "OnLayoutSwitched",
+               32 : "OnWindowChanged",
+               33 : "OnBeginClose",
+               34 : "OnBeginDocClose",
+        }
+
+    def __init__(self, oobj = None):
+        if oobj is None:
+            self._olecp = None
+        else:
+            import win32com.server.util
+            from win32com.server.policy import EventHandlerPolicy
+            cpc=oobj._oleobj_.QueryInterface(pythoncom.IID_IConnectionPointContainer)
+            cp=cpc.FindConnectionPoint(self.CLSID_Sink)
+            cookie=cp.Advise(win32com.server.util.wrap(self, usePolicy=EventHandlerPolicy))
+            self._olecp,self._olecp_cookie = cp,cookie
+    def __del__(self):
+        try:
+            self.close()
+        except pythoncom.com_error:
+            pass
+    def close(self):
+        if self._olecp is not None:
+            cp,cookie,self._olecp,self._olecp_cookie = self._olecp,self._olecp_cookie,None,None
+            cp.Unadvise(cookie)
+    def _query_interface_(self, iid):
+        import win32com.server.util
+        if iid==self.CLSID_Sink: return win32com.server.util.wrap(self)
+
+    # Event Handlers
+    # If you create handlers, they should have the following prototypes:
+#	def OnBeginSave(self, FileName=defaultNamedNotOptArg):
+#		'Happens immediately before Zwcad saves the drawing.'
+#	def OnEndSave(self, FileName=defaultNamedNotOptArg):
+#		'Happens immediately after Zwcad saved the drawing.'
+#	def OnBeginCommand(self, CommandName=defaultNamedNotOptArg):
+#		'Happens immediately before a command is issued.'
+#	def OnEndCommand(self, CommandName=defaultNamedNotOptArg):
+#		'Happens immediately after a command is issued.'
+#	def OnBeginLisp(self, FirstLine=defaultNamedNotOptArg):
+#		'Happens immediately before a LISP expression is evaluated.'
+#	def OnEndLisp(self):
+#		'Happens immediately after a LISP expression is evaluated.'
+#	def OnLispCancelled(self):
+#		'Happens when a LISP expression evaluation is cancelled.'
+#	def OnSelectionChanged(self):
+#		'Happens when the pickfirst selection set changes.'
+#	def OnActivate(self):
+#		'Happens when the drawing window is activated.'
+#	def OnDeactivate(self):
+#		'Happens when the drawing window is deactivated.'
+#	def OnBeginRightClick(self, PickPoint=defaultNamedNotOptArg):
+#		'Happens immediatly before the default right click action.'
+#	def OnBeginShortcutMenuDefault(self, ShortcutMenu=pythoncom.Missing):
+#		'Happens immediatly before the shortcut menu appears in default mode.'
+#	def OnBeginShortcutMenuEdit(self, ShortcutMenu=pythoncom.Missing, SelectionSet=pythoncom.Missing):
+#		'Happens immediatly before the shortcut menu appears in edit mode.'
+#	def OnBeginShortcutMenuCommand(self, ShortcutMenu=pythoncom.Missing, Command=defaultNamedNotOptArg):
+#		'Happens immediatly before the shortcut menu appears in command mode.'
+#	def OnBeginShortcutMenuGrip(self, ShortcutMenu=pythoncom.Missing):
+#		'Happens immediatly before the shortcut menu appears in grip mode.'
+#	def OnBeginShortcutMenuOsnap(self, ShortcutMenu=pythoncom.Missing):
+#		'Happens immediatly before the shortcut menu appears in osnap mode.'
+#	def OnEndShortcutMenu(self, ShortcutMenu=pythoncom.Missing):
+#		'Happens immediatly after the shortcut menu appears.'
+#	def OnBeginDoubleClick(self, PickPoint=defaultNamedNotOptArg):
+#		'Happens immediatly before the default double click action.'
+#	def OnObjectAdded(self, Object=defaultNamedNotOptArg):
+#		'Happens when an object is added to the drawing.'
+#	def OnObjectErased(self, ObjectID=defaultNamedNotOptArg):
+#		'Happens when an object is erased from the drawing.'
+#	def OnObjectModified(self, Object=defaultNamedNotOptArg):
+#		'Happens when an object is modified in the drawing.'
+#	def OnBeginPlot(self, DrawingName=defaultNamedNotOptArg):
+#		'Happens just before the drawing is plotted.'
+#	def OnEndPlot(self, DrawingName=defaultNamedNotOptArg):
+#		'Happens just after the drawing is plotted.'
+#	def OnWindowMovedOrResized(self, HWNDFrame=defaultNamedNotOptArg, bMoved=defaultNamedNotOptArg):
+#		'Happens when the drawing window is moved or resized.'
+#	def OnLayoutSwitched(self, LayoutName=defaultNamedNotOptArg):
+#		'Happens when the current layout space changes.'
+#	def OnWindowChanged(self, WindowState=defaultNamedNotOptArg):
+#		'Happens when the drawing window state changes.'
+#	def OnBeginClose(self):
+#		'Happens just before a drawing is closed.'
+#	def OnBeginDocClose(self, Cancel=defaultNamedNotOptArg):
+#		'Happens just before a drawing is closed.'
+
 
 from win32com.client import CoClassBaseClass
 class ArcTextObj(CoClassBaseClass): # A CoClass
@@ -21381,6 +23464,32 @@ class Zcad3DSolid(CoClassBaseClass): # A CoClass
         IZcad3DSolid,
     ]
     default_interface = IZcad3DSolid
+
+# This CoClass is known by the name 'ZWCAD.Application.2024'
+class ZcadApplication(CoClassBaseClass): # A CoClass
+    # ZcadApplication Class
+    CLSID = IID('{EC92313D-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+        _DZcadApplicationEvents,
+    ]
+    default_source = _DZcadApplicationEvents
+    coclass_interfaces = [
+        IZcadApplication,
+    ]
+    default_interface = IZcadApplication
+
+# This CoClass is known by the name 'ZWCAD.Application.2024'
+class ZcadApplicationMinorVersion(CoClassBaseClass): # A CoClass
+    # ZcadApplication Versioned Class
+    CLSID = IID('{2F671EB3-669F-11E7-91B7-BC5FF42AC839}')
+    coclass_sources = [
+        _DZcadApplicationEvents,
+    ]
+    default_source = _DZcadApplicationEvents
+    coclass_interfaces = [
+        IZcadApplication,
+    ]
+    default_interface = IZcadApplication
 
 class ZcadArc(CoClassBaseClass): # A CoClass
     # ZWCAD Arc Object
@@ -21619,6 +23728,29 @@ class ZcadDimension(CoClassBaseClass): # A CoClass
         IZcadDimension,
     ]
     default_interface = IZcadDimension
+
+# This CoClass is known by the name 'ZWCAD.Drawing.2024'
+class ZcadDocument(CoClassBaseClass): # A CoClass
+    # ZcadDocument Class
+    CLSID = IID('{2F671DA0-669F-11E7-91B7-BC5FF42AC839}')
+    coclass_sources = [
+        _DZcadDocumentEvents,
+    ]
+    default_source = _DZcadDocumentEvents
+    coclass_interfaces = [
+        IZcadDocument,
+    ]
+    default_interface = IZcadDocument
+
+class ZcadDocuments(CoClassBaseClass): # A CoClass
+    # ZcadDocuments Class
+    CLSID = IID('{EC9231BB-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadDocuments,
+    ]
+    default_interface = IZcadDocuments
 
 class ZcadDwfUnderlay(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92312A-5A21-11E7-B72E-BC5FF42AC839}')
@@ -21967,6 +24099,36 @@ class ZcadMaterials(CoClassBaseClass): # A CoClass
     ]
     default_interface = IZcadMaterials
 
+class ZcadMenuBar(CoClassBaseClass): # A CoClass
+    # ZWCAD MenuBar Object
+    CLSID = IID('{EC922FED-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadMenuBar,
+    ]
+    default_interface = IZcadMenuBar
+
+class ZcadMenuGroup(CoClassBaseClass): # A CoClass
+    # ZWCAD MenuGroup Object
+    CLSID = IID('{EC9231F6-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadMenuGroup,
+    ]
+    default_interface = IZcadMenuGroup
+
+class ZcadMenuGroups(CoClassBaseClass): # A CoClass
+    # ZWCAD MenuGroups Object
+    CLSID = IID('{EC923146-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadMenuGroups,
+    ]
+    default_interface = IZcadMenuGroups
+
 class ZcadModelSpace(CoClassBaseClass): # A CoClass
     # ZWCAD ModelSpace Object
     CLSID = IID('{EC9231A1-5A21-11E7-B72E-BC5FF42AC839}')
@@ -22051,6 +24213,16 @@ class ZcadPlaneSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IZcadPlaneSurface
 
+class ZcadPlot(CoClassBaseClass): # A CoClass
+    # ZWCAD Plot Object
+    CLSID = IID('{EC92315F-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPlot,
+    ]
+    default_interface = IZcadPlot
+
 class ZcadPlotConfiguration(CoClassBaseClass): # A CoClass
     # ZWCAD PlotConfiguration Object
     CLSID = IID('{EC9231A5-5A21-11E7-B72E-BC5FF42AC839}')
@@ -22128,6 +24300,135 @@ class ZcadPolyline(CoClassBaseClass): # A CoClass
         IZcadPolyline,
     ]
     default_interface = IZcadPolyline
+
+class ZcadPopupMenu(CoClassBaseClass): # A CoClass
+    # ZWCAD PopupMenu Object
+    CLSID = IID('{EC923008-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPopupMenu,
+    ]
+    default_interface = IZcadPopupMenu
+
+class ZcadPopupMenuItem(CoClassBaseClass): # A CoClass
+    # ZWCAD PopupMenuItem Object
+    CLSID = IID('{EC9230D4-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPopupMenuItem,
+    ]
+    default_interface = IZcadPopupMenuItem
+
+class ZcadPopupMenus(CoClassBaseClass): # A CoClass
+    # ZWCAD PopupMenus Object
+    CLSID = IID('{EC922FD9-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPopupMenus,
+    ]
+    default_interface = IZcadPopupMenus
+
+class ZcadPreferences(CoClassBaseClass): # A CoClass
+    CLSID = IID('{EC922FC7-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPreferences,
+    ]
+    default_interface = IZcadPreferences
+
+class ZcadPreferencesDisplay(CoClassBaseClass): # A CoClass
+    # ZWCAD Display Preferences Object
+    CLSID = IID('{EC92300A-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPreferencesDisplay,
+    ]
+    default_interface = IZcadPreferencesDisplay
+
+class ZcadPreferencesDrafting(CoClassBaseClass): # A CoClass
+    # ZWCAD Drafting Preferences Object
+    CLSID = IID('{EC9231EB-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPreferencesDrafting,
+    ]
+    default_interface = IZcadPreferencesDrafting
+
+class ZcadPreferencesFiles(CoClassBaseClass): # A CoClass
+    # ZWCAD Files Preferences Object
+    CLSID = IID('{EC9230A0-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPreferencesFiles,
+    ]
+    default_interface = IZcadPreferencesFiles
+
+class ZcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
+    # ZWCAD OpenSave Preferences Object
+    CLSID = IID('{EC92304A-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPreferencesOpenSave,
+    ]
+    default_interface = IZcadPreferencesOpenSave
+
+class ZcadPreferencesOutput(CoClassBaseClass): # A CoClass
+    # ZWCAD Output Preferences Object
+    CLSID = IID('{EC9230F0-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPreferencesOutput,
+    ]
+    default_interface = IZcadPreferencesOutput
+
+class ZcadPreferencesProfiles(CoClassBaseClass): # A CoClass
+    # ZWCAD Profiles Preferences Object
+    CLSID = IID('{EC9231F7-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPreferencesProfiles,
+    ]
+    default_interface = IZcadPreferencesProfiles
+
+class ZcadPreferencesSelection(CoClassBaseClass): # A CoClass
+    # ZWCAD Selection Preferences Object
+    CLSID = IID('{EC9230A7-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPreferencesSelection,
+    ]
+    default_interface = IZcadPreferencesSelection
+
+class ZcadPreferencesSystem(CoClassBaseClass): # A CoClass
+    # ZWCAD System Preferences Object
+    CLSID = IID('{EC923185-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPreferencesSystem,
+    ]
+    default_interface = IZcadPreferencesSystem
+
+class ZcadPreferencesUser(CoClassBaseClass): # A CoClass
+    # ZWCAD User Preferences Object
+    CLSID = IID('{EC9231A8-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadPreferencesUser,
+    ]
+    default_interface = IZcadPreferencesUser
 
 class ZcadRasterImage(CoClassBaseClass): # A CoClass
     # ZWCAD Raster Object
@@ -22234,6 +24535,26 @@ class ZcadSecurityParams(CoClassBaseClass): # A CoClass
     ]
     default_interface = IZcadSecurityParams
 
+class ZcadSelectionSet(CoClassBaseClass): # A CoClass
+    # ZwcadSelectionSet Class
+    CLSID = IID('{EC923000-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadSelectionSet,
+    ]
+    default_interface = IZcadSelectionSet
+
+class ZcadSelectionSets(CoClassBaseClass): # A CoClass
+    # ZwcadSelectionSets Class
+    CLSID = IID('{EC923150-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadSelectionSets,
+    ]
+    default_interface = IZcadSelectionSets
+
 class ZcadShadowDisplay(CoClassBaseClass): # A CoClass
     # ZcadShadowDisplay Class
     CLSID = IID('{EC92317D-5A21-11E7-B72E-BC5FF42AC839}')
@@ -22282,6 +24603,16 @@ class ZcadSpline(CoClassBaseClass): # A CoClass
         IZcadSpline,
     ]
     default_interface = IZcadSpline
+
+class ZcadState(CoClassBaseClass): # A CoClass
+    # ZWCAD State Object
+    CLSID = IID('{EC922FCC-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadState,
+    ]
+    default_interface = IZcadState
 
 class ZcadSubDMesh(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923286-5A21-11E7-B72E-BC5FF42AC839}')
@@ -22451,6 +24782,36 @@ class ZcadTolerance(CoClassBaseClass): # A CoClass
     ]
     default_interface = IZcadTolerance
 
+class ZcadToolbar(CoClassBaseClass): # A CoClass
+    # ZWCAD Toolbar Object
+    CLSID = IID('{EC922FF3-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadToolbar,
+    ]
+    default_interface = IZcadToolbar
+
+class ZcadToolbarItem(CoClassBaseClass): # A CoClass
+    # ZWCAD ToolbarItem Object
+    CLSID = IID('{EC9230E9-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadToolbarItem,
+    ]
+    default_interface = IZcadToolbarItem
+
+class ZcadToolbars(CoClassBaseClass): # A CoClass
+    # ZWCAD Toolbars Object
+    CLSID = IID('{EC923086-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadToolbars,
+    ]
+    default_interface = IZcadToolbars
+
 class ZcadTrace(CoClassBaseClass): # A CoClass
     # ZWCAD Trace Object
     CLSID = IID('{EC923159-5A21-11E7-B72E-BC5FF42AC839}')
@@ -22480,6 +24841,16 @@ class ZcadUCSs(CoClassBaseClass): # A CoClass
         IZcadUCSs,
     ]
     default_interface = IZcadUCSs
+
+class ZcadUtility(CoClassBaseClass): # A CoClass
+    # ZWCAD Utility Object
+    CLSID = IID('{EC922FFC-5A21-11E7-B72E-BC5FF42AC839}')
+    coclass_sources = [
+    ]
+    coclass_interfaces = [
+        IZcadUtility,
+    ]
+    default_interface = IZcadUtility
 
 class ZcadView(CoClassBaseClass): # A CoClass
     # ZWCAD View Object
@@ -22560,16 +24931,6 @@ class ZcadZcCmColor(CoClassBaseClass): # A CoClass
         IZcadZcCmColor,
     ]
     default_interface = IZcadZcCmColor
-
-# This CoClass is known by the name 'ZWCAD.ZxDbDocument.2024'
-class ZxDbDocument(CoClassBaseClass): # A CoClass
-    CLSID = IID('{EC92306E-5A21-11E7-B72E-BC5FF42AC839}')
-    coclass_sources = [
-    ]
-    coclass_interfaces = [
-        IZxDbDocument,
-    ]
-    default_interface = IZxDbDocument
 
 IArcTextObj_vtables_dispatch_ = 1
 IArcTextObj_vtables_ = [
@@ -22662,6 +25023,65 @@ IZcad3DSolid_vtables_ = [
     (( 'History' , 'bHistory' , ), 14, (14, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
     (( 'ShowHistory' , 'Position' , ), 15, (15, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
     (( 'ShowHistory' , 'Position' , ), 15, (15, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadApplication_vtables_dispatch_ = 1
+IZcadApplication_vtables_ = [
+    (( 'Visible' , 'pVal' , ), 1, (1, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'Visible' , 'pVal' , ), 1, (1, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'Name' , 'pAppName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Caption' , 'bstrCaption' , ), 3, (3, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Application' , 'pAppObj' , ), 4, (4, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveDocument' , 'pActiveDoc' , ), 5, (5, (), [ (16393, 10, None, "IID('{EC923156-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveDocument' , 'pActiveDoc' , ), 5, (5, (), [ (9, 1, None, "IID('{EC923156-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'FullName' , 'FullName' , ), 6, (6, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'Height' , 'Height' , ), 7, (7, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'Height' , 'Height' , ), 7, (7, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'WindowLeft' , 'left' , ), 8, (8, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'WindowLeft' , 'left' , ), 8, (8, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'Path' , 'bstrPath' , ), 9, (9, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'LocaleId' , 'lcid' , ), 10, (10, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'WindowTop' , 'top' , ), 11, (11, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'WindowTop' , 'top' , ), 11, (11, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'Version' , 'bstrVer' , ), 12, (12, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'Width' , 'Width' , ), 13, (13, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'Width' , 'Width' , ), 13, (13, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'Preferences' , 'pPreferences' , ), 14, (14, (), [ (16393, 10, None, "IID('{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'StatusId' , 'VportObj' , 'bStatus' , ), 17, (17, (), [ (9, 1, None, None) , 
+             (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+    (( 'ListZrx' , 'pVarListArray' , ), 18, (18, (), [ (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
+    (( 'LoadZrx' , 'Name' , ), 19, (19, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
+    (( 'GetInterfaceObject' , 'ProgID' , 'pObj' , ), 20, (20, (), [ (8, 1, None, None) , 
+             (16393, 10, None, None) , ], 1 , 1 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
+    (( 'UnloadZrx' , 'Name' , ), 23, (23, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
+    (( 'Update' , ), 24, (24, (), [ ], 1 , 1 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
+    (( 'Quit' , ), 25, (25, (), [ ], 1 , 1 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
+    (( 'Zoom' , 'Type' , 'vParams' , ), 26, (26, (), [ (3, 1, None, None) , 
+             (16396, 1, None, None) , ], 1 , 1 , 4 , 0 , 272 , (3, 0, None, None) , 64 , )),
+    (( 'VBE' , 'pDispVBE' , ), 27, (27, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
+    (( 'MenuGroups' , 'pMenuGroups' , ), 28, (28, (), [ (16393, 10, None, "IID('{EC923155-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
+    (( 'MenuBar' , 'pMenuBar' , ), 29, (29, (), [ (16393, 10, None, "IID('{EC92305B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
+    (( 'LoadZVB' , 'Name' , ), 30, (30, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
+    (( 'UnloadZVB' , 'Name' , ), 31, (31, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
+    (( 'Documents' , 'pDocuments' , ), 32, (32, (), [ (16393, 10, None, "IID('{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 320 , (3, 0, None, None) , 0 , )),
+    (( 'Eval' , 'Expression' , ), 33, (33, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 328 , (3, 0, None, None) , 0 , )),
+    (( 'WindowState' , 'eWinState' , ), 34, (34, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 336 , (3, 0, None, None) , 0 , )),
+    (( 'WindowState' , 'eWinState' , ), 34, (34, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 344 , (3, 0, None, None) , 0 , )),
+    (( 'RunMacro' , 'MacroPath' , ), 35, (35, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 352 , (3, 0, None, None) , 0 , )),
+    (( 'ZoomExtents' , ), 36, (36, (), [ ], 1 , 1 , 4 , 0 , 360 , (3, 0, None, None) , 0 , )),
+    (( 'ZoomAll' , ), 37, (37, (), [ ], 1 , 1 , 4 , 0 , 368 , (3, 0, None, None) , 0 , )),
+    (( 'ZoomCenter' , 'Center' , 'Magnify' , ), 38, (38, (), [ (12, 1, None, None) , 
+             (5, 1, None, None) , ], 1 , 1 , 4 , 0 , 376 , (3, 0, None, None) , 0 , )),
+    (( 'ZoomScaled' , 'scale' , 'ScaleType' , ), 39, (39, (), [ (5, 1, None, None) , 
+             (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 384 , (3, 0, None, None) , 0 , )),
+    (( 'ZoomWindow' , 'LowerLeft' , 'UpperRight' , ), 40, (40, (), [ (12, 1, None, None) , 
+             (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 392 , (3, 0, None, None) , 0 , )),
+    (( 'ZoomPickWindow' , ), 41, (41, (), [ ], 1 , 1 , 4 , 0 , 400 , (3, 0, None, None) , 0 , )),
+    (( 'GetZcadState' , 'pVal' , ), 42, (42, (), [ (16393, 10, None, "IID('{EC923162-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 408 , (3, 0, None, None) , 0 , )),
+    (( 'ZoomPrevious' , ), 43, (43, (), [ ], 1 , 1 , 4 , 0 , 416 , (3, 0, None, None) , 0 , )),
+    (( 'HWND' , 'HWND' , ), 44, (44, (), [ (16404, 10, None, None) , ], 1 , 2 , 4 , 0 , 424 , (3, 0, None, None) , 0 , )),
+    (( 'GetLicenseSerial' , 'retType' , 'Serial' , 'chkLock' , 'retIsNet' , 
+             ), 45, (45, (), [ (16387, 2, None, None) , (16392, 2, None, None) , (3, 1, None, None) , (16387, 2, None, None) , ], 1 , 1 , 4 , 0 , 432 , (3, 0, None, None) , 0 , )),
 ]
 
 IZcadArc_vtables_dispatch_ = 1
@@ -24163,6 +26583,100 @@ IZcadDimension_vtables_ = [
     (( 'DimTxtDirection' , 'bVal' , ), 1573, (1573, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 912 , (3, 0, None, None) , 0 , )),
 ]
 
+IZcadDocument_vtables_dispatch_ = 1
+IZcadDocument_vtables_ = [
+    (( 'Plot' , 'pPlot' , ), 23, (23, (), [ (16393, 10, None, "IID('{EC92301B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveLayer' , 'pActLayer' , ), 24, (24, (), [ (16393, 10, None, "IID('{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveLayer' , 'pActLayer' , ), 24, (24, (), [ (9, 1, None, "IID('{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveLinetype' , 'pActLinetype' , ), 25, (25, (), [ (16393, 10, None, "IID('{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveLinetype' , 'pActLinetype' , ), 25, (25, (), [ (9, 1, None, "IID('{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 320 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveDimStyle' , 'pActDimStyle' , ), 26, (26, (), [ (16393, 10, None, "IID('{EC923160-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 328 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveDimStyle' , 'pActDimStyle' , ), 26, (26, (), [ (9, 1, None, "IID('{EC923160-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 336 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveTextStyle' , 'pActTextStyle' , ), 27, (27, (), [ (16393, 10, None, "IID('{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 344 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveTextStyle' , 'pActTextStyle' , ), 27, (27, (), [ (9, 1, None, "IID('{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 352 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveUCS' , 'pActUCS' , ), 28, (28, (), [ (16393, 10, None, "IID('{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 360 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveUCS' , 'pActUCS' , ), 28, (28, (), [ (9, 1, None, "IID('{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 368 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveViewport' , 'pActView' , ), 29, (29, (), [ (16393, 10, None, "IID('{EC92303D-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 376 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveViewport' , 'pActView' , ), 29, (29, (), [ (9, 1, None, "IID('{EC92303D-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 384 , (3, 0, None, None) , 0 , )),
+    (( 'ActivePViewport' , 'pActView' , ), 30, (30, (), [ (16393, 10, None, "IID('{EC923139-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 392 , (3, 0, None, None) , 0 , )),
+    (( 'ActivePViewport' , 'pActView' , ), 30, (30, (), [ (9, 1, None, "IID('{EC923139-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 400 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveSpace' , 'ActSpace' , ), 31, (31, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 408 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveSpace' , 'ActSpace' , ), 31, (31, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 416 , (3, 0, None, None) , 0 , )),
+    (( 'SelectionSets' , 'pSelSets' , ), 32, (32, (), [ (16393, 10, None, "IID('{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 424 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveSelectionSet' , 'pSelSet' , ), 33, (33, (), [ (16393, 10, None, "IID('{EC923124-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 432 , (3, 0, None, None) , 0 , )),
+    (( 'FullName' , 'pstrFullAppName' , ), 34, (34, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 440 , (3, 0, None, None) , 0 , )),
+    (( 'Name' , 'Name' , ), 35, (35, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 448 , (3, 0, None, None) , 0 , )),
+    (( 'Path' , 'Path' , ), 36, (36, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
+    (( 'ObjectSnapMode' , 'fSnapMode' , ), 37, (37, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
+    (( 'ObjectSnapMode' , 'fSnapMode' , ), 37, (37, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
+    (( 'ReadOnly' , 'bReadOnly' , ), 38, (38, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 480 , (3, 0, None, None) , 0 , )),
+    (( 'Saved' , 'bSaved' , ), 39, (39, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 488 , (3, 0, None, None) , 0 , )),
+    (( 'MSpace' , 'Mode' , ), 40, (40, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 496 , (3, 0, None, None) , 0 , )),
+    (( 'MSpace' , 'Mode' , ), 40, (40, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 504 , (3, 0, None, None) , 0 , )),
+    (( 'Utility' , 'pUtil' , ), 41, (41, (), [ (16393, 10, None, "IID('{EC923126-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 512 , (3, 0, None, None) , 0 , )),
+    (( 'Open' , 'FullName' , 'Password' , 'pDocObj' , ), 42, (42, (), [ 
+             (8, 1, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{EC923156-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 1 , 520 , (3, 0, None, None) , 0 , )),
+    (( 'AuditInfo' , 'FixErr' , ), 43, (43, (), [ (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 528 , (3, 0, None, None) , 0 , )),
+    (( 'Import' , 'FileName' , 'InsertionPoint' , 'ScaleFactor' , 'pObj' , 
+             ), 44, (44, (), [ (8, 1, None, None) , (12, 1, None, None) , (5, 1, None, None) , (16393, 10, None, None) , ], 1 , 1 , 4 , 0 , 536 , (3, 0, None, None) , 0 , )),
+    (( 'Export' , 'FileName' , 'Extension' , 'SelectionSet' , ), 45, (45, (), [ 
+             (8, 1, None, None) , (8, 1, None, None) , (9, 1, None, "IID('{EC923124-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
+    (( 'New' , 'TemplateFileName' , 'pDocObj' , ), 46, (46, (), [ (8, 1, None, None) , 
+             (16393, 10, None, "IID('{EC923156-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 552 , (3, 0, None, None) , 0 , )),
+    (( 'Save' , ), 47, (47, (), [ ], 1 , 1 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
+    (( 'SaveAs' , 'FullFileName' , 'SaveAsType' , 'vSecurityParams' , ), 48, (48, (), [ 
+             (8, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 568 , (3, 0, None, None) , 0 , )),
+    (( 'Wblock' , 'FileName' , 'SelectionSet' , ), 49, (49, (), [ (8, 1, None, None) , 
+             (9, 1, None, "IID('{EC923124-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
+    (( 'PurgeAll' , ), 50, (50, (), [ ], 1 , 1 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
+    (( 'GetVariable' , 'Name' , 'Value' , ), 51, (51, (), [ (8, 1, None, None) , 
+             (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
+    (( 'SetVariable' , 'Name' , 'Value' , ), 52, (52, (), [ (8, 1, None, None) , 
+             (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 600 , (3, 0, None, None) , 0 , )),
+    (( 'LoadShapeFile' , 'FullName' , ), 53, (53, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
+    (( 'Regen' , 'WhichViewports' , ), 54, (54, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 616 , (3, 0, None, None) , 0 , )),
+    (( 'PickfirstSelectionSet' , 'pSelSet' , ), 55, (55, (), [ (16393, 10, None, "IID('{EC923124-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 624 , (3, 0, None, None) , 0 , )),
+    (( 'Active' , 'pvbActive' , ), 56, (56, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 632 , (3, 0, None, None) , 0 , )),
+    (( 'Activate' , ), 57, (57, (), [ ], 1 , 1 , 4 , 0 , 640 , (3, 0, None, None) , 0 , )),
+    (( 'Close' , 'SaveChanges' , 'FileName' , ), 58, (58, (), [ (12, 17, None, None) , 
+             (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 648 , (3, 0, None, None) , 0 , )),
+    (( 'WindowState' , 'pWinState' , ), 59, (59, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 656 , (3, 0, None, None) , 0 , )),
+    (( 'WindowState' , 'pWinState' , ), 59, (59, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 664 , (3, 0, None, None) , 0 , )),
+    (( 'Width' , 'pWidth' , ), 60, (60, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 672 , (3, 0, None, None) , 0 , )),
+    (( 'Width' , 'pWidth' , ), 60, (60, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 680 , (3, 0, None, None) , 0 , )),
+    (( 'Height' , 'pHeight' , ), 61, (61, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 688 , (3, 0, None, None) , 0 , )),
+    (( 'Height' , 'pHeight' , ), 61, (61, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 696 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveLayout' , 'pLayout' , ), 62, (62, (), [ (9, 1, None, "IID('{EC923115-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveLayout' , 'pLayout' , ), 62, (62, (), [ (16393, 10, None, "IID('{EC923115-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
+    (( 'SendCommand' , 'Command' , ), 63, (63, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
+    (( 'HWND' , 'HWND' , ), 64, (64, (), [ (16404, 10, None, None) , ], 1 , 2 , 4 , 0 , 728 , (3, 0, None, None) , 0 , )),
+    (( 'WindowTitle' , 'Title' , ), 65, (65, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 736 , (3, 0, None, None) , 0 , )),
+    (( 'Application' , 'pAppObj' , ), 66, (66, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 744 , (3, 0, None, None) , 0 , )),
+    (( 'Database' , 'pDatabase' , ), 67, (67, (), [ (16393, 10, None, "IID('{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 752 , (3, 0, None, None) , 0 , )),
+    (( 'StartUndoMark' , ), 68, (68, (), [ ], 1 , 1 , 4 , 0 , 760 , (3, 0, None, None) , 0 , )),
+    (( 'EndUndoMark' , ), 69, (69, (), [ ], 1 , 1 , 4 , 0 , 768 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveMaterial' , 'pActMaterial' , ), 74, (74, (), [ (16393, 10, None, "IID('{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 776 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveMaterial' , 'pActMaterial' , ), 74, (74, (), [ (9, 1, None, "IID('{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 784 , (3, 0, None, None) , 0 , )),
+    (( 'PostCommand' , 'Command' , ), 75, (75, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 792 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadDocuments_vtables_dispatch_ = 1
+IZcadDocuments_vtables_ = [
+    (( 'Item' , 'Index' , 'ppItem' , ), 0, (0, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC923156-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( '_NewEnum' , 'ppUnk' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 1 , )),
+    (( 'Count' , 'pCount' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Application' , 'ppApp' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Add' , 'TemplateName' , 'pDispDoc' , ), 1610743812, (1610743812, (), [ (12, 17, None, None) , 
+             (16393, 10, None, "IID('{EC923156-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 1 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'Open' , 'File' , 'ReadOnly' , 'Password' , 'ppDocument' , 
+             ), 1610743813, (1610743813, (), [ (8, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{EC923156-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 2 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'Close' , ), 1610743814, (1610743814, (), [ ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'Parent' , 'ppParent' , ), 1610743815, (1610743815, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'CloseAll' , 'AskSave' , ), 1610743816, (1610743816, (), [ (11, 49, 'True', None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'SaveAll' , ), 1610743817, (1610743817, (), [ ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+]
+
 IZcadDwfUnderlay_vtables_dispatch_ = 1
 IZcadDwfUnderlay_vtables_ = [
     (( 'DWFFormat' , 'Name' , ), 18, (18, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
@@ -25003,6 +27517,43 @@ IZcadMaterials_vtables_ = [
              (16393, 10, None, "IID('{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
+IZcadMenuBar_vtables_dispatch_ = 1
+IZcadMenuBar_vtables_ = [
+    (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
+    (( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadMenuGroup_vtables_dispatch_ = 1
+IZcadMenuGroup_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{EC923155-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'Name' , 'Name' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Type' , 'menuType' , ), 1610743811, (1610743811, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'MenuFileName' , 'Name' , ), 1610743812, (1610743812, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'Menus' , 'pMenus' , ), 1610743813, (1610743813, (), [ (16393, 10, None, "IID('{EC92318C-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'Toolbars' , 'pToolbars' , ), 1610743814, (1610743814, (), [ (16393, 10, None, "IID('{EC923003-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'Unload' , ), 1610743815, (1610743815, (), [ ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'Save' , 'MenuFileType' , ), 1610743816, (1610743816, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'SaveAs' , 'MenuFileName' , 'MenuFileType' , ), 1610743817, (1610743817, (), [ (8, 1, None, None) , 
+             (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadMenuGroups_vtables_dispatch_ = 1
+IZcadMenuGroups_vtables_ = [
+    (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
+    (( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'Load' , 'MenuFileName' , 'BaseMenu' , 'pMenuGroup' , ), 1610743813, (1610743813, (), [ 
+             (8, 1, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 1 , 96 , (3, 0, None, None) , 0 , )),
+]
+
 IZcadModelSpace_vtables_dispatch_ = 1
 IZcadModelSpace_vtables_ = [
 ]
@@ -25144,6 +27695,24 @@ IZcadPaperSpace_vtables_ = [
 
 IZcadPlaneSurface_vtables_dispatch_ = 1
 IZcadPlaneSurface_vtables_ = [
+]
+
+IZcadPlot_vtables_dispatch_ = 1
+IZcadPlot_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'QuietErrorMode' , 'bErrorMode' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'QuietErrorMode' , 'bErrorMode' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'NumberOfCopies' , 'numCopies' , ), 1610743811, (1610743811, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'NumberOfCopies' , 'numCopies' , ), 1610743811, (1610743811, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'BatchPlotProgress' , 'bProgressStatus' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'BatchPlotProgress' , 'bProgressStatus' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayPlotPreview' , 'Preview' , ), 1610743815, (1610743815, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'PlotToFile' , 'plotFile' , 'plotConfig' , 'success' , ), 1610743816, (1610743816, (), [ 
+             (8, 1, None, None) , (12, 17, None, None) , (16395, 10, None, None) , ], 1 , 1 , 4 , 1 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'PlotToDevice' , 'plotConfig' , 'success' , ), 1610743817, (1610743817, (), [ (12, 17, None, None) , 
+             (16395, 10, None, None) , ], 1 , 1 , 4 , 1 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'SetLayoutsToPlot' , 'layoutList' , ), 1610743818, (1610743818, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'StartBatchMode' , 'entryCount' , ), 1610743819, (1610743819, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
 ]
 
 IZcadPlotConfiguration_vtables_dispatch_ = 1
@@ -25363,6 +27932,403 @@ IZcadPolyline_vtables_ = [
     (( 'Coordinate' , 'Index' , 'pVal' , ), 17, (17, (), [ (3, 1, None, None) , 
              (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 656 , (3, 0, None, None) , 1024 , )),
     (( 'Length' , 'Length' , ), 18, (18, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 664 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPopupMenu_vtables_dispatch_ = 1
+IZcadPopupMenu_vtables_ = [
+    (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC923050-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
+    (( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'Name' , 'bstrName' , ), 1610743813, (1610743813, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'Name' , 'bstrName' , ), 1610743813, (1610743813, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'NameNoMnemonic' , 'bstrName' , ), 1610743815, (1610743815, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'ShortcutMenu' , 'bFlag' , ), 1610743816, (1610743816, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'OnMenuBar' , 'bFlag' , ), 1610743817, (1610743817, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'AddMenuItem' , 'Index' , 'Label' , 'Macro' , 'pItem' , 
+             ), 1610743818, (1610743818, (), [ (12, 1, None, None) , (8, 1, None, None) , (8, 1, None, None) , (16393, 10, None, "IID('{EC923050-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'AddSubMenu' , 'Index' , 'Label' , 'pMenu' , ), 1610743819, (1610743819, (), [ 
+             (12, 1, None, None) , (8, 1, None, None) , (16393, 10, None, "IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'AddSeparator' , 'Index' , 'pItem' , ), 1610743820, (1610743820, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC923050-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'InsertInMenuBar' , 'Index' , ), 1610743821, (1610743821, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'RemoveFromMenuBar' , ), 1610743822, (1610743822, (), [ ], 1 , 1 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'TagString' , 'bstrTag' , ), 1610743823, (1610743823, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPopupMenuItem_vtables_dispatch_ = 1
+IZcadPopupMenuItem_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'Label' , 'bstrLabel' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Label' , 'bstrLabel' , ), 1610743810, (1610743810, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'TagString' , 'bstrTag' , ), 1610743812, (1610743812, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'TagString' , 'bstrTag' , ), 1610743812, (1610743812, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'Enable' , 'bFlag' , ), 1610743814, (1610743814, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'Enable' , 'bFlag' , ), 1610743814, (1610743814, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'Check' , 'bFlag' , ), 1610743816, (1610743816, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'Check' , 'bFlag' , ), 1610743816, (1610743816, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'Type' , 'itemType' , ), 1610743818, (1610743818, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'SubMenu' , 'pMenu' , ), 1610743819, (1610743819, (), [ (16393, 10, None, "IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'Macro' , 'bstrMacro' , ), 1610743820, (1610743820, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'Macro' , 'bstrMacro' , ), 1610743820, (1610743820, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'Index' , 'nIndex' , ), 1610743822, (1610743822, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'Caption' , 'bstrCaption' , ), 1610743823, (1610743823, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'HelpString' , 'bstrHelp' , ), 1610743824, (1610743824, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'HelpString' , 'bstrHelp' , ), 1610743824, (1610743824, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'Delete' , ), 1610743826, (1610743826, (), [ ], 1 , 1 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'EndSubMenuLevel' , 'level' , ), 1610743827, (1610743827, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'EndSubMenuLevel' , 'level' , ), 1610743827, (1610743827, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPopupMenus_vtables_dispatch_ = 1
+IZcadPopupMenus_vtables_ = [
+    (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
+    (( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'Add' , 'MenuName' , 'pMenu' , ), 1610743813, (1610743813, (), [ (8, 1, None, None) , 
+             (16393, 10, None, "IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'InsertMenuInMenuBar' , 'MenuName' , 'Index' , ), 1610743814, (1610743814, (), [ (8, 1, None, None) , 
+             (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'RemoveMenuFromMenuBar' , 'Index' , ), 1610743815, (1610743815, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPreferences_vtables_dispatch_ = 1
+IZcadPreferences_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'Files' , 'pObj' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'Display' , 'pObj' , ), 1610743810, (1610743810, (), [ (16393, 10, None, "IID('{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'OpenSave' , 'pObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{EC923128-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Output' , 'pObj' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'System' , 'pObj' , ), 1610743813, (1610743813, (), [ (16393, 10, None, "IID('{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'User' , 'pObj' , ), 1610743814, (1610743814, (), [ (16393, 10, None, "IID('{EC923038-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'Drafting' , 'pObj' , ), 1610743815, (1610743815, (), [ (16393, 10, None, "IID('{EC923186-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'Selection' , 'pObj' , ), 1610743816, (1610743816, (), [ (16393, 10, None, "IID('{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'Profiles' , 'pObj' , ), 1610743817, (1610743817, (), [ (16393, 10, None, "IID('{EC92314B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPreferencesDisplay_vtables_dispatch_ = 1
+IZcadPreferencesDisplay_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutDisplayMargins' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutDisplayMargins' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutDisplayPaper' , 'Path' , ), 1610743811, (1610743811, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutDisplayPaper' , 'Path' , ), 1610743811, (1610743811, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutDisplayPaperShadow' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutDisplayPaperShadow' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutShowPlotSetup' , 'Path' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutShowPlotSetup' , 'Path' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutCreateViewport' , 'Path' , ), 1610743817, (1610743817, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutCreateViewport' , 'Path' , ), 1610743817, (1610743817, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayScrollBars' , 'Path' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayScrollBars' , 'Path' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayScreenMenu' , 'Path' , ), 1610743821, (1610743821, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayScreenMenu' , 'Path' , ), 1610743821, (1610743821, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'CursorSize' , 'size' , ), 1610743823, (1610743823, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'CursorSize' , 'size' , ), 1610743823, (1610743823, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'DockedVisibleLines' , 'Path' , ), 1610743825, (1610743825, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'DockedVisibleLines' , 'Path' , ), 1610743825, (1610743825, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'ShowRasterImage' , 'Path' , ), 1610743827, (1610743827, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'ShowRasterImage' , 'Path' , ), 1610743827, (1610743827, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+    (( 'GraphicsWinModelBackgrndColor' , 'color' , ), 1610743829, (1610743829, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
+    (( 'GraphicsWinModelBackgrndColor' , 'color' , ), 1610743829, (1610743829, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
+    (( 'ModelCrosshairColor' , 'crossHairColor' , ), 1610743831, (1610743831, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
+    (( 'ModelCrosshairColor' , 'crossHairColor' , ), 1610743831, (1610743831, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
+    (( 'GraphicsWinLayoutBackgrndColor' , 'color' , ), 1610743833, (1610743833, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
+    (( 'GraphicsWinLayoutBackgrndColor' , 'color' , ), 1610743833, (1610743833, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
+    (( 'TextWinBackgrndColor' , 'Path' , ), 1610743835, (1610743835, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 272 , (3, 0, None, None) , 0 , )),
+    (( 'TextWinBackgrndColor' , 'Path' , ), 1610743835, (1610743835, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
+    (( 'TextWinTextColor' , 'Path' , ), 1610743837, (1610743837, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
+    (( 'TextWinTextColor' , 'Path' , ), 1610743837, (1610743837, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutCrosshairColor' , 'crossHairColor' , ), 1610743839, (1610743839, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
+    (( 'LayoutCrosshairColor' , 'crossHairColor' , ), 1610743839, (1610743839, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
+    (( 'AutoTrackingVecColor' , 'AutoTrackingVecColor' , ), 1610743841, (1610743841, (), [ (19, 1, None, None) , ], 1 , 4 , 4 , 0 , 320 , (3, 0, None, None) , 0 , )),
+    (( 'AutoTrackingVecColor' , 'AutoTrackingVecColor' , ), 1610743841, (1610743841, (), [ (16403, 10, None, None) , ], 1 , 2 , 4 , 0 , 328 , (3, 0, None, None) , 0 , )),
+    (( 'TextFont' , 'Path' , ), 1610743843, (1610743843, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 336 , (3, 0, None, None) , 0 , )),
+    (( 'TextFont' , 'Path' , ), 1610743843, (1610743843, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 344 , (3, 0, None, None) , 0 , )),
+    (( 'TextFontStyle' , 'Path' , ), 1610743845, (1610743845, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 352 , (3, 0, None, None) , 0 , )),
+    (( 'TextFontStyle' , 'Path' , ), 1610743845, (1610743845, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 360 , (3, 0, None, None) , 0 , )),
+    (( 'TextFontSize' , 'Path' , ), 1610743847, (1610743847, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 368 , (3, 0, None, None) , 0 , )),
+    (( 'TextFontSize' , 'Path' , ), 1610743847, (1610743847, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 376 , (3, 0, None, None) , 0 , )),
+    (( 'HistoryLines' , 'Path' , ), 1610743849, (1610743849, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 384 , (3, 0, None, None) , 0 , )),
+    (( 'HistoryLines' , 'Path' , ), 1610743849, (1610743849, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 392 , (3, 0, None, None) , 0 , )),
+    (( 'MaxZWCADWindow' , 'Path' , ), 1610743851, (1610743851, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 400 , (3, 0, None, None) , 0 , )),
+    (( 'MaxZWCADWindow' , 'Path' , ), 1610743851, (1610743851, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 408 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayLayoutTabs' , 'Path' , ), 1610743853, (1610743853, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 416 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayLayoutTabs' , 'Path' , ), 1610743853, (1610743853, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 424 , (3, 0, None, None) , 0 , )),
+    (( 'ImageFrameHighlight' , 'Path' , ), 1610743855, (1610743855, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 432 , (3, 0, None, None) , 0 , )),
+    (( 'ImageFrameHighlight' , 'Path' , ), 1610743855, (1610743855, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 440 , (3, 0, None, None) , 0 , )),
+    (( 'TrueColorImages' , 'Path' , ), 1610743857, (1610743857, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 448 , (3, 0, None, None) , 0 , )),
+    (( 'TrueColorImages' , 'Path' , ), 1610743857, (1610743857, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
+    (( 'XRefFadeIntensity' , 'Path' , ), 1610743859, (1610743859, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
+    (( 'XRefFadeIntensity' , 'Path' , ), 1610743859, (1610743859, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPreferencesDrafting_vtables_dispatch_ = 1
+IZcadPreferencesDrafting_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapMarker' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapMarker' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapMagnet' , 'Path' , ), 1610743811, (1610743811, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapMagnet' , 'Path' , ), 1610743811, (1610743811, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapTooltip' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapTooltip' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapAperture' , 'Path' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapAperture' , 'Path' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapApertureSize' , 'Path' , ), 1610743817, (1610743817, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapApertureSize' , 'Path' , ), 1610743817, (1610743817, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapMarkerColor' , 'Path' , ), 1610743819, (1610743819, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapMarkerColor' , 'Path' , ), 1610743819, (1610743819, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapMarkerSize' , 'Path' , ), 1610743821, (1610743821, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSnapMarkerSize' , 'Path' , ), 1610743821, (1610743821, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'PolarTrackingVector' , 'Path' , ), 1610743823, (1610743823, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'PolarTrackingVector' , 'Path' , ), 1610743823, (1610743823, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'FullScreenTrackingVector' , 'Path' , ), 1610743825, (1610743825, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'FullScreenTrackingVector' , 'Path' , ), 1610743825, (1610743825, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'AutoTrackTooltip' , 'Path' , ), 1610743827, (1610743827, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'AutoTrackTooltip' , 'Path' , ), 1610743827, (1610743827, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+    (( 'AlignmentPointAcquisition' , 'Path' , ), 1610743829, (1610743829, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
+    (( 'AlignmentPointAcquisition' , 'Path' , ), 1610743829, (1610743829, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPreferencesFiles_vtables_dispatch_ = 1
+IZcadPreferencesFiles_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'SupportPath' , 'orient' , ), 0, (0, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'SupportPath' , 'orient' , ), 0, (0, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'DriversPath' , 'Path' , ), 1610743811, (1610743811, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'DriversPath' , 'Path' , ), 1610743811, (1610743811, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'MenuFile' , 'Path' , ), 1610743813, (1610743813, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'MenuFile' , 'Path' , ), 1610743813, (1610743813, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'EnterpriseMenuFile' , 'Path' , ), 1610743815, (1610743815, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'EnterpriseMenuFile' , 'Path' , ), 1610743815, (1610743815, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'CustomIconPath' , 'Path' , ), 1610743817, (1610743817, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'CustomIconPath' , 'Path' , ), 1610743817, (1610743817, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'HelpFilePath' , 'Path' , ), 1610743819, (1610743819, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'HelpFilePath' , 'Path' , ), 1610743819, (1610743819, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultInternetURL' , 'Path' , ), 1610743821, (1610743821, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultInternetURL' , 'Path' , ), 1610743821, (1610743821, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'ConfigFile' , 'ConfigFile' , ), 1610743823, (1610743823, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'LicenseServer' , 'Path' , ), 1610743824, (1610743824, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 64 , )),
+    (( 'TextEditor' , 'Path' , ), 1610743825, (1610743825, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'TextEditor' , 'Path' , ), 1610743825, (1610743825, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'MainDictionary' , 'Path' , ), 1610743827, (1610743827, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'MainDictionary' , 'Path' , ), 1610743827, (1610743827, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+    (( 'CustomDictionary' , 'Path' , ), 1610743829, (1610743829, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
+    (( 'CustomDictionary' , 'Path' , ), 1610743829, (1610743829, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
+    (( 'AltFontFile' , 'fontFile' , ), 1610743831, (1610743831, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
+    (( 'AltFontFile' , 'fontFile' , ), 1610743831, (1610743831, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
+    (( 'FontFileMap' , 'Path' , ), 1610743833, (1610743833, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
+    (( 'FontFileMap' , 'Path' , ), 1610743833, (1610743833, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
+    (( 'PrintFile' , 'Path' , ), 1610743835, (1610743835, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 272 , (3, 0, None, None) , 0 , )),
+    (( 'PrintFile' , 'Path' , ), 1610743835, (1610743835, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
+    (( 'PrintSpoolExecutable' , 'Path' , ), 1610743837, (1610743837, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
+    (( 'PrintSpoolExecutable' , 'Path' , ), 1610743837, (1610743837, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
+    (( 'PostScriptPrologFile' , 'Path' , ), 1610743839, (1610743839, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
+    (( 'PostScriptPrologFile' , 'Path' , ), 1610743839, (1610743839, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
+    (( 'PrintSpoolerPath' , 'Path' , ), 1610743841, (1610743841, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 320 , (3, 0, None, None) , 0 , )),
+    (( 'PrintSpoolerPath' , 'Path' , ), 1610743841, (1610743841, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 328 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSavePath' , 'AutoSavePath' , ), 1610743843, (1610743843, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 336 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSavePath' , 'AutoSavePath' , ), 1610743843, (1610743843, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 344 , (3, 0, None, None) , 0 , )),
+    (( 'TemplateDwgPath' , 'Path' , ), 1610743845, (1610743845, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 352 , (3, 0, None, None) , 0 , )),
+    (( 'TemplateDwgPath' , 'Path' , ), 1610743845, (1610743845, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 360 , (3, 0, None, None) , 0 , )),
+    (( 'LogFilePath' , 'Path' , ), 1610743847, (1610743847, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 368 , (3, 0, None, None) , 0 , )),
+    (( 'LogFilePath' , 'Path' , ), 1610743847, (1610743847, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 376 , (3, 0, None, None) , 0 , )),
+    (( 'TempFilePath' , 'Path' , ), 1610743849, (1610743849, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 384 , (3, 0, None, None) , 0 , )),
+    (( 'TempFilePath' , 'Path' , ), 1610743849, (1610743849, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 392 , (3, 0, None, None) , 0 , )),
+    (( 'TempXrefPath' , 'Path' , ), 1610743851, (1610743851, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 400 , (3, 0, None, None) , 0 , )),
+    (( 'TempXrefPath' , 'Path' , ), 1610743851, (1610743851, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 408 , (3, 0, None, None) , 0 , )),
+    (( 'TextureMapPath' , 'Path' , ), 1610743853, (1610743853, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 416 , (3, 0, None, None) , 0 , )),
+    (( 'TextureMapPath' , 'Path' , ), 1610743853, (1610743853, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 424 , (3, 0, None, None) , 0 , )),
+    (( 'AltTabletMenuFile' , 'MenuFile' , ), 1610743855, (1610743855, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 432 , (3, 0, None, None) , 0 , )),
+    (( 'AltTabletMenuFile' , 'MenuFile' , ), 1610743855, (1610743855, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 440 , (3, 0, None, None) , 0 , )),
+    (( 'SetProjectFilePath' , 'ProjectName' , 'ProjectFilePath' , ), 1610743857, (1610743857, (), [ (8, 1, None, None) , 
+             (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 448 , (3, 0, None, None) , 0 , )),
+    (( 'GetProjectFilePath' , 'ProjectName' , 'Path' , ), 1610743858, (1610743858, (), [ (8, 1, None, None) , 
+             (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
+    (( 'PrinterConfigPath' , 'Path' , ), 1610743859, (1610743859, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
+    (( 'PrinterConfigPath' , 'Path' , ), 1610743859, (1610743859, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
+    (( 'PrinterDescPath' , 'Path' , ), 1610743861, (1610743861, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 480 , (3, 0, None, None) , 0 , )),
+    (( 'PrinterDescPath' , 'Path' , ), 1610743861, (1610743861, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 488 , (3, 0, None, None) , 0 , )),
+    (( 'PrinterStyleSheetPath' , 'Path' , ), 1610743863, (1610743863, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 496 , (3, 0, None, None) , 0 , )),
+    (( 'PrinterStyleSheetPath' , 'Path' , ), 1610743863, (1610743863, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 504 , (3, 0, None, None) , 0 , )),
+    (( 'WorkspacePath' , 'Path' , ), 1610743865, (1610743865, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 512 , (3, 0, None, None) , 0 , )),
+    (( 'WorkspacePath' , 'Path' , ), 1610743865, (1610743865, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 520 , (3, 0, None, None) , 0 , )),
+    (( 'ObjectZRXPath' , 'Path' , ), 1610743867, (1610743867, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 528 , (3, 0, None, None) , 64 , )),
+    (( 'ObjectZRXPath' , 'Path' , ), 1610743867, (1610743867, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 536 , (3, 0, None, None) , 64 , )),
+    (( 'ColorBookPath' , 'Path' , ), 1610743869, (1610743869, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
+    (( 'ColorBookPath' , 'Path' , ), 1610743869, (1610743869, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 552 , (3, 0, None, None) , 0 , )),
+    (( 'ToolPalettePath' , 'Path' , ), 1610743871, (1610743871, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
+    (( 'ToolPalettePath' , 'Path' , ), 1610743871, (1610743871, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 568 , (3, 0, None, None) , 0 , )),
+    (( 'QNewTemplateFile' , 'templateFile' , ), 1610743873, (1610743873, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
+    (( 'QNewTemplateFile' , 'templateFile' , ), 1610743873, (1610743873, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
+    (( 'PlotLogFilePath' , 'templateFile' , ), 1610743875, (1610743875, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
+    (( 'PlotLogFilePath' , 'templateFile' , ), 1610743875, (1610743875, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 600 , (3, 0, None, None) , 0 , )),
+    (( 'PageSetupOverridesTemplateFile' , 'templateFile' , ), 1610743877, (1610743877, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
+    (( 'PageSetupOverridesTemplateFile' , 'templateFile' , ), 1610743877, (1610743877, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 616 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveInvProject' , 'Path' , ), 1610743879, (1610743879, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 624 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveInvProject' , 'Path' , ), 1610743879, (1610743879, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 632 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPreferencesOpenSave_vtables_dispatch_ = 1
+IZcadPreferencesOpenSave_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'SavePreviewThumbnail' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'SavePreviewThumbnail' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'IncrementalSavePercent' , 'Path' , ), 1610743811, (1610743811, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'IncrementalSavePercent' , 'Path' , ), 1610743811, (1610743811, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSaveInterval' , 'Path' , ), 1610743813, (1610743813, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'AutoSaveInterval' , 'Path' , ), 1610743813, (1610743813, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'CreateBackup' , 'CreateBackup' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'CreateBackup' , 'CreateBackup' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'FullCRCValidation' , 'Path' , ), 1610743817, (1610743817, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'FullCRCValidation' , 'Path' , ), 1610743817, (1610743817, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'LogFileOn' , 'Path' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'LogFileOn' , 'Path' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'TempFileExtension' , 'Path' , ), 1610743821, (1610743821, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'TempFileExtension' , 'Path' , ), 1610743821, (1610743821, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'XrefDemandLoad' , 'Path' , ), 1610743823, (1610743823, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'XrefDemandLoad' , 'Path' , ), 1610743823, (1610743823, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'DemandLoadZRXApp' , 'Path' , ), 1610743825, (1610743825, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'DemandLoadZRXApp' , 'Path' , ), 1610743825, (1610743825, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'ProxyImage' , 'Path' , ), 1610743827, (1610743827, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'ProxyImage' , 'Path' , ), 1610743827, (1610743827, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+    (( 'ShowProxyDialogBox' , 'Path' , ), 1610743829, (1610743829, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
+    (( 'ShowProxyDialogBox' , 'Path' , ), 1610743829, (1610743829, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
+    (( 'AutoAudit' , 'bAudit' , ), 1610743831, (1610743831, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
+    (( 'AutoAudit' , 'bAudit' , ), 1610743831, (1610743831, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
+    (( 'SaveAsType' , 'Path' , ), 1610743833, (1610743833, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
+    (( 'SaveAsType' , 'Path' , ), 1610743833, (1610743833, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
+    (( 'MRUNumber' , 'Path' , ), 1610743835, (1610743835, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 272 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPreferencesOutput_vtables_dispatch_ = 1
+IZcadPreferencesOutput_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultOutputDevice' , 'Path' , ), 1610743809, (1610743809, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultOutputDevice' , 'Path' , ), 1610743809, (1610743809, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'PrinterSpoolAlert' , 'Path' , ), 1610743811, (1610743811, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'PrinterSpoolAlert' , 'Path' , ), 1610743811, (1610743811, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'PrinterPaperSizeAlert' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'PrinterPaperSizeAlert' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'PlotLegacy' , 'Path' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'PlotLegacy' , 'Path' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'OLEQuality' , 'Path' , ), 1610743817, (1610743817, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'OLEQuality' , 'Path' , ), 1610743817, (1610743817, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'UseLastPlotSettings' , 'Path' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'UseLastPlotSettings' , 'Path' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'PlotPolicy' , 'Path' , ), 1610743821, (1610743821, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'PlotPolicy' , 'Path' , ), 1610743821, (1610743821, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultPlotStyleTable' , 'Path' , ), 1610743823, (1610743823, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultPlotStyleTable' , 'Path' , ), 1610743823, (1610743823, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultPlotStyleForObjects' , 'Path' , ), 1610743825, (1610743825, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultPlotStyleForObjects' , 'Path' , ), 1610743825, (1610743825, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultPlotStyleForLayer' , 'Path' , ), 1610743827, (1610743827, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultPlotStyleForLayer' , 'Path' , ), 1610743827, (1610743827, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+    (( 'ContinuousPlotLog' , 'Path' , ), 1610743829, (1610743829, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
+    (( 'ContinuousPlotLog' , 'Path' , ), 1610743829, (1610743829, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
+    (( 'AutomaticPlotLog' , 'Path' , ), 1610743831, (1610743831, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
+    (( 'AutomaticPlotLog' , 'Path' , ), 1610743831, (1610743831, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultPlotToFilePath' , 'Path' , ), 1610743833, (1610743833, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
+    (( 'DefaultPlotToFilePath' , 'Path' , ), 1610743833, (1610743833, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPreferencesProfiles_vtables_dispatch_ = 1
+IZcadPreferencesProfiles_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveProfile' , 'Path' , ), 1610743809, (1610743809, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'ActiveProfile' , 'Path' , ), 1610743809, (1610743809, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'ImportProfile' , 'ProfileName' , 'RegFile' , 'IncludePathInfo' , ), 1610743811, (1610743811, (), [ 
+             (8, 1, None, None) , (8, 1, None, None) , (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'ExportProfile' , 'ProfileName' , 'RegFile' , ), 1610743812, (1610743812, (), [ (8, 1, None, None) , 
+             (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'DeleteProfile' , 'ProfileName' , ), 1610743813, (1610743813, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'ResetProfile' , 'Profile' , ), 1610743814, (1610743814, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'RenameProfile' , 'origProfileName' , 'newProfileName' , ), 1610743815, (1610743815, (), [ (8, 1, None, None) , 
+             (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'CopyProfile' , 'oldProfileName' , 'newProfileName' , ), 1610743816, (1610743816, (), [ (8, 1, None, None) , 
+             (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'GetAllProfileNames' , 'pNames' , ), 1610743817, (1610743817, (), [ (16396, 2, None, None) , ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPreferencesSelection_vtables_dispatch_ = 1
+IZcadPreferencesSelection_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'PickFirst' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'PickFirst' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'PickAdd' , 'Path' , ), 1610743811, (1610743811, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'PickAdd' , 'Path' , ), 1610743811, (1610743811, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'PickDrag' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'PickDrag' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'PickAuto' , 'Path' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'PickAuto' , 'Path' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'PickBoxSize' , 'Path' , ), 1610743817, (1610743817, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'PickBoxSize' , 'Path' , ), 1610743817, (1610743817, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayGrips' , 'Path' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayGrips' , 'Path' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayGripsWithinBlocks' , 'Path' , ), 1610743821, (1610743821, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayGripsWithinBlocks' , 'Path' , ), 1610743821, (1610743821, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'GripColorSelected' , 'Path' , ), 1610743823, (1610743823, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'GripColorSelected' , 'Path' , ), 1610743823, (1610743823, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'GripColorUnselected' , 'Path' , ), 1610743825, (1610743825, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'GripColorUnselected' , 'Path' , ), 1610743825, (1610743825, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'GripSize' , 'Path' , ), 1610743827, (1610743827, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'GripSize' , 'Path' , ), 1610743827, (1610743827, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+    (( 'PickGroup' , 'pick' , ), 1610743829, (1610743829, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
+    (( 'PickGroup' , 'pick' , ), 1610743829, (1610743829, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPreferencesSystem_vtables_dispatch_ = 1
+IZcadPreferencesSystem_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'SingleDocumentMode' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'SingleDocumentMode' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayOLEScale' , 'Path' , ), 1610743811, (1610743811, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'DisplayOLEScale' , 'Path' , ), 1610743811, (1610743811, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'StoreSQLIndex' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'StoreSQLIndex' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'TablesReadOnly' , 'Path' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'TablesReadOnly' , 'Path' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'EnableStartupDialog' , 'Path' , ), 1610743817, (1610743817, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'EnableStartupDialog' , 'Path' , ), 1610743817, (1610743817, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'BeepOnError' , 'BeepOnError' , ), 1610743819, (1610743819, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'BeepOnError' , 'BeepOnError' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'ShowWarningMessages' , 'Path' , ), 1610743821, (1610743821, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'ShowWarningMessages' , 'Path' , ), 1610743821, (1610743821, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'LoadZcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'LoadZcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadPreferencesUser_vtables_dispatch_ = 1
+IZcadPreferencesUser_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'KeyboardAccelerator' , 'Path' , ), 1610743809, (1610743809, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'KeyboardAccelerator' , 'Path' , ), 1610743809, (1610743809, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'KeyboardPriority' , 'Path' , ), 1610743811, (1610743811, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'KeyboardPriority' , 'Path' , ), 1610743811, (1610743811, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'HyperlinkDisplayCursor' , 'Path' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'HyperlinkDisplayCursor' , 'Path' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'ADCInsertUnitsDefaultSource' , 'pIU' , ), 1610743817, (1610743817, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'ADCInsertUnitsDefaultSource' , 'pIU' , ), 1610743817, (1610743817, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'ADCInsertUnitsDefaultTarget' , 'pSUunits' , ), 1610743819, (1610743819, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'ADCInsertUnitsDefaultTarget' , 'pSUunits' , ), 1610743819, (1610743819, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'ShortCutMenuDisplay' , 'pSCM' , ), 1610743821, (1610743821, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'ShortCutMenuDisplay' , 'pSCM' , ), 1610743821, (1610743821, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'SCMDefaultMode' , 'pSCM' , ), 1610743823, (1610743823, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'SCMDefaultMode' , 'pSCM' , ), 1610743823, (1610743823, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'SCMEditMode' , 'pSCM' , ), 1610743825, (1610743825, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'SCMEditMode' , 'pSCM' , ), 1610743825, (1610743825, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'SCMCommandMode' , 'pSCM' , ), 1610743827, (1610743827, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'SCMCommandMode' , 'pSCM' , ), 1610743827, (1610743827, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'SCMTimeMode' , 'time' , ), 1610743829, (1610743829, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'SCMTimeMode' , 'time' , ), 1610743829, (1610743829, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+    (( 'SCMTimeValue' , 'time' , ), 1610743831, (1610743831, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
+    (( 'SCMTimeValue' , 'time' , ), 1610743831, (1610743831, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
 ]
 
 IZcadRasterImage_vtables_dispatch_ = 1
@@ -25659,6 +28625,43 @@ IZcadSecurityParams_vtables_ = [
     (( 'TimeServer' , 'pTimeServerName' , ), 11, (11, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
 ]
 
+IZcadSelectionSet_vtables_dispatch_ = 1
+IZcadSelectionSet_vtables_ = [
+    (( 'Item' , 'Index' , 'pEntity' , ), 0, (0, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 65 , )),
+    (( 'Name' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Highlight' , 'bFlag' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'Erase' , ), 4, (4, (), [ ], 1 , 1 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'Update' , ), 5, (5, (), [ ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'Application' , 'pAppObj' , ), 6, (6, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'AddItems' , 'pSelSet' , ), 7, (7, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'RemoveItems' , 'Objects' , ), 8, (8, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'Clear' , ), 9, (9, (), [ ], 1 , 1 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'Select' , 'Mode' , 'Point1' , 'Point2' , 'FilterType' , 
+             'FilterData' , ), 10, (10, (), [ (3, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , 
+             (12, 17, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 4 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'SelectAtPoint' , 'Point' , 'FilterType' , 'FilterData' , ), 11, (11, (), [ 
+             (12, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'SelectByPolygon' , 'Mode' , 'PointsList' , 'FilterType' , 'FilterData' , 
+             ), 12, (12, (), [ (3, 1, None, None) , (12, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'SelectOnScreen' , 'FilterType' , 'FilterData' , ), 13, (13, (), [ (12, 17, None, None) , 
+             (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'Delete' , ), 14, (14, (), [ ], 1 , 1 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadSelectionSets_vtables_dispatch_ = 1
+IZcadSelectionSets_vtables_ = [
+    (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC923124-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 65 , )),
+    (( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Add' , 'Name' , 'pSet' , ), 2, (2, (), [ (8, 1, None, None) , 
+             (16393, 10, None, "IID('{EC923124-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+]
+
 IZcadShadowDisplay_vtables_dispatch_ = 0
 IZcadShadowDisplay_vtables_ = [
     (( 'ShadowDisplay' , 'ShadowDisplay' , ), 1610678272, (1610678272, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 24 , (3, 0, None, None) , 0 , )),
@@ -25772,6 +28775,12 @@ IZcadSpline_vtables_ = [
     (( 'Degree2' , 'Degree' , ), 31, (31, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 784 , (3, 0, None, None) , 0 , )),
     (( 'Closed2' , 'fClose' , ), 32, (32, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 792 , (3, 0, None, None) , 0 , )),
     (( 'Closed2' , 'fClose' , ), 32, (32, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 800 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadState_vtables_dispatch_ = 1
+IZcadState_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1, (1, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'IsQuiescent' , 'pVal' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
 ]
 
 IZcadSubDMesh_vtables_dispatch_ = 1
@@ -26544,6 +29553,82 @@ IZcadTolerance_vtables_ = [
     (( 'DimensionLineColor' , 'Type' , ), 13, (13, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
 ]
 
+IZcadToolbar_vtables_dispatch_ = 1
+IZcadToolbar_vtables_ = [
+    (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
+    (( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'Name' , 'bstrName' , ), 1610743813, (1610743813, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'Name' , 'bstrName' , ), 1610743813, (1610743813, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'Visible' , 'bFlag' , ), 1610743815, (1610743815, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'Visible' , 'bFlag' , ), 1610743815, (1610743815, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'DockStatus' , 'nStatus' , ), 1610743817, (1610743817, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'LargeButtons' , 'bFlag' , ), 1610743818, (1610743818, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'left' , 'nLeft' , ), 1610743819, (1610743819, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'left' , 'nLeft' , ), 1610743819, (1610743819, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'top' , 'nTop' , ), 1610743821, (1610743821, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'top' , 'nTop' , ), 1610743821, (1610743821, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'Width' , 'nWidth' , ), 1610743823, (1610743823, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'Height' , 'nHeight' , ), 1610743824, (1610743824, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'FloatingRows' , 'nRows' , ), 1610743825, (1610743825, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'FloatingRows' , 'nRows' , ), 1610743825, (1610743825, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'HelpString' , 'bstrHelp' , ), 1610743827, (1610743827, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'HelpString' , 'bstrHelp' , ), 1610743827, (1610743827, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+    (( 'AddToolbarButton' , 'Index' , 'Name' , 'HelpString' , 'Macro' , 
+             'FlyoutButton' , 'pItem' , ), 1610743829, (1610743829, (), [ (12, 1, None, None) , (8, 1, None, None) , 
+             (8, 1, None, None) , (8, 1, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 1 , 224 , (3, 0, None, None) , 0 , )),
+    (( 'AddSeparator' , 'Index' , 'pItem' , ), 1610743830, (1610743830, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
+    (( 'Dock' , 'Side' , ), 1610743831, (1610743831, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
+    (( 'Float' , 'top' , 'left' , 'NumberFloatRows' , ), 1610743832, (1610743832, (), [ 
+             (3, 1, None, None) , (3, 1, None, None) , (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
+    (( 'Delete' , ), 1610743833, (1610743833, (), [ ], 1 , 1 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
+    (( 'TagString' , 'bstrTag' , ), 1610743834, (1610743834, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadToolbarItem_vtables_dispatch_ = 1
+IZcadToolbarItem_vtables_ = [
+    (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'Name' , 'bstrName' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Name' , 'bstrName' , ), 1610743810, (1610743810, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'TagString' , 'bstrTag' , ), 1610743812, (1610743812, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'TagString' , 'bstrTag' , ), 1610743812, (1610743812, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'Type' , 'itemType' , ), 1610743814, (1610743814, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'Flyout' , 'pTlbar' , ), 1610743815, (1610743815, (), [ (16393, 10, None, "IID('{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'Macro' , 'bstrMacro' , ), 1610743816, (1610743816, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'Macro' , 'bstrMacro' , ), 1610743816, (1610743816, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'Index' , 'nIndex' , ), 1610743818, (1610743818, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'HelpString' , 'bstrHelp' , ), 1610743819, (1610743819, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'HelpString' , 'bstrHelp' , ), 1610743819, (1610743819, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'GetBitmaps' , 'SmallIconName' , 'LargeIconName' , ), 1610743821, (1610743821, (), [ (16392, 2, None, None) , 
+             (16392, 2, None, None) , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'SetBitmaps' , 'SmallIconName' , 'LargeIconName' , ), 1610743822, (1610743822, (), [ (8, 1, None, None) , 
+             (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'AttachToolbarToFlyout' , 'MenuGroupName' , 'ToolbarName' , ), 1610743823, (1610743823, (), [ (8, 1, None, None) , 
+             (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'Delete' , ), 1610743824, (1610743824, (), [ ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'CommandDisplayName' , 'Name' , ), 1610743825, (1610743825, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'CommandDisplayName' , 'Name' , ), 1610743825, (1610743825, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadToolbars_vtables_dispatch_ = 1
+IZcadToolbars_vtables_ = [
+    (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
+             (16393, 10, None, "IID('{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
+    (( 'Count' , 'Count' , ), 1610743810, (1610743810, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'Application' , 'pAppObj' , ), 1610743811, (1610743811, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'LargeButtons' , 'bFlag' , ), 1610743813, (1610743813, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'LargeButtons' , 'bFlag' , ), 1610743813, (1610743813, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'Add' , 'ToolbarName' , 'pTlbar' , ), 1610743815, (1610743815, (), [ (8, 1, None, None) , 
+             (16393, 10, None, "IID('{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
+]
+
 IZcadTrace_vtables_dispatch_ = 1
 IZcadTrace_vtables_ = [
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
@@ -26615,6 +29700,70 @@ IZcadUnderlay_vtables_ = [
     (( 'ClippingEnabled' , 'kClip' , ), 16, (16, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 680 , (3, 0, None, None) , 0 , )),
     (( 'UnderlayLayerOverrideApplied' , 'bOverride' , ), 17, (17, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 688 , (3, 0, None, None) , 0 , )),
     (( 'UnderlayLayerOverrideApplied' , 'bOverride' , ), 17, (17, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 696 , (3, 0, None, None) , 0 , )),
+]
+
+IZcadUtility_vtables_dispatch_ = 1
+IZcadUtility_vtables_ = [
+    (( 'AngleToReal' , 'Angle' , 'Unit' , 'Value' , ), 1610743808, (1610743808, (), [ 
+             (8, 1, None, None) , (3, 1, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
+    (( 'AngleToString' , 'Angle' , 'Unit' , 'precision' , 'bstrValue' , 
+             ), 1610743809, (1610743809, (), [ (5, 1, None, None) , (3, 1, None, None) , (3, 1, None, None) , (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
+    (( 'DistanceToReal' , 'Distance' , 'Unit' , 'Value' , ), 1610743810, (1610743810, (), [ 
+             (8, 1, None, None) , (3, 1, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
+    (( 'RealToString' , 'Value' , 'Unit' , 'precision' , 'bstrValue' , 
+             ), 1610743811, (1610743811, (), [ (5, 1, None, None) , (3, 1, None, None) , (3, 1, None, None) , (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 80 , (3, 0, None, None) , 0 , )),
+    (( 'TranslateCoordinates' , 'Point' , 'FromCoordSystem' , 'ToCoordSystem' , 'Displacement' , 
+             'OCSNormal' , 'transPt' , ), 1610743812, (1610743812, (), [ (12, 1, None, None) , (3, 1, None, None) , 
+             (3, 1, None, None) , (3, 1, None, None) , (12, 17, None, None) , (16396, 10, None, None) , ], 1 , 1 , 4 , 1 , 88 , (3, 0, None, None) , 0 , )),
+    (( 'InitializeUserInput' , 'Bits' , 'KeyWordList' , ), 1610743813, (1610743813, (), [ (3, 1, None, None) , 
+             (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 96 , (3, 0, None, None) , 0 , )),
+    (( 'GetInteger' , 'Prompt' , 'Value' , ), 1610743814, (1610743814, (), [ (12, 17, None, None) , 
+             (16387, 10, None, None) , ], 1 , 1 , 4 , 1 , 104 , (3, 0, None, None) , 0 , )),
+    (( 'GetReal' , 'Prompt' , 'Value' , ), 1610743815, (1610743815, (), [ (12, 17, None, None) , 
+             (16389, 10, None, None) , ], 1 , 1 , 4 , 1 , 112 , (3, 0, None, None) , 0 , )),
+    (( 'GetInput' , 'Value' , ), 1610743816, (1610743816, (), [ (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
+    (( 'GetKeyword' , 'Prompt' , 'bstrKeyword' , ), 1610743817, (1610743817, (), [ (12, 17, None, None) , 
+             (16392, 10, None, None) , ], 1 , 1 , 4 , 1 , 128 , (3, 0, None, None) , 0 , )),
+    (( 'GetString' , 'HasSpaces' , 'Prompt' , 'bstrValue' , ), 1610743818, (1610743818, (), [ 
+             (3, 1, None, None) , (12, 17, None, None) , (16392, 10, None, None) , ], 1 , 1 , 4 , 1 , 136 , (3, 0, None, None) , 0 , )),
+    (( 'GetAngle' , 'Point' , 'Prompt' , 'Angle' , ), 1610743819, (1610743819, (), [ 
+             (12, 17, None, None) , (12, 17, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 2 , 144 , (3, 0, None, None) , 0 , )),
+    (( 'AngleFromXAxis' , 'StartPoint' , 'EndPoint' , 'Angle' , ), 1610743820, (1610743820, (), [ 
+             (12, 1, None, None) , (12, 1, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
+    (( 'GetCorner' , 'Point' , 'Prompt' , 'corner' , ), 1610743821, (1610743821, (), [ 
+             (12, 1, None, None) , (12, 17, None, None) , (16396, 10, None, None) , ], 1 , 1 , 4 , 1 , 160 , (3, 0, None, None) , 0 , )),
+    (( 'GetDistance' , 'Point' , 'Prompt' , 'dist' , ), 1610743822, (1610743822, (), [ 
+             (12, 17, None, None) , (12, 17, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 2 , 168 , (3, 0, None, None) , 0 , )),
+    (( 'GetOrientation' , 'Point' , 'Prompt' , 'Angle' , ), 1610743823, (1610743823, (), [ 
+             (12, 17, None, None) , (12, 17, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 2 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'GetPoint' , 'Point' , 'Prompt' , 'inputPoint' , ), 1610743824, (1610743824, (), [ 
+             (12, 17, None, None) , (12, 17, None, None) , (16396, 10, None, None) , ], 1 , 1 , 4 , 2 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'PolarPoint' , 'Point' , 'Angle' , 'Distance' , 'inputPoint' , 
+             ), 1610743825, (1610743825, (), [ (12, 1, None, None) , (5, 1, None, None) , (5, 1, None, None) , (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
+    (( 'CreateTypedArray' , 'varArr' , 'Type' , 'inArgs' , ), 1610743826, (1610743826, (), [ 
+             (16396, 2, None, None) , (3, 1, None, None) , (8204, 1, None, None) , ], 1 , 1 , 4 , -1 , 200 , (3, 0, None, None) , 0 , )),
+    (( 'GetEntity' , 'Object' , 'PickedPoint' , 'Prompt' , ), 1610743827, (1610743827, (), [ 
+             (16393, 2, None, None) , (16396, 2, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 208 , (3, 0, None, None) , 0 , )),
+    (( 'Prompt' , 'Message' , ), 1610743828, (1610743828, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
+    (( 'GetSubEntity' , 'Object' , 'PickedPoint' , 'transMatrix' , 'ContextData' , 
+             'Prompt' , ), 1610743829, (1610743829, (), [ (16393, 2, None, None) , (16396, 2, None, None) , (16396, 2, None, None) , 
+             (16396, 2, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 224 , (3, 0, None, None) , 0 , )),
+    (( 'IsURL' , 'URL' , 'IsValidURL' , ), 1610743830, (1610743830, (), [ (8, 1, None, None) , 
+             (16395, 10, None, None) , ], 1 , 1 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
+    (( 'GetRemoteFile' , 'URL' , 'LocalFile' , 'IgnoreCache' , ), 1610743831, (1610743831, (), [ 
+             (8, 1, None, None) , (16392, 2, None, None) , (11, 1, None, None) , ], 1 , 1 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
+    (( 'PutRemoteFile' , 'URL' , 'LocalFile' , ), 1610743832, (1610743832, (), [ (8, 1, None, None) , 
+             (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
+    (( 'IsRemoteFile' , 'LocalFile' , 'URL' , 'IsDownloadedFile' , ), 1610743833, (1610743833, (), [ 
+             (8, 1, None, None) , (16392, 2, None, None) , (16395, 10, None, None) , ], 1 , 1 , 4 , 0 , 256 , (3, 0, None, None) , 0 , )),
+    (( 'LaunchBrowserDialog' , 'SelectedURL' , 'DialogTitle' , 'OpenButtonCaption' , 'StartPageURL' , 
+             'RegistryRootKey' , 'OpenButtonAlwaysEnabled' , 'success' , ), 1610743834, (1610743834, (), [ (16392, 2, None, None) , 
+             (8, 1, None, None) , (8, 1, None, None) , (8, 1, None, None) , (8, 1, None, None) , (11, 1, None, None) , 
+             (16395, 10, None, None) , ], 1 , 1 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
+    (( 'SendModelessOperationStart' , 'Context' , ), 1610743835, (1610743835, (), [ (8, 0, None, None) , ], 1 , 1 , 4 , 0 , 272 , (3, 0, None, None) , 0 , )),
+    (( 'SendModelessOperationEnded' , 'Context' , ), 1610743836, (1610743836, (), [ (8, 0, None, None) , ], 1 , 1 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
+    (( 'GetObjectIdString' , 'Object' , 'bHex' , 'ObjectIdString' , ), 1610743837, (1610743837, (), [ 
+             (9, 1, None, None) , (11, 1, None, None) , (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
 ]
 
 IZcadView_vtables_dispatch_ = 1
@@ -26756,27 +29905,6 @@ IZcadZcCmColor_vtables_ = [
              (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
 ]
 
-IZxDbDocument_vtables_dispatch_ = 1
-IZxDbDocument_vtables_ = [
-    (( 'Name' , 'pVal' , ), 256, (256, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
-    (( 'Name' , 'pVal' , ), 256, (256, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
-    (( 'Open' , 'FileName' , 'Password' , ), 257, (257, (), [ (8, 1, None, None) , 
-             (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 304 , (3, 0, None, None) , 0 , )),
-    (( 'Save' , ), 258, (258, (), [ ], 1 , 1 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
-    (( 'SaveAs' , 'FileName' , 'vSecurityParams' , ), 259, (259, (), [ (8, 1, None, None) , 
-             (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 320 , (3, 0, None, None) , 0 , )),
-    (( 'DxfIn' , 'FileName' , 'LogFileName' , ), 260, (260, (), [ (8, 1, None, None) , 
-             (12, 17, None, None) , ], 1 , 1 , 4 , 1 , 328 , (3, 0, None, None) , 0 , )),
-    (( 'DxfOut' , 'FileName' , 'precision' , 'SaveThumbnailImage' , ), 261, (261, (), [ 
-             (8, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , ], 1 , 1 , 4 , 2 , 336 , (3, 0, None, None) , 0 , )),
-    (( 'Application' , 'pAppObj' , ), 262, (262, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 344 , (3, 0, None, None) , 0 , )),
-    (( 'Database' , 'pDatabase' , ), 263, (263, (), [ (16393, 10, None, "IID('{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 352 , (3, 0, None, None) , 0 , )),
-]
-
-IZxDbDocumentEvents_vtables_dispatch_ = 0
-IZxDbDocumentEvents_vtables_ = [
-]
-
 RecordMap = {
 }
 
@@ -26909,7 +30037,35 @@ CLSIDToClassMap = {
     '{EC9230F6-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLayerStateManager,
     '{EC923199-5A21-11E7-B72E-BC5FF42AC839}' : IZcadModelSpace2,
     '{EC923100-5A21-11E7-B72E-BC5FF42AC839}' : IArcTextObj,
-    '{30FDAC07-01CB-4245-9A81-6EAE0E8D498E}' : IZxDbDocument,
+    '{EC923156-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDocument,
+    '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPlot,
+    '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}' : IZcadApplication,
+    '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferences,
+    '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesFiles,
+    '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesDisplay,
+    '{EC923128-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesOpenSave,
+    '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesOutput,
+    '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesSystem,
+    '{EC923038-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesUser,
+    '{EC923186-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesDrafting,
+    '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesSelection,
+    '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesProfiles,
+    '{EC923155-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMenuGroups,
+    '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMenuGroup,
+    '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPopupMenus,
+    '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPopupMenu,
+    '{EC923050-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPopupMenuItem,
+    '{EC923003-5A21-11E7-B72E-BC5FF42AC839}' : IZcadToolbars,
+    '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadToolbar,
+    '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}' : IZcadToolbarItem,
+    '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMenuBar,
+    '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDocuments,
+    '{EC923162-5A21-11E7-B72E-BC5FF42AC839}' : IZcadState,
+    '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSelectionSets,
+    '{EC923124-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSelectionSet,
+    '{EC923126-5A21-11E7-B72E-BC5FF42AC839}' : IZcadUtility,
+    '{EC923092-5A21-11E7-B72E-BC5FF42AC839}' : _DZcadApplicationEvents,
+    '{EC923172-5A21-11E7-B72E-BC5FF42AC839}' : _DZcadDocumentEvents,
     '{EC923177-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLine,
     '{EC92303A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadCircle,
     '{EC92304D-5A21-11E7-B72E-BC5FF42AC839}' : ZcadEntity,
@@ -27036,7 +30192,34 @@ CLSIDToClassMap = {
     '{EC9232A8-5A21-11E7-B72E-BC5FF42AC839}' : ZcadGeomapImage,
     '{EC9232A9-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPointCloud,
     '{EC9232AA-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPointCloudEx,
-    '{EC92306E-5A21-11E7-B72E-BC5FF42AC839}' : ZxDbDocument,
+    '{EC92313D-5A21-11E7-B72E-BC5FF42AC839}' : ZcadApplication,
+    '{2F671EB3-669F-11E7-91B7-BC5FF42AC839}' : ZcadApplicationMinorVersion,
+    '{EC9231BB-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDocuments,
+    '{2F671DA0-669F-11E7-91B7-BC5FF42AC839}' : ZcadDocument,
+    '{EC922FC7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferences,
+    '{EC9230A0-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesFiles,
+    '{EC92300A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesDisplay,
+    '{EC9231EB-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesDrafting,
+    '{EC92304A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesOpenSave,
+    '{EC9230F0-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesOutput,
+    '{EC9231F7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesProfiles,
+    '{EC9230A7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesSelection,
+    '{EC9231A8-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesUser,
+    '{EC923185-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesSystem,
+    '{EC92315F-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPlot,
+    '{EC923000-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSelectionSet,
+    '{EC923150-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSelectionSets,
+    '{EC922FFC-5A21-11E7-B72E-BC5FF42AC839}' : ZcadUtility,
+    '{EC922FCC-5A21-11E7-B72E-BC5FF42AC839}' : ZcadState,
+    '{EC923146-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMenuGroups,
+    '{EC9231F6-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMenuGroup,
+    '{EC9230D4-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPopupMenuItem,
+    '{EC922FD9-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPopupMenus,
+    '{EC923008-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPopupMenu,
+    '{EC923086-5A21-11E7-B72E-BC5FF42AC839}' : ZcadToolbars,
+    '{EC922FF3-5A21-11E7-B72E-BC5FF42AC839}' : ZcadToolbar,
+    '{EC9230E9-5A21-11E7-B72E-BC5FF42AC839}' : ZcadToolbarItem,
+    '{EC922FED-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMenuBar,
 }
 CLSIDToPackageMap = {}
 win32com.client.CLSIDToClass.RegisterCLSIDsFromDict( CLSIDToClassMap )
@@ -27171,8 +30354,33 @@ VTablesToClassMap = {
     '{EC9230F6-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLayerStateManager',
     '{EC923199-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadModelSpace2',
     '{EC923100-5A21-11E7-B72E-BC5FF42AC839}' : 'IArcTextObj',
-    '{49C74794-57FD-4CAF-B7C6-CC4F3334C721}' : 'IZxDbDocumentEvents',
-    '{30FDAC07-01CB-4245-9A81-6EAE0E8D498E}' : 'IZxDbDocument',
+    '{EC923156-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDocument',
+    '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPlot',
+    '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadApplication',
+    '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferences',
+    '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesFiles',
+    '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesDisplay',
+    '{EC923128-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesOpenSave',
+    '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesOutput',
+    '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesSystem',
+    '{EC923038-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesUser',
+    '{EC923186-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesDrafting',
+    '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesSelection',
+    '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesProfiles',
+    '{EC923155-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMenuGroups',
+    '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMenuGroup',
+    '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPopupMenus',
+    '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPopupMenu',
+    '{EC923050-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPopupMenuItem',
+    '{EC923003-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadToolbars',
+    '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadToolbar',
+    '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadToolbarItem',
+    '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMenuBar',
+    '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDocuments',
+    '{EC923162-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadState',
+    '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSelectionSets',
+    '{EC923124-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSelectionSet',
+    '{EC923126-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadUtility',
 }
 
 
@@ -27305,9 +30513,36 @@ NamesToIIDMap = {
     'IZcadLayerStateManager' : '{EC9230F6-5A21-11E7-B72E-BC5FF42AC839}',
     'IZcadModelSpace2' : '{EC923199-5A21-11E7-B72E-BC5FF42AC839}',
     'IArcTextObj' : '{EC923100-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZxDbDocument' : '{30FDAC07-01CB-4245-9A81-6EAE0E8D498E}',
+    'IZcadDocument' : '{EC923156-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPlot' : '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadApplication' : '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPreferences' : '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPreferencesFiles' : '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPreferencesDisplay' : '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPreferencesOpenSave' : '{EC923128-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPreferencesOutput' : '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPreferencesSystem' : '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPreferencesUser' : '{EC923038-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPreferencesDrafting' : '{EC923186-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPreferencesSelection' : '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPreferencesProfiles' : '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadMenuGroups' : '{EC923155-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadMenuGroup' : '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPopupMenus' : '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPopupMenu' : '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadPopupMenuItem' : '{EC923050-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadToolbars' : '{EC923003-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadToolbar' : '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadToolbarItem' : '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadMenuBar' : '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadDocuments' : '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadState' : '{EC923162-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadSelectionSets' : '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadSelectionSet' : '{EC923124-5A21-11E7-B72E-BC5FF42AC839}',
+    'IZcadUtility' : '{EC923126-5A21-11E7-B72E-BC5FF42AC839}',
+    '_DZcadApplicationEvents' : '{EC923092-5A21-11E7-B72E-BC5FF42AC839}',
+    '_DZcadDocumentEvents' : '{EC923172-5A21-11E7-B72E-BC5FF42AC839}',
     'IZcadObjectEvents' : '{EC92317E-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZxDbDocumentEvents' : '{49C74794-57FD-4CAF-B7C6-CC4F3334C721}',
 }
 
 win32com.client.constants.__dicts__.append(constants.__dict__)
