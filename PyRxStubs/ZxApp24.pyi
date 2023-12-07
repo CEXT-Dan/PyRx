@@ -12,6 +12,9 @@ MinorVersion: int
 LibraryFlags: int
 LCID: int
 
+def getApp() -> IZcadApplication: ...
+def createEventObject(obj,eventClass): ...
+
 class constants:
     zcCubicSpline3DPoly: int
     zcQuadSpline3DPoly: int

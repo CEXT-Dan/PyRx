@@ -12,6 +12,9 @@ MinorVersion: int
 LibraryFlags: int
 LCID: int
 
+def getApp() -> IGcadApplication: ...
+def createEventObject(obj,eventClass): ...
+
 class constants:
     acCubicSpline3DPoly: int
     acQuadSpline3DPoly: int
