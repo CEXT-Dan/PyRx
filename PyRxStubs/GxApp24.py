@@ -1717,13 +1717,14 @@ class IGcad3DFace(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
         'Specifies the coordinate of a single vertex in the object'
-        BasePoint = VTR8ArrayOrVal(BasePoint)
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(8, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -1755,14 +1756,6 @@ class IGcad3DFace(DispatchBaseClass):
             case _:
                 DispatchBaseClass.__setattr__(self, __name, __value)
            
-    # override properties
-    def __setattr__(self, __name, __value):
-        match __name:
-            case 'Coordinates':
-                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
-            case _:
-                DispatchBaseClass.__setattr__(self, __name, __value)
-                               
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
@@ -1938,6 +1931,7 @@ class IGcad3DPolyline(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -2141,6 +2135,7 @@ class IGcad3DSolid(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -2519,6 +2514,7 @@ class IGcadArc(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -2717,6 +2713,7 @@ class IGcadArcAlignedText(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -2944,6 +2941,7 @@ class IGcadAssocArrayPath(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -3205,6 +3203,7 @@ class IGcadAssocArrayPolar(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -3467,6 +3466,7 @@ class IGcadAssocArrayRectangular(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -3692,6 +3692,7 @@ class IGcadAttribute(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -3936,6 +3937,7 @@ class IGcadAttributeReference(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -4878,6 +4880,7 @@ class IGcadBlockReference(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -5170,6 +5173,7 @@ class IGcadCamera(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -5375,6 +5379,7 @@ class IGcadCircle(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -5939,6 +5944,7 @@ class IGcadDim3PointAngular(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -6260,6 +6266,7 @@ class IGcadDimAligned(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -6635,6 +6642,7 @@ class IGcadDimAngular(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -6962,6 +6970,7 @@ class IGcadDimArcLength(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -7353,6 +7362,7 @@ class IGcadDimDiametric(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -7689,6 +7699,7 @@ class IGcadDimOrdinate(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -7998,6 +8009,7 @@ class IGcadDimRadial(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8328,6 +8340,7 @@ class IGcadDimRadialLarge(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8659,6 +8672,7 @@ class IGcadDimRotated(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -9174,6 +9188,7 @@ class IGcadDimension(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -9743,6 +9758,7 @@ class IGcadDwfUnderlay(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -9988,6 +10004,7 @@ class IGcadEllipse(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -10190,6 +10207,7 @@ class IGcadEntity(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -10387,6 +10405,7 @@ class IGcadExternalReference(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -10592,6 +10611,7 @@ class IGcadExtrudedSurface(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -11144,6 +11164,7 @@ class IGcadHatch(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -11358,6 +11379,7 @@ class IGcadHelix(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -11698,6 +11720,7 @@ class IGcadLWPolyline(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -12398,6 +12421,7 @@ class IGcadLeader(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -12609,6 +12633,7 @@ class IGcadLight(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -12831,6 +12856,7 @@ class IGcadLight2(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -13088,6 +13114,7 @@ class IGcadLight3(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -13353,6 +13380,7 @@ class IGcadLine(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -13695,6 +13723,7 @@ class IGcadLoftedSurface(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -13917,6 +13946,7 @@ class IGcadMInsertBlock(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -14188,6 +14218,7 @@ class IGcadMLeader(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -14585,6 +14616,7 @@ class IGcadMLine(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -14773,6 +14805,7 @@ class IGcadMText(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -15962,6 +15995,7 @@ class IGcadNurbSurface(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -16233,6 +16267,7 @@ class IGcadOle(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -16444,6 +16479,7 @@ class IGcadPViewport(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -17395,6 +17431,7 @@ class IGcadPlaneSurface(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -17862,6 +17899,7 @@ class IGcadPoint(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -18046,6 +18084,7 @@ class IGcadPointCloudEx(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -18249,6 +18288,7 @@ class IGcadPolyfaceMesh(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -18451,6 +18491,7 @@ class IGcadPolygonMesh(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -18677,6 +18718,7 @@ class IGcadPolyline(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -19618,6 +19660,7 @@ class IGcadRasterImage(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -19824,6 +19867,7 @@ class IGcadRay(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -20017,6 +20061,7 @@ class IGcadRegion(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -20346,6 +20391,7 @@ class IGcadRevolvedSurface(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -20613,6 +20659,7 @@ class IGcadSection(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -20856,6 +20903,7 @@ class IGcadSection2(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -21564,6 +21612,7 @@ class IGcadShape(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -21764,6 +21813,7 @@ class IGcadSolid(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -22098,6 +22148,7 @@ class IGcadSpline(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -22343,6 +22394,7 @@ class IGcadSubDMesh(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -22595,6 +22647,7 @@ class IGcadSurface(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -22774,6 +22827,7 @@ class IGcadSweptSurface(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -23304,6 +23358,7 @@ class IGcadTable(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -23770,6 +23825,7 @@ class IGcadTableCell(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -24215,6 +24271,7 @@ class IGcadText(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -24596,6 +24653,7 @@ class IGcadTolerance(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -25016,6 +25074,7 @@ class IGcadTrace(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -25376,6 +25435,7 @@ class IGcadUnderlay(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -26252,6 +26312,7 @@ class IGcadXline(DispatchBaseClass):
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
         'Scale the entity object with respect to the base point and the scale factor.'
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 

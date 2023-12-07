@@ -10,10 +10,16 @@ import PyEd as Ed
 # these are in the stub file
 # requires win32com
 
-host = Ap.Application.host()
+host = Ap.Application.hostAPI()
 if host == 'BRX':  
     import BxDb24 as AxDb
     import BxApp24 as Ax
+elif host == 'GRX': 
+    import GxApp24 as AxDb
+    import GxApp24 as Ax
+elif host == 'ZRX': 
+    import ZxApp24 as AxDb
+    import ZxApp24 as Ax
 else:
     import AxApp24 as AxDb
     import AxApp24 as Ax
