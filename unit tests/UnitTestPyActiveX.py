@@ -9,10 +9,16 @@ import PyAp as Ap
 import PyEd as Ed
 
 #requires win32com.client
-host = Ap.Application.host()
+host = Ap.Application.hostAPI()
 if host == 'BRX':  
     import BxDb24 as AxDb
     import BxApp24 as Ax
+elif host == 'GRX': 
+    import GxApp24 as AxDb
+    import GxApp24 as Ax
+elif host == 'ZRX': 
+    import ZxApp24 as AxDb
+    import ZxApp24 as Ax
 else:
     import AxApp24 as AxDb
     import AxApp24 as Ax
@@ -25,11 +31,15 @@ class TestActiveX(unittest.TestCase):
         name : str = app.Name
         if host == 'BRX': 
             self.assertTrue('BricsCAD' in name)
+        elif host == 'GRX':
+            self.assertTrue('GstarCAD' in name)
+        elif host == 'ZRX':
+            self.assertTrue('ZWCAD' in name)
         else:
             self.assertTrue('AutoCAD' in name)
             
     def test_get_dbx(self):
-        if host == 'BRX': 
+        if host != 'ARX': 
             return
         dbx = Ax.getDbx()
         path = ".\\testmedia\\06457.dwg"

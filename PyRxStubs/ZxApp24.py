@@ -9077,7 +9077,7 @@ class IZcadGeomapImage(DispatchBaseClass):
             case 'Origin':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case _:
-                DispatchBaseClass.__setattr__(self, __name, __value
+                DispatchBaseClass.__setattr__(self, __name, __value)
                                               
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
