@@ -1475,7 +1475,7 @@ class IAcad3DSolid(DispatchBaseClass):
         'Create a section of the 3dsolid given three points that define the plane. Returns the Section as a Region object'
         Point1 = VTR8ArrayOrVal(Point1)
         Point2 = VTR8ArrayOrVal(Point2)
-        Point3 = VTR8ArrayOrVal(Point3)
+        point3 = VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(10, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1492,7 +1492,7 @@ class IAcad3DSolid(DispatchBaseClass):
         'Create a slice of the 3dsolid given three points that define the plane. Returns the resulting array of 3dSolid object. '
         Point1 = VTR8ArrayOrVal(Point1)
         Point2 = VTR8ArrayOrVal(Point2)
-        Point3 = VTR8ArrayOrVal(Point3)
+        point3 = VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(11, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (11, 1)),Point1
             , Point2, point3, Negative)
         if ret is not None:

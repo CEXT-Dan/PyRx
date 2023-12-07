@@ -18,7 +18,7 @@ public:
     static std::string className();
     static UINT_PTR acadGetIDispatch();
     static PyObject* getwxApp();
-    static std::string host();
+    static std::string hostAPI();
 };
 
 //-----------------------------------------------------------------------------------------

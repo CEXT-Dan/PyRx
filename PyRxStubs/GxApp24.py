@@ -24,6 +24,27 @@ MinorVersion = 0
 LibraryFlags = 8
 LCID = 0x0
 
+def VTR8ArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, __values)
+    return __values
+
+def VTI2ArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_I2, __values)
+    return __values
+
+def VTVARArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, __values)
+    return __values
+
+def VTDISPArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_DISPATCH, __values)
+    return __values
+
+
 class constants:
     acCubicSpline3DPoly           =2          # from enum Gc3DPolylineType
     acQuadSpline3DPoly            =1          # from enum Gc3DPolylineType
@@ -31883,3 +31904,9 @@ NamesToIIDMap = {
 
 win32com.client.constants.__dicts__.append(constants.__dict__)
 
+def getApp() -> IGcadApplication:
+    id = GcadApplication.CLSID
+    return  win32com.client.Dispatch(id)
+
+def createEventObject(obj, eventclass):
+    win32com.client.WithEvents(obj,eventclass)

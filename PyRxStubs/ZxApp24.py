@@ -24,6 +24,27 @@ MinorVersion = 0
 LibraryFlags = 8
 LCID = 0x0
 
+def VTR8ArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, __values)
+    return __values
+
+def VTI2ArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_I2, __values)
+    return __values
+
+def VTVARArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_VARIANT, __values)
+    return __values
+
+def VTDISPArrayOrVal(__values):
+    if isinstance(__values, list) or isinstance(__values, tuple):
+        return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_DISPATCH, __values)
+    return __values
+
+
 class constants:
     zcCubicSpline3DPoly           =2          # from enum Zc3DPolylineType
     zcQuadSpline3DPoly            =1          # from enum Zc3DPolylineType
@@ -980,6 +1001,8 @@ class IArcTextObj(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -987,6 +1010,9 @@ class IArcTextObj(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -994,18 +1020,24 @@ class IArcTextObj(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -1015,6 +1047,7 @@ class IArcTextObj(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -1154,6 +1187,8 @@ class IZcad3DFace(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -1161,6 +1196,9 @@ class IZcad3DFace(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1168,23 +1206,30 @@ class IZcad3DFace(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # The method SetCoordinate is actually a property, but must be used as a method to correctly pass the arguments
     def SetCoordinate(self, Index=defaultNamedNotOptArg, arg1=defaultUnnamedArg):
+        arg1 = VTR8ArrayOrVal(arg1)
         return self._oleobj_.InvokeTypes(8, LCID, 4, (24, 0), ((3, 1), (12, 1)),Index
             , arg1)
 
@@ -1198,6 +1243,7 @@ class IZcad3DFace(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -1327,6 +1373,8 @@ class IZcad3DPolyline(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -1334,6 +1382,9 @@ class IZcad3DPolyline(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1341,18 +1392,24 @@ class IZcad3DPolyline(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -1367,6 +1424,7 @@ class IZcad3DPolyline(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -1490,6 +1548,8 @@ class IZcad3DSolid(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -1497,6 +1557,9 @@ class IZcad3DSolid(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1504,23 +1567,32 @@ class IZcad3DSolid(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
     # Result is of type IZcadRegion
     def SectionSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(10, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1534,6 +1606,9 @@ class IZcad3DSolid(DispatchBaseClass):
 
     # Result is of type IZcad3DSolid
     def SliceSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Negative=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(11, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (11, 1)),Point1
             , Point2, point3, Negative)
         if ret is not None:
@@ -1541,6 +1616,7 @@ class IZcad3DSolid(DispatchBaseClass):
         return ret
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -1815,6 +1891,8 @@ class IZcadArc(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -1822,6 +1900,9 @@ class IZcadArc(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1829,6 +1910,8 @@ class IZcadArc(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -1837,14 +1920,18 @@ class IZcadArc(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -1854,6 +1941,7 @@ class IZcadArc(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -1978,6 +2066,8 @@ class IZcadAttribute(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -1985,6 +2075,9 @@ class IZcadAttribute(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -1992,18 +2085,24 @@ class IZcadAttribute(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -2013,6 +2112,7 @@ class IZcadAttribute(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -2181,6 +2281,8 @@ class IZcadAttributeReference(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -2188,6 +2290,9 @@ class IZcadAttributeReference(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -2195,18 +2300,24 @@ class IZcadAttributeReference(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -2216,6 +2327,7 @@ class IZcadAttributeReference(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -2327,6 +2439,10 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a three dimensional face given four vertices.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -2336,6 +2452,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form three dimensional mesh.'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -2345,6 +2462,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a three dimensional polyline entity.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1542, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -2354,6 +2472,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc with center, radius, start angle and end angle.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -2364,6 +2483,7 @@ class IZcadBlock(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Adds an attribute definition.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -2374,6 +2494,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a box with edges parallel to the World Coordinate System axes given the length, width and height dimensions.'
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -2383,6 +2504,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given the center and radius in the current UCS.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -2392,6 +2514,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, base radius and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -2409,6 +2532,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, base radius and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -2418,6 +2542,9 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3 point angular dimension.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -2427,6 +2554,9 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -2436,6 +2566,9 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -2444,6 +2577,10 @@ class IZcadBlock(DispatchBaseClass):
 
     # Result is of type IZcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
+        ArcCenter = VTR8ArrayOrVal(ArcCenter)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        ArcPoint = VTR8ArrayOrVal(ArcPoint)
         ret = self._oleobj_.InvokeTypes(1602, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),ArcCenter
             , FirstEndPoint, SecondEndPoint, ArcPoint)
         if ret is not None:
@@ -2453,6 +2590,8 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension.'
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        FarChordPoint = VTR8ArrayOrVal(FarChordPoint)
         ret = self._oleobj_.InvokeTypes(1551, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),ChordPoint
             , FarChordPoint, LeaderLength)
         if ret is not None:
@@ -2462,6 +2601,8 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension.'
+        DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
+        LeaderEndPoint = VTR8ArrayOrVal(LeaderEndPoint)
         ret = self._oleobj_.InvokeTypes(1553, LCID, 1, (9, 0), ((12, 1), (12, 1), (3, 1)),DefinitionPoint
             , LeaderEndPoint, UseXAxis)
         if ret is not None:
@@ -2471,6 +2612,8 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension.'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
         ret = self._oleobj_.InvokeTypes(1554, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, LeaderLength)
         if ret is not None:
@@ -2480,6 +2623,10 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        OverrideCenter = VTR8ArrayOrVal(OverrideCenter)
+        JogPoint = VTR8ArrayOrVal(JogPoint)
         ret = self._oleobj_.InvokeTypes(1603, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, OverrideCenter, JogPoint, JogAngle)
         if ret is not None:
@@ -2489,6 +2636,9 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a linear dimension.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        DimLineLocation = VTR8ArrayOrVal(DimLineLocation)
         ret = self._oleobj_.InvokeTypes(1552, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (5, 1)),ExtLine1Point
             , ExtLine2Point, DimLineLocation, RotationAngle)
         if ret is not None:
@@ -2498,6 +2648,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the current UCS given the center, major and minor axes.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -2507,6 +2658,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -2550,17 +2702,20 @@ class IZcadBlock(DispatchBaseClass):
         return ret
 
     # Result is of type IZcadLeader
-    def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
-        'Creates a leader line.'
-        ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
-            , Annotation, Type)
+    def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a cone given the center, major and minor radii and height.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
+        Center = VTR8ArrayOrVal(Center)
+        ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
+            , MajorRadius, MinorRadius, Height)
         if ret is not None:
-            ret = Dispatch(ret, 'AddLeader', '{EC92308B-5A21-11E7-B72E-BC5FF42AC839}')
+            ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
     # Result is of type IZcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a light weight polyline.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -2570,6 +2725,8 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Adds a line to ModelSpace or PaperSpace or a block.'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -2581,6 +2738,7 @@ class IZcadBlock(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an array of blocks in the current document.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -2591,12 +2749,14 @@ class IZcadBlock(DispatchBaseClass):
 
     # Result is of type IZcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IZcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Inserts an mline object in the current document.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
             )
         if ret is not None:
@@ -2606,6 +2766,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates a Mtext entity in a rectangle defined by insertion point and width.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -2615,6 +2776,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a point entity at a given location.'
+        Point = VTR8ArrayOrVal(Point)
         ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
             )
         if ret is not None:
@@ -2624,6 +2786,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Inserts polyface mesh object in the current document.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1586, LCID, 1, (9, 0), ((12, 1), (12, 1)),VertexList
             , FaceList)
         if ret is not None:
@@ -2633,6 +2796,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -2642,6 +2806,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a raster based of given image filename.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -2651,6 +2816,8 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two given points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -2659,12 +2826,15 @@ class IZcadBlock(DispatchBaseClass):
 
     def AddRegion(self, ObjectList=defaultNamedNotOptArg):
         'Creates a region from the given closed curve sets.'
+        ObjectList = VTDISPArrayOrVal(ObjectList)
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
     # Result is of type IZcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid given the profile and a revolution path.'
+        AxisPoint = VTR8ArrayOrVal(AxisPoint)
+        AxisDir = VTR8ArrayOrVal(AxisDir)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -2673,6 +2843,9 @@ class IZcadBlock(DispatchBaseClass):
 
     # Result is of type IZcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
+        planeVector = VTR8ArrayOrVal(planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -2682,6 +2855,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a given shape.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -2691,6 +2865,10 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates an ZWCAD solid.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1569, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -2700,6 +2878,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1570, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -2709,6 +2888,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a B-spline given n points and the end tangents.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -2719,6 +2899,7 @@ class IZcadBlock(DispatchBaseClass):
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1595, LCID, 1, (9, 0), ((12, 1), (3, 1), (3, 1), (5, 1), (5, 1)),InsertionPoint
             , NumRows, NumColumns, RowHeight, ColWidth)
         if ret is not None:
@@ -2728,6 +2909,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a text entity with specified height and rotation.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1572, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),TextString
             , InsertionPoint, Height)
         if ret is not None:
@@ -2737,6 +2919,8 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
+        Direction = VTR8ArrayOrVal(Direction)
         ret = self._oleobj_.InvokeTypes(1573, LCID, 1, (9, 0), ((8, 1), (12, 1), (12, 1)),Text
             , InsertionPoint, Direction)
         if ret is not None:
@@ -2746,6 +2930,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus given the center, torus and tube radius.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1574, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , TorusRadius, TubeRadius)
         if ret is not None:
@@ -2755,6 +2940,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a trace entity with four points.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -2764,6 +2950,7 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width and height dimensions'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1576, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Length, Width, Height)
         if ret is not None:
@@ -2773,6 +2960,8 @@ class IZcadBlock(DispatchBaseClass):
     # Result is of type IZcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an xline passing through two specified points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1577, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -2783,6 +2972,7 @@ class IZcadBlock(DispatchBaseClass):
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attach an external reference to the block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1590, LCID, 1, (9, 0), ((8, 1), (8, 1), (12, 1), (5, 1), (5, 1), (5, 1), (5, 1), (11, 1), (12, 17)),PathName
             , Name, InsertionPoint, Xscale, Yscale, Zscale
             , Rotation, bOverlay, Password)
@@ -2824,6 +3014,7 @@ class IZcadBlock(DispatchBaseClass):
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an instance of a block in the current document.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1578, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , Password)
@@ -2989,6 +3180,8 @@ class IZcadBlockReference(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -2996,6 +3189,9 @@ class IZcadBlockReference(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -3003,6 +3199,8 @@ class IZcadBlockReference(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -3010,14 +3208,18 @@ class IZcadBlockReference(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(515, LCID, 1, (24, 0), (),)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -3027,6 +3229,7 @@ class IZcadBlockReference(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -3249,6 +3452,8 @@ class IZcadCircle(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -3256,6 +3461,9 @@ class IZcadCircle(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -3263,6 +3471,8 @@ class IZcadCircle(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -3271,14 +3481,18 @@ class IZcadCircle(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -3288,6 +3502,7 @@ class IZcadCircle(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -3772,6 +3987,8 @@ class IZcadDim3PointAngular(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -3779,6 +3996,9 @@ class IZcadDim3PointAngular(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -3786,18 +4006,24 @@ class IZcadDim3PointAngular(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -3807,6 +4033,7 @@ class IZcadDim3PointAngular(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -4049,6 +4276,8 @@ class IZcadDimAligned(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -4056,6 +4285,9 @@ class IZcadDimAligned(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -4063,18 +4295,24 @@ class IZcadDimAligned(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -4084,6 +4322,7 @@ class IZcadDimAligned(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -4380,6 +4619,8 @@ class IZcadDimAngular(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -4387,6 +4628,9 @@ class IZcadDimAngular(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -4394,18 +4638,24 @@ class IZcadDimAngular(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -4415,6 +4665,7 @@ class IZcadDimAngular(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -4659,6 +4910,8 @@ class IZcadDimArcLength(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -4666,6 +4919,9 @@ class IZcadDimArcLength(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -4673,18 +4929,24 @@ class IZcadDimArcLength(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -4694,6 +4956,7 @@ class IZcadDimArcLength(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -4996,6 +5259,8 @@ class IZcadDimDiametric(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -5003,6 +5268,9 @@ class IZcadDimDiametric(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -5010,18 +5278,24 @@ class IZcadDimDiametric(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -5031,6 +5305,7 @@ class IZcadDimDiametric(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -5294,6 +5569,8 @@ class IZcadDimOrdinate(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -5301,6 +5578,9 @@ class IZcadDimOrdinate(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -5308,18 +5588,24 @@ class IZcadDimOrdinate(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -5329,6 +5615,7 @@ class IZcadDimOrdinate(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -5565,6 +5852,8 @@ class IZcadDimRadial(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -5572,6 +5861,9 @@ class IZcadDimRadial(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -5579,18 +5871,24 @@ class IZcadDimRadial(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -5600,6 +5898,7 @@ class IZcadDimRadial(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -5857,6 +6156,8 @@ class IZcadDimRadialLarge(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -5864,6 +6165,9 @@ class IZcadDimRadialLarge(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -5871,18 +6175,24 @@ class IZcadDimRadialLarge(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -5892,6 +6202,7 @@ class IZcadDimRadialLarge(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -6146,6 +6457,8 @@ class IZcadDimRotated(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -6153,6 +6466,9 @@ class IZcadDimRotated(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -6160,18 +6476,24 @@ class IZcadDimRotated(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -6181,6 +6503,7 @@ class IZcadDimRotated(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -6622,6 +6945,8 @@ class IZcadDimension(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -6629,6 +6954,9 @@ class IZcadDimension(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -6636,18 +6964,24 @@ class IZcadDimension(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -6657,6 +6991,7 @@ class IZcadDimension(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -7151,6 +7486,8 @@ class IZcadDwfUnderlay(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -7158,6 +7495,9 @@ class IZcadDwfUnderlay(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -7165,18 +7505,24 @@ class IZcadDwfUnderlay(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -7186,6 +7532,7 @@ class IZcadDwfUnderlay(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -7356,6 +7703,8 @@ class IZcadEllipse(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -7363,6 +7712,9 @@ class IZcadEllipse(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -7370,6 +7722,8 @@ class IZcadEllipse(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -7378,14 +7732,18 @@ class IZcadEllipse(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -7395,6 +7753,7 @@ class IZcadEllipse(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -7526,6 +7885,8 @@ class IZcadEntity(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -7533,6 +7894,9 @@ class IZcadEntity(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -7540,18 +7904,24 @@ class IZcadEntity(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -7561,6 +7931,7 @@ class IZcadEntity(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -7687,6 +8058,8 @@ class IZcadExternalReference(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -7694,6 +8067,9 @@ class IZcadExternalReference(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -7701,6 +8077,8 @@ class IZcadExternalReference(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -7708,14 +8086,18 @@ class IZcadExternalReference(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(515, LCID, 1, (24, 0), (),)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -7725,6 +8107,7 @@ class IZcadExternalReference(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -7860,6 +8243,8 @@ class IZcadExtrudedSurface(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -7867,6 +8252,9 @@ class IZcadExtrudedSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -7874,18 +8262,24 @@ class IZcadExtrudedSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -7895,6 +8289,7 @@ class IZcadExtrudedSurface(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -8117,6 +8512,8 @@ class IZcadGeoPositionMarker(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -8124,6 +8521,9 @@ class IZcadGeoPositionMarker(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -8131,18 +8531,24 @@ class IZcadGeoPositionMarker(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8152,6 +8558,7 @@ class IZcadGeoPositionMarker(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -8300,6 +8707,8 @@ class IZcadGeomapImage(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -8307,6 +8716,9 @@ class IZcadGeomapImage(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -8314,18 +8726,24 @@ class IZcadGeomapImage(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8335,6 +8753,7 @@ class IZcadGeomapImage(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -8701,6 +9120,8 @@ class IZcadHatch(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -8708,6 +9129,9 @@ class IZcadHatch(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -8715,18 +9139,24 @@ class IZcadHatch(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8740,6 +9170,7 @@ class IZcadHatch(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -8889,6 +9320,8 @@ class IZcadHelix(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -8896,6 +9329,9 @@ class IZcadHelix(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -8903,18 +9339,24 @@ class IZcadHelix(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -8924,6 +9366,7 @@ class IZcadHelix(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -9182,6 +9625,8 @@ class IZcadLWPolyline(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -9189,6 +9634,9 @@ class IZcadLWPolyline(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -9196,6 +9644,8 @@ class IZcadLWPolyline(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -9204,14 +9654,18 @@ class IZcadLWPolyline(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -9234,6 +9688,7 @@ class IZcadLWPolyline(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -9843,6 +10298,8 @@ class IZcadLeader(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -9850,6 +10307,9 @@ class IZcadLeader(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -9857,18 +10317,24 @@ class IZcadLeader(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -9883,6 +10349,7 @@ class IZcadLeader(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -10016,6 +10483,8 @@ class IZcadLine(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -10023,6 +10492,9 @@ class IZcadLine(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -10030,6 +10502,8 @@ class IZcadLine(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -10038,14 +10512,18 @@ class IZcadLine(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -10055,6 +10533,7 @@ class IZcadLine(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -10323,6 +10802,8 @@ class IZcadLoftedSurface(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -10330,6 +10811,9 @@ class IZcadLoftedSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -10337,18 +10821,24 @@ class IZcadLoftedSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -10358,6 +10848,7 @@ class IZcadLoftedSurface(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -10523,6 +11014,8 @@ class IZcadMInsertBlock(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -10530,6 +11023,9 @@ class IZcadMInsertBlock(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -10537,6 +11033,8 @@ class IZcadMInsertBlock(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -10544,14 +11042,18 @@ class IZcadMInsertBlock(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(515, LCID, 1, (24, 0), (),)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -10561,6 +11063,7 @@ class IZcadMInsertBlock(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -10741,6 +11244,8 @@ class IZcadMLeader(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -10748,6 +11253,9 @@ class IZcadMLeader(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -10755,6 +11263,8 @@ class IZcadMLeader(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -10767,14 +11277,18 @@ class IZcadMLeader(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -10800,6 +11314,7 @@ class IZcadMLeader(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -11161,6 +11676,8 @@ class IZcadMLine(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -11168,6 +11685,9 @@ class IZcadMLine(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11175,18 +11695,24 @@ class IZcadMLine(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -11196,6 +11722,7 @@ class IZcadMLine(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -11314,6 +11841,8 @@ class IZcadMText(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -11321,6 +11850,9 @@ class IZcadMText(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -11328,18 +11860,24 @@ class IZcadMText(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -11349,6 +11887,7 @@ class IZcadMText(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -11730,6 +12269,10 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a three dimensional face given four vertices.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -11739,6 +12282,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form three dimensional mesh.'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -11748,6 +12292,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a three dimensional polyline entity.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1542, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -11757,6 +12302,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc with center, radius, start angle and end angle.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -11767,6 +12313,7 @@ class IZcadModelSpace(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Adds an attribute definition.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -11777,6 +12324,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a box with edges parallel to the World Coordinate System axes given the length, width and height dimensions.'
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -11786,6 +12334,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given the center and radius in the current UCS.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -11795,6 +12344,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, base radius and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -11812,6 +12362,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, base radius and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -11821,6 +12372,9 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3 point angular dimension.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -11830,6 +12384,9 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -11839,6 +12396,9 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -11847,6 +12407,10 @@ class IZcadModelSpace(DispatchBaseClass):
 
     # Result is of type IZcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
+        ArcCenter = VTR8ArrayOrVal(ArcCenter)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        ArcPoint = VTR8ArrayOrVal(ArcPoint)
         ret = self._oleobj_.InvokeTypes(1602, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),ArcCenter
             , FirstEndPoint, SecondEndPoint, ArcPoint)
         if ret is not None:
@@ -11856,6 +12420,8 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension.'
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        FarChordPoint = VTR8ArrayOrVal(FarChordPoint)
         ret = self._oleobj_.InvokeTypes(1551, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),ChordPoint
             , FarChordPoint, LeaderLength)
         if ret is not None:
@@ -11865,6 +12431,8 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension.'
+        DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
+        LeaderEndPoint = VTR8ArrayOrVal(LeaderEndPoint)
         ret = self._oleobj_.InvokeTypes(1553, LCID, 1, (9, 0), ((12, 1), (12, 1), (3, 1)),DefinitionPoint
             , LeaderEndPoint, UseXAxis)
         if ret is not None:
@@ -11874,6 +12442,8 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension.'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
         ret = self._oleobj_.InvokeTypes(1554, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, LeaderLength)
         if ret is not None:
@@ -11883,6 +12453,10 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        OverrideCenter = VTR8ArrayOrVal(OverrideCenter)
+        JogPoint = VTR8ArrayOrVal(JogPoint)
         ret = self._oleobj_.InvokeTypes(1603, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, OverrideCenter, JogPoint, JogAngle)
         if ret is not None:
@@ -11892,6 +12466,9 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a linear dimension.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        DimLineLocation = VTR8ArrayOrVal(DimLineLocation)
         ret = self._oleobj_.InvokeTypes(1552, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (5, 1)),ExtLine1Point
             , ExtLine2Point, DimLineLocation, RotationAngle)
         if ret is not None:
@@ -11901,6 +12478,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the current UCS given the center, major and minor axes.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -11910,6 +12488,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -11953,17 +12532,20 @@ class IZcadModelSpace(DispatchBaseClass):
         return ret
 
     # Result is of type IZcadLeader
-    def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
-        'Creates a leader line.'
-        ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
-            , Annotation, Type)
+    def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a cone given the center, major and minor radii and height.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
+        Center = VTR8ArrayOrVal(Center)
+        ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
+            , MajorRadius, MinorRadius, Height)
         if ret is not None:
-            ret = Dispatch(ret, 'AddLeader', '{EC92308B-5A21-11E7-B72E-BC5FF42AC839}')
+            ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
     # Result is of type IZcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a light weight polyline.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -11973,6 +12555,8 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Adds a line to ModelSpace or PaperSpace or a block.'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -11984,6 +12568,7 @@ class IZcadModelSpace(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an array of blocks in the current document.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -11994,12 +12579,14 @@ class IZcadModelSpace(DispatchBaseClass):
 
     # Result is of type IZcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IZcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Inserts an mline object in the current document.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
             )
         if ret is not None:
@@ -12009,6 +12596,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates a Mtext entity in a rectangle defined by insertion point and width.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -12018,6 +12606,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a point entity at a given location.'
+        Point = VTR8ArrayOrVal(Point)
         ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
             )
         if ret is not None:
@@ -12027,6 +12616,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Inserts polyface mesh object in the current document.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1586, LCID, 1, (9, 0), ((12, 1), (12, 1)),VertexList
             , FaceList)
         if ret is not None:
@@ -12036,6 +12626,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -12045,6 +12636,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a raster based of given image filename.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -12054,6 +12646,8 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two given points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12062,12 +12656,15 @@ class IZcadModelSpace(DispatchBaseClass):
 
     def AddRegion(self, ObjectList=defaultNamedNotOptArg):
         'Creates a region from the given closed curve sets.'
+        ObjectList = VTDISPArrayOrVal(ObjectList)
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
     # Result is of type IZcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid given the profile and a revolution path.'
+        AxisPoint = VTR8ArrayOrVal(AxisPoint)
+        AxisDir = VTR8ArrayOrVal(AxisDir)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -12076,6 +12673,9 @@ class IZcadModelSpace(DispatchBaseClass):
 
     # Result is of type IZcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
+        planeVector = VTR8ArrayOrVal(planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -12085,6 +12685,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a given shape.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -12094,6 +12695,10 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates an ZWCAD solid.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1569, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -12103,6 +12708,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1570, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -12112,6 +12718,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a B-spline given n points and the end tangents.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -12122,6 +12729,7 @@ class IZcadModelSpace(DispatchBaseClass):
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1595, LCID, 1, (9, 0), ((12, 1), (3, 1), (3, 1), (5, 1), (5, 1)),InsertionPoint
             , NumRows, NumColumns, RowHeight, ColWidth)
         if ret is not None:
@@ -12131,6 +12739,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a text entity with specified height and rotation.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1572, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),TextString
             , InsertionPoint, Height)
         if ret is not None:
@@ -12140,6 +12749,8 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
+        Direction = VTR8ArrayOrVal(Direction)
         ret = self._oleobj_.InvokeTypes(1573, LCID, 1, (9, 0), ((8, 1), (12, 1), (12, 1)),Text
             , InsertionPoint, Direction)
         if ret is not None:
@@ -12149,6 +12760,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus given the center, torus and tube radius.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1574, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , TorusRadius, TubeRadius)
         if ret is not None:
@@ -12158,6 +12770,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a trace entity with four points.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -12167,6 +12780,7 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width and height dimensions'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1576, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Length, Width, Height)
         if ret is not None:
@@ -12176,6 +12790,8 @@ class IZcadModelSpace(DispatchBaseClass):
     # Result is of type IZcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an xline passing through two specified points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1577, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12186,6 +12802,7 @@ class IZcadModelSpace(DispatchBaseClass):
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attach an external reference to the block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1590, LCID, 1, (9, 0), ((8, 1), (8, 1), (12, 1), (5, 1), (5, 1), (5, 1), (5, 1), (11, 1), (12, 17)),PathName
             , Name, InsertionPoint, Xscale, Yscale, Zscale
             , Rotation, bOverlay, Password)
@@ -12227,6 +12844,7 @@ class IZcadModelSpace(DispatchBaseClass):
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an instance of a block in the current document.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1578, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , Password)
@@ -12326,6 +12944,10 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a three dimensional face given four vertices.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -12335,6 +12957,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form three dimensional mesh.'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -12344,6 +12967,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a three dimensional polyline entity.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1542, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -12353,6 +12977,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc with center, radius, start angle and end angle.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -12363,6 +12988,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Adds an attribute definition.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -12373,6 +12999,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a box with edges parallel to the World Coordinate System axes given the length, width and height dimensions.'
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -12382,6 +13009,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given the center and radius in the current UCS.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -12391,6 +13019,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, base radius and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -12408,6 +13037,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, base radius and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -12417,6 +13047,9 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3 point angular dimension.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -12426,6 +13059,9 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -12435,6 +13071,9 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -12443,6 +13082,10 @@ class IZcadModelSpace2(DispatchBaseClass):
 
     # Result is of type IZcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
+        ArcCenter = VTR8ArrayOrVal(ArcCenter)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        ArcPoint = VTR8ArrayOrVal(ArcPoint)
         ret = self._oleobj_.InvokeTypes(1602, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),ArcCenter
             , FirstEndPoint, SecondEndPoint, ArcPoint)
         if ret is not None:
@@ -12452,6 +13095,8 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension.'
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        FarChordPoint = VTR8ArrayOrVal(FarChordPoint)
         ret = self._oleobj_.InvokeTypes(1551, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),ChordPoint
             , FarChordPoint, LeaderLength)
         if ret is not None:
@@ -12461,6 +13106,8 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension.'
+        DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
+        LeaderEndPoint = VTR8ArrayOrVal(LeaderEndPoint)
         ret = self._oleobj_.InvokeTypes(1553, LCID, 1, (9, 0), ((12, 1), (12, 1), (3, 1)),DefinitionPoint
             , LeaderEndPoint, UseXAxis)
         if ret is not None:
@@ -12470,6 +13117,8 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension.'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
         ret = self._oleobj_.InvokeTypes(1554, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, LeaderLength)
         if ret is not None:
@@ -12479,6 +13128,10 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        OverrideCenter = VTR8ArrayOrVal(OverrideCenter)
+        JogPoint = VTR8ArrayOrVal(JogPoint)
         ret = self._oleobj_.InvokeTypes(1603, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, OverrideCenter, JogPoint, JogAngle)
         if ret is not None:
@@ -12488,6 +13141,9 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a linear dimension.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        DimLineLocation = VTR8ArrayOrVal(DimLineLocation)
         ret = self._oleobj_.InvokeTypes(1552, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (5, 1)),ExtLine1Point
             , ExtLine2Point, DimLineLocation, RotationAngle)
         if ret is not None:
@@ -12497,6 +13153,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the current UCS given the center, major and minor axes.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -12506,6 +13163,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -12549,17 +13207,20 @@ class IZcadModelSpace2(DispatchBaseClass):
         return ret
 
     # Result is of type IZcadLeader
-    def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
-        'Creates a leader line.'
-        ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
-            , Annotation, Type)
+    def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a cone given the center, major and minor radii and height.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
+        Center = VTR8ArrayOrVal(Center)
+        ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
+            , MajorRadius, MinorRadius, Height)
         if ret is not None:
-            ret = Dispatch(ret, 'AddLeader', '{EC92308B-5A21-11E7-B72E-BC5FF42AC839}')
+            ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
     # Result is of type IZcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a light weight polyline.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -12569,6 +13230,8 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Adds a line to ModelSpace or PaperSpace or a block.'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -12580,6 +13243,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an array of blocks in the current document.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -12590,12 +13254,14 @@ class IZcadModelSpace2(DispatchBaseClass):
 
     # Result is of type IZcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IZcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Inserts an mline object in the current document.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
             )
         if ret is not None:
@@ -12605,6 +13271,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates a Mtext entity in a rectangle defined by insertion point and width.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -12614,6 +13281,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a point entity at a given location.'
+        Point = VTR8ArrayOrVal(Point)
         ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
             )
         if ret is not None:
@@ -12623,6 +13291,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Inserts polyface mesh object in the current document.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1586, LCID, 1, (9, 0), ((12, 1), (12, 1)),VertexList
             , FaceList)
         if ret is not None:
@@ -12632,6 +13301,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -12641,6 +13311,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a raster based of given image filename.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -12650,6 +13321,8 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two given points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12658,12 +13331,15 @@ class IZcadModelSpace2(DispatchBaseClass):
 
     def AddRegion(self, ObjectList=defaultNamedNotOptArg):
         'Creates a region from the given closed curve sets.'
+        ObjectList = VTDISPArrayOrVal(ObjectList)
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
     # Result is of type IZcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid given the profile and a revolution path.'
+        AxisPoint = VTR8ArrayOrVal(AxisPoint)
+        AxisDir = VTR8ArrayOrVal(AxisDir)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -12672,6 +13348,9 @@ class IZcadModelSpace2(DispatchBaseClass):
 
     # Result is of type IZcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
+        planeVector = VTR8ArrayOrVal(planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -12681,6 +13360,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a given shape.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -12690,6 +13370,10 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates an ZWCAD solid.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1569, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -12699,6 +13383,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1570, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -12708,6 +13393,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a B-spline given n points and the end tangents.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -12718,6 +13404,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1595, LCID, 1, (9, 0), ((12, 1), (3, 1), (3, 1), (5, 1), (5, 1)),InsertionPoint
             , NumRows, NumColumns, RowHeight, ColWidth)
         if ret is not None:
@@ -12727,6 +13414,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a text entity with specified height and rotation.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1572, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),TextString
             , InsertionPoint, Height)
         if ret is not None:
@@ -12736,6 +13424,8 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
+        Direction = VTR8ArrayOrVal(Direction)
         ret = self._oleobj_.InvokeTypes(1573, LCID, 1, (9, 0), ((8, 1), (12, 1), (12, 1)),Text
             , InsertionPoint, Direction)
         if ret is not None:
@@ -12745,6 +13435,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus given the center, torus and tube radius.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1574, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , TorusRadius, TubeRadius)
         if ret is not None:
@@ -12754,6 +13445,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a trace entity with four points.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -12763,6 +13455,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width and height dimensions'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1576, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Length, Width, Height)
         if ret is not None:
@@ -12772,6 +13465,8 @@ class IZcadModelSpace2(DispatchBaseClass):
     # Result is of type IZcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an xline passing through two specified points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1577, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12782,6 +13477,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attach an external reference to the block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1590, LCID, 1, (9, 0), ((8, 1), (8, 1), (12, 1), (5, 1), (5, 1), (5, 1), (5, 1), (11, 1), (12, 17)),PathName
             , Name, InsertionPoint, Xscale, Yscale, Zscale
             , Rotation, bOverlay, Password)
@@ -12823,6 +13519,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an instance of a block in the current document.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1578, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , Password)
@@ -12968,6 +13665,8 @@ class IZcadNurbSurface(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -12975,6 +13674,9 @@ class IZcadNurbSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -12982,18 +13684,24 @@ class IZcadNurbSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -13003,6 +13711,7 @@ class IZcadNurbSurface(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -13179,6 +13888,8 @@ class IZcadOle(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13186,6 +13897,9 @@ class IZcadOle(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -13193,18 +13907,24 @@ class IZcadOle(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -13214,6 +13934,7 @@ class IZcadOle(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -13353,6 +14074,8 @@ class IZcadPViewport(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13360,6 +14083,9 @@ class IZcadPViewport(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -13367,18 +14093,24 @@ class IZcadPViewport(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -13399,6 +14131,7 @@ class IZcadPViewport(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(36, LCID, 1, (24, 0), (),)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -13518,6 +14251,10 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a three dimensional face given four vertices.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1540, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -13527,6 +14264,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form three dimensional mesh.'
+        PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
         ret = self._oleobj_.InvokeTypes(1541, LCID, 1, (9, 0), ((3, 1), (3, 1), (12, 1)),M
             , N, PointsMatrix)
         if ret is not None:
@@ -13536,6 +14274,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a three dimensional polyline entity.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1542, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -13545,6 +14284,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc with center, radius, start angle and end angle.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1543, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Radius, StartAngle, EndAngle)
         if ret is not None:
@@ -13555,6 +14295,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Adds an attribute definition.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1544, LCID, 1, (9, 0), ((5, 1), (3, 1), (8, 1), (12, 1), (8, 1), (8, 1)),Height
             , Mode, Prompt, InsertionPoint, Tag, Value
             )
@@ -13565,6 +14306,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a box with edges parallel to the World Coordinate System axes given the length, width and height dimensions.'
+        Origin = VTR8ArrayOrVal(Origin)
         ret = self._oleobj_.InvokeTypes(1545, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Origin
             , Length, Width, Height)
         if ret is not None:
@@ -13574,6 +14316,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given the center and radius in the current UCS.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1546, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -13583,6 +14326,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, base radius and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1547, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , BaseRadius, Height)
         if ret is not None:
@@ -13600,6 +14344,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, base radius and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1548, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , Radius, Height)
         if ret is not None:
@@ -13609,6 +14354,9 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3 point angular dimension.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1588, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -13618,6 +14366,9 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        TextPosition = VTR8ArrayOrVal(TextPosition)
         ret = self._oleobj_.InvokeTypes(1549, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),ExtLine1Point
             , ExtLine2Point, TextPosition)
         if ret is not None:
@@ -13627,6 +14378,9 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension.'
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        TextPoint = VTR8ArrayOrVal(TextPoint)
         ret = self._oleobj_.InvokeTypes(1550, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),AngleVertex
             , FirstEndPoint, SecondEndPoint, TextPoint)
         if ret is not None:
@@ -13635,6 +14389,10 @@ class IZcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IZcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
+        ArcCenter = VTR8ArrayOrVal(ArcCenter)
+        FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
+        SecondEndPoint = VTR8ArrayOrVal(SecondEndPoint)
+        ArcPoint = VTR8ArrayOrVal(ArcPoint)
         ret = self._oleobj_.InvokeTypes(1602, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),ArcCenter
             , FirstEndPoint, SecondEndPoint, ArcPoint)
         if ret is not None:
@@ -13644,6 +14402,8 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension.'
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        FarChordPoint = VTR8ArrayOrVal(FarChordPoint)
         ret = self._oleobj_.InvokeTypes(1551, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),ChordPoint
             , FarChordPoint, LeaderLength)
         if ret is not None:
@@ -13653,6 +14413,8 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension.'
+        DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
+        LeaderEndPoint = VTR8ArrayOrVal(LeaderEndPoint)
         ret = self._oleobj_.InvokeTypes(1553, LCID, 1, (9, 0), ((12, 1), (12, 1), (3, 1)),DefinitionPoint
             , LeaderEndPoint, UseXAxis)
         if ret is not None:
@@ -13662,6 +14424,8 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension.'
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
         ret = self._oleobj_.InvokeTypes(1554, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, LeaderLength)
         if ret is not None:
@@ -13671,6 +14435,10 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
+        Center = VTR8ArrayOrVal(Center)
+        ChordPoint = VTR8ArrayOrVal(ChordPoint)
+        OverrideCenter = VTR8ArrayOrVal(OverrideCenter)
+        JogPoint = VTR8ArrayOrVal(JogPoint)
         ret = self._oleobj_.InvokeTypes(1603, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1), (5, 1)),Center
             , ChordPoint, OverrideCenter, JogPoint, JogAngle)
         if ret is not None:
@@ -13680,6 +14448,9 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a linear dimension.'
+        ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
+        ExtLine2Point = VTR8ArrayOrVal(ExtLine2Point)
+        DimLineLocation = VTR8ArrayOrVal(DimLineLocation)
         ret = self._oleobj_.InvokeTypes(1552, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (5, 1)),ExtLine1Point
             , ExtLine2Point, DimLineLocation, RotationAngle)
         if ret is not None:
@@ -13689,6 +14460,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the current UCS given the center, major and minor axes.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -13698,6 +14470,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , MajorRadius, MinorRadius, Height)
         if ret is not None:
@@ -13741,17 +14514,20 @@ class IZcadPaperSpace(DispatchBaseClass):
         return ret
 
     # Result is of type IZcadLeader
-    def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
-        'Creates a leader line.'
-        ret = self._oleobj_.InvokeTypes(1560, LCID, 1, (9, 0), ((12, 1), (9, 1), (3, 1)),PointsArray
-            , Annotation, Type)
+    def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
+        'Creates a cone given the center, major and minor radii and height.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
+        Center = VTR8ArrayOrVal(Center)
+        ret = self._oleobj_.InvokeTypes(1556, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
+            , MajorRadius, MinorRadius, Height)
         if ret is not None:
-            ret = Dispatch(ret, 'AddLeader', '{EC92308B-5A21-11E7-B72E-BC5FF42AC839}')
+            ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
     # Result is of type IZcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a light weight polyline.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1563, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -13761,6 +14537,8 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Adds a line to ModelSpace or PaperSpace or a block.'
+        StartPoint = VTR8ArrayOrVal(StartPoint)
+        EndPoint = VTR8ArrayOrVal(EndPoint)
         ret = self._oleobj_.InvokeTypes(1581, LCID, 1, (9, 0), ((12, 1), (12, 1)),StartPoint
             , EndPoint)
         if ret is not None:
@@ -13772,6 +14550,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an array of blocks in the current document.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1585, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (3, 1), (3, 1), (3, 1), (3, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , NumRows, NumColumns, RowSpacing, ColumnSpacing, Password
@@ -13782,12 +14561,14 @@ class IZcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IZcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}',PointsArray
             , leaderLineIndex)
 
     # Result is of type IZcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Inserts an mline object in the current document.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1587, LCID, 1, (9, 0), ((12, 1),),VertexList
             )
         if ret is not None:
@@ -13797,6 +14578,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates a Mtext entity in a rectangle defined by insertion point and width.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1561, LCID, 1, (9, 0), ((12, 1), (5, 1), (8, 1)),InsertionPoint
             , Width, Text)
         if ret is not None:
@@ -13815,6 +14597,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a point entity at a given location.'
+        Point = VTR8ArrayOrVal(Point)
         ret = self._oleobj_.InvokeTypes(1562, LCID, 1, (9, 0), ((12, 1),),Point
             )
         if ret is not None:
@@ -13824,6 +14607,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Inserts polyface mesh object in the current document.'
+        VertexList = VTR8ArrayOrVal(VertexList)
         ret = self._oleobj_.InvokeTypes(1586, LCID, 1, (9, 0), ((12, 1), (12, 1)),VertexList
             , FaceList)
         if ret is not None:
@@ -13833,6 +14617,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline.'
+        VerticesList = VTR8ArrayOrVal(VerticesList)
         ret = self._oleobj_.InvokeTypes(1564, LCID, 1, (9, 0), ((12, 1),),VerticesList
             )
         if ret is not None:
@@ -13842,6 +14627,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a raster based of given image filename.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1580, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),imageFileName
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -13851,6 +14637,8 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two given points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1565, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13859,12 +14647,15 @@ class IZcadPaperSpace(DispatchBaseClass):
 
     def AddRegion(self, ObjectList=defaultNamedNotOptArg):
         'Creates a region from the given closed curve sets.'
+        ObjectList = VTDISPArrayOrVal(ObjectList)
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
     # Result is of type IZcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid given the profile and a revolution path.'
+        AxisPoint = VTR8ArrayOrVal(AxisPoint)
+        AxisDir = VTR8ArrayOrVal(AxisDir)
         ret = self._oleobj_.InvokeTypes(1567, LCID, 1, (9, 0), ((9, 1), (12, 1), (12, 1), (5, 1)),Profile
             , AxisPoint, AxisDir, Angle)
         if ret is not None:
@@ -13873,6 +14664,9 @@ class IZcadPaperSpace(DispatchBaseClass):
 
     # Result is of type IZcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
+        planeVector = VTR8ArrayOrVal(planeVector)
         ret = self._oleobj_.InvokeTypes(1604, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),FromPoint
             , ToPoint, planeVector)
         if ret is not None:
@@ -13882,6 +14676,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a given shape.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1568, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1), (5, 1)),Name
             , InsertionPoint, ScaleFactor, RotationAngle)
         if ret is not None:
@@ -13891,6 +14686,10 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates an ZWCAD solid.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3 = VTR8ArrayOrVal(point3)
+        Point4 = VTR8ArrayOrVal(Point4)
         ret = self._oleobj_.InvokeTypes(1569, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3, Point4)
         if ret is not None:
@@ -13900,6 +14699,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1570, LCID, 1, (9, 0), ((12, 1), (5, 1)),Center
             , Radius)
         if ret is not None:
@@ -13909,6 +14709,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a B-spline given n points and the end tangents.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1571, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),PointsArray
             , StartTangent, EndTangent)
         if ret is not None:
@@ -13919,6 +14720,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1595, LCID, 1, (9, 0), ((12, 1), (3, 1), (3, 1), (5, 1), (5, 1)),InsertionPoint
             , NumRows, NumColumns, RowHeight, ColWidth)
         if ret is not None:
@@ -13928,6 +14730,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a text entity with specified height and rotation.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1572, LCID, 1, (9, 0), ((8, 1), (12, 1), (5, 1)),TextString
             , InsertionPoint, Height)
         if ret is not None:
@@ -13937,6 +14740,8 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
+        Direction = VTR8ArrayOrVal(Direction)
         ret = self._oleobj_.InvokeTypes(1573, LCID, 1, (9, 0), ((8, 1), (12, 1), (12, 1)),Text
             , InsertionPoint, Direction)
         if ret is not None:
@@ -13946,6 +14751,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus given the center, torus and tube radius.'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1574, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
             , TorusRadius, TubeRadius)
         if ret is not None:
@@ -13955,6 +14761,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a trace entity with four points.'
+        PointsArray = VTR8ArrayOrVal(PointsArray)
         ret = self._oleobj_.InvokeTypes(1575, LCID, 1, (9, 0), ((12, 1),),PointsArray
             )
         if ret is not None:
@@ -13964,6 +14771,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width and height dimensions'
+        Center = VTR8ArrayOrVal(Center)
         ret = self._oleobj_.InvokeTypes(1576, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
             , Length, Width, Height)
         if ret is not None:
@@ -13973,6 +14781,8 @@ class IZcadPaperSpace(DispatchBaseClass):
     # Result is of type IZcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an xline passing through two specified points.'
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1577, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -13983,6 +14793,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attach an external reference to the block.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1590, LCID, 1, (9, 0), ((8, 1), (8, 1), (12, 1), (5, 1), (5, 1), (5, 1), (5, 1), (11, 1), (12, 17)),PathName
             , Name, InsertionPoint, Xscale, Yscale, Zscale
             , Rotation, bOverlay, Password)
@@ -14024,6 +14835,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an instance of a block in the current document.'
+        InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
         ret = self._oleobj_.InvokeTypes(1578, LCID, 1, (9, 0), ((12, 1), (8, 1), (5, 1), (5, 1), (5, 1), (5, 1), (12, 17)),InsertionPoint
             , Name, Xscale, Yscale, Zscale, Rotation
             , Password)
@@ -14169,6 +14981,8 @@ class IZcadPlaneSurface(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -14176,6 +14990,9 @@ class IZcadPlaneSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -14183,18 +15000,24 @@ class IZcadPlaneSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -14204,6 +15027,7 @@ class IZcadPlaneSurface(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -14614,6 +15438,8 @@ class IZcadPoint(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -14621,6 +15447,9 @@ class IZcadPoint(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -14628,18 +15457,24 @@ class IZcadPoint(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -14649,6 +15484,7 @@ class IZcadPoint(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -14761,6 +15597,8 @@ class IZcadPointCloud(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -14768,6 +15606,9 @@ class IZcadPointCloud(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -14775,18 +15616,24 @@ class IZcadPointCloud(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -14796,6 +15643,7 @@ class IZcadPointCloud(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -14930,6 +15778,8 @@ class IZcadPointCloudEx(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -14937,6 +15787,9 @@ class IZcadPointCloudEx(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -14944,18 +15797,24 @@ class IZcadPointCloudEx(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -14965,6 +15824,7 @@ class IZcadPointCloudEx(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -15092,6 +15952,8 @@ class IZcadPointCloudEx2(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15099,6 +15961,9 @@ class IZcadPointCloudEx2(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15106,18 +15971,24 @@ class IZcadPointCloudEx2(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -15127,6 +15998,7 @@ class IZcadPointCloudEx2(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -15261,6 +16133,8 @@ class IZcadPolyfaceMesh(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15268,6 +16142,9 @@ class IZcadPolyfaceMesh(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15275,18 +16152,24 @@ class IZcadPolyfaceMesh(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -15301,6 +16184,7 @@ class IZcadPolyfaceMesh(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -15425,6 +16309,8 @@ class IZcadPolygonMesh(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15432,6 +16318,9 @@ class IZcadPolygonMesh(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15439,18 +16328,24 @@ class IZcadPolygonMesh(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -15465,6 +16360,7 @@ class IZcadPolygonMesh(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -15606,6 +16502,8 @@ class IZcadPolyline(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -15613,6 +16511,9 @@ class IZcadPolyline(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -15620,6 +16521,8 @@ class IZcadPolyline(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -15628,14 +16531,18 @@ class IZcadPolyline(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -15658,6 +16565,7 @@ class IZcadPolyline(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -16511,6 +17419,8 @@ class IZcadRasterImage(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -16518,6 +17428,9 @@ class IZcadRasterImage(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -16525,18 +17438,24 @@ class IZcadRasterImage(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -16546,6 +17465,7 @@ class IZcadRasterImage(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -16683,6 +17603,8 @@ class IZcadRay(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -16690,6 +17612,9 @@ class IZcadRay(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -16697,6 +17622,8 @@ class IZcadRay(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -16705,14 +17632,18 @@ class IZcadRay(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -16722,6 +17653,7 @@ class IZcadRay(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -16842,6 +17774,8 @@ class IZcadRegion(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -16849,6 +17783,9 @@ class IZcadRegion(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -16856,18 +17793,24 @@ class IZcadRegion(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -16877,6 +17820,7 @@ class IZcadRegion(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -17136,6 +18080,8 @@ class IZcadRevolvedSurface(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17143,6 +18089,9 @@ class IZcadRevolvedSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17150,18 +18099,24 @@ class IZcadRevolvedSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -17171,6 +18126,7 @@ class IZcadRevolvedSurface(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -17321,6 +18277,8 @@ class IZcadSection(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17328,6 +18286,9 @@ class IZcadSection(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17335,6 +18296,8 @@ class IZcadSection(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -17343,14 +18306,18 @@ class IZcadSection(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -17365,6 +18332,7 @@ class IZcadSection(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -17522,6 +18490,8 @@ class IZcadSection2(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -17529,6 +18499,9 @@ class IZcadSection2(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -17536,6 +18509,8 @@ class IZcadSection2(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -17544,14 +18519,18 @@ class IZcadSection2(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -17566,6 +18545,7 @@ class IZcadSection2(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -18315,6 +19295,8 @@ class IZcadShape(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -18322,6 +19304,9 @@ class IZcadShape(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -18329,18 +19314,24 @@ class IZcadShape(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -18350,6 +19341,7 @@ class IZcadShape(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -18478,6 +19470,8 @@ class IZcadSolid(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -18485,6 +19479,9 @@ class IZcadSolid(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -18492,18 +19489,24 @@ class IZcadSolid(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -18518,6 +19521,7 @@ class IZcadSolid(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -18754,6 +19758,8 @@ class IZcadSpline(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -18761,6 +19767,9 @@ class IZcadSpline(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -18768,6 +19777,8 @@ class IZcadSpline(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -18782,14 +19793,18 @@ class IZcadSpline(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(25, LCID, 1, (24, 0), (),)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -18811,6 +19826,7 @@ class IZcadSpline(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -18974,6 +19990,8 @@ class IZcadSubDMesh(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -18981,6 +19999,9 @@ class IZcadSubDMesh(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -18988,18 +20009,24 @@ class IZcadSubDMesh(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -19014,6 +20041,7 @@ class IZcadSubDMesh(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -19456,6 +20484,8 @@ class IZcadSurface(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -19463,6 +20493,9 @@ class IZcadSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -19470,18 +20503,24 @@ class IZcadSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -19491,6 +20530,7 @@ class IZcadSurface(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -19612,6 +20652,8 @@ class IZcadSweptSurface(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -19619,6 +20661,9 @@ class IZcadSweptSurface(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -19626,18 +20671,24 @@ class IZcadSweptSurface(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -19647,6 +20698,7 @@ class IZcadSweptSurface(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -20192,6 +21244,8 @@ class IZcadTable(DispatchBaseClass):
             , maxRow, minCol, maxCol)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -20199,6 +21253,9 @@ class IZcadTable(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -20206,6 +21263,8 @@ class IZcadTable(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -20229,14 +21288,18 @@ class IZcadTable(DispatchBaseClass):
             , col)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -20528,6 +21591,7 @@ class IZcadTable(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -21068,6 +22132,8 @@ class IZcadText(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -21075,6 +22141,9 @@ class IZcadText(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -21082,18 +22151,24 @@ class IZcadText(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -21103,6 +22178,7 @@ class IZcadText(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -21412,6 +22488,8 @@ class IZcadTolerance(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -21419,6 +22497,9 @@ class IZcadTolerance(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -21426,18 +22507,24 @@ class IZcadTolerance(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -21447,6 +22534,7 @@ class IZcadTolerance(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -21793,6 +22881,8 @@ class IZcadTrace(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -21800,6 +22890,9 @@ class IZcadTrace(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -21807,18 +22900,24 @@ class IZcadTrace(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -21833,6 +22932,7 @@ class IZcadTrace(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -22103,6 +23203,8 @@ class IZcadUnderlay(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -22110,6 +23212,9 @@ class IZcadUnderlay(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -22117,18 +23222,24 @@ class IZcadUnderlay(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -22138,6 +23249,7 @@ class IZcadUnderlay(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -22820,6 +23932,8 @@ class IZcadWipeout(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -22827,6 +23941,9 @@ class IZcadWipeout(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -22834,18 +23951,24 @@ class IZcadWipeout(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -22855,6 +23978,7 @@ class IZcadWipeout(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -23057,6 +24181,8 @@ class IZcadXline(DispatchBaseClass):
             , option)
 
     def Mirror(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         ret = self._oleobj_.InvokeTypes(1292, LCID, 1, (9, 0), ((12, 1), (12, 1)),Point1
             , Point2)
         if ret is not None:
@@ -23064,6 +24190,9 @@ class IZcadXline(DispatchBaseClass):
         return ret
 
     def Mirror3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
+        point3= VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
@@ -23071,6 +24200,8 @@ class IZcadXline(DispatchBaseClass):
         return ret
 
     def Move(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg):
+        FromPoint = VTR8ArrayOrVal(FromPoint)
+        ToPoint = VTR8ArrayOrVal(ToPoint)
         return self._oleobj_.InvokeTypes(1289, LCID, 1, (24, 0), ((12, 1), (12, 1)),FromPoint
             , ToPoint)
 
@@ -23079,14 +24210,18 @@ class IZcadXline(DispatchBaseClass):
             )
 
     def Rotate(self, BasePoint=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1290, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , RotationAngle)
 
     def Rotate3D(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
+        Point1 = VTR8ArrayOrVal(Point1)
+        Point2 = VTR8ArrayOrVal(Point2)
         return self._oleobj_.InvokeTypes(1291, LCID, 1, (24, 0), ((12, 1), (12, 1), (5, 1)),Point1
             , Point2, RotationAngle)
 
     def ScaleEntity(self, BasePoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg):
+        BasePoint = VTR8ArrayOrVal(BasePoint)
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
@@ -23096,6 +24231,7 @@ class IZcadXline(DispatchBaseClass):
             , XDataValue)
 
     def TransformBy(self, TransformationMatrix=defaultNamedNotOptArg):
+        TransformationMatrix = VTR8ArrayOrVal(TransformationMatrix)
         return self._oleobj_.InvokeTypes(1295, LCID, 1, (24, 0), ((12, 1),),TransformationMatrix
             )
 
@@ -30547,3 +31683,9 @@ NamesToIIDMap = {
 
 win32com.client.constants.__dicts__.append(constants.__dict__)
 
+def getApp() -> IZcadApplication:
+    id = ZcadApplication.CLSID
+    return  win32com.client.Dispatch(id)
+
+def createEventObject(obj, eventclass):
+    win32com.client.WithEvents(obj,eventclass)
