@@ -1,6 +1,6 @@
 
 with open("M:\\Dev\\Projects\\PyRxGit\\PyRxStubs\\dump.txt", "w") as outFile:
-    with open("M:\\Dev\\Projects\\PyRxGit\\PyRxStubs\\GxApp24.py", "r") as inFile:
+    with open("M:\\Dev\\Projects\\PyRxGit\\PyRxStubs\\ZxApp24.py", "r") as inFile:
         inclass = False
         inPropGet = False
         inPropPut = False
