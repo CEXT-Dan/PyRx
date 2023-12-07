@@ -1029,7 +1029,7 @@ class IAcad3DFace(DispatchBaseClass):
         'Mirrors selected objects about a plane defined by three points.'
         Point1 = VTR8ArrayOrVal(Point1)
         Point2 = VTR8ArrayOrVal(Point2)
-        Point3 = VTR8ArrayOrVal(Point3)
+        point3 = VTR8ArrayOrVal(point3)
         ret = self._oleobj_.InvokeTypes(1293, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
             , Point2, point3)
         if ret is not None:
