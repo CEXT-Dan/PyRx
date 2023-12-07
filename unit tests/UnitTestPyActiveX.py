@@ -46,6 +46,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(point.Coordinates, (100,200,300))
         point.Coordinates = (1,2,3)
         self.assertEqual(point.Coordinates, (1,2,3))
+        point.Delete()
         
     def test_add_line(self):
         app = Ax.getApp()
@@ -56,6 +57,7 @@ class TestActiveX(unittest.TestCase):
         line.EndPoint = (4,5,6)
         self.assertEqual(line.StartPoint, (1,2,3))
         self.assertEqual(line.EndPoint, (4,5,6))
+        line.Delete()
         
     def test_add_polyline(self):
         app = Ax.getApp()
@@ -63,6 +65,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(line.Coordinates, (0, 0, 10, 10, 20, 10))
         line.Coordinates = (1, 2, 3, 4, 5, 6)
         self.assertEqual(line.Coordinates, (1, 2, 3, 4, 5, 6))
+        line.Delete()
         
     def test_add_mtext(self):
         app = Ax.getApp()
@@ -70,6 +73,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(mt.InsertionPoint,(100,200,300))
         mt.InsertionPoint = (400,100,0)
         self.assertEqual(mt.InsertionPoint, (400,100,0))
+        mt.Delete()
         
     def test_Add3DFaceProps(self): 
         app = Ax.getApp()
@@ -77,6 +81,7 @@ class TestActiveX(unittest.TestCase):
         face = model.Add3DFace((0,0,0),(0,100,0),(100,100,0),(100,0,0))
         face.SetCoordinate(3,face.Coordinate(3))
         self.assertEqual(face.Coordinate(3), (100,0,0))
+        face.Delete()
         
     def test_ent_copy(self): 
         app = Ax.getApp()
@@ -85,7 +90,23 @@ class TestActiveX(unittest.TestCase):
         lineCopy = line.Copy()
         self.assertEqual(line.StartPoint,lineCopy.StartPoint)
         self.assertEqual(line.EndPoint,lineCopy.EndPoint)
-
+        line.Delete()
+        lineCopy.Delete()
+        
+    def test_iter_block(self): 
+        app = Ax.getApp()
+        model = app.ActiveDocument.ModelSpace
+        points = []
+        for x in range(10):
+            for y in range(100):
+                points.append(model.AddPoint((x,y,0)))
+        cnt = 0
+        for item in model:
+            cnt += 1
+        self.assertEqual(len(points),cnt)
+        for p in points:
+            p.Delete()
+            
 def PyRxCmd_pyactivex():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestActiveX)
