@@ -15330,14 +15330,6 @@ class IAcadPaperSpace(DispatchBaseClass):
             case _:
                 DispatchBaseClass.__setattr__(self, __name, __value)
 
-    #override properties
-    def __setattr__(self, __name, __value):
-        match __name:
-            case 'Origin':
-                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
-            case _:
-                DispatchBaseClass.__setattr__(self, __name, __value)
-                
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BlockScaling": (1600, 2, (3, 0), (), "BlockScaling", None),
@@ -19926,7 +19918,7 @@ class IAcadSelectionSet(DispatchBaseClass):
 
     def RemoveItems(self, Objects=defaultNamedNotOptArg):
         'Removes specified items from the group or selection set'
-        pSelSet = VTDISPArrayOrVal(pSelSet)
+        Objects = VTDISPArrayOrVal(Objects)
         return self._oleobj_.InvokeTypes(8, LCID, 1, (24, 0), ((12, 1),),Objects)
 
     def Select(self, Mode=defaultNamedNotOptArg, Point1=defaultNamedOptArg, Point2=defaultNamedOptArg,
