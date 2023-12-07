@@ -13,6 +13,19 @@ from pywintypes import IID
 from win32com.client import Dispatch
 import BxDb24
 
+# The following 3 lines may need tweaking for the particular server
+# Candidates are pythoncom.Missing, .Empty and .ArgNotFound
+defaultNamedOptArg=pythoncom.Empty
+defaultNamedNotOptArg=pythoncom.Empty
+defaultUnnamedArg=pythoncom.Empty
+
+CLSID = IID('{58B85F2E-40FC-4422-A821-84C954420139}')
+MajorVersion = 24
+MinorVersion = 0
+LibraryFlags = 8
+LCID = 0x0
+
+#PyRx
 def VTR8ArrayOrVal(__values):
     if isinstance(__values, list) or isinstance(__values, tuple):
         return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, __values)
@@ -32,18 +45,6 @@ def VTDISPArrayOrVal(__values):
     if isinstance(__values, list) or isinstance(__values, tuple):
         return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_DISPATCH, __values)
     return __values
-
-# The following 3 lines may need tweaking for the particular server
-# Candidates are pythoncom.Missing, .Empty and .ArgNotFound
-defaultNamedOptArg=pythoncom.Empty
-defaultNamedNotOptArg=pythoncom.Empty
-defaultUnnamedArg=pythoncom.Empty
-
-CLSID = IID('{58B85F2E-40FC-4422-A821-84C954420139}')
-MajorVersion = 24
-MinorVersion = 0
-LibraryFlags = 8
-LCID = 0x0
 
 class constants:
     acLsAll                       =65535      # from enum AcLayerStateMask
