@@ -50,7 +50,7 @@ def PyRxCmd_sstestx():
         # for loop
         print('\nway 1')
         for e in ss:
-            p = AxDb.IAcadPoint(e)
+            p = AxDb.IGcadPoint(e)
             print(p.Coordinates)
 
         # sdded array ss[ids]
