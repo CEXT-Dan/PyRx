@@ -9,17 +9,28 @@ import PyAp as Ap
 import PyEd as Ed
 
 #requires win32com.client
-import AxApp24 as Ax
-import AxAppUtils24 as AxUt
+host = Ap.Application.host()
+if host == 'BRX':  
+    import BxDb24 as AxDb
+    import BxApp24 as Ax
+else:
+    import AxApp24 as AxDb
+    import AxApp24 as Ax
 
 print("testname = pyactivex")
 
 class TestActiveX(unittest.TestCase):
     def test_get_app(self): 
         app = Ax.getApp()
-        self.assertEqual(app.Name, 'AutoCAD')
-    
+        name : str = app.Name
+        if host == 'BRX': 
+            self.assertTrue('BricsCAD' in name)
+        else:
+            self.assertTrue('AutoCAD' in name)
+            
     def test_get_dbx(self):
+        if host == 'BRX': 
+            return
         dbx = Ax.getDbx()
         path = ".\\testmedia\\06457.dwg"
         dbx.Open(path,None)
@@ -28,6 +39,37 @@ class TestActiveX(unittest.TestCase):
             
         self.assertEqual(dbx.Name, path)
         self.assertNotEqual(dbx.ModelSpace.Count, 0)
+        
+    def test_add_point(self):
+        app = Ax.getApp()
+        point = app.ActiveDocument.ModelSpace.AddPoint((100,200,300))
+        self.assertEqual(point.Coordinates, (100,200,300))
+        point.Coordinates = (1,2,3)
+        self.assertEqual(point.Coordinates, (1,2,3))
+        
+    def test_add_line(self):
+        app = Ax.getApp()
+        line = app.ActiveDocument.ModelSpace.AddLine((100,200,300),(400,500,600))
+        self.assertEqual(line.StartPoint, (100,200,300))
+        self.assertEqual(line.EndPoint, (400,500,600))
+        line.StartPoint = (1,2,3)
+        line.EndPoint = (4,5,6)
+        self.assertEqual(line.StartPoint, (1,2,3))
+        self.assertEqual(line.EndPoint, (4,5,6))
+        
+    def test_add_polyline(self):
+        app = Ax.getApp()
+        line = app.ActiveDocument.ModelSpace.AddLightWeightPolyline([0, 0, 10, 10, 20, 10])
+        self.assertEqual(line.Coordinates, (0, 0, 10, 10, 20, 10))
+        line.Coordinates = (1, 2, 3, 4, 5, 6)
+        self.assertEqual(line.Coordinates, (1, 2, 3, 4, 5, 6))
+        
+    def test_add_mtext(self):
+        app = Ax.getApp()
+        mt = app.ActiveDocument.ModelSpace.AddMText((100,200,300),40,"Hello world")
+        self.assertEqual(mt.InsertionPoint,(100,200,300))
+        mt.InsertionPoint = (400,100,0)
+        self.assertEqual(mt.InsertionPoint, (400,100,0))
         
     def test_Add3DFaceProps(self): 
         app = Ax.getApp()
