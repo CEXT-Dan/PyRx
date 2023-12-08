@@ -9632,6 +9632,12 @@ class IAcadDocuments(DispatchBaseClass):
             ret = Dispatch(ret, '__call__', '{9368AF30-60A3-47E3-A743-60D4C21FB580}')
         return ret
 
+    def __getitem__(self, *args): 
+        try:
+            return self.__call__(*args)
+        except:
+            raise IndexError
+        
     def __str__(self, *args):
         return str(self.__call__(*args))
     def __int__(self, *args):
