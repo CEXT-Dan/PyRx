@@ -1594,7 +1594,7 @@ class IAcad3DFace(DispatchBaseClass):
     @property
     def PlotStyleName(self): ...
     @property
-    def TrueColor(self) -> IAcadGcCmColor: ...
+    def TrueColor(self) -> IAcadAcCmColor: ...
     @property
     def VisibilityEdge1(self): ...
     @property
@@ -1708,7 +1708,7 @@ class IAcad3DPolyline(DispatchBaseClass):
     @property
     def PlotStyleName(self): ...
     @property
-    def TrueColor(self) -> IAcadGcCmColor: ...
+    def TrueColor(self) -> IAcadAcCmColor: ...
     @property
     def Type(self): ...
     @property
@@ -1826,7 +1826,7 @@ class IAcad3DSolid(DispatchBaseClass):
     @property
     def SolidType(self): ...
     @property
-    def TrueColor(self) -> IAcadGcCmColor: ...
+    def TrueColor(self) -> IAcadAcCmColor: ...
     @property
     def Visible(self): ...
     @property
@@ -2025,7 +2025,7 @@ class IAcadArc(DispatchBaseClass):
     @property
     def TotalAngle(self): ...
     @property
-    def TrueColor(self) -> IAcadGcCmColor: ...
+    def TrueColor(self) -> IAcadAcCmColor: ...
     @property
     def Visible(self): ...
     @property
@@ -8223,7 +8223,7 @@ class IAcadFileDependency(DispatchBaseClass):
     @property
     def VersionGuid(self): ...
 
-class IAcadGcCmColor(DispatchBaseClass):
+class IAcadAcCmColor(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -17292,7 +17292,7 @@ class IAcadXline(DispatchBaseClass):
     @property
     def PlotStyleName(self): ...
     @property
-    def TrueColor(self) -> IAcadGcCmColor: ...
+    def TrueColor(self) -> IAcadAcCmColor: ...
     @property
     def Visible(self): ...
     @property
@@ -17382,7 +17382,7 @@ class GcadAcCmColor(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IAcadGcCmColor
+    default_interface = IAcadAcCmColor
 
 class GcadApplication(CoClassBaseClass):
     CLSID: Incomplete
@@ -18414,8 +18414,8 @@ IAcadFileDependencies_vtables_dispatch_: int
 IAcadFileDependencies_vtables_: Incomplete
 IAcadFileDependency_vtables_dispatch_: int
 IAcadFileDependency_vtables_: Incomplete
-IAcadGcCmColor_vtables_dispatch_: int
-IAcadGcCmColor_vtables_: Incomplete
+IAcadAcCmColor_vtables_dispatch_: int
+IAcadAcCmColor_vtables_: Incomplete
 IAcadGroup_vtables_dispatch_: int
 IAcadGroup_vtables_: Incomplete
 IAcadGroups_vtables_dispatch_: int
