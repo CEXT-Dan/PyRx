@@ -199,7 +199,13 @@ class TestActiveX(unittest.TestCase):
             for p in points:
                 p.Delete()
             ss.Delete()
-
+            
+    def test_iter_documents(self):
+        axApp = Ax.getApp()
+        cnt = 0
+        for doc in axApp.Documents:
+            cnt +=1
+        self.assertNotEqual(cnt, 0)
 
 def PyRxCmd_pyactivex():
     try:
