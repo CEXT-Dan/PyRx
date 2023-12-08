@@ -12,7 +12,7 @@ MinorVersion: int
 LibraryFlags: int
 LCID: int
 
-def getApp() -> IGcadApplication: ...
+def getApp() -> IAcadApplication: ...
 def createEventObject(obj,eventClass): ...
 
 class constants:
@@ -1528,7 +1528,7 @@ class IGcPePropertyEditorColor(DispatchBaseClass):
     def SetXData(self, XDataType=..., XDataValue=...): ...
     def __iter__(self): ...
 
-class IGcad3DFace(DispatchBaseClass):
+class IAcad3DFace(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -1556,13 +1556,13 @@ class IGcad3DFace(DispatchBaseClass):
     def Update(self): ...
     def __iter__(self): ...
     @property
-    def Application(self) -> IGcadApplication: ...
+    def Application(self) -> IAcadApplication: ...
     @property
     def Coordinates(self): ...
     @property
-    def Database(self) -> IGcadDatabase: ...
+    def Database(self) -> IAcadDatabase: ...
     @property
-    def Document(self) -> IGcadDocument: ...
+    def Document(self) -> IAcadDocument: ...
     @property
     def EntityName(self): ...
     @property
@@ -1574,7 +1574,7 @@ class IGcad3DFace(DispatchBaseClass):
     @property
     def HasExtensionDictionary(self): ...
     @property
-    def Hyperlinks(self) -> IGcadHyperlinks: ...
+    def Hyperlinks(self) -> IAcadHyperlinks: ...
     @property
     def Layer(self): ...
     @property
@@ -1594,7 +1594,7 @@ class IGcad3DFace(DispatchBaseClass):
     @property
     def PlotStyleName(self): ...
     @property
-    def TrueColor(self) -> IGcadGcCmColor: ...
+    def TrueColor(self) -> IAcadGcCmColor: ...
     @property
     def VisibilityEdge1(self): ...
     @property
@@ -1638,7 +1638,7 @@ class IGcad3DFace(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcad3DPolyline(DispatchBaseClass):
+class IAcad3DPolyline(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AppendVertex(self, vertex=...): ...
@@ -1666,15 +1666,15 @@ class IGcad3DPolyline(DispatchBaseClass):
     def Update(self): ...
     def __iter__(self): ...
     @property
-    def Application(self) -> IGcadApplication: ...
+    def Application(self) -> IAcadApplication: ...
     @property
     def Closed(self): ...
     @property
     def Coordinates(self): ...
     @property
-    def Database(self) -> IGcadDatabase: ...
+    def Database(self) -> IAcadDatabase: ...
     @property
-    def Document(self) -> IGcadDocument: ...
+    def Document(self) -> IAcadDocument: ...
     @property
     def EntityName(self): ...
     @property
@@ -1686,7 +1686,7 @@ class IGcad3DPolyline(DispatchBaseClass):
     @property
     def HasExtensionDictionary(self): ...
     @property
-    def Hyperlinks(self) -> IGcadHyperlinks: ...
+    def Hyperlinks(self) -> IAcadHyperlinks: ...
     @property
     def Layer(self): ...
     @property
@@ -1708,7 +1708,7 @@ class IGcad3DPolyline(DispatchBaseClass):
     @property
     def PlotStyleName(self): ...
     @property
-    def TrueColor(self) -> IGcadGcCmColor: ...
+    def TrueColor(self) -> IAcadGcCmColor: ...
     @property
     def Type(self): ...
     @property
@@ -1742,7 +1742,7 @@ class IGcad3DPolyline(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcad3DSolid(DispatchBaseClass):
+class IAcad3DSolid(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -1770,13 +1770,13 @@ class IGcad3DSolid(DispatchBaseClass):
     def Update(self): ...
     def __iter__(self): ...
     @property
-    def Application(self) -> IGcadApplication: ...
+    def Application(self) -> IAcadApplication: ...
     @property
     def Centroid(self): ...
     @property
-    def Database(self) -> IGcadDatabase: ...
+    def Database(self) -> IAcadDatabase: ...
     @property
-    def Document(self) -> IGcadDocument: ...
+    def Document(self) -> IAcadDocument: ...
     @property
     def EntityName(self): ...
     @property
@@ -1790,7 +1790,7 @@ class IGcad3DSolid(DispatchBaseClass):
     @property
     def History(self): ...
     @property
-    def Hyperlinks(self) -> IGcadHyperlinks: ...
+    def Hyperlinks(self) -> IAcadHyperlinks: ...
     @property
     def Layer(self): ...
     @property
@@ -1826,7 +1826,7 @@ class IGcad3DSolid(DispatchBaseClass):
     @property
     def SolidType(self): ...
     @property
-    def TrueColor(self) -> IGcadGcCmColor: ...
+    def TrueColor(self) -> IAcadGcCmColor: ...
     @property
     def Visible(self): ...
     @property
@@ -1860,7 +1860,7 @@ class IGcad3DSolid(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadApplication(DispatchBaseClass):
+class IAcadApplication(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Eval(self, Expression=...): ...
@@ -1888,13 +1888,13 @@ class IGcadApplication(DispatchBaseClass):
     def ZoomWindow(self, LowerLeft=..., UpperRight=...): ...
     def __iter__(self): ...
     @property
-    def ActiveDocument(self) -> IGcadDocument: ...
+    def ActiveDocument(self) -> IAcadDocument: ...
     @property
-    def Application(self) -> IGcadApplication: ...
+    def Application(self) -> IAcadApplication: ...
     @property
     def Caption(self): ...
     @property
-    def Documents(self) -> IGcadDocuments: ...
+    def Documents(self) -> IAcadDocuments: ...
     @property
     def FullName(self): ...
     @property
@@ -1904,15 +1904,15 @@ class IGcadApplication(DispatchBaseClass):
     @property
     def LocaleId(self): ...
     @property
-    def MenuBar(self) -> IGcadMenuBar: ...
+    def MenuBar(self) -> IAcadMenuBar: ...
     @property
-    def MenuGroups(self) -> IGcadMenuGroups: ...
+    def MenuGroups(self) -> IAcadMenuGroups: ...
     @property
     def Name(self): ...
     @property
     def Path(self): ...
     @property
-    def Preferences(self) -> IGcadPreferences: ...
+    def Preferences(self) -> IAcadPreferences: ...
     @property
     def VBE(self): ...
     @property
@@ -1942,7 +1942,7 @@ class IGcadApplication(DispatchBaseClass):
     @WindowTop.setter
     def WindowTop(self, value) -> None: ...
 
-class IGcadArc(DispatchBaseClass):
+class IAcadArc(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -1967,7 +1967,7 @@ class IGcadArc(DispatchBaseClass):
     def Update(self): ...
     def __iter__(self): ...
     @property
-    def Application(self) -> IGcadApplication: ...
+    def Application(self) -> IAcadApplication: ...
     @property
     def ArcLength(self): ...
     @property
@@ -1975,9 +1975,9 @@ class IGcadArc(DispatchBaseClass):
     @property
     def Center(self): ...
     @property
-    def Database(self) -> IGcadDatabase: ...
+    def Database(self) -> IAcadDatabase: ...
     @property
-    def Document(self) -> IGcadDocument: ...
+    def Document(self) -> IAcadDocument: ...
     @property
     def EndAngle(self): ...
     @property
@@ -1993,7 +1993,7 @@ class IGcadArc(DispatchBaseClass):
     @property
     def HasExtensionDictionary(self): ...
     @property
-    def Hyperlinks(self) -> IGcadHyperlinks: ...
+    def Hyperlinks(self) -> IAcadHyperlinks: ...
     @property
     def Layer(self): ...
     @property
@@ -2025,7 +2025,7 @@ class IGcadArc(DispatchBaseClass):
     @property
     def TotalAngle(self): ...
     @property
-    def TrueColor(self) -> IGcadGcCmColor: ...
+    def TrueColor(self) -> IAcadGcCmColor: ...
     @property
     def Visible(self): ...
     @property
@@ -2063,7 +2063,7 @@ class IGcadArc(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadArcAlignedText(DispatchBaseClass):
+class IAcadArcAlignedText(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -2193,7 +2193,7 @@ class IGcadArcAlignedText(DispatchBaseClass):
     @contents.setter
     def contents(self, value) -> None: ...
 
-class IGcadAssocArrayPath(DispatchBaseClass):
+class IAcadAssocArrayPath(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -2224,7 +2224,7 @@ class IGcadAssocArrayPath(DispatchBaseClass):
     def Update(self): ...
     def __iter__(self): ...
 
-class IGcadAssocArrayPolar(DispatchBaseClass):
+class IAcadAssocArrayPolar(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -2255,7 +2255,7 @@ class IGcadAssocArrayPolar(DispatchBaseClass):
     def Update(self): ...
     def __iter__(self): ...
 
-class IGcadAssocArrayRectangular(DispatchBaseClass):
+class IAcadAssocArrayRectangular(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -2286,7 +2286,7 @@ class IGcadAssocArrayRectangular(DispatchBaseClass):
     def Update(self): ...
     def __iter__(self): ...
 
-class IGcadAttribute(DispatchBaseClass):
+class IAcadAttribute(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -2489,7 +2489,7 @@ class IGcadAttribute(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadAttributeReference(DispatchBaseClass):
+class IAcadAttributeReference(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -2659,7 +2659,7 @@ class IGcadAttributeReference(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadBlock(DispatchBaseClass):
+class IAcadBlock(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add3DFace(self, Point1=..., Point2=..., point3=..., Point4=...): ...
@@ -2787,7 +2787,7 @@ class IGcadBlock(DispatchBaseClass):
     @Units.setter
     def Units(self, value) -> None: ...
 
-class IGcadBlockReference(DispatchBaseClass):
+class IAcadBlockReference(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -2930,7 +2930,7 @@ class IGcadBlockReference(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadBlocks(DispatchBaseClass):
+class IAcadBlocks(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, InsertionPoint=..., Name=...): ...
@@ -2964,7 +2964,7 @@ class IGcadBlocks(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadCamera(DispatchBaseClass):
+class IAcadCamera(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -3098,7 +3098,7 @@ class IGcadCamera(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadCircle(DispatchBaseClass):
+class IAcadCircle(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -3214,7 +3214,7 @@ class IGcadCircle(DispatchBaseClass):
     def color(self, value) -> None: ...
 
 
-class IGcadDatabase(DispatchBaseClass):
+class IAcadDatabase(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def CopyObjects(self, Objects=..., Owner=..., IdPairs=...): ...
@@ -3275,7 +3275,7 @@ class IGcadDatabase(DispatchBaseClass):
     @Limits.setter
     def Limits(self, value) -> None: ...
 
-class IGcadDatabasePreferences(DispatchBaseClass):
+class IAcadDatabasePreferences(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -3358,7 +3358,7 @@ class IGcadDatabasePreferences(DispatchBaseClass):
     @XRefLayerVisibility.setter
     def XRefLayerVisibility(self, value) -> None: ...
 
-class IGcadDictionaries(DispatchBaseClass):
+class IAcadDictionaries(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -3392,7 +3392,7 @@ class IGcadDictionaries(DispatchBaseClass):
     @property
     def OwnerID(self): ...
     
-class IGcadDictionary(DispatchBaseClass):
+class IAcadDictionary(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddObject(self, Keyword=..., ObjectName=...): ...
@@ -3437,7 +3437,7 @@ class IGcadDictionary(DispatchBaseClass):
     @Name.setter
     def Name(self, value) -> None: ...
 
-class IGcadDim3PointAngular(DispatchBaseClass):
+class IAcadDim3PointAngular(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -3794,7 +3794,7 @@ class IGcadDim3PointAngular(DispatchBaseClass):
     def color(self, value) -> None: ...
 
 
-class IGcadDimAligned(DispatchBaseClass):
+class IAcadDimAligned(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -4258,7 +4258,7 @@ class IGcadDimAligned(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadDimAngular(DispatchBaseClass):
+class IAcadDimAngular(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -4618,7 +4618,7 @@ class IGcadDimAngular(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadDimArcLength(DispatchBaseClass):
+class IAcadDimArcLength(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -5094,7 +5094,7 @@ class IGcadDimArcLength(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadDimDiametric(DispatchBaseClass):
+class IAcadDimDiametric(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -5492,7 +5492,7 @@ class IGcadDimDiametric(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadDimOrdinate(DispatchBaseClass):
+class IAcadDimOrdinate(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -5836,7 +5836,7 @@ class IGcadDimOrdinate(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadDimRadial(DispatchBaseClass):
+class IAcadDimRadial(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -6222,7 +6222,7 @@ class IGcadDimRadial(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadDimRadialLarge(DispatchBaseClass):
+class IAcadDimRadialLarge(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -6602,7 +6602,7 @@ class IGcadDimRadialLarge(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadDimRotated(DispatchBaseClass):
+class IAcadDimRotated(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -7058,7 +7058,7 @@ class IGcadDimRotated(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadDimStyle(DispatchBaseClass):
+class IAcadDimStyle(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def CopyFrom(self, StyleSource=...): ...
@@ -7089,7 +7089,7 @@ class IGcadDimStyle(DispatchBaseClass):
     @Name.setter
     def Name(self, value) -> None: ...
 
-class IGcadDimStyles(DispatchBaseClass):
+class IAcadDimStyles(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -7123,7 +7123,7 @@ class IGcadDimStyles(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadDimension(DispatchBaseClass):
+class IAcadDimension(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -7325,7 +7325,7 @@ class IGcadDimension(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadDocument(DispatchBaseClass):
+class IAcadDocument(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Activate(self): ...
@@ -7498,7 +7498,7 @@ class IGcadDocument(DispatchBaseClass):
     @WindowState.setter
     def WindowState(self, value) -> None: ...
 
-class IGcadDocuments(DispatchBaseClass):
+class IAcadDocuments(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, TemplateName=...): ...
@@ -7515,7 +7515,7 @@ class IGcadDocuments(DispatchBaseClass):
     @property
     def Count(self): ...
 
-class IGcadDwfUnderlay(DispatchBaseClass):
+class IAcadDwfUnderlay(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -7666,7 +7666,7 @@ class IGcadDwfUnderlay(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadDynamicBlockReferenceProperty(DispatchBaseClass):
+class IAcadDynamicBlockReferenceProperty(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __call__(self): ...
@@ -7690,7 +7690,7 @@ class IGcadDynamicBlockReferenceProperty(DispatchBaseClass):
     @Value.setter
     def Value(self, value) -> None: ...
 
-class IGcadEllipse(DispatchBaseClass):
+class IAcadEllipse(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -7825,7 +7825,7 @@ class IGcadEllipse(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadEntity(DispatchBaseClass):
+class IAcadEntity(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -7911,7 +7911,7 @@ class IGcadEntity(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadExternalReference(DispatchBaseClass):
+class IAcadExternalReference(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -8058,7 +8058,7 @@ class IGcadExternalReference(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadExtrudedSurface(DispatchBaseClass):
+class IAcadExtrudedSurface(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -8176,7 +8176,7 @@ class IGcadExtrudedSurface(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadFileDependencies(DispatchBaseClass):
+class IAcadFileDependencies(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def CreateEntry(self, Feature=..., FullFileName=..., AffectsGraphics=..., noIncrement=...): ...
@@ -8194,7 +8194,7 @@ class IGcadFileDependencies(DispatchBaseClass):
     @property
     def Count(self): ...
 
-class IGcadFileDependency(DispatchBaseClass):
+class IAcadFileDependency(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -8223,7 +8223,7 @@ class IGcadFileDependency(DispatchBaseClass):
     @property
     def VersionGuid(self): ...
 
-class IGcadGcCmColor(DispatchBaseClass):
+class IAcadGcCmColor(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -8255,7 +8255,7 @@ class IGcadGcCmColor(DispatchBaseClass):
     @EntityColor.setter
     def EntityColor(self, value) -> None: ...
 
-class IGcadGroup(DispatchBaseClass):
+class IAcadGroup(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AppendItems(self, Objects=...): ...
@@ -8314,7 +8314,7 @@ class IGcadGroup(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadGroups(DispatchBaseClass):
+class IAcadGroups(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -8348,7 +8348,7 @@ class IGcadGroups(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadHatch(DispatchBaseClass):
+class IAcadHatch(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AppendInnerLoop(self, ObjectArray=...): ...
@@ -8516,7 +8516,7 @@ class IGcadHatch(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadHelix(DispatchBaseClass):
+class IAcadHelix(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -8638,7 +8638,7 @@ class IGcadHelix(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadHyperlink(DispatchBaseClass):
+class IAcadHyperlink(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -8658,7 +8658,7 @@ class IGcadHyperlink(DispatchBaseClass):
     @URLNamedLocation.setter
     def URLNamedLocation(self, value) -> None: ...
 
-class IGcadHyperlinks(DispatchBaseClass):
+class IAcadHyperlinks(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=..., Description=..., NamedLocation=...): ...
@@ -8673,7 +8673,7 @@ class IGcadHyperlinks(DispatchBaseClass):
     @property
     def Count(self): ...
 
-class IGcadIdPair(DispatchBaseClass):
+class IAcadIdPair(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __call__(self): ...
@@ -8696,7 +8696,7 @@ class IGcadIdPair(DispatchBaseClass):
     @property
     def key(self): ...
 
-class IGcadLWPolyline(DispatchBaseClass):
+class IAcadLWPolyline(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddVertex(self, Index=..., vertex=...): ...
@@ -8823,7 +8823,7 @@ class IGcadLWPolyline(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadLayer(DispatchBaseClass):
+class IAcadLayer(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -8903,7 +8903,7 @@ class IGcadLayer(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadLayerStateManager(DispatchBaseClass):
+class IAcadLayerStateManager(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self, bsName=...): ...
@@ -8917,7 +8917,7 @@ class IGcadLayerStateManager(DispatchBaseClass):
     def SetMask(self, bsName=..., arg1=...): ...
     def __iter__(self): ...
 
-class IGcadLayers(DispatchBaseClass):
+class IAcadLayers(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -8952,7 +8952,7 @@ class IGcadLayers(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadLayout(DispatchBaseClass):
+class IAcadLayout(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def CopyFrom(self, pPlotConfig=...): ...
@@ -9074,7 +9074,7 @@ class IGcadLayout(DispatchBaseClass):
     @ViewToPlot.setter
     def ViewToPlot(self, value) -> None: ...
 
-class IGcadLayouts(DispatchBaseClass):
+class IAcadLayouts(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -9108,7 +9108,7 @@ class IGcadLayouts(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadLeader(DispatchBaseClass):
+class IAcadLeader(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -9247,7 +9247,7 @@ class IGcadLeader(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadLight(DispatchBaseClass):
+class IAcadLight(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -9425,7 +9425,7 @@ class IGcadLight(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadLight2(DispatchBaseClass):
+class IAcadLight2(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -9671,7 +9671,7 @@ class IGcadLight2(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadLight3(DispatchBaseClass):
+class IAcadLight3(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -9921,7 +9921,7 @@ class IGcadLight3(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadLine(DispatchBaseClass):
+class IAcadLine(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -10030,7 +10030,7 @@ class IGcadLine(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadLineType(DispatchBaseClass):
+class IAcadLineType(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -10064,7 +10064,7 @@ class IGcadLineType(DispatchBaseClass):
     @Name.setter
     def Name(self, value) -> None: ...
 
-class IGcadLineTypes(DispatchBaseClass):
+class IAcadLineTypes(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -10100,7 +10100,7 @@ class IGcadLineTypes(DispatchBaseClass):
     def OwnerID(self): ...
 
 
-class IGcadLoftedSurface(DispatchBaseClass):
+class IAcadLoftedSurface(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -10236,7 +10236,7 @@ class IGcadLoftedSurface(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadMInsertBlock(DispatchBaseClass):
+class IAcadMInsertBlock(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -10395,7 +10395,7 @@ class IGcadMInsertBlock(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadMLeader(DispatchBaseClass):
+class IAcadMLeader(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddLeader(self): ...
@@ -10635,7 +10635,7 @@ class IGcadMLeader(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadMLeaderStyle(DispatchBaseClass):
+class IAcadMLeaderStyle(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -10831,7 +10831,7 @@ class IGcadMLeaderStyle(DispatchBaseClass):
     @TextTopAttachmentType.setter
     def TextTopAttachmentType(self, value) -> None: ...
 
-class IGcadMLine(DispatchBaseClass):
+class IAcadMLine(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -10931,7 +10931,7 @@ class IGcadMLine(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadMText(DispatchBaseClass):
+class IAcadMText(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -11070,7 +11070,7 @@ class IGcadMText(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadMaterial(DispatchBaseClass):
+class IAcadMaterial(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -11104,7 +11104,7 @@ class IGcadMaterial(DispatchBaseClass):
     @Name.setter
     def Name(self, value) -> None: ...
 
-class IGcadMaterials(DispatchBaseClass):
+class IAcadMaterials(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -11138,7 +11138,7 @@ class IGcadMaterials(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadMenuBar(DispatchBaseClass):
+class IAcadMenuBar(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Item(self, Index=...): ...
@@ -11154,7 +11154,7 @@ class IGcadMenuBar(DispatchBaseClass):
     @property
     def Parent(self): ...
 
-class IGcadMenuGroup(DispatchBaseClass):
+class IAcadMenuGroup(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Save(self, MenuFileType=...): ...
@@ -11176,7 +11176,7 @@ class IGcadMenuGroup(DispatchBaseClass):
     @property
     def Type(self): ...
 
-class IGcadMenuGroups(DispatchBaseClass):
+class IAcadMenuGroups(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Item(self, Index=...): ...
@@ -11193,7 +11193,7 @@ class IGcadMenuGroups(DispatchBaseClass):
     @property
     def Parent(self): ...
 
-class IGcadModelSpace(DispatchBaseClass):
+class IAcadModelSpace(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add3DFace(self, Point1=..., Point2=..., point3=..., Point4=...): ...
@@ -11321,7 +11321,7 @@ class IGcadModelSpace(DispatchBaseClass):
     @Units.setter
     def Units(self, value) -> None: ...
 
-class IGcadNurbSurface(DispatchBaseClass):
+class IAcadNurbSurface(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -11433,7 +11433,7 @@ class IGcadNurbSurface(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadObject(DispatchBaseClass):
+class IAcadObject(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -11460,7 +11460,7 @@ class IGcadObject(DispatchBaseClass):
     def OwnerID(self): ...
     
 
-class IGcadObjectEvents:
+class IAcadObjectEvents:
     CLSID: Incomplete
     CLSID_Sink: Incomplete
     coclass_clsid: Incomplete
@@ -11468,7 +11468,7 @@ class IGcadObjectEvents:
     def __del__(self) -> None: ...
     def close(self) -> None: ...
 
-class IGcadOle(DispatchBaseClass):
+class IAcadOle(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -11594,7 +11594,7 @@ class IGcadOle(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadPViewport(DispatchBaseClass):
+class IAcadPViewport(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -11804,7 +11804,7 @@ class IGcadPViewport(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadPaperSpace(DispatchBaseClass):
+class IAcadPaperSpace(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add3DFace(self, Point1=..., Point2=..., point3=..., Point4=...): ...
@@ -11933,7 +11933,7 @@ class IGcadPaperSpace(DispatchBaseClass):
     @Units.setter
     def Units(self, value) -> None: ...
 
-class IGcadPlaneSurface(DispatchBaseClass):
+class IAcadPlaneSurface(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -12041,7 +12041,7 @@ class IGcadPlaneSurface(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadPlot(DispatchBaseClass):
+class IAcadPlot(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def DisplayPlotPreview(self, Preview=...): ...
@@ -12065,7 +12065,7 @@ class IGcadPlot(DispatchBaseClass):
     @QuietErrorMode.setter
     def QuietErrorMode(self, value) -> None: ...
 
-class IGcadPlotConfiguration(DispatchBaseClass):
+class IAcadPlotConfiguration(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def CopyFrom(self, pPlotConfig=...): ...
@@ -12181,7 +12181,7 @@ class IGcadPlotConfiguration(DispatchBaseClass):
     @ViewToPlot.setter
     def ViewToPlot(self, value) -> None: ...
 
-class IGcadPlotConfigurations(DispatchBaseClass):
+class IAcadPlotConfigurations(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=..., ModelType=...): ...
@@ -12215,7 +12215,7 @@ class IGcadPlotConfigurations(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadPoint(DispatchBaseClass):
+class IAcadPoint(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -12313,7 +12313,7 @@ class IGcadPoint(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadPointCloudEx(DispatchBaseClass):
+class IAcadPointCloudEx(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -12441,7 +12441,7 @@ class IGcadPointCloudEx(DispatchBaseClass):
     @scale.setter
     def scale(self, value) -> None: ...
 
-class IGcadPolyfaceMesh(DispatchBaseClass):
+class IAcadPolyfaceMesh(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -12539,7 +12539,7 @@ class IGcadPolyfaceMesh(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadPolygonMesh(DispatchBaseClass):
+class IAcadPolygonMesh(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AppendVertex(self, vertex=...): ...
@@ -12657,7 +12657,7 @@ class IGcadPolygonMesh(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadPolyline(DispatchBaseClass):
+class IAcadPolyline(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AppendVertex(self, vertex=...): ...
@@ -12788,7 +12788,7 @@ class IGcadPolyline(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadPopupMenu(DispatchBaseClass):
+class IAcadPopupMenu(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddMenuItem(self, Index=..., Label=..., Macro=...): ...
@@ -12821,7 +12821,7 @@ class IGcadPopupMenu(DispatchBaseClass):
     @Name.setter
     def Name(self, value) -> None: ...
 
-class IGcadPopupMenuItem(DispatchBaseClass):
+class IAcadPopupMenuItem(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -12867,7 +12867,7 @@ class IGcadPopupMenuItem(DispatchBaseClass):
     @TagString.setter
     def TagString(self, value) -> None: ...
 
-class IGcadPopupMenus(DispatchBaseClass):
+class IAcadPopupMenus(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, MenuName=...): ...
@@ -12880,7 +12880,7 @@ class IGcadPopupMenus(DispatchBaseClass):
     def __len__(self) -> int: ...
     def __nonzero__(self): ...
 
-class IGcadPreferences(DispatchBaseClass):
+class IAcadPreferences(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -12911,7 +12911,7 @@ class IGcadPreferences(DispatchBaseClass):
     @property
     def User(self): ...
 
-class IGcadPreferencesDisplay(DispatchBaseClass):
+class IAcadPreferencesDisplay(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -13022,7 +13022,7 @@ class IGcadPreferencesDisplay(DispatchBaseClass):
     @XRefFadeIntensity.setter
     def XRefFadeIntensity(self, value) -> None: ...
 
-class IGcadPreferencesDrafting(DispatchBaseClass):
+class IAcadPreferencesDrafting(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -13073,7 +13073,7 @@ class IGcadPreferencesDrafting(DispatchBaseClass):
     @PolarTrackingVector.setter
     def PolarTrackingVector(self, value) -> None: ...
 
-class IGcadPreferencesFiles(DispatchBaseClass):
+class IAcadPreferencesFiles(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def GetProjectFilePath(self, ProjectName=...): ...
@@ -13220,7 +13220,7 @@ class IGcadPreferencesFiles(DispatchBaseClass):
     @WorkspacePath.setter
     def WorkspacePath(self, value) -> None: ...
 
-class IGcadPreferencesOpenSave(DispatchBaseClass):
+class IAcadPreferencesOpenSave(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -13281,7 +13281,7 @@ class IGcadPreferencesOpenSave(DispatchBaseClass):
     @XrefDemandLoad.setter
     def XrefDemandLoad(self, value) -> None: ...
 
-class IGcadPreferencesOutput(DispatchBaseClass):
+class IAcadPreferencesOutput(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -13340,7 +13340,7 @@ class IGcadPreferencesOutput(DispatchBaseClass):
     @UseLastPlotSettings.setter
     def UseLastPlotSettings(self, value) -> None: ...
 
-class IGcadPreferencesProfiles(DispatchBaseClass):
+class IAcadPreferencesProfiles(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def CopyProfile(self, oldProfileName=..., newProfileName=...): ...
@@ -13358,7 +13358,7 @@ class IGcadPreferencesProfiles(DispatchBaseClass):
     @ActiveProfile.setter
     def ActiveProfile(self, value) -> None: ...
 
-class IGcadPreferencesSelection(DispatchBaseClass):
+class IAcadPreferencesSelection(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -13409,7 +13409,7 @@ class IGcadPreferencesSelection(DispatchBaseClass):
     @PickGroup.setter
     def PickGroup(self, value) -> None: ...
 
-class IGcadPreferencesSystem(DispatchBaseClass):
+class IAcadPreferencesSystem(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -13448,7 +13448,7 @@ class IGcadPreferencesSystem(DispatchBaseClass):
     @TablesReadOnly.setter
     def TablesReadOnly(self, value) -> None: ...
 
-class IGcadPreferencesUser(DispatchBaseClass):
+class IAcadPreferencesUser(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -13503,7 +13503,7 @@ class IGcadPreferencesUser(DispatchBaseClass):
     @ShortCutMenuDisplay.setter
     def ShortCutMenuDisplay(self, value) -> None: ...
 
-class IGcadRasterImage(DispatchBaseClass):
+class IAcadRasterImage(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -13650,7 +13650,7 @@ class IGcadRasterImage(DispatchBaseClass):
     @transparency.setter
     def transparency(self, value) -> None: ...
 
-class IGcadRay(DispatchBaseClass):
+class IAcadRay(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -13748,7 +13748,7 @@ class IGcadRay(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadRegion(DispatchBaseClass):
+class IAcadRegion(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -13854,7 +13854,7 @@ class IGcadRegion(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadRegisteredApplication(DispatchBaseClass):
+class IAcadRegisteredApplication(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -13884,7 +13884,7 @@ class IGcadRegisteredApplication(DispatchBaseClass):
     @Name.setter
     def Name(self, value) -> None: ...
 
-class IGcadRegisteredApplications(DispatchBaseClass):
+class IAcadRegisteredApplications(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -13918,7 +13918,7 @@ class IGcadRegisteredApplications(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadRevolvedSurface(DispatchBaseClass):
+class IAcadRevolvedSurface(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -14036,7 +14036,7 @@ class IGcadRevolvedSurface(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadScriptJet(DispatchBaseClass):
+class IAcadScriptJet(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddNamedItem(self, pstrCode=..., dwFlags: int = ...): ...
@@ -14048,7 +14048,7 @@ class IGcadScriptJet(DispatchBaseClass):
     def Run(self): ...
     def __iter__(self): ...
 
-class IGcadSection(DispatchBaseClass):
+class IAcadSection(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddVertex(self, nIndex=..., val=...): ...
@@ -14191,7 +14191,7 @@ class IGcadSection(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadSection2(DispatchBaseClass):
+class IAcadSection2(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddVertex(self, nIndex=..., val=...): ...
@@ -14346,7 +14346,7 @@ class IGcadSection2(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadSectionManager(DispatchBaseClass):
+class IAcadSectionManager(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -14381,7 +14381,7 @@ class IGcadSectionManager(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadSectionSettings(DispatchBaseClass):
+class IAcadSectionSettings(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -14412,7 +14412,7 @@ class IGcadSectionSettings(DispatchBaseClass):
     @CurrentSectionType.setter
     def CurrentSectionType(self, value) -> None: ...
 
-class IGcadSectionTypeSettings(DispatchBaseClass):
+class IAcadSectionTypeSettings(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -14613,7 +14613,7 @@ class IGcadSectionTypeSettings(DispatchBaseClass):
     @SourceObjects.setter
     def SourceObjects(self, value) -> None: ...
 
-class IGcadSecurityParams(DispatchBaseClass):
+class IAcadSecurityParams(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -14662,7 +14662,7 @@ class IGcadSecurityParams(DispatchBaseClass):
     @TimeServer.setter
     def TimeServer(self, value) -> None: ...
 
-class IGcadSelectionSet(DispatchBaseClass):
+class IAcadSelectionSet(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddItems(self, pSelSet=...): ...
@@ -14689,7 +14689,7 @@ class IGcadSelectionSet(DispatchBaseClass):
     @property
     def Name(self): ...
 
-class IGcadSelectionSets(DispatchBaseClass):
+class IAcadSelectionSets(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -14705,7 +14705,7 @@ class IGcadSelectionSets(DispatchBaseClass):
     @property
     def Count(self): ...
 
-class IGcadShape(DispatchBaseClass):
+class IAcadShape(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -14823,7 +14823,7 @@ class IGcadShape(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadSolid(DispatchBaseClass):
+class IAcadSolid(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -14923,7 +14923,7 @@ class IGcadSolid(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadSortentsTable(DispatchBaseClass):
+class IAcadSortentsTable(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Block(self): ...
@@ -14958,7 +14958,7 @@ class IGcadSortentsTable(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadSpline(DispatchBaseClass):
+class IAcadSpline(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddFitPoint(self, Index=..., fitPoint=...): ...
@@ -15104,7 +15104,7 @@ class IGcadSpline(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadState(DispatchBaseClass):
+class IAcadState(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -15113,7 +15113,7 @@ class IGcadState(DispatchBaseClass):
     @property
     def IsQuiescent(self): ...
 
-class IGcadSubDMesh(DispatchBaseClass):
+class IAcadSubDMesh(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -15213,7 +15213,7 @@ class IGcadSubDMesh(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadSummaryInfo(DispatchBaseClass):
+class IAcadSummaryInfo(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddCustomInfo(self, key=..., Value=...): ...
@@ -15258,7 +15258,7 @@ class IGcadSummaryInfo(DispatchBaseClass):
     @Title.setter
     def Title(self, value) -> None: ...
 
-class IGcadSurface(DispatchBaseClass):
+class IAcadSurface(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -15366,7 +15366,7 @@ class IGcadSurface(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadSweptSurface(DispatchBaseClass):
+class IAcadSweptSurface(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -15492,7 +15492,7 @@ class IGcadSweptSurface(DispatchBaseClass):
     @scale.setter
     def scale(self, value) -> None: ...
 
-class IGcadTable(DispatchBaseClass):
+class IAcadTable(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -15783,7 +15783,7 @@ class IGcadTable(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadTableCell(DispatchBaseClass):
+class IAcadTableCell(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -15993,7 +15993,7 @@ class IGcadTableCell(DispatchBaseClass):
     @format.setter
     def format(self, value) -> None: ...
 
-class IGcadTableStyle(DispatchBaseClass):
+class IAcadTableStyle(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -16080,7 +16080,7 @@ class IGcadTableStyle(DispatchBaseClass):
     @VertCellMargin.setter
     def VertCellMargin(self, value) -> None: ...
 
-class IGcadText(DispatchBaseClass):
+class IAcadText(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -16231,7 +16231,7 @@ class IGcadText(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadTextStyle(DispatchBaseClass):
+class IAcadTextStyle(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -16289,7 +16289,7 @@ class IGcadTextStyle(DispatchBaseClass):
     @fontFile.setter
     def fontFile(self, value) -> None: ...
 
-class IGcadTextStyles(DispatchBaseClass):
+class IAcadTextStyles(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -16324,7 +16324,7 @@ class IGcadTextStyles(DispatchBaseClass):
     def OwnerID(self): ...
     
 
-class IGcadTolerance(DispatchBaseClass):
+class IAcadTolerance(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -16450,7 +16450,7 @@ class IGcadTolerance(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadToolbar(DispatchBaseClass):
+class IAcadToolbar(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AddSeparator(self, Index=...): ...
@@ -16505,7 +16505,7 @@ class IGcadToolbar(DispatchBaseClass):
     @top.setter
     def top(self, value) -> None: ...
 
-class IGcadToolbarItem(DispatchBaseClass):
+class IAcadToolbarItem(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AttachToolbarToFlyout(self, MenuGroupName=..., ToolbarName=...): ...
@@ -16544,7 +16544,7 @@ class IGcadToolbarItem(DispatchBaseClass):
     @TagString.setter
     def TagString(self, value) -> None: ...
 
-class IGcadToolbars(DispatchBaseClass):
+class IAcadToolbars(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, ToolbarName=...): ...
@@ -16565,7 +16565,7 @@ class IGcadToolbars(DispatchBaseClass):
     @LargeButtons.setter
     def LargeButtons(self, value) -> None: ...
 
-class IGcadTrace(DispatchBaseClass):
+class IAcadTrace(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -16665,7 +16665,7 @@ class IGcadTrace(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class IGcadUCS(DispatchBaseClass):
+class IAcadUCS(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -16708,7 +16708,7 @@ class IGcadUCS(DispatchBaseClass):
     @YVector.setter
     def YVector(self, value) -> None: ...
 
-class IGcadUCSs(DispatchBaseClass):
+class IAcadUCSs(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Origin=..., XAxisPoint=..., YAxisPoint=..., Name=...): ...
@@ -16742,7 +16742,7 @@ class IGcadUCSs(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadUnderlay(DispatchBaseClass):
+class IAcadUnderlay(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -16886,7 +16886,7 @@ class IGcadUnderlay(DispatchBaseClass):
     def Visible(self, value) -> None: ...
     @Width.setter
 
-class IGcadUtility(DispatchBaseClass):
+class IAcadUtility(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def AngleFromXAxis(self, StartPoint=..., EndPoint=...): ...
@@ -16923,7 +16923,7 @@ class IGcadUtility(DispatchBaseClass):
     def TranslateCoordinates(self, Point=..., FromCoordSystem=..., ToCoordSystem=..., Displacement=..., OCSNormal=...): ...
     def __iter__(self): ...
 
-class IGcadView(DispatchBaseClass):
+class IAcadView(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -16933,7 +16933,7 @@ class IGcadView(DispatchBaseClass):
     def SetXData(self, XDataType=..., XDataValue=...): ...
     def __iter__(self): ...
 
-class IGcadViewport(DispatchBaseClass):
+class IAcadViewport(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -16949,7 +16949,7 @@ class IGcadViewport(DispatchBaseClass):
     def Split(self, NumWins=...): ...
     def __iter__(self): ...
     @property
-    def Application(self) -> IGcadApplication: ...
+    def Application(self) -> IAcadApplication: ...
     @property
     def ArcSmoothness(self): ...
     @property
@@ -16959,13 +16959,13 @@ class IGcadViewport(DispatchBaseClass):
     @property
     def CustomScale(self): ...
     @property
-    def Database(self) -> IGcadDatabase: ...
+    def Database(self) -> IAcadDatabase: ...
     @property
     def Direction(self): ...
     @property
     def DisplayLocked(self): ...
     @property
-    def Document(self) -> IGcadDocument: ...
+    def Document(self) -> IAcadDocument: ...
     @property
     def EntityName(self): ...
     @property
@@ -16983,7 +16983,7 @@ class IGcadViewport(DispatchBaseClass):
     @property
     def Height(self): ...
     @property
-    def Hyperlinks(self) -> IGcadHyperlinks: ...
+    def Hyperlinks(self) -> IAcadHyperlinks: ...
     @property
     def LabelBlockId(self): ...
     @property
@@ -17031,7 +17031,7 @@ class IGcadViewport(DispatchBaseClass):
     @property
     def Target(self): ...
     @property
-    def TrueColor(self) -> IGcadAcCmColor: ...
+    def TrueColor(self) -> IAcadAcCmColor: ...
     @property
     def TwistAngle(self): ...
     @property
@@ -17126,7 +17126,7 @@ class IGcadViewport(DispatchBaseClass):
     def color(self, value) -> None: ...
 
 
-class IGcadViewports(DispatchBaseClass):
+class IAcadViewports(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -17143,13 +17143,13 @@ class IGcadViewports(DispatchBaseClass):
     def __len__(self) -> int: ...
     def __nonzero__(self): ...
     @property
-    def Application(self) -> IGcadApplication: ...
+    def Application(self) -> IAcadApplication: ...
     @property
     def Count(self): ...
     @property
-    def Database(self) -> IGcadDatabase: ...
+    def Database(self) -> IAcadDatabase: ...
     @property
-    def Document(self) -> IGcadDocument: ...
+    def Document(self) -> IAcadDocument: ...
     @property
     def Handle(self): ...
     @property
@@ -17161,7 +17161,7 @@ class IGcadViewports(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadViews(DispatchBaseClass):
+class IAcadViews(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Add(self, Name=...): ...
@@ -17177,13 +17177,13 @@ class IGcadViews(DispatchBaseClass):
     def __len__(self) -> int: ...
     def __nonzero__(self): ...
     @property
-    def Application(self) -> IGcadApplication: ...
+    def Application(self) -> IAcadApplication: ...
     @property
     def Count(self): ...
     @property
-    def Database(self) -> IGcadDatabase: ...
+    def Database(self) -> IAcadDatabase: ...
     @property
-    def Document(self) -> IGcadDocument: ...
+    def Document(self) -> IAcadDocument: ...
     @property
     def Handle(self): ...
     @property
@@ -17195,7 +17195,7 @@ class IGcadViews(DispatchBaseClass):
     @property
     def OwnerID(self): ...
 
-class IGcadXRecord(DispatchBaseClass):
+class IAcadXRecord(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def Delete(self): ...
@@ -17207,11 +17207,11 @@ class IGcadXRecord(DispatchBaseClass):
     def SetXRecordData(self, XRecordDataType=..., XRecordDataValue=...): ...
     def __iter__(self): ...
     @property
-    def Application(self) -> IGcadApplication: ...
+    def Application(self) -> IAcadApplication: ...
     @property
-    def Database(self) -> IGcadDatabase: ...
+    def Database(self) -> IAcadDatabase: ...
     @property
-    def Document(self) -> IGcadDocument: ...
+    def Document(self) -> IAcadDocument: ...
     @property
     def Handle(self): ...
     @property
@@ -17231,7 +17231,7 @@ class IGcadXRecord(DispatchBaseClass):
     @TranslateIDs.setter
     def TranslateIDs(self, value) -> None: ...
 
-class IGcadXline(DispatchBaseClass):
+class IAcadXline(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def ArrayPolar(self, NumberOfObjects=..., AngleToFill=..., CenterPoint=...): ...
@@ -17256,11 +17256,11 @@ class IGcadXline(DispatchBaseClass):
     def Update(self): ...
     def __iter__(self): ...
     @property
-    def Application(self) -> IGcadApplication: ...
+    def Application(self) -> IAcadApplication: ...
     @property
-    def Database(self) -> IGcadDatabase: ...
+    def Database(self) -> IAcadDatabase: ...
     @property
-    def Document(self) -> IGcadDocument: ...
+    def Document(self) -> IAcadDocument: ...
     @property
     def EntityName(self): ...
     @property
@@ -17272,7 +17272,7 @@ class IGcadXline(DispatchBaseClass):
     @property
     def HasExtensionDictionary(self): ...
     @property
-    def Hyperlinks(self) -> IGcadHyperlinks: ...
+    def Hyperlinks(self) -> IAcadHyperlinks: ...
     @property
     def Layer(self): ...
     @property
@@ -17292,7 +17292,7 @@ class IGcadXline(DispatchBaseClass):
     @property
     def PlotStyleName(self): ...
     @property
-    def TrueColor(self) -> IGcadGcCmColor: ...
+    def TrueColor(self) -> IAcadGcCmColor: ...
     @property
     def Visible(self): ...
     @property
@@ -17346,7 +17346,7 @@ class _DGcadDocumentEvents:
     def __del__(self) -> None: ...
     def close(self) -> None: ...
 
-class _IGcadScriptJetEvents(DispatchBaseClass):
+class _IAcadScriptJetEvents(DispatchBaseClass):
     CLSID: Incomplete
     coclass_clsid: Incomplete
     def __iter__(self): ...
@@ -17360,773 +17360,773 @@ class GcPePropertyEditorColor(CoClassBaseClass):
 class Gcad3DFace(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcad3DFace
+    default_interface = IAcad3DFace
 
 class Gcad3DPolyline(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcad3DPolyline
+    default_interface = IAcad3DPolyline
 
 class Gcad3DSolid(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcad3DSolid
+    default_interface = IAcad3DSolid
 
 class GcadAcCmColor(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadGcCmColor
+    default_interface = IAcadGcCmColor
 
 class GcadApplication(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadApplication
+    default_interface = IAcadApplication
 
 class GcadArc(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadArc
+    default_interface = IAcadArc
 
 class GcadArcAlignedText(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadArcAlignedText
+    default_interface = IAcadArcAlignedText
 
 class GcadAssocArrayPath(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadAssocArrayPath
+    default_interface = IAcadAssocArrayPath
 
 class GcadAssocArrayPolar(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadAssocArrayPolar
+    default_interface = IAcadAssocArrayPolar
 
 class GcadAssocArrayRectangular(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadAssocArrayRectangular
+    default_interface = IAcadAssocArrayRectangular
 
 class GcadAttribute(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadAttribute
+    default_interface = IAcadAttribute
 
 class GcadAttributeReference(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadAttributeReference
+    default_interface = IAcadAttributeReference
 
 class GcadBlock(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadBlock
+    default_interface = IAcadBlock
 
 class GcadBlockReference(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadBlockReference
+    default_interface = IAcadBlockReference
 
 class GcadBlocks(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadBlocks
+    default_interface = IAcadBlocks
 
 class GcadCamera(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadCamera
+    default_interface = IAcadCamera
 
 class GcadCircle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadCircle
+    default_interface = IAcadCircle
 
 class GcadDatabase(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadDatabase
+    default_interface = IAcadDatabase
 
 class GcadDatabasePreferences(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadDatabasePreferences
+    default_interface = IAcadDatabasePreferences
 
 class GcadDgnUnderlay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadUnderlay
+    default_interface = IAcadUnderlay
 
 class GcadDictionaries(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDictionaries
+    default_interface = IAcadDictionaries
 
 class GcadDictionary(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDictionary
+    default_interface = IAcadDictionary
 
 class GcadDim3PointAngular(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDim3PointAngular
+    default_interface = IAcadDim3PointAngular
 
 class GcadDimAligned(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimAligned
+    default_interface = IAcadDimAligned
 
 class GcadDimAngular(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimAngular
+    default_interface = IAcadDimAngular
 
 class GcadDimArcLength(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimArcLength
+    default_interface = IAcadDimArcLength
 
 class GcadDimDiametric(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimDiametric
+    default_interface = IAcadDimDiametric
 
 class GcadDimOrdinate(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimOrdinate
+    default_interface = IAcadDimOrdinate
 
 class GcadDimRadial(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimRadial
+    default_interface = IAcadDimRadial
 
 class GcadDimRadialLarge(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimRadialLarge
+    default_interface = IAcadDimRadialLarge
 
 class GcadDimRotated(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimRotated
+    default_interface = IAcadDimRotated
 
 class GcadDimStyle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimStyle
+    default_interface = IAcadDimStyle
 
 class GcadDimStyles(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimStyles
+    default_interface = IAcadDimStyles
 
 class GcadDimension(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadDimension
+    default_interface = IAcadDimension
 
 class GcadDocument(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadDocument
+    default_interface = IAcadDocument
 
 class GcadDocuments(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadDocuments
+    default_interface = IAcadDocuments
 
 class GcadDwfUnderlay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadUnderlay
+    default_interface = IAcadUnderlay
 
 class GcadDynamicBlockReferenceProperty(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadDynamicBlockReferenceProperty
+    default_interface = IAcadDynamicBlockReferenceProperty
 
 class GcadEllipse(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadEllipse
+    default_interface = IAcadEllipse
 
 class GcadEntity(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadEntity
+    default_interface = IAcadEntity
 
 class GcadExternalReference(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadExternalReference
+    default_interface = IAcadExternalReference
 
 class GcadExtrudedSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadExtrudedSurface
+    default_interface = IAcadExtrudedSurface
 
 class GcadFileDependencies(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadFileDependencies
+    default_interface = IAcadFileDependencies
 
 class GcadFileDependency(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadFileDependency
+    default_interface = IAcadFileDependency
 
 class GcadGroup(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadGroup
+    default_interface = IAcadGroup
 
 class GcadGroups(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadGroups
+    default_interface = IAcadGroups
 
 class GcadHatch(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadHatch
+    default_interface = IAcadHatch
 
 class GcadHelix(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadHelix
+    default_interface = IAcadHelix
 
 class GcadHyperlink(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadHyperlink
+    default_interface = IAcadHyperlink
 
 class GcadHyperlinks(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadHyperlinks
+    default_interface = IAcadHyperlinks
 
 class GcadIdPair(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadIdPair
+    default_interface = IAcadIdPair
 
 class GcadLWPolyline(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLWPolyline
+    default_interface = IAcadLWPolyline
 
 class GcadLayer(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLayer
+    default_interface = IAcadLayer
 
 class GcadLayerStateManager(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadLayerStateManager
+    default_interface = IAcadLayerStateManager
 
 class GcadLayers(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLayers
+    default_interface = IAcadLayers
 
 class GcadLayout(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLayout
+    default_interface = IAcadLayout
 
 class GcadLayouts(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLayouts
+    default_interface = IAcadLayouts
 
 class GcadLeader(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLeader
+    default_interface = IAcadLeader
 
 class GcadLight(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLight
+    default_interface = IAcadLight
 
 class GcadLine(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLine
+    default_interface = IAcadLine
 
 class GcadLineType(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLineType
+    default_interface = IAcadLineType
 
 class GcadLineTypes(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLineTypes
+    default_interface = IAcadLineTypes
 
 class GcadLoftedSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadLoftedSurface
+    default_interface = IAcadLoftedSurface
 
 class GcadMInsertBlock(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadMInsertBlock
+    default_interface = IAcadMInsertBlock
 
 class GcadMLeader(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadMLeader
+    default_interface = IAcadMLeader
 
 class GcadMLeaderStyle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadMLeaderStyle
+    default_interface = IAcadMLeaderStyle
 
 class GcadMLine(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadMLine
+    default_interface = IAcadMLine
 
 class GcadMText(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadMText
+    default_interface = IAcadMText
 
 class GcadMaterial(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadMaterial
+    default_interface = IAcadMaterial
 
 class GcadMaterials(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadMaterials
+    default_interface = IAcadMaterials
 
 class GcadMenuBar(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadMenuBar
+    default_interface = IAcadMenuBar
 
 class GcadMenuGroup(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadMenuGroup
+    default_interface = IAcadMenuGroup
 
 class GcadMenuGroups(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadMenuGroups
+    default_interface = IAcadMenuGroups
 
 class GcadModelSpace(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadModelSpace
+    default_interface = IAcadModelSpace
 
 class GcadNurbSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadNurbSurface
+    default_interface = IAcadNurbSurface
 
 class GcadObject(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadObject
+    default_interface = IAcadObject
 
 class GcadOle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadOle
+    default_interface = IAcadOle
 
 class GcadPViewport(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadPViewport
+    default_interface = IAcadPViewport
 
 class GcadPaperSpace(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadPaperSpace
+    default_interface = IAcadPaperSpace
 
 class GcadPdfUnderlay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadUnderlay
+    default_interface = IAcadUnderlay
 
 class GcadPlaneSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadPlaneSurface
+    default_interface = IAcadPlaneSurface
 
 class GcadPlot(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPlot
+    default_interface = IAcadPlot
 
 class GcadPlotConfiguration(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPlotConfiguration
+    default_interface = IAcadPlotConfiguration
 
 class GcadPlotConfigurations(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadPlotConfigurations
+    default_interface = IAcadPlotConfigurations
 
 class GcadPoint(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadPoint
+    default_interface = IAcadPoint
 
 class GcadPointCloudEx(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadPointCloudEx
+    default_interface = IAcadPointCloudEx
 
 class GcadPolyfaceMesh(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadPolyfaceMesh
+    default_interface = IAcadPolyfaceMesh
 
 class GcadPolygonMesh(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadPolygonMesh
+    default_interface = IAcadPolygonMesh
 
 class GcadPolyline(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadPolyline
+    default_interface = IAcadPolyline
 
 class GcadPopupMenu(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPopupMenu
+    default_interface = IAcadPopupMenu
 
 class GcadPopupMenuItem(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPopupMenuItem
+    default_interface = IAcadPopupMenuItem
 
 class GcadPopupMenus(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPopupMenus
+    default_interface = IAcadPopupMenus
 
 class GcadPreferences(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPreferences
+    default_interface = IAcadPreferences
 
 class GcadPreferencesDisplay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPreferencesDisplay
+    default_interface = IAcadPreferencesDisplay
 
 class GcadPreferencesDrafting(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPreferencesDrafting
+    default_interface = IAcadPreferencesDrafting
 
 class GcadPreferencesFiles(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPreferencesFiles
+    default_interface = IAcadPreferencesFiles
 
 class GcadPreferencesOpenSave(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPreferencesOpenSave
+    default_interface = IAcadPreferencesOpenSave
 
 class GcadPreferencesOutput(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPreferencesOutput
+    default_interface = IAcadPreferencesOutput
 
 class GcadPreferencesProfiles(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPreferencesProfiles
+    default_interface = IAcadPreferencesProfiles
 
 class GcadPreferencesSelection(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPreferencesSelection
+    default_interface = IAcadPreferencesSelection
 
 class GcadPreferencesSystem(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPreferencesSystem
+    default_interface = IAcadPreferencesSystem
 
 class GcadPreferencesUser(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadPreferencesUser
+    default_interface = IAcadPreferencesUser
 
 class GcadRasterImage(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadRasterImage
+    default_interface = IAcadRasterImage
 
 class GcadRay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadRay
+    default_interface = IAcadRay
 
 class GcadRegion(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadRegion
+    default_interface = IAcadRegion
 
 class GcadRegisteredApplication(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadRegisteredApplication
+    default_interface = IAcadRegisteredApplication
 
 class GcadRegisteredApplications(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadRegisteredApplications
+    default_interface = IAcadRegisteredApplications
 
 class GcadRevolvedSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadRevolvedSurface
+    default_interface = IAcadRevolvedSurface
 
 class GcadScriptJet(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadScriptJet
+    default_interface = IAcadScriptJet
 
 class GcadSection(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadSection
+    default_interface = IAcadSection
 
 class GcadSectionManager(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadSectionManager
+    default_interface = IAcadSectionManager
 
 class GcadSectionSettings(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadSectionSettings
+    default_interface = IAcadSectionSettings
 
 class GcadSecurityParams(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadSecurityParams
+    default_interface = IAcadSecurityParams
 
 class GcadSelectionSet(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadSelectionSet
+    default_interface = IAcadSelectionSet
 
 class GcadSelectionSets(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadSelectionSets
+    default_interface = IAcadSelectionSets
 
 class GcadShadowDisplay(CoClassBaseClass):
     CLSID: Incomplete
@@ -18136,496 +18136,496 @@ class GcadShadowDisplay(CoClassBaseClass):
 class GcadShape(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadShape
+    default_interface = IAcadShape
 
 class GcadSolid(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadSolid
+    default_interface = IAcadSolid
 
 class GcadSortentsTable(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadSortentsTable
+    default_interface = IAcadSortentsTable
 
 class GcadSpline(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadSpline
+    default_interface = IAcadSpline
 
 class GcadState(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadState
+    default_interface = IAcadState
 
 class GcadSubDMesh(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadSubDMesh
+    default_interface = IAcadSubDMesh
 
 class GcadSummaryInfo(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadSummaryInfo
+    default_interface = IAcadSummaryInfo
 
 class GcadSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadSurface
+    default_interface = IAcadSurface
 
 class GcadSweptSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadSweptSurface
+    default_interface = IAcadSweptSurface
 
 class GcadTable(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadTable
+    default_interface = IAcadTable
 
 class GcadTableCell(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadTableCell
+    default_interface = IAcadTableCell
 
 class GcadTableStyle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadTableStyle
+    default_interface = IAcadTableStyle
 
 class GcadText(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadText
+    default_interface = IAcadText
 
 class GcadTextStyle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadTextStyle
+    default_interface = IAcadTextStyle
 
 class GcadTextStyles(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadTextStyles
+    default_interface = IAcadTextStyles
 
 class GcadTolerance(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadTolerance
+    default_interface = IAcadTolerance
 
 class GcadToolbar(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadToolbar
+    default_interface = IAcadToolbar
 
 class GcadToolbarItem(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadToolbarItem
+    default_interface = IAcadToolbarItem
 
 class GcadToolbars(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadToolbars
+    default_interface = IAcadToolbars
 
 class GcadTrace(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadTrace
+    default_interface = IAcadTrace
 
 class GcadUCS(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadUCS
+    default_interface = IAcadUCS
 
 class GcadUCSs(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadUCSs
+    default_interface = IAcadUCSs
 
 class GcadUtility(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
-    default_interface = IGcadUtility
+    default_interface = IAcadUtility
 
 class GcadView(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadView
+    default_interface = IAcadView
 
 class GcadViewport(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadViewport
+    default_interface = IAcadViewport
 
 class GcadViewports(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadViewports
+    default_interface = IAcadViewports
 
 class GcadViews(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadViews
+    default_interface = IAcadViews
 
 class GcadXRecord(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadXRecord
+    default_interface = IAcadXRecord
 
 class GcadXline(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
-    default_interface = IGcadXline
+    default_interface = IAcadXline
 
 IGcPePropertyEditorColor_vtables_dispatch_: int
 IGcPePropertyEditorColor_vtables_: Incomplete
-IGcad3DFace_vtables_dispatch_: int
-IGcad3DFace_vtables_: Incomplete
-IGcad3DPolyline_vtables_dispatch_: int
-IGcad3DPolyline_vtables_: Incomplete
-IGcad3DSolid_vtables_dispatch_: int
-IGcad3DSolid_vtables_: Incomplete
-IGcadApplication_vtables_dispatch_: int
-IGcadApplication_vtables_: Incomplete
-IGcadArc_vtables_dispatch_: int
-IGcadArc_vtables_: Incomplete
-IGcadArcAlignedText_vtables_dispatch_: int
-IGcadArcAlignedText_vtables_: Incomplete
-IGcadAssocArrayPath_vtables_dispatch_: int
-IGcadAssocArrayPath_vtables_: Incomplete
-IGcadAssocArrayPolar_vtables_dispatch_: int
-IGcadAssocArrayPolar_vtables_: Incomplete
-IGcadAssocArrayRectangular_vtables_dispatch_: int
-IGcadAssocArrayRectangular_vtables_: Incomplete
-IGcadAttribute_vtables_dispatch_: int
-IGcadAttribute_vtables_: Incomplete
-IGcadAttributeReference_vtables_dispatch_: int
-IGcadAttributeReference_vtables_: Incomplete
-IGcadBlock_vtables_dispatch_: int
-IGcadBlock_vtables_: Incomplete
-IGcadBlockReference_vtables_dispatch_: int
-IGcadBlockReference_vtables_: Incomplete
-IGcadBlocks_vtables_dispatch_: int
-IGcadBlocks_vtables_: Incomplete
-IGcadCamera_vtables_dispatch_: int
-IGcadCamera_vtables_: Incomplete
-IGcadCircle_vtables_dispatch_: int
-IGcadCircle_vtables_: Incomplete
-IGcadDatabase_vtables_dispatch_: int
-IGcadDatabase_vtables_: Incomplete
-IGcadDatabasePreferences_vtables_dispatch_: int
-IGcadDatabasePreferences_vtables_: Incomplete
-IGcadDictionaries_vtables_dispatch_: int
-IGcadDictionaries_vtables_: Incomplete
-IGcadDictionary_vtables_dispatch_: int
-IGcadDictionary_vtables_: Incomplete
-IGcadDim3PointAngular_vtables_dispatch_: int
-IGcadDim3PointAngular_vtables_: Incomplete
-IGcadDimAligned_vtables_dispatch_: int
-IGcadDimAligned_vtables_: Incomplete
-IGcadDimAngular_vtables_dispatch_: int
-IGcadDimAngular_vtables_: Incomplete
-IGcadDimArcLength_vtables_dispatch_: int
-IGcadDimArcLength_vtables_: Incomplete
-IGcadDimDiametric_vtables_dispatch_: int
-IGcadDimDiametric_vtables_: Incomplete
-IGcadDimOrdinate_vtables_dispatch_: int
-IGcadDimOrdinate_vtables_: Incomplete
-IGcadDimRadial_vtables_dispatch_: int
-IGcadDimRadial_vtables_: Incomplete
-IGcadDimRadialLarge_vtables_dispatch_: int
-IGcadDimRadialLarge_vtables_: Incomplete
-IGcadDimRotated_vtables_dispatch_: int
-IGcadDimRotated_vtables_: Incomplete
-IGcadDimStyle_vtables_dispatch_: int
-IGcadDimStyle_vtables_: Incomplete
-IGcadDimStyles_vtables_dispatch_: int
-IGcadDimStyles_vtables_: Incomplete
-IGcadDimension_vtables_dispatch_: int
-IGcadDimension_vtables_: Incomplete
-IGcadDocument_vtables_dispatch_: int
-IGcadDocument_vtables_: Incomplete
-IGcadDocuments_vtables_dispatch_: int
-IGcadDocuments_vtables_: Incomplete
-IGcadDwfUnderlay_vtables_dispatch_: int
-IGcadDwfUnderlay_vtables_: Incomplete
-IGcadDynamicBlockReferenceProperty_vtables_dispatch_: int
-IGcadDynamicBlockReferenceProperty_vtables_: Incomplete
-IGcadEllipse_vtables_dispatch_: int
-IGcadEllipse_vtables_: Incomplete
-IGcadEntity_vtables_dispatch_: int
-IGcadEntity_vtables_: Incomplete
-IGcadExternalReference_vtables_dispatch_: int
-IGcadExternalReference_vtables_: Incomplete
-IGcadExtrudedSurface_vtables_dispatch_: int
-IGcadExtrudedSurface_vtables_: Incomplete
-IGcadFileDependencies_vtables_dispatch_: int
-IGcadFileDependencies_vtables_: Incomplete
-IGcadFileDependency_vtables_dispatch_: int
-IGcadFileDependency_vtables_: Incomplete
-IGcadGcCmColor_vtables_dispatch_: int
-IGcadGcCmColor_vtables_: Incomplete
-IGcadGroup_vtables_dispatch_: int
-IGcadGroup_vtables_: Incomplete
-IGcadGroups_vtables_dispatch_: int
-IGcadGroups_vtables_: Incomplete
-IGcadHatch_vtables_dispatch_: int
-IGcadHatch_vtables_: Incomplete
-IGcadHelix_vtables_dispatch_: int
-IGcadHelix_vtables_: Incomplete
-IGcadHyperlink_vtables_dispatch_: int
-IGcadHyperlink_vtables_: Incomplete
-IGcadHyperlinks_vtables_dispatch_: int
-IGcadHyperlinks_vtables_: Incomplete
-IGcadIdPair_vtables_dispatch_: int
-IGcadIdPair_vtables_: Incomplete
-IGcadLWPolyline_vtables_dispatch_: int
-IGcadLWPolyline_vtables_: Incomplete
-IGcadLayer_vtables_dispatch_: int
-IGcadLayer_vtables_: Incomplete
-IGcadLayerStateManager_vtables_dispatch_: int
-IGcadLayerStateManager_vtables_: Incomplete
-IGcadLayers_vtables_dispatch_: int
-IGcadLayers_vtables_: Incomplete
-IGcadLayout_vtables_dispatch_: int
-IGcadLayout_vtables_: Incomplete
-IGcadLayouts_vtables_dispatch_: int
-IGcadLayouts_vtables_: Incomplete
-IGcadLeader_vtables_dispatch_: int
-IGcadLeader_vtables_: Incomplete
-IGcadLight_vtables_dispatch_: int
-IGcadLight_vtables_: Incomplete
-IGcadLight2_vtables_dispatch_: int
-IGcadLight2_vtables_: Incomplete
-IGcadLight3_vtables_dispatch_: int
-IGcadLight3_vtables_: Incomplete
-IGcadLine_vtables_dispatch_: int
-IGcadLine_vtables_: Incomplete
-IGcadLineType_vtables_dispatch_: int
-IGcadLineType_vtables_: Incomplete
-IGcadLineTypes_vtables_dispatch_: int
-IGcadLineTypes_vtables_: Incomplete
-IGcadLoftedSurface_vtables_dispatch_: int
-IGcadLoftedSurface_vtables_: Incomplete
-IGcadMInsertBlock_vtables_dispatch_: int
-IGcadMInsertBlock_vtables_: Incomplete
-IGcadMLeader_vtables_dispatch_: int
-IGcadMLeader_vtables_: Incomplete
-IGcadMLeaderStyle_vtables_dispatch_: int
-IGcadMLeaderStyle_vtables_: Incomplete
-IGcadMLine_vtables_dispatch_: int
-IGcadMLine_vtables_: Incomplete
-IGcadMText_vtables_dispatch_: int
-IGcadMText_vtables_: Incomplete
-IGcadMaterial_vtables_dispatch_: int
-IGcadMaterial_vtables_: Incomplete
-IGcadMaterials_vtables_dispatch_: int
-IGcadMaterials_vtables_: Incomplete
-IGcadMenuBar_vtables_dispatch_: int
-IGcadMenuBar_vtables_: Incomplete
-IGcadMenuGroup_vtables_dispatch_: int
-IGcadMenuGroup_vtables_: Incomplete
-IGcadMenuGroups_vtables_dispatch_: int
-IGcadMenuGroups_vtables_: Incomplete
-IGcadModelSpace_vtables_dispatch_: int
-IGcadModelSpace_vtables_: Incomplete
-IGcadNurbSurface_vtables_dispatch_: int
-IGcadNurbSurface_vtables_: Incomplete
-IGcadObject_vtables_dispatch_: int
-IGcadObject_vtables_: Incomplete
-IGcadOle_vtables_dispatch_: int
-IGcadOle_vtables_: Incomplete
-IGcadPViewport_vtables_dispatch_: int
-IGcadPViewport_vtables_: Incomplete
-IGcadPaperSpace_vtables_dispatch_: int
-IGcadPaperSpace_vtables_: Incomplete
-IGcadPlaneSurface_vtables_dispatch_: int
-IGcadPlaneSurface_vtables_: Incomplete
-IGcadPlot_vtables_dispatch_: int
-IGcadPlot_vtables_: Incomplete
-IGcadPlotConfiguration_vtables_dispatch_: int
-IGcadPlotConfiguration_vtables_: Incomplete
-IGcadPlotConfigurations_vtables_dispatch_: int
-IGcadPlotConfigurations_vtables_: Incomplete
-IGcadPoint_vtables_dispatch_: int
-IGcadPoint_vtables_: Incomplete
-IGcadPointCloudEx_vtables_dispatch_: int
-IGcadPointCloudEx_vtables_: Incomplete
-IGcadPolyfaceMesh_vtables_dispatch_: int
-IGcadPolyfaceMesh_vtables_: Incomplete
-IGcadPolygonMesh_vtables_dispatch_: int
-IGcadPolygonMesh_vtables_: Incomplete
-IGcadPolyline_vtables_dispatch_: int
-IGcadPolyline_vtables_: Incomplete
-IGcadPopupMenu_vtables_dispatch_: int
-IGcadPopupMenu_vtables_: Incomplete
-IGcadPopupMenuItem_vtables_dispatch_: int
-IGcadPopupMenuItem_vtables_: Incomplete
-IGcadPopupMenus_vtables_dispatch_: int
-IGcadPopupMenus_vtables_: Incomplete
-IGcadPreferences_vtables_dispatch_: int
-IGcadPreferences_vtables_: Incomplete
-IGcadPreferencesDisplay_vtables_dispatch_: int
-IGcadPreferencesDisplay_vtables_: Incomplete
-IGcadPreferencesDrafting_vtables_dispatch_: int
-IGcadPreferencesDrafting_vtables_: Incomplete
-IGcadPreferencesFiles_vtables_dispatch_: int
-IGcadPreferencesFiles_vtables_: Incomplete
-IGcadPreferencesOpenSave_vtables_dispatch_: int
-IGcadPreferencesOpenSave_vtables_: Incomplete
-IGcadPreferencesOutput_vtables_dispatch_: int
-IGcadPreferencesOutput_vtables_: Incomplete
-IGcadPreferencesProfiles_vtables_dispatch_: int
-IGcadPreferencesProfiles_vtables_: Incomplete
-IGcadPreferencesSelection_vtables_dispatch_: int
-IGcadPreferencesSelection_vtables_: Incomplete
-IGcadPreferencesSystem_vtables_dispatch_: int
-IGcadPreferencesSystem_vtables_: Incomplete
-IGcadPreferencesUser_vtables_dispatch_: int
-IGcadPreferencesUser_vtables_: Incomplete
-IGcadRasterImage_vtables_dispatch_: int
-IGcadRasterImage_vtables_: Incomplete
-IGcadRay_vtables_dispatch_: int
-IGcadRay_vtables_: Incomplete
-IGcadRegion_vtables_dispatch_: int
-IGcadRegion_vtables_: Incomplete
-IGcadRegisteredApplication_vtables_dispatch_: int
-IGcadRegisteredApplication_vtables_: Incomplete
-IGcadRegisteredApplications_vtables_dispatch_: int
-IGcadRegisteredApplications_vtables_: Incomplete
-IGcadRevolvedSurface_vtables_dispatch_: int
-IGcadRevolvedSurface_vtables_: Incomplete
-IGcadScriptJet_vtables_dispatch_: int
-IGcadScriptJet_vtables_: Incomplete
-IGcadSection_vtables_dispatch_: int
-IGcadSection_vtables_: Incomplete
-IGcadSection2_vtables_dispatch_: int
-IGcadSection2_vtables_: Incomplete
-IGcadSectionManager_vtables_dispatch_: int
-IGcadSectionManager_vtables_: Incomplete
-IGcadSectionSettings_vtables_dispatch_: int
-IGcadSectionSettings_vtables_: Incomplete
-IGcadSectionTypeSettings_vtables_dispatch_: int
-IGcadSectionTypeSettings_vtables_: Incomplete
-IGcadSecurityParams_vtables_dispatch_: int
-IGcadSecurityParams_vtables_: Incomplete
-IGcadSelectionSet_vtables_dispatch_: int
-IGcadSelectionSet_vtables_: Incomplete
-IGcadSelectionSets_vtables_dispatch_: int
-IGcadSelectionSets_vtables_: Incomplete
-IGcadShadowDisplay_vtables_dispatch_: int
-IGcadShadowDisplay_vtables_: Incomplete
-IGcadShape_vtables_dispatch_: int
-IGcadShape_vtables_: Incomplete
-IGcadSolid_vtables_dispatch_: int
-IGcadSolid_vtables_: Incomplete
-IGcadSortentsTable_vtables_dispatch_: int
-IGcadSortentsTable_vtables_: Incomplete
-IGcadSpline_vtables_dispatch_: int
-IGcadSpline_vtables_: Incomplete
-IGcadState_vtables_dispatch_: int
-IGcadState_vtables_: Incomplete
-IGcadSubDMesh_vtables_dispatch_: int
-IGcadSubDMesh_vtables_: Incomplete
-IGcadSummaryInfo_vtables_dispatch_: int
-IGcadSummaryInfo_vtables_: Incomplete
-IGcadSurface_vtables_dispatch_: int
-IGcadSurface_vtables_: Incomplete
-IGcadSweptSurface_vtables_dispatch_: int
-IGcadSweptSurface_vtables_: Incomplete
-IGcadTable_vtables_dispatch_: int
-IGcadTable_vtables_: Incomplete
-IGcadTableCell_vtables_dispatch_: int
-IGcadTableCell_vtables_: Incomplete
-IGcadTableStyle_vtables_dispatch_: int
-IGcadTableStyle_vtables_: Incomplete
-IGcadText_vtables_dispatch_: int
-IGcadText_vtables_: Incomplete
-IGcadTextStyle_vtables_dispatch_: int
-IGcadTextStyle_vtables_: Incomplete
-IGcadTextStyles_vtables_dispatch_: int
-IGcadTextStyles_vtables_: Incomplete
-IGcadTolerance_vtables_dispatch_: int
-IGcadTolerance_vtables_: Incomplete
-IGcadToolbar_vtables_dispatch_: int
-IGcadToolbar_vtables_: Incomplete
-IGcadToolbarItem_vtables_dispatch_: int
-IGcadToolbarItem_vtables_: Incomplete
-IGcadToolbars_vtables_dispatch_: int
-IGcadToolbars_vtables_: Incomplete
-IGcadTrace_vtables_dispatch_: int
-IGcadTrace_vtables_: Incomplete
-IGcadUCS_vtables_dispatch_: int
-IGcadUCS_vtables_: Incomplete
-IGcadUCSs_vtables_dispatch_: int
-IGcadUCSs_vtables_: Incomplete
-IGcadUnderlay_vtables_dispatch_: int
-IGcadUnderlay_vtables_: Incomplete
-IGcadUtility_vtables_dispatch_: int
-IGcadUtility_vtables_: Incomplete
-IGcadView_vtables_dispatch_: int
-IGcadView_vtables_: Incomplete
-IGcadViewport_vtables_dispatch_: int
-IGcadViewport_vtables_: Incomplete
-IGcadViewports_vtables_dispatch_: int
-IGcadViewports_vtables_: Incomplete
-IGcadViews_vtables_dispatch_: int
-IGcadViews_vtables_: Incomplete
-IGcadXRecord_vtables_dispatch_: int
-IGcadXRecord_vtables_: Incomplete
-IGcadXline_vtables_dispatch_: int
-IGcadXline_vtables_: Incomplete
+IAcad3DFace_vtables_dispatch_: int
+IAcad3DFace_vtables_: Incomplete
+IAcad3DPolyline_vtables_dispatch_: int
+IAcad3DPolyline_vtables_: Incomplete
+IAcad3DSolid_vtables_dispatch_: int
+IAcad3DSolid_vtables_: Incomplete
+IAcadApplication_vtables_dispatch_: int
+IAcadApplication_vtables_: Incomplete
+IAcadArc_vtables_dispatch_: int
+IAcadArc_vtables_: Incomplete
+IAcadArcAlignedText_vtables_dispatch_: int
+IAcadArcAlignedText_vtables_: Incomplete
+IAcadAssocArrayPath_vtables_dispatch_: int
+IAcadAssocArrayPath_vtables_: Incomplete
+IAcadAssocArrayPolar_vtables_dispatch_: int
+IAcadAssocArrayPolar_vtables_: Incomplete
+IAcadAssocArrayRectangular_vtables_dispatch_: int
+IAcadAssocArrayRectangular_vtables_: Incomplete
+IAcadAttribute_vtables_dispatch_: int
+IAcadAttribute_vtables_: Incomplete
+IAcadAttributeReference_vtables_dispatch_: int
+IAcadAttributeReference_vtables_: Incomplete
+IAcadBlock_vtables_dispatch_: int
+IAcadBlock_vtables_: Incomplete
+IAcadBlockReference_vtables_dispatch_: int
+IAcadBlockReference_vtables_: Incomplete
+IAcadBlocks_vtables_dispatch_: int
+IAcadBlocks_vtables_: Incomplete
+IAcadCamera_vtables_dispatch_: int
+IAcadCamera_vtables_: Incomplete
+IAcadCircle_vtables_dispatch_: int
+IAcadCircle_vtables_: Incomplete
+IAcadDatabase_vtables_dispatch_: int
+IAcadDatabase_vtables_: Incomplete
+IAcadDatabasePreferences_vtables_dispatch_: int
+IAcadDatabasePreferences_vtables_: Incomplete
+IAcadDictionaries_vtables_dispatch_: int
+IAcadDictionaries_vtables_: Incomplete
+IAcadDictionary_vtables_dispatch_: int
+IAcadDictionary_vtables_: Incomplete
+IAcadDim3PointAngular_vtables_dispatch_: int
+IAcadDim3PointAngular_vtables_: Incomplete
+IAcadDimAligned_vtables_dispatch_: int
+IAcadDimAligned_vtables_: Incomplete
+IAcadDimAngular_vtables_dispatch_: int
+IAcadDimAngular_vtables_: Incomplete
+IAcadDimArcLength_vtables_dispatch_: int
+IAcadDimArcLength_vtables_: Incomplete
+IAcadDimDiametric_vtables_dispatch_: int
+IAcadDimDiametric_vtables_: Incomplete
+IAcadDimOrdinate_vtables_dispatch_: int
+IAcadDimOrdinate_vtables_: Incomplete
+IAcadDimRadial_vtables_dispatch_: int
+IAcadDimRadial_vtables_: Incomplete
+IAcadDimRadialLarge_vtables_dispatch_: int
+IAcadDimRadialLarge_vtables_: Incomplete
+IAcadDimRotated_vtables_dispatch_: int
+IAcadDimRotated_vtables_: Incomplete
+IAcadDimStyle_vtables_dispatch_: int
+IAcadDimStyle_vtables_: Incomplete
+IAcadDimStyles_vtables_dispatch_: int
+IAcadDimStyles_vtables_: Incomplete
+IAcadDimension_vtables_dispatch_: int
+IAcadDimension_vtables_: Incomplete
+IAcadDocument_vtables_dispatch_: int
+IAcadDocument_vtables_: Incomplete
+IAcadDocuments_vtables_dispatch_: int
+IAcadDocuments_vtables_: Incomplete
+IAcadDwfUnderlay_vtables_dispatch_: int
+IAcadDwfUnderlay_vtables_: Incomplete
+IAcadDynamicBlockReferenceProperty_vtables_dispatch_: int
+IAcadDynamicBlockReferenceProperty_vtables_: Incomplete
+IAcadEllipse_vtables_dispatch_: int
+IAcadEllipse_vtables_: Incomplete
+IAcadEntity_vtables_dispatch_: int
+IAcadEntity_vtables_: Incomplete
+IAcadExternalReference_vtables_dispatch_: int
+IAcadExternalReference_vtables_: Incomplete
+IAcadExtrudedSurface_vtables_dispatch_: int
+IAcadExtrudedSurface_vtables_: Incomplete
+IAcadFileDependencies_vtables_dispatch_: int
+IAcadFileDependencies_vtables_: Incomplete
+IAcadFileDependency_vtables_dispatch_: int
+IAcadFileDependency_vtables_: Incomplete
+IAcadGcCmColor_vtables_dispatch_: int
+IAcadGcCmColor_vtables_: Incomplete
+IAcadGroup_vtables_dispatch_: int
+IAcadGroup_vtables_: Incomplete
+IAcadGroups_vtables_dispatch_: int
+IAcadGroups_vtables_: Incomplete
+IAcadHatch_vtables_dispatch_: int
+IAcadHatch_vtables_: Incomplete
+IAcadHelix_vtables_dispatch_: int
+IAcadHelix_vtables_: Incomplete
+IAcadHyperlink_vtables_dispatch_: int
+IAcadHyperlink_vtables_: Incomplete
+IAcadHyperlinks_vtables_dispatch_: int
+IAcadHyperlinks_vtables_: Incomplete
+IAcadIdPair_vtables_dispatch_: int
+IAcadIdPair_vtables_: Incomplete
+IAcadLWPolyline_vtables_dispatch_: int
+IAcadLWPolyline_vtables_: Incomplete
+IAcadLayer_vtables_dispatch_: int
+IAcadLayer_vtables_: Incomplete
+IAcadLayerStateManager_vtables_dispatch_: int
+IAcadLayerStateManager_vtables_: Incomplete
+IAcadLayers_vtables_dispatch_: int
+IAcadLayers_vtables_: Incomplete
+IAcadLayout_vtables_dispatch_: int
+IAcadLayout_vtables_: Incomplete
+IAcadLayouts_vtables_dispatch_: int
+IAcadLayouts_vtables_: Incomplete
+IAcadLeader_vtables_dispatch_: int
+IAcadLeader_vtables_: Incomplete
+IAcadLight_vtables_dispatch_: int
+IAcadLight_vtables_: Incomplete
+IAcadLight2_vtables_dispatch_: int
+IAcadLight2_vtables_: Incomplete
+IAcadLight3_vtables_dispatch_: int
+IAcadLight3_vtables_: Incomplete
+IAcadLine_vtables_dispatch_: int
+IAcadLine_vtables_: Incomplete
+IAcadLineType_vtables_dispatch_: int
+IAcadLineType_vtables_: Incomplete
+IAcadLineTypes_vtables_dispatch_: int
+IAcadLineTypes_vtables_: Incomplete
+IAcadLoftedSurface_vtables_dispatch_: int
+IAcadLoftedSurface_vtables_: Incomplete
+IAcadMInsertBlock_vtables_dispatch_: int
+IAcadMInsertBlock_vtables_: Incomplete
+IAcadMLeader_vtables_dispatch_: int
+IAcadMLeader_vtables_: Incomplete
+IAcadMLeaderStyle_vtables_dispatch_: int
+IAcadMLeaderStyle_vtables_: Incomplete
+IAcadMLine_vtables_dispatch_: int
+IAcadMLine_vtables_: Incomplete
+IAcadMText_vtables_dispatch_: int
+IAcadMText_vtables_: Incomplete
+IAcadMaterial_vtables_dispatch_: int
+IAcadMaterial_vtables_: Incomplete
+IAcadMaterials_vtables_dispatch_: int
+IAcadMaterials_vtables_: Incomplete
+IAcadMenuBar_vtables_dispatch_: int
+IAcadMenuBar_vtables_: Incomplete
+IAcadMenuGroup_vtables_dispatch_: int
+IAcadMenuGroup_vtables_: Incomplete
+IAcadMenuGroups_vtables_dispatch_: int
+IAcadMenuGroups_vtables_: Incomplete
+IAcadModelSpace_vtables_dispatch_: int
+IAcadModelSpace_vtables_: Incomplete
+IAcadNurbSurface_vtables_dispatch_: int
+IAcadNurbSurface_vtables_: Incomplete
+IAcadObject_vtables_dispatch_: int
+IAcadObject_vtables_: Incomplete
+IAcadOle_vtables_dispatch_: int
+IAcadOle_vtables_: Incomplete
+IAcadPViewport_vtables_dispatch_: int
+IAcadPViewport_vtables_: Incomplete
+IAcadPaperSpace_vtables_dispatch_: int
+IAcadPaperSpace_vtables_: Incomplete
+IAcadPlaneSurface_vtables_dispatch_: int
+IAcadPlaneSurface_vtables_: Incomplete
+IAcadPlot_vtables_dispatch_: int
+IAcadPlot_vtables_: Incomplete
+IAcadPlotConfiguration_vtables_dispatch_: int
+IAcadPlotConfiguration_vtables_: Incomplete
+IAcadPlotConfigurations_vtables_dispatch_: int
+IAcadPlotConfigurations_vtables_: Incomplete
+IAcadPoint_vtables_dispatch_: int
+IAcadPoint_vtables_: Incomplete
+IAcadPointCloudEx_vtables_dispatch_: int
+IAcadPointCloudEx_vtables_: Incomplete
+IAcadPolyfaceMesh_vtables_dispatch_: int
+IAcadPolyfaceMesh_vtables_: Incomplete
+IAcadPolygonMesh_vtables_dispatch_: int
+IAcadPolygonMesh_vtables_: Incomplete
+IAcadPolyline_vtables_dispatch_: int
+IAcadPolyline_vtables_: Incomplete
+IAcadPopupMenu_vtables_dispatch_: int
+IAcadPopupMenu_vtables_: Incomplete
+IAcadPopupMenuItem_vtables_dispatch_: int
+IAcadPopupMenuItem_vtables_: Incomplete
+IAcadPopupMenus_vtables_dispatch_: int
+IAcadPopupMenus_vtables_: Incomplete
+IAcadPreferences_vtables_dispatch_: int
+IAcadPreferences_vtables_: Incomplete
+IAcadPreferencesDisplay_vtables_dispatch_: int
+IAcadPreferencesDisplay_vtables_: Incomplete
+IAcadPreferencesDrafting_vtables_dispatch_: int
+IAcadPreferencesDrafting_vtables_: Incomplete
+IAcadPreferencesFiles_vtables_dispatch_: int
+IAcadPreferencesFiles_vtables_: Incomplete
+IAcadPreferencesOpenSave_vtables_dispatch_: int
+IAcadPreferencesOpenSave_vtables_: Incomplete
+IAcadPreferencesOutput_vtables_dispatch_: int
+IAcadPreferencesOutput_vtables_: Incomplete
+IAcadPreferencesProfiles_vtables_dispatch_: int
+IAcadPreferencesProfiles_vtables_: Incomplete
+IAcadPreferencesSelection_vtables_dispatch_: int
+IAcadPreferencesSelection_vtables_: Incomplete
+IAcadPreferencesSystem_vtables_dispatch_: int
+IAcadPreferencesSystem_vtables_: Incomplete
+IAcadPreferencesUser_vtables_dispatch_: int
+IAcadPreferencesUser_vtables_: Incomplete
+IAcadRasterImage_vtables_dispatch_: int
+IAcadRasterImage_vtables_: Incomplete
+IAcadRay_vtables_dispatch_: int
+IAcadRay_vtables_: Incomplete
+IAcadRegion_vtables_dispatch_: int
+IAcadRegion_vtables_: Incomplete
+IAcadRegisteredApplication_vtables_dispatch_: int
+IAcadRegisteredApplication_vtables_: Incomplete
+IAcadRegisteredApplications_vtables_dispatch_: int
+IAcadRegisteredApplications_vtables_: Incomplete
+IAcadRevolvedSurface_vtables_dispatch_: int
+IAcadRevolvedSurface_vtables_: Incomplete
+IAcadScriptJet_vtables_dispatch_: int
+IAcadScriptJet_vtables_: Incomplete
+IAcadSection_vtables_dispatch_: int
+IAcadSection_vtables_: Incomplete
+IAcadSection2_vtables_dispatch_: int
+IAcadSection2_vtables_: Incomplete
+IAcadSectionManager_vtables_dispatch_: int
+IAcadSectionManager_vtables_: Incomplete
+IAcadSectionSettings_vtables_dispatch_: int
+IAcadSectionSettings_vtables_: Incomplete
+IAcadSectionTypeSettings_vtables_dispatch_: int
+IAcadSectionTypeSettings_vtables_: Incomplete
+IAcadSecurityParams_vtables_dispatch_: int
+IAcadSecurityParams_vtables_: Incomplete
+IAcadSelectionSet_vtables_dispatch_: int
+IAcadSelectionSet_vtables_: Incomplete
+IAcadSelectionSets_vtables_dispatch_: int
+IAcadSelectionSets_vtables_: Incomplete
+IAcadShadowDisplay_vtables_dispatch_: int
+IAcadShadowDisplay_vtables_: Incomplete
+IAcadShape_vtables_dispatch_: int
+IAcadShape_vtables_: Incomplete
+IAcadSolid_vtables_dispatch_: int
+IAcadSolid_vtables_: Incomplete
+IAcadSortentsTable_vtables_dispatch_: int
+IAcadSortentsTable_vtables_: Incomplete
+IAcadSpline_vtables_dispatch_: int
+IAcadSpline_vtables_: Incomplete
+IAcadState_vtables_dispatch_: int
+IAcadState_vtables_: Incomplete
+IAcadSubDMesh_vtables_dispatch_: int
+IAcadSubDMesh_vtables_: Incomplete
+IAcadSummaryInfo_vtables_dispatch_: int
+IAcadSummaryInfo_vtables_: Incomplete
+IAcadSurface_vtables_dispatch_: int
+IAcadSurface_vtables_: Incomplete
+IAcadSweptSurface_vtables_dispatch_: int
+IAcadSweptSurface_vtables_: Incomplete
+IAcadTable_vtables_dispatch_: int
+IAcadTable_vtables_: Incomplete
+IAcadTableCell_vtables_dispatch_: int
+IAcadTableCell_vtables_: Incomplete
+IAcadTableStyle_vtables_dispatch_: int
+IAcadTableStyle_vtables_: Incomplete
+IAcadText_vtables_dispatch_: int
+IAcadText_vtables_: Incomplete
+IAcadTextStyle_vtables_dispatch_: int
+IAcadTextStyle_vtables_: Incomplete
+IAcadTextStyles_vtables_dispatch_: int
+IAcadTextStyles_vtables_: Incomplete
+IAcadTolerance_vtables_dispatch_: int
+IAcadTolerance_vtables_: Incomplete
+IAcadToolbar_vtables_dispatch_: int
+IAcadToolbar_vtables_: Incomplete
+IAcadToolbarItem_vtables_dispatch_: int
+IAcadToolbarItem_vtables_: Incomplete
+IAcadToolbars_vtables_dispatch_: int
+IAcadToolbars_vtables_: Incomplete
+IAcadTrace_vtables_dispatch_: int
+IAcadTrace_vtables_: Incomplete
+IAcadUCS_vtables_dispatch_: int
+IAcadUCS_vtables_: Incomplete
+IAcadUCSs_vtables_dispatch_: int
+IAcadUCSs_vtables_: Incomplete
+IAcadUnderlay_vtables_dispatch_: int
+IAcadUnderlay_vtables_: Incomplete
+IAcadUtility_vtables_dispatch_: int
+IAcadUtility_vtables_: Incomplete
+IAcadView_vtables_dispatch_: int
+IAcadView_vtables_: Incomplete
+IAcadViewport_vtables_dispatch_: int
+IAcadViewport_vtables_: Incomplete
+IAcadViewports_vtables_dispatch_: int
+IAcadViewports_vtables_: Incomplete
+IAcadViews_vtables_dispatch_: int
+IAcadViews_vtables_: Incomplete
+IAcadXRecord_vtables_dispatch_: int
+IAcadXRecord_vtables_: Incomplete
+IAcadXline_vtables_dispatch_: int
+IAcadXline_vtables_: Incomplete
 RecordMap: Incomplete
 CLSIDToClassMap: Incomplete
 CLSIDToPackageMap: Incomplete

@@ -1561,7 +1561,7 @@ class IGcPePropertyEditorColor(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -1581,7 +1581,7 @@ class IGcPePropertyEditorColor(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityColor": (1, 2, (3, 0), (), "EntityColor", None),
@@ -1602,7 +1602,7 @@ class IGcPePropertyEditorColor(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcad3DFace(DispatchBaseClass):
+class IAcad3DFace(DispatchBaseClass):
     'GCAD 3dFace Interface'
     CLSID = IID('{46250F63-F4E2-4C99-A12B-0471714BC659}')
     coclass_clsid = IID('{457AD5FC-1656-4606-AB8A-EF7F0215B238}')
@@ -1645,7 +1645,7 @@ class IGcad3DFace(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -1759,7 +1759,7 @@ class IGcad3DFace(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -1767,7 +1767,7 @@ class IGcad3DFace(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -1778,7 +1778,7 @@ class IGcad3DFace(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "VisibilityEdge1": (2, 2, (11, 0), (), "VisibilityEdge1", None),
         "VisibilityEdge2": (3, 2, (11, 0), (), "VisibilityEdge2", None),
@@ -1812,7 +1812,7 @@ class IGcad3DFace(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcad3DPolyline(DispatchBaseClass):
+class IAcad3DPolyline(DispatchBaseClass):
     'GCAD 3dPolyline Interface'
     CLSID = IID('{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}')
     coclass_clsid = IID('{7D7FD20A-AC1D-46BC-8C49-8EBB286F681E}')
@@ -1864,7 +1864,7 @@ class IGcad3DPolyline(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -1968,7 +1968,7 @@ class IGcad3DPolyline(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Closed": (6, 2, (11, 0), (), "Closed", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -1976,7 +1976,7 @@ class IGcad3DPolyline(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Length": (7, 2, (5, 0), (), "Length", None),
@@ -1988,7 +1988,7 @@ class IGcad3DPolyline(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Type": (5, 2, (3, 0), (), "Type", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -2017,7 +2017,7 @@ class IGcad3DPolyline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcad3DSolid(DispatchBaseClass):
+class IAcad3DSolid(DispatchBaseClass):
     'GCAD 3dSolid Interface'
     CLSID = IID('{93102923-D2AD-4429-86B3-A09D589BF38F}')
     coclass_clsid = IID('{C998B595-8233-4859-A51A-492A25E9EB67}')
@@ -2039,7 +2039,7 @@ class IGcad3DSolid(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(8, LCID, 1, (24, 0), ((3, 1), (9, 1)),Operation
             , SolidObject)
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def CheckInterference(self, Object=defaultNamedNotOptArg, CreateInterferenceSolid=defaultNamedNotOptArg):
         'Check interference for the 3dsolid object.'
         ret = self._oleobj_.InvokeTypes(9, LCID, 1, (9, 0), ((9, 1), (11, 1)),Object
@@ -2068,7 +2068,7 @@ class IGcad3DSolid(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -2139,7 +2139,7 @@ class IGcad3DSolid(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
-    # Result is of type IGcadRegion
+    # Result is of type IAcadRegion
     def SectionSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         'Create a section of the 3dsolid given three points that define the plane. Returns the Section as a Region object'
         ret = self._oleobj_.InvokeTypes(10, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1)),Point1
@@ -2153,7 +2153,7 @@ class IGcad3DSolid(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def SliceSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Negative=defaultNamedNotOptArg):
         'Create a slice of the 3dsolid given three points that define the plane. Returns the resulting array of 3dSolid object. '
         ret = self._oleobj_.InvokeTypes(11, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (11, 1)),Point1
@@ -2183,7 +2183,7 @@ class IGcad3DSolid(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Centroid": (1, 2, (12, 0), (), "Centroid", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -2192,7 +2192,7 @@ class IGcad3DSolid(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "History": (14, 2, (11, 0), (), "History", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -2211,7 +2211,7 @@ class IGcad3DSolid(DispatchBaseClass):
         "RadiiOfGyration": (6, 2, (12, 0), (), "RadiiOfGyration", None),
         "ShowHistory": (15, 2, (11, 0), (), "ShowHistory", None),
         "SolidType": (12, 2, (8, 0), (), "SolidType", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Volume": (7, 2, (5, 0), (), "Volume", None),
@@ -2240,8 +2240,8 @@ class IGcad3DSolid(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadApplication(DispatchBaseClass):
-    'IGcadApplication �ӿ�'
+class IAcadApplication(DispatchBaseClass):
+    'IAcadApplication �ӿ�'
     CLSID = IID('{B1872638-6D18-482F-90BA-38086D17625F}')
     coclass_clsid = IID('{E06CA8F7-4554-4993-8460-1127D2513B1E}')
 
@@ -2250,7 +2250,7 @@ class IGcadApplication(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(33, LCID, 1, (24, 0), ((8, 1),),Expression
             )
 
-    # Result is of type IGcadState
+    # Result is of type IAcadState
     def GetAcadState(self):
         'Retrieves an GcadState object.'
         ret = self._oleobj_.InvokeTypes(42, LCID, 1, (9, 0), (),)
@@ -2360,25 +2360,25 @@ class IGcadApplication(DispatchBaseClass):
             , UpperRight)
 
     _prop_map_get_ = {
-        # Method 'ActiveDocument' returns object of type 'IGcadDocument'
+        # Method 'ActiveDocument' returns object of type 'IAcadDocument'
         "ActiveDocument": (5, 2, (9, 0), (), "ActiveDocument", '{9368AF30-60A3-47E3-A743-60D4C21FB580}'),
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (4, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Caption": (3, 2, (8, 0), (), "Caption", None),
-        # Method 'Documents' returns object of type 'IGcadDocuments'
+        # Method 'Documents' returns object of type 'IAcadDocuments'
         "Documents": (32, 2, (9, 0), (), "Documents", '{31010F88-E412-4A4B-B482-B71D45D1A28A}'),
         "FullName": (6, 2, (8, 0), (), "FullName", None),
         "HWND": (44, 2, (20, 0), (), "HWND", None),
         "HWND32": (48, 2, (3, 0), (), "HWND32", None),
         "Height": (7, 2, (3, 0), (), "Height", None),
         "LocaleId": (10, 2, (3, 0), (), "LocaleId", None),
-        # Method 'MenuBar' returns object of type 'IGcadMenuBar'
+        # Method 'MenuBar' returns object of type 'IAcadMenuBar'
         "MenuBar": (29, 2, (9, 0), (), "MenuBar", '{87925C1E-ADEA-48BD-8BF1-239F9A116A81}'),
-        # Method 'MenuGroups' returns object of type 'IGcadMenuGroups'
+        # Method 'MenuGroups' returns object of type 'IAcadMenuGroups'
         "MenuGroups": (28, 2, (9, 0), (), "MenuGroups", '{1CB4149C-D49B-45BE-AEBC-D27A5B666A0B}'),
         "Name": (2, 2, (8, 0), (), "Name", None),
         "Path": (9, 2, (8, 0), (), "Path", None),
-        # Method 'Preferences' returns object of type 'IGcadPreferences'
+        # Method 'Preferences' returns object of type 'IAcadPreferences'
         "Preferences": (14, 2, (9, 0), (), "Preferences", '{253889D2-ABBB-4DB6-AB75-00DCACCB59A5}'),
         "VBE": (27, 2, (9, 0), (), "VBE", None),
         "Version": (12, 2, (8, 0), (), "Version", None),
@@ -2405,7 +2405,7 @@ class IGcadApplication(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadArc(DispatchBaseClass):
+class IAcadArc(DispatchBaseClass):
     'GCAD Arc Interface'
     CLSID = IID('{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}')
     coclass_clsid = IID('{7E99A93E-D084-43FF-9311-D24A452FF851}')
@@ -2442,7 +2442,7 @@ class IGcadArc(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -2552,7 +2552,7 @@ class IGcadArc(DispatchBaseClass):
         "ArcLength": (8, 2, (5, 0), (), "ArcLength", None),
         "Area": (11, 2, (5, 0), (), "Area", None),
         "Center": (2, 2, (12, 0), (), "Center", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EndAngle": (6, 2, (5, 0), (), "EndAngle", None),
@@ -2562,7 +2562,7 @@ class IGcadArc(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -2579,7 +2579,7 @@ class IGcadArc(DispatchBaseClass):
         "StartPoint": (1, 2, (12, 0), (), "StartPoint", None),
         "Thickness": (9, 2, (5, 0), (), "Thickness", None),
         "TotalAngle": (7, 2, (5, 0), (), "TotalAngle", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -2610,7 +2610,7 @@ class IGcadArc(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadArcAlignedText(DispatchBaseClass):
+class IAcadArcAlignedText(DispatchBaseClass):
     CLSID = IID('{1AAE5275-D7FE-47D0-9264-9BE6D9A4A9E4}')
     coclass_clsid = IID('{BA03B2BE-41B3-40E6-A493-7F46CCD7CC05}')
 
@@ -2646,7 +2646,7 @@ class IGcadArcAlignedText(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -2745,7 +2745,7 @@ class IGcadArcAlignedText(DispatchBaseClass):
         "ArcOffset": (7, 2, (5, 0), (), "ArcOffset", None),
         "Center": (2, 2, (12, 0), (), "Center", None),
         "CharSpacing": (12, 2, (5, 0), (), "CharSpacing", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EndAngle": (6, 2, (5, 0), (), "EndAngle", None),
@@ -2755,7 +2755,7 @@ class IGcadArcAlignedText(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (10, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LeftOffset": (8, 2, (5, 0), (), "LeftOffset", None),
@@ -2771,7 +2771,7 @@ class IGcadArcAlignedText(DispatchBaseClass):
         "Radius": (4, 2, (5, 0), (), "Radius", None),
         "RightOffset": (9, 2, (5, 0), (), "RightOffset", None),
         "StartAngle": (5, 2, (5, 0), (), "StartAngle", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "WidthFactor": (11, 2, (5, 0), (), "WidthFactor", None),
@@ -2808,8 +2808,8 @@ class IGcadArcAlignedText(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadAssocArrayPath(DispatchBaseClass):
-    'IGcadAssocArrayPath Interface'
+class IAcadAssocArrayPath(DispatchBaseClass):
+    'IAcadAssocArrayPath Interface'
     CLSID = IID('{F39B739A-A0E8-49C5-95B9-23F7C6496075}')
     coclass_clsid = IID('{3745EF1D-3D36-4500-8034-7526342623D3}')
 
@@ -2870,7 +2870,7 @@ class IGcadAssocArrayPath(DispatchBaseClass):
         'Gets the dynamic block properties'
         return self._ApplyTypes_(514, 1, (12, 0), (), 'GetDynamicBlockProperties', None,)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -2976,7 +2976,7 @@ class IGcadAssocArrayPath(DispatchBaseClass):
         "AlignItems": (643, 2, (11, 0), (), "AlignItems", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BasePoint": (601, 2, (12, 0), (), "BasePoint", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EffectiveName": (512, 2, (8, 0), (), "EffectiveName", None),
@@ -2988,7 +2988,7 @@ class IGcadAssocArrayPath(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasAttributes": (11, 2, (11, 0), (), "HasAttributes", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsUnits": (521, 2, (8, 0), (), "InsUnits", None),
         "InsUnitsFactor": (528, 2, (5, 0), (), "InsUnitsFactor", None),
@@ -3015,7 +3015,7 @@ class IGcadAssocArrayPath(DispatchBaseClass):
         "RowElevation": (610, 2, (5, 0), (), "RowElevation", None),
         "RowSpacing": (609, 2, (5, 0), (), "RowSpacing", None),
         "StartOffset": (615, 2, (5, 0), (), "StartOffset", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -3070,8 +3070,8 @@ class IGcadAssocArrayPath(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadAssocArrayPolar(DispatchBaseClass):
-    'IGcadAssocArrayPolar Interface'
+class IAcadAssocArrayPolar(DispatchBaseClass):
+    'IAcadAssocArrayPolar Interface'
     CLSID = IID('{79D41413-42B3-449F-8959-DA04EE748C1B}')
     coclass_clsid = IID('{AC93B51F-F467-4928-B094-03EA43B3A681}')
 
@@ -3132,7 +3132,7 @@ class IGcadAssocArrayPolar(DispatchBaseClass):
         'Gets the dynamic block properties'
         return self._ApplyTypes_(514, 1, (12, 0), (), 'GetDynamicBlockProperties', None,)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -3240,7 +3240,7 @@ class IGcadAssocArrayPolar(DispatchBaseClass):
         "AngleBetweenItems": (657, 2, (5, 0), (), "AngleBetweenItems", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BasePoint": (601, 2, (12, 0), (), "BasePoint", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Direction": (641, 2, (3, 0), (), "Direction", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -3252,7 +3252,7 @@ class IGcadAssocArrayPolar(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasAttributes": (11, 2, (11, 0), (), "HasAttributes", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsUnits": (521, 2, (8, 0), (), "InsUnits", None),
         "InsUnitsFactor": (528, 2, (5, 0), (), "InsUnitsFactor", None),
@@ -3279,7 +3279,7 @@ class IGcadAssocArrayPolar(DispatchBaseClass):
         "RowCount": (608, 2, (3, 0), (), "RowCount", None),
         "RowElevation": (610, 2, (5, 0), (), "RowElevation", None),
         "RowSpacing": (609, 2, (5, 0), (), "RowSpacing", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -3333,8 +3333,8 @@ class IGcadAssocArrayPolar(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadAssocArrayRectangular(DispatchBaseClass):
-    'IGcadAssocArrayRectangular Interface'
+class IAcadAssocArrayRectangular(DispatchBaseClass):
+    'IAcadAssocArrayRectangular Interface'
     CLSID = IID('{A0D37AF5-3A72-4ACC-84DC-D815BE30FF65}')
     coclass_clsid = IID('{48E1D6AC-00B6-41DF-9A4F-26F4F47A8EE6}')
 
@@ -3395,7 +3395,7 @@ class IGcadAssocArrayRectangular(DispatchBaseClass):
         'Gets the dynamic block properties'
         return self._ApplyTypes_(514, 1, (12, 0), (), 'GetDynamicBlockProperties', None,)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -3504,7 +3504,7 @@ class IGcadAssocArrayRectangular(DispatchBaseClass):
         "BasePoint": (601, 2, (12, 0), (), "BasePoint", None),
         "ColumnCount": (615, 2, (3, 0), (), "ColumnCount", None),
         "ColumnSpacing": (616, 2, (5, 0), (), "ColumnSpacing", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EffectiveName": (512, 2, (8, 0), (), "EffectiveName", None),
@@ -3514,7 +3514,7 @@ class IGcadAssocArrayRectangular(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasAttributes": (11, 2, (11, 0), (), "HasAttributes", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsUnits": (521, 2, (8, 0), (), "InsUnits", None),
         "InsUnitsFactor": (528, 2, (5, 0), (), "InsUnitsFactor", None),
@@ -3537,7 +3537,7 @@ class IGcadAssocArrayRectangular(DispatchBaseClass):
         "RowCount": (608, 2, (3, 0), (), "RowCount", None),
         "RowElevation": (610, 2, (5, 0), (), "RowElevation", None),
         "RowSpacing": (609, 2, (5, 0), (), "RowSpacing", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -3588,7 +3588,7 @@ class IGcadAssocArrayRectangular(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadAttribute(DispatchBaseClass):
+class IAcadAttribute(DispatchBaseClass):
     'GCAD Attribute Interface'
     CLSID = IID('{DB4711D4-33D9-408F-9E34-93A7F91248F2}')
     coclass_clsid = IID('{3BE70A3D-E2C4-42A6-989C-2F1E08C338D4}')
@@ -3625,7 +3625,7 @@ class IGcadAttribute(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -3734,7 +3734,7 @@ class IGcadAttribute(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Backward": (20, 2, (11, 0), (), "Backward", None),
         "Constant": (22, 2, (11, 0), (), "Constant", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -3745,7 +3745,7 @@ class IGcadAttribute(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (9, 2, (5, 0), (), "Height", None),
         "HorizontalAlignment": (7, 2, (3, 0), (), "HorizontalAlignment", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsertionPoint": (14, 2, (12, 0), (), "InsertionPoint", None),
         "Invisible": (21, 2, (11, 0), (), "Invisible", None),
@@ -3776,7 +3776,7 @@ class IGcadAttribute(DispatchBaseClass):
         "TextGenerationFlag": (16, 2, (3, 0), (), "TextGenerationFlag", None),
         "TextString": (4, 2, (8, 0), (), "TextString", None),
         "Thickness": (17, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UpsideDown": (19, 2, (11, 0), (), "UpsideDown", None),
         "Verify": (23, 2, (11, 0), (), "Verify", None),
@@ -3833,7 +3833,7 @@ class IGcadAttribute(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadAttributeReference(DispatchBaseClass):
+class IAcadAttributeReference(DispatchBaseClass):
     'Gcad Attribute Reference Interface'
     CLSID = IID('{183D30F5-55EB-4409-9FC8-06B66E6578FA}')
     coclass_clsid = IID('{326662C0-F9F3-4A5B-BFE5-2431F4AEF3D8}')
@@ -3870,7 +3870,7 @@ class IGcadAttributeReference(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -3975,7 +3975,7 @@ class IGcadAttributeReference(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Backward": (18, 2, (11, 0), (), "Backward", None),
         "Constant": (20, 2, (11, 0), (), "Constant", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -3986,7 +3986,7 @@ class IGcadAttributeReference(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (1, 2, (5, 0), (), "Height", None),
         "HorizontalAlignment": (2, 2, (3, 0), (), "HorizontalAlignment", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsertionPoint": (3, 2, (12, 0), (), "InsertionPoint", None),
         "Invisible": (19, 2, (11, 0), (), "Invisible", None),
@@ -4011,7 +4011,7 @@ class IGcadAttributeReference(DispatchBaseClass):
         "TextGenerationFlag": (11, 2, (3, 0), (), "TextGenerationFlag", None),
         "TextString": (12, 2, (8, 0), (), "TextString", None),
         "Thickness": (13, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UpsideDown": (17, 2, (11, 0), (), "UpsideDown", None),
         "VerticalAlignment": (14, 2, (3, 0), (), "VerticalAlignment", None),
@@ -4058,12 +4058,12 @@ class IGcadAttributeReference(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadBlock(DispatchBaseClass):
+class IAcadBlock(DispatchBaseClass):
     'A block definition containing a name and a set of objects'
     CLSID = IID('{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}')
     coclass_clsid = IID('{60C11D4D-6F51-4A16-88CE-305C5BBC84F1}')
 
-    # Result is of type IGcad3DFace
+    # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object given four vertices'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -4076,7 +4076,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DFace', '{46250F63-F4E2-4C99-A12B-0471714BC659}')
         return ret
 
-    # Result is of type IGcadPolygonMesh
+    # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form 3D mesh, given the number of points in the M and N directions and the coordinates of the points in the M and N directions'
         PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
@@ -4086,7 +4086,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DMesh', '{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}')
         return ret
 
-    # Result is of type IGcad3DPolyline
+    # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a 3D polyline from the given array of coordinates'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -4096,7 +4096,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DPoly', '{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}')
         return ret
 
-    # Result is of type IGcadArc
+    # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc given the center, radius, start angle, and end angle of the arc'
         Center = VTR8ArrayOrVal(Center)
@@ -4106,7 +4106,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddArc', '{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}')
         return ret
 
-    # Result is of type IGcadAttribute
+    # Result is of type IAcadAttribute
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an attribute definition at the given location with the specified properties'
@@ -4118,7 +4118,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddAttribute', '{DB4711D4-33D9-408F-9E34-93A7F91248F2}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box with edges parallel to the axes of the WCS'
         Origin = VTR8ArrayOrVal(Origin)
@@ -4128,7 +4128,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddBox', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadCircle
+    # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given a center point and radius'
         Center = VTR8ArrayOrVal(Center)
@@ -4138,7 +4138,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCircle', '{70B267B4-5885-477C-BE74-F898EE7FE9EA}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone with the base on the XY plane of the WCS'
         Center = VTR8ArrayOrVal(Center)
@@ -4156,7 +4156,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCustomObject', None)
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
         Center = VTR8ArrayOrVal(Center)
@@ -4166,7 +4166,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCylinder', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadDim3PointAngular
+    # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -4178,7 +4178,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDim3PointAngular', '{EA05C039-0D70-4713-865B-71DF0B02F6CA}')
         return ret
 
-    # Result is of type IGcadDimAligned
+    # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension object'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -4190,7 +4190,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAligned', '{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}')
         return ret
 
-    # Result is of type IGcadDimAngular
+    # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -4202,7 +4202,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAngular', '{78931DD8-09C7-44F5-9CB5-83198A8CD286}')
         return ret
 
-    # Result is of type IGcadDimArcLength
+    # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         'Creates an arc length dimension for an arc'
         ArcCenter = VTR8ArrayOrVal(ArcCenter)
@@ -4215,7 +4215,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimArc', '{6BE0895F-AB23-4095-8180-0BBD8E790138}')
         return ret
 
-    # Result is of type IGcadDimDiametric
+    # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension for a circle or arc given the two points on the diameter and the length of the leader line'
         ChordPoint = VTR8ArrayOrVal(ChordPoint)
@@ -4226,7 +4226,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimDiametric', '{CF7DAB54-2669-4E42-B5A5-297B0154CE04}')
         return ret
 
-    # Result is of type IGcadDimOrdinate
+    # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension given the definition point, and leader endpoint'
         DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
@@ -4237,7 +4237,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimOrdinate', '{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}')
         return ret
 
-    # Result is of type IGcadDimRadial
+    # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension for the selected object at the given location'
         Center = VTR8ArrayOrVal(Center)
@@ -4248,7 +4248,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadial', '{6070AA16-B13D-4B73-AA07-722C59BC09B5}')
         return ret
 
-    # Result is of type IGcadDimRadialLarge
+    # Result is of type IAcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         'Creates a jogged radial dimension for an arc, circle, or polyline arc segment'
@@ -4262,7 +4262,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadialLarge', '{E3D1CABD-C84B-49D2-9D47-984F880D33A2}')
         return ret
 
-    # Result is of type IGcadDimRotated
+    # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a rotated linear dimension'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -4274,7 +4274,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRotated', '{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}')
         return ret
 
-    # Result is of type IGcadEllipse
+    # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the XY plane of the WCS given the center point, a point on the major axis, and the radius ratio'
         Center = VTR8ArrayOrVal(Center)
@@ -4284,7 +4284,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipse', '{21565C97-8E2E-442B-8F69-C9662BC89DCA}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cone on the XY plane of the WCS given the Center, MajorRadius, MinorRadius, and Height'
         Center = VTR8ArrayOrVal(Center)
@@ -4294,7 +4294,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cylinder whose base is on the XY plane of the WCS, given the Center, MajorRadius, MinorRadius, and Height'
         Center = VTR8ArrayOrVal(Center)
@@ -4304,7 +4304,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCylinder', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolid(self, Profile=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, TaperAngle=defaultNamedNotOptArg):
         'Creates an extruded solid given the Profile, Height, and TaperAngle'
         ret = self._oleobj_.InvokeTypes(1558, LCID, 1, (9, 0), ((9, 1), (5, 1), (5, 1)),Profile
@@ -4313,7 +4313,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolid', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolidAlongPath(self, Profile=defaultNamedNotOptArg, Path=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and an extrusion path'
         ret = self._oleobj_.InvokeTypes(1559, LCID, 1, (9, 0), ((9, 1), (9, 1)),Profile
@@ -4322,7 +4322,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolidAlongPath', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadHatch
+    # Result is of type IAcadHatch
     def AddHatch(self, PatternType=defaultNamedNotOptArg, PatternName=defaultNamedNotOptArg, Associativity=defaultNamedNotOptArg, HatchObjectType=defaultNamedOptArg):
         'Creates a Hatch object'
         ret = self._oleobj_.InvokeTypes(1579, LCID, 1, (9, 0), ((3, 1), (8, 1), (11, 1), (12, 17)),PatternType
@@ -4331,7 +4331,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddHatch', '{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}')
         return ret
 
-    # Result is of type IGcadLeader
+    # Result is of type IAcadLeader
     def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
         'Creates a leader line, given the coordinates of the points'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -4341,7 +4341,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLeader', '{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}')
         return ret
 
-    # Result is of type IGcadLWPolyline
+    # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a lightweight polyline from a list of vertices'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -4351,7 +4351,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLightWeightPolyline', '{B32517C5-036E-4CB0-8538-66BD5FC625C4}')
         return ret
 
-    # Result is of type IGcadLine
+    # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a line passing through two points'
         StartPoint = VTR8ArrayOrVal(StartPoint)
@@ -4362,7 +4362,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLine', '{EB1641A6-750D-49EB-A681-0BAEB77E7388}')
         return ret
 
-    # Result is of type IGcadMInsertBlock
+    # Result is of type IAcadMInsertBlock
     def AddMInsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
@@ -4376,14 +4376,14 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMInsertBlock', '{2EA3AB94-E461-4DDC-9B9B-894406F31256}')
         return ret
 
-    # Result is of type IGcadMLeader
+    # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         'Creates a multileader'
         PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{59898AB2-E779-4D7C-B77C-86E9E10B2226}',PointsArray
             , leaderLineIndex)
 
-    # Result is of type IGcadMLine
+    # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Creates a polyface mesh from a list of vertices'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -4393,7 +4393,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMLine', '{0DA73585-0488-4699-BCD2-AB0F5C91D404}')
         return ret
 
-    # Result is of type IGcadMText
+    # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates an MText entity in a rectangle defined by the insertion point and width of the bounding box'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -4403,7 +4403,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMText', '{50FA2201-1260-4323-8C00-3EA7E36680B6}')
         return ret
 
-    # Result is of type IGcadPoint
+    # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object at a given location'
         Point = VTR8ArrayOrVal(Point)
@@ -4413,7 +4413,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPoint', '{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}')
         return ret
 
-    # Result is of type IGcadPolyfaceMesh
+    # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Creates a polyface mesh from a list of vertices'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -4423,7 +4423,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyfaceMesh', '{FD4B5856-B661-4E10-8B79-1E793FDB0E50}')
         return ret
 
-    # Result is of type IGcadPolyline
+    # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline from a list of vertices'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -4433,7 +4433,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyline', '{780E9428-D7F9-4F96-8E91-55C8F3CF3082}')
         return ret
 
-    # Result is of type IGcadRasterImage
+    # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a new raster image based on an existing image file'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -4443,7 +4443,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRaster', '{1A5BD135-D93B-4BFD-8027-E8277D629B46}')
         return ret
 
-    # Result is of type IGcadRay
+    # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two unique points'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -4460,7 +4460,7 @@ class IGcadBlock(DispatchBaseClass):
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid, given the region around an axis'
         AxisPoint = VTR8ArrayOrVal(AxisPoint)
@@ -4471,7 +4471,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRevolvedSolid', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadSection
+    # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         'Creates a section plane'
         FromPoint = VTR8ArrayOrVal(FromPoint)
@@ -4482,7 +4482,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSection', '{13C9B549-488C-48B2-A7D1-9B299FEE3C22}')
         return ret
 
-    # Result is of type IGcadShape
+    # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a Shape object based on a template identified by name, at the given insertion point, scale factor, and rotation'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -4492,7 +4492,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddShape', '{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}')
         return ret
 
-    # Result is of type IGcadSolid
+    # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 2D solid polygon'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -4505,7 +4505,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSolid', '{38D2992F-DF38-497F-9E2B-68D813057E8D}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius'
         Center = VTR8ArrayOrVal(Center)
@@ -4515,7 +4515,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSphere', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadSpline
+    # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a quadratic or cubic NURBS (nonuniform rational B-spline) curve'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -4525,7 +4525,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSpline', '{3D506D60-0138-48DD-8166-E5512E441206}')
         return ret
 
-    # Result is of type IGcadTable
+    # Result is of type IAcadTable
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width'
@@ -4536,7 +4536,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTable', '{449C1C61-4BD2-445C-BA5E-ED97DF538B9D}')
         return ret
 
-    # Result is of type IGcadText
+    # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a single line of text'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -4546,7 +4546,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddText', '{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}')
         return ret
 
-    # Result is of type IGcadTolerance
+    # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance entity'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -4557,7 +4557,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTolerance', '{98D4741E-D869-4950-8B28-046B6884A084}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus at the given location'
         Center = VTR8ArrayOrVal(Center)
@@ -4567,7 +4567,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTorus', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadTrace
+    # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a Trace object from an array of points'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -4577,7 +4577,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTrace', '{4253025F-5BC5-4D78-8D65-138D2DBED220}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width, and height'
         Center = VTR8ArrayOrVal(Center)
@@ -4587,7 +4587,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddWedge', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadXline
+    # Result is of type IAcadXline
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attaches an external reference (xref) to the drawing'
@@ -4601,7 +4601,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AttachExternalReference', '{29EB1F45-3E5E-41E2-B909-2EA909858B11}')
         return ret
 
-    # Result is of type IGcadExternalReference
+    # Result is of type IAcadExternalReference
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attaches an external reference (xref) to the drawing'
@@ -4630,7 +4630,7 @@ class IGcadBlock(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -4643,7 +4643,7 @@ class IGcadBlock(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadBlockReference
+    # Result is of type IAcadBlockReference
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts a drawing file or a named block that has been defined in the current drawing'
@@ -4655,7 +4655,7 @@ class IGcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'InsertBlock', '{0E143589-AFCC-44FC-8000-4C8D44F80ED6}')
         return ret
 
-    # Result is of type IGcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -4690,7 +4690,7 @@ class IGcadBlock(DispatchBaseClass):
         "BlockScaling": (1600, 2, (3, 0), (), "BlockScaling", None),
         "Comments": (1597, 2, (8, 0), (), "Comments", None),
         "Count": (1536, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Explodable": (1599, 2, (11, 0), (), "Explodable", None),
@@ -4699,7 +4699,7 @@ class IGcadBlock(DispatchBaseClass):
         "IsDynamicBlock": (1601, 2, (11, 0), (), "IsDynamicBlock", None),
         "IsLayout": (1582, 2, (11, 0), (), "IsLayout", None),
         "IsXRef": (1584, 2, (11, 0), (), "IsXRef", None),
-        # Method 'Layout' returns object of type 'IGcadLayout'
+        # Method 'Layout' returns object of type 'IAcadLayout'
         "Layout": (1583, 2, (9, 0), (), "Layout", '{F8AE8A77-1909-452A-95E8-0B833451FD4B}'),
         "Name": (1537, 2, (8, 0), (), "Name", None),
         "ObjectID": (1029, 2, (20, 0), (), "ObjectID", None),
@@ -4708,7 +4708,7 @@ class IGcadBlock(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "Path": (1596, 2, (8, 0), (), "Path", None),
         "Units": (1598, 2, (3, 0), (), "Units", None),
-        # Method 'XRefDatabase' returns object of type 'IGcadDatabase'
+        # Method 'XRefDatabase' returns object of type 'IAcadDatabase'
         "XRefDatabase": (1589, 2, (9, 0), (), "XRefDatabase", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
     }
     _prop_map_put_ = {
@@ -4747,7 +4747,7 @@ class IGcadBlock(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadBlockReference(DispatchBaseClass):
+class IAcadBlockReference(DispatchBaseClass):
     'GCAD Block Reference Interface'
     CLSID = IID('{0E143589-AFCC-44FC-8000-4C8D44F80ED6}')
     coclass_clsid = IID('{DA38CF1F-C119-4FE7-A5F9-AEC5E0C22709}')
@@ -4809,7 +4809,7 @@ class IGcadBlockReference(DispatchBaseClass):
         'Gets the dynamic block properties'
         return self._ApplyTypes_(514, 1, (12, 0), (), 'GetDynamicBlockProperties', None,)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -4911,7 +4911,7 @@ class IGcadBlockReference(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EffectiveName": (512, 2, (8, 0), (), "EffectiveName", None),
@@ -4921,7 +4921,7 @@ class IGcadBlockReference(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasAttributes": (11, 2, (11, 0), (), "HasAttributes", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsUnits": (521, 2, (8, 0), (), "InsUnits", None),
         "InsUnitsFactor": (528, 2, (5, 0), (), "InsUnitsFactor", None),
@@ -4939,7 +4939,7 @@ class IGcadBlockReference(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -4980,12 +4980,12 @@ class IGcadBlockReference(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadBlocks(DispatchBaseClass):
+class IAcadBlocks(DispatchBaseClass):
     'The collection of all blocks in the drawing'
     CLSID = IID('{E69E9F83-F577-403C-8F69-7F5E86AB61F4}')
     coclass_clsid = IID('{25F41555-CB62-4FB5-AF5A-FD50D5B99809}')
 
-    # Result is of type IGcadBlock
+    # Result is of type IAcadBlock
     def Add(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((12, 1), (8, 1)),InsertionPoint
@@ -5002,7 +5002,7 @@ class IGcadBlocks(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -5015,7 +5015,7 @@ class IGcadBlocks(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadBlock
+    # Result is of type IAcadBlock
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -5032,7 +5032,7 @@ class IGcadBlocks(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -5070,7 +5070,7 @@ class IGcadBlocks(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadCamera(DispatchBaseClass):
+class IAcadCamera(DispatchBaseClass):
     CLSID = IID('{6AB2CF34-6BE5-4E86-B1A7-BF6E8FC43E5E}')
     coclass_clsid = IID('{0C8A268F-2F40-4D78-8582-E900CD39AAB7}')
 
@@ -5106,7 +5106,7 @@ class IGcadCamera(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -5204,7 +5204,7 @@ class IGcadCamera(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BackPlane": (11, 2, (5, 0), (), "BackPlane", None),
         "Clipping": (12, 2, (8, 0), (), "Clipping", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -5216,7 +5216,7 @@ class IGcadCamera(DispatchBaseClass):
         "FrontPlane": (10, 2, (5, 0), (), "FrontPlane", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "IsPlotable": (9, 2, (11, 0), (), "IsPlotable", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -5233,7 +5233,7 @@ class IGcadCamera(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "RollAngle": (8, 2, (5, 0), (), "RollAngle", None),
         "Target": (3, 2, (12, 0), (), "Target", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -5270,7 +5270,7 @@ class IGcadCamera(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadCircle(DispatchBaseClass):
+class IAcadCircle(DispatchBaseClass):
     'GCAD Circle Interface'
     CLSID = IID('{70B267B4-5885-477C-BE74-F898EE7FE9EA}')
     coclass_clsid = IID('{C858EE7D-1B1F-4F2E-A61F-3F4AA8C6C1BA}')
@@ -5307,7 +5307,7 @@ class IGcadCircle(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -5413,7 +5413,7 @@ class IGcadCircle(DispatchBaseClass):
         "Area": (5, 2, (5, 0), (), "Area", None),
         "Center": (1, 2, (12, 0), (), "Center", None),
         "Circumference": (4, 2, (5, 0), (), "Circumference", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Diameter": (3, 2, (5, 0), (), "Diameter", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -5422,7 +5422,7 @@ class IGcadCircle(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -5436,7 +5436,7 @@ class IGcadCircle(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Radius": (2, 2, (5, 0), (), "Radius", None),
         "Thickness": (7, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -5468,8 +5468,8 @@ class IGcadCircle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDatabase(DispatchBaseClass):
-    'IGcadDatabase �ӿ�'
+class IAcadDatabase(DispatchBaseClass):
+    'IAcadDatabase �ӿ�'
     CLSID = IID('{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}')
     coclass_clsid = IID('{5E90323E-2CCF-4AE9-9B6F-6603AB611048}')
 
@@ -5502,48 +5502,48 @@ class IGcadDatabase(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Blocks' returns object of type 'IGcadBlocks'
+        # Method 'Blocks' returns object of type 'IAcadBlocks'
         "Blocks": (3, 2, (9, 0), (), "Blocks", '{E69E9F83-F577-403C-8F69-7F5E86AB61F4}'),
-        # Method 'Dictionaries' returns object of type 'IGcadDictionaries'
+        # Method 'Dictionaries' returns object of type 'IAcadDictionaries'
         "Dictionaries": (9, 2, (9, 0), (), "Dictionaries", '{7258BEDC-7CBD-4758-9F17-4ADC3C2C7C9E}'),
-        # Method 'DimStyles' returns object of type 'IGcadDimStyles'
+        # Method 'DimStyles' returns object of type 'IAcadDimStyles'
         "DimStyles": (6, 2, (9, 0), (), "DimStyles", '{B6084632-4A92-45F4-B8F7-0A91824DADB5}'),
         "ElevationModelSpace": (15, 2, (5, 0), (), "ElevationModelSpace", None),
         "ElevationPaperSpace": (16, 2, (5, 0), (), "ElevationPaperSpace", None),
-        # Method 'FileDependencies' returns object of type 'IGcadFileDependencies'
+        # Method 'FileDependencies' returns object of type 'IAcadFileDependencies'
         "FileDependencies": (70, 2, (9, 0), (), "FileDependencies", '{96FC4DA6-19CF-4E4A-A256-406D1386FAB9}'),
-        # Method 'Groups' returns object of type 'IGcadGroups'
+        # Method 'Groups' returns object of type 'IAcadGroups'
         "Groups": (5, 2, (9, 0), (), "Groups", '{1AFDB2C1-88C9-4BEE-8F5E-F4661538F170}'),
-        # Method 'Layers' returns object of type 'IGcadLayers'
+        # Method 'Layers' returns object of type 'IAcadLayers'
         "Layers": (7, 2, (9, 0), (), "Layers", '{7A9DE5C4-4D94-42BC-87DB-3D85D953A128}'),
-        # Method 'Layouts' returns object of type 'IGcadLayouts'
+        # Method 'Layouts' returns object of type 'IAcadLayouts'
         "Layouts": (20, 2, (9, 0), (), "Layouts", '{3B4B6A63-85E6-463A-9F6F-D99D77C731E7}'),
         "Limits": (17, 2, (12, 0), (), "Limits", None),
-        # Method 'Linetypes' returns object of type 'IGcadLineTypes'
+        # Method 'Linetypes' returns object of type 'IAcadLineTypes'
         "Linetypes": (8, 2, (9, 0), (), "Linetypes", '{ED574116-AE18-4BB2-9628-1921C110F038}'),
-        # Method 'Materials' returns object of type 'IGcadMaterials'
+        # Method 'Materials' returns object of type 'IAcadMaterials'
         "Materials": (73, 2, (9, 0), (), "Materials", '{C42C4E52-02C7-441C-B0BA-16771B542EA5}'),
-        # Method 'ModelSpace' returns object of type 'IGcadModelSpace'
+        # Method 'ModelSpace' returns object of type 'IAcadModelSpace'
         "ModelSpace": (1, 2, (9, 0), (), "ModelSpace", '{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}'),
-        # Method 'PaperSpace' returns object of type 'IGcadPaperSpace'
+        # Method 'PaperSpace' returns object of type 'IAcadPaperSpace'
         "PaperSpace": (2, 2, (9, 0), (), "PaperSpace", '{66FA50E9-6EB2-47CA-8EBA-7085C5E6C3A5}'),
-        # Method 'PlotConfigurations' returns object of type 'IGcadPlotConfigurations'
+        # Method 'PlotConfigurations' returns object of type 'IAcadPlotConfigurations'
         "PlotConfigurations": (21, 2, (9, 0), (), "PlotConfigurations", '{02242489-515A-4BDD-AC0C-E125FD1BE28C}'),
-        # Method 'Preferences' returns object of type 'IGcadDatabasePreferences'
+        # Method 'Preferences' returns object of type 'IAcadDatabasePreferences'
         "Preferences": (22, 2, (9, 0), (), "Preferences", '{A4F5877D-D0B7-46C3-A69B-0AB7B36531AB}'),
-        # Method 'RegisteredApplications' returns object of type 'IGcadRegisteredApplications'
+        # Method 'RegisteredApplications' returns object of type 'IAcadRegisteredApplications'
         "RegisteredApplications": (10, 2, (9, 0), (), "RegisteredApplications", '{FA985110-D0CB-4E62-AB01-2FE6027C7F05}'),
-        # Method 'SectionManager' returns object of type 'IGcadSectionManager'
+        # Method 'SectionManager' returns object of type 'IAcadSectionManager'
         "SectionManager": (72, 2, (9, 0), (), "SectionManager", '{0340058F-D94E-429D-8199-A4ECFF677AC1}'),
-        # Method 'SummaryInfo' returns object of type 'IGcadSummaryInfo'
+        # Method 'SummaryInfo' returns object of type 'IAcadSummaryInfo'
         "SummaryInfo": (71, 2, (9, 0), (), "SummaryInfo", '{A40DB73E-ED88-4AA8-8886-5CC3F2E63868}'),
-        # Method 'TextStyles' returns object of type 'IGcadTextStyles'
+        # Method 'TextStyles' returns object of type 'IAcadTextStyles'
         "TextStyles": (11, 2, (9, 0), (), "TextStyles", '{F8425B37-BFCF-4290-8CA2-C718D3201829}'),
-        # Method 'UserCoordinateSystems' returns object of type 'IGcadUCSs'
+        # Method 'UserCoordinateSystems' returns object of type 'IAcadUCSs'
         "UserCoordinateSystems": (12, 2, (9, 0), (), "UserCoordinateSystems", '{94DA139B-A285-4E3D-9E31-AA597FD909B0}'),
-        # Method 'Viewports' returns object of type 'IGcadViewports'
+        # Method 'Viewports' returns object of type 'IAcadViewports'
         "Viewports": (14, 2, (9, 0), (), "Viewports", '{EF5599E0-9D92-4DA2-A8B0-B3A5728E019C}'),
-        # Method 'Views' returns object of type 'IGcadViews'
+        # Method 'Views' returns object of type 'IAcadViews'
         "Views": (13, 2, (9, 0), (), "Views", '{9789FDA2-4DD1-44EA-8BC0-8B8B922EDE88}'),
     }
     _prop_map_put_ = {
@@ -5559,7 +5559,7 @@ class IGcadDatabase(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDatabasePreferences(DispatchBaseClass):
+class IAcadDatabasePreferences(DispatchBaseClass):
     'This object specifies the current GstarCAD drawing specific settings'
     CLSID = IID('{A4F5877D-D0B7-46C3-A69B-0AB7B36531AB}')
     coclass_clsid = IID('{E3AC406B-D118-44DB-AC19-AA594DD65C8A}')
@@ -5615,12 +5615,12 @@ class IGcadDatabasePreferences(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDictionaries(DispatchBaseClass):
+class IAcadDictionaries(DispatchBaseClass):
     'The collection of all dictionaries in the drawing'
     CLSID = IID('{7258BEDC-7CBD-4758-9F17-4ADC3C2C7C9E}')
     coclass_clsid = IID('{07244103-C9ED-4EF9-BDD4-5062C58A34D4}')
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -5637,7 +5637,7 @@ class IGcadDictionaries(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -5650,7 +5650,7 @@ class IGcadDictionaries(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadObject
+    # Result is of type IAcadObject
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -5667,7 +5667,7 @@ class IGcadDictionaries(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -5705,12 +5705,12 @@ class IGcadDictionaries(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadDictionary(DispatchBaseClass):
+class IAcadDictionary(DispatchBaseClass):
     'A container object for storing and retrieving objects'
     CLSID = IID('{6CE21DA5-2896-4D63-9373-2EE672A00D41}')
     coclass_clsid = IID('{F7A4E90A-DB70-4175-833C-E9F927851832}')
 
-    # Result is of type IGcadObject
+    # Result is of type IAcadObject
     def AddObject(self, Keyword=defaultNamedNotOptArg, ObjectName=defaultNamedNotOptArg):
         'Adds an object to a named dictionary'
         ret = self._oleobj_.InvokeTypes(3, LCID, 1, (9, 0), ((8, 1), (8, 1)),Keyword
@@ -5719,7 +5719,7 @@ class IGcadDictionary(DispatchBaseClass):
             ret = Dispatch(ret, 'AddObject', '{B0F45D84-478D-4E42-8261-0F0C89BE7E99}')
         return ret
 
-    # Result is of type IGcadXRecord
+    # Result is of type IAcadXRecord
     def AddXRecord(self, Keyword=defaultNamedNotOptArg):
         'Creates an XRecord object in any dictionary'
         ret = self._oleobj_.InvokeTypes(9, LCID, 1, (9, 0), ((8, 1),),Keyword
@@ -5736,7 +5736,7 @@ class IGcadDictionary(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -5750,7 +5750,7 @@ class IGcadDictionary(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(4, LCID, 1, (8, 0), ((9, 1),),Object
             )
 
-    # Result is of type IGcadObject
+    # Result is of type IAcadObject
     def GetObject(self, Name=defaultNamedNotOptArg):
         'Gets the object in a dictionary, given the name (keyword) of the object'
         ret = self._oleobj_.InvokeTypes(5, LCID, 1, (9, 0), ((8, 1),),Name
@@ -5764,7 +5764,7 @@ class IGcadDictionary(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadObject
+    # Result is of type IAcadObject
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -5773,7 +5773,7 @@ class IGcadDictionary(DispatchBaseClass):
             ret = Dispatch(ret, 'Item', '{B0F45D84-478D-4E42-8261-0F0C89BE7E99}')
         return ret
 
-    # Result is of type IGcadObject
+    # Result is of type IAcadObject
     def Remove(self, Name=defaultNamedNotOptArg):
         'Removes a named object from the dictionary'
         ret = self._oleobj_.InvokeTypes(6, LCID, 1, (9, 0), ((8, 1),),Name
@@ -5800,7 +5800,7 @@ class IGcadDictionary(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -5840,8 +5840,8 @@ class IGcadDictionary(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadDim3PointAngular(DispatchBaseClass):
-    'IGcadDim3PointAngular Interface'
+class IAcadDim3PointAngular(DispatchBaseClass):
+    'IAcadDim3PointAngular Interface'
     CLSID = IID('{EA05C039-0D70-4713-865B-71DF0B02F6CA}')
     coclass_clsid = IID('{348090AB-ECF8-4259-BFA3-45C7A91E30F6}')
 
@@ -5877,7 +5877,7 @@ class IGcadDim3PointAngular(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -5990,7 +5990,7 @@ class IGcadDim3PointAngular(DispatchBaseClass):
         "Arrowhead2Block": (66, 2, (8, 0), (), "Arrowhead2Block", None),
         "Arrowhead2Type": (63, 2, (3, 0), (), "Arrowhead2Type", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -6027,7 +6027,7 @@ class IGcadDim3PointAngular(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HorizontalTextPosition": (20, 2, (3, 0), (), "HorizontalTextPosition", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -6069,7 +6069,7 @@ class IGcadDim3PointAngular(DispatchBaseClass):
         "ToleranceSuppressLeadingZeros": (1569, 2, (11, 0), (), "ToleranceSuppressLeadingZeros", None),
         "ToleranceSuppressTrailingZeros": (1570, 2, (11, 0), (), "ToleranceSuppressTrailingZeros", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -6162,7 +6162,7 @@ class IGcadDim3PointAngular(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDimAligned(DispatchBaseClass):
+class IAcadDimAligned(DispatchBaseClass):
     'GCAD Aligned Dimension Interface'
     CLSID = IID('{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}')
     coclass_clsid = IID('{31463489-3D64-4BC7-85B1-0A1C6F0B2ABA}')
@@ -6199,7 +6199,7 @@ class IGcadDimAligned(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -6328,7 +6328,7 @@ class IGcadDimAligned(DispatchBaseClass):
         "Arrowhead2Block": (66, 2, (8, 0), (), "Arrowhead2Block", None),
         "Arrowhead2Type": (63, 2, (3, 0), (), "Arrowhead2Type", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -6367,7 +6367,7 @@ class IGcadDimAligned(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HorizontalTextPosition": (20, 2, (3, 0), (), "HorizontalTextPosition", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LinearScaleFactor": (21, 2, (5, 0), (), "LinearScaleFactor", None),
@@ -6417,7 +6417,7 @@ class IGcadDimAligned(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -6538,7 +6538,7 @@ class IGcadDimAligned(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDimAngular(DispatchBaseClass):
+class IAcadDimAngular(DispatchBaseClass):
     'GCAD Angular Dimension Interface'
     CLSID = IID('{78931DD8-09C7-44F5-9CB5-83198A8CD286}')
     coclass_clsid = IID('{8CBE37D9-7079-437A-A384-635D4A74A8D3}')
@@ -6575,7 +6575,7 @@ class IGcadDimAngular(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -6691,7 +6691,7 @@ class IGcadDimAngular(DispatchBaseClass):
         "Arrowhead2Block": (66, 2, (8, 0), (), "Arrowhead2Block", None),
         "Arrowhead2Type": (63, 2, (3, 0), (), "Arrowhead2Type", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -6730,7 +6730,7 @@ class IGcadDimAngular(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HorizontalTextPosition": (20, 2, (3, 0), (), "HorizontalTextPosition", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -6772,7 +6772,7 @@ class IGcadDimAngular(DispatchBaseClass):
         "ToleranceSuppressLeadingZeros": (1569, 2, (11, 0), (), "ToleranceSuppressLeadingZeros", None),
         "ToleranceSuppressTrailingZeros": (1570, 2, (11, 0), (), "ToleranceSuppressTrailingZeros", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -6866,8 +6866,8 @@ class IGcadDimAngular(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDimArcLength(DispatchBaseClass):
-    'IGcadDimArcLength Interface'
+class IAcadDimArcLength(DispatchBaseClass):
+    'IAcadDimArcLength Interface'
     CLSID = IID('{6BE0895F-AB23-4095-8180-0BBD8E790138}')
     coclass_clsid = IID('{2C817A8B-0B7D-4DE6-914A-B3A79F0665E4}')
 
@@ -6903,7 +6903,7 @@ class IGcadDimArcLength(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -7046,7 +7046,7 @@ class IGcadDimArcLength(DispatchBaseClass):
         "Arrowhead2Type": (63, 2, (3, 0), (), "Arrowhead2Type", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
         "CenterPoint": (71, 2, (12, 0), (), "CenterPoint", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimLine1Suppress": (25, 2, (11, 0), (), "DimLine1Suppress", None),
@@ -7080,7 +7080,7 @@ class IGcadDimArcLength(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HasLeader": (77, 2, (11, 0), (), "HasLeader", None),
         "HorizontalTextPosition": (20, 2, (3, 0), (), "HorizontalTextPosition", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "IsPartial": (74, 2, (11, 0), (), "IsPartial", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -7134,7 +7134,7 @@ class IGcadDimArcLength(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -7258,8 +7258,8 @@ class IGcadDimArcLength(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDimDiametric(DispatchBaseClass):
-    'IGcadDimDiametric Interface'
+class IAcadDimDiametric(DispatchBaseClass):
+    'IAcadDimDiametric Interface'
     CLSID = IID('{CF7DAB54-2669-4E42-B5A5-297B0154CE04}')
     coclass_clsid = IID('{A4E8085A-25F0-420B-A480-30ABAEF225C8}')
 
@@ -7295,7 +7295,7 @@ class IGcadDimDiametric(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -7418,7 +7418,7 @@ class IGcadDimDiametric(DispatchBaseClass):
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
         "CenterMarkSize": (44, 2, (5, 0), (), "CenterMarkSize", None),
         "CenterType": (43, 2, (3, 0), (), "CenterType", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -7442,7 +7442,7 @@ class IGcadDimDiametric(DispatchBaseClass):
         "FractionFormat": (19, 2, (3, 0), (), "FractionFormat", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LinearScaleFactor": (21, 2, (5, 0), (), "LinearScaleFactor", None),
@@ -7490,7 +7490,7 @@ class IGcadDimDiametric(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -7595,7 +7595,7 @@ class IGcadDimDiametric(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDimOrdinate(DispatchBaseClass):
+class IAcadDimOrdinate(DispatchBaseClass):
     'GCAD Ordinate Dimension Interface'
     CLSID = IID('{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}')
     coclass_clsid = IID('{A6F7E215-803A-414A-A81D-6299DED292E4}')
@@ -7632,7 +7632,7 @@ class IGcadDimOrdinate(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -7751,7 +7751,7 @@ class IGcadDimOrdinate(DispatchBaseClass):
         "AltUnitsScale": (5, 2, (5, 0), (), "AltUnitsScale", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimTxtDirection": (1573, 2, (11, 0), (), "DimTxtDirection", None),
@@ -7767,7 +7767,7 @@ class IGcadDimOrdinate(DispatchBaseClass):
         "FractionFormat": (19, 2, (3, 0), (), "FractionFormat", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LinearScaleFactor": (21, 2, (5, 0), (), "LinearScaleFactor", None),
@@ -7814,7 +7814,7 @@ class IGcadDimOrdinate(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -7905,7 +7905,7 @@ class IGcadDimOrdinate(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDimRadial(DispatchBaseClass):
+class IAcadDimRadial(DispatchBaseClass):
     'GCAD Radial Dimension Interface'
     CLSID = IID('{6070AA16-B13D-4B73-AA07-722C59BC09B5}')
     coclass_clsid = IID('{04A200E7-033D-4ECC-A9B1-806148A24763}')
@@ -7942,7 +7942,7 @@ class IGcadDimRadial(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -8063,7 +8063,7 @@ class IGcadDimRadial(DispatchBaseClass):
         "ArrowheadType": (63, 2, (3, 0), (), "ArrowheadType", None),
         "CenterMarkSize": (44, 2, (5, 0), (), "CenterMarkSize", None),
         "CenterType": (43, 2, (3, 0), (), "CenterType", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -8086,7 +8086,7 @@ class IGcadDimRadial(DispatchBaseClass):
         "FractionFormat": (19, 2, (3, 0), (), "FractionFormat", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LinearScaleFactor": (21, 2, (5, 0), (), "LinearScaleFactor", None),
@@ -8134,7 +8134,7 @@ class IGcadDimRadial(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -8236,7 +8236,7 @@ class IGcadDimRadial(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDimRadialLarge(DispatchBaseClass):
+class IAcadDimRadialLarge(DispatchBaseClass):
     'GCAD Jogged Dimension Interface'
     CLSID = IID('{E3D1CABD-C84B-49D2-9D47-984F880D33A2}')
     coclass_clsid = IID('{599C859E-76AB-4A00-8A81-2A71506A3824}')
@@ -8273,7 +8273,7 @@ class IGcadDimRadialLarge(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -8400,7 +8400,7 @@ class IGcadDimRadialLarge(DispatchBaseClass):
         "CenterMarkSize": (44, 2, (5, 0), (), "CenterMarkSize", None),
         "CenterType": (43, 2, (3, 0), (), "CenterType", None),
         "ChordPoint": (72, 2, (12, 0), (), "ChordPoint", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimLineSuppress": (26, 2, (11, 0), (), "DimLineSuppress", None),
@@ -8417,7 +8417,7 @@ class IGcadDimRadialLarge(DispatchBaseClass):
         "FractionFormat": (19, 2, (3, 0), (), "FractionFormat", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "JogAngle": (70, 2, (5, 0), (), "JogAngle", None),
         "JogLocation": (69, 2, (12, 0), (), "JogLocation", None),
@@ -8468,7 +8468,7 @@ class IGcadDimRadialLarge(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -8568,7 +8568,7 @@ class IGcadDimRadialLarge(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDimRotated(DispatchBaseClass):
+class IAcadDimRotated(DispatchBaseClass):
     'GCAD Rotated Dimension Interface'
     CLSID = IID('{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}')
     coclass_clsid = IID('{4D49A4C2-C908-4523-9E62-89B08B19CB1C}')
@@ -8605,7 +8605,7 @@ class IGcadDimRotated(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -8729,7 +8729,7 @@ class IGcadDimRotated(DispatchBaseClass):
         "Arrowhead2Block": (66, 2, (8, 0), (), "Arrowhead2Block", None),
         "Arrowhead2Type": (63, 2, (3, 0), (), "Arrowhead2Type", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -8766,7 +8766,7 @@ class IGcadDimRotated(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HorizontalTextPosition": (20, 2, (3, 0), (), "HorizontalTextPosition", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LinearScaleFactor": (21, 2, (5, 0), (), "LinearScaleFactor", None),
@@ -8816,7 +8816,7 @@ class IGcadDimRotated(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -8935,7 +8935,7 @@ class IGcadDimRotated(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDimStyle(DispatchBaseClass):
+class IAcadDimStyle(DispatchBaseClass):
     'A group of dimension settings that determines the appearance of a dimension'
     CLSID = IID('{88A65332-E185-46B4-9520-CA3305361E4B}')
     coclass_clsid = IID('{67211CB3-E07C-4585-B521-CD8F5840BD8D}')
@@ -8953,7 +8953,7 @@ class IGcadDimStyle(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -8973,7 +8973,7 @@ class IGcadDimStyle(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -8994,12 +8994,12 @@ class IGcadDimStyle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDimStyles(DispatchBaseClass):
+class IAcadDimStyles(DispatchBaseClass):
     'The collection of all dimension styles in the drawing'
     CLSID = IID('{B6084632-4A92-45F4-B8F7-0A91824DADB5}')
     coclass_clsid = IID('{187BD9EB-18F0-40A0-BEA1-4B53AE20A161}')
 
-    # Result is of type IGcadDimStyle
+    # Result is of type IAcadDimStyle
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -9016,7 +9016,7 @@ class IGcadDimStyles(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -9029,7 +9029,7 @@ class IGcadDimStyles(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadDimStyle
+    # Result is of type IAcadDimStyle
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -9046,7 +9046,7 @@ class IGcadDimStyles(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -9084,8 +9084,8 @@ class IGcadDimStyles(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadDimension(DispatchBaseClass):
-    'IGcadDimension Interface'
+class IAcadDimension(DispatchBaseClass):
+    'IAcadDimension Interface'
     CLSID = IID('{6330AC5A-B41E-4E0F-A133-9AA84C9A4E94}')
     coclass_clsid = IID('{5D0A1B18-A59B-402A-B66B-2E10E2BDAE65}')
 
@@ -9121,7 +9121,7 @@ class IGcadDimension(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -9221,7 +9221,7 @@ class IGcadDimension(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimTxtDirection": (1573, 2, (11, 0), (), "DimTxtDirection", None),
@@ -9231,7 +9231,7 @@ class IGcadDimension(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -9268,7 +9268,7 @@ class IGcadDimension(DispatchBaseClass):
         "ToleranceSuppressLeadingZeros": (1569, 2, (11, 0), (), "ToleranceSuppressLeadingZeros", None),
         "ToleranceSuppressTrailingZeros": (1570, 2, (11, 0), (), "ToleranceSuppressTrailingZeros", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -9323,8 +9323,8 @@ class IGcadDimension(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDocument(DispatchBaseClass):
-    'IGcadDocument �ӿ�'
+class IAcadDocument(DispatchBaseClass):
+    'IAcadDocument �ӿ�'
     CLSID = IID('{9368AF30-60A3-47E3-A743-60D4C21FB580}')
     coclass_clsid = IID('{EEA4FF96-9C53-49ED-977F-D22D2B51F741}')
 
@@ -9390,7 +9390,7 @@ class IGcadDocument(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(53, LCID, 1, (24, 0), ((8, 1),),FullName
             )
 
-    # Result is of type IGcadDocument
+    # Result is of type IAcadDocument
     def New(self, TemplateFileName=defaultNamedNotOptArg):
         'Creates a new document in SDI mode'
         ret = self._oleobj_.InvokeTypes(46, LCID, 1, (9, 0), ((8, 1),),TemplateFileName
@@ -9414,7 +9414,7 @@ class IGcadDocument(DispatchBaseClass):
             ret = Dispatch(ret, 'ObjectIdToObject32', None)
         return ret
 
-    # Result is of type IGcadDocument
+    # Result is of type IAcadDocument
     def Open(self, FullName=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Opens an existing drawing file (DWG) and makes it the active document'
         ret = self._oleobj_.InvokeTypes(42, LCID, 1, (9, 0), ((8, 1), (12, 17)),FullName
@@ -9462,91 +9462,91 @@ class IGcadDocument(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Active": (56, 2, (11, 0), (), "Active", None),
-        # Method 'ActiveDimStyle' returns object of type 'IGcadDimStyle'
+        # Method 'ActiveDimStyle' returns object of type 'IAcadDimStyle'
         "ActiveDimStyle": (26, 2, (9, 0), (), "ActiveDimStyle", '{88A65332-E185-46B4-9520-CA3305361E4B}'),
-        # Method 'ActiveLayer' returns object of type 'IGcadLayer'
+        # Method 'ActiveLayer' returns object of type 'IAcadLayer'
         "ActiveLayer": (24, 2, (9, 0), (), "ActiveLayer", '{369B3B72-01B7-4C1B-85C9-4E662705D76C}'),
-        # Method 'ActiveLayout' returns object of type 'IGcadLayout'
+        # Method 'ActiveLayout' returns object of type 'IAcadLayout'
         "ActiveLayout": (62, 2, (9, 0), (), "ActiveLayout", '{F8AE8A77-1909-452A-95E8-0B833451FD4B}'),
-        # Method 'ActiveLinetype' returns object of type 'IGcadLineType'
+        # Method 'ActiveLinetype' returns object of type 'IAcadLineType'
         "ActiveLinetype": (25, 2, (9, 0), (), "ActiveLinetype", '{39F82095-F5D0-4E82-8C15-483E1EA2DB2C}'),
-        # Method 'ActiveMaterial' returns object of type 'IGcadMaterial'
+        # Method 'ActiveMaterial' returns object of type 'IAcadMaterial'
         "ActiveMaterial": (74, 2, (9, 0), (), "ActiveMaterial", '{A7F84FAB-56C7-4437-9178-04441F062A4A}'),
-        # Method 'ActivePViewport' returns object of type 'IGcadPViewport'
+        # Method 'ActivePViewport' returns object of type 'IAcadPViewport'
         "ActivePViewport": (30, 2, (9, 0), (), "ActivePViewport", '{E1366A0E-60BF-4E69-9728-D524EDF12C69}'),
-        # Method 'ActiveSelectionSet' returns object of type 'IGcadSelectionSet'
+        # Method 'ActiveSelectionSet' returns object of type 'IAcadSelectionSet'
         "ActiveSelectionSet": (33, 2, (9, 0), (), "ActiveSelectionSet", '{E7DEA163-B4F1-4DDF-A408-2A3989603B09}'),
         "ActiveSpace": (31, 2, (3, 0), (), "ActiveSpace", None),
-        # Method 'ActiveTextStyle' returns object of type 'IGcadTextStyle'
+        # Method 'ActiveTextStyle' returns object of type 'IAcadTextStyle'
         "ActiveTextStyle": (27, 2, (9, 0), (), "ActiveTextStyle", '{703FE959-9B8D-4A91-A69A-844150619DF3}'),
-        # Method 'ActiveUCS' returns object of type 'IGcadUCS'
+        # Method 'ActiveUCS' returns object of type 'IAcadUCS'
         "ActiveUCS": (28, 2, (9, 0), (), "ActiveUCS", '{50B2A194-C469-4A57-B14A-BAFBA41A4039}'),
-        # Method 'ActiveViewport' returns object of type 'IGcadViewport'
+        # Method 'ActiveViewport' returns object of type 'IAcadViewport'
         "ActiveViewport": (29, 2, (9, 0), (), "ActiveViewport", '{B2B6FB46-0162-4C09-9612-65371297D78F}'),
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (66, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
-        # Method 'Blocks' returns object of type 'IGcadBlocks'
+        # Method 'Blocks' returns object of type 'IAcadBlocks'
         "Blocks": (3, 2, (9, 0), (), "Blocks", '{E69E9F83-F577-403C-8F69-7F5E86AB61F4}'),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (67, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
-        # Method 'Dictionaries' returns object of type 'IGcadDictionaries'
+        # Method 'Dictionaries' returns object of type 'IAcadDictionaries'
         "Dictionaries": (9, 2, (9, 0), (), "Dictionaries", '{7258BEDC-7CBD-4758-9F17-4ADC3C2C7C9E}'),
-        # Method 'DimStyles' returns object of type 'IGcadDimStyles'
+        # Method 'DimStyles' returns object of type 'IAcadDimStyles'
         "DimStyles": (6, 2, (9, 0), (), "DimStyles", '{B6084632-4A92-45F4-B8F7-0A91824DADB5}'),
         "ElevationModelSpace": (15, 2, (5, 0), (), "ElevationModelSpace", None),
         "ElevationPaperSpace": (16, 2, (5, 0), (), "ElevationPaperSpace", None),
-        # Method 'FileDependencies' returns object of type 'IGcadFileDependencies'
+        # Method 'FileDependencies' returns object of type 'IAcadFileDependencies'
         "FileDependencies": (70, 2, (9, 0), (), "FileDependencies", '{96FC4DA6-19CF-4E4A-A256-406D1386FAB9}'),
         "FullName": (34, 2, (8, 0), (), "FullName", None),
-        # Method 'Groups' returns object of type 'IGcadGroups'
+        # Method 'Groups' returns object of type 'IAcadGroups'
         "Groups": (5, 2, (9, 0), (), "Groups", '{1AFDB2C1-88C9-4BEE-8F5E-F4661538F170}'),
         "HWND": (64, 2, (20, 0), (), "HWND", None),
         "HWND32": (78, 2, (3, 0), (), "HWND32", None),
         "Height": (61, 2, (3, 0), (), "Height", None),
-        # Method 'Layers' returns object of type 'IGcadLayers'
+        # Method 'Layers' returns object of type 'IAcadLayers'
         "Layers": (7, 2, (9, 0), (), "Layers", '{7A9DE5C4-4D94-42BC-87DB-3D85D953A128}'),
-        # Method 'Layouts' returns object of type 'IGcadLayouts'
+        # Method 'Layouts' returns object of type 'IAcadLayouts'
         "Layouts": (20, 2, (9, 0), (), "Layouts", '{3B4B6A63-85E6-463A-9F6F-D99D77C731E7}'),
         "Limits": (17, 2, (12, 0), (), "Limits", None),
-        # Method 'Linetypes' returns object of type 'IGcadLineTypes'
+        # Method 'Linetypes' returns object of type 'IAcadLineTypes'
         "Linetypes": (8, 2, (9, 0), (), "Linetypes", '{ED574116-AE18-4BB2-9628-1921C110F038}'),
         "MSpace": (40, 2, (11, 0), (), "MSpace", None),
-        # Method 'Materials' returns object of type 'IGcadMaterials'
+        # Method 'Materials' returns object of type 'IAcadMaterials'
         "Materials": (73, 2, (9, 0), (), "Materials", '{C42C4E52-02C7-441C-B0BA-16771B542EA5}'),
-        # Method 'ModelSpace' returns object of type 'IGcadModelSpace'
+        # Method 'ModelSpace' returns object of type 'IAcadModelSpace'
         "ModelSpace": (1, 2, (9, 0), (), "ModelSpace", '{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}'),
         "Name": (35, 2, (8, 0), (), "Name", None),
         "ObjectSnapMode": (37, 2, (11, 0), (), "ObjectSnapMode", None),
-        # Method 'PaperSpace' returns object of type 'IGcadPaperSpace'
+        # Method 'PaperSpace' returns object of type 'IAcadPaperSpace'
         "PaperSpace": (2, 2, (9, 0), (), "PaperSpace", '{66FA50E9-6EB2-47CA-8EBA-7085C5E6C3A5}'),
         "Path": (36, 2, (8, 0), (), "Path", None),
-        # Method 'PickfirstSelectionSet' returns object of type 'IGcadSelectionSet'
+        # Method 'PickfirstSelectionSet' returns object of type 'IAcadSelectionSet'
         "PickfirstSelectionSet": (55, 2, (9, 0), (), "PickfirstSelectionSet", '{E7DEA163-B4F1-4DDF-A408-2A3989603B09}'),
-        # Method 'Plot' returns object of type 'IGcadPlot'
+        # Method 'Plot' returns object of type 'IAcadPlot'
         "Plot": (23, 2, (9, 0), (), "Plot", '{E93528F4-F504-4E58-8560-C473AD8445A2}'),
-        # Method 'PlotConfigurations' returns object of type 'IGcadPlotConfigurations'
+        # Method 'PlotConfigurations' returns object of type 'IAcadPlotConfigurations'
         "PlotConfigurations": (21, 2, (9, 0), (), "PlotConfigurations", '{02242489-515A-4BDD-AC0C-E125FD1BE28C}'),
-        # Method 'Preferences' returns object of type 'IGcadDatabasePreferences'
+        # Method 'Preferences' returns object of type 'IAcadDatabasePreferences'
         "Preferences": (22, 2, (9, 0), (), "Preferences", '{A4F5877D-D0B7-46C3-A69B-0AB7B36531AB}'),
         "ReadOnly": (38, 2, (11, 0), (), "ReadOnly", None),
-        # Method 'RegisteredApplications' returns object of type 'IGcadRegisteredApplications'
+        # Method 'RegisteredApplications' returns object of type 'IAcadRegisteredApplications'
         "RegisteredApplications": (10, 2, (9, 0), (), "RegisteredApplications", '{FA985110-D0CB-4E62-AB01-2FE6027C7F05}'),
         "Saved": (39, 2, (11, 0), (), "Saved", None),
-        # Method 'SectionManager' returns object of type 'IGcadSectionManager'
+        # Method 'SectionManager' returns object of type 'IAcadSectionManager'
         "SectionManager": (72, 2, (9, 0), (), "SectionManager", '{0340058F-D94E-429D-8199-A4ECFF677AC1}'),
-        # Method 'SelectionSets' returns object of type 'IGcadSelectionSets'
+        # Method 'SelectionSets' returns object of type 'IAcadSelectionSets'
         "SelectionSets": (32, 2, (9, 0), (), "SelectionSets", '{BA391ABB-844F-42A0-8F57-31EE00D0583A}'),
-        # Method 'SummaryInfo' returns object of type 'IGcadSummaryInfo'
+        # Method 'SummaryInfo' returns object of type 'IAcadSummaryInfo'
         "SummaryInfo": (71, 2, (9, 0), (), "SummaryInfo", '{A40DB73E-ED88-4AA8-8886-5CC3F2E63868}'),
-        # Method 'TextStyles' returns object of type 'IGcadTextStyles'
+        # Method 'TextStyles' returns object of type 'IAcadTextStyles'
         "TextStyles": (11, 2, (9, 0), (), "TextStyles", '{F8425B37-BFCF-4290-8CA2-C718D3201829}'),
-        # Method 'UserCoordinateSystems' returns object of type 'IGcadUCSs'
+        # Method 'UserCoordinateSystems' returns object of type 'IAcadUCSs'
         "UserCoordinateSystems": (12, 2, (9, 0), (), "UserCoordinateSystems", '{94DA139B-A285-4E3D-9E31-AA597FD909B0}'),
-        # Method 'Utility' returns object of type 'IGcadUtility'
+        # Method 'Utility' returns object of type 'IAcadUtility'
         "Utility": (41, 2, (9, 0), (), "Utility", '{CE85BBED-B6CD-446F-B3F6-052465802DB6}'),
-        # Method 'Viewports' returns object of type 'IGcadViewports'
+        # Method 'Viewports' returns object of type 'IAcadViewports'
         "Viewports": (14, 2, (9, 0), (), "Viewports", '{EF5599E0-9D92-4DA2-A8B0-B3A5728E019C}'),
-        # Method 'Views' returns object of type 'IGcadViews'
+        # Method 'Views' returns object of type 'IAcadViews'
         "Views": (13, 2, (9, 0), (), "Views", '{9789FDA2-4DD1-44EA-8BC0-8B8B922EDE88}'),
         "Width": (60, 2, (3, 0), (), "Width", None),
         "WindowState": (59, 2, (3, 0), (), "WindowState", None),
@@ -9580,12 +9580,12 @@ class IGcadDocument(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDocuments(DispatchBaseClass):
-    'IGcadDocuments �ӿ�'
+class IAcadDocuments(DispatchBaseClass):
+    'IAcadDocuments �ӿ�'
     CLSID = IID('{31010F88-E412-4A4B-B482-B71D45D1A28A}')
     coclass_clsid = IID('{99EF8026-26E1-43C1-92EE-F5041E7DBE8C}')
 
-    # Result is of type IGcadDocument
+    # Result is of type IAcadDocument
     def Add(self, TemplateName=defaultNamedOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(1610743812, LCID, 1, (9, 0), ((12, 17),),TemplateName
@@ -9598,7 +9598,7 @@ class IGcadDocuments(DispatchBaseClass):
         'Closes the specified drawing, or all open drawings'
         return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDocument
+    # Result is of type IAcadDocument
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -9607,7 +9607,7 @@ class IGcadDocuments(DispatchBaseClass):
             ret = Dispatch(ret, 'Item', '{9368AF30-60A3-47E3-A743-60D4C21FB580}')
         return ret
 
-    # Result is of type IGcadDocument
+    # Result is of type IAcadDocument
     def Open(self, Name=defaultNamedNotOptArg, ReadOnly=defaultNamedOptArg, Password=defaultNamedOptArg):
         'Opens an existing drawing file (DWG) and makes it the active document'
         ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1), (12, 17), (12, 17)),Name
@@ -9617,7 +9617,7 @@ class IGcadDocuments(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
     }
@@ -9650,7 +9650,7 @@ class IGcadDocuments(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadDwfUnderlay(DispatchBaseClass):
+class IAcadDwfUnderlay(DispatchBaseClass):
     CLSID = IID('{DCC7E463-86DB-4343-BD67-EB3E51A0B74F}')
     coclass_clsid = IID('{B8E04FA2-2C8E-4EAE-873C-9ECC978E1628}')
 
@@ -9691,7 +9691,7 @@ class IGcadDwfUnderlay(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -9791,7 +9791,7 @@ class IGcadDwfUnderlay(DispatchBaseClass):
         "ClippingEnabled": (16, 2, (11, 0), (), "ClippingEnabled", None),
         "Contrast": (1, 2, (3, 0), (), "Contrast", None),
         "DWFFormat": (18, 2, (8, 0), (), "DWFFormat", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -9802,7 +9802,7 @@ class IGcadDwfUnderlay(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (6, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "ItemName": (8, 2, (8, 0), (), "ItemName", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -9818,7 +9818,7 @@ class IGcadDwfUnderlay(DispatchBaseClass):
         "Position": (3, 2, (12, 0), (), "Position", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (12, 2, (5, 0), (), "ScaleFactor", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UnderlayLayerOverrideApplied": (17, 2, (3, 0), (), "UnderlayLayerOverrideApplied", None),
         "UnderlayName": (7, 2, (8, 0), (), "UnderlayName", None),
@@ -9863,7 +9863,7 @@ class IGcadDwfUnderlay(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadDynamicBlockReferenceProperty(DispatchBaseClass):
+class IAcadDynamicBlockReferenceProperty(DispatchBaseClass):
     'GCAD Dynamic Block Property Interface'
     CLSID = IID('{017EAE27-EA30-4151-8272-BA072063C218}')
     coclass_clsid = IID('{114CCE6C-FDBF-4DAD-9157-7078B5664B95}')
@@ -9895,7 +9895,7 @@ class IGcadDynamicBlockReferenceProperty(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadEllipse(DispatchBaseClass):
+class IAcadEllipse(DispatchBaseClass):
     'GCAD Ellipse Interface'
     CLSID = IID('{21565C97-8E2E-442B-8F69-C9662BC89DCA}')
     coclass_clsid = IID('{7F11EDC5-9468-4C9D-8749-5720C123C13F}')
@@ -9932,7 +9932,7 @@ class IGcadEllipse(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10037,7 +10037,7 @@ class IGcadEllipse(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Area": (14, 2, (5, 0), (), "Area", None),
         "Center": (2, 2, (12, 0), (), "Center", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EndAngle": (8, 2, (5, 0), (), "EndAngle", None),
@@ -10048,7 +10048,7 @@ class IGcadEllipse(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -10068,7 +10068,7 @@ class IGcadEllipse(DispatchBaseClass):
         "StartAngle": (7, 2, (5, 0), (), "StartAngle", None),
         "StartParameter": (9, 2, (5, 0), (), "StartParameter", None),
         "StartPoint": (1, 2, (12, 0), (), "StartPoint", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -10103,8 +10103,8 @@ class IGcadEllipse(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadEntity(DispatchBaseClass):
-    'IGcadEntity �ӿ�'
+class IAcadEntity(DispatchBaseClass):
+    'IAcadEntity �ӿ�'
     CLSID = IID('{D78C594E-0412-4D7A-919A-2B6D1662D337}')
     coclass_clsid = IID('{3737DD60-3DB3-45AA-A592-49640E47A4CB}')
 
@@ -10140,7 +10140,7 @@ class IGcadEntity(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10228,7 +10228,7 @@ class IGcadEntity(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -10236,7 +10236,7 @@ class IGcadEntity(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -10247,7 +10247,7 @@ class IGcadEntity(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -10272,8 +10272,8 @@ class IGcadEntity(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadExternalReference(DispatchBaseClass):
-    'IGcadExternalReference Interface'
+class IAcadExternalReference(DispatchBaseClass):
+    'IAcadExternalReference Interface'
     CLSID = IID('{29EB1F45-3E5E-41E2-B909-2EA909858B11}')
     coclass_clsid = IID('{78F3EF1F-22D5-4BC8-A186-3CF45759F2DD}')
 
@@ -10334,7 +10334,7 @@ class IGcadExternalReference(DispatchBaseClass):
         'Gets the dynamic block properties'
         return self._ApplyTypes_(514, 1, (12, 0), (), 'GetDynamicBlockProperties', None,)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10436,7 +10436,7 @@ class IGcadExternalReference(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EffectiveName": (512, 2, (8, 0), (), "EffectiveName", None),
@@ -10446,7 +10446,7 @@ class IGcadExternalReference(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasAttributes": (11, 2, (11, 0), (), "HasAttributes", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsUnits": (521, 2, (8, 0), (), "InsUnits", None),
         "InsUnitsFactor": (528, 2, (5, 0), (), "InsUnitsFactor", None),
@@ -10465,7 +10465,7 @@ class IGcadExternalReference(DispatchBaseClass):
         "Path": (256, 2, (8, 0), (), "Path", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -10507,8 +10507,8 @@ class IGcadExternalReference(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadExtrudedSurface(DispatchBaseClass):
-    'IGcadExtrudedSurface Interface'
+class IAcadExtrudedSurface(DispatchBaseClass):
+    'IAcadExtrudedSurface Interface'
     CLSID = IID('{FB90B93B-E0A9-43E8-A5F9-B79015C81B0E}')
     coclass_clsid = IID('{3865F4CA-2245-4517-9550-0FA5E5FC28F8}')
 
@@ -10544,7 +10544,7 @@ class IGcadExtrudedSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10632,7 +10632,7 @@ class IGcadExtrudedSurface(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Direction": (4, 2, (12, 0), (), "Direction", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -10642,7 +10642,7 @@ class IGcadExtrudedSurface(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (2, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -10657,7 +10657,7 @@ class IGcadExtrudedSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
         "TaperAngle": (3, 2, (5, 0), (), "TaperAngle", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -10692,8 +10692,8 @@ class IGcadExtrudedSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadFileDependencies(DispatchBaseClass):
-    'IGcadFileDependencies Interface'
+class IAcadFileDependencies(DispatchBaseClass):
+    'IAcadFileDependencies Interface'
     CLSID = IID('{96FC4DA6-19CF-4E4A-A256-406D1386FAB9}')
     coclass_clsid = IID('{B1406301-FAFE-4332-B481-6DE6B109B206}')
 
@@ -10707,7 +10707,7 @@ class IGcadFileDependencies(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(4, LCID, 1, (3, 0), ((8, 1), (8, 1)),Feature
             , FullFileName)
 
-    # Result is of type IGcadFileDependency
+    # Result is of type IAcadFileDependency
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -10759,8 +10759,8 @@ class IGcadFileDependencies(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadFileDependency(DispatchBaseClass):
-    'IGcadFileDependency Interface'
+class IAcadFileDependency(DispatchBaseClass):
+    'IAcadFileDependency Interface'
     CLSID = IID('{0CED4F33-C673-485D-AE75-54F88D10FA57}')
     coclass_clsid = IID('{0E92853F-5027-4A90-999C-118BC73FA6BA}')
 
@@ -10788,8 +10788,8 @@ class IGcadFileDependency(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadGcCmColor(DispatchBaseClass):
-    'IGcadGcCmColor �ӿ�'
+class IAcadGcCmColor(DispatchBaseClass):
+    'IAcadGcCmColor �ӿ�'
     CLSID = IID('{E38E7951-AB58-43F5-9B74-B473C5C6605B}')
     coclass_clsid = IID('{F7848BAF-729D-4217-A1E8-7DCE59B662FA}')
 
@@ -10835,7 +10835,7 @@ class IGcadGcCmColor(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadGroup(DispatchBaseClass):
+class IAcadGroup(DispatchBaseClass):
     'A named SelectionSet object'
     CLSID = IID('{4B02E349-191E-4736-BDE6-52C2D458E0F5}')
     coclass_clsid = IID('{28EA8439-1EEF-4632-812B-3A8515F93530}')
@@ -10853,7 +10853,7 @@ class IGcadGroup(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10871,7 +10871,7 @@ class IGcadGroup(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(7, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
-    # Result is of type IGcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -10897,7 +10897,7 @@ class IGcadGroup(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -10946,12 +10946,12 @@ class IGcadGroup(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadGroups(DispatchBaseClass):
+class IAcadGroups(DispatchBaseClass):
     'The collection of all groups in the drawing'
     CLSID = IID('{1AFDB2C1-88C9-4BEE-8F5E-F4661538F170}')
     coclass_clsid = IID('{255F2619-FB9D-4176-BE91-D2C122537155}')
 
-    # Result is of type IGcadGroup
+    # Result is of type IAcadGroup
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -10968,7 +10968,7 @@ class IGcadGroups(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10981,7 +10981,7 @@ class IGcadGroups(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadGroup
+    # Result is of type IAcadGroup
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -10998,7 +10998,7 @@ class IGcadGroups(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -11036,7 +11036,7 @@ class IGcadGroups(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadHatch(DispatchBaseClass):
+class IAcadHatch(DispatchBaseClass):
     'GCAD Hatch Interface'
     CLSID = IID('{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}')
     coclass_clsid = IID('{EF74767C-CCF5-4725-935C-39E7BDB8D3B8}')
@@ -11087,7 +11087,7 @@ class IGcadHatch(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -11192,9 +11192,9 @@ class IGcadHatch(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Area": (25, 2, (5, 0), (), "Area", None),
         "AssociativeHatch": (11, 2, (11, 0), (), "AssociativeHatch", None),
-        # Method 'BackgroundColor' returns object of type 'IGcadGcCmColor'
+        # Method 'BackgroundColor' returns object of type 'IAcadGcCmColor'
         "BackgroundColor": (27, 2, (9, 0), (), "BackgroundColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Elevation": (10, 2, (5, 0), (), "Elevation", None),
@@ -11203,16 +11203,16 @@ class IGcadHatch(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "GradientAngle": (21, 2, (5, 0), (), "GradientAngle", None),
         "GradientCentered": (22, 2, (11, 0), (), "GradientCentered", None),
-        # Method 'GradientColor1' returns object of type 'IGcadGcCmColor'
+        # Method 'GradientColor1' returns object of type 'IAcadGcCmColor'
         "GradientColor1": (19, 2, (9, 0), (), "GradientColor1", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
-        # Method 'GradientColor2' returns object of type 'IGcadGcCmColor'
+        # Method 'GradientColor2' returns object of type 'IAcadGcCmColor'
         "GradientColor2": (20, 2, (9, 0), (), "GradientColor2", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "GradientName": (23, 2, (8, 0), (), "GradientName", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HatchObjectType": (24, 2, (3, 0), (), "HatchObjectType", None),
         "HatchStyle": (12, 2, (3, 0), (), "HatchStyle", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "ISOPenWidth": (8, 2, (3, 0), (), "ISOPenWidth", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -11233,7 +11233,7 @@ class IGcadHatch(DispatchBaseClass):
         "PatternSpace": (7, 2, (5, 0), (), "PatternSpace", None),
         "PatternType": (3, 2, (3, 0), (), "PatternType", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -11275,8 +11275,8 @@ class IGcadHatch(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadHelix(DispatchBaseClass):
-    'IGcadSpring Interface'
+class IAcadHelix(DispatchBaseClass):
+    'IAcadSpring Interface'
     CLSID = IID('{4A201B9C-6555-45ED-A3B5-9342F2F28D71}')
     coclass_clsid = IID('{E817F271-E3BF-44E9-A481-C860D9D8CD13}')
 
@@ -11312,7 +11312,7 @@ class IGcadHelix(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -11410,7 +11410,7 @@ class IGcadHelix(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BaseRadius": (6, 2, (5, 0), (), "BaseRadius", None),
         "Constrain": (2, 2, (3, 0), (), "Constrain", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -11419,7 +11419,7 @@ class IGcadHelix(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (3, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -11433,7 +11433,7 @@ class IGcadHelix(DispatchBaseClass):
         "Position": (1, 2, (12, 0), (), "Position", None),
         "TopRadius": (7, 2, (5, 0), (), "TopRadius", None),
         "TotalLength": (10, 2, (5, 0), (), "TotalLength", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "TurnHeight": (5, 2, (5, 0), (), "TurnHeight", None),
         "TurnSlope": (9, 2, (5, 0), (), "TurnSlope", None),
@@ -11470,7 +11470,7 @@ class IGcadHelix(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadHyperlink(DispatchBaseClass):
+class IAcadHyperlink(DispatchBaseClass):
     'A URL and URL description'
     CLSID = IID('{D1DF7DB6-95E1-4721-AE9D-0C668FB28825}')
     coclass_clsid = IID('{B4F3F703-2BC5-4074-BD6E-24E5830BBD0A}')
@@ -11498,12 +11498,12 @@ class IGcadHyperlink(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadHyperlinks(DispatchBaseClass):
+class IAcadHyperlinks(DispatchBaseClass):
     'The collection of all hyperlinks for a given entity'
     CLSID = IID('{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}')
     coclass_clsid = IID('{D1131D16-F4F4-4F50-8AEB-A6ECA83141C0}')
 
-    # Result is of type IGcadHyperlink
+    # Result is of type IAcadHyperlink
     def Add(self, Name=defaultNamedNotOptArg, Description=defaultNamedOptArg, NamedLocation=defaultNamedOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(3, LCID, 1, (9, 0), ((8, 1), (12, 17), (12, 17)),Name
@@ -11512,7 +11512,7 @@ class IGcadHyperlinks(DispatchBaseClass):
             ret = Dispatch(ret, 'Add', '{D1DF7DB6-95E1-4721-AE9D-0C668FB28825}')
         return ret
 
-    # Result is of type IGcadHyperlink
+    # Result is of type IAcadHyperlink
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((3, 1),),Index
@@ -11554,7 +11554,7 @@ class IGcadHyperlinks(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadIdPair(DispatchBaseClass):
+class IAcadIdPair(DispatchBaseClass):
     'A special object for use with the CopyObjects method that contains the object IDs of both the source and destination objects'
     CLSID = IID('{1D3AF325-66DF-4CF6-B19F-1DCF053D75F9}')
     coclass_clsid = IID('{CDF39880-2237-4180-A675-1601037F78ED}')
@@ -11586,7 +11586,7 @@ class IGcadIdPair(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLWPolyline(DispatchBaseClass):
+class IAcadLWPolyline(DispatchBaseClass):
     'GCAD Lightweight Polyline Interface'
     CLSID = IID('{B32517C5-036E-4CB0-8538-66BD5FC625C4}')
     coclass_clsid = IID('{508C6E95-0B42-4E0B-9A4A-75CF28263857}')
@@ -11643,7 +11643,7 @@ class IGcadLWPolyline(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(6, LCID, 1, (5, 0), ((3, 1),),Index
             )
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -11771,7 +11771,7 @@ class IGcadLWPolyline(DispatchBaseClass):
         "Closed": (15, 2, (11, 0), (), "Closed", None),
         "ConstantWidth": (10, 2, (5, 0), (), "ConstantWidth", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Elevation": (12, 2, (5, 0), (), "Elevation", None),
@@ -11780,7 +11780,7 @@ class IGcadLWPolyline(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Length": (17, 2, (5, 0), (), "Length", None),
@@ -11795,7 +11795,7 @@ class IGcadLWPolyline(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -11827,7 +11827,7 @@ class IGcadLWPolyline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLayer(DispatchBaseClass):
+class IAcadLayer(DispatchBaseClass):
     'A logical grouping of data, similar to transparent acetate overlays on a drawing'
     CLSID = IID('{369B3B72-01B7-4C1B-85C9-4E662705D76C}')
     coclass_clsid = IID('{C358F0A6-CF01-4B79-BC20-3744A6CE61CE}')
@@ -11840,7 +11840,7 @@ class IGcadLayer(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -11860,7 +11860,7 @@ class IGcadLayer(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Description": (12, 2, (8, 0), (), "Description", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -11878,7 +11878,7 @@ class IGcadLayer(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (9, 2, (8, 0), (), "PlotStyleName", None),
         "Plottable": (7, 2, (11, 0), (), "Plottable", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (11, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Used": (13, 2, (11, 0), (), "Used", None),
         "ViewportDefault": (8, 2, (11, 0), (), "ViewportDefault", None),
@@ -11907,8 +11907,8 @@ class IGcadLayer(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLayerStateManager(DispatchBaseClass):
-    'IGcadLayerStateManager Interface'
+class IAcadLayerStateManager(DispatchBaseClass):
+    'IAcadLayerStateManager Interface'
     CLSID = IID('{FC6D298C-564D-4ACA-850F-3ADF1C01B6D9}')
     coclass_clsid = IID('{B120B2EF-DD09-4935-94FE-CD57754907B1}')
 
@@ -11971,12 +11971,12 @@ class IGcadLayerStateManager(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLayers(DispatchBaseClass):
+class IAcadLayers(DispatchBaseClass):
     'The collection of all layers in the drawing'
     CLSID = IID('{7A9DE5C4-4D94-42BC-87DB-3D85D953A128}')
     coclass_clsid = IID('{60E6BD18-62F7-4B1A-B701-CEF35537CB59}')
 
-    # Result is of type IGcadLayer
+    # Result is of type IAcadLayer
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -11997,7 +11997,7 @@ class IGcadLayers(DispatchBaseClass):
         'Generates layer usage data. See also Used property of Layer.'
         return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -12010,7 +12010,7 @@ class IGcadLayers(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadLayer
+    # Result is of type IAcadLayer
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -12027,7 +12027,7 @@ class IGcadLayers(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -12065,7 +12065,7 @@ class IGcadLayers(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadLayout(DispatchBaseClass):
+class IAcadLayout(DispatchBaseClass):
     'The plot settings and visual properties of a model space or paper space block'
     CLSID = IID('{F8AE8A77-1909-452A-95E8-0B833451FD4B}')
     coclass_clsid = IID('{12664C95-EEAD-4337-A88A-971953571812}')
@@ -12092,7 +12092,7 @@ class IGcadLayout(DispatchBaseClass):
         return self._ApplyTypes_(17, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetCustomScale', None,Numerator
             , Denominator)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -12155,12 +12155,12 @@ class IGcadLayout(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Block' returns object of type 'IGcadBlock'
+        # Method 'Block' returns object of type 'IAcadBlock'
         "Block": (48, 2, (9, 0), (), "Block", '{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}'),
         "CanonicalMediaName": (6, 2, (8, 0), (), "CanonicalMediaName", None),
         "CenterPlot": (11, 2, (11, 0), (), "CenterPlot", None),
         "ConfigName": (3, 2, (8, 0), (), "ConfigName", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -12217,12 +12217,12 @@ class IGcadLayout(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLayouts(DispatchBaseClass):
+class IAcadLayouts(DispatchBaseClass):
     'The collection of all layouts in the drawing'
     CLSID = IID('{3B4B6A63-85E6-463A-9F6F-D99D77C731E7}')
     coclass_clsid = IID('{C6B60202-2BEA-4ED1-9A9F-7CF91E5A295D}')
 
-    # Result is of type IGcadLayout
+    # Result is of type IAcadLayout
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -12239,7 +12239,7 @@ class IGcadLayouts(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -12252,7 +12252,7 @@ class IGcadLayouts(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadLayout
+    # Result is of type IAcadLayout
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -12269,7 +12269,7 @@ class IGcadLayouts(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -12307,7 +12307,7 @@ class IGcadLayouts(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadLeader(DispatchBaseClass):
+class IAcadLeader(DispatchBaseClass):
     'GCAD Leader Interface'
     CLSID = IID('{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}')
     coclass_clsid = IID('{1B4D2B5E-8406-4167-B42C-09D8136BAE47}')
@@ -12354,7 +12354,7 @@ class IGcadLeader(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -12459,14 +12459,14 @@ class IGcadLeader(DispatchBaseClass):
                 DispatchBaseClass.__setattr__(self, __name, __value)
                 
     _prop_map_get_ = {
-        # Method 'Annotation' returns object of type 'IGcadEntity'
+        # Method 'Annotation' returns object of type 'IAcadEntity'
         "Annotation": (68, 2, (9, 0), (), "Annotation", '{D78C594E-0412-4D7A-919A-2B6D1662D337}'),
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ArrowheadBlock": (70, 2, (8, 0), (), "ArrowheadBlock", None),
         "ArrowheadSize": (1543, 2, (5, 0), (), "ArrowheadSize", None),
         "ArrowheadType": (69, 2, (3, 0), (), "ArrowheadType", None),
         "Coordinates": (64, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DimensionLineColor": (13, 2, (3, 0), (), "DimensionLineColor", None),
         "DimensionLineWeight": (1550, 2, (3, 0), (), "DimensionLineWeight", None),
@@ -12476,7 +12476,7 @@ class IGcadLeader(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -12491,7 +12491,7 @@ class IGcadLeader(DispatchBaseClass):
         "ScaleFactor": (1553, 2, (5, 0), (), "ScaleFactor", None),
         "StyleName": (1542, 2, (8, 0), (), "StyleName", None),
         "TextGap": (1549, 2, (5, 0), (), "TextGap", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Type": (65, 2, (3, 0), (), "Type", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -12530,7 +12530,7 @@ class IGcadLeader(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLight(DispatchBaseClass):
+class IAcadLight(DispatchBaseClass):
     CLSID = IID('{C45579D8-B271-461E-B658-F57BE7B1B4EB}')
     coclass_clsid = IID('{1441A79B-2C78-4568-8F3F-1D068ACFC6CD}')
 
@@ -12566,7 +12566,7 @@ class IGcadLight(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -12663,7 +12663,7 @@ class IGcadLight(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "AttenuationType": (13, 2, (8, 0), (), "AttenuationType", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EndLimit": (16, 2, (5, 0), (), "EndLimit", None),
@@ -12675,10 +12675,10 @@ class IGcadLight(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HotSpot": (6, 2, (5, 0), (), "HotSpot", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Intensity": (8, 2, (5, 0), (), "Intensity", None),
-        # Method 'LColor' returns object of type 'IGcadGcCmColor'
+        # Method 'LColor' returns object of type 'IAcadGcCmColor'
         "LColor": (9, 2, (9, 0), (), "LColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LightType": (2, 2, (8, 0), (), "LightType", None),
@@ -12704,7 +12704,7 @@ class IGcadLight(DispatchBaseClass):
         "Status": (4, 2, (11, 0), (), "Status", None),
         "Target": (12, 2, (12, 0), (), "Target", None),
         "ToVector": (21, 2, (12, 0), (), "ToVector", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UseLimits": (14, 2, (11, 0), (), "UseLimits", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -12753,7 +12753,7 @@ class IGcadLight(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLight2(DispatchBaseClass):
+class IAcadLight2(DispatchBaseClass):
     CLSID = IID('{2B8F45C4-3CE8-482C-918E-ECD39EC2B86D}')
     coclass_clsid = IID('{1441A79B-2C78-4568-8F3F-1D068ACFC6CD}')
 
@@ -12789,7 +12789,7 @@ class IGcadLight2(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -12886,7 +12886,7 @@ class IGcadLight2(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "AttenuationType": (13, 2, (8, 0), (), "AttenuationType", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EndLimit": (16, 2, (5, 0), (), "EndLimit", None),
@@ -12899,11 +12899,11 @@ class IGcadLight2(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HasTarget": (34, 2, (11, 0), (), "HasTarget", None),
         "HotSpot": (6, 2, (5, 0), (), "HotSpot", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "IlluminanceDistance": (39, 2, (5, 0), (), "IlluminanceDistance", None),
         "Intensity": (8, 2, (5, 0), (), "Intensity", None),
-        # Method 'LColor' returns object of type 'IGcadGcCmColor'
+        # Method 'LColor' returns object of type 'IAcadGcCmColor'
         "LColor": (9, 2, (9, 0), (), "LColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "LampColor": (27, 2, (12, 0), (), "LampColor", None),
         "LampIntensity": (25, 2, (8, 0), (), "LampIntensity", None),
@@ -12921,7 +12921,7 @@ class IGcadLight2(DispatchBaseClass):
         "PlotGlyph": (10, 2, (11, 0), (), "PlotGlyph", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Position": (11, 2, (12, 0), (), "Position", None),
-        # Method 'ResultColor' returns object of type 'IGcadGcCmColor'
+        # Method 'ResultColor' returns object of type 'IAcadGcCmColor'
         "ResultColor": (28, 2, (9, 0), (), "ResultColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "ResultIntensity": (26, 2, (8, 0), (), "ResultIntensity", None),
         "ShadowLength": (40, 2, (5, 0), (), "ShadowLength", None),
@@ -12940,7 +12940,7 @@ class IGcadLight2(DispatchBaseClass):
         "Status": (4, 2, (11, 0), (), "Status", None),
         "Target": (12, 2, (12, 0), (), "Target", None),
         "ToVector": (21, 2, (12, 0), (), "ToVector", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UseLimits": (14, 2, (11, 0), (), "UseLimits", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -13011,7 +13011,7 @@ class IGcadLight2(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLight3(DispatchBaseClass):
+class IAcadLight3(DispatchBaseClass):
     CLSID = IID('{0370B70A-6C67-45FD-A247-B2457AEE6ABC}')
     coclass_clsid = IID('{1441A79B-2C78-4568-8F3F-1D068ACFC6CD}')
 
@@ -13047,7 +13047,7 @@ class IGcadLight3(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -13144,7 +13144,7 @@ class IGcadLight3(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "AttenuationType": (13, 2, (8, 0), (), "AttenuationType", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EndLimit": (16, 2, (5, 0), (), "EndLimit", None),
@@ -13158,11 +13158,11 @@ class IGcadLight3(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HasTarget": (34, 2, (11, 0), (), "HasTarget", None),
         "HotSpot": (6, 2, (5, 0), (), "HotSpot", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "IlluminanceDistance": (39, 2, (5, 0), (), "IlluminanceDistance", None),
         "Intensity": (8, 2, (5, 0), (), "Intensity", None),
-        # Method 'LColor' returns object of type 'IGcadGcCmColor'
+        # Method 'LColor' returns object of type 'IAcadGcCmColor'
         "LColor": (9, 2, (9, 0), (), "LColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "LampColor": (27, 2, (12, 0), (), "LampColor", None),
         "LampIntensity": (25, 2, (8, 0), (), "LampIntensity", None),
@@ -13180,7 +13180,7 @@ class IGcadLight3(DispatchBaseClass):
         "PlotGlyph": (10, 2, (11, 0), (), "PlotGlyph", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Position": (11, 2, (12, 0), (), "Position", None),
-        # Method 'ResultColor' returns object of type 'IGcadGcCmColor'
+        # Method 'ResultColor' returns object of type 'IAcadGcCmColor'
         "ResultColor": (28, 2, (9, 0), (), "ResultColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "ResultIntensity": (26, 2, (8, 0), (), "ResultIntensity", None),
         "ShadowLength": (40, 2, (5, 0), (), "ShadowLength", None),
@@ -13199,7 +13199,7 @@ class IGcadLight3(DispatchBaseClass):
         "Status": (4, 2, (11, 0), (), "Status", None),
         "Target": (12, 2, (12, 0), (), "Target", None),
         "ToVector": (21, 2, (12, 0), (), "ToVector", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UseLimits": (14, 2, (11, 0), (), "UseLimits", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -13271,7 +13271,7 @@ class IGcadLight3(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLine(DispatchBaseClass):
+class IAcadLine(DispatchBaseClass):
     'GCAD Line Interface'
     CLSID = IID('{EB1641A6-750D-49EB-A681-0BAEB77E7388}')
     coclass_clsid = IID('{6ACCA2E1-E804-4519-B95F-235867C214AC}')
@@ -13308,7 +13308,7 @@ class IGcadLine(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -13414,7 +13414,7 @@ class IGcadLine(DispatchBaseClass):
     _prop_map_get_ = {
         "Angle": (8, 2, (5, 0), (), "Angle", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Delta": (6, 2, (12, 0), (), "Delta", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -13424,7 +13424,7 @@ class IGcadLine(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Length": (7, 2, (5, 0), (), "Length", None),
@@ -13439,7 +13439,7 @@ class IGcadLine(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "StartPoint": (1, 2, (12, 0), (), "StartPoint", None),
         "Thickness": (4, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -13468,7 +13468,7 @@ class IGcadLine(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLineType(DispatchBaseClass):
+class IAcadLineType(DispatchBaseClass):
     'The line characteristics consisting of combinations of dashes, dots, and spaces'
     CLSID = IID('{39F82095-F5D0-4E82-8C15-483E1EA2DB2C}')
     coclass_clsid = IID('{44E0D10E-F951-4B01-BDC0-21256D036952}')
@@ -13481,7 +13481,7 @@ class IGcadLineType(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -13501,7 +13501,7 @@ class IGcadLineType(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Description": (1, 2, (8, 0), (), "Description", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -13524,12 +13524,12 @@ class IGcadLineType(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadLineTypes(DispatchBaseClass):
+class IAcadLineTypes(DispatchBaseClass):
     'The collection of all linetypes in the drawing'
     CLSID = IID('{ED574116-AE18-4BB2-9628-1921C110F038}')
     coclass_clsid = IID('{09C7B1A6-D60E-43DA-B8DA-445C72D2A022}')
 
-    # Result is of type IGcadLineType
+    # Result is of type IAcadLineType
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -13546,7 +13546,7 @@ class IGcadLineTypes(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -13559,7 +13559,7 @@ class IGcadLineTypes(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadLineType
+    # Result is of type IAcadLineType
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -13581,7 +13581,7 @@ class IGcadLineTypes(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -13619,8 +13619,8 @@ class IGcadLineTypes(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadLoftedSurface(DispatchBaseClass):
-    'IGcadLoftedSurface Interface'
+class IAcadLoftedSurface(DispatchBaseClass):
+    'IAcadLoftedSurface Interface'
     CLSID = IID('{83049727-9881-4D4D-8E57-63C83CB0CC6E}')
     coclass_clsid = IID('{3A949249-A2A7-412A-92FF-94D134EB3198}')
 
@@ -13656,7 +13656,7 @@ class IGcadLoftedSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -13745,7 +13745,7 @@ class IGcadLoftedSurface(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Closed": (9, 2, (11, 0), (), "Closed", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EndDraftAngle": (7, 2, (5, 0), (), "EndDraftAngle", None),
@@ -13755,7 +13755,7 @@ class IGcadLoftedSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -13774,7 +13774,7 @@ class IGcadLoftedSurface(DispatchBaseClass):
         "StartDraftMagnitude": (6, 2, (5, 0), (), "StartDraftMagnitude", None),
         "SurfaceNormals": (4, 2, (3, 0), (), "SurfaceNormals", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -13813,8 +13813,8 @@ class IGcadLoftedSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadMInsertBlock(DispatchBaseClass):
-    'IGcadMInsertBlock Interface'
+class IAcadMInsertBlock(DispatchBaseClass):
+    'IAcadMInsertBlock Interface'
     CLSID = IID('{2EA3AB94-E461-4DDC-9B9B-894406F31256}')
     coclass_clsid = IID('{5B817FD8-0DDF-4283-B794-86434740C658}')
 
@@ -13875,7 +13875,7 @@ class IGcadMInsertBlock(DispatchBaseClass):
         'Gets the dynamic block properties'
         return self._ApplyTypes_(514, 1, (12, 0), (), 'GetDynamicBlockProperties', None,)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -13979,7 +13979,7 @@ class IGcadMInsertBlock(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ColumnSpacing": (257, 2, (5, 0), (), "ColumnSpacing", None),
         "Columns": (256, 2, (3, 0), (), "Columns", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EffectiveName": (512, 2, (8, 0), (), "EffectiveName", None),
@@ -13989,7 +13989,7 @@ class IGcadMInsertBlock(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasAttributes": (11, 2, (11, 0), (), "HasAttributes", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsUnits": (521, 2, (8, 0), (), "InsUnits", None),
         "InsUnitsFactor": (528, 2, (5, 0), (), "InsUnitsFactor", None),
@@ -14009,7 +14009,7 @@ class IGcadMInsertBlock(DispatchBaseClass):
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "RowSpacing": (259, 2, (5, 0), (), "RowSpacing", None),
         "Rows": (258, 2, (3, 0), (), "Rows", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -14054,7 +14054,7 @@ class IGcadMInsertBlock(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadMLeader(DispatchBaseClass):
+class IAcadMLeader(DispatchBaseClass):
     'GstarCAD Multi-Leader Interface'
     CLSID = IID('{59898AB2-E779-4D7C-B77C-86E9E10B2226}')
     coclass_clsid = IID('{E6494613-3893-47A5-B0E7-B6AD41ADA6F4}')
@@ -14121,7 +14121,7 @@ class IGcadMLeader(DispatchBaseClass):
         return self._ApplyTypes_(41, 1, (12, 0), ((3, 1),), 'GetDoglegDirection', None,leaderIndex
             )
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -14266,7 +14266,7 @@ class IGcadMLeader(DispatchBaseClass):
         "ContentBlockName": (9, 2, (8, 0), (), "ContentBlockName", None),
         "ContentBlockType": (25, 2, (3, 0), (), "ContentBlockType", None),
         "ContentType": (34, 2, (3, 0), (), "ContentType", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "DogLegged": (7, 2, (11, 0), (), "DogLegged", None),
@@ -14276,12 +14276,12 @@ class IGcadMLeader(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "LandingGap": (23, 2, (5, 0), (), "LandingGap", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LeaderCount": (26, 2, (3, 0), (), "LeaderCount", None),
-        # Method 'LeaderLineColor' returns object of type 'IGcadGcCmColor'
+        # Method 'LeaderLineColor' returns object of type 'IAcadGcCmColor'
         "LeaderLineColor": (2, 2, (9, 0), (), "LeaderLineColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "LeaderLineWeight": (4, 2, (3, 0), (), "LeaderLineWeight", None),
         "LeaderLinetype": (3, 2, (8, 0), (), "LeaderLinetype", None),
@@ -14313,7 +14313,7 @@ class IGcadMLeader(DispatchBaseClass):
         "TextStyleName": (12, 2, (8, 0), (), "TextStyleName", None),
         "TextTopAttachmentType": (49, 2, (3, 0), (), "TextTopAttachmentType", None),
         "TextWidth": (15, 2, (5, 0), (), "TextWidth", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -14372,7 +14372,7 @@ class IGcadMLeader(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadMLeaderStyle(DispatchBaseClass):
+class IAcadMLeaderStyle(DispatchBaseClass):
     'Gcad MLeaderstyle Interface'
     CLSID = IID('{865CCF2C-B13D-48CB-9605-04E135F8FF30}')
     coclass_clsid = IID('{C3819487-144A-4471-B95E-712E3CC64BEC}')
@@ -14385,7 +14385,7 @@ class IGcadMLeaderStyle(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -14411,14 +14411,14 @@ class IGcadMLeaderStyle(DispatchBaseClass):
         "ArrowSymbol": (18, 2, (8, 0), (), "ArrowSymbol", None),
         "BitFlags": (3, 2, (3, 0), (), "BitFlags", None),
         "Block": (26, 2, (8, 0), (), "Block", None),
-        # Method 'BlockColor' returns object of type 'IGcadGcCmColor'
+        # Method 'BlockColor' returns object of type 'IAcadGcCmColor'
         "BlockColor": (27, 2, (9, 0), (), "BlockColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "BlockConnectionType": (32, 2, (3, 0), (), "BlockConnectionType", None),
         "BlockRotation": (31, 2, (5, 0), (), "BlockRotation", None),
         "BlockScale": (29, 2, (5, 0), (), "BlockScale", None),
         "BreakSize": (36, 2, (5, 0), (), "BreakSize", None),
         "ContentType": (4, 2, (3, 0), (), "ContentType", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Description": (2, 2, (8, 0), (), "Description", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -14434,7 +14434,7 @@ class IGcadMLeaderStyle(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "LandingGap": (15, 2, (5, 0), (), "LandingGap", None),
-        # Method 'LeaderLineColor' returns object of type 'IGcadGcCmColor'
+        # Method 'LeaderLineColor' returns object of type 'IAcadGcCmColor'
         "LeaderLineColor": (11, 2, (9, 0), (), "LeaderLineColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "LeaderLineTypeId": (12, 2, (8, 0), (), "LeaderLineTypeId", None),
         "LeaderLineWeight": (13, 2, (3, 0), (), "LeaderLineWeight", None),
@@ -14451,7 +14451,7 @@ class IGcadMLeaderStyle(DispatchBaseClass):
         "TextAngleType": (38, 2, (3, 0), (), "TextAngleType", None),
         "TextAttachmentDirection": (41, 2, (3, 0), (), "TextAttachmentDirection", None),
         "TextBottomAttachmentType": (43, 2, (3, 0), (), "TextBottomAttachmentType", None),
-        # Method 'TextColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TextColor' returns object of type 'IAcadGcCmColor'
         "TextColor": (22, 2, (9, 0), (), "TextColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "TextHeight": (23, 2, (5, 0), (), "TextHeight", None),
         "TextLeftAttachmentType": (21, 2, (3, 0), (), "TextLeftAttachmentType", None),
@@ -14512,8 +14512,8 @@ class IGcadMLeaderStyle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadMLine(DispatchBaseClass):
-    'IGcadMLine Interface'
+class IAcadMLine(DispatchBaseClass):
+    'IAcadMLine Interface'
     CLSID = IID('{0DA73585-0488-4699-BCD2-AB0F5C91D404}')
     coclass_clsid = IID('{CC35F7B8-1AE8-4C31-9F3D-484A44EAC286}')
 
@@ -14549,7 +14549,7 @@ class IGcadMLine(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -14646,7 +14646,7 @@ class IGcadMLine(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (2, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -14654,7 +14654,7 @@ class IGcadMLine(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Justification": (3, 2, (3, 0), (), "Justification", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -14668,7 +14668,7 @@ class IGcadMLine(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "StyleName": (1, 2, (8, 0), (), "StyleName", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -14696,7 +14696,7 @@ class IGcadMLine(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadMText(DispatchBaseClass):
+class IAcadMText(DispatchBaseClass):
     'GCAD MText Interface'
     CLSID = IID('{50FA2201-1260-4323-8C00-3EA7E36680B6}')
     coclass_clsid = IID('{9F58700D-4910-4463-AEEB-2406161B0490}')
@@ -14738,7 +14738,7 @@ class IGcadMText(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -14838,7 +14838,7 @@ class IGcadMText(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "AttachmentPoint": (3, 2, (3, 0), (), "AttachmentPoint", None),
         "BackgroundFill": (13, 2, (11, 0), (), "BackgroundFill", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "DrawingDirection": (4, 2, (3, 0), (), "DrawingDirection", None),
@@ -14848,7 +14848,7 @@ class IGcadMText(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (6, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsertionPoint": (8, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -14867,7 +14867,7 @@ class IGcadMText(DispatchBaseClass):
         "Rotation": (7, 2, (5, 0), (), "Rotation", None),
         "StyleName": (2, 2, (8, 0), (), "StyleName", None),
         "TextString": (1, 2, (8, 0), (), "TextString", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (5, 2, (5, 0), (), "Width", None),
@@ -14906,7 +14906,7 @@ class IGcadMText(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadMaterial(DispatchBaseClass):
+class IAcadMaterial(DispatchBaseClass):
     'The render material characteristics'
     CLSID = IID('{A7F84FAB-56C7-4437-9178-04441F062A4A}')
     coclass_clsid = IID('{F55DC97F-4A3C-49E9-873C-B1F3B6F4F8D6}')
@@ -14919,7 +14919,7 @@ class IGcadMaterial(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -14939,7 +14939,7 @@ class IGcadMaterial(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Description": (1, 2, (8, 0), (), "Description", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -14962,11 +14962,11 @@ class IGcadMaterial(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadMaterials(DispatchBaseClass):
+class IAcadMaterials(DispatchBaseClass):
     CLSID = IID('{C42C4E52-02C7-441C-B0BA-16771B542EA5}')
     coclass_clsid = IID('{C4E55BE8-77A9-4A8A-81DE-2CC03D13FF48}')
 
-    # Result is of type IGcadMaterial
+    # Result is of type IAcadMaterial
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -14983,7 +14983,7 @@ class IGcadMaterials(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -14996,7 +14996,7 @@ class IGcadMaterials(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadMaterial
+    # Result is of type IAcadMaterial
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -15013,7 +15013,7 @@ class IGcadMaterials(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -15051,12 +15051,12 @@ class IGcadMaterials(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadMenuBar(DispatchBaseClass):
+class IAcadMenuBar(DispatchBaseClass):
     'A collection of PopupMenu objects representing the currentGCAD menu bar'
     CLSID = IID('{87925C1E-ADEA-48BD-8BF1-239F9A116A81}')
     coclass_clsid = IID('{573373A3-EDBE-4369-AF1F-3292EE13538C}')
 
-    # Result is of type IGcadPopupMenu
+    # Result is of type IAcadPopupMenu
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -15066,10 +15066,10 @@ class IGcadMenuBar(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
-        # Method 'Parent' returns object of type 'IGcadApplication'
+        # Method 'Parent' returns object of type 'IAcadApplication'
         "Parent": (1610743812, 2, (9, 0), (), "Parent", '{B1872638-6D18-482F-90BA-38086D17625F}'),
     }
     _prop_map_put_ = {
@@ -15101,7 +15101,7 @@ class IGcadMenuBar(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadMenuGroup(DispatchBaseClass):
+class IAcadMenuGroup(DispatchBaseClass):
     'An GCAD menu group'
     CLSID = IID('{72D027F2-CD79-4135-AE60-74FD0F8F595B}')
     coclass_clsid = IID('{521C919B-AC49-4F28-A908-D4BD172C92E6}')
@@ -15121,15 +15121,15 @@ class IGcadMenuGroup(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "MenuFileName": (1610743812, 2, (8, 0), (), "MenuFileName", None),
-        # Method 'Menus' returns object of type 'IGcadPopupMenus'
+        # Method 'Menus' returns object of type 'IAcadPopupMenus'
         "Menus": (1610743813, 2, (9, 0), (), "Menus", '{4B67342A-4DF3-450B-8E12-CF0A8B16DBC0}'),
         "Name": (1610743810, 2, (8, 0), (), "Name", None),
-        # Method 'Parent' returns object of type 'IGcadMenuGroups'
+        # Method 'Parent' returns object of type 'IAcadMenuGroups'
         "Parent": (1610743809, 2, (9, 0), (), "Parent", '{1CB4149C-D49B-45BE-AEBC-D27A5B666A0B}'),
-        # Method 'Toolbars' returns object of type 'IGcadToolbars'
+        # Method 'Toolbars' returns object of type 'IAcadToolbars'
         "Toolbars": (1610743814, 2, (9, 0), (), "Toolbars", '{8095E3AB-7AB4-4915-A35A-11491F1B45D6}'),
         "Type": (1610743811, 2, (3, 0), (), "Type", None),
     }
@@ -15143,12 +15143,12 @@ class IGcadMenuGroup(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadMenuGroups(DispatchBaseClass):
-    'IGcadMenuGroups �ӿ�'
+class IAcadMenuGroups(DispatchBaseClass):
+    'IAcadMenuGroups �ӿ�'
     CLSID = IID('{1CB4149C-D49B-45BE-AEBC-D27A5B666A0B}')
     coclass_clsid = IID('{79855627-10CA-4054-BB8C-00946292669D}')
 
-    # Result is of type IGcadMenuGroup
+    # Result is of type IAcadMenuGroup
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -15157,7 +15157,7 @@ class IGcadMenuGroups(DispatchBaseClass):
             ret = Dispatch(ret, 'Item', '{72D027F2-CD79-4135-AE60-74FD0F8F595B}')
         return ret
 
-    # Result is of type IGcadMenuGroup
+    # Result is of type IAcadMenuGroup
     def Load(self, MenuFileName=defaultNamedNotOptArg, BaseMenu=defaultNamedOptArg):
         'Loads a menu group from a menu file or the definition of a linetype from a library (LIN) file'
         ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1), (12, 17)),MenuFileName
@@ -15167,10 +15167,10 @@ class IGcadMenuGroups(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
-        # Method 'Parent' returns object of type 'IGcadApplication'
+        # Method 'Parent' returns object of type 'IAcadApplication'
         "Parent": (1610743812, 2, (9, 0), (), "Parent", '{B1872638-6D18-482F-90BA-38086D17625F}'),
     }
     _prop_map_put_ = {
@@ -15202,12 +15202,12 @@ class IGcadMenuGroups(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadModelSpace(DispatchBaseClass):
-    'IGcadModelSpace �ӿ�'
+class IAcadModelSpace(DispatchBaseClass):
+    'IAcadModelSpace �ӿ�'
     CLSID = IID('{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}')
     coclass_clsid = IID('{35DF9E00-7285-40A9-BD63-D714AA0CA70F}')
 
-    # Result is of type IGcad3DFace
+    # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object given four vertices'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -15220,7 +15220,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DFace', '{46250F63-F4E2-4C99-A12B-0471714BC659}')
         return ret
 
-    # Result is of type IGcadPolygonMesh
+    # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form 3D mesh, given the number of points in the M and N directions and the coordinates of the points in the M and N directions'
         PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
@@ -15230,7 +15230,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DMesh', '{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}')
         return ret
 
-    # Result is of type IGcad3DPolyline
+    # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a 3D polyline from the given array of coordinates'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -15240,7 +15240,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DPoly', '{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}')
         return ret
 
-    # Result is of type IGcadArc
+    # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc given the center, radius, start angle, and end angle of the arc'
         Center = VTR8ArrayOrVal(Center)
@@ -15250,7 +15250,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddArc', '{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}')
         return ret
 
-    # Result is of type IGcadAttribute
+    # Result is of type IAcadAttribute
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an attribute definition at the given location with the specified properties'
@@ -15262,7 +15262,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddAttribute', '{DB4711D4-33D9-408F-9E34-93A7F91248F2}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box with edges parallel to the axes of the WCS'
         Origin = VTR8ArrayOrVal(Origin)
@@ -15272,7 +15272,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddBox', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadCircle
+    # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given a center point and radius'
         Center = VTR8ArrayOrVal(Center)
@@ -15282,7 +15282,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCircle', '{70B267B4-5885-477C-BE74-F898EE7FE9EA}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone with the base on the XY plane of the WCS'
         Center = VTR8ArrayOrVal(Center)
@@ -15300,7 +15300,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCustomObject', None)
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
         Center = VTR8ArrayOrVal(Center)
@@ -15310,7 +15310,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCylinder', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadDim3PointAngular
+    # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -15322,7 +15322,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDim3PointAngular', '{EA05C039-0D70-4713-865B-71DF0B02F6CA}')
         return ret
 
-    # Result is of type IGcadDimAligned
+    # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension object'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -15334,7 +15334,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAligned', '{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}')
         return ret
 
-    # Result is of type IGcadDimAngular
+    # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -15346,7 +15346,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAngular', '{78931DD8-09C7-44F5-9CB5-83198A8CD286}')
         return ret
 
-    # Result is of type IGcadDimArcLength
+    # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         'Creates an arc length dimension for an arc'
         ArcCenter = VTR8ArrayOrVal(ArcCenter)
@@ -15359,7 +15359,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimArc', '{6BE0895F-AB23-4095-8180-0BBD8E790138}')
         return ret
 
-    # Result is of type IGcadDimDiametric
+    # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension for a circle or arc given the two points on the diameter and the length of the leader line'
         ChordPoint = VTR8ArrayOrVal(ChordPoint)
@@ -15370,7 +15370,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimDiametric', '{CF7DAB54-2669-4E42-B5A5-297B0154CE04}')
         return ret
 
-    # Result is of type IGcadDimOrdinate
+    # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension given the definition point, and leader endpoint'
         DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
@@ -15381,7 +15381,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimOrdinate', '{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}')
         return ret
 
-    # Result is of type IGcadDimRadial
+    # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension for the selected object at the given location'
         Center = VTR8ArrayOrVal(Center)
@@ -15392,7 +15392,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadial', '{6070AA16-B13D-4B73-AA07-722C59BC09B5}')
         return ret
 
-    # Result is of type IGcadDimRadialLarge
+    # Result is of type IAcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         'Creates a jogged radial dimension for an arc, circle, or polyline arc segment'
@@ -15406,7 +15406,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadialLarge', '{E3D1CABD-C84B-49D2-9D47-984F880D33A2}')
         return ret
 
-    # Result is of type IGcadDimRotated
+    # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a rotated linear dimension'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -15418,7 +15418,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRotated', '{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}')
         return ret
 
-    # Result is of type IGcadEllipse
+    # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the XY plane of the WCS given the center point, a point on the major axis, and the radius ratio'
         Center = VTR8ArrayOrVal(Center)
@@ -15428,7 +15428,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipse', '{21565C97-8E2E-442B-8F69-C9662BC89DCA}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cone on the XY plane of the WCS given the Center, MajorRadius, MinorRadius, and Height'
         Center = VTR8ArrayOrVal(Center)
@@ -15438,7 +15438,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cylinder whose base is on the XY plane of the WCS, given the Center, MajorRadius, MinorRadius, and Height'
         Center = VTR8ArrayOrVal(Center)
@@ -15448,7 +15448,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCylinder', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolid(self, Profile=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, TaperAngle=defaultNamedNotOptArg):
         'Creates an extruded solid given the Profile, Height, and TaperAngle'
         ret = self._oleobj_.InvokeTypes(1558, LCID, 1, (9, 0), ((9, 1), (5, 1), (5, 1)),Profile
@@ -15457,7 +15457,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolid', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolidAlongPath(self, Profile=defaultNamedNotOptArg, Path=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and an extrusion path'
         ret = self._oleobj_.InvokeTypes(1559, LCID, 1, (9, 0), ((9, 1), (9, 1)),Profile
@@ -15466,7 +15466,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolidAlongPath', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadHatch
+    # Result is of type IAcadHatch
     def AddHatch(self, PatternType=defaultNamedNotOptArg, PatternName=defaultNamedNotOptArg, Associativity=defaultNamedNotOptArg, HatchObjectType=defaultNamedOptArg):
         'Creates a Hatch object'
         ret = self._oleobj_.InvokeTypes(1579, LCID, 1, (9, 0), ((3, 1), (8, 1), (11, 1), (12, 17)),PatternType
@@ -15475,7 +15475,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddHatch', '{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}')
         return ret
 
-    # Result is of type IGcadLeader
+    # Result is of type IAcadLeader
     def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
         'Creates a leader line, given the coordinates of the points'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -15485,7 +15485,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLeader', '{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}')
         return ret
 
-    # Result is of type IGcadLWPolyline
+    # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a lightweight polyline from a list of vertices'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -15495,7 +15495,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLightWeightPolyline', '{B32517C5-036E-4CB0-8538-66BD5FC625C4}')
         return ret
 
-    # Result is of type IGcadLine
+    # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a line passing through two points'
         StartPoint = VTR8ArrayOrVal(StartPoint)
@@ -15506,7 +15506,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLine', '{EB1641A6-750D-49EB-A681-0BAEB77E7388}')
         return ret
 
-    # Result is of type IGcadMInsertBlock
+    # Result is of type IAcadMInsertBlock
     def AddMInsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
@@ -15520,14 +15520,14 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMInsertBlock', '{2EA3AB94-E461-4DDC-9B9B-894406F31256}')
         return ret
 
-    # Result is of type IGcadMLeader
+    # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         'Creates a multileader'
         PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{59898AB2-E779-4D7C-B77C-86E9E10B2226}',PointsArray
             , leaderLineIndex)
 
-    # Result is of type IGcadMLine
+    # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Creates a polyface mesh from a list of vertices'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -15537,7 +15537,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMLine', '{0DA73585-0488-4699-BCD2-AB0F5C91D404}')
         return ret
 
-    # Result is of type IGcadMText
+    # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates an MText entity in a rectangle defined by the insertion point and width of the bounding box'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -15547,7 +15547,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMText', '{50FA2201-1260-4323-8C00-3EA7E36680B6}')
         return ret
 
-    # Result is of type IGcadPoint
+    # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object at a given location'
         Point = VTR8ArrayOrVal(Point)
@@ -15557,7 +15557,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPoint', '{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}')
         return ret
 
-    # Result is of type IGcadPolyfaceMesh
+    # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Creates a polyface mesh from a list of vertices'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -15567,7 +15567,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyfaceMesh', '{FD4B5856-B661-4E10-8B79-1E793FDB0E50}')
         return ret
 
-    # Result is of type IGcadPolyline
+    # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline from a list of vertices'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -15577,7 +15577,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyline', '{780E9428-D7F9-4F96-8E91-55C8F3CF3082}')
         return ret
 
-    # Result is of type IGcadRasterImage
+    # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a new raster image based on an existing image file'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -15587,7 +15587,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRaster', '{1A5BD135-D93B-4BFD-8027-E8277D629B46}')
         return ret
 
-    # Result is of type IGcadRay
+    # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two unique points'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -15604,7 +15604,7 @@ class IGcadModelSpace(DispatchBaseClass):
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid, given the region around an axis'
         AxisPoint = VTR8ArrayOrVal(AxisPoint)
@@ -15615,7 +15615,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRevolvedSolid', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadSection
+    # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         'Creates a section plane'
         FromPoint = VTR8ArrayOrVal(FromPoint)
@@ -15626,7 +15626,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSection', '{13C9B549-488C-48B2-A7D1-9B299FEE3C22}')
         return ret
 
-    # Result is of type IGcadShape
+    # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a Shape object based on a template identified by name, at the given insertion point, scale factor, and rotation'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -15636,7 +15636,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddShape', '{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}')
         return ret
 
-    # Result is of type IGcadSolid
+    # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 2D solid polygon'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -15649,7 +15649,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSolid', '{38D2992F-DF38-497F-9E2B-68D813057E8D}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius'
         Center = VTR8ArrayOrVal(Center)
@@ -15659,7 +15659,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSphere', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadSpline
+    # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a quadratic or cubic NURBS (nonuniform rational B-spline) curve'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -15669,7 +15669,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSpline', '{3D506D60-0138-48DD-8166-E5512E441206}')
         return ret
 
-    # Result is of type IGcadTable
+    # Result is of type IAcadTable
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width'
@@ -15680,7 +15680,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTable', '{449C1C61-4BD2-445C-BA5E-ED97DF538B9D}')
         return ret
 
-    # Result is of type IGcadText
+    # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a single line of text'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -15690,7 +15690,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddText', '{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}')
         return ret
 
-    # Result is of type IGcadTolerance
+    # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance entity'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -15701,7 +15701,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTolerance', '{98D4741E-D869-4950-8B28-046B6884A084}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus at the given location'
         Center = VTR8ArrayOrVal(Center)
@@ -15711,7 +15711,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTorus', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadTrace
+    # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a Trace object from an array of points'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -15721,7 +15721,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTrace', '{4253025F-5BC5-4D78-8D65-138D2DBED220}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width, and height'
         Center = VTR8ArrayOrVal(Center)
@@ -15731,7 +15731,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddWedge', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadXline
+    # Result is of type IAcadXline
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attaches an external reference (xref) to the drawing'
@@ -15745,7 +15745,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AttachExternalReference', '{29EB1F45-3E5E-41E2-B909-2EA909858B11}')
         return ret
 
-    # Result is of type IGcadExternalReference
+    # Result is of type IAcadExternalReference
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attaches an external reference (xref) to the drawing'
@@ -15774,7 +15774,7 @@ class IGcadModelSpace(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -15787,7 +15787,7 @@ class IGcadModelSpace(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadBlockReference
+    # Result is of type IAcadBlockReference
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts a drawing file or a named block that has been defined in the current drawing'
@@ -15799,7 +15799,7 @@ class IGcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'InsertBlock', '{0E143589-AFCC-44FC-8000-4C8D44F80ED6}')
         return ret
 
-    # Result is of type IGcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -15834,7 +15834,7 @@ class IGcadModelSpace(DispatchBaseClass):
         "BlockScaling": (1600, 2, (3, 0), (), "BlockScaling", None),
         "Comments": (1597, 2, (8, 0), (), "Comments", None),
         "Count": (1536, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Explodable": (1599, 2, (11, 0), (), "Explodable", None),
@@ -15843,7 +15843,7 @@ class IGcadModelSpace(DispatchBaseClass):
         "IsDynamicBlock": (1601, 2, (11, 0), (), "IsDynamicBlock", None),
         "IsLayout": (1582, 2, (11, 0), (), "IsLayout", None),
         "IsXRef": (1584, 2, (11, 0), (), "IsXRef", None),
-        # Method 'Layout' returns object of type 'IGcadLayout'
+        # Method 'Layout' returns object of type 'IAcadLayout'
         "Layout": (1583, 2, (9, 0), (), "Layout", '{F8AE8A77-1909-452A-95E8-0B833451FD4B}'),
         "Name": (1537, 2, (8, 0), (), "Name", None),
         "ObjectID": (1029, 2, (20, 0), (), "ObjectID", None),
@@ -15852,7 +15852,7 @@ class IGcadModelSpace(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "Path": (1596, 2, (8, 0), (), "Path", None),
         "Units": (1598, 2, (3, 0), (), "Units", None),
-        # Method 'XRefDatabase' returns object of type 'IGcadDatabase'
+        # Method 'XRefDatabase' returns object of type 'IAcadDatabase'
         "XRefDatabase": (1589, 2, (9, 0), (), "XRefDatabase", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
     }
     _prop_map_put_ = {
@@ -15891,8 +15891,8 @@ class IGcadModelSpace(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadNurbSurface(DispatchBaseClass):
-    'IGcadNurbSurface Interface'
+class IAcadNurbSurface(DispatchBaseClass):
+    'IAcadNurbSurface Interface'
     CLSID = IID('{B4087378-9A1B-4996-B1C0-D3EAD492FA7A}')
     coclass_clsid = IID('{3C7846DC-43D5-44CD-B954-F941A0F85DE9}')
 
@@ -15928,7 +15928,7 @@ class IGcadNurbSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -16017,7 +16017,7 @@ class IGcadNurbSurface(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "CvHullDisplay": (12, 2, (11, 0), (), "CvHullDisplay", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -16025,7 +16025,7 @@ class IGcadNurbSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -16039,7 +16039,7 @@ class IGcadNurbSurface(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -16073,8 +16073,8 @@ class IGcadNurbSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadObject(DispatchBaseClass):
-    'IGcadObject �ӿ�'
+class IAcadObject(DispatchBaseClass):
+    'IAcadObject �ӿ�'
     CLSID = IID('{B0F45D84-478D-4E42-8261-0F0C89BE7E99}')
     coclass_clsid = IID('{4F1D3AB3-AAC7-4F57-BA5C-B6D5410FE1D7}')
 
@@ -16086,7 +16086,7 @@ class IGcadObject(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -16106,7 +16106,7 @@ class IGcadObject(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -16125,8 +16125,8 @@ class IGcadObject(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadObjectEvents:
-    'IGcadObjectEvents �ӿ�'
+class IAcadObjectEvents:
+    'IAcadObjectEvents �ӿ�'
     CLSID = CLSID_Sink = IID('{41B85986-5004-4888-9E89-7895663FA77C}')
     coclass_clsid = IID('{028BA451-EBBA-4529-8521-DBFB95EB745C}')
     _public_methods_ = [] # For COM Server support
@@ -16163,8 +16163,8 @@ class IGcadObjectEvents:
 #		'Triggered when an object or collection in the drawing has been modified'
 
 
-class IGcadOle(DispatchBaseClass):
-    'IGcadOle Interface'
+class IAcadOle(DispatchBaseClass):
+    'IAcadOle Interface'
     CLSID = IID('{75419B16-46F2-4245-A624-7819E87EEA8A}')
     coclass_clsid = IID('{ABA71980-3AA9-40F5-81A7-735886F6F6FD}')
 
@@ -16200,7 +16200,7 @@ class IGcadOle(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -16296,7 +16296,7 @@ class IGcadOle(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -16305,7 +16305,7 @@ class IGcadOle(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (4, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsertionPoint": (1, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -16324,7 +16324,7 @@ class IGcadOle(DispatchBaseClass):
         "Rotation": (2, 2, (5, 0), (), "Rotation", None),
         "ScaleHeight": (6, 2, (5, 0), (), "ScaleHeight", None),
         "ScaleWidth": (5, 2, (5, 0), (), "ScaleWidth", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (3, 2, (5, 0), (), "Width", None),
@@ -16360,8 +16360,8 @@ class IGcadOle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPViewport(DispatchBaseClass):
-    'IGcadPViewport Interface'
+class IAcadPViewport(DispatchBaseClass):
+    'IAcadPViewport Interface'
     CLSID = IID('{E1366A0E-60BF-4E69-9728-D524EDF12C69}')
     coclass_clsid = IID('{BEAF55E0-0A37-499C-B48B-DBC93CF6E29B}')
 
@@ -16402,7 +16402,7 @@ class IGcadPViewport(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -16528,7 +16528,7 @@ class IGcadPViewport(DispatchBaseClass):
         "Center": (1, 2, (12, 0), (), "Center", None),
         "Clipped": (7, 2, (11, 0), (), "Clipped", None),
         "CustomScale": (10, 2, (5, 0), (), "CustomScale", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Direction": (2, 2, (12, 0), (), "Direction", None),
         "DisplayLocked": (8, 2, (11, 0), (), "DisplayLocked", None),
@@ -16541,7 +16541,7 @@ class IGcadPViewport(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HasSheetView": (35, 2, (11, 0), (), "HasSheetView", None),
         "Height": (4, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "LabelBlockId": (34, 2, (3, 0), (), "LabelBlockId", None),
         "LabelBlockId32": (38, 2, (3, 0), (), "LabelBlockId32", None),
@@ -16552,7 +16552,7 @@ class IGcadPViewport(DispatchBaseClass):
         "LinetypeScale": (1283, 2, (5, 0), (), "LinetypeScale", None),
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "Material": (1399, 2, (8, 0), (), "Material", None),
-        # Method 'ModelView' returns object of type 'IGcadView'
+        # Method 'ModelView' returns object of type 'IAcadView'
         "ModelView": (32, 2, (9, 0), (), "ModelView", '{DE1C99A1-811D-4F40-98A6-A17186C8779A}'),
         "ObjectID": (1029, 2, (20, 0), (), "ObjectID", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
@@ -16560,7 +16560,7 @@ class IGcadPViewport(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "RemoveHiddenLines": (25, 2, (11, 0), (), "RemoveHiddenLines", None),
         "ShadePlot": (29, 2, (3, 0), (), "ShadePlot", None),
-        # Method 'SheetView' returns object of type 'IGcadView'
+        # Method 'SheetView' returns object of type 'IAcadView'
         "SheetView": (33, 2, (9, 0), (), "SheetView", '{DE1C99A1-811D-4F40-98A6-A17186C8779A}'),
         "SnapBasePoint": (13, 2, (12, 0), (), "SnapBasePoint", None),
         "SnapOn": (14, 2, (11, 0), (), "SnapOn", None),
@@ -16569,7 +16569,7 @@ class IGcadPViewport(DispatchBaseClass):
         "StandardScale2": (39, 2, (3, 0), (), "StandardScale2", None),
         "StyleSheet": (11, 2, (8, 0), (), "StyleSheet", None),
         "Target": (26, 2, (12, 0), (), "Target", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "TwistAngle": (23, 2, (5, 0), (), "TwistAngle", None),
         "UCSIconAtOrigin": (17, 2, (11, 0), (), "UCSIconAtOrigin", None),
@@ -16629,12 +16629,12 @@ class IGcadPViewport(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPaperSpace(DispatchBaseClass):
+class IAcadPaperSpace(DispatchBaseClass):
     'A special Block object containing all the entities in the active paper space layout'
     CLSID = IID('{66FA50E9-6EB2-47CA-8EBA-7085C5E6C3A5}')
     coclass_clsid = IID('{BF0FD147-A1EA-416E-911B-9EF794738AFA}')
 
-    # Result is of type IGcad3DFace
+    # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 3DFace object given four vertices'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -16647,7 +16647,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DFace', '{46250F63-F4E2-4C99-A12B-0471714BC659}')
         return ret
 
-    # Result is of type IGcadPolygonMesh
+    # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form 3D mesh, given the number of points in the M and N directions and the coordinates of the points in the M and N directions'
         PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
@@ -16657,7 +16657,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DMesh', '{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}')
         return ret
 
-    # Result is of type IGcad3DPolyline
+    # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a 3D polyline from the given array of coordinates'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -16667,7 +16667,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DPoly', '{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}')
         return ret
 
-    # Result is of type IGcadArc
+    # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc given the center, radius, start angle, and end angle of the arc'
         Center = VTR8ArrayOrVal(Center)
@@ -16677,7 +16677,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddArc', '{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}')
         return ret
 
-    # Result is of type IGcadAttribute
+    # Result is of type IAcadAttribute
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Creates an attribute definition at the given location with the specified properties'
@@ -16689,7 +16689,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddAttribute', '{DB4711D4-33D9-408F-9E34-93A7F91248F2}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid box with edges parallel to the axes of the WCS'
         Origin = VTR8ArrayOrVal(Origin)
@@ -16699,7 +16699,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddBox', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadCircle
+    # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given a center point and radius'
         Center = VTR8ArrayOrVal(Center)
@@ -16709,7 +16709,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCircle', '{70B267B4-5885-477C-BE74-F898EE7FE9EA}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cone with the base on the XY plane of the WCS'
         Center = VTR8ArrayOrVal(Center)
@@ -16727,7 +16727,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCustomObject', None)
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid cylinder whose base is on the XY plane of the WCS'
         Center = VTR8ArrayOrVal(Center)
@@ -16737,7 +16737,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCylinder', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadDim3PointAngular
+    # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -16749,7 +16749,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDim3PointAngular', '{EA05C039-0D70-4713-865B-71DF0B02F6CA}')
         return ret
 
-    # Result is of type IGcadDimAligned
+    # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension object'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -16761,7 +16761,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAligned', '{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}')
         return ret
 
-    # Result is of type IGcadDimAngular
+    # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension for an arc, two lines, or a circle'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -16773,7 +16773,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAngular', '{78931DD8-09C7-44F5-9CB5-83198A8CD286}')
         return ret
 
-    # Result is of type IGcadDimArcLength
+    # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         'Creates an arc length dimension for an arc'
         ArcCenter = VTR8ArrayOrVal(ArcCenter)
@@ -16786,7 +16786,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimArc', '{6BE0895F-AB23-4095-8180-0BBD8E790138}')
         return ret
 
-    # Result is of type IGcadDimDiametric
+    # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension for a circle or arc given the two points on the diameter and the length of the leader line'
         ChordPoint = VTR8ArrayOrVal(ChordPoint)
@@ -16797,7 +16797,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimDiametric', '{CF7DAB54-2669-4E42-B5A5-297B0154CE04}')
         return ret
 
-    # Result is of type IGcadDimOrdinate
+    # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension given the definition point, and leader endpoint'
         DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
@@ -16808,7 +16808,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimOrdinate', '{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}')
         return ret
 
-    # Result is of type IGcadDimRadial
+    # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension for the selected object at the given location'
         Center = VTR8ArrayOrVal(Center)
@@ -16819,7 +16819,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadial', '{6070AA16-B13D-4B73-AA07-722C59BC09B5}')
         return ret
 
-    # Result is of type IGcadDimRadialLarge
+    # Result is of type IAcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         'Creates a jogged radial dimension for an arc, circle, or polyline arc segment'
@@ -16833,7 +16833,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadialLarge', '{E3D1CABD-C84B-49D2-9D47-984F880D33A2}')
         return ret
 
-    # Result is of type IGcadDimRotated
+    # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a rotated linear dimension'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -16845,7 +16845,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRotated', '{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}')
         return ret
 
-    # Result is of type IGcadEllipse
+    # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the XY plane of the WCS given the center point, a point on the major axis, and the radius ratio'
         Center = VTR8ArrayOrVal(Center)
@@ -16855,7 +16855,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipse', '{21565C97-8E2E-442B-8F69-C9662BC89DCA}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cone on the XY plane of the WCS given the Center, MajorRadius, MinorRadius, and Height'
         Center = VTR8ArrayOrVal(Center)
@@ -16865,7 +16865,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a 3D solid elliptical cylinder whose base is on the XY plane of the WCS, given the Center, MajorRadius, MinorRadius, and Height'
         Center = VTR8ArrayOrVal(Center)
@@ -16875,7 +16875,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCylinder', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolid(self, Profile=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, TaperAngle=defaultNamedNotOptArg):
         'Creates an extruded solid given the Profile, Height, and TaperAngle'
         ret = self._oleobj_.InvokeTypes(1558, LCID, 1, (9, 0), ((9, 1), (5, 1), (5, 1)),Profile
@@ -16884,7 +16884,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolid', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolidAlongPath(self, Profile=defaultNamedNotOptArg, Path=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and an extrusion path'
         ret = self._oleobj_.InvokeTypes(1559, LCID, 1, (9, 0), ((9, 1), (9, 1)),Profile
@@ -16893,7 +16893,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolidAlongPath', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadHatch
+    # Result is of type IAcadHatch
     def AddHatch(self, PatternType=defaultNamedNotOptArg, PatternName=defaultNamedNotOptArg, Associativity=defaultNamedNotOptArg, HatchObjectType=defaultNamedOptArg):
         'Creates a Hatch object'
         ret = self._oleobj_.InvokeTypes(1579, LCID, 1, (9, 0), ((3, 1), (8, 1), (11, 1), (12, 17)),PatternType
@@ -16902,7 +16902,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddHatch', '{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}')
         return ret
 
-    # Result is of type IGcadLeader
+    # Result is of type IAcadLeader
     def AddLeader(self, PointsArray=defaultNamedNotOptArg, Annotation=defaultNamedNotOptArg, Type=defaultNamedNotOptArg):
         'Creates a leader line, given the coordinates of the points'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -16912,7 +16912,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLeader', '{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}')
         return ret
 
-    # Result is of type IGcadLWPolyline
+    # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a lightweight polyline from a list of vertices'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -16922,7 +16922,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLightWeightPolyline', '{B32517C5-036E-4CB0-8538-66BD5FC625C4}')
         return ret
 
-    # Result is of type IGcadLine
+    # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Creates a line passing through two points'
         StartPoint = VTR8ArrayOrVal(StartPoint)
@@ -16933,7 +16933,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLine', '{EB1641A6-750D-49EB-A681-0BAEB77E7388}')
         return ret
 
-    # Result is of type IGcadMInsertBlock
+    # Result is of type IAcadMInsertBlock
     def AddMInsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
@@ -16947,14 +16947,14 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMInsertBlock', '{2EA3AB94-E461-4DDC-9B9B-894406F31256}')
         return ret
 
-    # Result is of type IGcadMLeader
+    # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         'Creates a multileader'
         PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{59898AB2-E779-4D7C-B77C-86E9E10B2226}',PointsArray
             , leaderLineIndex)
 
-    # Result is of type IGcadMLine
+    # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Creates a polyface mesh from a list of vertices'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -16964,7 +16964,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMLine', '{0DA73585-0488-4699-BCD2-AB0F5C91D404}')
         return ret
 
-    # Result is of type IGcadMText
+    # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates an MText entity in a rectangle defined by the insertion point and width of the bounding box'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -16974,7 +16974,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMText', '{50FA2201-1260-4323-8C00-3EA7E36680B6}')
         return ret
 
-    # Result is of type IGcadPViewport
+    # Result is of type IAcadPViewport
     def AddPViewport(self, Center=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Adds a paper space viewport, given the center, height, and width'
         ret = self._oleobj_.InvokeTypes(1, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
@@ -16983,7 +16983,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPViewport', '{E1366A0E-60BF-4E69-9728-D524EDF12C69}')
         return ret
 
-    # Result is of type IGcadPoint
+    # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a Point object at a given location'
         Point = VTR8ArrayOrVal(Point)
@@ -16993,7 +16993,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPoint', '{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}')
         return ret
 
-    # Result is of type IGcadPolyfaceMesh
+    # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Creates a polyface mesh from a list of vertices'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -17003,7 +17003,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyfaceMesh', '{FD4B5856-B661-4E10-8B79-1E793FDB0E50}')
         return ret
 
-    # Result is of type IGcadPolyline
+    # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline from a list of vertices'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -17013,7 +17013,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyline', '{780E9428-D7F9-4F96-8E91-55C8F3CF3082}')
         return ret
 
-    # Result is of type IGcadRasterImage
+    # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a new raster image based on an existing image file'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -17023,7 +17023,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRaster', '{1A5BD135-D93B-4BFD-8027-E8277D629B46}')
         return ret
 
-    # Result is of type IGcadRay
+    # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two unique points'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -17040,7 +17040,7 @@ class IGcadPaperSpace(DispatchBaseClass):
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid, given the region around an axis'
         AxisPoint = VTR8ArrayOrVal(AxisPoint)
@@ -17051,7 +17051,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRevolvedSolid', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadSection
+    # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         'Creates a section plane'
         FromPoint = VTR8ArrayOrVal(FromPoint)
@@ -17062,7 +17062,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSection', '{13C9B549-488C-48B2-A7D1-9B299FEE3C22}')
         return ret
 
-    # Result is of type IGcadShape
+    # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a Shape object based on a template identified by name, at the given insertion point, scale factor, and rotation'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -17072,7 +17072,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddShape', '{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}')
         return ret
 
-    # Result is of type IGcadSolid
+    # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a 2D solid polygon'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -17085,7 +17085,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSolid', '{38D2992F-DF38-497F-9E2B-68D813057E8D}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius'
         Center = VTR8ArrayOrVal(Center)
@@ -17095,7 +17095,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSphere', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadSpline
+    # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a quadratic or cubic NURBS (nonuniform rational B-spline) curve'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -17105,7 +17105,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSpline', '{3D506D60-0138-48DD-8166-E5512E441206}')
         return ret
 
-    # Result is of type IGcadTable
+    # Result is of type IAcadTable
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width'
@@ -17116,7 +17116,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTable', '{449C1C61-4BD2-445C-BA5E-ED97DF538B9D}')
         return ret
 
-    # Result is of type IGcadText
+    # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a single line of text'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -17126,7 +17126,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddText', '{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}')
         return ret
 
-    # Result is of type IGcadTolerance
+    # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance entity'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -17137,7 +17137,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTolerance', '{98D4741E-D869-4950-8B28-046B6884A084}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus at the given location'
         Center = VTR8ArrayOrVal(Center)
@@ -17147,7 +17147,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTorus', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadTrace
+    # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a Trace object from an array of points'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -17157,7 +17157,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTrace', '{4253025F-5BC5-4D78-8D65-138D2DBED220}')
         return ret
 
-    # Result is of type IGcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width, and height'
         Center = VTR8ArrayOrVal(Center)
@@ -17167,7 +17167,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddWedge', '{93102923-D2AD-4429-86B3-A09D589BF38F}')
         return ret
 
-    # Result is of type IGcadXline
+    # Result is of type IAcadXline
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attaches an external reference (xref) to the drawing'
@@ -17181,7 +17181,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AttachExternalReference', '{29EB1F45-3E5E-41E2-B909-2EA909858B11}')
         return ret
 
-    # Result is of type IGcadExternalReference
+    # Result is of type IAcadExternalReference
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attaches an external reference (xref) to the drawing'
@@ -17210,7 +17210,7 @@ class IGcadPaperSpace(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -17223,7 +17223,7 @@ class IGcadPaperSpace(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadBlockReference
+    # Result is of type IAcadBlockReference
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts a drawing file or a named block that has been defined in the current drawing'
@@ -17235,7 +17235,7 @@ class IGcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'InsertBlock', '{0E143589-AFCC-44FC-8000-4C8D44F80ED6}')
         return ret
 
-    # Result is of type IGcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -17270,7 +17270,7 @@ class IGcadPaperSpace(DispatchBaseClass):
         "BlockScaling": (1600, 2, (3, 0), (), "BlockScaling", None),
         "Comments": (1597, 2, (8, 0), (), "Comments", None),
         "Count": (1536, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Explodable": (1599, 2, (11, 0), (), "Explodable", None),
@@ -17279,7 +17279,7 @@ class IGcadPaperSpace(DispatchBaseClass):
         "IsDynamicBlock": (1601, 2, (11, 0), (), "IsDynamicBlock", None),
         "IsLayout": (1582, 2, (11, 0), (), "IsLayout", None),
         "IsXRef": (1584, 2, (11, 0), (), "IsXRef", None),
-        # Method 'Layout' returns object of type 'IGcadLayout'
+        # Method 'Layout' returns object of type 'IAcadLayout'
         "Layout": (1583, 2, (9, 0), (), "Layout", '{F8AE8A77-1909-452A-95E8-0B833451FD4B}'),
         "Name": (1537, 2, (8, 0), (), "Name", None),
         "ObjectID": (1029, 2, (20, 0), (), "ObjectID", None),
@@ -17288,7 +17288,7 @@ class IGcadPaperSpace(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "Path": (1596, 2, (8, 0), (), "Path", None),
         "Units": (1598, 2, (3, 0), (), "Units", None),
-        # Method 'XRefDatabase' returns object of type 'IGcadDatabase'
+        # Method 'XRefDatabase' returns object of type 'IAcadDatabase'
         "XRefDatabase": (1589, 2, (9, 0), (), "XRefDatabase", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
     }
     _prop_map_put_ = {
@@ -17327,8 +17327,8 @@ class IGcadPaperSpace(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadPlaneSurface(DispatchBaseClass):
-    'IGcadPlaneSurface Interface'
+class IAcadPlaneSurface(DispatchBaseClass):
+    'IAcadPlaneSurface Interface'
     CLSID = IID('{D3A1F3D5-4942-4904-928D-910183FAD5B3}')
     coclass_clsid = IID('{938953B2-646A-428C-895E-203B73B1B05A}')
 
@@ -17364,7 +17364,7 @@ class IGcadPlaneSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -17452,7 +17452,7 @@ class IGcadPlaneSurface(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -17460,7 +17460,7 @@ class IGcadPlaneSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -17474,7 +17474,7 @@ class IGcadPlaneSurface(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -17507,8 +17507,8 @@ class IGcadPlaneSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPlot(DispatchBaseClass):
-    'IGcadPlot �ӿ�'
+class IAcadPlot(DispatchBaseClass):
+    'IAcadPlot �ӿ�'
     CLSID = IID('{E93528F4-F504-4E58-8560-C473AD8445A2}')
     coclass_clsid = IID('{DF79DE83-2A11-43DB-AE4C-1FE95E57F574}')
 
@@ -17538,7 +17538,7 @@ class IGcadPlot(DispatchBaseClass):
             )
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "BatchPlotProgress": (1610743813, 2, (11, 0), (), "BatchPlotProgress", None),
         "NumberOfCopies": (1610743811, 2, (3, 0), (), "NumberOfCopies", None),
@@ -17557,7 +17557,7 @@ class IGcadPlot(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPlotConfiguration(DispatchBaseClass):
+class IAcadPlotConfiguration(DispatchBaseClass):
     'A named collection of plot settings'
     CLSID = IID('{37A8DABC-FD78-4509-B9CA-396F4CC30472}')
     coclass_clsid = IID('{211BF34C-5307-4666-B82D-0719CACA809C}')
@@ -17584,7 +17584,7 @@ class IGcadPlotConfiguration(DispatchBaseClass):
         return self._ApplyTypes_(17, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetCustomScale', None,Numerator
             , Denominator)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -17650,7 +17650,7 @@ class IGcadPlotConfiguration(DispatchBaseClass):
         "CanonicalMediaName": (6, 2, (8, 0), (), "CanonicalMediaName", None),
         "CenterPlot": (11, 2, (11, 0), (), "CenterPlot", None),
         "ConfigName": (3, 2, (8, 0), (), "ConfigName", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -17705,12 +17705,12 @@ class IGcadPlotConfiguration(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPlotConfigurations(DispatchBaseClass):
+class IAcadPlotConfigurations(DispatchBaseClass):
     'A collection of named plot settings'
     CLSID = IID('{02242489-515A-4BDD-AC0C-E125FD1BE28C}')
     coclass_clsid = IID('{0EEABD18-B6F5-4E1E-887D-0384A20CD8E9}')
 
-    # Result is of type IGcadPlotConfiguration
+    # Result is of type IAcadPlotConfiguration
     def Add(self, Name=defaultNamedNotOptArg, ModelType=defaultNamedOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1), (12, 17)),Name
@@ -17727,7 +17727,7 @@ class IGcadPlotConfigurations(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -17740,7 +17740,7 @@ class IGcadPlotConfigurations(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadPlotConfiguration
+    # Result is of type IAcadPlotConfiguration
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -17757,7 +17757,7 @@ class IGcadPlotConfigurations(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -17795,7 +17795,7 @@ class IGcadPlotConfigurations(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadPoint(DispatchBaseClass):
+class IAcadPoint(DispatchBaseClass):
     'GCAD Point Interface'
     CLSID = IID('{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}')
     coclass_clsid = IID('{5759A970-9028-4C5C-805B-AFE6D6169382}')
@@ -17832,7 +17832,7 @@ class IGcadPoint(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -17931,7 +17931,7 @@ class IGcadPoint(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -17939,7 +17939,7 @@ class IGcadPoint(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -17952,7 +17952,7 @@ class IGcadPoint(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -17980,8 +17980,8 @@ class IGcadPoint(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPointCloudEx(DispatchBaseClass):
-    'IGcadPointCloudEx Interface'
+class IAcadPointCloudEx(DispatchBaseClass):
+    'IAcadPointCloudEx Interface'
     CLSID = IID('{43DC153E-7BF6-43A8-96AC-C6788C702C9D}')
     coclass_clsid = IID('{028BA451-EBBA-4529-8521-DBFB95EB745C}')
 
@@ -18017,7 +18017,7 @@ class IGcadPointCloudEx(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -18114,7 +18114,7 @@ class IGcadPointCloudEx(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ColorScheme": (19, 2, (8, 0), (), "ColorScheme", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -18123,7 +18123,7 @@ class IGcadPointCloudEx(DispatchBaseClass):
         "Geolocate": (12, 2, (11, 0), (), "Geolocate", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsertionPoint": (4, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -18141,7 +18141,7 @@ class IGcadPointCloudEx(DispatchBaseClass):
         "Rotation": (5, 2, (5, 0), (), "Rotation", None),
         "ShowCropped": (10, 2, (11, 0), (), "ShowCropped", None),
         "Stylization": (18, 2, (3, 0), (), "Stylization", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Unit": (14, 2, (8, 0), (), "Unit", None),
         "UnitFactor": (15, 2, (5, 0), (), "UnitFactor", None),
@@ -18178,8 +18178,8 @@ class IGcadPointCloudEx(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPolyfaceMesh(DispatchBaseClass):
-    'IGcadPolyfaceMesh Interface'
+class IAcadPolyfaceMesh(DispatchBaseClass):
+    'IAcadPolyfaceMesh Interface'
     CLSID = IID('{FD4B5856-B661-4E10-8B79-1E793FDB0E50}')
     coclass_clsid = IID('{A9879069-87D2-4F15-94B4-92531900783C}')
 
@@ -18221,7 +18221,7 @@ class IGcadPolyfaceMesh(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -18324,7 +18324,7 @@ class IGcadPolyfaceMesh(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -18332,7 +18332,7 @@ class IGcadPolyfaceMesh(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -18345,7 +18345,7 @@ class IGcadPolyfaceMesh(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -18372,7 +18372,7 @@ class IGcadPolyfaceMesh(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPolygonMesh(DispatchBaseClass):
+class IAcadPolygonMesh(DispatchBaseClass):
     'GCAD PolygonMesh Interface'
     CLSID = IID('{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}')
     coclass_clsid = IID('{7BAA52E2-CBFA-406B-83AB-7D0F939026D4}')
@@ -18424,7 +18424,7 @@ class IGcadPolygonMesh(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -18527,7 +18527,7 @@ class IGcadPolygonMesh(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -18535,7 +18535,7 @@ class IGcadPolygonMesh(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -18552,7 +18552,7 @@ class IGcadPolygonMesh(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Type": (8, 2, (3, 0), (), "Type", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -18584,7 +18584,7 @@ class IGcadPolygonMesh(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPolyline(DispatchBaseClass):
+class IAcadPolyline(DispatchBaseClass):
     'GCAD Polyline Interface'
     CLSID = IID('{780E9428-D7F9-4F96-8E91-55C8F3CF3082}')
     coclass_clsid = IID('{DD0ACEEC-B19B-4EC4-A5C8-C85BBE6402B2}')
@@ -18641,7 +18641,7 @@ class IGcadPolyline(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(6, LCID, 1, (5, 0), ((3, 1),),Index
             )
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -18769,7 +18769,7 @@ class IGcadPolyline(DispatchBaseClass):
         "Closed": (14, 2, (11, 0), (), "Closed", None),
         "ConstantWidth": (10, 2, (5, 0), (), "ConstantWidth", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Elevation": (12, 2, (5, 0), (), "Elevation", None),
@@ -18778,7 +18778,7 @@ class IGcadPolyline(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Length": (18, 2, (5, 0), (), "Length", None),
@@ -18793,7 +18793,7 @@ class IGcadPolyline(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Type": (13, 2, (3, 0), (), "Type", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -18827,12 +18827,12 @@ class IGcadPolyline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPopupMenu(DispatchBaseClass):
+class IAcadPopupMenu(DispatchBaseClass):
     'An GCAD cascading menu'
     CLSID = IID('{551A5349-4463-40E2-822C-D3A632409117}')
     coclass_clsid = IID('{8774869F-546D-4CE5-9703-CFA67AEEBF26}')
 
-    # Result is of type IGcadPopupMenuItem
+    # Result is of type IAcadPopupMenuItem
     def AddMenuItem(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg):
         'Adds a popup menu item to a popup menu'
         ret = self._oleobj_.InvokeTypes(1610743818, LCID, 1, (9, 0), ((12, 1), (8, 1), (8, 1)),Index
@@ -18841,7 +18841,7 @@ class IGcadPopupMenu(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMenuItem', '{2E00012D-0862-428C-B675-A88781D31934}')
         return ret
 
-    # Result is of type IGcadPopupMenuItem
+    # Result is of type IAcadPopupMenuItem
     def AddSeparator(self, Index=defaultNamedNotOptArg):
         'Adds a separator to an existing menu or toolbar'
         ret = self._oleobj_.InvokeTypes(1610743820, LCID, 1, (9, 0), ((12, 1),),Index
@@ -18850,7 +18850,7 @@ class IGcadPopupMenu(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSeparator', '{2E00012D-0862-428C-B675-A88781D31934}')
         return ret
 
-    # Result is of type IGcadPopupMenu
+    # Result is of type IAcadPopupMenu
     def AddSubMenu(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg):
         'Adds a submenu to an existing menu'
         ret = self._oleobj_.InvokeTypes(1610743819, LCID, 1, (9, 0), ((12, 1), (8, 1)),Index
@@ -18864,7 +18864,7 @@ class IGcadPopupMenu(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743821, LCID, 1, (24, 0), ((12, 1),),Index
             )
 
-    # Result is of type IGcadPopupMenuItem
+    # Result is of type IAcadPopupMenuItem
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -18878,7 +18878,7 @@ class IGcadPopupMenu(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
         "Name": (1610743813, 2, (8, 0), (), "Name", None),
@@ -18918,7 +18918,7 @@ class IGcadPopupMenu(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadPopupMenuItem(DispatchBaseClass):
+class IAcadPopupMenuItem(DispatchBaseClass):
     'A single menu item on an GstarCAD pull-down menu'
     CLSID = IID('{2E00012D-0862-428C-B675-A88781D31934}')
     coclass_clsid = IID('{70408B41-584A-4C9C-B31B-F36FF8073798}')
@@ -18928,7 +18928,7 @@ class IGcadPopupMenuItem(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743826, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Caption": (1610743823, 2, (8, 0), (), "Caption", None),
         "Check": (1610743816, 2, (11, 0), (), "Check", None),
@@ -18938,9 +18938,9 @@ class IGcadPopupMenuItem(DispatchBaseClass):
         "Index": (1610743822, 2, (3, 0), (), "Index", None),
         "Label": (1610743810, 2, (8, 0), (), "Label", None),
         "Macro": (1610743820, 2, (8, 0), (), "Macro", None),
-        # Method 'Parent' returns object of type 'IGcadPopupMenu'
+        # Method 'Parent' returns object of type 'IAcadPopupMenu'
         "Parent": (1610743809, 2, (9, 0), (), "Parent", '{551A5349-4463-40E2-822C-D3A632409117}'),
-        # Method 'SubMenu' returns object of type 'IGcadPopupMenu'
+        # Method 'SubMenu' returns object of type 'IAcadPopupMenu'
         "SubMenu": (1610743819, 2, (9, 0), (), "SubMenu", '{551A5349-4463-40E2-822C-D3A632409117}'),
         "TagString": (1610743812, 2, (8, 0), (), "TagString", None),
         "Type": (1610743818, 2, (3, 0), (), "Type", None),
@@ -18962,12 +18962,12 @@ class IGcadPopupMenuItem(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPopupMenus(DispatchBaseClass):
+class IAcadPopupMenus(DispatchBaseClass):
     'A collection of PopupMenu objects representing all the popup menus loaded in the MenuGroup'
     CLSID = IID('{4B67342A-4DF3-450B-8E12-CF0A8B16DBC0}')
     coclass_clsid = IID('{63F5DDA7-C143-42AD-94E8-763C8E770537}')
 
-    # Result is of type IGcadPopupMenu
+    # Result is of type IAcadPopupMenu
     def Add(self, MenuName=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1),),MenuName
@@ -18981,7 +18981,7 @@ class IGcadPopupMenus(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), ((8, 1), (12, 1)),MenuName
             , Index)
 
-    # Result is of type IGcadPopupMenu
+    # Result is of type IAcadPopupMenu
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -18996,10 +18996,10 @@ class IGcadPopupMenus(DispatchBaseClass):
             )
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
-        # Method 'Parent' returns object of type 'IGcadMenuGroup'
+        # Method 'Parent' returns object of type 'IAcadMenuGroup'
         "Parent": (1610743812, 2, (9, 0), (), "Parent", '{72D027F2-CD79-4135-AE60-74FD0F8F595B}'),
     }
     _prop_map_put_ = {
@@ -19031,31 +19031,31 @@ class IGcadPopupMenus(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadPreferences(DispatchBaseClass):
-    'IGcadPreferences �ӿ�'
+class IAcadPreferences(DispatchBaseClass):
+    'IAcadPreferences �ӿ�'
     CLSID = IID('{253889D2-ABBB-4DB6-AB75-00DCACCB59A5}')
     coclass_clsid = IID('{57FB46D7-D66B-4EEA-969A-5D778BA7B79F}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
-        # Method 'Display' returns object of type 'IGcadPreferencesDisplay'
+        # Method 'Display' returns object of type 'IAcadPreferencesDisplay'
         "Display": (1610743810, 2, (9, 0), (), "Display", '{EFA91E4C-5304-45CC-AA56-F57F39D7FCCD}'),
-        # Method 'Drafting' returns object of type 'IGcadPreferencesDrafting'
+        # Method 'Drafting' returns object of type 'IAcadPreferencesDrafting'
         "Drafting": (1610743815, 2, (9, 0), (), "Drafting", '{E4A0A141-99BD-44B8-9A4F-5B813BE85A68}'),
-        # Method 'Files' returns object of type 'IGcadPreferencesFiles'
+        # Method 'Files' returns object of type 'IAcadPreferencesFiles'
         "Files": (1610743809, 2, (9, 0), (), "Files", '{39B8DED6-4AAA-4E2F-9EAF-4BBD930EFCED}'),
-        # Method 'OpenSave' returns object of type 'IGcadPreferencesOpenSave'
+        # Method 'OpenSave' returns object of type 'IAcadPreferencesOpenSave'
         "OpenSave": (1610743811, 2, (9, 0), (), "OpenSave", '{97311A0B-4C28-4D80-8397-40FB3403AEF0}'),
-        # Method 'Output' returns object of type 'IGcadPreferencesOutput'
+        # Method 'Output' returns object of type 'IAcadPreferencesOutput'
         "Output": (1610743812, 2, (9, 0), (), "Output", '{FA0A2ECE-5E7C-46EF-ACCA-F2528C0C2566}'),
-        # Method 'Profiles' returns object of type 'IGcadPreferencesProfiles'
+        # Method 'Profiles' returns object of type 'IAcadPreferencesProfiles'
         "Profiles": (1610743817, 2, (9, 0), (), "Profiles", '{807758BB-F12D-4275-A52F-6A2CFCAD9A21}'),
-        # Method 'Selection' returns object of type 'IGcadPreferencesSelection'
+        # Method 'Selection' returns object of type 'IAcadPreferencesSelection'
         "Selection": (1610743816, 2, (9, 0), (), "Selection", '{CDCD600E-0299-4127-89C6-3C8FA33F7EBC}'),
-        # Method 'System' returns object of type 'IGcadPreferencesSystem'
+        # Method 'System' returns object of type 'IAcadPreferencesSystem'
         "System": (1610743813, 2, (9, 0), (), "System", '{51B2EDFB-066F-40E2-A298-D3DA4355BAE7}'),
-        # Method 'User' returns object of type 'IGcadPreferencesUser'
+        # Method 'User' returns object of type 'IAcadPreferencesUser'
         "User": (1610743814, 2, (9, 0), (), "User", '{AC90CA06-AABE-40DB-BE6B-D4C18C5BF232}'),
     }
     _prop_map_put_ = {
@@ -19068,13 +19068,13 @@ class IGcadPreferences(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPreferencesDisplay(DispatchBaseClass):
+class IAcadPreferencesDisplay(DispatchBaseClass):
     'This object contains the options from the Display tab on the Options dialog'
     CLSID = IID('{EFA91E4C-5304-45CC-AA56-F57F39D7FCCD}')
     coclass_clsid = IID('{865D8226-319C-4784-B160-5D45FE038BF8}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "AutoTrackingVecColor": (1610743841, 2, (19, 0), (), "AutoTrackingVecColor", None),
         "CursorSize": (1610743823, 2, (3, 0), (), "CursorSize", None),
@@ -19139,14 +19139,14 @@ class IGcadPreferencesDisplay(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPreferencesDrafting(DispatchBaseClass):
+class IAcadPreferencesDrafting(DispatchBaseClass):
     'This object contains the options from the Drafting tab on the Options dialog'
     CLSID = IID('{E4A0A141-99BD-44B8-9A4F-5B813BE85A68}')
     coclass_clsid = IID('{AA668926-0FCF-4677-A97F-AD7920AB2C58}')
 
     _prop_map_get_ = {
         "AlignmentPointAcquisition": (1610743829, 2, (3, 0), (), "AlignmentPointAcquisition", None),
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "AutoSnapAperture": (1610743815, 2, (11, 0), (), "AutoSnapAperture", None),
         "AutoSnapApertureSize": (1610743817, 2, (3, 0), (), "AutoSnapApertureSize", None),
@@ -19180,7 +19180,7 @@ class IGcadPreferencesDrafting(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPreferencesFiles(DispatchBaseClass):
+class IAcadPreferencesFiles(DispatchBaseClass):
     'This object contains the options from the Files tab on the Options dialog'
     CLSID = IID('{39B8DED6-4AAA-4E2F-9EAF-4BBD930EFCED}')
     coclass_clsid = IID('{6CE93067-926C-4A41-BFC4-EA0A02C9F7E7}')
@@ -19199,7 +19199,7 @@ class IGcadPreferencesFiles(DispatchBaseClass):
     _prop_map_get_ = {
         "AltFontFile": (1610743831, 2, (8, 0), (), "AltFontFile", None),
         "AltTabletMenuFile": (1610743855, 2, (8, 0), (), "AltTabletMenuFile", None),
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "AutoSavePath": (1610743843, 2, (8, 0), (), "AutoSavePath", None),
         "ColorBookPath": (1610743869, 2, (8, 0), (), "ColorBookPath", None),
@@ -19285,13 +19285,13 @@ class IGcadPreferencesFiles(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPreferencesOpenSave(DispatchBaseClass):
+class IAcadPreferencesOpenSave(DispatchBaseClass):
     'This object contains the options from the Open and Save tab on the Options dialog'
     CLSID = IID('{97311A0B-4C28-4D80-8397-40FB3403AEF0}')
     coclass_clsid = IID('{7DBA4518-9AA4-416E-A3D6-45E80A02E979}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "AutoAudit": (1610743831, 2, (11, 0), (), "AutoAudit", None),
         "AutoSaveInterval": (1610743813, 2, (3, 0), (), "AutoSaveInterval", None),
@@ -19331,13 +19331,13 @@ class IGcadPreferencesOpenSave(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPreferencesOutput(DispatchBaseClass):
+class IAcadPreferencesOutput(DispatchBaseClass):
     'This object contains the options from the Output tab on the Options dialog'
     CLSID = IID('{FA0A2ECE-5E7C-46EF-ACCA-F2528C0C2566}')
     coclass_clsid = IID('{62EE39DA-DF13-42B1-861F-487026489C27}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "AutomaticPlotLog": (1610743831, 2, (11, 0), (), "AutomaticPlotLog", None),
         "ContinuousPlotLog": (1610743829, 2, (11, 0), (), "ContinuousPlotLog", None),
@@ -19376,7 +19376,7 @@ class IGcadPreferencesOutput(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPreferencesProfiles(DispatchBaseClass):
+class IAcadPreferencesProfiles(DispatchBaseClass):
     'This object contains the options from the Profiles tab on the Options dialog'
     CLSID = IID('{807758BB-F12D-4275-A52F-6A2CFCAD9A21}')
     coclass_clsid = IID('{38CDCF3E-F321-43F6-B355-6CBE197BD33A}')
@@ -19418,7 +19418,7 @@ class IGcadPreferencesProfiles(DispatchBaseClass):
 
     _prop_map_get_ = {
         "ActiveProfile": (1610743809, 2, (8, 0), (), "ActiveProfile", None),
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
     }
     _prop_map_put_ = {
@@ -19432,13 +19432,13 @@ class IGcadPreferencesProfiles(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPreferencesSelection(DispatchBaseClass):
+class IAcadPreferencesSelection(DispatchBaseClass):
     'This object contains the options from the Selection tab on the Options dialog'
     CLSID = IID('{CDCD600E-0299-4127-89C6-3C8FA33F7EBC}')
     coclass_clsid = IID('{1615B81F-2474-4AC3-A6F7-885F0DC5D62F}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "DisplayGrips": (1610743819, 2, (11, 0), (), "DisplayGrips", None),
         "DisplayGripsWithinBlocks": (1610743821, 2, (11, 0), (), "DisplayGripsWithinBlocks", None),
@@ -19473,13 +19473,13 @@ class IGcadPreferencesSelection(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPreferencesSystem(DispatchBaseClass):
+class IAcadPreferencesSystem(DispatchBaseClass):
     'This object contains the options from the System tab on the Options dialog'
     CLSID = IID('{51B2EDFB-066F-40E2-A298-D3DA4355BAE7}')
     coclass_clsid = IID('{C19DA545-A773-422D-818F-61E60340C184}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "BeepOnError": (1610743819, 2, (11, 0), (), "BeepOnError", None),
         "DisplayOLEScale": (1610743811, 2, (11, 0), (), "DisplayOLEScale", None),
@@ -19508,7 +19508,7 @@ class IGcadPreferencesSystem(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadPreferencesUser(DispatchBaseClass):
+class IAcadPreferencesUser(DispatchBaseClass):
     'This object contains the options from the User tab on the Options dialog'
     CLSID = IID('{AC90CA06-AABE-40DB-BE6B-D4C18C5BF232}')
     coclass_clsid = IID('{2DF90FE8-4354-4AB3-ABA9-04B9831F94BF}')
@@ -19516,7 +19516,7 @@ class IGcadPreferencesUser(DispatchBaseClass):
     _prop_map_get_ = {
         "ADCInsertUnitsDefaultSource": (1610743817, 2, (3, 0), (), "ADCInsertUnitsDefaultSource", None),
         "ADCInsertUnitsDefaultTarget": (1610743819, 2, (3, 0), (), "ADCInsertUnitsDefaultTarget", None),
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "HyperlinkDisplayCursor": (1610743813, 2, (11, 0), (), "HyperlinkDisplayCursor", None),
         "HyperlinkDisplayTooltip": (1610743815, 2, (11, 0), (), "HyperlinkDisplayTooltip", None),
@@ -19551,7 +19551,7 @@ class IGcadPreferencesUser(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadRasterImage(DispatchBaseClass):
+class IAcadRasterImage(DispatchBaseClass):
     'GCAD Raster Interface'
     CLSID = IID('{1A5BD135-D93B-4BFD-8027-E8277D629B46}')
     coclass_clsid = IID('{FB5AA334-CBF1-41D1-B9E3-98F2ACB2EB83}')
@@ -19593,7 +19593,7 @@ class IGcadRasterImage(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -19692,7 +19692,7 @@ class IGcadRasterImage(DispatchBaseClass):
         "Brightness": (1, 2, (3, 0), (), "Brightness", None),
         "ClippingEnabled": (11, 2, (11, 0), (), "ClippingEnabled", None),
         "Contrast": (2, 2, (3, 0), (), "Contrast", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -19702,7 +19702,7 @@ class IGcadRasterImage(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (14, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "ImageFile": (9, 2, (8, 0), (), "ImageFile", None),
         "ImageHeight": (7, 2, (5, 0), (), "ImageHeight", None),
@@ -19722,7 +19722,7 @@ class IGcadRasterImage(DispatchBaseClass):
         "Rotation": (5, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (17, 2, (5, 0), (), "ScaleFactor", None),
         "ShowRotation": (16, 2, (11, 0), (), "ShowRotation", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (15, 2, (5, 0), (), "Width", None),
@@ -19763,7 +19763,7 @@ class IGcadRasterImage(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadRay(DispatchBaseClass):
+class IAcadRay(DispatchBaseClass):
     'GCAD Ray Interface'
     CLSID = IID('{D05D772F-86F6-4B10-9898-E22BF8C5F192}')
     coclass_clsid = IID('{D44D6709-6C13-4C52-A360-A2943C33EEE8}')
@@ -19800,7 +19800,7 @@ class IGcadRay(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -19899,7 +19899,7 @@ class IGcadRay(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BasePoint": (1, 2, (12, 0), (), "BasePoint", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DirectionVector": (3, 2, (12, 0), (), "DirectionVector", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -19908,7 +19908,7 @@ class IGcadRay(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -19920,7 +19920,7 @@ class IGcadRay(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "SecondPoint": (2, 2, (12, 0), (), "SecondPoint", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -19948,7 +19948,7 @@ class IGcadRay(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadRegion(DispatchBaseClass):
+class IAcadRegion(DispatchBaseClass):
     'GCAD Region Interface'
     CLSID = IID('{6B5D2248-E3ED-4807-8AFB-0CAA49BAF64A}')
     coclass_clsid = IID('{A83EBA25-CCF0-45CE-A7C2-FEABE0D3AF59}')
@@ -19994,7 +19994,7 @@ class IGcadRegion(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -20092,7 +20092,7 @@ class IGcadRegion(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Area": (1, 2, (5, 0), (), "Area", None),
         "Centroid": (2, 2, (12, 0), (), "Centroid", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -20100,7 +20100,7 @@ class IGcadRegion(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20118,7 +20118,7 @@ class IGcadRegion(DispatchBaseClass):
         "PrincipalMoments": (7, 2, (12, 0), (), "PrincipalMoments", None),
         "ProductOfInertia": (8, 2, (5, 0), (), "ProductOfInertia", None),
         "RadiiOfGyration": (9, 2, (12, 0), (), "RadiiOfGyration", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -20143,7 +20143,7 @@ class IGcadRegion(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadRegisteredApplication(DispatchBaseClass):
+class IAcadRegisteredApplication(DispatchBaseClass):
     'An external application that has been added to the drawing'
     CLSID = IID('{F0F9DD45-70ED-42C1-B4AC-562396361489}')
     coclass_clsid = IID('{CF8BF2DA-8602-41B7-8906-3C67F07994FB}')
@@ -20156,7 +20156,7 @@ class IGcadRegisteredApplication(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -20176,7 +20176,7 @@ class IGcadRegisteredApplication(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -20197,12 +20197,12 @@ class IGcadRegisteredApplication(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadRegisteredApplications(DispatchBaseClass):
+class IAcadRegisteredApplications(DispatchBaseClass):
     'The collection of all registered applications in the drawing'
     CLSID = IID('{FA985110-D0CB-4E62-AB01-2FE6027C7F05}')
     coclass_clsid = IID('{216D566A-A968-4E87-A8B3-9B5EB06BB19D}')
 
-    # Result is of type IGcadRegisteredApplication
+    # Result is of type IAcadRegisteredApplication
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -20219,7 +20219,7 @@ class IGcadRegisteredApplications(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -20232,7 +20232,7 @@ class IGcadRegisteredApplications(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadRegisteredApplication
+    # Result is of type IAcadRegisteredApplication
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -20249,7 +20249,7 @@ class IGcadRegisteredApplications(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -20287,8 +20287,8 @@ class IGcadRegisteredApplications(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadRevolvedSurface(DispatchBaseClass):
-    'IGcadRevolvedSurface Interface'
+class IAcadRevolvedSurface(DispatchBaseClass):
+    'IAcadRevolvedSurface Interface'
     CLSID = IID('{BC4B31D4-9595-43C1-8BC9-AC5F8003F179}')
     coclass_clsid = IID('{CA2C91D1-2D7B-4195-A66C-CFB788EFEB14}')
 
@@ -20324,7 +20324,7 @@ class IGcadRevolvedSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -20414,7 +20414,7 @@ class IGcadRevolvedSurface(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "AxisDirection": (4, 2, (12, 0), (), "AxisDirection", None),
         "AxisPosition": (3, 2, (12, 0), (), "AxisPosition", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -20422,7 +20422,7 @@ class IGcadRevolvedSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20437,7 +20437,7 @@ class IGcadRevolvedSurface(DispatchBaseClass):
         "RevolutionAngle": (2, 2, (5, 0), (), "RevolutionAngle", None),
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -20472,7 +20472,7 @@ class IGcadRevolvedSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadScriptJet(DispatchBaseClass):
+class IAcadScriptJet(DispatchBaseClass):
     'IHCScriptJet �ӿ�'
     CLSID = IID('{6BBD85F2-FBE1-414E-8A89-76379B9E2E4B}')
     coclass_clsid = IID('{098976AB-EB69-4330-92C8-C8AC73822785}')
@@ -20521,8 +20521,8 @@ class IGcadScriptJet(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSection(DispatchBaseClass):
-    'IGcadSection Interface'
+class IAcadSection(DispatchBaseClass):
+    'IAcadSection Interface'
     CLSID = IID('{13C9B549-488C-48B2-A7D1-9B299FEE3C22}')
     coclass_clsid = IID('{DCB0E3B7-B4A4-4D92-A3E8-C27BCAECBE8F}')
 
@@ -20581,7 +20581,7 @@ class IGcadSection(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -20695,7 +20695,7 @@ class IGcadSection(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BottomHeight": (11, 2, (5, 0), (), "BottomHeight", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Elevation": (9, 2, (5, 0), (), "Elevation", None),
@@ -20704,9 +20704,9 @@ class IGcadSection(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
-        # Method 'IndicatorFillColor' returns object of type 'IGcadGcCmColor'
+        # Method 'IndicatorFillColor' returns object of type 'IAcadGcCmColor'
         "IndicatorFillColor": (8, 2, (9, 0), (), "IndicatorFillColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "IndicatorTransparency": (7, 2, (3, 0), (), "IndicatorTransparency", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -20722,11 +20722,11 @@ class IGcadSection(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'Settings' returns object of type 'IGcadSectionSettings'
+        # Method 'Settings' returns object of type 'IAcadSectionSettings'
         "Settings": (19, 2, (9, 0), (), "Settings", '{AC4451F8-ED8E-42F0-B10D-1345A423FA33}'),
         "State": (2, 2, (3, 0), (), "State", None),
         "TopHeight": (10, 2, (5, 0), (), "TopHeight", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "VerticalDirection": (4, 2, (12, 0), (), "VerticalDirection", None),
         "Vertices": (13, 2, (12, 0), (), "Vertices", None),
@@ -20765,8 +20765,8 @@ class IGcadSection(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSection2(DispatchBaseClass):
-    'IGcadSection Interface'
+class IAcadSection2(DispatchBaseClass):
+    'IAcadSection Interface'
     CLSID = IID('{B894B727-442F-4560-B162-4AFD82F79E09}')
     coclass_clsid = IID('{DCB0E3B7-B4A4-4D92-A3E8-C27BCAECBE8F}')
 
@@ -20825,7 +20825,7 @@ class IGcadSection2(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -20939,7 +20939,7 @@ class IGcadSection2(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BottomHeight": (11, 2, (5, 0), (), "BottomHeight", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Elevation": (9, 2, (5, 0), (), "Elevation", None),
@@ -20948,9 +20948,9 @@ class IGcadSection2(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
-        # Method 'IndicatorFillColor' returns object of type 'IGcadGcCmColor'
+        # Method 'IndicatorFillColor' returns object of type 'IAcadGcCmColor'
         "IndicatorFillColor": (8, 2, (9, 0), (), "IndicatorFillColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "IndicatorTransparency": (7, 2, (3, 0), (), "IndicatorTransparency", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -20967,13 +20967,13 @@ class IGcadSection2(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "SectionPlaneOffset": (23, 2, (5, 0), (), "SectionPlaneOffset", None),
-        # Method 'Settings' returns object of type 'IGcadSectionSettings'
+        # Method 'Settings' returns object of type 'IAcadSectionSettings'
         "Settings": (19, 2, (9, 0), (), "Settings", '{AC4451F8-ED8E-42F0-B10D-1345A423FA33}'),
         "SliceDepth": (21, 2, (5, 0), (), "SliceDepth", None),
         "State": (2, 2, (3, 0), (), "State", None),
         "State2": (22, 2, (3, 0), (), "State2", None),
         "TopHeight": (10, 2, (5, 0), (), "TopHeight", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "VerticalDirection": (4, 2, (12, 0), (), "VerticalDirection", None),
         "Vertices": (13, 2, (12, 0), (), "Vertices", None),
@@ -21015,7 +21015,7 @@ class IGcadSection2(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSectionManager(DispatchBaseClass):
+class IAcadSectionManager(DispatchBaseClass):
     'Controls which property is constrained when editing other property values'
     CLSID = IID('{0340058F-D94E-429D-8199-A4ECFF677AC1}')
     coclass_clsid = IID('{D1F1BB22-D947-40C8-90D8-B9DC99591EF7}')
@@ -21028,7 +21028,7 @@ class IGcadSectionManager(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -21036,7 +21036,7 @@ class IGcadSectionManager(DispatchBaseClass):
             ret = Dispatch(ret, 'GetExtensionDictionary', '{6CE21DA5-2896-4D63-9373-2EE672A00D41}')
         return ret
 
-    # Result is of type IGcadSection
+    # Result is of type IAcadSection
     def GetLiveSection(self):
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), (),)
         if ret is not None:
@@ -21053,7 +21053,7 @@ class IGcadSectionManager(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadSection
+    # Result is of type IAcadSection
     def Item(self, Index=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
@@ -21069,7 +21069,7 @@ class IGcadSectionManager(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -21106,8 +21106,8 @@ class IGcadSectionManager(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadSectionSettings(DispatchBaseClass):
-    'IGcadSectionSettings Interface'
+class IAcadSectionSettings(DispatchBaseClass):
+    'IAcadSectionSettings Interface'
     CLSID = IID('{AC4451F8-ED8E-42F0-B10D-1345A423FA33}')
     coclass_clsid = IID('{5246A240-92AB-460B-820D-365247D9B47F}')
 
@@ -21119,7 +21119,7 @@ class IGcadSectionSettings(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -21127,7 +21127,7 @@ class IGcadSectionSettings(DispatchBaseClass):
             ret = Dispatch(ret, 'GetExtensionDictionary', '{6CE21DA5-2896-4D63-9373-2EE672A00D41}')
         return ret
 
-    # Result is of type IGcadSectionTypeSettings
+    # Result is of type IAcadSectionTypeSettings
     def GetSectionTypeSettings(self, secType=defaultNamedNotOptArg):
         'Gets the section type settings object'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((3, 1),),secType
@@ -21149,7 +21149,7 @@ class IGcadSectionSettings(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "CurrentSectionType": (1, 2, (3, 0), (), "CurrentSectionType", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -21169,13 +21169,13 @@ class IGcadSectionSettings(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSectionTypeSettings(DispatchBaseClass):
-    'IGcadSectionTypeSettings Interface'
+class IAcadSectionTypeSettings(DispatchBaseClass):
+    'IAcadSectionTypeSettings Interface'
     CLSID = IID('{4ACE8AF8-EC50-438D-93BF-B5434CE6245B}')
     coclass_clsid = None
 
     _prop_map_get_ = {
-        # Method 'BackgroundLinesColor' returns object of type 'IGcadGcCmColor'
+        # Method 'BackgroundLinesColor' returns object of type 'IAcadGcCmColor'
         "BackgroundLinesColor": (93, 2, (9, 0), (), "BackgroundLinesColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "BackgroundLinesHiddenLine": (92, 2, (11, 0), (), "BackgroundLinesHiddenLine", None),
         "BackgroundLinesLayer": (94, 2, (8, 0), (), "BackgroundLinesLayer", None),
@@ -21184,7 +21184,7 @@ class IGcadSectionTypeSettings(DispatchBaseClass):
         "BackgroundLinesLineweight": (98, 2, (3, 0), (), "BackgroundLinesLineweight", None),
         "BackgroundLinesPlotStyleName": (97, 2, (8, 0), (), "BackgroundLinesPlotStyleName", None),
         "BackgroundLinesVisible": (91, 2, (11, 0), (), "BackgroundLinesVisible", None),
-        # Method 'CurveTangencyLinesColor' returns object of type 'IGcadGcCmColor'
+        # Method 'CurveTangencyLinesColor' returns object of type 'IAcadGcCmColor'
         "CurveTangencyLinesColor": (132, 2, (9, 0), (), "CurveTangencyLinesColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "CurveTangencyLinesLayer": (133, 2, (8, 0), (), "CurveTangencyLinesLayer", None),
         "CurveTangencyLinesLinetype": (134, 2, (8, 0), (), "CurveTangencyLinesLinetype", None),
@@ -21194,7 +21194,7 @@ class IGcadSectionTypeSettings(DispatchBaseClass):
         "CurveTangencyLinesVisible": (131, 2, (11, 0), (), "CurveTangencyLinesVisible", None),
         "DestinationBlock": (3, 2, (12, 0), (), "DestinationBlock", None),
         "DestinationFile": (4, 2, (8, 0), (), "DestinationFile", None),
-        # Method 'ForegroundLinesColor' returns object of type 'IGcadGcCmColor'
+        # Method 'ForegroundLinesColor' returns object of type 'IAcadGcCmColor'
         "ForegroundLinesColor": (113, 2, (9, 0), (), "ForegroundLinesColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "ForegroundLinesEdgeTransparency": (120, 2, (3, 0), (), "ForegroundLinesEdgeTransparency", None),
         "ForegroundLinesFaceTransparency": (119, 2, (3, 0), (), "ForegroundLinesFaceTransparency", None),
@@ -21206,7 +21206,7 @@ class IGcadSectionTypeSettings(DispatchBaseClass):
         "ForegroundLinesPlotStyleName": (117, 2, (8, 0), (), "ForegroundLinesPlotStyleName", None),
         "ForegroundLinesVisible": (111, 2, (11, 0), (), "ForegroundLinesVisible", None),
         "GenerationOptions": (1, 2, (3, 0), (), "GenerationOptions", None),
-        # Method 'IntersectionBoundaryColor' returns object of type 'IGcadGcCmColor'
+        # Method 'IntersectionBoundaryColor' returns object of type 'IAcadGcCmColor'
         "IntersectionBoundaryColor": (51, 2, (9, 0), (), "IntersectionBoundaryColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "IntersectionBoundaryDivisionLines": (57, 2, (11, 0), (), "IntersectionBoundaryDivisionLines", None),
         "IntersectionBoundaryLayer": (52, 2, (8, 0), (), "IntersectionBoundaryLayer", None),
@@ -21214,7 +21214,7 @@ class IGcadSectionTypeSettings(DispatchBaseClass):
         "IntersectionBoundaryLinetypeScale": (54, 2, (5, 0), (), "IntersectionBoundaryLinetypeScale", None),
         "IntersectionBoundaryLineweight": (56, 2, (3, 0), (), "IntersectionBoundaryLineweight", None),
         "IntersectionBoundaryPlotStyleName": (55, 2, (8, 0), (), "IntersectionBoundaryPlotStyleName", None),
-        # Method 'IntersectionFillColor' returns object of type 'IGcadGcCmColor'
+        # Method 'IntersectionFillColor' returns object of type 'IAcadGcCmColor'
         "IntersectionFillColor": (77, 2, (9, 0), (), "IntersectionFillColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "IntersectionFillFaceTransparency": (83, 2, (3, 0), (), "IntersectionFillFaceTransparency", None),
         "IntersectionFillHatchAngle": (74, 2, (5, 0), (), "IntersectionFillHatchAngle", None),
@@ -21289,8 +21289,8 @@ class IGcadSectionTypeSettings(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSecurityParams(DispatchBaseClass):
-    'IGcadSecurityParams �ӿ�'
+class IAcadSecurityParams(DispatchBaseClass):
+    'IAcadSecurityParams �ӿ�'
     CLSID = IID('{B7BD1413-D044-4527-B229-ECC06EB76040}')
     coclass_clsid = IID('{D4903656-AC07-421A-8648-4804351E9DBE}')
 
@@ -21328,8 +21328,8 @@ class IGcadSecurityParams(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSelectionSet(DispatchBaseClass):
-    'IGcadSelectionSet �ӿ�'
+class IAcadSelectionSet(DispatchBaseClass):
+    'IAcadSelectionSet �ӿ�'
     CLSID = IID('{E7DEA163-B4F1-4DDF-A408-2A3989603B09}')
     coclass_clsid = IID('{81A17A41-793D-4BF0-A902-E1B622D175B5}')
 
@@ -21356,7 +21356,7 @@ class IGcadSelectionSet(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((11, 1),),bFlag
             )
 
-    # Result is of type IGcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -21409,7 +21409,7 @@ class IGcadSelectionSet(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(5, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (6, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Count": (1, 2, (3, 0), (), "Count", None),
         "Name": (2, 2, (8, 0), (), "Name", None),
@@ -21449,12 +21449,12 @@ class IGcadSelectionSet(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadSelectionSets(DispatchBaseClass):
-    'IGcadSelectionSets �ӿ�'
+class IAcadSelectionSets(DispatchBaseClass):
+    'IAcadSelectionSets �ӿ�'
     CLSID = IID('{BA391ABB-844F-42A0-8F57-31EE00D0583A}')
     coclass_clsid = IID('{EA8022D8-0E43-473D-8646-BB1292EACE19}')
 
-    # Result is of type IGcadSelectionSet
+    # Result is of type IAcadSelectionSet
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -21463,7 +21463,7 @@ class IGcadSelectionSets(DispatchBaseClass):
             ret = Dispatch(ret, 'Add', '{E7DEA163-B4F1-4DDF-A408-2A3989603B09}')
         return ret
 
-    # Result is of type IGcadSelectionSet
+    # Result is of type IAcadSelectionSet
     def GetActiveSelectionSet(self):
         'GetActive Selectionset'
         ret = self._oleobj_.InvokeTypes(4, LCID, 1, (9, 0), (),)
@@ -21471,7 +21471,7 @@ class IGcadSelectionSets(DispatchBaseClass):
             ret = Dispatch(ret, 'GetActiveSelectionSet', '{E7DEA163-B4F1-4DDF-A408-2A3989603B09}')
         return ret
 
-    # Result is of type IGcadSelectionSet
+    # Result is of type IAcadSelectionSet
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -21481,7 +21481,7 @@ class IGcadSelectionSets(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Count": (1, 2, (3, 0), (), "Count", None),
     }
@@ -21514,7 +21514,7 @@ class IGcadSelectionSets(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadShape(DispatchBaseClass):
+class IAcadShape(DispatchBaseClass):
     'GCAD Shape Interface'
     CLSID = IID('{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}')
     coclass_clsid = IID('{4EFE4629-C549-4346-9E5A-06F0AE788ED0}')
@@ -21551,7 +21551,7 @@ class IGcadShape(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -21649,7 +21649,7 @@ class IGcadShape(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -21658,7 +21658,7 @@ class IGcadShape(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (3, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsertionPoint": (1, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -21676,7 +21676,7 @@ class IGcadShape(DispatchBaseClass):
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (5, 2, (5, 0), (), "ScaleFactor", None),
         "Thickness": (8, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -21709,7 +21709,7 @@ class IGcadShape(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSolid(DispatchBaseClass):
+class IAcadSolid(DispatchBaseClass):
     'GCAD Solid Interface'
     CLSID = IID('{38D2992F-DF38-497F-9E2B-68D813057E8D}')
     coclass_clsid = IID('{7EB18444-4D79-4CA8-8743-0498B64C4D01}')
@@ -21752,7 +21752,7 @@ class IGcadSolid(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -21857,7 +21857,7 @@ class IGcadSolid(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -21865,7 +21865,7 @@ class IGcadSolid(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -21878,7 +21878,7 @@ class IGcadSolid(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -21906,12 +21906,12 @@ class IGcadSolid(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSortentsTable(DispatchBaseClass):
+class IAcadSortentsTable(DispatchBaseClass):
     'GCAD GcadSortentsTable Interface'
     CLSID = IID('{DEDB84CD-55C2-4F73-B534-7F06EBF8919F}')
     coclass_clsid = IID('{79C8B818-C544-46EE-BDCF-613095E6DA50}')
 
-    # Result is of type IGcadBlock
+    # Result is of type IAcadBlock
     def Block(self):
         'Returns the Block this Sortents Table belongs to.'
         ret = self._oleobj_.InvokeTypes(6, LCID, 1, (9, 0), (),)
@@ -21927,7 +21927,7 @@ class IGcadSortentsTable(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -21987,7 +21987,7 @@ class IGcadSortentsTable(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -22006,7 +22006,7 @@ class IGcadSortentsTable(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSpline(DispatchBaseClass):
+class IAcadSpline(DispatchBaseClass):
     'GCAD Spline Interface'
     CLSID = IID('{3D506D60-0138-48DD-8166-E5512E441206}')
     coclass_clsid = IID('{F2293592-5908-4F24-9B5D-759CDA971FC2}')
@@ -22064,7 +22064,7 @@ class IGcadSpline(DispatchBaseClass):
         return self._ApplyTypes_(15, 1, (12, 0), ((3, 1),), 'GetControlPoint', None,Index
             )
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -22206,7 +22206,7 @@ class IGcadSpline(DispatchBaseClass):
         "Closed": (6, 2, (11, 0), (), "Closed", None),
         "Closed2": (32, 2, (11, 0), (), "Closed2", None),
         "ControlPoints": (2, 2, (12, 0), (), "ControlPoints", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Degree": (5, 2, (3, 0), (), "Degree", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -22218,7 +22218,7 @@ class IGcadSpline(DispatchBaseClass):
         "FitTolerance": (12, 2, (5, 0), (), "FitTolerance", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "IsPeriodic": (9, 2, (11, 0), (), "IsPeriodic", None),
         "IsPlanar": (7, 2, (11, 0), (), "IsPlanar", None),
@@ -22236,7 +22236,7 @@ class IGcadSpline(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "StartTangent": (10, 2, (12, 0), (), "StartTangent", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Weights": (27, 2, (12, 0), (), "Weights", None),
@@ -22270,13 +22270,13 @@ class IGcadSpline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadState(DispatchBaseClass):
-    'IGcadState �ӿ�'
+class IAcadState(DispatchBaseClass):
+    'IAcadState �ӿ�'
     CLSID = IID('{31E08BF4-3D9F-45DC-B456-D2A2CA16E126}')
     coclass_clsid = IID('{6208CB09-68D9-4D82-A4BB-43003DB56AFA}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "IsQuiescent": (2, 2, (11, 0), (), "IsQuiescent", None),
     }
@@ -22290,7 +22290,7 @@ class IGcadState(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSubDMesh(DispatchBaseClass):
+class IAcadSubDMesh(DispatchBaseClass):
     'GstarCAD SubDMesh Interface'
     CLSID = IID('{D594DD08-3145-43F2-B9A9-D2DDAC0E0141}')
     coclass_clsid = IID('{73EBC89D-6A5A-4ED8-BC4D-2995DC879649}')
@@ -22333,7 +22333,7 @@ class IGcadSubDMesh(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -22428,7 +22428,7 @@ class IGcadSubDMesh(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (3, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -22437,7 +22437,7 @@ class IGcadSubDMesh(DispatchBaseClass):
         "FaceCount": (6, 2, (3, 0), (), "FaceCount", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -22449,7 +22449,7 @@ class IGcadSubDMesh(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Smoothness": (1, 2, (3, 0), (), "Smoothness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "VertexCount": (5, 2, (3, 0), (), "VertexCount", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -22477,8 +22477,8 @@ class IGcadSubDMesh(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSummaryInfo(DispatchBaseClass):
-    'IGcadSummaryInfo Interface'
+class IAcadSummaryInfo(DispatchBaseClass):
+    'IAcadSummaryInfo Interface'
     CLSID = IID('{A40DB73E-ED88-4AA8-8886-5CC3F2E63868}')
     coclass_clsid = IID('{BBC325BA-407B-4755-B4D1-7A3E30581BD3}')
 
@@ -22549,8 +22549,8 @@ class IGcadSummaryInfo(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSurface(DispatchBaseClass):
-    'IGcadSurface Interface'
+class IAcadSurface(DispatchBaseClass):
+    'IAcadSurface Interface'
     CLSID = IID('{223679F5-6EE7-45C9-B778-E1B2A00D49B4}')
     coclass_clsid = IID('{25D868BF-4CFD-4CB4-BC30-1A43AAF5F3E1}')
 
@@ -22586,7 +22586,7 @@ class IGcadSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -22674,7 +22674,7 @@ class IGcadSurface(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -22682,7 +22682,7 @@ class IGcadSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -22696,7 +22696,7 @@ class IGcadSurface(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -22729,8 +22729,8 @@ class IGcadSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadSweptSurface(DispatchBaseClass):
-    'IGcadSweptSurface Interface'
+class IAcadSweptSurface(DispatchBaseClass):
+    'IAcadSweptSurface Interface'
     CLSID = IID('{0EA16B8C-632D-4AC3-8B6F-FECEB9558A7D}')
     coclass_clsid = IID('{6997E39D-299C-45CC-95BC-A677AC0D1A62}')
 
@@ -22766,7 +22766,7 @@ class IGcadSweptSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -22855,7 +22855,7 @@ class IGcadSweptSurface(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Bank": (3, 2, (11, 0), (), "Bank", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -22863,7 +22863,7 @@ class IGcadSweptSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Length": (6, 2, (5, 0), (), "Length", None),
@@ -22879,7 +22879,7 @@ class IGcadSweptSurface(DispatchBaseClass):
         "ProfileRotation": (2, 2, (5, 0), (), "ProfileRotation", None),
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Twist": (4, 2, (5, 0), (), "Twist", None),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
@@ -22918,8 +22918,8 @@ class IGcadSweptSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadTable(DispatchBaseClass):
-    'IGcadTable Interface'
+class IAcadTable(DispatchBaseClass):
+    'IAcadTable Interface'
     CLSID = IID('{449C1C61-4BD2-445C-BA5E-ED97DF538B9D}')
     coclass_clsid = IID('{92B86261-DA20-4A60-9982-05863C6D9EBE}')
 
@@ -22998,7 +22998,7 @@ class IGcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(77, LCID, 1, (11, 0), ((3, 1), (3, 1)),row
             , col)
 
-    # Result is of type IGcadGcCmColor
+    # Result is of type IAcadGcCmColor
     def GetBackgroundColor(self, rowType=defaultNamedNotOptArg):
         'Returns the background true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(37, LCID, 1, (9, 0), ((3, 1),),rowType
@@ -23057,7 +23057,7 @@ class IGcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(58, LCID, 1, (3, 0), ((3, 1), (3, 1)),row
             , col)
 
-    # Result is of type IGcadGcCmColor
+    # Result is of type IAcadGcCmColor
     def GetCellBackgroundColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
         'Returns the background true color value for the specified row and column.'
         ret = self._oleobj_.InvokeTypes(62, LCID, 1, (9, 0), ((3, 1), (3, 1)),row
@@ -23071,7 +23071,7 @@ class IGcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(60, LCID, 1, (11, 0), ((3, 1), (3, 1)),row
             , col)
 
-    # Result is of type IGcadGcCmColor
+    # Result is of type IAcadGcCmColor
     def GetCellContentColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
         'Returns the true color value for the specified row and column.'
         ret = self._oleobj_.InvokeTypes(64, LCID, 1, (9, 0), ((3, 1), (3, 1)),row
@@ -23096,7 +23096,7 @@ class IGcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1948, LCID, 1, (8, 0), ((3, 1), (3, 1)),row
             , col)
 
-    # Result is of type IGcadGcCmColor
+    # Result is of type IAcadGcCmColor
     def GetCellGridColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, edge=defaultNamedNotOptArg):
         'Returns the gridColor value for the given edge of specified row and column.'
         ret = self._oleobj_.InvokeTypes(87, LCID, 1, (9, 0), ((3, 1), (3, 1), (3, 1)),row
@@ -23151,7 +23151,7 @@ class IGcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(10, LCID, 1, (5, 0), ((3, 1),),col
             )
 
-    # Result is of type IGcadGcCmColor
+    # Result is of type IAcadGcCmColor
     def GetContentColor(self, rowType=defaultNamedNotOptArg):
         'Returns the true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(39, LCID, 1, (9, 0), ((3, 1),),rowType
@@ -23165,7 +23165,7 @@ class IGcadTable(DispatchBaseClass):
         return self._ApplyTypes_(117, 1, (24, 0), ((3, 1), (16387, 2), (16387, 2)), 'GetDataType', None,rowType
             , pDataType, pUnitType)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -23192,7 +23192,7 @@ class IGcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(119, LCID, 1, (8, 0), ((3, 1),),rowType
             )
 
-    # Result is of type IGcadGcCmColor
+    # Result is of type IAcadGcCmColor
     def GetGridColor(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
         'Returns the gridColor value for the specified gridLineType and row type.'
         ret = self._oleobj_.InvokeTypes(47, LCID, 1, (9, 0), ((3, 1), (3, 1)),gridLineType
@@ -23641,7 +23641,7 @@ class IGcadTable(DispatchBaseClass):
         "BreakSpacing": (65527, 2, (5, 0), (), "BreakSpacing", None),
         "BreaksEnabled": (65520, 2, (11, 0), (), "BreaksEnabled", None),
         "Columns": (3, 2, (3, 0), (), "Columns", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Direction": (30, 2, (12, 0), (), "Direction", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -23655,7 +23655,7 @@ class IGcadTable(DispatchBaseClass):
         "HeaderSuppressed": (32, 2, (11, 0), (), "HeaderSuppressed", None),
         "Height": (6, 2, (5, 0), (), "Height", None),
         "HorzCellMargin": (8, 2, (5, 0), (), "HorzCellMargin", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsertionPoint": (9, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -23678,7 +23678,7 @@ class IGcadTable(DispatchBaseClass):
         "TableBreakHeight": (65526, 2, (5, 0), (), "TableBreakHeight", None),
         "TableStyleOverrides": (51, 2, (12, 0), (), "TableStyleOverrides", None),
         "TitleSuppressed": (31, 2, (11, 0), (), "TitleSuppressed", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "VertCellMargin": (7, 2, (5, 0), (), "VertCellMargin", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -23728,7 +23728,7 @@ class IGcadTable(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadTableCell(DispatchBaseClass):
+class IAcadTableCell(DispatchBaseClass):
     CLSID = IID('{5C5196BD-9E8D-4B23-A0CF-5FB8550456FD}')
     coclass_clsid = IID('{6336B61B-EFBF-4325-94FE-59D403CB0C76}')
 
@@ -23764,7 +23764,7 @@ class IGcadTableCell(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -23854,15 +23854,15 @@ class IGcadTableCell(DispatchBaseClass):
         "AdditionalFormat": (25, 2, (8, 0), (), "AdditionalFormat", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BlockAutofit": (28, 2, (11, 0), (), "BlockAutofit", None),
-        # Method 'BlockColor' returns object of type 'IGcadGcCmColor'
+        # Method 'BlockColor' returns object of type 'IAcadGcCmColor'
         "BlockColor": (31, 2, (9, 0), (), "BlockColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "BlockName": (27, 2, (8, 0), (), "BlockName", None),
         "BlockRotation": (30, 2, (5, 0), (), "BlockRotation", None),
         "BlockScale": (29, 2, (5, 0), (), "BlockScale", None),
         "BlocksInCell": (26, 2, (3, 0), (), "BlocksInCell", None),
-        # Method 'CellBackgroundFill' returns object of type 'IGcadGcCmColor'
+        # Method 'CellBackgroundFill' returns object of type 'IAcadGcCmColor'
         "CellBackgroundFill": (7, 2, (9, 0), (), "CellBackgroundFill", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
-        # Method 'CellBorderColor' returns object of type 'IGcadGcCmColor'
+        # Method 'CellBorderColor' returns object of type 'IAcadGcCmColor'
         "CellBorderColor": (8, 2, (9, 0), (), "CellBorderColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "CellBorderLinetype": (10, 2, (8, 0), (), "CellBorderLinetype", None),
         "CellBorderLineweight": (9, 2, (3, 0), (), "CellBorderLineweight", None),
@@ -23873,7 +23873,7 @@ class IGcadTableCell(DispatchBaseClass):
         "CellLayout": (16, 2, (8, 0), (), "CellLayout", None),
         "CellLocking": (13, 2, (8, 0), (), "CellLocking", None),
         "CellStyle": (1, 2, (8, 0), (), "CellStyle", None),
-        # Method 'CellTextColor' returns object of type 'IGcadGcCmColor'
+        # Method 'CellTextColor' returns object of type 'IAcadGcCmColor'
         "CellTextColor": (21, 2, (9, 0), (), "CellTextColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "CellTextHeight": (19, 2, (5, 0), (), "CellTextHeight", None),
         "CellTextRotation": (20, 2, (5, 0), (), "CellTextRotation", None),
@@ -23881,7 +23881,7 @@ class IGcadTableCell(DispatchBaseClass):
         "CellType": (15, 2, (8, 0), (), "CellType", None),
         "CellWidth": (4, 2, (5, 0), (), "CellWidth", None),
         "ColumnStyle": (3, 2, (8, 0), (), "ColumnStyle", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -23890,7 +23890,7 @@ class IGcadTableCell(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HorizontalCellMargin": (11, 2, (5, 0), (), "HorizontalCellMargin", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -23903,7 +23903,7 @@ class IGcadTableCell(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Presition": (24, 2, (8, 0), (), "Presition", None),
         "RowStyle": (2, 2, (8, 0), (), "RowStyle", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "VerticalCellMargin": (12, 2, (5, 0), (), "VerticalCellMargin", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -23962,8 +23962,8 @@ class IGcadTableCell(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadTableStyle(DispatchBaseClass):
-    'GCAD IGcadTableStyle Interface'
+class IAcadTableStyle(DispatchBaseClass):
+    'GCAD IAcadTableStyle Interface'
     CLSID = IID('{4EC5CAC3-22E8-4B42-BBA8-77271650DEA4}')
     coclass_clsid = IID('{31B9FEC5-563C-464B-B180-5B5E4B530EDD}')
 
@@ -23980,7 +23980,7 @@ class IGcadTableStyle(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(13, LCID, 1, (3, 0), ((3, 1),),rowType
             )
 
-    # Result is of type IGcadGcCmColor
+    # Result is of type IAcadGcCmColor
     def GetBackgroundColor(self, rowType=defaultNamedNotOptArg):
         'Returns the background true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(17, LCID, 1, (9, 0), ((3, 1),),rowType
@@ -23994,7 +23994,7 @@ class IGcadTableStyle(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(19, LCID, 1, (11, 0), ((3, 1),),rowType
             )
 
-    # Result is of type IGcadGcCmColor
+    # Result is of type IAcadGcCmColor
     def GetColor(self, rowType=defaultNamedNotOptArg):
         'Returns the true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(15, LCID, 1, (9, 0), ((3, 1),),rowType
@@ -24008,7 +24008,7 @@ class IGcadTableStyle(DispatchBaseClass):
         return self._ApplyTypes_(27, 1, (24, 0), ((3, 1), (16387, 2), (16387, 2)), 'GetDataType', None,rowType
             , pDataType, pUnitType)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24022,7 +24022,7 @@ class IGcadTableStyle(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(29, LCID, 1, (8, 0), ((3, 1),),rowType
             )
 
-    # Result is of type IGcadGcCmColor
+    # Result is of type IAcadGcCmColor
     def GetGridColor(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
         'Returns the gridColor value for the specifed gridLineType and row type.'
         ret = self._oleobj_.InvokeTypes(23, LCID, 1, (9, 0), ((3, 1), (3, 1)),gridLineType
@@ -24132,7 +24132,7 @@ class IGcadTableStyle(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BitFlags": (3, 2, (3, 0), (), "BitFlags", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Description": (2, 2, (8, 0), (), "Description", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -24168,7 +24168,7 @@ class IGcadTableStyle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadText(DispatchBaseClass):
+class IAcadText(DispatchBaseClass):
     'GCAD Text Interface'
     CLSID = IID('{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}')
     coclass_clsid = IID('{12226789-EEA7-4BE8-9FD7-33513C744E3B}')
@@ -24210,7 +24210,7 @@ class IGcadText(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24312,7 +24312,7 @@ class IGcadText(DispatchBaseClass):
         "Alignment": (3, 2, (3, 0), (), "Alignment", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Backward": (16, 2, (11, 0), (), "Backward", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -24322,7 +24322,7 @@ class IGcadText(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (6, 2, (5, 0), (), "Height", None),
         "HorizontalAlignment": (4, 2, (3, 0), (), "HorizontalAlignment", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsertionPoint": (11, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -24343,7 +24343,7 @@ class IGcadText(DispatchBaseClass):
         "TextGenerationFlag": (13, 2, (3, 0), (), "TextGenerationFlag", None),
         "TextString": (1, 2, (8, 0), (), "TextString", None),
         "Thickness": (14, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UpsideDown": (15, 2, (11, 0), (), "UpsideDown", None),
         "VerticalAlignment": (5, 2, (3, 0), (), "VerticalAlignment", None),
@@ -24386,7 +24386,7 @@ class IGcadText(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadTextStyle(DispatchBaseClass):
+class IAcadTextStyle(DispatchBaseClass):
     'A named, saved collection of settings that determines the appearance of text characters'
     CLSID = IID('{703FE959-9B8D-4A91-A69A-844150619DF3}')
     coclass_clsid = IID('{59F48386-168C-4320-8B3D-77E8556EF9E1}')
@@ -24399,7 +24399,7 @@ class IGcadTextStyle(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24432,7 +24432,7 @@ class IGcadTextStyle(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BigFontFile": (1, 2, (8, 0), (), "BigFontFile", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -24465,12 +24465,12 @@ class IGcadTextStyle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadTextStyles(DispatchBaseClass):
+class IAcadTextStyles(DispatchBaseClass):
     'The collection of all text styles in the drawing'
     CLSID = IID('{F8425B37-BFCF-4290-8CA2-C718D3201829}')
     coclass_clsid = IID('{F194C083-83FC-4F35-A76F-F4C577C0689A}')
 
-    # Result is of type IGcadTextStyle
+    # Result is of type IAcadTextStyle
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -24487,7 +24487,7 @@ class IGcadTextStyles(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24500,7 +24500,7 @@ class IGcadTextStyles(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadTextStyle
+    # Result is of type IAcadTextStyle
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -24517,7 +24517,7 @@ class IGcadTextStyles(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -24555,7 +24555,7 @@ class IGcadTextStyles(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadTolerance(DispatchBaseClass):
+class IAcadTolerance(DispatchBaseClass):
     'GCAD Tolerance Interface'
     CLSID = IID('{98D4741E-D869-4950-8B28-046B6884A084}')
     coclass_clsid = IID('{092962C2-F320-44E1-8857-C8AFE3885555}')
@@ -24592,7 +24592,7 @@ class IGcadTolerance(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24692,7 +24692,7 @@ class IGcadTolerance(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DimensionLineColor": (13, 2, (3, 0), (), "DimensionLineColor", None),
         "DirectionVector": (80, 2, (12, 0), (), "DirectionVector", None),
@@ -24702,7 +24702,7 @@ class IGcadTolerance(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "InsertionPoint": (81, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -24721,7 +24721,7 @@ class IGcadTolerance(DispatchBaseClass):
         "TextHeight": (1563, 2, (5, 0), (), "TextHeight", None),
         "TextString": (1541, 2, (8, 0), (), "TextString", None),
         "TextStyle": (1562, 2, (8, 0), (), "TextStyle", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -24756,12 +24756,12 @@ class IGcadTolerance(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadToolbar(DispatchBaseClass):
+class IAcadToolbar(DispatchBaseClass):
     'An GCAD toolbar'
     CLSID = IID('{EDE9142E-0923-4657-90F7-EB55FC56C99A}')
     coclass_clsid = IID('{D6EE440D-BCFF-443C-960D-4F1DAC6D94F6}')
 
-    # Result is of type IGcadToolbarItem
+    # Result is of type IAcadToolbarItem
     def AddSeparator(self, Index=defaultNamedNotOptArg):
         'Adds a separator to an existing menu or toolbar'
         ret = self._oleobj_.InvokeTypes(1610743830, LCID, 1, (9, 0), ((12, 1),),Index
@@ -24770,7 +24770,7 @@ class IGcadToolbar(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSeparator', '{72E4902E-AA1A-4F5D-8995-B06088CF363C}')
         return ret
 
-    # Result is of type IGcadToolbarItem
+    # Result is of type IAcadToolbarItem
     def AddToolbarButton(self, Index=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, HelpString=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg
             , FlyoutButton=defaultNamedOptArg):
         'Adds a toolbar item to a toolbar at a specified position'
@@ -24794,7 +24794,7 @@ class IGcadToolbar(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743832, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),top
             , left, NumberFloatRows)
 
-    # Result is of type IGcadToolbarItem
+    # Result is of type IAcadToolbarItem
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -24804,7 +24804,7 @@ class IGcadToolbar(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
         "DockStatus": (1610743817, 2, (3, 0), (), "DockStatus", None),
@@ -24855,7 +24855,7 @@ class IGcadToolbar(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadToolbarItem(DispatchBaseClass):
+class IAcadToolbarItem(DispatchBaseClass):
     'A single button item on an GCAD toolbar'
     CLSID = IID('{72E4902E-AA1A-4F5D-8995-B06088CF363C}')
     coclass_clsid = IID('{D2806DE9-1AFE-42DF-87AC-B0A855F9B891}')
@@ -24880,16 +24880,16 @@ class IGcadToolbarItem(DispatchBaseClass):
             , LargeIconName)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "CommandDisplayName": (1610743825, 2, (8, 0), (), "CommandDisplayName", None),
-        # Method 'Flyout' returns object of type 'IGcadToolbar'
+        # Method 'Flyout' returns object of type 'IAcadToolbar'
         "Flyout": (1610743815, 2, (9, 0), (), "Flyout", '{EDE9142E-0923-4657-90F7-EB55FC56C99A}'),
         "HelpString": (1610743819, 2, (8, 0), (), "HelpString", None),
         "Index": (1610743818, 2, (3, 0), (), "Index", None),
         "Macro": (1610743816, 2, (8, 0), (), "Macro", None),
         "Name": (1610743810, 2, (8, 0), (), "Name", None),
-        # Method 'Parent' returns object of type 'IGcadToolbar'
+        # Method 'Parent' returns object of type 'IAcadToolbar'
         "Parent": (1610743809, 2, (9, 0), (), "Parent", '{EDE9142E-0923-4657-90F7-EB55FC56C99A}'),
         "TagString": (1610743812, 2, (8, 0), (), "TagString", None),
         "Type": (1610743814, 2, (3, 0), (), "Type", None),
@@ -24909,12 +24909,12 @@ class IGcadToolbarItem(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadToolbars(DispatchBaseClass):
+class IAcadToolbars(DispatchBaseClass):
     'A collection of Toolbar objects representing all the toolbars loaded in the current GstarCAD session'
     CLSID = IID('{8095E3AB-7AB4-4915-A35A-11491F1B45D6}')
     coclass_clsid = IID('{30523308-F09B-4C74-A819-9AD14A4A943E}')
 
-    # Result is of type IGcadToolbar
+    # Result is of type IAcadToolbar
     def Add(self, ToolbarName=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(1610743815, LCID, 1, (9, 0), ((8, 1),),ToolbarName
@@ -24923,7 +24923,7 @@ class IGcadToolbars(DispatchBaseClass):
             ret = Dispatch(ret, 'Add', '{EDE9142E-0923-4657-90F7-EB55FC56C99A}')
         return ret
 
-    # Result is of type IGcadToolbar
+    # Result is of type IAcadToolbar
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -24933,11 +24933,11 @@ class IGcadToolbars(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IGcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{B1872638-6D18-482F-90BA-38086D17625F}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
         "LargeButtons": (1610743813, 2, (11, 0), (), "LargeButtons", None),
-        # Method 'Parent' returns object of type 'IGcadMenuGroup'
+        # Method 'Parent' returns object of type 'IAcadMenuGroup'
         "Parent": (1610743812, 2, (9, 0), (), "Parent", '{72D027F2-CD79-4135-AE60-74FD0F8F595B}'),
     }
     _prop_map_put_ = {
@@ -24970,7 +24970,7 @@ class IGcadToolbars(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadTrace(DispatchBaseClass):
+class IAcadTrace(DispatchBaseClass):
     'GCAD Trace Interface'
     CLSID = IID('{4253025F-5BC5-4D78-8D65-138D2DBED220}')
     coclass_clsid = IID('{D7B6AF1E-5F8B-453C-A26E-828A2BD820CC}')
@@ -25013,7 +25013,7 @@ class IGcadTrace(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -25118,7 +25118,7 @@ class IGcadTrace(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -25126,7 +25126,7 @@ class IGcadTrace(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -25139,7 +25139,7 @@ class IGcadTrace(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -25167,7 +25167,7 @@ class IGcadTrace(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadUCS(DispatchBaseClass):
+class IAcadUCS(DispatchBaseClass):
     'A user-defined coordinate system that determines the orientation of the X, Y, and Z axes in 3D space'
     CLSID = IID('{50B2A194-C469-4A57-B14A-BAFBA41A4039}')
     coclass_clsid = IID('{D4E3C6C4-7DAE-4D80-A98C-148C3CD66E32}')
@@ -25180,7 +25180,7 @@ class IGcadUCS(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -25216,7 +25216,7 @@ class IGcadUCS(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -25243,12 +25243,12 @@ class IGcadUCS(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadUCSs(DispatchBaseClass):
+class IAcadUCSs(DispatchBaseClass):
     'The collection of all user coordinate systems (UCSs) in the drawing'
     CLSID = IID('{94DA139B-A285-4E3D-9E31-AA597FD909B0}')
     coclass_clsid = IID('{1146DF77-46C8-4F31-AB6A-8815AEE71EB7}')
 
-    # Result is of type IGcadUCS
+    # Result is of type IAcadUCS
     def Add(self, Origin=defaultNamedNotOptArg, XAxisPoint=defaultNamedNotOptArg, YAxisPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (8, 1)),Origin
@@ -25265,7 +25265,7 @@ class IGcadUCSs(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -25278,7 +25278,7 @@ class IGcadUCSs(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadUCS
+    # Result is of type IAcadUCS
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -25295,7 +25295,7 @@ class IGcadUCSs(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -25333,7 +25333,7 @@ class IGcadUCSs(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadUnderlay(DispatchBaseClass):
+class IAcadUnderlay(DispatchBaseClass):
     CLSID = IID('{78A705C7-0B90-4FBC-AF7A-AFFAEDD2CC1F}')
     coclass_clsid = IID('{B8E04FA2-2C8E-4EAE-873C-9ECC978E1628}')
 
@@ -25374,7 +25374,7 @@ class IGcadUnderlay(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -25473,7 +25473,7 @@ class IGcadUnderlay(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ClippingEnabled": (16, 2, (11, 0), (), "ClippingEnabled", None),
         "Contrast": (1, 2, (3, 0), (), "Contrast", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -25484,7 +25484,7 @@ class IGcadUnderlay(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (6, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "ItemName": (8, 2, (8, 0), (), "ItemName", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -25500,7 +25500,7 @@ class IGcadUnderlay(DispatchBaseClass):
         "Position": (3, 2, (12, 0), (), "Position", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (12, 2, (5, 0), (), "ScaleFactor", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "UnderlayLayerOverrideApplied": (17, 2, (3, 0), (), "UnderlayLayerOverrideApplied", None),
         "UnderlayName": (7, 2, (8, 0), (), "UnderlayName", None),
@@ -25544,8 +25544,8 @@ class IGcadUnderlay(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadUtility(DispatchBaseClass):
-    'IGcadUtility �ӿ�'
+class IAcadUtility(DispatchBaseClass):
+    'IAcadUtility �ӿ�'
     CLSID = IID('{CE85BBED-B6CD-446F-B3F6-052465802DB6}')
     coclass_clsid = IID('{9F1290F0-C25D-429E-901E-42CBE63A9836}')
 
@@ -25746,7 +25746,7 @@ class IGcadUtility(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadView(DispatchBaseClass):
+class IAcadView(DispatchBaseClass):
     'A graphical representation of a 2D drawing or 3D model from a specific location (viewpoint) in space'
     CLSID = IID('{DE1C99A1-811D-4F40-98A6-A17186C8779A}')
     coclass_clsid = IID('{A2F794C5-9ED5-49B6-A45B-1FB659497505}')
@@ -25759,7 +25759,7 @@ class IGcadView(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -25793,7 +25793,7 @@ class IGcadView(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "CategoryName": (7, 2, (8, 0), (), "CategoryName", None),
         "Center": (1, 2, (12, 0), (), "Center", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Direction": (5, 2, (12, 0), (), "Direction", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -25832,7 +25832,7 @@ class IGcadView(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadViewport(DispatchBaseClass):
+class IAcadViewport(DispatchBaseClass):
     "A bounded area that displays some portion of a drawing's model space"
     CLSID = IID('{B2B6FB46-0162-4C09-9612-65371297D78F}')
     coclass_clsid = IID('{415EAAB8-7D05-4935-A6DF-25DA98FC8FB2}')
@@ -25845,7 +25845,7 @@ class IGcadViewport(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -25911,7 +25911,7 @@ class IGcadViewport(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ArcSmoothness": (23, 2, (3, 0), (), "ArcSmoothness", None),
         "Center": (1, 2, (12, 0), (), "Center", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Direction": (5, 2, (12, 0), (), "Direction", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -25958,12 +25958,12 @@ class IGcadViewport(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadViewports(DispatchBaseClass):
+class IAcadViewports(DispatchBaseClass):
     'The collection of all viewports in the drawing'
     CLSID = IID('{EF5599E0-9D92-4DA2-A8B0-B3A5728E019C}')
     coclass_clsid = IID('{FD6D9F4B-1812-4B43-8836-1BCEC2E28F65}')
 
-    # Result is of type IGcadViewport
+    # Result is of type IAcadViewport
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -25985,7 +25985,7 @@ class IGcadViewports(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -25998,7 +25998,7 @@ class IGcadViewports(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadViewport
+    # Result is of type IAcadViewport
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -26015,7 +26015,7 @@ class IGcadViewports(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -26053,12 +26053,12 @@ class IGcadViewports(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadViews(DispatchBaseClass):
+class IAcadViews(DispatchBaseClass):
     'The collection of all views in the drawing'
     CLSID = IID('{9789FDA2-4DD1-44EA-8BC0-8B8B922EDE88}')
     coclass_clsid = IID('{0165E8DC-3E0B-4102-9C66-DC0228911048}')
 
-    # Result is of type IGcadView
+    # Result is of type IAcadView
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -26075,7 +26075,7 @@ class IGcadViews(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -26088,7 +26088,7 @@ class IGcadViews(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IGcadView
+    # Result is of type IAcadView
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -26105,7 +26105,7 @@ class IGcadViews(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -26143,7 +26143,7 @@ class IGcadViews(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IGcadXRecord(DispatchBaseClass):
+class IAcadXRecord(DispatchBaseClass):
     'XRecord objects are used to store and manage arbitrary data'
     CLSID = IID('{153C1376-952E-4696-94A0-F57364AA6836}')
     coclass_clsid = IID('{1E499AED-C7C7-4EE1-8FA6-AB1119B7268E}')
@@ -26156,7 +26156,7 @@ class IGcadXRecord(DispatchBaseClass):
         'Erases all the objects in a selection set'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -26186,7 +26186,7 @@ class IGcadXRecord(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -26209,7 +26209,7 @@ class IGcadXRecord(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IGcadXline(DispatchBaseClass):
+class IAcadXline(DispatchBaseClass):
     'GCAD Xline Interface'
     CLSID = IID('{36494A5A-AADE-46F4-B87C-B213A2AF0083}')
     coclass_clsid = IID('{70371E06-28C5-423C-8912-78A9A6E342CB}')
@@ -26246,7 +26246,7 @@ class IGcadXline(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IGcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Gets the extension dictionary associated with an object'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -26350,7 +26350,7 @@ class IGcadXline(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BasePoint": (1, 2, (12, 0), (), "BasePoint", None),
-        # Method 'Database' returns object of type 'IGcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}'),
         "DirectionVector": (3, 2, (12, 0), (), "DirectionVector", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -26359,7 +26359,7 @@ class IGcadXline(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IGcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -26371,7 +26371,7 @@ class IGcadXline(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "SecondPoint": (2, 2, (12, 0), (), "SecondPoint", None),
-        # Method 'TrueColor' returns object of type 'IGcadGcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadGcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{E38E7951-AB58-43F5-9B74-B473C5C6605B}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -26400,7 +26400,7 @@ class IGcadXline(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class _DGcadApplicationEvents:
-    '_IGcadApplicationEvents �ӿ�'
+    '_IAcadApplicationEvents �ӿ�'
     CLSID = CLSID_Sink = IID('{330F7B9E-C93C-403D-807C-D92CB9698637}')
     coclass_clsid = IID('{E06CA8F7-4554-4993-8460-1127D2513B1E}')
     _public_methods_ = [] # For COM Server support
@@ -26504,7 +26504,7 @@ class _DGcadApplicationEvents:
 
 
 class _DGcadDocumentEvents:
-    '_IGcadDocumentEvents �ӿ�'
+    '_IAcadDocumentEvents �ӿ�'
     CLSID = CLSID_Sink = IID('{2ABEE42C-D570-4DE3-874F-353204A47B63}')
     coclass_clsid = IID('{EEA4FF96-9C53-49ED-977F-D22D2B51F741}')
     _public_methods_ = [] # For COM Server support
@@ -26604,8 +26604,8 @@ class _DGcadDocumentEvents:
 #		'Triggered before the BeginClose event. This is an opportunity to cancel the closing process'
 
 
-class _IGcadScriptJetEvents(DispatchBaseClass):
-    '_IGcadScriptJet�¼��ӿ�'
+class _IAcadScriptJetEvents(DispatchBaseClass):
+    '_IAcadScriptJet�¼��ӿ�'
     CLSID = IID('{1BAA42A6-463E-492D-BB53-0D4028148443}')
     coclass_clsid = None
 
@@ -26636,37 +26636,37 @@ class Gcad3DFace(CoClassBaseClass): # A CoClass
     # GCAD 3dFace Object
     CLSID = IID('{457AD5FC-1656-4606-AB8A-EF7F0215B238}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcad3DFace,
+        IAcad3DFace,
     ]
-    default_interface = IGcad3DFace
+    default_interface = IAcad3DFace
 
 class Gcad3DPolyline(CoClassBaseClass): # A CoClass
     # GCAD 3dPolyline Object
     CLSID = IID('{7D7FD20A-AC1D-46BC-8C49-8EBB286F681E}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcad3DPolyline,
+        IAcad3DPolyline,
     ]
-    default_interface = IGcad3DPolyline
+    default_interface = IAcad3DPolyline
 
 class Gcad3DSolid(CoClassBaseClass): # A CoClass
     # GCAD 3dSolid Object
     CLSID = IID('{C998B595-8233-4859-A51A-492A25E9EB67}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcad3DSolid,
+        IAcad3DSolid,
     ]
-    default_interface = IGcad3DSolid
+    default_interface = IAcad3DSolid
 
 # This CoClass is known by the name 'GStarCAD.AcCmColor.24'
 class GcadAcCmColor(CoClassBaseClass): # A CoClass
@@ -26675,9 +26675,9 @@ class GcadAcCmColor(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadGcCmColor,
+        IAcadGcCmColor,
     ]
-    default_interface = IGcadGcCmColor
+    default_interface = IAcadGcCmColor
 
 # This CoClass is known by the name 'GStarCAD.GcadApplication.24'
 class GcadApplication(CoClassBaseClass): # A CoClass
@@ -26688,21 +26688,21 @@ class GcadApplication(CoClassBaseClass): # A CoClass
     ]
     default_source = _DGcadApplicationEvents
     coclass_interfaces = [
-        IGcadApplication,
+        IAcadApplication,
     ]
-    default_interface = IGcadApplication
+    default_interface = IAcadApplication
 
 class GcadArc(CoClassBaseClass): # A CoClass
     # GCAD Arc Object
     CLSID = IID('{7E99A93E-D084-43FF-9311-D24A452FF851}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadArc,
+        IAcadArc,
     ]
-    default_interface = IGcadArc
+    default_interface = IAcadArc
 
 class GcadArcAlignedText(CoClassBaseClass): # A CoClass
     # GcadArcAlignedText Class
@@ -26710,129 +26710,129 @@ class GcadArcAlignedText(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadArcAlignedText,
+        IAcadArcAlignedText,
     ]
-    default_interface = IGcadArcAlignedText
+    default_interface = IAcadArcAlignedText
 
 class GcadAssocArrayPath(CoClassBaseClass): # A CoClass
     # GCAD AssocArrayPath Object
     CLSID = IID('{3745EF1D-3D36-4500-8034-7526342623D3}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadAssocArrayPath,
+        IAcadAssocArrayPath,
     ]
-    default_interface = IGcadAssocArrayPath
+    default_interface = IAcadAssocArrayPath
 
 class GcadAssocArrayPolar(CoClassBaseClass): # A CoClass
     # GCAD AssocArrayPolar Object
     CLSID = IID('{AC93B51F-F467-4928-B094-03EA43B3A681}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadAssocArrayPolar,
+        IAcadAssocArrayPolar,
     ]
-    default_interface = IGcadAssocArrayPolar
+    default_interface = IAcadAssocArrayPolar
 
 class GcadAssocArrayRectangular(CoClassBaseClass): # A CoClass
     # GCAD AssocArrayRectangular Object
     CLSID = IID('{48E1D6AC-00B6-41DF-9A4F-26F4F47A8EE6}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadAssocArrayRectangular,
+        IAcadAssocArrayRectangular,
     ]
-    default_interface = IGcadAssocArrayRectangular
+    default_interface = IAcadAssocArrayRectangular
 
 class GcadAttribute(CoClassBaseClass): # A CoClass
     # GCAD Attribute Object
     CLSID = IID('{3BE70A3D-E2C4-42A6-989C-2F1E08C338D4}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadAttribute,
+        IAcadAttribute,
     ]
-    default_interface = IGcadAttribute
+    default_interface = IAcadAttribute
 
 class GcadAttributeReference(CoClassBaseClass): # A CoClass
     # GCAD Attribute Reference Object
     CLSID = IID('{326662C0-F9F3-4A5B-BFE5-2431F4AEF3D8}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadAttributeReference,
+        IAcadAttributeReference,
     ]
-    default_interface = IGcadAttributeReference
+    default_interface = IAcadAttributeReference
 
 class GcadBlock(CoClassBaseClass): # A CoClass
     # GcadBlock Class
     CLSID = IID('{60C11D4D-6F51-4A16-88CE-305C5BBC84F1}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadBlock,
+        IAcadBlock,
     ]
-    default_interface = IGcadBlock
+    default_interface = IAcadBlock
 
 class GcadBlockReference(CoClassBaseClass): # A CoClass
     # GCAD Block Reference Object
     CLSID = IID('{DA38CF1F-C119-4FE7-A5F9-AEC5E0C22709}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadBlockReference,
+        IAcadBlockReference,
     ]
-    default_interface = IGcadBlockReference
+    default_interface = IAcadBlockReference
 
 class GcadBlocks(CoClassBaseClass): # A CoClass
     # GcadBlocks Class
     CLSID = IID('{25F41555-CB62-4FB5-AF5A-FD50D5B99809}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadBlocks,
+        IAcadBlocks,
     ]
-    default_interface = IGcadBlocks
+    default_interface = IAcadBlocks
 
 class GcadCamera(CoClassBaseClass): # A CoClass
     # Gcad Camera
     CLSID = IID('{0C8A268F-2F40-4D78-8582-E900CD39AAB7}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadCamera,
+        IAcadCamera,
     ]
-    default_interface = IGcadCamera
+    default_interface = IAcadCamera
 
 class GcadCircle(CoClassBaseClass): # A CoClass
     # GcadCircle
     CLSID = IID('{C858EE7D-1B1F-4F2E-A61F-3F4AA8C6C1BA}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadCircle,
+        IAcadCircle,
     ]
-    default_interface = IGcadCircle
+    default_interface = IAcadCircle
 
 class GcadDatabase(CoClassBaseClass): # A CoClass
     # GcadDatabase Class
@@ -26840,9 +26840,9 @@ class GcadDatabase(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadDatabase,
+        IAcadDatabase,
     ]
-    default_interface = IGcadDatabase
+    default_interface = IAcadDatabase
 
 class GcadDatabasePreferences(CoClassBaseClass): # A CoClass
     # GcadDatabasePreferences Class
@@ -26850,189 +26850,189 @@ class GcadDatabasePreferences(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadDatabasePreferences,
+        IAcadDatabasePreferences,
     ]
-    default_interface = IGcadDatabasePreferences
+    default_interface = IAcadDatabasePreferences
 
 class GcadDgnUnderlay(CoClassBaseClass): # A CoClass
     # Gcad DgnUnderlay
     CLSID = IID('{7A486F98-18BC-424E-9D37-CD975EC3667F}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadUnderlay,
+        IAcadUnderlay,
     ]
-    default_interface = IGcadUnderlay
+    default_interface = IAcadUnderlay
 
 class GcadDictionaries(CoClassBaseClass): # A CoClass
     # GcadDictionaries Class
     CLSID = IID('{07244103-C9ED-4EF9-BDD4-5062C58A34D4}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDictionaries,
+        IAcadDictionaries,
     ]
-    default_interface = IGcadDictionaries
+    default_interface = IAcadDictionaries
 
 class GcadDictionary(CoClassBaseClass): # A CoClass
     # A container object for storing and retrieving objects
     CLSID = IID('{F7A4E90A-DB70-4175-833C-E9F927851832}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDictionary,
+        IAcadDictionary,
     ]
-    default_interface = IGcadDictionary
+    default_interface = IAcadDictionary
 
 class GcadDim3PointAngular(CoClassBaseClass): # A CoClass
     # GCAD 3PointAngular Dimension Object
     CLSID = IID('{348090AB-ECF8-4259-BFA3-45C7A91E30F6}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDim3PointAngular,
+        IAcadDim3PointAngular,
     ]
-    default_interface = IGcadDim3PointAngular
+    default_interface = IAcadDim3PointAngular
 
 class GcadDimAligned(CoClassBaseClass): # A CoClass
     # GCAD Aligned Dimension Object
     CLSID = IID('{31463489-3D64-4BC7-85B1-0A1C6F0B2ABA}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimAligned,
+        IAcadDimAligned,
     ]
-    default_interface = IGcadDimAligned
+    default_interface = IAcadDimAligned
 
 class GcadDimAngular(CoClassBaseClass): # A CoClass
     # GCAD Angular Dimension Object
     CLSID = IID('{8CBE37D9-7079-437A-A384-635D4A74A8D3}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimAngular,
+        IAcadDimAngular,
     ]
-    default_interface = IGcadDimAngular
+    default_interface = IAcadDimAngular
 
 class GcadDimArcLength(CoClassBaseClass): # A CoClass
     # GCAD Arc Length Dimension Object
     CLSID = IID('{2C817A8B-0B7D-4DE6-914A-B3A79F0665E4}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimArcLength,
+        IAcadDimArcLength,
     ]
-    default_interface = IGcadDimArcLength
+    default_interface = IAcadDimArcLength
 
 class GcadDimDiametric(CoClassBaseClass): # A CoClass
     # GcadDimDiametric Class
     CLSID = IID('{A4E8085A-25F0-420B-A480-30ABAEF225C8}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimDiametric,
+        IAcadDimDiametric,
     ]
-    default_interface = IGcadDimDiametric
+    default_interface = IAcadDimDiametric
 
 class GcadDimOrdinate(CoClassBaseClass): # A CoClass
     # GCAD Ordinate Dimension Object
     CLSID = IID('{A6F7E215-803A-414A-A81D-6299DED292E4}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimOrdinate,
+        IAcadDimOrdinate,
     ]
-    default_interface = IGcadDimOrdinate
+    default_interface = IAcadDimOrdinate
 
 class GcadDimRadial(CoClassBaseClass): # A CoClass
     # GCAD Radial Dimension Object
     CLSID = IID('{04A200E7-033D-4ECC-A9B1-806148A24763}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimRadial,
+        IAcadDimRadial,
     ]
-    default_interface = IGcadDimRadial
+    default_interface = IAcadDimRadial
 
 class GcadDimRadialLarge(CoClassBaseClass): # A CoClass
     # GCAD Jogged Dimension Object
     CLSID = IID('{599C859E-76AB-4A00-8A81-2A71506A3824}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimRadialLarge,
+        IAcadDimRadialLarge,
     ]
-    default_interface = IGcadDimRadialLarge
+    default_interface = IAcadDimRadialLarge
 
 class GcadDimRotated(CoClassBaseClass): # A CoClass
     # GCAD Rotated Dimension Object
     CLSID = IID('{4D49A4C2-C908-4523-9E62-89B08B19CB1C}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimRotated,
+        IAcadDimRotated,
     ]
-    default_interface = IGcadDimRotated
+    default_interface = IAcadDimRotated
 
 class GcadDimStyle(CoClassBaseClass): # A CoClass
     # GcadDimStyle Class
     CLSID = IID('{67211CB3-E07C-4585-B521-CD8F5840BD8D}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimStyle,
+        IAcadDimStyle,
     ]
-    default_interface = IGcadDimStyle
+    default_interface = IAcadDimStyle
 
 class GcadDimStyles(CoClassBaseClass): # A CoClass
     # GcadDimStyles Class
     CLSID = IID('{187BD9EB-18F0-40A0-BEA1-4B53AE20A161}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimStyles,
+        IAcadDimStyles,
     ]
-    default_interface = IGcadDimStyles
+    default_interface = IAcadDimStyles
 
 class GcadDimension(CoClassBaseClass): # A CoClass
     # GcadDimension Class
     CLSID = IID('{5D0A1B18-A59B-402A-B66B-2E10E2BDAE65}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadDimension,
+        IAcadDimension,
     ]
-    default_interface = IGcadDimension
+    default_interface = IAcadDimension
 
 class GcadDocument(CoClassBaseClass): # A CoClass
     # GcadDocument Class
@@ -27042,9 +27042,9 @@ class GcadDocument(CoClassBaseClass): # A CoClass
     ]
     default_source = _DGcadDocumentEvents
     coclass_interfaces = [
-        IGcadDocument,
+        IAcadDocument,
     ]
-    default_interface = IGcadDocument
+    default_interface = IAcadDocument
 
 class GcadDocuments(CoClassBaseClass): # A CoClass
     # GcadDocuments Class
@@ -27052,22 +27052,22 @@ class GcadDocuments(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadDocuments,
+        IAcadDocuments,
     ]
-    default_interface = IGcadDocuments
+    default_interface = IAcadDocuments
 
 class GcadDwfUnderlay(CoClassBaseClass): # A CoClass
     # Gcad DwfnUnderlay
     CLSID = IID('{B8E04FA2-2C8E-4EAE-873C-9ECC978E1628}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadUnderlay,
-        IGcadDwfUnderlay,
+        IAcadUnderlay,
+        IAcadDwfUnderlay,
     ]
-    default_interface = IGcadUnderlay
+    default_interface = IAcadUnderlay
 
 class GcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
     # GCAD Dynamic Block Property Object
@@ -27075,57 +27075,57 @@ class GcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadDynamicBlockReferenceProperty,
+        IAcadDynamicBlockReferenceProperty,
     ]
-    default_interface = IGcadDynamicBlockReferenceProperty
+    default_interface = IAcadDynamicBlockReferenceProperty
 
 class GcadEllipse(CoClassBaseClass): # A CoClass
     # GCAD Ellipse Object
     CLSID = IID('{7F11EDC5-9468-4C9D-8749-5720C123C13F}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadEllipse,
+        IAcadEllipse,
     ]
-    default_interface = IGcadEllipse
+    default_interface = IAcadEllipse
 
 class GcadEntity(CoClassBaseClass): # A CoClass
     # GcadEntity Class
     CLSID = IID('{3737DD60-3DB3-45AA-A592-49640E47A4CB}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadEntity,
+        IAcadEntity,
     ]
-    default_interface = IGcadEntity
+    default_interface = IAcadEntity
 
 class GcadExternalReference(CoClassBaseClass): # A CoClass
     # GCAD External Reference Object
     CLSID = IID('{78F3EF1F-22D5-4BC8-A186-3CF45759F2DD}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadExternalReference,
+        IAcadExternalReference,
     ]
-    default_interface = IGcadExternalReference
+    default_interface = IAcadExternalReference
 
 class GcadExtrudedSurface(CoClassBaseClass): # A CoClass
     # Gcad ExtrudedSurface
     CLSID = IID('{3865F4CA-2245-4517-9550-0FA5E5FC28F8}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadExtrudedSurface,
+        IAcadExtrudedSurface,
     ]
-    default_interface = IGcadExtrudedSurface
+    default_interface = IAcadExtrudedSurface
 
 class GcadFileDependencies(CoClassBaseClass): # A CoClass
     # GcadFileDependencies Class
@@ -27133,9 +27133,9 @@ class GcadFileDependencies(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadFileDependencies,
+        IAcadFileDependencies,
     ]
-    default_interface = IGcadFileDependencies
+    default_interface = IAcadFileDependencies
 
 class GcadFileDependency(CoClassBaseClass): # A CoClass
     # GcadFileDependency Class
@@ -27143,57 +27143,57 @@ class GcadFileDependency(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadFileDependency,
+        IAcadFileDependency,
     ]
-    default_interface = IGcadFileDependency
+    default_interface = IAcadFileDependency
 
 class GcadGroup(CoClassBaseClass): # A CoClass
     # GcadGroup Class
     CLSID = IID('{28EA8439-1EEF-4632-812B-3A8515F93530}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadGroup,
+        IAcadGroup,
     ]
-    default_interface = IGcadGroup
+    default_interface = IAcadGroup
 
 class GcadGroups(CoClassBaseClass): # A CoClass
     # GcadGroups Class
     CLSID = IID('{255F2619-FB9D-4176-BE91-D2C122537155}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadGroups,
+        IAcadGroups,
     ]
-    default_interface = IGcadGroups
+    default_interface = IAcadGroups
 
 class GcadHatch(CoClassBaseClass): # A CoClass
     # GCAD Hatch Object
     CLSID = IID('{EF74767C-CCF5-4725-935C-39E7BDB8D3B8}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadHatch,
+        IAcadHatch,
     ]
-    default_interface = IGcadHatch
+    default_interface = IAcadHatch
 
 class GcadHelix(CoClassBaseClass): # A CoClass
     # Gcad Helix
     CLSID = IID('{E817F271-E3BF-44E9-A481-C860D9D8CD13}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadHelix,
+        IAcadHelix,
     ]
-    default_interface = IGcadHelix
+    default_interface = IAcadHelix
 
 class GcadHyperlink(CoClassBaseClass): # A CoClass
     # A URL and URL description
@@ -27201,9 +27201,9 @@ class GcadHyperlink(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadHyperlink,
+        IAcadHyperlink,
     ]
-    default_interface = IGcadHyperlink
+    default_interface = IAcadHyperlink
 
 class GcadHyperlinks(CoClassBaseClass): # A CoClass
     # GcadHyperlinks Class
@@ -27211,9 +27211,9 @@ class GcadHyperlinks(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadHyperlinks,
+        IAcadHyperlinks,
     ]
-    default_interface = IGcadHyperlinks
+    default_interface = IAcadHyperlinks
 
 class GcadIdPair(CoClassBaseClass): # A CoClass
     # Gcad IdPair
@@ -27221,33 +27221,33 @@ class GcadIdPair(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadIdPair,
+        IAcadIdPair,
     ]
-    default_interface = IGcadIdPair
+    default_interface = IAcadIdPair
 
 class GcadLWPolyline(CoClassBaseClass): # A CoClass
     # GCAD Lightweight Polyline Object
     CLSID = IID('{508C6E95-0B42-4E0B-9A4A-75CF28263857}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLWPolyline,
+        IAcadLWPolyline,
     ]
-    default_interface = IGcadLWPolyline
+    default_interface = IAcadLWPolyline
 
 class GcadLayer(CoClassBaseClass): # A CoClass
     # GcadLayer Class
     CLSID = IID('{C358F0A6-CF01-4B79-BC20-3744A6CE61CE}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLayer,
+        IAcadLayer,
     ]
-    default_interface = IGcadLayer
+    default_interface = IAcadLayer
 
 # This CoClass is known by the name 'GStarCAD.GcadLayerStateManager.24'
 class GcadLayerStateManager(CoClassBaseClass): # A CoClass
@@ -27256,203 +27256,203 @@ class GcadLayerStateManager(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadLayerStateManager,
+        IAcadLayerStateManager,
     ]
-    default_interface = IGcadLayerStateManager
+    default_interface = IAcadLayerStateManager
 
 class GcadLayers(CoClassBaseClass): # A CoClass
     # GcadLayers Class
     CLSID = IID('{60E6BD18-62F7-4B1A-B701-CEF35537CB59}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLayers,
+        IAcadLayers,
     ]
-    default_interface = IGcadLayers
+    default_interface = IAcadLayers
 
 class GcadLayout(CoClassBaseClass): # A CoClass
     # GcadLayout Class
     CLSID = IID('{12664C95-EEAD-4337-A88A-971953571812}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLayout,
+        IAcadLayout,
     ]
-    default_interface = IGcadLayout
+    default_interface = IAcadLayout
 
 class GcadLayouts(CoClassBaseClass): # A CoClass
     # GcadLayouts Class
     CLSID = IID('{C6B60202-2BEA-4ED1-9A9F-7CF91E5A295D}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLayouts,
+        IAcadLayouts,
     ]
-    default_interface = IGcadLayouts
+    default_interface = IAcadLayouts
 
 class GcadLeader(CoClassBaseClass): # A CoClass
     # GCAD Leader Object
     CLSID = IID('{1B4D2B5E-8406-4167-B42C-09D8136BAE47}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLeader,
+        IAcadLeader,
     ]
-    default_interface = IGcadLeader
+    default_interface = IAcadLeader
 
 class GcadLight(CoClassBaseClass): # A CoClass
     # Gcad Light
     CLSID = IID('{1441A79B-2C78-4568-8F3F-1D068ACFC6CD}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLight,
-        IGcadLight2,
-        IGcadLight3,
+        IAcadLight,
+        IAcadLight2,
+        IAcadLight3,
     ]
-    default_interface = IGcadLight
+    default_interface = IAcadLight
 
 class GcadLine(CoClassBaseClass): # A CoClass
     # GcadLine Class
     CLSID = IID('{6ACCA2E1-E804-4519-B95F-235867C214AC}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLine,
+        IAcadLine,
     ]
-    default_interface = IGcadLine
+    default_interface = IAcadLine
 
 class GcadLineType(CoClassBaseClass): # A CoClass
     # GcadLineType Class
     CLSID = IID('{44E0D10E-F951-4B01-BDC0-21256D036952}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLineType,
+        IAcadLineType,
     ]
-    default_interface = IGcadLineType
+    default_interface = IAcadLineType
 
 class GcadLineTypes(CoClassBaseClass): # A CoClass
     # GcadLineTypes Class
     CLSID = IID('{09C7B1A6-D60E-43DA-B8DA-445C72D2A022}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLineTypes,
+        IAcadLineTypes,
     ]
-    default_interface = IGcadLineTypes
+    default_interface = IAcadLineTypes
 
 class GcadLoftedSurface(CoClassBaseClass): # A CoClass
     # Gcad LoftedSurface
     CLSID = IID('{3A949249-A2A7-412A-92FF-94D134EB3198}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadLoftedSurface,
+        IAcadLoftedSurface,
     ]
-    default_interface = IGcadLoftedSurface
+    default_interface = IAcadLoftedSurface
 
 class GcadMInsertBlock(CoClassBaseClass): # A CoClass
     # GCAD MInsertBlock Object
     CLSID = IID('{5B817FD8-0DDF-4283-B794-86434740C658}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadMInsertBlock,
+        IAcadMInsertBlock,
     ]
-    default_interface = IGcadMInsertBlock
+    default_interface = IAcadMInsertBlock
 
 class GcadMLeader(CoClassBaseClass): # A CoClass
     # Gcad MLeader
     CLSID = IID('{E6494613-3893-47A5-B0E7-B6AD41ADA6F4}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadMLeader,
+        IAcadMLeader,
     ]
-    default_interface = IGcadMLeader
+    default_interface = IAcadMLeader
 
 class GcadMLeaderStyle(CoClassBaseClass): # A CoClass
     # GcadMLeaderStyle Class
     CLSID = IID('{C3819487-144A-4471-B95E-712E3CC64BEC}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadMLeaderStyle,
+        IAcadMLeaderStyle,
     ]
-    default_interface = IGcadMLeaderStyle
+    default_interface = IAcadMLeaderStyle
 
 class GcadMLine(CoClassBaseClass): # A CoClass
     # GCAD MLine Object
     CLSID = IID('{CC35F7B8-1AE8-4C31-9F3D-484A44EAC286}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadMLine,
+        IAcadMLine,
     ]
-    default_interface = IGcadMLine
+    default_interface = IAcadMLine
 
 class GcadMText(CoClassBaseClass): # A CoClass
     # GcadMText
     CLSID = IID('{9F58700D-4910-4463-AEEB-2406161B0490}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadMText,
+        IAcadMText,
     ]
-    default_interface = IGcadMText
+    default_interface = IAcadMText
 
 class GcadMaterial(CoClassBaseClass): # A CoClass
     # GcadMaterial Class
     CLSID = IID('{F55DC97F-4A3C-49E9-873C-B1F3B6F4F8D6}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadMaterial,
+        IAcadMaterial,
     ]
-    default_interface = IGcadMaterial
+    default_interface = IAcadMaterial
 
 class GcadMaterials(CoClassBaseClass): # A CoClass
     # GcadMaterials Class
     CLSID = IID('{C4E55BE8-77A9-4A8A-81DE-2CC03D13FF48}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadMaterials,
+        IAcadMaterials,
     ]
-    default_interface = IGcadMaterials
+    default_interface = IAcadMaterials
 
 class GcadMenuBar(CoClassBaseClass): # A CoClass
     # GcadMenuBar Class
@@ -27460,9 +27460,9 @@ class GcadMenuBar(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadMenuBar,
+        IAcadMenuBar,
     ]
-    default_interface = IGcadMenuBar
+    default_interface = IAcadMenuBar
 
 class GcadMenuGroup(CoClassBaseClass): # A CoClass
     # An GCAD menu group
@@ -27470,9 +27470,9 @@ class GcadMenuGroup(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadMenuGroup,
+        IAcadMenuGroup,
     ]
-    default_interface = IGcadMenuGroup
+    default_interface = IAcadMenuGroup
 
 class GcadMenuGroups(CoClassBaseClass): # A CoClass
     # GcadMenuGroups Class
@@ -27480,105 +27480,105 @@ class GcadMenuGroups(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadMenuGroups,
+        IAcadMenuGroups,
     ]
-    default_interface = IGcadMenuGroups
+    default_interface = IAcadMenuGroups
 
 class GcadModelSpace(CoClassBaseClass): # A CoClass
     # GcadModelSpace Class
     CLSID = IID('{35DF9E00-7285-40A9-BD63-D714AA0CA70F}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadModelSpace,
+        IAcadModelSpace,
     ]
-    default_interface = IGcadModelSpace
+    default_interface = IAcadModelSpace
 
 class GcadNurbSurface(CoClassBaseClass): # A CoClass
     # GcadNurbSurface Class
     CLSID = IID('{3C7846DC-43D5-44CD-B954-F941A0F85DE9}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadNurbSurface,
+        IAcadNurbSurface,
     ]
-    default_interface = IGcadNurbSurface
+    default_interface = IAcadNurbSurface
 
 class GcadObject(CoClassBaseClass): # A CoClass
     # GcadObject Class
     CLSID = IID('{4F1D3AB3-AAC7-4F57-BA5C-B6D5410FE1D7}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadObject,
+        IAcadObject,
     ]
-    default_interface = IGcadObject
+    default_interface = IAcadObject
 
 class GcadOle(CoClassBaseClass): # A CoClass
     # Gcad OLE
     CLSID = IID('{ABA71980-3AA9-40F5-81A7-735886F6F6FD}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadOle,
+        IAcadOle,
     ]
-    default_interface = IGcadOle
+    default_interface = IAcadOle
 
 class GcadPViewport(CoClassBaseClass): # A CoClass
     # GcadPViewport Class
     CLSID = IID('{BEAF55E0-0A37-499C-B48B-DBC93CF6E29B}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadPViewport,
+        IAcadPViewport,
     ]
-    default_interface = IGcadPViewport
+    default_interface = IAcadPViewport
 
 class GcadPaperSpace(CoClassBaseClass): # A CoClass
     # GcadPaperSpace Class
     CLSID = IID('{BF0FD147-A1EA-416E-911B-9EF794738AFA}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadPaperSpace,
+        IAcadPaperSpace,
     ]
-    default_interface = IGcadPaperSpace
+    default_interface = IAcadPaperSpace
 
 class GcadPdfUnderlay(CoClassBaseClass): # A CoClass
     # Gcad PdfUnderlay
     CLSID = IID('{8DF57FE7-CEDA-4730-9F54-C308ED442495}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadUnderlay,
+        IAcadUnderlay,
     ]
-    default_interface = IGcadUnderlay
+    default_interface = IAcadUnderlay
 
 class GcadPlaneSurface(CoClassBaseClass): # A CoClass
     # Gcad PlaneSurface
     CLSID = IID('{938953B2-646A-428C-895E-203B73B1B05A}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadPlaneSurface,
+        IAcadPlaneSurface,
     ]
-    default_interface = IGcadPlaneSurface
+    default_interface = IAcadPlaneSurface
 
 class GcadPlot(CoClassBaseClass): # A CoClass
     # GcadPlot Class
@@ -27586,9 +27586,9 @@ class GcadPlot(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPlot,
+        IAcadPlot,
     ]
-    default_interface = IGcadPlot
+    default_interface = IAcadPlot
 
 class GcadPlotConfiguration(CoClassBaseClass): # A CoClass
     # GcadPlotConfiguration Class
@@ -27596,81 +27596,81 @@ class GcadPlotConfiguration(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPlotConfiguration,
+        IAcadPlotConfiguration,
     ]
-    default_interface = IGcadPlotConfiguration
+    default_interface = IAcadPlotConfiguration
 
 class GcadPlotConfigurations(CoClassBaseClass): # A CoClass
     # GcadPlotConfigurations Class
     CLSID = IID('{0EEABD18-B6F5-4E1E-887D-0384A20CD8E9}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadPlotConfigurations,
+        IAcadPlotConfigurations,
     ]
-    default_interface = IGcadPlotConfigurations
+    default_interface = IAcadPlotConfigurations
 
 class GcadPoint(CoClassBaseClass): # A CoClass
     # GCAD Point Object
     CLSID = IID('{5759A970-9028-4C5C-805B-AFE6D6169382}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadPoint,
+        IAcadPoint,
     ]
-    default_interface = IGcadPoint
+    default_interface = IAcadPoint
 
 class GcadPointCloudEx(CoClassBaseClass): # A CoClass
     # GcadPointCloudEx
     CLSID = IID('{028BA451-EBBA-4529-8521-DBFB95EB745C}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadPointCloudEx,
+        IAcadPointCloudEx,
     ]
-    default_interface = IGcadPointCloudEx
+    default_interface = IAcadPointCloudEx
 
 class GcadPolyfaceMesh(CoClassBaseClass): # A CoClass
     # GCAD PolyfaceMesh Object
     CLSID = IID('{A9879069-87D2-4F15-94B4-92531900783C}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadPolyfaceMesh,
+        IAcadPolyfaceMesh,
     ]
-    default_interface = IGcadPolyfaceMesh
+    default_interface = IAcadPolyfaceMesh
 
 class GcadPolygonMesh(CoClassBaseClass): # A CoClass
     # GCAD PolygonMesh Object
     CLSID = IID('{7BAA52E2-CBFA-406B-83AB-7D0F939026D4}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadPolygonMesh,
+        IAcadPolygonMesh,
     ]
-    default_interface = IGcadPolygonMesh
+    default_interface = IAcadPolygonMesh
 
 class GcadPolyline(CoClassBaseClass): # A CoClass
     # GCAD Polyline Object
     CLSID = IID('{DD0ACEEC-B19B-4EC4-A5C8-C85BBE6402B2}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadPolyline,
+        IAcadPolyline,
     ]
-    default_interface = IGcadPolyline
+    default_interface = IAcadPolyline
 
 class GcadPopupMenu(CoClassBaseClass): # A CoClass
     # An GCAD cascading menu
@@ -27678,9 +27678,9 @@ class GcadPopupMenu(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPopupMenu,
+        IAcadPopupMenu,
     ]
-    default_interface = IGcadPopupMenu
+    default_interface = IAcadPopupMenu
 
 class GcadPopupMenuItem(CoClassBaseClass): # A CoClass
     # A single menu item on an GCAD pull-down menu
@@ -27688,9 +27688,9 @@ class GcadPopupMenuItem(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPopupMenuItem,
+        IAcadPopupMenuItem,
     ]
-    default_interface = IGcadPopupMenuItem
+    default_interface = IAcadPopupMenuItem
 
 class GcadPopupMenus(CoClassBaseClass): # A CoClass
     # A collection of PopupMenu objects representing all the popup menus loaded in the MenuGroup
@@ -27698,9 +27698,9 @@ class GcadPopupMenus(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPopupMenus,
+        IAcadPopupMenus,
     ]
-    default_interface = IGcadPopupMenus
+    default_interface = IAcadPopupMenus
 
 class GcadPreferences(CoClassBaseClass): # A CoClass
     # This object specifies the current GstarCAD settings
@@ -27708,9 +27708,9 @@ class GcadPreferences(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPreferences,
+        IAcadPreferences,
     ]
-    default_interface = IGcadPreferences
+    default_interface = IAcadPreferences
 
 class GcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     # This object contains the options from the Display tab on the Options dialog
@@ -27718,9 +27718,9 @@ class GcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPreferencesDisplay,
+        IAcadPreferencesDisplay,
     ]
-    default_interface = IGcadPreferencesDisplay
+    default_interface = IAcadPreferencesDisplay
 
 class GcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     # This object contains the options from the Drafting tab on the Options dialog
@@ -27728,9 +27728,9 @@ class GcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPreferencesDrafting,
+        IAcadPreferencesDrafting,
     ]
-    default_interface = IGcadPreferencesDrafting
+    default_interface = IAcadPreferencesDrafting
 
 class GcadPreferencesFiles(CoClassBaseClass): # A CoClass
     # This object contains the options from the Files tab on the Options dialog
@@ -27738,9 +27738,9 @@ class GcadPreferencesFiles(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPreferencesFiles,
+        IAcadPreferencesFiles,
     ]
-    default_interface = IGcadPreferencesFiles
+    default_interface = IAcadPreferencesFiles
 
 class GcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     # This object contains the options from the Open and Save tab on the Options dialog
@@ -27748,9 +27748,9 @@ class GcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPreferencesOpenSave,
+        IAcadPreferencesOpenSave,
     ]
-    default_interface = IGcadPreferencesOpenSave
+    default_interface = IAcadPreferencesOpenSave
 
 class GcadPreferencesOutput(CoClassBaseClass): # A CoClass
     # This object contains the options from the Output tab on the Options dialog
@@ -27758,9 +27758,9 @@ class GcadPreferencesOutput(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPreferencesOutput,
+        IAcadPreferencesOutput,
     ]
-    default_interface = IGcadPreferencesOutput
+    default_interface = IAcadPreferencesOutput
 
 class GcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     # This object contains the options from the Profiles tab on the Options dialog
@@ -27768,9 +27768,9 @@ class GcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPreferencesProfiles,
+        IAcadPreferencesProfiles,
     ]
-    default_interface = IGcadPreferencesProfiles
+    default_interface = IAcadPreferencesProfiles
 
 class GcadPreferencesSelection(CoClassBaseClass): # A CoClass
     # This object contains the options from the Selection tab on the Options dialog
@@ -27778,9 +27778,9 @@ class GcadPreferencesSelection(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPreferencesSelection,
+        IAcadPreferencesSelection,
     ]
-    default_interface = IGcadPreferencesSelection
+    default_interface = IAcadPreferencesSelection
 
 class GcadPreferencesSystem(CoClassBaseClass): # A CoClass
     # This object contains the options from the System tab on the Options dialog
@@ -27788,9 +27788,9 @@ class GcadPreferencesSystem(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPreferencesSystem,
+        IAcadPreferencesSystem,
     ]
-    default_interface = IGcadPreferencesSystem
+    default_interface = IAcadPreferencesSystem
 
 class GcadPreferencesUser(CoClassBaseClass): # A CoClass
     # This object contains the options from the User tab on the Options dialog
@@ -27798,81 +27798,81 @@ class GcadPreferencesUser(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadPreferencesUser,
+        IAcadPreferencesUser,
     ]
-    default_interface = IGcadPreferencesUser
+    default_interface = IAcadPreferencesUser
 
 class GcadRasterImage(CoClassBaseClass): # A CoClass
     # GCAD Raster Object
     CLSID = IID('{FB5AA334-CBF1-41D1-B9E3-98F2ACB2EB83}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadRasterImage,
+        IAcadRasterImage,
     ]
-    default_interface = IGcadRasterImage
+    default_interface = IAcadRasterImage
 
 class GcadRay(CoClassBaseClass): # A CoClass
     # GCAD Ray Object
     CLSID = IID('{D44D6709-6C13-4C52-A360-A2943C33EEE8}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadRay,
+        IAcadRay,
     ]
-    default_interface = IGcadRay
+    default_interface = IAcadRay
 
 class GcadRegion(CoClassBaseClass): # A CoClass
     # GCAD Region Object
     CLSID = IID('{A83EBA25-CCF0-45CE-A7C2-FEABE0D3AF59}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadRegion,
+        IAcadRegion,
     ]
-    default_interface = IGcadRegion
+    default_interface = IAcadRegion
 
 class GcadRegisteredApplication(CoClassBaseClass): # A CoClass
     # GcadRegisteredApplication Class
     CLSID = IID('{CF8BF2DA-8602-41B7-8906-3C67F07994FB}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadRegisteredApplication,
+        IAcadRegisteredApplication,
     ]
-    default_interface = IGcadRegisteredApplication
+    default_interface = IAcadRegisteredApplication
 
 class GcadRegisteredApplications(CoClassBaseClass): # A CoClass
     # GcadRegisteredApplications Class
     CLSID = IID('{216D566A-A968-4E87-A8B3-9B5EB06BB19D}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadRegisteredApplications,
+        IAcadRegisteredApplications,
     ]
-    default_interface = IGcadRegisteredApplications
+    default_interface = IAcadRegisteredApplications
 
 class GcadRevolvedSurface(CoClassBaseClass): # A CoClass
     # Gcad RevolvedSurface
     CLSID = IID('{CA2C91D1-2D7B-4195-A66C-CFB788EFEB14}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadRevolvedSurface,
+        IAcadRevolvedSurface,
     ]
-    default_interface = IGcadRevolvedSurface
+    default_interface = IAcadRevolvedSurface
 
 class GcadScriptJet(CoClassBaseClass): # A CoClass
     # GcadScriptJet Class
@@ -27880,46 +27880,46 @@ class GcadScriptJet(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadScriptJet,
+        IAcadScriptJet,
     ]
-    default_interface = IGcadScriptJet
+    default_interface = IAcadScriptJet
 
 class GcadSection(CoClassBaseClass): # A CoClass
     # Gcad Section
     CLSID = IID('{DCB0E3B7-B4A4-4D92-A3E8-C27BCAECBE8F}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadSection,
-        IGcadSection2,
+        IAcadSection,
+        IAcadSection2,
     ]
-    default_interface = IGcadSection
+    default_interface = IAcadSection
 
 class GcadSectionManager(CoClassBaseClass): # A CoClass
     # GcadSectionManager Class
     CLSID = IID('{D1F1BB22-D947-40C8-90D8-B9DC99591EF7}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadSectionManager,
+        IAcadSectionManager,
     ]
-    default_interface = IGcadSectionManager
+    default_interface = IAcadSectionManager
 
 class GcadSectionSettings(CoClassBaseClass): # A CoClass
     # GCAD Section Settings Object
     CLSID = IID('{5246A240-92AB-460B-820D-365247D9B47F}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadSectionSettings,
+        IAcadSectionSettings,
     ]
-    default_interface = IGcadSectionSettings
+    default_interface = IAcadSectionSettings
 
 # This CoClass is known by the name 'GStarCAD.GcadSecurityParams.24'
 class GcadSecurityParams(CoClassBaseClass): # A CoClass
@@ -27928,9 +27928,9 @@ class GcadSecurityParams(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadSecurityParams,
+        IAcadSecurityParams,
     ]
-    default_interface = IGcadSecurityParams
+    default_interface = IAcadSecurityParams
 
 class GcadSelectionSet(CoClassBaseClass): # A CoClass
     # A group of one or more GCAD objects specified for processing as a single unit
@@ -27938,9 +27938,9 @@ class GcadSelectionSet(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadSelectionSet,
+        IAcadSelectionSet,
     ]
-    default_interface = IGcadSelectionSet
+    default_interface = IAcadSelectionSet
 
 class GcadSelectionSets(CoClassBaseClass): # A CoClass
     # The collection of all selection sets in the drawing
@@ -27948,9 +27948,9 @@ class GcadSelectionSets(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadSelectionSets,
+        IAcadSelectionSets,
     ]
-    default_interface = IGcadSelectionSets
+    default_interface = IAcadSelectionSets
 
 class GcadShadowDisplay(CoClassBaseClass): # A CoClass
     # GCAD Entity with Shadows interface
@@ -27964,25 +27964,25 @@ class GcadShape(CoClassBaseClass): # A CoClass
     # GCAD Shape Object
     CLSID = IID('{4EFE4629-C549-4346-9E5A-06F0AE788ED0}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadShape,
+        IAcadShape,
     ]
-    default_interface = IGcadShape
+    default_interface = IAcadShape
 
 class GcadSolid(CoClassBaseClass): # A CoClass
     # GCAD Solid Object
     CLSID = IID('{7EB18444-4D79-4CA8-8743-0498B64C4D01}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadSolid,
+        IAcadSolid,
     ]
-    default_interface = IGcadSolid
+    default_interface = IAcadSolid
 
 class GcadSortentsTable(CoClassBaseClass): # A CoClass
     # GcadSortentsTable Class
@@ -27990,21 +27990,21 @@ class GcadSortentsTable(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadSortentsTable,
+        IAcadSortentsTable,
     ]
-    default_interface = IGcadSortentsTable
+    default_interface = IAcadSortentsTable
 
 class GcadSpline(CoClassBaseClass): # A CoClass
     # GCAD Spline Object
     CLSID = IID('{F2293592-5908-4F24-9B5D-759CDA971FC2}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadSpline,
+        IAcadSpline,
     ]
-    default_interface = IGcadSpline
+    default_interface = IAcadSpline
 
 class GcadState(CoClassBaseClass): # A CoClass
     # GCAD State Object
@@ -28012,21 +28012,21 @@ class GcadState(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadState,
+        IAcadState,
     ]
-    default_interface = IGcadState
+    default_interface = IAcadState
 
 class GcadSubDMesh(CoClassBaseClass): # A CoClass
     # Gcad SubDMesh
     CLSID = IID('{73EBC89D-6A5A-4ED8-BC4D-2995DC879649}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadSubDMesh,
+        IAcadSubDMesh,
     ]
-    default_interface = IGcadSubDMesh
+    default_interface = IAcadSubDMesh
 
 class GcadSummaryInfo(CoClassBaseClass): # A CoClass
     # GcadSummaryInfo Class
@@ -28034,57 +28034,57 @@ class GcadSummaryInfo(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadSummaryInfo,
+        IAcadSummaryInfo,
     ]
-    default_interface = IGcadSummaryInfo
+    default_interface = IAcadSummaryInfo
 
 class GcadSurface(CoClassBaseClass): # A CoClass
     # Gcad Surface
     CLSID = IID('{25D868BF-4CFD-4CB4-BC30-1A43AAF5F3E1}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadSurface,
+        IAcadSurface,
     ]
-    default_interface = IGcadSurface
+    default_interface = IAcadSurface
 
 class GcadSweptSurface(CoClassBaseClass): # A CoClass
     # Gcad SweptSurface
     CLSID = IID('{6997E39D-299C-45CC-95BC-A677AC0D1A62}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadSweptSurface,
+        IAcadSweptSurface,
     ]
-    default_interface = IGcadSweptSurface
+    default_interface = IAcadSweptSurface
 
 class GcadTable(CoClassBaseClass): # A CoClass
     # GCAD Table Object
     CLSID = IID('{92B86261-DA20-4A60-9982-05863C6D9EBE}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadTable,
+        IAcadTable,
     ]
-    default_interface = IGcadTable
+    default_interface = IAcadTable
 
 class GcadTableCell(CoClassBaseClass): # A CoClass
     # GCAD TableCell Object
     CLSID = IID('{6336B61B-EFBF-4325-94FE-59D403CB0C76}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadTableCell,
+        IAcadTableCell,
     ]
-    default_interface = IGcadTableCell
+    default_interface = IAcadTableCell
 
 class GcadTableStyle(CoClassBaseClass): # A CoClass
     # GcadTableStyle Class
@@ -28092,57 +28092,57 @@ class GcadTableStyle(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadTableStyle,
+        IAcadTableStyle,
     ]
-    default_interface = IGcadTableStyle
+    default_interface = IAcadTableStyle
 
 class GcadText(CoClassBaseClass): # A CoClass
     # GCAD Text Object
     CLSID = IID('{12226789-EEA7-4BE8-9FD7-33513C744E3B}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadText,
+        IAcadText,
     ]
-    default_interface = IGcadText
+    default_interface = IAcadText
 
 class GcadTextStyle(CoClassBaseClass): # A CoClass
     # GcadTextStyle Class
     CLSID = IID('{59F48386-168C-4320-8B3D-77E8556EF9E1}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadTextStyle,
+        IAcadTextStyle,
     ]
-    default_interface = IGcadTextStyle
+    default_interface = IAcadTextStyle
 
 class GcadTextStyles(CoClassBaseClass): # A CoClass
     # GcadTextStyles Class
     CLSID = IID('{F194C083-83FC-4F35-A76F-F4C577C0689A}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadTextStyles,
+        IAcadTextStyles,
     ]
-    default_interface = IGcadTextStyles
+    default_interface = IAcadTextStyles
 
 class GcadTolerance(CoClassBaseClass): # A CoClass
     # GCAD Tolerance Object
     CLSID = IID('{092962C2-F320-44E1-8857-C8AFE3885555}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadTolerance,
+        IAcadTolerance,
     ]
-    default_interface = IGcadTolerance
+    default_interface = IAcadTolerance
 
 class GcadToolbar(CoClassBaseClass): # A CoClass
     # Gcad Toolbar
@@ -28150,9 +28150,9 @@ class GcadToolbar(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadToolbar,
+        IAcadToolbar,
     ]
-    default_interface = IGcadToolbar
+    default_interface = IAcadToolbar
 
 class GcadToolbarItem(CoClassBaseClass): # A CoClass
     # Gcad ToolbarItem
@@ -28160,9 +28160,9 @@ class GcadToolbarItem(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadToolbarItem,
+        IAcadToolbarItem,
     ]
-    default_interface = IGcadToolbarItem
+    default_interface = IAcadToolbarItem
 
 class GcadToolbars(CoClassBaseClass): # A CoClass
     # Gcad Toolbars
@@ -28170,45 +28170,45 @@ class GcadToolbars(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadToolbars,
+        IAcadToolbars,
     ]
-    default_interface = IGcadToolbars
+    default_interface = IAcadToolbars
 
 class GcadTrace(CoClassBaseClass): # A CoClass
     # GCAD Trace Object
     CLSID = IID('{D7B6AF1E-5F8B-453C-A26E-828A2BD820CC}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadTrace,
+        IAcadTrace,
     ]
-    default_interface = IGcadTrace
+    default_interface = IAcadTrace
 
 class GcadUCS(CoClassBaseClass): # A CoClass
     # GcadUCS Class
     CLSID = IID('{D4E3C6C4-7DAE-4D80-A98C-148C3CD66E32}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadUCS,
+        IAcadUCS,
     ]
-    default_interface = IGcadUCS
+    default_interface = IAcadUCS
 
 class GcadUCSs(CoClassBaseClass): # A CoClass
     # GcadUCSs Class
     CLSID = IID('{1146DF77-46C8-4F31-AB6A-8815AEE71EB7}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadUCSs,
+        IAcadUCSs,
     ]
-    default_interface = IGcadUCSs
+    default_interface = IAcadUCSs
 
 class GcadUtility(CoClassBaseClass): # A CoClass
     # GcadUtility Class
@@ -28216,81 +28216,81 @@ class GcadUtility(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IGcadUtility,
+        IAcadUtility,
     ]
-    default_interface = IGcadUtility
+    default_interface = IAcadUtility
 
 class GcadView(CoClassBaseClass): # A CoClass
     # A graphical representation of a 2D drawing or 3D model from a specific location (viewpoint) in space
     CLSID = IID('{A2F794C5-9ED5-49B6-A45B-1FB659497505}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadView,
+        IAcadView,
     ]
-    default_interface = IGcadView
+    default_interface = IAcadView
 
 class GcadViewport(CoClassBaseClass): # A CoClass
     # GcadViewport Class
     CLSID = IID('{415EAAB8-7D05-4935-A6DF-25DA98FC8FB2}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadViewport,
+        IAcadViewport,
     ]
-    default_interface = IGcadViewport
+    default_interface = IAcadViewport
 
 class GcadViewports(CoClassBaseClass): # A CoClass
     # GcadViewports Class
     CLSID = IID('{FD6D9F4B-1812-4B43-8836-1BCEC2E28F65}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadViewports,
+        IAcadViewports,
     ]
-    default_interface = IGcadViewports
+    default_interface = IAcadViewports
 
 class GcadViews(CoClassBaseClass): # A CoClass
     # GcadViews Class
     CLSID = IID('{0165E8DC-3E0B-4102-9C66-DC0228911048}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadViews,
+        IAcadViews,
     ]
-    default_interface = IGcadViews
+    default_interface = IAcadViews
 
 class GcadXRecord(CoClassBaseClass): # A CoClass
     # XRecord objects are used to store and manage arbitrary data
     CLSID = IID('{1E499AED-C7C7-4EE1-8FA6-AB1119B7268E}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadXRecord,
+        IAcadXRecord,
     ]
-    default_interface = IGcadXRecord
+    default_interface = IAcadXRecord
 
 class GcadXline(CoClassBaseClass): # A CoClass
     # GCAD Xline Object
     CLSID = IID('{70371E06-28C5-423C-8912-78A9A6E342CB}')
     coclass_sources = [
-        IGcadObjectEvents,
+        IAcadObjectEvents,
     ]
-    default_source = IGcadObjectEvents
+    default_source = IAcadObjectEvents
     coclass_interfaces = [
-        IGcadXline,
+        IAcadXline,
     ]
-    default_interface = IGcadXline
+    default_interface = IAcadXline
 
 IGcPePropertyEditorColor_vtables_dispatch_ = 1
 IGcPePropertyEditorColor_vtables_ = [
@@ -28298,8 +28298,8 @@ IGcPePropertyEditorColor_vtables_ = [
     (( 'EntityColor' , 'eColor' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcad3DFace_vtables_dispatch_ = 1
-IGcad3DFace_vtables_ = [
+IAcad3DFace_vtables_dispatch_ = 1
+IAcad3DFace_vtables_ = [
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'VisibilityEdge1' , 'visibility' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28320,8 +28320,8 @@ IGcad3DFace_vtables_ = [
              (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcad3DPolyline_vtables_dispatch_ = 1
-IGcad3DPolyline_vtables_ = [
+IAcad3DPolyline_vtables_dispatch_ = 1
+IAcad3DPolyline_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'AppendVertex' , 'vertex' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28337,8 +28337,8 @@ IGcad3DPolyline_vtables_ = [
     (( 'Length' , 'Length' , ), 7, (7, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 536 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcad3DSolid_vtables_dispatch_ = 1
-IGcad3DSolid_vtables_ = [
+IAcad3DSolid_vtables_dispatch_ = 1
+IAcad3DSolid_vtables_ = [
     (( 'Centroid' , 'Centroid' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'MomentOfInertia' , 'momentInertia' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'PrincipalDirections' , 'prinDir' , ), 3, (3, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28364,8 +28364,8 @@ IGcad3DSolid_vtables_ = [
     (( 'ShowHistory' , 'Position' , ), 15, (15, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadApplication_vtables_dispatch_ = 1
-IGcadApplication_vtables_ = [
+IAcadApplication_vtables_dispatch_ = 1
+IAcadApplication_vtables_ = [
     (( 'Visible' , 'Visible' , ), 1, (1, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Visible' , 'Visible' , ), 1, (1, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'pAppName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -28425,8 +28425,8 @@ IGcadApplication_vtables_ = [
     (( 'HWND32' , 'HWND' , ), 48, (48, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadArc_vtables_dispatch_ = 1
-IGcadArc_vtables_ = [
+IAcadArc_vtables_dispatch_ = 1
+IAcadArc_vtables_ = [
     (( 'StartPoint' , 'StartPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'CenterPoint' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'CenterPoint' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28448,8 +28448,8 @@ IGcadArc_vtables_ = [
     (( 'Normal' , 'Normal' , ), 12, (12, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadArcAlignedText_vtables_dispatch_ = 1
-IGcadArcAlignedText_vtables_ = [
+IAcadArcAlignedText_vtables_dispatch_ = 1
+IAcadArcAlignedText_vtables_ = [
     (( 'contents' , 'pVal' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'contents' , 'pVal' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'pVal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28474,8 +28474,8 @@ IGcadArcAlignedText_vtables_ = [
     (( 'CharSpacing' , 'pVal' , ), 12, (12, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 624 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadAssocArrayPath_vtables_dispatch_ = 1
-IGcadAssocArrayPath_vtables_ = [
+IAcadAssocArrayPath_vtables_dispatch_ = 1
+IAcadAssocArrayPath_vtables_ = [
     (( 'BasePoint' , 'ptBasePoint' , ), 601, (601, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
     (( 'BasePoint' , 'ptBasePoint' , ), 601, (601, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
     (( 'RowCount' , 'nCnt' , ), 608, (608, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 728 , (3, 0, None, None) , 0 , )),
@@ -28505,8 +28505,8 @@ IGcadAssocArrayPath_vtables_ = [
     (( 'Length' , 'dLength' , ), 644, (644, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadAssocArrayPolar_vtables_dispatch_ = 1
-IGcadAssocArrayPolar_vtables_ = [
+IAcadAssocArrayPolar_vtables_dispatch_ = 1
+IAcadAssocArrayPolar_vtables_ = [
     (( 'BasePoint' , 'ptBasePoint' , ), 601, (601, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
     (( 'BasePoint' , 'ptBasePoint' , ), 601, (601, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
     (( 'RowCount' , 'nCnt' , ), 608, (608, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 728 , (3, 0, None, None) , 0 , )),
@@ -28535,8 +28535,8 @@ IGcadAssocArrayPolar_vtables_ = [
     (( 'FillAngle' , 'dAngle' , ), 658, (658, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 912 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadAssocArrayRectangular_vtables_dispatch_ = 1
-IGcadAssocArrayRectangular_vtables_ = [
+IAcadAssocArrayRectangular_vtables_dispatch_ = 1
+IAcadAssocArrayRectangular_vtables_ = [
     (( 'BasePoint' , 'ptBasePoint' , ), 601, (601, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
     (( 'BasePoint' , 'ptBasePoint' , ), 601, (601, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
     (( 'RowCount' , 'nCnt' , ), 608, (608, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 728 , (3, 0, None, None) , 0 , )),
@@ -28559,8 +28559,8 @@ IGcadAssocArrayRectangular_vtables_ = [
     (( 'AxesAngle' , 'dAngle' , ), 657, (657, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 864 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadAttribute_vtables_dispatch_ = 1
-IGcadAttribute_vtables_ = [
+IAcadAttribute_vtables_dispatch_ = 1
+IAcadAttribute_vtables_ = [
     (( 'FieldLength' , 'fieldLen' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'FieldLength' , 'fieldLen' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'TagString' , 'Tag' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28622,8 +28622,8 @@ IGcadAttribute_vtables_ = [
     (( 'MTextDrawingDirection' , 'drawDir' , ), 30, (30, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadAttributeReference_vtables_dispatch_ = 1
-IGcadAttributeReference_vtables_ = [
+IAcadAttributeReference_vtables_dispatch_ = 1
+IAcadAttributeReference_vtables_ = [
     (( 'Height' , 'Height' , ), 1, (1, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Height' , 'Height' , ), 1, (1, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'HorizontalAlignment' , 'horizAlign' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 64 , )),
@@ -28668,8 +28668,8 @@ IGcadAttributeReference_vtables_ = [
     (( 'MTextAttribute' , 'bMTextAttribute' , ), 26, (26, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 784 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadBlock_vtables_dispatch_ = 1
-IGcadBlock_vtables_ = [
+IAcadBlock_vtables_dispatch_ = 1
+IAcadBlock_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{D78C594E-0412-4D7A-919A-2B6D1662D337}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 65 , )),
@@ -28833,8 +28833,8 @@ IGcadBlock_vtables_ = [
              (12, 1, None, None) , (16387, 2, None, None) , (16393, 10, None, "IID('{59898AB2-E779-4D7C-B77C-86E9E10B2226}')") , ], 1 , 1 , 4 , 0 , 784 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadBlockReference_vtables_dispatch_ = 1
-IGcadBlockReference_vtables_ = [
+IAcadBlockReference_vtables_dispatch_ = 1
+IAcadBlockReference_vtables_ = [
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28869,8 +28869,8 @@ IGcadBlockReference_vtables_ = [
     (( 'InsUnitsFactor' , 'factor' , ), 528, (528, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadBlocks_vtables_dispatch_ = 1
-IGcadBlocks_vtables_ = [
+IAcadBlocks_vtables_dispatch_ = 1
+IAcadBlocks_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -28879,8 +28879,8 @@ IGcadBlocks_vtables_ = [
              (12, 1, None, None) , (8, 1, None, None) , (16393, 10, None, "IID('{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadCamera_vtables_dispatch_ = 1
-IGcadCamera_vtables_ = [
+IAcadCamera_vtables_dispatch_ = 1
+IAcadCamera_vtables_ = [
     (( 'Name' , 'pVal' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'pVal' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Location' , 'pVal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28907,8 +28907,8 @@ IGcadCamera_vtables_ = [
     (( 'Clipping' , 'pVal' , ), 12, (12, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 640 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadCircle_vtables_dispatch_ = 1
-IGcadCircle_vtables_ = [
+IAcadCircle_vtables_dispatch_ = 1
+IAcadCircle_vtables_ = [
     (( 'Center' , 'CenterPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'CenterPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Radius' , 'Radius' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28927,8 +28927,8 @@ IGcadCircle_vtables_ = [
              (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 568 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDatabase_vtables_dispatch_ = 1
-IGcadDatabase_vtables_ = [
+IAcadDatabase_vtables_dispatch_ = 1
+IAcadDatabase_vtables_ = [
     (( 'ModelSpace' , 'pMSpace' , ), 1, (1, (), [ (16393, 10, None, "IID('{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'PaperSpace' , 'pPSpace' , ), 2, (2, (), [ (16393, 10, None, "IID('{66FA50E9-6EB2-47CA-8EBA-7085C5E6C3A5}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Blocks' , 'pBlocks' , ), 3, (3, (), [ (16393, 10, None, "IID('{E69E9F83-F577-403C-8F69-7F5E86AB61F4}')") , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -28965,8 +28965,8 @@ IGcadDatabase_vtables_ = [
              (16393, 10, None, None) , ], 1 , 1 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDatabasePreferences_vtables_dispatch_ = 1
-IGcadDatabasePreferences_vtables_ = [
+IAcadDatabasePreferences_vtables_dispatch_ = 1
+IAcadDatabasePreferences_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1, (1, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'SolidFill' , 'Fill' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'SolidFill' , 'Fill' , ), 2, (2, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -29008,8 +29008,8 @@ IGcadDatabasePreferences_vtables_ = [
     (( 'LineWeightDisplay' , 'Path' , ), 27, (27, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 360 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDictionaries_vtables_dispatch_ = 1
-IGcadDictionaries_vtables_ = [
+IAcadDictionaries_vtables_dispatch_ = 1
+IAcadDictionaries_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{B0F45D84-478D-4E42-8261-0F0C89BE7E99}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -29018,8 +29018,8 @@ IGcadDictionaries_vtables_ = [
              (16393, 10, None, "IID('{6CE21DA5-2896-4D63-9373-2EE672A00D41}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDictionary_vtables_dispatch_ = 1
-IGcadDictionary_vtables_ = [
+IAcadDictionary_vtables_dispatch_ = 1
+IAcadDictionary_vtables_ = [
     (( 'Name' , 'pVal' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'pVal' , ), 2, (2, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'AddObject' , 'Keyword' , 'ObjectName' , 'pNewObj' , ), 3, (3, (), [ 
@@ -29042,8 +29042,8 @@ IGcadDictionary_vtables_ = [
              (16393, 10, None, "IID('{153C1376-952E-4696-94A0-F57364AA6836}')") , ], 1 , 1 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDim3PointAngular_vtables_dispatch_ = 1
-IGcadDim3PointAngular_vtables_ = [
+IAcadDim3PointAngular_vtables_dispatch_ = 1
+IAcadDim3PointAngular_vtables_ = [
     (( 'ExtLine1EndPoint' , 'xLine1Point' , ), 38, (38, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'ExtLine1EndPoint' , 'xLine1Point' , ), 38, (38, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'ExtLine2EndPoint' , 'xLine2Point' , ), 40, (40, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -29123,8 +29123,8 @@ IGcadDim3PointAngular_vtables_ = [
     (( 'DimConstrDesc' , 'bstrDescription' , ), 90, (90, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1528 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimAligned_vtables_dispatch_ = 1
-IGcadDimAligned_vtables_ = [
+IAcadDimAligned_vtables_dispatch_ = 1
+IAcadDimAligned_vtables_ = [
     (( 'ExtLine1Point' , 'xLine1Point' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'ExtLine1Point' , 'xLine1Point' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'ExtLine2Point' , 'xLine2Point' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -29258,8 +29258,8 @@ IGcadDimAligned_vtables_ = [
     (( 'AltSubUnitsFactor' , 'factor' , ), 1577, (1577, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 1960 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimAngular_vtables_dispatch_ = 1
-IGcadDimAngular_vtables_ = [
+IAcadDimAngular_vtables_dispatch_ = 1
+IAcadDimAngular_vtables_ = [
     (( 'ExtLine1StartPoint' , 'xLine1Point' , ), 37, (37, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'ExtLine1StartPoint' , 'xLine1Point' , ), 37, (37, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'ExtLine1EndPoint' , 'xLine1Point' , ), 38, (38, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -29341,8 +29341,8 @@ IGcadDimAngular_vtables_ = [
     (( 'DimConstrDesc' , 'bstrDescription' , ), 90, (90, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1544 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimArcLength_vtables_dispatch_ = 1
-IGcadDimArcLength_vtables_ = [
+IAcadDimArcLength_vtables_dispatch_ = 1
+IAcadDimArcLength_vtables_ = [
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnitsPrecision' , 'precision' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -29482,8 +29482,8 @@ IGcadDimArcLength_vtables_ = [
     (( 'AltSubUnitsFactor' , 'factor' , ), 1577, (1577, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 2008 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimDiametric_vtables_dispatch_ = 1
-IGcadDimDiametric_vtables_ = [
+IAcadDimDiametric_vtables_dispatch_ = 1
+IAcadDimDiametric_vtables_ = [
     (( 'LeaderLength' , ), 42, (42, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -29584,8 +29584,8 @@ IGcadDimDiametric_vtables_ = [
     (( 'DimConstrDesc' , 'bstrDescription' , ), 90, (90, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1696 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimOrdinate_vtables_dispatch_ = 1
-IGcadDimOrdinate_vtables_ = [
+IAcadDimOrdinate_vtables_dispatch_ = 1
+IAcadDimOrdinate_vtables_ = [
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnitsPrecision' , 'precision' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -29659,8 +29659,8 @@ IGcadDimOrdinate_vtables_ = [
     (( 'AltSubUnitsFactor' , 'factor' , ), 1577, (1577, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 1480 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimRadial_vtables_dispatch_ = 1
-IGcadDimRadial_vtables_ = [
+IAcadDimRadial_vtables_dispatch_ = 1
+IAcadDimRadial_vtables_ = [
     (( 'LeaderLength' , ), 42, (42, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -29755,8 +29755,8 @@ IGcadDimRadial_vtables_ = [
     (( 'DimConstrDesc' , 'bstrDescription' , ), 90, (90, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1648 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimRadialLarge_vtables_dispatch_ = 1
-IGcadDimRadialLarge_vtables_ = [
+IAcadDimRadialLarge_vtables_dispatch_ = 1
+IAcadDimRadialLarge_vtables_ = [
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnitsPrecision' , 'precision' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -29848,8 +29848,8 @@ IGcadDimRadialLarge_vtables_ = [
     (( 'DimensionLinetype' , 'Linetype' , ), 80, (80, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1624 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimRotated_vtables_dispatch_ = 1
-IGcadDimRotated_vtables_ = [
+IAcadDimRotated_vtables_dispatch_ = 1
+IAcadDimRotated_vtables_ = [
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnitsPrecision' , 'precision' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -29979,15 +29979,15 @@ IGcadDimRotated_vtables_ = [
     (( 'AltSubUnitsFactor' , 'factor' , ), 1577, (1577, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 1928 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimStyle_vtables_dispatch_ = 1
-IGcadDimStyle_vtables_ = [
+IAcadDimStyle_vtables_dispatch_ = 1
+IAcadDimStyle_vtables_ = [
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'CopyFrom' , 'StyleSource' , ), 2, (2, (), [ (9, 1, None, None) , ], 1 , 1 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimStyles_vtables_dispatch_ = 1
-IGcadDimStyles_vtables_ = [
+IAcadDimStyles_vtables_dispatch_ = 1
+IAcadDimStyles_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{88A65332-E185-46B4-9520-CA3305361E4B}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -29996,8 +29996,8 @@ IGcadDimStyles_vtables_ = [
              (16393, 10, None, "IID('{88A65332-E185-46B4-9520-CA3305361E4B}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDimension_vtables_dispatch_ = 1
-IGcadDimension_vtables_ = [
+IAcadDimension_vtables_dispatch_ = 1
+IAcadDimension_vtables_ = [
     (( 'Normal' , 'Normal' , ), 1537, (1537, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 1537, (1537, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Rotation' , 'rotAngle' , ), 1538, (1538, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30058,8 +30058,8 @@ IGcadDimension_vtables_ = [
     (( 'DimTxtDirection' , 'pbVal' , ), 1573, (1573, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 912 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDocument_vtables_dispatch_ = 1
-IGcadDocument_vtables_ = [
+IAcadDocument_vtables_dispatch_ = 1
+IAcadDocument_vtables_ = [
     (( 'Plot' , 'pPlot' , ), 23, (23, (), [ (16393, 10, None, "IID('{E93528F4-F504-4E58-8560-C473AD8445A2}')") , ], 1 , 2 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
     (( 'ActiveLayer' , 'pActLayer' , ), 24, (24, (), [ (16393, 10, None, "IID('{369B3B72-01B7-4C1B-85C9-4E662705D76C}')") , ], 1 , 2 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
     (( 'ActiveLayer' , 'pActLayer' , ), 24, (24, (), [ (9, 1, None, "IID('{369B3B72-01B7-4C1B-85C9-4E662705D76C}')") , ], 1 , 4 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
@@ -30137,8 +30137,8 @@ IGcadDocument_vtables_ = [
     (( 'HWND32' , 'HWND' , ), 78, (78, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 816 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDocuments_vtables_dispatch_ = 1
-IGcadDocuments_vtables_ = [
+IAcadDocuments_vtables_dispatch_ = 1
+IAcadDocuments_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{9368AF30-60A3-47E3-A743-60D4C21FB580}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -30151,14 +30151,14 @@ IGcadDocuments_vtables_ = [
     (( 'Close' , ), 1610743814, (1610743814, (), [ ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDwfUnderlay_vtables_dispatch_ = 1
-IGcadDwfUnderlay_vtables_ = [
+IAcadDwfUnderlay_vtables_dispatch_ = 1
+IAcadDwfUnderlay_vtables_ = [
     (( 'DWFFormat' , 'Name' , ), 18, (18, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
     (( 'DWFFormat' , 'Name' , ), 18, (18, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadDynamicBlockReferenceProperty_vtables_dispatch_ = 1
-IGcadDynamicBlockReferenceProperty_vtables_ = [
+IAcadDynamicBlockReferenceProperty_vtables_dispatch_ = 1
+IAcadDynamicBlockReferenceProperty_vtables_ = [
     (( 'PropertyName' , 'PropertyName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'ReadOnly' , 'ReadOnly' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Show' , 'Show' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30169,8 +30169,8 @@ IGcadDynamicBlockReferenceProperty_vtables_ = [
     (( 'UnitsType' , 'Units' , ), 7, (7, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadEllipse_vtables_dispatch_ = 1
-IGcadEllipse_vtables_ = [
+IAcadEllipse_vtables_dispatch_ = 1
+IAcadEllipse_vtables_ = [
     (( 'StartPoint' , 'StartPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'Center' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'Center' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30199,8 +30199,8 @@ IGcadEllipse_vtables_ = [
              (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 648 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadEntity_vtables_dispatch_ = 1
-IGcadEntity_vtables_ = [
+IAcadEntity_vtables_dispatch_ = 1
+IAcadEntity_vtables_ = [
     (( 'TrueColor' , 'pColor' , ), 1302, (1302, (), [ (16393, 10, None, "IID('{E38E7951-AB58-43F5-9B74-B473C5C6605B}')") , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'TrueColor' , 'pColor' , ), 1302, (1302, (), [ (9, 1, None, "IID('{E38E7951-AB58-43F5-9B74-B473C5C6605B}')") , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Layer' , 'Layer' , ), 1281, (1281, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -30252,14 +30252,14 @@ IGcadEntity_vtables_ = [
     (( 'color' , 'color' , ), 1280, (1280, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 448 , (3, 0, None, None) , 64 , )),
 ]
 
-IGcadExternalReference_vtables_dispatch_ = 1
-IGcadExternalReference_vtables_ = [
+IAcadExternalReference_vtables_dispatch_ = 1
+IAcadExternalReference_vtables_ = [
     (( 'Path' , 'bstrName' , ), 256, (256, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
     (( 'Path' , 'bstrName' , ), 256, (256, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadExtrudedSurface_vtables_dispatch_ = 1
-IGcadExtrudedSurface_vtables_ = [
+IAcadExtrudedSurface_vtables_dispatch_ = 1
+IAcadExtrudedSurface_vtables_ = [
     (( 'Height' , 'Height' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
     (( 'Height' , 'Height' , ), 2, (2, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 552 , (3, 0, None, None) , 0 , )),
     (( 'TaperAngle' , 'TaperAngle' , ), 3, (3, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
@@ -30267,8 +30267,8 @@ IGcadExtrudedSurface_vtables_ = [
     (( 'Direction' , 'Direction' , ), 4, (4, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadFileDependencies_vtables_dispatch_ = 1
-IGcadFileDependencies_vtables_ = [
+IAcadFileDependencies_vtables_dispatch_ = 1
+IAcadFileDependencies_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{0CED4F33-C673-485D-AE75-54F88D10FA57}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -30284,8 +30284,8 @@ IGcadFileDependencies_vtables_ = [
     (( 'UpdateEntry' , 'Index' , ), 6, (6, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadFileDependency_vtables_dispatch_ = 1
-IGcadFileDependency_vtables_ = [
+IAcadFileDependency_vtables_dispatch_ = 1
+IAcadFileDependency_vtables_ = [
     (( 'FullFileName' , 'FullFileName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'FileName' , 'FileName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'FoundPath' , 'FoundPath' , ), 3, (3, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30300,8 +30300,8 @@ IGcadFileDependency_vtables_ = [
     (( 'ReferenceCount' , 'refCount' , ), 18, (18, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadGcCmColor_vtables_dispatch_ = 1
-IGcadGcCmColor_vtables_ = [
+IAcadGcCmColor_vtables_dispatch_ = 1
+IAcadGcCmColor_vtables_ = [
     (( 'EntityColor' , 'eColor' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'EntityColor' , 'eColor' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'ColorName' , 'Name' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30322,8 +30322,8 @@ IGcadGcCmColor_vtables_ = [
              (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadGroup_vtables_dispatch_ = 1
-IGcadGroup_vtables_ = [
+IAcadGroup_vtables_dispatch_ = 1
+IAcadGroup_vtables_ = [
     (( 'Item' , 'Index' , 'ppEntity' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{D78C594E-0412-4D7A-919A-2B6D1662D337}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 65 , )),
@@ -30345,8 +30345,8 @@ IGcadGroup_vtables_ = [
     (( 'color' , ), 2, (2, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 296 , (3, 0, None, None) , 64 , )),
 ]
 
-IGcadGroups_vtables_dispatch_ = 1
-IGcadGroups_vtables_ = [
+IAcadGroups_vtables_dispatch_ = 1
+IAcadGroups_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{4B02E349-191E-4736-BDE6-52C2D458E0F5}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -30355,8 +30355,8 @@ IGcadGroups_vtables_ = [
              (16393, 10, None, "IID('{4B02E349-191E-4736-BDE6-52C2D458E0F5}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadHatch_vtables_dispatch_ = 1
-IGcadHatch_vtables_ = [
+IAcadHatch_vtables_dispatch_ = 1
+IAcadHatch_vtables_ = [
     (( 'Normal' , 'Normal' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'NumberOfLoops' , 'numLoops' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30406,8 +30406,8 @@ IGcadHatch_vtables_ = [
     (( 'BackgroundColor' , 'BackgroundColor' , ), 27, (27, (), [ (9, 1, None, "IID('{E38E7951-AB58-43F5-9B74-B473C5C6605B}')") , ], 1 , 4 , 4 , 0 , 800 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadHelix_vtables_dispatch_ = 1
-IGcadHelix_vtables_ = [
+IAcadHelix_vtables_dispatch_ = 1
+IAcadHelix_vtables_ = [
     (( 'Position' , 'StartPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Position' , 'StartPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Constrain' , 'constrainType' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30428,8 +30428,8 @@ IGcadHelix_vtables_ = [
     (( 'TotalLength' , 'TotalLength' , ), 10, (10, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadHyperlink_vtables_dispatch_ = 1
-IGcadHyperlink_vtables_ = [
+IAcadHyperlink_vtables_dispatch_ = 1
+IAcadHyperlink_vtables_ = [
     (( 'URL' , 'URLPath' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'URL' , 'URLPath' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'URLDescription' , 'Description' , ), 2, (2, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30440,8 +30440,8 @@ IGcadHyperlink_vtables_ = [
     (( 'URLNamedLocation' , 'Location' , ), 5, (5, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadHyperlinks_vtables_dispatch_ = 1
-IGcadHyperlinks_vtables_ = [
+IAcadHyperlinks_vtables_dispatch_ = 1
+IAcadHyperlinks_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (3, 1, None, None) , 
              (16393, 10, None, "IID('{D1DF7DB6-95E1-4721-AE9D-0C668FB28825}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
@@ -30451,8 +30451,8 @@ IGcadHyperlinks_vtables_ = [
              ), 3, (3, (), [ (8, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{D1DF7DB6-95E1-4721-AE9D-0C668FB28825}')") , ], 1 , 1 , 4 , 2 , 88 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadIdPair_vtables_dispatch_ = 1
-IGcadIdPair_vtables_ = [
+IAcadIdPair_vtables_dispatch_ = 1
+IAcadIdPair_vtables_ = [
     (( 'IsCloned' , 'pVal' , ), 1, (1, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'IsOwnerXlated' , 'pVal' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'IsPrimary' , 'pVal' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30463,8 +30463,8 @@ IGcadIdPair_vtables_ = [
     (( 'Value32' , 'pVal' , ), 8, (8, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLWPolyline_vtables_dispatch_ = 1
-IGcadLWPolyline_vtables_ = [
+IAcadLWPolyline_vtables_dispatch_ = 1
+IAcadLWPolyline_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30500,8 +30500,8 @@ IGcadLWPolyline_vtables_ = [
     (( 'Length' , 'Length' , ), 17, (17, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 648 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLayer_vtables_dispatch_ = 1
-IGcadLayer_vtables_ = [
+IAcadLayer_vtables_dispatch_ = 1
+IAcadLayer_vtables_ = [
     (( 'color' , 'color' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 64 , )),
     (( 'color' , 'color' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 64 , )),
     (( 'TrueColor' , 'pColor' , ), 11, (11, (), [ (16393, 10, None, "IID('{E38E7951-AB58-43F5-9B74-B473C5C6605B}')") , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -30531,8 +30531,8 @@ IGcadLayer_vtables_ = [
     (( 'Material' , 'Material' , ), 14, (14, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 368 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLayerStateManager_vtables_dispatch_ = 1
-IGcadLayerStateManager_vtables_ = [
+IAcadLayerStateManager_vtables_dispatch_ = 1
+IAcadLayerStateManager_vtables_ = [
     (( 'SetDatabase' , 'iHostDb' , ), 1610743808, (1610743808, (), [ (9, 1, None, "IID('{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Mask' , 'bsName' , 'eMask' , ), 1610743809, (1610743809, (), [ (8, 1, None, None) , 
              (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
@@ -30549,8 +30549,8 @@ IGcadLayerStateManager_vtables_ = [
              (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLayers_vtables_dispatch_ = 1
-IGcadLayers_vtables_ = [
+IAcadLayers_vtables_dispatch_ = 1
+IAcadLayers_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{369B3B72-01B7-4C1B-85C9-4E662705D76C}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -30560,15 +30560,15 @@ IGcadLayers_vtables_ = [
     (( 'GenerateUsageData' , ), 3, (3, (), [ ], 1 , 1 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLayout_vtables_dispatch_ = 1
-IGcadLayout_vtables_ = [
+IAcadLayout_vtables_dispatch_ = 1
+IAcadLayout_vtables_ = [
     (( 'Block' , 'pBlock' , ), 48, (48, (), [ (16393, 10, None, "IID('{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}')") , ], 1 , 2 , 4 , 0 , 568 , (3, 0, None, None) , 0 , )),
     (( 'TabOrder' , 'pOrder' , ), 49, (49, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
     (( 'TabOrder' , 'pOrder' , ), 49, (49, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLayouts_vtables_dispatch_ = 1
-IGcadLayouts_vtables_ = [
+IAcadLayouts_vtables_dispatch_ = 1
+IAcadLayouts_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{F8AE8A77-1909-452A-95E8-0B833451FD4B}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -30577,8 +30577,8 @@ IGcadLayouts_vtables_ = [
              (16393, 10, None, "IID('{F8AE8A77-1909-452A-95E8-0B833451FD4B}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLeader_vtables_dispatch_ = 1
-IGcadLeader_vtables_ = [
+IAcadLeader_vtables_dispatch_ = 1
+IAcadLeader_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 64, (64, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 64, (64, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 1537, (1537, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30611,8 +30611,8 @@ IGcadLeader_vtables_ = [
     (( 'ArrowheadBlock' , 'BlockName' , ), 70, (70, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 672 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLight_vtables_dispatch_ = 1
-IGcadLight_vtables_ = [
+IAcadLight_vtables_dispatch_ = 1
+IAcadLight_vtables_ = [
     (( 'Name' , 'pVal' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'pVal' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'LightType' , 'pVal' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30661,8 +30661,8 @@ IGcadLight_vtables_ = [
     (( 'SourceVectorZ' , 'pVal' , ), 24, (24, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 816 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLight2_vtables_dispatch_ = 1
-IGcadLight2_vtables_ = [
+IAcadLight2_vtables_dispatch_ = 1
+IAcadLight2_vtables_ = [
     (( 'LampIntensity' , 'pVal' , ), 25, (25, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 824 , (3, 0, None, None) , 0 , )),
     (( 'LampIntensity' , 'pVal' , ), 25, (25, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 832 , (3, 0, None, None) , 0 , )),
     (( 'ResultIntensity' , 'pVal' , ), 26, (26, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 840 , (3, 0, None, None) , 0 , )),
@@ -30699,14 +30699,14 @@ IGcadLight2_vtables_ = [
     (( 'ShadowWidth' , 'pVal' , ), 41, (41, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 1088 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLight3_vtables_dispatch_ = 1
-IGcadLight3_vtables_ = [
+IAcadLight3_vtables_dispatch_ = 1
+IAcadLight3_vtables_ = [
     (( 'GlyphDisplay' , 'pVal' , ), 42, (42, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 1096 , (3, 0, None, None) , 0 , )),
     (( 'GlyphDisplay' , 'pVal' , ), 42, (42, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1104 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLine_vtables_dispatch_ = 1
-IGcadLine_vtables_ = [
+IAcadLine_vtables_dispatch_ = 1
+IAcadLine_vtables_ = [
     (( 'StartPoint' , 'StartPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'StartPoint' , 'StartPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'EndPoint' , 'EndPoint' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30722,16 +30722,16 @@ IGcadLine_vtables_ = [
     (( 'Angle' , 'Angle' , ), 8, (8, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLineType_vtables_dispatch_ = 1
-IGcadLineType_vtables_ = [
+IAcadLineType_vtables_dispatch_ = 1
+IAcadLineType_vtables_ = [
     (( 'Description' , 'bstrDes' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Description' , 'bstrDes' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLineTypes_vtables_dispatch_ = 1
-IGcadLineTypes_vtables_ = [
+IAcadLineTypes_vtables_dispatch_ = 1
+IAcadLineTypes_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{39F82095-F5D0-4E82-8C15-483E1EA2DB2C}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -30742,8 +30742,8 @@ IGcadLineTypes_vtables_ = [
              (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadLoftedSurface_vtables_dispatch_ = 1
-IGcadLoftedSurface_vtables_ = [
+IAcadLoftedSurface_vtables_dispatch_ = 1
+IAcadLoftedSurface_vtables_ = [
     (( 'NumCrossSections' , 'NumCrossSections' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
     (( 'NumGuidePaths' , 'NumGuidePaths' , ), 3, (3, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 552 , (3, 0, None, None) , 0 , )),
     (( 'SurfaceNormals' , 'surfaceNormal' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
@@ -30760,8 +30760,8 @@ IGcadLoftedSurface_vtables_ = [
     (( 'Closed' , 'bClosed' , ), 9, (9, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 648 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadMInsertBlock_vtables_dispatch_ = 1
-IGcadMInsertBlock_vtables_ = [
+IAcadMInsertBlock_vtables_dispatch_ = 1
+IAcadMInsertBlock_vtables_ = [
     (( 'Columns' , 'NumColumns' , ), 256, (256, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
     (( 'Columns' , 'NumColumns' , ), 256, (256, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
     (( 'ColumnSpacing' , 'Spacing' , ), 257, (257, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 728 , (3, 0, None, None) , 0 , )),
@@ -30772,8 +30772,8 @@ IGcadMInsertBlock_vtables_ = [
     (( 'RowSpacing' , 'Spacing' , ), 259, (259, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 768 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadMLeader_vtables_dispatch_ = 1
-IGcadMLeader_vtables_ = [
+IAcadMLeader_vtables_dispatch_ = 1
+IAcadMLeader_vtables_ = [
     (( 'ScaleFactor' , 'scale' , ), 38, (38, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'ScaleFactor' , 'scale' , ), 38, (38, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'LeaderType' , 'Type' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30874,8 +30874,8 @@ IGcadMLeader_vtables_ = [
              (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 1128 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadMLeaderStyle_vtables_dispatch_ = 1
-IGcadMLeaderStyle_vtables_ = [
+IAcadMLeaderStyle_vtables_dispatch_ = 1
+IAcadMLeaderStyle_vtables_ = [
     (( 'Name' , 'Name' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'Name' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Description' , 'Description' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -30963,8 +30963,8 @@ IGcadMLeaderStyle_vtables_ = [
     (( 'TextAlignmentType' , 'Type' , ), 39, (39, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 832 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadMLine_vtables_dispatch_ = 1
-IGcadMLine_vtables_ = [
+IAcadMLine_vtables_dispatch_ = 1
+IAcadMLine_vtables_ = [
     (( 'StyleName' , 'Name' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Vertices' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Vertices' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30974,8 +30974,8 @@ IGcadMLine_vtables_ = [
     (( 'MLineScale' , 'scale' , ), 4, (4, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 504 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadMText_vtables_dispatch_ = 1
-IGcadMText_vtables_ = [
+IAcadMText_vtables_dispatch_ = 1
+IAcadMText_vtables_ = [
     (( 'TextString' , 'bstrText' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'TextString' , 'bstrText' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'StyleName' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31005,16 +31005,16 @@ IGcadMText_vtables_ = [
     (( 'FieldCode' , 'bstrText' , ), 14, (14, (), [ (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 664 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadMaterial_vtables_dispatch_ = 1
-IGcadMaterial_vtables_ = [
+IAcadMaterial_vtables_dispatch_ = 1
+IAcadMaterial_vtables_ = [
     (( 'Description' , 'bstrDes' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Description' , 'bstrDes' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadMaterials_vtables_dispatch_ = 1
-IGcadMaterials_vtables_ = [
+IAcadMaterials_vtables_dispatch_ = 1
+IAcadMaterials_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{A7F84FAB-56C7-4437-9178-04441F062A4A}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -31023,8 +31023,8 @@ IGcadMaterials_vtables_ = [
              (16393, 10, None, "IID('{A7F84FAB-56C7-4437-9178-04441F062A4A}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadMenuBar_vtables_dispatch_ = 1
-IGcadMenuBar_vtables_ = [
+IAcadMenuBar_vtables_dispatch_ = 1
+IAcadMenuBar_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{551A5349-4463-40E2-822C-D3A632409117}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -31033,8 +31033,8 @@ IGcadMenuBar_vtables_ = [
     (( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadMenuGroup_vtables_dispatch_ = 1
-IGcadMenuGroup_vtables_ = [
+IAcadMenuGroup_vtables_dispatch_ = 1
+IAcadMenuGroup_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{1CB4149C-D49B-45BE-AEBC-D27A5B666A0B}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'Name' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31048,8 +31048,8 @@ IGcadMenuGroup_vtables_ = [
              (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadMenuGroups_vtables_dispatch_ = 1
-IGcadMenuGroups_vtables_ = [
+IAcadMenuGroups_vtables_dispatch_ = 1
+IAcadMenuGroups_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{72D027F2-CD79-4135-AE60-74FD0F8F595B}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -31060,18 +31060,18 @@ IGcadMenuGroups_vtables_ = [
              (8, 1, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{72D027F2-CD79-4135-AE60-74FD0F8F595B}')") , ], 1 , 1 , 4 , 1 , 96 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadModelSpace_vtables_dispatch_ = 1
-IGcadModelSpace_vtables_ = [
+IAcadModelSpace_vtables_dispatch_ = 1
+IAcadModelSpace_vtables_ = [
 ]
 
-IGcadNurbSurface_vtables_dispatch_ = 1
-IGcadNurbSurface_vtables_ = [
+IAcadNurbSurface_vtables_dispatch_ = 1
+IAcadNurbSurface_vtables_ = [
     (( 'CvHullDisplay' , 'Display' , ), 12, (12, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
     (( 'CvHullDisplay' , 'Display' , ), 12, (12, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 552 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadObject_vtables_dispatch_ = 1
-IGcadObject_vtables_ = [
+IAcadObject_vtables_dispatch_ = 1
+IAcadObject_vtables_ = [
     (( 'Handle' , 'Handle' , ), 1024, (1024, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'ObjectName' , 'ObjectName' , ), 1025, (1025, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'GetXData' , 'AppName' , 'XDataType' , 'XDataValue' , ), 1026, (1026, (), [ 
@@ -31089,8 +31089,8 @@ IGcadObject_vtables_ = [
     (( 'Erase' , ), 1141, (1141, (), [ ], 1 , 1 , 4 , 0 , 152 , (3, 0, None, None) , 64 , )),
 ]
 
-IGcadOle_vtables_dispatch_ = 1
-IGcadOle_vtables_ = [
+IAcadOle_vtables_dispatch_ = 1
+IAcadOle_vtables_ = [
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Rotation' , 'rot' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31113,8 +31113,8 @@ IGcadOle_vtables_ = [
     (( 'OleSourceApp' , 'srcApp' , ), 10, (10, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPViewport_vtables_dispatch_ = 1
-IGcadPViewport_vtables_ = [
+IAcadPViewport_vtables_dispatch_ = 1
+IAcadPViewport_vtables_ = [
     (( 'Center' , 'CenterPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'CenterPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Direction' , 'dirVector' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31179,25 +31179,25 @@ IGcadPViewport_vtables_ = [
     (( 'LabelBlockId' , 'ObjectID' , ), 34, (34, (), [ (16387, 1, None, None) , ], 1 , 4 , 4 , 0 , 912 , (3, 0, None, None) , 0 , )),
     (( 'HasSheetView' , 'bSheetView' , ), 35, (35, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'SyncModelView' , ), 36, (36, (), [ ], 1 , 1 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
-    (( 'LayerPropertyOverrides' , '__MIDL__IGcadPViewport0000' , ), 37, (37, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
-    (( 'StandardScale2' , '__MIDL__IGcadPViewport0001' , ), 39, (39, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 944 , (3, 0, None, None) , 0 , )),
-    (( 'StandardScale2' , '__MIDL__IGcadPViewport0001' , ), 39, (39, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 952 , (3, 0, None, None) , 0 , )),
+    (( 'LayerPropertyOverrides' , '__MIDL__IAcadPViewport0000' , ), 37, (37, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
+    (( 'StandardScale2' , '__MIDL__IAcadPViewport0001' , ), 39, (39, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 944 , (3, 0, None, None) , 0 , )),
+    (( 'StandardScale2' , '__MIDL__IAcadPViewport0001' , ), 39, (39, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 952 , (3, 0, None, None) , 0 , )),
     (( 'LabelBlockId32' , 'ObjectID' , ), 38, (38, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 960 , (3, 0, None, None) , 0 , )),
     (( 'LabelBlockId32' , 'ObjectID' , ), 38, (38, (), [ (16387, 1, None, None) , ], 1 , 4 , 4 , 0 , 968 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPaperSpace_vtables_dispatch_ = 1
-IGcadPaperSpace_vtables_ = [
+IAcadPaperSpace_vtables_dispatch_ = 1
+IAcadPaperSpace_vtables_ = [
     (( 'AddPViewport' , 'Center' , 'Width' , 'Height' , 'pPViewport' , 
              ), 1, (1, (), [ (12, 1, None, None) , (5, 1, None, None) , (5, 1, None, None) , (16393, 10, None, "IID('{E1366A0E-60BF-4E69-9728-D524EDF12C69}')") , ], 1 , 1 , 4 , 0 , 792 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPlaneSurface_vtables_dispatch_ = 1
-IGcadPlaneSurface_vtables_ = [
+IAcadPlaneSurface_vtables_dispatch_ = 1
+IAcadPlaneSurface_vtables_ = [
 ]
 
-IGcadPlot_vtables_dispatch_ = 1
-IGcadPlot_vtables_ = [
+IAcadPlot_vtables_dispatch_ = 1
+IAcadPlot_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'QuietErrorMode' , 'bErrorMode' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'QuietErrorMode' , 'bErrorMode' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31214,8 +31214,8 @@ IGcadPlot_vtables_ = [
     (( 'StartBatchMode' , 'entryCount' , ), 1610743819, (1610743819, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPlotConfiguration_vtables_dispatch_ = 1
-IGcadPlotConfiguration_vtables_ = [
+IAcadPlotConfiguration_vtables_dispatch_ = 1
+IAcadPlotConfiguration_vtables_ = [
     (( 'Name' , 'pName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'pName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'ConfigName' , 'pName' , ), 3, (3, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -31276,8 +31276,8 @@ IGcadPlotConfiguration_vtables_ = [
              (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPlotConfigurations_vtables_dispatch_ = 1
-IGcadPlotConfigurations_vtables_ = [
+IAcadPlotConfigurations_vtables_dispatch_ = 1
+IAcadPlotConfigurations_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{37A8DABC-FD78-4509-B9CA-396F4CC30472}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -31286,8 +31286,8 @@ IGcadPlotConfigurations_vtables_ = [
              (8, 1, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{37A8DABC-FD78-4509-B9CA-396F4CC30472}')") , ], 1 , 1 , 4 , 1 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPoint_vtables_dispatch_ = 1
-IGcadPoint_vtables_ = [
+IAcadPoint_vtables_dispatch_ = 1
+IAcadPoint_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31296,8 +31296,8 @@ IGcadPoint_vtables_ = [
     (( 'Thickness' , 'Thickness' , ), 3, (3, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 496 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPointCloudEx_vtables_dispatch_ = 1
-IGcadPointCloudEx_vtables_ = [
+IAcadPointCloudEx_vtables_dispatch_ = 1
+IAcadPointCloudEx_vtables_ = [
     (( 'Stylization' , 'Type' , ), 18, (18, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Stylization' , 'Type' , ), 18, (18, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'ColorScheme' , 'Type' , ), 19, (19, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31321,8 +31321,8 @@ IGcadPointCloudEx_vtables_ = [
     (( 'UnitFactor' , 'val' , ), 15, (15, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 616 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPolyfaceMesh_vtables_dispatch_ = 1
-IGcadPolyfaceMesh_vtables_ = [
+IAcadPolyfaceMesh_vtables_dispatch_ = 1
+IAcadPolyfaceMesh_vtables_ = [
     (( 'Coordinates' , 'Vertices' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Vertices' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Coordinate' , 'Index' , 'pVal' , ), 2, (2, (), [ (3, 1, None, None) , 
@@ -31334,8 +31334,8 @@ IGcadPolyfaceMesh_vtables_ = [
     (( 'Faces' , ), 80, (80, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 504 , (3, 0, None, None) , 64 , )),
 ]
 
-IGcadPolygonMesh_vtables_dispatch_ = 1
-IGcadPolygonMesh_vtables_ = [
+IAcadPolygonMesh_vtables_dispatch_ = 1
+IAcadPolygonMesh_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'MClose' , 'bClose' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31358,8 +31358,8 @@ IGcadPolygonMesh_vtables_ = [
              (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPolyline_vtables_dispatch_ = 1
-IGcadPolyline_vtables_ = [
+IAcadPolyline_vtables_dispatch_ = 1
+IAcadPolyline_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31396,8 +31396,8 @@ IGcadPolyline_vtables_ = [
     (( 'Length' , 'Length' , ), 18, (18, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 664 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPopupMenu_vtables_dispatch_ = 1
-IGcadPopupMenu_vtables_ = [
+IAcadPopupMenu_vtables_dispatch_ = 1
+IAcadPopupMenu_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{2E00012D-0862-428C-B675-A88781D31934}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -31420,8 +31420,8 @@ IGcadPopupMenu_vtables_ = [
     (( 'TagString' , 'bstrTag' , ), 1610743823, (1610743823, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPopupMenuItem_vtables_dispatch_ = 1
-IGcadPopupMenuItem_vtables_ = [
+IAcadPopupMenuItem_vtables_dispatch_ = 1
+IAcadPopupMenuItem_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{551A5349-4463-40E2-822C-D3A632409117}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Label' , 'bstrLabel' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31445,8 +31445,8 @@ IGcadPopupMenuItem_vtables_ = [
     (( 'EndSubMenuLevel' , 'Level' , ), 1610743827, (1610743827, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPopupMenus_vtables_dispatch_ = 1
-IGcadPopupMenus_vtables_ = [
+IAcadPopupMenus_vtables_dispatch_ = 1
+IAcadPopupMenus_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{551A5349-4463-40E2-822C-D3A632409117}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -31460,8 +31460,8 @@ IGcadPopupMenus_vtables_ = [
     (( 'RemoveMenuFromMenuBar' , 'Index' , ), 1610743815, (1610743815, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPreferences_vtables_dispatch_ = 1
-IGcadPreferences_vtables_ = [
+IAcadPreferences_vtables_dispatch_ = 1
+IAcadPreferences_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Files' , 'pObj' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{39B8DED6-4AAA-4E2F-9EAF-4BBD930EFCED}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Display' , 'pObj' , ), 1610743810, (1610743810, (), [ (16393, 10, None, "IID('{EFA91E4C-5304-45CC-AA56-F57F39D7FCCD}')") , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31474,8 +31474,8 @@ IGcadPreferences_vtables_ = [
     (( 'Profiles' , 'pObj' , ), 1610743817, (1610743817, (), [ (16393, 10, None, "IID('{807758BB-F12D-4275-A52F-6A2CFCAD9A21}')") , ], 1 , 2 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPreferencesDisplay_vtables_dispatch_ = 1
-IGcadPreferencesDisplay_vtables_ = [
+IAcadPreferencesDisplay_vtables_dispatch_ = 1
+IAcadPreferencesDisplay_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'LayoutDisplayMargins' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'LayoutDisplayMargins' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31531,8 +31531,8 @@ IGcadPreferencesDisplay_vtables_ = [
     (( 'XRefFadeIntensity' , 'Path' , ), 1610743859, (1610743859, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPreferencesDrafting_vtables_dispatch_ = 1
-IGcadPreferencesDrafting_vtables_ = [
+IAcadPreferencesDrafting_vtables_dispatch_ = 1
+IAcadPreferencesDrafting_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'AutoSnapMarker' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'AutoSnapMarker' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31558,8 +31558,8 @@ IGcadPreferencesDrafting_vtables_ = [
     (( 'AlignmentPointAcquisition' , 'Path' , ), 1610743829, (1610743829, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPreferencesFiles_vtables_dispatch_ = 1
-IGcadPreferencesFiles_vtables_ = [
+IAcadPreferencesFiles_vtables_dispatch_ = 1
+IAcadPreferencesFiles_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'SupportPath' , 'orient' , ), 0, (0, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'SupportPath' , 'orient' , ), 0, (0, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31635,8 +31635,8 @@ IGcadPreferencesFiles_vtables_ = [
     (( 'PageSetupOverridesTemplateFile' , 'templateFile' , ), 1610743877, (1610743877, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 616 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPreferencesOpenSave_vtables_dispatch_ = 1
-IGcadPreferencesOpenSave_vtables_ = [
+IAcadPreferencesOpenSave_vtables_dispatch_ = 1
+IAcadPreferencesOpenSave_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'SavePreviewThumbnail' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'SavePreviewThumbnail' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31667,8 +31667,8 @@ IGcadPreferencesOpenSave_vtables_ = [
     (( 'MRUNumber' , 'Path' , ), 1610743835, (1610743835, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 272 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPreferencesOutput_vtables_dispatch_ = 1
-IGcadPreferencesOutput_vtables_ = [
+IAcadPreferencesOutput_vtables_dispatch_ = 1
+IAcadPreferencesOutput_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'DefaultOutputDevice' , 'Path' , ), 1610743809, (1610743809, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'DefaultOutputDevice' , 'Path' , ), 1610743809, (1610743809, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31698,8 +31698,8 @@ IGcadPreferencesOutput_vtables_ = [
     (( 'DefaultPlotToFilePath' , 'Path' , ), 1610743833, (1610743833, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPreferencesProfiles_vtables_dispatch_ = 1
-IGcadPreferencesProfiles_vtables_ = [
+IAcadPreferencesProfiles_vtables_dispatch_ = 1
+IAcadPreferencesProfiles_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'ActiveProfile' , 'Path' , ), 1610743809, (1610743809, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'ActiveProfile' , 'Path' , ), 1610743809, (1610743809, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31716,8 +31716,8 @@ IGcadPreferencesProfiles_vtables_ = [
     (( 'GetAllProfileNames' , 'pNames' , ), 1610743817, (1610743817, (), [ (16396, 2, None, None) , ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPreferencesSelection_vtables_dispatch_ = 1
-IGcadPreferencesSelection_vtables_ = [
+IAcadPreferencesSelection_vtables_dispatch_ = 1
+IAcadPreferencesSelection_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'PickFirst' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'PickFirst' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31743,8 +31743,8 @@ IGcadPreferencesSelection_vtables_ = [
     (( 'PickGroup' , 'pick' , ), 1610743829, (1610743829, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPreferencesSystem_vtables_dispatch_ = 1
-IGcadPreferencesSystem_vtables_ = [
+IAcadPreferencesSystem_vtables_dispatch_ = 1
+IAcadPreferencesSystem_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'SingleDocumentMode' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'SingleDocumentMode' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31764,8 +31764,8 @@ IGcadPreferencesSystem_vtables_ = [
     (( 'LoadGcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadPreferencesUser_vtables_dispatch_ = 1
-IGcadPreferencesUser_vtables_ = [
+IAcadPreferencesUser_vtables_dispatch_ = 1
+IAcadPreferencesUser_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'KeyboardAccelerator' , 'Path' , ), 1610743809, (1610743809, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'KeyboardAccelerator' , 'Path' , ), 1610743809, (1610743809, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31793,8 +31793,8 @@ IGcadPreferencesUser_vtables_ = [
     (( 'SCMTimeValue' , 'time' , ), 1610743831, (1610743831, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadRasterImage_vtables_dispatch_ = 1
-IGcadRasterImage_vtables_ = [
+IAcadRasterImage_vtables_dispatch_ = 1
+IAcadRasterImage_vtables_ = [
     (( 'Brightness' , 'Brightness' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Brightness' , 'Brightness' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Contrast' , 'Contrast' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31828,8 +31828,8 @@ IGcadRasterImage_vtables_ = [
     (( 'ScaleFactor' , 'ScaleFactor' , ), 17, (17, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 696 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadRay_vtables_dispatch_ = 1
-IGcadRay_vtables_ = [
+IAcadRay_vtables_dispatch_ = 1
+IAcadRay_vtables_ = [
     (( 'BasePoint' , 'BasePoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'BasePoint' , 'BasePoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'SecondPoint' , 'SecondPoint' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31838,8 +31838,8 @@ IGcadRay_vtables_ = [
     (( 'DirectionVector' , 'dirVector' , ), 3, (3, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 496 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadRegion_vtables_dispatch_ = 1
-IGcadRegion_vtables_ = [
+IAcadRegion_vtables_dispatch_ = 1
+IAcadRegion_vtables_ = [
     (( 'Area' , 'Area' , ), 1, (1, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Centroid' , 'Centroid' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'MomentOfInertia' , 'momentInertia' , ), 3, (3, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31854,14 +31854,14 @@ IGcadRegion_vtables_ = [
     (( 'Explode' , 'pArrayObjs' , ), 11, (11, (), [ (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 536 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadRegisteredApplication_vtables_dispatch_ = 1
-IGcadRegisteredApplication_vtables_ = [
+IAcadRegisteredApplication_vtables_dispatch_ = 1
+IAcadRegisteredApplication_vtables_ = [
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadRegisteredApplications_vtables_dispatch_ = 1
-IGcadRegisteredApplications_vtables_ = [
+IAcadRegisteredApplications_vtables_dispatch_ = 1
+IAcadRegisteredApplications_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{F0F9DD45-70ED-42C1-B4AC-562396361489}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -31870,8 +31870,8 @@ IGcadRegisteredApplications_vtables_ = [
              (16393, 10, None, "IID('{F0F9DD45-70ED-42C1-B4AC-562396361489}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadRevolvedSurface_vtables_dispatch_ = 1
-IGcadRevolvedSurface_vtables_ = [
+IAcadRevolvedSurface_vtables_dispatch_ = 1
+IAcadRevolvedSurface_vtables_ = [
     (( 'RevolutionAngle' , 'revAngle' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
     (( 'RevolutionAngle' , 'revAngle' , ), 2, (2, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 552 , (3, 0, None, None) , 0 , )),
     (( 'AxisPosition' , 'AxisPosition' , ), 3, (3, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
@@ -31879,8 +31879,8 @@ IGcadRevolvedSurface_vtables_ = [
     (( 'AxisDirection' , 'AxisDirection' , ), 4, (4, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadScriptJet_vtables_dispatch_ = 1
-IGcadScriptJet_vtables_ = [
+IAcadScriptJet_vtables_dispatch_ = 1
+IAcadScriptJet_vtables_ = [
     (( 'ParseScriptText_E' , 'pstrCode' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Create' , ), 2, (2, (), [ ], 1 , 1 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Run' , ), 3, (3, (), [ ], 1 , 1 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31893,8 +31893,8 @@ IGcadScriptJet_vtables_ = [
              (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 104 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSection_vtables_dispatch_ = 1
-IGcadSection_vtables_ = [
+IAcadSection_vtables_dispatch_ = 1
+IAcadSection_vtables_ = [
     (( 'Name' , 'pbstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'pbstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'State' , 'pVal' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31936,8 +31936,8 @@ IGcadSection_vtables_ = [
              (16396, 2, None, None) , (16396, 2, None, None) , (16396, 2, None, None) , (16396, 2, None, None) , ], 1 , 1 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSection2_vtables_dispatch_ = 1
-IGcadSection2_vtables_ = [
+IAcadSection2_vtables_dispatch_ = 1
+IAcadSection2_vtables_ = [
     (( 'State2' , 'pVal' , ), 22, (22, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
     (( 'State2' , 'pVal' , ), 22, (22, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
     (( 'SliceDepth' , 'pVal' , ), 21, (21, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 728 , (3, 0, None, None) , 0 , )),
@@ -31946,8 +31946,8 @@ IGcadSection2_vtables_ = [
     (( 'SectionPlaneOffset' , 'pVal' , ), 23, (23, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 752 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSectionManager_vtables_dispatch_ = 1
-IGcadSectionManager_vtables_ = [
+IAcadSectionManager_vtables_dispatch_ = 1
+IAcadSectionManager_vtables_ = [
     (( 'Item' , 'Index' , 'pSection' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{13C9B549-488C-48B2-A7D1-9B299FEE3C22}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 65 , )),
@@ -31957,16 +31957,16 @@ IGcadSectionManager_vtables_ = [
              (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSectionSettings_vtables_dispatch_ = 1
-IGcadSectionSettings_vtables_ = [
+IAcadSectionSettings_vtables_dispatch_ = 1
+IAcadSectionSettings_vtables_ = [
     (( 'CurrentSectionType' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'CurrentSectionType' , 'pVal' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'GetSectionTypeSettings' , 'secType' , 'pUnk' , ), 2, (2, (), [ (3, 1, None, None) , 
              (16393, 10, None, "IID('{4ACE8AF8-EC50-438D-93BF-B5434CE6245B}')") , ], 1 , 1 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSectionTypeSettings_vtables_dispatch_ = 1
-IGcadSectionTypeSettings_vtables_ = [
+IAcadSectionTypeSettings_vtables_dispatch_ = 1
+IAcadSectionTypeSettings_vtables_ = [
     (( 'GenerationOptions' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'GenerationOptions' , 'pVal' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'SourceObjects' , 'pVal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -32067,8 +32067,8 @@ IGcadSectionTypeSettings_vtables_ = [
     (( 'CurveTangencyLinesLineweight' , 'Lineweight' , ), 137, (137, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 832 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSecurityParams_vtables_dispatch_ = 1
-IGcadSecurityParams_vtables_ = [
+IAcadSecurityParams_vtables_dispatch_ = 1
+IAcadSecurityParams_vtables_ = [
     (( 'Action' , 'pOperations' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Action' , 'pOperations' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Password' , 'pSecret' , ), 2, (2, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -32093,8 +32093,8 @@ IGcadSecurityParams_vtables_ = [
     (( 'TimeServer' , 'pTimeServerName' , ), 11, (11, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSelectionSet_vtables_dispatch_ = 1
-IGcadSelectionSet_vtables_ = [
+IAcadSelectionSet_vtables_dispatch_ = 1
+IAcadSelectionSet_vtables_ = [
     (( 'Item' , 'Index' , 'pEntity' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{D78C594E-0412-4D7A-919A-2B6D1662D337}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
@@ -32119,8 +32119,8 @@ IGcadSelectionSet_vtables_ = [
     (( 'Delete' , ), 14, (14, (), [ ], 1 , 1 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSelectionSets_vtables_dispatch_ = 1
-IGcadSelectionSets_vtables_ = [
+IAcadSelectionSets_vtables_dispatch_ = 1
+IAcadSelectionSets_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{E7DEA163-B4F1-4DDF-A408-2A3989603B09}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
@@ -32131,15 +32131,15 @@ IGcadSelectionSets_vtables_ = [
     (( 'GetActiveSelectionSet' , 'pSet' , ), 4, (4, (), [ (16393, 10, None, "IID('{E7DEA163-B4F1-4DDF-A408-2A3989603B09}')") , ], 1 , 1 , 4 , 0 , 96 , (3, 0, None, None) , 64 , )),
 ]
 
-IGcadShadowDisplay_vtables_dispatch_ = 0
-IGcadShadowDisplay_vtables_ = [
+IAcadShadowDisplay_vtables_dispatch_ = 0
+IAcadShadowDisplay_vtables_ = [
     (( 'ShadowDisplay' , 'ShadowDisplay' , ), 1610678272, (1610678272, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 24 , (3, 0, None, None) , 0 , )),
     (( 'ShadowDisplay' , 'ShadowDisplay' , ), 1610678272, (1610678272, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 32 , (3, 0, None, None) , 0 , )),
     (( 'EnableShadowDisplay' , 'ShadowDisplay' , ), 1610678274, (1610678274, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 40 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadShape_vtables_dispatch_ = 1
-IGcadShape_vtables_ = [
+IAcadShape_vtables_dispatch_ = 1
+IAcadShape_vtables_ = [
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32158,8 +32158,8 @@ IGcadShape_vtables_ = [
     (( 'Thickness' , 'Thickness' , ), 8, (8, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSolid_vtables_dispatch_ = 1
-IGcadSolid_vtables_ = [
+IAcadSolid_vtables_dispatch_ = 1
+IAcadSolid_vtables_ = [
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32172,8 +32172,8 @@ IGcadSolid_vtables_ = [
              (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 512 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSortentsTable_vtables_dispatch_ = 1
-IGcadSortentsTable_vtables_ = [
+IAcadSortentsTable_vtables_dispatch_ = 1
+IAcadSortentsTable_vtables_ = [
     (( 'MoveToBottom' , 'Objects' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'MoveToTop' , 'Objects' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'MoveBelow' , 'Objects' , 'Target' , ), 3, (3, (), [ (12, 1, None, None) , 
@@ -32190,8 +32190,8 @@ IGcadSortentsTable_vtables_ = [
     (( 'SetRelativeDrawOrder' , 'Objects' , ), 9, (9, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSpline_vtables_dispatch_ = 1
-IGcadSpline_vtables_ = [
+IAcadSpline_vtables_dispatch_ = 1
+IAcadSpline_vtables_ = [
     (( 'NumberOfControlPoints' , 'numCtrlPoints' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'ControlPoints' , 'controlPoint' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'ControlPoints' , 'controlPoint' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32238,14 +32238,14 @@ IGcadSpline_vtables_ = [
     (( 'Closed2' , 'bVal' , ), 32, (32, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 736 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadState_vtables_dispatch_ = 1
-IGcadState_vtables_ = [
+IAcadState_vtables_dispatch_ = 1
+IAcadState_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1, (1, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'IsQuiescent' , 'pVal' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSubDMesh_vtables_dispatch_ = 1
-IGcadSubDMesh_vtables_ = [
+IAcadSubDMesh_vtables_dispatch_ = 1
+IAcadSubDMesh_vtables_ = [
     (( 'Smoothness' , 'Level' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Smoothness' , 'Level' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'corners' , ), 3, (3, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32258,8 +32258,8 @@ IGcadSubDMesh_vtables_ = [
     (( 'FaceCount' , 'Count' , ), 6, (6, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 512 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSummaryInfo_vtables_dispatch_ = 1
-IGcadSummaryInfo_vtables_ = [
+IAcadSummaryInfo_vtables_dispatch_ = 1
+IAcadSummaryInfo_vtables_ = [
     (( 'Author' , 'pAuthor' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Author' , 'pAuthor' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Comments' , 'pComments' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -32291,8 +32291,8 @@ IGcadSummaryInfo_vtables_ = [
     (( 'RemoveCustomByKey' , 'key' , ), 16, (16, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSurface_vtables_dispatch_ = 1
-IGcadSurface_vtables_ = [
+IAcadSurface_vtables_dispatch_ = 1
+IAcadSurface_vtables_ = [
     (( 'SurfaceType' , 'SurfaceType' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'UIsolineDensity' , 'density' , ), 10, (10, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'UIsolineDensity' , 'density' , ), 10, (10, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32306,8 +32306,8 @@ IGcadSurface_vtables_ = [
     (( 'ShowAssociativity' , 'rhs' , ), 177, (177, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 536 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadSweptSurface_vtables_dispatch_ = 1
-IGcadSweptSurface_vtables_ = [
+IAcadSweptSurface_vtables_dispatch_ = 1
+IAcadSweptSurface_vtables_ = [
     (( 'ProfileRotation' , 'profileRotationAngle' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
     (( 'ProfileRotation' , 'profileRotationAngle' , ), 2, (2, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 552 , (3, 0, None, None) , 0 , )),
     (( 'Bank' , 'bBank' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
@@ -32319,8 +32319,8 @@ IGcadSweptSurface_vtables_ = [
     (( 'Length' , 'Length' , ), 6, (6, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadTable_vtables_dispatch_ = 1
-IGcadTable_vtables_ = [
+IAcadTable_vtables_dispatch_ = 1
+IAcadTable_vtables_ = [
     (( 'StyleName' , 'bstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'StyleName' , 'bstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Rows' , 'pRows' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32596,8 +32596,8 @@ IGcadTable_vtables_ = [
     (( 'BreakSpacing' , 'pSpacing' , ), 65527, (65527, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 1704 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadTableCell_vtables_dispatch_ = 1
-IGcadTableCell_vtables_ = [
+IAcadTableCell_vtables_dispatch_ = 1
+IAcadTableCell_vtables_ = [
     (( 'CellStyle' , 'CellStyle' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'CellStyle' , 'CellStyle' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'RowStyle' , 'RowStyle' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32662,8 +32662,8 @@ IGcadTableCell_vtables_ = [
     (( 'BlockColor' , 'ppColor' , ), 31, (31, (), [ (9, 1, None, "IID('{E38E7951-AB58-43F5-9B74-B473C5C6605B}')") , ], 1 , 4 , 4 , 0 , 944 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadTableStyle_vtables_dispatch_ = 1
-IGcadTableStyle_vtables_ = [
+IAcadTableStyle_vtables_dispatch_ = 1
+IAcadTableStyle_vtables_ = [
     (( 'Name' , 'bstrValue' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrValue' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Description' , 'bstr' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -32734,8 +32734,8 @@ IGcadTableStyle_vtables_ = [
              (3, 0, None, None) , ], 1 , 1 , 4 , 0 , 496 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadText_vtables_dispatch_ = 1
-IGcadText_vtables_ = [
+IAcadText_vtables_dispatch_ = 1
+IAcadText_vtables_ = [
     (( 'TextString' , 'bstrText' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'TextString' , 'bstrText' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'StyleName' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32771,8 +32771,8 @@ IGcadText_vtables_ = [
     (( 'FieldCode' , 'bstrText' , ), 17, (17, (), [ (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadTextStyle_vtables_dispatch_ = 1
-IGcadTextStyle_vtables_ = [
+IAcadTextStyle_vtables_dispatch_ = 1
+IAcadTextStyle_vtables_ = [
     (( 'BigFontFile' , 'fontFile' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'BigFontFile' , 'fontFile' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'fontFile' , 'fontFile' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -32796,8 +32796,8 @@ IGcadTextStyle_vtables_ = [
              (3, 1, None, None) , (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadTextStyles_vtables_dispatch_ = 1
-IGcadTextStyles_vtables_ = [
+IAcadTextStyles_vtables_dispatch_ = 1
+IAcadTextStyles_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{703FE959-9B8D-4A91-A69A-844150619DF3}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -32806,8 +32806,8 @@ IGcadTextStyles_vtables_ = [
              (16393, 10, None, "IID('{703FE959-9B8D-4A91-A69A-844150619DF3}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadTolerance_vtables_dispatch_ = 1
-IGcadTolerance_vtables_ = [
+IAcadTolerance_vtables_dispatch_ = 1
+IAcadTolerance_vtables_ = [
     (( 'DirectionVector' , 'dirVector' , ), 80, (80, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'DirectionVector' , 'dirVector' , ), 80, (80, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'InsertionPoint' , 'insPoint' , ), 81, (81, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32830,8 +32830,8 @@ IGcadTolerance_vtables_ = [
     (( 'DimensionLineColor' , 'Type' , ), 13, (13, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadToolbar_vtables_dispatch_ = 1
-IGcadToolbar_vtables_ = [
+IAcadToolbar_vtables_dispatch_ = 1
+IAcadToolbar_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{72E4902E-AA1A-4F5D-8995-B06088CF363C}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -32866,8 +32866,8 @@ IGcadToolbar_vtables_ = [
     (( 'TagString' , 'bstrTag' , ), 1610743834, (1610743834, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadToolbarItem_vtables_dispatch_ = 1
-IGcadToolbarItem_vtables_ = [
+IAcadToolbarItem_vtables_dispatch_ = 1
+IAcadToolbarItem_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{B1872638-6D18-482F-90BA-38086D17625F}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{EDE9142E-0923-4657-90F7-EB55FC56C99A}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -32892,8 +32892,8 @@ IGcadToolbarItem_vtables_ = [
     (( 'CommandDisplayName' , 'bstrCmdDisName' , ), 1610743825, (1610743825, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadToolbars_vtables_dispatch_ = 1
-IGcadToolbars_vtables_ = [
+IAcadToolbars_vtables_dispatch_ = 1
+IAcadToolbars_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EDE9142E-0923-4657-90F7-EB55FC56C99A}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -32906,8 +32906,8 @@ IGcadToolbars_vtables_ = [
              (16393, 10, None, "IID('{EDE9142E-0923-4657-90F7-EB55FC56C99A}')") , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadTrace_vtables_dispatch_ = 1
-IGcadTrace_vtables_ = [
+IAcadTrace_vtables_dispatch_ = 1
+IAcadTrace_vtables_ = [
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32920,8 +32920,8 @@ IGcadTrace_vtables_ = [
              (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 512 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadUCS_vtables_dispatch_ = 1
-IGcadUCS_vtables_ = [
+IAcadUCS_vtables_dispatch_ = 1
+IAcadUCS_vtables_ = [
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Origin' , 'Origin' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -32933,8 +32933,8 @@ IGcadUCS_vtables_ = [
     (( 'GetUCSMatrix' , 'transMatrix' , ), 5, (5, (), [ (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadUCSs_vtables_dispatch_ = 1
-IGcadUCSs_vtables_ = [
+IAcadUCSs_vtables_dispatch_ = 1
+IAcadUCSs_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{50B2A194-C469-4A57-B14A-BAFBA41A4039}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -32944,8 +32944,8 @@ IGcadUCSs_vtables_ = [
              (8, 1, None, None) , (16393, 10, None, "IID('{50B2A194-C469-4A57-B14A-BAFBA41A4039}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadUnderlay_vtables_dispatch_ = 1
-IGcadUnderlay_vtables_ = [
+IAcadUnderlay_vtables_dispatch_ = 1
+IAcadUnderlay_vtables_ = [
     (( 'Contrast' , 'Contrast' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Contrast' , 'Contrast' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Fade' , 'Fade' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -32979,8 +32979,8 @@ IGcadUnderlay_vtables_ = [
     (( 'UnderlayLayerOverrideApplied' , 'bOverride' , ), 17, (17, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 696 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadUtility_vtables_dispatch_ = 1
-IGcadUtility_vtables_ = [
+IAcadUtility_vtables_dispatch_ = 1
+IAcadUtility_vtables_ = [
     (( 'AngleToReal' , 'Angle' , 'Unit' , 'Value' , ), 1610743808, (1610743808, (), [ 
              (8, 1, None, None) , (3, 1, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'AngleToString' , 'Angle' , 'Unit' , 'precision' , 'bstrValue' , 
@@ -33048,8 +33048,8 @@ IGcadUtility_vtables_ = [
              (9, 1, None, None) , (11, 1, None, None) , (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadView_vtables_dispatch_ = 1
-IGcadView_vtables_ = [
+IAcadView_vtables_dispatch_ = 1
+IAcadView_vtables_ = [
     (( 'Center' , 'Center' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'Center' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Height' , 'Height' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -33074,8 +33074,8 @@ IGcadView_vtables_ = [
     (( 'LayoutId32' , 'ObjectID' , ), 11, (11, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 328 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadViewport_vtables_dispatch_ = 1
-IGcadViewport_vtables_ = [
+IAcadViewport_vtables_dispatch_ = 1
+IAcadViewport_vtables_ = [
     (( 'Center' , 'Center' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'Center' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Height' , 'Height' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -33118,8 +33118,8 @@ IGcadViewport_vtables_ = [
     (( 'ArcSmoothness' , 'arcSmooth' , ), 23, (23, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 440 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadViewports_vtables_dispatch_ = 1
-IGcadViewports_vtables_ = [
+IAcadViewports_vtables_dispatch_ = 1
+IAcadViewports_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{B2B6FB46-0162-4C09-9612-65371297D78F}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -33129,8 +33129,8 @@ IGcadViewports_vtables_ = [
     (( 'DeleteConfiguration' , 'Name' , ), 3, (3, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadViews_vtables_dispatch_ = 1
-IGcadViews_vtables_ = [
+IAcadViews_vtables_dispatch_ = 1
+IAcadViews_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{DE1C99A1-811D-4F40-98A6-A17186C8779A}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -33139,8 +33139,8 @@ IGcadViews_vtables_ = [
              (16393, 10, None, "IID('{DE1C99A1-811D-4F40-98A6-A17186C8779A}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadXRecord_vtables_dispatch_ = 1
-IGcadXRecord_vtables_ = [
+IAcadXRecord_vtables_dispatch_ = 1
+IAcadXRecord_vtables_ = [
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'GetXRecordData' , 'XRecordDataType' , 'XRecordDataValue' , ), 2, (2, (), [ (16396, 2, None, None) , 
@@ -33151,8 +33151,8 @@ IGcadXRecord_vtables_ = [
     (( 'TranslateIDs' , 'xlateIds' , ), 4, (4, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
 ]
 
-IGcadXline_vtables_dispatch_ = 1
-IGcadXline_vtables_ = [
+IAcadXline_vtables_dispatch_ = 1
+IAcadXline_vtables_ = [
     (( 'BasePoint' , 'BasePoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'BasePoint' , 'BasePoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'SecondPoint' , 'SecondPoint' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -33168,127 +33168,127 @@ RecordMap = {
 
 CLSIDToClassMap = {
     '{330F7B9E-C93C-403D-807C-D92CB9698637}' : _DGcadApplicationEvents,
-    '{B1872638-6D18-482F-90BA-38086D17625F}' : IGcadApplication,
+    '{B1872638-6D18-482F-90BA-38086D17625F}' : IAcadApplication,
     '{E06CA8F7-4554-4993-8460-1127D2513B1E}' : GcadApplication,
-    '{9368AF30-60A3-47E3-A743-60D4C21FB580}' : IGcadDocument,
-    '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}' : IGcadDatabase,
-    '{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}' : IGcadModelSpace,
-    '{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}' : IGcadBlock,
-    '{B0F45D84-478D-4E42-8261-0F0C89BE7E99}' : IGcadObject,
-    '{6CE21DA5-2896-4D63-9373-2EE672A00D41}' : IGcadDictionary,
-    '{153C1376-952E-4696-94A0-F57364AA6836}' : IGcadXRecord,
-    '{D78C594E-0412-4D7A-919A-2B6D1662D337}' : IGcadEntity,
-    '{E38E7951-AB58-43F5-9B74-B473C5C6605B}' : IGcadGcCmColor,
-    '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}' : IGcadHyperlinks,
-    '{D1DF7DB6-95E1-4721-AE9D-0C668FB28825}' : IGcadHyperlink,
-    '{46250F63-F4E2-4C99-A12B-0471714BC659}' : IGcad3DFace,
-    '{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}' : IGcadPolygonMesh,
-    '{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}' : IGcad3DPolyline,
-    '{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}' : IGcadArc,
-    '{DB4711D4-33D9-408F-9E34-93A7F91248F2}' : IGcadAttribute,
-    '{93102923-D2AD-4429-86B3-A09D589BF38F}' : IGcad3DSolid,
-    '{6B5D2248-E3ED-4807-8AFB-0CAA49BAF64A}' : IGcadRegion,
-    '{70B267B4-5885-477C-BE74-F898EE7FE9EA}' : IGcadCircle,
-    '{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}' : IGcadDimAligned,
-    '{6330AC5A-B41E-4E0F-A133-9AA84C9A4E94}' : IGcadDimension,
-    '{78931DD8-09C7-44F5-9CB5-83198A8CD286}' : IGcadDimAngular,
-    '{CF7DAB54-2669-4E42-B5A5-297B0154CE04}' : IGcadDimDiametric,
-    '{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}' : IGcadDimRotated,
-    '{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}' : IGcadDimOrdinate,
-    '{6070AA16-B13D-4B73-AA07-722C59BC09B5}' : IGcadDimRadial,
-    '{21565C97-8E2E-442B-8F69-C9662BC89DCA}' : IGcadEllipse,
-    '{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}' : IGcadLeader,
-    '{50FA2201-1260-4323-8C00-3EA7E36680B6}' : IGcadMText,
-    '{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}' : IGcadPoint,
-    '{B32517C5-036E-4CB0-8538-66BD5FC625C4}' : IGcadLWPolyline,
-    '{780E9428-D7F9-4F96-8E91-55C8F3CF3082}' : IGcadPolyline,
-    '{D05D772F-86F6-4B10-9898-E22BF8C5F192}' : IGcadRay,
-    '{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}' : IGcadShape,
-    '{38D2992F-DF38-497F-9E2B-68D813057E8D}' : IGcadSolid,
-    '{3D506D60-0138-48DD-8166-E5512E441206}' : IGcadSpline,
-    '{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}' : IGcadText,
-    '{98D4741E-D869-4950-8B28-046B6884A084}' : IGcadTolerance,
-    '{4253025F-5BC5-4D78-8D65-138D2DBED220}' : IGcadTrace,
-    '{36494A5A-AADE-46F4-B87C-B213A2AF0083}' : IGcadXline,
-    '{0E143589-AFCC-44FC-8000-4C8D44F80ED6}' : IGcadBlockReference,
-    '{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}' : IGcadHatch,
-    '{1A5BD135-D93B-4BFD-8027-E8277D629B46}' : IGcadRasterImage,
-    '{EB1641A6-750D-49EB-A681-0BAEB77E7388}' : IGcadLine,
-    '{F8AE8A77-1909-452A-95E8-0B833451FD4B}' : IGcadLayout,
-    '{37A8DABC-FD78-4509-B9CA-396F4CC30472}' : IGcadPlotConfiguration,
-    '{2EA3AB94-E461-4DDC-9B9B-894406F31256}' : IGcadMInsertBlock,
-    '{FD4B5856-B661-4E10-8B79-1E793FDB0E50}' : IGcadPolyfaceMesh,
-    '{0DA73585-0488-4699-BCD2-AB0F5C91D404}' : IGcadMLine,
-    '{EA05C039-0D70-4713-865B-71DF0B02F6CA}' : IGcadDim3PointAngular,
-    '{29EB1F45-3E5E-41E2-B909-2EA909858B11}' : IGcadExternalReference,
-    '{449C1C61-4BD2-445C-BA5E-ED97DF538B9D}' : IGcadTable,
-    '{6BE0895F-AB23-4095-8180-0BBD8E790138}' : IGcadDimArcLength,
-    '{E3D1CABD-C84B-49D2-9D47-984F880D33A2}' : IGcadDimRadialLarge,
-    '{13C9B549-488C-48B2-A7D1-9B299FEE3C22}' : IGcadSection,
-    '{AC4451F8-ED8E-42F0-B10D-1345A423FA33}' : IGcadSectionSettings,
-    '{4ACE8AF8-EC50-438D-93BF-B5434CE6245B}' : IGcadSectionTypeSettings,
-    '{59898AB2-E779-4D7C-B77C-86E9E10B2226}' : IGcadMLeader,
-    '{66FA50E9-6EB2-47CA-8EBA-7085C5E6C3A5}' : IGcadPaperSpace,
-    '{E1366A0E-60BF-4E69-9728-D524EDF12C69}' : IGcadPViewport,
-    '{DE1C99A1-811D-4F40-98A6-A17186C8779A}' : IGcadView,
-    '{E69E9F83-F577-403C-8F69-7F5E86AB61F4}' : IGcadBlocks,
-    '{1AFDB2C1-88C9-4BEE-8F5E-F4661538F170}' : IGcadGroups,
-    '{4B02E349-191E-4736-BDE6-52C2D458E0F5}' : IGcadGroup,
-    '{B6084632-4A92-45F4-B8F7-0A91824DADB5}' : IGcadDimStyles,
-    '{88A65332-E185-46B4-9520-CA3305361E4B}' : IGcadDimStyle,
-    '{7A9DE5C4-4D94-42BC-87DB-3D85D953A128}' : IGcadLayers,
-    '{369B3B72-01B7-4C1B-85C9-4E662705D76C}' : IGcadLayer,
-    '{ED574116-AE18-4BB2-9628-1921C110F038}' : IGcadLineTypes,
-    '{39F82095-F5D0-4E82-8C15-483E1EA2DB2C}' : IGcadLineType,
-    '{7258BEDC-7CBD-4758-9F17-4ADC3C2C7C9E}' : IGcadDictionaries,
-    '{FA985110-D0CB-4E62-AB01-2FE6027C7F05}' : IGcadRegisteredApplications,
-    '{F0F9DD45-70ED-42C1-B4AC-562396361489}' : IGcadRegisteredApplication,
-    '{F8425B37-BFCF-4290-8CA2-C718D3201829}' : IGcadTextStyles,
-    '{703FE959-9B8D-4A91-A69A-844150619DF3}' : IGcadTextStyle,
-    '{94DA139B-A285-4E3D-9E31-AA597FD909B0}' : IGcadUCSs,
-    '{50B2A194-C469-4A57-B14A-BAFBA41A4039}' : IGcadUCS,
-    '{9789FDA2-4DD1-44EA-8BC0-8B8B922EDE88}' : IGcadViews,
-    '{EF5599E0-9D92-4DA2-A8B0-B3A5728E019C}' : IGcadViewports,
-    '{B2B6FB46-0162-4C09-9612-65371297D78F}' : IGcadViewport,
-    '{3B4B6A63-85E6-463A-9F6F-D99D77C731E7}' : IGcadLayouts,
-    '{02242489-515A-4BDD-AC0C-E125FD1BE28C}' : IGcadPlotConfigurations,
-    '{A4F5877D-D0B7-46C3-A69B-0AB7B36531AB}' : IGcadDatabasePreferences,
-    '{96FC4DA6-19CF-4E4A-A256-406D1386FAB9}' : IGcadFileDependencies,
-    '{0CED4F33-C673-485D-AE75-54F88D10FA57}' : IGcadFileDependency,
-    '{A40DB73E-ED88-4AA8-8886-5CC3F2E63868}' : IGcadSummaryInfo,
-    '{0340058F-D94E-429D-8199-A4ECFF677AC1}' : IGcadSectionManager,
-    '{C42C4E52-02C7-441C-B0BA-16771B542EA5}' : IGcadMaterials,
-    '{A7F84FAB-56C7-4437-9178-04441F062A4A}' : IGcadMaterial,
-    '{E93528F4-F504-4E58-8560-C473AD8445A2}' : IGcadPlot,
-    '{BA391ABB-844F-42A0-8F57-31EE00D0583A}' : IGcadSelectionSets,
-    '{E7DEA163-B4F1-4DDF-A408-2A3989603B09}' : IGcadSelectionSet,
-    '{CE85BBED-B6CD-446F-B3F6-052465802DB6}' : IGcadUtility,
-    '{253889D2-ABBB-4DB6-AB75-00DCACCB59A5}' : IGcadPreferences,
-    '{39B8DED6-4AAA-4E2F-9EAF-4BBD930EFCED}' : IGcadPreferencesFiles,
-    '{EFA91E4C-5304-45CC-AA56-F57F39D7FCCD}' : IGcadPreferencesDisplay,
-    '{97311A0B-4C28-4D80-8397-40FB3403AEF0}' : IGcadPreferencesOpenSave,
-    '{FA0A2ECE-5E7C-46EF-ACCA-F2528C0C2566}' : IGcadPreferencesOutput,
-    '{51B2EDFB-066F-40E2-A298-D3DA4355BAE7}' : IGcadPreferencesSystem,
-    '{AC90CA06-AABE-40DB-BE6B-D4C18C5BF232}' : IGcadPreferencesUser,
-    '{E4A0A141-99BD-44B8-9A4F-5B813BE85A68}' : IGcadPreferencesDrafting,
-    '{CDCD600E-0299-4127-89C6-3C8FA33F7EBC}' : IGcadPreferencesSelection,
-    '{807758BB-F12D-4275-A52F-6A2CFCAD9A21}' : IGcadPreferencesProfiles,
-    '{1CB4149C-D49B-45BE-AEBC-D27A5B666A0B}' : IGcadMenuGroups,
-    '{72D027F2-CD79-4135-AE60-74FD0F8F595B}' : IGcadMenuGroup,
-    '{4B67342A-4DF3-450B-8E12-CF0A8B16DBC0}' : IGcadPopupMenus,
-    '{551A5349-4463-40E2-822C-D3A632409117}' : IGcadPopupMenu,
-    '{2E00012D-0862-428C-B675-A88781D31934}' : IGcadPopupMenuItem,
-    '{8095E3AB-7AB4-4915-A35A-11491F1B45D6}' : IGcadToolbars,
-    '{EDE9142E-0923-4657-90F7-EB55FC56C99A}' : IGcadToolbar,
-    '{72E4902E-AA1A-4F5D-8995-B06088CF363C}' : IGcadToolbarItem,
-    '{87925C1E-ADEA-48BD-8BF1-239F9A116A81}' : IGcadMenuBar,
-    '{31010F88-E412-4A4B-B482-B71D45D1A28A}' : IGcadDocuments,
-    '{31E08BF4-3D9F-45DC-B456-D2A2CA16E126}' : IGcadState,
+    '{9368AF30-60A3-47E3-A743-60D4C21FB580}' : IAcadDocument,
+    '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}' : IAcadDatabase,
+    '{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}' : IAcadModelSpace,
+    '{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}' : IAcadBlock,
+    '{B0F45D84-478D-4E42-8261-0F0C89BE7E99}' : IAcadObject,
+    '{6CE21DA5-2896-4D63-9373-2EE672A00D41}' : IAcadDictionary,
+    '{153C1376-952E-4696-94A0-F57364AA6836}' : IAcadXRecord,
+    '{D78C594E-0412-4D7A-919A-2B6D1662D337}' : IAcadEntity,
+    '{E38E7951-AB58-43F5-9B74-B473C5C6605B}' : IAcadGcCmColor,
+    '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}' : IAcadHyperlinks,
+    '{D1DF7DB6-95E1-4721-AE9D-0C668FB28825}' : IAcadHyperlink,
+    '{46250F63-F4E2-4C99-A12B-0471714BC659}' : IAcad3DFace,
+    '{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}' : IAcadPolygonMesh,
+    '{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}' : IAcad3DPolyline,
+    '{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}' : IAcadArc,
+    '{DB4711D4-33D9-408F-9E34-93A7F91248F2}' : IAcadAttribute,
+    '{93102923-D2AD-4429-86B3-A09D589BF38F}' : IAcad3DSolid,
+    '{6B5D2248-E3ED-4807-8AFB-0CAA49BAF64A}' : IAcadRegion,
+    '{70B267B4-5885-477C-BE74-F898EE7FE9EA}' : IAcadCircle,
+    '{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}' : IAcadDimAligned,
+    '{6330AC5A-B41E-4E0F-A133-9AA84C9A4E94}' : IAcadDimension,
+    '{78931DD8-09C7-44F5-9CB5-83198A8CD286}' : IAcadDimAngular,
+    '{CF7DAB54-2669-4E42-B5A5-297B0154CE04}' : IAcadDimDiametric,
+    '{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}' : IAcadDimRotated,
+    '{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}' : IAcadDimOrdinate,
+    '{6070AA16-B13D-4B73-AA07-722C59BC09B5}' : IAcadDimRadial,
+    '{21565C97-8E2E-442B-8F69-C9662BC89DCA}' : IAcadEllipse,
+    '{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}' : IAcadLeader,
+    '{50FA2201-1260-4323-8C00-3EA7E36680B6}' : IAcadMText,
+    '{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}' : IAcadPoint,
+    '{B32517C5-036E-4CB0-8538-66BD5FC625C4}' : IAcadLWPolyline,
+    '{780E9428-D7F9-4F96-8E91-55C8F3CF3082}' : IAcadPolyline,
+    '{D05D772F-86F6-4B10-9898-E22BF8C5F192}' : IAcadRay,
+    '{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}' : IAcadShape,
+    '{38D2992F-DF38-497F-9E2B-68D813057E8D}' : IAcadSolid,
+    '{3D506D60-0138-48DD-8166-E5512E441206}' : IAcadSpline,
+    '{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}' : IAcadText,
+    '{98D4741E-D869-4950-8B28-046B6884A084}' : IAcadTolerance,
+    '{4253025F-5BC5-4D78-8D65-138D2DBED220}' : IAcadTrace,
+    '{36494A5A-AADE-46F4-B87C-B213A2AF0083}' : IAcadXline,
+    '{0E143589-AFCC-44FC-8000-4C8D44F80ED6}' : IAcadBlockReference,
+    '{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}' : IAcadHatch,
+    '{1A5BD135-D93B-4BFD-8027-E8277D629B46}' : IAcadRasterImage,
+    '{EB1641A6-750D-49EB-A681-0BAEB77E7388}' : IAcadLine,
+    '{F8AE8A77-1909-452A-95E8-0B833451FD4B}' : IAcadLayout,
+    '{37A8DABC-FD78-4509-B9CA-396F4CC30472}' : IAcadPlotConfiguration,
+    '{2EA3AB94-E461-4DDC-9B9B-894406F31256}' : IAcadMInsertBlock,
+    '{FD4B5856-B661-4E10-8B79-1E793FDB0E50}' : IAcadPolyfaceMesh,
+    '{0DA73585-0488-4699-BCD2-AB0F5C91D404}' : IAcadMLine,
+    '{EA05C039-0D70-4713-865B-71DF0B02F6CA}' : IAcadDim3PointAngular,
+    '{29EB1F45-3E5E-41E2-B909-2EA909858B11}' : IAcadExternalReference,
+    '{449C1C61-4BD2-445C-BA5E-ED97DF538B9D}' : IAcadTable,
+    '{6BE0895F-AB23-4095-8180-0BBD8E790138}' : IAcadDimArcLength,
+    '{E3D1CABD-C84B-49D2-9D47-984F880D33A2}' : IAcadDimRadialLarge,
+    '{13C9B549-488C-48B2-A7D1-9B299FEE3C22}' : IAcadSection,
+    '{AC4451F8-ED8E-42F0-B10D-1345A423FA33}' : IAcadSectionSettings,
+    '{4ACE8AF8-EC50-438D-93BF-B5434CE6245B}' : IAcadSectionTypeSettings,
+    '{59898AB2-E779-4D7C-B77C-86E9E10B2226}' : IAcadMLeader,
+    '{66FA50E9-6EB2-47CA-8EBA-7085C5E6C3A5}' : IAcadPaperSpace,
+    '{E1366A0E-60BF-4E69-9728-D524EDF12C69}' : IAcadPViewport,
+    '{DE1C99A1-811D-4F40-98A6-A17186C8779A}' : IAcadView,
+    '{E69E9F83-F577-403C-8F69-7F5E86AB61F4}' : IAcadBlocks,
+    '{1AFDB2C1-88C9-4BEE-8F5E-F4661538F170}' : IAcadGroups,
+    '{4B02E349-191E-4736-BDE6-52C2D458E0F5}' : IAcadGroup,
+    '{B6084632-4A92-45F4-B8F7-0A91824DADB5}' : IAcadDimStyles,
+    '{88A65332-E185-46B4-9520-CA3305361E4B}' : IAcadDimStyle,
+    '{7A9DE5C4-4D94-42BC-87DB-3D85D953A128}' : IAcadLayers,
+    '{369B3B72-01B7-4C1B-85C9-4E662705D76C}' : IAcadLayer,
+    '{ED574116-AE18-4BB2-9628-1921C110F038}' : IAcadLineTypes,
+    '{39F82095-F5D0-4E82-8C15-483E1EA2DB2C}' : IAcadLineType,
+    '{7258BEDC-7CBD-4758-9F17-4ADC3C2C7C9E}' : IAcadDictionaries,
+    '{FA985110-D0CB-4E62-AB01-2FE6027C7F05}' : IAcadRegisteredApplications,
+    '{F0F9DD45-70ED-42C1-B4AC-562396361489}' : IAcadRegisteredApplication,
+    '{F8425B37-BFCF-4290-8CA2-C718D3201829}' : IAcadTextStyles,
+    '{703FE959-9B8D-4A91-A69A-844150619DF3}' : IAcadTextStyle,
+    '{94DA139B-A285-4E3D-9E31-AA597FD909B0}' : IAcadUCSs,
+    '{50B2A194-C469-4A57-B14A-BAFBA41A4039}' : IAcadUCS,
+    '{9789FDA2-4DD1-44EA-8BC0-8B8B922EDE88}' : IAcadViews,
+    '{EF5599E0-9D92-4DA2-A8B0-B3A5728E019C}' : IAcadViewports,
+    '{B2B6FB46-0162-4C09-9612-65371297D78F}' : IAcadViewport,
+    '{3B4B6A63-85E6-463A-9F6F-D99D77C731E7}' : IAcadLayouts,
+    '{02242489-515A-4BDD-AC0C-E125FD1BE28C}' : IAcadPlotConfigurations,
+    '{A4F5877D-D0B7-46C3-A69B-0AB7B36531AB}' : IAcadDatabasePreferences,
+    '{96FC4DA6-19CF-4E4A-A256-406D1386FAB9}' : IAcadFileDependencies,
+    '{0CED4F33-C673-485D-AE75-54F88D10FA57}' : IAcadFileDependency,
+    '{A40DB73E-ED88-4AA8-8886-5CC3F2E63868}' : IAcadSummaryInfo,
+    '{0340058F-D94E-429D-8199-A4ECFF677AC1}' : IAcadSectionManager,
+    '{C42C4E52-02C7-441C-B0BA-16771B542EA5}' : IAcadMaterials,
+    '{A7F84FAB-56C7-4437-9178-04441F062A4A}' : IAcadMaterial,
+    '{E93528F4-F504-4E58-8560-C473AD8445A2}' : IAcadPlot,
+    '{BA391ABB-844F-42A0-8F57-31EE00D0583A}' : IAcadSelectionSets,
+    '{E7DEA163-B4F1-4DDF-A408-2A3989603B09}' : IAcadSelectionSet,
+    '{CE85BBED-B6CD-446F-B3F6-052465802DB6}' : IAcadUtility,
+    '{253889D2-ABBB-4DB6-AB75-00DCACCB59A5}' : IAcadPreferences,
+    '{39B8DED6-4AAA-4E2F-9EAF-4BBD930EFCED}' : IAcadPreferencesFiles,
+    '{EFA91E4C-5304-45CC-AA56-F57F39D7FCCD}' : IAcadPreferencesDisplay,
+    '{97311A0B-4C28-4D80-8397-40FB3403AEF0}' : IAcadPreferencesOpenSave,
+    '{FA0A2ECE-5E7C-46EF-ACCA-F2528C0C2566}' : IAcadPreferencesOutput,
+    '{51B2EDFB-066F-40E2-A298-D3DA4355BAE7}' : IAcadPreferencesSystem,
+    '{AC90CA06-AABE-40DB-BE6B-D4C18C5BF232}' : IAcadPreferencesUser,
+    '{E4A0A141-99BD-44B8-9A4F-5B813BE85A68}' : IAcadPreferencesDrafting,
+    '{CDCD600E-0299-4127-89C6-3C8FA33F7EBC}' : IAcadPreferencesSelection,
+    '{807758BB-F12D-4275-A52F-6A2CFCAD9A21}' : IAcadPreferencesProfiles,
+    '{1CB4149C-D49B-45BE-AEBC-D27A5B666A0B}' : IAcadMenuGroups,
+    '{72D027F2-CD79-4135-AE60-74FD0F8F595B}' : IAcadMenuGroup,
+    '{4B67342A-4DF3-450B-8E12-CF0A8B16DBC0}' : IAcadPopupMenus,
+    '{551A5349-4463-40E2-822C-D3A632409117}' : IAcadPopupMenu,
+    '{2E00012D-0862-428C-B675-A88781D31934}' : IAcadPopupMenuItem,
+    '{8095E3AB-7AB4-4915-A35A-11491F1B45D6}' : IAcadToolbars,
+    '{EDE9142E-0923-4657-90F7-EB55FC56C99A}' : IAcadToolbar,
+    '{72E4902E-AA1A-4F5D-8995-B06088CF363C}' : IAcadToolbarItem,
+    '{87925C1E-ADEA-48BD-8BF1-239F9A116A81}' : IAcadMenuBar,
+    '{31010F88-E412-4A4B-B482-B71D45D1A28A}' : IAcadDocuments,
+    '{31E08BF4-3D9F-45DC-B456-D2A2CA16E126}' : IAcadState,
     '{79855627-10CA-4054-BB8C-00946292669D}' : GcadMenuGroups,
     '{573373A3-EDBE-4369-AF1F-3292EE13538C}' : GcadMenuBar,
     '{99EF8026-26E1-43C1-92EE-F5041E7DBE8C}' : GcadDocuments,
     '{5E90323E-2CCF-4AE9-9B6F-6603AB611048}' : GcadDatabase,
-    '{41B85986-5004-4888-9E89-7895663FA77C}' : IGcadObjectEvents,
+    '{41B85986-5004-4888-9E89-7895663FA77C}' : IAcadObjectEvents,
     '{35DF9E00-7285-40A9-BD63-D714AA0CA70F}' : GcadModelSpace,
     '{BF0FD147-A1EA-416E-911B-9EF794738AFA}' : GcadPaperSpace,
     '{25F41555-CB62-4FB5-AF5A-FD50D5B99809}' : GcadBlocks,
@@ -33315,7 +33315,7 @@ CLSIDToClassMap = {
     '{C358F0A6-CF01-4B79-BC20-3744A6CE61CE}' : GcadLayer,
     '{44E0D10E-F951-4B01-BDC0-21256D036952}' : GcadLineType,
     '{67211CB3-E07C-4585-B521-CD8F5840BD8D}' : GcadDimStyle,
-    '{865CCF2C-B13D-48CB-9605-04E135F8FF30}' : IGcadMLeaderStyle,
+    '{865CCF2C-B13D-48CB-9605-04E135F8FF30}' : IAcadMLeaderStyle,
     '{C3819487-144A-4471-B95E-712E3CC64BEC}' : GcadMLeaderStyle,
     '{59F48386-168C-4320-8B3D-77E8556EF9E1}' : GcadTextStyle,
     '{D4E3C6C4-7DAE-4D80-A98C-148C3CD66E32}' : GcadUCS,
@@ -33355,7 +33355,7 @@ CLSIDToClassMap = {
     '{C858EE7D-1B1F-4F2E-A61F-3F4AA8C6C1BA}' : GcadCircle,
     '{0F994C78-5B0F-4A2C-B63A-DB74B93B5537}' : GcadShadowDisplay,
     '{B4F3F703-2BC5-4074-BD6E-24E5830BBD0A}' : GcadHyperlink,
-    '{017EAE27-EA30-4151-8272-BA072063C218}' : IGcadDynamicBlockReferenceProperty,
+    '{017EAE27-EA30-4151-8272-BA072063C218}' : IAcadDynamicBlockReferenceProperty,
     '{114CCE6C-FDBF-4DAD-9157-7078B5664B95}' : GcadDynamicBlockReferenceProperty,
     '{1E499AED-C7C7-4EE1-8FA6-AB1119B7268E}' : GcadXRecord,
     '{5246A240-92AB-460B-820D-365247D9B47F}' : GcadSectionSettings,
@@ -33366,7 +33366,7 @@ CLSIDToClassMap = {
     '{C998B595-8233-4859-A51A-492A25E9EB67}' : Gcad3DSolid,
     '{7E99A93E-D084-43FF-9311-D24A452FF851}' : GcadArc,
     '{3BE70A3D-E2C4-42A6-989C-2F1E08C338D4}' : GcadAttribute,
-    '{183D30F5-55EB-4409-9FC8-06B66E6578FA}' : IGcadAttributeReference,
+    '{183D30F5-55EB-4409-9FC8-06B66E6578FA}' : IAcadAttributeReference,
     '{326662C0-F9F3-4A5B-BFE5-2431F4AEF3D8}' : GcadAttributeReference,
     '{7F11EDC5-9468-4C9D-8749-5720C123C13F}' : GcadEllipse,
     '{EF74767C-CCF5-4725-935C-39E7BDB8D3B8}' : GcadHatch,
@@ -33386,15 +33386,15 @@ CLSIDToClassMap = {
     '{5B817FD8-0DDF-4283-B794-86434740C658}' : GcadMInsertBlock,
     '{A9879069-87D2-4F15-94B4-92531900783C}' : GcadPolyfaceMesh,
     '{CC35F7B8-1AE8-4C31-9F3D-484A44EAC286}' : GcadMLine,
-    '{F39B739A-A0E8-49C5-95B9-23F7C6496075}' : IGcadAssocArrayPath,
+    '{F39B739A-A0E8-49C5-95B9-23F7C6496075}' : IAcadAssocArrayPath,
     '{3745EF1D-3D36-4500-8034-7526342623D3}' : GcadAssocArrayPath,
-    '{79D41413-42B3-449F-8959-DA04EE748C1B}' : IGcadAssocArrayPolar,
+    '{79D41413-42B3-449F-8959-DA04EE748C1B}' : IAcadAssocArrayPolar,
     '{AC93B51F-F467-4928-B094-03EA43B3A681}' : GcadAssocArrayPolar,
-    '{A0D37AF5-3A72-4ACC-84DC-D815BE30FF65}' : IGcadAssocArrayRectangular,
+    '{A0D37AF5-3A72-4ACC-84DC-D815BE30FF65}' : IAcadAssocArrayRectangular,
     '{48E1D6AC-00B6-41DF-9A4F-26F4F47A8EE6}' : GcadAssocArrayRectangular,
     '{78F3EF1F-22D5-4BC8-A186-3CF45759F2DD}' : GcadExternalReference,
     '{92B86261-DA20-4A60-9982-05863C6D9EBE}' : GcadTable,
-    '{5C5196BD-9E8D-4B23-A0CF-5FB8550456FD}' : IGcadTableCell,
+    '{5C5196BD-9E8D-4B23-A0CF-5FB8550456FD}' : IAcadTableCell,
     '{6336B61B-EFBF-4325-94FE-59D403CB0C76}' : GcadTableCell,
     '{5D0A1B18-A59B-402A-B66B-2E10E2BDAE65}' : GcadDimension,
     '{31463489-3D64-4BC7-85B1-0A1C6F0B2ABA}' : GcadDimAligned,
@@ -33411,57 +33411,57 @@ CLSIDToClassMap = {
     '{30523308-F09B-4C74-A819-9AD14A4A943E}' : GcadToolbars,
     '{D6EE440D-BCFF-443C-960D-4F1DAC6D94F6}' : GcadToolbar,
     '{D2806DE9-1AFE-42DF-87AC-B0A855F9B891}' : GcadToolbarItem,
-    '{B7BD1413-D044-4527-B229-ECC06EB76040}' : IGcadSecurityParams,
+    '{B7BD1413-D044-4527-B229-ECC06EB76040}' : IAcadSecurityParams,
     '{D4903656-AC07-421A-8648-4804351E9DBE}' : GcadSecurityParams,
-    '{1BAA42A6-463E-492D-BB53-0D4028148443}' : _IGcadScriptJetEvents,
-    '{6BBD85F2-FBE1-414E-8A89-76379B9E2E4B}' : IGcadScriptJet,
+    '{1BAA42A6-463E-492D-BB53-0D4028148443}' : _IAcadScriptJetEvents,
+    '{6BBD85F2-FBE1-414E-8A89-76379B9E2E4B}' : IAcadScriptJet,
     '{098976AB-EB69-4330-92C8-C8AC73822785}' : GcadScriptJet,
     '{0E92853F-5027-4A90-999C-118BC73FA6BA}' : GcadFileDependency,
     '{E6494613-3893-47A5-B0E7-B6AD41ADA6F4}' : GcadMLeader,
-    '{75419B16-46F2-4245-A624-7819E87EEA8A}' : IGcadOle,
+    '{75419B16-46F2-4245-A624-7819E87EEA8A}' : IAcadOle,
     '{ABA71980-3AA9-40F5-81A7-735886F6F6FD}' : GcadOle,
-    '{D594DD08-3145-43F2-B9A9-D2DDAC0E0141}' : IGcadSubDMesh,
+    '{D594DD08-3145-43F2-B9A9-D2DDAC0E0141}' : IAcadSubDMesh,
     '{73EBC89D-6A5A-4ED8-BC4D-2995DC879649}' : GcadSubDMesh,
-    '{4A201B9C-6555-45ED-A3B5-9342F2F28D71}' : IGcadHelix,
+    '{4A201B9C-6555-45ED-A3B5-9342F2F28D71}' : IAcadHelix,
     '{E817F271-E3BF-44E9-A481-C860D9D8CD13}' : GcadHelix,
-    '{B894B727-442F-4560-B162-4AFD82F79E09}' : IGcadSection2,
+    '{B894B727-442F-4560-B162-4AFD82F79E09}' : IAcadSection2,
     '{DCB0E3B7-B4A4-4D92-A3E8-C27BCAECBE8F}' : GcadSection,
-    '{78A705C7-0B90-4FBC-AF7A-AFFAEDD2CC1F}' : IGcadUnderlay,
+    '{78A705C7-0B90-4FBC-AF7A-AFFAEDD2CC1F}' : IAcadUnderlay,
     '{7A486F98-18BC-424E-9D37-CD975EC3667F}' : GcadDgnUnderlay,
     '{8DF57FE7-CEDA-4730-9F54-C308ED442495}' : GcadPdfUnderlay,
-    '{DCC7E463-86DB-4343-BD67-EB3E51A0B74F}' : IGcadDwfUnderlay,
+    '{DCC7E463-86DB-4343-BD67-EB3E51A0B74F}' : IAcadDwfUnderlay,
     '{B8E04FA2-2C8E-4EAE-873C-9ECC978E1628}' : GcadDwfUnderlay,
-    '{223679F5-6EE7-45C9-B778-E1B2A00D49B4}' : IGcadSurface,
+    '{223679F5-6EE7-45C9-B778-E1B2A00D49B4}' : IAcadSurface,
     '{25D868BF-4CFD-4CB4-BC30-1A43AAF5F3E1}' : GcadSurface,
-    '{FB90B93B-E0A9-43E8-A5F9-B79015C81B0E}' : IGcadExtrudedSurface,
+    '{FB90B93B-E0A9-43E8-A5F9-B79015C81B0E}' : IAcadExtrudedSurface,
     '{3865F4CA-2245-4517-9550-0FA5E5FC28F8}' : GcadExtrudedSurface,
-    '{83049727-9881-4D4D-8E57-63C83CB0CC6E}' : IGcadLoftedSurface,
+    '{83049727-9881-4D4D-8E57-63C83CB0CC6E}' : IAcadLoftedSurface,
     '{3A949249-A2A7-412A-92FF-94D134EB3198}' : GcadLoftedSurface,
-    '{D3A1F3D5-4942-4904-928D-910183FAD5B3}' : IGcadPlaneSurface,
+    '{D3A1F3D5-4942-4904-928D-910183FAD5B3}' : IAcadPlaneSurface,
     '{938953B2-646A-428C-895E-203B73B1B05A}' : GcadPlaneSurface,
-    '{BC4B31D4-9595-43C1-8BC9-AC5F8003F179}' : IGcadRevolvedSurface,
+    '{BC4B31D4-9595-43C1-8BC9-AC5F8003F179}' : IAcadRevolvedSurface,
     '{CA2C91D1-2D7B-4195-A66C-CFB788EFEB14}' : GcadRevolvedSurface,
-    '{0EA16B8C-632D-4AC3-8B6F-FECEB9558A7D}' : IGcadSweptSurface,
+    '{0EA16B8C-632D-4AC3-8B6F-FECEB9558A7D}' : IAcadSweptSurface,
     '{6997E39D-299C-45CC-95BC-A677AC0D1A62}' : GcadSweptSurface,
-    '{6AB2CF34-6BE5-4E86-B1A7-BF6E8FC43E5E}' : IGcadCamera,
+    '{6AB2CF34-6BE5-4E86-B1A7-BF6E8FC43E5E}' : IAcadCamera,
     '{0C8A268F-2F40-4D78-8582-E900CD39AAB7}' : GcadCamera,
-    '{C45579D8-B271-461E-B658-F57BE7B1B4EB}' : IGcadLight,
-    '{2B8F45C4-3CE8-482C-918E-ECD39EC2B86D}' : IGcadLight2,
-    '{0370B70A-6C67-45FD-A247-B2457AEE6ABC}' : IGcadLight3,
+    '{C45579D8-B271-461E-B658-F57BE7B1B4EB}' : IAcadLight,
+    '{2B8F45C4-3CE8-482C-918E-ECD39EC2B86D}' : IAcadLight2,
+    '{0370B70A-6C67-45FD-A247-B2457AEE6ABC}' : IAcadLight3,
     '{1441A79B-2C78-4568-8F3F-1D068ACFC6CD}' : GcadLight,
-    '{1D3AF325-66DF-4CF6-B19F-1DCF053D75F9}' : IGcadIdPair,
+    '{1D3AF325-66DF-4CF6-B19F-1DCF053D75F9}' : IAcadIdPair,
     '{CDF39880-2237-4180-A675-1601037F78ED}' : GcadIdPair,
-    '{FC6D298C-564D-4ACA-850F-3ADF1C01B6D9}' : IGcadLayerStateManager,
+    '{FC6D298C-564D-4ACA-850F-3ADF1C01B6D9}' : IAcadLayerStateManager,
     '{B120B2EF-DD09-4935-94FE-CD57754907B1}' : GcadLayerStateManager,
-    '{DEDB84CD-55C2-4F73-B534-7F06EBF8919F}' : IGcadSortentsTable,
+    '{DEDB84CD-55C2-4F73-B534-7F06EBF8919F}' : IAcadSortentsTable,
     '{79C8B818-C544-46EE-BDCF-613095E6DA50}' : GcadSortentsTable,
-    '{4EC5CAC3-22E8-4B42-BBA8-77271650DEA4}' : IGcadTableStyle,
+    '{4EC5CAC3-22E8-4B42-BBA8-77271650DEA4}' : IAcadTableStyle,
     '{31B9FEC5-563C-464B-B180-5B5E4B530EDD}' : GcadTableStyle,
-    '{1AAE5275-D7FE-47D0-9264-9BE6D9A4A9E4}' : IGcadArcAlignedText,
+    '{1AAE5275-D7FE-47D0-9264-9BE6D9A4A9E4}' : IAcadArcAlignedText,
     '{BA03B2BE-41B3-40E6-A493-7F46CCD7CC05}' : GcadArcAlignedText,
-    '{B4087378-9A1B-4996-B1C0-D3EAD492FA7A}' : IGcadNurbSurface,
+    '{B4087378-9A1B-4996-B1C0-D3EAD492FA7A}' : IAcadNurbSurface,
     '{3C7846DC-43D5-44CD-B954-F941A0F85DE9}' : GcadNurbSurface,
-    '{43DC153E-7BF6-43A8-96AC-C6788C702C9D}' : IGcadPointCloudEx,
+    '{43DC153E-7BF6-43A8-96AC-C6788C702C9D}' : IAcadPointCloudEx,
     '{028BA451-EBBA-4529-8521-DBFB95EB745C}' : GcadPointCloudEx,
     '{30DA6F50-6158-43ED-97F7-E9B19E58BB1A}' : IGcPePropertyEditorColor,
     '{11E6CDE7-1304-488C-8790-3F7AAC891BF2}' : GcPePropertyEditorColor,
@@ -33470,317 +33470,317 @@ CLSIDToPackageMap = {}
 win32com.client.CLSIDToClass.RegisterCLSIDsFromDict( CLSIDToClassMap )
 VTablesToPackageMap = {}
 VTablesToClassMap = {
-    '{B1872638-6D18-482F-90BA-38086D17625F}' : 'IGcadApplication',
-    '{9368AF30-60A3-47E3-A743-60D4C21FB580}' : 'IGcadDocument',
-    '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}' : 'IGcadDatabase',
-    '{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}' : 'IGcadModelSpace',
-    '{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}' : 'IGcadBlock',
-    '{B0F45D84-478D-4E42-8261-0F0C89BE7E99}' : 'IGcadObject',
-    '{6CE21DA5-2896-4D63-9373-2EE672A00D41}' : 'IGcadDictionary',
-    '{153C1376-952E-4696-94A0-F57364AA6836}' : 'IGcadXRecord',
-    '{D78C594E-0412-4D7A-919A-2B6D1662D337}' : 'IGcadEntity',
-    '{E38E7951-AB58-43F5-9B74-B473C5C6605B}' : 'IGcadGcCmColor',
-    '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}' : 'IGcadHyperlinks',
-    '{D1DF7DB6-95E1-4721-AE9D-0C668FB28825}' : 'IGcadHyperlink',
-    '{46250F63-F4E2-4C99-A12B-0471714BC659}' : 'IGcad3DFace',
-    '{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}' : 'IGcadPolygonMesh',
-    '{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}' : 'IGcad3DPolyline',
-    '{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}' : 'IGcadArc',
-    '{DB4711D4-33D9-408F-9E34-93A7F91248F2}' : 'IGcadAttribute',
-    '{93102923-D2AD-4429-86B3-A09D589BF38F}' : 'IGcad3DSolid',
-    '{6B5D2248-E3ED-4807-8AFB-0CAA49BAF64A}' : 'IGcadRegion',
-    '{70B267B4-5885-477C-BE74-F898EE7FE9EA}' : 'IGcadCircle',
-    '{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}' : 'IGcadDimAligned',
-    '{6330AC5A-B41E-4E0F-A133-9AA84C9A4E94}' : 'IGcadDimension',
-    '{78931DD8-09C7-44F5-9CB5-83198A8CD286}' : 'IGcadDimAngular',
-    '{CF7DAB54-2669-4E42-B5A5-297B0154CE04}' : 'IGcadDimDiametric',
-    '{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}' : 'IGcadDimRotated',
-    '{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}' : 'IGcadDimOrdinate',
-    '{6070AA16-B13D-4B73-AA07-722C59BC09B5}' : 'IGcadDimRadial',
-    '{21565C97-8E2E-442B-8F69-C9662BC89DCA}' : 'IGcadEllipse',
-    '{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}' : 'IGcadLeader',
-    '{50FA2201-1260-4323-8C00-3EA7E36680B6}' : 'IGcadMText',
-    '{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}' : 'IGcadPoint',
-    '{B32517C5-036E-4CB0-8538-66BD5FC625C4}' : 'IGcadLWPolyline',
-    '{780E9428-D7F9-4F96-8E91-55C8F3CF3082}' : 'IGcadPolyline',
-    '{D05D772F-86F6-4B10-9898-E22BF8C5F192}' : 'IGcadRay',
-    '{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}' : 'IGcadShape',
-    '{38D2992F-DF38-497F-9E2B-68D813057E8D}' : 'IGcadSolid',
-    '{3D506D60-0138-48DD-8166-E5512E441206}' : 'IGcadSpline',
-    '{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}' : 'IGcadText',
-    '{98D4741E-D869-4950-8B28-046B6884A084}' : 'IGcadTolerance',
-    '{4253025F-5BC5-4D78-8D65-138D2DBED220}' : 'IGcadTrace',
-    '{36494A5A-AADE-46F4-B87C-B213A2AF0083}' : 'IGcadXline',
-    '{0E143589-AFCC-44FC-8000-4C8D44F80ED6}' : 'IGcadBlockReference',
-    '{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}' : 'IGcadHatch',
-    '{1A5BD135-D93B-4BFD-8027-E8277D629B46}' : 'IGcadRasterImage',
-    '{EB1641A6-750D-49EB-A681-0BAEB77E7388}' : 'IGcadLine',
-    '{F8AE8A77-1909-452A-95E8-0B833451FD4B}' : 'IGcadLayout',
-    '{37A8DABC-FD78-4509-B9CA-396F4CC30472}' : 'IGcadPlotConfiguration',
-    '{2EA3AB94-E461-4DDC-9B9B-894406F31256}' : 'IGcadMInsertBlock',
-    '{FD4B5856-B661-4E10-8B79-1E793FDB0E50}' : 'IGcadPolyfaceMesh',
-    '{0DA73585-0488-4699-BCD2-AB0F5C91D404}' : 'IGcadMLine',
-    '{EA05C039-0D70-4713-865B-71DF0B02F6CA}' : 'IGcadDim3PointAngular',
-    '{29EB1F45-3E5E-41E2-B909-2EA909858B11}' : 'IGcadExternalReference',
-    '{449C1C61-4BD2-445C-BA5E-ED97DF538B9D}' : 'IGcadTable',
-    '{6BE0895F-AB23-4095-8180-0BBD8E790138}' : 'IGcadDimArcLength',
-    '{E3D1CABD-C84B-49D2-9D47-984F880D33A2}' : 'IGcadDimRadialLarge',
-    '{13C9B549-488C-48B2-A7D1-9B299FEE3C22}' : 'IGcadSection',
-    '{AC4451F8-ED8E-42F0-B10D-1345A423FA33}' : 'IGcadSectionSettings',
-    '{4ACE8AF8-EC50-438D-93BF-B5434CE6245B}' : 'IGcadSectionTypeSettings',
-    '{59898AB2-E779-4D7C-B77C-86E9E10B2226}' : 'IGcadMLeader',
-    '{66FA50E9-6EB2-47CA-8EBA-7085C5E6C3A5}' : 'IGcadPaperSpace',
-    '{E1366A0E-60BF-4E69-9728-D524EDF12C69}' : 'IGcadPViewport',
-    '{DE1C99A1-811D-4F40-98A6-A17186C8779A}' : 'IGcadView',
-    '{E69E9F83-F577-403C-8F69-7F5E86AB61F4}' : 'IGcadBlocks',
-    '{1AFDB2C1-88C9-4BEE-8F5E-F4661538F170}' : 'IGcadGroups',
-    '{4B02E349-191E-4736-BDE6-52C2D458E0F5}' : 'IGcadGroup',
-    '{B6084632-4A92-45F4-B8F7-0A91824DADB5}' : 'IGcadDimStyles',
-    '{88A65332-E185-46B4-9520-CA3305361E4B}' : 'IGcadDimStyle',
-    '{7A9DE5C4-4D94-42BC-87DB-3D85D953A128}' : 'IGcadLayers',
-    '{369B3B72-01B7-4C1B-85C9-4E662705D76C}' : 'IGcadLayer',
-    '{ED574116-AE18-4BB2-9628-1921C110F038}' : 'IGcadLineTypes',
-    '{39F82095-F5D0-4E82-8C15-483E1EA2DB2C}' : 'IGcadLineType',
-    '{7258BEDC-7CBD-4758-9F17-4ADC3C2C7C9E}' : 'IGcadDictionaries',
-    '{FA985110-D0CB-4E62-AB01-2FE6027C7F05}' : 'IGcadRegisteredApplications',
-    '{F0F9DD45-70ED-42C1-B4AC-562396361489}' : 'IGcadRegisteredApplication',
-    '{F8425B37-BFCF-4290-8CA2-C718D3201829}' : 'IGcadTextStyles',
-    '{703FE959-9B8D-4A91-A69A-844150619DF3}' : 'IGcadTextStyle',
-    '{94DA139B-A285-4E3D-9E31-AA597FD909B0}' : 'IGcadUCSs',
-    '{50B2A194-C469-4A57-B14A-BAFBA41A4039}' : 'IGcadUCS',
-    '{9789FDA2-4DD1-44EA-8BC0-8B8B922EDE88}' : 'IGcadViews',
-    '{EF5599E0-9D92-4DA2-A8B0-B3A5728E019C}' : 'IGcadViewports',
-    '{B2B6FB46-0162-4C09-9612-65371297D78F}' : 'IGcadViewport',
-    '{3B4B6A63-85E6-463A-9F6F-D99D77C731E7}' : 'IGcadLayouts',
-    '{02242489-515A-4BDD-AC0C-E125FD1BE28C}' : 'IGcadPlotConfigurations',
-    '{A4F5877D-D0B7-46C3-A69B-0AB7B36531AB}' : 'IGcadDatabasePreferences',
-    '{96FC4DA6-19CF-4E4A-A256-406D1386FAB9}' : 'IGcadFileDependencies',
-    '{0CED4F33-C673-485D-AE75-54F88D10FA57}' : 'IGcadFileDependency',
-    '{A40DB73E-ED88-4AA8-8886-5CC3F2E63868}' : 'IGcadSummaryInfo',
-    '{0340058F-D94E-429D-8199-A4ECFF677AC1}' : 'IGcadSectionManager',
-    '{C42C4E52-02C7-441C-B0BA-16771B542EA5}' : 'IGcadMaterials',
-    '{A7F84FAB-56C7-4437-9178-04441F062A4A}' : 'IGcadMaterial',
-    '{E93528F4-F504-4E58-8560-C473AD8445A2}' : 'IGcadPlot',
-    '{BA391ABB-844F-42A0-8F57-31EE00D0583A}' : 'IGcadSelectionSets',
-    '{E7DEA163-B4F1-4DDF-A408-2A3989603B09}' : 'IGcadSelectionSet',
-    '{CE85BBED-B6CD-446F-B3F6-052465802DB6}' : 'IGcadUtility',
-    '{253889D2-ABBB-4DB6-AB75-00DCACCB59A5}' : 'IGcadPreferences',
-    '{39B8DED6-4AAA-4E2F-9EAF-4BBD930EFCED}' : 'IGcadPreferencesFiles',
-    '{EFA91E4C-5304-45CC-AA56-F57F39D7FCCD}' : 'IGcadPreferencesDisplay',
-    '{97311A0B-4C28-4D80-8397-40FB3403AEF0}' : 'IGcadPreferencesOpenSave',
-    '{FA0A2ECE-5E7C-46EF-ACCA-F2528C0C2566}' : 'IGcadPreferencesOutput',
-    '{51B2EDFB-066F-40E2-A298-D3DA4355BAE7}' : 'IGcadPreferencesSystem',
-    '{AC90CA06-AABE-40DB-BE6B-D4C18C5BF232}' : 'IGcadPreferencesUser',
-    '{E4A0A141-99BD-44B8-9A4F-5B813BE85A68}' : 'IGcadPreferencesDrafting',
-    '{CDCD600E-0299-4127-89C6-3C8FA33F7EBC}' : 'IGcadPreferencesSelection',
-    '{807758BB-F12D-4275-A52F-6A2CFCAD9A21}' : 'IGcadPreferencesProfiles',
-    '{1CB4149C-D49B-45BE-AEBC-D27A5B666A0B}' : 'IGcadMenuGroups',
-    '{72D027F2-CD79-4135-AE60-74FD0F8F595B}' : 'IGcadMenuGroup',
-    '{4B67342A-4DF3-450B-8E12-CF0A8B16DBC0}' : 'IGcadPopupMenus',
-    '{551A5349-4463-40E2-822C-D3A632409117}' : 'IGcadPopupMenu',
-    '{2E00012D-0862-428C-B675-A88781D31934}' : 'IGcadPopupMenuItem',
-    '{8095E3AB-7AB4-4915-A35A-11491F1B45D6}' : 'IGcadToolbars',
-    '{EDE9142E-0923-4657-90F7-EB55FC56C99A}' : 'IGcadToolbar',
-    '{72E4902E-AA1A-4F5D-8995-B06088CF363C}' : 'IGcadToolbarItem',
-    '{87925C1E-ADEA-48BD-8BF1-239F9A116A81}' : 'IGcadMenuBar',
-    '{31010F88-E412-4A4B-B482-B71D45D1A28A}' : 'IGcadDocuments',
-    '{31E08BF4-3D9F-45DC-B456-D2A2CA16E126}' : 'IGcadState',
-    '{865CCF2C-B13D-48CB-9605-04E135F8FF30}' : 'IGcadMLeaderStyle',
-    '{0552FF7C-E7C5-4890-984F-FD499B4B566F}' : 'IGcadShadowDisplay',
-    '{017EAE27-EA30-4151-8272-BA072063C218}' : 'IGcadDynamicBlockReferenceProperty',
-    '{183D30F5-55EB-4409-9FC8-06B66E6578FA}' : 'IGcadAttributeReference',
-    '{F39B739A-A0E8-49C5-95B9-23F7C6496075}' : 'IGcadAssocArrayPath',
-    '{79D41413-42B3-449F-8959-DA04EE748C1B}' : 'IGcadAssocArrayPolar',
-    '{A0D37AF5-3A72-4ACC-84DC-D815BE30FF65}' : 'IGcadAssocArrayRectangular',
-    '{5C5196BD-9E8D-4B23-A0CF-5FB8550456FD}' : 'IGcadTableCell',
-    '{B7BD1413-D044-4527-B229-ECC06EB76040}' : 'IGcadSecurityParams',
-    '{6BBD85F2-FBE1-414E-8A89-76379B9E2E4B}' : 'IGcadScriptJet',
-    '{75419B16-46F2-4245-A624-7819E87EEA8A}' : 'IGcadOle',
-    '{D594DD08-3145-43F2-B9A9-D2DDAC0E0141}' : 'IGcadSubDMesh',
-    '{4A201B9C-6555-45ED-A3B5-9342F2F28D71}' : 'IGcadHelix',
-    '{B894B727-442F-4560-B162-4AFD82F79E09}' : 'IGcadSection2',
-    '{78A705C7-0B90-4FBC-AF7A-AFFAEDD2CC1F}' : 'IGcadUnderlay',
-    '{DCC7E463-86DB-4343-BD67-EB3E51A0B74F}' : 'IGcadDwfUnderlay',
-    '{223679F5-6EE7-45C9-B778-E1B2A00D49B4}' : 'IGcadSurface',
-    '{FB90B93B-E0A9-43E8-A5F9-B79015C81B0E}' : 'IGcadExtrudedSurface',
-    '{83049727-9881-4D4D-8E57-63C83CB0CC6E}' : 'IGcadLoftedSurface',
-    '{D3A1F3D5-4942-4904-928D-910183FAD5B3}' : 'IGcadPlaneSurface',
-    '{BC4B31D4-9595-43C1-8BC9-AC5F8003F179}' : 'IGcadRevolvedSurface',
-    '{0EA16B8C-632D-4AC3-8B6F-FECEB9558A7D}' : 'IGcadSweptSurface',
-    '{6AB2CF34-6BE5-4E86-B1A7-BF6E8FC43E5E}' : 'IGcadCamera',
-    '{C45579D8-B271-461E-B658-F57BE7B1B4EB}' : 'IGcadLight',
-    '{2B8F45C4-3CE8-482C-918E-ECD39EC2B86D}' : 'IGcadLight2',
-    '{0370B70A-6C67-45FD-A247-B2457AEE6ABC}' : 'IGcadLight3',
-    '{1D3AF325-66DF-4CF6-B19F-1DCF053D75F9}' : 'IGcadIdPair',
-    '{FC6D298C-564D-4ACA-850F-3ADF1C01B6D9}' : 'IGcadLayerStateManager',
-    '{DEDB84CD-55C2-4F73-B534-7F06EBF8919F}' : 'IGcadSortentsTable',
-    '{4EC5CAC3-22E8-4B42-BBA8-77271650DEA4}' : 'IGcadTableStyle',
-    '{1AAE5275-D7FE-47D0-9264-9BE6D9A4A9E4}' : 'IGcadArcAlignedText',
-    '{B4087378-9A1B-4996-B1C0-D3EAD492FA7A}' : 'IGcadNurbSurface',
-    '{43DC153E-7BF6-43A8-96AC-C6788C702C9D}' : 'IGcadPointCloudEx',
+    '{B1872638-6D18-482F-90BA-38086D17625F}' : 'IAcadApplication',
+    '{9368AF30-60A3-47E3-A743-60D4C21FB580}' : 'IAcadDocument',
+    '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}' : 'IAcadDatabase',
+    '{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}' : 'IAcadModelSpace',
+    '{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}' : 'IAcadBlock',
+    '{B0F45D84-478D-4E42-8261-0F0C89BE7E99}' : 'IAcadObject',
+    '{6CE21DA5-2896-4D63-9373-2EE672A00D41}' : 'IAcadDictionary',
+    '{153C1376-952E-4696-94A0-F57364AA6836}' : 'IAcadXRecord',
+    '{D78C594E-0412-4D7A-919A-2B6D1662D337}' : 'IAcadEntity',
+    '{E38E7951-AB58-43F5-9B74-B473C5C6605B}' : 'IAcadGcCmColor',
+    '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}' : 'IAcadHyperlinks',
+    '{D1DF7DB6-95E1-4721-AE9D-0C668FB28825}' : 'IAcadHyperlink',
+    '{46250F63-F4E2-4C99-A12B-0471714BC659}' : 'IAcad3DFace',
+    '{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}' : 'IAcadPolygonMesh',
+    '{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}' : 'IAcad3DPolyline',
+    '{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}' : 'IAcadArc',
+    '{DB4711D4-33D9-408F-9E34-93A7F91248F2}' : 'IAcadAttribute',
+    '{93102923-D2AD-4429-86B3-A09D589BF38F}' : 'IAcad3DSolid',
+    '{6B5D2248-E3ED-4807-8AFB-0CAA49BAF64A}' : 'IAcadRegion',
+    '{70B267B4-5885-477C-BE74-F898EE7FE9EA}' : 'IAcadCircle',
+    '{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}' : 'IAcadDimAligned',
+    '{6330AC5A-B41E-4E0F-A133-9AA84C9A4E94}' : 'IAcadDimension',
+    '{78931DD8-09C7-44F5-9CB5-83198A8CD286}' : 'IAcadDimAngular',
+    '{CF7DAB54-2669-4E42-B5A5-297B0154CE04}' : 'IAcadDimDiametric',
+    '{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}' : 'IAcadDimRotated',
+    '{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}' : 'IAcadDimOrdinate',
+    '{6070AA16-B13D-4B73-AA07-722C59BC09B5}' : 'IAcadDimRadial',
+    '{21565C97-8E2E-442B-8F69-C9662BC89DCA}' : 'IAcadEllipse',
+    '{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}' : 'IAcadLeader',
+    '{50FA2201-1260-4323-8C00-3EA7E36680B6}' : 'IAcadMText',
+    '{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}' : 'IAcadPoint',
+    '{B32517C5-036E-4CB0-8538-66BD5FC625C4}' : 'IAcadLWPolyline',
+    '{780E9428-D7F9-4F96-8E91-55C8F3CF3082}' : 'IAcadPolyline',
+    '{D05D772F-86F6-4B10-9898-E22BF8C5F192}' : 'IAcadRay',
+    '{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}' : 'IAcadShape',
+    '{38D2992F-DF38-497F-9E2B-68D813057E8D}' : 'IAcadSolid',
+    '{3D506D60-0138-48DD-8166-E5512E441206}' : 'IAcadSpline',
+    '{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}' : 'IAcadText',
+    '{98D4741E-D869-4950-8B28-046B6884A084}' : 'IAcadTolerance',
+    '{4253025F-5BC5-4D78-8D65-138D2DBED220}' : 'IAcadTrace',
+    '{36494A5A-AADE-46F4-B87C-B213A2AF0083}' : 'IAcadXline',
+    '{0E143589-AFCC-44FC-8000-4C8D44F80ED6}' : 'IAcadBlockReference',
+    '{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}' : 'IAcadHatch',
+    '{1A5BD135-D93B-4BFD-8027-E8277D629B46}' : 'IAcadRasterImage',
+    '{EB1641A6-750D-49EB-A681-0BAEB77E7388}' : 'IAcadLine',
+    '{F8AE8A77-1909-452A-95E8-0B833451FD4B}' : 'IAcadLayout',
+    '{37A8DABC-FD78-4509-B9CA-396F4CC30472}' : 'IAcadPlotConfiguration',
+    '{2EA3AB94-E461-4DDC-9B9B-894406F31256}' : 'IAcadMInsertBlock',
+    '{FD4B5856-B661-4E10-8B79-1E793FDB0E50}' : 'IAcadPolyfaceMesh',
+    '{0DA73585-0488-4699-BCD2-AB0F5C91D404}' : 'IAcadMLine',
+    '{EA05C039-0D70-4713-865B-71DF0B02F6CA}' : 'IAcadDim3PointAngular',
+    '{29EB1F45-3E5E-41E2-B909-2EA909858B11}' : 'IAcadExternalReference',
+    '{449C1C61-4BD2-445C-BA5E-ED97DF538B9D}' : 'IAcadTable',
+    '{6BE0895F-AB23-4095-8180-0BBD8E790138}' : 'IAcadDimArcLength',
+    '{E3D1CABD-C84B-49D2-9D47-984F880D33A2}' : 'IAcadDimRadialLarge',
+    '{13C9B549-488C-48B2-A7D1-9B299FEE3C22}' : 'IAcadSection',
+    '{AC4451F8-ED8E-42F0-B10D-1345A423FA33}' : 'IAcadSectionSettings',
+    '{4ACE8AF8-EC50-438D-93BF-B5434CE6245B}' : 'IAcadSectionTypeSettings',
+    '{59898AB2-E779-4D7C-B77C-86E9E10B2226}' : 'IAcadMLeader',
+    '{66FA50E9-6EB2-47CA-8EBA-7085C5E6C3A5}' : 'IAcadPaperSpace',
+    '{E1366A0E-60BF-4E69-9728-D524EDF12C69}' : 'IAcadPViewport',
+    '{DE1C99A1-811D-4F40-98A6-A17186C8779A}' : 'IAcadView',
+    '{E69E9F83-F577-403C-8F69-7F5E86AB61F4}' : 'IAcadBlocks',
+    '{1AFDB2C1-88C9-4BEE-8F5E-F4661538F170}' : 'IAcadGroups',
+    '{4B02E349-191E-4736-BDE6-52C2D458E0F5}' : 'IAcadGroup',
+    '{B6084632-4A92-45F4-B8F7-0A91824DADB5}' : 'IAcadDimStyles',
+    '{88A65332-E185-46B4-9520-CA3305361E4B}' : 'IAcadDimStyle',
+    '{7A9DE5C4-4D94-42BC-87DB-3D85D953A128}' : 'IAcadLayers',
+    '{369B3B72-01B7-4C1B-85C9-4E662705D76C}' : 'IAcadLayer',
+    '{ED574116-AE18-4BB2-9628-1921C110F038}' : 'IAcadLineTypes',
+    '{39F82095-F5D0-4E82-8C15-483E1EA2DB2C}' : 'IAcadLineType',
+    '{7258BEDC-7CBD-4758-9F17-4ADC3C2C7C9E}' : 'IAcadDictionaries',
+    '{FA985110-D0CB-4E62-AB01-2FE6027C7F05}' : 'IAcadRegisteredApplications',
+    '{F0F9DD45-70ED-42C1-B4AC-562396361489}' : 'IAcadRegisteredApplication',
+    '{F8425B37-BFCF-4290-8CA2-C718D3201829}' : 'IAcadTextStyles',
+    '{703FE959-9B8D-4A91-A69A-844150619DF3}' : 'IAcadTextStyle',
+    '{94DA139B-A285-4E3D-9E31-AA597FD909B0}' : 'IAcadUCSs',
+    '{50B2A194-C469-4A57-B14A-BAFBA41A4039}' : 'IAcadUCS',
+    '{9789FDA2-4DD1-44EA-8BC0-8B8B922EDE88}' : 'IAcadViews',
+    '{EF5599E0-9D92-4DA2-A8B0-B3A5728E019C}' : 'IAcadViewports',
+    '{B2B6FB46-0162-4C09-9612-65371297D78F}' : 'IAcadViewport',
+    '{3B4B6A63-85E6-463A-9F6F-D99D77C731E7}' : 'IAcadLayouts',
+    '{02242489-515A-4BDD-AC0C-E125FD1BE28C}' : 'IAcadPlotConfigurations',
+    '{A4F5877D-D0B7-46C3-A69B-0AB7B36531AB}' : 'IAcadDatabasePreferences',
+    '{96FC4DA6-19CF-4E4A-A256-406D1386FAB9}' : 'IAcadFileDependencies',
+    '{0CED4F33-C673-485D-AE75-54F88D10FA57}' : 'IAcadFileDependency',
+    '{A40DB73E-ED88-4AA8-8886-5CC3F2E63868}' : 'IAcadSummaryInfo',
+    '{0340058F-D94E-429D-8199-A4ECFF677AC1}' : 'IAcadSectionManager',
+    '{C42C4E52-02C7-441C-B0BA-16771B542EA5}' : 'IAcadMaterials',
+    '{A7F84FAB-56C7-4437-9178-04441F062A4A}' : 'IAcadMaterial',
+    '{E93528F4-F504-4E58-8560-C473AD8445A2}' : 'IAcadPlot',
+    '{BA391ABB-844F-42A0-8F57-31EE00D0583A}' : 'IAcadSelectionSets',
+    '{E7DEA163-B4F1-4DDF-A408-2A3989603B09}' : 'IAcadSelectionSet',
+    '{CE85BBED-B6CD-446F-B3F6-052465802DB6}' : 'IAcadUtility',
+    '{253889D2-ABBB-4DB6-AB75-00DCACCB59A5}' : 'IAcadPreferences',
+    '{39B8DED6-4AAA-4E2F-9EAF-4BBD930EFCED}' : 'IAcadPreferencesFiles',
+    '{EFA91E4C-5304-45CC-AA56-F57F39D7FCCD}' : 'IAcadPreferencesDisplay',
+    '{97311A0B-4C28-4D80-8397-40FB3403AEF0}' : 'IAcadPreferencesOpenSave',
+    '{FA0A2ECE-5E7C-46EF-ACCA-F2528C0C2566}' : 'IAcadPreferencesOutput',
+    '{51B2EDFB-066F-40E2-A298-D3DA4355BAE7}' : 'IAcadPreferencesSystem',
+    '{AC90CA06-AABE-40DB-BE6B-D4C18C5BF232}' : 'IAcadPreferencesUser',
+    '{E4A0A141-99BD-44B8-9A4F-5B813BE85A68}' : 'IAcadPreferencesDrafting',
+    '{CDCD600E-0299-4127-89C6-3C8FA33F7EBC}' : 'IAcadPreferencesSelection',
+    '{807758BB-F12D-4275-A52F-6A2CFCAD9A21}' : 'IAcadPreferencesProfiles',
+    '{1CB4149C-D49B-45BE-AEBC-D27A5B666A0B}' : 'IAcadMenuGroups',
+    '{72D027F2-CD79-4135-AE60-74FD0F8F595B}' : 'IAcadMenuGroup',
+    '{4B67342A-4DF3-450B-8E12-CF0A8B16DBC0}' : 'IAcadPopupMenus',
+    '{551A5349-4463-40E2-822C-D3A632409117}' : 'IAcadPopupMenu',
+    '{2E00012D-0862-428C-B675-A88781D31934}' : 'IAcadPopupMenuItem',
+    '{8095E3AB-7AB4-4915-A35A-11491F1B45D6}' : 'IAcadToolbars',
+    '{EDE9142E-0923-4657-90F7-EB55FC56C99A}' : 'IAcadToolbar',
+    '{72E4902E-AA1A-4F5D-8995-B06088CF363C}' : 'IAcadToolbarItem',
+    '{87925C1E-ADEA-48BD-8BF1-239F9A116A81}' : 'IAcadMenuBar',
+    '{31010F88-E412-4A4B-B482-B71D45D1A28A}' : 'IAcadDocuments',
+    '{31E08BF4-3D9F-45DC-B456-D2A2CA16E126}' : 'IAcadState',
+    '{865CCF2C-B13D-48CB-9605-04E135F8FF30}' : 'IAcadMLeaderStyle',
+    '{0552FF7C-E7C5-4890-984F-FD499B4B566F}' : 'IAcadShadowDisplay',
+    '{017EAE27-EA30-4151-8272-BA072063C218}' : 'IAcadDynamicBlockReferenceProperty',
+    '{183D30F5-55EB-4409-9FC8-06B66E6578FA}' : 'IAcadAttributeReference',
+    '{F39B739A-A0E8-49C5-95B9-23F7C6496075}' : 'IAcadAssocArrayPath',
+    '{79D41413-42B3-449F-8959-DA04EE748C1B}' : 'IAcadAssocArrayPolar',
+    '{A0D37AF5-3A72-4ACC-84DC-D815BE30FF65}' : 'IAcadAssocArrayRectangular',
+    '{5C5196BD-9E8D-4B23-A0CF-5FB8550456FD}' : 'IAcadTableCell',
+    '{B7BD1413-D044-4527-B229-ECC06EB76040}' : 'IAcadSecurityParams',
+    '{6BBD85F2-FBE1-414E-8A89-76379B9E2E4B}' : 'IAcadScriptJet',
+    '{75419B16-46F2-4245-A624-7819E87EEA8A}' : 'IAcadOle',
+    '{D594DD08-3145-43F2-B9A9-D2DDAC0E0141}' : 'IAcadSubDMesh',
+    '{4A201B9C-6555-45ED-A3B5-9342F2F28D71}' : 'IAcadHelix',
+    '{B894B727-442F-4560-B162-4AFD82F79E09}' : 'IAcadSection2',
+    '{78A705C7-0B90-4FBC-AF7A-AFFAEDD2CC1F}' : 'IAcadUnderlay',
+    '{DCC7E463-86DB-4343-BD67-EB3E51A0B74F}' : 'IAcadDwfUnderlay',
+    '{223679F5-6EE7-45C9-B778-E1B2A00D49B4}' : 'IAcadSurface',
+    '{FB90B93B-E0A9-43E8-A5F9-B79015C81B0E}' : 'IAcadExtrudedSurface',
+    '{83049727-9881-4D4D-8E57-63C83CB0CC6E}' : 'IAcadLoftedSurface',
+    '{D3A1F3D5-4942-4904-928D-910183FAD5B3}' : 'IAcadPlaneSurface',
+    '{BC4B31D4-9595-43C1-8BC9-AC5F8003F179}' : 'IAcadRevolvedSurface',
+    '{0EA16B8C-632D-4AC3-8B6F-FECEB9558A7D}' : 'IAcadSweptSurface',
+    '{6AB2CF34-6BE5-4E86-B1A7-BF6E8FC43E5E}' : 'IAcadCamera',
+    '{C45579D8-B271-461E-B658-F57BE7B1B4EB}' : 'IAcadLight',
+    '{2B8F45C4-3CE8-482C-918E-ECD39EC2B86D}' : 'IAcadLight2',
+    '{0370B70A-6C67-45FD-A247-B2457AEE6ABC}' : 'IAcadLight3',
+    '{1D3AF325-66DF-4CF6-B19F-1DCF053D75F9}' : 'IAcadIdPair',
+    '{FC6D298C-564D-4ACA-850F-3ADF1C01B6D9}' : 'IAcadLayerStateManager',
+    '{DEDB84CD-55C2-4F73-B534-7F06EBF8919F}' : 'IAcadSortentsTable',
+    '{4EC5CAC3-22E8-4B42-BBA8-77271650DEA4}' : 'IAcadTableStyle',
+    '{1AAE5275-D7FE-47D0-9264-9BE6D9A4A9E4}' : 'IAcadArcAlignedText',
+    '{B4087378-9A1B-4996-B1C0-D3EAD492FA7A}' : 'IAcadNurbSurface',
+    '{43DC153E-7BF6-43A8-96AC-C6788C702C9D}' : 'IAcadPointCloudEx',
     '{30DA6F50-6158-43ED-97F7-E9B19E58BB1A}' : 'IGcPePropertyEditorColor',
 }
 
 
 NamesToIIDMap = {
     '_DGcadApplicationEvents' : '{330F7B9E-C93C-403D-807C-D92CB9698637}',
-    'IGcadApplication' : '{B1872638-6D18-482F-90BA-38086D17625F}',
-    'IGcadDocument' : '{9368AF30-60A3-47E3-A743-60D4C21FB580}',
-    'IGcadDatabase' : '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}',
-    'IGcadModelSpace' : '{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}',
-    'IGcadBlock' : '{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}',
-    'IGcadObject' : '{B0F45D84-478D-4E42-8261-0F0C89BE7E99}',
-    'IGcadDictionary' : '{6CE21DA5-2896-4D63-9373-2EE672A00D41}',
-    'IGcadXRecord' : '{153C1376-952E-4696-94A0-F57364AA6836}',
-    'IGcadEntity' : '{D78C594E-0412-4D7A-919A-2B6D1662D337}',
-    'IGcadGcCmColor' : '{E38E7951-AB58-43F5-9B74-B473C5C6605B}',
-    'IGcadHyperlinks' : '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}',
-    'IGcadHyperlink' : '{D1DF7DB6-95E1-4721-AE9D-0C668FB28825}',
-    'IGcad3DFace' : '{46250F63-F4E2-4C99-A12B-0471714BC659}',
-    'IGcadPolygonMesh' : '{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}',
-    'IGcad3DPolyline' : '{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}',
-    'IGcadArc' : '{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}',
-    'IGcadAttribute' : '{DB4711D4-33D9-408F-9E34-93A7F91248F2}',
-    'IGcad3DSolid' : '{93102923-D2AD-4429-86B3-A09D589BF38F}',
-    'IGcadRegion' : '{6B5D2248-E3ED-4807-8AFB-0CAA49BAF64A}',
-    'IGcadCircle' : '{70B267B4-5885-477C-BE74-F898EE7FE9EA}',
-    'IGcadDimAligned' : '{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}',
-    'IGcadDimension' : '{6330AC5A-B41E-4E0F-A133-9AA84C9A4E94}',
-    'IGcadDimAngular' : '{78931DD8-09C7-44F5-9CB5-83198A8CD286}',
-    'IGcadDimDiametric' : '{CF7DAB54-2669-4E42-B5A5-297B0154CE04}',
-    'IGcadDimRotated' : '{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}',
-    'IGcadDimOrdinate' : '{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}',
-    'IGcadDimRadial' : '{6070AA16-B13D-4B73-AA07-722C59BC09B5}',
-    'IGcadEllipse' : '{21565C97-8E2E-442B-8F69-C9662BC89DCA}',
-    'IGcadLeader' : '{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}',
-    'IGcadMText' : '{50FA2201-1260-4323-8C00-3EA7E36680B6}',
-    'IGcadPoint' : '{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}',
-    'IGcadLWPolyline' : '{B32517C5-036E-4CB0-8538-66BD5FC625C4}',
-    'IGcadPolyline' : '{780E9428-D7F9-4F96-8E91-55C8F3CF3082}',
-    'IGcadRay' : '{D05D772F-86F6-4B10-9898-E22BF8C5F192}',
-    'IGcadShape' : '{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}',
-    'IGcadSolid' : '{38D2992F-DF38-497F-9E2B-68D813057E8D}',
-    'IGcadSpline' : '{3D506D60-0138-48DD-8166-E5512E441206}',
-    'IGcadText' : '{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}',
-    'IGcadTolerance' : '{98D4741E-D869-4950-8B28-046B6884A084}',
-    'IGcadTrace' : '{4253025F-5BC5-4D78-8D65-138D2DBED220}',
-    'IGcadXline' : '{36494A5A-AADE-46F4-B87C-B213A2AF0083}',
-    'IGcadBlockReference' : '{0E143589-AFCC-44FC-8000-4C8D44F80ED6}',
-    'IGcadHatch' : '{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}',
-    'IGcadRasterImage' : '{1A5BD135-D93B-4BFD-8027-E8277D629B46}',
-    'IGcadLine' : '{EB1641A6-750D-49EB-A681-0BAEB77E7388}',
-    'IGcadLayout' : '{F8AE8A77-1909-452A-95E8-0B833451FD4B}',
-    'IGcadPlotConfiguration' : '{37A8DABC-FD78-4509-B9CA-396F4CC30472}',
-    'IGcadMInsertBlock' : '{2EA3AB94-E461-4DDC-9B9B-894406F31256}',
-    'IGcadPolyfaceMesh' : '{FD4B5856-B661-4E10-8B79-1E793FDB0E50}',
-    'IGcadMLine' : '{0DA73585-0488-4699-BCD2-AB0F5C91D404}',
-    'IGcadDim3PointAngular' : '{EA05C039-0D70-4713-865B-71DF0B02F6CA}',
-    'IGcadExternalReference' : '{29EB1F45-3E5E-41E2-B909-2EA909858B11}',
-    'IGcadTable' : '{449C1C61-4BD2-445C-BA5E-ED97DF538B9D}',
-    'IGcadDimArcLength' : '{6BE0895F-AB23-4095-8180-0BBD8E790138}',
-    'IGcadDimRadialLarge' : '{E3D1CABD-C84B-49D2-9D47-984F880D33A2}',
-    'IGcadSection' : '{13C9B549-488C-48B2-A7D1-9B299FEE3C22}',
-    'IGcadSectionSettings' : '{AC4451F8-ED8E-42F0-B10D-1345A423FA33}',
-    'IGcadSectionTypeSettings' : '{4ACE8AF8-EC50-438D-93BF-B5434CE6245B}',
-    'IGcadMLeader' : '{59898AB2-E779-4D7C-B77C-86E9E10B2226}',
-    'IGcadPaperSpace' : '{66FA50E9-6EB2-47CA-8EBA-7085C5E6C3A5}',
-    'IGcadPViewport' : '{E1366A0E-60BF-4E69-9728-D524EDF12C69}',
-    'IGcadView' : '{DE1C99A1-811D-4F40-98A6-A17186C8779A}',
-    'IGcadBlocks' : '{E69E9F83-F577-403C-8F69-7F5E86AB61F4}',
-    'IGcadGroups' : '{1AFDB2C1-88C9-4BEE-8F5E-F4661538F170}',
-    'IGcadGroup' : '{4B02E349-191E-4736-BDE6-52C2D458E0F5}',
-    'IGcadDimStyles' : '{B6084632-4A92-45F4-B8F7-0A91824DADB5}',
-    'IGcadDimStyle' : '{88A65332-E185-46B4-9520-CA3305361E4B}',
-    'IGcadLayers' : '{7A9DE5C4-4D94-42BC-87DB-3D85D953A128}',
-    'IGcadLayer' : '{369B3B72-01B7-4C1B-85C9-4E662705D76C}',
-    'IGcadLineTypes' : '{ED574116-AE18-4BB2-9628-1921C110F038}',
-    'IGcadLineType' : '{39F82095-F5D0-4E82-8C15-483E1EA2DB2C}',
-    'IGcadDictionaries' : '{7258BEDC-7CBD-4758-9F17-4ADC3C2C7C9E}',
-    'IGcadRegisteredApplications' : '{FA985110-D0CB-4E62-AB01-2FE6027C7F05}',
-    'IGcadRegisteredApplication' : '{F0F9DD45-70ED-42C1-B4AC-562396361489}',
-    'IGcadTextStyles' : '{F8425B37-BFCF-4290-8CA2-C718D3201829}',
-    'IGcadTextStyle' : '{703FE959-9B8D-4A91-A69A-844150619DF3}',
-    'IGcadUCSs' : '{94DA139B-A285-4E3D-9E31-AA597FD909B0}',
-    'IGcadUCS' : '{50B2A194-C469-4A57-B14A-BAFBA41A4039}',
-    'IGcadViews' : '{9789FDA2-4DD1-44EA-8BC0-8B8B922EDE88}',
-    'IGcadViewports' : '{EF5599E0-9D92-4DA2-A8B0-B3A5728E019C}',
-    'IGcadViewport' : '{B2B6FB46-0162-4C09-9612-65371297D78F}',
-    'IGcadLayouts' : '{3B4B6A63-85E6-463A-9F6F-D99D77C731E7}',
-    'IGcadPlotConfigurations' : '{02242489-515A-4BDD-AC0C-E125FD1BE28C}',
-    'IGcadDatabasePreferences' : '{A4F5877D-D0B7-46C3-A69B-0AB7B36531AB}',
-    'IGcadFileDependencies' : '{96FC4DA6-19CF-4E4A-A256-406D1386FAB9}',
-    'IGcadFileDependency' : '{0CED4F33-C673-485D-AE75-54F88D10FA57}',
-    'IGcadSummaryInfo' : '{A40DB73E-ED88-4AA8-8886-5CC3F2E63868}',
-    'IGcadSectionManager' : '{0340058F-D94E-429D-8199-A4ECFF677AC1}',
-    'IGcadMaterials' : '{C42C4E52-02C7-441C-B0BA-16771B542EA5}',
-    'IGcadMaterial' : '{A7F84FAB-56C7-4437-9178-04441F062A4A}',
-    'IGcadPlot' : '{E93528F4-F504-4E58-8560-C473AD8445A2}',
-    'IGcadSelectionSets' : '{BA391ABB-844F-42A0-8F57-31EE00D0583A}',
-    'IGcadSelectionSet' : '{E7DEA163-B4F1-4DDF-A408-2A3989603B09}',
-    'IGcadUtility' : '{CE85BBED-B6CD-446F-B3F6-052465802DB6}',
-    'IGcadPreferences' : '{253889D2-ABBB-4DB6-AB75-00DCACCB59A5}',
-    'IGcadPreferencesFiles' : '{39B8DED6-4AAA-4E2F-9EAF-4BBD930EFCED}',
-    'IGcadPreferencesDisplay' : '{EFA91E4C-5304-45CC-AA56-F57F39D7FCCD}',
-    'IGcadPreferencesOpenSave' : '{97311A0B-4C28-4D80-8397-40FB3403AEF0}',
-    'IGcadPreferencesOutput' : '{FA0A2ECE-5E7C-46EF-ACCA-F2528C0C2566}',
-    'IGcadPreferencesSystem' : '{51B2EDFB-066F-40E2-A298-D3DA4355BAE7}',
-    'IGcadPreferencesUser' : '{AC90CA06-AABE-40DB-BE6B-D4C18C5BF232}',
-    'IGcadPreferencesDrafting' : '{E4A0A141-99BD-44B8-9A4F-5B813BE85A68}',
-    'IGcadPreferencesSelection' : '{CDCD600E-0299-4127-89C6-3C8FA33F7EBC}',
-    'IGcadPreferencesProfiles' : '{807758BB-F12D-4275-A52F-6A2CFCAD9A21}',
-    'IGcadMenuGroups' : '{1CB4149C-D49B-45BE-AEBC-D27A5B666A0B}',
-    'IGcadMenuGroup' : '{72D027F2-CD79-4135-AE60-74FD0F8F595B}',
-    'IGcadPopupMenus' : '{4B67342A-4DF3-450B-8E12-CF0A8B16DBC0}',
-    'IGcadPopupMenu' : '{551A5349-4463-40E2-822C-D3A632409117}',
-    'IGcadPopupMenuItem' : '{2E00012D-0862-428C-B675-A88781D31934}',
-    'IGcadToolbars' : '{8095E3AB-7AB4-4915-A35A-11491F1B45D6}',
-    'IGcadToolbar' : '{EDE9142E-0923-4657-90F7-EB55FC56C99A}',
-    'IGcadToolbarItem' : '{72E4902E-AA1A-4F5D-8995-B06088CF363C}',
-    'IGcadMenuBar' : '{87925C1E-ADEA-48BD-8BF1-239F9A116A81}',
-    'IGcadDocuments' : '{31010F88-E412-4A4B-B482-B71D45D1A28A}',
-    'IGcadState' : '{31E08BF4-3D9F-45DC-B456-D2A2CA16E126}',
-    'IGcadObjectEvents' : '{41B85986-5004-4888-9E89-7895663FA77C}',
-    'IGcadMLeaderStyle' : '{865CCF2C-B13D-48CB-9605-04E135F8FF30}',
+    'IAcadApplication' : '{B1872638-6D18-482F-90BA-38086D17625F}',
+    'IAcadDocument' : '{9368AF30-60A3-47E3-A743-60D4C21FB580}',
+    'IAcadDatabase' : '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}',
+    'IAcadModelSpace' : '{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}',
+    'IAcadBlock' : '{DA8148BC-3A06-4ACF-844D-36DF63CDAD78}',
+    'IAcadObject' : '{B0F45D84-478D-4E42-8261-0F0C89BE7E99}',
+    'IAcadDictionary' : '{6CE21DA5-2896-4D63-9373-2EE672A00D41}',
+    'IAcadXRecord' : '{153C1376-952E-4696-94A0-F57364AA6836}',
+    'IAcadEntity' : '{D78C594E-0412-4D7A-919A-2B6D1662D337}',
+    'IAcadGcCmColor' : '{E38E7951-AB58-43F5-9B74-B473C5C6605B}',
+    'IAcadHyperlinks' : '{3B00FF4A-56D0-4CB2-8D6D-E1EB343ECBDE}',
+    'IAcadHyperlink' : '{D1DF7DB6-95E1-4721-AE9D-0C668FB28825}',
+    'IAcad3DFace' : '{46250F63-F4E2-4C99-A12B-0471714BC659}',
+    'IAcadPolygonMesh' : '{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}',
+    'IAcad3DPolyline' : '{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}',
+    'IAcadArc' : '{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}',
+    'IAcadAttribute' : '{DB4711D4-33D9-408F-9E34-93A7F91248F2}',
+    'IAcad3DSolid' : '{93102923-D2AD-4429-86B3-A09D589BF38F}',
+    'IAcadRegion' : '{6B5D2248-E3ED-4807-8AFB-0CAA49BAF64A}',
+    'IAcadCircle' : '{70B267B4-5885-477C-BE74-F898EE7FE9EA}',
+    'IAcadDimAligned' : '{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}',
+    'IAcadDimension' : '{6330AC5A-B41E-4E0F-A133-9AA84C9A4E94}',
+    'IAcadDimAngular' : '{78931DD8-09C7-44F5-9CB5-83198A8CD286}',
+    'IAcadDimDiametric' : '{CF7DAB54-2669-4E42-B5A5-297B0154CE04}',
+    'IAcadDimRotated' : '{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}',
+    'IAcadDimOrdinate' : '{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}',
+    'IAcadDimRadial' : '{6070AA16-B13D-4B73-AA07-722C59BC09B5}',
+    'IAcadEllipse' : '{21565C97-8E2E-442B-8F69-C9662BC89DCA}',
+    'IAcadLeader' : '{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}',
+    'IAcadMText' : '{50FA2201-1260-4323-8C00-3EA7E36680B6}',
+    'IAcadPoint' : '{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}',
+    'IAcadLWPolyline' : '{B32517C5-036E-4CB0-8538-66BD5FC625C4}',
+    'IAcadPolyline' : '{780E9428-D7F9-4F96-8E91-55C8F3CF3082}',
+    'IAcadRay' : '{D05D772F-86F6-4B10-9898-E22BF8C5F192}',
+    'IAcadShape' : '{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}',
+    'IAcadSolid' : '{38D2992F-DF38-497F-9E2B-68D813057E8D}',
+    'IAcadSpline' : '{3D506D60-0138-48DD-8166-E5512E441206}',
+    'IAcadText' : '{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}',
+    'IAcadTolerance' : '{98D4741E-D869-4950-8B28-046B6884A084}',
+    'IAcadTrace' : '{4253025F-5BC5-4D78-8D65-138D2DBED220}',
+    'IAcadXline' : '{36494A5A-AADE-46F4-B87C-B213A2AF0083}',
+    'IAcadBlockReference' : '{0E143589-AFCC-44FC-8000-4C8D44F80ED6}',
+    'IAcadHatch' : '{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}',
+    'IAcadRasterImage' : '{1A5BD135-D93B-4BFD-8027-E8277D629B46}',
+    'IAcadLine' : '{EB1641A6-750D-49EB-A681-0BAEB77E7388}',
+    'IAcadLayout' : '{F8AE8A77-1909-452A-95E8-0B833451FD4B}',
+    'IAcadPlotConfiguration' : '{37A8DABC-FD78-4509-B9CA-396F4CC30472}',
+    'IAcadMInsertBlock' : '{2EA3AB94-E461-4DDC-9B9B-894406F31256}',
+    'IAcadPolyfaceMesh' : '{FD4B5856-B661-4E10-8B79-1E793FDB0E50}',
+    'IAcadMLine' : '{0DA73585-0488-4699-BCD2-AB0F5C91D404}',
+    'IAcadDim3PointAngular' : '{EA05C039-0D70-4713-865B-71DF0B02F6CA}',
+    'IAcadExternalReference' : '{29EB1F45-3E5E-41E2-B909-2EA909858B11}',
+    'IAcadTable' : '{449C1C61-4BD2-445C-BA5E-ED97DF538B9D}',
+    'IAcadDimArcLength' : '{6BE0895F-AB23-4095-8180-0BBD8E790138}',
+    'IAcadDimRadialLarge' : '{E3D1CABD-C84B-49D2-9D47-984F880D33A2}',
+    'IAcadSection' : '{13C9B549-488C-48B2-A7D1-9B299FEE3C22}',
+    'IAcadSectionSettings' : '{AC4451F8-ED8E-42F0-B10D-1345A423FA33}',
+    'IAcadSectionTypeSettings' : '{4ACE8AF8-EC50-438D-93BF-B5434CE6245B}',
+    'IAcadMLeader' : '{59898AB2-E779-4D7C-B77C-86E9E10B2226}',
+    'IAcadPaperSpace' : '{66FA50E9-6EB2-47CA-8EBA-7085C5E6C3A5}',
+    'IAcadPViewport' : '{E1366A0E-60BF-4E69-9728-D524EDF12C69}',
+    'IAcadView' : '{DE1C99A1-811D-4F40-98A6-A17186C8779A}',
+    'IAcadBlocks' : '{E69E9F83-F577-403C-8F69-7F5E86AB61F4}',
+    'IAcadGroups' : '{1AFDB2C1-88C9-4BEE-8F5E-F4661538F170}',
+    'IAcadGroup' : '{4B02E349-191E-4736-BDE6-52C2D458E0F5}',
+    'IAcadDimStyles' : '{B6084632-4A92-45F4-B8F7-0A91824DADB5}',
+    'IAcadDimStyle' : '{88A65332-E185-46B4-9520-CA3305361E4B}',
+    'IAcadLayers' : '{7A9DE5C4-4D94-42BC-87DB-3D85D953A128}',
+    'IAcadLayer' : '{369B3B72-01B7-4C1B-85C9-4E662705D76C}',
+    'IAcadLineTypes' : '{ED574116-AE18-4BB2-9628-1921C110F038}',
+    'IAcadLineType' : '{39F82095-F5D0-4E82-8C15-483E1EA2DB2C}',
+    'IAcadDictionaries' : '{7258BEDC-7CBD-4758-9F17-4ADC3C2C7C9E}',
+    'IAcadRegisteredApplications' : '{FA985110-D0CB-4E62-AB01-2FE6027C7F05}',
+    'IAcadRegisteredApplication' : '{F0F9DD45-70ED-42C1-B4AC-562396361489}',
+    'IAcadTextStyles' : '{F8425B37-BFCF-4290-8CA2-C718D3201829}',
+    'IAcadTextStyle' : '{703FE959-9B8D-4A91-A69A-844150619DF3}',
+    'IAcadUCSs' : '{94DA139B-A285-4E3D-9E31-AA597FD909B0}',
+    'IAcadUCS' : '{50B2A194-C469-4A57-B14A-BAFBA41A4039}',
+    'IAcadViews' : '{9789FDA2-4DD1-44EA-8BC0-8B8B922EDE88}',
+    'IAcadViewports' : '{EF5599E0-9D92-4DA2-A8B0-B3A5728E019C}',
+    'IAcadViewport' : '{B2B6FB46-0162-4C09-9612-65371297D78F}',
+    'IAcadLayouts' : '{3B4B6A63-85E6-463A-9F6F-D99D77C731E7}',
+    'IAcadPlotConfigurations' : '{02242489-515A-4BDD-AC0C-E125FD1BE28C}',
+    'IAcadDatabasePreferences' : '{A4F5877D-D0B7-46C3-A69B-0AB7B36531AB}',
+    'IAcadFileDependencies' : '{96FC4DA6-19CF-4E4A-A256-406D1386FAB9}',
+    'IAcadFileDependency' : '{0CED4F33-C673-485D-AE75-54F88D10FA57}',
+    'IAcadSummaryInfo' : '{A40DB73E-ED88-4AA8-8886-5CC3F2E63868}',
+    'IAcadSectionManager' : '{0340058F-D94E-429D-8199-A4ECFF677AC1}',
+    'IAcadMaterials' : '{C42C4E52-02C7-441C-B0BA-16771B542EA5}',
+    'IAcadMaterial' : '{A7F84FAB-56C7-4437-9178-04441F062A4A}',
+    'IAcadPlot' : '{E93528F4-F504-4E58-8560-C473AD8445A2}',
+    'IAcadSelectionSets' : '{BA391ABB-844F-42A0-8F57-31EE00D0583A}',
+    'IAcadSelectionSet' : '{E7DEA163-B4F1-4DDF-A408-2A3989603B09}',
+    'IAcadUtility' : '{CE85BBED-B6CD-446F-B3F6-052465802DB6}',
+    'IAcadPreferences' : '{253889D2-ABBB-4DB6-AB75-00DCACCB59A5}',
+    'IAcadPreferencesFiles' : '{39B8DED6-4AAA-4E2F-9EAF-4BBD930EFCED}',
+    'IAcadPreferencesDisplay' : '{EFA91E4C-5304-45CC-AA56-F57F39D7FCCD}',
+    'IAcadPreferencesOpenSave' : '{97311A0B-4C28-4D80-8397-40FB3403AEF0}',
+    'IAcadPreferencesOutput' : '{FA0A2ECE-5E7C-46EF-ACCA-F2528C0C2566}',
+    'IAcadPreferencesSystem' : '{51B2EDFB-066F-40E2-A298-D3DA4355BAE7}',
+    'IAcadPreferencesUser' : '{AC90CA06-AABE-40DB-BE6B-D4C18C5BF232}',
+    'IAcadPreferencesDrafting' : '{E4A0A141-99BD-44B8-9A4F-5B813BE85A68}',
+    'IAcadPreferencesSelection' : '{CDCD600E-0299-4127-89C6-3C8FA33F7EBC}',
+    'IAcadPreferencesProfiles' : '{807758BB-F12D-4275-A52F-6A2CFCAD9A21}',
+    'IAcadMenuGroups' : '{1CB4149C-D49B-45BE-AEBC-D27A5B666A0B}',
+    'IAcadMenuGroup' : '{72D027F2-CD79-4135-AE60-74FD0F8F595B}',
+    'IAcadPopupMenus' : '{4B67342A-4DF3-450B-8E12-CF0A8B16DBC0}',
+    'IAcadPopupMenu' : '{551A5349-4463-40E2-822C-D3A632409117}',
+    'IAcadPopupMenuItem' : '{2E00012D-0862-428C-B675-A88781D31934}',
+    'IAcadToolbars' : '{8095E3AB-7AB4-4915-A35A-11491F1B45D6}',
+    'IAcadToolbar' : '{EDE9142E-0923-4657-90F7-EB55FC56C99A}',
+    'IAcadToolbarItem' : '{72E4902E-AA1A-4F5D-8995-B06088CF363C}',
+    'IAcadMenuBar' : '{87925C1E-ADEA-48BD-8BF1-239F9A116A81}',
+    'IAcadDocuments' : '{31010F88-E412-4A4B-B482-B71D45D1A28A}',
+    'IAcadState' : '{31E08BF4-3D9F-45DC-B456-D2A2CA16E126}',
+    'IAcadObjectEvents' : '{41B85986-5004-4888-9E89-7895663FA77C}',
+    'IAcadMLeaderStyle' : '{865CCF2C-B13D-48CB-9605-04E135F8FF30}',
     '_DGcadDocumentEvents' : '{2ABEE42C-D570-4DE3-874F-353204A47B63}',
-    'IGcadDynamicBlockReferenceProperty' : '{017EAE27-EA30-4151-8272-BA072063C218}',
-    'IGcadAttributeReference' : '{183D30F5-55EB-4409-9FC8-06B66E6578FA}',
-    'IGcadAssocArrayPath' : '{F39B739A-A0E8-49C5-95B9-23F7C6496075}',
-    'IGcadAssocArrayPolar' : '{79D41413-42B3-449F-8959-DA04EE748C1B}',
-    'IGcadAssocArrayRectangular' : '{A0D37AF5-3A72-4ACC-84DC-D815BE30FF65}',
-    'IGcadTableCell' : '{5C5196BD-9E8D-4B23-A0CF-5FB8550456FD}',
-    'IGcadSecurityParams' : '{B7BD1413-D044-4527-B229-ECC06EB76040}',
-    '_IGcadScriptJetEvents' : '{1BAA42A6-463E-492D-BB53-0D4028148443}',
-    'IGcadScriptJet' : '{6BBD85F2-FBE1-414E-8A89-76379B9E2E4B}',
-    'IGcadOle' : '{75419B16-46F2-4245-A624-7819E87EEA8A}',
-    'IGcadSubDMesh' : '{D594DD08-3145-43F2-B9A9-D2DDAC0E0141}',
-    'IGcadHelix' : '{4A201B9C-6555-45ED-A3B5-9342F2F28D71}',
-    'IGcadSection2' : '{B894B727-442F-4560-B162-4AFD82F79E09}',
-    'IGcadUnderlay' : '{78A705C7-0B90-4FBC-AF7A-AFFAEDD2CC1F}',
-    'IGcadDwfUnderlay' : '{DCC7E463-86DB-4343-BD67-EB3E51A0B74F}',
-    'IGcadSurface' : '{223679F5-6EE7-45C9-B778-E1B2A00D49B4}',
-    'IGcadExtrudedSurface' : '{FB90B93B-E0A9-43E8-A5F9-B79015C81B0E}',
-    'IGcadLoftedSurface' : '{83049727-9881-4D4D-8E57-63C83CB0CC6E}',
-    'IGcadPlaneSurface' : '{D3A1F3D5-4942-4904-928D-910183FAD5B3}',
-    'IGcadRevolvedSurface' : '{BC4B31D4-9595-43C1-8BC9-AC5F8003F179}',
-    'IGcadSweptSurface' : '{0EA16B8C-632D-4AC3-8B6F-FECEB9558A7D}',
-    'IGcadCamera' : '{6AB2CF34-6BE5-4E86-B1A7-BF6E8FC43E5E}',
-    'IGcadLight' : '{C45579D8-B271-461E-B658-F57BE7B1B4EB}',
-    'IGcadLight2' : '{2B8F45C4-3CE8-482C-918E-ECD39EC2B86D}',
-    'IGcadLight3' : '{0370B70A-6C67-45FD-A247-B2457AEE6ABC}',
-    'IGcadIdPair' : '{1D3AF325-66DF-4CF6-B19F-1DCF053D75F9}',
-    'IGcadLayerStateManager' : '{FC6D298C-564D-4ACA-850F-3ADF1C01B6D9}',
-    'IGcadSortentsTable' : '{DEDB84CD-55C2-4F73-B534-7F06EBF8919F}',
-    'IGcadTableStyle' : '{4EC5CAC3-22E8-4B42-BBA8-77271650DEA4}',
-    'IGcadArcAlignedText' : '{1AAE5275-D7FE-47D0-9264-9BE6D9A4A9E4}',
-    'IGcadNurbSurface' : '{B4087378-9A1B-4996-B1C0-D3EAD492FA7A}',
-    'IGcadPointCloudEx' : '{43DC153E-7BF6-43A8-96AC-C6788C702C9D}',
+    'IAcadDynamicBlockReferenceProperty' : '{017EAE27-EA30-4151-8272-BA072063C218}',
+    'IAcadAttributeReference' : '{183D30F5-55EB-4409-9FC8-06B66E6578FA}',
+    'IAcadAssocArrayPath' : '{F39B739A-A0E8-49C5-95B9-23F7C6496075}',
+    'IAcadAssocArrayPolar' : '{79D41413-42B3-449F-8959-DA04EE748C1B}',
+    'IAcadAssocArrayRectangular' : '{A0D37AF5-3A72-4ACC-84DC-D815BE30FF65}',
+    'IAcadTableCell' : '{5C5196BD-9E8D-4B23-A0CF-5FB8550456FD}',
+    'IAcadSecurityParams' : '{B7BD1413-D044-4527-B229-ECC06EB76040}',
+    '_IAcadScriptJetEvents' : '{1BAA42A6-463E-492D-BB53-0D4028148443}',
+    'IAcadScriptJet' : '{6BBD85F2-FBE1-414E-8A89-76379B9E2E4B}',
+    'IAcadOle' : '{75419B16-46F2-4245-A624-7819E87EEA8A}',
+    'IAcadSubDMesh' : '{D594DD08-3145-43F2-B9A9-D2DDAC0E0141}',
+    'IAcadHelix' : '{4A201B9C-6555-45ED-A3B5-9342F2F28D71}',
+    'IAcadSection2' : '{B894B727-442F-4560-B162-4AFD82F79E09}',
+    'IAcadUnderlay' : '{78A705C7-0B90-4FBC-AF7A-AFFAEDD2CC1F}',
+    'IAcadDwfUnderlay' : '{DCC7E463-86DB-4343-BD67-EB3E51A0B74F}',
+    'IAcadSurface' : '{223679F5-6EE7-45C9-B778-E1B2A00D49B4}',
+    'IAcadExtrudedSurface' : '{FB90B93B-E0A9-43E8-A5F9-B79015C81B0E}',
+    'IAcadLoftedSurface' : '{83049727-9881-4D4D-8E57-63C83CB0CC6E}',
+    'IAcadPlaneSurface' : '{D3A1F3D5-4942-4904-928D-910183FAD5B3}',
+    'IAcadRevolvedSurface' : '{BC4B31D4-9595-43C1-8BC9-AC5F8003F179}',
+    'IAcadSweptSurface' : '{0EA16B8C-632D-4AC3-8B6F-FECEB9558A7D}',
+    'IAcadCamera' : '{6AB2CF34-6BE5-4E86-B1A7-BF6E8FC43E5E}',
+    'IAcadLight' : '{C45579D8-B271-461E-B658-F57BE7B1B4EB}',
+    'IAcadLight2' : '{2B8F45C4-3CE8-482C-918E-ECD39EC2B86D}',
+    'IAcadLight3' : '{0370B70A-6C67-45FD-A247-B2457AEE6ABC}',
+    'IAcadIdPair' : '{1D3AF325-66DF-4CF6-B19F-1DCF053D75F9}',
+    'IAcadLayerStateManager' : '{FC6D298C-564D-4ACA-850F-3ADF1C01B6D9}',
+    'IAcadSortentsTable' : '{DEDB84CD-55C2-4F73-B534-7F06EBF8919F}',
+    'IAcadTableStyle' : '{4EC5CAC3-22E8-4B42-BBA8-77271650DEA4}',
+    'IAcadArcAlignedText' : '{1AAE5275-D7FE-47D0-9264-9BE6D9A4A9E4}',
+    'IAcadNurbSurface' : '{B4087378-9A1B-4996-B1C0-D3EAD492FA7A}',
+    'IAcadPointCloudEx' : '{43DC153E-7BF6-43A8-96AC-C6788C702C9D}',
     'IGcPePropertyEditorColor' : '{30DA6F50-6158-43ED-97F7-E9B19E58BB1A}',
-    'IGcadShadowDisplay' : '{0552FF7C-E7C5-4890-984F-FD499B4B566F}',
+    'IAcadShadowDisplay' : '{0552FF7C-E7C5-4890-984F-FD499B4B566F}',
 }
 
 win32com.client.constants.__dicts__.append(constants.__dict__)
 
-def getApp() -> IGcadApplication:
+def getApp() -> IAcadApplication:
     id = GcadApplication.CLSID
     return  win32com.client.Dispatch(id)
 
