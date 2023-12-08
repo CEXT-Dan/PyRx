@@ -939,11 +939,11 @@ class constants:
     zcNormals                     =2          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0009
     zcObject                      =1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0009
     zcRGB                         =0          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0009
-    ZCADSECURITYPARAMS_ADD_TIMESTAMP=32         # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
-    ZCADSECURITYPARAMS_ENCRYPT_DATA=1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
-    ZCADSECURITYPARAMS_ENCRYPT_PROPS=2          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
-    ZCADSECURITYPARAMS_SIGN_DATA  =16         # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
-    ZCADSECURITYPARAMS_ALGID_RC4  =26625      # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0011
+    AcadSECURITYPARAMS_ADD_TIMESTAMP=32         # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
+    AcadSECURITYPARAMS_ENCRYPT_DATA=1          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
+    AcadSECURITYPARAMS_ENCRYPT_PROPS=2          # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
+    AcadSECURITYPARAMS_SIGN_DATA  =16         # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0010
+    AcadSECURITYPARAMS_ALGID_RC4  =26625      # from enum __MIDL___MIDL_itf_zwcad_0000_0000_0011
 
 from win32com.client import DispatchBaseClass
 class IArcTextObj(DispatchBaseClass):
@@ -1748,10 +1748,10 @@ class IAcadApplication(DispatchBaseClass):
             , Serial, chkLock, retIsNet)
 
     # Result is of type IAcadState
-    def GetZcadState(self):
+    def GetAcadState(self):
         ret = self._oleobj_.InvokeTypes(42, LCID, 1, (9, 0), (),)
         if ret is not None:
-            ret = Dispatch(ret, 'GetZcadState', '{EC923162-5A21-11E7-B72E-BC5FF42AC839}')
+            ret = Dispatch(ret, 'GetAcadState', '{EC923162-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
     def ListZrx(self):
@@ -1816,7 +1816,7 @@ class IAcadApplication(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(36, LCID, 1, (24, 0), (),)
 
     def ZoomPickWindow(self):
-        'Zoom window with ZCAD interaction.'
+        'Zoom window with Acad interaction.'
         return self._oleobj_.InvokeTypes(41, LCID, 1, (24, 0), (),)
 
     def ZoomPrevious(self):
@@ -17790,7 +17790,7 @@ class IAcadPreferencesSystem(DispatchBaseClass):
         "BeepOnError": (1610743819, 2, (11, 0), (), "BeepOnError", None),
         "DisplayOLEScale": (1610743811, 2, (11, 0), (), "DisplayOLEScale", None),
         "EnableStartupDialog": (1610743817, 2, (11, 0), (), "EnableStartupDialog", None),
-        "LoadZcadLspInAllDocuments": (1610743823, 2, (11, 0), (), "LoadZcadLspInAllDocuments", None),
+        "LoadAcadLspInAllDocuments": (1610743823, 2, (11, 0), (), "LoadAcadLspInAllDocuments", None),
         "ShowWarningMessages": (1610743821, 2, (11, 0), (), "ShowWarningMessages", None),
         "SingleDocumentMode": (1610743809, 2, (11, 0), (), "SingleDocumentMode", None),
         "StoreSQLIndex": (1610743813, 2, (11, 0), (), "StoreSQLIndex", None),
@@ -17800,7 +17800,7 @@ class IAcadPreferencesSystem(DispatchBaseClass):
         "BeepOnError": ((1610743819, LCID, 4, 0),()),
         "DisplayOLEScale": ((1610743811, LCID, 4, 0),()),
         "EnableStartupDialog": ((1610743817, LCID, 4, 0),()),
-        "LoadZcadLspInAllDocuments": ((1610743823, LCID, 4, 0),()),
+        "LoadAcadLspInAllDocuments": ((1610743823, LCID, 4, 0),()),
         "ShowWarningMessages": ((1610743821, LCID, 4, 0),()),
         "SingleDocumentMode": ((1610743809, LCID, 4, 0),()),
         "StoreSQLIndex": ((1610743813, LCID, 4, 0),()),
@@ -25061,7 +25061,7 @@ class IAcadAcCmColor(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class _DZcadApplicationEvents:
+class _DAcadApplicationEvents:
     'ZWCAD Application Event Interface'
     CLSID = CLSID_Sink = IID('{EC923092-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{2F671EB3-669F-11E7-91B7-BC5FF42AC839}')
@@ -25165,7 +25165,7 @@ class _DZcadApplicationEvents:
 #		'Happens when the main frame window state changes.'
 
 
-class _DZcadDocumentEvents:
+class _DAcadDocumentEvents:
     'ZWCAD Document Event Interface'
     CLSID = CLSID_Sink = IID('{EC923172-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{2F671DA0-669F-11E7-91B7-BC5FF42AC839}')
@@ -25295,7 +25295,7 @@ class ArcTextObj(CoClassBaseClass): # A CoClass
     ]
     default_interface = IArcTextObj
 
-class Zcad3DFace(CoClassBaseClass): # A CoClass
+class Acad3DFace(CoClassBaseClass): # A CoClass
     # ZWCAD 3dFace Object
     CLSID = IID('{EC9231B4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25305,7 +25305,7 @@ class Zcad3DFace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcad3DFace
 
-class Zcad3DPolyline(CoClassBaseClass): # A CoClass
+class Acad3DPolyline(CoClassBaseClass): # A CoClass
     # ZWCAD 3dPolyline Object
     CLSID = IID('{EC92304C-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25315,7 +25315,7 @@ class Zcad3DPolyline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcad3DPolyline
 
-class Zcad3DSolid(CoClassBaseClass): # A CoClass
+class Acad3DSolid(CoClassBaseClass): # A CoClass
     # ZWCAD 3dSolid Object
     CLSID = IID('{EC923173-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25326,32 +25326,32 @@ class Zcad3DSolid(CoClassBaseClass): # A CoClass
     default_interface = IAcad3DSolid
 
 # This CoClass is known by the name 'ZWCAD.Application.2024'
-class ZcadApplication(CoClassBaseClass): # A CoClass
-    # ZcadApplication Class
+class AcadApplication(CoClassBaseClass): # A CoClass
+    # AcadApplication Class
     CLSID = IID('{EC92313D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
-        _DZcadApplicationEvents,
+        _DAcadApplicationEvents,
     ]
-    default_source = _DZcadApplicationEvents
+    default_source = _DAcadApplicationEvents
     coclass_interfaces = [
         IAcadApplication,
     ]
     default_interface = IAcadApplication
 
 # This CoClass is known by the name 'ZWCAD.Application.2024'
-class ZcadApplicationMinorVersion(CoClassBaseClass): # A CoClass
-    # ZcadApplication Versioned Class
+class AcadApplicationMinorVersion(CoClassBaseClass): # A CoClass
+    # AcadApplication Versioned Class
     CLSID = IID('{2F671EB3-669F-11E7-91B7-BC5FF42AC839}')
     coclass_sources = [
-        _DZcadApplicationEvents,
+        _DAcadApplicationEvents,
     ]
-    default_source = _DZcadApplicationEvents
+    default_source = _DAcadApplicationEvents
     coclass_interfaces = [
         IAcadApplication,
     ]
     default_interface = IAcadApplication
 
-class ZcadArc(CoClassBaseClass): # A CoClass
+class AcadArc(CoClassBaseClass): # A CoClass
     # ZWCAD Arc Object
     CLSID = IID('{EC9230B1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25361,7 +25361,7 @@ class ZcadArc(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadArc
 
-class ZcadAttribute(CoClassBaseClass): # A CoClass
+class AcadAttribute(CoClassBaseClass): # A CoClass
     # ZWCAD Attribute Object
     CLSID = IID('{EC923182-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25371,7 +25371,7 @@ class ZcadAttribute(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAttribute
 
-class ZcadAttributeReference(CoClassBaseClass): # A CoClass
+class AcadAttributeReference(CoClassBaseClass): # A CoClass
     # ZWCAD Attribute Reference Object
     CLSID = IID('{EC9231A3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25381,7 +25381,7 @@ class ZcadAttributeReference(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAttributeReference
 
-class ZcadBlock(CoClassBaseClass): # A CoClass
+class AcadBlock(CoClassBaseClass): # A CoClass
     # ZWCAD Block Object
     CLSID = IID('{EC923016-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25390,7 +25390,7 @@ class ZcadBlock(CoClassBaseClass): # A CoClass
         IAcadBlock,
     ]
 
-class ZcadBlockReference(CoClassBaseClass): # A CoClass
+class AcadBlockReference(CoClassBaseClass): # A CoClass
     # ZWCAD Block Reference Object
     CLSID = IID('{EC92315A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25400,7 +25400,7 @@ class ZcadBlockReference(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadBlockReference
 
-class ZcadBlocks(CoClassBaseClass): # A CoClass
+class AcadBlocks(CoClassBaseClass): # A CoClass
     # ZwcadBlocks Class
     CLSID = IID('{EC9231B1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25410,7 +25410,7 @@ class ZcadBlocks(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadBlocks
 
-class ZcadCircle(CoClassBaseClass): # A CoClass
+class AcadCircle(CoClassBaseClass): # A CoClass
     # ZWCAD Circle Object
     CLSID = IID('{EC92303A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25420,8 +25420,8 @@ class ZcadCircle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadCircle
 
-class ZcadDatabase(CoClassBaseClass): # A CoClass
-    # ZcadDatabase Class
+class AcadDatabase(CoClassBaseClass): # A CoClass
+    # AcadDatabase Class
     CLSID = IID('{EC92317A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25430,7 +25430,7 @@ class ZcadDatabase(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDatabase
 
-class ZcadDatabasePreferences(CoClassBaseClass): # A CoClass
+class AcadDatabasePreferences(CoClassBaseClass): # A CoClass
     # ZWCAD Database Preferences Object
     CLSID = IID('{EC9231F0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25440,7 +25440,7 @@ class ZcadDatabasePreferences(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDatabasePreferences
 
-class ZcadDgnUnderlay(CoClassBaseClass): # A CoClass
+class AcadDgnUnderlay(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25449,7 +25449,7 @@ class ZcadDgnUnderlay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUnderlay
 
-class ZcadDictionaries(CoClassBaseClass): # A CoClass
+class AcadDictionaries(CoClassBaseClass): # A CoClass
     # ZwcadDictionaries Class
     CLSID = IID('{EC923015-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25459,8 +25459,8 @@ class ZcadDictionaries(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDictionaries
 
-class ZcadDictionary(CoClassBaseClass): # A CoClass
-    # ZcadDictionary Class
+class AcadDictionary(CoClassBaseClass): # A CoClass
+    # AcadDictionary Class
     CLSID = IID('{EC9230BF-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25469,7 +25469,7 @@ class ZcadDictionary(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDictionary
 
-class ZcadDim3PointAngular(CoClassBaseClass): # A CoClass
+class AcadDim3PointAngular(CoClassBaseClass): # A CoClass
     # ZWCAD 3PointAngular Dimension Object
     CLSID = IID('{EC923072-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25479,7 +25479,7 @@ class ZcadDim3PointAngular(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDim3PointAngular
 
-class ZcadDimAligned(CoClassBaseClass): # A CoClass
+class AcadDimAligned(CoClassBaseClass): # A CoClass
     # ZWCAD Aligned Dimension Object
     CLSID = IID('{EC923118-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25489,7 +25489,7 @@ class ZcadDimAligned(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimAligned
 
-class ZcadDimAngular(CoClassBaseClass): # A CoClass
+class AcadDimAngular(CoClassBaseClass): # A CoClass
     # ZWCAD Angular Dimension Object
     CLSID = IID('{EC92306D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25499,7 +25499,7 @@ class ZcadDimAngular(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimAngular
 
-class ZcadDimArcLength(CoClassBaseClass): # A CoClass
+class AcadDimArcLength(CoClassBaseClass): # A CoClass
     # ZWCAD Arc Length Dimension Object
     CLSID = IID('{EC92301D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25509,7 +25509,7 @@ class ZcadDimArcLength(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimArcLength
 
-class ZcadDimDiametric(CoClassBaseClass): # A CoClass
+class AcadDimDiametric(CoClassBaseClass): # A CoClass
     # ZwcadDimDiametric Class
     CLSID = IID('{EC9231E5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25519,7 +25519,7 @@ class ZcadDimDiametric(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimDiametric
 
-class ZcadDimOrdinate(CoClassBaseClass): # A CoClass
+class AcadDimOrdinate(CoClassBaseClass): # A CoClass
     # ZWCAD Ordinate Dimension Object
     CLSID = IID('{EC92313B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25529,7 +25529,7 @@ class ZcadDimOrdinate(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimOrdinate
 
-class ZcadDimRadial(CoClassBaseClass): # A CoClass
+class AcadDimRadial(CoClassBaseClass): # A CoClass
     # ZWCAD Radial Dimension Object
     CLSID = IID('{EC922FEA-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25539,7 +25539,7 @@ class ZcadDimRadial(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimRadial
 
-class ZcadDimRadialLarge(CoClassBaseClass): # A CoClass
+class AcadDimRadialLarge(CoClassBaseClass): # A CoClass
     # ZWCAD Radial Large Dimension Object
     CLSID = IID('{EC923110-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25549,7 +25549,7 @@ class ZcadDimRadialLarge(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimRadialLarge
 
-class ZcadDimRotated(CoClassBaseClass): # A CoClass
+class AcadDimRotated(CoClassBaseClass): # A CoClass
     # ZWCAD Rotated Dimension Object
     CLSID = IID('{EC923179-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25559,7 +25559,7 @@ class ZcadDimRotated(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimRotated
 
-class ZcadDimStyle(CoClassBaseClass): # A CoClass
+class AcadDimStyle(CoClassBaseClass): # A CoClass
     # ZWCAD DimStyle Object
     CLSID = IID('{EC923085-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25569,7 +25569,7 @@ class ZcadDimStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimStyle
 
-class ZcadDimStyles(CoClassBaseClass): # A CoClass
+class AcadDimStyles(CoClassBaseClass): # A CoClass
     # ZwcadDimStyles Class
     CLSID = IID('{EC923002-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25579,7 +25579,7 @@ class ZcadDimStyles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimStyles
 
-class ZcadDimension(CoClassBaseClass): # A CoClass
+class AcadDimension(CoClassBaseClass): # A CoClass
     # ZwcadDimension Class
     CLSID = IID('{EC9230F7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25590,20 +25590,20 @@ class ZcadDimension(CoClassBaseClass): # A CoClass
     default_interface = IAcadDimension
 
 # This CoClass is known by the name 'ZWCAD.Drawing.2024'
-class ZcadDocument(CoClassBaseClass): # A CoClass
-    # ZcadDocument Class
+class AcadDocument(CoClassBaseClass): # A CoClass
+    # AcadDocument Class
     CLSID = IID('{2F671DA0-669F-11E7-91B7-BC5FF42AC839}')
     coclass_sources = [
-        _DZcadDocumentEvents,
+        _DAcadDocumentEvents,
     ]
-    default_source = _DZcadDocumentEvents
+    default_source = _DAcadDocumentEvents
     coclass_interfaces = [
         IAcadDocument,
     ]
     default_interface = IAcadDocument
 
-class ZcadDocuments(CoClassBaseClass): # A CoClass
-    # ZcadDocuments Class
+class AcadDocuments(CoClassBaseClass): # A CoClass
+    # AcadDocuments Class
     CLSID = IID('{EC9231BB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25612,7 +25612,7 @@ class ZcadDocuments(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDocuments
 
-class ZcadDwfUnderlay(CoClassBaseClass): # A CoClass
+class AcadDwfUnderlay(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92312A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25622,7 +25622,7 @@ class ZcadDwfUnderlay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDwfUnderlay
 
-class ZcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
+class AcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC922FC3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25631,7 +25631,7 @@ class ZcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDynamicBlockReferenceProperty
 
-class ZcadEllipse(CoClassBaseClass): # A CoClass
+class AcadEllipse(CoClassBaseClass): # A CoClass
     # ZWCAD Ellipse Object
     CLSID = IID('{EC9231C5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25641,8 +25641,8 @@ class ZcadEllipse(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadEllipse
 
-class ZcadEntity(CoClassBaseClass): # A CoClass
-    # ZcadEntity Class
+class AcadEntity(CoClassBaseClass): # A CoClass
+    # AcadEntity Class
     CLSID = IID('{EC92304D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25651,7 +25651,7 @@ class ZcadEntity(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadEntity
 
-class ZcadExternalReference(CoClassBaseClass): # A CoClass
+class AcadExternalReference(CoClassBaseClass): # A CoClass
     # ZWCAD External Reference Object
     CLSID = IID('{EC923009-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25661,7 +25661,7 @@ class ZcadExternalReference(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadExternalReference
 
-class ZcadExtrudedSurface(CoClassBaseClass): # A CoClass
+class AcadExtrudedSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923284-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25670,7 +25670,7 @@ class ZcadExtrudedSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadExtrudedSurface
 
-class ZcadFileDependencies(CoClassBaseClass): # A CoClass
+class AcadFileDependencies(CoClassBaseClass): # A CoClass
     # ZwcadFileDependencies Class
     CLSID = IID('{EC92315B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25680,7 +25680,7 @@ class ZcadFileDependencies(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadFileDependencies
 
-class ZcadFileDependency(CoClassBaseClass): # A CoClass
+class AcadFileDependency(CoClassBaseClass): # A CoClass
     # ZwcadFileDependency Class
     CLSID = IID('{EC9231C4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25690,7 +25690,7 @@ class ZcadFileDependency(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadFileDependency
 
-class ZcadGeoPositionMarker(CoClassBaseClass): # A CoClass
+class AcadGeoPositionMarker(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25699,7 +25699,7 @@ class ZcadGeoPositionMarker(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadGeoPositionMarker
 
-class ZcadGeomapImage(CoClassBaseClass): # A CoClass
+class AcadGeomapImage(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A8-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25708,7 +25708,7 @@ class ZcadGeomapImage(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadGeomapImage
 
-class ZcadGroup(CoClassBaseClass): # A CoClass
+class AcadGroup(CoClassBaseClass): # A CoClass
     # ZWCAD Group Object
     CLSID = IID('{EC92316E-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25718,7 +25718,7 @@ class ZcadGroup(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadGroup
 
-class ZcadGroups(CoClassBaseClass): # A CoClass
+class AcadGroups(CoClassBaseClass): # A CoClass
     # ZwcadGroups Class
     CLSID = IID('{EC9231D7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25728,7 +25728,7 @@ class ZcadGroups(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadGroups
 
-class ZcadHatch(CoClassBaseClass): # A CoClass
+class AcadHatch(CoClassBaseClass): # A CoClass
     # ZWCAD Hatch Object
     CLSID = IID('{EC923120-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25738,7 +25738,7 @@ class ZcadHatch(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHatch
 
-class ZcadHelix(CoClassBaseClass): # A CoClass
+class AcadHelix(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923012-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25747,7 +25747,7 @@ class ZcadHelix(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHelix
 
-class ZcadHyperlink(CoClassBaseClass): # A CoClass
+class AcadHyperlink(CoClassBaseClass): # A CoClass
     # ZWCAD Object
     CLSID = IID('{EC9230B3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25757,7 +25757,7 @@ class ZcadHyperlink(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHyperlink
 
-class ZcadHyperlinks(CoClassBaseClass): # A CoClass
+class AcadHyperlinks(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923046-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25766,7 +25766,7 @@ class ZcadHyperlinks(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHyperlinks
 
-class ZcadIdPair(CoClassBaseClass): # A CoClass
+class AcadIdPair(CoClassBaseClass): # A CoClass
     # ZWCAD IdPair Object
     CLSID = IID('{EC9230BC-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25776,7 +25776,7 @@ class ZcadIdPair(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadIdPair
 
-class ZcadLWPolyline(CoClassBaseClass): # A CoClass
+class AcadLWPolyline(CoClassBaseClass): # A CoClass
     # ZWCAD Lightweight Polyline Object
     CLSID = IID('{EC92307B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25786,7 +25786,7 @@ class ZcadLWPolyline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLWPolyline
 
-class ZcadLayer(CoClassBaseClass): # A CoClass
+class AcadLayer(CoClassBaseClass): # A CoClass
     # ZWCAD Layer Object
     CLSID = IID('{EC9231D0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25796,7 +25796,7 @@ class ZcadLayer(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayer
 
-class ZcadLayerStateManager(CoClassBaseClass): # A CoClass
+class AcadLayerStateManager(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92312F-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25805,7 +25805,7 @@ class ZcadLayerStateManager(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayerStateManager
 
-class ZcadLayers(CoClassBaseClass): # A CoClass
+class AcadLayers(CoClassBaseClass): # A CoClass
     # ZwcadLayers Class
     CLSID = IID('{EC9230B8-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25815,7 +25815,7 @@ class ZcadLayers(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayers
 
-class ZcadLayout(CoClassBaseClass): # A CoClass
+class AcadLayout(CoClassBaseClass): # A CoClass
     # ZWCAD Layout Object
     CLSID = IID('{EC922FF9-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25825,7 +25825,7 @@ class ZcadLayout(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayout
 
-class ZcadLayouts(CoClassBaseClass): # A CoClass
+class AcadLayouts(CoClassBaseClass): # A CoClass
     # ZWCAD Layouts Object
     CLSID = IID('{EC923079-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25835,7 +25835,7 @@ class ZcadLayouts(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayouts
 
-class ZcadLeader(CoClassBaseClass): # A CoClass
+class AcadLeader(CoClassBaseClass): # A CoClass
     # ZWCAD Leader Object
     CLSID = IID('{EC922FD3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25845,7 +25845,7 @@ class ZcadLeader(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLeader
 
-class ZcadLine(CoClassBaseClass): # A CoClass
+class AcadLine(CoClassBaseClass): # A CoClass
     # ZWCAD Line Object
     CLSID = IID('{EC923177-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25855,7 +25855,7 @@ class ZcadLine(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLine
 
-class ZcadLineType(CoClassBaseClass): # A CoClass
+class AcadLineType(CoClassBaseClass): # A CoClass
     # ZWCAD LineType Object
     CLSID = IID('{EC922FF6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25865,7 +25865,7 @@ class ZcadLineType(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLineType
 
-class ZcadLineTypes(CoClassBaseClass): # A CoClass
+class AcadLineTypes(CoClassBaseClass): # A CoClass
     # ZwcadLineTypes Class
     CLSID = IID('{EC922FE5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25875,7 +25875,7 @@ class ZcadLineTypes(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLineTypes
 
-class ZcadLoftedSurface(CoClassBaseClass): # A CoClass
+class AcadLoftedSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923222-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25884,7 +25884,7 @@ class ZcadLoftedSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLoftedSurface
 
-class ZcadMInsertBlock(CoClassBaseClass): # A CoClass
+class AcadMInsertBlock(CoClassBaseClass): # A CoClass
     # ZWCAD MInsertBlock Object
     CLSID = IID('{EC9230F1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25894,7 +25894,7 @@ class ZcadMInsertBlock(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMInsertBlock
 
-class ZcadMLeader(CoClassBaseClass): # A CoClass
+class AcadMLeader(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923004-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25903,7 +25903,7 @@ class ZcadMLeader(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLeader
 
-class ZcadMLeaderLeader(CoClassBaseClass): # A CoClass
+class AcadMLeaderLeader(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232B9-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25912,7 +25912,7 @@ class ZcadMLeaderLeader(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLeaderLeader
 
-class ZcadMLeaderStyle(CoClassBaseClass): # A CoClass
+class AcadMLeaderStyle(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923148-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25921,7 +25921,7 @@ class ZcadMLeaderStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLeaderStyle
 
-class ZcadMLine(CoClassBaseClass): # A CoClass
+class AcadMLine(CoClassBaseClass): # A CoClass
     # ZWCAD MLine Object
     CLSID = IID('{EC9230C1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25931,7 +25931,7 @@ class ZcadMLine(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLine
 
-class ZcadMText(CoClassBaseClass): # A CoClass
+class AcadMText(CoClassBaseClass): # A CoClass
     # ZWCAD MText Object
     CLSID = IID('{EC92302D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25941,7 +25941,7 @@ class ZcadMText(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMText
 
-class ZcadMaterial(CoClassBaseClass): # A CoClass
+class AcadMaterial(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923024-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25950,7 +25950,7 @@ class ZcadMaterial(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMaterial
 
-class ZcadMaterials(CoClassBaseClass): # A CoClass
+class AcadMaterials(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92310B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -25959,7 +25959,7 @@ class ZcadMaterials(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMaterials
 
-class ZcadMenuBar(CoClassBaseClass): # A CoClass
+class AcadMenuBar(CoClassBaseClass): # A CoClass
     # ZWCAD MenuBar Object
     CLSID = IID('{EC922FED-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25969,7 +25969,7 @@ class ZcadMenuBar(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMenuBar
 
-class ZcadMenuGroup(CoClassBaseClass): # A CoClass
+class AcadMenuGroup(CoClassBaseClass): # A CoClass
     # ZWCAD MenuGroup Object
     CLSID = IID('{EC9231F6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25979,7 +25979,7 @@ class ZcadMenuGroup(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMenuGroup
 
-class ZcadMenuGroups(CoClassBaseClass): # A CoClass
+class AcadMenuGroups(CoClassBaseClass): # A CoClass
     # ZWCAD MenuGroups Object
     CLSID = IID('{EC923146-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -25989,7 +25989,7 @@ class ZcadMenuGroups(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMenuGroups
 
-class ZcadModelSpace(CoClassBaseClass): # A CoClass
+class AcadModelSpace(CoClassBaseClass): # A CoClass
     # ZWCAD ModelSpace Object
     CLSID = IID('{EC9231A1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26000,7 +26000,7 @@ class ZcadModelSpace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadModelSpace
 
-class ZcadNurbSurface(CoClassBaseClass): # A CoClass
+class AcadNurbSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26009,8 +26009,8 @@ class ZcadNurbSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadNurbSurface
 
-class ZcadObject(CoClassBaseClass): # A CoClass
-    # ZcadObject Class
+class AcadObject(CoClassBaseClass): # A CoClass
+    # AcadObject Class
     CLSID = IID('{EC923157-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26019,15 +26019,15 @@ class ZcadObject(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadObject
 
-class ZcadObjectEvents(CoClassBaseClass): # A CoClass
-    # ZcadObjectEvents Class
+class AcadObjectEvents(CoClassBaseClass): # A CoClass
+    # AcadObjectEvents Class
     CLSID = IID('{EC922FDF-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
     ]
 
-class ZcadOle(CoClassBaseClass): # A CoClass
+class AcadOle(CoClassBaseClass): # A CoClass
     # ZWCAD OLE Object
     CLSID = IID('{EC92311B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26037,7 +26037,7 @@ class ZcadOle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadOle
 
-class ZcadPViewport(CoClassBaseClass): # A CoClass
+class AcadPViewport(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923088-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26046,7 +26046,7 @@ class ZcadPViewport(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPViewport
 
-class ZcadPaperSpace(CoClassBaseClass): # A CoClass
+class AcadPaperSpace(CoClassBaseClass): # A CoClass
     # ZWCAD PaperSpace Object
     CLSID = IID('{EC9231E4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26055,7 +26055,7 @@ class ZcadPaperSpace(CoClassBaseClass): # A CoClass
         IAcadPaperSpace,
     ]
 
-class ZcadPdfUnderlay(CoClassBaseClass): # A CoClass
+class AcadPdfUnderlay(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92327C-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26064,7 +26064,7 @@ class ZcadPdfUnderlay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUnderlay
 
-class ZcadPlaneSurface(CoClassBaseClass): # A CoClass
+class AcadPlaneSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923036-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26073,7 +26073,7 @@ class ZcadPlaneSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlaneSurface
 
-class ZcadPlot(CoClassBaseClass): # A CoClass
+class AcadPlot(CoClassBaseClass): # A CoClass
     # ZWCAD Plot Object
     CLSID = IID('{EC92315F-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26083,7 +26083,7 @@ class ZcadPlot(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlot
 
-class ZcadPlotConfiguration(CoClassBaseClass): # A CoClass
+class AcadPlotConfiguration(CoClassBaseClass): # A CoClass
     # ZWCAD PlotConfiguration Object
     CLSID = IID('{EC9231A5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26093,7 +26093,7 @@ class ZcadPlotConfiguration(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlotConfiguration
 
-class ZcadPlotConfigurations(CoClassBaseClass): # A CoClass
+class AcadPlotConfigurations(CoClassBaseClass): # A CoClass
     # ZWCAD PlotConfigurations Object
     CLSID = IID('{EC923069-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26103,7 +26103,7 @@ class ZcadPlotConfigurations(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlotConfigurations
 
-class ZcadPoint(CoClassBaseClass): # A CoClass
+class AcadPoint(CoClassBaseClass): # A CoClass
     # ZWCAD Point Object
     CLSID = IID('{EC92314D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26113,7 +26113,7 @@ class ZcadPoint(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPoint
 
-class ZcadPointCloud(CoClassBaseClass): # A CoClass
+class AcadPointCloud(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A9-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26122,7 +26122,7 @@ class ZcadPointCloud(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPointCloud
 
-class ZcadPointCloudEx(CoClassBaseClass): # A CoClass
+class AcadPointCloudEx(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232AA-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26131,7 +26131,7 @@ class ZcadPointCloudEx(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPointCloudEx2
 
-class ZcadPolyfaceMesh(CoClassBaseClass): # A CoClass
+class AcadPolyfaceMesh(CoClassBaseClass): # A CoClass
     # ZWCAD PolyfaceMesh Object
     CLSID = IID('{EC9231F8-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26141,7 +26141,7 @@ class ZcadPolyfaceMesh(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPolyfaceMesh
 
-class ZcadPolygonMesh(CoClassBaseClass): # A CoClass
+class AcadPolygonMesh(CoClassBaseClass): # A CoClass
     # ZWCAD PolygonMesh Object
     CLSID = IID('{EC923017-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26151,7 +26151,7 @@ class ZcadPolygonMesh(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPolygonMesh
 
-class ZcadPolyline(CoClassBaseClass): # A CoClass
+class AcadPolyline(CoClassBaseClass): # A CoClass
     # ZWCAD Polyline Object
     CLSID = IID('{EC92305E-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26161,7 +26161,7 @@ class ZcadPolyline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPolyline
 
-class ZcadPopupMenu(CoClassBaseClass): # A CoClass
+class AcadPopupMenu(CoClassBaseClass): # A CoClass
     # ZWCAD PopupMenu Object
     CLSID = IID('{EC923008-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26171,7 +26171,7 @@ class ZcadPopupMenu(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPopupMenu
 
-class ZcadPopupMenuItem(CoClassBaseClass): # A CoClass
+class AcadPopupMenuItem(CoClassBaseClass): # A CoClass
     # ZWCAD PopupMenuItem Object
     CLSID = IID('{EC9230D4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26181,7 +26181,7 @@ class ZcadPopupMenuItem(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPopupMenuItem
 
-class ZcadPopupMenus(CoClassBaseClass): # A CoClass
+class AcadPopupMenus(CoClassBaseClass): # A CoClass
     # ZWCAD PopupMenus Object
     CLSID = IID('{EC922FD9-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26191,7 +26191,7 @@ class ZcadPopupMenus(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPopupMenus
 
-class ZcadPreferences(CoClassBaseClass): # A CoClass
+class AcadPreferences(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC922FC7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26200,7 +26200,7 @@ class ZcadPreferences(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferences
 
-class ZcadPreferencesDisplay(CoClassBaseClass): # A CoClass
+class AcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     # ZWCAD Display Preferences Object
     CLSID = IID('{EC92300A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26210,7 +26210,7 @@ class ZcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesDisplay
 
-class ZcadPreferencesDrafting(CoClassBaseClass): # A CoClass
+class AcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     # ZWCAD Drafting Preferences Object
     CLSID = IID('{EC9231EB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26220,7 +26220,7 @@ class ZcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesDrafting
 
-class ZcadPreferencesFiles(CoClassBaseClass): # A CoClass
+class AcadPreferencesFiles(CoClassBaseClass): # A CoClass
     # ZWCAD Files Preferences Object
     CLSID = IID('{EC9230A0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26230,7 +26230,7 @@ class ZcadPreferencesFiles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesFiles
 
-class ZcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
+class AcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     # ZWCAD OpenSave Preferences Object
     CLSID = IID('{EC92304A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26240,7 +26240,7 @@ class ZcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesOpenSave
 
-class ZcadPreferencesOutput(CoClassBaseClass): # A CoClass
+class AcadPreferencesOutput(CoClassBaseClass): # A CoClass
     # ZWCAD Output Preferences Object
     CLSID = IID('{EC9230F0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26250,7 +26250,7 @@ class ZcadPreferencesOutput(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesOutput
 
-class ZcadPreferencesProfiles(CoClassBaseClass): # A CoClass
+class AcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     # ZWCAD Profiles Preferences Object
     CLSID = IID('{EC9231F7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26260,7 +26260,7 @@ class ZcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesProfiles
 
-class ZcadPreferencesSelection(CoClassBaseClass): # A CoClass
+class AcadPreferencesSelection(CoClassBaseClass): # A CoClass
     # ZWCAD Selection Preferences Object
     CLSID = IID('{EC9230A7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26270,7 +26270,7 @@ class ZcadPreferencesSelection(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesSelection
 
-class ZcadPreferencesSystem(CoClassBaseClass): # A CoClass
+class AcadPreferencesSystem(CoClassBaseClass): # A CoClass
     # ZWCAD System Preferences Object
     CLSID = IID('{EC923185-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26280,7 +26280,7 @@ class ZcadPreferencesSystem(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesSystem
 
-class ZcadPreferencesUser(CoClassBaseClass): # A CoClass
+class AcadPreferencesUser(CoClassBaseClass): # A CoClass
     # ZWCAD User Preferences Object
     CLSID = IID('{EC9231A8-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26290,7 +26290,7 @@ class ZcadPreferencesUser(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesUser
 
-class ZcadRasterImage(CoClassBaseClass): # A CoClass
+class AcadRasterImage(CoClassBaseClass): # A CoClass
     # ZWCAD Raster Object
     CLSID = IID('{EC923047-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26300,7 +26300,7 @@ class ZcadRasterImage(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRasterImage
 
-class ZcadRay(CoClassBaseClass): # A CoClass
+class AcadRay(CoClassBaseClass): # A CoClass
     # ZWCAD Ray Object
     CLSID = IID('{EC9231F2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26310,7 +26310,7 @@ class ZcadRay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRay
 
-class ZcadRegion(CoClassBaseClass): # A CoClass
+class AcadRegion(CoClassBaseClass): # A CoClass
     # ZWCAD Region Object
     CLSID = IID('{EC9231E7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26320,7 +26320,7 @@ class ZcadRegion(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRegion
 
-class ZcadRegisteredApplication(CoClassBaseClass): # A CoClass
+class AcadRegisteredApplication(CoClassBaseClass): # A CoClass
     # ZWCAD RegisteredApplication Object
     CLSID = IID('{EC923107-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26330,7 +26330,7 @@ class ZcadRegisteredApplication(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRegisteredApplication
 
-class ZcadRegisteredApplications(CoClassBaseClass): # A CoClass
+class AcadRegisteredApplications(CoClassBaseClass): # A CoClass
     # ZwcadRegisteredApplications Class
     CLSID = IID('{EC923188-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26340,7 +26340,7 @@ class ZcadRegisteredApplications(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRegisteredApplications
 
-class ZcadRevolvedSurface(CoClassBaseClass): # A CoClass
+class AcadRevolvedSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC922FE4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26349,7 +26349,7 @@ class ZcadRevolvedSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRevolvedSurface
 
-class ZcadSection(CoClassBaseClass): # A CoClass
+class AcadSection(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92302B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26358,7 +26358,7 @@ class ZcadSection(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSection
 
-class ZcadSectionManager(CoClassBaseClass): # A CoClass
+class AcadSectionManager(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9230EB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26367,7 +26367,7 @@ class ZcadSectionManager(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSectionManager
 
-class ZcadSectionSettings(CoClassBaseClass): # A CoClass
+class AcadSectionSettings(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923094-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26376,7 +26376,7 @@ class ZcadSectionSettings(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSectionSettings
 
-class ZcadSectionTypeSettings(CoClassBaseClass): # A CoClass
+class AcadSectionTypeSettings(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923027-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26385,7 +26385,7 @@ class ZcadSectionTypeSettings(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSectionTypeSettings
 
-class ZcadSecurityParams(CoClassBaseClass): # A CoClass
+class AcadSecurityParams(CoClassBaseClass): # A CoClass
     # Security Parameters Object
     CLSID = IID('{EC922FF4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26395,7 +26395,7 @@ class ZcadSecurityParams(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSecurityParams
 
-class ZcadSelectionSet(CoClassBaseClass): # A CoClass
+class AcadSelectionSet(CoClassBaseClass): # A CoClass
     # ZwcadSelectionSet Class
     CLSID = IID('{EC923000-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26405,7 +26405,7 @@ class ZcadSelectionSet(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSelectionSet
 
-class ZcadSelectionSets(CoClassBaseClass): # A CoClass
+class AcadSelectionSets(CoClassBaseClass): # A CoClass
     # ZwcadSelectionSets Class
     CLSID = IID('{EC923150-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26415,8 +26415,8 @@ class ZcadSelectionSets(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSelectionSets
 
-class ZcadShadowDisplay(CoClassBaseClass): # A CoClass
-    # ZcadShadowDisplay Class
+class AcadShadowDisplay(CoClassBaseClass): # A CoClass
+    # AcadShadowDisplay Class
     CLSID = IID('{EC92317D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26425,7 +26425,7 @@ class ZcadShadowDisplay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadShadowDisplay
 
-class ZcadShape(CoClassBaseClass): # A CoClass
+class AcadShape(CoClassBaseClass): # A CoClass
     # ZWCAD Shape Object
     CLSID = IID('{EC92304F-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26435,7 +26435,7 @@ class ZcadShape(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadShape
 
-class ZcadSolid(CoClassBaseClass): # A CoClass
+class AcadSolid(CoClassBaseClass): # A CoClass
     # ZWCAD Solid Object
     CLSID = IID('{EC92312B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26445,7 +26445,7 @@ class ZcadSolid(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSolid
 
-class ZcadSortentsTable(CoClassBaseClass): # A CoClass
+class AcadSortentsTable(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92308A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26454,7 +26454,7 @@ class ZcadSortentsTable(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSortentsTable
 
-class ZcadSpline(CoClassBaseClass): # A CoClass
+class AcadSpline(CoClassBaseClass): # A CoClass
     # ZWCAD Spline Object
     CLSID = IID('{EC923158-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26464,7 +26464,7 @@ class ZcadSpline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSpline
 
-class ZcadState(CoClassBaseClass): # A CoClass
+class AcadState(CoClassBaseClass): # A CoClass
     # ZWCAD State Object
     CLSID = IID('{EC922FCC-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26474,7 +26474,7 @@ class ZcadState(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadState
 
-class ZcadSubDMesh(CoClassBaseClass): # A CoClass
+class AcadSubDMesh(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923286-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26483,7 +26483,7 @@ class ZcadSubDMesh(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubDMesh
 
-class ZcadSubDMeshEdge(CoClassBaseClass): # A CoClass
+class AcadSubDMeshEdge(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26492,7 +26492,7 @@ class ZcadSubDMeshEdge(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubDMeshEdge
 
-class ZcadSubDMeshFace(CoClassBaseClass): # A CoClass
+class AcadSubDMeshFace(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26501,7 +26501,7 @@ class ZcadSubDMeshFace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubDMeshFace
 
-class ZcadSubDMeshVertex(CoClassBaseClass): # A CoClass
+class AcadSubDMeshVertex(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26510,7 +26510,7 @@ class ZcadSubDMeshVertex(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubDMeshVertex
 
-class ZcadSubEntSolidEdge(CoClassBaseClass): # A CoClass
+class AcadSubEntSolidEdge(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923191-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26519,7 +26519,7 @@ class ZcadSubEntSolidEdge(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubEntSolidEdge
 
-class ZcadSubEntSolidFace(CoClassBaseClass): # A CoClass
+class AcadSubEntSolidFace(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26528,7 +26528,7 @@ class ZcadSubEntSolidFace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubEntSolidFace
 
-class ZcadSubEntSolidNode(CoClassBaseClass): # A CoClass
+class AcadSubEntSolidNode(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26537,7 +26537,7 @@ class ZcadSubEntSolidNode(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubEntSolidNode
 
-class ZcadSubEntSolidVertex(CoClassBaseClass): # A CoClass
+class AcadSubEntSolidVertex(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9230E1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26546,7 +26546,7 @@ class ZcadSubEntSolidVertex(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubEntSolidVertex
 
-class ZcadSubEntity(CoClassBaseClass): # A CoClass
+class AcadSubEntity(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9231A7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26555,7 +26555,7 @@ class ZcadSubEntity(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubEntity
 
-class ZcadSummaryInfo(CoClassBaseClass): # A CoClass
+class AcadSummaryInfo(CoClassBaseClass): # A CoClass
     # ZwcadSummaryInfo Class
     CLSID = IID('{EC9230E6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26565,7 +26565,7 @@ class ZcadSummaryInfo(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSummaryInfo
 
-class ZcadSurface(CoClassBaseClass): # A CoClass
+class AcadSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92305A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26574,7 +26574,7 @@ class ZcadSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSurface
 
-class ZcadSweptSurface(CoClassBaseClass): # A CoClass
+class AcadSweptSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923060-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26583,7 +26583,7 @@ class ZcadSweptSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSweptSurface
 
-class ZcadTable(CoClassBaseClass): # A CoClass
+class AcadTable(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923019-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26592,7 +26592,7 @@ class ZcadTable(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTable
 
-class ZcadTableStyle(CoClassBaseClass): # A CoClass
+class AcadTableStyle(CoClassBaseClass): # A CoClass
     # ZWCAD TableStyle Object
     CLSID = IID('{EC923111-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26602,7 +26602,7 @@ class ZcadTableStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTableStyle
 
-class ZcadText(CoClassBaseClass): # A CoClass
+class AcadText(CoClassBaseClass): # A CoClass
     # ZWCAD Text Object
     CLSID = IID('{EC923067-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26612,7 +26612,7 @@ class ZcadText(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadText
 
-class ZcadTextStyle(CoClassBaseClass): # A CoClass
+class AcadTextStyle(CoClassBaseClass): # A CoClass
     # ZWCAD TextStyle Object
     CLSID = IID('{EC9231A2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26622,7 +26622,7 @@ class ZcadTextStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTextStyle
 
-class ZcadTextStyles(CoClassBaseClass): # A CoClass
+class AcadTextStyles(CoClassBaseClass): # A CoClass
     # ZwcadTextStyles Class
     CLSID = IID('{EC9230C5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26632,7 +26632,7 @@ class ZcadTextStyles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTextStyles
 
-class ZcadTolerance(CoClassBaseClass): # A CoClass
+class AcadTolerance(CoClassBaseClass): # A CoClass
     # ZWCAD Tolerance Object
     CLSID = IID('{EC9230D2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26642,7 +26642,7 @@ class ZcadTolerance(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTolerance
 
-class ZcadToolbar(CoClassBaseClass): # A CoClass
+class AcadToolbar(CoClassBaseClass): # A CoClass
     # ZWCAD Toolbar Object
     CLSID = IID('{EC922FF3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26652,7 +26652,7 @@ class ZcadToolbar(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadToolbar
 
-class ZcadToolbarItem(CoClassBaseClass): # A CoClass
+class AcadToolbarItem(CoClassBaseClass): # A CoClass
     # ZWCAD ToolbarItem Object
     CLSID = IID('{EC9230E9-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26662,7 +26662,7 @@ class ZcadToolbarItem(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadToolbarItem
 
-class ZcadToolbars(CoClassBaseClass): # A CoClass
+class AcadToolbars(CoClassBaseClass): # A CoClass
     # ZWCAD Toolbars Object
     CLSID = IID('{EC923086-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26672,7 +26672,7 @@ class ZcadToolbars(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadToolbars
 
-class ZcadTrace(CoClassBaseClass): # A CoClass
+class AcadTrace(CoClassBaseClass): # A CoClass
     # ZWCAD Trace Object
     CLSID = IID('{EC923159-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26682,7 +26682,7 @@ class ZcadTrace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTrace
 
-class ZcadUCS(CoClassBaseClass): # A CoClass
+class AcadUCS(CoClassBaseClass): # A CoClass
     # ZWCAD UCS Object
     CLSID = IID('{EC922FCB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26692,7 +26692,7 @@ class ZcadUCS(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUCS
 
-class ZcadUCSs(CoClassBaseClass): # A CoClass
+class AcadUCSs(CoClassBaseClass): # A CoClass
     # ZwcadUCSs Class
     CLSID = IID('{EC9231CD-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26702,7 +26702,7 @@ class ZcadUCSs(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUCSs
 
-class ZcadUtility(CoClassBaseClass): # A CoClass
+class AcadUtility(CoClassBaseClass): # A CoClass
     # ZWCAD Utility Object
     CLSID = IID('{EC922FFC-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26712,7 +26712,7 @@ class ZcadUtility(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUtility
 
-class ZcadView(CoClassBaseClass): # A CoClass
+class AcadView(CoClassBaseClass): # A CoClass
     # ZWCAD View Object
     CLSID = IID('{EC923014-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26722,7 +26722,7 @@ class ZcadView(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadView
 
-class ZcadViewport(CoClassBaseClass): # A CoClass
+class AcadViewport(CoClassBaseClass): # A CoClass
     # ZWCAD Viewport Object
     CLSID = IID('{EC9231D1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26732,7 +26732,7 @@ class ZcadViewport(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadViewport
 
-class ZcadViewports(CoClassBaseClass): # A CoClass
+class AcadViewports(CoClassBaseClass): # A CoClass
     # ZwcadViewports Class
     CLSID = IID('{EC922FCD-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26742,7 +26742,7 @@ class ZcadViewports(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadViewports
 
-class ZcadViews(CoClassBaseClass): # A CoClass
+class AcadViews(CoClassBaseClass): # A CoClass
     # ZwcadViews Class
     CLSID = IID('{EC9230A8-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26752,8 +26752,8 @@ class ZcadViews(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadViews
 
-class ZcadWipeout(CoClassBaseClass): # A CoClass
-    # ZcadWipeout ��
+class AcadWipeout(CoClassBaseClass): # A CoClass
+    # AcadWipeout ��
     CLSID = IID('{EC923089-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26762,7 +26762,7 @@ class ZcadWipeout(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadWipeout
 
-class ZcadXRecord(CoClassBaseClass): # A CoClass
+class AcadXRecord(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923032-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
@@ -26771,7 +26771,7 @@ class ZcadXRecord(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadXRecord
 
-class ZcadXline(CoClassBaseClass): # A CoClass
+class AcadXline(CoClassBaseClass): # A CoClass
     # ZWCAD Xline Object
     CLSID = IID('{EC9231CE-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26782,7 +26782,7 @@ class ZcadXline(CoClassBaseClass): # A CoClass
     default_interface = IAcadXline
 
 # This CoClass is known by the name 'ZWCAD.ZcCmColor.2024'
-class ZcadZcCmColor(CoClassBaseClass): # A CoClass
+class AcadZcCmColor(CoClassBaseClass): # A CoClass
     # ZWCAD True Color Object
     CLSID = IID('{EC9231C3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -26937,7 +26937,7 @@ IAcadApplication_vtables_ = [
     (( 'ZoomWindow' , 'LowerLeft' , 'UpperRight' , ), 40, (40, (), [ (12, 1, None, None) , 
              (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 392 , (3, 0, None, None) , 0 , )),
     (( 'ZoomPickWindow' , ), 41, (41, (), [ ], 1 , 1 , 4 , 0 , 400 , (3, 0, None, None) , 0 , )),
-    (( 'GetZcadState' , 'pVal' , ), 42, (42, (), [ (16393, 10, None, "IID('{EC923162-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 408 , (3, 0, None, None) , 0 , )),
+    (( 'GetAcadState' , 'pVal' , ), 42, (42, (), [ (16393, 10, None, "IID('{EC923162-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 408 , (3, 0, None, None) , 0 , )),
     (( 'ZoomPrevious' , ), 43, (43, (), [ ], 1 , 1 , 4 , 0 , 416 , (3, 0, None, None) , 0 , )),
     (( 'HWND' , 'HWND' , ), 44, (44, (), [ (16404, 10, None, None) , ], 1 , 2 , 4 , 0 , 424 , (3, 0, None, None) , 0 , )),
     (( 'GetLicenseSerial' , 'retType' , 'Serial' , 'chkLock' , 'retIsNet' , 
@@ -30160,8 +30160,8 @@ IAcadPreferencesSystem_vtables_ = [
     (( 'BeepOnError' , 'BeepOnError' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
     (( 'ShowWarningMessages' , 'Path' , ), 1610743821, (1610743821, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'ShowWarningMessages' , 'Path' , ), 1610743821, (1610743821, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-    (( 'LoadZcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-    (( 'LoadZcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'LoadAcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'LoadAcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
 IAcadPreferencesUser_vtables_dispatch_ = 1
@@ -31924,162 +31924,162 @@ CLSIDToClassMap = {
     '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSelectionSets,
     '{EC923124-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSelectionSet,
     '{EC923126-5A21-11E7-B72E-BC5FF42AC839}' : IAcadUtility,
-    '{EC923092-5A21-11E7-B72E-BC5FF42AC839}' : _DZcadApplicationEvents,
-    '{EC923172-5A21-11E7-B72E-BC5FF42AC839}' : _DZcadDocumentEvents,
-    '{EC923177-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLine,
-    '{EC92303A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadCircle,
-    '{EC92304D-5A21-11E7-B72E-BC5FF42AC839}' : ZcadEntity,
-    '{EC923157-5A21-11E7-B72E-BC5FF42AC839}' : ZcadObject,
-    '{EC9230BF-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDictionary,
-    '{EC92317A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDatabase,
-    '{EC92317D-5A21-11E7-B72E-BC5FF42AC839}' : ZcadShadowDisplay,
-    '{EC922FDF-5A21-11E7-B72E-BC5FF42AC839}' : ZcadObjectEvents,
-    '{EC9231B4-5A21-11E7-B72E-BC5FF42AC839}' : Zcad3DFace,
-    '{EC923089-5A21-11E7-B72E-BC5FF42AC839}' : ZcadWipeout,
-    '{EC923047-5A21-11E7-B72E-BC5FF42AC839}' : ZcadRasterImage,
-    '{EC92304C-5A21-11E7-B72E-BC5FF42AC839}' : Zcad3DPolyline,
-    '{EC923012-5A21-11E7-B72E-BC5FF42AC839}' : ZcadHelix,
-    '{EC92311B-5A21-11E7-B72E-BC5FF42AC839}' : ZcadOle,
-    '{EC923173-5A21-11E7-B72E-BC5FF42AC839}' : Zcad3DSolid,
-    '{EC9230B1-5A21-11E7-B72E-BC5FF42AC839}' : ZcadArc,
-    '{EC923182-5A21-11E7-B72E-BC5FF42AC839}' : ZcadAttribute,
-    '{EC9231A3-5A21-11E7-B72E-BC5FF42AC839}' : ZcadAttributeReference,
-    '{EC92315A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadBlockReference,
-    '{EC9231C5-5A21-11E7-B72E-BC5FF42AC839}' : ZcadEllipse,
-    '{EC923120-5A21-11E7-B72E-BC5FF42AC839}' : ZcadHatch,
-    '{EC922FD3-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLeader,
-    '{EC92307B-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLWPolyline,
-    '{EC92302D-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMText,
-    '{EC92314D-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPoint,
-    '{EC92305E-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPolyline,
-    '{EC923017-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPolygonMesh,
-    '{EC9231F2-5A21-11E7-B72E-BC5FF42AC839}' : ZcadRay,
-    '{EC9231E7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadRegion,
-    '{EC92304F-5A21-11E7-B72E-BC5FF42AC839}' : ZcadShape,
-    '{EC92312B-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSolid,
-    '{EC923158-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSpline,
-    '{EC923067-5A21-11E7-B72E-BC5FF42AC839}' : ZcadText,
-    '{EC9230D2-5A21-11E7-B72E-BC5FF42AC839}' : ZcadTolerance,
-    '{EC923159-5A21-11E7-B72E-BC5FF42AC839}' : ZcadTrace,
-    '{EC9231CE-5A21-11E7-B72E-BC5FF42AC839}' : ZcadXline,
-    '{EC923014-5A21-11E7-B72E-BC5FF42AC839}' : ZcadView,
-    '{EC923088-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPViewport,
-    '{EC9230F1-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMInsertBlock,
-    '{EC923004-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMLeader,
-    '{EC9230C1-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMLine,
-    '{EC9231F8-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPolyfaceMesh,
-    '{EC923009-5A21-11E7-B72E-BC5FF42AC839}' : ZcadExternalReference,
-    '{EC923019-5A21-11E7-B72E-BC5FF42AC839}' : ZcadTable,
-    '{EC9230F7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimension,
-    '{EC923118-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimAligned,
-    '{EC92306D-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimAngular,
-    '{EC9231E5-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimDiametric,
-    '{EC92313B-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimOrdinate,
-    '{EC922FEA-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimRadial,
-    '{EC923179-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimRotated,
-    '{EC923072-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDim3PointAngular,
-    '{EC923110-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimRadialLarge,
-    '{EC92301D-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimArcLength,
+    '{EC923092-5A21-11E7-B72E-BC5FF42AC839}' : _DAcadApplicationEvents,
+    '{EC923172-5A21-11E7-B72E-BC5FF42AC839}' : _DAcadDocumentEvents,
+    '{EC923177-5A21-11E7-B72E-BC5FF42AC839}' : AcadLine,
+    '{EC92303A-5A21-11E7-B72E-BC5FF42AC839}' : AcadCircle,
+    '{EC92304D-5A21-11E7-B72E-BC5FF42AC839}' : AcadEntity,
+    '{EC923157-5A21-11E7-B72E-BC5FF42AC839}' : AcadObject,
+    '{EC9230BF-5A21-11E7-B72E-BC5FF42AC839}' : AcadDictionary,
+    '{EC92317A-5A21-11E7-B72E-BC5FF42AC839}' : AcadDatabase,
+    '{EC92317D-5A21-11E7-B72E-BC5FF42AC839}' : AcadShadowDisplay,
+    '{EC922FDF-5A21-11E7-B72E-BC5FF42AC839}' : AcadObjectEvents,
+    '{EC9231B4-5A21-11E7-B72E-BC5FF42AC839}' : Acad3DFace,
+    '{EC923089-5A21-11E7-B72E-BC5FF42AC839}' : AcadWipeout,
+    '{EC923047-5A21-11E7-B72E-BC5FF42AC839}' : AcadRasterImage,
+    '{EC92304C-5A21-11E7-B72E-BC5FF42AC839}' : Acad3DPolyline,
+    '{EC923012-5A21-11E7-B72E-BC5FF42AC839}' : AcadHelix,
+    '{EC92311B-5A21-11E7-B72E-BC5FF42AC839}' : AcadOle,
+    '{EC923173-5A21-11E7-B72E-BC5FF42AC839}' : Acad3DSolid,
+    '{EC9230B1-5A21-11E7-B72E-BC5FF42AC839}' : AcadArc,
+    '{EC923182-5A21-11E7-B72E-BC5FF42AC839}' : AcadAttribute,
+    '{EC9231A3-5A21-11E7-B72E-BC5FF42AC839}' : AcadAttributeReference,
+    '{EC92315A-5A21-11E7-B72E-BC5FF42AC839}' : AcadBlockReference,
+    '{EC9231C5-5A21-11E7-B72E-BC5FF42AC839}' : AcadEllipse,
+    '{EC923120-5A21-11E7-B72E-BC5FF42AC839}' : AcadHatch,
+    '{EC922FD3-5A21-11E7-B72E-BC5FF42AC839}' : AcadLeader,
+    '{EC92307B-5A21-11E7-B72E-BC5FF42AC839}' : AcadLWPolyline,
+    '{EC92302D-5A21-11E7-B72E-BC5FF42AC839}' : AcadMText,
+    '{EC92314D-5A21-11E7-B72E-BC5FF42AC839}' : AcadPoint,
+    '{EC92305E-5A21-11E7-B72E-BC5FF42AC839}' : AcadPolyline,
+    '{EC923017-5A21-11E7-B72E-BC5FF42AC839}' : AcadPolygonMesh,
+    '{EC9231F2-5A21-11E7-B72E-BC5FF42AC839}' : AcadRay,
+    '{EC9231E7-5A21-11E7-B72E-BC5FF42AC839}' : AcadRegion,
+    '{EC92304F-5A21-11E7-B72E-BC5FF42AC839}' : AcadShape,
+    '{EC92312B-5A21-11E7-B72E-BC5FF42AC839}' : AcadSolid,
+    '{EC923158-5A21-11E7-B72E-BC5FF42AC839}' : AcadSpline,
+    '{EC923067-5A21-11E7-B72E-BC5FF42AC839}' : AcadText,
+    '{EC9230D2-5A21-11E7-B72E-BC5FF42AC839}' : AcadTolerance,
+    '{EC923159-5A21-11E7-B72E-BC5FF42AC839}' : AcadTrace,
+    '{EC9231CE-5A21-11E7-B72E-BC5FF42AC839}' : AcadXline,
+    '{EC923014-5A21-11E7-B72E-BC5FF42AC839}' : AcadView,
+    '{EC923088-5A21-11E7-B72E-BC5FF42AC839}' : AcadPViewport,
+    '{EC9230F1-5A21-11E7-B72E-BC5FF42AC839}' : AcadMInsertBlock,
+    '{EC923004-5A21-11E7-B72E-BC5FF42AC839}' : AcadMLeader,
+    '{EC9230C1-5A21-11E7-B72E-BC5FF42AC839}' : AcadMLine,
+    '{EC9231F8-5A21-11E7-B72E-BC5FF42AC839}' : AcadPolyfaceMesh,
+    '{EC923009-5A21-11E7-B72E-BC5FF42AC839}' : AcadExternalReference,
+    '{EC923019-5A21-11E7-B72E-BC5FF42AC839}' : AcadTable,
+    '{EC9230F7-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimension,
+    '{EC923118-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimAligned,
+    '{EC92306D-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimAngular,
+    '{EC9231E5-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimDiametric,
+    '{EC92313B-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimOrdinate,
+    '{EC922FEA-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimRadial,
+    '{EC923179-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimRotated,
+    '{EC923072-5A21-11E7-B72E-BC5FF42AC839}' : AcadDim3PointAngular,
+    '{EC923110-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimRadialLarge,
+    '{EC92301D-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimArcLength,
     '{EC92307E-5A21-11E7-B72E-BC5FF42AC839}' : ArcTextObj,
-    '{EC9231C3-5A21-11E7-B72E-BC5FF42AC839}' : ZcadZcCmColor,
-    '{EC9230B3-5A21-11E7-B72E-BC5FF42AC839}' : ZcadHyperlink,
-    '{EC923046-5A21-11E7-B72E-BC5FF42AC839}' : ZcadHyperlinks,
-    '{EC923016-5A21-11E7-B72E-BC5FF42AC839}' : ZcadBlock,
-    '{EC9231A1-5A21-11E7-B72E-BC5FF42AC839}' : ZcadModelSpace,
-    '{EC9231E4-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPaperSpace,
-    '{EC923085-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimStyle,
-    '{EC9231A2-5A21-11E7-B72E-BC5FF42AC839}' : ZcadTextStyle,
-    '{EC922FCB-5A21-11E7-B72E-BC5FF42AC839}' : ZcadUCS,
-    '{EC9231B1-5A21-11E7-B72E-BC5FF42AC839}' : ZcadBlocks,
-    '{EC9230C5-5A21-11E7-B72E-BC5FF42AC839}' : ZcadTextStyles,
-    '{EC9231D7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadGroups,
-    '{EC923002-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDimStyles,
-    '{EC9230B8-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLayers,
-    '{EC922FE5-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLineTypes,
-    '{EC923015-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDictionaries,
-    '{EC923188-5A21-11E7-B72E-BC5FF42AC839}' : ZcadRegisteredApplications,
-    '{EC923107-5A21-11E7-B72E-BC5FF42AC839}' : ZcadRegisteredApplication,
-    '{EC9231CD-5A21-11E7-B72E-BC5FF42AC839}' : ZcadUCSs,
-    '{EC9230A8-5A21-11E7-B72E-BC5FF42AC839}' : ZcadViews,
-    '{EC922FCD-5A21-11E7-B72E-BC5FF42AC839}' : ZcadViewports,
-    '{EC923079-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLayouts,
-    '{EC923069-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPlotConfigurations,
-    '{EC9231F0-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDatabasePreferences,
-    '{EC92315B-5A21-11E7-B72E-BC5FF42AC839}' : ZcadFileDependencies,
-    '{EC9230E6-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSummaryInfo,
-    '{EC9230EB-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSectionManager,
-    '{EC92310B-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMaterials,
-    '{EC9231D0-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLayer,
-    '{EC922FF6-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLineType,
-    '{EC9231D1-5A21-11E7-B72E-BC5FF42AC839}' : ZcadViewport,
-    '{EC9231A5-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPlotConfiguration,
-    '{EC922FF9-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLayout,
-    '{EC92302B-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSection,
-    '{EC923094-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSectionSettings,
-    '{EC923027-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSectionTypeSettings,
-    '{EC923024-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMaterial,
-    '{EC92308A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSortentsTable,
-    '{EC92312F-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLayerStateManager,
-    '{EC923032-5A21-11E7-B72E-BC5FF42AC839}' : ZcadXRecord,
-    '{EC9231C4-5A21-11E7-B72E-BC5FF42AC839}' : ZcadFileDependency,
-    '{EC922FF4-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSecurityParams,
-    '{EC9230BC-5A21-11E7-B72E-BC5FF42AC839}' : ZcadIdPair,
-    '{EC92305A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSurface,
-    '{EC923060-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSweptSurface,
-    '{EC922FE4-5A21-11E7-B72E-BC5FF42AC839}' : ZcadRevolvedSurface,
-    '{EC923036-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPlaneSurface,
-    '{EC923222-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLoftedSurface,
-    '{EC923284-5A21-11E7-B72E-BC5FF42AC839}' : ZcadExtrudedSurface,
-    '{EC92316E-5A21-11E7-B72E-BC5FF42AC839}' : ZcadGroup,
-    '{EC922FC3-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDynamicBlockReferenceProperty,
-    '{EC9231A7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSubEntity,
-    '{EC923191-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSubEntSolidEdge,
-    '{EC9230E1-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSubEntSolidVertex,
-    '{EC923111-5A21-11E7-B72E-BC5FF42AC839}' : ZcadTableStyle,
-    '{EC92312A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDwfUnderlay,
-    '{EC923148-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMLeaderStyle,
-    '{EC92327C-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPdfUnderlay,
-    '{EC923286-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSubDMesh,
-    '{EC9232B9-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMLeaderLeader,
-    '{EC9232A0-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDgnUnderlay,
-    '{EC9232A1-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSubEntSolidFace,
-    '{EC9232A2-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSubEntSolidNode,
-    '{EC9232A3-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSubDMeshFace,
-    '{EC9232A4-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSubDMeshEdge,
-    '{EC9232A5-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSubDMeshVertex,
-    '{EC9232A6-5A21-11E7-B72E-BC5FF42AC839}' : ZcadNurbSurface,
-    '{EC9232A7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadGeoPositionMarker,
-    '{EC9232A8-5A21-11E7-B72E-BC5FF42AC839}' : ZcadGeomapImage,
-    '{EC9232A9-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPointCloud,
-    '{EC9232AA-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPointCloudEx,
-    '{EC92313D-5A21-11E7-B72E-BC5FF42AC839}' : ZcadApplication,
-    '{2F671EB3-669F-11E7-91B7-BC5FF42AC839}' : ZcadApplicationMinorVersion,
-    '{EC9231BB-5A21-11E7-B72E-BC5FF42AC839}' : ZcadDocuments,
-    '{2F671DA0-669F-11E7-91B7-BC5FF42AC839}' : ZcadDocument,
-    '{EC922FC7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferences,
-    '{EC9230A0-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesFiles,
-    '{EC92300A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesDisplay,
-    '{EC9231EB-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesDrafting,
-    '{EC92304A-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesOpenSave,
-    '{EC9230F0-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesOutput,
-    '{EC9231F7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesProfiles,
-    '{EC9230A7-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesSelection,
-    '{EC9231A8-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesUser,
-    '{EC923185-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPreferencesSystem,
-    '{EC92315F-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPlot,
-    '{EC923000-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSelectionSet,
-    '{EC923150-5A21-11E7-B72E-BC5FF42AC839}' : ZcadSelectionSets,
-    '{EC922FFC-5A21-11E7-B72E-BC5FF42AC839}' : ZcadUtility,
-    '{EC922FCC-5A21-11E7-B72E-BC5FF42AC839}' : ZcadState,
-    '{EC923146-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMenuGroups,
-    '{EC9231F6-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMenuGroup,
-    '{EC9230D4-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPopupMenuItem,
-    '{EC922FD9-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPopupMenus,
-    '{EC923008-5A21-11E7-B72E-BC5FF42AC839}' : ZcadPopupMenu,
-    '{EC923086-5A21-11E7-B72E-BC5FF42AC839}' : ZcadToolbars,
-    '{EC922FF3-5A21-11E7-B72E-BC5FF42AC839}' : ZcadToolbar,
-    '{EC9230E9-5A21-11E7-B72E-BC5FF42AC839}' : ZcadToolbarItem,
-    '{EC922FED-5A21-11E7-B72E-BC5FF42AC839}' : ZcadMenuBar,
+    '{EC9231C3-5A21-11E7-B72E-BC5FF42AC839}' : AcadZcCmColor,
+    '{EC9230B3-5A21-11E7-B72E-BC5FF42AC839}' : AcadHyperlink,
+    '{EC923046-5A21-11E7-B72E-BC5FF42AC839}' : AcadHyperlinks,
+    '{EC923016-5A21-11E7-B72E-BC5FF42AC839}' : AcadBlock,
+    '{EC9231A1-5A21-11E7-B72E-BC5FF42AC839}' : AcadModelSpace,
+    '{EC9231E4-5A21-11E7-B72E-BC5FF42AC839}' : AcadPaperSpace,
+    '{EC923085-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimStyle,
+    '{EC9231A2-5A21-11E7-B72E-BC5FF42AC839}' : AcadTextStyle,
+    '{EC922FCB-5A21-11E7-B72E-BC5FF42AC839}' : AcadUCS,
+    '{EC9231B1-5A21-11E7-B72E-BC5FF42AC839}' : AcadBlocks,
+    '{EC9230C5-5A21-11E7-B72E-BC5FF42AC839}' : AcadTextStyles,
+    '{EC9231D7-5A21-11E7-B72E-BC5FF42AC839}' : AcadGroups,
+    '{EC923002-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimStyles,
+    '{EC9230B8-5A21-11E7-B72E-BC5FF42AC839}' : AcadLayers,
+    '{EC922FE5-5A21-11E7-B72E-BC5FF42AC839}' : AcadLineTypes,
+    '{EC923015-5A21-11E7-B72E-BC5FF42AC839}' : AcadDictionaries,
+    '{EC923188-5A21-11E7-B72E-BC5FF42AC839}' : AcadRegisteredApplications,
+    '{EC923107-5A21-11E7-B72E-BC5FF42AC839}' : AcadRegisteredApplication,
+    '{EC9231CD-5A21-11E7-B72E-BC5FF42AC839}' : AcadUCSs,
+    '{EC9230A8-5A21-11E7-B72E-BC5FF42AC839}' : AcadViews,
+    '{EC922FCD-5A21-11E7-B72E-BC5FF42AC839}' : AcadViewports,
+    '{EC923079-5A21-11E7-B72E-BC5FF42AC839}' : AcadLayouts,
+    '{EC923069-5A21-11E7-B72E-BC5FF42AC839}' : AcadPlotConfigurations,
+    '{EC9231F0-5A21-11E7-B72E-BC5FF42AC839}' : AcadDatabasePreferences,
+    '{EC92315B-5A21-11E7-B72E-BC5FF42AC839}' : AcadFileDependencies,
+    '{EC9230E6-5A21-11E7-B72E-BC5FF42AC839}' : AcadSummaryInfo,
+    '{EC9230EB-5A21-11E7-B72E-BC5FF42AC839}' : AcadSectionManager,
+    '{EC92310B-5A21-11E7-B72E-BC5FF42AC839}' : AcadMaterials,
+    '{EC9231D0-5A21-11E7-B72E-BC5FF42AC839}' : AcadLayer,
+    '{EC922FF6-5A21-11E7-B72E-BC5FF42AC839}' : AcadLineType,
+    '{EC9231D1-5A21-11E7-B72E-BC5FF42AC839}' : AcadViewport,
+    '{EC9231A5-5A21-11E7-B72E-BC5FF42AC839}' : AcadPlotConfiguration,
+    '{EC922FF9-5A21-11E7-B72E-BC5FF42AC839}' : AcadLayout,
+    '{EC92302B-5A21-11E7-B72E-BC5FF42AC839}' : AcadSection,
+    '{EC923094-5A21-11E7-B72E-BC5FF42AC839}' : AcadSectionSettings,
+    '{EC923027-5A21-11E7-B72E-BC5FF42AC839}' : AcadSectionTypeSettings,
+    '{EC923024-5A21-11E7-B72E-BC5FF42AC839}' : AcadMaterial,
+    '{EC92308A-5A21-11E7-B72E-BC5FF42AC839}' : AcadSortentsTable,
+    '{EC92312F-5A21-11E7-B72E-BC5FF42AC839}' : AcadLayerStateManager,
+    '{EC923032-5A21-11E7-B72E-BC5FF42AC839}' : AcadXRecord,
+    '{EC9231C4-5A21-11E7-B72E-BC5FF42AC839}' : AcadFileDependency,
+    '{EC922FF4-5A21-11E7-B72E-BC5FF42AC839}' : AcadSecurityParams,
+    '{EC9230BC-5A21-11E7-B72E-BC5FF42AC839}' : AcadIdPair,
+    '{EC92305A-5A21-11E7-B72E-BC5FF42AC839}' : AcadSurface,
+    '{EC923060-5A21-11E7-B72E-BC5FF42AC839}' : AcadSweptSurface,
+    '{EC922FE4-5A21-11E7-B72E-BC5FF42AC839}' : AcadRevolvedSurface,
+    '{EC923036-5A21-11E7-B72E-BC5FF42AC839}' : AcadPlaneSurface,
+    '{EC923222-5A21-11E7-B72E-BC5FF42AC839}' : AcadLoftedSurface,
+    '{EC923284-5A21-11E7-B72E-BC5FF42AC839}' : AcadExtrudedSurface,
+    '{EC92316E-5A21-11E7-B72E-BC5FF42AC839}' : AcadGroup,
+    '{EC922FC3-5A21-11E7-B72E-BC5FF42AC839}' : AcadDynamicBlockReferenceProperty,
+    '{EC9231A7-5A21-11E7-B72E-BC5FF42AC839}' : AcadSubEntity,
+    '{EC923191-5A21-11E7-B72E-BC5FF42AC839}' : AcadSubEntSolidEdge,
+    '{EC9230E1-5A21-11E7-B72E-BC5FF42AC839}' : AcadSubEntSolidVertex,
+    '{EC923111-5A21-11E7-B72E-BC5FF42AC839}' : AcadTableStyle,
+    '{EC92312A-5A21-11E7-B72E-BC5FF42AC839}' : AcadDwfUnderlay,
+    '{EC923148-5A21-11E7-B72E-BC5FF42AC839}' : AcadMLeaderStyle,
+    '{EC92327C-5A21-11E7-B72E-BC5FF42AC839}' : AcadPdfUnderlay,
+    '{EC923286-5A21-11E7-B72E-BC5FF42AC839}' : AcadSubDMesh,
+    '{EC9232B9-5A21-11E7-B72E-BC5FF42AC839}' : AcadMLeaderLeader,
+    '{EC9232A0-5A21-11E7-B72E-BC5FF42AC839}' : AcadDgnUnderlay,
+    '{EC9232A1-5A21-11E7-B72E-BC5FF42AC839}' : AcadSubEntSolidFace,
+    '{EC9232A2-5A21-11E7-B72E-BC5FF42AC839}' : AcadSubEntSolidNode,
+    '{EC9232A3-5A21-11E7-B72E-BC5FF42AC839}' : AcadSubDMeshFace,
+    '{EC9232A4-5A21-11E7-B72E-BC5FF42AC839}' : AcadSubDMeshEdge,
+    '{EC9232A5-5A21-11E7-B72E-BC5FF42AC839}' : AcadSubDMeshVertex,
+    '{EC9232A6-5A21-11E7-B72E-BC5FF42AC839}' : AcadNurbSurface,
+    '{EC9232A7-5A21-11E7-B72E-BC5FF42AC839}' : AcadGeoPositionMarker,
+    '{EC9232A8-5A21-11E7-B72E-BC5FF42AC839}' : AcadGeomapImage,
+    '{EC9232A9-5A21-11E7-B72E-BC5FF42AC839}' : AcadPointCloud,
+    '{EC9232AA-5A21-11E7-B72E-BC5FF42AC839}' : AcadPointCloudEx,
+    '{EC92313D-5A21-11E7-B72E-BC5FF42AC839}' : AcadApplication,
+    '{2F671EB3-669F-11E7-91B7-BC5FF42AC839}' : AcadApplicationMinorVersion,
+    '{EC9231BB-5A21-11E7-B72E-BC5FF42AC839}' : AcadDocuments,
+    '{2F671DA0-669F-11E7-91B7-BC5FF42AC839}' : AcadDocument,
+    '{EC922FC7-5A21-11E7-B72E-BC5FF42AC839}' : AcadPreferences,
+    '{EC9230A0-5A21-11E7-B72E-BC5FF42AC839}' : AcadPreferencesFiles,
+    '{EC92300A-5A21-11E7-B72E-BC5FF42AC839}' : AcadPreferencesDisplay,
+    '{EC9231EB-5A21-11E7-B72E-BC5FF42AC839}' : AcadPreferencesDrafting,
+    '{EC92304A-5A21-11E7-B72E-BC5FF42AC839}' : AcadPreferencesOpenSave,
+    '{EC9230F0-5A21-11E7-B72E-BC5FF42AC839}' : AcadPreferencesOutput,
+    '{EC9231F7-5A21-11E7-B72E-BC5FF42AC839}' : AcadPreferencesProfiles,
+    '{EC9230A7-5A21-11E7-B72E-BC5FF42AC839}' : AcadPreferencesSelection,
+    '{EC9231A8-5A21-11E7-B72E-BC5FF42AC839}' : AcadPreferencesUser,
+    '{EC923185-5A21-11E7-B72E-BC5FF42AC839}' : AcadPreferencesSystem,
+    '{EC92315F-5A21-11E7-B72E-BC5FF42AC839}' : AcadPlot,
+    '{EC923000-5A21-11E7-B72E-BC5FF42AC839}' : AcadSelectionSet,
+    '{EC923150-5A21-11E7-B72E-BC5FF42AC839}' : AcadSelectionSets,
+    '{EC922FFC-5A21-11E7-B72E-BC5FF42AC839}' : AcadUtility,
+    '{EC922FCC-5A21-11E7-B72E-BC5FF42AC839}' : AcadState,
+    '{EC923146-5A21-11E7-B72E-BC5FF42AC839}' : AcadMenuGroups,
+    '{EC9231F6-5A21-11E7-B72E-BC5FF42AC839}' : AcadMenuGroup,
+    '{EC9230D4-5A21-11E7-B72E-BC5FF42AC839}' : AcadPopupMenuItem,
+    '{EC922FD9-5A21-11E7-B72E-BC5FF42AC839}' : AcadPopupMenus,
+    '{EC923008-5A21-11E7-B72E-BC5FF42AC839}' : AcadPopupMenu,
+    '{EC923086-5A21-11E7-B72E-BC5FF42AC839}' : AcadToolbars,
+    '{EC922FF3-5A21-11E7-B72E-BC5FF42AC839}' : AcadToolbar,
+    '{EC9230E9-5A21-11E7-B72E-BC5FF42AC839}' : AcadToolbarItem,
+    '{EC922FED-5A21-11E7-B72E-BC5FF42AC839}' : AcadMenuBar,
 }
 CLSIDToPackageMap = {}
 win32com.client.CLSIDToClass.RegisterCLSIDsFromDict( CLSIDToClassMap )
@@ -32400,15 +32400,15 @@ NamesToIIDMap = {
     'IAcadSelectionSets' : '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}',
     'IAcadSelectionSet' : '{EC923124-5A21-11E7-B72E-BC5FF42AC839}',
     'IAcadUtility' : '{EC923126-5A21-11E7-B72E-BC5FF42AC839}',
-    '_DZcadApplicationEvents' : '{EC923092-5A21-11E7-B72E-BC5FF42AC839}',
-    '_DZcadDocumentEvents' : '{EC923172-5A21-11E7-B72E-BC5FF42AC839}',
+    '_DAcadApplicationEvents' : '{EC923092-5A21-11E7-B72E-BC5FF42AC839}',
+    '_DAcadDocumentEvents' : '{EC923172-5A21-11E7-B72E-BC5FF42AC839}',
     'IAcadObjectEvents' : '{EC92317E-5A21-11E7-B72E-BC5FF42AC839}',
 }
 
 win32com.client.constants.__dicts__.append(constants.__dict__)
 
 def getApp() -> IAcadApplication:
-    id = ZcadApplication.CLSID
+    id = AcadApplication.CLSID
     return  win32com.client.Dispatch(id)
 
 def createEventObject(obj, eventclass):

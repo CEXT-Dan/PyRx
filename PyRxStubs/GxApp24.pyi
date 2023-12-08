@@ -1496,15 +1496,15 @@ class constants:
     gcZoomScaledRelative: int
     gcZoomScaledRelativePSpace: int
     ACADSECURITYPARAMS_ALGID_RC4: int
-    GCADSECURITYPARAMS_ALGID_RC4: int
+    AcadSECURITYPARAMS_ALGID_RC4: int
     ACADSECURITYPARAMS_ADD_TIMESTAMP: int
     ACADSECURITYPARAMS_ENCRYPT_DATA: int
     ACADSECURITYPARAMS_ENCRYPT_PROPS: int
     ACADSECURITYPARAMS_SIGN_DATA: int
-    GCADSECURITYPARAMS_ADD_TIMESTAMP: int
-    GCADSECURITYPARAMS_ENCRYPT_DATA: int
-    GCADSECURITYPARAMS_ENCRYPT_PROPS: int
-    GCADSECURITYPARAMS_SIGN_DATA: int
+    AcadSECURITYPARAMS_ADD_TIMESTAMP: int
+    AcadSECURITYPARAMS_ENCRYPT_DATA: int
+    AcadSECURITYPARAMS_ENCRYPT_PROPS: int
+    AcadSECURITYPARAMS_SIGN_DATA: int
     kCellOptionNone: int
     kInheritCellFormat: int
     acMergeCellStyleConvertDuplicatesToOverrides: int
@@ -13422,7 +13422,7 @@ class IAcadPreferencesSystem(DispatchBaseClass):
     @property
     def EnableStartupDialog(self): ...
     @property
-    def LoadGcadLspInAllDocuments(self): ...
+    def LoadAcadLspInAllDocuments(self): ...
     @property
     def ShowWarningMessages(self): ...
     @property
@@ -13437,8 +13437,8 @@ class IAcadPreferencesSystem(DispatchBaseClass):
     def DisplayOLEScale(self, value) -> None: ...
     @EnableStartupDialog.setter
     def EnableStartupDialog(self, value) -> None: ...
-    @LoadGcadLspInAllDocuments.setter
-    def LoadGcadLspInAllDocuments(self, value) -> None: ...
+    @LoadAcadLspInAllDocuments.setter
+    def LoadAcadLspInAllDocuments(self, value) -> None: ...
     @ShowWarningMessages.setter
     def ShowWarningMessages(self, value) -> None: ...
     @SingleDocumentMode.setter
@@ -17330,7 +17330,7 @@ class IAcadXline(DispatchBaseClass):
     @color.setter
     def color(self, value) -> None: ...
 
-class _DGcadApplicationEvents:
+class _DAcadApplicationEvents:
     CLSID: Incomplete
     CLSID_Sink: Incomplete
     coclass_clsid: Incomplete
@@ -17338,7 +17338,7 @@ class _DGcadApplicationEvents:
     def __del__(self) -> None: ...
     def close(self) -> None: ...
 
-class _DGcadDocumentEvents:
+class _DAcadDocumentEvents:
     CLSID: Incomplete
     CLSID_Sink: Incomplete
     coclass_clsid: Incomplete
@@ -17357,971 +17357,971 @@ class GcPePropertyEditorColor(CoClassBaseClass):
     coclass_interfaces: Incomplete
     default_interface = IGcPePropertyEditorColor
 
-class Gcad3DFace(CoClassBaseClass):
+class Acad3DFace(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcad3DFace
 
-class Gcad3DPolyline(CoClassBaseClass):
+class Acad3DPolyline(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcad3DPolyline
 
-class Gcad3DSolid(CoClassBaseClass):
+class Acad3DSolid(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcad3DSolid
 
-class GcadAcCmColor(CoClassBaseClass):
+class AcadAcCmColor(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadAcCmColor
 
-class GcadApplication(CoClassBaseClass):
+class AcadApplication(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadApplication
 
-class GcadArc(CoClassBaseClass):
+class AcadArc(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadArc
 
-class GcadArcAlignedText(CoClassBaseClass):
+class AcadArcAlignedText(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadArcAlignedText
 
-class GcadAssocArrayPath(CoClassBaseClass):
+class AcadAssocArrayPath(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadAssocArrayPath
 
-class GcadAssocArrayPolar(CoClassBaseClass):
+class AcadAssocArrayPolar(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadAssocArrayPolar
 
-class GcadAssocArrayRectangular(CoClassBaseClass):
+class AcadAssocArrayRectangular(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadAssocArrayRectangular
 
-class GcadAttribute(CoClassBaseClass):
+class AcadAttribute(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadAttribute
 
-class GcadAttributeReference(CoClassBaseClass):
+class AcadAttributeReference(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadAttributeReference
 
-class GcadBlock(CoClassBaseClass):
+class AcadBlock(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadBlock
 
-class GcadBlockReference(CoClassBaseClass):
+class AcadBlockReference(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadBlockReference
 
-class GcadBlocks(CoClassBaseClass):
+class AcadBlocks(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadBlocks
 
-class GcadCamera(CoClassBaseClass):
+class AcadCamera(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadCamera
 
-class GcadCircle(CoClassBaseClass):
+class AcadCircle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadCircle
 
-class GcadDatabase(CoClassBaseClass):
+class AcadDatabase(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadDatabase
 
-class GcadDatabasePreferences(CoClassBaseClass):
+class AcadDatabasePreferences(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadDatabasePreferences
 
-class GcadDgnUnderlay(CoClassBaseClass):
+class AcadDgnUnderlay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadUnderlay
 
-class GcadDictionaries(CoClassBaseClass):
+class AcadDictionaries(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDictionaries
 
-class GcadDictionary(CoClassBaseClass):
+class AcadDictionary(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDictionary
 
-class GcadDim3PointAngular(CoClassBaseClass):
+class AcadDim3PointAngular(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDim3PointAngular
 
-class GcadDimAligned(CoClassBaseClass):
+class AcadDimAligned(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimAligned
 
-class GcadDimAngular(CoClassBaseClass):
+class AcadDimAngular(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimAngular
 
-class GcadDimArcLength(CoClassBaseClass):
+class AcadDimArcLength(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimArcLength
 
-class GcadDimDiametric(CoClassBaseClass):
+class AcadDimDiametric(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimDiametric
 
-class GcadDimOrdinate(CoClassBaseClass):
+class AcadDimOrdinate(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimOrdinate
 
-class GcadDimRadial(CoClassBaseClass):
+class AcadDimRadial(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimRadial
 
-class GcadDimRadialLarge(CoClassBaseClass):
+class AcadDimRadialLarge(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimRadialLarge
 
-class GcadDimRotated(CoClassBaseClass):
+class AcadDimRotated(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimRotated
 
-class GcadDimStyle(CoClassBaseClass):
+class AcadDimStyle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimStyle
 
-class GcadDimStyles(CoClassBaseClass):
+class AcadDimStyles(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimStyles
 
-class GcadDimension(CoClassBaseClass):
+class AcadDimension(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadDimension
 
-class GcadDocument(CoClassBaseClass):
+class AcadDocument(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadDocument
 
-class GcadDocuments(CoClassBaseClass):
+class AcadDocuments(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadDocuments
 
-class GcadDwfUnderlay(CoClassBaseClass):
+class AcadDwfUnderlay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadUnderlay
 
-class GcadDynamicBlockReferenceProperty(CoClassBaseClass):
+class AcadDynamicBlockReferenceProperty(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadDynamicBlockReferenceProperty
 
-class GcadEllipse(CoClassBaseClass):
+class AcadEllipse(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadEllipse
 
-class GcadEntity(CoClassBaseClass):
+class AcadEntity(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadEntity
 
-class GcadExternalReference(CoClassBaseClass):
+class AcadExternalReference(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadExternalReference
 
-class GcadExtrudedSurface(CoClassBaseClass):
+class AcadExtrudedSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadExtrudedSurface
 
-class GcadFileDependencies(CoClassBaseClass):
+class AcadFileDependencies(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadFileDependencies
 
-class GcadFileDependency(CoClassBaseClass):
+class AcadFileDependency(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadFileDependency
 
-class GcadGroup(CoClassBaseClass):
+class AcadGroup(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadGroup
 
-class GcadGroups(CoClassBaseClass):
+class AcadGroups(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadGroups
 
-class GcadHatch(CoClassBaseClass):
+class AcadHatch(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadHatch
 
-class GcadHelix(CoClassBaseClass):
+class AcadHelix(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadHelix
 
-class GcadHyperlink(CoClassBaseClass):
+class AcadHyperlink(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadHyperlink
 
-class GcadHyperlinks(CoClassBaseClass):
+class AcadHyperlinks(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadHyperlinks
 
-class GcadIdPair(CoClassBaseClass):
+class AcadIdPair(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadIdPair
 
-class GcadLWPolyline(CoClassBaseClass):
+class AcadLWPolyline(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLWPolyline
 
-class GcadLayer(CoClassBaseClass):
+class AcadLayer(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLayer
 
-class GcadLayerStateManager(CoClassBaseClass):
+class AcadLayerStateManager(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadLayerStateManager
 
-class GcadLayers(CoClassBaseClass):
+class AcadLayers(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLayers
 
-class GcadLayout(CoClassBaseClass):
+class AcadLayout(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLayout
 
-class GcadLayouts(CoClassBaseClass):
+class AcadLayouts(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLayouts
 
-class GcadLeader(CoClassBaseClass):
+class AcadLeader(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLeader
 
-class GcadLight(CoClassBaseClass):
+class AcadLight(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLight
 
-class GcadLine(CoClassBaseClass):
+class AcadLine(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLine
 
-class GcadLineType(CoClassBaseClass):
+class AcadLineType(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLineType
 
-class GcadLineTypes(CoClassBaseClass):
+class AcadLineTypes(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLineTypes
 
-class GcadLoftedSurface(CoClassBaseClass):
+class AcadLoftedSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadLoftedSurface
 
-class GcadMInsertBlock(CoClassBaseClass):
+class AcadMInsertBlock(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadMInsertBlock
 
-class GcadMLeader(CoClassBaseClass):
+class AcadMLeader(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadMLeader
 
-class GcadMLeaderStyle(CoClassBaseClass):
+class AcadMLeaderStyle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadMLeaderStyle
 
-class GcadMLine(CoClassBaseClass):
+class AcadMLine(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadMLine
 
-class GcadMText(CoClassBaseClass):
+class AcadMText(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadMText
 
-class GcadMaterial(CoClassBaseClass):
+class AcadMaterial(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadMaterial
 
-class GcadMaterials(CoClassBaseClass):
+class AcadMaterials(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadMaterials
 
-class GcadMenuBar(CoClassBaseClass):
+class AcadMenuBar(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadMenuBar
 
-class GcadMenuGroup(CoClassBaseClass):
+class AcadMenuGroup(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadMenuGroup
 
-class GcadMenuGroups(CoClassBaseClass):
+class AcadMenuGroups(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadMenuGroups
 
-class GcadModelSpace(CoClassBaseClass):
+class AcadModelSpace(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadModelSpace
 
-class GcadNurbSurface(CoClassBaseClass):
+class AcadNurbSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadNurbSurface
 
-class GcadObject(CoClassBaseClass):
+class AcadObject(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadObject
 
-class GcadOle(CoClassBaseClass):
+class AcadOle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadOle
 
-class GcadPViewport(CoClassBaseClass):
+class AcadPViewport(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadPViewport
 
-class GcadPaperSpace(CoClassBaseClass):
+class AcadPaperSpace(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadPaperSpace
 
-class GcadPdfUnderlay(CoClassBaseClass):
+class AcadPdfUnderlay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadUnderlay
 
-class GcadPlaneSurface(CoClassBaseClass):
+class AcadPlaneSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadPlaneSurface
 
-class GcadPlot(CoClassBaseClass):
+class AcadPlot(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPlot
 
-class GcadPlotConfiguration(CoClassBaseClass):
+class AcadPlotConfiguration(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPlotConfiguration
 
-class GcadPlotConfigurations(CoClassBaseClass):
+class AcadPlotConfigurations(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadPlotConfigurations
 
-class GcadPoint(CoClassBaseClass):
+class AcadPoint(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadPoint
 
-class GcadPointCloudEx(CoClassBaseClass):
+class AcadPointCloudEx(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadPointCloudEx
 
-class GcadPolyfaceMesh(CoClassBaseClass):
+class AcadPolyfaceMesh(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadPolyfaceMesh
 
-class GcadPolygonMesh(CoClassBaseClass):
+class AcadPolygonMesh(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadPolygonMesh
 
-class GcadPolyline(CoClassBaseClass):
+class AcadPolyline(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadPolyline
 
-class GcadPopupMenu(CoClassBaseClass):
+class AcadPopupMenu(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPopupMenu
 
-class GcadPopupMenuItem(CoClassBaseClass):
+class AcadPopupMenuItem(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPopupMenuItem
 
-class GcadPopupMenus(CoClassBaseClass):
+class AcadPopupMenus(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPopupMenus
 
-class GcadPreferences(CoClassBaseClass):
+class AcadPreferences(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPreferences
 
-class GcadPreferencesDisplay(CoClassBaseClass):
+class AcadPreferencesDisplay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPreferencesDisplay
 
-class GcadPreferencesDrafting(CoClassBaseClass):
+class AcadPreferencesDrafting(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPreferencesDrafting
 
-class GcadPreferencesFiles(CoClassBaseClass):
+class AcadPreferencesFiles(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPreferencesFiles
 
-class GcadPreferencesOpenSave(CoClassBaseClass):
+class AcadPreferencesOpenSave(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPreferencesOpenSave
 
-class GcadPreferencesOutput(CoClassBaseClass):
+class AcadPreferencesOutput(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPreferencesOutput
 
-class GcadPreferencesProfiles(CoClassBaseClass):
+class AcadPreferencesProfiles(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPreferencesProfiles
 
-class GcadPreferencesSelection(CoClassBaseClass):
+class AcadPreferencesSelection(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPreferencesSelection
 
-class GcadPreferencesSystem(CoClassBaseClass):
+class AcadPreferencesSystem(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPreferencesSystem
 
-class GcadPreferencesUser(CoClassBaseClass):
+class AcadPreferencesUser(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadPreferencesUser
 
-class GcadRasterImage(CoClassBaseClass):
+class AcadRasterImage(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadRasterImage
 
-class GcadRay(CoClassBaseClass):
+class AcadRay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadRay
 
-class GcadRegion(CoClassBaseClass):
+class AcadRegion(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadRegion
 
-class GcadRegisteredApplication(CoClassBaseClass):
+class AcadRegisteredApplication(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadRegisteredApplication
 
-class GcadRegisteredApplications(CoClassBaseClass):
+class AcadRegisteredApplications(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadRegisteredApplications
 
-class GcadRevolvedSurface(CoClassBaseClass):
+class AcadRevolvedSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadRevolvedSurface
 
-class GcadScriptJet(CoClassBaseClass):
+class AcadScriptJet(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadScriptJet
 
-class GcadSection(CoClassBaseClass):
+class AcadSection(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadSection
 
-class GcadSectionManager(CoClassBaseClass):
+class AcadSectionManager(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadSectionManager
 
-class GcadSectionSettings(CoClassBaseClass):
+class AcadSectionSettings(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadSectionSettings
 
-class GcadSecurityParams(CoClassBaseClass):
+class AcadSecurityParams(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadSecurityParams
 
-class GcadSelectionSet(CoClassBaseClass):
+class AcadSelectionSet(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadSelectionSet
 
-class GcadSelectionSets(CoClassBaseClass):
+class AcadSelectionSets(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadSelectionSets
 
-class GcadShadowDisplay(CoClassBaseClass):
+class AcadShadowDisplay(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
 
-class GcadShape(CoClassBaseClass):
+class AcadShape(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadShape
 
-class GcadSolid(CoClassBaseClass):
+class AcadSolid(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadSolid
 
-class GcadSortentsTable(CoClassBaseClass):
+class AcadSortentsTable(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadSortentsTable
 
-class GcadSpline(CoClassBaseClass):
+class AcadSpline(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadSpline
 
-class GcadState(CoClassBaseClass):
+class AcadState(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadState
 
-class GcadSubDMesh(CoClassBaseClass):
+class AcadSubDMesh(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadSubDMesh
 
-class GcadSummaryInfo(CoClassBaseClass):
+class AcadSummaryInfo(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadSummaryInfo
 
-class GcadSurface(CoClassBaseClass):
+class AcadSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadSurface
 
-class GcadSweptSurface(CoClassBaseClass):
+class AcadSweptSurface(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadSweptSurface
 
-class GcadTable(CoClassBaseClass):
+class AcadTable(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadTable
 
-class GcadTableCell(CoClassBaseClass):
+class AcadTableCell(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadTableCell
 
-class GcadTableStyle(CoClassBaseClass):
+class AcadTableStyle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadTableStyle
 
-class GcadText(CoClassBaseClass):
+class AcadText(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadText
 
-class GcadTextStyle(CoClassBaseClass):
+class AcadTextStyle(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadTextStyle
 
-class GcadTextStyles(CoClassBaseClass):
+class AcadTextStyles(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadTextStyles
 
-class GcadTolerance(CoClassBaseClass):
+class AcadTolerance(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadTolerance
 
-class GcadToolbar(CoClassBaseClass):
+class AcadToolbar(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadToolbar
 
-class GcadToolbarItem(CoClassBaseClass):
+class AcadToolbarItem(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadToolbarItem
 
-class GcadToolbars(CoClassBaseClass):
+class AcadToolbars(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadToolbars
 
-class GcadTrace(CoClassBaseClass):
+class AcadTrace(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadTrace
 
-class GcadUCS(CoClassBaseClass):
+class AcadUCS(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadUCS
 
-class GcadUCSs(CoClassBaseClass):
+class AcadUCSs(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadUCSs
 
-class GcadUtility(CoClassBaseClass):
+class AcadUtility(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
     default_interface = IAcadUtility
 
-class GcadView(CoClassBaseClass):
+class AcadView(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadView
 
-class GcadViewport(CoClassBaseClass):
+class AcadViewport(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadViewport
 
-class GcadViewports(CoClassBaseClass):
+class AcadViewports(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadViewports
 
-class GcadViews(CoClassBaseClass):
+class AcadViews(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadViews
 
-class GcadXRecord(CoClassBaseClass):
+class AcadXRecord(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents
     coclass_interfaces: Incomplete
     default_interface = IAcadXRecord
 
-class GcadXline(CoClassBaseClass):
+class AcadXline(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     default_source = IAcadObjectEvents

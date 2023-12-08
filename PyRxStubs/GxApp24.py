@@ -3,7 +3,7 @@
 # By python version 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]
 # From type library 'gcax.tlb'
 # On Thu Dec  7 13:06:45 2023
-'GCAD2024 Object Library'
+'Acad2024 Object Library'
 makepy_version = '0.5.01'
 python_version = 0x30c00f0
 
@@ -1525,28 +1525,28 @@ class constants:
     gcZoomScaledAbsolute          =0          # from enum GcZoomScaleType
     gcZoomScaledRelative          =1          # from enum GcZoomScaleType
     gcZoomScaledRelativePSpace    =2          # from enum GcZoomScaleType
-    ACADSECURITYPARAMS_ALGID_RC4  =26625      # from enum GcadSecurityParamsConstants
-    GCADSECURITYPARAMS_ALGID_RC4  =26625      # from enum GcadSecurityParamsConstants
-    ACADSECURITYPARAMS_ADD_TIMESTAMP=32         # from enum GcadSecurityParamsType
-    ACADSECURITYPARAMS_ENCRYPT_DATA=1          # from enum GcadSecurityParamsType
-    ACADSECURITYPARAMS_ENCRYPT_PROPS=2          # from enum GcadSecurityParamsType
-    ACADSECURITYPARAMS_SIGN_DATA  =16         # from enum GcadSecurityParamsType
-    GCADSECURITYPARAMS_ADD_TIMESTAMP=32         # from enum GcadSecurityParamsType
-    GCADSECURITYPARAMS_ENCRYPT_DATA=1          # from enum GcadSecurityParamsType
-    GCADSECURITYPARAMS_ENCRYPT_PROPS=2          # from enum GcadSecurityParamsType
-    GCADSECURITYPARAMS_SIGN_DATA  =16         # from enum GcadSecurityParamsType
-    kCellOptionNone               =0          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0001
-    kInheritCellFormat            =1          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0001
-    acMergeCellStyleConvertDuplicatesToOverrides=4          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0002
-    acMergeCellStyleCopyDuplicates=1          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0002
-    acMergeCellStyleIgnoreNewStyles=8          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0002
-    acMergeCellStyleNone          =0          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0002
-    acMergeCellStyleOverwriteDuplicates=2          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0002
-    gcMergeCellStyleConvertDuplicatesToOverrides=4          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0002
-    gcMergeCellStyleCopyDuplicates=1          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0002
-    gcMergeCellStyleIgnoreNewStyles=8          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0002
-    gcMergeCellStyleNone          =0          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0002
-    gcMergeCellStyleOverwriteDuplicates=2          # from enum __MIDL___MIDL_itf_gcadi_0001_0067_0002
+    ACADSECURITYPARAMS_ALGID_RC4  =26625      # from enum AcadSecurityParamsConstants
+    AcadSECURITYPARAMS_ALGID_RC4  =26625      # from enum AcadSecurityParamsConstants
+    ACADSECURITYPARAMS_ADD_TIMESTAMP=32         # from enum AcadSecurityParamsType
+    ACADSECURITYPARAMS_ENCRYPT_DATA=1          # from enum AcadSecurityParamsType
+    ACADSECURITYPARAMS_ENCRYPT_PROPS=2          # from enum AcadSecurityParamsType
+    ACADSECURITYPARAMS_SIGN_DATA  =16         # from enum AcadSecurityParamsType
+    AcadSECURITYPARAMS_ADD_TIMESTAMP=32         # from enum AcadSecurityParamsType
+    AcadSECURITYPARAMS_ENCRYPT_DATA=1          # from enum AcadSecurityParamsType
+    AcadSECURITYPARAMS_ENCRYPT_PROPS=2          # from enum AcadSecurityParamsType
+    AcadSECURITYPARAMS_SIGN_DATA  =16         # from enum AcadSecurityParamsType
+    kCellOptionNone               =0          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0001
+    kInheritCellFormat            =1          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0001
+    acMergeCellStyleConvertDuplicatesToOverrides=4          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0002
+    acMergeCellStyleCopyDuplicates=1          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0002
+    acMergeCellStyleIgnoreNewStyles=8          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0002
+    acMergeCellStyleNone          =0          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0002
+    acMergeCellStyleOverwriteDuplicates=2          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0002
+    gcMergeCellStyleConvertDuplicatesToOverrides=4          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0002
+    gcMergeCellStyleCopyDuplicates=1          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0002
+    gcMergeCellStyleIgnoreNewStyles=8          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0002
+    gcMergeCellStyleNone          =0          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0002
+    gcMergeCellStyleOverwriteDuplicates=2          # from enum __MIDL___MIDL_itf_Acadi_0001_0067_0002
 
 from win32com.client import DispatchBaseClass
 class IGcPePropertyEditorColor(DispatchBaseClass):
@@ -1603,7 +1603,7 @@ class IGcPePropertyEditorColor(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcad3DFace(DispatchBaseClass):
-    'GCAD 3dFace Interface'
+    'Acad 3dFace Interface'
     CLSID = IID('{46250F63-F4E2-4C99-A12B-0471714BC659}')
     coclass_clsid = IID('{457AD5FC-1656-4606-AB8A-EF7F0215B238}')
 
@@ -1813,7 +1813,7 @@ class IAcad3DFace(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcad3DPolyline(DispatchBaseClass):
-    'GCAD 3dPolyline Interface'
+    'Acad 3dPolyline Interface'
     CLSID = IID('{2D6B36AF-53ED-44A5-A97B-AD5C91872CF1}')
     coclass_clsid = IID('{7D7FD20A-AC1D-46BC-8C49-8EBB286F681E}')
 
@@ -2018,7 +2018,7 @@ class IAcad3DPolyline(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcad3DSolid(DispatchBaseClass):
-    'GCAD 3dSolid Interface'
+    'Acad 3dSolid Interface'
     CLSID = IID('{93102923-D2AD-4429-86B3-A09D589BF38F}')
     coclass_clsid = IID('{C998B595-8233-4859-A51A-492A25E9EB67}')
 
@@ -2252,7 +2252,7 @@ class IAcadApplication(DispatchBaseClass):
 
     # Result is of type IAcadState
     def GetAcadState(self):
-        'Retrieves an GcadState object.'
+        'Retrieves an AcadState object.'
         ret = self._oleobj_.InvokeTypes(42, LCID, 1, (9, 0), (),)
         if ret is not None:
             ret = Dispatch(ret, 'GetAcadState', '{31E08BF4-3D9F-45DC-B456-D2A2CA16E126}')
@@ -2406,7 +2406,7 @@ class IAcadApplication(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadArc(DispatchBaseClass):
-    'GCAD Arc Interface'
+    'Acad Arc Interface'
     CLSID = IID('{6D9FE1BB-5B25-41AA-A962-E55DE2B6210D}')
     coclass_clsid = IID('{7E99A93E-D084-43FF-9311-D24A452FF851}')
 
@@ -3589,7 +3589,7 @@ class IAcadAssocArrayRectangular(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadAttribute(DispatchBaseClass):
-    'GCAD Attribute Interface'
+    'Acad Attribute Interface'
     CLSID = IID('{DB4711D4-33D9-408F-9E34-93A7F91248F2}')
     coclass_clsid = IID('{3BE70A3D-E2C4-42A6-989C-2F1E08C338D4}')
 
@@ -3834,7 +3834,7 @@ class IAcadAttribute(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadAttributeReference(DispatchBaseClass):
-    'Gcad Attribute Reference Interface'
+    'Acad Attribute Reference Interface'
     CLSID = IID('{183D30F5-55EB-4409-9FC8-06B66E6578FA}')
     coclass_clsid = IID('{326662C0-F9F3-4A5B-BFE5-2431F4AEF3D8}')
 
@@ -4748,7 +4748,7 @@ class IAcadBlock(DispatchBaseClass):
         return True
 
 class IAcadBlockReference(DispatchBaseClass):
-    'GCAD Block Reference Interface'
+    'Acad Block Reference Interface'
     CLSID = IID('{0E143589-AFCC-44FC-8000-4C8D44F80ED6}')
     coclass_clsid = IID('{DA38CF1F-C119-4FE7-A5F9-AEC5E0C22709}')
 
@@ -5271,7 +5271,7 @@ class IAcadCamera(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadCircle(DispatchBaseClass):
-    'GCAD Circle Interface'
+    'Acad Circle Interface'
     CLSID = IID('{70B267B4-5885-477C-BE74-F898EE7FE9EA}')
     coclass_clsid = IID('{C858EE7D-1B1F-4F2E-A61F-3F4AA8C6C1BA}')
 
@@ -6163,7 +6163,7 @@ class IAcadDim3PointAngular(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadDimAligned(DispatchBaseClass):
-    'GCAD Aligned Dimension Interface'
+    'Acad Aligned Dimension Interface'
     CLSID = IID('{21E8F2DD-9EB3-4B41-AF26-1D32C67294B6}')
     coclass_clsid = IID('{31463489-3D64-4BC7-85B1-0A1C6F0B2ABA}')
 
@@ -6539,7 +6539,7 @@ class IAcadDimAligned(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadDimAngular(DispatchBaseClass):
-    'GCAD Angular Dimension Interface'
+    'Acad Angular Dimension Interface'
     CLSID = IID('{78931DD8-09C7-44F5-9CB5-83198A8CD286}')
     coclass_clsid = IID('{8CBE37D9-7079-437A-A384-635D4A74A8D3}')
 
@@ -7596,7 +7596,7 @@ class IAcadDimDiametric(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadDimOrdinate(DispatchBaseClass):
-    'GCAD Ordinate Dimension Interface'
+    'Acad Ordinate Dimension Interface'
     CLSID = IID('{251DE54B-53EE-47A2-8A4F-53D2EE9E7C57}')
     coclass_clsid = IID('{A6F7E215-803A-414A-A81D-6299DED292E4}')
 
@@ -7906,7 +7906,7 @@ class IAcadDimOrdinate(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadDimRadial(DispatchBaseClass):
-    'GCAD Radial Dimension Interface'
+    'Acad Radial Dimension Interface'
     CLSID = IID('{6070AA16-B13D-4B73-AA07-722C59BC09B5}')
     coclass_clsid = IID('{04A200E7-033D-4ECC-A9B1-806148A24763}')
 
@@ -8237,7 +8237,7 @@ class IAcadDimRadial(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadDimRadialLarge(DispatchBaseClass):
-    'GCAD Jogged Dimension Interface'
+    'Acad Jogged Dimension Interface'
     CLSID = IID('{E3D1CABD-C84B-49D2-9D47-984F880D33A2}')
     coclass_clsid = IID('{599C859E-76AB-4A00-8A81-2A71506A3824}')
 
@@ -8569,7 +8569,7 @@ class IAcadDimRadialLarge(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadDimRotated(DispatchBaseClass):
-    'GCAD Rotated Dimension Interface'
+    'Acad Rotated Dimension Interface'
     CLSID = IID('{BFA28400-5AA8-4322-950A-CB92AD2EBCE5}')
     coclass_clsid = IID('{4D49A4C2-C908-4523-9E62-89B08B19CB1C}')
 
@@ -9864,7 +9864,7 @@ class IAcadDwfUnderlay(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadDynamicBlockReferenceProperty(DispatchBaseClass):
-    'GCAD Dynamic Block Property Interface'
+    'Acad Dynamic Block Property Interface'
     CLSID = IID('{017EAE27-EA30-4151-8272-BA072063C218}')
     coclass_clsid = IID('{114CCE6C-FDBF-4DAD-9157-7078B5664B95}')
 
@@ -9896,7 +9896,7 @@ class IAcadDynamicBlockReferenceProperty(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadEllipse(DispatchBaseClass):
-    'GCAD Ellipse Interface'
+    'Acad Ellipse Interface'
     CLSID = IID('{21565C97-8E2E-442B-8F69-C9662BC89DCA}')
     coclass_clsid = IID('{7F11EDC5-9468-4C9D-8749-5720C123C13F}')
 
@@ -11037,7 +11037,7 @@ class IAcadGroups(DispatchBaseClass):
         return True
 
 class IAcadHatch(DispatchBaseClass):
-    'GCAD Hatch Interface'
+    'Acad Hatch Interface'
     CLSID = IID('{78EEB562-92AD-4C9E-AE4B-BE3E73AEFE32}')
     coclass_clsid = IID('{EF74767C-CCF5-4725-935C-39E7BDB8D3B8}')
 
@@ -11587,7 +11587,7 @@ class IAcadIdPair(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadLWPolyline(DispatchBaseClass):
-    'GCAD Lightweight Polyline Interface'
+    'Acad Lightweight Polyline Interface'
     CLSID = IID('{B32517C5-036E-4CB0-8538-66BD5FC625C4}')
     coclass_clsid = IID('{508C6E95-0B42-4E0B-9A4A-75CF28263857}')
 
@@ -12308,7 +12308,7 @@ class IAcadLayouts(DispatchBaseClass):
         return True
 
 class IAcadLeader(DispatchBaseClass):
-    'GCAD Leader Interface'
+    'Acad Leader Interface'
     CLSID = IID('{4E0C6FC4-8B82-40CA-A3BB-0C645F788048}')
     coclass_clsid = IID('{1B4D2B5E-8406-4167-B42C-09D8136BAE47}')
 
@@ -13272,7 +13272,7 @@ class IAcadLight3(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadLine(DispatchBaseClass):
-    'GCAD Line Interface'
+    'Acad Line Interface'
     CLSID = IID('{EB1641A6-750D-49EB-A681-0BAEB77E7388}')
     coclass_clsid = IID('{6ACCA2E1-E804-4519-B95F-235867C214AC}')
 
@@ -14373,7 +14373,7 @@ class IAcadMLeader(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadMLeaderStyle(DispatchBaseClass):
-    'Gcad MLeaderstyle Interface'
+    'Acad MLeaderstyle Interface'
     CLSID = IID('{865CCF2C-B13D-48CB-9605-04E135F8FF30}')
     coclass_clsid = IID('{C3819487-144A-4471-B95E-712E3CC64BEC}')
 
@@ -14697,7 +14697,7 @@ class IAcadMLine(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadMText(DispatchBaseClass):
-    'GCAD MText Interface'
+    'Acad MText Interface'
     CLSID = IID('{50FA2201-1260-4323-8C00-3EA7E36680B6}')
     coclass_clsid = IID('{9F58700D-4910-4463-AEEB-2406161B0490}')
 
@@ -15052,7 +15052,7 @@ class IAcadMaterials(DispatchBaseClass):
         return True
 
 class IAcadMenuBar(DispatchBaseClass):
-    'A collection of PopupMenu objects representing the currentGCAD menu bar'
+    'A collection of PopupMenu objects representing the currentAcad menu bar'
     CLSID = IID('{87925C1E-ADEA-48BD-8BF1-239F9A116A81}')
     coclass_clsid = IID('{573373A3-EDBE-4369-AF1F-3292EE13538C}')
 
@@ -15102,7 +15102,7 @@ class IAcadMenuBar(DispatchBaseClass):
         return True
 
 class IAcadMenuGroup(DispatchBaseClass):
-    'An GCAD menu group'
+    'An Acad menu group'
     CLSID = IID('{72D027F2-CD79-4135-AE60-74FD0F8F595B}')
     coclass_clsid = IID('{521C919B-AC49-4F28-A908-D4BD172C92E6}')
 
@@ -17796,7 +17796,7 @@ class IAcadPlotConfigurations(DispatchBaseClass):
         return True
 
 class IAcadPoint(DispatchBaseClass):
-    'GCAD Point Interface'
+    'Acad Point Interface'
     CLSID = IID('{E2A6DDD8-204E-4A0B-9F0B-C27640B98B7A}')
     coclass_clsid = IID('{5759A970-9028-4C5C-805B-AFE6D6169382}')
 
@@ -18373,7 +18373,7 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPolygonMesh(DispatchBaseClass):
-    'GCAD PolygonMesh Interface'
+    'Acad PolygonMesh Interface'
     CLSID = IID('{A48E1718-9751-4ACD-BC5E-A247DAC5FC44}')
     coclass_clsid = IID('{7BAA52E2-CBFA-406B-83AB-7D0F939026D4}')
 
@@ -18585,7 +18585,7 @@ class IAcadPolygonMesh(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPolyline(DispatchBaseClass):
-    'GCAD Polyline Interface'
+    'Acad Polyline Interface'
     CLSID = IID('{780E9428-D7F9-4F96-8E91-55C8F3CF3082}')
     coclass_clsid = IID('{DD0ACEEC-B19B-4EC4-A5C8-C85BBE6402B2}')
 
@@ -18828,7 +18828,7 @@ class IAcadPolyline(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadPopupMenu(DispatchBaseClass):
-    'An GCAD cascading menu'
+    'An Acad cascading menu'
     CLSID = IID('{551A5349-4463-40E2-822C-D3A632409117}')
     coclass_clsid = IID('{8774869F-546D-4CE5-9703-CFA67AEEBF26}')
 
@@ -19484,7 +19484,7 @@ class IAcadPreferencesSystem(DispatchBaseClass):
         "BeepOnError": (1610743819, 2, (11, 0), (), "BeepOnError", None),
         "DisplayOLEScale": (1610743811, 2, (11, 0), (), "DisplayOLEScale", None),
         "EnableStartupDialog": (1610743817, 2, (11, 0), (), "EnableStartupDialog", None),
-        "LoadGcadLspInAllDocuments": (1610743823, 2, (11, 0), (), "LoadGcadLspInAllDocuments", None),
+        "LoadAcadLspInAllDocuments": (1610743823, 2, (11, 0), (), "LoadAcadLspInAllDocuments", None),
         "ShowWarningMessages": (1610743821, 2, (11, 0), (), "ShowWarningMessages", None),
         "SingleDocumentMode": (1610743809, 2, (11, 0), (), "SingleDocumentMode", None),
         "StoreSQLIndex": (1610743813, 2, (11, 0), (), "StoreSQLIndex", None),
@@ -19494,7 +19494,7 @@ class IAcadPreferencesSystem(DispatchBaseClass):
         "BeepOnError": ((1610743819, LCID, 4, 0),()),
         "DisplayOLEScale": ((1610743811, LCID, 4, 0),()),
         "EnableStartupDialog": ((1610743817, LCID, 4, 0),()),
-        "LoadGcadLspInAllDocuments": ((1610743823, LCID, 4, 0),()),
+        "LoadAcadLspInAllDocuments": ((1610743823, LCID, 4, 0),()),
         "ShowWarningMessages": ((1610743821, LCID, 4, 0),()),
         "SingleDocumentMode": ((1610743809, LCID, 4, 0),()),
         "StoreSQLIndex": ((1610743813, LCID, 4, 0),()),
@@ -19552,7 +19552,7 @@ class IAcadPreferencesUser(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadRasterImage(DispatchBaseClass):
-    'GCAD Raster Interface'
+    'Acad Raster Interface'
     CLSID = IID('{1A5BD135-D93B-4BFD-8027-E8277D629B46}')
     coclass_clsid = IID('{FB5AA334-CBF1-41D1-B9E3-98F2ACB2EB83}')
 
@@ -19764,7 +19764,7 @@ class IAcadRasterImage(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadRay(DispatchBaseClass):
-    'GCAD Ray Interface'
+    'Acad Ray Interface'
     CLSID = IID('{D05D772F-86F6-4B10-9898-E22BF8C5F192}')
     coclass_clsid = IID('{D44D6709-6C13-4C52-A360-A2943C33EEE8}')
 
@@ -19949,7 +19949,7 @@ class IAcadRay(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadRegion(DispatchBaseClass):
-    'GCAD Region Interface'
+    'Acad Region Interface'
     CLSID = IID('{6B5D2248-E3ED-4807-8AFB-0CAA49BAF64A}')
     coclass_clsid = IID('{A83EBA25-CCF0-45CE-A7C2-FEABE0D3AF59}')
 
@@ -21515,7 +21515,7 @@ class IAcadSelectionSets(DispatchBaseClass):
         return True
 
 class IAcadShape(DispatchBaseClass):
-    'GCAD Shape Interface'
+    'Acad Shape Interface'
     CLSID = IID('{850C5DB8-5052-4C0B-99B7-C0A385ECE85F}')
     coclass_clsid = IID('{4EFE4629-C549-4346-9E5A-06F0AE788ED0}')
 
@@ -21710,7 +21710,7 @@ class IAcadShape(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSolid(DispatchBaseClass):
-    'GCAD Solid Interface'
+    'Acad Solid Interface'
     CLSID = IID('{38D2992F-DF38-497F-9E2B-68D813057E8D}')
     coclass_clsid = IID('{7EB18444-4D79-4CA8-8743-0498B64C4D01}')
 
@@ -21907,7 +21907,7 @@ class IAcadSolid(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSortentsTable(DispatchBaseClass):
-    'GCAD GcadSortentsTable Interface'
+    'Acad AcadSortentsTable Interface'
     CLSID = IID('{DEDB84CD-55C2-4F73-B534-7F06EBF8919F}')
     coclass_clsid = IID('{79C8B818-C544-46EE-BDCF-613095E6DA50}')
 
@@ -22007,7 +22007,7 @@ class IAcadSortentsTable(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadSpline(DispatchBaseClass):
-    'GCAD Spline Interface'
+    'Acad Spline Interface'
     CLSID = IID('{3D506D60-0138-48DD-8166-E5512E441206}')
     coclass_clsid = IID('{F2293592-5908-4F24-9B5D-759CDA971FC2}')
 
@@ -23963,7 +23963,7 @@ class IAcadTableCell(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadTableStyle(DispatchBaseClass):
-    'GCAD IAcadTableStyle Interface'
+    'Acad IAcadTableStyle Interface'
     CLSID = IID('{4EC5CAC3-22E8-4B42-BBA8-77271650DEA4}')
     coclass_clsid = IID('{31B9FEC5-563C-464B-B180-5B5E4B530EDD}')
 
@@ -24169,7 +24169,7 @@ class IAcadTableStyle(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadText(DispatchBaseClass):
-    'GCAD Text Interface'
+    'Acad Text Interface'
     CLSID = IID('{910CD144-7EC6-4BA5-9B63-AA6D8AEA3A6B}')
     coclass_clsid = IID('{12226789-EEA7-4BE8-9FD7-33513C744E3B}')
 
@@ -24556,7 +24556,7 @@ class IAcadTextStyles(DispatchBaseClass):
         return True
 
 class IAcadTolerance(DispatchBaseClass):
-    'GCAD Tolerance Interface'
+    'Acad Tolerance Interface'
     CLSID = IID('{98D4741E-D869-4950-8B28-046B6884A084}')
     coclass_clsid = IID('{092962C2-F320-44E1-8857-C8AFE3885555}')
 
@@ -24757,7 +24757,7 @@ class IAcadTolerance(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadToolbar(DispatchBaseClass):
-    'An GCAD toolbar'
+    'An Acad toolbar'
     CLSID = IID('{EDE9142E-0923-4657-90F7-EB55FC56C99A}')
     coclass_clsid = IID('{D6EE440D-BCFF-443C-960D-4F1DAC6D94F6}')
 
@@ -24856,7 +24856,7 @@ class IAcadToolbar(DispatchBaseClass):
         return True
 
 class IAcadToolbarItem(DispatchBaseClass):
-    'A single button item on an GCAD toolbar'
+    'A single button item on an Acad toolbar'
     CLSID = IID('{72E4902E-AA1A-4F5D-8995-B06088CF363C}')
     coclass_clsid = IID('{D2806DE9-1AFE-42DF-87AC-B0A855F9B891}')
 
@@ -24971,7 +24971,7 @@ class IAcadToolbars(DispatchBaseClass):
         return True
 
 class IAcadTrace(DispatchBaseClass):
-    'GCAD Trace Interface'
+    'Acad Trace Interface'
     CLSID = IID('{4253025F-5BC5-4D78-8D65-138D2DBED220}')
     coclass_clsid = IID('{D7B6AF1E-5F8B-453C-A26E-828A2BD820CC}')
 
@@ -26210,7 +26210,7 @@ class IAcadXRecord(DispatchBaseClass):
         return win32com.client.util.Iterator(ob, None)
 
 class IAcadXline(DispatchBaseClass):
-    'GCAD Xline Interface'
+    'Acad Xline Interface'
     CLSID = IID('{36494A5A-AADE-46F4-B87C-B213A2AF0083}')
     coclass_clsid = IID('{70371E06-28C5-423C-8912-78A9A6E342CB}')
 
@@ -26399,7 +26399,7 @@ class IAcadXline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class _DGcadApplicationEvents:
+class _DAcadApplicationEvents:
     '_IAcadApplicationEvents �ӿ�'
     CLSID = CLSID_Sink = IID('{330F7B9E-C93C-403D-807C-D92CB9698637}')
     coclass_clsid = IID('{E06CA8F7-4554-4993-8460-1127D2513B1E}')
@@ -26503,7 +26503,7 @@ class _DGcadApplicationEvents:
 #		'Triggered when there is a change to the application or document windows'
 
 
-class _DGcadDocumentEvents:
+class _DAcadDocumentEvents:
     '_IAcadDocumentEvents �ӿ�'
     CLSID = CLSID_Sink = IID('{2ABEE42C-D570-4DE3-874F-353204A47B63}')
     coclass_clsid = IID('{EEA4FF96-9C53-49ED-977F-D22D2B51F741}')
@@ -26632,8 +26632,8 @@ class GcPePropertyEditorColor(CoClassBaseClass): # A CoClass
     ]
     default_interface = IGcPePropertyEditorColor
 
-class Gcad3DFace(CoClassBaseClass): # A CoClass
-    # GCAD 3dFace Object
+class Acad3DFace(CoClassBaseClass): # A CoClass
+    # Acad 3dFace Object
     CLSID = IID('{457AD5FC-1656-4606-AB8A-EF7F0215B238}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26644,8 +26644,8 @@ class Gcad3DFace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcad3DFace
 
-class Gcad3DPolyline(CoClassBaseClass): # A CoClass
-    # GCAD 3dPolyline Object
+class Acad3DPolyline(CoClassBaseClass): # A CoClass
+    # Acad 3dPolyline Object
     CLSID = IID('{7D7FD20A-AC1D-46BC-8C49-8EBB286F681E}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26656,8 +26656,8 @@ class Gcad3DPolyline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcad3DPolyline
 
-class Gcad3DSolid(CoClassBaseClass): # A CoClass
-    # GCAD 3dSolid Object
+class Acad3DSolid(CoClassBaseClass): # A CoClass
+    # Acad 3dSolid Object
     CLSID = IID('{C998B595-8233-4859-A51A-492A25E9EB67}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26669,8 +26669,8 @@ class Gcad3DSolid(CoClassBaseClass): # A CoClass
     default_interface = IAcad3DSolid
 
 # This CoClass is known by the name 'GStarCAD.AcCmColor.24'
-class GcadAcCmColor(CoClassBaseClass): # A CoClass
-    # GcadAcCmColor Class
+class AcadAcCmColor(CoClassBaseClass): # A CoClass
+    # AcadAcCmColor Class
     CLSID = IID('{F7848BAF-729D-4217-A1E8-7DCE59B662FA}')
     coclass_sources = [
     ]
@@ -26679,21 +26679,21 @@ class GcadAcCmColor(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAcCmColor
 
-# This CoClass is known by the name 'GStarCAD.GcadApplication.24'
-class GcadApplication(CoClassBaseClass): # A CoClass
-    # GcadApplication Class
+# This CoClass is known by the name 'GStarCAD.AcadApplication.24'
+class AcadApplication(CoClassBaseClass): # A CoClass
+    # AcadApplication Class
     CLSID = IID('{E06CA8F7-4554-4993-8460-1127D2513B1E}')
     coclass_sources = [
-        _DGcadApplicationEvents,
+        _DAcadApplicationEvents,
     ]
-    default_source = _DGcadApplicationEvents
+    default_source = _DAcadApplicationEvents
     coclass_interfaces = [
         IAcadApplication,
     ]
     default_interface = IAcadApplication
 
-class GcadArc(CoClassBaseClass): # A CoClass
-    # GCAD Arc Object
+class AcadArc(CoClassBaseClass): # A CoClass
+    # Acad Arc Object
     CLSID = IID('{7E99A93E-D084-43FF-9311-D24A452FF851}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26704,8 +26704,8 @@ class GcadArc(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadArc
 
-class GcadArcAlignedText(CoClassBaseClass): # A CoClass
-    # GcadArcAlignedText Class
+class AcadArcAlignedText(CoClassBaseClass): # A CoClass
+    # AcadArcAlignedText Class
     CLSID = IID('{BA03B2BE-41B3-40E6-A493-7F46CCD7CC05}')
     coclass_sources = [
     ]
@@ -26714,8 +26714,8 @@ class GcadArcAlignedText(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadArcAlignedText
 
-class GcadAssocArrayPath(CoClassBaseClass): # A CoClass
-    # GCAD AssocArrayPath Object
+class AcadAssocArrayPath(CoClassBaseClass): # A CoClass
+    # Acad AssocArrayPath Object
     CLSID = IID('{3745EF1D-3D36-4500-8034-7526342623D3}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26726,8 +26726,8 @@ class GcadAssocArrayPath(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAssocArrayPath
 
-class GcadAssocArrayPolar(CoClassBaseClass): # A CoClass
-    # GCAD AssocArrayPolar Object
+class AcadAssocArrayPolar(CoClassBaseClass): # A CoClass
+    # Acad AssocArrayPolar Object
     CLSID = IID('{AC93B51F-F467-4928-B094-03EA43B3A681}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26738,8 +26738,8 @@ class GcadAssocArrayPolar(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAssocArrayPolar
 
-class GcadAssocArrayRectangular(CoClassBaseClass): # A CoClass
-    # GCAD AssocArrayRectangular Object
+class AcadAssocArrayRectangular(CoClassBaseClass): # A CoClass
+    # Acad AssocArrayRectangular Object
     CLSID = IID('{48E1D6AC-00B6-41DF-9A4F-26F4F47A8EE6}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26750,8 +26750,8 @@ class GcadAssocArrayRectangular(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAssocArrayRectangular
 
-class GcadAttribute(CoClassBaseClass): # A CoClass
-    # GCAD Attribute Object
+class AcadAttribute(CoClassBaseClass): # A CoClass
+    # Acad Attribute Object
     CLSID = IID('{3BE70A3D-E2C4-42A6-989C-2F1E08C338D4}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26762,8 +26762,8 @@ class GcadAttribute(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAttribute
 
-class GcadAttributeReference(CoClassBaseClass): # A CoClass
-    # GCAD Attribute Reference Object
+class AcadAttributeReference(CoClassBaseClass): # A CoClass
+    # Acad Attribute Reference Object
     CLSID = IID('{326662C0-F9F3-4A5B-BFE5-2431F4AEF3D8}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26774,8 +26774,8 @@ class GcadAttributeReference(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadAttributeReference
 
-class GcadBlock(CoClassBaseClass): # A CoClass
-    # GcadBlock Class
+class AcadBlock(CoClassBaseClass): # A CoClass
+    # AcadBlock Class
     CLSID = IID('{60C11D4D-6F51-4A16-88CE-305C5BBC84F1}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26786,8 +26786,8 @@ class GcadBlock(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadBlock
 
-class GcadBlockReference(CoClassBaseClass): # A CoClass
-    # GCAD Block Reference Object
+class AcadBlockReference(CoClassBaseClass): # A CoClass
+    # Acad Block Reference Object
     CLSID = IID('{DA38CF1F-C119-4FE7-A5F9-AEC5E0C22709}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26798,8 +26798,8 @@ class GcadBlockReference(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadBlockReference
 
-class GcadBlocks(CoClassBaseClass): # A CoClass
-    # GcadBlocks Class
+class AcadBlocks(CoClassBaseClass): # A CoClass
+    # AcadBlocks Class
     CLSID = IID('{25F41555-CB62-4FB5-AF5A-FD50D5B99809}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26810,8 +26810,8 @@ class GcadBlocks(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadBlocks
 
-class GcadCamera(CoClassBaseClass): # A CoClass
-    # Gcad Camera
+class AcadCamera(CoClassBaseClass): # A CoClass
+    # Acad Camera
     CLSID = IID('{0C8A268F-2F40-4D78-8582-E900CD39AAB7}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26822,8 +26822,8 @@ class GcadCamera(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadCamera
 
-class GcadCircle(CoClassBaseClass): # A CoClass
-    # GcadCircle
+class AcadCircle(CoClassBaseClass): # A CoClass
+    # AcadCircle
     CLSID = IID('{C858EE7D-1B1F-4F2E-A61F-3F4AA8C6C1BA}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26834,8 +26834,8 @@ class GcadCircle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadCircle
 
-class GcadDatabase(CoClassBaseClass): # A CoClass
-    # GcadDatabase Class
+class AcadDatabase(CoClassBaseClass): # A CoClass
+    # AcadDatabase Class
     CLSID = IID('{5E90323E-2CCF-4AE9-9B6F-6603AB611048}')
     coclass_sources = [
     ]
@@ -26844,8 +26844,8 @@ class GcadDatabase(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDatabase
 
-class GcadDatabasePreferences(CoClassBaseClass): # A CoClass
-    # GcadDatabasePreferences Class
+class AcadDatabasePreferences(CoClassBaseClass): # A CoClass
+    # AcadDatabasePreferences Class
     CLSID = IID('{E3AC406B-D118-44DB-AC19-AA594DD65C8A}')
     coclass_sources = [
     ]
@@ -26854,8 +26854,8 @@ class GcadDatabasePreferences(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDatabasePreferences
 
-class GcadDgnUnderlay(CoClassBaseClass): # A CoClass
-    # Gcad DgnUnderlay
+class AcadDgnUnderlay(CoClassBaseClass): # A CoClass
+    # Acad DgnUnderlay
     CLSID = IID('{7A486F98-18BC-424E-9D37-CD975EC3667F}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26866,8 +26866,8 @@ class GcadDgnUnderlay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUnderlay
 
-class GcadDictionaries(CoClassBaseClass): # A CoClass
-    # GcadDictionaries Class
+class AcadDictionaries(CoClassBaseClass): # A CoClass
+    # AcadDictionaries Class
     CLSID = IID('{07244103-C9ED-4EF9-BDD4-5062C58A34D4}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26878,7 +26878,7 @@ class GcadDictionaries(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDictionaries
 
-class GcadDictionary(CoClassBaseClass): # A CoClass
+class AcadDictionary(CoClassBaseClass): # A CoClass
     # A container object for storing and retrieving objects
     CLSID = IID('{F7A4E90A-DB70-4175-833C-E9F927851832}')
     coclass_sources = [
@@ -26890,8 +26890,8 @@ class GcadDictionary(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDictionary
 
-class GcadDim3PointAngular(CoClassBaseClass): # A CoClass
-    # GCAD 3PointAngular Dimension Object
+class AcadDim3PointAngular(CoClassBaseClass): # A CoClass
+    # Acad 3PointAngular Dimension Object
     CLSID = IID('{348090AB-ECF8-4259-BFA3-45C7A91E30F6}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26902,8 +26902,8 @@ class GcadDim3PointAngular(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDim3PointAngular
 
-class GcadDimAligned(CoClassBaseClass): # A CoClass
-    # GCAD Aligned Dimension Object
+class AcadDimAligned(CoClassBaseClass): # A CoClass
+    # Acad Aligned Dimension Object
     CLSID = IID('{31463489-3D64-4BC7-85B1-0A1C6F0B2ABA}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26914,8 +26914,8 @@ class GcadDimAligned(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimAligned
 
-class GcadDimAngular(CoClassBaseClass): # A CoClass
-    # GCAD Angular Dimension Object
+class AcadDimAngular(CoClassBaseClass): # A CoClass
+    # Acad Angular Dimension Object
     CLSID = IID('{8CBE37D9-7079-437A-A384-635D4A74A8D3}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26926,8 +26926,8 @@ class GcadDimAngular(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimAngular
 
-class GcadDimArcLength(CoClassBaseClass): # A CoClass
-    # GCAD Arc Length Dimension Object
+class AcadDimArcLength(CoClassBaseClass): # A CoClass
+    # Acad Arc Length Dimension Object
     CLSID = IID('{2C817A8B-0B7D-4DE6-914A-B3A79F0665E4}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26938,8 +26938,8 @@ class GcadDimArcLength(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimArcLength
 
-class GcadDimDiametric(CoClassBaseClass): # A CoClass
-    # GcadDimDiametric Class
+class AcadDimDiametric(CoClassBaseClass): # A CoClass
+    # AcadDimDiametric Class
     CLSID = IID('{A4E8085A-25F0-420B-A480-30ABAEF225C8}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26950,8 +26950,8 @@ class GcadDimDiametric(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimDiametric
 
-class GcadDimOrdinate(CoClassBaseClass): # A CoClass
-    # GCAD Ordinate Dimension Object
+class AcadDimOrdinate(CoClassBaseClass): # A CoClass
+    # Acad Ordinate Dimension Object
     CLSID = IID('{A6F7E215-803A-414A-A81D-6299DED292E4}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26962,8 +26962,8 @@ class GcadDimOrdinate(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimOrdinate
 
-class GcadDimRadial(CoClassBaseClass): # A CoClass
-    # GCAD Radial Dimension Object
+class AcadDimRadial(CoClassBaseClass): # A CoClass
+    # Acad Radial Dimension Object
     CLSID = IID('{04A200E7-033D-4ECC-A9B1-806148A24763}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26974,8 +26974,8 @@ class GcadDimRadial(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimRadial
 
-class GcadDimRadialLarge(CoClassBaseClass): # A CoClass
-    # GCAD Jogged Dimension Object
+class AcadDimRadialLarge(CoClassBaseClass): # A CoClass
+    # Acad Jogged Dimension Object
     CLSID = IID('{599C859E-76AB-4A00-8A81-2A71506A3824}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26986,8 +26986,8 @@ class GcadDimRadialLarge(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimRadialLarge
 
-class GcadDimRotated(CoClassBaseClass): # A CoClass
-    # GCAD Rotated Dimension Object
+class AcadDimRotated(CoClassBaseClass): # A CoClass
+    # Acad Rotated Dimension Object
     CLSID = IID('{4D49A4C2-C908-4523-9E62-89B08B19CB1C}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -26998,8 +26998,8 @@ class GcadDimRotated(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimRotated
 
-class GcadDimStyle(CoClassBaseClass): # A CoClass
-    # GcadDimStyle Class
+class AcadDimStyle(CoClassBaseClass): # A CoClass
+    # AcadDimStyle Class
     CLSID = IID('{67211CB3-E07C-4585-B521-CD8F5840BD8D}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27010,8 +27010,8 @@ class GcadDimStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimStyle
 
-class GcadDimStyles(CoClassBaseClass): # A CoClass
-    # GcadDimStyles Class
+class AcadDimStyles(CoClassBaseClass): # A CoClass
+    # AcadDimStyles Class
     CLSID = IID('{187BD9EB-18F0-40A0-BEA1-4B53AE20A161}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27022,8 +27022,8 @@ class GcadDimStyles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimStyles
 
-class GcadDimension(CoClassBaseClass): # A CoClass
-    # GcadDimension Class
+class AcadDimension(CoClassBaseClass): # A CoClass
+    # AcadDimension Class
     CLSID = IID('{5D0A1B18-A59B-402A-B66B-2E10E2BDAE65}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27034,20 +27034,20 @@ class GcadDimension(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDimension
 
-class GcadDocument(CoClassBaseClass): # A CoClass
-    # GcadDocument Class
+class AcadDocument(CoClassBaseClass): # A CoClass
+    # AcadDocument Class
     CLSID = IID('{EEA4FF96-9C53-49ED-977F-D22D2B51F741}')
     coclass_sources = [
-        _DGcadDocumentEvents,
+        _DAcadDocumentEvents,
     ]
-    default_source = _DGcadDocumentEvents
+    default_source = _DAcadDocumentEvents
     coclass_interfaces = [
         IAcadDocument,
     ]
     default_interface = IAcadDocument
 
-class GcadDocuments(CoClassBaseClass): # A CoClass
-    # GcadDocuments Class
+class AcadDocuments(CoClassBaseClass): # A CoClass
+    # AcadDocuments Class
     CLSID = IID('{99EF8026-26E1-43C1-92EE-F5041E7DBE8C}')
     coclass_sources = [
     ]
@@ -27056,8 +27056,8 @@ class GcadDocuments(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDocuments
 
-class GcadDwfUnderlay(CoClassBaseClass): # A CoClass
-    # Gcad DwfnUnderlay
+class AcadDwfUnderlay(CoClassBaseClass): # A CoClass
+    # Acad DwfnUnderlay
     CLSID = IID('{B8E04FA2-2C8E-4EAE-873C-9ECC978E1628}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27069,8 +27069,8 @@ class GcadDwfUnderlay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUnderlay
 
-class GcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
-    # GCAD Dynamic Block Property Object
+class AcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
+    # Acad Dynamic Block Property Object
     CLSID = IID('{114CCE6C-FDBF-4DAD-9157-7078B5664B95}')
     coclass_sources = [
     ]
@@ -27079,8 +27079,8 @@ class GcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadDynamicBlockReferenceProperty
 
-class GcadEllipse(CoClassBaseClass): # A CoClass
-    # GCAD Ellipse Object
+class AcadEllipse(CoClassBaseClass): # A CoClass
+    # Acad Ellipse Object
     CLSID = IID('{7F11EDC5-9468-4C9D-8749-5720C123C13F}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27091,8 +27091,8 @@ class GcadEllipse(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadEllipse
 
-class GcadEntity(CoClassBaseClass): # A CoClass
-    # GcadEntity Class
+class AcadEntity(CoClassBaseClass): # A CoClass
+    # AcadEntity Class
     CLSID = IID('{3737DD60-3DB3-45AA-A592-49640E47A4CB}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27103,8 +27103,8 @@ class GcadEntity(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadEntity
 
-class GcadExternalReference(CoClassBaseClass): # A CoClass
-    # GCAD External Reference Object
+class AcadExternalReference(CoClassBaseClass): # A CoClass
+    # Acad External Reference Object
     CLSID = IID('{78F3EF1F-22D5-4BC8-A186-3CF45759F2DD}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27115,8 +27115,8 @@ class GcadExternalReference(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadExternalReference
 
-class GcadExtrudedSurface(CoClassBaseClass): # A CoClass
-    # Gcad ExtrudedSurface
+class AcadExtrudedSurface(CoClassBaseClass): # A CoClass
+    # Acad ExtrudedSurface
     CLSID = IID('{3865F4CA-2245-4517-9550-0FA5E5FC28F8}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27127,8 +27127,8 @@ class GcadExtrudedSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadExtrudedSurface
 
-class GcadFileDependencies(CoClassBaseClass): # A CoClass
-    # GcadFileDependencies Class
+class AcadFileDependencies(CoClassBaseClass): # A CoClass
+    # AcadFileDependencies Class
     CLSID = IID('{B1406301-FAFE-4332-B481-6DE6B109B206}')
     coclass_sources = [
     ]
@@ -27137,8 +27137,8 @@ class GcadFileDependencies(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadFileDependencies
 
-class GcadFileDependency(CoClassBaseClass): # A CoClass
-    # GcadFileDependency Class
+class AcadFileDependency(CoClassBaseClass): # A CoClass
+    # AcadFileDependency Class
     CLSID = IID('{0E92853F-5027-4A90-999C-118BC73FA6BA}')
     coclass_sources = [
     ]
@@ -27147,8 +27147,8 @@ class GcadFileDependency(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadFileDependency
 
-class GcadGroup(CoClassBaseClass): # A CoClass
-    # GcadGroup Class
+class AcadGroup(CoClassBaseClass): # A CoClass
+    # AcadGroup Class
     CLSID = IID('{28EA8439-1EEF-4632-812B-3A8515F93530}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27159,8 +27159,8 @@ class GcadGroup(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadGroup
 
-class GcadGroups(CoClassBaseClass): # A CoClass
-    # GcadGroups Class
+class AcadGroups(CoClassBaseClass): # A CoClass
+    # AcadGroups Class
     CLSID = IID('{255F2619-FB9D-4176-BE91-D2C122537155}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27171,8 +27171,8 @@ class GcadGroups(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadGroups
 
-class GcadHatch(CoClassBaseClass): # A CoClass
-    # GCAD Hatch Object
+class AcadHatch(CoClassBaseClass): # A CoClass
+    # Acad Hatch Object
     CLSID = IID('{EF74767C-CCF5-4725-935C-39E7BDB8D3B8}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27183,8 +27183,8 @@ class GcadHatch(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHatch
 
-class GcadHelix(CoClassBaseClass): # A CoClass
-    # Gcad Helix
+class AcadHelix(CoClassBaseClass): # A CoClass
+    # Acad Helix
     CLSID = IID('{E817F271-E3BF-44E9-A481-C860D9D8CD13}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27195,7 +27195,7 @@ class GcadHelix(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHelix
 
-class GcadHyperlink(CoClassBaseClass): # A CoClass
+class AcadHyperlink(CoClassBaseClass): # A CoClass
     # A URL and URL description
     CLSID = IID('{B4F3F703-2BC5-4074-BD6E-24E5830BBD0A}')
     coclass_sources = [
@@ -27205,8 +27205,8 @@ class GcadHyperlink(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHyperlink
 
-class GcadHyperlinks(CoClassBaseClass): # A CoClass
-    # GcadHyperlinks Class
+class AcadHyperlinks(CoClassBaseClass): # A CoClass
+    # AcadHyperlinks Class
     CLSID = IID('{D1131D16-F4F4-4F50-8AEB-A6ECA83141C0}')
     coclass_sources = [
     ]
@@ -27215,8 +27215,8 @@ class GcadHyperlinks(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadHyperlinks
 
-class GcadIdPair(CoClassBaseClass): # A CoClass
-    # Gcad IdPair
+class AcadIdPair(CoClassBaseClass): # A CoClass
+    # Acad IdPair
     CLSID = IID('{CDF39880-2237-4180-A675-1601037F78ED}')
     coclass_sources = [
     ]
@@ -27225,8 +27225,8 @@ class GcadIdPair(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadIdPair
 
-class GcadLWPolyline(CoClassBaseClass): # A CoClass
-    # GCAD Lightweight Polyline Object
+class AcadLWPolyline(CoClassBaseClass): # A CoClass
+    # Acad Lightweight Polyline Object
     CLSID = IID('{508C6E95-0B42-4E0B-9A4A-75CF28263857}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27237,8 +27237,8 @@ class GcadLWPolyline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLWPolyline
 
-class GcadLayer(CoClassBaseClass): # A CoClass
-    # GcadLayer Class
+class AcadLayer(CoClassBaseClass): # A CoClass
+    # AcadLayer Class
     CLSID = IID('{C358F0A6-CF01-4B79-BC20-3744A6CE61CE}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27249,9 +27249,9 @@ class GcadLayer(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayer
 
-# This CoClass is known by the name 'GStarCAD.GcadLayerStateManager.24'
-class GcadLayerStateManager(CoClassBaseClass): # A CoClass
-    # GcadLayerStateManager Class
+# This CoClass is known by the name 'GStarCAD.AcadLayerStateManager.24'
+class AcadLayerStateManager(CoClassBaseClass): # A CoClass
+    # AcadLayerStateManager Class
     CLSID = IID('{B120B2EF-DD09-4935-94FE-CD57754907B1}')
     coclass_sources = [
     ]
@@ -27260,8 +27260,8 @@ class GcadLayerStateManager(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayerStateManager
 
-class GcadLayers(CoClassBaseClass): # A CoClass
-    # GcadLayers Class
+class AcadLayers(CoClassBaseClass): # A CoClass
+    # AcadLayers Class
     CLSID = IID('{60E6BD18-62F7-4B1A-B701-CEF35537CB59}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27272,8 +27272,8 @@ class GcadLayers(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayers
 
-class GcadLayout(CoClassBaseClass): # A CoClass
-    # GcadLayout Class
+class AcadLayout(CoClassBaseClass): # A CoClass
+    # AcadLayout Class
     CLSID = IID('{12664C95-EEAD-4337-A88A-971953571812}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27284,8 +27284,8 @@ class GcadLayout(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayout
 
-class GcadLayouts(CoClassBaseClass): # A CoClass
-    # GcadLayouts Class
+class AcadLayouts(CoClassBaseClass): # A CoClass
+    # AcadLayouts Class
     CLSID = IID('{C6B60202-2BEA-4ED1-9A9F-7CF91E5A295D}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27296,8 +27296,8 @@ class GcadLayouts(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLayouts
 
-class GcadLeader(CoClassBaseClass): # A CoClass
-    # GCAD Leader Object
+class AcadLeader(CoClassBaseClass): # A CoClass
+    # Acad Leader Object
     CLSID = IID('{1B4D2B5E-8406-4167-B42C-09D8136BAE47}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27308,8 +27308,8 @@ class GcadLeader(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLeader
 
-class GcadLight(CoClassBaseClass): # A CoClass
-    # Gcad Light
+class AcadLight(CoClassBaseClass): # A CoClass
+    # Acad Light
     CLSID = IID('{1441A79B-2C78-4568-8F3F-1D068ACFC6CD}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27322,8 +27322,8 @@ class GcadLight(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLight
 
-class GcadLine(CoClassBaseClass): # A CoClass
-    # GcadLine Class
+class AcadLine(CoClassBaseClass): # A CoClass
+    # AcadLine Class
     CLSID = IID('{6ACCA2E1-E804-4519-B95F-235867C214AC}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27334,8 +27334,8 @@ class GcadLine(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLine
 
-class GcadLineType(CoClassBaseClass): # A CoClass
-    # GcadLineType Class
+class AcadLineType(CoClassBaseClass): # A CoClass
+    # AcadLineType Class
     CLSID = IID('{44E0D10E-F951-4B01-BDC0-21256D036952}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27346,8 +27346,8 @@ class GcadLineType(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLineType
 
-class GcadLineTypes(CoClassBaseClass): # A CoClass
-    # GcadLineTypes Class
+class AcadLineTypes(CoClassBaseClass): # A CoClass
+    # AcadLineTypes Class
     CLSID = IID('{09C7B1A6-D60E-43DA-B8DA-445C72D2A022}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27358,8 +27358,8 @@ class GcadLineTypes(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLineTypes
 
-class GcadLoftedSurface(CoClassBaseClass): # A CoClass
-    # Gcad LoftedSurface
+class AcadLoftedSurface(CoClassBaseClass): # A CoClass
+    # Acad LoftedSurface
     CLSID = IID('{3A949249-A2A7-412A-92FF-94D134EB3198}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27370,8 +27370,8 @@ class GcadLoftedSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadLoftedSurface
 
-class GcadMInsertBlock(CoClassBaseClass): # A CoClass
-    # GCAD MInsertBlock Object
+class AcadMInsertBlock(CoClassBaseClass): # A CoClass
+    # Acad MInsertBlock Object
     CLSID = IID('{5B817FD8-0DDF-4283-B794-86434740C658}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27382,8 +27382,8 @@ class GcadMInsertBlock(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMInsertBlock
 
-class GcadMLeader(CoClassBaseClass): # A CoClass
-    # Gcad MLeader
+class AcadMLeader(CoClassBaseClass): # A CoClass
+    # Acad MLeader
     CLSID = IID('{E6494613-3893-47A5-B0E7-B6AD41ADA6F4}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27394,8 +27394,8 @@ class GcadMLeader(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLeader
 
-class GcadMLeaderStyle(CoClassBaseClass): # A CoClass
-    # GcadMLeaderStyle Class
+class AcadMLeaderStyle(CoClassBaseClass): # A CoClass
+    # AcadMLeaderStyle Class
     CLSID = IID('{C3819487-144A-4471-B95E-712E3CC64BEC}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27406,8 +27406,8 @@ class GcadMLeaderStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLeaderStyle
 
-class GcadMLine(CoClassBaseClass): # A CoClass
-    # GCAD MLine Object
+class AcadMLine(CoClassBaseClass): # A CoClass
+    # Acad MLine Object
     CLSID = IID('{CC35F7B8-1AE8-4C31-9F3D-484A44EAC286}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27418,8 +27418,8 @@ class GcadMLine(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMLine
 
-class GcadMText(CoClassBaseClass): # A CoClass
-    # GcadMText
+class AcadMText(CoClassBaseClass): # A CoClass
+    # AcadMText
     CLSID = IID('{9F58700D-4910-4463-AEEB-2406161B0490}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27430,8 +27430,8 @@ class GcadMText(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMText
 
-class GcadMaterial(CoClassBaseClass): # A CoClass
-    # GcadMaterial Class
+class AcadMaterial(CoClassBaseClass): # A CoClass
+    # AcadMaterial Class
     CLSID = IID('{F55DC97F-4A3C-49E9-873C-B1F3B6F4F8D6}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27442,8 +27442,8 @@ class GcadMaterial(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMaterial
 
-class GcadMaterials(CoClassBaseClass): # A CoClass
-    # GcadMaterials Class
+class AcadMaterials(CoClassBaseClass): # A CoClass
+    # AcadMaterials Class
     CLSID = IID('{C4E55BE8-77A9-4A8A-81DE-2CC03D13FF48}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27454,8 +27454,8 @@ class GcadMaterials(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMaterials
 
-class GcadMenuBar(CoClassBaseClass): # A CoClass
-    # GcadMenuBar Class
+class AcadMenuBar(CoClassBaseClass): # A CoClass
+    # AcadMenuBar Class
     CLSID = IID('{573373A3-EDBE-4369-AF1F-3292EE13538C}')
     coclass_sources = [
     ]
@@ -27464,8 +27464,8 @@ class GcadMenuBar(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMenuBar
 
-class GcadMenuGroup(CoClassBaseClass): # A CoClass
-    # An GCAD menu group
+class AcadMenuGroup(CoClassBaseClass): # A CoClass
+    # An Acad menu group
     CLSID = IID('{521C919B-AC49-4F28-A908-D4BD172C92E6}')
     coclass_sources = [
     ]
@@ -27474,8 +27474,8 @@ class GcadMenuGroup(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMenuGroup
 
-class GcadMenuGroups(CoClassBaseClass): # A CoClass
-    # GcadMenuGroups Class
+class AcadMenuGroups(CoClassBaseClass): # A CoClass
+    # AcadMenuGroups Class
     CLSID = IID('{79855627-10CA-4054-BB8C-00946292669D}')
     coclass_sources = [
     ]
@@ -27484,8 +27484,8 @@ class GcadMenuGroups(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadMenuGroups
 
-class GcadModelSpace(CoClassBaseClass): # A CoClass
-    # GcadModelSpace Class
+class AcadModelSpace(CoClassBaseClass): # A CoClass
+    # AcadModelSpace Class
     CLSID = IID('{35DF9E00-7285-40A9-BD63-D714AA0CA70F}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27496,8 +27496,8 @@ class GcadModelSpace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadModelSpace
 
-class GcadNurbSurface(CoClassBaseClass): # A CoClass
-    # GcadNurbSurface Class
+class AcadNurbSurface(CoClassBaseClass): # A CoClass
+    # AcadNurbSurface Class
     CLSID = IID('{3C7846DC-43D5-44CD-B954-F941A0F85DE9}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27508,8 +27508,8 @@ class GcadNurbSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadNurbSurface
 
-class GcadObject(CoClassBaseClass): # A CoClass
-    # GcadObject Class
+class AcadObject(CoClassBaseClass): # A CoClass
+    # AcadObject Class
     CLSID = IID('{4F1D3AB3-AAC7-4F57-BA5C-B6D5410FE1D7}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27520,8 +27520,8 @@ class GcadObject(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadObject
 
-class GcadOle(CoClassBaseClass): # A CoClass
-    # Gcad OLE
+class AcadOle(CoClassBaseClass): # A CoClass
+    # Acad OLE
     CLSID = IID('{ABA71980-3AA9-40F5-81A7-735886F6F6FD}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27532,8 +27532,8 @@ class GcadOle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadOle
 
-class GcadPViewport(CoClassBaseClass): # A CoClass
-    # GcadPViewport Class
+class AcadPViewport(CoClassBaseClass): # A CoClass
+    # AcadPViewport Class
     CLSID = IID('{BEAF55E0-0A37-499C-B48B-DBC93CF6E29B}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27544,8 +27544,8 @@ class GcadPViewport(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPViewport
 
-class GcadPaperSpace(CoClassBaseClass): # A CoClass
-    # GcadPaperSpace Class
+class AcadPaperSpace(CoClassBaseClass): # A CoClass
+    # AcadPaperSpace Class
     CLSID = IID('{BF0FD147-A1EA-416E-911B-9EF794738AFA}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27556,8 +27556,8 @@ class GcadPaperSpace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPaperSpace
 
-class GcadPdfUnderlay(CoClassBaseClass): # A CoClass
-    # Gcad PdfUnderlay
+class AcadPdfUnderlay(CoClassBaseClass): # A CoClass
+    # Acad PdfUnderlay
     CLSID = IID('{8DF57FE7-CEDA-4730-9F54-C308ED442495}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27568,8 +27568,8 @@ class GcadPdfUnderlay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUnderlay
 
-class GcadPlaneSurface(CoClassBaseClass): # A CoClass
-    # Gcad PlaneSurface
+class AcadPlaneSurface(CoClassBaseClass): # A CoClass
+    # Acad PlaneSurface
     CLSID = IID('{938953B2-646A-428C-895E-203B73B1B05A}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27580,8 +27580,8 @@ class GcadPlaneSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlaneSurface
 
-class GcadPlot(CoClassBaseClass): # A CoClass
-    # GcadPlot Class
+class AcadPlot(CoClassBaseClass): # A CoClass
+    # AcadPlot Class
     CLSID = IID('{DF79DE83-2A11-43DB-AE4C-1FE95E57F574}')
     coclass_sources = [
     ]
@@ -27590,8 +27590,8 @@ class GcadPlot(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlot
 
-class GcadPlotConfiguration(CoClassBaseClass): # A CoClass
-    # GcadPlotConfiguration Class
+class AcadPlotConfiguration(CoClassBaseClass): # A CoClass
+    # AcadPlotConfiguration Class
     CLSID = IID('{211BF34C-5307-4666-B82D-0719CACA809C}')
     coclass_sources = [
     ]
@@ -27600,8 +27600,8 @@ class GcadPlotConfiguration(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlotConfiguration
 
-class GcadPlotConfigurations(CoClassBaseClass): # A CoClass
-    # GcadPlotConfigurations Class
+class AcadPlotConfigurations(CoClassBaseClass): # A CoClass
+    # AcadPlotConfigurations Class
     CLSID = IID('{0EEABD18-B6F5-4E1E-887D-0384A20CD8E9}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27612,8 +27612,8 @@ class GcadPlotConfigurations(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPlotConfigurations
 
-class GcadPoint(CoClassBaseClass): # A CoClass
-    # GCAD Point Object
+class AcadPoint(CoClassBaseClass): # A CoClass
+    # Acad Point Object
     CLSID = IID('{5759A970-9028-4C5C-805B-AFE6D6169382}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27624,8 +27624,8 @@ class GcadPoint(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPoint
 
-class GcadPointCloudEx(CoClassBaseClass): # A CoClass
-    # GcadPointCloudEx
+class AcadPointCloudEx(CoClassBaseClass): # A CoClass
+    # AcadPointCloudEx
     CLSID = IID('{028BA451-EBBA-4529-8521-DBFB95EB745C}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27636,8 +27636,8 @@ class GcadPointCloudEx(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPointCloudEx
 
-class GcadPolyfaceMesh(CoClassBaseClass): # A CoClass
-    # GCAD PolyfaceMesh Object
+class AcadPolyfaceMesh(CoClassBaseClass): # A CoClass
+    # Acad PolyfaceMesh Object
     CLSID = IID('{A9879069-87D2-4F15-94B4-92531900783C}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27648,8 +27648,8 @@ class GcadPolyfaceMesh(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPolyfaceMesh
 
-class GcadPolygonMesh(CoClassBaseClass): # A CoClass
-    # GCAD PolygonMesh Object
+class AcadPolygonMesh(CoClassBaseClass): # A CoClass
+    # Acad PolygonMesh Object
     CLSID = IID('{7BAA52E2-CBFA-406B-83AB-7D0F939026D4}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27660,8 +27660,8 @@ class GcadPolygonMesh(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPolygonMesh
 
-class GcadPolyline(CoClassBaseClass): # A CoClass
-    # GCAD Polyline Object
+class AcadPolyline(CoClassBaseClass): # A CoClass
+    # Acad Polyline Object
     CLSID = IID('{DD0ACEEC-B19B-4EC4-A5C8-C85BBE6402B2}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27672,8 +27672,8 @@ class GcadPolyline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPolyline
 
-class GcadPopupMenu(CoClassBaseClass): # A CoClass
-    # An GCAD cascading menu
+class AcadPopupMenu(CoClassBaseClass): # A CoClass
+    # An Acad cascading menu
     CLSID = IID('{8774869F-546D-4CE5-9703-CFA67AEEBF26}')
     coclass_sources = [
     ]
@@ -27682,8 +27682,8 @@ class GcadPopupMenu(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPopupMenu
 
-class GcadPopupMenuItem(CoClassBaseClass): # A CoClass
-    # A single menu item on an GCAD pull-down menu
+class AcadPopupMenuItem(CoClassBaseClass): # A CoClass
+    # A single menu item on an Acad pull-down menu
     CLSID = IID('{70408B41-584A-4C9C-B31B-F36FF8073798}')
     coclass_sources = [
     ]
@@ -27692,7 +27692,7 @@ class GcadPopupMenuItem(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPopupMenuItem
 
-class GcadPopupMenus(CoClassBaseClass): # A CoClass
+class AcadPopupMenus(CoClassBaseClass): # A CoClass
     # A collection of PopupMenu objects representing all the popup menus loaded in the MenuGroup
     CLSID = IID('{63F5DDA7-C143-42AD-94E8-763C8E770537}')
     coclass_sources = [
@@ -27702,7 +27702,7 @@ class GcadPopupMenus(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPopupMenus
 
-class GcadPreferences(CoClassBaseClass): # A CoClass
+class AcadPreferences(CoClassBaseClass): # A CoClass
     # This object specifies the current GstarCAD settings
     CLSID = IID('{57FB46D7-D66B-4EEA-969A-5D778BA7B79F}')
     coclass_sources = [
@@ -27712,7 +27712,7 @@ class GcadPreferences(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferences
 
-class GcadPreferencesDisplay(CoClassBaseClass): # A CoClass
+class AcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     # This object contains the options from the Display tab on the Options dialog
     CLSID = IID('{865D8226-319C-4784-B160-5D45FE038BF8}')
     coclass_sources = [
@@ -27722,7 +27722,7 @@ class GcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesDisplay
 
-class GcadPreferencesDrafting(CoClassBaseClass): # A CoClass
+class AcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     # This object contains the options from the Drafting tab on the Options dialog
     CLSID = IID('{AA668926-0FCF-4677-A97F-AD7920AB2C58}')
     coclass_sources = [
@@ -27732,7 +27732,7 @@ class GcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesDrafting
 
-class GcadPreferencesFiles(CoClassBaseClass): # A CoClass
+class AcadPreferencesFiles(CoClassBaseClass): # A CoClass
     # This object contains the options from the Files tab on the Options dialog
     CLSID = IID('{6CE93067-926C-4A41-BFC4-EA0A02C9F7E7}')
     coclass_sources = [
@@ -27742,7 +27742,7 @@ class GcadPreferencesFiles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesFiles
 
-class GcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
+class AcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     # This object contains the options from the Open and Save tab on the Options dialog
     CLSID = IID('{7DBA4518-9AA4-416E-A3D6-45E80A02E979}')
     coclass_sources = [
@@ -27752,7 +27752,7 @@ class GcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesOpenSave
 
-class GcadPreferencesOutput(CoClassBaseClass): # A CoClass
+class AcadPreferencesOutput(CoClassBaseClass): # A CoClass
     # This object contains the options from the Output tab on the Options dialog
     CLSID = IID('{62EE39DA-DF13-42B1-861F-487026489C27}')
     coclass_sources = [
@@ -27762,7 +27762,7 @@ class GcadPreferencesOutput(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesOutput
 
-class GcadPreferencesProfiles(CoClassBaseClass): # A CoClass
+class AcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     # This object contains the options from the Profiles tab on the Options dialog
     CLSID = IID('{38CDCF3E-F321-43F6-B355-6CBE197BD33A}')
     coclass_sources = [
@@ -27772,7 +27772,7 @@ class GcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesProfiles
 
-class GcadPreferencesSelection(CoClassBaseClass): # A CoClass
+class AcadPreferencesSelection(CoClassBaseClass): # A CoClass
     # This object contains the options from the Selection tab on the Options dialog
     CLSID = IID('{1615B81F-2474-4AC3-A6F7-885F0DC5D62F}')
     coclass_sources = [
@@ -27782,7 +27782,7 @@ class GcadPreferencesSelection(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesSelection
 
-class GcadPreferencesSystem(CoClassBaseClass): # A CoClass
+class AcadPreferencesSystem(CoClassBaseClass): # A CoClass
     # This object contains the options from the System tab on the Options dialog
     CLSID = IID('{C19DA545-A773-422D-818F-61E60340C184}')
     coclass_sources = [
@@ -27792,7 +27792,7 @@ class GcadPreferencesSystem(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesSystem
 
-class GcadPreferencesUser(CoClassBaseClass): # A CoClass
+class AcadPreferencesUser(CoClassBaseClass): # A CoClass
     # This object contains the options from the User tab on the Options dialog
     CLSID = IID('{2DF90FE8-4354-4AB3-ABA9-04B9831F94BF}')
     coclass_sources = [
@@ -27802,8 +27802,8 @@ class GcadPreferencesUser(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadPreferencesUser
 
-class GcadRasterImage(CoClassBaseClass): # A CoClass
-    # GCAD Raster Object
+class AcadRasterImage(CoClassBaseClass): # A CoClass
+    # Acad Raster Object
     CLSID = IID('{FB5AA334-CBF1-41D1-B9E3-98F2ACB2EB83}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27814,8 +27814,8 @@ class GcadRasterImage(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRasterImage
 
-class GcadRay(CoClassBaseClass): # A CoClass
-    # GCAD Ray Object
+class AcadRay(CoClassBaseClass): # A CoClass
+    # Acad Ray Object
     CLSID = IID('{D44D6709-6C13-4C52-A360-A2943C33EEE8}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27826,8 +27826,8 @@ class GcadRay(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRay
 
-class GcadRegion(CoClassBaseClass): # A CoClass
-    # GCAD Region Object
+class AcadRegion(CoClassBaseClass): # A CoClass
+    # Acad Region Object
     CLSID = IID('{A83EBA25-CCF0-45CE-A7C2-FEABE0D3AF59}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27838,8 +27838,8 @@ class GcadRegion(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRegion
 
-class GcadRegisteredApplication(CoClassBaseClass): # A CoClass
-    # GcadRegisteredApplication Class
+class AcadRegisteredApplication(CoClassBaseClass): # A CoClass
+    # AcadRegisteredApplication Class
     CLSID = IID('{CF8BF2DA-8602-41B7-8906-3C67F07994FB}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27850,8 +27850,8 @@ class GcadRegisteredApplication(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRegisteredApplication
 
-class GcadRegisteredApplications(CoClassBaseClass): # A CoClass
-    # GcadRegisteredApplications Class
+class AcadRegisteredApplications(CoClassBaseClass): # A CoClass
+    # AcadRegisteredApplications Class
     CLSID = IID('{216D566A-A968-4E87-A8B3-9B5EB06BB19D}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27862,8 +27862,8 @@ class GcadRegisteredApplications(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRegisteredApplications
 
-class GcadRevolvedSurface(CoClassBaseClass): # A CoClass
-    # Gcad RevolvedSurface
+class AcadRevolvedSurface(CoClassBaseClass): # A CoClass
+    # Acad RevolvedSurface
     CLSID = IID('{CA2C91D1-2D7B-4195-A66C-CFB788EFEB14}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27874,8 +27874,8 @@ class GcadRevolvedSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadRevolvedSurface
 
-class GcadScriptJet(CoClassBaseClass): # A CoClass
-    # GcadScriptJet Class
+class AcadScriptJet(CoClassBaseClass): # A CoClass
+    # AcadScriptJet Class
     CLSID = IID('{098976AB-EB69-4330-92C8-C8AC73822785}')
     coclass_sources = [
     ]
@@ -27884,8 +27884,8 @@ class GcadScriptJet(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadScriptJet
 
-class GcadSection(CoClassBaseClass): # A CoClass
-    # Gcad Section
+class AcadSection(CoClassBaseClass): # A CoClass
+    # Acad Section
     CLSID = IID('{DCB0E3B7-B4A4-4D92-A3E8-C27BCAECBE8F}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27897,8 +27897,8 @@ class GcadSection(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSection
 
-class GcadSectionManager(CoClassBaseClass): # A CoClass
-    # GcadSectionManager Class
+class AcadSectionManager(CoClassBaseClass): # A CoClass
+    # AcadSectionManager Class
     CLSID = IID('{D1F1BB22-D947-40C8-90D8-B9DC99591EF7}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27909,8 +27909,8 @@ class GcadSectionManager(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSectionManager
 
-class GcadSectionSettings(CoClassBaseClass): # A CoClass
-    # GCAD Section Settings Object
+class AcadSectionSettings(CoClassBaseClass): # A CoClass
+    # Acad Section Settings Object
     CLSID = IID('{5246A240-92AB-460B-820D-365247D9B47F}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27921,9 +27921,9 @@ class GcadSectionSettings(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSectionSettings
 
-# This CoClass is known by the name 'GStarCAD.GcadSecurityParams.24'
-class GcadSecurityParams(CoClassBaseClass): # A CoClass
-    # GcadSecurityParams Class
+# This CoClass is known by the name 'GStarCAD.AcadSecurityParams.24'
+class AcadSecurityParams(CoClassBaseClass): # A CoClass
+    # AcadSecurityParams Class
     CLSID = IID('{D4903656-AC07-421A-8648-4804351E9DBE}')
     coclass_sources = [
     ]
@@ -27932,8 +27932,8 @@ class GcadSecurityParams(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSecurityParams
 
-class GcadSelectionSet(CoClassBaseClass): # A CoClass
-    # A group of one or more GCAD objects specified for processing as a single unit
+class AcadSelectionSet(CoClassBaseClass): # A CoClass
+    # A group of one or more Acad objects specified for processing as a single unit
     CLSID = IID('{81A17A41-793D-4BF0-A902-E1B622D175B5}')
     coclass_sources = [
     ]
@@ -27942,7 +27942,7 @@ class GcadSelectionSet(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSelectionSet
 
-class GcadSelectionSets(CoClassBaseClass): # A CoClass
+class AcadSelectionSets(CoClassBaseClass): # A CoClass
     # The collection of all selection sets in the drawing
     CLSID = IID('{EA8022D8-0E43-473D-8646-BB1292EACE19}')
     coclass_sources = [
@@ -27952,16 +27952,16 @@ class GcadSelectionSets(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSelectionSets
 
-class GcadShadowDisplay(CoClassBaseClass): # A CoClass
-    # GCAD Entity with Shadows interface
+class AcadShadowDisplay(CoClassBaseClass): # A CoClass
+    # Acad Entity with Shadows interface
     CLSID = IID('{0F994C78-5B0F-4A2C-B63A-DB74B93B5537}')
     coclass_sources = [
     ]
     coclass_interfaces = [
     ]
 
-class GcadShape(CoClassBaseClass): # A CoClass
-    # GCAD Shape Object
+class AcadShape(CoClassBaseClass): # A CoClass
+    # Acad Shape Object
     CLSID = IID('{4EFE4629-C549-4346-9E5A-06F0AE788ED0}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27972,8 +27972,8 @@ class GcadShape(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadShape
 
-class GcadSolid(CoClassBaseClass): # A CoClass
-    # GCAD Solid Object
+class AcadSolid(CoClassBaseClass): # A CoClass
+    # Acad Solid Object
     CLSID = IID('{7EB18444-4D79-4CA8-8743-0498B64C4D01}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -27984,8 +27984,8 @@ class GcadSolid(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSolid
 
-class GcadSortentsTable(CoClassBaseClass): # A CoClass
-    # GcadSortentsTable Class
+class AcadSortentsTable(CoClassBaseClass): # A CoClass
+    # AcadSortentsTable Class
     CLSID = IID('{79C8B818-C544-46EE-BDCF-613095E6DA50}')
     coclass_sources = [
     ]
@@ -27994,8 +27994,8 @@ class GcadSortentsTable(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSortentsTable
 
-class GcadSpline(CoClassBaseClass): # A CoClass
-    # GCAD Spline Object
+class AcadSpline(CoClassBaseClass): # A CoClass
+    # Acad Spline Object
     CLSID = IID('{F2293592-5908-4F24-9B5D-759CDA971FC2}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28006,8 +28006,8 @@ class GcadSpline(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSpline
 
-class GcadState(CoClassBaseClass): # A CoClass
-    # GCAD State Object
+class AcadState(CoClassBaseClass): # A CoClass
+    # Acad State Object
     CLSID = IID('{6208CB09-68D9-4D82-A4BB-43003DB56AFA}')
     coclass_sources = [
     ]
@@ -28016,8 +28016,8 @@ class GcadState(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadState
 
-class GcadSubDMesh(CoClassBaseClass): # A CoClass
-    # Gcad SubDMesh
+class AcadSubDMesh(CoClassBaseClass): # A CoClass
+    # Acad SubDMesh
     CLSID = IID('{73EBC89D-6A5A-4ED8-BC4D-2995DC879649}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28028,8 +28028,8 @@ class GcadSubDMesh(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSubDMesh
 
-class GcadSummaryInfo(CoClassBaseClass): # A CoClass
-    # GcadSummaryInfo Class
+class AcadSummaryInfo(CoClassBaseClass): # A CoClass
+    # AcadSummaryInfo Class
     CLSID = IID('{BBC325BA-407B-4755-B4D1-7A3E30581BD3}')
     coclass_sources = [
     ]
@@ -28038,8 +28038,8 @@ class GcadSummaryInfo(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSummaryInfo
 
-class GcadSurface(CoClassBaseClass): # A CoClass
-    # Gcad Surface
+class AcadSurface(CoClassBaseClass): # A CoClass
+    # Acad Surface
     CLSID = IID('{25D868BF-4CFD-4CB4-BC30-1A43AAF5F3E1}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28050,8 +28050,8 @@ class GcadSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSurface
 
-class GcadSweptSurface(CoClassBaseClass): # A CoClass
-    # Gcad SweptSurface
+class AcadSweptSurface(CoClassBaseClass): # A CoClass
+    # Acad SweptSurface
     CLSID = IID('{6997E39D-299C-45CC-95BC-A677AC0D1A62}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28062,8 +28062,8 @@ class GcadSweptSurface(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadSweptSurface
 
-class GcadTable(CoClassBaseClass): # A CoClass
-    # GCAD Table Object
+class AcadTable(CoClassBaseClass): # A CoClass
+    # Acad Table Object
     CLSID = IID('{92B86261-DA20-4A60-9982-05863C6D9EBE}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28074,8 +28074,8 @@ class GcadTable(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTable
 
-class GcadTableCell(CoClassBaseClass): # A CoClass
-    # GCAD TableCell Object
+class AcadTableCell(CoClassBaseClass): # A CoClass
+    # Acad TableCell Object
     CLSID = IID('{6336B61B-EFBF-4325-94FE-59D403CB0C76}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28086,8 +28086,8 @@ class GcadTableCell(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTableCell
 
-class GcadTableStyle(CoClassBaseClass): # A CoClass
-    # GcadTableStyle Class
+class AcadTableStyle(CoClassBaseClass): # A CoClass
+    # AcadTableStyle Class
     CLSID = IID('{31B9FEC5-563C-464B-B180-5B5E4B530EDD}')
     coclass_sources = [
     ]
@@ -28096,8 +28096,8 @@ class GcadTableStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTableStyle
 
-class GcadText(CoClassBaseClass): # A CoClass
-    # GCAD Text Object
+class AcadText(CoClassBaseClass): # A CoClass
+    # Acad Text Object
     CLSID = IID('{12226789-EEA7-4BE8-9FD7-33513C744E3B}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28108,8 +28108,8 @@ class GcadText(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadText
 
-class GcadTextStyle(CoClassBaseClass): # A CoClass
-    # GcadTextStyle Class
+class AcadTextStyle(CoClassBaseClass): # A CoClass
+    # AcadTextStyle Class
     CLSID = IID('{59F48386-168C-4320-8B3D-77E8556EF9E1}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28120,8 +28120,8 @@ class GcadTextStyle(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTextStyle
 
-class GcadTextStyles(CoClassBaseClass): # A CoClass
-    # GcadTextStyles Class
+class AcadTextStyles(CoClassBaseClass): # A CoClass
+    # AcadTextStyles Class
     CLSID = IID('{F194C083-83FC-4F35-A76F-F4C577C0689A}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28132,8 +28132,8 @@ class GcadTextStyles(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTextStyles
 
-class GcadTolerance(CoClassBaseClass): # A CoClass
-    # GCAD Tolerance Object
+class AcadTolerance(CoClassBaseClass): # A CoClass
+    # Acad Tolerance Object
     CLSID = IID('{092962C2-F320-44E1-8857-C8AFE3885555}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28144,8 +28144,8 @@ class GcadTolerance(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTolerance
 
-class GcadToolbar(CoClassBaseClass): # A CoClass
-    # Gcad Toolbar
+class AcadToolbar(CoClassBaseClass): # A CoClass
+    # Acad Toolbar
     CLSID = IID('{D6EE440D-BCFF-443C-960D-4F1DAC6D94F6}')
     coclass_sources = [
     ]
@@ -28154,8 +28154,8 @@ class GcadToolbar(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadToolbar
 
-class GcadToolbarItem(CoClassBaseClass): # A CoClass
-    # Gcad ToolbarItem
+class AcadToolbarItem(CoClassBaseClass): # A CoClass
+    # Acad ToolbarItem
     CLSID = IID('{D2806DE9-1AFE-42DF-87AC-B0A855F9B891}')
     coclass_sources = [
     ]
@@ -28164,8 +28164,8 @@ class GcadToolbarItem(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadToolbarItem
 
-class GcadToolbars(CoClassBaseClass): # A CoClass
-    # Gcad Toolbars
+class AcadToolbars(CoClassBaseClass): # A CoClass
+    # Acad Toolbars
     CLSID = IID('{30523308-F09B-4C74-A819-9AD14A4A943E}')
     coclass_sources = [
     ]
@@ -28174,8 +28174,8 @@ class GcadToolbars(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadToolbars
 
-class GcadTrace(CoClassBaseClass): # A CoClass
-    # GCAD Trace Object
+class AcadTrace(CoClassBaseClass): # A CoClass
+    # Acad Trace Object
     CLSID = IID('{D7B6AF1E-5F8B-453C-A26E-828A2BD820CC}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28186,8 +28186,8 @@ class GcadTrace(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadTrace
 
-class GcadUCS(CoClassBaseClass): # A CoClass
-    # GcadUCS Class
+class AcadUCS(CoClassBaseClass): # A CoClass
+    # AcadUCS Class
     CLSID = IID('{D4E3C6C4-7DAE-4D80-A98C-148C3CD66E32}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28198,8 +28198,8 @@ class GcadUCS(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUCS
 
-class GcadUCSs(CoClassBaseClass): # A CoClass
-    # GcadUCSs Class
+class AcadUCSs(CoClassBaseClass): # A CoClass
+    # AcadUCSs Class
     CLSID = IID('{1146DF77-46C8-4F31-AB6A-8815AEE71EB7}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28210,8 +28210,8 @@ class GcadUCSs(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUCSs
 
-class GcadUtility(CoClassBaseClass): # A CoClass
-    # GcadUtility Class
+class AcadUtility(CoClassBaseClass): # A CoClass
+    # AcadUtility Class
     CLSID = IID('{9F1290F0-C25D-429E-901E-42CBE63A9836}')
     coclass_sources = [
     ]
@@ -28220,7 +28220,7 @@ class GcadUtility(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadUtility
 
-class GcadView(CoClassBaseClass): # A CoClass
+class AcadView(CoClassBaseClass): # A CoClass
     # A graphical representation of a 2D drawing or 3D model from a specific location (viewpoint) in space
     CLSID = IID('{A2F794C5-9ED5-49B6-A45B-1FB659497505}')
     coclass_sources = [
@@ -28232,8 +28232,8 @@ class GcadView(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadView
 
-class GcadViewport(CoClassBaseClass): # A CoClass
-    # GcadViewport Class
+class AcadViewport(CoClassBaseClass): # A CoClass
+    # AcadViewport Class
     CLSID = IID('{415EAAB8-7D05-4935-A6DF-25DA98FC8FB2}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28244,8 +28244,8 @@ class GcadViewport(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadViewport
 
-class GcadViewports(CoClassBaseClass): # A CoClass
-    # GcadViewports Class
+class AcadViewports(CoClassBaseClass): # A CoClass
+    # AcadViewports Class
     CLSID = IID('{FD6D9F4B-1812-4B43-8836-1BCEC2E28F65}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28256,8 +28256,8 @@ class GcadViewports(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadViewports
 
-class GcadViews(CoClassBaseClass): # A CoClass
-    # GcadViews Class
+class AcadViews(CoClassBaseClass): # A CoClass
+    # AcadViews Class
     CLSID = IID('{0165E8DC-3E0B-4102-9C66-DC0228911048}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -28268,7 +28268,7 @@ class GcadViews(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadViews
 
-class GcadXRecord(CoClassBaseClass): # A CoClass
+class AcadXRecord(CoClassBaseClass): # A CoClass
     # XRecord objects are used to store and manage arbitrary data
     CLSID = IID('{1E499AED-C7C7-4EE1-8FA6-AB1119B7268E}')
     coclass_sources = [
@@ -28280,8 +28280,8 @@ class GcadXRecord(CoClassBaseClass): # A CoClass
     ]
     default_interface = IAcadXRecord
 
-class GcadXline(CoClassBaseClass): # A CoClass
-    # GCAD Xline Object
+class AcadXline(CoClassBaseClass): # A CoClass
+    # Acad Xline Object
     CLSID = IID('{70371E06-28C5-423C-8912-78A9A6E342CB}')
     coclass_sources = [
         IAcadObjectEvents,
@@ -31760,8 +31760,8 @@ IAcadPreferencesSystem_vtables_ = [
     (( 'BeepOnError' , 'BeepOnError' , ), 1610743819, (1610743819, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
     (( 'ShowWarningMessages' , 'Path' , ), 1610743821, (1610743821, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'ShowWarningMessages' , 'Path' , ), 1610743821, (1610743821, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
-    (( 'LoadGcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
-    (( 'LoadGcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
+    (( 'LoadAcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
+    (( 'LoadAcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
 IAcadPreferencesUser_vtables_dispatch_ = 1
@@ -33167,9 +33167,9 @@ RecordMap = {
 }
 
 CLSIDToClassMap = {
-    '{330F7B9E-C93C-403D-807C-D92CB9698637}' : _DGcadApplicationEvents,
+    '{330F7B9E-C93C-403D-807C-D92CB9698637}' : _DAcadApplicationEvents,
     '{B1872638-6D18-482F-90BA-38086D17625F}' : IAcadApplication,
-    '{E06CA8F7-4554-4993-8460-1127D2513B1E}' : GcadApplication,
+    '{E06CA8F7-4554-4993-8460-1127D2513B1E}' : AcadApplication,
     '{9368AF30-60A3-47E3-A743-60D4C21FB580}' : IAcadDocument,
     '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}' : IAcadDatabase,
     '{2F4EF1D8-60BB-4737-8BD6-5B57A90E4C84}' : IAcadModelSpace,
@@ -33284,185 +33284,185 @@ CLSIDToClassMap = {
     '{87925C1E-ADEA-48BD-8BF1-239F9A116A81}' : IAcadMenuBar,
     '{31010F88-E412-4A4B-B482-B71D45D1A28A}' : IAcadDocuments,
     '{31E08BF4-3D9F-45DC-B456-D2A2CA16E126}' : IAcadState,
-    '{79855627-10CA-4054-BB8C-00946292669D}' : GcadMenuGroups,
-    '{573373A3-EDBE-4369-AF1F-3292EE13538C}' : GcadMenuBar,
-    '{99EF8026-26E1-43C1-92EE-F5041E7DBE8C}' : GcadDocuments,
-    '{5E90323E-2CCF-4AE9-9B6F-6603AB611048}' : GcadDatabase,
+    '{79855627-10CA-4054-BB8C-00946292669D}' : AcadMenuGroups,
+    '{573373A3-EDBE-4369-AF1F-3292EE13538C}' : AcadMenuBar,
+    '{99EF8026-26E1-43C1-92EE-F5041E7DBE8C}' : AcadDocuments,
+    '{5E90323E-2CCF-4AE9-9B6F-6603AB611048}' : AcadDatabase,
     '{41B85986-5004-4888-9E89-7895663FA77C}' : IAcadObjectEvents,
-    '{35DF9E00-7285-40A9-BD63-D714AA0CA70F}' : GcadModelSpace,
-    '{BF0FD147-A1EA-416E-911B-9EF794738AFA}' : GcadPaperSpace,
-    '{25F41555-CB62-4FB5-AF5A-FD50D5B99809}' : GcadBlocks,
-    '{255F2619-FB9D-4176-BE91-D2C122537155}' : GcadGroups,
-    '{187BD9EB-18F0-40A0-BEA1-4B53AE20A161}' : GcadDimStyles,
-    '{60E6BD18-62F7-4B1A-B701-CEF35537CB59}' : GcadLayers,
-    '{09C7B1A6-D60E-43DA-B8DA-445C72D2A022}' : GcadLineTypes,
-    '{07244103-C9ED-4EF9-BDD4-5062C58A34D4}' : GcadDictionaries,
-    '{CF8BF2DA-8602-41B7-8906-3C67F07994FB}' : GcadRegisteredApplication,
-    '{216D566A-A968-4E87-A8B3-9B5EB06BB19D}' : GcadRegisteredApplications,
-    '{F194C083-83FC-4F35-A76F-F4C577C0689A}' : GcadTextStyles,
-    '{1146DF77-46C8-4F31-AB6A-8815AEE71EB7}' : GcadUCSs,
-    '{0165E8DC-3E0B-4102-9C66-DC0228911048}' : GcadViews,
-    '{FD6D9F4B-1812-4B43-8836-1BCEC2E28F65}' : GcadViewports,
-    '{C6B60202-2BEA-4ED1-9A9F-7CF91E5A295D}' : GcadLayouts,
-    '{0EEABD18-B6F5-4E1E-887D-0384A20CD8E9}' : GcadPlotConfigurations,
-    '{E3AC406B-D118-44DB-AC19-AA594DD65C8A}' : GcadDatabasePreferences,
-    '{B1406301-FAFE-4332-B481-6DE6B109B206}' : GcadFileDependencies,
-    '{BBC325BA-407B-4755-B4D1-7A3E30581BD3}' : GcadSummaryInfo,
-    '{D1F1BB22-D947-40C8-90D8-B9DC99591EF7}' : GcadSectionManager,
-    '{C4E55BE8-77A9-4A8A-81DE-2CC03D13FF48}' : GcadMaterials,
-    '{28EA8439-1EEF-4632-812B-3A8515F93530}' : GcadGroup,
-    '{DF79DE83-2A11-43DB-AE4C-1FE95E57F574}' : GcadPlot,
-    '{C358F0A6-CF01-4B79-BC20-3744A6CE61CE}' : GcadLayer,
-    '{44E0D10E-F951-4B01-BDC0-21256D036952}' : GcadLineType,
-    '{67211CB3-E07C-4585-B521-CD8F5840BD8D}' : GcadDimStyle,
+    '{35DF9E00-7285-40A9-BD63-D714AA0CA70F}' : AcadModelSpace,
+    '{BF0FD147-A1EA-416E-911B-9EF794738AFA}' : AcadPaperSpace,
+    '{25F41555-CB62-4FB5-AF5A-FD50D5B99809}' : AcadBlocks,
+    '{255F2619-FB9D-4176-BE91-D2C122537155}' : AcadGroups,
+    '{187BD9EB-18F0-40A0-BEA1-4B53AE20A161}' : AcadDimStyles,
+    '{60E6BD18-62F7-4B1A-B701-CEF35537CB59}' : AcadLayers,
+    '{09C7B1A6-D60E-43DA-B8DA-445C72D2A022}' : AcadLineTypes,
+    '{07244103-C9ED-4EF9-BDD4-5062C58A34D4}' : AcadDictionaries,
+    '{CF8BF2DA-8602-41B7-8906-3C67F07994FB}' : AcadRegisteredApplication,
+    '{216D566A-A968-4E87-A8B3-9B5EB06BB19D}' : AcadRegisteredApplications,
+    '{F194C083-83FC-4F35-A76F-F4C577C0689A}' : AcadTextStyles,
+    '{1146DF77-46C8-4F31-AB6A-8815AEE71EB7}' : AcadUCSs,
+    '{0165E8DC-3E0B-4102-9C66-DC0228911048}' : AcadViews,
+    '{FD6D9F4B-1812-4B43-8836-1BCEC2E28F65}' : AcadViewports,
+    '{C6B60202-2BEA-4ED1-9A9F-7CF91E5A295D}' : AcadLayouts,
+    '{0EEABD18-B6F5-4E1E-887D-0384A20CD8E9}' : AcadPlotConfigurations,
+    '{E3AC406B-D118-44DB-AC19-AA594DD65C8A}' : AcadDatabasePreferences,
+    '{B1406301-FAFE-4332-B481-6DE6B109B206}' : AcadFileDependencies,
+    '{BBC325BA-407B-4755-B4D1-7A3E30581BD3}' : AcadSummaryInfo,
+    '{D1F1BB22-D947-40C8-90D8-B9DC99591EF7}' : AcadSectionManager,
+    '{C4E55BE8-77A9-4A8A-81DE-2CC03D13FF48}' : AcadMaterials,
+    '{28EA8439-1EEF-4632-812B-3A8515F93530}' : AcadGroup,
+    '{DF79DE83-2A11-43DB-AE4C-1FE95E57F574}' : AcadPlot,
+    '{C358F0A6-CF01-4B79-BC20-3744A6CE61CE}' : AcadLayer,
+    '{44E0D10E-F951-4B01-BDC0-21256D036952}' : AcadLineType,
+    '{67211CB3-E07C-4585-B521-CD8F5840BD8D}' : AcadDimStyle,
     '{865CCF2C-B13D-48CB-9605-04E135F8FF30}' : IAcadMLeaderStyle,
-    '{C3819487-144A-4471-B95E-712E3CC64BEC}' : GcadMLeaderStyle,
-    '{59F48386-168C-4320-8B3D-77E8556EF9E1}' : GcadTextStyle,
-    '{D4E3C6C4-7DAE-4D80-A98C-148C3CD66E32}' : GcadUCS,
-    '{415EAAB8-7D05-4935-A6DF-25DA98FC8FB2}' : GcadViewport,
-    '{BEAF55E0-0A37-499C-B48B-DBC93CF6E29B}' : GcadPViewport,
-    '{9F1290F0-C25D-429E-901E-42CBE63A9836}' : GcadUtility,
-    '{F55DC97F-4A3C-49E9-873C-B1F3B6F4F8D6}' : GcadMaterial,
-    '{12664C95-EEAD-4337-A88A-971953571812}' : GcadLayout,
-    '{2ABEE42C-D570-4DE3-874F-353204A47B63}' : _DGcadDocumentEvents,
-    '{EEA4FF96-9C53-49ED-977F-D22D2B51F741}' : GcadDocument,
-    '{4F1D3AB3-AAC7-4F57-BA5C-B6D5410FE1D7}' : GcadObject,
-    '{3737DD60-3DB3-45AA-A592-49640E47A4CB}' : GcadEntity,
-    '{F7848BAF-729D-4217-A1E8-7DCE59B662FA}' : GcadAcCmColor,
-    '{D1131D16-F4F4-4F50-8AEB-A6ECA83141C0}' : GcadHyperlinks,
-    '{6ACCA2E1-E804-4519-B95F-235867C214AC}' : GcadLine,
-    '{211BF34C-5307-4666-B82D-0719CACA809C}' : GcadPlotConfiguration,
-    '{60C11D4D-6F51-4A16-88CE-305C5BBC84F1}' : GcadBlock,
-    '{6208CB09-68D9-4D82-A4BB-43003DB56AFA}' : GcadState,
-    '{81A17A41-793D-4BF0-A902-E1B622D175B5}' : GcadSelectionSet,
-    '{EA8022D8-0E43-473D-8646-BB1292EACE19}' : GcadSelectionSets,
-    '{57FB46D7-D66B-4EEA-969A-5D778BA7B79F}' : GcadPreferences,
-    '{AA668926-0FCF-4677-A97F-AD7920AB2C58}' : GcadPreferencesDrafting,
-    '{865D8226-319C-4784-B160-5D45FE038BF8}' : GcadPreferencesDisplay,
-    '{6CE93067-926C-4A41-BFC4-EA0A02C9F7E7}' : GcadPreferencesFiles,
-    '{7DBA4518-9AA4-416E-A3D6-45E80A02E979}' : GcadPreferencesOpenSave,
-    '{62EE39DA-DF13-42B1-861F-487026489C27}' : GcadPreferencesOutput,
-    '{38CDCF3E-F321-43F6-B355-6CBE197BD33A}' : GcadPreferencesProfiles,
-    '{1615B81F-2474-4AC3-A6F7-885F0DC5D62F}' : GcadPreferencesSelection,
-    '{C19DA545-A773-422D-818F-61E60340C184}' : GcadPreferencesSystem,
-    '{2DF90FE8-4354-4AB3-ABA9-04B9831F94BF}' : GcadPreferencesUser,
-    '{521C919B-AC49-4F28-A908-D4BD172C92E6}' : GcadMenuGroup,
-    '{63F5DDA7-C143-42AD-94E8-763C8E770537}' : GcadPopupMenus,
-    '{8774869F-546D-4CE5-9703-CFA67AEEBF26}' : GcadPopupMenu,
-    '{70408B41-584A-4C9C-B31B-F36FF8073798}' : GcadPopupMenuItem,
-    '{9F58700D-4910-4463-AEEB-2406161B0490}' : GcadMText,
-    '{DA38CF1F-C119-4FE7-A5F9-AEC5E0C22709}' : GcadBlockReference,
-    '{C858EE7D-1B1F-4F2E-A61F-3F4AA8C6C1BA}' : GcadCircle,
-    '{0F994C78-5B0F-4A2C-B63A-DB74B93B5537}' : GcadShadowDisplay,
-    '{B4F3F703-2BC5-4074-BD6E-24E5830BBD0A}' : GcadHyperlink,
+    '{C3819487-144A-4471-B95E-712E3CC64BEC}' : AcadMLeaderStyle,
+    '{59F48386-168C-4320-8B3D-77E8556EF9E1}' : AcadTextStyle,
+    '{D4E3C6C4-7DAE-4D80-A98C-148C3CD66E32}' : AcadUCS,
+    '{415EAAB8-7D05-4935-A6DF-25DA98FC8FB2}' : AcadViewport,
+    '{BEAF55E0-0A37-499C-B48B-DBC93CF6E29B}' : AcadPViewport,
+    '{9F1290F0-C25D-429E-901E-42CBE63A9836}' : AcadUtility,
+    '{F55DC97F-4A3C-49E9-873C-B1F3B6F4F8D6}' : AcadMaterial,
+    '{12664C95-EEAD-4337-A88A-971953571812}' : AcadLayout,
+    '{2ABEE42C-D570-4DE3-874F-353204A47B63}' : _DAcadDocumentEvents,
+    '{EEA4FF96-9C53-49ED-977F-D22D2B51F741}' : AcadDocument,
+    '{4F1D3AB3-AAC7-4F57-BA5C-B6D5410FE1D7}' : AcadObject,
+    '{3737DD60-3DB3-45AA-A592-49640E47A4CB}' : AcadEntity,
+    '{F7848BAF-729D-4217-A1E8-7DCE59B662FA}' : AcadAcCmColor,
+    '{D1131D16-F4F4-4F50-8AEB-A6ECA83141C0}' : AcadHyperlinks,
+    '{6ACCA2E1-E804-4519-B95F-235867C214AC}' : AcadLine,
+    '{211BF34C-5307-4666-B82D-0719CACA809C}' : AcadPlotConfiguration,
+    '{60C11D4D-6F51-4A16-88CE-305C5BBC84F1}' : AcadBlock,
+    '{6208CB09-68D9-4D82-A4BB-43003DB56AFA}' : AcadState,
+    '{81A17A41-793D-4BF0-A902-E1B622D175B5}' : AcadSelectionSet,
+    '{EA8022D8-0E43-473D-8646-BB1292EACE19}' : AcadSelectionSets,
+    '{57FB46D7-D66B-4EEA-969A-5D778BA7B79F}' : AcadPreferences,
+    '{AA668926-0FCF-4677-A97F-AD7920AB2C58}' : AcadPreferencesDrafting,
+    '{865D8226-319C-4784-B160-5D45FE038BF8}' : AcadPreferencesDisplay,
+    '{6CE93067-926C-4A41-BFC4-EA0A02C9F7E7}' : AcadPreferencesFiles,
+    '{7DBA4518-9AA4-416E-A3D6-45E80A02E979}' : AcadPreferencesOpenSave,
+    '{62EE39DA-DF13-42B1-861F-487026489C27}' : AcadPreferencesOutput,
+    '{38CDCF3E-F321-43F6-B355-6CBE197BD33A}' : AcadPreferencesProfiles,
+    '{1615B81F-2474-4AC3-A6F7-885F0DC5D62F}' : AcadPreferencesSelection,
+    '{C19DA545-A773-422D-818F-61E60340C184}' : AcadPreferencesSystem,
+    '{2DF90FE8-4354-4AB3-ABA9-04B9831F94BF}' : AcadPreferencesUser,
+    '{521C919B-AC49-4F28-A908-D4BD172C92E6}' : AcadMenuGroup,
+    '{63F5DDA7-C143-42AD-94E8-763C8E770537}' : AcadPopupMenus,
+    '{8774869F-546D-4CE5-9703-CFA67AEEBF26}' : AcadPopupMenu,
+    '{70408B41-584A-4C9C-B31B-F36FF8073798}' : AcadPopupMenuItem,
+    '{9F58700D-4910-4463-AEEB-2406161B0490}' : AcadMText,
+    '{DA38CF1F-C119-4FE7-A5F9-AEC5E0C22709}' : AcadBlockReference,
+    '{C858EE7D-1B1F-4F2E-A61F-3F4AA8C6C1BA}' : AcadCircle,
+    '{0F994C78-5B0F-4A2C-B63A-DB74B93B5537}' : AcadShadowDisplay,
+    '{B4F3F703-2BC5-4074-BD6E-24E5830BBD0A}' : AcadHyperlink,
     '{017EAE27-EA30-4151-8272-BA072063C218}' : IAcadDynamicBlockReferenceProperty,
-    '{114CCE6C-FDBF-4DAD-9157-7078B5664B95}' : GcadDynamicBlockReferenceProperty,
-    '{1E499AED-C7C7-4EE1-8FA6-AB1119B7268E}' : GcadXRecord,
-    '{5246A240-92AB-460B-820D-365247D9B47F}' : GcadSectionSettings,
-    '{FB5AA334-CBF1-41D1-B9E3-98F2ACB2EB83}' : GcadRasterImage,
-    '{457AD5FC-1656-4606-AB8A-EF7F0215B238}' : Gcad3DFace,
-    '{7D7FD20A-AC1D-46BC-8C49-8EBB286F681E}' : Gcad3DPolyline,
-    '{A83EBA25-CCF0-45CE-A7C2-FEABE0D3AF59}' : GcadRegion,
-    '{C998B595-8233-4859-A51A-492A25E9EB67}' : Gcad3DSolid,
-    '{7E99A93E-D084-43FF-9311-D24A452FF851}' : GcadArc,
-    '{3BE70A3D-E2C4-42A6-989C-2F1E08C338D4}' : GcadAttribute,
+    '{114CCE6C-FDBF-4DAD-9157-7078B5664B95}' : AcadDynamicBlockReferenceProperty,
+    '{1E499AED-C7C7-4EE1-8FA6-AB1119B7268E}' : AcadXRecord,
+    '{5246A240-92AB-460B-820D-365247D9B47F}' : AcadSectionSettings,
+    '{FB5AA334-CBF1-41D1-B9E3-98F2ACB2EB83}' : AcadRasterImage,
+    '{457AD5FC-1656-4606-AB8A-EF7F0215B238}' : Acad3DFace,
+    '{7D7FD20A-AC1D-46BC-8C49-8EBB286F681E}' : Acad3DPolyline,
+    '{A83EBA25-CCF0-45CE-A7C2-FEABE0D3AF59}' : AcadRegion,
+    '{C998B595-8233-4859-A51A-492A25E9EB67}' : Acad3DSolid,
+    '{7E99A93E-D084-43FF-9311-D24A452FF851}' : AcadArc,
+    '{3BE70A3D-E2C4-42A6-989C-2F1E08C338D4}' : AcadAttribute,
     '{183D30F5-55EB-4409-9FC8-06B66E6578FA}' : IAcadAttributeReference,
-    '{326662C0-F9F3-4A5B-BFE5-2431F4AEF3D8}' : GcadAttributeReference,
-    '{7F11EDC5-9468-4C9D-8749-5720C123C13F}' : GcadEllipse,
-    '{EF74767C-CCF5-4725-935C-39E7BDB8D3B8}' : GcadHatch,
-    '{1B4D2B5E-8406-4167-B42C-09D8136BAE47}' : GcadLeader,
-    '{508C6E95-0B42-4E0B-9A4A-75CF28263857}' : GcadLWPolyline,
-    '{5759A970-9028-4C5C-805B-AFE6D6169382}' : GcadPoint,
-    '{DD0ACEEC-B19B-4EC4-A5C8-C85BBE6402B2}' : GcadPolyline,
-    '{7BAA52E2-CBFA-406B-83AB-7D0F939026D4}' : GcadPolygonMesh,
-    '{D44D6709-6C13-4C52-A360-A2943C33EEE8}' : GcadRay,
-    '{4EFE4629-C549-4346-9E5A-06F0AE788ED0}' : GcadShape,
-    '{7EB18444-4D79-4CA8-8743-0498B64C4D01}' : GcadSolid,
-    '{F2293592-5908-4F24-9B5D-759CDA971FC2}' : GcadSpline,
-    '{12226789-EEA7-4BE8-9FD7-33513C744E3B}' : GcadText,
-    '{092962C2-F320-44E1-8857-C8AFE3885555}' : GcadTolerance,
-    '{D7B6AF1E-5F8B-453C-A26E-828A2BD820CC}' : GcadTrace,
-    '{70371E06-28C5-423C-8912-78A9A6E342CB}' : GcadXline,
-    '{5B817FD8-0DDF-4283-B794-86434740C658}' : GcadMInsertBlock,
-    '{A9879069-87D2-4F15-94B4-92531900783C}' : GcadPolyfaceMesh,
-    '{CC35F7B8-1AE8-4C31-9F3D-484A44EAC286}' : GcadMLine,
+    '{326662C0-F9F3-4A5B-BFE5-2431F4AEF3D8}' : AcadAttributeReference,
+    '{7F11EDC5-9468-4C9D-8749-5720C123C13F}' : AcadEllipse,
+    '{EF74767C-CCF5-4725-935C-39E7BDB8D3B8}' : AcadHatch,
+    '{1B4D2B5E-8406-4167-B42C-09D8136BAE47}' : AcadLeader,
+    '{508C6E95-0B42-4E0B-9A4A-75CF28263857}' : AcadLWPolyline,
+    '{5759A970-9028-4C5C-805B-AFE6D6169382}' : AcadPoint,
+    '{DD0ACEEC-B19B-4EC4-A5C8-C85BBE6402B2}' : AcadPolyline,
+    '{7BAA52E2-CBFA-406B-83AB-7D0F939026D4}' : AcadPolygonMesh,
+    '{D44D6709-6C13-4C52-A360-A2943C33EEE8}' : AcadRay,
+    '{4EFE4629-C549-4346-9E5A-06F0AE788ED0}' : AcadShape,
+    '{7EB18444-4D79-4CA8-8743-0498B64C4D01}' : AcadSolid,
+    '{F2293592-5908-4F24-9B5D-759CDA971FC2}' : AcadSpline,
+    '{12226789-EEA7-4BE8-9FD7-33513C744E3B}' : AcadText,
+    '{092962C2-F320-44E1-8857-C8AFE3885555}' : AcadTolerance,
+    '{D7B6AF1E-5F8B-453C-A26E-828A2BD820CC}' : AcadTrace,
+    '{70371E06-28C5-423C-8912-78A9A6E342CB}' : AcadXline,
+    '{5B817FD8-0DDF-4283-B794-86434740C658}' : AcadMInsertBlock,
+    '{A9879069-87D2-4F15-94B4-92531900783C}' : AcadPolyfaceMesh,
+    '{CC35F7B8-1AE8-4C31-9F3D-484A44EAC286}' : AcadMLine,
     '{F39B739A-A0E8-49C5-95B9-23F7C6496075}' : IAcadAssocArrayPath,
-    '{3745EF1D-3D36-4500-8034-7526342623D3}' : GcadAssocArrayPath,
+    '{3745EF1D-3D36-4500-8034-7526342623D3}' : AcadAssocArrayPath,
     '{79D41413-42B3-449F-8959-DA04EE748C1B}' : IAcadAssocArrayPolar,
-    '{AC93B51F-F467-4928-B094-03EA43B3A681}' : GcadAssocArrayPolar,
+    '{AC93B51F-F467-4928-B094-03EA43B3A681}' : AcadAssocArrayPolar,
     '{A0D37AF5-3A72-4ACC-84DC-D815BE30FF65}' : IAcadAssocArrayRectangular,
-    '{48E1D6AC-00B6-41DF-9A4F-26F4F47A8EE6}' : GcadAssocArrayRectangular,
-    '{78F3EF1F-22D5-4BC8-A186-3CF45759F2DD}' : GcadExternalReference,
-    '{92B86261-DA20-4A60-9982-05863C6D9EBE}' : GcadTable,
+    '{48E1D6AC-00B6-41DF-9A4F-26F4F47A8EE6}' : AcadAssocArrayRectangular,
+    '{78F3EF1F-22D5-4BC8-A186-3CF45759F2DD}' : AcadExternalReference,
+    '{92B86261-DA20-4A60-9982-05863C6D9EBE}' : AcadTable,
     '{5C5196BD-9E8D-4B23-A0CF-5FB8550456FD}' : IAcadTableCell,
-    '{6336B61B-EFBF-4325-94FE-59D403CB0C76}' : GcadTableCell,
-    '{5D0A1B18-A59B-402A-B66B-2E10E2BDAE65}' : GcadDimension,
-    '{31463489-3D64-4BC7-85B1-0A1C6F0B2ABA}' : GcadDimAligned,
-    '{8CBE37D9-7079-437A-A384-635D4A74A8D3}' : GcadDimAngular,
-    '{A4E8085A-25F0-420B-A480-30ABAEF225C8}' : GcadDimDiametric,
-    '{A6F7E215-803A-414A-A81D-6299DED292E4}' : GcadDimOrdinate,
-    '{04A200E7-033D-4ECC-A9B1-806148A24763}' : GcadDimRadial,
-    '{4D49A4C2-C908-4523-9E62-89B08B19CB1C}' : GcadDimRotated,
-    '{348090AB-ECF8-4259-BFA3-45C7A91E30F6}' : GcadDim3PointAngular,
-    '{2C817A8B-0B7D-4DE6-914A-B3A79F0665E4}' : GcadDimArcLength,
-    '{599C859E-76AB-4A00-8A81-2A71506A3824}' : GcadDimRadialLarge,
-    '{F7A4E90A-DB70-4175-833C-E9F927851832}' : GcadDictionary,
-    '{A2F794C5-9ED5-49B6-A45B-1FB659497505}' : GcadView,
-    '{30523308-F09B-4C74-A819-9AD14A4A943E}' : GcadToolbars,
-    '{D6EE440D-BCFF-443C-960D-4F1DAC6D94F6}' : GcadToolbar,
-    '{D2806DE9-1AFE-42DF-87AC-B0A855F9B891}' : GcadToolbarItem,
+    '{6336B61B-EFBF-4325-94FE-59D403CB0C76}' : AcadTableCell,
+    '{5D0A1B18-A59B-402A-B66B-2E10E2BDAE65}' : AcadDimension,
+    '{31463489-3D64-4BC7-85B1-0A1C6F0B2ABA}' : AcadDimAligned,
+    '{8CBE37D9-7079-437A-A384-635D4A74A8D3}' : AcadDimAngular,
+    '{A4E8085A-25F0-420B-A480-30ABAEF225C8}' : AcadDimDiametric,
+    '{A6F7E215-803A-414A-A81D-6299DED292E4}' : AcadDimOrdinate,
+    '{04A200E7-033D-4ECC-A9B1-806148A24763}' : AcadDimRadial,
+    '{4D49A4C2-C908-4523-9E62-89B08B19CB1C}' : AcadDimRotated,
+    '{348090AB-ECF8-4259-BFA3-45C7A91E30F6}' : AcadDim3PointAngular,
+    '{2C817A8B-0B7D-4DE6-914A-B3A79F0665E4}' : AcadDimArcLength,
+    '{599C859E-76AB-4A00-8A81-2A71506A3824}' : AcadDimRadialLarge,
+    '{F7A4E90A-DB70-4175-833C-E9F927851832}' : AcadDictionary,
+    '{A2F794C5-9ED5-49B6-A45B-1FB659497505}' : AcadView,
+    '{30523308-F09B-4C74-A819-9AD14A4A943E}' : AcadToolbars,
+    '{D6EE440D-BCFF-443C-960D-4F1DAC6D94F6}' : AcadToolbar,
+    '{D2806DE9-1AFE-42DF-87AC-B0A855F9B891}' : AcadToolbarItem,
     '{B7BD1413-D044-4527-B229-ECC06EB76040}' : IAcadSecurityParams,
-    '{D4903656-AC07-421A-8648-4804351E9DBE}' : GcadSecurityParams,
+    '{D4903656-AC07-421A-8648-4804351E9DBE}' : AcadSecurityParams,
     '{1BAA42A6-463E-492D-BB53-0D4028148443}' : _IAcadScriptJetEvents,
     '{6BBD85F2-FBE1-414E-8A89-76379B9E2E4B}' : IAcadScriptJet,
-    '{098976AB-EB69-4330-92C8-C8AC73822785}' : GcadScriptJet,
-    '{0E92853F-5027-4A90-999C-118BC73FA6BA}' : GcadFileDependency,
-    '{E6494613-3893-47A5-B0E7-B6AD41ADA6F4}' : GcadMLeader,
+    '{098976AB-EB69-4330-92C8-C8AC73822785}' : AcadScriptJet,
+    '{0E92853F-5027-4A90-999C-118BC73FA6BA}' : AcadFileDependency,
+    '{E6494613-3893-47A5-B0E7-B6AD41ADA6F4}' : AcadMLeader,
     '{75419B16-46F2-4245-A624-7819E87EEA8A}' : IAcadOle,
-    '{ABA71980-3AA9-40F5-81A7-735886F6F6FD}' : GcadOle,
+    '{ABA71980-3AA9-40F5-81A7-735886F6F6FD}' : AcadOle,
     '{D594DD08-3145-43F2-B9A9-D2DDAC0E0141}' : IAcadSubDMesh,
-    '{73EBC89D-6A5A-4ED8-BC4D-2995DC879649}' : GcadSubDMesh,
+    '{73EBC89D-6A5A-4ED8-BC4D-2995DC879649}' : AcadSubDMesh,
     '{4A201B9C-6555-45ED-A3B5-9342F2F28D71}' : IAcadHelix,
-    '{E817F271-E3BF-44E9-A481-C860D9D8CD13}' : GcadHelix,
+    '{E817F271-E3BF-44E9-A481-C860D9D8CD13}' : AcadHelix,
     '{B894B727-442F-4560-B162-4AFD82F79E09}' : IAcadSection2,
-    '{DCB0E3B7-B4A4-4D92-A3E8-C27BCAECBE8F}' : GcadSection,
+    '{DCB0E3B7-B4A4-4D92-A3E8-C27BCAECBE8F}' : AcadSection,
     '{78A705C7-0B90-4FBC-AF7A-AFFAEDD2CC1F}' : IAcadUnderlay,
-    '{7A486F98-18BC-424E-9D37-CD975EC3667F}' : GcadDgnUnderlay,
-    '{8DF57FE7-CEDA-4730-9F54-C308ED442495}' : GcadPdfUnderlay,
+    '{7A486F98-18BC-424E-9D37-CD975EC3667F}' : AcadDgnUnderlay,
+    '{8DF57FE7-CEDA-4730-9F54-C308ED442495}' : AcadPdfUnderlay,
     '{DCC7E463-86DB-4343-BD67-EB3E51A0B74F}' : IAcadDwfUnderlay,
-    '{B8E04FA2-2C8E-4EAE-873C-9ECC978E1628}' : GcadDwfUnderlay,
+    '{B8E04FA2-2C8E-4EAE-873C-9ECC978E1628}' : AcadDwfUnderlay,
     '{223679F5-6EE7-45C9-B778-E1B2A00D49B4}' : IAcadSurface,
-    '{25D868BF-4CFD-4CB4-BC30-1A43AAF5F3E1}' : GcadSurface,
+    '{25D868BF-4CFD-4CB4-BC30-1A43AAF5F3E1}' : AcadSurface,
     '{FB90B93B-E0A9-43E8-A5F9-B79015C81B0E}' : IAcadExtrudedSurface,
-    '{3865F4CA-2245-4517-9550-0FA5E5FC28F8}' : GcadExtrudedSurface,
+    '{3865F4CA-2245-4517-9550-0FA5E5FC28F8}' : AcadExtrudedSurface,
     '{83049727-9881-4D4D-8E57-63C83CB0CC6E}' : IAcadLoftedSurface,
-    '{3A949249-A2A7-412A-92FF-94D134EB3198}' : GcadLoftedSurface,
+    '{3A949249-A2A7-412A-92FF-94D134EB3198}' : AcadLoftedSurface,
     '{D3A1F3D5-4942-4904-928D-910183FAD5B3}' : IAcadPlaneSurface,
-    '{938953B2-646A-428C-895E-203B73B1B05A}' : GcadPlaneSurface,
+    '{938953B2-646A-428C-895E-203B73B1B05A}' : AcadPlaneSurface,
     '{BC4B31D4-9595-43C1-8BC9-AC5F8003F179}' : IAcadRevolvedSurface,
-    '{CA2C91D1-2D7B-4195-A66C-CFB788EFEB14}' : GcadRevolvedSurface,
+    '{CA2C91D1-2D7B-4195-A66C-CFB788EFEB14}' : AcadRevolvedSurface,
     '{0EA16B8C-632D-4AC3-8B6F-FECEB9558A7D}' : IAcadSweptSurface,
-    '{6997E39D-299C-45CC-95BC-A677AC0D1A62}' : GcadSweptSurface,
+    '{6997E39D-299C-45CC-95BC-A677AC0D1A62}' : AcadSweptSurface,
     '{6AB2CF34-6BE5-4E86-B1A7-BF6E8FC43E5E}' : IAcadCamera,
-    '{0C8A268F-2F40-4D78-8582-E900CD39AAB7}' : GcadCamera,
+    '{0C8A268F-2F40-4D78-8582-E900CD39AAB7}' : AcadCamera,
     '{C45579D8-B271-461E-B658-F57BE7B1B4EB}' : IAcadLight,
     '{2B8F45C4-3CE8-482C-918E-ECD39EC2B86D}' : IAcadLight2,
     '{0370B70A-6C67-45FD-A247-B2457AEE6ABC}' : IAcadLight3,
-    '{1441A79B-2C78-4568-8F3F-1D068ACFC6CD}' : GcadLight,
+    '{1441A79B-2C78-4568-8F3F-1D068ACFC6CD}' : AcadLight,
     '{1D3AF325-66DF-4CF6-B19F-1DCF053D75F9}' : IAcadIdPair,
-    '{CDF39880-2237-4180-A675-1601037F78ED}' : GcadIdPair,
+    '{CDF39880-2237-4180-A675-1601037F78ED}' : AcadIdPair,
     '{FC6D298C-564D-4ACA-850F-3ADF1C01B6D9}' : IAcadLayerStateManager,
-    '{B120B2EF-DD09-4935-94FE-CD57754907B1}' : GcadLayerStateManager,
+    '{B120B2EF-DD09-4935-94FE-CD57754907B1}' : AcadLayerStateManager,
     '{DEDB84CD-55C2-4F73-B534-7F06EBF8919F}' : IAcadSortentsTable,
-    '{79C8B818-C544-46EE-BDCF-613095E6DA50}' : GcadSortentsTable,
+    '{79C8B818-C544-46EE-BDCF-613095E6DA50}' : AcadSortentsTable,
     '{4EC5CAC3-22E8-4B42-BBA8-77271650DEA4}' : IAcadTableStyle,
-    '{31B9FEC5-563C-464B-B180-5B5E4B530EDD}' : GcadTableStyle,
+    '{31B9FEC5-563C-464B-B180-5B5E4B530EDD}' : AcadTableStyle,
     '{1AAE5275-D7FE-47D0-9264-9BE6D9A4A9E4}' : IAcadArcAlignedText,
-    '{BA03B2BE-41B3-40E6-A493-7F46CCD7CC05}' : GcadArcAlignedText,
+    '{BA03B2BE-41B3-40E6-A493-7F46CCD7CC05}' : AcadArcAlignedText,
     '{B4087378-9A1B-4996-B1C0-D3EAD492FA7A}' : IAcadNurbSurface,
-    '{3C7846DC-43D5-44CD-B954-F941A0F85DE9}' : GcadNurbSurface,
+    '{3C7846DC-43D5-44CD-B954-F941A0F85DE9}' : AcadNurbSurface,
     '{43DC153E-7BF6-43A8-96AC-C6788C702C9D}' : IAcadPointCloudEx,
-    '{028BA451-EBBA-4529-8521-DBFB95EB745C}' : GcadPointCloudEx,
+    '{028BA451-EBBA-4529-8521-DBFB95EB745C}' : AcadPointCloudEx,
     '{30DA6F50-6158-43ED-97F7-E9B19E58BB1A}' : IGcPePropertyEditorColor,
     '{11E6CDE7-1304-488C-8790-3F7AAC891BF2}' : GcPePropertyEditorColor,
 }
@@ -33623,7 +33623,7 @@ VTablesToClassMap = {
 
 
 NamesToIIDMap = {
-    '_DGcadApplicationEvents' : '{330F7B9E-C93C-403D-807C-D92CB9698637}',
+    '_DAcadApplicationEvents' : '{330F7B9E-C93C-403D-807C-D92CB9698637}',
     'IAcadApplication' : '{B1872638-6D18-482F-90BA-38086D17625F}',
     'IAcadDocument' : '{9368AF30-60A3-47E3-A743-60D4C21FB580}',
     'IAcadDatabase' : '{A870B378-DB7F-4DA2-8E41-6E37B163A1C3}',
@@ -33741,7 +33741,7 @@ NamesToIIDMap = {
     'IAcadState' : '{31E08BF4-3D9F-45DC-B456-D2A2CA16E126}',
     'IAcadObjectEvents' : '{41B85986-5004-4888-9E89-7895663FA77C}',
     'IAcadMLeaderStyle' : '{865CCF2C-B13D-48CB-9605-04E135F8FF30}',
-    '_DGcadDocumentEvents' : '{2ABEE42C-D570-4DE3-874F-353204A47B63}',
+    '_DAcadDocumentEvents' : '{2ABEE42C-D570-4DE3-874F-353204A47B63}',
     'IAcadDynamicBlockReferenceProperty' : '{017EAE27-EA30-4151-8272-BA072063C218}',
     'IAcadAttributeReference' : '{183D30F5-55EB-4409-9FC8-06B66E6578FA}',
     'IAcadAssocArrayPath' : '{F39B739A-A0E8-49C5-95B9-23F7C6496075}',
@@ -33781,7 +33781,7 @@ NamesToIIDMap = {
 win32com.client.constants.__dicts__.append(constants.__dict__)
 
 def getApp() -> IAcadApplication:
-    id = GcadApplication.CLSID
+    id = AcadApplication.CLSID
     return  win32com.client.Dispatch(id)
 
 def createEventObject(obj, eventclass):
