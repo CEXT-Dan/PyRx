@@ -26782,7 +26782,7 @@ class AcadXline(CoClassBaseClass): # A CoClass
     default_interface = IAcadXline
 
 # This CoClass is known by the name 'ZWCAD.ZcCmColor.2024'
-class AcadZcCmColor(CoClassBaseClass): # A CoClass
+class AcadAcCmColor(CoClassBaseClass): # A CoClass
     # ZWCAD True Color Object
     CLSID = IID('{EC9231C3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
@@ -31981,7 +31981,7 @@ CLSIDToClassMap = {
     '{EC923110-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimRadialLarge,
     '{EC92301D-5A21-11E7-B72E-BC5FF42AC839}' : AcadDimArcLength,
     '{EC92307E-5A21-11E7-B72E-BC5FF42AC839}' : ArcTextObj,
-    '{EC9231C3-5A21-11E7-B72E-BC5FF42AC839}' : AcadZcCmColor,
+    '{EC9231C3-5A21-11E7-B72E-BC5FF42AC839}' : AcadAcCmColor,
     '{EC9230B3-5A21-11E7-B72E-BC5FF42AC839}' : AcadHyperlink,
     '{EC923046-5A21-11E7-B72E-BC5FF42AC839}' : AcadHyperlinks,
     '{EC923016-5A21-11E7-B72E-BC5FF42AC839}' : AcadBlock,

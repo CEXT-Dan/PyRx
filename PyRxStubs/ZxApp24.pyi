@@ -18139,7 +18139,7 @@ class AcadXline(CoClassBaseClass):
     coclass_interfaces: Incomplete
     default_interface = IAcadXline
 
-class AcadZcCmColor(CoClassBaseClass):
+class AcadAcCmColor(CoClassBaseClass):
     CLSID: Incomplete
     coclass_sources: Incomplete
     coclass_interfaces: Incomplete
