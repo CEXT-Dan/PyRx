@@ -67,6 +67,13 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(line.StartPoint, (1, 2, 3))
         self.assertEqual(line.EndPoint, (4, 5, 6))
         line.Delete()
+    
+    def test_add_circle(self):
+        app = Ax.getApp()
+        circle = app.ActiveDocument.ModelSpace.AddCircle((100,200,300),50)
+        self.assertEqual(circle.Radius,50)
+        self.assertEqual(circle.Center,(100,200,300))
+        circle.Delete()
 
     def test_add_polyline(self):
         app = Ax.getApp()
