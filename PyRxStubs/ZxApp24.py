@@ -979,7 +979,7 @@ class IArcTextObj(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -1070,7 +1070,7 @@ class IArcTextObj(DispatchBaseClass):
         "Center": (2, 2, (12, 0), (), "Center", None),
         "CharSpacing": (12, 2, (5, 0), (), "CharSpacing", None),
         "Contents": (1, 2, (8, 0), (), "Contents", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EndAngle": (6, 2, (5, 0), (), "EndAngle", None),
@@ -1080,7 +1080,7 @@ class IArcTextObj(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (10, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LeftOffset": (8, 2, (5, 0), (), "LeftOffset", None),
@@ -1096,7 +1096,7 @@ class IArcTextObj(DispatchBaseClass):
         "Radius": (4, 2, (5, 0), (), "Radius", None),
         "RightOffset": (9, 2, (5, 0), (), "RightOffset", None),
         "StartAngle": (5, 2, (5, 0), (), "StartAngle", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "WidthFactor": (11, 2, (5, 0), (), "WidthFactor", None),
@@ -1133,7 +1133,7 @@ class IArcTextObj(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcad3DFace(DispatchBaseClass):
+class IAcad3DFace(DispatchBaseClass):
     'ZWCAD 3dFace Interface'
     CLSID = IID('{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231B4-5A21-11E7-B72E-BC5FF42AC839}')
@@ -1171,7 +1171,7 @@ class IZcad3DFace(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -1271,7 +1271,7 @@ class IZcad3DFace(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -1279,7 +1279,7 @@ class IZcad3DFace(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -1290,7 +1290,7 @@ class IZcad3DFace(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VisibilityEdge1": (2, 2, (11, 0), (), "VisibilityEdge1", None),
         "VisibilityEdge2": (3, 2, (11, 0), (), "VisibilityEdge2", None),
@@ -1324,7 +1324,7 @@ class IZcad3DFace(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcad3DPolyline(DispatchBaseClass):
+class IAcad3DPolyline(DispatchBaseClass):
     'ZWCAD 3dPolyline Interface'
     CLSID = IID('{EC923081-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92304C-5A21-11E7-B72E-BC5FF42AC839}')
@@ -1369,7 +1369,7 @@ class IZcad3DPolyline(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -1461,7 +1461,7 @@ class IZcad3DPolyline(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Closed": (6, 2, (11, 0), (), "Closed", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -1469,7 +1469,7 @@ class IZcad3DPolyline(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Length": (7, 2, (5, 0), (), "Length", None),
@@ -1481,7 +1481,7 @@ class IZcad3DPolyline(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Type": (5, 2, (3, 0), (), "Type", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -1518,7 +1518,7 @@ class IZcad3DPolyline(DispatchBaseClass):
             case _:
                 DispatchBaseClass.__setattr__(self, __name, __value)
                 
-class IZcad3DSolid(DispatchBaseClass):
+class IAcad3DSolid(DispatchBaseClass):
     'ZWCAD 3dSolid Interface'
     CLSID = IID('{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923173-5A21-11E7-B72E-BC5FF42AC839}')
@@ -1537,7 +1537,7 @@ class IZcad3DSolid(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(8, LCID, 1, (24, 0), ((3, 1), (9, 1)),Operation
             , SolidObject)
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def CheckInterference(self, Object=defaultNamedNotOptArg, CreateInterferenceSolid=defaultNamedNotOptArg, SolidsInterfere=pythoncom.Missing):
         return self._ApplyTypes_(9, 1, (9, 0), ((9, 1), (11, 1), (16395, 2)), 'CheckInterference', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}',Object
             , CreateInterferenceSolid, SolidsInterfere)
@@ -1560,7 +1560,7 @@ class IZcad3DSolid(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -1622,7 +1622,7 @@ class IZcad3DSolid(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1294, LCID, 1, (24, 0), ((12, 1), (5, 1)),BasePoint
             , ScaleFactor)
 
-    # Result is of type IZcadRegion
+    # Result is of type IAcadRegion
     def SectionSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg):
         Point1 = VTR8ArrayOrVal(Point1)
         Point2 = VTR8ArrayOrVal(Point2)
@@ -1638,7 +1638,7 @@ class IZcad3DSolid(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1027, LCID, 1, (24, 0), ((12, 1), (12, 1)),XDataType
             , XDataValue)
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def SliceSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Negative=defaultNamedNotOptArg):
         Point1 = VTR8ArrayOrVal(Point1)
         Point2 = VTR8ArrayOrVal(Point2)
@@ -1668,7 +1668,7 @@ class IZcad3DSolid(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Centroid": (1, 2, (12, 0), (), "Centroid", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -1677,7 +1677,7 @@ class IZcad3DSolid(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "History": (14, 2, (11, 0), (), "History", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -1696,7 +1696,7 @@ class IZcad3DSolid(DispatchBaseClass):
         "RadiiOfGyration": (6, 2, (12, 0), (), "RadiiOfGyration", None),
         "ShowHistory": (15, 2, (11, 0), (), "ShowHistory", None),
         "SolidType": (12, 2, (8, 0), (), "SolidType", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Volume": (7, 2, (5, 0), (), "Volume", None),
@@ -1725,7 +1725,7 @@ class IZcad3DSolid(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadApplication(DispatchBaseClass):
+class IAcadApplication(DispatchBaseClass):
     'ZWCAD Application Interface'
     CLSID = IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{2F671EB3-669F-11E7-91B7-BC5FF42AC839}')
@@ -1747,7 +1747,7 @@ class IZcadApplication(DispatchBaseClass):
         return self._ApplyTypes_(45, 1, (24, 0), ((16387, 2), (16392, 2), (3, 1), (16387, 2)), 'GetLicenseSerial', None,retType
             , Serial, chkLock, retIsNet)
 
-    # Result is of type IZcadState
+    # Result is of type IAcadState
     def GetZcadState(self):
         ret = self._oleobj_.InvokeTypes(42, LCID, 1, (9, 0), (),)
         if ret is not None:
@@ -1834,24 +1834,24 @@ class IZcadApplication(DispatchBaseClass):
             , UpperRight)
 
     _prop_map_get_ = {
-        # Method 'ActiveDocument' returns object of type 'IZcadDocument'
+        # Method 'ActiveDocument' returns object of type 'IAcadDocument'
         "ActiveDocument": (5, 2, (9, 0), (), "ActiveDocument", '{EC923156-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (4, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Caption": (3, 2, (8, 0), (), "Caption", None),
-        # Method 'Documents' returns object of type 'IZcadDocuments'
+        # Method 'Documents' returns object of type 'IAcadDocuments'
         "Documents": (32, 2, (9, 0), (), "Documents", '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}'),
         "FullName": (6, 2, (8, 0), (), "FullName", None),
         "HWND": (44, 2, (20, 0), (), "HWND", None),
         "Height": (7, 2, (3, 0), (), "Height", None),
         "LocaleId": (10, 2, (3, 0), (), "LocaleId", None),
-        # Method 'MenuBar' returns object of type 'IZcadMenuBar'
+        # Method 'MenuBar' returns object of type 'IAcadMenuBar'
         "MenuBar": (29, 2, (9, 0), (), "MenuBar", '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'MenuGroups' returns object of type 'IZcadMenuGroups'
+        # Method 'MenuGroups' returns object of type 'IAcadMenuGroups'
         "MenuGroups": (28, 2, (9, 0), (), "MenuGroups", '{EC923155-5A21-11E7-B72E-BC5FF42AC839}'),
         "Name": (2, 2, (8, 0), (), "Name", None),
         "Path": (9, 2, (8, 0), (), "Path", None),
-        # Method 'Preferences' returns object of type 'IZcadPreferences'
+        # Method 'Preferences' returns object of type 'IAcadPreferences'
         "Preferences": (14, 2, (9, 0), (), "Preferences", '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}'),
         "VBE": (27, 2, (9, 0), (), "VBE", None),
         "Version": (12, 2, (8, 0), (), "Version", None),
@@ -1878,7 +1878,7 @@ class IZcadApplication(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadArc(DispatchBaseClass):
+class IAcadArc(DispatchBaseClass):
     'ZWCAD Arc Interface'
     CLSID = IID('{EC923095-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230B1-5A21-11E7-B72E-BC5FF42AC839}')
@@ -1911,7 +1911,7 @@ class IZcadArc(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -2009,7 +2009,7 @@ class IZcadArc(DispatchBaseClass):
         "ArcLength": (8, 2, (5, 0), (), "ArcLength", None),
         "Area": (11, 2, (5, 0), (), "Area", None),
         "Center": (2, 2, (12, 0), (), "Center", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EndAngle": (6, 2, (5, 0), (), "EndAngle", None),
@@ -2019,7 +2019,7 @@ class IZcadArc(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -2036,7 +2036,7 @@ class IZcadArc(DispatchBaseClass):
         "StartPoint": (1, 2, (12, 0), (), "StartPoint", None),
         "Thickness": (9, 2, (5, 0), (), "Thickness", None),
         "TotalAngle": (7, 2, (5, 0), (), "TotalAngle", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -2067,7 +2067,7 @@ class IZcadArc(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadAttribute(DispatchBaseClass):
+class IAcadAttribute(DispatchBaseClass):
     'ZWCAD Attribute Interface'
     CLSID = IID('{EC923192-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923182-5A21-11E7-B72E-BC5FF42AC839}')
@@ -2100,7 +2100,7 @@ class IZcadAttribute(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -2197,7 +2197,7 @@ class IZcadAttribute(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Backward": (20, 2, (11, 0), (), "Backward", None),
         "Constant": (22, 2, (11, 0), (), "Constant", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -2208,7 +2208,7 @@ class IZcadAttribute(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (9, 2, (5, 0), (), "Height", None),
         "HorizontalAlignment": (7, 2, (3, 0), (), "HorizontalAlignment", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (14, 2, (12, 0), (), "InsertionPoint", None),
         "Invisible": (21, 2, (11, 0), (), "Invisible", None),
@@ -2239,7 +2239,7 @@ class IZcadAttribute(DispatchBaseClass):
         "TextGenerationFlag": (16, 2, (3, 0), (), "TextGenerationFlag", None),
         "TextString": (4, 2, (8, 0), (), "TextString", None),
         "Thickness": (17, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UpsideDown": (19, 2, (11, 0), (), "UpsideDown", None),
         "Verify": (23, 2, (11, 0), (), "Verify", None),
@@ -2296,7 +2296,7 @@ class IZcadAttribute(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadAttributeReference(DispatchBaseClass):
+class IAcadAttributeReference(DispatchBaseClass):
     'ZWCAD Attribute Reference Interface'
     CLSID = IID('{EC92304E-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231A3-5A21-11E7-B72E-BC5FF42AC839}')
@@ -2329,7 +2329,7 @@ class IZcadAttributeReference(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -2426,7 +2426,7 @@ class IZcadAttributeReference(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Backward": (18, 2, (11, 0), (), "Backward", None),
         "Constant": (20, 2, (11, 0), (), "Constant", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -2437,7 +2437,7 @@ class IZcadAttributeReference(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (1, 2, (5, 0), (), "Height", None),
         "HorizontalAlignment": (2, 2, (3, 0), (), "HorizontalAlignment", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (3, 2, (12, 0), (), "InsertionPoint", None),
         "Invisible": (19, 2, (11, 0), (), "Invisible", None),
@@ -2465,7 +2465,7 @@ class IZcadAttributeReference(DispatchBaseClass):
         "TextGenerationFlag": (11, 2, (3, 0), (), "TextGenerationFlag", None),
         "TextString": (12, 2, (8, 0), (), "TextString", None),
         "Thickness": (13, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UpsideDown": (17, 2, (11, 0), (), "UpsideDown", None),
         "VerticalAlignment": (14, 2, (3, 0), (), "VerticalAlignment", None),
@@ -2515,12 +2515,12 @@ class IZcadAttributeReference(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadBlock(DispatchBaseClass):
+class IAcadBlock(DispatchBaseClass):
     'ZWCAD Block Interface'
     CLSID = IID('{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923016-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcad3DFace
+    # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a three dimensional face given four vertices.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -2533,7 +2533,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DFace', '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolygonMesh
+    # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form three dimensional mesh.'
         PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
@@ -2543,7 +2543,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DMesh', '{EC923073-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DPolyline
+    # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a three dimensional polyline entity.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -2553,7 +2553,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DPoly', '{EC923081-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadArc
+    # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc with center, radius, start angle and end angle.'
         Center = VTR8ArrayOrVal(Center)
@@ -2563,7 +2563,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddArc', '{EC923095-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadAttribute
+    # Result is of type IAcadAttribute
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Adds an attribute definition.'
@@ -2575,7 +2575,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddAttribute', '{EC923192-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a box with edges parallel to the World Coordinate System axes given the length, width and height dimensions.'
         Origin = VTR8ArrayOrVal(Origin)
@@ -2585,7 +2585,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddBox', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadCircle
+    # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given the center and radius in the current UCS.'
         Center = VTR8ArrayOrVal(Center)
@@ -2595,7 +2595,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCircle', '{EC923048-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, base radius and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -2613,7 +2613,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCustomObject', None)
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, base radius and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -2623,7 +2623,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCylinder', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDim3PointAngular
+    # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3 point angular dimension.'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -2635,7 +2635,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDim3PointAngular', '{EC923174-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimAligned
+    # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension.'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -2647,7 +2647,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAligned', '{EC923189-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimAngular
+    # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension.'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -2659,7 +2659,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAngular', '{EC923152-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimArcLength
+    # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         ArcCenter = VTR8ArrayOrVal(ArcCenter)
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -2671,7 +2671,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimArc', '{EC923167-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimDiametric
+    # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension.'
         ChordPoint = VTR8ArrayOrVal(ChordPoint)
@@ -2682,7 +2682,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimDiametric', '{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimOrdinate
+    # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension.'
         DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
@@ -2693,7 +2693,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimOrdinate', '{EC923030-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRadial
+    # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension.'
         Center = VTR8ArrayOrVal(Center)
@@ -2704,7 +2704,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadial', '{EC923119-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRadialLarge
+    # Result is of type IAcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         Center = VTR8ArrayOrVal(Center)
@@ -2717,7 +2717,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadialLarge', '{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRotated
+    # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a linear dimension.'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -2729,7 +2729,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRotated', '{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadEllipse
+    # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the current UCS given the center, major and minor axes.'
         Center = VTR8ArrayOrVal(Center)
@@ -2739,7 +2739,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipse', '{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -2749,7 +2749,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, major and minor radii and height.'
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
@@ -2758,7 +2758,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCylinder', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolid(self, Profile=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, TaperAngle=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and a height.'
         ret = self._oleobj_.InvokeTypes(1558, LCID, 1, (9, 0), ((9, 1), (5, 1), (5, 1)),Profile
@@ -2767,7 +2767,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolid', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolidAlongPath(self, Profile=defaultNamedNotOptArg, Path=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and a path.'
         ret = self._oleobj_.InvokeTypes(1559, LCID, 1, (9, 0), ((9, 1), (9, 1)),Profile
@@ -2776,7 +2776,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolidAlongPath', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadHatch
+    # Result is of type IAcadHatch
     def AddHatch(self, PatternType=defaultNamedNotOptArg, PatternName=defaultNamedNotOptArg, Associativity=defaultNamedNotOptArg, HatchObjectType=defaultNamedOptArg):
         'Creates a hatch entity.'
         ret = self._oleobj_.InvokeTypes(1579, LCID, 1, (9, 0), ((3, 1), (8, 1), (11, 1), (12, 17)),PatternType
@@ -2785,7 +2785,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddHatch', '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLeader
+    # Result is of type IAcadLeader
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -2796,7 +2796,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLWPolyline
+    # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a light weight polyline.'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -2806,7 +2806,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLightWeightPolyline', '{EC92311E-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLine
+    # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Adds a line to ModelSpace or PaperSpace or a block.'
         StartPoint = VTR8ArrayOrVal(StartPoint)
@@ -2817,7 +2817,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLine', '{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMInsertBlock
+    # Result is of type IAcadMInsertBlock
     def AddMInsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
@@ -2831,13 +2831,13 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMInsertBlock', '{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMLeader
+    # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}',PointsArray
             , leaderLineIndex)
 
-    # Result is of type IZcadMLine
+    # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Inserts an mline object in the current document.'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -2847,7 +2847,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMLine', '{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMText
+    # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates a Mtext entity in a rectangle defined by insertion point and width.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -2857,7 +2857,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMText', '{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPoint
+    # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a point entity at a given location.'
         Point = VTR8ArrayOrVal(Point)
@@ -2867,7 +2867,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPoint', '{EC92315D-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolyfaceMesh
+    # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Inserts polyface mesh object in the current document.'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -2877,7 +2877,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyfaceMesh', '{EC923114-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolyline
+    # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline.'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -2887,7 +2887,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyline', '{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadRasterImage
+    # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a raster based of given image filename.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -2897,7 +2897,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRaster', '{EC923005-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadRay
+    # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two given points.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -2914,7 +2914,7 @@ class IZcadBlock(DispatchBaseClass):
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid given the profile and a revolution path.'
         AxisPoint = VTR8ArrayOrVal(AxisPoint)
@@ -2925,7 +2925,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRevolvedSolid', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSection
+    # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         FromPoint = VTR8ArrayOrVal(FromPoint)
         ToPoint = VTR8ArrayOrVal(ToPoint)
@@ -2936,7 +2936,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSection', '{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadShape
+    # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a given shape.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -2946,7 +2946,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddShape', '{EC92301C-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSolid
+    # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates an ZWCAD solid.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -2959,7 +2959,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSolid', '{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius.'
         Center = VTR8ArrayOrVal(Center)
@@ -2969,7 +2969,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSphere', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSpline
+    # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a B-spline given n points and the end tangents.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -2979,7 +2979,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSpline', '{EC92319E-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTable
+    # Result is of type IAcadTable
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width.'
@@ -2990,7 +2990,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTable', '{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadText
+    # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a text entity with specified height and rotation.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -3000,7 +3000,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddText', '{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTolerance
+    # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -3011,7 +3011,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTolerance', '{EC923101-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus given the center, torus and tube radius.'
         Center = VTR8ArrayOrVal(Center)
@@ -3021,7 +3021,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTorus', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTrace
+    # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a trace entity with four points.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -3031,7 +3031,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTrace', '{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width and height dimensions'
         Center = VTR8ArrayOrVal(Center)
@@ -3041,7 +3041,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddWedge', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadXline
+    # Result is of type IAcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an xline passing through two specified points.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -3052,7 +3052,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'AddXline', '{EC923055-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadExternalReference
+    # Result is of type IAcadExternalReference
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attach an external reference to the block.'
@@ -3081,7 +3081,7 @@ class IZcadBlock(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -3094,7 +3094,7 @@ class IZcadBlock(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadBlockReference
+    # Result is of type IAcadBlockReference
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an instance of a block in the current document.'
@@ -3106,7 +3106,7 @@ class IZcadBlock(DispatchBaseClass):
             ret = Dispatch(ret, 'InsertBlock', '{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an entity in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -3141,7 +3141,7 @@ class IZcadBlock(DispatchBaseClass):
         "BlockScaling": (1600, 2, (3, 0), (), "BlockScaling", None),
         "Comments": (1597, 2, (8, 0), (), "Comments", None),
         "Count": (1536, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Explodable": (1599, 2, (11, 0), (), "Explodable", None),
@@ -3150,7 +3150,7 @@ class IZcadBlock(DispatchBaseClass):
         "IsDynamicBlock": (1601, 2, (11, 0), (), "IsDynamicBlock", None),
         "IsLayout": (1582, 2, (11, 0), (), "IsLayout", None),
         "IsXRef": (1584, 2, (11, 0), (), "IsXRef", None),
-        # Method 'Layout' returns object of type 'IZcadLayout'
+        # Method 'Layout' returns object of type 'IAcadLayout'
         "Layout": (1583, 2, (9, 0), (), "Layout", '{EC923115-5A21-11E7-B72E-BC5FF42AC839}'),
         "Name": (1537, 2, (8, 0), (), "Name", None),
         "ObjectID": (1029, 2, (20, 0), (), "ObjectID", None),
@@ -3159,7 +3159,7 @@ class IZcadBlock(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "Path": (1596, 2, (8, 0), (), "Path", None),
         "Units": (1598, 2, (3, 0), (), "Units", None),
-        # Method 'XRefDatabase' returns object of type 'IZcadDatabase'
+        # Method 'XRefDatabase' returns object of type 'IAcadDatabase'
         "XRefDatabase": (1589, 2, (9, 0), (), "XRefDatabase", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -3198,7 +3198,7 @@ class IZcadBlock(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadBlockReference(DispatchBaseClass):
+class IAcadBlockReference(DispatchBaseClass):
     'ZWCAD Block Reference Interface'
     CLSID = IID('{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92315A-5A21-11E7-B72E-BC5FF42AC839}')
@@ -3250,7 +3250,7 @@ class IZcadBlockReference(DispatchBaseClass):
     def GetDynamicBlockProperties(self):
         return self._ApplyTypes_(514, 1, (12, 0), (), 'GetDynamicBlockProperties', None,)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -3340,7 +3340,7 @@ class IZcadBlockReference(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EffectiveName": (512, 2, (8, 0), (), "EffectiveName", None),
@@ -3350,7 +3350,7 @@ class IZcadBlockReference(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasAttributes": (11, 2, (11, 0), (), "HasAttributes", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsUnits": (521, 2, (8, 0), (), "InsUnits", None),
         "InsUnitsFactor": (528, 2, (5, 0), (), "InsUnitsFactor", None),
@@ -3368,7 +3368,7 @@ class IZcadBlockReference(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -3409,12 +3409,12 @@ class IZcadBlockReference(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadBlocks(DispatchBaseClass):
+class IAcadBlocks(DispatchBaseClass):
     'ZWCAD PaperSpace Interface'
     CLSID = IID('{EC923166-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231B1-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadBlock
+    # Result is of type IAcadBlock
     def Add(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg):
         'Adds a block to the blocks collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((12, 1), (8, 1)),InsertionPoint
@@ -3431,7 +3431,7 @@ class IZcadBlocks(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -3444,7 +3444,7 @@ class IZcadBlocks(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadBlock
+    # Result is of type IAcadBlock
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -3461,7 +3461,7 @@ class IZcadBlocks(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -3499,7 +3499,7 @@ class IZcadBlocks(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadCircle(DispatchBaseClass):
+class IAcadCircle(DispatchBaseClass):
     'ZWCAD Circle Interface'
     CLSID = IID('{EC923048-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92303A-5A21-11E7-B72E-BC5FF42AC839}')
@@ -3532,7 +3532,7 @@ class IZcadCircle(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -3626,7 +3626,7 @@ class IZcadCircle(DispatchBaseClass):
         "Area": (5, 2, (5, 0), (), "Area", None),
         "Center": (1, 2, (12, 0), (), "Center", None),
         "Circumference": (4, 2, (5, 0), (), "Circumference", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Diameter": (3, 2, (5, 0), (), "Diameter", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -3635,7 +3635,7 @@ class IZcadCircle(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -3649,7 +3649,7 @@ class IZcadCircle(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Radius": (2, 2, (5, 0), (), "Radius", None),
         "Thickness": (7, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -3681,7 +3681,7 @@ class IZcadCircle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDatabase(DispatchBaseClass):
+class IAcadDatabase(DispatchBaseClass):
     'ZWCAD Database Interface'
     CLSID = IID('{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92317A-5A21-11E7-B72E-BC5FF42AC839}')
@@ -3708,48 +3708,48 @@ class IZcadDatabase(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Blocks' returns object of type 'IZcadBlocks'
+        # Method 'Blocks' returns object of type 'IAcadBlocks'
         "Blocks": (3, 2, (9, 0), (), "Blocks", '{EC923166-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Dictionaries' returns object of type 'IZcadDictionaries'
+        # Method 'Dictionaries' returns object of type 'IAcadDictionaries'
         "Dictionaries": (9, 2, (9, 0), (), "Dictionaries", '{EC92309D-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'DimStyles' returns object of type 'IZcadDimStyles'
+        # Method 'DimStyles' returns object of type 'IAcadDimStyles'
         "DimStyles": (6, 2, (9, 0), (), "DimStyles", '{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}'),
         "ElevationModelSpace": (15, 2, (5, 0), (), "ElevationModelSpace", None),
         "ElevationPaperSpace": (16, 2, (5, 0), (), "ElevationPaperSpace", None),
-        # Method 'FileDependencies' returns object of type 'IZcadFileDependencies'
+        # Method 'FileDependencies' returns object of type 'IAcadFileDependencies'
         "FileDependencies": (70, 2, (9, 0), (), "FileDependencies", '{EC92302A-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Groups' returns object of type 'IZcadGroups'
+        # Method 'Groups' returns object of type 'IAcadGroups'
         "Groups": (5, 2, (9, 0), (), "Groups", '{EC92316B-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Layers' returns object of type 'IZcadLayers'
+        # Method 'Layers' returns object of type 'IAcadLayers'
         "Layers": (7, 2, (9, 0), (), "Layers", '{EC923043-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Layouts' returns object of type 'IZcadLayouts'
+        # Method 'Layouts' returns object of type 'IAcadLayouts'
         "Layouts": (20, 2, (9, 0), (), "Layouts", '{EC92312D-5A21-11E7-B72E-BC5FF42AC839}'),
         "Limits": (17, 2, (12, 0), (), "Limits", None),
-        # Method 'Linetypes' returns object of type 'IZcadLineTypes'
+        # Method 'Linetypes' returns object of type 'IAcadLineTypes'
         "Linetypes": (8, 2, (9, 0), (), "Linetypes", '{EC923098-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Materials' returns object of type 'IZcadMaterials'
+        # Method 'Materials' returns object of type 'IAcadMaterials'
         "Materials": (73, 2, (9, 0), (), "Materials", '{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ModelSpace' returns object of type 'IZcadModelSpace'
+        # Method 'ModelSpace' returns object of type 'IAcadModelSpace'
         "ModelSpace": (1, 2, (9, 0), (), "ModelSpace", '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'PaperSpace' returns object of type 'IZcadPaperSpace'
+        # Method 'PaperSpace' returns object of type 'IAcadPaperSpace'
         "PaperSpace": (2, 2, (9, 0), (), "PaperSpace", '{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'PlotConfigurations' returns object of type 'IZcadPlotConfigurations'
+        # Method 'PlotConfigurations' returns object of type 'IAcadPlotConfigurations'
         "PlotConfigurations": (21, 2, (9, 0), (), "PlotConfigurations", '{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Preferences' returns object of type 'IZcadDatabasePreferences'
+        # Method 'Preferences' returns object of type 'IAcadDatabasePreferences'
         "Preferences": (22, 2, (9, 0), (), "Preferences", '{EC923099-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'RegisteredApplications' returns object of type 'IZcadRegisteredApplications'
+        # Method 'RegisteredApplications' returns object of type 'IAcadRegisteredApplications'
         "RegisteredApplications": (10, 2, (9, 0), (), "RegisteredApplications", '{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'SectionManager' returns object of type 'IZcadSectionManager'
+        # Method 'SectionManager' returns object of type 'IAcadSectionManager'
         "SectionManager": (72, 2, (9, 0), (), "SectionManager", '{EC923035-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'SummaryInfo' returns object of type 'IZcadSummaryInfo'
+        # Method 'SummaryInfo' returns object of type 'IAcadSummaryInfo'
         "SummaryInfo": (71, 2, (9, 0), (), "SummaryInfo", '{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'TextStyles' returns object of type 'IZcadTextStyles'
+        # Method 'TextStyles' returns object of type 'IAcadTextStyles'
         "TextStyles": (11, 2, (9, 0), (), "TextStyles", '{EC923131-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'UserCoordinateSystems' returns object of type 'IZcadUCSs'
+        # Method 'UserCoordinateSystems' returns object of type 'IAcadUCSs'
         "UserCoordinateSystems": (12, 2, (9, 0), (), "UserCoordinateSystems", '{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Viewports' returns object of type 'IZcadViewports'
+        # Method 'Viewports' returns object of type 'IAcadViewports'
         "Viewports": (14, 2, (9, 0), (), "Viewports", '{EC923149-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Views' returns object of type 'IZcadViews'
+        # Method 'Views' returns object of type 'IAcadViews'
         "Views": (13, 2, (9, 0), (), "Views", '{EC92318D-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -3765,7 +3765,7 @@ class IZcadDatabase(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDatabasePreferences(DispatchBaseClass):
+class IAcadDatabasePreferences(DispatchBaseClass):
     'IZwcadDatabasePreferences Interface'
     CLSID = IID('{EC923099-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231F0-5A21-11E7-B72E-BC5FF42AC839}')
@@ -3821,12 +3821,12 @@ class IZcadDatabasePreferences(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDictionaries(DispatchBaseClass):
+class IAcadDictionaries(DispatchBaseClass):
     'IZwcadDictionaries Interface'
     CLSID = IID('{EC92309D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923015-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def Add(self, Name=defaultNamedNotOptArg):
         'Adds a dictionary to the dictionaries collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -3843,7 +3843,7 @@ class IZcadDictionaries(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -3856,7 +3856,7 @@ class IZcadDictionaries(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadObject
+    # Result is of type IAcadObject
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -3873,7 +3873,7 @@ class IZcadDictionaries(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -3911,12 +3911,12 @@ class IZcadDictionaries(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadDictionary(DispatchBaseClass):
+class IAcadDictionary(DispatchBaseClass):
     'ZWCAD Dictionary Interface'
     CLSID = IID('{EC922FDA-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230BF-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadObject
+    # Result is of type IAcadObject
     def AddObject(self, Keyword=defaultNamedNotOptArg, ObjectName=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(3, LCID, 1, (9, 0), ((8, 1), (8, 1)),Keyword
             , ObjectName)
@@ -3924,7 +3924,7 @@ class IZcadDictionary(DispatchBaseClass):
             ret = Dispatch(ret, 'AddObject', '{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadXRecord
+    # Result is of type IAcadXRecord
     def AddXRecord(self, Keyword=defaultNamedNotOptArg):
         'Adds an Xrecord to the dictionary.'
         ret = self._oleobj_.InvokeTypes(9, LCID, 1, (9, 0), ((8, 1),),Keyword
@@ -3941,7 +3941,7 @@ class IZcadDictionary(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -3955,7 +3955,7 @@ class IZcadDictionary(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(4, LCID, 1, (8, 0), ((9, 1),),Object
             )
 
-    # Result is of type IZcadObject
+    # Result is of type IAcadObject
     def GetObject(self, Name=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(5, LCID, 1, (9, 0), ((8, 1),),Name
             )
@@ -3968,7 +3968,7 @@ class IZcadDictionary(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadObject
+    # Result is of type IAcadObject
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the dictionary.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -3977,7 +3977,7 @@ class IZcadDictionary(DispatchBaseClass):
             ret = Dispatch(ret, 'Item', '{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadObject
+    # Result is of type IAcadObject
     def Remove(self, Name=defaultNamedNotOptArg):
         'Removes a named object from the dictionary.'
         ret = self._oleobj_.InvokeTypes(6, LCID, 1, (9, 0), ((8, 1),),Name
@@ -4004,7 +4004,7 @@ class IZcadDictionary(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -4044,7 +4044,7 @@ class IZcadDictionary(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadDim3PointAngular(DispatchBaseClass):
+class IAcadDim3PointAngular(DispatchBaseClass):
     'IZwcadDim3PointAngular Interface'
     CLSID = IID('{EC923174-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923072-5A21-11E7-B72E-BC5FF42AC839}')
@@ -4077,7 +4077,7 @@ class IZcadDim3PointAngular(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -4179,7 +4179,7 @@ class IZcadDim3PointAngular(DispatchBaseClass):
         "Arrowhead2Block": (66, 2, (8, 0), (), "Arrowhead2Block", None),
         "Arrowhead2Type": (63, 2, (3, 0), (), "Arrowhead2Type", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -4216,7 +4216,7 @@ class IZcadDim3PointAngular(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HorizontalTextPosition": (20, 2, (3, 0), (), "HorizontalTextPosition", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -4258,7 +4258,7 @@ class IZcadDim3PointAngular(DispatchBaseClass):
         "ToleranceSuppressLeadingZeros": (1569, 2, (11, 0), (), "ToleranceSuppressLeadingZeros", None),
         "ToleranceSuppressTrailingZeros": (1570, 2, (11, 0), (), "ToleranceSuppressTrailingZeros", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -4351,7 +4351,7 @@ class IZcadDim3PointAngular(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDimAligned(DispatchBaseClass):
+class IAcadDimAligned(DispatchBaseClass):
     'ZWCAD Aligned Dimension Interface'
     CLSID = IID('{EC923189-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923118-5A21-11E7-B72E-BC5FF42AC839}')
@@ -4384,7 +4384,7 @@ class IZcadDimAligned(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -4502,7 +4502,7 @@ class IZcadDimAligned(DispatchBaseClass):
         "Arrowhead2Block": (66, 2, (8, 0), (), "Arrowhead2Block", None),
         "Arrowhead2Type": (63, 2, (3, 0), (), "Arrowhead2Type", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -4541,7 +4541,7 @@ class IZcadDimAligned(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HorizontalTextPosition": (20, 2, (3, 0), (), "HorizontalTextPosition", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LinearScaleFactor": (21, 2, (5, 0), (), "LinearScaleFactor", None),
@@ -4591,7 +4591,7 @@ class IZcadDimAligned(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -4712,7 +4712,7 @@ class IZcadDimAligned(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDimAngular(DispatchBaseClass):
+class IAcadDimAngular(DispatchBaseClass):
     'ZWCAD Angular Dimension Interface'
     CLSID = IID('{EC923152-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92306D-5A21-11E7-B72E-BC5FF42AC839}')
@@ -4745,7 +4745,7 @@ class IZcadDimAngular(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -4850,7 +4850,7 @@ class IZcadDimAngular(DispatchBaseClass):
         "Arrowhead2Block": (66, 2, (8, 0), (), "Arrowhead2Block", None),
         "Arrowhead2Type": (63, 2, (3, 0), (), "Arrowhead2Type", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -4889,7 +4889,7 @@ class IZcadDimAngular(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HorizontalTextPosition": (20, 2, (3, 0), (), "HorizontalTextPosition", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -4931,7 +4931,7 @@ class IZcadDimAngular(DispatchBaseClass):
         "ToleranceSuppressLeadingZeros": (1569, 2, (11, 0), (), "ToleranceSuppressLeadingZeros", None),
         "ToleranceSuppressTrailingZeros": (1570, 2, (11, 0), (), "ToleranceSuppressTrailingZeros", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -5025,7 +5025,7 @@ class IZcadDimAngular(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDimArcLength(DispatchBaseClass):
+class IAcadDimArcLength(DispatchBaseClass):
     'ZWCAD Arc Length Dimension Interface'
     CLSID = IID('{EC923167-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92301D-5A21-11E7-B72E-BC5FF42AC839}')
@@ -5058,7 +5058,7 @@ class IZcadDimArcLength(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -5190,7 +5190,7 @@ class IZcadDimArcLength(DispatchBaseClass):
         "Arrowhead2Type": (63, 2, (3, 0), (), "Arrowhead2Type", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
         "CenterPoint": (71, 2, (12, 0), (), "CenterPoint", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimLine1Suppress": (25, 2, (11, 0), (), "DimLine1Suppress", None),
@@ -5224,7 +5224,7 @@ class IZcadDimArcLength(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HasLeader": (77, 2, (11, 0), (), "HasLeader", None),
         "HorizontalTextPosition": (20, 2, (3, 0), (), "HorizontalTextPosition", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "IsPartial": (74, 2, (11, 0), (), "IsPartial", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -5278,7 +5278,7 @@ class IZcadDimArcLength(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -5402,7 +5402,7 @@ class IZcadDimArcLength(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDimDiametric(DispatchBaseClass):
+class IAcadDimDiametric(DispatchBaseClass):
     'IZwcadDimDiametric Interface'
     CLSID = IID('{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231E5-5A21-11E7-B72E-BC5FF42AC839}')
@@ -5435,7 +5435,7 @@ class IZcadDimDiametric(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -5547,7 +5547,7 @@ class IZcadDimDiametric(DispatchBaseClass):
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
         "CenterMarkSize": (44, 2, (5, 0), (), "CenterMarkSize", None),
         "CenterType": (43, 2, (3, 0), (), "CenterType", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -5571,7 +5571,7 @@ class IZcadDimDiametric(DispatchBaseClass):
         "FractionFormat": (19, 2, (3, 0), (), "FractionFormat", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LinearScaleFactor": (21, 2, (5, 0), (), "LinearScaleFactor", None),
@@ -5619,7 +5619,7 @@ class IZcadDimDiametric(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -5724,7 +5724,7 @@ class IZcadDimDiametric(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDimOrdinate(DispatchBaseClass):
+class IAcadDimOrdinate(DispatchBaseClass):
     'ZWCAD Ordinate Dimension Interface'
     CLSID = IID('{EC923030-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92313B-5A21-11E7-B72E-BC5FF42AC839}')
@@ -5757,7 +5757,7 @@ class IZcadDimOrdinate(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -5865,7 +5865,7 @@ class IZcadDimOrdinate(DispatchBaseClass):
         "AltUnitsScale": (5, 2, (5, 0), (), "AltUnitsScale", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimTxtDirection": (1573, 2, (11, 0), (), "DimTxtDirection", None),
@@ -5881,7 +5881,7 @@ class IZcadDimOrdinate(DispatchBaseClass):
         "FractionFormat": (19, 2, (3, 0), (), "FractionFormat", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LinearScaleFactor": (21, 2, (5, 0), (), "LinearScaleFactor", None),
@@ -5928,7 +5928,7 @@ class IZcadDimOrdinate(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -6019,7 +6019,7 @@ class IZcadDimOrdinate(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDimRadial(DispatchBaseClass):
+class IAcadDimRadial(DispatchBaseClass):
     'ZWCAD Radial Dimension Interface'
     CLSID = IID('{EC923119-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FEA-5A21-11E7-B72E-BC5FF42AC839}')
@@ -6052,7 +6052,7 @@ class IZcadDimRadial(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -6162,7 +6162,7 @@ class IZcadDimRadial(DispatchBaseClass):
         "ArrowheadType": (63, 2, (3, 0), (), "ArrowheadType", None),
         "CenterMarkSize": (44, 2, (5, 0), (), "CenterMarkSize", None),
         "CenterType": (43, 2, (3, 0), (), "CenterType", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -6185,7 +6185,7 @@ class IZcadDimRadial(DispatchBaseClass):
         "FractionFormat": (19, 2, (3, 0), (), "FractionFormat", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LinearScaleFactor": (21, 2, (5, 0), (), "LinearScaleFactor", None),
@@ -6233,7 +6233,7 @@ class IZcadDimRadial(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -6335,7 +6335,7 @@ class IZcadDimRadial(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDimRadialLarge(DispatchBaseClass):
+class IAcadDimRadialLarge(DispatchBaseClass):
     'ZWCAD Radial Large Dimension Interface'
     CLSID = IID('{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923110-5A21-11E7-B72E-BC5FF42AC839}')
@@ -6368,7 +6368,7 @@ class IZcadDimRadialLarge(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -6484,7 +6484,7 @@ class IZcadDimRadialLarge(DispatchBaseClass):
         "CenterMarkSize": (44, 2, (5, 0), (), "CenterMarkSize", None),
         "CenterType": (43, 2, (3, 0), (), "CenterType", None),
         "ChordPoint": (72, 2, (12, 0), (), "ChordPoint", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimLineSuppress": (26, 2, (11, 0), (), "DimLineSuppress", None),
@@ -6501,7 +6501,7 @@ class IZcadDimRadialLarge(DispatchBaseClass):
         "FractionFormat": (19, 2, (3, 0), (), "FractionFormat", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "JogAngle": (70, 2, (5, 0), (), "JogAngle", None),
         "JogLocation": (69, 2, (12, 0), (), "JogLocation", None),
@@ -6552,7 +6552,7 @@ class IZcadDimRadialLarge(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -6652,7 +6652,7 @@ class IZcadDimRadialLarge(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDimRotated(DispatchBaseClass):
+class IAcadDimRotated(DispatchBaseClass):
     'ZWCAD Rotated Dimension Interface'
     CLSID = IID('{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923179-5A21-11E7-B72E-BC5FF42AC839}')
@@ -6685,7 +6685,7 @@ class IZcadDimRotated(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -6798,7 +6798,7 @@ class IZcadDimRotated(DispatchBaseClass):
         "Arrowhead2Block": (66, 2, (8, 0), (), "Arrowhead2Block", None),
         "Arrowhead2Type": (63, 2, (3, 0), (), "Arrowhead2Type", None),
         "ArrowheadSize": (61, 2, (5, 0), (), "ArrowheadSize", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimConstrDesc": (90, 2, (8, 0), (), "DimConstrDesc", None),
@@ -6835,7 +6835,7 @@ class IZcadDimRotated(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HorizontalTextPosition": (20, 2, (3, 0), (), "HorizontalTextPosition", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LinearScaleFactor": (21, 2, (5, 0), (), "LinearScaleFactor", None),
@@ -6885,7 +6885,7 @@ class IZcadDimRotated(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -7004,7 +7004,7 @@ class IZcadDimRotated(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDimStyle(DispatchBaseClass):
+class IAcadDimStyle(DispatchBaseClass):
     'ZWCAD DimStyle Interface'
     CLSID = IID('{EC923160-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923085-5A21-11E7-B72E-BC5FF42AC839}')
@@ -7022,7 +7022,7 @@ class IZcadDimStyle(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -7042,7 +7042,7 @@ class IZcadDimStyle(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -7063,12 +7063,12 @@ class IZcadDimStyle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDimStyles(DispatchBaseClass):
+class IAcadDimStyles(DispatchBaseClass):
     'IZwcadDimStyles Interface'
     CLSID = IID('{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923002-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadDimStyle
+    # Result is of type IAcadDimStyle
     def Add(self, Name=defaultNamedNotOptArg):
         'Adds a dimension style to the dimension styles collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -7085,7 +7085,7 @@ class IZcadDimStyles(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -7098,7 +7098,7 @@ class IZcadDimStyles(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadDimStyle
+    # Result is of type IAcadDimStyle
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -7115,7 +7115,7 @@ class IZcadDimStyles(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -7153,7 +7153,7 @@ class IZcadDimStyles(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadDimension(DispatchBaseClass):
+class IAcadDimension(DispatchBaseClass):
     'IZwcadDimension Interface'
     CLSID = IID('{EC9230DF-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230F7-5A21-11E7-B72E-BC5FF42AC839}')
@@ -7186,7 +7186,7 @@ class IZcadDimension(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -7275,7 +7275,7 @@ class IZcadDimension(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DecimalSeparator": (1548, 2, (8, 0), (), "DecimalSeparator", None),
         "DimTxtDirection": (1573, 2, (11, 0), (), "DimTxtDirection", None),
@@ -7285,7 +7285,7 @@ class IZcadDimension(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -7322,7 +7322,7 @@ class IZcadDimension(DispatchBaseClass):
         "ToleranceSuppressLeadingZeros": (1569, 2, (11, 0), (), "ToleranceSuppressLeadingZeros", None),
         "ToleranceSuppressTrailingZeros": (1570, 2, (11, 0), (), "ToleranceSuppressTrailingZeros", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -7377,7 +7377,7 @@ class IZcadDimension(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDocument(DispatchBaseClass):
+class IAcadDocument(DispatchBaseClass):
     'ZWCAD Document Interface'
     CLSID = IID('{EC923156-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{2F671DA0-669F-11E7-91B7-BC5FF42AC839}')
@@ -7436,7 +7436,7 @@ class IZcadDocument(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(53, LCID, 1, (24, 0), ((8, 1),),FullName
             )
 
-    # Result is of type IZcadDocument
+    # Result is of type IAcadDocument
     def New(self, TemplateFileName=defaultNamedNotOptArg):
         'Starts a new drawing.'
         ret = self._oleobj_.InvokeTypes(46, LCID, 1, (9, 0), ((8, 1),),TemplateFileName
@@ -7453,7 +7453,7 @@ class IZcadDocument(DispatchBaseClass):
             ret = Dispatch(ret, 'ObjectIdToObject', None)
         return ret
 
-    # Result is of type IZcadDocument
+    # Result is of type IAcadDocument
     def Open(self, FullName=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Opens a drawing file.'
         ret = self._oleobj_.InvokeTypes(42, LCID, 1, (9, 0), ((8, 1), (12, 17)),FullName
@@ -7505,90 +7505,90 @@ class IZcadDocument(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Active": (56, 2, (11, 0), (), "Active", None),
-        # Method 'ActiveDimStyle' returns object of type 'IZcadDimStyle'
+        # Method 'ActiveDimStyle' returns object of type 'IAcadDimStyle'
         "ActiveDimStyle": (26, 2, (9, 0), (), "ActiveDimStyle", '{EC923160-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ActiveLayer' returns object of type 'IZcadLayer'
+        # Method 'ActiveLayer' returns object of type 'IAcadLayer'
         "ActiveLayer": (24, 2, (9, 0), (), "ActiveLayer", '{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ActiveLayout' returns object of type 'IZcadLayout'
+        # Method 'ActiveLayout' returns object of type 'IAcadLayout'
         "ActiveLayout": (62, 2, (9, 0), (), "ActiveLayout", '{EC923115-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ActiveLinetype' returns object of type 'IZcadLineType'
+        # Method 'ActiveLinetype' returns object of type 'IAcadLineType'
         "ActiveLinetype": (25, 2, (9, 0), (), "ActiveLinetype", '{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ActiveMaterial' returns object of type 'IZcadMaterial'
+        # Method 'ActiveMaterial' returns object of type 'IAcadMaterial'
         "ActiveMaterial": (74, 2, (9, 0), (), "ActiveMaterial", '{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ActivePViewport' returns object of type 'IZcadPViewport'
+        # Method 'ActivePViewport' returns object of type 'IAcadPViewport'
         "ActivePViewport": (30, 2, (9, 0), (), "ActivePViewport", '{EC923139-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ActiveSelectionSet' returns object of type 'IZcadSelectionSet'
+        # Method 'ActiveSelectionSet' returns object of type 'IAcadSelectionSet'
         "ActiveSelectionSet": (33, 2, (9, 0), (), "ActiveSelectionSet", '{EC923124-5A21-11E7-B72E-BC5FF42AC839}'),
         "ActiveSpace": (31, 2, (3, 0), (), "ActiveSpace", None),
-        # Method 'ActiveTextStyle' returns object of type 'IZcadTextStyle'
+        # Method 'ActiveTextStyle' returns object of type 'IAcadTextStyle'
         "ActiveTextStyle": (27, 2, (9, 0), (), "ActiveTextStyle", '{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ActiveUCS' returns object of type 'IZcadUCS'
+        # Method 'ActiveUCS' returns object of type 'IAcadUCS'
         "ActiveUCS": (28, 2, (9, 0), (), "ActiveUCS", '{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ActiveViewport' returns object of type 'IZcadViewport'
+        # Method 'ActiveViewport' returns object of type 'IAcadViewport'
         "ActiveViewport": (29, 2, (9, 0), (), "ActiveViewport", '{EC92303D-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (66, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Blocks' returns object of type 'IZcadBlocks'
+        # Method 'Blocks' returns object of type 'IAcadBlocks'
         "Blocks": (3, 2, (9, 0), (), "Blocks", '{EC923166-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (67, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Dictionaries' returns object of type 'IZcadDictionaries'
+        # Method 'Dictionaries' returns object of type 'IAcadDictionaries'
         "Dictionaries": (9, 2, (9, 0), (), "Dictionaries", '{EC92309D-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'DimStyles' returns object of type 'IZcadDimStyles'
+        # Method 'DimStyles' returns object of type 'IAcadDimStyles'
         "DimStyles": (6, 2, (9, 0), (), "DimStyles", '{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}'),
         "ElevationModelSpace": (15, 2, (5, 0), (), "ElevationModelSpace", None),
         "ElevationPaperSpace": (16, 2, (5, 0), (), "ElevationPaperSpace", None),
-        # Method 'FileDependencies' returns object of type 'IZcadFileDependencies'
+        # Method 'FileDependencies' returns object of type 'IAcadFileDependencies'
         "FileDependencies": (70, 2, (9, 0), (), "FileDependencies", '{EC92302A-5A21-11E7-B72E-BC5FF42AC839}'),
         "FullName": (34, 2, (8, 0), (), "FullName", None),
-        # Method 'Groups' returns object of type 'IZcadGroups'
+        # Method 'Groups' returns object of type 'IAcadGroups'
         "Groups": (5, 2, (9, 0), (), "Groups", '{EC92316B-5A21-11E7-B72E-BC5FF42AC839}'),
         "HWND": (64, 2, (20, 0), (), "HWND", None),
         "Height": (61, 2, (3, 0), (), "Height", None),
-        # Method 'Layers' returns object of type 'IZcadLayers'
+        # Method 'Layers' returns object of type 'IAcadLayers'
         "Layers": (7, 2, (9, 0), (), "Layers", '{EC923043-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Layouts' returns object of type 'IZcadLayouts'
+        # Method 'Layouts' returns object of type 'IAcadLayouts'
         "Layouts": (20, 2, (9, 0), (), "Layouts", '{EC92312D-5A21-11E7-B72E-BC5FF42AC839}'),
         "Limits": (17, 2, (12, 0), (), "Limits", None),
-        # Method 'Linetypes' returns object of type 'IZcadLineTypes'
+        # Method 'Linetypes' returns object of type 'IAcadLineTypes'
         "Linetypes": (8, 2, (9, 0), (), "Linetypes", '{EC923098-5A21-11E7-B72E-BC5FF42AC839}'),
         "MSpace": (40, 2, (11, 0), (), "MSpace", None),
-        # Method 'Materials' returns object of type 'IZcadMaterials'
+        # Method 'Materials' returns object of type 'IAcadMaterials'
         "Materials": (73, 2, (9, 0), (), "Materials", '{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'ModelSpace' returns object of type 'IZcadModelSpace'
+        # Method 'ModelSpace' returns object of type 'IAcadModelSpace'
         "ModelSpace": (1, 2, (9, 0), (), "ModelSpace", '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}'),
         "Name": (35, 2, (8, 0), (), "Name", None),
         "ObjectSnapMode": (37, 2, (11, 0), (), "ObjectSnapMode", None),
-        # Method 'PaperSpace' returns object of type 'IZcadPaperSpace'
+        # Method 'PaperSpace' returns object of type 'IAcadPaperSpace'
         "PaperSpace": (2, 2, (9, 0), (), "PaperSpace", '{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Path": (36, 2, (8, 0), (), "Path", None),
-        # Method 'PickfirstSelectionSet' returns object of type 'IZcadSelectionSet'
+        # Method 'PickfirstSelectionSet' returns object of type 'IAcadSelectionSet'
         "PickfirstSelectionSet": (55, 2, (9, 0), (), "PickfirstSelectionSet", '{EC923124-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Plot' returns object of type 'IZcadPlot'
+        # Method 'Plot' returns object of type 'IAcadPlot'
         "Plot": (23, 2, (9, 0), (), "Plot", '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'PlotConfigurations' returns object of type 'IZcadPlotConfigurations'
+        # Method 'PlotConfigurations' returns object of type 'IAcadPlotConfigurations'
         "PlotConfigurations": (21, 2, (9, 0), (), "PlotConfigurations", '{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Preferences' returns object of type 'IZcadDatabasePreferences'
+        # Method 'Preferences' returns object of type 'IAcadDatabasePreferences'
         "Preferences": (22, 2, (9, 0), (), "Preferences", '{EC923099-5A21-11E7-B72E-BC5FF42AC839}'),
         "ReadOnly": (38, 2, (11, 0), (), "ReadOnly", None),
-        # Method 'RegisteredApplications' returns object of type 'IZcadRegisteredApplications'
+        # Method 'RegisteredApplications' returns object of type 'IAcadRegisteredApplications'
         "RegisteredApplications": (10, 2, (9, 0), (), "RegisteredApplications", '{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}'),
         "Saved": (39, 2, (11, 0), (), "Saved", None),
-        # Method 'SectionManager' returns object of type 'IZcadSectionManager'
+        # Method 'SectionManager' returns object of type 'IAcadSectionManager'
         "SectionManager": (72, 2, (9, 0), (), "SectionManager", '{EC923035-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'SelectionSets' returns object of type 'IZcadSelectionSets'
+        # Method 'SelectionSets' returns object of type 'IAcadSelectionSets'
         "SelectionSets": (32, 2, (9, 0), (), "SelectionSets", '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'SummaryInfo' returns object of type 'IZcadSummaryInfo'
+        # Method 'SummaryInfo' returns object of type 'IAcadSummaryInfo'
         "SummaryInfo": (71, 2, (9, 0), (), "SummaryInfo", '{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'TextStyles' returns object of type 'IZcadTextStyles'
+        # Method 'TextStyles' returns object of type 'IAcadTextStyles'
         "TextStyles": (11, 2, (9, 0), (), "TextStyles", '{EC923131-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'UserCoordinateSystems' returns object of type 'IZcadUCSs'
+        # Method 'UserCoordinateSystems' returns object of type 'IAcadUCSs'
         "UserCoordinateSystems": (12, 2, (9, 0), (), "UserCoordinateSystems", '{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Utility' returns object of type 'IZcadUtility'
+        # Method 'Utility' returns object of type 'IAcadUtility'
         "Utility": (41, 2, (9, 0), (), "Utility", '{EC923126-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Viewports' returns object of type 'IZcadViewports'
+        # Method 'Viewports' returns object of type 'IAcadViewports'
         "Viewports": (14, 2, (9, 0), (), "Viewports", '{EC923149-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Views' returns object of type 'IZcadViews'
+        # Method 'Views' returns object of type 'IAcadViews'
         "Views": (13, 2, (9, 0), (), "Views", '{EC92318D-5A21-11E7-B72E-BC5FF42AC839}'),
         "Width": (60, 2, (3, 0), (), "Width", None),
         "WindowState": (59, 2, (3, 0), (), "WindowState", None),
@@ -7622,12 +7622,12 @@ class IZcadDocument(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDocuments(DispatchBaseClass):
+class IAcadDocuments(DispatchBaseClass):
     'ZWCAD Documents Collection Interface'
     CLSID = IID('{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231BB-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadDocument
+    # Result is of type IAcadDocument
     def Add(self, TemplateName=defaultNamedOptArg):
         'Adds a document to the documents collection.'
         ret = self._oleobj_.InvokeTypes(1610743812, LCID, 1, (9, 0), ((12, 17),),TemplateName
@@ -7645,7 +7645,7 @@ class IZcadDocuments(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743816, LCID, 1, (24, 0), ((11, 49),),AskSave
             )
 
-    # Result is of type IZcadDocument
+    # Result is of type IAcadDocument
     def Item(self, Index=defaultNamedNotOptArg):
         'Given the index, returns one of the documents in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -7654,7 +7654,7 @@ class IZcadDocuments(DispatchBaseClass):
             ret = Dispatch(ret, 'Item', '{EC923156-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDocument
+    # Result is of type IAcadDocument
     def Open(self, File=defaultNamedNotOptArg, ReadOnly=defaultNamedOptArg, Password=defaultNamedOptArg):
         'Opens an existing document and add it to the collection.'
         ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1), (12, 17), (12, 17)),File
@@ -7668,10 +7668,10 @@ class IZcadDocuments(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743817, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
-        # Method 'Parent' returns object of type 'IZcadApplication'
+        # Method 'Parent' returns object of type 'IAcadApplication'
         "Parent": (1610743815, 2, (9, 0), (), "Parent", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -7703,7 +7703,7 @@ class IZcadDocuments(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadDwfUnderlay(DispatchBaseClass):
+class IAcadDwfUnderlay(DispatchBaseClass):
     CLSID = IID('{EC92319C-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92312A-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -7739,7 +7739,7 @@ class IZcadDwfUnderlay(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -7828,7 +7828,7 @@ class IZcadDwfUnderlay(DispatchBaseClass):
         "ClippingEnabled": (16, 2, (11, 0), (), "ClippingEnabled", None),
         "Contrast": (1, 2, (3, 0), (), "Contrast", None),
         "DWFFormat": (18, 2, (8, 0), (), "DWFFormat", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -7839,7 +7839,7 @@ class IZcadDwfUnderlay(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (6, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "ItemName": (8, 2, (8, 0), (), "ItemName", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -7855,7 +7855,7 @@ class IZcadDwfUnderlay(DispatchBaseClass):
         "Position": (3, 2, (12, 0), (), "Position", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (12, 2, (5, 0), (), "ScaleFactor", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnderlayLayerOverrideApplied": (17, 2, (3, 0), (), "UnderlayLayerOverrideApplied", None),
         "UnderlayName": (7, 2, (8, 0), (), "UnderlayName", None),
@@ -7900,7 +7900,7 @@ class IZcadDwfUnderlay(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadDynamicBlockReferenceProperty(DispatchBaseClass):
+class IAcadDynamicBlockReferenceProperty(DispatchBaseClass):
     CLSID = IID('{EC92310E-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FC3-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -7931,7 +7931,7 @@ class IZcadDynamicBlockReferenceProperty(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadEllipse(DispatchBaseClass):
+class IAcadEllipse(DispatchBaseClass):
     'ZWCAD Ellipse Interface'
     CLSID = IID('{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231C5-5A21-11E7-B72E-BC5FF42AC839}')
@@ -7964,7 +7964,7 @@ class IZcadEllipse(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -8057,7 +8057,7 @@ class IZcadEllipse(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Area": (14, 2, (5, 0), (), "Area", None),
         "Center": (2, 2, (12, 0), (), "Center", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EndAngle": (8, 2, (5, 0), (), "EndAngle", None),
@@ -8068,7 +8068,7 @@ class IZcadEllipse(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -8088,7 +8088,7 @@ class IZcadEllipse(DispatchBaseClass):
         "StartAngle": (7, 2, (5, 0), (), "StartAngle", None),
         "StartParameter": (9, 2, (5, 0), (), "StartParameter", None),
         "StartPoint": (1, 2, (12, 0), (), "StartPoint", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -8123,7 +8123,7 @@ class IZcadEllipse(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadEntity(DispatchBaseClass):
+class IAcadEntity(DispatchBaseClass):
     'ZWCAD Entity Interface'
     CLSID = IID('{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92304D-5A21-11E7-B72E-BC5FF42AC839}')
@@ -8156,7 +8156,7 @@ class IZcadEntity(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -8233,7 +8233,7 @@ class IZcadEntity(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -8241,7 +8241,7 @@ class IZcadEntity(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -8252,7 +8252,7 @@ class IZcadEntity(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -8277,7 +8277,7 @@ class IZcadEntity(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadExternalReference(DispatchBaseClass):
+class IAcadExternalReference(DispatchBaseClass):
     'IZwcadExternalReference Interface'
     CLSID = IID('{EC923029-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923009-5A21-11E7-B72E-BC5FF42AC839}')
@@ -8329,7 +8329,7 @@ class IZcadExternalReference(DispatchBaseClass):
     def GetDynamicBlockProperties(self):
         return self._ApplyTypes_(514, 1, (12, 0), (), 'GetDynamicBlockProperties', None,)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -8419,7 +8419,7 @@ class IZcadExternalReference(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EffectiveName": (512, 2, (8, 0), (), "EffectiveName", None),
@@ -8429,7 +8429,7 @@ class IZcadExternalReference(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasAttributes": (11, 2, (11, 0), (), "HasAttributes", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsUnits": (521, 2, (8, 0), (), "InsUnits", None),
         "InsUnitsFactor": (528, 2, (5, 0), (), "InsUnitsFactor", None),
@@ -8449,7 +8449,7 @@ class IZcadExternalReference(DispatchBaseClass):
         "Path": (256, 2, (8, 0), (), "Path", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -8491,8 +8491,8 @@ class IZcadExternalReference(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadExtrudedSurface(DispatchBaseClass):
-    'IZcadExtrudedSurface Interface'
+class IAcadExtrudedSurface(DispatchBaseClass):
+    'IAcadExtrudedSurface Interface'
     CLSID = IID('{EC923285-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923284-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -8524,7 +8524,7 @@ class IZcadExtrudedSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -8601,7 +8601,7 @@ class IZcadExtrudedSurface(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Direction": (4, 2, (12, 0), (), "Direction", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -8612,7 +8612,7 @@ class IZcadExtrudedSurface(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (2, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -8628,7 +8628,7 @@ class IZcadExtrudedSurface(DispatchBaseClass):
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
         "TaperAngle": (3, 2, (5, 0), (), "TaperAngle", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -8665,7 +8665,7 @@ class IZcadExtrudedSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadFileDependencies(DispatchBaseClass):
+class IAcadFileDependencies(DispatchBaseClass):
     'IZwcadFileDependencies Interface'
     CLSID = IID('{EC92302A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92315B-5A21-11E7-B72E-BC5FF42AC839}')
@@ -8680,7 +8680,7 @@ class IZcadFileDependencies(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(4, LCID, 1, (3, 0), ((8, 1), (8, 1)),Feature
             , FullFileName)
 
-    # Result is of type IZcadFileDependency
+    # Result is of type IAcadFileDependency
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -8732,7 +8732,7 @@ class IZcadFileDependencies(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadFileDependency(DispatchBaseClass):
+class IAcadFileDependency(DispatchBaseClass):
     'IZwcadFileDependency Interface'
     CLSID = IID('{EC923096-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231C4-5A21-11E7-B72E-BC5FF42AC839}')
@@ -8761,7 +8761,7 @@ class IZcadFileDependency(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadGeoPositionMarker(DispatchBaseClass):
+class IAcadGeoPositionMarker(DispatchBaseClass):
     CLSID = IID('{EC923297-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232A7-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -8793,7 +8793,7 @@ class IZcadGeoPositionMarker(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -8880,7 +8880,7 @@ class IZcadGeoPositionMarker(DispatchBaseClass):
         "Altitude": (18, 2, (5, 0), (), "Altitude", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BackgroundFill": (12, 2, (11, 0), (), "BackgroundFill", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "DrawingDirection": (5, 2, (3, 0), (), "DrawingDirection", None),
@@ -8890,7 +8890,7 @@ class IZcadGeoPositionMarker(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (7, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "LandingGap": (13, 2, (5, 0), (), "LandingGap", None),
         "Latitude": (16, 2, (8, 0), (), "Latitude", None),
@@ -8916,7 +8916,7 @@ class IZcadGeoPositionMarker(DispatchBaseClass):
         "TextString": (2, 2, (8, 0), (), "TextString", None),
         "TextStyleName": (3, 2, (8, 0), (), "TextStyleName", None),
         "TextWidth": (6, 2, (5, 0), (), "TextWidth", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -8960,7 +8960,7 @@ class IZcadGeoPositionMarker(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadGeomapImage(DispatchBaseClass):
+class IAcadGeomapImage(DispatchBaseClass):
     CLSID = IID('{EC923298-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232A8-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -8996,7 +8996,7 @@ class IZcadGeomapImage(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -9084,7 +9084,7 @@ class IZcadGeomapImage(DispatchBaseClass):
         "Brightness": (1, 2, (3, 0), (), "Brightness", None),
         "ClippingEnabled": (11, 2, (11, 0), (), "ClippingEnabled", None),
         "Contrast": (2, 2, (3, 0), (), "Contrast", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -9100,7 +9100,7 @@ class IZcadGeomapImage(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (14, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "ImageFile": (9, 2, (8, 0), (), "ImageFile", None),
         "ImageHeight": (7, 2, (5, 0), (), "ImageHeight", None),
@@ -9120,7 +9120,7 @@ class IZcadGeomapImage(DispatchBaseClass):
         "Rotation": (5, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (17, 2, (5, 0), (), "ScaleFactor", None),
         "ShowRotation": (16, 2, (11, 0), (), "ShowRotation", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (15, 2, (5, 0), (), "Width", None),
@@ -9164,7 +9164,7 @@ class IZcadGeomapImage(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadGroup(DispatchBaseClass):
+class IAcadGroup(DispatchBaseClass):
     'IZwcadGroup Interface'
     CLSID = IID('{EC92319A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92316E-5A21-11E7-B72E-BC5FF42AC839}')
@@ -9182,7 +9182,7 @@ class IZcadGroup(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -9200,7 +9200,7 @@ class IZcadGroup(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(7, LCID, 1, (24, 0), ((11, 1),),HighlightFlag
             )
 
-    # Result is of type IZcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an element in the group.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -9226,7 +9226,7 @@ class IZcadGroup(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -9275,12 +9275,12 @@ class IZcadGroup(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadGroups(DispatchBaseClass):
+class IAcadGroups(DispatchBaseClass):
     'IZwcadGroups Interface'
     CLSID = IID('{EC92316B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231D7-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadGroup
+    # Result is of type IAcadGroup
     def Add(self, Name=defaultNamedNotOptArg):
         'Adds a group to the groups collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -9297,7 +9297,7 @@ class IZcadGroups(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -9310,7 +9310,7 @@ class IZcadGroups(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadGroup
+    # Result is of type IAcadGroup
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -9327,7 +9327,7 @@ class IZcadGroups(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -9365,7 +9365,7 @@ class IZcadGroups(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadHatch(DispatchBaseClass):
+class IAcadHatch(DispatchBaseClass):
     'ZWCAD Hatch Interface'
     CLSID = IID('{EC92319B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923120-5A21-11E7-B72E-BC5FF42AC839}')
@@ -9409,7 +9409,7 @@ class IZcadHatch(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -9510,9 +9510,9 @@ class IZcadHatch(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Area": (25, 2, (5, 0), (), "Area", None),
         "AssociativeHatch": (11, 2, (11, 0), (), "AssociativeHatch", None),
-        # Method 'BackgroundColor' returns object of type 'IZcadZcCmColor'
+        # Method 'BackgroundColor' returns object of type 'IAcadZcCmColor'
         "BackgroundColor": (27, 2, (9, 0), (), "BackgroundColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Elevation": (10, 2, (5, 0), (), "Elevation", None),
@@ -9521,16 +9521,16 @@ class IZcadHatch(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "GradientAngle": (21, 2, (5, 0), (), "GradientAngle", None),
         "GradientCentered": (22, 2, (11, 0), (), "GradientCentered", None),
-        # Method 'GradientColor1' returns object of type 'IZcadZcCmColor'
+        # Method 'GradientColor1' returns object of type 'IAcadZcCmColor'
         "GradientColor1": (19, 2, (9, 0), (), "GradientColor1", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'GradientColor2' returns object of type 'IZcadZcCmColor'
+        # Method 'GradientColor2' returns object of type 'IAcadZcCmColor'
         "GradientColor2": (20, 2, (9, 0), (), "GradientColor2", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "GradientName": (23, 2, (8, 0), (), "GradientName", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HatchObjectType": (24, 2, (3, 0), (), "HatchObjectType", None),
         "HatchStyle": (12, 2, (3, 0), (), "HatchStyle", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "ISOPenWidth": (8, 2, (3, 0), (), "ISOPenWidth", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -9551,7 +9551,7 @@ class IZcadHatch(DispatchBaseClass):
         "PatternSpace": (7, 2, (5, 0), (), "PatternSpace", None),
         "PatternType": (3, 2, (3, 0), (), "PatternType", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -9595,7 +9595,7 @@ class IZcadHatch(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadHelix(DispatchBaseClass):
+class IAcadHelix(DispatchBaseClass):
     CLSID = IID('{EC923142-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923012-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -9627,7 +9627,7 @@ class IZcadHelix(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -9714,7 +9714,7 @@ class IZcadHelix(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BaseRadius": (6, 2, (5, 0), (), "BaseRadius", None),
         "Constrain": (2, 2, (3, 0), (), "Constrain", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -9723,7 +9723,7 @@ class IZcadHelix(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (3, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -9737,7 +9737,7 @@ class IZcadHelix(DispatchBaseClass):
         "Position": (1, 2, (12, 0), (), "Position", None),
         "TopRadius": (7, 2, (5, 0), (), "TopRadius", None),
         "TotalLength": (10, 2, (5, 0), (), "TotalLength", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "TurnHeight": (5, 2, (5, 0), (), "TurnHeight", None),
         "TurnSlope": (9, 2, (5, 0), (), "TurnSlope", None),
@@ -9774,7 +9774,7 @@ class IZcadHelix(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadHyperlink(DispatchBaseClass):
+class IAcadHyperlink(DispatchBaseClass):
     'ZWCAD Hyperlink Interface'
     CLSID = IID('{EC923112-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230B3-5A21-11E7-B72E-BC5FF42AC839}')
@@ -9802,12 +9802,12 @@ class IZcadHyperlink(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadHyperlinks(DispatchBaseClass):
+class IAcadHyperlinks(DispatchBaseClass):
     'ZWCAD Hyperlinks Interface'
     CLSID = IID('{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923046-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadHyperlink
+    # Result is of type IAcadHyperlink
     def Add(self, Name=defaultNamedNotOptArg, Description=defaultNamedOptArg, NamedLocation=defaultNamedOptArg):
         ret = self._oleobj_.InvokeTypes(3, LCID, 1, (9, 0), ((8, 1), (12, 17), (12, 17)),Name
             , Description, NamedLocation)
@@ -9815,7 +9815,7 @@ class IZcadHyperlinks(DispatchBaseClass):
             ret = Dispatch(ret, 'Add', '{EC923112-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadHyperlink
+    # Result is of type IAcadHyperlink
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((3, 1),),Index
@@ -9857,7 +9857,7 @@ class IZcadHyperlinks(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadIdPair(DispatchBaseClass):
+class IAcadIdPair(DispatchBaseClass):
     'ZWCAD IdPair Interface'
     CLSID = IID('{EC9230D6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230BC-5A21-11E7-B72E-BC5FF42AC839}')
@@ -9887,7 +9887,7 @@ class IZcadIdPair(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadLWPolyline(DispatchBaseClass):
+class IAcadLWPolyline(DispatchBaseClass):
     'ZWCAD Lightweight Polyline Interface'
     CLSID = IID('{EC92311E-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92307B-5A21-11E7-B72E-BC5FF42AC839}')
@@ -9936,7 +9936,7 @@ class IZcadLWPolyline(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(6, LCID, 1, (5, 0), ((3, 1),),Index
             )
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10048,7 +10048,7 @@ class IZcadLWPolyline(DispatchBaseClass):
         "Closed": (15, 2, (11, 0), (), "Closed", None),
         "ConstantWidth": (10, 2, (5, 0), (), "ConstantWidth", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Elevation": (12, 2, (5, 0), (), "Elevation", None),
@@ -10057,7 +10057,7 @@ class IZcadLWPolyline(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Length": (17, 2, (5, 0), (), "Length", None),
@@ -10072,7 +10072,7 @@ class IZcadLWPolyline(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -10104,7 +10104,7 @@ class IZcadLWPolyline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadLayer(DispatchBaseClass):
+class IAcadLayer(DispatchBaseClass):
     'ZWCAD Layer Interface'
     CLSID = IID('{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231D0-5A21-11E7-B72E-BC5FF42AC839}')
@@ -10117,7 +10117,7 @@ class IZcadLayer(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10137,7 +10137,7 @@ class IZcadLayer(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Description": (12, 2, (8, 0), (), "Description", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -10155,7 +10155,7 @@ class IZcadLayer(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (9, 2, (8, 0), (), "PlotStyleName", None),
         "Plottable": (7, 2, (11, 0), (), "Plottable", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (11, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Used": (13, 2, (11, 0), (), "Used", None),
         "ViewportDefault": (8, 2, (11, 0), (), "ViewportDefault", None),
@@ -10184,7 +10184,7 @@ class IZcadLayer(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadLayerStateManager(DispatchBaseClass):
+class IAcadLayerStateManager(DispatchBaseClass):
     CLSID = IID('{EC9230F6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92312F-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -10246,12 +10246,12 @@ class IZcadLayerStateManager(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadLayers(DispatchBaseClass):
+class IAcadLayers(DispatchBaseClass):
     'IZwcadLayers Interface'
     CLSID = IID('{EC923043-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230B8-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadLayer
+    # Result is of type IAcadLayer
     def Add(self, Name=defaultNamedNotOptArg):
         'Adds a layer to the layers collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -10272,7 +10272,7 @@ class IZcadLayers(DispatchBaseClass):
         'Generates layer usage data. See also Used property of Layer.'
         return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10285,7 +10285,7 @@ class IZcadLayers(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadLayer
+    # Result is of type IAcadLayer
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -10302,7 +10302,7 @@ class IZcadLayers(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -10340,7 +10340,7 @@ class IZcadLayers(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadLayout(DispatchBaseClass):
+class IAcadLayout(DispatchBaseClass):
     'ZWCAD Layout Interface'
     CLSID = IID('{EC923115-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FF9-5A21-11E7-B72E-BC5FF42AC839}')
@@ -10367,7 +10367,7 @@ class IZcadLayout(DispatchBaseClass):
         return self._ApplyTypes_(17, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetCustomScale', None,Numerator
             , Denominator)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10440,12 +10440,12 @@ class IZcadLayout(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Block' returns object of type 'IZcadBlock'
+        # Method 'Block' returns object of type 'IAcadBlock'
         "Block": (48, 2, (9, 0), (), "Block", '{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}'),
         "CanonicalMediaName": (6, 2, (8, 0), (), "CanonicalMediaName", None),
         "CenterPlot": (11, 2, (11, 0), (), "CenterPlot", None),
         "ConfigName": (3, 2, (8, 0), (), "ConfigName", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -10502,12 +10502,12 @@ class IZcadLayout(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadLayouts(DispatchBaseClass):
+class IAcadLayouts(DispatchBaseClass):
     'ZWCAD IZwcadLayouts Interface'
     CLSID = IID('{EC92312D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923079-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadLayout
+    # Result is of type IAcadLayout
     def Add(self, Name=defaultNamedNotOptArg):
         'Adds a layout to the layout collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -10524,7 +10524,7 @@ class IZcadLayouts(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10537,7 +10537,7 @@ class IZcadLayouts(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadLayout
+    # Result is of type IAcadLayout
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -10554,7 +10554,7 @@ class IZcadLayouts(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -10592,7 +10592,7 @@ class IZcadLayouts(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadLeader(DispatchBaseClass):
+class IAcadLeader(DispatchBaseClass):
     'ZWCAD Leader Interface'
     CLSID = IID('{EC92308B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FD3-5A21-11E7-B72E-BC5FF42AC839}')
@@ -10633,7 +10633,7 @@ class IZcadLeader(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10726,14 +10726,14 @@ class IZcadLeader(DispatchBaseClass):
                 DispatchBaseClass.__setattr__(self, __name, __value)
                 
     _prop_map_get_ = {
-        # Method 'Annotation' returns object of type 'IZcadEntity'
+        # Method 'Annotation' returns object of type 'IAcadEntity'
         "Annotation": (68, 2, (9, 0), (), "Annotation", '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}'),
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ArrowheadBlock": (70, 2, (8, 0), (), "ArrowheadBlock", None),
         "ArrowheadSize": (1543, 2, (5, 0), (), "ArrowheadSize", None),
         "ArrowheadType": (69, 2, (3, 0), (), "ArrowheadType", None),
         "Coordinates": (64, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DimensionLineColor": (13, 2, (3, 0), (), "DimensionLineColor", None),
         "DimensionLineWeight": (1550, 2, (3, 0), (), "DimensionLineWeight", None),
@@ -10743,7 +10743,7 @@ class IZcadLeader(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -10758,7 +10758,7 @@ class IZcadLeader(DispatchBaseClass):
         "ScaleFactor": (1553, 2, (5, 0), (), "ScaleFactor", None),
         "StyleName": (1542, 2, (8, 0), (), "StyleName", None),
         "TextGap": (1549, 2, (5, 0), (), "TextGap", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Type": (65, 2, (3, 0), (), "Type", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -10797,7 +10797,7 @@ class IZcadLeader(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadLine(DispatchBaseClass):
+class IAcadLine(DispatchBaseClass):
     'ZWCAD Line Interface'
     CLSID = IID('{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923177-5A21-11E7-B72E-BC5FF42AC839}')
@@ -10830,7 +10830,7 @@ class IZcadLine(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -10924,7 +10924,7 @@ class IZcadLine(DispatchBaseClass):
     _prop_map_get_ = {
         "Angle": (8, 2, (5, 0), (), "Angle", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Delta": (6, 2, (12, 0), (), "Delta", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -10934,7 +10934,7 @@ class IZcadLine(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Length": (7, 2, (5, 0), (), "Length", None),
@@ -10949,7 +10949,7 @@ class IZcadLine(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "StartPoint": (1, 2, (12, 0), (), "StartPoint", None),
         "Thickness": (4, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -10978,7 +10978,7 @@ class IZcadLine(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadLineType(DispatchBaseClass):
+class IAcadLineType(DispatchBaseClass):
     'ZWCAD LineType Interface'
     CLSID = IID('{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FF6-5A21-11E7-B72E-BC5FF42AC839}')
@@ -10991,7 +10991,7 @@ class IZcadLineType(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -11011,7 +11011,7 @@ class IZcadLineType(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Description": (1, 2, (8, 0), (), "Description", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -11034,12 +11034,12 @@ class IZcadLineType(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadLineTypes(DispatchBaseClass):
+class IAcadLineTypes(DispatchBaseClass):
     'IZwcadLineTypes Interface'
     CLSID = IID('{EC923098-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FE5-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadLineType
+    # Result is of type IAcadLineType
     def Add(self, Name=defaultNamedNotOptArg):
         'Adds a linetype to the linetypes collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -11056,7 +11056,7 @@ class IZcadLineTypes(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -11069,7 +11069,7 @@ class IZcadLineTypes(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadLineType
+    # Result is of type IAcadLineType
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -11091,7 +11091,7 @@ class IZcadLineTypes(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -11129,7 +11129,7 @@ class IZcadLineTypes(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadLoftedSurface(DispatchBaseClass):
+class IAcadLoftedSurface(DispatchBaseClass):
     CLSID = IID('{EC923221-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923222-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -11161,7 +11161,7 @@ class IZcadLoftedSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -11239,7 +11239,7 @@ class IZcadLoftedSurface(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Closed": (9, 2, (11, 0), (), "Closed", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EdgeExtensionDistances": (161, 2, (12, 0), (), "EdgeExtensionDistances", None),
@@ -11252,7 +11252,7 @@ class IZcadLoftedSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -11275,7 +11275,7 @@ class IZcadLoftedSurface(DispatchBaseClass):
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceNormals": (4, 2, (3, 0), (), "SurfaceNormals", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -11321,7 +11321,7 @@ class IZcadLoftedSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadMInsertBlock(DispatchBaseClass):
+class IAcadMInsertBlock(DispatchBaseClass):
     'IZwcadMInsertBlock Interface'
     CLSID = IID('{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230F1-5A21-11E7-B72E-BC5FF42AC839}')
@@ -11373,7 +11373,7 @@ class IZcadMInsertBlock(DispatchBaseClass):
     def GetDynamicBlockProperties(self):
         return self._ApplyTypes_(514, 1, (12, 0), (), 'GetDynamicBlockProperties', None,)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -11465,7 +11465,7 @@ class IZcadMInsertBlock(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ColumnSpacing": (257, 2, (5, 0), (), "ColumnSpacing", None),
         "Columns": (256, 2, (3, 0), (), "Columns", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EffectiveName": (512, 2, (8, 0), (), "EffectiveName", None),
@@ -11475,7 +11475,7 @@ class IZcadMInsertBlock(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasAttributes": (11, 2, (11, 0), (), "HasAttributes", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsUnits": (521, 2, (8, 0), (), "InsUnits", None),
         "InsUnitsFactor": (528, 2, (5, 0), (), "InsUnitsFactor", None),
@@ -11495,7 +11495,7 @@ class IZcadMInsertBlock(DispatchBaseClass):
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "RowSpacing": (259, 2, (5, 0), (), "RowSpacing", None),
         "Rows": (258, 2, (3, 0), (), "Rows", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -11540,7 +11540,7 @@ class IZcadMInsertBlock(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadMLeader(DispatchBaseClass):
+class IAcadMLeader(DispatchBaseClass):
     CLSID = IID('{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923004-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -11597,7 +11597,7 @@ class IZcadMLeader(DispatchBaseClass):
         return self._ApplyTypes_(41, 1, (12, 0), ((3, 1),), 'GetDoglegDirection', None,leaderIndex
             )
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -11722,7 +11722,7 @@ class IZcadMLeader(DispatchBaseClass):
         "ContentBlockName": (9, 2, (8, 0), (), "ContentBlockName", None),
         "ContentBlockType": (25, 2, (3, 0), (), "ContentBlockType", None),
         "ContentType": (34, 2, (3, 0), (), "ContentType", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "DogLegged": (7, 2, (11, 0), (), "DogLegged", None),
@@ -11732,12 +11732,12 @@ class IZcadMLeader(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "LandingGap": (23, 2, (5, 0), (), "LandingGap", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LeaderCount": (26, 2, (3, 0), (), "LeaderCount", None),
-        # Method 'LeaderLineColor' returns object of type 'IZcadZcCmColor'
+        # Method 'LeaderLineColor' returns object of type 'IAcadZcCmColor'
         "LeaderLineColor": (2, 2, (9, 0), (), "LeaderLineColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "LeaderLineWeight": (4, 2, (3, 0), (), "LeaderLineWeight", None),
         "LeaderLinetype": (3, 2, (8, 0), (), "LeaderLinetype", None),
@@ -11769,7 +11769,7 @@ class IZcadMLeader(DispatchBaseClass):
         "TextStyleName": (12, 2, (8, 0), (), "TextStyleName", None),
         "TextTopAttachmentType": (49, 2, (3, 0), (), "TextTopAttachmentType", None),
         "TextWidth": (15, 2, (5, 0), (), "TextWidth", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -11828,7 +11828,7 @@ class IZcadMLeader(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadMLeaderLeader(DispatchBaseClass):
+class IAcadMLeaderLeader(DispatchBaseClass):
     CLSID = IID('{EC92328F-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232B9-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -11839,10 +11839,10 @@ class IZcadMLeaderLeader(DispatchBaseClass):
         "ArrowheadBlock": (7, 2, (8, 0), (), "ArrowheadBlock", None),
         "ArrowheadSize": (6, 2, (5, 0), (), "ArrowheadSize", None),
         "ArrowheadType": (5, 2, (3, 0), (), "ArrowheadType", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
-        # Method 'LeaderLineColor' returns object of type 'IZcadZcCmColor'
+        # Method 'LeaderLineColor' returns object of type 'IAcadZcCmColor'
         "LeaderLineColor": (2, 2, (9, 0), (), "LeaderLineColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "LeaderLineWeight": (4, 2, (3, 0), (), "LeaderLineWeight", None),
         "LeaderLinetype": (3, 2, (8, 0), (), "LeaderLinetype", None),
@@ -11852,7 +11852,7 @@ class IZcadMLeaderLeader(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IZcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadZcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -11873,7 +11873,7 @@ class IZcadMLeaderLeader(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadMLeaderStyle(DispatchBaseClass):
+class IAcadMLeaderStyle(DispatchBaseClass):
     CLSID = IID('{EC923040-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923148-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -11885,7 +11885,7 @@ class IZcadMLeaderStyle(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -11911,14 +11911,14 @@ class IZcadMLeaderStyle(DispatchBaseClass):
         "ArrowSymbol": (18, 2, (8, 0), (), "ArrowSymbol", None),
         "BitFlags": (3, 2, (3, 0), (), "BitFlags", None),
         "Block": (26, 2, (8, 0), (), "Block", None),
-        # Method 'BlockColor' returns object of type 'IZcadZcCmColor'
+        # Method 'BlockColor' returns object of type 'IAcadZcCmColor'
         "BlockColor": (27, 2, (9, 0), (), "BlockColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "BlockConnectionType": (32, 2, (3, 0), (), "BlockConnectionType", None),
         "BlockRotation": (31, 2, (5, 0), (), "BlockRotation", None),
         "BlockScale": (29, 2, (5, 0), (), "BlockScale", None),
         "BreakSize": (36, 2, (5, 0), (), "BreakSize", None),
         "ContentType": (4, 2, (3, 0), (), "ContentType", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Description": (2, 2, (8, 0), (), "Description", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -11934,7 +11934,7 @@ class IZcadMLeaderStyle(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "LandingGap": (15, 2, (5, 0), (), "LandingGap", None),
-        # Method 'LeaderLineColor' returns object of type 'IZcadZcCmColor'
+        # Method 'LeaderLineColor' returns object of type 'IAcadZcCmColor'
         "LeaderLineColor": (11, 2, (9, 0), (), "LeaderLineColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "LeaderLineTypeId": (12, 2, (8, 0), (), "LeaderLineTypeId", None),
         "LeaderLineWeight": (13, 2, (3, 0), (), "LeaderLineWeight", None),
@@ -11951,7 +11951,7 @@ class IZcadMLeaderStyle(DispatchBaseClass):
         "TextAngleType": (38, 2, (3, 0), (), "TextAngleType", None),
         "TextAttachmentDirection": (41, 2, (3, 0), (), "TextAttachmentDirection", None),
         "TextBottomAttachmentType": (43, 2, (3, 0), (), "TextBottomAttachmentType", None),
-        # Method 'TextColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TextColor' returns object of type 'IAcadZcCmColor'
         "TextColor": (22, 2, (9, 0), (), "TextColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "TextHeight": (23, 2, (5, 0), (), "TextHeight", None),
         "TextLeftAttachmentType": (21, 2, (3, 0), (), "TextLeftAttachmentType", None),
@@ -12012,7 +12012,7 @@ class IZcadMLeaderStyle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadMLine(DispatchBaseClass):
+class IAcadMLine(DispatchBaseClass):
     'IZwcadMLine Interface'
     CLSID = IID('{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230C1-5A21-11E7-B72E-BC5FF42AC839}')
@@ -12045,7 +12045,7 @@ class IZcadMLine(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -12131,7 +12131,7 @@ class IZcadMLine(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (2, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -12139,7 +12139,7 @@ class IZcadMLine(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Justification": (3, 2, (3, 0), (), "Justification", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -12153,7 +12153,7 @@ class IZcadMLine(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "StyleName": (1, 2, (8, 0), (), "StyleName", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -12181,7 +12181,7 @@ class IZcadMLine(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadMText(DispatchBaseClass):
+class IAcadMText(DispatchBaseClass):
     'ZWCAD MText Interface'
     CLSID = IID('{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92302D-5A21-11E7-B72E-BC5FF42AC839}')
@@ -12218,7 +12218,7 @@ class IZcadMText(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -12307,7 +12307,7 @@ class IZcadMText(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "AttachmentPoint": (3, 2, (3, 0), (), "AttachmentPoint", None),
         "BackgroundFill": (13, 2, (11, 0), (), "BackgroundFill", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "DrawingDirection": (4, 2, (3, 0), (), "DrawingDirection", None),
@@ -12317,7 +12317,7 @@ class IZcadMText(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (6, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (8, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -12336,7 +12336,7 @@ class IZcadMText(DispatchBaseClass):
         "Rotation": (7, 2, (5, 0), (), "Rotation", None),
         "StyleName": (2, 2, (8, 0), (), "StyleName", None),
         "TextString": (1, 2, (8, 0), (), "TextString", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (5, 2, (5, 0), (), "Width", None),
@@ -12375,7 +12375,7 @@ class IZcadMText(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadMaterial(DispatchBaseClass):
+class IAcadMaterial(DispatchBaseClass):
     CLSID = IID('{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923024-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -12387,7 +12387,7 @@ class IZcadMaterial(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -12407,7 +12407,7 @@ class IZcadMaterial(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Description": (1, 2, (8, 0), (), "Description", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -12430,11 +12430,11 @@ class IZcadMaterial(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadMaterials(DispatchBaseClass):
+class IAcadMaterials(DispatchBaseClass):
     CLSID = IID('{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92310B-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadMaterial
+    # Result is of type IAcadMaterial
     def Add(self, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -12451,7 +12451,7 @@ class IZcadMaterials(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -12464,7 +12464,7 @@ class IZcadMaterials(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadMaterial
+    # Result is of type IAcadMaterial
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in the collection'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -12481,7 +12481,7 @@ class IZcadMaterials(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -12519,12 +12519,12 @@ class IZcadMaterials(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadMenuBar(DispatchBaseClass):
+class IAcadMenuBar(DispatchBaseClass):
     'ZWCAD MenuBar Interface'
     CLSID = IID('{EC92305B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FED-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadPopupMenu
+    # Result is of type IAcadPopupMenu
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an element in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -12534,10 +12534,10 @@ class IZcadMenuBar(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
-        # Method 'Parent' returns object of type 'IZcadApplication'
+        # Method 'Parent' returns object of type 'IAcadApplication'
         "Parent": (1610743812, 2, (9, 0), (), "Parent", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -12569,7 +12569,7 @@ class IZcadMenuBar(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadMenuGroup(DispatchBaseClass):
+class IAcadMenuGroup(DispatchBaseClass):
     'ZWCAD MenuGroup Interface'
     CLSID = IID('{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231F6-5A21-11E7-B72E-BC5FF42AC839}')
@@ -12589,15 +12589,15 @@ class IZcadMenuGroup(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743815, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "MenuFileName": (1610743812, 2, (8, 0), (), "MenuFileName", None),
-        # Method 'Menus' returns object of type 'IZcadPopupMenus'
+        # Method 'Menus' returns object of type 'IAcadPopupMenus'
         "Menus": (1610743813, 2, (9, 0), (), "Menus", '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}'),
         "Name": (1610743810, 2, (8, 0), (), "Name", None),
-        # Method 'Parent' returns object of type 'IZcadMenuGroups'
+        # Method 'Parent' returns object of type 'IAcadMenuGroups'
         "Parent": (1610743809, 2, (9, 0), (), "Parent", '{EC923155-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Toolbars' returns object of type 'IZcadToolbars'
+        # Method 'Toolbars' returns object of type 'IAcadToolbars'
         "Toolbars": (1610743814, 2, (9, 0), (), "Toolbars", '{EC923003-5A21-11E7-B72E-BC5FF42AC839}'),
         "Type": (1610743811, 2, (3, 0), (), "Type", None),
     }
@@ -12611,12 +12611,12 @@ class IZcadMenuGroup(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadMenuGroups(DispatchBaseClass):
+class IAcadMenuGroups(DispatchBaseClass):
     'ZWCAD MenuGroups Interface'
     CLSID = IID('{EC923155-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923146-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadMenuGroup
+    # Result is of type IAcadMenuGroup
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an element in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -12625,7 +12625,7 @@ class IZcadMenuGroups(DispatchBaseClass):
             ret = Dispatch(ret, 'Item', '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMenuGroup
+    # Result is of type IAcadMenuGroup
     def Load(self, MenuFileName=defaultNamedNotOptArg, BaseMenu=defaultNamedOptArg):
         'Loads the specified menu group.'
         ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1), (12, 17)),MenuFileName
@@ -12635,10 +12635,10 @@ class IZcadMenuGroups(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
-        # Method 'Parent' returns object of type 'IZcadApplication'
+        # Method 'Parent' returns object of type 'IAcadApplication'
         "Parent": (1610743812, 2, (9, 0), (), "Parent", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -12670,12 +12670,12 @@ class IZcadMenuGroups(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadModelSpace(DispatchBaseClass):
+class IAcadModelSpace(DispatchBaseClass):
     'ZWCAD ModelSpace Interface'
     CLSID = IID('{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231A1-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcad3DFace
+    # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a three dimensional face given four vertices.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -12688,7 +12688,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DFace', '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolygonMesh
+    # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form three dimensional mesh.'
         PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
@@ -12698,7 +12698,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DMesh', '{EC923073-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DPolyline
+    # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a three dimensional polyline entity.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -12708,7 +12708,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DPoly', '{EC923081-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadArc
+    # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc with center, radius, start angle and end angle.'
         Center = VTR8ArrayOrVal(Center)
@@ -12718,7 +12718,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddArc', '{EC923095-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadAttribute
+    # Result is of type IAcadAttribute
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Adds an attribute definition.'
@@ -12730,7 +12730,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddAttribute', '{EC923192-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a box with edges parallel to the World Coordinate System axes given the length, width and height dimensions.'
         Origin = VTR8ArrayOrVal(Origin)
@@ -12740,7 +12740,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddBox', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadCircle
+    # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given the center and radius in the current UCS.'
         Center = VTR8ArrayOrVal(Center)
@@ -12750,7 +12750,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCircle', '{EC923048-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, base radius and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -12768,7 +12768,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCustomObject', None)
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, base radius and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -12778,7 +12778,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCylinder', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDim3PointAngular
+    # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3 point angular dimension.'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -12790,7 +12790,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDim3PointAngular', '{EC923174-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimAligned
+    # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension.'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -12802,7 +12802,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAligned', '{EC923189-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimAngular
+    # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension.'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -12814,7 +12814,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAngular', '{EC923152-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimArcLength
+    # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         ArcCenter = VTR8ArrayOrVal(ArcCenter)
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -12826,7 +12826,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimArc', '{EC923167-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimDiametric
+    # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension.'
         ChordPoint = VTR8ArrayOrVal(ChordPoint)
@@ -12837,7 +12837,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimDiametric', '{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimOrdinate
+    # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension.'
         DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
@@ -12848,7 +12848,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimOrdinate', '{EC923030-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRadial
+    # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension.'
         Center = VTR8ArrayOrVal(Center)
@@ -12859,7 +12859,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadial', '{EC923119-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRadialLarge
+    # Result is of type IAcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         Center = VTR8ArrayOrVal(Center)
@@ -12872,7 +12872,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadialLarge', '{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRotated
+    # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a linear dimension.'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -12884,7 +12884,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRotated', '{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadEllipse
+    # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the current UCS given the center, major and minor axes.'
         Center = VTR8ArrayOrVal(Center)
@@ -12894,7 +12894,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipse', '{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -12904,7 +12904,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, major and minor radii and height.'
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
@@ -12913,7 +12913,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCylinder', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolid(self, Profile=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, TaperAngle=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and a height.'
         ret = self._oleobj_.InvokeTypes(1558, LCID, 1, (9, 0), ((9, 1), (5, 1), (5, 1)),Profile
@@ -12922,7 +12922,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolid', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolidAlongPath(self, Profile=defaultNamedNotOptArg, Path=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and a path.'
         ret = self._oleobj_.InvokeTypes(1559, LCID, 1, (9, 0), ((9, 1), (9, 1)),Profile
@@ -12931,7 +12931,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolidAlongPath', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadHatch
+    # Result is of type IAcadHatch
     def AddHatch(self, PatternType=defaultNamedNotOptArg, PatternName=defaultNamedNotOptArg, Associativity=defaultNamedNotOptArg, HatchObjectType=defaultNamedOptArg):
         'Creates a hatch entity.'
         ret = self._oleobj_.InvokeTypes(1579, LCID, 1, (9, 0), ((3, 1), (8, 1), (11, 1), (12, 17)),PatternType
@@ -12940,7 +12940,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddHatch', '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLeader
+    # Result is of type IAcadLeader
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -12951,7 +12951,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLWPolyline
+    # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a light weight polyline.'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -12961,7 +12961,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLightWeightPolyline', '{EC92311E-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLine
+    # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Adds a line to ModelSpace or PaperSpace or a block.'
         StartPoint = VTR8ArrayOrVal(StartPoint)
@@ -12972,7 +12972,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLine', '{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMInsertBlock
+    # Result is of type IAcadMInsertBlock
     def AddMInsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
@@ -12986,13 +12986,13 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMInsertBlock', '{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMLeader
+    # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}',PointsArray
             , leaderLineIndex)
 
-    # Result is of type IZcadMLine
+    # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Inserts an mline object in the current document.'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -13002,7 +13002,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMLine', '{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMText
+    # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates a Mtext entity in a rectangle defined by insertion point and width.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -13012,7 +13012,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMText', '{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPoint
+    # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a point entity at a given location.'
         Point = VTR8ArrayOrVal(Point)
@@ -13022,7 +13022,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPoint', '{EC92315D-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolyfaceMesh
+    # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Inserts polyface mesh object in the current document.'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -13032,7 +13032,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyfaceMesh', '{EC923114-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolyline
+    # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline.'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -13042,7 +13042,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyline', '{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadRasterImage
+    # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a raster based of given image filename.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -13052,7 +13052,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRaster', '{EC923005-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadRay
+    # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two given points.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -13069,7 +13069,7 @@ class IZcadModelSpace(DispatchBaseClass):
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid given the profile and a revolution path.'
         AxisPoint = VTR8ArrayOrVal(AxisPoint)
@@ -13080,7 +13080,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRevolvedSolid', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSection
+    # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         FromPoint = VTR8ArrayOrVal(FromPoint)
         ToPoint = VTR8ArrayOrVal(ToPoint)
@@ -13091,7 +13091,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSection', '{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadShape
+    # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a given shape.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -13101,7 +13101,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddShape', '{EC92301C-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSolid
+    # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates an ZWCAD solid.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -13114,7 +13114,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSolid', '{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius.'
         Center = VTR8ArrayOrVal(Center)
@@ -13124,7 +13124,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSphere', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSpline
+    # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a B-spline given n points and the end tangents.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -13134,7 +13134,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSpline', '{EC92319E-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTable
+    # Result is of type IAcadTable
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width.'
@@ -13145,7 +13145,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTable', '{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadText
+    # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a text entity with specified height and rotation.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -13155,7 +13155,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddText', '{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTolerance
+    # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -13166,7 +13166,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTolerance', '{EC923101-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus given the center, torus and tube radius.'
         Center = VTR8ArrayOrVal(Center)
@@ -13176,7 +13176,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTorus', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTrace
+    # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a trace entity with four points.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -13186,7 +13186,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTrace', '{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width and height dimensions'
         Center = VTR8ArrayOrVal(Center)
@@ -13196,7 +13196,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddWedge', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadXline
+    # Result is of type IAcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an xline passing through two specified points.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -13207,7 +13207,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddXline', '{EC923055-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadExternalReference
+    # Result is of type IAcadExternalReference
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attach an external reference to the block.'
@@ -13236,7 +13236,7 @@ class IZcadModelSpace(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -13249,7 +13249,7 @@ class IZcadModelSpace(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadBlockReference
+    # Result is of type IAcadBlockReference
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an instance of a block in the current document.'
@@ -13261,7 +13261,7 @@ class IZcadModelSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'InsertBlock', '{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an entity in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -13296,7 +13296,7 @@ class IZcadModelSpace(DispatchBaseClass):
         "BlockScaling": (1600, 2, (3, 0), (), "BlockScaling", None),
         "Comments": (1597, 2, (8, 0), (), "Comments", None),
         "Count": (1536, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Explodable": (1599, 2, (11, 0), (), "Explodable", None),
@@ -13305,7 +13305,7 @@ class IZcadModelSpace(DispatchBaseClass):
         "IsDynamicBlock": (1601, 2, (11, 0), (), "IsDynamicBlock", None),
         "IsLayout": (1582, 2, (11, 0), (), "IsLayout", None),
         "IsXRef": (1584, 2, (11, 0), (), "IsXRef", None),
-        # Method 'Layout' returns object of type 'IZcadLayout'
+        # Method 'Layout' returns object of type 'IAcadLayout'
         "Layout": (1583, 2, (9, 0), (), "Layout", '{EC923115-5A21-11E7-B72E-BC5FF42AC839}'),
         "Name": (1537, 2, (8, 0), (), "Name", None),
         "ObjectID": (1029, 2, (20, 0), (), "ObjectID", None),
@@ -13314,7 +13314,7 @@ class IZcadModelSpace(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "Path": (1596, 2, (8, 0), (), "Path", None),
         "Units": (1598, 2, (3, 0), (), "Units", None),
-        # Method 'XRefDatabase' returns object of type 'IZcadDatabase'
+        # Method 'XRefDatabase' returns object of type 'IAcadDatabase'
         "XRefDatabase": (1589, 2, (9, 0), (), "XRefDatabase", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -13353,12 +13353,12 @@ class IZcadModelSpace(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadModelSpace2(DispatchBaseClass):
+class IAcadModelSpace2(DispatchBaseClass):
     'ZWCAD ModelSpace Interface'
     CLSID = IID('{EC923199-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231A1-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcad3DFace
+    # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a three dimensional face given four vertices.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -13371,7 +13371,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DFace', '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolygonMesh
+    # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form three dimensional mesh.'
         PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
@@ -13381,7 +13381,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DMesh', '{EC923073-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DPolyline
+    # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a three dimensional polyline entity.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -13391,7 +13391,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DPoly', '{EC923081-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadArc
+    # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc with center, radius, start angle and end angle.'
         Center = VTR8ArrayOrVal(Center)
@@ -13401,7 +13401,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddArc', '{EC923095-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadAttribute
+    # Result is of type IAcadAttribute
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Adds an attribute definition.'
@@ -13413,7 +13413,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddAttribute', '{EC923192-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a box with edges parallel to the World Coordinate System axes given the length, width and height dimensions.'
         Origin = VTR8ArrayOrVal(Origin)
@@ -13423,7 +13423,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddBox', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadCircle
+    # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given the center and radius in the current UCS.'
         Center = VTR8ArrayOrVal(Center)
@@ -13433,7 +13433,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCircle', '{EC923048-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, base radius and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -13451,7 +13451,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCustomObject', None)
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, base radius and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -13461,7 +13461,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCylinder', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDim3PointAngular
+    # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3 point angular dimension.'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -13473,7 +13473,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDim3PointAngular', '{EC923174-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimAligned
+    # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension.'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -13485,7 +13485,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAligned', '{EC923189-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimAngular
+    # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension.'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -13497,7 +13497,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAngular', '{EC923152-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimArcLength
+    # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         ArcCenter = VTR8ArrayOrVal(ArcCenter)
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -13509,7 +13509,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimArc', '{EC923167-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimDiametric
+    # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension.'
         ChordPoint = VTR8ArrayOrVal(ChordPoint)
@@ -13520,7 +13520,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimDiametric', '{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimOrdinate
+    # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension.'
         DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
@@ -13531,7 +13531,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimOrdinate', '{EC923030-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRadial
+    # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension.'
         Center = VTR8ArrayOrVal(Center)
@@ -13542,7 +13542,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadial', '{EC923119-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRadialLarge
+    # Result is of type IAcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         Center = VTR8ArrayOrVal(Center)
@@ -13555,7 +13555,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadialLarge', '{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRotated
+    # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a linear dimension.'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -13567,7 +13567,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRotated', '{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadEllipse
+    # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the current UCS given the center, major and minor axes.'
         Center = VTR8ArrayOrVal(Center)
@@ -13577,7 +13577,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipse', '{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -13587,7 +13587,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, major and minor radii and height.'
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
@@ -13596,7 +13596,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCylinder', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolid(self, Profile=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, TaperAngle=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and a height.'
         ret = self._oleobj_.InvokeTypes(1558, LCID, 1, (9, 0), ((9, 1), (5, 1), (5, 1)),Profile
@@ -13605,7 +13605,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolid', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolidAlongPath(self, Profile=defaultNamedNotOptArg, Path=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and a path.'
         ret = self._oleobj_.InvokeTypes(1559, LCID, 1, (9, 0), ((9, 1), (9, 1)),Profile
@@ -13614,7 +13614,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolidAlongPath', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadHatch
+    # Result is of type IAcadHatch
     def AddHatch(self, PatternType=defaultNamedNotOptArg, PatternName=defaultNamedNotOptArg, Associativity=defaultNamedNotOptArg, HatchObjectType=defaultNamedOptArg):
         'Creates a hatch entity.'
         ret = self._oleobj_.InvokeTypes(1579, LCID, 1, (9, 0), ((3, 1), (8, 1), (11, 1), (12, 17)),PatternType
@@ -13623,7 +13623,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddHatch', '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLeader
+    # Result is of type IAcadLeader
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -13634,7 +13634,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLWPolyline
+    # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a light weight polyline.'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -13644,7 +13644,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLightWeightPolyline', '{EC92311E-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLine
+    # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Adds a line to ModelSpace or PaperSpace or a block.'
         StartPoint = VTR8ArrayOrVal(StartPoint)
@@ -13655,7 +13655,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLine', '{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMInsertBlock
+    # Result is of type IAcadMInsertBlock
     def AddMInsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
@@ -13669,13 +13669,13 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMInsertBlock', '{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMLeader
+    # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}',PointsArray
             , leaderLineIndex)
 
-    # Result is of type IZcadMLine
+    # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Inserts an mline object in the current document.'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -13685,7 +13685,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMLine', '{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMText
+    # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates a Mtext entity in a rectangle defined by insertion point and width.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -13695,7 +13695,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMText', '{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPoint
+    # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a point entity at a given location.'
         Point = VTR8ArrayOrVal(Point)
@@ -13705,7 +13705,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPoint', '{EC92315D-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolyfaceMesh
+    # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Inserts polyface mesh object in the current document.'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -13715,7 +13715,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyfaceMesh', '{EC923114-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolyline
+    # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline.'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -13725,7 +13725,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyline', '{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadRasterImage
+    # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a raster based of given image filename.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -13735,7 +13735,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRaster', '{EC923005-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadRay
+    # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two given points.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -13752,7 +13752,7 @@ class IZcadModelSpace2(DispatchBaseClass):
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid given the profile and a revolution path.'
         AxisPoint = VTR8ArrayOrVal(AxisPoint)
@@ -13763,7 +13763,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRevolvedSolid', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSection
+    # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         FromPoint = VTR8ArrayOrVal(FromPoint)
         ToPoint = VTR8ArrayOrVal(ToPoint)
@@ -13774,7 +13774,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSection', '{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadShape
+    # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a given shape.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -13784,7 +13784,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddShape', '{EC92301C-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSolid
+    # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates an ZWCAD solid.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -13797,7 +13797,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSolid', '{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius.'
         Center = VTR8ArrayOrVal(Center)
@@ -13807,7 +13807,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSphere', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSpline
+    # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a B-spline given n points and the end tangents.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -13817,7 +13817,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSpline', '{EC92319E-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTable
+    # Result is of type IAcadTable
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width.'
@@ -13828,7 +13828,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTable', '{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadText
+    # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a text entity with specified height and rotation.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -13838,7 +13838,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddText', '{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTolerance
+    # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -13849,7 +13849,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTolerance', '{EC923101-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus given the center, torus and tube radius.'
         Center = VTR8ArrayOrVal(Center)
@@ -13859,7 +13859,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTorus', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTrace
+    # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a trace entity with four points.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -13869,7 +13869,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTrace', '{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width and height dimensions'
         Center = VTR8ArrayOrVal(Center)
@@ -13879,7 +13879,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddWedge', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadXline
+    # Result is of type IAcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an xline passing through two specified points.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -13890,7 +13890,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'AddXline', '{EC923055-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadExternalReference
+    # Result is of type IAcadExternalReference
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attach an external reference to the block.'
@@ -13919,7 +13919,7 @@ class IZcadModelSpace2(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -13932,7 +13932,7 @@ class IZcadModelSpace2(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadBlockReference
+    # Result is of type IAcadBlockReference
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an instance of a block in the current document.'
@@ -13944,7 +13944,7 @@ class IZcadModelSpace2(DispatchBaseClass):
             ret = Dispatch(ret, 'InsertBlock', '{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an entity in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -13979,7 +13979,7 @@ class IZcadModelSpace2(DispatchBaseClass):
         "BlockScaling": (1600, 2, (3, 0), (), "BlockScaling", None),
         "Comments": (1597, 2, (8, 0), (), "Comments", None),
         "Count": (1536, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Explodable": (1599, 2, (11, 0), (), "Explodable", None),
@@ -13988,7 +13988,7 @@ class IZcadModelSpace2(DispatchBaseClass):
         "IsDynamicBlock": (1601, 2, (11, 0), (), "IsDynamicBlock", None),
         "IsLayout": (1582, 2, (11, 0), (), "IsLayout", None),
         "IsXRef": (1584, 2, (11, 0), (), "IsXRef", None),
-        # Method 'Layout' returns object of type 'IZcadLayout'
+        # Method 'Layout' returns object of type 'IAcadLayout'
         "Layout": (1583, 2, (9, 0), (), "Layout", '{EC923115-5A21-11E7-B72E-BC5FF42AC839}'),
         "Name": (1537, 2, (8, 0), (), "Name", None),
         "ObjectID": (1029, 2, (20, 0), (), "ObjectID", None),
@@ -13997,7 +13997,7 @@ class IZcadModelSpace2(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "Path": (1596, 2, (8, 0), (), "Path", None),
         "Units": (1598, 2, (3, 0), (), "Units", None),
-        # Method 'XRefDatabase' returns object of type 'IZcadDatabase'
+        # Method 'XRefDatabase' returns object of type 'IAcadDatabase'
         "XRefDatabase": (1589, 2, (9, 0), (), "XRefDatabase", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -14036,7 +14036,7 @@ class IZcadModelSpace2(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadNurbSurface(DispatchBaseClass):
+class IAcadNurbSurface(DispatchBaseClass):
     CLSID = IID('{EC923296-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232A6-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -14068,7 +14068,7 @@ class IZcadNurbSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -14146,7 +14146,7 @@ class IZcadNurbSurface(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "CvHullDisplay": (12, 2, (11, 0), (), "CvHullDisplay", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EdgeExtensionDistances": (161, 2, (12, 0), (), "EdgeExtensionDistances", None),
@@ -14155,7 +14155,7 @@ class IZcadNurbSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -14170,7 +14170,7 @@ class IZcadNurbSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -14206,7 +14206,7 @@ class IZcadNurbSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadObject(DispatchBaseClass):
+class IAcadObject(DispatchBaseClass):
     'ZWCAD Object Interface'
     CLSID = IID('{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923157-5A21-11E7-B72E-BC5FF42AC839}')
@@ -14219,7 +14219,7 @@ class IZcadObject(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -14239,7 +14239,7 @@ class IZcadObject(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -14258,7 +14258,7 @@ class IZcadObject(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadOle(DispatchBaseClass):
+class IAcadOle(DispatchBaseClass):
     'ZWCAD Ole Interface'
     CLSID = IID('{EC923045-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92311B-5A21-11E7-B72E-BC5FF42AC839}')
@@ -14291,7 +14291,7 @@ class IZcadOle(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -14376,7 +14376,7 @@ class IZcadOle(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -14385,7 +14385,7 @@ class IZcadOle(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (4, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (1, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -14404,7 +14404,7 @@ class IZcadOle(DispatchBaseClass):
         "Rotation": (2, 2, (5, 0), (), "Rotation", None),
         "ScaleHeight": (6, 2, (5, 0), (), "ScaleHeight", None),
         "ScaleWidth": (5, 2, (5, 0), (), "ScaleWidth", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (3, 2, (5, 0), (), "Width", None),
@@ -14440,7 +14440,7 @@ class IZcadOle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPViewport(DispatchBaseClass):
+class IAcadPViewport(DispatchBaseClass):
     'IZwcadPViewport Interface'
     CLSID = IID('{EC923139-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923088-5A21-11E7-B72E-BC5FF42AC839}')
@@ -14477,7 +14477,7 @@ class IZcadPViewport(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -14587,7 +14587,7 @@ class IZcadPViewport(DispatchBaseClass):
         "Center": (1, 2, (12, 0), (), "Center", None),
         "Clipped": (7, 2, (11, 0), (), "Clipped", None),
         "CustomScale": (10, 2, (5, 0), (), "CustomScale", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Direction": (2, 2, (12, 0), (), "Direction", None),
         "DisplayLocked": (8, 2, (11, 0), (), "DisplayLocked", None),
@@ -14600,7 +14600,7 @@ class IZcadPViewport(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "HasSheetView": (35, 2, (11, 0), (), "HasSheetView", None),
         "Height": (4, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "LabelBlockId": (34, 2, (20, 0), (), "LabelBlockId", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -14610,7 +14610,7 @@ class IZcadPViewport(DispatchBaseClass):
         "LinetypeScale": (1283, 2, (5, 0), (), "LinetypeScale", None),
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "Material": (1399, 2, (8, 0), (), "Material", None),
-        # Method 'ModelView' returns object of type 'IZcadView'
+        # Method 'ModelView' returns object of type 'IAcadView'
         "ModelView": (32, 2, (9, 0), (), "ModelView", '{EC923075-5A21-11E7-B72E-BC5FF42AC839}'),
         "ObjectID": (1029, 2, (20, 0), (), "ObjectID", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
@@ -14618,7 +14618,7 @@ class IZcadPViewport(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "RemoveHiddenLines": (25, 2, (11, 0), (), "RemoveHiddenLines", None),
         "ShadePlot": (29, 2, (3, 0), (), "ShadePlot", None),
-        # Method 'SheetView' returns object of type 'IZcadView'
+        # Method 'SheetView' returns object of type 'IAcadView'
         "SheetView": (33, 2, (9, 0), (), "SheetView", '{EC923075-5A21-11E7-B72E-BC5FF42AC839}'),
         "SnapBasePoint": (13, 2, (12, 0), (), "SnapBasePoint", None),
         "SnapOn": (14, 2, (11, 0), (), "SnapOn", None),
@@ -14627,7 +14627,7 @@ class IZcadPViewport(DispatchBaseClass):
         "StandardScale2": (39, 2, (3, 0), (), "StandardScale2", None),
         "StyleSheet": (11, 2, (8, 0), (), "StyleSheet", None),
         "Target": (26, 2, (12, 0), (), "Target", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "TwistAngle": (23, 2, (5, 0), (), "TwistAngle", None),
         "UCSIconAtOrigin": (17, 2, (11, 0), (), "UCSIconAtOrigin", None),
@@ -14686,12 +14686,12 @@ class IZcadPViewport(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPaperSpace(DispatchBaseClass):
+class IAcadPaperSpace(DispatchBaseClass):
     'ZWCAD PaperSpace Interface'
     CLSID = IID('{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231E4-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcad3DFace
+    # Result is of type IAcad3DFace
     def Add3DFace(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates a three dimensional face given four vertices.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -14704,7 +14704,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DFace', '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolygonMesh
+    # Result is of type IAcadPolygonMesh
     def Add3DMesh(self, M=defaultNamedNotOptArg, N=defaultNamedNotOptArg, PointsMatrix=defaultNamedNotOptArg):
         'Creates a free-form three dimensional mesh.'
         PointsMatrix = VTR8ArrayOrVal(PointsMatrix)
@@ -14714,7 +14714,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DMesh', '{EC923073-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DPolyline
+    # Result is of type IAcad3DPolyline
     def Add3DPoly(self, PointsArray=defaultNamedNotOptArg):
         'Creates a three dimensional polyline entity.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -14724,7 +14724,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'Add3DPoly', '{EC923081-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadArc
+    # Result is of type IAcadArc
     def AddArc(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, StartAngle=defaultNamedNotOptArg, EndAngle=defaultNamedNotOptArg):
         'Creates an arc with center, radius, start angle and end angle.'
         Center = VTR8ArrayOrVal(Center)
@@ -14734,7 +14734,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddArc', '{EC923095-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadAttribute
+    # Result is of type IAcadAttribute
     def AddAttribute(self, Height=defaultNamedNotOptArg, Mode=defaultNamedNotOptArg, Prompt=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg
             , Tag=defaultNamedNotOptArg, Value=defaultNamedNotOptArg):
         'Adds an attribute definition.'
@@ -14746,7 +14746,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddAttribute', '{EC923192-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddBox(self, Origin=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a box with edges parallel to the World Coordinate System axes given the length, width and height dimensions.'
         Origin = VTR8ArrayOrVal(Origin)
@@ -14756,7 +14756,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddBox', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadCircle
+    # Result is of type IAcadCircle
     def AddCircle(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a circle given the center and radius in the current UCS.'
         Center = VTR8ArrayOrVal(Center)
@@ -14766,7 +14766,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCircle', '{EC923048-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCone(self, Center=defaultNamedNotOptArg, BaseRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, base radius and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -14784,7 +14784,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCustomObject', None)
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddCylinder(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, base radius and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -14794,7 +14794,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddCylinder', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDim3PointAngular
+    # Result is of type IAcadDim3PointAngular
     def AddDim3PointAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates a 3 point angular dimension.'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -14806,7 +14806,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDim3PointAngular', '{EC923174-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimAligned
+    # Result is of type IAcadDimAligned
     def AddDimAligned(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, TextPosition=defaultNamedNotOptArg):
         'Creates an aligned dimension.'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -14818,7 +14818,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAligned', '{EC923189-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimAngular
+    # Result is of type IAcadDimAngular
     def AddDimAngular(self, AngleVertex=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, TextPoint=defaultNamedNotOptArg):
         'Creates an angular dimension.'
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -14830,7 +14830,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimAngular', '{EC923152-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimArcLength
+    # Result is of type IAcadDimArcLength
     def AddDimArc(self, ArcCenter=defaultNamedNotOptArg, FirstEndPoint=defaultNamedNotOptArg, SecondEndPoint=defaultNamedNotOptArg, ArcPoint=defaultNamedNotOptArg):
         ArcCenter = VTR8ArrayOrVal(ArcCenter)
         FirstEndPoint = VTR8ArrayOrVal(FirstEndPoint)
@@ -14842,7 +14842,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimArc', '{EC923167-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimDiametric
+    # Result is of type IAcadDimDiametric
     def AddDimDiametric(self, ChordPoint=defaultNamedNotOptArg, FarChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a diametric dimension.'
         ChordPoint = VTR8ArrayOrVal(ChordPoint)
@@ -14853,7 +14853,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimDiametric', '{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimOrdinate
+    # Result is of type IAcadDimOrdinate
     def AddDimOrdinate(self, DefinitionPoint=defaultNamedNotOptArg, LeaderEndPoint=defaultNamedNotOptArg, UseXAxis=defaultNamedNotOptArg):
         'Creates an ordinate dimension.'
         DefinitionPoint = VTR8ArrayOrVal(DefinitionPoint)
@@ -14864,7 +14864,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimOrdinate', '{EC923030-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRadial
+    # Result is of type IAcadDimRadial
     def AddDimRadial(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, LeaderLength=defaultNamedNotOptArg):
         'Creates a radial dimension.'
         Center = VTR8ArrayOrVal(Center)
@@ -14875,7 +14875,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadial', '{EC923119-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRadialLarge
+    # Result is of type IAcadDimRadialLarge
     def AddDimRadialLarge(self, Center=defaultNamedNotOptArg, ChordPoint=defaultNamedNotOptArg, OverrideCenter=defaultNamedNotOptArg, JogPoint=defaultNamedNotOptArg
             , JogAngle=defaultNamedNotOptArg):
         Center = VTR8ArrayOrVal(Center)
@@ -14888,7 +14888,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRadialLarge', '{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadDimRotated
+    # Result is of type IAcadDimRotated
     def AddDimRotated(self, ExtLine1Point=defaultNamedNotOptArg, ExtLine2Point=defaultNamedNotOptArg, DimLineLocation=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a linear dimension.'
         ExtLine1Point = VTR8ArrayOrVal(ExtLine1Point)
@@ -14900,7 +14900,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddDimRotated', '{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadEllipse
+    # Result is of type IAcadEllipse
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the current UCS given the center, major and minor axes.'
         Center = VTR8ArrayOrVal(Center)
@@ -14910,7 +14910,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipse', '{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
         Center = VTR8ArrayOrVal(Center)
@@ -14920,7 +14920,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddEllipticalCylinder(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cylinder given the center, major and minor radii and height.'
         ret = self._oleobj_.InvokeTypes(1557, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1), (5, 1)),Center
@@ -14929,7 +14929,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCylinder', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolid(self, Profile=defaultNamedNotOptArg, Height=defaultNamedNotOptArg, TaperAngle=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and a height.'
         ret = self._oleobj_.InvokeTypes(1558, LCID, 1, (9, 0), ((9, 1), (5, 1), (5, 1)),Profile
@@ -14938,7 +14938,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolid', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddExtrudedSolidAlongPath(self, Profile=defaultNamedNotOptArg, Path=defaultNamedNotOptArg):
         'Creates an extruded solid given the profile and a path.'
         ret = self._oleobj_.InvokeTypes(1559, LCID, 1, (9, 0), ((9, 1), (9, 1)),Profile
@@ -14947,7 +14947,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddExtrudedSolidAlongPath', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadHatch
+    # Result is of type IAcadHatch
     def AddHatch(self, PatternType=defaultNamedNotOptArg, PatternName=defaultNamedNotOptArg, Associativity=defaultNamedNotOptArg, HatchObjectType=defaultNamedOptArg):
         'Creates a hatch entity.'
         ret = self._oleobj_.InvokeTypes(1579, LCID, 1, (9, 0), ((3, 1), (8, 1), (11, 1), (12, 17)),PatternType
@@ -14956,7 +14956,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddHatch', '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLeader
+    # Result is of type IAcadLeader
     def AddEllipticalCone(self, Center=defaultNamedNotOptArg, MajorRadius=defaultNamedNotOptArg, MinorRadius=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a cone given the center, major and minor radii and height.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -14967,7 +14967,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddEllipticalCone', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLWPolyline
+    # Result is of type IAcadLWPolyline
     def AddLightWeightPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a light weight polyline.'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -14977,7 +14977,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLightWeightPolyline', '{EC92311E-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadLine
+    # Result is of type IAcadLine
     def AddLine(self, StartPoint=defaultNamedNotOptArg, EndPoint=defaultNamedNotOptArg):
         'Adds a line to ModelSpace or PaperSpace or a block.'
         StartPoint = VTR8ArrayOrVal(StartPoint)
@@ -14988,7 +14988,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddLine', '{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMInsertBlock
+    # Result is of type IAcadMInsertBlock
     def AddMInsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowSpacing=defaultNamedNotOptArg
             , ColumnSpacing=defaultNamedNotOptArg, Password=defaultNamedOptArg):
@@ -15002,13 +15002,13 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMInsertBlock', '{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMLeader
+    # Result is of type IAcadMLeader
     def AddMLeader(self, PointsArray=defaultNamedNotOptArg, leaderLineIndex=pythoncom.Missing):
         PointsArray = VTR8ArrayOrVal(PointsArray)
         return self._ApplyTypes_(1605, 1, (9, 0), ((12, 1), (16387, 2)), 'AddMLeader', '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}',PointsArray
             , leaderLineIndex)
 
-    # Result is of type IZcadMLine
+    # Result is of type IAcadMLine
     def AddMLine(self, VertexList=defaultNamedNotOptArg):
         'Inserts an mline object in the current document.'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -15018,7 +15018,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMLine', '{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadMText
+    # Result is of type IAcadMText
     def AddMText(self, InsertionPoint=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Text=defaultNamedNotOptArg):
         'Creates a Mtext entity in a rectangle defined by insertion point and width.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -15028,7 +15028,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMText', '{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPViewport
+    # Result is of type IAcadPViewport
     def AddPViewport(self, Center=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Create a paperspace viewport.'
         ret = self._oleobj_.InvokeTypes(1, LCID, 1, (9, 0), ((12, 1), (5, 1), (5, 1)),Center
@@ -15037,7 +15037,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPViewport', '{EC923139-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPoint
+    # Result is of type IAcadPoint
     def AddPoint(self, Point=defaultNamedNotOptArg):
         'Creates a point entity at a given location.'
         Point = VTR8ArrayOrVal(Point)
@@ -15047,7 +15047,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPoint', '{EC92315D-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolyfaceMesh
+    # Result is of type IAcadPolyfaceMesh
     def AddPolyfaceMesh(self, VertexList=defaultNamedNotOptArg, FaceList=defaultNamedNotOptArg):
         'Inserts polyface mesh object in the current document.'
         VertexList = VTR8ArrayOrVal(VertexList)
@@ -15057,7 +15057,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyfaceMesh', '{EC923114-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPolyline
+    # Result is of type IAcadPolyline
     def AddPolyline(self, VerticesList=defaultNamedNotOptArg):
         'Creates a polyline.'
         VerticesList = VTR8ArrayOrVal(VerticesList)
@@ -15067,7 +15067,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddPolyline', '{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadRasterImage
+    # Result is of type IAcadRasterImage
     def AddRaster(self, imageFileName=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a raster based of given image filename.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -15077,7 +15077,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRaster', '{EC923005-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadRay
+    # Result is of type IAcadRay
     def AddRay(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates a ray passing through two given points.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -15094,7 +15094,7 @@ class IZcadPaperSpace(DispatchBaseClass):
         return self._ApplyTypes_(1566, 1, (12, 0), ((12, 1),), 'AddRegion', None,ObjectList
             )
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddRevolvedSolid(self, Profile=defaultNamedNotOptArg, AxisPoint=defaultNamedNotOptArg, AxisDir=defaultNamedNotOptArg, Angle=defaultNamedNotOptArg):
         'Creates a revolved solid given the profile and a revolution path.'
         AxisPoint = VTR8ArrayOrVal(AxisPoint)
@@ -15105,7 +15105,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddRevolvedSolid', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSection
+    # Result is of type IAcadSection
     def AddSection(self, FromPoint=defaultNamedNotOptArg, ToPoint=defaultNamedNotOptArg, planeVector=defaultNamedNotOptArg):
         FromPoint = VTR8ArrayOrVal(FromPoint)
         ToPoint = VTR8ArrayOrVal(ToPoint)
@@ -15116,7 +15116,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSection', '{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadShape
+    # Result is of type IAcadShape
     def AddShape(self, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, ScaleFactor=defaultNamedNotOptArg, RotationAngle=defaultNamedNotOptArg):
         'Creates a given shape.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -15126,7 +15126,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddShape', '{EC92301C-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSolid
+    # Result is of type IAcadSolid
     def AddSolid(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg, point3=defaultNamedNotOptArg, Point4=defaultNamedNotOptArg):
         'Creates an ZWCAD solid.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -15139,7 +15139,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSolid', '{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddSphere(self, Center=defaultNamedNotOptArg, Radius=defaultNamedNotOptArg):
         'Creates a sphere given the center and radius.'
         Center = VTR8ArrayOrVal(Center)
@@ -15149,7 +15149,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSphere', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSpline
+    # Result is of type IAcadSpline
     def AddSpline(self, PointsArray=defaultNamedNotOptArg, StartTangent=defaultNamedNotOptArg, EndTangent=defaultNamedNotOptArg):
         'Creates a B-spline given n points and the end tangents.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -15159,7 +15159,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSpline', '{EC92319E-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTable
+    # Result is of type IAcadTable
     def AddTable(self, InsertionPoint=defaultNamedNotOptArg, NumRows=defaultNamedNotOptArg, NumColumns=defaultNamedNotOptArg, RowHeight=defaultNamedNotOptArg
             , ColWidth=defaultNamedNotOptArg):
         'Creates a table at the given insertion point, given the number of rows, number of columns, row height and column width.'
@@ -15170,7 +15170,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTable', '{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadText
+    # Result is of type IAcadText
     def AddText(self, TextString=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a text entity with specified height and rotation.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -15180,7 +15180,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddText', '{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTolerance
+    # Result is of type IAcadTolerance
     def AddTolerance(self, Text=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Direction=defaultNamedNotOptArg):
         'Creates a tolerance.'
         InsertionPoint = VTR8ArrayOrVal(InsertionPoint)
@@ -15191,7 +15191,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTolerance', '{EC923101-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddTorus(self, Center=defaultNamedNotOptArg, TorusRadius=defaultNamedNotOptArg, TubeRadius=defaultNamedNotOptArg):
         'Creates a torus given the center, torus and tube radius.'
         Center = VTR8ArrayOrVal(Center)
@@ -15201,7 +15201,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTorus', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadTrace
+    # Result is of type IAcadTrace
     def AddTrace(self, PointsArray=defaultNamedNotOptArg):
         'Creates a trace entity with four points.'
         PointsArray = VTR8ArrayOrVal(PointsArray)
@@ -15211,7 +15211,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddTrace', '{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcad3DSolid
+    # Result is of type IAcad3DSolid
     def AddWedge(self, Center=defaultNamedNotOptArg, Length=defaultNamedNotOptArg, Width=defaultNamedNotOptArg, Height=defaultNamedNotOptArg):
         'Creates a wedge with edges parallel to the axes given the length, width and height dimensions'
         Center = VTR8ArrayOrVal(Center)
@@ -15221,7 +15221,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddWedge', '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadXline
+    # Result is of type IAcadXline
     def AddXline(self, Point1=defaultNamedNotOptArg, Point2=defaultNamedNotOptArg):
         'Creates an xline passing through two specified points.'
         Point1 = VTR8ArrayOrVal(Point1)
@@ -15232,7 +15232,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'AddXline', '{EC923055-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadExternalReference
+    # Result is of type IAcadExternalReference
     def AttachExternalReference(self, PathName=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, InsertionPoint=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg
             , Yscale=defaultNamedNotOptArg, Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, bOverlay=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Attach an external reference to the block.'
@@ -15261,7 +15261,7 @@ class IZcadPaperSpace(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -15274,7 +15274,7 @@ class IZcadPaperSpace(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadBlockReference
+    # Result is of type IAcadBlockReference
     def InsertBlock(self, InsertionPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, Xscale=defaultNamedNotOptArg, Yscale=defaultNamedNotOptArg
             , Zscale=defaultNamedNotOptArg, Rotation=defaultNamedNotOptArg, Password=defaultNamedOptArg):
         'Inserts an instance of a block in the current document.'
@@ -15286,7 +15286,7 @@ class IZcadPaperSpace(DispatchBaseClass):
             ret = Dispatch(ret, 'InsertBlock', '{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an entity in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -15321,7 +15321,7 @@ class IZcadPaperSpace(DispatchBaseClass):
         "BlockScaling": (1600, 2, (3, 0), (), "BlockScaling", None),
         "Comments": (1597, 2, (8, 0), (), "Comments", None),
         "Count": (1536, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Explodable": (1599, 2, (11, 0), (), "Explodable", None),
@@ -15330,7 +15330,7 @@ class IZcadPaperSpace(DispatchBaseClass):
         "IsDynamicBlock": (1601, 2, (11, 0), (), "IsDynamicBlock", None),
         "IsLayout": (1582, 2, (11, 0), (), "IsLayout", None),
         "IsXRef": (1584, 2, (11, 0), (), "IsXRef", None),
-        # Method 'Layout' returns object of type 'IZcadLayout'
+        # Method 'Layout' returns object of type 'IAcadLayout'
         "Layout": (1583, 2, (9, 0), (), "Layout", '{EC923115-5A21-11E7-B72E-BC5FF42AC839}'),
         "Name": (1537, 2, (8, 0), (), "Name", None),
         "ObjectID": (1029, 2, (20, 0), (), "ObjectID", None),
@@ -15339,7 +15339,7 @@ class IZcadPaperSpace(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "Path": (1596, 2, (8, 0), (), "Path", None),
         "Units": (1598, 2, (3, 0), (), "Units", None),
-        # Method 'XRefDatabase' returns object of type 'IZcadDatabase'
+        # Method 'XRefDatabase' returns object of type 'IAcadDatabase'
         "XRefDatabase": (1589, 2, (9, 0), (), "XRefDatabase", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -15378,7 +15378,7 @@ class IZcadPaperSpace(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadPlaneSurface(DispatchBaseClass):
+class IAcadPlaneSurface(DispatchBaseClass):
     CLSID = IID('{EC9230A4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923036-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -15410,7 +15410,7 @@ class IZcadPlaneSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -15487,7 +15487,7 @@ class IZcadPlaneSurface(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EdgeExtensionDistances": (161, 2, (12, 0), (), "EdgeExtensionDistances", None),
@@ -15496,7 +15496,7 @@ class IZcadPlaneSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -15511,7 +15511,7 @@ class IZcadPlaneSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -15546,7 +15546,7 @@ class IZcadPlaneSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPlot(DispatchBaseClass):
+class IAcadPlot(DispatchBaseClass):
     'ZWCAD Plot Interface'
     CLSID = IID('{EC92301B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92315F-5A21-11E7-B72E-BC5FF42AC839}')
@@ -15577,7 +15577,7 @@ class IZcadPlot(DispatchBaseClass):
             )
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "BatchPlotProgress": (1610743813, 2, (11, 0), (), "BatchPlotProgress", None),
         "NumberOfCopies": (1610743811, 2, (3, 0), (), "NumberOfCopies", None),
@@ -15596,7 +15596,7 @@ class IZcadPlot(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPlotConfiguration(DispatchBaseClass):
+class IAcadPlotConfiguration(DispatchBaseClass):
     'ZWCAD PlotConfiguration Interface'
     CLSID = IID('{EC9231DB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231A5-5A21-11E7-B72E-BC5FF42AC839}')
@@ -15623,7 +15623,7 @@ class IZcadPlotConfiguration(DispatchBaseClass):
         return self._ApplyTypes_(17, 1, (24, 0), ((16389, 2), (16389, 2)), 'GetCustomScale', None,Numerator
             , Denominator)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -15689,7 +15689,7 @@ class IZcadPlotConfiguration(DispatchBaseClass):
         "CanonicalMediaName": (6, 2, (8, 0), (), "CanonicalMediaName", None),
         "CenterPlot": (11, 2, (11, 0), (), "CenterPlot", None),
         "ConfigName": (3, 2, (8, 0), (), "ConfigName", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -15744,12 +15744,12 @@ class IZcadPlotConfiguration(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPlotConfigurations(DispatchBaseClass):
+class IAcadPlotConfigurations(DispatchBaseClass):
     'ZWCAD IZwcadPlotConfigurations Interface'
     CLSID = IID('{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923069-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadPlotConfiguration
+    # Result is of type IAcadPlotConfiguration
     def Add(self, Name=defaultNamedNotOptArg, ModelType=defaultNamedOptArg):
         'Adds a plot configuration to the collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1), (12, 17)),Name
@@ -15766,7 +15766,7 @@ class IZcadPlotConfigurations(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -15779,7 +15779,7 @@ class IZcadPlotConfigurations(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadPlotConfiguration
+    # Result is of type IAcadPlotConfiguration
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -15796,7 +15796,7 @@ class IZcadPlotConfigurations(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -15834,7 +15834,7 @@ class IZcadPlotConfigurations(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadPoint(DispatchBaseClass):
+class IAcadPoint(DispatchBaseClass):
     'ZWCAD Point Interface'
     CLSID = IID('{EC92315D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92314D-5A21-11E7-B72E-BC5FF42AC839}')
@@ -15867,7 +15867,7 @@ class IZcadPoint(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -15955,7 +15955,7 @@ class IZcadPoint(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -15963,7 +15963,7 @@ class IZcadPoint(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -15976,7 +15976,7 @@ class IZcadPoint(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -16004,7 +16004,7 @@ class IZcadPoint(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPointCloud(DispatchBaseClass):
+class IAcadPointCloud(DispatchBaseClass):
     CLSID = IID('{EC923299-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232A9-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -16036,7 +16036,7 @@ class IZcadPointCloud(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -16121,7 +16121,7 @@ class IZcadPointCloud(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -16130,7 +16130,7 @@ class IZcadPointCloud(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (10, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (1, 2, (12, 0), (), "InsertionPoint", None),
         "IntensityColorScheme": (7, 2, (3, 0), (), "IntensityColorScheme", None),
@@ -16151,7 +16151,7 @@ class IZcadPointCloud(DispatchBaseClass):
         "ShowClipped": (13, 2, (11, 0), (), "ShowClipped", None),
         "ShowIntensity": (6, 2, (11, 0), (), "ShowIntensity", None),
         "Stylization": (16, 2, (3, 0), (), "Stylization", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Unit": (15, 2, (8, 0), (), "Unit", None),
         "UnitFactor": (14, 2, (5, 0), (), "UnitFactor", None),
@@ -16193,7 +16193,7 @@ class IZcadPointCloud(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPointCloudEx(DispatchBaseClass):
+class IAcadPointCloudEx(DispatchBaseClass):
     CLSID = IID('{EC92329E-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = None
 
@@ -16225,7 +16225,7 @@ class IZcadPointCloudEx(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -16311,7 +16311,7 @@ class IZcadPointCloudEx(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ColorScheme": (7, 2, (8, 0), (), "ColorScheme", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -16320,7 +16320,7 @@ class IZcadPointCloudEx(DispatchBaseClass):
         "Geolocate": (16, 2, (11, 0), (), "Geolocate", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (1, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -16338,7 +16338,7 @@ class IZcadPointCloudEx(DispatchBaseClass):
         "Rotation": (3, 2, (5, 0), (), "Rotation", None),
         "ShowCropped": (13, 2, (11, 0), (), "ShowCropped", None),
         "Stylization": (4, 2, (3, 0), (), "Stylization", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Unit": (15, 2, (8, 0), (), "Unit", None),
         "UnitFactor": (14, 2, (5, 0), (), "UnitFactor", None),
@@ -16375,7 +16375,7 @@ class IZcadPointCloudEx(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPointCloudEx2(DispatchBaseClass):
+class IAcadPointCloudEx2(DispatchBaseClass):
     CLSID = IID('{EC92329D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232AA-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -16407,7 +16407,7 @@ class IZcadPointCloudEx2(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -16493,7 +16493,7 @@ class IZcadPointCloudEx2(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ColorScheme": (7, 2, (8, 0), (), "ColorScheme", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -16502,7 +16502,7 @@ class IZcadPointCloudEx2(DispatchBaseClass):
         "Geolocate": (16, 2, (11, 0), (), "Geolocate", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (1, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -16521,7 +16521,7 @@ class IZcadPointCloudEx2(DispatchBaseClass):
         "Segmentation": (17, 2, (8, 0), (), "Segmentation", None),
         "ShowCropped": (13, 2, (11, 0), (), "ShowCropped", None),
         "Stylization": (4, 2, (3, 0), (), "Stylization", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Unit": (15, 2, (8, 0), (), "Unit", None),
         "UnitFactor": (14, 2, (5, 0), (), "UnitFactor", None),
@@ -16558,7 +16558,7 @@ class IZcadPointCloudEx2(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPolyfaceMesh(DispatchBaseClass):
+class IAcadPolyfaceMesh(DispatchBaseClass):
     'IZwcadPolyfaceMesh Interface'
     CLSID = IID('{EC923114-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231F8-5A21-11E7-B72E-BC5FF42AC839}')
@@ -16596,7 +16596,7 @@ class IZcadPolyfaceMesh(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -16679,7 +16679,7 @@ class IZcadPolyfaceMesh(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -16687,7 +16687,7 @@ class IZcadPolyfaceMesh(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -16700,7 +16700,7 @@ class IZcadPolyfaceMesh(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -16727,7 +16727,7 @@ class IZcadPolyfaceMesh(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPolygonMesh(DispatchBaseClass):
+class IAcadPolygonMesh(DispatchBaseClass):
     'ZWCAD PolygonMesh Interface'
     CLSID = IID('{EC923073-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923017-5A21-11E7-B72E-BC5FF42AC839}')
@@ -16772,7 +16772,7 @@ class IZcadPolygonMesh(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -16855,7 +16855,7 @@ class IZcadPolygonMesh(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -16863,7 +16863,7 @@ class IZcadPolygonMesh(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -16880,7 +16880,7 @@ class IZcadPolygonMesh(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Type": (8, 2, (3, 0), (), "Type", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -16912,7 +16912,7 @@ class IZcadPolygonMesh(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPolyline(DispatchBaseClass):
+class IAcadPolyline(DispatchBaseClass):
     'ZWCAD Polyline Interface'
     CLSID = IID('{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92305E-5A21-11E7-B72E-BC5FF42AC839}')
@@ -16961,7 +16961,7 @@ class IZcadPolyline(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(6, LCID, 1, (5, 0), ((3, 1),),Index
             )
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -17073,7 +17073,7 @@ class IZcadPolyline(DispatchBaseClass):
         "Closed": (14, 2, (11, 0), (), "Closed", None),
         "ConstantWidth": (10, 2, (5, 0), (), "ConstantWidth", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Elevation": (12, 2, (5, 0), (), "Elevation", None),
@@ -17082,7 +17082,7 @@ class IZcadPolyline(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Length": (18, 2, (5, 0), (), "Length", None),
@@ -17097,7 +17097,7 @@ class IZcadPolyline(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Type": (13, 2, (3, 0), (), "Type", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -17131,12 +17131,12 @@ class IZcadPolyline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPopupMenu(DispatchBaseClass):
+class IAcadPopupMenu(DispatchBaseClass):
     'ZWCAD PopupMenu Interface'
     CLSID = IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923008-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadPopupMenuItem
+    # Result is of type IAcadPopupMenuItem
     def AddMenuItem(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg):
         'Adds a popup menu item.'
         ret = self._oleobj_.InvokeTypes(1610743818, LCID, 1, (9, 0), ((12, 1), (8, 1), (8, 1)),Index
@@ -17145,7 +17145,7 @@ class IZcadPopupMenu(DispatchBaseClass):
             ret = Dispatch(ret, 'AddMenuItem', '{EC923050-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPopupMenuItem
+    # Result is of type IAcadPopupMenuItem
     def AddSeparator(self, Index=defaultNamedNotOptArg):
         'Adds a popup menu separator.'
         ret = self._oleobj_.InvokeTypes(1610743820, LCID, 1, (9, 0), ((12, 1),),Index
@@ -17154,7 +17154,7 @@ class IZcadPopupMenu(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSeparator', '{EC923050-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadPopupMenu
+    # Result is of type IAcadPopupMenu
     def AddSubMenu(self, Index=defaultNamedNotOptArg, Label=defaultNamedNotOptArg):
         'Adds a submenu as a popup menu item.'
         ret = self._oleobj_.InvokeTypes(1610743819, LCID, 1, (9, 0), ((12, 1), (8, 1)),Index
@@ -17168,7 +17168,7 @@ class IZcadPopupMenu(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743821, LCID, 1, (24, 0), ((12, 1),),Index
             )
 
-    # Result is of type IZcadPopupMenuItem
+    # Result is of type IAcadPopupMenuItem
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an element in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -17182,7 +17182,7 @@ class IZcadPopupMenu(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743822, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
         "Name": (1610743813, 2, (8, 0), (), "Name", None),
@@ -17222,7 +17222,7 @@ class IZcadPopupMenu(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadPopupMenuItem(DispatchBaseClass):
+class IAcadPopupMenuItem(DispatchBaseClass):
     'ZWCAD PopupMenuItem Interface'
     CLSID = IID('{EC923050-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230D4-5A21-11E7-B72E-BC5FF42AC839}')
@@ -17232,7 +17232,7 @@ class IZcadPopupMenuItem(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743826, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Caption": (1610743823, 2, (8, 0), (), "Caption", None),
         "Check": (1610743816, 2, (11, 0), (), "Check", None),
@@ -17242,9 +17242,9 @@ class IZcadPopupMenuItem(DispatchBaseClass):
         "Index": (1610743822, 2, (3, 0), (), "Index", None),
         "Label": (1610743810, 2, (8, 0), (), "Label", None),
         "Macro": (1610743820, 2, (8, 0), (), "Macro", None),
-        # Method 'Parent' returns object of type 'IZcadPopupMenu'
+        # Method 'Parent' returns object of type 'IAcadPopupMenu'
         "Parent": (1610743809, 2, (9, 0), (), "Parent", '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'SubMenu' returns object of type 'IZcadPopupMenu'
+        # Method 'SubMenu' returns object of type 'IAcadPopupMenu'
         "SubMenu": (1610743819, 2, (9, 0), (), "SubMenu", '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}'),
         "TagString": (1610743812, 2, (8, 0), (), "TagString", None),
         "Type": (1610743818, 2, (3, 0), (), "Type", None),
@@ -17266,12 +17266,12 @@ class IZcadPopupMenuItem(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPopupMenus(DispatchBaseClass):
+class IAcadPopupMenus(DispatchBaseClass):
     'ZWCAD PopupMenus Interface'
     CLSID = IID('{EC92318C-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FD9-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadPopupMenu
+    # Result is of type IAcadPopupMenu
     def Add(self, MenuName=defaultNamedNotOptArg):
         'Adds a popup menu.'
         ret = self._oleobj_.InvokeTypes(1610743813, LCID, 1, (9, 0), ((8, 1),),MenuName
@@ -17285,7 +17285,7 @@ class IZcadPopupMenus(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743814, LCID, 1, (24, 0), ((8, 1), (12, 1)),MenuName
             , Index)
 
-    # Result is of type IZcadPopupMenu
+    # Result is of type IAcadPopupMenu
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an element in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -17300,10 +17300,10 @@ class IZcadPopupMenus(DispatchBaseClass):
             )
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
-        # Method 'Parent' returns object of type 'IZcadMenuGroup'
+        # Method 'Parent' returns object of type 'IAcadMenuGroup'
         "Parent": (1610743812, 2, (9, 0), (), "Parent", '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -17335,31 +17335,31 @@ class IZcadPopupMenus(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadPreferences(DispatchBaseClass):
+class IAcadPreferences(DispatchBaseClass):
     'ZWCAD Preferences Interface'
     CLSID = IID('{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FC7-5A21-11E7-B72E-BC5FF42AC839}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Display' returns object of type 'IZcadPreferencesDisplay'
+        # Method 'Display' returns object of type 'IAcadPreferencesDisplay'
         "Display": (1610743810, 2, (9, 0), (), "Display", '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Drafting' returns object of type 'IZcadPreferencesDrafting'
+        # Method 'Drafting' returns object of type 'IAcadPreferencesDrafting'
         "Drafting": (1610743815, 2, (9, 0), (), "Drafting", '{EC923186-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Files' returns object of type 'IZcadPreferencesFiles'
+        # Method 'Files' returns object of type 'IAcadPreferencesFiles'
         "Files": (1610743809, 2, (9, 0), (), "Files", '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'OpenSave' returns object of type 'IZcadPreferencesOpenSave'
+        # Method 'OpenSave' returns object of type 'IAcadPreferencesOpenSave'
         "OpenSave": (1610743811, 2, (9, 0), (), "OpenSave", '{EC923128-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Output' returns object of type 'IZcadPreferencesOutput'
+        # Method 'Output' returns object of type 'IAcadPreferencesOutput'
         "Output": (1610743812, 2, (9, 0), (), "Output", '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Profiles' returns object of type 'IZcadPreferencesProfiles'
+        # Method 'Profiles' returns object of type 'IAcadPreferencesProfiles'
         "Profiles": (1610743817, 2, (9, 0), (), "Profiles", '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'Selection' returns object of type 'IZcadPreferencesSelection'
+        # Method 'Selection' returns object of type 'IAcadPreferencesSelection'
         "Selection": (1610743816, 2, (9, 0), (), "Selection", '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'System' returns object of type 'IZcadPreferencesSystem'
+        # Method 'System' returns object of type 'IAcadPreferencesSystem'
         "System": (1610743813, 2, (9, 0), (), "System", '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'User' returns object of type 'IZcadPreferencesUser'
+        # Method 'User' returns object of type 'IAcadPreferencesUser'
         "User": (1610743814, 2, (9, 0), (), "User", '{EC923038-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -17372,13 +17372,13 @@ class IZcadPreferences(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPreferencesDisplay(DispatchBaseClass):
+class IAcadPreferencesDisplay(DispatchBaseClass):
     'ZWCAD PreferencesDisplay Interface'
     CLSID = IID('{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92300A-5A21-11E7-B72E-BC5FF42AC839}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "AutoTrackingVecColor": (1610743841, 2, (19, 0), (), "AutoTrackingVecColor", None),
         "CursorSize": (1610743823, 2, (3, 0), (), "CursorSize", None),
@@ -17443,14 +17443,14 @@ class IZcadPreferencesDisplay(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPreferencesDrafting(DispatchBaseClass):
+class IAcadPreferencesDrafting(DispatchBaseClass):
     'ZWCAD PreferencesDrafting Interface'
     CLSID = IID('{EC923186-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231EB-5A21-11E7-B72E-BC5FF42AC839}')
 
     _prop_map_get_ = {
         "AlignmentPointAcquisition": (1610743829, 2, (3, 0), (), "AlignmentPointAcquisition", None),
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "AutoSnapAperture": (1610743815, 2, (11, 0), (), "AutoSnapAperture", None),
         "AutoSnapApertureSize": (1610743817, 2, (3, 0), (), "AutoSnapApertureSize", None),
@@ -17484,7 +17484,7 @@ class IZcadPreferencesDrafting(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPreferencesFiles(DispatchBaseClass):
+class IAcadPreferencesFiles(DispatchBaseClass):
     'ZWCAD PreferencesFiles Interface'
     CLSID = IID('{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230A0-5A21-11E7-B72E-BC5FF42AC839}')
@@ -17504,7 +17504,7 @@ class IZcadPreferencesFiles(DispatchBaseClass):
         "ActiveInvProject": (1610743879, 2, (8, 0), (), "ActiveInvProject", None),
         "AltFontFile": (1610743831, 2, (8, 0), (), "AltFontFile", None),
         "AltTabletMenuFile": (1610743855, 2, (8, 0), (), "AltTabletMenuFile", None),
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "AutoSavePath": (1610743843, 2, (8, 0), (), "AutoSavePath", None),
         "ColorBookPath": (1610743869, 2, (8, 0), (), "ColorBookPath", None),
@@ -17591,13 +17591,13 @@ class IZcadPreferencesFiles(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPreferencesOpenSave(DispatchBaseClass):
+class IAcadPreferencesOpenSave(DispatchBaseClass):
     'ZWCAD PreferencesOpenSave Interface'
     CLSID = IID('{EC923128-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92304A-5A21-11E7-B72E-BC5FF42AC839}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "AutoAudit": (1610743831, 2, (11, 0), (), "AutoAudit", None),
         "AutoSaveInterval": (1610743813, 2, (3, 0), (), "AutoSaveInterval", None),
@@ -17637,13 +17637,13 @@ class IZcadPreferencesOpenSave(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPreferencesOutput(DispatchBaseClass):
+class IAcadPreferencesOutput(DispatchBaseClass):
     'ZWCAD PreferencesOutput Interface'
     CLSID = IID('{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230F0-5A21-11E7-B72E-BC5FF42AC839}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "AutomaticPlotLog": (1610743831, 2, (11, 0), (), "AutomaticPlotLog", None),
         "ContinuousPlotLog": (1610743829, 2, (11, 0), (), "ContinuousPlotLog", None),
@@ -17682,7 +17682,7 @@ class IZcadPreferencesOutput(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPreferencesProfiles(DispatchBaseClass):
+class IAcadPreferencesProfiles(DispatchBaseClass):
     'ZWCAD PreferencesProfiles Interface'
     CLSID = IID('{EC92314B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231F7-5A21-11E7-B72E-BC5FF42AC839}')
@@ -17724,7 +17724,7 @@ class IZcadPreferencesProfiles(DispatchBaseClass):
 
     _prop_map_get_ = {
         "ActiveProfile": (1610743809, 2, (8, 0), (), "ActiveProfile", None),
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -17738,13 +17738,13 @@ class IZcadPreferencesProfiles(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPreferencesSelection(DispatchBaseClass):
+class IAcadPreferencesSelection(DispatchBaseClass):
     'ZWCAD PreferencesSelection Interface'
     CLSID = IID('{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230A7-5A21-11E7-B72E-BC5FF42AC839}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "DisplayGrips": (1610743819, 2, (11, 0), (), "DisplayGrips", None),
         "DisplayGripsWithinBlocks": (1610743821, 2, (11, 0), (), "DisplayGripsWithinBlocks", None),
@@ -17779,13 +17779,13 @@ class IZcadPreferencesSelection(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPreferencesSystem(DispatchBaseClass):
+class IAcadPreferencesSystem(DispatchBaseClass):
     'ZWCAD PreferencesSystem Interface'
     CLSID = IID('{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923185-5A21-11E7-B72E-BC5FF42AC839}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "BeepOnError": (1610743819, 2, (11, 0), (), "BeepOnError", None),
         "DisplayOLEScale": (1610743811, 2, (11, 0), (), "DisplayOLEScale", None),
@@ -17814,7 +17814,7 @@ class IZcadPreferencesSystem(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadPreferencesUser(DispatchBaseClass):
+class IAcadPreferencesUser(DispatchBaseClass):
     'ZWCAD PreferencesUser Interface'
     CLSID = IID('{EC923038-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231A8-5A21-11E7-B72E-BC5FF42AC839}')
@@ -17822,7 +17822,7 @@ class IZcadPreferencesUser(DispatchBaseClass):
     _prop_map_get_ = {
         "ADCInsertUnitsDefaultSource": (1610743817, 2, (3, 0), (), "ADCInsertUnitsDefaultSource", None),
         "ADCInsertUnitsDefaultTarget": (1610743819, 2, (3, 0), (), "ADCInsertUnitsDefaultTarget", None),
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "HyperlinkDisplayCursor": (1610743813, 2, (11, 0), (), "HyperlinkDisplayCursor", None),
         "KeyboardAccelerator": (1610743809, 2, (3, 0), (), "KeyboardAccelerator", None),
@@ -17855,7 +17855,7 @@ class IZcadPreferencesUser(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadRasterImage(DispatchBaseClass):
+class IAcadRasterImage(DispatchBaseClass):
     'ZWCAD Raster Interface'
     CLSID = IID('{EC923005-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923047-5A21-11E7-B72E-BC5FF42AC839}')
@@ -17892,7 +17892,7 @@ class IZcadRasterImage(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -17972,7 +17972,7 @@ class IZcadRasterImage(DispatchBaseClass):
         "Brightness": (1, 2, (3, 0), (), "Brightness", None),
         "ClippingEnabled": (11, 2, (11, 0), (), "ClippingEnabled", None),
         "Contrast": (2, 2, (3, 0), (), "Contrast", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -17982,7 +17982,7 @@ class IZcadRasterImage(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (14, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "ImageFile": (9, 2, (8, 0), (), "ImageFile", None),
         "ImageHeight": (7, 2, (5, 0), (), "ImageHeight", None),
@@ -18002,7 +18002,7 @@ class IZcadRasterImage(DispatchBaseClass):
         "Rotation": (5, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (17, 2, (5, 0), (), "ScaleFactor", None),
         "ShowRotation": (16, 2, (11, 0), (), "ShowRotation", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (15, 2, (5, 0), (), "Width", None),
@@ -18043,7 +18043,7 @@ class IZcadRasterImage(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadRay(DispatchBaseClass):
+class IAcadRay(DispatchBaseClass):
     'ZWCAD Ray Interface'
     CLSID = IID('{EC92300F-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231F2-5A21-11E7-B72E-BC5FF42AC839}')
@@ -18076,7 +18076,7 @@ class IZcadRay(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -18168,7 +18168,7 @@ class IZcadRay(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BasePoint": (1, 2, (12, 0), (), "BasePoint", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DirectionVector": (3, 2, (12, 0), (), "DirectionVector", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -18177,7 +18177,7 @@ class IZcadRay(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -18189,7 +18189,7 @@ class IZcadRay(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "SecondPoint": (2, 2, (12, 0), (), "SecondPoint", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -18217,7 +18217,7 @@ class IZcadRay(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadRegion(DispatchBaseClass):
+class IAcadRegion(DispatchBaseClass):
     'ZWCAD Region Interface'
     CLSID = IID('{EC9231E9-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231E7-5A21-11E7-B72E-BC5FF42AC839}')
@@ -18257,7 +18257,7 @@ class IZcadRegion(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -18344,7 +18344,7 @@ class IZcadRegion(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Area": (1, 2, (5, 0), (), "Area", None),
         "Centroid": (2, 2, (12, 0), (), "Centroid", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -18352,7 +18352,7 @@ class IZcadRegion(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -18370,7 +18370,7 @@ class IZcadRegion(DispatchBaseClass):
         "PrincipalMoments": (7, 2, (12, 0), (), "PrincipalMoments", None),
         "ProductOfInertia": (8, 2, (5, 0), (), "ProductOfInertia", None),
         "RadiiOfGyration": (9, 2, (12, 0), (), "RadiiOfGyration", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -18395,7 +18395,7 @@ class IZcadRegion(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadRegisteredApplication(DispatchBaseClass):
+class IAcadRegisteredApplication(DispatchBaseClass):
     'ZWCAD RegisteredApplication Interface'
     CLSID = IID('{EC92318F-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923107-5A21-11E7-B72E-BC5FF42AC839}')
@@ -18408,7 +18408,7 @@ class IZcadRegisteredApplication(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -18428,7 +18428,7 @@ class IZcadRegisteredApplication(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -18449,12 +18449,12 @@ class IZcadRegisteredApplication(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadRegisteredApplications(DispatchBaseClass):
+class IAcadRegisteredApplications(DispatchBaseClass):
     'IZwcadRegisteredApplications Interface'
     CLSID = IID('{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923188-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadRegisteredApplication
+    # Result is of type IAcadRegisteredApplication
     def Add(self, Name=defaultNamedNotOptArg):
         'Registers an application in the ZwcadCAD database.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -18471,7 +18471,7 @@ class IZcadRegisteredApplications(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -18484,7 +18484,7 @@ class IZcadRegisteredApplications(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadRegisteredApplication
+    # Result is of type IAcadRegisteredApplication
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -18501,7 +18501,7 @@ class IZcadRegisteredApplications(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -18539,7 +18539,7 @@ class IZcadRegisteredApplications(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadRevolvedSurface(DispatchBaseClass):
+class IAcadRevolvedSurface(DispatchBaseClass):
     CLSID = IID('{EC9231B7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FE4-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -18571,7 +18571,7 @@ class IZcadRevolvedSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -18650,7 +18650,7 @@ class IZcadRevolvedSurface(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "AxisDirection": (4, 2, (12, 0), (), "AxisDirection", None),
         "AxisPosition": (3, 2, (12, 0), (), "AxisPosition", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EdgeExtensionDistances": (161, 2, (12, 0), (), "EdgeExtensionDistances", None),
@@ -18659,7 +18659,7 @@ class IZcadRevolvedSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -18675,7 +18675,7 @@ class IZcadRevolvedSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -18712,7 +18712,7 @@ class IZcadRevolvedSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSection(DispatchBaseClass):
+class IAcadSection(DispatchBaseClass):
     CLSID = IID('{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92302B-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -18763,7 +18763,7 @@ class IZcadSection(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -18863,7 +18863,7 @@ class IZcadSection(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BottomHeight": (11, 2, (5, 0), (), "BottomHeight", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Elevation": (9, 2, (5, 0), (), "Elevation", None),
@@ -18872,9 +18872,9 @@ class IZcadSection(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'IndicatorFillColor' returns object of type 'IZcadZcCmColor'
+        # Method 'IndicatorFillColor' returns object of type 'IAcadZcCmColor'
         "IndicatorFillColor": (8, 2, (9, 0), (), "IndicatorFillColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IndicatorTransparency": (7, 2, (3, 0), (), "IndicatorTransparency", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -18890,11 +18890,11 @@ class IZcadSection(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'Settings' returns object of type 'IZcadSectionSettings'
+        # Method 'Settings' returns object of type 'IAcadSectionSettings'
         "Settings": (19, 2, (9, 0), (), "Settings", '{EC9230B0-5A21-11E7-B72E-BC5FF42AC839}'),
         "State": (2, 2, (3, 0), (), "State", None),
         "TopHeight": (10, 2, (5, 0), (), "TopHeight", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VerticalDirection": (4, 2, (12, 0), (), "VerticalDirection", None),
         "Vertices": (13, 2, (12, 0), (), "Vertices", None),
@@ -18933,7 +18933,7 @@ class IZcadSection(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSection2(DispatchBaseClass):
+class IAcadSection2(DispatchBaseClass):
     CLSID = IID('{EC923290-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = None
 
@@ -18984,7 +18984,7 @@ class IZcadSection2(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -19084,7 +19084,7 @@ class IZcadSection2(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BottomHeight": (11, 2, (5, 0), (), "BottomHeight", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Elevation": (9, 2, (5, 0), (), "Elevation", None),
@@ -19093,9 +19093,9 @@ class IZcadSection2(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'IndicatorFillColor' returns object of type 'IZcadZcCmColor'
+        # Method 'IndicatorFillColor' returns object of type 'IAcadZcCmColor'
         "IndicatorFillColor": (8, 2, (9, 0), (), "IndicatorFillColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IndicatorTransparency": (7, 2, (3, 0), (), "IndicatorTransparency", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -19112,13 +19112,13 @@ class IZcadSection2(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "SectionPlaneOffset": (23, 2, (5, 0), (), "SectionPlaneOffset", None),
-        # Method 'Settings' returns object of type 'IZcadSectionSettings'
+        # Method 'Settings' returns object of type 'IAcadSectionSettings'
         "Settings": (19, 2, (9, 0), (), "Settings", '{EC9230B0-5A21-11E7-B72E-BC5FF42AC839}'),
         "SliceDepth": (21, 2, (5, 0), (), "SliceDepth", None),
         "State": (2, 2, (3, 0), (), "State", None),
         "State2": (22, 2, (3, 0), (), "State2", None),
         "TopHeight": (10, 2, (5, 0), (), "TopHeight", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VerticalDirection": (4, 2, (12, 0), (), "VerticalDirection", None),
         "Vertices": (13, 2, (12, 0), (), "Vertices", None),
@@ -19160,7 +19160,7 @@ class IZcadSection2(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSectionManager(DispatchBaseClass):
+class IAcadSectionManager(DispatchBaseClass):
     CLSID = IID('{EC923035-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230EB-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -19172,7 +19172,7 @@ class IZcadSectionManager(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -19180,7 +19180,7 @@ class IZcadSectionManager(DispatchBaseClass):
             ret = Dispatch(ret, 'GetExtensionDictionary', '{EC922FDA-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSection
+    # Result is of type IAcadSection
     def GetLiveSection(self):
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), (),)
         if ret is not None:
@@ -19197,7 +19197,7 @@ class IZcadSectionManager(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadSection
+    # Result is of type IAcadSection
     def Item(self, Index=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
             )
@@ -19213,7 +19213,7 @@ class IZcadSectionManager(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -19250,7 +19250,7 @@ class IZcadSectionManager(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadSectionSettings(DispatchBaseClass):
+class IAcadSectionSettings(DispatchBaseClass):
     CLSID = IID('{EC9230B0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923094-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -19262,7 +19262,7 @@ class IZcadSectionSettings(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -19270,7 +19270,7 @@ class IZcadSectionSettings(DispatchBaseClass):
             ret = Dispatch(ret, 'GetExtensionDictionary', '{EC922FDA-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSectionTypeSettings
+    # Result is of type IAcadSectionTypeSettings
     def GetSectionTypeSettings(self, secType=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((3, 1),),secType
             )
@@ -19291,7 +19291,7 @@ class IZcadSectionSettings(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "CurrentSectionType": (1, 2, (3, 0), (), "CurrentSectionType", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -19311,12 +19311,12 @@ class IZcadSectionSettings(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSectionTypeSettings(DispatchBaseClass):
+class IAcadSectionTypeSettings(DispatchBaseClass):
     CLSID = IID('{EC92308C-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923027-5A21-11E7-B72E-BC5FF42AC839}')
 
     _prop_map_get_ = {
-        # Method 'BackgroundLinesColor' returns object of type 'IZcadZcCmColor'
+        # Method 'BackgroundLinesColor' returns object of type 'IAcadZcCmColor'
         "BackgroundLinesColor": (93, 2, (9, 0), (), "BackgroundLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "BackgroundLinesHiddenLine": (92, 2, (11, 0), (), "BackgroundLinesHiddenLine", None),
         "BackgroundLinesLayer": (94, 2, (8, 0), (), "BackgroundLinesLayer", None),
@@ -19325,7 +19325,7 @@ class IZcadSectionTypeSettings(DispatchBaseClass):
         "BackgroundLinesLineweight": (98, 2, (3, 0), (), "BackgroundLinesLineweight", None),
         "BackgroundLinesPlotStyleName": (97, 2, (8, 0), (), "BackgroundLinesPlotStyleName", None),
         "BackgroundLinesVisible": (91, 2, (11, 0), (), "BackgroundLinesVisible", None),
-        # Method 'CurveTangencyLinesColor' returns object of type 'IZcadZcCmColor'
+        # Method 'CurveTangencyLinesColor' returns object of type 'IAcadZcCmColor'
         "CurveTangencyLinesColor": (132, 2, (9, 0), (), "CurveTangencyLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "CurveTangencyLinesLayer": (133, 2, (8, 0), (), "CurveTangencyLinesLayer", None),
         "CurveTangencyLinesLinetype": (134, 2, (8, 0), (), "CurveTangencyLinesLinetype", None),
@@ -19335,7 +19335,7 @@ class IZcadSectionTypeSettings(DispatchBaseClass):
         "CurveTangencyLinesVisible": (131, 2, (11, 0), (), "CurveTangencyLinesVisible", None),
         "DestinationBlock": (3, 2, (12, 0), (), "DestinationBlock", None),
         "DestinationFile": (4, 2, (8, 0), (), "DestinationFile", None),
-        # Method 'ForegroundLinesColor' returns object of type 'IZcadZcCmColor'
+        # Method 'ForegroundLinesColor' returns object of type 'IAcadZcCmColor'
         "ForegroundLinesColor": (113, 2, (9, 0), (), "ForegroundLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "ForegroundLinesEdgeTransparency": (120, 2, (3, 0), (), "ForegroundLinesEdgeTransparency", None),
         "ForegroundLinesFaceTransparency": (119, 2, (3, 0), (), "ForegroundLinesFaceTransparency", None),
@@ -19347,7 +19347,7 @@ class IZcadSectionTypeSettings(DispatchBaseClass):
         "ForegroundLinesPlotStyleName": (117, 2, (8, 0), (), "ForegroundLinesPlotStyleName", None),
         "ForegroundLinesVisible": (111, 2, (11, 0), (), "ForegroundLinesVisible", None),
         "GenerationOptions": (1, 2, (3, 0), (), "GenerationOptions", None),
-        # Method 'IntersectionBoundaryColor' returns object of type 'IZcadZcCmColor'
+        # Method 'IntersectionBoundaryColor' returns object of type 'IAcadZcCmColor'
         "IntersectionBoundaryColor": (51, 2, (9, 0), (), "IntersectionBoundaryColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IntersectionBoundaryDivisionLines": (57, 2, (11, 0), (), "IntersectionBoundaryDivisionLines", None),
         "IntersectionBoundaryLayer": (52, 2, (8, 0), (), "IntersectionBoundaryLayer", None),
@@ -19355,7 +19355,7 @@ class IZcadSectionTypeSettings(DispatchBaseClass):
         "IntersectionBoundaryLinetypeScale": (54, 2, (5, 0), (), "IntersectionBoundaryLinetypeScale", None),
         "IntersectionBoundaryLineweight": (56, 2, (3, 0), (), "IntersectionBoundaryLineweight", None),
         "IntersectionBoundaryPlotStyleName": (55, 2, (8, 0), (), "IntersectionBoundaryPlotStyleName", None),
-        # Method 'IntersectionFillColor' returns object of type 'IZcadZcCmColor'
+        # Method 'IntersectionFillColor' returns object of type 'IAcadZcCmColor'
         "IntersectionFillColor": (77, 2, (9, 0), (), "IntersectionFillColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IntersectionFillFaceTransparency": (83, 2, (3, 0), (), "IntersectionFillFaceTransparency", None),
         "IntersectionFillHatchAngle": (74, 2, (5, 0), (), "IntersectionFillHatchAngle", None),
@@ -19430,13 +19430,13 @@ class IZcadSectionTypeSettings(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSectionTypeSettings2(DispatchBaseClass):
-    'IZcadSectionTypeSettings2 Interface'
+class IAcadSectionTypeSettings2(DispatchBaseClass):
+    'IAcadSectionTypeSettings2 Interface'
     CLSID = IID('{EC92328E-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = None
 
     _prop_map_get_ = {
-        # Method 'BackgroundLinesColor' returns object of type 'IZcadZcCmColor'
+        # Method 'BackgroundLinesColor' returns object of type 'IAcadZcCmColor'
         "BackgroundLinesColor": (93, 2, (9, 0), (), "BackgroundLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "BackgroundLinesHiddenLine": (92, 2, (11, 0), (), "BackgroundLinesHiddenLine", None),
         "BackgroundLinesLayer": (94, 2, (8, 0), (), "BackgroundLinesLayer", None),
@@ -19445,7 +19445,7 @@ class IZcadSectionTypeSettings2(DispatchBaseClass):
         "BackgroundLinesLineweight": (98, 2, (3, 0), (), "BackgroundLinesLineweight", None),
         "BackgroundLinesPlotStyleName": (97, 2, (8, 0), (), "BackgroundLinesPlotStyleName", None),
         "BackgroundLinesVisible": (91, 2, (11, 0), (), "BackgroundLinesVisible", None),
-        # Method 'CurveTangencyLinesColor' returns object of type 'IZcadZcCmColor'
+        # Method 'CurveTangencyLinesColor' returns object of type 'IAcadZcCmColor'
         "CurveTangencyLinesColor": (132, 2, (9, 0), (), "CurveTangencyLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "CurveTangencyLinesLayer": (133, 2, (8, 0), (), "CurveTangencyLinesLayer", None),
         "CurveTangencyLinesLinetype": (134, 2, (8, 0), (), "CurveTangencyLinesLinetype", None),
@@ -19455,7 +19455,7 @@ class IZcadSectionTypeSettings2(DispatchBaseClass):
         "CurveTangencyLinesVisible": (131, 2, (11, 0), (), "CurveTangencyLinesVisible", None),
         "DestinationBlock": (3, 2, (12, 0), (), "DestinationBlock", None),
         "DestinationFile": (4, 2, (8, 0), (), "DestinationFile", None),
-        # Method 'ForegroundLinesColor' returns object of type 'IZcadZcCmColor'
+        # Method 'ForegroundLinesColor' returns object of type 'IAcadZcCmColor'
         "ForegroundLinesColor": (113, 2, (9, 0), (), "ForegroundLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "ForegroundLinesEdgeTransparency": (120, 2, (3, 0), (), "ForegroundLinesEdgeTransparency", None),
         "ForegroundLinesFaceTransparency": (119, 2, (3, 0), (), "ForegroundLinesFaceTransparency", None),
@@ -19467,7 +19467,7 @@ class IZcadSectionTypeSettings2(DispatchBaseClass):
         "ForegroundLinesPlotStyleName": (117, 2, (8, 0), (), "ForegroundLinesPlotStyleName", None),
         "ForegroundLinesVisible": (111, 2, (11, 0), (), "ForegroundLinesVisible", None),
         "GenerationOptions": (1, 2, (3, 0), (), "GenerationOptions", None),
-        # Method 'IntersectionBoundaryColor' returns object of type 'IZcadZcCmColor'
+        # Method 'IntersectionBoundaryColor' returns object of type 'IAcadZcCmColor'
         "IntersectionBoundaryColor": (51, 2, (9, 0), (), "IntersectionBoundaryColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IntersectionBoundaryDivisionLines": (57, 2, (11, 0), (), "IntersectionBoundaryDivisionLines", None),
         "IntersectionBoundaryLayer": (52, 2, (8, 0), (), "IntersectionBoundaryLayer", None),
@@ -19476,7 +19476,7 @@ class IZcadSectionTypeSettings2(DispatchBaseClass):
         "IntersectionBoundaryLineweight": (56, 2, (3, 0), (), "IntersectionBoundaryLineweight", None),
         "IntersectionBoundaryPlotStyleName": (55, 2, (8, 0), (), "IntersectionBoundaryPlotStyleName", None),
         "IntersectionBoundaryVisible": (50, 2, (11, 0), (), "IntersectionBoundaryVisible", None),
-        # Method 'IntersectionFillColor' returns object of type 'IZcadZcCmColor'
+        # Method 'IntersectionFillColor' returns object of type 'IAcadZcCmColor'
         "IntersectionFillColor": (77, 2, (9, 0), (), "IntersectionFillColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IntersectionFillFaceTransparency": (83, 2, (3, 0), (), "IntersectionFillFaceTransparency", None),
         "IntersectionFillHatchAngle": (74, 2, (5, 0), (), "IntersectionFillHatchAngle", None),
@@ -19552,7 +19552,7 @@ class IZcadSectionTypeSettings2(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSecurityParams(DispatchBaseClass):
+class IAcadSecurityParams(DispatchBaseClass):
     'Security Parameters Interface'
     CLSID = IID('{EC923193-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FF4-5A21-11E7-B72E-BC5FF42AC839}')
@@ -19591,7 +19591,7 @@ class IZcadSecurityParams(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSelectionSet(DispatchBaseClass):
+class IAcadSelectionSet(DispatchBaseClass):
     'IZwcadSelectionSet Interface'
     CLSID = IID('{EC923124-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923000-5A21-11E7-B72E-BC5FF42AC839}')
@@ -19619,7 +19619,7 @@ class IZcadSelectionSet(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(3, LCID, 1, (24, 0), ((11, 1),),bFlag
             )
 
-    # Result is of type IZcadEntity
+    # Result is of type IAcadEntity
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an entity in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -19672,7 +19672,7 @@ class IZcadSelectionSet(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(5, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (6, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Count": (1, 2, (3, 0), (), "Count", None),
         "Name": (2, 2, (8, 0), (), "Name", None),
@@ -19712,12 +19712,12 @@ class IZcadSelectionSet(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadSelectionSets(DispatchBaseClass):
+class IAcadSelectionSets(DispatchBaseClass):
     'IZwcadSelectionSets Interface'
     CLSID = IID('{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923150-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadSelectionSet
+    # Result is of type IAcadSelectionSet
     def Add(self, Name=defaultNamedNotOptArg):
         'Adds a selection set to the collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -19726,7 +19726,7 @@ class IZcadSelectionSets(DispatchBaseClass):
             ret = Dispatch(ret, 'Add', '{EC923124-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadSelectionSet
+    # Result is of type IAcadSelectionSet
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -19736,7 +19736,7 @@ class IZcadSelectionSets(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Count": (1, 2, (3, 0), (), "Count", None),
     }
@@ -19769,7 +19769,7 @@ class IZcadSelectionSets(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadShadowDisplay(DispatchBaseClass):
+class IAcadShadowDisplay(DispatchBaseClass):
     'ZWCAD ShadowDisplay Interface'
     CLSID = IID('{EC923137-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92317D-5A21-11E7-B72E-BC5FF42AC839}')
@@ -19789,7 +19789,7 @@ class IZcadShadowDisplay(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadShape(DispatchBaseClass):
+class IAcadShape(DispatchBaseClass):
     'ZWCAD Shape Interface'
     CLSID = IID('{EC92301C-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92304F-5A21-11E7-B72E-BC5FF42AC839}')
@@ -19822,7 +19822,7 @@ class IZcadShape(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -19909,7 +19909,7 @@ class IZcadShape(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -19918,7 +19918,7 @@ class IZcadShape(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (3, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (1, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -19936,7 +19936,7 @@ class IZcadShape(DispatchBaseClass):
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (5, 2, (5, 0), (), "ScaleFactor", None),
         "Thickness": (8, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -19969,7 +19969,7 @@ class IZcadShape(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSolid(DispatchBaseClass):
+class IAcadSolid(DispatchBaseClass):
     'ZWCAD Solid Interface'
     CLSID = IID('{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92312B-5A21-11E7-B72E-BC5FF42AC839}')
@@ -20007,7 +20007,7 @@ class IZcadSolid(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -20100,7 +20100,7 @@ class IZcadSolid(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -20108,7 +20108,7 @@ class IZcadSolid(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20121,7 +20121,7 @@ class IZcadSolid(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -20149,11 +20149,11 @@ class IZcadSolid(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSortentsTable(DispatchBaseClass):
+class IAcadSortentsTable(DispatchBaseClass):
     CLSID = IID('{EC9230B5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92308A-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadBlock
+    # Result is of type IAcadBlock
     def Block(self):
         'Returns the Block this Sortents Table belongs to.'
         ret = self._oleobj_.InvokeTypes(6, LCID, 1, (9, 0), (),)
@@ -20169,7 +20169,7 @@ class IZcadSortentsTable(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -20229,7 +20229,7 @@ class IZcadSortentsTable(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -20248,7 +20248,7 @@ class IZcadSortentsTable(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSpline(DispatchBaseClass):
+class IAcadSpline(DispatchBaseClass):
     'ZWCAD Spline Interface'
     CLSID = IID('{EC92319E-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923158-5A21-11E7-B72E-BC5FF42AC839}')
@@ -20297,7 +20297,7 @@ class IZcadSpline(DispatchBaseClass):
         return self._ApplyTypes_(15, 1, (12, 0), ((3, 1),), 'GetControlPoint', None,Index
             )
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -20420,7 +20420,7 @@ class IZcadSpline(DispatchBaseClass):
         "Closed": (6, 2, (11, 0), (), "Closed", None),
         "Closed2": (32, 2, (11, 0), (), "Closed2", None),
         "ControlPoints": (2, 2, (12, 0), (), "ControlPoints", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Degree": (5, 2, (3, 0), (), "Degree", None),
         "Degree2": (31, 2, (3, 0), (), "Degree2", None),
@@ -20433,7 +20433,7 @@ class IZcadSpline(DispatchBaseClass):
         "FitTolerance": (12, 2, (5, 0), (), "FitTolerance", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "IsPeriodic": (9, 2, (11, 0), (), "IsPeriodic", None),
         "IsPlanar": (7, 2, (11, 0), (), "IsPlanar", None),
@@ -20454,7 +20454,7 @@ class IZcadSpline(DispatchBaseClass):
         "SplineFrame": (29, 2, (3, 0), (), "SplineFrame", None),
         "SplineMethod": (30, 2, (3, 0), (), "SplineMethod", None),
         "StartTangent": (10, 2, (12, 0), (), "StartTangent", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Weights": (27, 2, (12, 0), (), "Weights", None),
@@ -20492,13 +20492,13 @@ class IZcadSpline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadState(DispatchBaseClass):
+class IAcadState(DispatchBaseClass):
     'ZWCAD State Interface'
     CLSID = IID('{EC923162-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FCC-5A21-11E7-B72E-BC5FF42AC839}')
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "IsQuiescent": (2, 2, (11, 0), (), "IsQuiescent", None),
     }
@@ -20512,7 +20512,7 @@ class IZcadState(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSubDMesh(DispatchBaseClass):
+class IAcadSubDMesh(DispatchBaseClass):
     CLSID = IID('{EC923287-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923286-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -20549,7 +20549,7 @@ class IZcadSubDMesh(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -20632,7 +20632,7 @@ class IZcadSubDMesh(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (3, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -20641,7 +20641,7 @@ class IZcadSubDMesh(DispatchBaseClass):
         "FaceCount": (6, 2, (3, 0), (), "FaceCount", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20653,7 +20653,7 @@ class IZcadSubDMesh(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Smoothness": (1, 2, (3, 0), (), "Smoothness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VertexCount": (5, 2, (3, 0), (), "VertexCount", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -20681,7 +20681,7 @@ class IZcadSubDMesh(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSubDMeshEdge(DispatchBaseClass):
+class IAcadSubDMeshEdge(DispatchBaseClass):
     CLSID = IID('{EC923294-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232A4-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -20691,7 +20691,7 @@ class IZcadSubDMeshEdge(DispatchBaseClass):
     _prop_map_get_ = {
         "CreaseLevel": (2, 2, (5, 0), (), "CreaseLevel", None),
         "CreaseType": (1, 2, (3, 0), (), "CreaseType", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20699,7 +20699,7 @@ class IZcadSubDMeshEdge(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IZcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadZcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20715,7 +20715,7 @@ class IZcadSubDMeshEdge(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSubDMeshFace(DispatchBaseClass):
+class IAcadSubDMeshFace(DispatchBaseClass):
     CLSID = IID('{EC923293-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232A3-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -20725,7 +20725,7 @@ class IZcadSubDMeshFace(DispatchBaseClass):
     _prop_map_get_ = {
         "CreaseLevel": (2, 2, (5, 0), (), "CreaseLevel", None),
         "CreaseType": (1, 2, (3, 0), (), "CreaseType", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20734,7 +20734,7 @@ class IZcadSubDMeshFace(DispatchBaseClass):
         "Material": (1399, 2, (8, 0), (), "Material", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IZcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadZcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20751,7 +20751,7 @@ class IZcadSubDMeshFace(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSubDMeshVertex(DispatchBaseClass):
+class IAcadSubDMeshVertex(DispatchBaseClass):
     CLSID = IID('{EC923295-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232A5-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -20770,7 +20770,7 @@ class IZcadSubDMeshVertex(DispatchBaseClass):
         "Coordinates": (3, 2, (12, 0), (), "Coordinates", None),
         "CreaseLevel": (2, 2, (5, 0), (), "CreaseLevel", None),
         "CreaseType": (1, 2, (3, 0), (), "CreaseType", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20778,7 +20778,7 @@ class IZcadSubDMeshVertex(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IZcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadZcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20795,7 +20795,7 @@ class IZcadSubDMeshVertex(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSubEntSolidEdge(DispatchBaseClass):
+class IAcadSubEntSolidEdge(DispatchBaseClass):
     CLSID = IID('{EC923136-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923191-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -20803,7 +20803,7 @@ class IZcadSubEntSolidEdge(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20811,7 +20811,7 @@ class IZcadSubEntSolidEdge(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IZcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadZcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20825,7 +20825,7 @@ class IZcadSubEntSolidEdge(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSubEntSolidFace(DispatchBaseClass):
+class IAcadSubEntSolidFace(DispatchBaseClass):
     CLSID = IID('{EC923291-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232A1-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -20833,7 +20833,7 @@ class IZcadSubEntSolidFace(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20842,7 +20842,7 @@ class IZcadSubEntSolidFace(DispatchBaseClass):
         "Material": (1399, 2, (8, 0), (), "Material", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IZcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadZcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20857,7 +20857,7 @@ class IZcadSubEntSolidFace(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSubEntSolidNode(DispatchBaseClass):
+class IAcadSubEntSolidNode(DispatchBaseClass):
     CLSID = IID('{EC923292-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232A2-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -20865,7 +20865,7 @@ class IZcadSubEntSolidNode(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20873,7 +20873,7 @@ class IZcadSubEntSolidNode(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IZcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadZcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20887,7 +20887,7 @@ class IZcadSubEntSolidNode(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSubEntSolidVertex(DispatchBaseClass):
+class IAcadSubEntSolidVertex(DispatchBaseClass):
     CLSID = IID('{EC922FEF-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230E1-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -20895,7 +20895,7 @@ class IZcadSubEntSolidVertex(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20903,7 +20903,7 @@ class IZcadSubEntSolidVertex(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IZcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadZcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20917,7 +20917,7 @@ class IZcadSubEntSolidVertex(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSubEntity(DispatchBaseClass):
+class IAcadSubEntity(DispatchBaseClass):
     CLSID = IID('{EC923058-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231A7-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -20925,7 +20925,7 @@ class IZcadSubEntity(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1024, LCID, 1, (24, 0), (),)
 
     _prop_map_get_ = {
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -20933,7 +20933,7 @@ class IZcadSubEntity(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IZcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadZcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20947,7 +20947,7 @@ class IZcadSubEntity(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSummaryInfo(DispatchBaseClass):
+class IAcadSummaryInfo(DispatchBaseClass):
     'IZwcadSummaryInfo Interface'
     CLSID = IID('{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230E6-5A21-11E7-B72E-BC5FF42AC839}')
@@ -21019,7 +21019,7 @@ class IZcadSummaryInfo(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSurface(DispatchBaseClass):
+class IAcadSurface(DispatchBaseClass):
     CLSID = IID('{EC9231DF-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC92305A-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -21051,7 +21051,7 @@ class IZcadSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -21128,7 +21128,7 @@ class IZcadSurface(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EdgeExtensionDistances": (161, 2, (12, 0), (), "EdgeExtensionDistances", None),
@@ -21137,7 +21137,7 @@ class IZcadSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -21152,7 +21152,7 @@ class IZcadSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -21187,7 +21187,7 @@ class IZcadSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadSweptSurface(DispatchBaseClass):
+class IAcadSweptSurface(DispatchBaseClass):
     CLSID = IID('{EC92304B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923060-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -21219,7 +21219,7 @@ class IZcadSweptSurface(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -21297,7 +21297,7 @@ class IZcadSweptSurface(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Bank": (3, 2, (11, 0), (), "Bank", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EdgeExtensionDistances": (161, 2, (12, 0), (), "EdgeExtensionDistances", None),
@@ -21306,7 +21306,7 @@ class IZcadSweptSurface(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Length": (6, 2, (5, 0), (), "Length", None),
@@ -21323,7 +21323,7 @@ class IZcadSweptSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Twist": (4, 2, (5, 0), (), "Twist", None),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
@@ -21364,7 +21364,7 @@ class IZcadSweptSurface(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadTable(DispatchBaseClass):
+class IAcadTable(DispatchBaseClass):
     'IZwcadTable Interface'
     CLSID = IID('{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923019-5A21-11E7-B72E-BC5FF42AC839}')
@@ -21447,7 +21447,7 @@ class IZcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(2276, LCID, 1, (11, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetBackgroundColor(self, rowType=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(37, LCID, 1, (9, 0), ((3, 1),),rowType
             )
@@ -21497,7 +21497,7 @@ class IZcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(58, LCID, 1, (3, 0), ((3, 1), (3, 1)),row
             , col)
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetCellBackgroundColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(62, LCID, 1, (9, 0), ((3, 1), (3, 1)),row
             , col)
@@ -21509,7 +21509,7 @@ class IZcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(60, LCID, 1, (11, 0), ((3, 1), (3, 1)),row
             , col)
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetCellContentColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(64, LCID, 1, (9, 0), ((3, 1), (3, 1)),row
             , col)
@@ -21530,7 +21530,7 @@ class IZcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1948, LCID, 1, (8, 0), ((3, 1), (3, 1)),row
             , col)
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetCellGridColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, edge=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(87, LCID, 1, (9, 0), ((3, 1), (3, 1), (3, 1)),row
             , col, edge)
@@ -21585,7 +21585,7 @@ class IZcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(10, LCID, 1, (5, 0), ((3, 1),),col
             )
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetContentColor(self, rowType=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(39, LCID, 1, (9, 0), ((3, 1),),rowType
             )
@@ -21593,7 +21593,7 @@ class IZcadTable(DispatchBaseClass):
             ret = Dispatch(ret, 'GetContentColor', '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetContentColor2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(2260, LCID, 1, (9, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
@@ -21627,7 +21627,7 @@ class IZcadTable(DispatchBaseClass):
         return self._ApplyTypes_(2262, 1, (24, 0), ((3, 1), (3, 1), (3, 1), (16387, 2), (16387, 2)), 'GetDataType2', None,nRow
             , nCol, nContent, pDataType, pUnitType)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -21653,7 +21653,7 @@ class IZcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(2355, LCID, 1, (8, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetGridColor(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(47, LCID, 1, (9, 0), ((3, 1), (3, 1)),gridLineType
             , rowType)
@@ -21661,7 +21661,7 @@ class IZcadTable(DispatchBaseClass):
             ret = Dispatch(ret, 'GetGridColor', '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetGridColor2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(2291, LCID, 1, (9, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nGridLineType)
@@ -22219,7 +22219,7 @@ class IZcadTable(DispatchBaseClass):
         "BreakSpacing": (65527, 2, (5, 0), (), "BreakSpacing", None),
         "BreaksEnabled": (65520, 2, (11, 0), (), "BreaksEnabled", None),
         "Columns": (3, 2, (3, 0), (), "Columns", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Direction": (30, 2, (12, 0), (), "Direction", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -22233,7 +22233,7 @@ class IZcadTable(DispatchBaseClass):
         "HeaderSuppressed": (32, 2, (11, 0), (), "HeaderSuppressed", None),
         "Height": (6, 2, (5, 0), (), "Height", None),
         "HorzCellMargin": (8, 2, (5, 0), (), "HorzCellMargin", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (9, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -22256,7 +22256,7 @@ class IZcadTable(DispatchBaseClass):
         "TableBreakHeight": (65526, 2, (5, 0), (), "TableBreakHeight", None),
         "TableStyleOverrides": (51, 2, (12, 0), (), "TableStyleOverrides", None),
         "TitleSuppressed": (31, 2, (11, 0), (), "TitleSuppressed", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VertCellMargin": (7, 2, (5, 0), (), "VertCellMargin", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -22307,8 +22307,8 @@ class IZcadTable(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadTableStyle(DispatchBaseClass):
-    'ZWCAD IZcadTableStyle Interface'
+class IAcadTableStyle(DispatchBaseClass):
+    'ZWCAD IAcadTableStyle Interface'
     CLSID = IID('{EC923133-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923111-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -22346,7 +22346,7 @@ class IZcadTableStyle(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(43, LCID, 1, (3, 0), ((8, 1),),bstrCellStyle
             )
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetBackgroundColor(self, rowType=defaultNamedNotOptArg):
         'Returns the background true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(17, LCID, 1, (9, 0), ((3, 1),),rowType
@@ -22355,7 +22355,7 @@ class IZcadTableStyle(DispatchBaseClass):
             ret = Dispatch(ret, 'GetBackgroundColor', '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetBackgroundColor2(self, bstrCellStyle=defaultNamedNotOptArg):
         'get background color for the specified cell style'
         ret = self._oleobj_.InvokeTypes(47, LCID, 1, (9, 0), ((8, 1),),bstrCellStyle
@@ -22377,7 +22377,7 @@ class IZcadTableStyle(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(38, LCID, 1, (24, 0), ((16396, 1),),cellStylesArray
             )
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetColor(self, rowType=defaultNamedNotOptArg):
         'Returns the true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(15, LCID, 1, (9, 0), ((3, 1),),rowType
@@ -22386,7 +22386,7 @@ class IZcadTableStyle(DispatchBaseClass):
             ret = Dispatch(ret, 'GetColor', '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetColor2(self, bstrCellStyle=defaultNamedNotOptArg):
         'get color for the specified cell style'
         ret = self._oleobj_.InvokeTypes(45, LCID, 1, (9, 0), ((8, 1),),bstrCellStyle
@@ -22405,7 +22405,7 @@ class IZcadTableStyle(DispatchBaseClass):
         return self._ApplyTypes_(51, 1, (24, 0), ((8, 1), (16387, 2), (16387, 2)), 'GetDataType2', None,bstrCellStyle
             , pDataType, pUnitType)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -22424,7 +22424,7 @@ class IZcadTableStyle(DispatchBaseClass):
         return self._ApplyTypes_(53, 1, (24, 0), ((8, 1), (16392, 2)), 'GetFormat2', None,bstrCellStyle
             , pbstrFormat)
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetGridColor(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
         'Returns the gridColor value for the specified gridLineType and row type.'
         ret = self._oleobj_.InvokeTypes(23, LCID, 1, (9, 0), ((3, 1), (3, 1)),gridLineType
@@ -22433,7 +22433,7 @@ class IZcadTableStyle(DispatchBaseClass):
             ret = Dispatch(ret, 'GetGridColor', '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadZcCmColor
+    # Result is of type IAcadZcCmColor
     def GetGridColor2(self, bstrCellStyle=defaultNamedNotOptArg, gridLineType=defaultNamedNotOptArg):
         'get grid color for the specified cell style and grid line type'
         ret = self._oleobj_.InvokeTypes(57, LCID, 1, (9, 0), ((8, 1), (3, 1)),bstrCellStyle
@@ -22648,7 +22648,7 @@ class IZcadTableStyle(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BitFlags": (3, 2, (3, 0), (), "BitFlags", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Description": (2, 2, (8, 0), (), "Description", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -22687,7 +22687,7 @@ class IZcadTableStyle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadText(DispatchBaseClass):
+class IAcadText(DispatchBaseClass):
     'ZWCAD Text Interface'
     CLSID = IID('{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923067-5A21-11E7-B72E-BC5FF42AC839}')
@@ -22720,7 +22720,7 @@ class IZcadText(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -22811,7 +22811,7 @@ class IZcadText(DispatchBaseClass):
         "Alignment": (3, 2, (3, 0), (), "Alignment", None),
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Backward": (16, 2, (11, 0), (), "Backward", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -22822,7 +22822,7 @@ class IZcadText(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (6, 2, (5, 0), (), "Height", None),
         "HorizontalAlignment": (4, 2, (3, 0), (), "HorizontalAlignment", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (11, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -22843,7 +22843,7 @@ class IZcadText(DispatchBaseClass):
         "TextGenerationFlag": (13, 2, (3, 0), (), "TextGenerationFlag", None),
         "TextString": (1, 2, (8, 0), (), "TextString", None),
         "Thickness": (14, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UpsideDown": (15, 2, (11, 0), (), "UpsideDown", None),
         "VerticalAlignment": (5, 2, (3, 0), (), "VerticalAlignment", None),
@@ -22886,7 +22886,7 @@ class IZcadText(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadTextStyle(DispatchBaseClass):
+class IAcadTextStyle(DispatchBaseClass):
     'ZWCAD TextStyle Interface'
     CLSID = IID('{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231A2-5A21-11E7-B72E-BC5FF42AC839}')
@@ -22899,7 +22899,7 @@ class IZcadTextStyle(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -22932,7 +22932,7 @@ class IZcadTextStyle(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BigFontFile": (1, 2, (8, 0), (), "BigFontFile", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -22965,12 +22965,12 @@ class IZcadTextStyle(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadTextStyles(DispatchBaseClass):
+class IAcadTextStyles(DispatchBaseClass):
     'IZwcadTextStyles Interface'
     CLSID = IID('{EC923131-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230C5-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadTextStyle
+    # Result is of type IAcadTextStyle
     def Add(self, Name=defaultNamedNotOptArg):
         'Adds a text style to the text styles collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -22987,7 +22987,7 @@ class IZcadTextStyles(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -23000,7 +23000,7 @@ class IZcadTextStyles(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadTextStyle
+    # Result is of type IAcadTextStyle
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -23017,7 +23017,7 @@ class IZcadTextStyles(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -23055,7 +23055,7 @@ class IZcadTextStyles(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadTolerance(DispatchBaseClass):
+class IAcadTolerance(DispatchBaseClass):
     'ZWCAD Tolerance Interface'
     CLSID = IID('{EC923101-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230D2-5A21-11E7-B72E-BC5FF42AC839}')
@@ -23088,7 +23088,7 @@ class IZcadTolerance(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -23175,7 +23175,7 @@ class IZcadTolerance(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DimensionLineColor": (13, 2, (3, 0), (), "DimensionLineColor", None),
         "DirectionVector": (80, 2, (12, 0), (), "DirectionVector", None),
@@ -23185,7 +23185,7 @@ class IZcadTolerance(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "InsertionPoint": (81, 2, (12, 0), (), "InsertionPoint", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -23204,7 +23204,7 @@ class IZcadTolerance(DispatchBaseClass):
         "TextHeight": (1563, 2, (5, 0), (), "TextHeight", None),
         "TextString": (1541, 2, (8, 0), (), "TextString", None),
         "TextStyle": (1562, 2, (8, 0), (), "TextStyle", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -23239,12 +23239,12 @@ class IZcadTolerance(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadToolbar(DispatchBaseClass):
+class IAcadToolbar(DispatchBaseClass):
     'ZWCAD Toolbar Interface'
     CLSID = IID('{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FF3-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadToolbarItem
+    # Result is of type IAcadToolbarItem
     def AddSeparator(self, Index=defaultNamedNotOptArg):
         'Adds a toolbar separator.'
         ret = self._oleobj_.InvokeTypes(1610743830, LCID, 1, (9, 0), ((12, 1),),Index
@@ -23253,7 +23253,7 @@ class IZcadToolbar(DispatchBaseClass):
             ret = Dispatch(ret, 'AddSeparator', '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadToolbarItem
+    # Result is of type IAcadToolbarItem
     def AddToolbarButton(self, Index=defaultNamedNotOptArg, Name=defaultNamedNotOptArg, HelpString=defaultNamedNotOptArg, Macro=defaultNamedNotOptArg
             , FlyoutButton=defaultNamedOptArg):
         'Adds a toolbar item.'
@@ -23277,7 +23277,7 @@ class IZcadToolbar(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1610743832, LCID, 1, (24, 0), ((3, 1), (3, 1), (3, 1)),top
             , left, NumberFloatRows)
 
-    # Result is of type IZcadToolbarItem
+    # Result is of type IAcadToolbarItem
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an element in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -23287,7 +23287,7 @@ class IZcadToolbar(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
         "DockStatus": (1610743817, 2, (3, 0), (), "DockStatus", None),
@@ -23338,7 +23338,7 @@ class IZcadToolbar(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadToolbarItem(DispatchBaseClass):
+class IAcadToolbarItem(DispatchBaseClass):
     'ZWCAD ToolbarItem Interface'
     CLSID = IID('{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230E9-5A21-11E7-B72E-BC5FF42AC839}')
@@ -23363,16 +23363,16 @@ class IZcadToolbarItem(DispatchBaseClass):
             , LargeIconName)
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743808, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "CommandDisplayName": (1610743825, 2, (8, 0), (), "CommandDisplayName", None),
-        # Method 'Flyout' returns object of type 'IZcadToolbar'
+        # Method 'Flyout' returns object of type 'IAcadToolbar'
         "Flyout": (1610743815, 2, (9, 0), (), "Flyout", '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}'),
         "HelpString": (1610743819, 2, (8, 0), (), "HelpString", None),
         "Index": (1610743818, 2, (3, 0), (), "Index", None),
         "Macro": (1610743816, 2, (8, 0), (), "Macro", None),
         "Name": (1610743810, 2, (8, 0), (), "Name", None),
-        # Method 'Parent' returns object of type 'IZcadToolbar'
+        # Method 'Parent' returns object of type 'IAcadToolbar'
         "Parent": (1610743809, 2, (9, 0), (), "Parent", '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}'),
         "TagString": (1610743812, 2, (8, 0), (), "TagString", None),
         "Type": (1610743814, 2, (3, 0), (), "Type", None),
@@ -23392,12 +23392,12 @@ class IZcadToolbarItem(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadToolbars(DispatchBaseClass):
+class IAcadToolbars(DispatchBaseClass):
     'ZWCAD Toolbars Interface'
     CLSID = IID('{EC923003-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923086-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadToolbar
+    # Result is of type IAcadToolbar
     def Add(self, ToolbarName=defaultNamedNotOptArg):
         'Adds a toolbar.'
         ret = self._oleobj_.InvokeTypes(1610743815, LCID, 1, (9, 0), ((8, 1),),ToolbarName
@@ -23406,7 +23406,7 @@ class IZcadToolbars(DispatchBaseClass):
             ret = Dispatch(ret, 'Add', '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IZcadToolbar
+    # Result is of type IAcadToolbar
     def Item(self, Index=defaultNamedNotOptArg):
         'Returns an element in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -23416,11 +23416,11 @@ class IZcadToolbars(DispatchBaseClass):
         return ret
 
     _prop_map_get_ = {
-        # Method 'Application' returns object of type 'IZcadApplication'
+        # Method 'Application' returns object of type 'IAcadApplication'
         "Application": (1610743811, 2, (9, 0), (), "Application", '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}'),
         "Count": (1610743810, 2, (3, 0), (), "Count", None),
         "LargeButtons": (1610743813, 2, (11, 0), (), "LargeButtons", None),
-        # Method 'Parent' returns object of type 'IZcadMenuGroup'
+        # Method 'Parent' returns object of type 'IAcadMenuGroup'
         "Parent": (1610743812, 2, (9, 0), (), "Parent", '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -23453,7 +23453,7 @@ class IZcadToolbars(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadTrace(DispatchBaseClass):
+class IAcadTrace(DispatchBaseClass):
     'ZWCAD Trace Interface'
     CLSID = IID('{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923159-5A21-11E7-B72E-BC5FF42AC839}')
@@ -23491,7 +23491,7 @@ class IZcadTrace(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -23584,7 +23584,7 @@ class IZcadTrace(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Coordinates": (1, 2, (12, 0), (), "Coordinates", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -23592,7 +23592,7 @@ class IZcadTrace(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -23605,7 +23605,7 @@ class IZcadTrace(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -23633,7 +23633,7 @@ class IZcadTrace(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadUCS(DispatchBaseClass):
+class IAcadUCS(DispatchBaseClass):
     'ZWCAD UCS Interface'
     CLSID = IID('{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FCB-5A21-11E7-B72E-BC5FF42AC839}')
@@ -23646,7 +23646,7 @@ class IZcadUCS(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -23682,7 +23682,7 @@ class IZcadUCS(DispatchBaseClass):
                 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -23709,12 +23709,12 @@ class IZcadUCS(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadUCSs(DispatchBaseClass):
+class IAcadUCSs(DispatchBaseClass):
     'IZwcadUCSs Interface'
     CLSID = IID('{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231CD-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadUCS
+    # Result is of type IAcadUCS
     def Add(self, Origin=defaultNamedNotOptArg, XAxisPoint=defaultNamedNotOptArg, YAxisPoint=defaultNamedNotOptArg, Name=defaultNamedNotOptArg):
         'Creates a member object and adds it to the appropriate collection'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((12, 1), (12, 1), (12, 1), (8, 1)),Origin
@@ -23731,7 +23731,7 @@ class IZcadUCSs(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -23744,7 +23744,7 @@ class IZcadUCSs(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadUCS
+    # Result is of type IAcadUCS
     def Item(self, Index=defaultNamedNotOptArg):
         'Gets the member object at a given index in a collection, group, or selection set'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -23761,7 +23761,7 @@ class IZcadUCSs(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -23799,7 +23799,7 @@ class IZcadUCSs(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadUnderlay(DispatchBaseClass):
+class IAcadUnderlay(DispatchBaseClass):
     CLSID = IID('{EC9230F8-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9232A0-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -23835,7 +23835,7 @@ class IZcadUnderlay(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -23923,7 +23923,7 @@ class IZcadUnderlay(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ClippingEnabled": (16, 2, (11, 0), (), "ClippingEnabled", None),
         "Contrast": (1, 2, (3, 0), (), "Contrast", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -23934,7 +23934,7 @@ class IZcadUnderlay(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (6, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "ItemName": (8, 2, (8, 0), (), "ItemName", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -23950,7 +23950,7 @@ class IZcadUnderlay(DispatchBaseClass):
         "Position": (3, 2, (12, 0), (), "Position", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (12, 2, (5, 0), (), "ScaleFactor", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnderlayLayerOverrideApplied": (17, 2, (3, 0), (), "UnderlayLayerOverrideApplied", None),
         "UnderlayName": (7, 2, (8, 0), (), "UnderlayName", None),
@@ -23994,7 +23994,7 @@ class IZcadUnderlay(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadUtility(DispatchBaseClass):
+class IAcadUtility(DispatchBaseClass):
     'ZWCAD Utility Interface'
     CLSID = IID('{EC923126-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FFC-5A21-11E7-B72E-BC5FF42AC839}')
@@ -24184,7 +24184,7 @@ class IZcadUtility(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadView(DispatchBaseClass):
+class IAcadView(DispatchBaseClass):
     'ZWCAD View Interface'
     CLSID = IID('{EC923075-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923014-5A21-11E7-B72E-BC5FF42AC839}')
@@ -24197,7 +24197,7 @@ class IZcadView(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24231,7 +24231,7 @@ class IZcadView(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "CategoryName": (7, 2, (8, 0), (), "CategoryName", None),
         "Center": (1, 2, (12, 0), (), "Center", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Direction": (5, 2, (12, 0), (), "Direction", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -24268,7 +24268,7 @@ class IZcadView(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadViewport(DispatchBaseClass):
+class IAcadViewport(DispatchBaseClass):
     'ZWCAD Viewport Interface'
     CLSID = IID('{EC92303D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231D1-5A21-11E7-B72E-BC5FF42AC839}')
@@ -24281,7 +24281,7 @@ class IZcadViewport(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24347,7 +24347,7 @@ class IZcadViewport(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "ArcSmoothness": (23, 2, (3, 0), (), "ArcSmoothness", None),
         "Center": (1, 2, (12, 0), (), "Center", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Direction": (5, 2, (12, 0), (), "Direction", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -24394,12 +24394,12 @@ class IZcadViewport(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadViewports(DispatchBaseClass):
+class IAcadViewports(DispatchBaseClass):
     'IZwcadViewports Interface'
     CLSID = IID('{EC923149-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC922FCD-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadViewport
+    # Result is of type IAcadViewport
     def Add(self, Name=defaultNamedNotOptArg):
         'Adds a view to the views collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -24421,7 +24421,7 @@ class IZcadViewports(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24434,7 +24434,7 @@ class IZcadViewports(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadViewport
+    # Result is of type IAcadViewport
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -24451,7 +24451,7 @@ class IZcadViewports(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -24489,12 +24489,12 @@ class IZcadViewports(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadViews(DispatchBaseClass):
+class IAcadViews(DispatchBaseClass):
     'IZwcadViews Interface'
     CLSID = IID('{EC92318D-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9230A8-5A21-11E7-B72E-BC5FF42AC839}')
 
-    # Result is of type IZcadView
+    # Result is of type IAcadView
     def Add(self, Name=defaultNamedNotOptArg):
         'Adds a view to the views collection.'
         ret = self._oleobj_.InvokeTypes(2, LCID, 1, (9, 0), ((8, 1),),Name
@@ -24511,7 +24511,7 @@ class IZcadViews(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24524,7 +24524,7 @@ class IZcadViews(DispatchBaseClass):
         return self._ApplyTypes_(1026, 1, (24, 0), ((8, 1), (16396, 2), (16396, 2)), 'GetXData', None,AppName
             , XDataType, XDataValue)
 
-    # Result is of type IZcadView
+    # Result is of type IAcadView
     def Item(self, Index=defaultNamedNotOptArg):
         'Given an Index, returns an item in the collection.'
         ret = self._oleobj_.InvokeTypes(0, LCID, 1, (9, 0), ((12, 1),),Index
@@ -24541,7 +24541,7 @@ class IZcadViews(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Count": (1, 2, (3, 0), (), "Count", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -24579,7 +24579,7 @@ class IZcadViews(DispatchBaseClass):
     def __nonzero__(self):
         return True
 
-class IZcadWipeout(DispatchBaseClass):
+class IAcadWipeout(DispatchBaseClass):
     '���������򸲸ǹ�դͼ��� ZWCAD Interface'
     CLSID = IID('{EC9230D0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923089-5A21-11E7-B72E-BC5FF42AC839}')
@@ -24616,7 +24616,7 @@ class IZcadWipeout(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24704,7 +24704,7 @@ class IZcadWipeout(DispatchBaseClass):
         "Brightness": (1, 2, (3, 0), (), "Brightness", None),
         "ClippingEnabled": (11, 2, (11, 0), (), "ClippingEnabled", None),
         "Contrast": (2, 2, (3, 0), (), "Contrast", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "EntityName": (1397, 2, (8, 0), (), "EntityName", None),
@@ -24714,7 +24714,7 @@ class IZcadWipeout(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "Height": (14, 2, (5, 0), (), "Height", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "ImageFile": (9, 2, (8, 0), (), "ImageFile", None),
         "ImageHeight": (7, 2, (5, 0), (), "ImageHeight", None),
@@ -24734,7 +24734,7 @@ class IZcadWipeout(DispatchBaseClass):
         "Rotation": (5, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (17, 2, (5, 0), (), "ScaleFactor", None),
         "ShowRotation": (16, 2, (11, 0), (), "ShowRotation", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (15, 2, (5, 0), (), "Width", None),
@@ -24775,7 +24775,7 @@ class IZcadWipeout(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadXRecord(DispatchBaseClass):
+class IAcadXRecord(DispatchBaseClass):
     CLSID = IID('{EC92307A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC923032-5A21-11E7-B72E-BC5FF42AC839}')
 
@@ -24787,7 +24787,7 @@ class IZcadXRecord(DispatchBaseClass):
         'Erases the entity object.'
         return self._oleobj_.InvokeTypes(1141, LCID, 1, (24, 0), (),)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24817,7 +24817,7 @@ class IZcadXRecord(DispatchBaseClass):
 
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "Document": (1035, 2, (9, 0), (), "Document", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -24840,7 +24840,7 @@ class IZcadXRecord(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadXline(DispatchBaseClass):
+class IAcadXline(DispatchBaseClass):
     'ZWCAD Xline Interface'
     CLSID = IID('{EC923055-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231CE-5A21-11E7-B72E-BC5FF42AC839}')
@@ -24873,7 +24873,7 @@ class IZcadXline(DispatchBaseClass):
         return self._ApplyTypes_(1297, 1, (24, 0), ((16396, 2), (16396, 2)), 'GetBoundingBox', None,MinPoint
             , MaxPoint)
 
-    # Result is of type IZcadDictionary
+    # Result is of type IAcadDictionary
     def GetExtensionDictionary(self):
         'Returns the extension dictionary for the object.'
         ret = self._oleobj_.InvokeTypes(1033, LCID, 1, (9, 0), (),)
@@ -24965,7 +24965,7 @@ class IZcadXline(DispatchBaseClass):
     _prop_map_get_ = {
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "BasePoint": (1, 2, (12, 0), (), "BasePoint", None),
-        # Method 'Database' returns object of type 'IZcadDatabase'
+        # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
         "DirectionVector": (3, 2, (12, 0), (), "DirectionVector", None),
         "Document": (1035, 2, (9, 0), (), "Document", None),
@@ -24974,7 +24974,7 @@ class IZcadXline(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
-        # Method 'Hyperlinks' returns object of type 'IZcadHyperlinks'
+        # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "Linetype": (1282, 2, (8, 0), (), "Linetype", None),
@@ -24986,7 +24986,7 @@ class IZcadXline(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "SecondPoint": (2, 2, (12, 0), (), "SecondPoint", None),
-        # Method 'TrueColor' returns object of type 'IZcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -25014,7 +25014,7 @@ class IZcadXline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IZcadZcCmColor(DispatchBaseClass):
+class IAcadZcCmColor(DispatchBaseClass):
     'ZWCAD ZwCmColor Interface'
     CLSID = IID('{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231C3-5A21-11E7-B72E-BC5FF42AC839}')
@@ -25301,9 +25301,9 @@ class Zcad3DFace(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcad3DFace,
+        IAcad3DFace,
     ]
-    default_interface = IZcad3DFace
+    default_interface = IAcad3DFace
 
 class Zcad3DPolyline(CoClassBaseClass): # A CoClass
     # ZWCAD 3dPolyline Object
@@ -25311,9 +25311,9 @@ class Zcad3DPolyline(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcad3DPolyline,
+        IAcad3DPolyline,
     ]
-    default_interface = IZcad3DPolyline
+    default_interface = IAcad3DPolyline
 
 class Zcad3DSolid(CoClassBaseClass): # A CoClass
     # ZWCAD 3dSolid Object
@@ -25321,9 +25321,9 @@ class Zcad3DSolid(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcad3DSolid,
+        IAcad3DSolid,
     ]
-    default_interface = IZcad3DSolid
+    default_interface = IAcad3DSolid
 
 # This CoClass is known by the name 'ZWCAD.Application.2024'
 class ZcadApplication(CoClassBaseClass): # A CoClass
@@ -25334,9 +25334,9 @@ class ZcadApplication(CoClassBaseClass): # A CoClass
     ]
     default_source = _DZcadApplicationEvents
     coclass_interfaces = [
-        IZcadApplication,
+        IAcadApplication,
     ]
-    default_interface = IZcadApplication
+    default_interface = IAcadApplication
 
 # This CoClass is known by the name 'ZWCAD.Application.2024'
 class ZcadApplicationMinorVersion(CoClassBaseClass): # A CoClass
@@ -25347,9 +25347,9 @@ class ZcadApplicationMinorVersion(CoClassBaseClass): # A CoClass
     ]
     default_source = _DZcadApplicationEvents
     coclass_interfaces = [
-        IZcadApplication,
+        IAcadApplication,
     ]
-    default_interface = IZcadApplication
+    default_interface = IAcadApplication
 
 class ZcadArc(CoClassBaseClass): # A CoClass
     # ZWCAD Arc Object
@@ -25357,9 +25357,9 @@ class ZcadArc(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadArc,
+        IAcadArc,
     ]
-    default_interface = IZcadArc
+    default_interface = IAcadArc
 
 class ZcadAttribute(CoClassBaseClass): # A CoClass
     # ZWCAD Attribute Object
@@ -25367,9 +25367,9 @@ class ZcadAttribute(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadAttribute,
+        IAcadAttribute,
     ]
-    default_interface = IZcadAttribute
+    default_interface = IAcadAttribute
 
 class ZcadAttributeReference(CoClassBaseClass): # A CoClass
     # ZWCAD Attribute Reference Object
@@ -25377,9 +25377,9 @@ class ZcadAttributeReference(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadAttributeReference,
+        IAcadAttributeReference,
     ]
-    default_interface = IZcadAttributeReference
+    default_interface = IAcadAttributeReference
 
 class ZcadBlock(CoClassBaseClass): # A CoClass
     # ZWCAD Block Object
@@ -25387,7 +25387,7 @@ class ZcadBlock(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadBlock,
+        IAcadBlock,
     ]
 
 class ZcadBlockReference(CoClassBaseClass): # A CoClass
@@ -25396,9 +25396,9 @@ class ZcadBlockReference(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadBlockReference,
+        IAcadBlockReference,
     ]
-    default_interface = IZcadBlockReference
+    default_interface = IAcadBlockReference
 
 class ZcadBlocks(CoClassBaseClass): # A CoClass
     # ZwcadBlocks Class
@@ -25406,9 +25406,9 @@ class ZcadBlocks(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadBlocks,
+        IAcadBlocks,
     ]
-    default_interface = IZcadBlocks
+    default_interface = IAcadBlocks
 
 class ZcadCircle(CoClassBaseClass): # A CoClass
     # ZWCAD Circle Object
@@ -25416,9 +25416,9 @@ class ZcadCircle(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadCircle,
+        IAcadCircle,
     ]
-    default_interface = IZcadCircle
+    default_interface = IAcadCircle
 
 class ZcadDatabase(CoClassBaseClass): # A CoClass
     # ZcadDatabase Class
@@ -25426,9 +25426,9 @@ class ZcadDatabase(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDatabase,
+        IAcadDatabase,
     ]
-    default_interface = IZcadDatabase
+    default_interface = IAcadDatabase
 
 class ZcadDatabasePreferences(CoClassBaseClass): # A CoClass
     # ZWCAD Database Preferences Object
@@ -25436,18 +25436,18 @@ class ZcadDatabasePreferences(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDatabasePreferences,
+        IAcadDatabasePreferences,
     ]
-    default_interface = IZcadDatabasePreferences
+    default_interface = IAcadDatabasePreferences
 
 class ZcadDgnUnderlay(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A0-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadUnderlay,
+        IAcadUnderlay,
     ]
-    default_interface = IZcadUnderlay
+    default_interface = IAcadUnderlay
 
 class ZcadDictionaries(CoClassBaseClass): # A CoClass
     # ZwcadDictionaries Class
@@ -25455,9 +25455,9 @@ class ZcadDictionaries(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDictionaries,
+        IAcadDictionaries,
     ]
-    default_interface = IZcadDictionaries
+    default_interface = IAcadDictionaries
 
 class ZcadDictionary(CoClassBaseClass): # A CoClass
     # ZcadDictionary Class
@@ -25465,9 +25465,9 @@ class ZcadDictionary(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDictionary,
+        IAcadDictionary,
     ]
-    default_interface = IZcadDictionary
+    default_interface = IAcadDictionary
 
 class ZcadDim3PointAngular(CoClassBaseClass): # A CoClass
     # ZWCAD 3PointAngular Dimension Object
@@ -25475,9 +25475,9 @@ class ZcadDim3PointAngular(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDim3PointAngular,
+        IAcadDim3PointAngular,
     ]
-    default_interface = IZcadDim3PointAngular
+    default_interface = IAcadDim3PointAngular
 
 class ZcadDimAligned(CoClassBaseClass): # A CoClass
     # ZWCAD Aligned Dimension Object
@@ -25485,9 +25485,9 @@ class ZcadDimAligned(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimAligned,
+        IAcadDimAligned,
     ]
-    default_interface = IZcadDimAligned
+    default_interface = IAcadDimAligned
 
 class ZcadDimAngular(CoClassBaseClass): # A CoClass
     # ZWCAD Angular Dimension Object
@@ -25495,9 +25495,9 @@ class ZcadDimAngular(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimAngular,
+        IAcadDimAngular,
     ]
-    default_interface = IZcadDimAngular
+    default_interface = IAcadDimAngular
 
 class ZcadDimArcLength(CoClassBaseClass): # A CoClass
     # ZWCAD Arc Length Dimension Object
@@ -25505,9 +25505,9 @@ class ZcadDimArcLength(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimArcLength,
+        IAcadDimArcLength,
     ]
-    default_interface = IZcadDimArcLength
+    default_interface = IAcadDimArcLength
 
 class ZcadDimDiametric(CoClassBaseClass): # A CoClass
     # ZwcadDimDiametric Class
@@ -25515,9 +25515,9 @@ class ZcadDimDiametric(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimDiametric,
+        IAcadDimDiametric,
     ]
-    default_interface = IZcadDimDiametric
+    default_interface = IAcadDimDiametric
 
 class ZcadDimOrdinate(CoClassBaseClass): # A CoClass
     # ZWCAD Ordinate Dimension Object
@@ -25525,9 +25525,9 @@ class ZcadDimOrdinate(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimOrdinate,
+        IAcadDimOrdinate,
     ]
-    default_interface = IZcadDimOrdinate
+    default_interface = IAcadDimOrdinate
 
 class ZcadDimRadial(CoClassBaseClass): # A CoClass
     # ZWCAD Radial Dimension Object
@@ -25535,9 +25535,9 @@ class ZcadDimRadial(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimRadial,
+        IAcadDimRadial,
     ]
-    default_interface = IZcadDimRadial
+    default_interface = IAcadDimRadial
 
 class ZcadDimRadialLarge(CoClassBaseClass): # A CoClass
     # ZWCAD Radial Large Dimension Object
@@ -25545,9 +25545,9 @@ class ZcadDimRadialLarge(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimRadialLarge,
+        IAcadDimRadialLarge,
     ]
-    default_interface = IZcadDimRadialLarge
+    default_interface = IAcadDimRadialLarge
 
 class ZcadDimRotated(CoClassBaseClass): # A CoClass
     # ZWCAD Rotated Dimension Object
@@ -25555,9 +25555,9 @@ class ZcadDimRotated(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimRotated,
+        IAcadDimRotated,
     ]
-    default_interface = IZcadDimRotated
+    default_interface = IAcadDimRotated
 
 class ZcadDimStyle(CoClassBaseClass): # A CoClass
     # ZWCAD DimStyle Object
@@ -25565,9 +25565,9 @@ class ZcadDimStyle(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimStyle,
+        IAcadDimStyle,
     ]
-    default_interface = IZcadDimStyle
+    default_interface = IAcadDimStyle
 
 class ZcadDimStyles(CoClassBaseClass): # A CoClass
     # ZwcadDimStyles Class
@@ -25575,9 +25575,9 @@ class ZcadDimStyles(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimStyles,
+        IAcadDimStyles,
     ]
-    default_interface = IZcadDimStyles
+    default_interface = IAcadDimStyles
 
 class ZcadDimension(CoClassBaseClass): # A CoClass
     # ZwcadDimension Class
@@ -25585,9 +25585,9 @@ class ZcadDimension(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDimension,
+        IAcadDimension,
     ]
-    default_interface = IZcadDimension
+    default_interface = IAcadDimension
 
 # This CoClass is known by the name 'ZWCAD.Drawing.2024'
 class ZcadDocument(CoClassBaseClass): # A CoClass
@@ -25598,9 +25598,9 @@ class ZcadDocument(CoClassBaseClass): # A CoClass
     ]
     default_source = _DZcadDocumentEvents
     coclass_interfaces = [
-        IZcadDocument,
+        IAcadDocument,
     ]
-    default_interface = IZcadDocument
+    default_interface = IAcadDocument
 
 class ZcadDocuments(CoClassBaseClass): # A CoClass
     # ZcadDocuments Class
@@ -25608,28 +25608,28 @@ class ZcadDocuments(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDocuments,
+        IAcadDocuments,
     ]
-    default_interface = IZcadDocuments
+    default_interface = IAcadDocuments
 
 class ZcadDwfUnderlay(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92312A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDwfUnderlay,
-        IZcadUnderlay,
+        IAcadDwfUnderlay,
+        IAcadUnderlay,
     ]
-    default_interface = IZcadDwfUnderlay
+    default_interface = IAcadDwfUnderlay
 
 class ZcadDynamicBlockReferenceProperty(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC922FC3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadDynamicBlockReferenceProperty,
+        IAcadDynamicBlockReferenceProperty,
     ]
-    default_interface = IZcadDynamicBlockReferenceProperty
+    default_interface = IAcadDynamicBlockReferenceProperty
 
 class ZcadEllipse(CoClassBaseClass): # A CoClass
     # ZWCAD Ellipse Object
@@ -25637,9 +25637,9 @@ class ZcadEllipse(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadEllipse,
+        IAcadEllipse,
     ]
-    default_interface = IZcadEllipse
+    default_interface = IAcadEllipse
 
 class ZcadEntity(CoClassBaseClass): # A CoClass
     # ZcadEntity Class
@@ -25647,9 +25647,9 @@ class ZcadEntity(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadEntity,
+        IAcadEntity,
     ]
-    default_interface = IZcadEntity
+    default_interface = IAcadEntity
 
 class ZcadExternalReference(CoClassBaseClass): # A CoClass
     # ZWCAD External Reference Object
@@ -25657,18 +25657,18 @@ class ZcadExternalReference(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadExternalReference,
+        IAcadExternalReference,
     ]
-    default_interface = IZcadExternalReference
+    default_interface = IAcadExternalReference
 
 class ZcadExtrudedSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923284-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadExtrudedSurface,
+        IAcadExtrudedSurface,
     ]
-    default_interface = IZcadExtrudedSurface
+    default_interface = IAcadExtrudedSurface
 
 class ZcadFileDependencies(CoClassBaseClass): # A CoClass
     # ZwcadFileDependencies Class
@@ -25676,9 +25676,9 @@ class ZcadFileDependencies(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadFileDependencies,
+        IAcadFileDependencies,
     ]
-    default_interface = IZcadFileDependencies
+    default_interface = IAcadFileDependencies
 
 class ZcadFileDependency(CoClassBaseClass): # A CoClass
     # ZwcadFileDependency Class
@@ -25686,27 +25686,27 @@ class ZcadFileDependency(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadFileDependency,
+        IAcadFileDependency,
     ]
-    default_interface = IZcadFileDependency
+    default_interface = IAcadFileDependency
 
 class ZcadGeoPositionMarker(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadGeoPositionMarker,
+        IAcadGeoPositionMarker,
     ]
-    default_interface = IZcadGeoPositionMarker
+    default_interface = IAcadGeoPositionMarker
 
 class ZcadGeomapImage(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A8-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadGeomapImage,
+        IAcadGeomapImage,
     ]
-    default_interface = IZcadGeomapImage
+    default_interface = IAcadGeomapImage
 
 class ZcadGroup(CoClassBaseClass): # A CoClass
     # ZWCAD Group Object
@@ -25714,9 +25714,9 @@ class ZcadGroup(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadGroup,
+        IAcadGroup,
     ]
-    default_interface = IZcadGroup
+    default_interface = IAcadGroup
 
 class ZcadGroups(CoClassBaseClass): # A CoClass
     # ZwcadGroups Class
@@ -25724,9 +25724,9 @@ class ZcadGroups(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadGroups,
+        IAcadGroups,
     ]
-    default_interface = IZcadGroups
+    default_interface = IAcadGroups
 
 class ZcadHatch(CoClassBaseClass): # A CoClass
     # ZWCAD Hatch Object
@@ -25734,18 +25734,18 @@ class ZcadHatch(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadHatch,
+        IAcadHatch,
     ]
-    default_interface = IZcadHatch
+    default_interface = IAcadHatch
 
 class ZcadHelix(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923012-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadHelix,
+        IAcadHelix,
     ]
-    default_interface = IZcadHelix
+    default_interface = IAcadHelix
 
 class ZcadHyperlink(CoClassBaseClass): # A CoClass
     # ZWCAD Object
@@ -25753,18 +25753,18 @@ class ZcadHyperlink(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadHyperlink,
+        IAcadHyperlink,
     ]
-    default_interface = IZcadHyperlink
+    default_interface = IAcadHyperlink
 
 class ZcadHyperlinks(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923046-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadHyperlinks,
+        IAcadHyperlinks,
     ]
-    default_interface = IZcadHyperlinks
+    default_interface = IAcadHyperlinks
 
 class ZcadIdPair(CoClassBaseClass): # A CoClass
     # ZWCAD IdPair Object
@@ -25772,9 +25772,9 @@ class ZcadIdPair(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadIdPair,
+        IAcadIdPair,
     ]
-    default_interface = IZcadIdPair
+    default_interface = IAcadIdPair
 
 class ZcadLWPolyline(CoClassBaseClass): # A CoClass
     # ZWCAD Lightweight Polyline Object
@@ -25782,9 +25782,9 @@ class ZcadLWPolyline(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLWPolyline,
+        IAcadLWPolyline,
     ]
-    default_interface = IZcadLWPolyline
+    default_interface = IAcadLWPolyline
 
 class ZcadLayer(CoClassBaseClass): # A CoClass
     # ZWCAD Layer Object
@@ -25792,18 +25792,18 @@ class ZcadLayer(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLayer,
+        IAcadLayer,
     ]
-    default_interface = IZcadLayer
+    default_interface = IAcadLayer
 
 class ZcadLayerStateManager(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92312F-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLayerStateManager,
+        IAcadLayerStateManager,
     ]
-    default_interface = IZcadLayerStateManager
+    default_interface = IAcadLayerStateManager
 
 class ZcadLayers(CoClassBaseClass): # A CoClass
     # ZwcadLayers Class
@@ -25811,9 +25811,9 @@ class ZcadLayers(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLayers,
+        IAcadLayers,
     ]
-    default_interface = IZcadLayers
+    default_interface = IAcadLayers
 
 class ZcadLayout(CoClassBaseClass): # A CoClass
     # ZWCAD Layout Object
@@ -25821,9 +25821,9 @@ class ZcadLayout(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLayout,
+        IAcadLayout,
     ]
-    default_interface = IZcadLayout
+    default_interface = IAcadLayout
 
 class ZcadLayouts(CoClassBaseClass): # A CoClass
     # ZWCAD Layouts Object
@@ -25831,9 +25831,9 @@ class ZcadLayouts(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLayouts,
+        IAcadLayouts,
     ]
-    default_interface = IZcadLayouts
+    default_interface = IAcadLayouts
 
 class ZcadLeader(CoClassBaseClass): # A CoClass
     # ZWCAD Leader Object
@@ -25841,9 +25841,9 @@ class ZcadLeader(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLeader,
+        IAcadLeader,
     ]
-    default_interface = IZcadLeader
+    default_interface = IAcadLeader
 
 class ZcadLine(CoClassBaseClass): # A CoClass
     # ZWCAD Line Object
@@ -25851,9 +25851,9 @@ class ZcadLine(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLine,
+        IAcadLine,
     ]
-    default_interface = IZcadLine
+    default_interface = IAcadLine
 
 class ZcadLineType(CoClassBaseClass): # A CoClass
     # ZWCAD LineType Object
@@ -25861,9 +25861,9 @@ class ZcadLineType(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLineType,
+        IAcadLineType,
     ]
-    default_interface = IZcadLineType
+    default_interface = IAcadLineType
 
 class ZcadLineTypes(CoClassBaseClass): # A CoClass
     # ZwcadLineTypes Class
@@ -25871,18 +25871,18 @@ class ZcadLineTypes(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLineTypes,
+        IAcadLineTypes,
     ]
-    default_interface = IZcadLineTypes
+    default_interface = IAcadLineTypes
 
 class ZcadLoftedSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923222-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadLoftedSurface,
+        IAcadLoftedSurface,
     ]
-    default_interface = IZcadLoftedSurface
+    default_interface = IAcadLoftedSurface
 
 class ZcadMInsertBlock(CoClassBaseClass): # A CoClass
     # ZWCAD MInsertBlock Object
@@ -25890,36 +25890,36 @@ class ZcadMInsertBlock(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMInsertBlock,
+        IAcadMInsertBlock,
     ]
-    default_interface = IZcadMInsertBlock
+    default_interface = IAcadMInsertBlock
 
 class ZcadMLeader(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923004-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMLeader,
+        IAcadMLeader,
     ]
-    default_interface = IZcadMLeader
+    default_interface = IAcadMLeader
 
 class ZcadMLeaderLeader(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232B9-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMLeaderLeader,
+        IAcadMLeaderLeader,
     ]
-    default_interface = IZcadMLeaderLeader
+    default_interface = IAcadMLeaderLeader
 
 class ZcadMLeaderStyle(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923148-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMLeaderStyle,
+        IAcadMLeaderStyle,
     ]
-    default_interface = IZcadMLeaderStyle
+    default_interface = IAcadMLeaderStyle
 
 class ZcadMLine(CoClassBaseClass): # A CoClass
     # ZWCAD MLine Object
@@ -25927,9 +25927,9 @@ class ZcadMLine(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMLine,
+        IAcadMLine,
     ]
-    default_interface = IZcadMLine
+    default_interface = IAcadMLine
 
 class ZcadMText(CoClassBaseClass): # A CoClass
     # ZWCAD MText Object
@@ -25937,27 +25937,27 @@ class ZcadMText(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMText,
+        IAcadMText,
     ]
-    default_interface = IZcadMText
+    default_interface = IAcadMText
 
 class ZcadMaterial(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923024-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMaterial,
+        IAcadMaterial,
     ]
-    default_interface = IZcadMaterial
+    default_interface = IAcadMaterial
 
 class ZcadMaterials(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92310B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMaterials,
+        IAcadMaterials,
     ]
-    default_interface = IZcadMaterials
+    default_interface = IAcadMaterials
 
 class ZcadMenuBar(CoClassBaseClass): # A CoClass
     # ZWCAD MenuBar Object
@@ -25965,9 +25965,9 @@ class ZcadMenuBar(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMenuBar,
+        IAcadMenuBar,
     ]
-    default_interface = IZcadMenuBar
+    default_interface = IAcadMenuBar
 
 class ZcadMenuGroup(CoClassBaseClass): # A CoClass
     # ZWCAD MenuGroup Object
@@ -25975,9 +25975,9 @@ class ZcadMenuGroup(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMenuGroup,
+        IAcadMenuGroup,
     ]
-    default_interface = IZcadMenuGroup
+    default_interface = IAcadMenuGroup
 
 class ZcadMenuGroups(CoClassBaseClass): # A CoClass
     # ZWCAD MenuGroups Object
@@ -25985,9 +25985,9 @@ class ZcadMenuGroups(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadMenuGroups,
+        IAcadMenuGroups,
     ]
-    default_interface = IZcadMenuGroups
+    default_interface = IAcadMenuGroups
 
 class ZcadModelSpace(CoClassBaseClass): # A CoClass
     # ZWCAD ModelSpace Object
@@ -25995,19 +25995,19 @@ class ZcadModelSpace(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadModelSpace,
-        IZcadModelSpace2,
+        IAcadModelSpace,
+        IAcadModelSpace2,
     ]
-    default_interface = IZcadModelSpace
+    default_interface = IAcadModelSpace
 
 class ZcadNurbSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A6-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadNurbSurface,
+        IAcadNurbSurface,
     ]
-    default_interface = IZcadNurbSurface
+    default_interface = IAcadNurbSurface
 
 class ZcadObject(CoClassBaseClass): # A CoClass
     # ZcadObject Class
@@ -26015,9 +26015,9 @@ class ZcadObject(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadObject,
+        IAcadObject,
     ]
-    default_interface = IZcadObject
+    default_interface = IAcadObject
 
 class ZcadObjectEvents(CoClassBaseClass): # A CoClass
     # ZcadObjectEvents Class
@@ -26033,18 +26033,18 @@ class ZcadOle(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadOle,
+        IAcadOle,
     ]
-    default_interface = IZcadOle
+    default_interface = IAcadOle
 
 class ZcadPViewport(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923088-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPViewport,
+        IAcadPViewport,
     ]
-    default_interface = IZcadPViewport
+    default_interface = IAcadPViewport
 
 class ZcadPaperSpace(CoClassBaseClass): # A CoClass
     # ZWCAD PaperSpace Object
@@ -26052,7 +26052,7 @@ class ZcadPaperSpace(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPaperSpace,
+        IAcadPaperSpace,
     ]
 
 class ZcadPdfUnderlay(CoClassBaseClass): # A CoClass
@@ -26060,18 +26060,18 @@ class ZcadPdfUnderlay(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadUnderlay,
+        IAcadUnderlay,
     ]
-    default_interface = IZcadUnderlay
+    default_interface = IAcadUnderlay
 
 class ZcadPlaneSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923036-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPlaneSurface,
+        IAcadPlaneSurface,
     ]
-    default_interface = IZcadPlaneSurface
+    default_interface = IAcadPlaneSurface
 
 class ZcadPlot(CoClassBaseClass): # A CoClass
     # ZWCAD Plot Object
@@ -26079,9 +26079,9 @@ class ZcadPlot(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPlot,
+        IAcadPlot,
     ]
-    default_interface = IZcadPlot
+    default_interface = IAcadPlot
 
 class ZcadPlotConfiguration(CoClassBaseClass): # A CoClass
     # ZWCAD PlotConfiguration Object
@@ -26089,9 +26089,9 @@ class ZcadPlotConfiguration(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPlotConfiguration,
+        IAcadPlotConfiguration,
     ]
-    default_interface = IZcadPlotConfiguration
+    default_interface = IAcadPlotConfiguration
 
 class ZcadPlotConfigurations(CoClassBaseClass): # A CoClass
     # ZWCAD PlotConfigurations Object
@@ -26099,9 +26099,9 @@ class ZcadPlotConfigurations(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPlotConfigurations,
+        IAcadPlotConfigurations,
     ]
-    default_interface = IZcadPlotConfigurations
+    default_interface = IAcadPlotConfigurations
 
 class ZcadPoint(CoClassBaseClass): # A CoClass
     # ZWCAD Point Object
@@ -26109,27 +26109,27 @@ class ZcadPoint(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPoint,
+        IAcadPoint,
     ]
-    default_interface = IZcadPoint
+    default_interface = IAcadPoint
 
 class ZcadPointCloud(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A9-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPointCloud,
+        IAcadPointCloud,
     ]
-    default_interface = IZcadPointCloud
+    default_interface = IAcadPointCloud
 
 class ZcadPointCloudEx(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232AA-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPointCloudEx2,
+        IAcadPointCloudEx2,
     ]
-    default_interface = IZcadPointCloudEx2
+    default_interface = IAcadPointCloudEx2
 
 class ZcadPolyfaceMesh(CoClassBaseClass): # A CoClass
     # ZWCAD PolyfaceMesh Object
@@ -26137,9 +26137,9 @@ class ZcadPolyfaceMesh(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPolyfaceMesh,
+        IAcadPolyfaceMesh,
     ]
-    default_interface = IZcadPolyfaceMesh
+    default_interface = IAcadPolyfaceMesh
 
 class ZcadPolygonMesh(CoClassBaseClass): # A CoClass
     # ZWCAD PolygonMesh Object
@@ -26147,9 +26147,9 @@ class ZcadPolygonMesh(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPolygonMesh,
+        IAcadPolygonMesh,
     ]
-    default_interface = IZcadPolygonMesh
+    default_interface = IAcadPolygonMesh
 
 class ZcadPolyline(CoClassBaseClass): # A CoClass
     # ZWCAD Polyline Object
@@ -26157,9 +26157,9 @@ class ZcadPolyline(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPolyline,
+        IAcadPolyline,
     ]
-    default_interface = IZcadPolyline
+    default_interface = IAcadPolyline
 
 class ZcadPopupMenu(CoClassBaseClass): # A CoClass
     # ZWCAD PopupMenu Object
@@ -26167,9 +26167,9 @@ class ZcadPopupMenu(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPopupMenu,
+        IAcadPopupMenu,
     ]
-    default_interface = IZcadPopupMenu
+    default_interface = IAcadPopupMenu
 
 class ZcadPopupMenuItem(CoClassBaseClass): # A CoClass
     # ZWCAD PopupMenuItem Object
@@ -26177,9 +26177,9 @@ class ZcadPopupMenuItem(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPopupMenuItem,
+        IAcadPopupMenuItem,
     ]
-    default_interface = IZcadPopupMenuItem
+    default_interface = IAcadPopupMenuItem
 
 class ZcadPopupMenus(CoClassBaseClass): # A CoClass
     # ZWCAD PopupMenus Object
@@ -26187,18 +26187,18 @@ class ZcadPopupMenus(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPopupMenus,
+        IAcadPopupMenus,
     ]
-    default_interface = IZcadPopupMenus
+    default_interface = IAcadPopupMenus
 
 class ZcadPreferences(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC922FC7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPreferences,
+        IAcadPreferences,
     ]
-    default_interface = IZcadPreferences
+    default_interface = IAcadPreferences
 
 class ZcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     # ZWCAD Display Preferences Object
@@ -26206,9 +26206,9 @@ class ZcadPreferencesDisplay(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPreferencesDisplay,
+        IAcadPreferencesDisplay,
     ]
-    default_interface = IZcadPreferencesDisplay
+    default_interface = IAcadPreferencesDisplay
 
 class ZcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     # ZWCAD Drafting Preferences Object
@@ -26216,9 +26216,9 @@ class ZcadPreferencesDrafting(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPreferencesDrafting,
+        IAcadPreferencesDrafting,
     ]
-    default_interface = IZcadPreferencesDrafting
+    default_interface = IAcadPreferencesDrafting
 
 class ZcadPreferencesFiles(CoClassBaseClass): # A CoClass
     # ZWCAD Files Preferences Object
@@ -26226,9 +26226,9 @@ class ZcadPreferencesFiles(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPreferencesFiles,
+        IAcadPreferencesFiles,
     ]
-    default_interface = IZcadPreferencesFiles
+    default_interface = IAcadPreferencesFiles
 
 class ZcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     # ZWCAD OpenSave Preferences Object
@@ -26236,9 +26236,9 @@ class ZcadPreferencesOpenSave(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPreferencesOpenSave,
+        IAcadPreferencesOpenSave,
     ]
-    default_interface = IZcadPreferencesOpenSave
+    default_interface = IAcadPreferencesOpenSave
 
 class ZcadPreferencesOutput(CoClassBaseClass): # A CoClass
     # ZWCAD Output Preferences Object
@@ -26246,9 +26246,9 @@ class ZcadPreferencesOutput(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPreferencesOutput,
+        IAcadPreferencesOutput,
     ]
-    default_interface = IZcadPreferencesOutput
+    default_interface = IAcadPreferencesOutput
 
 class ZcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     # ZWCAD Profiles Preferences Object
@@ -26256,9 +26256,9 @@ class ZcadPreferencesProfiles(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPreferencesProfiles,
+        IAcadPreferencesProfiles,
     ]
-    default_interface = IZcadPreferencesProfiles
+    default_interface = IAcadPreferencesProfiles
 
 class ZcadPreferencesSelection(CoClassBaseClass): # A CoClass
     # ZWCAD Selection Preferences Object
@@ -26266,9 +26266,9 @@ class ZcadPreferencesSelection(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPreferencesSelection,
+        IAcadPreferencesSelection,
     ]
-    default_interface = IZcadPreferencesSelection
+    default_interface = IAcadPreferencesSelection
 
 class ZcadPreferencesSystem(CoClassBaseClass): # A CoClass
     # ZWCAD System Preferences Object
@@ -26276,9 +26276,9 @@ class ZcadPreferencesSystem(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPreferencesSystem,
+        IAcadPreferencesSystem,
     ]
-    default_interface = IZcadPreferencesSystem
+    default_interface = IAcadPreferencesSystem
 
 class ZcadPreferencesUser(CoClassBaseClass): # A CoClass
     # ZWCAD User Preferences Object
@@ -26286,9 +26286,9 @@ class ZcadPreferencesUser(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadPreferencesUser,
+        IAcadPreferencesUser,
     ]
-    default_interface = IZcadPreferencesUser
+    default_interface = IAcadPreferencesUser
 
 class ZcadRasterImage(CoClassBaseClass): # A CoClass
     # ZWCAD Raster Object
@@ -26296,9 +26296,9 @@ class ZcadRasterImage(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadRasterImage,
+        IAcadRasterImage,
     ]
-    default_interface = IZcadRasterImage
+    default_interface = IAcadRasterImage
 
 class ZcadRay(CoClassBaseClass): # A CoClass
     # ZWCAD Ray Object
@@ -26306,9 +26306,9 @@ class ZcadRay(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadRay,
+        IAcadRay,
     ]
-    default_interface = IZcadRay
+    default_interface = IAcadRay
 
 class ZcadRegion(CoClassBaseClass): # A CoClass
     # ZWCAD Region Object
@@ -26316,9 +26316,9 @@ class ZcadRegion(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadRegion,
+        IAcadRegion,
     ]
-    default_interface = IZcadRegion
+    default_interface = IAcadRegion
 
 class ZcadRegisteredApplication(CoClassBaseClass): # A CoClass
     # ZWCAD RegisteredApplication Object
@@ -26326,9 +26326,9 @@ class ZcadRegisteredApplication(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadRegisteredApplication,
+        IAcadRegisteredApplication,
     ]
-    default_interface = IZcadRegisteredApplication
+    default_interface = IAcadRegisteredApplication
 
 class ZcadRegisteredApplications(CoClassBaseClass): # A CoClass
     # ZwcadRegisteredApplications Class
@@ -26336,54 +26336,54 @@ class ZcadRegisteredApplications(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadRegisteredApplications,
+        IAcadRegisteredApplications,
     ]
-    default_interface = IZcadRegisteredApplications
+    default_interface = IAcadRegisteredApplications
 
 class ZcadRevolvedSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC922FE4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadRevolvedSurface,
+        IAcadRevolvedSurface,
     ]
-    default_interface = IZcadRevolvedSurface
+    default_interface = IAcadRevolvedSurface
 
 class ZcadSection(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92302B-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSection,
+        IAcadSection,
     ]
-    default_interface = IZcadSection
+    default_interface = IAcadSection
 
 class ZcadSectionManager(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9230EB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSectionManager,
+        IAcadSectionManager,
     ]
-    default_interface = IZcadSectionManager
+    default_interface = IAcadSectionManager
 
 class ZcadSectionSettings(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923094-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSectionSettings,
+        IAcadSectionSettings,
     ]
-    default_interface = IZcadSectionSettings
+    default_interface = IAcadSectionSettings
 
 class ZcadSectionTypeSettings(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923027-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSectionTypeSettings,
+        IAcadSectionTypeSettings,
     ]
-    default_interface = IZcadSectionTypeSettings
+    default_interface = IAcadSectionTypeSettings
 
 class ZcadSecurityParams(CoClassBaseClass): # A CoClass
     # Security Parameters Object
@@ -26391,9 +26391,9 @@ class ZcadSecurityParams(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSecurityParams,
+        IAcadSecurityParams,
     ]
-    default_interface = IZcadSecurityParams
+    default_interface = IAcadSecurityParams
 
 class ZcadSelectionSet(CoClassBaseClass): # A CoClass
     # ZwcadSelectionSet Class
@@ -26401,9 +26401,9 @@ class ZcadSelectionSet(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSelectionSet,
+        IAcadSelectionSet,
     ]
-    default_interface = IZcadSelectionSet
+    default_interface = IAcadSelectionSet
 
 class ZcadSelectionSets(CoClassBaseClass): # A CoClass
     # ZwcadSelectionSets Class
@@ -26411,9 +26411,9 @@ class ZcadSelectionSets(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSelectionSets,
+        IAcadSelectionSets,
     ]
-    default_interface = IZcadSelectionSets
+    default_interface = IAcadSelectionSets
 
 class ZcadShadowDisplay(CoClassBaseClass): # A CoClass
     # ZcadShadowDisplay Class
@@ -26421,9 +26421,9 @@ class ZcadShadowDisplay(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadShadowDisplay,
+        IAcadShadowDisplay,
     ]
-    default_interface = IZcadShadowDisplay
+    default_interface = IAcadShadowDisplay
 
 class ZcadShape(CoClassBaseClass): # A CoClass
     # ZWCAD Shape Object
@@ -26431,9 +26431,9 @@ class ZcadShape(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadShape,
+        IAcadShape,
     ]
-    default_interface = IZcadShape
+    default_interface = IAcadShape
 
 class ZcadSolid(CoClassBaseClass): # A CoClass
     # ZWCAD Solid Object
@@ -26441,18 +26441,18 @@ class ZcadSolid(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSolid,
+        IAcadSolid,
     ]
-    default_interface = IZcadSolid
+    default_interface = IAcadSolid
 
 class ZcadSortentsTable(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92308A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSortentsTable,
+        IAcadSortentsTable,
     ]
-    default_interface = IZcadSortentsTable
+    default_interface = IAcadSortentsTable
 
 class ZcadSpline(CoClassBaseClass): # A CoClass
     # ZWCAD Spline Object
@@ -26460,9 +26460,9 @@ class ZcadSpline(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSpline,
+        IAcadSpline,
     ]
-    default_interface = IZcadSpline
+    default_interface = IAcadSpline
 
 class ZcadState(CoClassBaseClass): # A CoClass
     # ZWCAD State Object
@@ -26470,90 +26470,90 @@ class ZcadState(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadState,
+        IAcadState,
     ]
-    default_interface = IZcadState
+    default_interface = IAcadState
 
 class ZcadSubDMesh(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923286-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSubDMesh,
+        IAcadSubDMesh,
     ]
-    default_interface = IZcadSubDMesh
+    default_interface = IAcadSubDMesh
 
 class ZcadSubDMeshEdge(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A4-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSubDMeshEdge,
+        IAcadSubDMeshEdge,
     ]
-    default_interface = IZcadSubDMeshEdge
+    default_interface = IAcadSubDMeshEdge
 
 class ZcadSubDMeshFace(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A3-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSubDMeshFace,
+        IAcadSubDMeshFace,
     ]
-    default_interface = IZcadSubDMeshFace
+    default_interface = IAcadSubDMeshFace
 
 class ZcadSubDMeshVertex(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A5-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSubDMeshVertex,
+        IAcadSubDMeshVertex,
     ]
-    default_interface = IZcadSubDMeshVertex
+    default_interface = IAcadSubDMeshVertex
 
 class ZcadSubEntSolidEdge(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923191-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSubEntSolidEdge,
+        IAcadSubEntSolidEdge,
     ]
-    default_interface = IZcadSubEntSolidEdge
+    default_interface = IAcadSubEntSolidEdge
 
 class ZcadSubEntSolidFace(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSubEntSolidFace,
+        IAcadSubEntSolidFace,
     ]
-    default_interface = IZcadSubEntSolidFace
+    default_interface = IAcadSubEntSolidFace
 
 class ZcadSubEntSolidNode(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9232A2-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSubEntSolidNode,
+        IAcadSubEntSolidNode,
     ]
-    default_interface = IZcadSubEntSolidNode
+    default_interface = IAcadSubEntSolidNode
 
 class ZcadSubEntSolidVertex(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9230E1-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSubEntSolidVertex,
+        IAcadSubEntSolidVertex,
     ]
-    default_interface = IZcadSubEntSolidVertex
+    default_interface = IAcadSubEntSolidVertex
 
 class ZcadSubEntity(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC9231A7-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSubEntity,
+        IAcadSubEntity,
     ]
-    default_interface = IZcadSubEntity
+    default_interface = IAcadSubEntity
 
 class ZcadSummaryInfo(CoClassBaseClass): # A CoClass
     # ZwcadSummaryInfo Class
@@ -26561,36 +26561,36 @@ class ZcadSummaryInfo(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSummaryInfo,
+        IAcadSummaryInfo,
     ]
-    default_interface = IZcadSummaryInfo
+    default_interface = IAcadSummaryInfo
 
 class ZcadSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC92305A-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSurface,
+        IAcadSurface,
     ]
-    default_interface = IZcadSurface
+    default_interface = IAcadSurface
 
 class ZcadSweptSurface(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923060-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadSweptSurface,
+        IAcadSweptSurface,
     ]
-    default_interface = IZcadSweptSurface
+    default_interface = IAcadSweptSurface
 
 class ZcadTable(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923019-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadTable,
+        IAcadTable,
     ]
-    default_interface = IZcadTable
+    default_interface = IAcadTable
 
 class ZcadTableStyle(CoClassBaseClass): # A CoClass
     # ZWCAD TableStyle Object
@@ -26598,9 +26598,9 @@ class ZcadTableStyle(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadTableStyle,
+        IAcadTableStyle,
     ]
-    default_interface = IZcadTableStyle
+    default_interface = IAcadTableStyle
 
 class ZcadText(CoClassBaseClass): # A CoClass
     # ZWCAD Text Object
@@ -26608,9 +26608,9 @@ class ZcadText(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadText,
+        IAcadText,
     ]
-    default_interface = IZcadText
+    default_interface = IAcadText
 
 class ZcadTextStyle(CoClassBaseClass): # A CoClass
     # ZWCAD TextStyle Object
@@ -26618,9 +26618,9 @@ class ZcadTextStyle(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadTextStyle,
+        IAcadTextStyle,
     ]
-    default_interface = IZcadTextStyle
+    default_interface = IAcadTextStyle
 
 class ZcadTextStyles(CoClassBaseClass): # A CoClass
     # ZwcadTextStyles Class
@@ -26628,9 +26628,9 @@ class ZcadTextStyles(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadTextStyles,
+        IAcadTextStyles,
     ]
-    default_interface = IZcadTextStyles
+    default_interface = IAcadTextStyles
 
 class ZcadTolerance(CoClassBaseClass): # A CoClass
     # ZWCAD Tolerance Object
@@ -26638,9 +26638,9 @@ class ZcadTolerance(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadTolerance,
+        IAcadTolerance,
     ]
-    default_interface = IZcadTolerance
+    default_interface = IAcadTolerance
 
 class ZcadToolbar(CoClassBaseClass): # A CoClass
     # ZWCAD Toolbar Object
@@ -26648,9 +26648,9 @@ class ZcadToolbar(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadToolbar,
+        IAcadToolbar,
     ]
-    default_interface = IZcadToolbar
+    default_interface = IAcadToolbar
 
 class ZcadToolbarItem(CoClassBaseClass): # A CoClass
     # ZWCAD ToolbarItem Object
@@ -26658,9 +26658,9 @@ class ZcadToolbarItem(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadToolbarItem,
+        IAcadToolbarItem,
     ]
-    default_interface = IZcadToolbarItem
+    default_interface = IAcadToolbarItem
 
 class ZcadToolbars(CoClassBaseClass): # A CoClass
     # ZWCAD Toolbars Object
@@ -26668,9 +26668,9 @@ class ZcadToolbars(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadToolbars,
+        IAcadToolbars,
     ]
-    default_interface = IZcadToolbars
+    default_interface = IAcadToolbars
 
 class ZcadTrace(CoClassBaseClass): # A CoClass
     # ZWCAD Trace Object
@@ -26678,9 +26678,9 @@ class ZcadTrace(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadTrace,
+        IAcadTrace,
     ]
-    default_interface = IZcadTrace
+    default_interface = IAcadTrace
 
 class ZcadUCS(CoClassBaseClass): # A CoClass
     # ZWCAD UCS Object
@@ -26688,9 +26688,9 @@ class ZcadUCS(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadUCS,
+        IAcadUCS,
     ]
-    default_interface = IZcadUCS
+    default_interface = IAcadUCS
 
 class ZcadUCSs(CoClassBaseClass): # A CoClass
     # ZwcadUCSs Class
@@ -26698,9 +26698,9 @@ class ZcadUCSs(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadUCSs,
+        IAcadUCSs,
     ]
-    default_interface = IZcadUCSs
+    default_interface = IAcadUCSs
 
 class ZcadUtility(CoClassBaseClass): # A CoClass
     # ZWCAD Utility Object
@@ -26708,9 +26708,9 @@ class ZcadUtility(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadUtility,
+        IAcadUtility,
     ]
-    default_interface = IZcadUtility
+    default_interface = IAcadUtility
 
 class ZcadView(CoClassBaseClass): # A CoClass
     # ZWCAD View Object
@@ -26718,9 +26718,9 @@ class ZcadView(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadView,
+        IAcadView,
     ]
-    default_interface = IZcadView
+    default_interface = IAcadView
 
 class ZcadViewport(CoClassBaseClass): # A CoClass
     # ZWCAD Viewport Object
@@ -26728,9 +26728,9 @@ class ZcadViewport(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadViewport,
+        IAcadViewport,
     ]
-    default_interface = IZcadViewport
+    default_interface = IAcadViewport
 
 class ZcadViewports(CoClassBaseClass): # A CoClass
     # ZwcadViewports Class
@@ -26738,9 +26738,9 @@ class ZcadViewports(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadViewports,
+        IAcadViewports,
     ]
-    default_interface = IZcadViewports
+    default_interface = IAcadViewports
 
 class ZcadViews(CoClassBaseClass): # A CoClass
     # ZwcadViews Class
@@ -26748,9 +26748,9 @@ class ZcadViews(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadViews,
+        IAcadViews,
     ]
-    default_interface = IZcadViews
+    default_interface = IAcadViews
 
 class ZcadWipeout(CoClassBaseClass): # A CoClass
     # ZcadWipeout ��
@@ -26758,18 +26758,18 @@ class ZcadWipeout(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadWipeout,
+        IAcadWipeout,
     ]
-    default_interface = IZcadWipeout
+    default_interface = IAcadWipeout
 
 class ZcadXRecord(CoClassBaseClass): # A CoClass
     CLSID = IID('{EC923032-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadXRecord,
+        IAcadXRecord,
     ]
-    default_interface = IZcadXRecord
+    default_interface = IAcadXRecord
 
 class ZcadXline(CoClassBaseClass): # A CoClass
     # ZWCAD Xline Object
@@ -26777,9 +26777,9 @@ class ZcadXline(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadXline,
+        IAcadXline,
     ]
-    default_interface = IZcadXline
+    default_interface = IAcadXline
 
 # This CoClass is known by the name 'ZWCAD.ZcCmColor.2024'
 class ZcadZcCmColor(CoClassBaseClass): # A CoClass
@@ -26788,9 +26788,9 @@ class ZcadZcCmColor(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IZcadZcCmColor,
+        IAcadZcCmColor,
     ]
-    default_interface = IZcadZcCmColor
+    default_interface = IAcadZcCmColor
 
 IArcTextObj_vtables_dispatch_ = 1
 IArcTextObj_vtables_ = [
@@ -26819,8 +26819,8 @@ IArcTextObj_vtables_ = [
     (( 'CharSpacing' , 'pVal' , ), 12, (12, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 632 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcad3DFace_vtables_dispatch_ = 1
-IZcad3DFace_vtables_ = [
+IAcad3DFace_vtables_dispatch_ = 1
+IAcad3DFace_vtables_ = [
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'VisibilityEdge1' , 'visibility' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -26841,8 +26841,8 @@ IZcad3DFace_vtables_ = [
              (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcad3DPolyline_vtables_dispatch_ = 1
-IZcad3DPolyline_vtables_ = [
+IAcad3DPolyline_vtables_dispatch_ = 1
+IAcad3DPolyline_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'AppendVertex' , 'vertex' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -26858,8 +26858,8 @@ IZcad3DPolyline_vtables_ = [
     (( 'Length' , 'Length' , ), 7, (7, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 536 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcad3DSolid_vtables_dispatch_ = 1
-IZcad3DSolid_vtables_ = [
+IAcad3DSolid_vtables_dispatch_ = 1
+IAcad3DSolid_vtables_ = [
     (( 'Centroid' , 'Centroid' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 1024 , )),
     (( 'MomentOfInertia' , 'momentInertia' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 1024 , )),
     (( 'PrincipalDirections' , 'prinDir' , ), 3, (3, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -26885,8 +26885,8 @@ IZcad3DSolid_vtables_ = [
     (( 'ShowHistory' , 'Position' , ), 15, (15, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadApplication_vtables_dispatch_ = 1
-IZcadApplication_vtables_ = [
+IAcadApplication_vtables_dispatch_ = 1
+IAcadApplication_vtables_ = [
     (( 'Visible' , 'pVal' , ), 1, (1, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Visible' , 'pVal' , ), 1, (1, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'pAppName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -26944,8 +26944,8 @@ IZcadApplication_vtables_ = [
              ), 45, (45, (), [ (16387, 2, None, None) , (16392, 2, None, None) , (3, 1, None, None) , (16387, 2, None, None) , ], 1 , 1 , 4 , 0 , 432 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadArc_vtables_dispatch_ = 1
-IZcadArc_vtables_ = [
+IAcadArc_vtables_dispatch_ = 1
+IAcadArc_vtables_ = [
     (( 'StartPoint' , 'StartPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'CenterPoint' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'CenterPoint' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -26967,8 +26967,8 @@ IZcadArc_vtables_ = [
     (( 'Normal' , 'Normal' , ), 12, (12, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadAttribute_vtables_dispatch_ = 1
-IZcadAttribute_vtables_ = [
+IAcadAttribute_vtables_dispatch_ = 1
+IAcadAttribute_vtables_ = [
     (( 'FieldLength' , 'fieldLen' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 1024 , )),
     (( 'FieldLength' , 'fieldLen' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 1024 , )),
     (( 'TagString' , 'Tag' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -27030,8 +27030,8 @@ IZcadAttribute_vtables_ = [
     (( 'MTextDrawingDirection' , 'drawDir' , ), 30, (30, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadAttributeReference_vtables_dispatch_ = 1
-IZcadAttributeReference_vtables_ = [
+IAcadAttributeReference_vtables_dispatch_ = 1
+IAcadAttributeReference_vtables_ = [
     (( 'Height' , 'Height' , ), 1, (1, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Height' , 'Height' , ), 1, (1, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'HorizontalAlignment' , 'horizAlign' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 64 , )),
@@ -27083,8 +27083,8 @@ IZcadAttributeReference_vtables_ = [
     (( 'MTextDrawingDirection' , 'drawDir' , ), 31, (31, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 840 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadBlock_vtables_dispatch_ = 1
-IZcadBlock_vtables_ = [
+IAcadBlock_vtables_dispatch_ = 1
+IAcadBlock_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 65 , )),
@@ -27248,8 +27248,8 @@ IZcadBlock_vtables_ = [
              (12, 1, None, None) , (16387, 2, None, None) , (16393, 10, None, "IID('{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 784 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadBlockReference_vtables_dispatch_ = 1
-IZcadBlockReference_vtables_ = [
+IAcadBlockReference_vtables_dispatch_ = 1
+IAcadBlockReference_vtables_ = [
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -27284,8 +27284,8 @@ IZcadBlockReference_vtables_ = [
     (( 'InsUnitsFactor' , 'factor' , ), 528, (528, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadBlocks_vtables_dispatch_ = 1
-IZcadBlocks_vtables_ = [
+IAcadBlocks_vtables_dispatch_ = 1
+IAcadBlocks_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -27294,8 +27294,8 @@ IZcadBlocks_vtables_ = [
              (12, 1, None, None) , (8, 1, None, None) , (16393, 10, None, "IID('{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadCircle_vtables_dispatch_ = 1
-IZcadCircle_vtables_ = [
+IAcadCircle_vtables_dispatch_ = 1
+IAcadCircle_vtables_ = [
     (( 'Center' , 'Center' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'Center' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Radius' , 'Radius' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -27314,8 +27314,8 @@ IZcadCircle_vtables_ = [
              (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 568 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDatabase_vtables_dispatch_ = 1
-IZcadDatabase_vtables_ = [
+IAcadDatabase_vtables_dispatch_ = 1
+IAcadDatabase_vtables_ = [
     (( 'ModelSpace' , 'pMSpace' , ), 1, (1, (), [ (16393, 10, None, "IID('{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'PaperSpace' , 'pPSpace' , ), 2, (2, (), [ (16393, 10, None, "IID('{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Blocks' , 'pBlocks' , ), 3, (3, (), [ (16393, 10, None, "IID('{EC923166-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -27350,8 +27350,8 @@ IZcadDatabase_vtables_ = [
     (( 'Materials' , 'pMaterials' , ), 73, (73, (), [ (16393, 10, None, "IID('{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 280 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDatabasePreferences_vtables_dispatch_ = 1
-IZcadDatabasePreferences_vtables_ = [
+IAcadDatabasePreferences_vtables_dispatch_ = 1
+IAcadDatabasePreferences_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1, (1, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'SolidFill' , 'Fill' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'SolidFill' , 'Fill' , ), 2, (2, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -27393,8 +27393,8 @@ IZcadDatabasePreferences_vtables_ = [
     (( 'LineWeightDisplay' , 'Path' , ), 27, (27, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 360 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDictionaries_vtables_dispatch_ = 1
-IZcadDictionaries_vtables_ = [
+IAcadDictionaries_vtables_dispatch_ = 1
+IAcadDictionaries_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -27403,8 +27403,8 @@ IZcadDictionaries_vtables_ = [
              (16393, 10, None, "IID('{EC922FDA-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDictionary_vtables_dispatch_ = 1
-IZcadDictionary_vtables_ = [
+IAcadDictionary_vtables_dispatch_ = 1
+IAcadDictionary_vtables_ = [
     (( 'Name' , 'pVal' , ), 1281, (1281, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'pVal' , ), 1281, (1281, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'AddObject' , 'Keyword' , 'ObjectName' , 'pNewObj' , ), 3, (3, (), [ 
@@ -27427,8 +27427,8 @@ IZcadDictionary_vtables_ = [
              (16393, 10, None, "IID('{EC92307A-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 248 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDim3PointAngular_vtables_dispatch_ = 1
-IZcadDim3PointAngular_vtables_ = [
+IAcadDim3PointAngular_vtables_dispatch_ = 1
+IAcadDim3PointAngular_vtables_ = [
     (( 'ExtLine1EndPoint' , 'xLine1Point' , ), 38, (38, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 1024 , )),
     (( 'ExtLine1EndPoint' , 'xLine1Point' , ), 38, (38, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 1024 , )),
     (( 'ExtLine2EndPoint' , 'xLine2Point' , ), 40, (40, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 1024 , )),
@@ -27508,8 +27508,8 @@ IZcadDim3PointAngular_vtables_ = [
     (( 'DimConstrDesc' , 'bstrDescription' , ), 90, (90, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1528 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadDimAligned_vtables_dispatch_ = 1
-IZcadDimAligned_vtables_ = [
+IAcadDimAligned_vtables_dispatch_ = 1
+IAcadDimAligned_vtables_ = [
     (( 'ExtLine1Point' , 'xLine1Point' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 1024 , )),
     (( 'ExtLine1Point' , 'xLine1Point' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 1024 , )),
     (( 'ExtLine2Point' , 'xLine2Point' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 1024 , )),
@@ -27643,8 +27643,8 @@ IZcadDimAligned_vtables_ = [
     (( 'AltSubUnitsFactor' , 'factor' , ), 1577, (1577, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 1960 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDimAngular_vtables_dispatch_ = 1
-IZcadDimAngular_vtables_ = [
+IAcadDimAngular_vtables_dispatch_ = 1
+IAcadDimAngular_vtables_ = [
     (( 'ExtLine1StartPoint' , 'xLine1Point' , ), 37, (37, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 1024 , )),
     (( 'ExtLine1StartPoint' , 'xLine1Point' , ), 37, (37, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 1024 , )),
     (( 'ExtLine1EndPoint' , 'xLine1Point' , ), 38, (38, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 1024 , )),
@@ -27726,8 +27726,8 @@ IZcadDimAngular_vtables_ = [
     (( 'DimConstrDesc' , 'bstrDescription' , ), 90, (90, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1544 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadDimArcLength_vtables_dispatch_ = 1
-IZcadDimArcLength_vtables_ = [
+IAcadDimArcLength_vtables_dispatch_ = 1
+IAcadDimArcLength_vtables_ = [
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnitsPrecision' , 'precision' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -27867,8 +27867,8 @@ IZcadDimArcLength_vtables_ = [
     (( 'AltSubUnitsFactor' , 'factor' , ), 1577, (1577, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 2008 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadDimDiametric_vtables_dispatch_ = 1
-IZcadDimDiametric_vtables_ = [
+IAcadDimDiametric_vtables_dispatch_ = 1
+IAcadDimDiametric_vtables_ = [
     (( 'LeaderLength' , ), 42, (42, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 920 , (3, 0, None, None) , 1024 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -27969,8 +27969,8 @@ IZcadDimDiametric_vtables_ = [
     (( 'DimConstrDesc' , 'bstrDescription' , ), 90, (90, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1696 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadDimOrdinate_vtables_dispatch_ = 1
-IZcadDimOrdinate_vtables_ = [
+IAcadDimOrdinate_vtables_dispatch_ = 1
+IAcadDimOrdinate_vtables_ = [
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnitsPrecision' , 'precision' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -28044,8 +28044,8 @@ IZcadDimOrdinate_vtables_ = [
     (( 'AltSubUnitsFactor' , 'factor' , ), 1577, (1577, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 1480 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadDimRadial_vtables_dispatch_ = 1
-IZcadDimRadial_vtables_ = [
+IAcadDimRadial_vtables_dispatch_ = 1
+IAcadDimRadial_vtables_ = [
     (( 'LeaderLength' , ), 42, (42, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 920 , (3, 0, None, None) , 1024 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -28140,8 +28140,8 @@ IZcadDimRadial_vtables_ = [
     (( 'DimConstrDesc' , 'bstrDescription' , ), 90, (90, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1648 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadDimRadialLarge_vtables_dispatch_ = 1
-IZcadDimRadialLarge_vtables_ = [
+IAcadDimRadialLarge_vtables_dispatch_ = 1
+IAcadDimRadialLarge_vtables_ = [
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnitsPrecision' , 'precision' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -28233,8 +28233,8 @@ IZcadDimRadialLarge_vtables_ = [
     (( 'DimensionLinetype' , 'Linetype' , ), 80, (80, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 1624 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDimRotated_vtables_dispatch_ = 1
-IZcadDimRotated_vtables_ = [
+IAcadDimRotated_vtables_dispatch_ = 1
+IAcadDimRotated_vtables_ = [
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 920 , (3, 0, None, None) , 0 , )),
     (( 'AltUnits' , 'bAlternate' , ), 3, (3, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 928 , (3, 0, None, None) , 0 , )),
     (( 'AltUnitsPrecision' , 'precision' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 936 , (3, 0, None, None) , 0 , )),
@@ -28364,15 +28364,15 @@ IZcadDimRotated_vtables_ = [
     (( 'AltSubUnitsFactor' , 'factor' , ), 1577, (1577, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 1928 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadDimStyle_vtables_dispatch_ = 1
-IZcadDimStyle_vtables_ = [
+IAcadDimStyle_vtables_dispatch_ = 1
+IAcadDimStyle_vtables_ = [
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'CopyFrom' , 'StyleSource' , ), 2, (2, (), [ (9, 1, None, None) , ], 1 , 1 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDimStyles_vtables_dispatch_ = 1
-IZcadDimStyles_vtables_ = [
+IAcadDimStyles_vtables_dispatch_ = 1
+IAcadDimStyles_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC923160-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -28381,8 +28381,8 @@ IZcadDimStyles_vtables_ = [
              (16393, 10, None, "IID('{EC923160-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDimension_vtables_dispatch_ = 1
-IZcadDimension_vtables_ = [
+IAcadDimension_vtables_dispatch_ = 1
+IAcadDimension_vtables_ = [
     (( 'Normal' , 'Normal' , ), 1537, (1537, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 1024 , )),
     (( 'Normal' , 'Normal' , ), 1537, (1537, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 1024 , )),
     (( 'Rotation' , 'rotAngle' , ), 1538, (1538, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -28443,8 +28443,8 @@ IZcadDimension_vtables_ = [
     (( 'DimTxtDirection' , 'bVal' , ), 1573, (1573, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 912 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDocument_vtables_dispatch_ = 1
-IZcadDocument_vtables_ = [
+IAcadDocument_vtables_dispatch_ = 1
+IAcadDocument_vtables_ = [
     (( 'Plot' , 'pPlot' , ), 23, (23, (), [ (16393, 10, None, "IID('{EC92301B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
     (( 'ActiveLayer' , 'pActLayer' , ), 24, (24, (), [ (16393, 10, None, "IID('{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 296 , (3, 0, None, None) , 0 , )),
     (( 'ActiveLayer' , 'pActLayer' , ), 24, (24, (), [ (9, 1, None, "IID('{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 304 , (3, 0, None, None) , 0 , )),
@@ -28520,8 +28520,8 @@ IZcadDocument_vtables_ = [
     (( 'PostCommand' , 'Command' , ), 75, (75, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 792 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDocuments_vtables_dispatch_ = 1
-IZcadDocuments_vtables_ = [
+IAcadDocuments_vtables_dispatch_ = 1
+IAcadDocuments_vtables_ = [
     (( 'Item' , 'Index' , 'ppItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC923156-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'ppUnk' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 1 , )),
@@ -28537,14 +28537,14 @@ IZcadDocuments_vtables_ = [
     (( 'SaveAll' , ), 1610743817, (1610743817, (), [ ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDwfUnderlay_vtables_dispatch_ = 1
-IZcadDwfUnderlay_vtables_ = [
+IAcadDwfUnderlay_vtables_dispatch_ = 1
+IAcadDwfUnderlay_vtables_ = [
     (( 'DWFFormat' , 'Name' , ), 18, (18, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
     (( 'DWFFormat' , 'Name' , ), 18, (18, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadDynamicBlockReferenceProperty_vtables_dispatch_ = 1
-IZcadDynamicBlockReferenceProperty_vtables_ = [
+IAcadDynamicBlockReferenceProperty_vtables_dispatch_ = 1
+IAcadDynamicBlockReferenceProperty_vtables_ = [
     (( 'PropertyName' , 'PropertyName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'ReadOnly' , 'ReadOnly' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'show' , 'show' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -28555,8 +28555,8 @@ IZcadDynamicBlockReferenceProperty_vtables_ = [
     (( 'UnitsType' , 'Units' , ), 7, (7, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadEllipse_vtables_dispatch_ = 1
-IZcadEllipse_vtables_ = [
+IAcadEllipse_vtables_dispatch_ = 1
+IAcadEllipse_vtables_ = [
     (( 'StartPoint' , 'StartPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'Center' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'Center' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28585,8 +28585,8 @@ IZcadEllipse_vtables_ = [
              (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 648 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadEntity_vtables_dispatch_ = 1
-IZcadEntity_vtables_ = [
+IAcadEntity_vtables_dispatch_ = 1
+IAcadEntity_vtables_ = [
     (( 'TrueColor' , 'pVal' , ), 1302, (1302, (), [ (16393, 10, None, "IID('{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'TrueColor' , 'pVal' , ), 1302, (1302, (), [ (9, 1, None, "IID('{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Layer' , 'pVal' , ), 1281, (1281, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -28638,15 +28638,15 @@ IZcadEntity_vtables_ = [
     (( 'color' , 'pVal' , ), 1280, (1280, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 448 , (3, 0, None, None) , 64 , )),
 ]
 
-IZcadExternalReference_vtables_dispatch_ = 1
-IZcadExternalReference_vtables_ = [
+IAcadExternalReference_vtables_dispatch_ = 1
+IAcadExternalReference_vtables_ = [
     (( 'Path' , 'bstrName' , ), 256, (256, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
     (( 'Path' , 'bstrName' , ), 256, (256, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
     (( 'LayerPropertyOverrides' , 'bOverrides' , ), 368, (368, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 728 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadExtrudedSurface_vtables_dispatch_ = 1
-IZcadExtrudedSurface_vtables_ = [
+IAcadExtrudedSurface_vtables_dispatch_ = 1
+IAcadExtrudedSurface_vtables_ = [
     (( 'Height' , 'Height' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
     (( 'Height' , 'Height' , ), 2, (2, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
     (( 'TaperAngle' , 'TaperAngle' , ), 3, (3, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
@@ -28654,8 +28654,8 @@ IZcadExtrudedSurface_vtables_ = [
     (( 'Direction' , 'Direction' , ), 4, (4, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadFileDependencies_vtables_dispatch_ = 1
-IZcadFileDependencies_vtables_ = [
+IAcadFileDependencies_vtables_dispatch_ = 1
+IAcadFileDependencies_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC923096-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -28671,8 +28671,8 @@ IZcadFileDependencies_vtables_ = [
     (( 'UpdateEntry' , 'Index' , ), 6, (6, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadFileDependency_vtables_dispatch_ = 1
-IZcadFileDependency_vtables_ = [
+IAcadFileDependency_vtables_dispatch_ = 1
+IAcadFileDependency_vtables_ = [
     (( 'FullFileName' , 'FullFileName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'FileName' , 'FileName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'FoundPath' , 'FoundPath' , ), 3, (3, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -28687,8 +28687,8 @@ IZcadFileDependency_vtables_ = [
     (( 'ReferenceCount' , 'refCount' , ), 18, (18, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadGeoPositionMarker_vtables_dispatch_ = 1
-IZcadGeoPositionMarker_vtables_ = [
+IAcadGeoPositionMarker_vtables_dispatch_ = 1
+IAcadGeoPositionMarker_vtables_ = [
     (( 'Position' , 'Position' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Position' , 'Position' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'TextString' , 'bstrText' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28729,8 +28729,8 @@ IZcadGeoPositionMarker_vtables_ = [
     (( 'Notes' , 'Notes' , ), 19, (19, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 752 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadGeomapImage_vtables_dispatch_ = 1
-IZcadGeomapImage_vtables_ = [
+IAcadGeomapImage_vtables_dispatch_ = 1
+IAcadGeomapImage_vtables_ = [
     (( 'GeoImageBrightness' , 'Brightness' , ), 33, (33, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
     (( 'GeoImageBrightness' , 'Brightness' , ), 33, (33, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
     (( 'GeoImageContrast' , 'Contrast' , ), 34, (34, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
@@ -28742,8 +28742,8 @@ IZcadGeomapImage_vtables_ = [
     (( 'GeoImageHeight' , 'Height' , ), 38, (38, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 768 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadGroup_vtables_dispatch_ = 1
-IZcadGroup_vtables_ = [
+IAcadGroup_vtables_dispatch_ = 1
+IAcadGroup_vtables_ = [
     (( 'Item' , 'Index' , 'ppEntity' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 65 , )),
@@ -28765,8 +28765,8 @@ IZcadGroup_vtables_ = [
     (( 'color' , ), 2, (2, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 296 , (3, 0, None, None) , 64 , )),
 ]
 
-IZcadGroups_vtables_dispatch_ = 1
-IZcadGroups_vtables_ = [
+IAcadGroups_vtables_dispatch_ = 1
+IAcadGroups_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC92319A-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -28775,8 +28775,8 @@ IZcadGroups_vtables_ = [
              (16393, 10, None, "IID('{EC92319A-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadHatch_vtables_dispatch_ = 1
-IZcadHatch_vtables_ = [
+IAcadHatch_vtables_dispatch_ = 1
+IAcadHatch_vtables_ = [
     (( 'Normal' , 'Normal' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 1024 , )),
     (( 'Normal' , 'Normal' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 1024 , )),
     (( 'NumberOfLoops' , 'numLoops' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -28828,8 +28828,8 @@ IZcadHatch_vtables_ = [
     (( 'BackgroundColor' , 'pColor' , ), 27, (27, (), [ (9, 1, None, "IID('{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 4 , 4 , 0 , 816 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadHelix_vtables_dispatch_ = 1
-IZcadHelix_vtables_ = [
+IAcadHelix_vtables_dispatch_ = 1
+IAcadHelix_vtables_ = [
     (( 'Position' , 'StartPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Position' , 'StartPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Constrain' , 'constrainType' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -28850,8 +28850,8 @@ IZcadHelix_vtables_ = [
     (( 'TotalLength' , 'TotalLength' , ), 10, (10, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadHyperlink_vtables_dispatch_ = 1
-IZcadHyperlink_vtables_ = [
+IAcadHyperlink_vtables_dispatch_ = 1
+IAcadHyperlink_vtables_ = [
     (( 'URL' , 'URLPath' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'URL' , 'URLPath' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'URLDescription' , 'Description' , ), 2, (2, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -28862,8 +28862,8 @@ IZcadHyperlink_vtables_ = [
     (( 'URLNamedLocation' , 'Location' , ), 5, (5, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadHyperlinks_vtables_dispatch_ = 1
-IZcadHyperlinks_vtables_ = [
+IAcadHyperlinks_vtables_dispatch_ = 1
+IAcadHyperlinks_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (3, 1, None, None) , 
              (16393, 10, None, "IID('{EC923112-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
@@ -28873,8 +28873,8 @@ IZcadHyperlinks_vtables_ = [
              ), 3, (3, (), [ (8, 1, None, None) , (12, 17, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{EC923112-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 2 , 88 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadIdPair_vtables_dispatch_ = 1
-IZcadIdPair_vtables_ = [
+IAcadIdPair_vtables_dispatch_ = 1
+IAcadIdPair_vtables_ = [
     (( 'IsCloned' , 'pVal' , ), 1, (1, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'IsOwnerXlated' , 'pVal' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'IsPrimary' , 'pVal' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -28883,8 +28883,8 @@ IZcadIdPair_vtables_ = [
     (( 'Application' , 'ApplicationObject' , ), 6, (6, (), [ (16393, 10, None, None) , ], 1 , 2 , 4 , 0 , 96 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadLWPolyline_vtables_dispatch_ = 1
-IZcadLWPolyline_vtables_ = [
+IAcadLWPolyline_vtables_dispatch_ = 1
+IAcadLWPolyline_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -28920,8 +28920,8 @@ IZcadLWPolyline_vtables_ = [
     (( 'Length' , 'Length' , ), 17, (17, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 648 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadLayer_vtables_dispatch_ = 1
-IZcadLayer_vtables_ = [
+IAcadLayer_vtables_dispatch_ = 1
+IAcadLayer_vtables_ = [
     (( 'color' , 'color' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 64 , )),
     (( 'color' , 'color' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 64 , )),
     (( 'TrueColor' , 'pColor' , ), 11, (11, (), [ (16393, 10, None, "IID('{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -28951,8 +28951,8 @@ IZcadLayer_vtables_ = [
     (( 'Material' , 'Material' , ), 14, (14, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 368 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadLayerStateManager_vtables_dispatch_ = 1
-IZcadLayerStateManager_vtables_ = [
+IAcadLayerStateManager_vtables_dispatch_ = 1
+IAcadLayerStateManager_vtables_ = [
     (( 'SetDatabase' , 'iHostDb' , ), 1610743808, (1610743808, (), [ (9, 1, None, "IID('{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Mask' , 'bsName' , 'eMask' , ), 1610743809, (1610743809, (), [ (8, 1, None, None) , 
              (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
@@ -28969,8 +28969,8 @@ IZcadLayerStateManager_vtables_ = [
              (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 120 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadLayers_vtables_dispatch_ = 1
-IZcadLayers_vtables_ = [
+IAcadLayers_vtables_dispatch_ = 1
+IAcadLayers_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -28980,15 +28980,15 @@ IZcadLayers_vtables_ = [
     (( 'GenerateUsageData' , ), 3, (3, (), [ ], 1 , 1 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadLayout_vtables_dispatch_ = 1
-IZcadLayout_vtables_ = [
+IAcadLayout_vtables_dispatch_ = 1
+IAcadLayout_vtables_ = [
     (( 'Block' , 'pBlock' , ), 48, (48, (), [ (16393, 10, None, "IID('{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 568 , (3, 0, None, None) , 0 , )),
     (( 'TabOrder' , 'pOrder' , ), 49, (49, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
     (( 'TabOrder' , 'pOrder' , ), 49, (49, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadLayouts_vtables_dispatch_ = 1
-IZcadLayouts_vtables_ = [
+IAcadLayouts_vtables_dispatch_ = 1
+IAcadLayouts_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC923115-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -28997,8 +28997,8 @@ IZcadLayouts_vtables_ = [
              (16393, 10, None, "IID('{EC923115-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadLeader_vtables_dispatch_ = 1
-IZcadLeader_vtables_ = [
+IAcadLeader_vtables_dispatch_ = 1
+IAcadLeader_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 64, (64, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 64, (64, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 1537, (1537, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -29031,8 +29031,8 @@ IZcadLeader_vtables_ = [
     (( 'ArrowheadBlock' , 'BlockName' , ), 70, (70, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 672 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadLine_vtables_dispatch_ = 1
-IZcadLine_vtables_ = [
+IAcadLine_vtables_dispatch_ = 1
+IAcadLine_vtables_ = [
     (( 'StartPoint' , 'StartPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'StartPoint' , 'StartPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'EndPoint' , 'EndPoint' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -29048,16 +29048,16 @@ IZcadLine_vtables_ = [
     (( 'Angle' , 'Angle' , ), 8, (8, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 544 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadLineType_vtables_dispatch_ = 1
-IZcadLineType_vtables_ = [
+IAcadLineType_vtables_dispatch_ = 1
+IAcadLineType_vtables_ = [
     (( 'Description' , 'bstrDes' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Description' , 'bstrDes' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadLineTypes_vtables_dispatch_ = 1
-IZcadLineTypes_vtables_ = [
+IAcadLineTypes_vtables_dispatch_ = 1
+IAcadLineTypes_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -29068,8 +29068,8 @@ IZcadLineTypes_vtables_ = [
              (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadLoftedSurface_vtables_dispatch_ = 1
-IZcadLoftedSurface_vtables_ = [
+IAcadLoftedSurface_vtables_dispatch_ = 1
+IAcadLoftedSurface_vtables_ = [
     (( 'NumCrossSections' , 'NumCrossSections' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
     (( 'NumGuidePaths' , 'NumGuidePaths' , ), 3, (3, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
     (( 'SurfaceNormals' , 'surfaceNormal' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
@@ -29096,8 +29096,8 @@ IZcadLoftedSurface_vtables_ = [
     (( 'Periodic' , 'bPeriodic' , ), 16, (16, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 760 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMInsertBlock_vtables_dispatch_ = 1
-IZcadMInsertBlock_vtables_ = [
+IAcadMInsertBlock_vtables_dispatch_ = 1
+IAcadMInsertBlock_vtables_ = [
     (( 'Columns' , 'NumColumns' , ), 256, (256, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
     (( 'Columns' , 'NumColumns' , ), 256, (256, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
     (( 'ColumnSpacing' , 'Spacing' , ), 257, (257, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 728 , (3, 0, None, None) , 0 , )),
@@ -29108,8 +29108,8 @@ IZcadMInsertBlock_vtables_ = [
     (( 'RowSpacing' , 'Spacing' , ), 259, (259, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 768 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMLeader_vtables_dispatch_ = 1
-IZcadMLeader_vtables_ = [
+IAcadMLeader_vtables_dispatch_ = 1
+IAcadMLeader_vtables_ = [
     (( 'ScaleFactor' , 'scale' , ), 38, (38, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'ScaleFactor' , 'scale' , ), 38, (38, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'LeaderType' , 'Type' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -29210,8 +29210,8 @@ IZcadMLeader_vtables_ = [
              (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 1128 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMLeaderLeader_vtables_dispatch_ = 1
-IZcadMLeaderLeader_vtables_ = [
+IAcadMLeaderLeader_vtables_dispatch_ = 1
+IAcadMLeaderLeader_vtables_ = [
     (( 'LeaderType' , 'Type' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
     (( 'LeaderType' , 'Type' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
     (( 'LeaderLineColor' , 'Type' , ), 2, (2, (), [ (16393, 10, None, "IID('{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
@@ -29228,8 +29228,8 @@ IZcadMLeaderLeader_vtables_ = [
     (( 'ArrowheadBlock' , 'BlockName' , ), 7, (7, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMLeaderStyle_vtables_dispatch_ = 1
-IZcadMLeaderStyle_vtables_ = [
+IAcadMLeaderStyle_vtables_dispatch_ = 1
+IAcadMLeaderStyle_vtables_ = [
     (( 'Name' , 'Name' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'Name' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Description' , 'Description' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -29317,8 +29317,8 @@ IZcadMLeaderStyle_vtables_ = [
     (( 'TextAlignmentType' , 'Type' , ), 39, (39, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 832 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMLine_vtables_dispatch_ = 1
-IZcadMLine_vtables_ = [
+IAcadMLine_vtables_dispatch_ = 1
+IAcadMLine_vtables_ = [
     (( 'StyleName' , 'Name' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Vertices' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 1024 , )),
     (( 'Coordinates' , 'Vertices' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -29328,8 +29328,8 @@ IZcadMLine_vtables_ = [
     (( 'MLineScale' , 'pMLineScale' , ), 4, (4, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 504 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMText_vtables_dispatch_ = 1
-IZcadMText_vtables_ = [
+IAcadMText_vtables_dispatch_ = 1
+IAcadMText_vtables_ = [
     (( 'TextString' , 'bstrText' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'TextString' , 'bstrText' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'StyleName' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -29359,16 +29359,16 @@ IZcadMText_vtables_ = [
     (( 'FieldCode' , 'bstrText' , ), 14, (14, (), [ (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 664 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMaterial_vtables_dispatch_ = 1
-IZcadMaterial_vtables_ = [
+IAcadMaterial_vtables_dispatch_ = 1
+IAcadMaterial_vtables_ = [
     (( 'Description' , 'bstrDesc' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Description' , 'bstrDesc' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMaterials_vtables_dispatch_ = 1
-IZcadMaterials_vtables_ = [
+IAcadMaterials_vtables_dispatch_ = 1
+IAcadMaterials_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -29377,8 +29377,8 @@ IZcadMaterials_vtables_ = [
              (16393, 10, None, "IID('{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMenuBar_vtables_dispatch_ = 1
-IZcadMenuBar_vtables_ = [
+IAcadMenuBar_vtables_dispatch_ = 1
+IAcadMenuBar_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -29387,8 +29387,8 @@ IZcadMenuBar_vtables_ = [
     (( 'Parent' , 'pParent' , ), 1610743812, (1610743812, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMenuGroup_vtables_dispatch_ = 1
-IZcadMenuGroup_vtables_ = [
+IAcadMenuGroup_vtables_dispatch_ = 1
+IAcadMenuGroup_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{EC923155-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'Name' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -29402,8 +29402,8 @@ IZcadMenuGroup_vtables_ = [
              (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadMenuGroups_vtables_dispatch_ = 1
-IZcadMenuGroups_vtables_ = [
+IAcadMenuGroups_vtables_dispatch_ = 1
+IAcadMenuGroups_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -29414,22 +29414,22 @@ IZcadMenuGroups_vtables_ = [
              (8, 1, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 1 , 96 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadModelSpace_vtables_dispatch_ = 1
-IZcadModelSpace_vtables_ = [
+IAcadModelSpace_vtables_dispatch_ = 1
+IAcadModelSpace_vtables_ = [
 ]
 
-IZcadModelSpace2_vtables_dispatch_ = 1
-IZcadModelSpace2_vtables_ = [
+IAcadModelSpace2_vtables_dispatch_ = 1
+IAcadModelSpace2_vtables_ = [
 ]
 
-IZcadNurbSurface_vtables_dispatch_ = 1
-IZcadNurbSurface_vtables_ = [
+IAcadNurbSurface_vtables_dispatch_ = 1
+IAcadNurbSurface_vtables_ = [
     (( 'CvHullDisplay' , 'Display' , ), 12, (12, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
     (( 'CvHullDisplay' , 'Display' , ), 12, (12, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadObject_vtables_dispatch_ = 1
-IZcadObject_vtables_ = [
+IAcadObject_vtables_dispatch_ = 1
+IAcadObject_vtables_ = [
     (( 'Handle' , 'Handle' , ), 1024, (1024, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'ObjectName' , 'ObjectName' , ), 1025, (1025, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 1024 , )),
     (( 'GetXData' , 'AppName' , 'XDataType' , 'XDataValue' , ), 1026, (1026, (), [ 
@@ -29447,13 +29447,13 @@ IZcadObject_vtables_ = [
     (( 'Erase' , ), 1141, (1141, (), [ ], 1 , 1 , 4 , 0 , 152 , (3, 0, None, None) , 64 , )),
 ]
 
-IZcadObjectEvents_vtables_dispatch_ = 0
-IZcadObjectEvents_vtables_ = [
+IAcadObjectEvents_vtables_dispatch_ = 0
+IAcadObjectEvents_vtables_ = [
     (( 'Modified' , 'pVal' , ), 1, (1, (), [ (9, 1, None, "IID('{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 24 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadOle_vtables_dispatch_ = 1
-IZcadOle_vtables_ = [
+IAcadOle_vtables_dispatch_ = 1
+IAcadOle_vtables_ = [
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Rotation' , 'rot' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -29476,8 +29476,8 @@ IZcadOle_vtables_ = [
     (( 'OleSourceApp' , 'srcApp' , ), 10, (10, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPViewport_vtables_dispatch_ = 1
-IZcadPViewport_vtables_ = [
+IAcadPViewport_vtables_dispatch_ = 1
+IAcadPViewport_vtables_ = [
     (( 'Center' , 'CenterPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'CenterPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Direction' , 'dirVector' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -29547,18 +29547,18 @@ IZcadPViewport_vtables_ = [
     (( 'StandardScale2' , 'scale' , ), 39, (39, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 952 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPaperSpace_vtables_dispatch_ = 1
-IZcadPaperSpace_vtables_ = [
+IAcadPaperSpace_vtables_dispatch_ = 1
+IAcadPaperSpace_vtables_ = [
     (( 'AddPViewport' , 'Center' , 'Width' , 'Height' , 'pPViewport' , 
              ), 1, (1, (), [ (12, 1, None, None) , (5, 1, None, None) , (5, 1, None, None) , (16393, 10, None, "IID('{EC923139-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 792 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPlaneSurface_vtables_dispatch_ = 1
-IZcadPlaneSurface_vtables_ = [
+IAcadPlaneSurface_vtables_dispatch_ = 1
+IAcadPlaneSurface_vtables_ = [
 ]
 
-IZcadPlot_vtables_dispatch_ = 1
-IZcadPlot_vtables_ = [
+IAcadPlot_vtables_dispatch_ = 1
+IAcadPlot_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'QuietErrorMode' , 'bErrorMode' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'QuietErrorMode' , 'bErrorMode' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -29575,8 +29575,8 @@ IZcadPlot_vtables_ = [
     (( 'StartBatchMode' , 'entryCount' , ), 1610743819, (1610743819, (), [ (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPlotConfiguration_vtables_dispatch_ = 1
-IZcadPlotConfiguration_vtables_ = [
+IAcadPlotConfiguration_vtables_dispatch_ = 1
+IAcadPlotConfiguration_vtables_ = [
     (( 'Name' , 'pName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'pName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'ConfigName' , 'pName' , ), 3, (3, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -29637,8 +29637,8 @@ IZcadPlotConfiguration_vtables_ = [
              (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 560 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPlotConfigurations_vtables_dispatch_ = 1
-IZcadPlotConfigurations_vtables_ = [
+IAcadPlotConfigurations_vtables_dispatch_ = 1
+IAcadPlotConfigurations_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC9231DB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -29647,8 +29647,8 @@ IZcadPlotConfigurations_vtables_ = [
              (8, 1, None, None) , (12, 17, None, None) , (16393, 10, None, "IID('{EC9231DB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 1 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPoint_vtables_dispatch_ = 1
-IZcadPoint_vtables_ = [
+IAcadPoint_vtables_dispatch_ = 1
+IAcadPoint_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -29657,8 +29657,8 @@ IZcadPoint_vtables_ = [
     (( 'Thickness' , 'Thickness' , ), 3, (3, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 496 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPointCloud_vtables_dispatch_ = 1
-IZcadPointCloud_vtables_ = [
+IAcadPointCloud_vtables_dispatch_ = 1
+IAcadPointCloud_vtables_ = [
     (( 'UseEntityColor' , 'val' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'UseEntityColor' , 'val' , ), 4, (4, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'ShowIntensity' , 'val' , ), 6, (6, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -29689,8 +29689,8 @@ IZcadPointCloud_vtables_ = [
     (( 'UnitFactor' , 'val' , ), 14, (14, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 672 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPointCloudEx_vtables_dispatch_ = 1
-IZcadPointCloudEx_vtables_ = [
+IAcadPointCloudEx_vtables_dispatch_ = 1
+IAcadPointCloudEx_vtables_ = [
     (( 'Stylization' , 'val' , ), 4, (4, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Stylization' , 'val' , ), 4, (4, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'ColorScheme' , 'val' , ), 7, (7, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -29714,13 +29714,13 @@ IZcadPointCloudEx_vtables_ = [
     (( 'UnitFactor' , 'val' , ), 14, (14, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 616 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPointCloudEx2_vtables_dispatch_ = 1
-IZcadPointCloudEx2_vtables_ = [
+IAcadPointCloudEx2_vtables_dispatch_ = 1
+IAcadPointCloudEx2_vtables_ = [
     (( 'Segmentation' , 'val' , ), 17, (17, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 624 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPolyfaceMesh_vtables_dispatch_ = 1
-IZcadPolyfaceMesh_vtables_ = [
+IAcadPolyfaceMesh_vtables_dispatch_ = 1
+IAcadPolyfaceMesh_vtables_ = [
     (( 'Coordinates' , 'Vertices' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Vertices' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Coordinate' , 'Index' , 'pVal' , ), 2, (2, (), [ (3, 1, None, None) , 
@@ -29732,8 +29732,8 @@ IZcadPolyfaceMesh_vtables_ = [
     (( 'Faces' , ), 80, (80, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 504 , (3, 0, None, None) , 64 , )),
 ]
 
-IZcadPolygonMesh_vtables_dispatch_ = 1
-IZcadPolygonMesh_vtables_ = [
+IAcadPolygonMesh_vtables_dispatch_ = 1
+IAcadPolygonMesh_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'MClose' , 'bClose' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -29756,8 +29756,8 @@ IZcadPolygonMesh_vtables_ = [
              (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 592 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadPolyline_vtables_dispatch_ = 1
-IZcadPolyline_vtables_ = [
+IAcadPolyline_vtables_dispatch_ = 1
+IAcadPolyline_vtables_ = [
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'Coordinates' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -29794,8 +29794,8 @@ IZcadPolyline_vtables_ = [
     (( 'Length' , 'Length' , ), 18, (18, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 664 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPopupMenu_vtables_dispatch_ = 1
-IZcadPopupMenu_vtables_ = [
+IAcadPopupMenu_vtables_dispatch_ = 1
+IAcadPopupMenu_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC923050-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -29818,8 +29818,8 @@ IZcadPopupMenu_vtables_ = [
     (( 'TagString' , 'bstrTag' , ), 1610743823, (1610743823, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPopupMenuItem_vtables_dispatch_ = 1
-IZcadPopupMenuItem_vtables_ = [
+IAcadPopupMenuItem_vtables_dispatch_ = 1
+IAcadPopupMenuItem_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Label' , 'bstrLabel' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -29843,8 +29843,8 @@ IZcadPopupMenuItem_vtables_ = [
     (( 'EndSubMenuLevel' , 'level' , ), 1610743827, (1610743827, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 216 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPopupMenus_vtables_dispatch_ = 1
-IZcadPopupMenus_vtables_ = [
+IAcadPopupMenus_vtables_dispatch_ = 1
+IAcadPopupMenus_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -29858,8 +29858,8 @@ IZcadPopupMenus_vtables_ = [
     (( 'RemoveMenuFromMenuBar' , 'Index' , ), 1610743815, (1610743815, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPreferences_vtables_dispatch_ = 1
-IZcadPreferences_vtables_ = [
+IAcadPreferences_vtables_dispatch_ = 1
+IAcadPreferences_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Files' , 'pObj' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Display' , 'pObj' , ), 1610743810, (1610743810, (), [ (16393, 10, None, "IID('{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -29872,8 +29872,8 @@ IZcadPreferences_vtables_ = [
     (( 'Profiles' , 'pObj' , ), 1610743817, (1610743817, (), [ (16393, 10, None, "IID('{EC92314B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPreferencesDisplay_vtables_dispatch_ = 1
-IZcadPreferencesDisplay_vtables_ = [
+IAcadPreferencesDisplay_vtables_dispatch_ = 1
+IAcadPreferencesDisplay_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'LayoutDisplayMargins' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'LayoutDisplayMargins' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -29929,8 +29929,8 @@ IZcadPreferencesDisplay_vtables_ = [
     (( 'XRefFadeIntensity' , 'Path' , ), 1610743859, (1610743859, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPreferencesDrafting_vtables_dispatch_ = 1
-IZcadPreferencesDrafting_vtables_ = [
+IAcadPreferencesDrafting_vtables_dispatch_ = 1
+IAcadPreferencesDrafting_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'AutoSnapMarker' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'AutoSnapMarker' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -29956,8 +29956,8 @@ IZcadPreferencesDrafting_vtables_ = [
     (( 'AlignmentPointAcquisition' , 'Path' , ), 1610743829, (1610743829, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPreferencesFiles_vtables_dispatch_ = 1
-IZcadPreferencesFiles_vtables_ = [
+IAcadPreferencesFiles_vtables_dispatch_ = 1
+IAcadPreferencesFiles_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'SupportPath' , 'orient' , ), 0, (0, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'SupportPath' , 'orient' , ), 0, (0, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30035,8 +30035,8 @@ IZcadPreferencesFiles_vtables_ = [
     (( 'ActiveInvProject' , 'Path' , ), 1610743879, (1610743879, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 632 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPreferencesOpenSave_vtables_dispatch_ = 1
-IZcadPreferencesOpenSave_vtables_ = [
+IAcadPreferencesOpenSave_vtables_dispatch_ = 1
+IAcadPreferencesOpenSave_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'SavePreviewThumbnail' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'SavePreviewThumbnail' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30067,8 +30067,8 @@ IZcadPreferencesOpenSave_vtables_ = [
     (( 'MRUNumber' , 'Path' , ), 1610743835, (1610743835, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 272 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPreferencesOutput_vtables_dispatch_ = 1
-IZcadPreferencesOutput_vtables_ = [
+IAcadPreferencesOutput_vtables_dispatch_ = 1
+IAcadPreferencesOutput_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'DefaultOutputDevice' , 'Path' , ), 1610743809, (1610743809, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'DefaultOutputDevice' , 'Path' , ), 1610743809, (1610743809, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30098,8 +30098,8 @@ IZcadPreferencesOutput_vtables_ = [
     (( 'DefaultPlotToFilePath' , 'Path' , ), 1610743833, (1610743833, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPreferencesProfiles_vtables_dispatch_ = 1
-IZcadPreferencesProfiles_vtables_ = [
+IAcadPreferencesProfiles_vtables_dispatch_ = 1
+IAcadPreferencesProfiles_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'ActiveProfile' , 'Path' , ), 1610743809, (1610743809, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'ActiveProfile' , 'Path' , ), 1610743809, (1610743809, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30116,8 +30116,8 @@ IZcadPreferencesProfiles_vtables_ = [
     (( 'GetAllProfileNames' , 'pNames' , ), 1610743817, (1610743817, (), [ (16396, 2, None, None) , ], 1 , 1 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPreferencesSelection_vtables_dispatch_ = 1
-IZcadPreferencesSelection_vtables_ = [
+IAcadPreferencesSelection_vtables_dispatch_ = 1
+IAcadPreferencesSelection_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'PickFirst' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'PickFirst' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30143,8 +30143,8 @@ IZcadPreferencesSelection_vtables_ = [
     (( 'PickGroup' , 'pick' , ), 1610743829, (1610743829, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPreferencesSystem_vtables_dispatch_ = 1
-IZcadPreferencesSystem_vtables_ = [
+IAcadPreferencesSystem_vtables_dispatch_ = 1
+IAcadPreferencesSystem_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'SingleDocumentMode' , 'Path' , ), 1610743809, (1610743809, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'SingleDocumentMode' , 'Path' , ), 1610743809, (1610743809, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30164,8 +30164,8 @@ IZcadPreferencesSystem_vtables_ = [
     (( 'LoadZcadLspInAllDocuments' , 'pALID' , ), 1610743823, (1610743823, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadPreferencesUser_vtables_dispatch_ = 1
-IZcadPreferencesUser_vtables_ = [
+IAcadPreferencesUser_vtables_dispatch_ = 1
+IAcadPreferencesUser_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'KeyboardAccelerator' , 'Path' , ), 1610743809, (1610743809, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'KeyboardAccelerator' , 'Path' , ), 1610743809, (1610743809, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30191,8 +30191,8 @@ IZcadPreferencesUser_vtables_ = [
     (( 'SCMTimeValue' , 'time' , ), 1610743831, (1610743831, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 232 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadRasterImage_vtables_dispatch_ = 1
-IZcadRasterImage_vtables_ = [
+IAcadRasterImage_vtables_dispatch_ = 1
+IAcadRasterImage_vtables_ = [
     (( 'Brightness' , 'Brightness' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Brightness' , 'Brightness' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Contrast' , 'Contrast' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30226,8 +30226,8 @@ IZcadRasterImage_vtables_ = [
     (( 'ScaleFactor' , 'ScaleFactor' , ), 17, (17, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 696 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadRay_vtables_dispatch_ = 1
-IZcadRay_vtables_ = [
+IAcadRay_vtables_dispatch_ = 1
+IAcadRay_vtables_ = [
     (( 'BasePoint' , 'BasePoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'BasePoint' , 'BasePoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'SecondPoint' , 'SecondPoint' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30238,8 +30238,8 @@ IZcadRay_vtables_ = [
              (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 504 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadRegion_vtables_dispatch_ = 1
-IZcadRegion_vtables_ = [
+IAcadRegion_vtables_dispatch_ = 1
+IAcadRegion_vtables_ = [
     (( 'Area' , 'Area' , ), 1, (1, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Centroid' , 'Centroid' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 1024 , )),
     (( 'MomentOfInertia' , 'momentInertia' , ), 3, (3, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -30254,14 +30254,14 @@ IZcadRegion_vtables_ = [
     (( 'Explode' , 'pArrayObjs' , ), 11, (11, (), [ (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 536 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadRegisteredApplication_vtables_dispatch_ = 1
-IZcadRegisteredApplication_vtables_ = [
+IAcadRegisteredApplication_vtables_dispatch_ = 1
+IAcadRegisteredApplication_vtables_ = [
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadRegisteredApplications_vtables_dispatch_ = 1
-IZcadRegisteredApplications_vtables_ = [
+IAcadRegisteredApplications_vtables_dispatch_ = 1
+IAcadRegisteredApplications_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC92318F-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -30270,8 +30270,8 @@ IZcadRegisteredApplications_vtables_ = [
              (16393, 10, None, "IID('{EC92318F-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadRevolvedSurface_vtables_dispatch_ = 1
-IZcadRevolvedSurface_vtables_ = [
+IAcadRevolvedSurface_vtables_dispatch_ = 1
+IAcadRevolvedSurface_vtables_ = [
     (( 'RevolutionAngle' , 'revAngle' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
     (( 'RevolutionAngle' , 'revAngle' , ), 2, (2, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
     (( 'AxisPosition' , 'AxisPosition' , ), 3, (3, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
@@ -30279,8 +30279,8 @@ IZcadRevolvedSurface_vtables_ = [
     (( 'AxisDirection' , 'AxisDirection' , ), 4, (4, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSection_vtables_dispatch_ = 1
-IZcadSection_vtables_ = [
+IAcadSection_vtables_dispatch_ = 1
+IAcadSection_vtables_ = [
     (( 'Name' , 'pbstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'pbstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'State' , 'pVal' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30322,8 +30322,8 @@ IZcadSection_vtables_ = [
              (16396, 2, None, None) , (16396, 2, None, None) , (16396, 2, None, None) , (16396, 2, None, None) , ], 1 , 1 , 4 , 0 , 704 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSection2_vtables_dispatch_ = 1
-IZcadSection2_vtables_ = [
+IAcadSection2_vtables_dispatch_ = 1
+IAcadSection2_vtables_ = [
     (( 'State2' , 'pVal' , ), 22, (22, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
     (( 'State2' , 'pVal' , ), 22, (22, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 720 , (3, 0, None, None) , 0 , )),
     (( 'SliceDepth' , 'pVal' , ), 21, (21, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 728 , (3, 0, None, None) , 0 , )),
@@ -30332,8 +30332,8 @@ IZcadSection2_vtables_ = [
     (( 'SectionPlaneOffset' , 'pVal' , ), 23, (23, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 752 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSectionManager_vtables_dispatch_ = 1
-IZcadSectionManager_vtables_ = [
+IAcadSectionManager_vtables_dispatch_ = 1
+IAcadSectionManager_vtables_ = [
     (( 'Item' , 'Index' , 'pSection' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pVal' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 65 , )),
@@ -30343,16 +30343,16 @@ IZcadSectionManager_vtables_ = [
              (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSectionSettings_vtables_dispatch_ = 1
-IZcadSectionSettings_vtables_ = [
+IAcadSectionSettings_vtables_dispatch_ = 1
+IAcadSectionSettings_vtables_ = [
     (( 'CurrentSectionType' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'CurrentSectionType' , 'pVal' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'GetSectionTypeSettings' , 'secType' , 'pUnk' , ), 2, (2, (), [ (3, 1, None, None) , 
              (16393, 10, None, "IID('{EC92308C-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSectionTypeSettings_vtables_dispatch_ = 1
-IZcadSectionTypeSettings_vtables_ = [
+IAcadSectionTypeSettings_vtables_dispatch_ = 1
+IAcadSectionTypeSettings_vtables_ = [
     (( 'GenerationOptions' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'GenerationOptions' , 'pVal' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'SourceObjects' , 'pVal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30453,14 +30453,14 @@ IZcadSectionTypeSettings_vtables_ = [
     (( 'CurveTangencyLinesLineweight' , 'Lineweight' , ), 137, (137, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 832 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSectionTypeSettings2_vtables_dispatch_ = 1
-IZcadSectionTypeSettings2_vtables_ = [
+IAcadSectionTypeSettings2_vtables_dispatch_ = 1
+IAcadSectionTypeSettings2_vtables_ = [
     (( 'IntersectionBoundaryVisible' , 'pVal' , ), 50, (50, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 840 , (3, 0, None, None) , 0 , )),
     (( 'IntersectionBoundaryVisible' , 'pVal' , ), 50, (50, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 848 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSecurityParams_vtables_dispatch_ = 1
-IZcadSecurityParams_vtables_ = [
+IAcadSecurityParams_vtables_dispatch_ = 1
+IAcadSecurityParams_vtables_ = [
     (( 'Action' , 'pOperations' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Action' , 'pOperations' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Password' , 'pSecret' , ), 2, (2, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30485,8 +30485,8 @@ IZcadSecurityParams_vtables_ = [
     (( 'TimeServer' , 'pTimeServerName' , ), 11, (11, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSelectionSet_vtables_dispatch_ = 1
-IZcadSelectionSet_vtables_ = [
+IAcadSelectionSet_vtables_dispatch_ = 1
+IAcadSelectionSet_vtables_ = [
     (( 'Item' , 'Index' , 'pEntity' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
@@ -30511,8 +30511,8 @@ IZcadSelectionSet_vtables_ = [
     (( 'Delete' , ), 14, (14, (), [ ], 1 , 1 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSelectionSets_vtables_dispatch_ = 1
-IZcadSelectionSets_vtables_ = [
+IAcadSelectionSets_vtables_dispatch_ = 1
+IAcadSelectionSets_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC923124-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pVal' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
@@ -30522,15 +30522,15 @@ IZcadSelectionSets_vtables_ = [
              (16393, 10, None, "IID('{EC923124-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 88 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadShadowDisplay_vtables_dispatch_ = 0
-IZcadShadowDisplay_vtables_ = [
+IAcadShadowDisplay_vtables_dispatch_ = 0
+IAcadShadowDisplay_vtables_ = [
     (( 'ShadowDisplay' , 'ShadowDisplay' , ), 1610678272, (1610678272, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 24 , (3, 0, None, None) , 0 , )),
     (( 'ShadowDisplay' , 'ShadowDisplay' , ), 1610678272, (1610678272, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 32 , (3, 0, None, None) , 0 , )),
     (( 'EnableShadowDisplay' , 'ShadowDisplay' , ), 1610678274, (1610678274, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 40 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadShape_vtables_dispatch_ = 1
-IZcadShape_vtables_ = [
+IAcadShape_vtables_dispatch_ = 1
+IAcadShape_vtables_ = [
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'InsertionPoint' , 'insPoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30549,8 +30549,8 @@ IZcadShape_vtables_ = [
     (( 'Thickness' , 'Thickness' , ), 8, (8, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSolid_vtables_dispatch_ = 1
-IZcadSolid_vtables_ = [
+IAcadSolid_vtables_dispatch_ = 1
+IAcadSolid_vtables_ = [
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -30563,8 +30563,8 @@ IZcadSolid_vtables_ = [
              (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 512 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadSortentsTable_vtables_dispatch_ = 1
-IZcadSortentsTable_vtables_ = [
+IAcadSortentsTable_vtables_dispatch_ = 1
+IAcadSortentsTable_vtables_ = [
     (( 'MoveToBottom' , 'Objects' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'MoveToTop' , 'Objects' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'MoveBelow' , 'Objects' , 'Target' , ), 3, (3, (), [ (12, 1, None, None) , 
@@ -30581,8 +30581,8 @@ IZcadSortentsTable_vtables_ = [
     (( 'SetRelativeDrawOrder' , 'Objects' , ), 9, (9, (), [ (12, 1, None, None) , ], 1 , 1 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSpline_vtables_dispatch_ = 1
-IZcadSpline_vtables_ = [
+IAcadSpline_vtables_dispatch_ = 1
+IAcadSpline_vtables_ = [
     (( 'NumberOfControlPoints' , 'numCtrlPoints' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'ControlPoints' , 'controlPoint' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'ControlPoints' , 'controlPoint' , ), 2, (2, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30637,14 +30637,14 @@ IZcadSpline_vtables_ = [
     (( 'Closed2' , 'fClose' , ), 32, (32, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 800 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadState_vtables_dispatch_ = 1
-IZcadState_vtables_ = [
+IAcadState_vtables_dispatch_ = 1
+IAcadState_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1, (1, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'IsQuiescent' , 'pVal' , ), 2, (2, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSubDMesh_vtables_dispatch_ = 1
-IZcadSubDMesh_vtables_ = [
+IAcadSubDMesh_vtables_dispatch_ = 1
+IAcadSubDMesh_vtables_ = [
     (( 'Smoothness' , 'level' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Smoothness' , 'level' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'corners' , ), 3, (3, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30657,16 +30657,16 @@ IZcadSubDMesh_vtables_ = [
     (( 'FaceCount' , 'Count' , ), 6, (6, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 512 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSubDMeshEdge_vtables_dispatch_ = 1
-IZcadSubDMeshEdge_vtables_ = [
+IAcadSubDMeshEdge_vtables_dispatch_ = 1
+IAcadSubDMeshEdge_vtables_ = [
     (( 'CreaseType' , 'Type' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
     (( 'CreaseType' , 'Type' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
     (( 'CreaseLevel' , 'level' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
     (( 'CreaseLevel' , 'level' , ), 2, (2, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSubDMeshFace_vtables_dispatch_ = 1
-IZcadSubDMeshFace_vtables_ = [
+IAcadSubDMeshFace_vtables_dispatch_ = 1
+IAcadSubDMeshFace_vtables_ = [
     (( 'Material' , 'Material' , ), 1399, (1399, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
     (( 'Material' , 'Material' , ), 1399, (1399, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
     (( 'CreaseType' , 'Type' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
@@ -30675,8 +30675,8 @@ IZcadSubDMeshFace_vtables_ = [
     (( 'CreaseLevel' , 'level' , ), 2, (2, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSubDMeshVertex_vtables_dispatch_ = 1
-IZcadSubDMeshVertex_vtables_ = [
+IAcadSubDMeshVertex_vtables_dispatch_ = 1
+IAcadSubDMeshVertex_vtables_ = [
     (( 'Coordinates' , 'coord' , ), 3, (3, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'coord' , ), 3, (3, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
     (( 'CreaseType' , 'Type' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 152 , (3, 0, None, None) , 0 , )),
@@ -30685,26 +30685,26 @@ IZcadSubDMeshVertex_vtables_ = [
     (( 'CreaseLevel' , 'level' , ), 2, (2, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSubEntSolidEdge_vtables_dispatch_ = 1
-IZcadSubEntSolidEdge_vtables_ = [
+IAcadSubEntSolidEdge_vtables_dispatch_ = 1
+IAcadSubEntSolidEdge_vtables_ = [
 ]
 
-IZcadSubEntSolidFace_vtables_dispatch_ = 1
-IZcadSubEntSolidFace_vtables_ = [
+IAcadSubEntSolidFace_vtables_dispatch_ = 1
+IAcadSubEntSolidFace_vtables_ = [
     (( 'Material' , 'Material' , ), 1399, (1399, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 136 , (3, 0, None, None) , 0 , )),
     (( 'Material' , 'Material' , ), 1399, (1399, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 144 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSubEntSolidNode_vtables_dispatch_ = 1
-IZcadSubEntSolidNode_vtables_ = [
+IAcadSubEntSolidNode_vtables_dispatch_ = 1
+IAcadSubEntSolidNode_vtables_ = [
 ]
 
-IZcadSubEntSolidVertex_vtables_dispatch_ = 1
-IZcadSubEntSolidVertex_vtables_ = [
+IAcadSubEntSolidVertex_vtables_dispatch_ = 1
+IAcadSubEntSolidVertex_vtables_ = [
 ]
 
-IZcadSubEntity_vtables_dispatch_ = 1
-IZcadSubEntity_vtables_ = [
+IAcadSubEntity_vtables_dispatch_ = 1
+IAcadSubEntity_vtables_ = [
     (( 'OnModified' , ), 1024, (1024, (), [ ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'ObjectName' , 'ObjectName' , ), 1025, (1025, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'color' , 'pColor' , ), 1302, (1302, (), [ (16393, 10, None, "IID('{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30717,8 +30717,8 @@ IZcadSubEntity_vtables_ = [
     (( 'Hyperlinks' , 'Hyperlinks' , ), 1301, (1301, (), [ (16393, 10, None, "IID('{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 128 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSummaryInfo_vtables_dispatch_ = 1
-IZcadSummaryInfo_vtables_ = [
+IAcadSummaryInfo_vtables_dispatch_ = 1
+IAcadSummaryInfo_vtables_ = [
     (( 'Author' , 'pAuthor' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Author' , 'pAuthor' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Comments' , 'pComments' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -30750,8 +30750,8 @@ IZcadSummaryInfo_vtables_ = [
     (( 'RemoveCustomByKey' , 'key' , ), 16, (16, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 240 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSurface_vtables_dispatch_ = 1
-IZcadSurface_vtables_ = [
+IAcadSurface_vtables_dispatch_ = 1
+IAcadSurface_vtables_ = [
     (( 'SurfaceType' , 'SurfaceType' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'UIsolineDensity' , 'density' , ), 10, (10, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'UIsolineDensity' , 'density' , ), 10, (10, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -30769,8 +30769,8 @@ IZcadSurface_vtables_ = [
     (( 'SurfTrimAssociativity' , 'associative' , ), 193, (193, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 568 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadSweptSurface_vtables_dispatch_ = 1
-IZcadSweptSurface_vtables_ = [
+IAcadSweptSurface_vtables_dispatch_ = 1
+IAcadSweptSurface_vtables_ = [
     (( 'ProfileRotation' , 'profileRotationAngle' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 576 , (3, 0, None, None) , 0 , )),
     (( 'ProfileRotation' , 'profileRotationAngle' , ), 2, (2, (), [ (5, 1, None, None) , ], 1 , 4 , 4 , 0 , 584 , (3, 0, None, None) , 0 , )),
     (( 'Bank' , 'bBank' , ), 3, (3, (), [ (16395, 10, None, None) , ], 1 , 2 , 4 , 0 , 592 , (3, 0, None, None) , 0 , )),
@@ -30782,8 +30782,8 @@ IZcadSweptSurface_vtables_ = [
     (( 'Length' , 'Length' , ), 6, (6, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 640 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadTable_vtables_dispatch_ = 1
-IZcadTable_vtables_ = [
+IAcadTable_vtables_dispatch_ = 1
+IAcadTable_vtables_ = [
     (( 'StyleName' , 'bstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'StyleName' , 'bstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Rows' , 'pRows' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31177,8 +31177,8 @@ IZcadTable_vtables_ = [
              (3, 1, None, None) , (3, 1, None, None) , (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 2168 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadTableStyle_vtables_dispatch_ = 1
-IZcadTableStyle_vtables_ = [
+IAcadTableStyle_vtables_dispatch_ = 1
+IAcadTableStyle_vtables_ = [
     (( 'Name' , 'bstrValue' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrValue' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Description' , 'bstr' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -31317,8 +31317,8 @@ IZcadTableStyle_vtables_ = [
              (3, 0, None, None) , ], 1 , 1 , 4 , 0 , 792 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadText_vtables_dispatch_ = 1
-IZcadText_vtables_ = [
+IAcadText_vtables_dispatch_ = 1
+IAcadText_vtables_ = [
     (( 'TextString' , 'bstrText' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'TextString' , 'bstrText' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'StyleName' , 'bstrName' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31354,8 +31354,8 @@ IZcadText_vtables_ = [
     (( 'FieldCode' , 'bstrText' , ), 17, (17, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 712 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadTextStyle_vtables_dispatch_ = 1
-IZcadTextStyle_vtables_ = [
+IAcadTextStyle_vtables_dispatch_ = 1
+IAcadTextStyle_vtables_ = [
     (( 'BigFontFile' , 'fontFile' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'BigFontFile' , 'fontFile' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'fontFile' , 'fontFile' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -31379,8 +31379,8 @@ IZcadTextStyle_vtables_ = [
              (3, 1, None, None) , (3, 1, None, None) , ], 1 , 1 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadTextStyles_vtables_dispatch_ = 1
-IZcadTextStyles_vtables_ = [
+IAcadTextStyles_vtables_dispatch_ = 1
+IAcadTextStyles_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -31389,8 +31389,8 @@ IZcadTextStyles_vtables_ = [
              (16393, 10, None, "IID('{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadTolerance_vtables_dispatch_ = 1
-IZcadTolerance_vtables_ = [
+IAcadTolerance_vtables_dispatch_ = 1
+IAcadTolerance_vtables_ = [
     (( 'DirectionVector' , 'dirVector' , ), 80, (80, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 1024 , )),
     (( 'DirectionVector' , 'dirVector' , ), 80, (80, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 1024 , )),
     (( 'InsertionPoint' , 'insPoint' , ), 81, (81, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31413,8 +31413,8 @@ IZcadTolerance_vtables_ = [
     (( 'DimensionLineColor' , 'Type' , ), 13, (13, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 608 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadToolbar_vtables_dispatch_ = 1
-IZcadToolbar_vtables_ = [
+IAcadToolbar_vtables_dispatch_ = 1
+IAcadToolbar_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -31449,8 +31449,8 @@ IZcadToolbar_vtables_ = [
     (( 'TagString' , 'bstrTag' , ), 1610743834, (1610743834, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 264 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadToolbarItem_vtables_dispatch_ = 1
-IZcadToolbarItem_vtables_ = [
+IAcadToolbarItem_vtables_dispatch_ = 1
+IAcadToolbarItem_vtables_ = [
     (( 'Application' , 'pAppObj' , ), 1610743808, (1610743808, (), [ (16393, 10, None, "IID('{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'Parent' , 'pParent' , ), 1610743809, (1610743809, (), [ (16393, 10, None, "IID('{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 1610743810, (1610743810, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31475,8 +31475,8 @@ IZcadToolbarItem_vtables_ = [
     (( 'CommandDisplayName' , 'Name' , ), 1610743825, (1610743825, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadToolbars_vtables_dispatch_ = 1
-IZcadToolbars_vtables_ = [
+IAcadToolbars_vtables_dispatch_ = 1
+IAcadToolbars_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( '_NewEnum' , 'pEnumVariant' , ), -4, (-4, (), [ (16397, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 65 , )),
@@ -31489,8 +31489,8 @@ IZcadToolbars_vtables_ = [
              (16393, 10, None, "IID('{EC92306B-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 112 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadTrace_vtables_dispatch_ = 1
-IZcadTrace_vtables_ = [
+IAcadTrace_vtables_dispatch_ = 1
+IAcadTrace_vtables_ = [
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Coordinates' , 'corners' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Normal' , 'Normal' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 1024 , )),
@@ -31503,8 +31503,8 @@ IZcadTrace_vtables_ = [
              (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 512 , (3, 0, None, None) , 1024 , )),
 ]
 
-IZcadUCS_vtables_dispatch_ = 1
-IZcadUCS_vtables_ = [
+IAcadUCS_vtables_dispatch_ = 1
+IAcadUCS_vtables_ = [
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Origin' , 'Origin' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -31516,8 +31516,8 @@ IZcadUCS_vtables_ = [
     (( 'GetUCSMatrix' , 'transMatrix' , ), 5, (5, (), [ (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 224 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadUCSs_vtables_dispatch_ = 1
-IZcadUCSs_vtables_ = [
+IAcadUCSs_vtables_dispatch_ = 1
+IAcadUCSs_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -31527,8 +31527,8 @@ IZcadUCSs_vtables_ = [
              (8, 1, None, None) , (16393, 10, None, "IID('{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadUnderlay_vtables_dispatch_ = 1
-IZcadUnderlay_vtables_ = [
+IAcadUnderlay_vtables_dispatch_ = 1
+IAcadUnderlay_vtables_ = [
     (( 'Contrast' , 'Contrast' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'Contrast' , 'Contrast' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'Fade' , 'Fade' , ), 2, (2, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31562,8 +31562,8 @@ IZcadUnderlay_vtables_ = [
     (( 'UnderlayLayerOverrideApplied' , 'bOverride' , ), 17, (17, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 696 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadUtility_vtables_dispatch_ = 1
-IZcadUtility_vtables_ = [
+IAcadUtility_vtables_dispatch_ = 1
+IAcadUtility_vtables_ = [
     (( 'AngleToReal' , 'Angle' , 'Unit' , 'Value' , ), 1610743808, (1610743808, (), [ 
              (8, 1, None, None) , (3, 1, None, None) , (16389, 10, None, None) , ], 1 , 1 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'AngleToString' , 'Angle' , 'Unit' , 'precision' , 'bstrValue' , 
@@ -31626,8 +31626,8 @@ IZcadUtility_vtables_ = [
              (9, 1, None, None) , (11, 1, None, None) , (16392, 10, None, None) , ], 1 , 1 , 4 , 0 , 288 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadView_vtables_dispatch_ = 1
-IZcadView_vtables_ = [
+IAcadView_vtables_dispatch_ = 1
+IAcadView_vtables_ = [
     (( 'Center' , 'Center' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'Center' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Height' , 'Height' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -31650,8 +31650,8 @@ IZcadView_vtables_ = [
     (( 'HasVpAssociation' , 'bVpAssoc' , ), 10, (10, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 312 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadViewport_vtables_dispatch_ = 1
-IZcadViewport_vtables_ = [
+IAcadViewport_vtables_dispatch_ = 1
+IAcadViewport_vtables_ = [
     (( 'Center' , 'Center' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Center' , 'Center' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'Height' , 'Height' , ), 2, (2, (), [ (16389, 10, None, None) , ], 1 , 2 , 4 , 0 , 176 , (3, 0, None, None) , 0 , )),
@@ -31694,8 +31694,8 @@ IZcadViewport_vtables_ = [
     (( 'ArcSmoothness' , 'arcSmooth' , ), 23, (23, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 440 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadViewports_vtables_dispatch_ = 1
-IZcadViewports_vtables_ = [
+IAcadViewports_vtables_dispatch_ = 1
+IAcadViewports_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC92303D-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -31705,8 +31705,8 @@ IZcadViewports_vtables_ = [
     (( 'DeleteConfiguration' , 'Name' , ), 3, (3, (), [ (8, 1, None, None) , ], 1 , 1 , 4 , 0 , 192 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadViews_vtables_dispatch_ = 1
-IZcadViews_vtables_ = [
+IAcadViews_vtables_dispatch_ = 1
+IAcadViews_vtables_ = [
     (( 'Item' , 'Index' , 'pItem' , ), 0, (0, (), [ (12, 1, None, None) , 
              (16393, 10, None, "IID('{EC923075-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Count' , 'pCount' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
@@ -31715,12 +31715,12 @@ IZcadViews_vtables_ = [
              (16393, 10, None, "IID('{EC923075-5A21-11E7-B72E-BC5FF42AC839}')") , ], 1 , 1 , 4 , 0 , 184 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadWipeout_vtables_dispatch_ = 1
-IZcadWipeout_vtables_ = [
+IAcadWipeout_vtables_dispatch_ = 1
+IAcadWipeout_vtables_ = [
 ]
 
-IZcadXRecord_vtables_dispatch_ = 1
-IZcadXRecord_vtables_ = [
+IAcadXRecord_vtables_dispatch_ = 1
+IAcadXRecord_vtables_ = [
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 160 , (3, 0, None, None) , 0 , )),
     (( 'Name' , 'bstrName' , ), 1, (1, (), [ (8, 1, None, None) , ], 1 , 4 , 4 , 0 , 168 , (3, 0, None, None) , 0 , )),
     (( 'GetXRecordData' , 'XRecordDataType' , 'XRecordDataValue' , ), 2, (2, (), [ (16396, 2, None, None) , 
@@ -31731,8 +31731,8 @@ IZcadXRecord_vtables_ = [
     (( 'TranslateIDs' , 'xlateIds' , ), 4, (4, (), [ (11, 1, None, None) , ], 1 , 4 , 4 , 0 , 200 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadXline_vtables_dispatch_ = 1
-IZcadXline_vtables_ = [
+IAcadXline_vtables_dispatch_ = 1
+IAcadXline_vtables_ = [
     (( 'BasePoint' , 'BasePoint' , ), 1, (1, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 456 , (3, 0, None, None) , 0 , )),
     (( 'BasePoint' , 'BasePoint' , ), 1, (1, (), [ (12, 1, None, None) , ], 1 , 4 , 4 , 0 , 464 , (3, 0, None, None) , 0 , )),
     (( 'SecondPoint' , 'SecondPoint' , ), 2, (2, (), [ (16396, 10, None, None) , ], 1 , 2 , 4 , 0 , 472 , (3, 0, None, None) , 0 , )),
@@ -31743,8 +31743,8 @@ IZcadXline_vtables_ = [
              (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 504 , (3, 0, None, None) , 0 , )),
 ]
 
-IZcadZcCmColor_vtables_dispatch_ = 1
-IZcadZcCmColor_vtables_ = [
+IAcadZcCmColor_vtables_dispatch_ = 1
+IAcadZcCmColor_vtables_ = [
     (( 'EntityColor' , 'eColor' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'EntityColor' , 'eColor' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'ColorName' , 'Name' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31769,161 +31769,161 @@ RecordMap = {
 }
 
 CLSIDToClassMap = {
-    '{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}' : IZcadObject,
-    '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDatabase,
-    '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}' : IZcadModelSpace,
-    '{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}' : IZcadBlock,
-    '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}' : IZcadEntity,
-    '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}' : IZcadZcCmColor,
-    '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}' : IZcadHyperlinks,
-    '{EC923112-5A21-11E7-B72E-BC5FF42AC839}' : IZcadHyperlink,
-    '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}' : IZcad3DFace,
-    '{EC923073-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPolygonMesh,
-    '{EC923081-5A21-11E7-B72E-BC5FF42AC839}' : IZcad3DPolyline,
-    '{EC923095-5A21-11E7-B72E-BC5FF42AC839}' : IZcadArc,
-    '{EC923192-5A21-11E7-B72E-BC5FF42AC839}' : IZcadAttribute,
-    '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}' : IZcad3DSolid,
-    '{EC9231E9-5A21-11E7-B72E-BC5FF42AC839}' : IZcadRegion,
-    '{EC923048-5A21-11E7-B72E-BC5FF42AC839}' : IZcadCircle,
-    '{EC923189-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimAligned,
-    '{EC9230DF-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimension,
-    '{EC923152-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimAngular,
-    '{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimDiametric,
-    '{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimRotated,
-    '{EC923030-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimOrdinate,
-    '{EC923119-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimRadial,
-    '{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}' : IZcadEllipse,
-    '{EC92308B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLeader,
-    '{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMText,
-    '{EC92315D-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPoint,
-    '{EC92311E-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLWPolyline,
-    '{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPolyline,
-    '{EC92300F-5A21-11E7-B72E-BC5FF42AC839}' : IZcadRay,
-    '{EC92301C-5A21-11E7-B72E-BC5FF42AC839}' : IZcadShape,
-    '{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSolid,
-    '{EC92319E-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSpline,
-    '{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}' : IZcadText,
-    '{EC923101-5A21-11E7-B72E-BC5FF42AC839}' : IZcadTolerance,
-    '{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}' : IZcadTrace,
-    '{EC923055-5A21-11E7-B72E-BC5FF42AC839}' : IZcadXline,
-    '{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}' : IZcadBlockReference,
-    '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadHatch,
-    '{EC923005-5A21-11E7-B72E-BC5FF42AC839}' : IZcadRasterImage,
-    '{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLine,
-    '{EC923115-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLayout,
-    '{EC9231DB-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPlotConfiguration,
-    '{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMInsertBlock,
-    '{EC923114-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPolyfaceMesh,
-    '{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMLine,
-    '{EC923174-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDim3PointAngular,
-    '{EC923029-5A21-11E7-B72E-BC5FF42AC839}' : IZcadExternalReference,
-    '{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}' : IZcadTable,
-    '{EC923167-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimArcLength,
-    '{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimRadialLarge,
-    '{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSection,
-    '{EC9230B0-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSectionSettings,
-    '{EC92308C-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSectionTypeSettings,
-    '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMLeader,
-    '{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPaperSpace,
-    '{EC923139-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPViewport,
-    '{EC923075-5A21-11E7-B72E-BC5FF42AC839}' : IZcadView,
-    '{EC923166-5A21-11E7-B72E-BC5FF42AC839}' : IZcadBlocks,
-    '{EC92316B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadGroups,
-    '{EC92319A-5A21-11E7-B72E-BC5FF42AC839}' : IZcadGroup,
-    '{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimStyles,
-    '{EC923160-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDimStyle,
-    '{EC923043-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLayers,
-    '{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLayer,
-    '{EC923098-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLineTypes,
-    '{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLineType,
-    '{EC92309D-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDictionaries,
-    '{EC922FDA-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDictionary,
-    '{EC92307A-5A21-11E7-B72E-BC5FF42AC839}' : IZcadXRecord,
-    '{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}' : IZcadRegisteredApplications,
-    '{EC92318F-5A21-11E7-B72E-BC5FF42AC839}' : IZcadRegisteredApplication,
-    '{EC923131-5A21-11E7-B72E-BC5FF42AC839}' : IZcadTextStyles,
-    '{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}' : IZcadTextStyle,
-    '{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}' : IZcadUCSs,
-    '{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}' : IZcadUCS,
-    '{EC92318D-5A21-11E7-B72E-BC5FF42AC839}' : IZcadViews,
-    '{EC923149-5A21-11E7-B72E-BC5FF42AC839}' : IZcadViewports,
-    '{EC92303D-5A21-11E7-B72E-BC5FF42AC839}' : IZcadViewport,
-    '{EC92312D-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLayouts,
-    '{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPlotConfigurations,
-    '{EC923099-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDatabasePreferences,
-    '{EC92302A-5A21-11E7-B72E-BC5FF42AC839}' : IZcadFileDependencies,
-    '{EC923096-5A21-11E7-B72E-BC5FF42AC839}' : IZcadFileDependency,
-    '{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSummaryInfo,
-    '{EC923035-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSectionManager,
-    '{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMaterials,
-    '{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMaterial,
-    '{EC92328E-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSectionTypeSettings2,
-    '{EC92310E-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDynamicBlockReferenceProperty,
-    '{EC9230B5-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSortentsTable,
-    '{EC9230D6-5A21-11E7-B72E-BC5FF42AC839}' : IZcadIdPair,
-    '{EC923133-5A21-11E7-B72E-BC5FF42AC839}' : IZcadTableStyle,
-    '{EC923040-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMLeaderStyle,
-    '{EC923137-5A21-11E7-B72E-BC5FF42AC839}' : IZcadShadowDisplay,
-    '{EC92304E-5A21-11E7-B72E-BC5FF42AC839}' : IZcadAttributeReference,
-    '{EC923058-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSubEntity,
-    '{EC92328F-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMLeaderLeader,
-    '{EC923045-5A21-11E7-B72E-BC5FF42AC839}' : IZcadOle,
-    '{EC923142-5A21-11E7-B72E-BC5FF42AC839}' : IZcadHelix,
-    '{EC9231DF-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSurface,
-    '{EC9230A4-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPlaneSurface,
-    '{EC923285-5A21-11E7-B72E-BC5FF42AC839}' : IZcadExtrudedSurface,
-    '{EC9231B7-5A21-11E7-B72E-BC5FF42AC839}' : IZcadRevolvedSurface,
-    '{EC92304B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSweptSurface,
-    '{EC923221-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLoftedSurface,
-    '{EC923290-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSection2,
-    '{EC9230F8-5A21-11E7-B72E-BC5FF42AC839}' : IZcadUnderlay,
-    '{EC92319C-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDwfUnderlay,
-    '{EC923291-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSubEntSolidFace,
-    '{EC923136-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSubEntSolidEdge,
-    '{EC922FEF-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSubEntSolidVertex,
-    '{EC923292-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSubEntSolidNode,
-    '{EC9230D0-5A21-11E7-B72E-BC5FF42AC839}' : IZcadWipeout,
-    '{EC923287-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSubDMesh,
-    '{EC923293-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSubDMeshFace,
-    '{EC923294-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSubDMeshEdge,
-    '{EC923295-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSubDMeshVertex,
-    '{EC923296-5A21-11E7-B72E-BC5FF42AC839}' : IZcadNurbSurface,
-    '{EC923297-5A21-11E7-B72E-BC5FF42AC839}' : IZcadGeoPositionMarker,
-    '{EC923298-5A21-11E7-B72E-BC5FF42AC839}' : IZcadGeomapImage,
-    '{EC923299-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPointCloud,
-    '{EC92329E-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPointCloudEx,
-    '{EC92329D-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPointCloudEx2,
-    '{EC923193-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSecurityParams,
-    '{EC9230F6-5A21-11E7-B72E-BC5FF42AC839}' : IZcadLayerStateManager,
-    '{EC923199-5A21-11E7-B72E-BC5FF42AC839}' : IZcadModelSpace2,
+    '{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}' : IAcadObject,
+    '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDatabase,
+    '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}' : IAcadModelSpace,
+    '{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}' : IAcadBlock,
+    '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}' : IAcadEntity,
+    '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}' : IAcadZcCmColor,
+    '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}' : IAcadHyperlinks,
+    '{EC923112-5A21-11E7-B72E-BC5FF42AC839}' : IAcadHyperlink,
+    '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}' : IAcad3DFace,
+    '{EC923073-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPolygonMesh,
+    '{EC923081-5A21-11E7-B72E-BC5FF42AC839}' : IAcad3DPolyline,
+    '{EC923095-5A21-11E7-B72E-BC5FF42AC839}' : IAcadArc,
+    '{EC923192-5A21-11E7-B72E-BC5FF42AC839}' : IAcadAttribute,
+    '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}' : IAcad3DSolid,
+    '{EC9231E9-5A21-11E7-B72E-BC5FF42AC839}' : IAcadRegion,
+    '{EC923048-5A21-11E7-B72E-BC5FF42AC839}' : IAcadCircle,
+    '{EC923189-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimAligned,
+    '{EC9230DF-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimension,
+    '{EC923152-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimAngular,
+    '{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimDiametric,
+    '{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimRotated,
+    '{EC923030-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimOrdinate,
+    '{EC923119-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimRadial,
+    '{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}' : IAcadEllipse,
+    '{EC92308B-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLeader,
+    '{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMText,
+    '{EC92315D-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPoint,
+    '{EC92311E-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLWPolyline,
+    '{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPolyline,
+    '{EC92300F-5A21-11E7-B72E-BC5FF42AC839}' : IAcadRay,
+    '{EC92301C-5A21-11E7-B72E-BC5FF42AC839}' : IAcadShape,
+    '{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSolid,
+    '{EC92319E-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSpline,
+    '{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}' : IAcadText,
+    '{EC923101-5A21-11E7-B72E-BC5FF42AC839}' : IAcadTolerance,
+    '{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}' : IAcadTrace,
+    '{EC923055-5A21-11E7-B72E-BC5FF42AC839}' : IAcadXline,
+    '{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}' : IAcadBlockReference,
+    '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}' : IAcadHatch,
+    '{EC923005-5A21-11E7-B72E-BC5FF42AC839}' : IAcadRasterImage,
+    '{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLine,
+    '{EC923115-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLayout,
+    '{EC9231DB-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPlotConfiguration,
+    '{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMInsertBlock,
+    '{EC923114-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPolyfaceMesh,
+    '{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMLine,
+    '{EC923174-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDim3PointAngular,
+    '{EC923029-5A21-11E7-B72E-BC5FF42AC839}' : IAcadExternalReference,
+    '{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}' : IAcadTable,
+    '{EC923167-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimArcLength,
+    '{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimRadialLarge,
+    '{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSection,
+    '{EC9230B0-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSectionSettings,
+    '{EC92308C-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSectionTypeSettings,
+    '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMLeader,
+    '{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPaperSpace,
+    '{EC923139-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPViewport,
+    '{EC923075-5A21-11E7-B72E-BC5FF42AC839}' : IAcadView,
+    '{EC923166-5A21-11E7-B72E-BC5FF42AC839}' : IAcadBlocks,
+    '{EC92316B-5A21-11E7-B72E-BC5FF42AC839}' : IAcadGroups,
+    '{EC92319A-5A21-11E7-B72E-BC5FF42AC839}' : IAcadGroup,
+    '{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimStyles,
+    '{EC923160-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDimStyle,
+    '{EC923043-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLayers,
+    '{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLayer,
+    '{EC923098-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLineTypes,
+    '{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLineType,
+    '{EC92309D-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDictionaries,
+    '{EC922FDA-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDictionary,
+    '{EC92307A-5A21-11E7-B72E-BC5FF42AC839}' : IAcadXRecord,
+    '{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}' : IAcadRegisteredApplications,
+    '{EC92318F-5A21-11E7-B72E-BC5FF42AC839}' : IAcadRegisteredApplication,
+    '{EC923131-5A21-11E7-B72E-BC5FF42AC839}' : IAcadTextStyles,
+    '{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}' : IAcadTextStyle,
+    '{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}' : IAcadUCSs,
+    '{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}' : IAcadUCS,
+    '{EC92318D-5A21-11E7-B72E-BC5FF42AC839}' : IAcadViews,
+    '{EC923149-5A21-11E7-B72E-BC5FF42AC839}' : IAcadViewports,
+    '{EC92303D-5A21-11E7-B72E-BC5FF42AC839}' : IAcadViewport,
+    '{EC92312D-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLayouts,
+    '{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPlotConfigurations,
+    '{EC923099-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDatabasePreferences,
+    '{EC92302A-5A21-11E7-B72E-BC5FF42AC839}' : IAcadFileDependencies,
+    '{EC923096-5A21-11E7-B72E-BC5FF42AC839}' : IAcadFileDependency,
+    '{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSummaryInfo,
+    '{EC923035-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSectionManager,
+    '{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMaterials,
+    '{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMaterial,
+    '{EC92328E-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSectionTypeSettings2,
+    '{EC92310E-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDynamicBlockReferenceProperty,
+    '{EC9230B5-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSortentsTable,
+    '{EC9230D6-5A21-11E7-B72E-BC5FF42AC839}' : IAcadIdPair,
+    '{EC923133-5A21-11E7-B72E-BC5FF42AC839}' : IAcadTableStyle,
+    '{EC923040-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMLeaderStyle,
+    '{EC923137-5A21-11E7-B72E-BC5FF42AC839}' : IAcadShadowDisplay,
+    '{EC92304E-5A21-11E7-B72E-BC5FF42AC839}' : IAcadAttributeReference,
+    '{EC923058-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSubEntity,
+    '{EC92328F-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMLeaderLeader,
+    '{EC923045-5A21-11E7-B72E-BC5FF42AC839}' : IAcadOle,
+    '{EC923142-5A21-11E7-B72E-BC5FF42AC839}' : IAcadHelix,
+    '{EC9231DF-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSurface,
+    '{EC9230A4-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPlaneSurface,
+    '{EC923285-5A21-11E7-B72E-BC5FF42AC839}' : IAcadExtrudedSurface,
+    '{EC9231B7-5A21-11E7-B72E-BC5FF42AC839}' : IAcadRevolvedSurface,
+    '{EC92304B-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSweptSurface,
+    '{EC923221-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLoftedSurface,
+    '{EC923290-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSection2,
+    '{EC9230F8-5A21-11E7-B72E-BC5FF42AC839}' : IAcadUnderlay,
+    '{EC92319C-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDwfUnderlay,
+    '{EC923291-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSubEntSolidFace,
+    '{EC923136-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSubEntSolidEdge,
+    '{EC922FEF-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSubEntSolidVertex,
+    '{EC923292-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSubEntSolidNode,
+    '{EC9230D0-5A21-11E7-B72E-BC5FF42AC839}' : IAcadWipeout,
+    '{EC923287-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSubDMesh,
+    '{EC923293-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSubDMeshFace,
+    '{EC923294-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSubDMeshEdge,
+    '{EC923295-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSubDMeshVertex,
+    '{EC923296-5A21-11E7-B72E-BC5FF42AC839}' : IAcadNurbSurface,
+    '{EC923297-5A21-11E7-B72E-BC5FF42AC839}' : IAcadGeoPositionMarker,
+    '{EC923298-5A21-11E7-B72E-BC5FF42AC839}' : IAcadGeomapImage,
+    '{EC923299-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPointCloud,
+    '{EC92329E-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPointCloudEx,
+    '{EC92329D-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPointCloudEx2,
+    '{EC923193-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSecurityParams,
+    '{EC9230F6-5A21-11E7-B72E-BC5FF42AC839}' : IAcadLayerStateManager,
+    '{EC923199-5A21-11E7-B72E-BC5FF42AC839}' : IAcadModelSpace2,
     '{EC923100-5A21-11E7-B72E-BC5FF42AC839}' : IArcTextObj,
-    '{EC923156-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDocument,
-    '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPlot,
-    '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}' : IZcadApplication,
-    '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferences,
-    '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesFiles,
-    '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesDisplay,
-    '{EC923128-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesOpenSave,
-    '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesOutput,
-    '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesSystem,
-    '{EC923038-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesUser,
-    '{EC923186-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesDrafting,
-    '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesSelection,
-    '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPreferencesProfiles,
-    '{EC923155-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMenuGroups,
-    '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMenuGroup,
-    '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPopupMenus,
-    '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPopupMenu,
-    '{EC923050-5A21-11E7-B72E-BC5FF42AC839}' : IZcadPopupMenuItem,
-    '{EC923003-5A21-11E7-B72E-BC5FF42AC839}' : IZcadToolbars,
-    '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadToolbar,
-    '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}' : IZcadToolbarItem,
-    '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}' : IZcadMenuBar,
-    '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}' : IZcadDocuments,
-    '{EC923162-5A21-11E7-B72E-BC5FF42AC839}' : IZcadState,
-    '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSelectionSets,
-    '{EC923124-5A21-11E7-B72E-BC5FF42AC839}' : IZcadSelectionSet,
-    '{EC923126-5A21-11E7-B72E-BC5FF42AC839}' : IZcadUtility,
+    '{EC923156-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDocument,
+    '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPlot,
+    '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}' : IAcadApplication,
+    '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPreferences,
+    '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPreferencesFiles,
+    '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPreferencesDisplay,
+    '{EC923128-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPreferencesOpenSave,
+    '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPreferencesOutput,
+    '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPreferencesSystem,
+    '{EC923038-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPreferencesUser,
+    '{EC923186-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPreferencesDrafting,
+    '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPreferencesSelection,
+    '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPreferencesProfiles,
+    '{EC923155-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMenuGroups,
+    '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMenuGroup,
+    '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPopupMenus,
+    '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPopupMenu,
+    '{EC923050-5A21-11E7-B72E-BC5FF42AC839}' : IAcadPopupMenuItem,
+    '{EC923003-5A21-11E7-B72E-BC5FF42AC839}' : IAcadToolbars,
+    '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}' : IAcadToolbar,
+    '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}' : IAcadToolbarItem,
+    '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}' : IAcadMenuBar,
+    '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}' : IAcadDocuments,
+    '{EC923162-5A21-11E7-B72E-BC5FF42AC839}' : IAcadState,
+    '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSelectionSets,
+    '{EC923124-5A21-11E7-B72E-BC5FF42AC839}' : IAcadSelectionSet,
+    '{EC923126-5A21-11E7-B72E-BC5FF42AC839}' : IAcadUtility,
     '{EC923092-5A21-11E7-B72E-BC5FF42AC839}' : _DZcadApplicationEvents,
     '{EC923172-5A21-11E7-B72E-BC5FF42AC839}' : _DZcadDocumentEvents,
     '{EC923177-5A21-11E7-B72E-BC5FF42AC839}' : ZcadLine,
@@ -32085,329 +32085,329 @@ CLSIDToPackageMap = {}
 win32com.client.CLSIDToClass.RegisterCLSIDsFromDict( CLSIDToClassMap )
 VTablesToPackageMap = {}
 VTablesToClassMap = {
-    '{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadObject',
-    '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDatabase',
-    '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadModelSpace',
-    '{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadBlock',
-    '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadEntity',
-    '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadZcCmColor',
-    '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadHyperlinks',
-    '{EC923112-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadHyperlink',
-    '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcad3DFace',
-    '{EC923073-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPolygonMesh',
-    '{EC923081-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcad3DPolyline',
-    '{EC923095-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadArc',
-    '{EC923192-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadAttribute',
-    '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcad3DSolid',
-    '{EC9231E9-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadRegion',
-    '{EC923048-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadCircle',
-    '{EC923189-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimAligned',
-    '{EC9230DF-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimension',
-    '{EC923152-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimAngular',
-    '{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimDiametric',
-    '{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimRotated',
-    '{EC923030-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimOrdinate',
-    '{EC923119-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimRadial',
-    '{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadEllipse',
-    '{EC92308B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLeader',
-    '{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMText',
-    '{EC92315D-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPoint',
-    '{EC92311E-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLWPolyline',
-    '{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPolyline',
-    '{EC92300F-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadRay',
-    '{EC92301C-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadShape',
-    '{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSolid',
-    '{EC92319E-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSpline',
-    '{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadText',
-    '{EC923101-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadTolerance',
-    '{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadTrace',
-    '{EC923055-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadXline',
-    '{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadBlockReference',
-    '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadHatch',
-    '{EC923005-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadRasterImage',
-    '{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLine',
-    '{EC923115-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLayout',
-    '{EC9231DB-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPlotConfiguration',
-    '{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMInsertBlock',
-    '{EC923114-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPolyfaceMesh',
-    '{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMLine',
-    '{EC923174-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDim3PointAngular',
-    '{EC923029-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadExternalReference',
-    '{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadTable',
-    '{EC923167-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimArcLength',
-    '{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimRadialLarge',
-    '{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSection',
-    '{EC9230B0-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSectionSettings',
-    '{EC92308C-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSectionTypeSettings',
-    '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMLeader',
-    '{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPaperSpace',
-    '{EC923139-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPViewport',
-    '{EC923075-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadView',
-    '{EC923166-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadBlocks',
-    '{EC92316B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadGroups',
-    '{EC92319A-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadGroup',
-    '{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimStyles',
-    '{EC923160-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDimStyle',
-    '{EC923043-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLayers',
-    '{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLayer',
-    '{EC923098-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLineTypes',
-    '{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLineType',
-    '{EC92309D-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDictionaries',
-    '{EC922FDA-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDictionary',
-    '{EC92307A-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadXRecord',
-    '{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadRegisteredApplications',
-    '{EC92318F-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadRegisteredApplication',
-    '{EC923131-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadTextStyles',
-    '{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadTextStyle',
-    '{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadUCSs',
-    '{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadUCS',
-    '{EC92318D-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadViews',
-    '{EC923149-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadViewports',
-    '{EC92303D-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadViewport',
-    '{EC92312D-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLayouts',
-    '{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPlotConfigurations',
-    '{EC923099-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDatabasePreferences',
-    '{EC92302A-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadFileDependencies',
-    '{EC923096-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadFileDependency',
-    '{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSummaryInfo',
-    '{EC923035-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSectionManager',
-    '{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMaterials',
-    '{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMaterial',
-    '{EC92328E-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSectionTypeSettings2',
-    '{EC92310E-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDynamicBlockReferenceProperty',
-    '{EC92317E-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadObjectEvents',
-    '{EC9230B5-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSortentsTable',
-    '{EC9230D6-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadIdPair',
-    '{EC923133-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadTableStyle',
-    '{EC923040-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMLeaderStyle',
-    '{EC923137-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadShadowDisplay',
-    '{EC92304E-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadAttributeReference',
-    '{EC923058-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSubEntity',
-    '{EC92328F-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMLeaderLeader',
-    '{EC923045-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadOle',
-    '{EC923142-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadHelix',
-    '{EC9231DF-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSurface',
-    '{EC9230A4-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPlaneSurface',
-    '{EC923285-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadExtrudedSurface',
-    '{EC9231B7-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadRevolvedSurface',
-    '{EC92304B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSweptSurface',
-    '{EC923221-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLoftedSurface',
-    '{EC923290-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSection2',
-    '{EC9230F8-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadUnderlay',
-    '{EC92319C-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDwfUnderlay',
-    '{EC923291-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSubEntSolidFace',
-    '{EC923136-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSubEntSolidEdge',
-    '{EC922FEF-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSubEntSolidVertex',
-    '{EC923292-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSubEntSolidNode',
-    '{EC9230D0-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadWipeout',
-    '{EC923287-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSubDMesh',
-    '{EC923293-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSubDMeshFace',
-    '{EC923294-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSubDMeshEdge',
-    '{EC923295-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSubDMeshVertex',
-    '{EC923296-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadNurbSurface',
-    '{EC923297-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadGeoPositionMarker',
-    '{EC923298-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadGeomapImage',
-    '{EC923299-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPointCloud',
-    '{EC92329E-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPointCloudEx',
-    '{EC92329D-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPointCloudEx2',
-    '{EC923193-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSecurityParams',
-    '{EC9230F6-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadLayerStateManager',
-    '{EC923199-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadModelSpace2',
+    '{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadObject',
+    '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDatabase',
+    '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadModelSpace',
+    '{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadBlock',
+    '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadEntity',
+    '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadZcCmColor',
+    '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadHyperlinks',
+    '{EC923112-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadHyperlink',
+    '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcad3DFace',
+    '{EC923073-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPolygonMesh',
+    '{EC923081-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcad3DPolyline',
+    '{EC923095-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadArc',
+    '{EC923192-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadAttribute',
+    '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcad3DSolid',
+    '{EC9231E9-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadRegion',
+    '{EC923048-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadCircle',
+    '{EC923189-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimAligned',
+    '{EC9230DF-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimension',
+    '{EC923152-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimAngular',
+    '{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimDiametric',
+    '{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimRotated',
+    '{EC923030-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimOrdinate',
+    '{EC923119-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimRadial',
+    '{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadEllipse',
+    '{EC92308B-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLeader',
+    '{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMText',
+    '{EC92315D-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPoint',
+    '{EC92311E-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLWPolyline',
+    '{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPolyline',
+    '{EC92300F-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadRay',
+    '{EC92301C-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadShape',
+    '{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSolid',
+    '{EC92319E-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSpline',
+    '{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadText',
+    '{EC923101-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadTolerance',
+    '{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadTrace',
+    '{EC923055-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadXline',
+    '{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadBlockReference',
+    '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadHatch',
+    '{EC923005-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadRasterImage',
+    '{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLine',
+    '{EC923115-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLayout',
+    '{EC9231DB-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPlotConfiguration',
+    '{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMInsertBlock',
+    '{EC923114-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPolyfaceMesh',
+    '{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMLine',
+    '{EC923174-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDim3PointAngular',
+    '{EC923029-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadExternalReference',
+    '{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadTable',
+    '{EC923167-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimArcLength',
+    '{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimRadialLarge',
+    '{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSection',
+    '{EC9230B0-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSectionSettings',
+    '{EC92308C-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSectionTypeSettings',
+    '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMLeader',
+    '{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPaperSpace',
+    '{EC923139-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPViewport',
+    '{EC923075-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadView',
+    '{EC923166-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadBlocks',
+    '{EC92316B-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadGroups',
+    '{EC92319A-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadGroup',
+    '{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimStyles',
+    '{EC923160-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDimStyle',
+    '{EC923043-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLayers',
+    '{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLayer',
+    '{EC923098-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLineTypes',
+    '{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLineType',
+    '{EC92309D-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDictionaries',
+    '{EC922FDA-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDictionary',
+    '{EC92307A-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadXRecord',
+    '{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadRegisteredApplications',
+    '{EC92318F-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadRegisteredApplication',
+    '{EC923131-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadTextStyles',
+    '{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadTextStyle',
+    '{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadUCSs',
+    '{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadUCS',
+    '{EC92318D-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadViews',
+    '{EC923149-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadViewports',
+    '{EC92303D-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadViewport',
+    '{EC92312D-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLayouts',
+    '{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPlotConfigurations',
+    '{EC923099-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDatabasePreferences',
+    '{EC92302A-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadFileDependencies',
+    '{EC923096-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadFileDependency',
+    '{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSummaryInfo',
+    '{EC923035-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSectionManager',
+    '{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMaterials',
+    '{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMaterial',
+    '{EC92328E-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSectionTypeSettings2',
+    '{EC92310E-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDynamicBlockReferenceProperty',
+    '{EC92317E-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadObjectEvents',
+    '{EC9230B5-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSortentsTable',
+    '{EC9230D6-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadIdPair',
+    '{EC923133-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadTableStyle',
+    '{EC923040-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMLeaderStyle',
+    '{EC923137-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadShadowDisplay',
+    '{EC92304E-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadAttributeReference',
+    '{EC923058-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSubEntity',
+    '{EC92328F-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMLeaderLeader',
+    '{EC923045-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadOle',
+    '{EC923142-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadHelix',
+    '{EC9231DF-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSurface',
+    '{EC9230A4-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPlaneSurface',
+    '{EC923285-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadExtrudedSurface',
+    '{EC9231B7-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadRevolvedSurface',
+    '{EC92304B-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSweptSurface',
+    '{EC923221-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLoftedSurface',
+    '{EC923290-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSection2',
+    '{EC9230F8-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadUnderlay',
+    '{EC92319C-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDwfUnderlay',
+    '{EC923291-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSubEntSolidFace',
+    '{EC923136-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSubEntSolidEdge',
+    '{EC922FEF-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSubEntSolidVertex',
+    '{EC923292-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSubEntSolidNode',
+    '{EC9230D0-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadWipeout',
+    '{EC923287-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSubDMesh',
+    '{EC923293-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSubDMeshFace',
+    '{EC923294-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSubDMeshEdge',
+    '{EC923295-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSubDMeshVertex',
+    '{EC923296-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadNurbSurface',
+    '{EC923297-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadGeoPositionMarker',
+    '{EC923298-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadGeomapImage',
+    '{EC923299-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPointCloud',
+    '{EC92329E-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPointCloudEx',
+    '{EC92329D-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPointCloudEx2',
+    '{EC923193-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSecurityParams',
+    '{EC9230F6-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadLayerStateManager',
+    '{EC923199-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadModelSpace2',
     '{EC923100-5A21-11E7-B72E-BC5FF42AC839}' : 'IArcTextObj',
-    '{EC923156-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDocument',
-    '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPlot',
-    '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadApplication',
-    '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferences',
-    '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesFiles',
-    '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesDisplay',
-    '{EC923128-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesOpenSave',
-    '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesOutput',
-    '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesSystem',
-    '{EC923038-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesUser',
-    '{EC923186-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesDrafting',
-    '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesSelection',
-    '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPreferencesProfiles',
-    '{EC923155-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMenuGroups',
-    '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMenuGroup',
-    '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPopupMenus',
-    '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPopupMenu',
-    '{EC923050-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadPopupMenuItem',
-    '{EC923003-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadToolbars',
-    '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadToolbar',
-    '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadToolbarItem',
-    '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadMenuBar',
-    '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadDocuments',
-    '{EC923162-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadState',
-    '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSelectionSets',
-    '{EC923124-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadSelectionSet',
-    '{EC923126-5A21-11E7-B72E-BC5FF42AC839}' : 'IZcadUtility',
+    '{EC923156-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDocument',
+    '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPlot',
+    '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadApplication',
+    '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPreferences',
+    '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPreferencesFiles',
+    '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPreferencesDisplay',
+    '{EC923128-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPreferencesOpenSave',
+    '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPreferencesOutput',
+    '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPreferencesSystem',
+    '{EC923038-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPreferencesUser',
+    '{EC923186-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPreferencesDrafting',
+    '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPreferencesSelection',
+    '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPreferencesProfiles',
+    '{EC923155-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMenuGroups',
+    '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMenuGroup',
+    '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPopupMenus',
+    '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPopupMenu',
+    '{EC923050-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadPopupMenuItem',
+    '{EC923003-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadToolbars',
+    '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadToolbar',
+    '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadToolbarItem',
+    '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadMenuBar',
+    '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadDocuments',
+    '{EC923162-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadState',
+    '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSelectionSets',
+    '{EC923124-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadSelectionSet',
+    '{EC923126-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadUtility',
 }
 
 
 NamesToIIDMap = {
-    'IZcadObject' : '{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDatabase' : '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadModelSpace' : '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadBlock' : '{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadEntity' : '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadZcCmColor' : '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadHyperlinks' : '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadHyperlink' : '{EC923112-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcad3DFace' : '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPolygonMesh' : '{EC923073-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcad3DPolyline' : '{EC923081-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadArc' : '{EC923095-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadAttribute' : '{EC923192-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcad3DSolid' : '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadRegion' : '{EC9231E9-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadCircle' : '{EC923048-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimAligned' : '{EC923189-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimension' : '{EC9230DF-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimAngular' : '{EC923152-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimDiametric' : '{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimRotated' : '{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimOrdinate' : '{EC923030-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimRadial' : '{EC923119-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadEllipse' : '{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLeader' : '{EC92308B-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMText' : '{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPoint' : '{EC92315D-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLWPolyline' : '{EC92311E-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPolyline' : '{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadRay' : '{EC92300F-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadShape' : '{EC92301C-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSolid' : '{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSpline' : '{EC92319E-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadText' : '{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadTolerance' : '{EC923101-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadTrace' : '{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadXline' : '{EC923055-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadBlockReference' : '{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadHatch' : '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadRasterImage' : '{EC923005-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLine' : '{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLayout' : '{EC923115-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPlotConfiguration' : '{EC9231DB-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMInsertBlock' : '{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPolyfaceMesh' : '{EC923114-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMLine' : '{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDim3PointAngular' : '{EC923174-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadExternalReference' : '{EC923029-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadTable' : '{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimArcLength' : '{EC923167-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimRadialLarge' : '{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSection' : '{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSectionSettings' : '{EC9230B0-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSectionTypeSettings' : '{EC92308C-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMLeader' : '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPaperSpace' : '{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPViewport' : '{EC923139-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadView' : '{EC923075-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadBlocks' : '{EC923166-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadGroups' : '{EC92316B-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadGroup' : '{EC92319A-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimStyles' : '{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDimStyle' : '{EC923160-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLayers' : '{EC923043-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLayer' : '{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLineTypes' : '{EC923098-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLineType' : '{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDictionaries' : '{EC92309D-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDictionary' : '{EC922FDA-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadXRecord' : '{EC92307A-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadRegisteredApplications' : '{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadRegisteredApplication' : '{EC92318F-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadTextStyles' : '{EC923131-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadTextStyle' : '{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadUCSs' : '{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadUCS' : '{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadViews' : '{EC92318D-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadViewports' : '{EC923149-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadViewport' : '{EC92303D-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLayouts' : '{EC92312D-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPlotConfigurations' : '{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDatabasePreferences' : '{EC923099-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadFileDependencies' : '{EC92302A-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadFileDependency' : '{EC923096-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSummaryInfo' : '{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSectionManager' : '{EC923035-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMaterials' : '{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMaterial' : '{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSectionTypeSettings2' : '{EC92328E-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDynamicBlockReferenceProperty' : '{EC92310E-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSortentsTable' : '{EC9230B5-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadIdPair' : '{EC9230D6-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadTableStyle' : '{EC923133-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMLeaderStyle' : '{EC923040-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadShadowDisplay' : '{EC923137-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadAttributeReference' : '{EC92304E-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSubEntity' : '{EC923058-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMLeaderLeader' : '{EC92328F-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadOle' : '{EC923045-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadHelix' : '{EC923142-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSurface' : '{EC9231DF-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPlaneSurface' : '{EC9230A4-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadExtrudedSurface' : '{EC923285-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadRevolvedSurface' : '{EC9231B7-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSweptSurface' : '{EC92304B-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLoftedSurface' : '{EC923221-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSection2' : '{EC923290-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadUnderlay' : '{EC9230F8-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDwfUnderlay' : '{EC92319C-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSubEntSolidFace' : '{EC923291-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSubEntSolidEdge' : '{EC923136-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSubEntSolidVertex' : '{EC922FEF-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSubEntSolidNode' : '{EC923292-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadWipeout' : '{EC9230D0-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSubDMesh' : '{EC923287-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSubDMeshFace' : '{EC923293-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSubDMeshEdge' : '{EC923294-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSubDMeshVertex' : '{EC923295-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadNurbSurface' : '{EC923296-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadGeoPositionMarker' : '{EC923297-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadGeomapImage' : '{EC923298-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPointCloud' : '{EC923299-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPointCloudEx' : '{EC92329E-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPointCloudEx2' : '{EC92329D-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSecurityParams' : '{EC923193-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadLayerStateManager' : '{EC9230F6-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadModelSpace2' : '{EC923199-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadObject' : '{EC9230C6-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDatabase' : '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadModelSpace' : '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadBlock' : '{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadEntity' : '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadZcCmColor' : '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadHyperlinks' : '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadHyperlink' : '{EC923112-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcad3DFace' : '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPolygonMesh' : '{EC923073-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcad3DPolyline' : '{EC923081-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadArc' : '{EC923095-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadAttribute' : '{EC923192-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcad3DSolid' : '{EC92309B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadRegion' : '{EC9231E9-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadCircle' : '{EC923048-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimAligned' : '{EC923189-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimension' : '{EC9230DF-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimAngular' : '{EC923152-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimDiametric' : '{EC9231B6-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimRotated' : '{EC922FDE-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimOrdinate' : '{EC923030-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimRadial' : '{EC923119-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadEllipse' : '{EC9230CA-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLeader' : '{EC92308B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMText' : '{EC922FE1-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPoint' : '{EC92315D-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLWPolyline' : '{EC92311E-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPolyline' : '{EC9230F2-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadRay' : '{EC92300F-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadShape' : '{EC92301C-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSolid' : '{EC9230E8-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSpline' : '{EC92319E-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadText' : '{EC9230C3-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadTolerance' : '{EC923101-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadTrace' : '{EC9231B0-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadXline' : '{EC923055-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadBlockReference' : '{EC9230D5-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadHatch' : '{EC92319B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadRasterImage' : '{EC923005-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLine' : '{EC9230FB-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLayout' : '{EC923115-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPlotConfiguration' : '{EC9231DB-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMInsertBlock' : '{EC922FC1-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPolyfaceMesh' : '{EC923114-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMLine' : '{EC9231D9-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDim3PointAngular' : '{EC923174-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadExternalReference' : '{EC923029-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadTable' : '{EC9231D2-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimArcLength' : '{EC923167-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimRadialLarge' : '{EC922FE2-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSection' : '{EC9231D6-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSectionSettings' : '{EC9230B0-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSectionTypeSettings' : '{EC92308C-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMLeader' : '{EC922FC2-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPaperSpace' : '{EC9230E3-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPViewport' : '{EC923139-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadView' : '{EC923075-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadBlocks' : '{EC923166-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadGroups' : '{EC92316B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadGroup' : '{EC92319A-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimStyles' : '{EC9230AF-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDimStyle' : '{EC923160-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLayers' : '{EC923043-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLayer' : '{EC9230C0-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLineTypes' : '{EC923098-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLineType' : '{EC922FF1-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDictionaries' : '{EC92309D-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDictionary' : '{EC922FDA-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadXRecord' : '{EC92307A-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadRegisteredApplications' : '{EC9231AE-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadRegisteredApplication' : '{EC92318F-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadTextStyles' : '{EC923131-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadTextStyle' : '{EC922FF8-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadUCSs' : '{EC9230EC-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadUCS' : '{EC9230AB-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadViews' : '{EC92318D-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadViewports' : '{EC923149-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadViewport' : '{EC92303D-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLayouts' : '{EC92312D-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPlotConfigurations' : '{EC9231BD-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDatabasePreferences' : '{EC923099-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadFileDependencies' : '{EC92302A-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadFileDependency' : '{EC923096-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSummaryInfo' : '{EC922FF0-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSectionManager' : '{EC923035-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMaterials' : '{EC9230AC-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMaterial' : '{EC9230DD-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSectionTypeSettings2' : '{EC92328E-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDynamicBlockReferenceProperty' : '{EC92310E-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSortentsTable' : '{EC9230B5-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadIdPair' : '{EC9230D6-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadTableStyle' : '{EC923133-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMLeaderStyle' : '{EC923040-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadShadowDisplay' : '{EC923137-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadAttributeReference' : '{EC92304E-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSubEntity' : '{EC923058-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMLeaderLeader' : '{EC92328F-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadOle' : '{EC923045-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadHelix' : '{EC923142-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSurface' : '{EC9231DF-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPlaneSurface' : '{EC9230A4-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadExtrudedSurface' : '{EC923285-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadRevolvedSurface' : '{EC9231B7-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSweptSurface' : '{EC92304B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLoftedSurface' : '{EC923221-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSection2' : '{EC923290-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadUnderlay' : '{EC9230F8-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDwfUnderlay' : '{EC92319C-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSubEntSolidFace' : '{EC923291-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSubEntSolidEdge' : '{EC923136-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSubEntSolidVertex' : '{EC922FEF-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSubEntSolidNode' : '{EC923292-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadWipeout' : '{EC9230D0-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSubDMesh' : '{EC923287-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSubDMeshFace' : '{EC923293-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSubDMeshEdge' : '{EC923294-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSubDMeshVertex' : '{EC923295-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadNurbSurface' : '{EC923296-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadGeoPositionMarker' : '{EC923297-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadGeomapImage' : '{EC923298-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPointCloud' : '{EC923299-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPointCloudEx' : '{EC92329E-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPointCloudEx2' : '{EC92329D-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSecurityParams' : '{EC923193-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadLayerStateManager' : '{EC9230F6-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadModelSpace2' : '{EC923199-5A21-11E7-B72E-BC5FF42AC839}',
     'IArcTextObj' : '{EC923100-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDocument' : '{EC923156-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPlot' : '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadApplication' : '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPreferences' : '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPreferencesFiles' : '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPreferencesDisplay' : '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPreferencesOpenSave' : '{EC923128-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPreferencesOutput' : '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPreferencesSystem' : '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPreferencesUser' : '{EC923038-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPreferencesDrafting' : '{EC923186-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPreferencesSelection' : '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPreferencesProfiles' : '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMenuGroups' : '{EC923155-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMenuGroup' : '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPopupMenus' : '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPopupMenu' : '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadPopupMenuItem' : '{EC923050-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadToolbars' : '{EC923003-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadToolbar' : '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadToolbarItem' : '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadMenuBar' : '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadDocuments' : '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadState' : '{EC923162-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSelectionSets' : '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadSelectionSet' : '{EC923124-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadUtility' : '{EC923126-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDocument' : '{EC923156-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPlot' : '{EC92301B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadApplication' : '{EC9231AC-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPreferences' : '{EC9231E8-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPreferencesFiles' : '{EC9231B2-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPreferencesDisplay' : '{EC9231E3-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPreferencesOpenSave' : '{EC923128-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPreferencesOutput' : '{EC9230B4-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPreferencesSystem' : '{EC9231D5-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPreferencesUser' : '{EC923038-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPreferencesDrafting' : '{EC923186-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPreferencesSelection' : '{EC9231AB-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPreferencesProfiles' : '{EC92314B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMenuGroups' : '{EC923155-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMenuGroup' : '{EC9230F5-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPopupMenus' : '{EC92318C-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPopupMenu' : '{EC9230C2-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadPopupMenuItem' : '{EC923050-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadToolbars' : '{EC923003-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadToolbar' : '{EC92306B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadToolbarItem' : '{EC922FFE-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadMenuBar' : '{EC92305B-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadDocuments' : '{EC9230A9-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadState' : '{EC923162-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSelectionSets' : '{EC9231DE-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadSelectionSet' : '{EC923124-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadUtility' : '{EC923126-5A21-11E7-B72E-BC5FF42AC839}',
     '_DZcadApplicationEvents' : '{EC923092-5A21-11E7-B72E-BC5FF42AC839}',
     '_DZcadDocumentEvents' : '{EC923172-5A21-11E7-B72E-BC5FF42AC839}',
-    'IZcadObjectEvents' : '{EC92317E-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadObjectEvents' : '{EC92317E-5A21-11E7-B72E-BC5FF42AC839}',
 }
 
 win32com.client.constants.__dicts__.append(constants.__dict__)
 
-def getApp() -> IZcadApplication:
+def getApp() -> IAcadApplication:
     id = ZcadApplication.CLSID
     return  win32com.client.Dispatch(id)
 
