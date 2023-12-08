@@ -1096,7 +1096,7 @@ class IArcTextObj(DispatchBaseClass):
         "Radius": (4, 2, (5, 0), (), "Radius", None),
         "RightOffset": (9, 2, (5, 0), (), "RightOffset", None),
         "StartAngle": (5, 2, (5, 0), (), "StartAngle", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "WidthFactor": (11, 2, (5, 0), (), "WidthFactor", None),
@@ -1290,7 +1290,7 @@ class IAcad3DFace(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VisibilityEdge1": (2, 2, (11, 0), (), "VisibilityEdge1", None),
         "VisibilityEdge2": (3, 2, (11, 0), (), "VisibilityEdge2", None),
@@ -1481,7 +1481,7 @@ class IAcad3DPolyline(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Type": (5, 2, (3, 0), (), "Type", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -1696,7 +1696,7 @@ class IAcad3DSolid(DispatchBaseClass):
         "RadiiOfGyration": (6, 2, (12, 0), (), "RadiiOfGyration", None),
         "ShowHistory": (15, 2, (11, 0), (), "ShowHistory", None),
         "SolidType": (12, 2, (8, 0), (), "SolidType", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Volume": (7, 2, (5, 0), (), "Volume", None),
@@ -2036,7 +2036,7 @@ class IAcadArc(DispatchBaseClass):
         "StartPoint": (1, 2, (12, 0), (), "StartPoint", None),
         "Thickness": (9, 2, (5, 0), (), "Thickness", None),
         "TotalAngle": (7, 2, (5, 0), (), "TotalAngle", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -2239,7 +2239,7 @@ class IAcadAttribute(DispatchBaseClass):
         "TextGenerationFlag": (16, 2, (3, 0), (), "TextGenerationFlag", None),
         "TextString": (4, 2, (8, 0), (), "TextString", None),
         "Thickness": (17, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UpsideDown": (19, 2, (11, 0), (), "UpsideDown", None),
         "Verify": (23, 2, (11, 0), (), "Verify", None),
@@ -2465,7 +2465,7 @@ class IAcadAttributeReference(DispatchBaseClass):
         "TextGenerationFlag": (11, 2, (3, 0), (), "TextGenerationFlag", None),
         "TextString": (12, 2, (8, 0), (), "TextString", None),
         "Thickness": (13, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UpsideDown": (17, 2, (11, 0), (), "UpsideDown", None),
         "VerticalAlignment": (14, 2, (3, 0), (), "VerticalAlignment", None),
@@ -3368,7 +3368,7 @@ class IAcadBlockReference(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -3649,7 +3649,7 @@ class IAcadCircle(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Radius": (2, 2, (5, 0), (), "Radius", None),
         "Thickness": (7, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -4258,7 +4258,7 @@ class IAcadDim3PointAngular(DispatchBaseClass):
         "ToleranceSuppressLeadingZeros": (1569, 2, (11, 0), (), "ToleranceSuppressLeadingZeros", None),
         "ToleranceSuppressTrailingZeros": (1570, 2, (11, 0), (), "ToleranceSuppressTrailingZeros", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -4591,7 +4591,7 @@ class IAcadDimAligned(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -4931,7 +4931,7 @@ class IAcadDimAngular(DispatchBaseClass):
         "ToleranceSuppressLeadingZeros": (1569, 2, (11, 0), (), "ToleranceSuppressLeadingZeros", None),
         "ToleranceSuppressTrailingZeros": (1570, 2, (11, 0), (), "ToleranceSuppressTrailingZeros", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -5278,7 +5278,7 @@ class IAcadDimArcLength(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -5619,7 +5619,7 @@ class IAcadDimDiametric(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -5928,7 +5928,7 @@ class IAcadDimOrdinate(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -6233,7 +6233,7 @@ class IAcadDimRadial(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -6552,7 +6552,7 @@ class IAcadDimRadialLarge(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -6885,7 +6885,7 @@ class IAcadDimRotated(DispatchBaseClass):
         "ToleranceSuppressZeroFeet": (58, 2, (11, 0), (), "ToleranceSuppressZeroFeet", None),
         "ToleranceSuppressZeroInches": (59, 2, (11, 0), (), "ToleranceSuppressZeroInches", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnitsFormat": (22, 2, (3, 0), (), "UnitsFormat", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -7322,7 +7322,7 @@ class IAcadDimension(DispatchBaseClass):
         "ToleranceSuppressLeadingZeros": (1569, 2, (11, 0), (), "ToleranceSuppressLeadingZeros", None),
         "ToleranceSuppressTrailingZeros": (1570, 2, (11, 0), (), "ToleranceSuppressTrailingZeros", None),
         "ToleranceUpperLimit": (1561, 2, (5, 0), (), "ToleranceUpperLimit", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -7855,7 +7855,7 @@ class IAcadDwfUnderlay(DispatchBaseClass):
         "Position": (3, 2, (12, 0), (), "Position", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (12, 2, (5, 0), (), "ScaleFactor", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnderlayLayerOverrideApplied": (17, 2, (3, 0), (), "UnderlayLayerOverrideApplied", None),
         "UnderlayName": (7, 2, (8, 0), (), "UnderlayName", None),
@@ -8088,7 +8088,7 @@ class IAcadEllipse(DispatchBaseClass):
         "StartAngle": (7, 2, (5, 0), (), "StartAngle", None),
         "StartParameter": (9, 2, (5, 0), (), "StartParameter", None),
         "StartPoint": (1, 2, (12, 0), (), "StartPoint", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -8252,7 +8252,7 @@ class IAcadEntity(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -8449,7 +8449,7 @@ class IAcadExternalReference(DispatchBaseClass):
         "Path": (256, 2, (8, 0), (), "Path", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -8628,7 +8628,7 @@ class IAcadExtrudedSurface(DispatchBaseClass):
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
         "TaperAngle": (3, 2, (5, 0), (), "TaperAngle", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -8916,7 +8916,7 @@ class IAcadGeoPositionMarker(DispatchBaseClass):
         "TextString": (2, 2, (8, 0), (), "TextString", None),
         "TextStyleName": (3, 2, (8, 0), (), "TextStyleName", None),
         "TextWidth": (6, 2, (5, 0), (), "TextWidth", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -9120,7 +9120,7 @@ class IAcadGeomapImage(DispatchBaseClass):
         "Rotation": (5, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (17, 2, (5, 0), (), "ScaleFactor", None),
         "ShowRotation": (16, 2, (11, 0), (), "ShowRotation", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (15, 2, (5, 0), (), "Width", None),
@@ -9510,7 +9510,7 @@ class IAcadHatch(DispatchBaseClass):
         "Application": (1030, 2, (9, 0), (), "Application", None),
         "Area": (25, 2, (5, 0), (), "Area", None),
         "AssociativeHatch": (11, 2, (11, 0), (), "AssociativeHatch", None),
-        # Method 'BackgroundColor' returns object of type 'IAcadZcCmColor'
+        # Method 'BackgroundColor' returns object of type 'IAcadAcCmColor'
         "BackgroundColor": (27, 2, (9, 0), (), "BackgroundColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         # Method 'Database' returns object of type 'IAcadDatabase'
         "Database": (1031, 2, (9, 0), (), "Database", '{EC9230F3-5A21-11E7-B72E-BC5FF42AC839}'),
@@ -9521,9 +9521,9 @@ class IAcadHatch(DispatchBaseClass):
         "EntityType": (1398, 2, (3, 0), (), "EntityType", None),
         "GradientAngle": (21, 2, (5, 0), (), "GradientAngle", None),
         "GradientCentered": (22, 2, (11, 0), (), "GradientCentered", None),
-        # Method 'GradientColor1' returns object of type 'IAcadZcCmColor'
+        # Method 'GradientColor1' returns object of type 'IAcadAcCmColor'
         "GradientColor1": (19, 2, (9, 0), (), "GradientColor1", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'GradientColor2' returns object of type 'IAcadZcCmColor'
+        # Method 'GradientColor2' returns object of type 'IAcadAcCmColor'
         "GradientColor2": (20, 2, (9, 0), (), "GradientColor2", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "GradientName": (23, 2, (8, 0), (), "GradientName", None),
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
@@ -9551,7 +9551,7 @@ class IAcadHatch(DispatchBaseClass):
         "PatternSpace": (7, 2, (5, 0), (), "PatternSpace", None),
         "PatternType": (3, 2, (3, 0), (), "PatternType", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -9737,7 +9737,7 @@ class IAcadHelix(DispatchBaseClass):
         "Position": (1, 2, (12, 0), (), "Position", None),
         "TopRadius": (7, 2, (5, 0), (), "TopRadius", None),
         "TotalLength": (10, 2, (5, 0), (), "TotalLength", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "TurnHeight": (5, 2, (5, 0), (), "TurnHeight", None),
         "TurnSlope": (9, 2, (5, 0), (), "TurnSlope", None),
@@ -10072,7 +10072,7 @@ class IAcadLWPolyline(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -10155,7 +10155,7 @@ class IAcadLayer(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (9, 2, (8, 0), (), "PlotStyleName", None),
         "Plottable": (7, 2, (11, 0), (), "Plottable", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (11, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Used": (13, 2, (11, 0), (), "Used", None),
         "ViewportDefault": (8, 2, (11, 0), (), "ViewportDefault", None),
@@ -10758,7 +10758,7 @@ class IAcadLeader(DispatchBaseClass):
         "ScaleFactor": (1553, 2, (5, 0), (), "ScaleFactor", None),
         "StyleName": (1542, 2, (8, 0), (), "StyleName", None),
         "TextGap": (1549, 2, (5, 0), (), "TextGap", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Type": (65, 2, (3, 0), (), "Type", None),
         "VerticalTextPosition": (1554, 2, (3, 0), (), "VerticalTextPosition", None),
@@ -10949,7 +10949,7 @@ class IAcadLine(DispatchBaseClass):
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "StartPoint": (1, 2, (12, 0), (), "StartPoint", None),
         "Thickness": (4, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -11275,7 +11275,7 @@ class IAcadLoftedSurface(DispatchBaseClass):
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceNormals": (4, 2, (3, 0), (), "SurfaceNormals", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -11495,7 +11495,7 @@ class IAcadMInsertBlock(DispatchBaseClass):
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "RowSpacing": (259, 2, (5, 0), (), "RowSpacing", None),
         "Rows": (258, 2, (3, 0), (), "Rows", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "XEffectiveScaleFactor": (518, 2, (5, 0), (), "XEffectiveScaleFactor", None),
@@ -11737,7 +11737,7 @@ class IAcadMLeader(DispatchBaseClass):
         "LandingGap": (23, 2, (5, 0), (), "LandingGap", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
         "LeaderCount": (26, 2, (3, 0), (), "LeaderCount", None),
-        # Method 'LeaderLineColor' returns object of type 'IAcadZcCmColor'
+        # Method 'LeaderLineColor' returns object of type 'IAcadAcCmColor'
         "LeaderLineColor": (2, 2, (9, 0), (), "LeaderLineColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "LeaderLineWeight": (4, 2, (3, 0), (), "LeaderLineWeight", None),
         "LeaderLinetype": (3, 2, (8, 0), (), "LeaderLinetype", None),
@@ -11769,7 +11769,7 @@ class IAcadMLeader(DispatchBaseClass):
         "TextStyleName": (12, 2, (8, 0), (), "TextStyleName", None),
         "TextTopAttachmentType": (49, 2, (3, 0), (), "TextTopAttachmentType", None),
         "TextWidth": (15, 2, (5, 0), (), "TextWidth", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -11842,7 +11842,7 @@ class IAcadMLeaderLeader(DispatchBaseClass):
         # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
-        # Method 'LeaderLineColor' returns object of type 'IAcadZcCmColor'
+        # Method 'LeaderLineColor' returns object of type 'IAcadAcCmColor'
         "LeaderLineColor": (2, 2, (9, 0), (), "LeaderLineColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "LeaderLineWeight": (4, 2, (3, 0), (), "LeaderLineWeight", None),
         "LeaderLinetype": (3, 2, (8, 0), (), "LeaderLinetype", None),
@@ -11852,7 +11852,7 @@ class IAcadMLeaderLeader(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IAcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadAcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -11911,7 +11911,7 @@ class IAcadMLeaderStyle(DispatchBaseClass):
         "ArrowSymbol": (18, 2, (8, 0), (), "ArrowSymbol", None),
         "BitFlags": (3, 2, (3, 0), (), "BitFlags", None),
         "Block": (26, 2, (8, 0), (), "Block", None),
-        # Method 'BlockColor' returns object of type 'IAcadZcCmColor'
+        # Method 'BlockColor' returns object of type 'IAcadAcCmColor'
         "BlockColor": (27, 2, (9, 0), (), "BlockColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "BlockConnectionType": (32, 2, (3, 0), (), "BlockConnectionType", None),
         "BlockRotation": (31, 2, (5, 0), (), "BlockRotation", None),
@@ -11934,7 +11934,7 @@ class IAcadMLeaderStyle(DispatchBaseClass):
         "Handle": (1024, 2, (8, 0), (), "Handle", None),
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         "LandingGap": (15, 2, (5, 0), (), "LandingGap", None),
-        # Method 'LeaderLineColor' returns object of type 'IAcadZcCmColor'
+        # Method 'LeaderLineColor' returns object of type 'IAcadAcCmColor'
         "LeaderLineColor": (11, 2, (9, 0), (), "LeaderLineColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "LeaderLineTypeId": (12, 2, (8, 0), (), "LeaderLineTypeId", None),
         "LeaderLineWeight": (13, 2, (3, 0), (), "LeaderLineWeight", None),
@@ -11951,7 +11951,7 @@ class IAcadMLeaderStyle(DispatchBaseClass):
         "TextAngleType": (38, 2, (3, 0), (), "TextAngleType", None),
         "TextAttachmentDirection": (41, 2, (3, 0), (), "TextAttachmentDirection", None),
         "TextBottomAttachmentType": (43, 2, (3, 0), (), "TextBottomAttachmentType", None),
-        # Method 'TextColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TextColor' returns object of type 'IAcadAcCmColor'
         "TextColor": (22, 2, (9, 0), (), "TextColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "TextHeight": (23, 2, (5, 0), (), "TextHeight", None),
         "TextLeftAttachmentType": (21, 2, (3, 0), (), "TextLeftAttachmentType", None),
@@ -12153,7 +12153,7 @@ class IAcadMLine(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "StyleName": (1, 2, (8, 0), (), "StyleName", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -12336,7 +12336,7 @@ class IAcadMText(DispatchBaseClass):
         "Rotation": (7, 2, (5, 0), (), "Rotation", None),
         "StyleName": (2, 2, (8, 0), (), "StyleName", None),
         "TextString": (1, 2, (8, 0), (), "TextString", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (5, 2, (5, 0), (), "Width", None),
@@ -14170,7 +14170,7 @@ class IAcadNurbSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -14404,7 +14404,7 @@ class IAcadOle(DispatchBaseClass):
         "Rotation": (2, 2, (5, 0), (), "Rotation", None),
         "ScaleHeight": (6, 2, (5, 0), (), "ScaleHeight", None),
         "ScaleWidth": (5, 2, (5, 0), (), "ScaleWidth", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (3, 2, (5, 0), (), "Width", None),
@@ -14627,7 +14627,7 @@ class IAcadPViewport(DispatchBaseClass):
         "StandardScale2": (39, 2, (3, 0), (), "StandardScale2", None),
         "StyleSheet": (11, 2, (8, 0), (), "StyleSheet", None),
         "Target": (26, 2, (12, 0), (), "Target", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "TwistAngle": (23, 2, (5, 0), (), "TwistAngle", None),
         "UCSIconAtOrigin": (17, 2, (11, 0), (), "UCSIconAtOrigin", None),
@@ -15511,7 +15511,7 @@ class IAcadPlaneSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -15976,7 +15976,7 @@ class IAcadPoint(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -16151,7 +16151,7 @@ class IAcadPointCloud(DispatchBaseClass):
         "ShowClipped": (13, 2, (11, 0), (), "ShowClipped", None),
         "ShowIntensity": (6, 2, (11, 0), (), "ShowIntensity", None),
         "Stylization": (16, 2, (3, 0), (), "Stylization", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Unit": (15, 2, (8, 0), (), "Unit", None),
         "UnitFactor": (14, 2, (5, 0), (), "UnitFactor", None),
@@ -16338,7 +16338,7 @@ class IAcadPointCloudEx(DispatchBaseClass):
         "Rotation": (3, 2, (5, 0), (), "Rotation", None),
         "ShowCropped": (13, 2, (11, 0), (), "ShowCropped", None),
         "Stylization": (4, 2, (3, 0), (), "Stylization", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Unit": (15, 2, (8, 0), (), "Unit", None),
         "UnitFactor": (14, 2, (5, 0), (), "UnitFactor", None),
@@ -16521,7 +16521,7 @@ class IAcadPointCloudEx2(DispatchBaseClass):
         "Segmentation": (17, 2, (8, 0), (), "Segmentation", None),
         "ShowCropped": (13, 2, (11, 0), (), "ShowCropped", None),
         "Stylization": (4, 2, (3, 0), (), "Stylization", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Unit": (15, 2, (8, 0), (), "Unit", None),
         "UnitFactor": (14, 2, (5, 0), (), "UnitFactor", None),
@@ -16700,7 +16700,7 @@ class IAcadPolyfaceMesh(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -16880,7 +16880,7 @@ class IAcadPolygonMesh(DispatchBaseClass):
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Type": (8, 2, (3, 0), (), "Type", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -17097,7 +17097,7 @@ class IAcadPolyline(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Type": (13, 2, (3, 0), (), "Type", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -18002,7 +18002,7 @@ class IAcadRasterImage(DispatchBaseClass):
         "Rotation": (5, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (17, 2, (5, 0), (), "ScaleFactor", None),
         "ShowRotation": (16, 2, (11, 0), (), "ShowRotation", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (15, 2, (5, 0), (), "Width", None),
@@ -18189,7 +18189,7 @@ class IAcadRay(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "SecondPoint": (2, 2, (12, 0), (), "SecondPoint", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -18370,7 +18370,7 @@ class IAcadRegion(DispatchBaseClass):
         "PrincipalMoments": (7, 2, (12, 0), (), "PrincipalMoments", None),
         "ProductOfInertia": (8, 2, (5, 0), (), "ProductOfInertia", None),
         "RadiiOfGyration": (9, 2, (12, 0), (), "RadiiOfGyration", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -18675,7 +18675,7 @@ class IAcadRevolvedSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -18874,7 +18874,7 @@ class IAcadSection(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'IndicatorFillColor' returns object of type 'IAcadZcCmColor'
+        # Method 'IndicatorFillColor' returns object of type 'IAcadAcCmColor'
         "IndicatorFillColor": (8, 2, (9, 0), (), "IndicatorFillColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IndicatorTransparency": (7, 2, (3, 0), (), "IndicatorTransparency", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -18894,7 +18894,7 @@ class IAcadSection(DispatchBaseClass):
         "Settings": (19, 2, (9, 0), (), "Settings", '{EC9230B0-5A21-11E7-B72E-BC5FF42AC839}'),
         "State": (2, 2, (3, 0), (), "State", None),
         "TopHeight": (10, 2, (5, 0), (), "TopHeight", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VerticalDirection": (4, 2, (12, 0), (), "VerticalDirection", None),
         "Vertices": (13, 2, (12, 0), (), "Vertices", None),
@@ -19095,7 +19095,7 @@ class IAcadSection2(DispatchBaseClass):
         "HasExtensionDictionary": (1032, 2, (11, 0), (), "HasExtensionDictionary", None),
         # Method 'Hyperlinks' returns object of type 'IAcadHyperlinks'
         "Hyperlinks": (1301, 2, (9, 0), (), "Hyperlinks", '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}'),
-        # Method 'IndicatorFillColor' returns object of type 'IAcadZcCmColor'
+        # Method 'IndicatorFillColor' returns object of type 'IAcadAcCmColor'
         "IndicatorFillColor": (8, 2, (9, 0), (), "IndicatorFillColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IndicatorTransparency": (7, 2, (3, 0), (), "IndicatorTransparency", None),
         "Layer": (1281, 2, (8, 0), (), "Layer", None),
@@ -19118,7 +19118,7 @@ class IAcadSection2(DispatchBaseClass):
         "State": (2, 2, (3, 0), (), "State", None),
         "State2": (22, 2, (3, 0), (), "State2", None),
         "TopHeight": (10, 2, (5, 0), (), "TopHeight", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VerticalDirection": (4, 2, (12, 0), (), "VerticalDirection", None),
         "Vertices": (13, 2, (12, 0), (), "Vertices", None),
@@ -19316,7 +19316,7 @@ class IAcadSectionTypeSettings(DispatchBaseClass):
     coclass_clsid = IID('{EC923027-5A21-11E7-B72E-BC5FF42AC839}')
 
     _prop_map_get_ = {
-        # Method 'BackgroundLinesColor' returns object of type 'IAcadZcCmColor'
+        # Method 'BackgroundLinesColor' returns object of type 'IAcadAcCmColor'
         "BackgroundLinesColor": (93, 2, (9, 0), (), "BackgroundLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "BackgroundLinesHiddenLine": (92, 2, (11, 0), (), "BackgroundLinesHiddenLine", None),
         "BackgroundLinesLayer": (94, 2, (8, 0), (), "BackgroundLinesLayer", None),
@@ -19325,7 +19325,7 @@ class IAcadSectionTypeSettings(DispatchBaseClass):
         "BackgroundLinesLineweight": (98, 2, (3, 0), (), "BackgroundLinesLineweight", None),
         "BackgroundLinesPlotStyleName": (97, 2, (8, 0), (), "BackgroundLinesPlotStyleName", None),
         "BackgroundLinesVisible": (91, 2, (11, 0), (), "BackgroundLinesVisible", None),
-        # Method 'CurveTangencyLinesColor' returns object of type 'IAcadZcCmColor'
+        # Method 'CurveTangencyLinesColor' returns object of type 'IAcadAcCmColor'
         "CurveTangencyLinesColor": (132, 2, (9, 0), (), "CurveTangencyLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "CurveTangencyLinesLayer": (133, 2, (8, 0), (), "CurveTangencyLinesLayer", None),
         "CurveTangencyLinesLinetype": (134, 2, (8, 0), (), "CurveTangencyLinesLinetype", None),
@@ -19335,7 +19335,7 @@ class IAcadSectionTypeSettings(DispatchBaseClass):
         "CurveTangencyLinesVisible": (131, 2, (11, 0), (), "CurveTangencyLinesVisible", None),
         "DestinationBlock": (3, 2, (12, 0), (), "DestinationBlock", None),
         "DestinationFile": (4, 2, (8, 0), (), "DestinationFile", None),
-        # Method 'ForegroundLinesColor' returns object of type 'IAcadZcCmColor'
+        # Method 'ForegroundLinesColor' returns object of type 'IAcadAcCmColor'
         "ForegroundLinesColor": (113, 2, (9, 0), (), "ForegroundLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "ForegroundLinesEdgeTransparency": (120, 2, (3, 0), (), "ForegroundLinesEdgeTransparency", None),
         "ForegroundLinesFaceTransparency": (119, 2, (3, 0), (), "ForegroundLinesFaceTransparency", None),
@@ -19347,7 +19347,7 @@ class IAcadSectionTypeSettings(DispatchBaseClass):
         "ForegroundLinesPlotStyleName": (117, 2, (8, 0), (), "ForegroundLinesPlotStyleName", None),
         "ForegroundLinesVisible": (111, 2, (11, 0), (), "ForegroundLinesVisible", None),
         "GenerationOptions": (1, 2, (3, 0), (), "GenerationOptions", None),
-        # Method 'IntersectionBoundaryColor' returns object of type 'IAcadZcCmColor'
+        # Method 'IntersectionBoundaryColor' returns object of type 'IAcadAcCmColor'
         "IntersectionBoundaryColor": (51, 2, (9, 0), (), "IntersectionBoundaryColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IntersectionBoundaryDivisionLines": (57, 2, (11, 0), (), "IntersectionBoundaryDivisionLines", None),
         "IntersectionBoundaryLayer": (52, 2, (8, 0), (), "IntersectionBoundaryLayer", None),
@@ -19355,7 +19355,7 @@ class IAcadSectionTypeSettings(DispatchBaseClass):
         "IntersectionBoundaryLinetypeScale": (54, 2, (5, 0), (), "IntersectionBoundaryLinetypeScale", None),
         "IntersectionBoundaryLineweight": (56, 2, (3, 0), (), "IntersectionBoundaryLineweight", None),
         "IntersectionBoundaryPlotStyleName": (55, 2, (8, 0), (), "IntersectionBoundaryPlotStyleName", None),
-        # Method 'IntersectionFillColor' returns object of type 'IAcadZcCmColor'
+        # Method 'IntersectionFillColor' returns object of type 'IAcadAcCmColor'
         "IntersectionFillColor": (77, 2, (9, 0), (), "IntersectionFillColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IntersectionFillFaceTransparency": (83, 2, (3, 0), (), "IntersectionFillFaceTransparency", None),
         "IntersectionFillHatchAngle": (74, 2, (5, 0), (), "IntersectionFillHatchAngle", None),
@@ -19436,7 +19436,7 @@ class IAcadSectionTypeSettings2(DispatchBaseClass):
     coclass_clsid = None
 
     _prop_map_get_ = {
-        # Method 'BackgroundLinesColor' returns object of type 'IAcadZcCmColor'
+        # Method 'BackgroundLinesColor' returns object of type 'IAcadAcCmColor'
         "BackgroundLinesColor": (93, 2, (9, 0), (), "BackgroundLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "BackgroundLinesHiddenLine": (92, 2, (11, 0), (), "BackgroundLinesHiddenLine", None),
         "BackgroundLinesLayer": (94, 2, (8, 0), (), "BackgroundLinesLayer", None),
@@ -19445,7 +19445,7 @@ class IAcadSectionTypeSettings2(DispatchBaseClass):
         "BackgroundLinesLineweight": (98, 2, (3, 0), (), "BackgroundLinesLineweight", None),
         "BackgroundLinesPlotStyleName": (97, 2, (8, 0), (), "BackgroundLinesPlotStyleName", None),
         "BackgroundLinesVisible": (91, 2, (11, 0), (), "BackgroundLinesVisible", None),
-        # Method 'CurveTangencyLinesColor' returns object of type 'IAcadZcCmColor'
+        # Method 'CurveTangencyLinesColor' returns object of type 'IAcadAcCmColor'
         "CurveTangencyLinesColor": (132, 2, (9, 0), (), "CurveTangencyLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "CurveTangencyLinesLayer": (133, 2, (8, 0), (), "CurveTangencyLinesLayer", None),
         "CurveTangencyLinesLinetype": (134, 2, (8, 0), (), "CurveTangencyLinesLinetype", None),
@@ -19455,7 +19455,7 @@ class IAcadSectionTypeSettings2(DispatchBaseClass):
         "CurveTangencyLinesVisible": (131, 2, (11, 0), (), "CurveTangencyLinesVisible", None),
         "DestinationBlock": (3, 2, (12, 0), (), "DestinationBlock", None),
         "DestinationFile": (4, 2, (8, 0), (), "DestinationFile", None),
-        # Method 'ForegroundLinesColor' returns object of type 'IAcadZcCmColor'
+        # Method 'ForegroundLinesColor' returns object of type 'IAcadAcCmColor'
         "ForegroundLinesColor": (113, 2, (9, 0), (), "ForegroundLinesColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "ForegroundLinesEdgeTransparency": (120, 2, (3, 0), (), "ForegroundLinesEdgeTransparency", None),
         "ForegroundLinesFaceTransparency": (119, 2, (3, 0), (), "ForegroundLinesFaceTransparency", None),
@@ -19467,7 +19467,7 @@ class IAcadSectionTypeSettings2(DispatchBaseClass):
         "ForegroundLinesPlotStyleName": (117, 2, (8, 0), (), "ForegroundLinesPlotStyleName", None),
         "ForegroundLinesVisible": (111, 2, (11, 0), (), "ForegroundLinesVisible", None),
         "GenerationOptions": (1, 2, (3, 0), (), "GenerationOptions", None),
-        # Method 'IntersectionBoundaryColor' returns object of type 'IAcadZcCmColor'
+        # Method 'IntersectionBoundaryColor' returns object of type 'IAcadAcCmColor'
         "IntersectionBoundaryColor": (51, 2, (9, 0), (), "IntersectionBoundaryColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IntersectionBoundaryDivisionLines": (57, 2, (11, 0), (), "IntersectionBoundaryDivisionLines", None),
         "IntersectionBoundaryLayer": (52, 2, (8, 0), (), "IntersectionBoundaryLayer", None),
@@ -19476,7 +19476,7 @@ class IAcadSectionTypeSettings2(DispatchBaseClass):
         "IntersectionBoundaryLineweight": (56, 2, (3, 0), (), "IntersectionBoundaryLineweight", None),
         "IntersectionBoundaryPlotStyleName": (55, 2, (8, 0), (), "IntersectionBoundaryPlotStyleName", None),
         "IntersectionBoundaryVisible": (50, 2, (11, 0), (), "IntersectionBoundaryVisible", None),
-        # Method 'IntersectionFillColor' returns object of type 'IAcadZcCmColor'
+        # Method 'IntersectionFillColor' returns object of type 'IAcadAcCmColor'
         "IntersectionFillColor": (77, 2, (9, 0), (), "IntersectionFillColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "IntersectionFillFaceTransparency": (83, 2, (3, 0), (), "IntersectionFillFaceTransparency", None),
         "IntersectionFillHatchAngle": (74, 2, (5, 0), (), "IntersectionFillHatchAngle", None),
@@ -19936,7 +19936,7 @@ class IAcadShape(DispatchBaseClass):
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (5, 2, (5, 0), (), "ScaleFactor", None),
         "Thickness": (8, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -20121,7 +20121,7 @@ class IAcadSolid(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -20454,7 +20454,7 @@ class IAcadSpline(DispatchBaseClass):
         "SplineFrame": (29, 2, (3, 0), (), "SplineFrame", None),
         "SplineMethod": (30, 2, (3, 0), (), "SplineMethod", None),
         "StartTangent": (10, 2, (12, 0), (), "StartTangent", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Weights": (27, 2, (12, 0), (), "Weights", None),
@@ -20653,7 +20653,7 @@ class IAcadSubDMesh(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Smoothness": (1, 2, (3, 0), (), "Smoothness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VertexCount": (5, 2, (3, 0), (), "VertexCount", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -20699,7 +20699,7 @@ class IAcadSubDMeshEdge(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IAcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadAcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20734,7 +20734,7 @@ class IAcadSubDMeshFace(DispatchBaseClass):
         "Material": (1399, 2, (8, 0), (), "Material", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IAcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadAcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20778,7 +20778,7 @@ class IAcadSubDMeshVertex(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IAcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadAcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20811,7 +20811,7 @@ class IAcadSubEntSolidEdge(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IAcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadAcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20842,7 +20842,7 @@ class IAcadSubEntSolidFace(DispatchBaseClass):
         "Material": (1399, 2, (8, 0), (), "Material", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IAcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadAcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20873,7 +20873,7 @@ class IAcadSubEntSolidNode(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IAcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadAcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20903,7 +20903,7 @@ class IAcadSubEntSolidVertex(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IAcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadAcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -20933,7 +20933,7 @@ class IAcadSubEntity(DispatchBaseClass):
         "Lineweight": (1300, 2, (3, 0), (), "Lineweight", None),
         "ObjectName": (1025, 2, (8, 0), (), "ObjectName", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
-        # Method 'color' returns object of type 'IAcadZcCmColor'
+        # Method 'color' returns object of type 'IAcadAcCmColor'
         "color": (1302, 2, (9, 0), (), "color", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
     }
     _prop_map_put_ = {
@@ -21152,7 +21152,7 @@ class IAcadSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
         "VIsolineDensity": (11, 2, (3, 0), (), "VIsolineDensity", None),
@@ -21323,7 +21323,7 @@ class IAcadSweptSurface(DispatchBaseClass):
         "ShowAssociativity": (177, 2, (11, 0), (), "ShowAssociativity", None),
         "SurfTrimAssociativity": (193, 2, (12, 0), (), "SurfTrimAssociativity", None),
         "SurfaceType": (1, 2, (8, 0), (), "SurfaceType", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Twist": (4, 2, (5, 0), (), "Twist", None),
         "UIsolineDensity": (10, 2, (3, 0), (), "UIsolineDensity", None),
@@ -21447,7 +21447,7 @@ class IAcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(2276, LCID, 1, (11, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetBackgroundColor(self, rowType=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(37, LCID, 1, (9, 0), ((3, 1),),rowType
             )
@@ -21497,7 +21497,7 @@ class IAcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(58, LCID, 1, (3, 0), ((3, 1), (3, 1)),row
             , col)
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetCellBackgroundColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(62, LCID, 1, (9, 0), ((3, 1), (3, 1)),row
             , col)
@@ -21509,7 +21509,7 @@ class IAcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(60, LCID, 1, (11, 0), ((3, 1), (3, 1)),row
             , col)
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetCellContentColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(64, LCID, 1, (9, 0), ((3, 1), (3, 1)),row
             , col)
@@ -21530,7 +21530,7 @@ class IAcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(1948, LCID, 1, (8, 0), ((3, 1), (3, 1)),row
             , col)
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetCellGridColor(self, row=defaultNamedNotOptArg, col=defaultNamedNotOptArg, edge=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(87, LCID, 1, (9, 0), ((3, 1), (3, 1), (3, 1)),row
             , col, edge)
@@ -21585,7 +21585,7 @@ class IAcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(10, LCID, 1, (5, 0), ((3, 1),),col
             )
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetContentColor(self, rowType=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(39, LCID, 1, (9, 0), ((3, 1),),rowType
             )
@@ -21593,7 +21593,7 @@ class IAcadTable(DispatchBaseClass):
             ret = Dispatch(ret, 'GetContentColor', '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetContentColor2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nContent=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(2260, LCID, 1, (9, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
@@ -21653,7 +21653,7 @@ class IAcadTable(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(2355, LCID, 1, (8, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nContent)
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetGridColor(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(47, LCID, 1, (9, 0), ((3, 1), (3, 1)),gridLineType
             , rowType)
@@ -21661,7 +21661,7 @@ class IAcadTable(DispatchBaseClass):
             ret = Dispatch(ret, 'GetGridColor', '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetGridColor2(self, nRow=defaultNamedNotOptArg, nCol=defaultNamedNotOptArg, nGridLineType=defaultNamedNotOptArg):
         ret = self._oleobj_.InvokeTypes(2291, LCID, 1, (9, 0), ((3, 1), (3, 1), (3, 1)),nRow
             , nCol, nGridLineType)
@@ -22256,7 +22256,7 @@ class IAcadTable(DispatchBaseClass):
         "TableBreakHeight": (65526, 2, (5, 0), (), "TableBreakHeight", None),
         "TableStyleOverrides": (51, 2, (12, 0), (), "TableStyleOverrides", None),
         "TitleSuppressed": (31, 2, (11, 0), (), "TitleSuppressed", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "VertCellMargin": (7, 2, (5, 0), (), "VertCellMargin", None),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
@@ -22346,7 +22346,7 @@ class IAcadTableStyle(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(43, LCID, 1, (3, 0), ((8, 1),),bstrCellStyle
             )
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetBackgroundColor(self, rowType=defaultNamedNotOptArg):
         'Returns the background true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(17, LCID, 1, (9, 0), ((3, 1),),rowType
@@ -22355,7 +22355,7 @@ class IAcadTableStyle(DispatchBaseClass):
             ret = Dispatch(ret, 'GetBackgroundColor', '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetBackgroundColor2(self, bstrCellStyle=defaultNamedNotOptArg):
         'get background color for the specified cell style'
         ret = self._oleobj_.InvokeTypes(47, LCID, 1, (9, 0), ((8, 1),),bstrCellStyle
@@ -22377,7 +22377,7 @@ class IAcadTableStyle(DispatchBaseClass):
         return self._oleobj_.InvokeTypes(38, LCID, 1, (24, 0), ((16396, 1),),cellStylesArray
             )
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetColor(self, rowType=defaultNamedNotOptArg):
         'Returns the true color value for the specified row type.'
         ret = self._oleobj_.InvokeTypes(15, LCID, 1, (9, 0), ((3, 1),),rowType
@@ -22386,7 +22386,7 @@ class IAcadTableStyle(DispatchBaseClass):
             ret = Dispatch(ret, 'GetColor', '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetColor2(self, bstrCellStyle=defaultNamedNotOptArg):
         'get color for the specified cell style'
         ret = self._oleobj_.InvokeTypes(45, LCID, 1, (9, 0), ((8, 1),),bstrCellStyle
@@ -22424,7 +22424,7 @@ class IAcadTableStyle(DispatchBaseClass):
         return self._ApplyTypes_(53, 1, (24, 0), ((8, 1), (16392, 2)), 'GetFormat2', None,bstrCellStyle
             , pbstrFormat)
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetGridColor(self, gridLineType=defaultNamedNotOptArg, rowType=defaultNamedNotOptArg):
         'Returns the gridColor value for the specified gridLineType and row type.'
         ret = self._oleobj_.InvokeTypes(23, LCID, 1, (9, 0), ((3, 1), (3, 1)),gridLineType
@@ -22433,7 +22433,7 @@ class IAcadTableStyle(DispatchBaseClass):
             ret = Dispatch(ret, 'GetGridColor', '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
         return ret
 
-    # Result is of type IAcadZcCmColor
+    # Result is of type IAcadAcCmColor
     def GetGridColor2(self, bstrCellStyle=defaultNamedNotOptArg, gridLineType=defaultNamedNotOptArg):
         'get grid color for the specified cell style and grid line type'
         ret = self._oleobj_.InvokeTypes(57, LCID, 1, (9, 0), ((8, 1), (3, 1)),bstrCellStyle
@@ -22843,7 +22843,7 @@ class IAcadText(DispatchBaseClass):
         "TextGenerationFlag": (13, 2, (3, 0), (), "TextGenerationFlag", None),
         "TextString": (1, 2, (8, 0), (), "TextString", None),
         "Thickness": (14, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UpsideDown": (15, 2, (11, 0), (), "UpsideDown", None),
         "VerticalAlignment": (5, 2, (3, 0), (), "VerticalAlignment", None),
@@ -23204,7 +23204,7 @@ class IAcadTolerance(DispatchBaseClass):
         "TextHeight": (1563, 2, (5, 0), (), "TextHeight", None),
         "TextString": (1541, 2, (8, 0), (), "TextString", None),
         "TextStyle": (1562, 2, (8, 0), (), "TextStyle", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -23605,7 +23605,7 @@ class IAcadTrace(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "Thickness": (3, 2, (5, 0), (), "Thickness", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -23950,7 +23950,7 @@ class IAcadUnderlay(DispatchBaseClass):
         "Position": (3, 2, (12, 0), (), "Position", None),
         "Rotation": (4, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (12, 2, (5, 0), (), "ScaleFactor", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "UnderlayLayerOverrideApplied": (17, 2, (3, 0), (), "UnderlayLayerOverrideApplied", None),
         "UnderlayName": (7, 2, (8, 0), (), "UnderlayName", None),
@@ -24734,7 +24734,7 @@ class IAcadWipeout(DispatchBaseClass):
         "Rotation": (5, 2, (5, 0), (), "Rotation", None),
         "ScaleFactor": (17, 2, (5, 0), (), "ScaleFactor", None),
         "ShowRotation": (16, 2, (11, 0), (), "ShowRotation", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "Width": (15, 2, (5, 0), (), "Width", None),
@@ -24986,7 +24986,7 @@ class IAcadXline(DispatchBaseClass):
         "OwnerID": (1034, 2, (20, 0), (), "OwnerID", None),
         "PlotStyleName": (1299, 2, (8, 0), (), "PlotStyleName", None),
         "SecondPoint": (2, 2, (12, 0), (), "SecondPoint", None),
-        # Method 'TrueColor' returns object of type 'IAcadZcCmColor'
+        # Method 'TrueColor' returns object of type 'IAcadAcCmColor'
         "TrueColor": (1302, 2, (9, 0), (), "TrueColor", '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}'),
         "Visible": (1284, 2, (11, 0), (), "Visible", None),
         "color": (1280, 2, (3, 0), (), "color", None),
@@ -25014,7 +25014,7 @@ class IAcadXline(DispatchBaseClass):
             raise TypeError("This object does not support enumeration")
         return win32com.client.util.Iterator(ob, None)
 
-class IAcadZcCmColor(DispatchBaseClass):
+class IAcadAcCmColor(DispatchBaseClass):
     'ZWCAD ZwCmColor Interface'
     CLSID = IID('{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}')
     coclass_clsid = IID('{EC9231C3-5A21-11E7-B72E-BC5FF42AC839}')
@@ -26788,9 +26788,9 @@ class ZcadZcCmColor(CoClassBaseClass): # A CoClass
     coclass_sources = [
     ]
     coclass_interfaces = [
-        IAcadZcCmColor,
+        IAcadAcCmColor,
     ]
-    default_interface = IAcadZcCmColor
+    default_interface = IAcadAcCmColor
 
 IArcTextObj_vtables_dispatch_ = 1
 IArcTextObj_vtables_ = [
@@ -31743,8 +31743,8 @@ IAcadXline_vtables_ = [
              (16396, 10, None, None) , ], 1 , 1 , 4 , 0 , 504 , (3, 0, None, None) , 0 , )),
 ]
 
-IAcadZcCmColor_vtables_dispatch_ = 1
-IAcadZcCmColor_vtables_ = [
+IAcadAcCmColor_vtables_dispatch_ = 1
+IAcadAcCmColor_vtables_ = [
     (( 'EntityColor' , 'eColor' , ), 1, (1, (), [ (3, 1, None, None) , ], 1 , 4 , 4 , 0 , 56 , (3, 0, None, None) , 0 , )),
     (( 'EntityColor' , 'eColor' , ), 1, (1, (), [ (16387, 10, None, None) , ], 1 , 2 , 4 , 0 , 64 , (3, 0, None, None) , 0 , )),
     (( 'ColorName' , 'Name' , ), 2, (2, (), [ (16392, 10, None, None) , ], 1 , 2 , 4 , 0 , 72 , (3, 0, None, None) , 0 , )),
@@ -31774,7 +31774,7 @@ CLSIDToClassMap = {
     '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}' : IAcadModelSpace,
     '{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}' : IAcadBlock,
     '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}' : IAcadEntity,
-    '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}' : IAcadZcCmColor,
+    '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}' : IAcadAcCmColor,
     '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}' : IAcadHyperlinks,
     '{EC923112-5A21-11E7-B72E-BC5FF42AC839}' : IAcadHyperlink,
     '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}' : IAcad3DFace,
@@ -32090,7 +32090,7 @@ VTablesToClassMap = {
     '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadModelSpace',
     '{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadBlock',
     '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadEntity',
-    '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadZcCmColor',
+    '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadAcCmColor',
     '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadHyperlinks',
     '{EC923112-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcadHyperlink',
     '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}' : 'IAcad3DFace',
@@ -32250,7 +32250,7 @@ NamesToIIDMap = {
     'IAcadModelSpace' : '{EC9231E6-5A21-11E7-B72E-BC5FF42AC839}',
     'IAcadBlock' : '{EC9230D7-5A21-11E7-B72E-BC5FF42AC839}',
     'IAcadEntity' : '{EC922FE0-5A21-11E7-B72E-BC5FF42AC839}',
-    'IAcadZcCmColor' : '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}',
+    'IAcadAcCmColor' : '{EC922FFB-5A21-11E7-B72E-BC5FF42AC839}',
     'IAcadHyperlinks' : '{EC9231DD-5A21-11E7-B72E-BC5FF42AC839}',
     'IAcadHyperlink' : '{EC923112-5A21-11E7-B72E-BC5FF42AC839}',
     'IAcad3DFace' : '{EC9231DC-5A21-11E7-B72E-BC5FF42AC839}',
