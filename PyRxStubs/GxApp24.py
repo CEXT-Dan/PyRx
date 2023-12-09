@@ -4278,6 +4278,7 @@ class IAcadBlock(DispatchBaseClass):
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the XY plane of the WCS given the center point, a point on the major axis, and the radius ratio'
         Center = VTR8ArrayOrVal(Center)
+        MajorAxis = VTR8ArrayOrVal(MajorAxis)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -15428,6 +15429,7 @@ class IAcadModelSpace(DispatchBaseClass):
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the XY plane of the WCS given the center point, a point on the major axis, and the radius ratio'
         Center = VTR8ArrayOrVal(Center)
+        MajorAxis = VTR8ArrayOrVal(MajorAxis)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
@@ -16855,6 +16857,7 @@ class IAcadPaperSpace(DispatchBaseClass):
     def AddEllipse(self, Center=defaultNamedNotOptArg, MajorAxis=defaultNamedNotOptArg, RadiusRatio=defaultNamedNotOptArg):
         'Creates an ellipse in the XY plane of the WCS given the center point, a point on the major axis, and the radius ratio'
         Center = VTR8ArrayOrVal(Center)
+        MajorAxis = VTR8ArrayOrVal(MajorAxis)
         ret = self._oleobj_.InvokeTypes(1555, LCID, 1, (9, 0), ((12, 1), (12, 1), (5, 1)),Center
             , MajorAxis, RadiusRatio)
         if ret is not None:
