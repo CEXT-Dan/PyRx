@@ -7,7 +7,8 @@ bindings for BricsCAD® BRX® 2024
 
 bindings for AutoCAD® ActiveX  2021-2024
 ActiveX bindings for BricsCAD  v24
-** ActiveX bindings GstarCAD and ZwCAD are on the TODO list
+ActiveX bindings GstarCAD 2024
+ActiveX bindings ZwCAD 2024
 
 uses wxPython for the GUI, Dialogs and CAdUiPalette wrapper
 
