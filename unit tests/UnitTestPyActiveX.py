@@ -51,7 +51,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(point.Coordinates, (100, 200, 300))
         point.Coordinates = (1, 2, 3)
         self.assertEqual(point.Coordinates, (1, 2, 3))
-        point.Delete()
+        point.Erase()
 
     def test_add_line(self):
         app = Ax.getApp()
@@ -62,7 +62,7 @@ class TestActiveX(unittest.TestCase):
         line.EndPoint = (4, 5, 6)
         self.assertEqual(line.StartPoint, (1, 2, 3))
         self.assertEqual(line.EndPoint, (4, 5, 6))
-        line.Delete()
+        line.Erase()
     
     def test_add_circle(self):
         app = Ax.getApp()
@@ -79,7 +79,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(line.Coordinates, (0, 0, 10, 10, 20, 10))
         line.Coordinates = (1, 2, 3, 4, 5, 6)
         self.assertEqual(line.Coordinates, (1, 2, 3, 4, 5, 6))
-        line.Delete()
+        line.Erase()
 
     def test_add_mtext(self):
         app = Ax.getApp()
@@ -87,7 +87,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(mt.InsertionPoint, (100, 200, 300))
         mt.InsertionPoint = (400, 100, 0)
         self.assertEqual(mt.InsertionPoint, (400, 100, 0))
-        mt.Delete()
+        mt.Erase()
 
     def test_Add3DFaceProps(self):
         app = Ax.getApp()
@@ -95,7 +95,7 @@ class TestActiveX(unittest.TestCase):
         face = model.Add3DFace((0, 0, 0), (0, 100, 0), (100, 100, 0), (100, 0, 0))
         face.SetCoordinate(3, face.Coordinate(3))
         self.assertEqual(face.Coordinate(3), (100, 0, 0))
-        face.Delete()
+        face.Erase()
 
     def test_ent_copy(self):
         app = Ax.getApp()
@@ -105,7 +105,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(line.StartPoint, lineCopy.StartPoint)
         self.assertEqual(line.EndPoint, lineCopy.EndPoint)
         line.Delete()
-        lineCopy.Delete()
+        lineCopy.Erase()
 
     def test_iter_block(self):
         app = Ax.getApp()
@@ -119,7 +119,7 @@ class TestActiveX(unittest.TestCase):
             cnt += 1
         self.assertEqual(len(points), cnt)
         for p in points:
-            p.Delete()
+            p.Erase()
 
     def test_iter_selection1(self):
         app = Ax.getApp()
@@ -145,7 +145,7 @@ class TestActiveX(unittest.TestCase):
             pass
         finally:
             for p in points:
-                p.Delete()
+                p.Erase()
             ss.Delete()
 
     def test_iter_selection2(self):
@@ -172,7 +172,7 @@ class TestActiveX(unittest.TestCase):
             pass
         finally:
             for p in points:
-                p.Delete()
+                p.Erase()
             ss.Delete()
 
     def test_iter_selection3(self):
@@ -199,7 +199,7 @@ class TestActiveX(unittest.TestCase):
             pass
         finally:
             for p in points:
-                p.Delete()
+                p.Erase()
             ss.Delete()
             
     def test_iter_documents(self):
