@@ -12,16 +12,12 @@ import PyEd as Ed
 
 host = Ap.Application.hostAPI()
 if host == 'BRX':  
-    import BxDb24 as AxDb
     import BxApp24 as Ax
 elif host == 'GRX': 
-    import GxApp24 as AxDb
     import GxApp24 as Ax
 elif host == 'ZRX': 
-    import ZxApp24 as AxDb
     import ZxApp24 as Ax
 else:
-    import AxApp24 as AxDb
     import AxApp24 as Ax
 
 import traceback
@@ -50,7 +46,7 @@ def PyRxCmd_sstestx():
         # for loop
         print('\nway 1')
         for e in ss:
-            p = AxDb.IGcadPoint(e)
+            p = Ax.IGcadPoint(e)
             print(p.Coordinates)
 
         # sdded array ss[ids]
@@ -71,10 +67,10 @@ def PyRxCmd_sstestx():
 
 def PyRxCmd_AddPolylineX():
     try:
-        model: AxDb.IAcadBlock = theApp.ActiveDocument.ModelSpace
+        model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
         line = model.AddLightWeightPolyline([0, 0, 10, 10, 20, 10])
 
-        clr: AxDb.IAcadAcCmColor = AxDb.AcadAcCmColor()
+        clr: Ax.IAcadAcCmColor = Ax.AcadAcCmColor()
         clr.SetRGB(255, 255, 0)
         line.TrueColor = clr
 
@@ -91,10 +87,10 @@ def PyRxCmd_AddPolylineX():
 
 def PyRxCmd_AddLineX():
     try:
-        model: AxDb.IAcadBlock = theApp.ActiveDocument.ModelSpace
+        model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
         line = model.AddLine((0, 0, 0), (100, 100, 0))
 
-        clr: AxDb.IAcadAcCmColor = AxDb.AcadAcCmColor()
+        clr: Ax.IAcadAcCmColor = Ax.AcadAcCmColor()
         clr.SetRGB(255, 255, 0)
         line.TrueColor = clr
 
@@ -128,7 +124,7 @@ def PyRxCmd_GetEntX():
     try:
         doc: Ax.IAcadDocument = theApp.ActiveDocument
         util: Ax.IAcadUtility = doc.Utility
-        ent: AxDb.IAcadEntity = util.GetEntity("\nPick an ent: ")
+        ent: Ax.IAcadEntity = util.GetEntity("\nPick an ent: ")
         print(ent[0].ObjectName, ent[1])
     except Exception as err:
         traceback.print_exception(err)
@@ -180,14 +176,14 @@ def PyRxCmd_layerStateX():
 
 def PyRxCmd_interx():
     try:
-        model: AxDb.IAcadBlock = theApp.ActiveDocument.ModelSpace
+        model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
         line1 = model.AddLine((0, 0, 0), (100, 100, 0))
         line2 = model.AddLine((100, 0, 0), (0, 100, 0))
-        res = line2.IntersectWith(line1, AxDb.constants.acExtendNone)
+        res = line2.IntersectWith(line1, Ax.constants.acExtendNone)
         print(res)
         line3 = model.AddLine((0, 0, 0), (100, 100, 0))
         line4 = model.AddLine((0, 0, 0), (100, 100, 0))
-        res2 = line3.IntersectWith(line4, AxDb.constants.acExtendNone)
+        res2 = line3.IntersectWith(line4, Ax.constants.acExtendNone)
         print(res2)
     except Exception as err:
         traceback.print_exception(err)
@@ -195,13 +191,13 @@ def PyRxCmd_interx():
 
 def PyRxCmd_mleaderx():
     try:
-        model: AxDb.IAcadBlock = theApp.ActiveDocument.ModelSpace
+        model: Ax.IAcadBlock = theApp.ActiveDocument.ModelSpace
         pnts = [2, 2, 0, 6, 6, 0, 6, 7, 0]
         res = model.AddMLeader(pnts, 0)
-        leader: AxDb.IAcadMLeader = res[0]
+        leader: Ax.IAcadMLeader = res[0]
         leader.TextString = "Yeah Buddy Light weight baby"
-        leader.LeaderType = AxDb.constants.acStraightLeader
-        leader.ArrowheadType = AxDb.constants.acArrowClosed
+        leader.LeaderType = Ax.constants.acStraightLeader
+        leader.ArrowheadType = Ax.constants.acArrowClosed
 
     except Exception as err:
         traceback.print_exception(err)
