@@ -75,7 +75,7 @@ class TestActiveX(unittest.TestCase):
         app = Ax.getApp()
         ellipse = app.ActiveDocument.ModelSpace.AddEllipse((100,200,0),(200,300,0),0.5)
         self.assertEqual(ellipse.Center, (100,200,0))
-        #self.assertEqual(ellipse.MajorAxis, 100)
+        self.assertEqual(ellipse.MajorAxis, (200,300,0))
         self.assertEqual(ellipse.RadiusRatio, 0.5)
         ellipse.Delete()
 
