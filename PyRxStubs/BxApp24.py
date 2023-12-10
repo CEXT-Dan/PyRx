@@ -7861,6 +7861,8 @@ class IAcadEllipse(DispatchBaseClass):
         match __name:
             case 'Center':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
+            case 'MajorAxis':
+                DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case 'Normal':
                 DispatchBaseClass.__setattr__(self, __name,  VTR8ArrayOrVal(__value))
             case _:
