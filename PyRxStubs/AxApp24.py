@@ -32949,7 +32949,7 @@ win32com.client.constants.__dicts__.append(constants.__dict__)
 
 def getApp() -> IAcadApplication:
     id = AcadApplication.CLSID
-    return  win32com.client.Dispatch(id)
+    return win32com.client.GetActiveObject(id)
 
 def getDbx() -> IAcadApplication:
     id = AxDbDocument.CLSID
