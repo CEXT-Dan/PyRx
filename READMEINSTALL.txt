@@ -1,4 +1,4 @@
-Install python (64 bit) python3.12.0 with PATH checkbox set to true.
+Install python (64 bit) python3.12.X with PATH checkbox set to true.
 
 install wxPython 4.2.1 from https://pypi.org/project/wxPython/
 

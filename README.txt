@@ -1,14 +1,16 @@
 Python (cPython)
 
-bindings for AutoCAD® ObjectARX® 2021-2024
-bindings for ZwCAD® ZRX® 2024
-bindings for GstarCAD® GRX® 2024
-bindings for BricsCAD® BRX® 2024
+bindings for C++: 
+AutoCAD®    ObjectARX®  2021-2024
+ZwCAD®      ZRX®        2024
+GstarCAD®   GRX®        2024
+BricsCAD®   BRX®        2024
 
-bindings for AutoCAD® ActiveX  2021-2024
-ActiveX bindings for BricsCAD  v24
-ActiveX bindings GstarCAD 2024
-ActiveX bindings ZwCAD 2024
+bindings for ActiveX 
+AutoCAD®    2021-2024
+BricsCAD    v24
+GstarCAD    2024
+ZwCAD       2024
 
 uses wxPython for the GUI, Dialogs and CAdUiPalette wrapper
 
