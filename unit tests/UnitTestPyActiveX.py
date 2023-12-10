@@ -69,6 +69,10 @@ class TestActiveX(unittest.TestCase):
         circle = app.ActiveDocument.ModelSpace.AddCircle((100,200,300),50)
         self.assertEqual(circle.Radius,50)
         self.assertEqual(circle.Center,(100,200,300))
+        circle.Center = (400,500,600)
+        circle.Radius = 100
+        self.assertEqual(circle.Radius,100)
+        self.assertEqual(circle.Center,(400,500,600))
         circle.Delete()
 
     def test_add_ellipse(self):
@@ -77,6 +81,10 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(ellipse.Center, (100,200,0))
         self.assertEqual(ellipse.MajorAxis, (200,300,0))
         self.assertEqual(ellipse.RadiusRatio, 0.5)
+        ellipse.Center = (400,500,0)
+        ellipse.MajorAxis = (500,600,0)
+        self.assertEqual(ellipse.Center, (400,500,0))
+        self.assertEqual(ellipse.MajorAxis, (500,600,0))
         ellipse.Delete()
 
     def test_add_polyline(self):
