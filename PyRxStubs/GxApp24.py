@@ -2334,6 +2334,7 @@ class IAcadApplication(DispatchBaseClass):
 
     def ZoomCenter(self, Center=defaultNamedNotOptArg, Magnify=defaultNamedNotOptArg):
         'Zooms the current viewport to a specified center point and magnification'
+        Center = VTR8ArrayOrVal(Center)
         return self._oleobj_.InvokeTypes(38, LCID, 1, (24, 0), ((12, 1), (5, 1)),Center
             , Magnify)
 
@@ -2356,6 +2357,8 @@ class IAcadApplication(DispatchBaseClass):
 
     def ZoomWindow(self, LowerLeft=defaultNamedNotOptArg, UpperRight=defaultNamedNotOptArg):
         'Zooms the current viewport to the area specified by two opposite corners of a rectangle'
+        LowerLeft = VTR8ArrayOrVal(LowerLeft)
+        UpperRight = VTR8ArrayOrVal(UpperRight)
         return self._oleobj_.InvokeTypes(40, LCID, 1, (24, 0), ((12, 1), (12, 1)),LowerLeft
             , UpperRight)
 
