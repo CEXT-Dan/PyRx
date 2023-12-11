@@ -10,6 +10,11 @@ print("added command pymon")
 print("added command pyunmon")
 
 
+#exit clean
+def OnPyUnloadApp():
+    PyRxCmd_pyunmon()
+
+
 class MyPointMonitor(Ed.InputPointMonitor):
     def __init__(self):
         Ed.InputPointMonitor.__init__(self)
@@ -23,18 +28,27 @@ class MyPointMonitor(Ed.InputPointMonitor):
             ents = input.pickedEntities()
             if len(ents) == 0:
                 return
+            
+            #just get the first entity and check the type
             if not ents[0].isDerivedFrom(Db.MText.desc()):
                 return
+            
+            #open the mtext for read
             mt = Db.MText(ents[0])
             bp = mt.getBoundingPoints()
             if len(bp) != 4:
                 return
+            
+            #reorder the points 
             self.swap(bp,2,3)
+            
+            #draw the geometry
             input.drawContext().geometry().polygon(bp)
         except Exception as err:
             print(err)
 
 
+#global space
 pm = MyPointMonitor()
 
 
