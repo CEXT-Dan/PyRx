@@ -45,6 +45,26 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(dbx.Name, path)
         self.assertNotEqual(dbx.ModelSpace.Count, 0)
 
+    def test_add_attribute(self):
+        app = Ax.getApp()
+        attr = app.ActiveDocument.ModelSpace.AddAttribute(1, 
+            Ax.constants.acAttributeModeInvisible,
+            "PromptTest",
+            (0, 0, 0),
+            "Tag",
+            "Value")       
+
+        self.assertEqual(attr.InsertionPoint, (0, 0, 0))
+        self.assertEqual(attr.TagString, "Tag")
+        self.assertEqual(attr.TextString, "Value")
+        attr.InsertionPoint = (1, 2, 3)
+        attr.TagString = "Tag2"
+        attr.TextString = "Value2"
+        self.assertEqual(attr.InsertionPoint, (1, 2, 3))
+        self.assertEqual(attr.TagString, "Tag2")
+        self.assertEqual(attr.TextString, "Value2")
+        attr.Delete()
+
     def test_add_point(self):
         app = Ax.getApp()
         point = app.ActiveDocument.ModelSpace.AddPoint((100, 200, 300))
@@ -87,6 +107,17 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(ellipse.MajorAxis, (500,600,0))
         ellipse.Delete()
 
+    def test_add_cylinder(self):
+        pass
+        # find solid properties to test
+        # assertequal one property
+
+    def test_add_cone(self):
+        pass
+
+    def test_add_elliptical_cone(self):
+        pass
+
     def test_add_polyline(self):
         app = Ax.getApp()
         line = app.ActiveDocument.ModelSpace.AddLightWeightPolyline(
@@ -96,6 +127,26 @@ class TestActiveX(unittest.TestCase):
         line.Coordinates = (1, 2, 3, 4, 5, 6)
         self.assertEqual(line.Coordinates, (1, 2, 3, 4, 5, 6))
         line.Delete()
+
+    def test_add_mline(self):
+        app = Ax.getApp()
+        mline = app.ActiveDocument.ModelSpace.AddMLine([0, 0, 10, 10, 20, 10])
+        self.assertEqual(mline.Coordinates, (0, 0, 10, 10, 20, 10))
+        mline.Coordinates = [10, 10, 20, 20, 30, 20]
+        self.assertEqual(mline.Coordinates, (10, 10, 20, 20, 30, 20))
+        mline.Delete()
+
+    def test_add_text(self):
+        app = Ax.getApp()
+        text = app.ActiveDocument.ModelSpace.AddText("Oratrice Mechanique D'Analyse Cardinale 3000", (0, 0, 0), 1)
+        self.assertEqual(text.TextString, "Oratrice Mechanique D'Analyse Cardinale 3000")
+        self.assertEqual(text.InsertionPoint, (0, 0, 0))
+        self.assertEqual(text.Height, 1)
+        text.TextString = "Hello World"
+        text.InsertionPoint = (1,2,3)
+        self.assertEqual(text.TextString, "Hello World")
+        self.assertEqual(text.InsertionPoint, (1, 2, 3))
+        text.Delete()
 
     def test_add_mtext(self):
         app = Ax.getApp()
