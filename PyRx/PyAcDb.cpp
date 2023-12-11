@@ -267,6 +267,8 @@ BOOST_PYTHON_MODULE(PyDb)
 #endif
     makePyDbObjectOverrulerapper();
 #if !defined(_BRXTARGET240)
+    makePyDbPointCloudClassificationColorRampWrapper();
+    makePyDbPointCloudColorRampWrapper();
     makePyDbPointCloudDefExWrapper();
     makePyDbPointCloudExWrapper();
     makePyDbPointCloudColorMapWrapper();

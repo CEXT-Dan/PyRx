@@ -15,6 +15,61 @@ class PyRxObject;
 class PyDbObjectId;
 class PyDbDatabase;
 
+//-----------------------------------------------------------------------------------
+//PyDbPointCloudColorRamp
+void makePyDbPointCloudClassificationColorRampWrapper();
+class PyDbPointCloudClassificationColorRamp
+{
+public:
+    PyDbPointCloudClassificationColorRamp();
+    ~PyDbPointCloudClassificationColorRamp() = default;
+
+    Adesk::Int32                numColors() const;
+    AcCmEntityColor             color(int c) const;
+    void                        setColor(int c, const AcCmEntityColor& color);
+    bool                        visibility(int c) const;
+    void                        setVisibility(int c, bool visibility);
+    void                        setFrom(const PyDbPointCloudClassificationColorRamp& source);
+    std::string                 name() const;
+    void                        setName(const  std::string& name);
+
+public:
+    static std::string          className();
+public:
+    AcDbPointCloudClassificationColorRamp* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<AcDbPointCloudClassificationColorRamp> m_pyImp;
+};
+
+
+
+//-----------------------------------------------------------------------------------
+//PyDbPointCloudColorRamp
+void makePyDbPointCloudColorRampWrapper();
+class PyDbPointCloudColorRamp
+{
+public:
+    PyDbPointCloudColorRamp();
+    ~PyDbPointCloudColorRamp() = default;
+
+    Adesk::Int32                numColors() const;
+    void                        setNumColors(Adesk::Int32 count);
+    AcCmEntityColor             color(int c) const;
+    void                        setColor(int c, const AcCmEntityColor& color);
+    bool                        visibility(int c) const;
+    void                        setVisibility(int c, bool visibility);
+    void                        setFrom(const PyDbPointCloudColorRamp& source);
+    std::string                 name() const;
+    void                        setName(const  std::string& name);
+
+public:
+    static std::string          className();
+public:
+    AcDbPointCloudColorRamp*    impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<AcDbPointCloudColorRamp> m_pyImp;
+};
+
 
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudColorMap
@@ -44,12 +99,12 @@ public:
     boost::python::list         getColorSchemeInUse() const;
     boost::python::list         getClassificationColorSchemeInUse() const;
 
-    //bool                            colorScheme(const wchar_t* GUID, AcDbPointCloudColorRamp& target) const;
-    //bool                            setColorScheme(const wchar_t* GUID, const AcDbPointCloudColorRamp& source);
-    //bool                            classificationScheme(const wchar_t* GUID, AcDbPointCloudClassificationColorRamp& target) const;
-    //bool                            setClassificationScheme(const wchar_t* GUID, const AcDbPointCloudClassificationColorRamp& source);
+    boost::python::tuple        colorScheme(const std::string& GUID);
+    bool                        setColorScheme(const std::string& GUID, const PyDbPointCloudColorRamp& source);
 
-  
+    boost::python::tuple        classificationScheme(const std::string& GUID);
+    bool                        setClassificationScheme(const std::string& GUID, const PyDbPointCloudClassificationColorRamp& source);
+
     static PyDbObjectId         getColorMap(PyDbDatabase& pDb);
 public:
     static std::string          className();
