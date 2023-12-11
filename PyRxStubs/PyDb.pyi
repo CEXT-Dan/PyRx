@@ -50627,6 +50627,70 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
       '''                             '''
     ...
 
+class PointCloudClassificationColorRamp:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def color (self, *args, **kwargs)-> PyDb.EntityColor :
+      '''color( (PointCloudClassificationColorRamp)arg1, (int)arg2) -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor color(class PyDbPointCloudClassificationColorRamp {lvalue},int)'''
+    ...
+    def name (self, *args, **kwargs)-> str :
+      '''name( (PointCloudClassificationColorRamp)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyDbPointCloudClassificationColorRamp {lvalue})'''
+    ...
+    def numColors (self, *args, **kwargs)-> int :
+      '''numColors( (PointCloudClassificationColorRamp)arg1) -> int :
+
+    C++ signature :
+        int numColors(class PyDbPointCloudClassificationColorRamp {lvalue})'''
+    ...
+    def setColor (self, *args, **kwargs)-> None :
+      '''setColor( (PointCloudClassificationColorRamp)arg1, (int)arg2, (EntityColor)arg3) -> None :
+
+    C++ signature :
+        void setColor(class PyDbPointCloudClassificationColorRamp {lvalue},int,class AcCmEntityColor)'''
+    ...
+    def setFrom (self, *args, **kwargs)-> None :
+      '''setFrom( (PointCloudClassificationColorRamp)arg1, (PointCloudClassificationColorRamp)arg2) -> None :
+
+    C++ signature :
+        void setFrom(class PyDbPointCloudClassificationColorRamp {lvalue},class PyDbPointCloudClassificationColorRamp)'''
+    ...
+    def setName (self, *args, **kwargs)-> None :
+      '''setName( (PointCloudClassificationColorRamp)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setName(class PyDbPointCloudClassificationColorRamp {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setVisibility (self, *args, **kwargs)-> None :
+      '''setVisibility( (PointCloudClassificationColorRamp)arg1, (int)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setVisibility(class PyDbPointCloudClassificationColorRamp {lvalue},int,bool)'''
+    ...
+    def visibility (self, *args, **kwargs)-> bool :
+      '''visibility( (PointCloudClassificationColorRamp)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool visibility(class PyDbPointCloudClassificationColorRamp {lvalue},int)'''
+    ...
+
 class PointCloudColorMap:
     def __init__ (self: PointCloudColorMap,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
@@ -50658,6 +50722,12 @@ class PointCloudColorMap:
     def className ()-> str :
       '''                             '''
     ...
+    def classificationScheme (self, *args, **kwargs)-> tuple :
+      '''classificationScheme( (PointCloudColorMap)arg1, (str)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple classificationScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def classificationSchemeGUIDs (self, *args, **kwargs)-> list :
       '''classificationSchemeGUIDs( (PointCloudColorMap)arg1) -> list :
 
@@ -50669,6 +50739,12 @@ class PointCloudColorMap:
     ...
     def close (self: DbObject)-> None :
       '''                             '''
+    ...
+    def colorScheme (self, *args, **kwargs)-> tuple :
+      '''colorScheme( (PointCloudColorMap)arg1, (str)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple colorScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def colorSchemeGUIDs (self, *args, **kwargs)-> list :
       '''colorSchemeGUIDs( (PointCloudColorMap)arg1) -> list :
@@ -50892,6 +50968,18 @@ class PointCloudColorMap:
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
+    def setClassificationScheme (self, *args, **kwargs)-> bool :
+      '''setClassificationScheme( (PointCloudColorMap)arg1, (str)arg2, (PointCloudClassificationColorRamp)arg3) -> bool :
+
+    C++ signature :
+        bool setClassificationScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbPointCloudClassificationColorRamp)'''
+    ...
+    def setColorScheme (self, *args, **kwargs)-> bool :
+      '''setColorScheme( (PointCloudColorMap)arg1, (str)arg2, (PointCloudColorRamp)arg3) -> bool :
+
+    C++ signature :
+        bool setColorScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbPointCloudColorRamp)'''
+    ...
     def setDefaultClassificationColorScheme (self, *args, **kwargs)-> bool :
       '''setDefaultClassificationColorScheme( (PointCloudColorMap)arg1, (str)arg2) -> bool :
 
@@ -50951,6 +51039,76 @@ class PointCloudColorMap:
     ...
     def xmitPropagateModify (self: DbObject)-> None :
       '''                             '''
+    ...
+
+class PointCloudColorRamp:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def color (self, *args, **kwargs)-> PyDb.EntityColor :
+      '''color( (PointCloudColorRamp)arg1, (int)arg2) -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor color(class PyDbPointCloudColorRamp {lvalue},int)'''
+    ...
+    def name (self, *args, **kwargs)-> str :
+      '''name( (PointCloudColorRamp)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyDbPointCloudColorRamp {lvalue})'''
+    ...
+    def numColors (self, *args, **kwargs)-> int :
+      '''numColors( (PointCloudColorRamp)arg1) -> int :
+
+    C++ signature :
+        int numColors(class PyDbPointCloudColorRamp {lvalue})'''
+    ...
+    def setColor (self, *args, **kwargs)-> None :
+      '''setColor( (PointCloudColorRamp)arg1, (int)arg2, (EntityColor)arg3) -> None :
+
+    C++ signature :
+        void setColor(class PyDbPointCloudColorRamp {lvalue},int,class AcCmEntityColor)'''
+    ...
+    def setFrom (self, *args, **kwargs)-> None :
+      '''setFrom( (PointCloudColorRamp)arg1, (PointCloudColorRamp)arg2) -> None :
+
+    C++ signature :
+        void setFrom(class PyDbPointCloudColorRamp {lvalue},class PyDbPointCloudColorRamp)'''
+    ...
+    def setName (self, *args, **kwargs)-> None :
+      '''setName( (PointCloudColorRamp)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setName(class PyDbPointCloudColorRamp {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setNumColors (self, *args, **kwargs)-> None :
+      '''setNumColors( (PointCloudColorRamp)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setNumColors(class PyDbPointCloudColorRamp {lvalue},int)'''
+    ...
+    def setVisibility (self, *args, **kwargs)-> None :
+      '''setVisibility( (PointCloudColorRamp)arg1, (int)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void setVisibility(class PyDbPointCloudColorRamp {lvalue},int,bool)'''
+    ...
+    def visibility (self, *args, **kwargs)-> bool :
+      '''visibility( (PointCloudColorRamp)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool visibility(class PyDbPointCloudColorRamp {lvalue},int)'''
     ...
 
 class PointCloudDefEx:

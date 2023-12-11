@@ -10,6 +10,172 @@
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
+//PyDbPointCloudColorRamp
+void makePyDbPointCloudClassificationColorRampWrapper()
+{
+    PyDocString DS("PointCloudClassificationColorRamp");
+    class_<PyDbPointCloudClassificationColorRamp>("PointCloudClassificationColorRamp")
+        .def(init<>())
+        .def("numColors", &PyDbPointCloudClassificationColorRamp::numColors)
+        .def("color", &PyDbPointCloudClassificationColorRamp::color)
+        .def("setColor", &PyDbPointCloudClassificationColorRamp::setColor)
+        .def("visibility", &PyDbPointCloudClassificationColorRamp::visibility)
+        .def("setVisibility", &PyDbPointCloudClassificationColorRamp::setVisibility)
+        .def("setFrom", &PyDbPointCloudClassificationColorRamp::setFrom)
+        .def("name", &PyDbPointCloudClassificationColorRamp::name)
+        .def("setName", &PyDbPointCloudClassificationColorRamp::setName)
+        .def("className", &PyDbPointCloudClassificationColorRamp::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+
+PyDbPointCloudClassificationColorRamp::PyDbPointCloudClassificationColorRamp()
+    : m_pyImp(new AcDbPointCloudClassificationColorRamp())
+{
+}
+
+Adesk::Int32 PyDbPointCloudClassificationColorRamp::numColors() const
+{
+    return impObj()->numColors();
+}
+
+AcCmEntityColor PyDbPointCloudClassificationColorRamp::color(int c) const
+{
+    return impObj()->color(c);
+}
+
+void PyDbPointCloudClassificationColorRamp::setColor(int c, const AcCmEntityColor& color)
+{
+    return impObj()->setColor(c, color);
+}
+
+bool PyDbPointCloudClassificationColorRamp::visibility(int c) const
+{
+    return impObj()->visibility(c);
+}
+
+
+void PyDbPointCloudClassificationColorRamp::setVisibility(int c, bool visibility)
+{
+    return impObj()->setVisibility(c, visibility);
+}
+
+void PyDbPointCloudClassificationColorRamp::setFrom(const PyDbPointCloudClassificationColorRamp& source)
+{
+    return impObj()->setFrom(source.impObj());
+}
+
+std::string PyDbPointCloudClassificationColorRamp::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+void PyDbPointCloudClassificationColorRamp::setName(const std::string& name)
+{
+    PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
+}
+
+std::string PyDbPointCloudClassificationColorRamp::className()
+{
+    return "AcDbPointCloudClassificationColorRamp";
+}
+
+AcDbPointCloudClassificationColorRamp* PyDbPointCloudClassificationColorRamp::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return m_pyImp.get();
+}
+
+
+//-----------------------------------------------------------------------------------
+//PyDbPointCloudColorRamp
+void makePyDbPointCloudColorRampWrapper()
+{
+    PyDocString DS("PointCloudColorRamp");
+    class_<PyDbPointCloudColorRamp>("PointCloudColorRamp")
+        .def(init<>())
+        .def("numColors", &PyDbPointCloudColorRamp::numColors)
+        .def("setNumColors", &PyDbPointCloudColorRamp::setNumColors)
+        .def("color", &PyDbPointCloudColorRamp::color)
+        .def("setColor", &PyDbPointCloudColorRamp::setColor)
+        .def("visibility", &PyDbPointCloudColorRamp::visibility)
+        .def("setVisibility", &PyDbPointCloudColorRamp::setVisibility)
+        .def("setFrom", &PyDbPointCloudColorRamp::setFrom)
+        .def("name", &PyDbPointCloudColorRamp::name)
+        .def("setName", &PyDbPointCloudColorRamp::setName)
+        .def("className", &PyDbPointCloudColorRamp::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+
+PyDbPointCloudColorRamp::PyDbPointCloudColorRamp()
+    : m_pyImp(new AcDbPointCloudColorRamp())
+{
+}
+
+Adesk::Int32 PyDbPointCloudColorRamp::numColors() const
+{
+    return impObj()->numColors();
+}
+
+void PyDbPointCloudColorRamp::setNumColors(Adesk::Int32 count)
+{
+    PyThrowBadEs(impObj()->setNumColors(count));
+}
+
+AcCmEntityColor PyDbPointCloudColorRamp::color(int c) const
+{
+    return impObj()->color(c);
+}
+
+void PyDbPointCloudColorRamp::setColor(int c,const AcCmEntityColor& color)
+{
+    return impObj()->setColor(c, color);
+}
+
+bool PyDbPointCloudColorRamp::visibility(int c) const
+{
+    return impObj()->visibility(c);
+}
+
+
+void PyDbPointCloudColorRamp::setVisibility(int c, bool visibility)
+{
+    return impObj()->setVisibility(c, visibility);
+}
+
+void PyDbPointCloudColorRamp::setFrom(const PyDbPointCloudColorRamp& source)
+{
+    return impObj()->setFrom(source.impObj());
+}
+
+std::string PyDbPointCloudColorRamp::name() const
+{
+    return wstr_to_utf8(impObj()->name());
+}
+
+void PyDbPointCloudColorRamp::setName(const std::string& name)
+{
+    PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
+}
+
+std::string PyDbPointCloudColorRamp::className()
+{
+    return "AcDbPointCloudColorRamp";
+}
+
+AcDbPointCloudColorRamp* PyDbPointCloudColorRamp::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return m_pyImp.get();
+}
+
+
+//-----------------------------------------------------------------------------------
 //PyDbPointCloudColorMap
 void makePyDbPointCloudColorMapWrapper()
 {
@@ -33,6 +199,11 @@ void makePyDbPointCloudColorMapWrapper()
         .def("deleteClassificationScheme", &PyDbPointCloudColorMap::deleteClassificationScheme)
         .def("getColorSchemeInUse", &PyDbPointCloudColorMap::getColorSchemeInUse)
         .def("getClassificationColorSchemeInUse", &PyDbPointCloudColorMap::getClassificationColorSchemeInUse)
+
+        .def("colorScheme", &PyDbPointCloudColorMap::colorScheme)
+        .def("setColorScheme", &PyDbPointCloudColorMap::setColorScheme)
+        .def("classificationScheme", &PyDbPointCloudColorMap::classificationScheme)
+        .def("setClassificationScheme", &PyDbPointCloudColorMap::setClassificationScheme)
 
         .def("getColorMap", &PyDbPointCloudColorMap::getColorMap, DS.SARGS({ "val : PyDb.Database" })).staticmethod("getColorMap")
         .def("className", &PyDbPointCloudColorMap::className, DS.SARGS()).staticmethod("className")
@@ -150,6 +321,36 @@ boost::python::list PyDbPointCloudColorMap::getClassificationColorSchemeInUse() 
     for (const auto& item : GUIDs)
         pylist.append(wstr_to_utf8(item));
     return pylist;
+}
+
+boost::python::tuple PyDbPointCloudColorMap::colorScheme(const std::string& GUID)
+{
+    PyAutoLockGIL lock;
+    PyDbPointCloudColorRamp pyramp;
+    AcDbPointCloudColorRamp acramp;
+    auto flag = impObj()->colorScheme(utf8_to_wstr(GUID).c_str(), acramp);
+    pyramp.impObj()->setFrom(&acramp);
+    return boost::python::make_tuple(flag, pyramp);
+}
+
+bool PyDbPointCloudColorMap::setColorScheme(const std::string& GUID, const PyDbPointCloudColorRamp& source)
+{
+    return impObj()->colorScheme(utf8_to_wstr(GUID).c_str(), *source.impObj());
+}
+
+boost::python::tuple PyDbPointCloudColorMap::classificationScheme(const std::string& GUID)
+{
+    PyAutoLockGIL lock;
+    PyDbPointCloudClassificationColorRamp pyramp;
+    AcDbPointCloudClassificationColorRamp acramp;
+    auto flag = impObj()->classificationScheme(utf8_to_wstr(GUID).c_str(), acramp);
+    pyramp.impObj()->setFrom(&acramp);
+    return boost::python::make_tuple(flag, pyramp);
+}
+
+bool PyDbPointCloudColorMap::setClassificationScheme(const std::string& GUID, const PyDbPointCloudClassificationColorRamp& source)
+{
+    return impObj()->setClassificationScheme(utf8_to_wstr(GUID).c_str(), *source.impObj());
 }
 
 PyDbObjectId PyDbPointCloudColorMap::getColorMap(PyDbDatabase& pDb)
