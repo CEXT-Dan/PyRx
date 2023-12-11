@@ -44,8 +44,6 @@ EXTERN_C void                   acedGetCommandPromptString(CString&);
 EXTERN_C void                   acedDropOpenFile(const ACHAR*);
 extern void                     acedGetLastCommandLines(AcStringArray&, int, bool);
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
-//int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
-//int                             acedEvaluateDiesel(const ACHAR*, ACHAR*, size_t);
 bool                            acedLoadMainMenu(const ACHAR*);
 
 //acedLinetypeDialog()
