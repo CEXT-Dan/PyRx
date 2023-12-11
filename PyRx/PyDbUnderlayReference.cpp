@@ -8,11 +8,12 @@ using namespace boost::python;
 //PyUnderlayLayer
 void makePyUnderlayLayerWrapper()
 {
+    PyDocString DS("UnderlayLayer");
     class_<PyUnderlayLayer>("UnderlayLayer")
-        .def("name", &PyUnderlayLayer::name)
-        .def("state", &PyUnderlayLayer::state)
-        .def("setName", &PyUnderlayLayer::setName)
-        .def("setState", &PyUnderlayLayer::setState)
+        .def("name", &PyUnderlayLayer::name, DS.ARGS())
+        .def("state", &PyUnderlayLayer::state, DS.ARGS())
+        .def("setName", &PyUnderlayLayer::setName, DS.ARGS({ "name : str" }))
+        .def("setState", &PyUnderlayLayer::setState, DS.ARGS({ "state : bool" }))
         ;
 }
 
@@ -49,23 +50,24 @@ void PyUnderlayLayer::setState(bool state)
 //PyDbUnderlayDefinition
 void makePyDbUnderlayDefinitionWrapper()
 {
+    PyDocString DS("UnderlayDefinition");
     class_<PyDbUnderlayDefinition, bases<PyDbObject>>("UnderlayDefinition", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("setSourceFileName", &PyDbUnderlayDefinition::setSourceFileName)
-        .def("getSourceFileName", &PyDbUnderlayDefinition::getSourceFileName)
-        .def("getActiveFileName", &PyDbUnderlayDefinition::getActiveFileName)
-        .def("setItemName", &PyDbUnderlayDefinition::setItemName)
-        .def("getItemName", &PyDbUnderlayDefinition::getItemName)
+        .def("setSourceFileName", &PyDbUnderlayDefinition::setSourceFileName, DS.ARGS({ "file : str" }))
+        .def("getSourceFileName", &PyDbUnderlayDefinition::getSourceFileName, DS.ARGS())
+        .def("getActiveFileName", &PyDbUnderlayDefinition::getActiveFileName, DS.ARGS())
+        .def("setItemName", &PyDbUnderlayDefinition::setItemName, DS.ARGS({ "item : str" }))
+        .def("getItemName", &PyDbUnderlayDefinition::getItemName, DS.ARGS())
         .def("load", &PyDbUnderlayDefinition::load1)
-        .def("load", &PyDbUnderlayDefinition::load2)
-        .def("unload", &PyDbUnderlayDefinition::unload)
-        .def("isLoaded", &PyDbUnderlayDefinition::isLoaded)
-        .def("dictionaryKey", &PyDbUnderlayDefinition::dictionaryKey).staticmethod("dictionaryKey")
-        .def("className", &PyDbUnderlayDefinition::className).staticmethod("className")
-        .def("desc", &PyDbUnderlayDefinition::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbUnderlayDefinition::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbUnderlayDefinition::cast).staticmethod("cast")
+        .def("load", &PyDbUnderlayDefinition::load2, DS.ARGS({ "pass : str=None" }))
+        .def("unload", &PyDbUnderlayDefinition::unload, DS.ARGS())
+        .def("isLoaded", &PyDbUnderlayDefinition::isLoaded, DS.ARGS())
+        .def("dictionaryKey", &PyDbUnderlayDefinition::dictionaryKey, DS.SARGS({ "underlayDefinitionType: PyRx.RxClass" })).staticmethod("dictionaryKey")
+        .def("className", &PyDbUnderlayDefinition::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbUnderlayDefinition::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbUnderlayDefinition::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbUnderlayDefinition::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 

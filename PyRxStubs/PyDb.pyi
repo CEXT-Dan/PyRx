@@ -46568,11 +46568,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def dictionaryKey (self, *args, **kwargs)-> str :
-      '''dictionaryKey( (RxClass)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRxClass)'''
+    def dictionaryKey (underlayDefinitionType: PyRx.RxClass)-> str :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -46595,11 +46592,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getActiveFileName (self, *args, **kwargs)-> str :
-      '''getActiveFileName( (UnderlayDefinition)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveFileName(class PyDbUnderlayDefinition {lvalue})'''
+    def getActiveFileName (self: UnderlayDefinition)-> str :
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
       '''                             '''
@@ -46610,17 +46604,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getItemName (self, *args, **kwargs)-> str :
-      '''getItemName( (UnderlayDefinition)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getItemName(class PyDbUnderlayDefinition {lvalue})'''
+    def getItemName (self: UnderlayDefinition)-> str :
+      '''                             '''
     ...
-    def getSourceFileName (self, *args, **kwargs)-> str :
-      '''getSourceFileName( (UnderlayDefinition)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getSourceFileName(class PyDbUnderlayDefinition {lvalue})'''
+    def getSourceFileName (self: UnderlayDefinition)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -46661,11 +46649,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isLoaded (self, *args, **kwargs)-> bool :
-      '''isLoaded( (UnderlayDefinition)arg1) -> bool :
-
-    C++ signature :
-        bool isLoaded(class PyDbUnderlayDefinition {lvalue})'''
+    def isLoaded (self: UnderlayDefinition)-> bool :
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
       '''                             '''
@@ -46712,16 +46697,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def keepAlive (self: RxObject,flag:bool)-> None :
       '''                             '''
     ...
-    def load (self, *args, **kwargs)-> None :
-      '''load( (UnderlayDefinition)arg1) -> None :
-
-    C++ signature :
-        void load(class PyDbUnderlayDefinition {lvalue})
-
-load( (UnderlayDefinition)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void load(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def load (self: UnderlayDefinition,pass : str=None)-> None :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -46756,20 +46733,14 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setItemName (self, *args, **kwargs)-> None :
-      '''setItemName( (UnderlayDefinition)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setItemName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setItemName (self: UnderlayDefinition,item : str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setSourceFileName (self, *args, **kwargs)-> None :
-      '''setSourceFileName( (UnderlayDefinition)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setSourceFileName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setSourceFileName (self: UnderlayDefinition,file : str)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -46780,11 +46751,8 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def unload (self, *args, **kwargs)-> None :
-      '''unload( (UnderlayDefinition)arg1) -> None :
-
-    C++ signature :
-        void unload(class PyDbUnderlayDefinition {lvalue})'''
+    def unload (self: UnderlayDefinition)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -74996,23 +74964,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PyDb.UnderlayDefinition :
-      '''cast( (RxObject)arg1) -> UnderlayDefinition :
-
-    C++ signature :
-        class PyDbUnderlayDefinition cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> PyDb.UnderlayDefinition :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PyDb.UnderlayDefinition :
-      '''cloneFrom( (RxObject)arg1) -> UnderlayDefinition :
-
-    C++ signature :
-        class PyDbUnderlayDefinition cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.UnderlayDefinition :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -75029,17 +74988,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> PyRx.RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
     ...
-    def dictionaryKey (self, *args, **kwargs)-> str :
-      '''dictionaryKey( (RxClass)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRxClass)'''
+    def dictionaryKey (underlayDefinitionType: PyRx.RxClass)-> str :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -75062,11 +75015,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def getActiveFileName (self, *args, **kwargs)-> str :
-      '''getActiveFileName( (UnderlayDefinition)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveFileName(class PyDbUnderlayDefinition {lvalue})'''
+    def getActiveFileName (self: UnderlayDefinition)-> str :
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
       '''                             '''
@@ -75077,17 +75027,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getItemName (self, *args, **kwargs)-> str :
-      '''getItemName( (UnderlayDefinition)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getItemName(class PyDbUnderlayDefinition {lvalue})'''
+    def getItemName (self: UnderlayDefinition)-> str :
+      '''                             '''
     ...
-    def getSourceFileName (self, *args, **kwargs)-> str :
-      '''getSourceFileName( (UnderlayDefinition)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getSourceFileName(class PyDbUnderlayDefinition {lvalue})'''
+    def getSourceFileName (self: UnderlayDefinition)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -75128,11 +75072,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isLoaded (self, *args, **kwargs)-> bool :
-      '''isLoaded( (UnderlayDefinition)arg1) -> bool :
-
-    C++ signature :
-        bool isLoaded(class PyDbUnderlayDefinition {lvalue})'''
+    def isLoaded (self: UnderlayDefinition)-> bool :
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
       '''                             '''
@@ -75179,16 +75120,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def keepAlive (self: RxObject,flag:bool)-> None :
       '''                             '''
     ...
-    def load (self, *args, **kwargs)-> None :
-      '''load( (UnderlayDefinition)arg1) -> None :
-
-    C++ signature :
-        void load(class PyDbUnderlayDefinition {lvalue})
-
-load( (UnderlayDefinition)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void load(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def load (self: UnderlayDefinition,pass : str=None)-> None :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
@@ -75223,20 +75156,14 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setItemName (self, *args, **kwargs)-> None :
-      '''setItemName( (UnderlayDefinition)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setItemName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setItemName (self: UnderlayDefinition,item : str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setSourceFileName (self, *args, **kwargs)-> None :
-      '''setSourceFileName( (UnderlayDefinition)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setSourceFileName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setSourceFileName (self: UnderlayDefinition,file : str)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -75247,11 +75174,8 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def unload (self, *args, **kwargs)-> None :
-      '''unload( (UnderlayDefinition)arg1) -> None :
-
-    C++ signature :
-        void unload(class PyDbUnderlayDefinition {lvalue})'''
+    def unload (self: UnderlayDefinition)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -75288,29 +75212,17 @@ class UnderlayLayer:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def name (self, *args, **kwargs)-> str :
-      '''name( (UnderlayLayer)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyUnderlayLayer {lvalue})'''
+    def name (self: UnderlayLayer)-> str :
+      '''                             '''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (UnderlayLayer)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyUnderlayLayer {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: UnderlayLayer,name : str)-> None :
+      '''                             '''
     ...
-    def setState (self, *args, **kwargs)-> None :
-      '''setState( (UnderlayLayer)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setState(class PyUnderlayLayer {lvalue},bool)'''
+    def setState (self: UnderlayLayer,state : bool)-> None :
+      '''                             '''
     ...
-    def state (self, *args, **kwargs)-> bool :
-      '''state( (UnderlayLayer)arg1) -> bool :
-
-    C++ signature :
-        bool state(class PyUnderlayLayer {lvalue})'''
+    def state (self: UnderlayLayer)-> bool :
+      '''                             '''
     ...
 
 class UnderlayReference:
