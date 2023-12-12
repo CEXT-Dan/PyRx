@@ -10,6 +10,121 @@
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
+//PyDbPointCloudCrop
+void makePyDbPointCloudCropWrapper()
+{
+    PyDocString DS("PointCloudCrop");
+    class_<PyDbPointCloudCrop>("PointCloudCrop")
+        .def(init<>())
+        .def("clear", &PyDbPointCloudCrop::clear)
+        .def("isValid", &PyDbPointCloudCrop::isValid)
+        .def("type", &PyDbPointCloudCrop::type)
+        .def("setCropType", &PyDbPointCloudCrop::setCropType)
+        .def("isInside", &PyDbPointCloudCrop::isInside)
+        .def("setInside", &PyDbPointCloudCrop::setInside)
+        .def("isInverted", &PyDbPointCloudCrop::isInverted)
+        .def("setInvert", &PyDbPointCloudCrop::setInvert)
+        .def("getCropPlane", &PyDbPointCloudCrop::getCropPlane)
+        .def("setCropPlane", &PyDbPointCloudCrop::setCropPlane)
+        .def("length", &PyDbPointCloudCrop::length)
+        .def("set", &PyDbPointCloudCrop::set)
+        .def("get", &PyDbPointCloudCrop::get)
+        .def("className", &PyDbPointCloudCrop::className, DS.SARGS()).staticmethod("className")
+        ;
+}
+
+PyDbPointCloudCrop::PyDbPointCloudCrop()
+    : m_pyImp(new AcDbPointCloudCrop())
+{
+}
+
+PyDbPointCloudCrop::PyDbPointCloudCrop(const AcDbPointCloudCrop& other)
+    : m_pyImp(new AcDbPointCloudCrop(other))
+{
+}
+
+void PyDbPointCloudCrop::clear()
+{
+    impObj()->clear();
+}
+
+bool PyDbPointCloudCrop::isValid() const
+{
+    return impObj()->isValid();
+}
+
+AcDbPointCloudCrop::CropType PyDbPointCloudCrop::type() const
+{
+    return impObj()->type();
+}
+
+void PyDbPointCloudCrop::setCropType(AcDbPointCloudCrop::CropType type)
+{
+    impObj()->setCropType(type);
+}
+
+bool PyDbPointCloudCrop::isInside() const
+{
+    return impObj()->isInside();
+}
+
+void PyDbPointCloudCrop::setInside(bool bInside)
+{
+    impObj()->setInside(bInside);
+}
+
+bool PyDbPointCloudCrop::isInverted() const
+{
+    return impObj()->isInverted();
+}
+
+void PyDbPointCloudCrop::setInvert(bool toInvert)
+{
+    impObj()->setInvert(toInvert);
+}
+
+boost::python::tuple PyDbPointCloudCrop::getCropPlane()
+{
+    PyAutoLockGIL lock;
+    AcGePlane plane;
+    auto flag = impObj()->getCropPlane(plane);
+    return boost::python::make_tuple(flag, PyGePlane(plane));
+}
+
+void PyDbPointCloudCrop::setCropPlane(const PyGePlane& plane)
+{
+    impObj()->setCropPlane(*plane.impObj());
+}
+
+int PyDbPointCloudCrop::length() const
+{
+    return impObj()->length();
+}
+
+void PyDbPointCloudCrop::set(const boost::python::list& points)
+{
+    impObj()->set(PyListToPoint3dArray(points));
+}
+
+boost::python::list PyDbPointCloudCrop::get()
+{
+    return Point3dArrayToPyList(impObj()->get());
+}
+
+std::string PyDbPointCloudCrop::className()
+{
+    return "AcDbPointCloudCrop";
+}
+
+AcDbPointCloudCrop* PyDbPointCloudCrop::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr) [[unlikely]] {
+        throw PyNullObject(src);
+        }
+    return m_pyImp.get();
+}
+
+//-----------------------------------------------------------------------------------
 //PyDbPointCloudColorRamp
 void makePyDbPointCloudClassificationColorRampWrapper()
 {
@@ -449,6 +564,14 @@ void makePyDbPointCloudDefExWrapper()
         .value("kGeoGraphic", AcDbPointCloudDefEx::Property::kGeoGraphic)
         .export_values()
         ;
+
+    enum_<AcDbPointCloudCrop::CropType>("PointCloudCropType")
+        .value("kInvalid", AcDbPointCloudCrop::CropType::kInvalid)
+        .value("kRectangular", AcDbPointCloudCrop::CropType::kRectangular)
+        .value("kPolygonal", AcDbPointCloudCrop::CropType::kPolygonal)
+        .value("kCircular", AcDbPointCloudCrop::CropType::kCircular)
+        .export_values()
+        ;
 }
 
 PyDbPointCloudDefEx::PyDbPointCloudDefEx()
@@ -719,6 +842,8 @@ void makePyDbPointCloudExWrapper()
         .def("getMinDistPrecision", &PyDbPointCloudEx::getMinDistPrecision, DS.ARGS())
         .def("detectPointBelonger", &PyDbPointCloudEx::detectPointBelonger)
         .def("getCustomOsnapInfo", &PyDbPointCloudEx::getCustomOsnapInfo)
+        .def("getPointCloudCropping", &PyDbPointCloudEx::getPointCloudCropping)
+        .def("addCroppingBoundary", &PyDbPointCloudEx::addCroppingBoundary)
         .def("attachPointCloud", &PyDbPointCloudEx::attachPointCloud, DS.ARGS({ "path: str","pos: PyGe.Point3d","scale: real","rotation: real","db: PyDb.Database" })).staticmethod("attachPointCloud")
         .def("className", &PyDbPointCloudEx::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbPointCloudEx::desc, DS.SARGS()).staticmethod("desc")
@@ -887,6 +1012,16 @@ void PyDbPointCloudEx::setPointCloudName(const std::string& name)
 int PyDbPointCloudEx::getCroppingCount() const
 {
     return impObj()->getCroppingCount();
+}
+
+PyDbPointCloudCrop PyDbPointCloudEx::getPointCloudCropping(int index)
+{
+    return PyDbPointCloudCrop(*impObj()->getPointCloudCropping(index));
+}
+
+void PyDbPointCloudEx::addCroppingBoundary(const PyDbPointCloudCrop& cropping)
+{
+    impObj()->addCroppingBoundary(*cropping.impObj());
 }
 
 void PyDbPointCloudEx::clearCropping()
