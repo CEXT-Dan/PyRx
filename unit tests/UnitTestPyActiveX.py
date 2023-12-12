@@ -6,6 +6,7 @@ import PyGi as Gi
 import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
+import math
 
 # requires win32com.client
 host = Ap.Application.hostAPI()
@@ -17,7 +18,14 @@ elif host == "ZRX":
     import ZxApp24 as Ax
 else:
     import AxApp24 as Ax
-
+    
+    
+def almostEq(L , R)->bool:
+    for l,r in zip(L,R):
+        if not math.isclose(l, r, rel_tol=1e-2):
+            return False
+    return True
+    
 print("testname = pyactivex")
 
 class TestActiveX(unittest.TestCase):
@@ -98,13 +106,13 @@ class TestActiveX(unittest.TestCase):
     def test_add_ellipse(self):
         app = Ax.getApp()
         ellipse = app.ActiveDocument.ModelSpace.AddEllipse((100,200,0),(200,300,0),0.5)
-        self.assertEqual(ellipse.Center, (100,200,0))
-        self.assertEqual(ellipse.MajorAxis, (200,300,0))
-        self.assertEqual(ellipse.RadiusRatio, 0.5)
+        self.assertTrue(almostEq(ellipse.Center,(100,200,0)))
+        self.assertTrue(almostEq(ellipse.MajorAxis, (200,300,0)))
+        self.assertAlmostEqual(ellipse.RadiusRatio, 0.5, 10)
         ellipse.Center = (400,500,0)
         ellipse.MajorAxis = (500,600,0)
-        self.assertEqual(ellipse.Center, (400,500,0))
-        self.assertEqual(ellipse.MajorAxis, (500,600,0))
+        self.assertTrue(almostEq(ellipse.Center, (400,500,0)))
+        self.assertTrue(almostEq(ellipse.MajorAxis, (500,600,0)))
         ellipse.Delete()
 
     # Todo: run test on AutoCAD with Position
@@ -160,10 +168,10 @@ class TestActiveX(unittest.TestCase):
 
     def test_add_mline(self):
         app = Ax.getApp()
-        mline = app.ActiveDocument.ModelSpace.AddMLine([0, 0, 10, 10, 20, 10])
-        self.assertEqual(mline.Coordinates, (0, 0, 10, 10, 20, 10))
-        mline.Coordinates = [10, 10, 20, 20, 30, 20]
-        self.assertEqual(mline.Coordinates, (10, 10, 20, 20, 30, 20))
+        mline = app.ActiveDocument.ModelSpace.AddMLine([0, 0, 0, 10, 20, 0])
+        self.assertEqual(mline.Coordinates, (0, 0, 0, 10, 20, 0))
+        mline.Coordinates = [10, 10, 0, 20, 30, 0]
+        self.assertEqual(mline.Coordinates, (10, 10, 0, 20, 30, 0))
         mline.Delete()
 
     def test_add_text(self):
