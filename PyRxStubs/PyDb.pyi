@@ -51111,6 +51111,231 @@ __init__( (object)arg1) -> None :
         bool visibility(class PyDbPointCloudColorRamp {lvalue},int)'''
     ...
 
+class PointCloudCrop:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def clear (self, *args, **kwargs)-> None :
+      '''clear( (PointCloudCrop)arg1) -> None :
+
+    C++ signature :
+        void clear(class PyDbPointCloudCrop {lvalue})'''
+    ...
+    def get (self, *args, **kwargs)-> list :
+      '''get( (PointCloudCrop)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list get(class PyDbPointCloudCrop {lvalue})'''
+    ...
+    def getCropPlane (self, *args, **kwargs)-> tuple :
+      '''getCropPlane( (PointCloudCrop)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getCropPlane(class PyDbPointCloudCrop {lvalue})'''
+    ...
+    def isInside (self, *args, **kwargs)-> bool :
+      '''isInside( (PointCloudCrop)arg1) -> bool :
+
+    C++ signature :
+        bool isInside(class PyDbPointCloudCrop {lvalue})'''
+    ...
+    def isInverted (self, *args, **kwargs)-> bool :
+      '''isInverted( (PointCloudCrop)arg1) -> bool :
+
+    C++ signature :
+        bool isInverted(class PyDbPointCloudCrop {lvalue})'''
+    ...
+    def isValid (self, *args, **kwargs)-> bool :
+      '''isValid( (PointCloudCrop)arg1) -> bool :
+
+    C++ signature :
+        bool isValid(class PyDbPointCloudCrop {lvalue})'''
+    ...
+    def length (self, *args, **kwargs)-> int :
+      '''length( (PointCloudCrop)arg1) -> int :
+
+    C++ signature :
+        int length(class PyDbPointCloudCrop {lvalue})'''
+    ...
+    def set (self, *args, **kwargs)-> None :
+      '''set( (PointCloudCrop)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void set(class PyDbPointCloudCrop {lvalue},class boost::python::list)'''
+    ...
+    def setCropPlane (self, *args, **kwargs)-> None :
+      '''setCropPlane( (PointCloudCrop)arg1, (Plane)arg2) -> None :
+
+    C++ signature :
+        void setCropPlane(class PyDbPointCloudCrop {lvalue},class PyGePlane)'''
+    ...
+    def setCropType (self, *args, **kwargs)-> None :
+      '''setCropType( (PointCloudCrop)arg1, (PointCloudCropType)arg2) -> None :
+
+    C++ signature :
+        void setCropType(class PyDbPointCloudCrop {lvalue},enum AcDbPointCloudCrop::CropType)'''
+    ...
+    def setInside (self, *args, **kwargs)-> None :
+      '''setInside( (PointCloudCrop)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setInside(class PyDbPointCloudCrop {lvalue},bool)'''
+    ...
+    def setInvert (self, *args, **kwargs)-> None :
+      '''setInvert( (PointCloudCrop)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setInvert(class PyDbPointCloudCrop {lvalue},bool)'''
+    ...
+    def type (self, *args, **kwargs)-> PyDb.PointCloudCropType :
+      '''type( (PointCloudCrop)arg1) -> PointCloudCropType :
+
+    C++ signature :
+        enum AcDbPointCloudCrop::CropType type(class PyDbPointCloudCrop {lvalue})'''
+    ...
+
+class PointCloudCropType:
+    def __init__ (self, /, *args, **kwargs) :
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /) :
+      '''Return a pair of integers, whose ratio is equal to the original int.
+
+The ratio is in lowest terms and has a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /) :
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /) :
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None :
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None :
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder='big', *, signed=False) :
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None :
+      '''the imaginary part of a complex number'''
+    ...
+    def is_integer (self, /) :
+      '''Returns True. Exists for duck type compatibility with float.is_integer.'''
+    ...
+    def kCircular (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kInvalid (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kPolygonal (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def kRectangular (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None :
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None :
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None :
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.  Default
+    is length 1.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.  Default is to use 'big'.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via :
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class PointCloudDefEx:
     def __init__ (self: PointCloudDefEx,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
@@ -51551,6 +51776,12 @@ class PointCloudEx:
     def __init__ (self: PointCloudEx,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
+    def addCroppingBoundary (self, *args, **kwargs)-> None :
+      '''addCroppingBoundary( (PointCloudEx)arg1, (PointCloudCrop)arg2) -> None :
+
+    C++ signature :
+        void addCroppingBoundary(class PyDbPointCloudEx {lvalue},class PyDbPointCloudCrop)'''
+    ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -51777,6 +52008,12 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     ...
     def getPlotStyleNameId (self: Entity)-> PyDb.ObjectId :
       '''                             '''
+    ...
+    def getPointCloudCropping (self, *args, **kwargs)-> PyDb.PointCloudCrop :
+      '''getPointCloudCropping( (PointCloudEx)arg1, (int)arg2) -> PointCloudCrop :
+
+    C++ signature :
+        class PyDbPointCloudCrop getPointCloudCropping(class PyDbPointCloudEx {lvalue},int)'''
     ...
     def getPointCloudName (self: PointCloudEx)-> str :
       '''                             '''

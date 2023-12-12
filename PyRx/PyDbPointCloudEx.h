@@ -9,11 +9,48 @@
 #include "AcDbPointCloudColorMap.h"
 #include "AcDbPointCloudEx.h"
 #include "AcDbPointCloudDefEx.h"
-
+#include "AcDbPointCloudCrop.h"
 
 class PyRxObject;
 class PyDbObjectId;
 class PyDbDatabase;
+
+//-----------------------------------------------------------------------------------
+//PyDbPointCloudCrop
+void makePyDbPointCloudCropWrapper();
+class PyDbPointCloudCrop
+{
+public:
+    PyDbPointCloudCrop();
+    PyDbPointCloudCrop(const AcDbPointCloudCrop& other);
+    ~PyDbPointCloudCrop() = default;
+    void                        clear();
+    bool                        isValid() const;
+
+    AcDbPointCloudCrop::CropType type() const;
+    void                         setCropType(AcDbPointCloudCrop::CropType type);
+
+    bool                        isInside() const;
+    void                        setInside(bool bInside);
+
+    bool                        isInverted() const;
+    void                        setInvert(bool toInvert);
+
+    boost::python::tuple        getCropPlane();
+    void                        setCropPlane(const PyGePlane& plane);
+
+    int                         length() const;
+
+    void                        set(const boost::python::list& points);
+    boost::python::list         get();
+
+public:
+    static std::string          className();
+public:
+    AcDbPointCloudCrop* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<AcDbPointCloudCrop > m_pyImp;
+};
 
 //-----------------------------------------------------------------------------------
 //PyDbPointCloudColorRamp
@@ -40,7 +77,6 @@ public:
 public:
     std::shared_ptr<AcDbPointCloudClassificationColorRamp> m_pyImp;
 };
-
 
 
 //-----------------------------------------------------------------------------------
@@ -200,9 +236,8 @@ public:
     void                        setPointCloudName(const std::string& name);
     int                         getCroppingCount() const;
 
-    //AcDbPointCloudCrop*       getPointCloudCropping(int index);
-    //const AcDbPointCloudCrop* getPointCloudCroppingConst(int index) const;
-    //void                      addCroppingBoundary(const AcDbPointCloudCrop& cropping);
+    PyDbPointCloudCrop          getPointCloudCropping(int index);
+    void                        addCroppingBoundary(const PyDbPointCloudCrop& cropping);
 
     void                        clearCropping();
     void                        removeLastCropping();
