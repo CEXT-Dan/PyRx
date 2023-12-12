@@ -107,11 +107,21 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(ellipse.MajorAxis, (500,600,0))
         ellipse.Delete()
 
+    # Todo: run test on AutoCAD with Position
     def test_add_box(self):
-        pass
+        app = Ax.getApp()
+        box = app.ActiveDocument.ModelSpace.AddBox((0, 0, 0), 10, 20, 30)
+        self.assertEqual(box.Layer, "0")
+        # self.assertEqual(box.Position, (0, 0, 0))
+        # box.Position= (1, 2, 3)
+        # self.assertEqual(box.Position, (1, 2, 3))
+        box.Delete()
 
     def test_add_cylinder(self):
-        pass
+        app = Ax.getApp()
+        cylinder = app.ActiveDocument.ModelSpace.AddCylinder((0, 0, 0), 10, 50)
+        # self.assertEqual(cylinder.Position, (0, 0, 0))
+        cylinder.Delete()
         # find solid properties to test
         # assertequal one property
 
