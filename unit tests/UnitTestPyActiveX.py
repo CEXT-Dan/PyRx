@@ -107,12 +107,18 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(ellipse.MajorAxis, (500,600,0))
         ellipse.Delete()
 
+    def test_add_box(self):
+        pass
+
     def test_add_cylinder(self):
         pass
         # find solid properties to test
         # assertequal one property
 
     def test_add_cone(self):
+        pass
+
+    def test_add_elliptical_cylinder(self):
         pass
 
     def test_add_elliptical_cone(self):
@@ -127,6 +133,20 @@ class TestActiveX(unittest.TestCase):
         line.Coordinates = (1, 2, 3, 4, 5, 6)
         self.assertEqual(line.Coordinates, (1, 2, 3, 4, 5, 6))
         line.Delete()
+
+    def test_add_table(self):
+        app = Ax.getApp()
+        table = app.ActiveDocument.ModelSpace.AddTable((0, 0, 0), 4, 5, 10, 30)
+        self.assertEqual(table.InsertionPoint, (0, 0, 0))
+        self.assertEqual(table.Rows, 4)
+        self.assertEqual(table.Columns, 5)
+        self.assertEqual(table.GetRowHeight(2), 10)
+        self.assertEqual(table.GetColumnWidth(2), 30)
+        table.InsertionPoint = (1, 2, 3)
+        table.SetTextString(0, 0, 0, "MyDadIsDisappointedThatIPutHi")
+        self.assertEqual(table.InsertionPoint, (1, 2, 3))
+        self.assertEqual(table.GetTextString(0, 0, 0), "MyDadIsDisappointedThatIPutHi")
+        table.Delete()
 
     def test_add_mline(self):
         app = Ax.getApp()
