@@ -503,7 +503,9 @@ public:
 
     static int ADSPREFIX(pyload(void))
     {
+#ifdef PYRXDEBUG
         acutPrintf(_T("%ld"), acedGetFunCode());
+#endif
         std::filesystem::path pysyspath;
         std::filesystem::path pypath;
         AcString pathName;
@@ -530,7 +532,9 @@ public:
 
     static int ADSPREFIX(pyloaded(void))
     {
+#ifdef PYRXDEBUG
         acutPrintf(_T("%ld"), acedGetFunCode());
+#endif
         AcResBufPtr pArgs(acutNewRb(RTSTR));
         resbuf* pTail = pArgs.get();
         for (auto& item : PyRxApp::instance().funcNameMap)
