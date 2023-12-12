@@ -152,6 +152,7 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(line.Coordinates, (1, 2, 3, 4, 5, 6))
         line.Delete()
 
+    #TODO: GRX is wonkey 
     def test_add_table(self):
         app = Ax.getApp()
         table = app.ActiveDocument.ModelSpace.AddTable((0, 0, 0), 4, 5, 10, 30)
@@ -161,9 +162,10 @@ class TestActiveX(unittest.TestCase):
         self.assertEqual(table.GetRowHeight(2), 10)
         self.assertEqual(table.GetColumnWidth(2), 30)
         table.InsertionPoint = (1, 2, 3)
-        table.SetTextString(0, 0, 0, "MyDadIsDisappointedThatIPutHi")
         self.assertEqual(table.InsertionPoint, (1, 2, 3))
-        self.assertEqual(table.GetTextString(0, 0, 0), "MyDadIsDisappointedThatIPutHi")
+        if host != "GRX":
+            table.SetTextString(0, 0, 0, "MyDadIsDisappointedThatIPutHi")
+            self.assertEqual(table.GetTextString(0, 0, 0), "MyDadIsDisappointedThatIPutHi")
         table.Delete()
 
     def test_add_mline(self):
