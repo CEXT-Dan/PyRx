@@ -547,11 +547,11 @@ public:
         return RSRSLT;
     }
 
-    #ifdef PYRXDEBUG
+#ifdef PYRXDEBUG
     static void AcRxPyApp_idoit(void)
     {
     }
-    #endif
+#endif
 };
 
 //-----------------------------------------------------------------------------
