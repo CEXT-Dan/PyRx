@@ -19,7 +19,6 @@ class MyJig(PyEd.Jig):
         self.line = line
         self.curPoint = basepoint
 
-    # C++ sampler returns AcEdJig::DragStatus::kNoChange if not overridden
     # acquireXXX returns a tuple AcEdJig::DragStatus and Value
     def sampler(self):
         self.setUserInputControls
