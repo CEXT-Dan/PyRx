@@ -77,6 +77,7 @@ void makePyDbEntityWrapper()
         .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults2, DS.ARGS({ "db: Database = current" }))
         .def("getCompoundObjectTransform", &PyDbEntity::getCompoundObjectTransform, DS.ARGS())
         .def("getGeomExtents", &PyDbEntity::getGeomExtents, DS.ARGS())
+        .def("getGeomExtents2d", &PyDbEntity::getGeomExtents2d, DS.ARGS())
         .def("draw", &PyDbEntity::draw, DS.ARGS())
         .def("explode", &PyDbEntity::explode, DS.ARGS())
         .def("getTransformedCopy", &PyDbEntity::getTransformedCopy, DS.ARGS({ "matrix3d: PyGe.Matrix3d" }))
@@ -450,6 +451,13 @@ AcDbExtents PyDbEntity::getGeomExtents() const
     AcDbExtents extents;
     PyThrowBadEs(impObj()->getGeomExtents(extents));
     return extents;
+}
+
+AcDbExtents2d PyDbEntity::getGeomExtents2d() const
+{
+    AcDbExtents extents;
+    PyThrowBadEs(impObj()->getGeomExtents(extents));
+    return AcDbExtents2d(extents.minPoint().convert2d(AcGePlane::kXYPlane), extents.maxPoint().convert2d(AcGePlane::kXYPlane));
 }
 
 boost::python::list PyDbEntity::intersectWith1(const PyDbEntity& pEnt, AcDb::Intersect intType) const

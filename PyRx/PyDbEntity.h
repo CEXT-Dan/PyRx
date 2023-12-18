@@ -80,6 +80,7 @@ public:
     void                setDatabaseDefaults2(const PyDbDatabase& pDb);
     AcGeMatrix3d        getCompoundObjectTransform() const;
     AcDbExtents         getGeomExtents() const;
+    AcDbExtents2d       getGeomExtents2d() const;
     boost::python::list intersectWith1(const PyDbEntity&, AcDb::Intersect) const;
     boost::python::list intersectWith2(const PyDbEntity&, AcDb::Intersect, Adesk::GsMarker, Adesk::GsMarker) const;
     boost::python::list intersectWith3(const PyDbEntity&, AcDb::Intersect, const PyGePlane&) const;
