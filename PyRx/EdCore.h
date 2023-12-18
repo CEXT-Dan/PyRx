@@ -89,7 +89,8 @@ public:
     static boost::python::object getVar(const std::string& sym);
     static bool                  setVar(const std::string& sym, const  boost::python::object&);
     static PySysVar              autoSetVar(const std::string& sym, const  boost::python::object& val);
-    static int                  grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
+    static int                  grDraw1(const AcGePoint2d& from, const AcGePoint2d& to, int colorIndex, int highlight);
+    static int                  grDraw2(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
     static AcGePoint3d          getMousePositionUCS();
     static AcGePoint3d          getMousePositionWCS();
     static boost::python::list  invoke(const boost::python::list& args);

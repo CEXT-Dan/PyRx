@@ -124,8 +124,10 @@ def PyRxCmd_GetEntX():
     try:
         doc: Ax.IAcadDocument = theApp.ActiveDocument
         util: Ax.IAcadUtility = doc.Utility
-        ent: Ax.IAcadEntity = util.GetEntity("\nPick an ent: ")
-        print(ent[0].ObjectName, ent[1])
+        result = util.GetEntity("\nPick an ent: ")
+        ent: Ax.IAcadEntity = result[0]
+        print(ent.ObjectName, ent)
+        print(ent.GetBoundingBox(), ent)
     except Exception as err:
         traceback.print_exception(err)
 
