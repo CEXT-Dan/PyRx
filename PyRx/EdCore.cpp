@@ -150,7 +150,8 @@ void makePyEdCoreWrapper()
         .def("getWinNum", &EdCore::getWinNum).staticmethod("getWinNum")
         .def("getRGB", &EdCore::getRGB, DS.ARGS({ "colorIndex : int" })).staticmethod("getRGB")
         .def("graphScr", &EdCore::graphScr, DS.SARGS()).staticmethod("graphScr")
-        .def("grDraw", &EdCore::grDraw).staticmethod("grDraw")
+        .def("grDraw", &EdCore::grDraw1)
+        .def("grDraw", &EdCore::grDraw2).staticmethod("grDraw")
         .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
         .def("getLastCommandLines", &EdCore::getLastCommandLines).staticmethod("getLastCommandLines")
         .def("getBlockEditMode", &EdCore::getBlockEditMode).staticmethod("getBlockEditMode")
@@ -1116,7 +1117,12 @@ boost::python::tuple EdCore::setColorDialogTrueColor2(const AcCmColor& color, Ad
     return boost::python::make_tuple(flag, _color);
 }
 
-int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight)
+int EdCore::grDraw1(const AcGePoint2d& from, const AcGePoint2d& to, int colorIndex, int highlight)
+{
+    return acedGrDraw(asDblArray(from), asDblArray(to), colorIndex, highlight);
+}
+
+int EdCore::grDraw2(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight)
 {
     return acedGrDraw(asDblArray(from), asDblArray(to), colorIndex, highlight);
 }
