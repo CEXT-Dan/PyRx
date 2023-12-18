@@ -1289,6 +1289,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -2361,6 +2364,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -3050,6 +3056,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -4014,6 +4023,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -4636,6 +4648,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -5233,6 +5248,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -5679,6 +5697,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -6151,6 +6172,9 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -7409,6 +7433,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -9334,6 +9361,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -10840,6 +10870,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -13766,6 +13799,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -16894,6 +16930,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -19087,6 +19126,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -19769,6 +19811,9 @@ class Entity:
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -22168,11 +22213,23 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     C++ signature :
         void addPoint(class AcDbExtents {lvalue},class AcGePoint3d)'''
     ...
+    def coords (self, *args, **kwargs)-> tuple :
+      '''coords( (Extents)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple coords(class AcDbExtents)'''
+    ...
     def expandBy (self, *args, **kwargs)-> None :
       '''expandBy( (Extents)arg1, (Vector3d)arg2) -> None :
 
     C++ signature :
         void expandBy(class AcDbExtents {lvalue},class AcGeVector3d)'''
+    ...
+    def intersectsWith (self, *args, **kwargs)-> bool :
+      '''intersectsWith( (Extents)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool intersectsWith(class AcDbExtents,class AcDbExtents)'''
     ...
     def maxPoint (self, *args, **kwargs)-> PyGe.Point3d :
       '''maxPoint( (Extents)arg1) -> Point3d :
@@ -22233,11 +22290,23 @@ __init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
     C++ signature :
         void addPoint(class AcDbExtents2d {lvalue},class AcGePoint2d)'''
     ...
+    def coords (self, *args, **kwargs)-> tuple :
+      '''coords( (Extents2d)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple coords(class AcDbExtents2d)'''
+    ...
     def expandBy (self, *args, **kwargs)-> None :
       '''expandBy( (Extents2d)arg1, (Vector2d)arg2) -> None :
 
     C++ signature :
         void expandBy(class AcDbExtents2d {lvalue},class AcGeVector2d)'''
+    ...
+    def intersectsWith (self, *args, **kwargs)-> bool :
+      '''intersectsWith( (Extents2d)arg1, (Extents2d)arg2) -> bool :
+
+    C++ signature :
+        bool intersectsWith(class AcDbExtents2d,class AcDbExtents2d)'''
     ...
     def maxPoint (self, *args, **kwargs)-> PyGe.Point2d :
       '''maxPoint( (Extents2d)arg1) -> Point2d :
@@ -22440,6 +22509,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -22968,6 +23040,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -23432,6 +23507,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -23931,6 +24009,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -27229,6 +27310,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGradientColors (self: Hatch)-> tuple :
       '''                             '''
     ...
@@ -28730,6 +28814,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -29700,6 +29787,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -32835,6 +32925,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -33583,6 +33676,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -34239,6 +34335,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -36081,6 +36180,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -36617,6 +36719,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -37310,6 +37415,9 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
         class AcGePoint3d getFirstVertex(class PyDbMLeader {lvalue},int)'''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -40844,6 +40952,9 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -41617,6 +41728,9 @@ class MText:
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -43109,6 +43223,9 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -44260,6 +44377,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -45150,6 +45270,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -46960,6 +47083,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -47673,6 +47799,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -49417,6 +49546,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -50016,6 +50148,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -51973,6 +52108,9 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -53529,6 +53667,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -53984,6 +54125,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -54508,6 +54652,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -55197,6 +55344,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -55928,6 +56078,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -56522,6 +56675,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -57188,6 +57344,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -58069,6 +58228,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -58890,6 +59052,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -60806,6 +60971,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -61688,6 +61856,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -62442,6 +62613,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -63629,6 +63803,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -64674,6 +64851,9 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> None
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -65684,6 +65864,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -67127,6 +67310,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -68423,6 +68609,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -70028,6 +70217,9 @@ getDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> tuple :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGridOverride (self: Table,row: int,col: int,nGridLineType: PyDb.GridLineType)-> PyDb.GridProperty :
@@ -72737,6 +72929,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -75768,6 +75963,9 @@ class UnderlayReference:
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -76782,6 +76980,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getGeomExtents (self: Entity)-> PyDb.Extents :
       '''                             '''
     ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
+      '''                             '''
+    ...
     def getGripPoints (self, *args, **kwargs)-> None :
       '''getGripPoints( (Entity)arg1, (list)arg2, (list)arg3, (list)arg4) -> None :
 
@@ -77242,6 +77443,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -78418,6 +78622,9 @@ class Viewport:
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :
@@ -80549,6 +80756,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
     def getGeomExtents (self: Entity)-> PyDb.Extents :
+      '''                             '''
+    ...
+    def getGeomExtents2d (self: Entity)-> PyDb.Extents2d :
       '''                             '''
     ...
     def getGripPoints (self, *args, **kwargs)-> None :

@@ -74,6 +74,14 @@ static bool AcDbExtents2dIntersects(const AcDbExtents2d& extents, const AcDbExte
     return(min.x < omax.x && max.x > omin.x && max.y > omin.y && min.y < max.y);
 }
 
+static boost::python::tuple AcDbExtents2dCoords(const AcDbExtents2d& extents)
+{
+    PyAutoLockGIL lock;
+    auto min = extents.minPoint();
+    auto max = extents.maxPoint();
+    return boost::python::make_tuple(min.x, min.y, max.x, max.y);
+}
+
 void makePyDbExtents2dWrapper()
 {
     class_<AcDbExtents2d>("Extents2d")
@@ -90,6 +98,7 @@ void makePyDbExtents2dWrapper()
         .def("transformBy", &AcDbExtents2d::transformBy)
 #endif
         .def("intersectsWith", &AcDbExtents2dIntersects)
+        .def("coords", &AcDbExtents2dCoords)
         .def("__str__", &AcDbExtents2dToString)
         .def("__repr__", &AcDbExtents2dToStringRepr)
         ;
@@ -109,6 +118,7 @@ std::string AcDbExtentsToStringRepr(const AcDbExtents& p)
     return std::format("<{}.Extents(({:.14f},{:.14f},{:.14f}),({:.14f},{:.14f},{:.14f}))>", PyGeNamespace, mi.x, mi.y, mi.z, ma.x, ma.y, ma.z);
 }
 
+//TODO: test
 static bool AcDbExtents3dIntersects(const AcDbExtents& extents, const AcDbExtents& other)
 {
     auto tol = AcGeContext::gTol.equalPoint();
@@ -120,6 +130,13 @@ static bool AcDbExtents3dIntersects(const AcDbExtents& extents, const AcDbExtent
            max.y > omin.y && min.y < max.y || (min.z < omax.z && max.z > omin.z));
 }
 
+static boost::python::tuple AcDbExtents3dCoords(const AcDbExtents& extents)
+{
+    PyAutoLockGIL lock;
+    auto min = extents.minPoint();
+    auto max = extents.maxPoint();
+    return boost::python::make_tuple(min.x, min.y, min.z, max.x, max.y, max.z);
+}
 
 void makePyDbExtentsWrapper()
 {
@@ -135,6 +152,7 @@ void makePyDbExtentsWrapper()
         .def("expandBy", &AcDbExtents::expandBy)
         .def("transformBy", &AcDbExtents::transformBy)
         .def("intersectsWith", &AcDbExtents3dIntersects)
+        .def("coords", &AcDbExtents3dCoords)
         .def("__str__", &AcDbExtentsToString)
         .def("__repr__", &AcDbExtentsToStringRepr)
         //.def("addBlockExt", &AcDbExtents::addBlockExt) //TODO
