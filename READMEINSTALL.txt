@@ -6,7 +6,7 @@ Run the PyRxSetup installer https://github.com/CEXT-Dan/PyRx/releases or https:/
 This setup writes two values to the registry, adds wxPython to PATH, adds autocomplete stubs path to PYTHONPATH.
 The stub files are for intellisense in Visual studio code
 
-see env.png in this folder
+see env.png and pyinstall.png in this folder
 
 Installs a .bundle in %ProgramData\Autodesk\ApplicationPlugins\PyRx.bundle
 ./PyRxHelp
