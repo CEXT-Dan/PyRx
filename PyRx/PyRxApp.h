@@ -57,16 +57,14 @@ public:
     static PyRxApp& instance();
 public:
 
-    using FuncNameMap = std::map<AcString, PyRxMethod>;
+    using FuncNameMap = std::unordered_map<AcString, PyRxMethod>;
+    using LoadedPaths = std::unordered_set<std::filesystem::path>;
+    using CmdNameMap = std::unordered_map<AcString, PyObject*>;
+    using CmdLispMap = std::unordered_map<int, AcString>;
+    using PathForCommand = std::unordered_map<AcString, std::filesystem::path>;
+
     FuncNameMap funcNameMap;
-
-    using LoadedPaths = std::set<std::filesystem::path>;
     LoadedPaths loadedModulePaths;
-
-    using CmdNameMap = std::map<AcString, PyObject*>;
-    using CmdLispMap = std::map<int, AcString>;
-    using PathForCommand = std::map<AcString, std::filesystem::path>;
-
     CmdNameMap commands;
     PyLispService lispService;
     PathForCommand pathForCommand;
