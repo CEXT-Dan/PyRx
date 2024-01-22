@@ -28,6 +28,7 @@
 #include "PyRxApp.h"
 #include "PyCmd.h"
 #include "rxvar.h"
+#include "PyRxModule.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
@@ -269,7 +270,7 @@ public:
                     const int commandFlags = PyCmd::getCommandFlags(pValue);
                     rxApp.commands.emplace(commandName, pValue);
                     rxApp.pathForCommand.emplace(commandName, pyPath);
-                    acedRegCmds->addCommand(formatFileNameforCommandGroup(moduleName), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
+                    PyRxModule::regCommand(formatFileNameforCommandGroup(moduleName), commandName, commandFlags);
                 }
             }
             if (key.find(PyLispFuncPrefix) != -1)
@@ -300,7 +301,7 @@ public:
                         const int commandFlags = PyCmd::getCommandFlags(pValue);
                         rxApp.commands.emplace(commandName, pValue);
                         rxApp.pathForCommand.emplace(commandName, pypath);
-                        acedRegCmds->addCommand(formatFileNameforCommandGroup(moduleName), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
+                        PyRxModule::regCommand(formatFileNameforCommandGroup(moduleName), commandName, commandFlags);
                     }
                 }
             }
@@ -427,58 +428,6 @@ public:
     static void AcRxPyApp_pyrxver(void)
     {
         PRINTVER();
-    }
-
-    static AcString commandForCurDocument()
-    {
-#ifdef _ZRXTARGET240
-        RxAutoOutStr cmd;
-        AcString pGlobalCmdName;
-        if (auto es = acedGetCommandForDocument(curDoc(), cmd.buf); es != eOk)
-            return pGlobalCmdName;
-        pGlobalCmdName = cmd.buf;
-        return pGlobalCmdName.makeUpper();
-#else
-        AcString pGlobalCmdName;
-        if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
-            return pGlobalCmdName;
-        return pGlobalCmdName.makeUpper();
-#endif
-    }
-
-    static void AcRxPyApp_pyfunc(void)
-    {
-        if (curDoc() != nullptr)
-        {
-            auto& rxApp = PyRxApp::instance();
-            const AcString cmdName = commandForCurDocument();
-            if (rxApp.commands.contains(cmdName))
-            {
-                try
-                {
-                    if (rxApp.pathForCommand.contains(cmdName))
-                        std::filesystem::current_path(rxApp.pathForCommand.at(cmdName));
-
-                    PyObject* pMethod = rxApp.commands.at(cmdName);
-                    if (pMethod != nullptr)
-                    {
-                        WxPyAutoLock lock;
-                        if (PyCallable_Check(pMethod))
-                        {
-                            PyErr_Clear();
-                            PyObjectPtr rslt(PyObject_CallNoArgs(pMethod));
-                            if (rslt != nullptr)
-                                return;
-                        }
-                    }
-                }
-                catch (...)
-                {
-                    acutPrintf(_T("\npyfunc failed with exception: "));
-                }
-            }
-        }
-        acutPrintf(_T("\npyfunc failed: "));
     }
 
     static void AcRxPyApp_pycmdprompt(void)
