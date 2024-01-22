@@ -36,13 +36,13 @@ constexpr inline std::string trim_copy(std::string s, char chr) noexcept {
 constexpr inline void ltrim(std::wstring& s, wchar_t chr) noexcept {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [&](wchar_t ch) {
         return chr != ch;
-    }));
+        }));
 }
 
 constexpr inline void rtrim(std::wstring& s, wchar_t chr) noexcept {
     s.erase(std::find_if(s.rbegin(), s.rend(), [&](wchar_t ch) {
         return chr != ch;
-    }).base(), s.end());
+        }).base(), s.end());
 }
 
 constexpr inline void trim(std::wstring& s, wchar_t chr) noexcept {
@@ -71,8 +71,8 @@ constexpr inline bool iCompare(const std::string& a, const std::string& b) noexc
     return std::equal(a.begin(), a.end(),
         b.begin(), b.end(),
         [](char a, char b) {
-        return tolower(a) == tolower(b);
-    });
+            return tolower(a) == tolower(b);
+        });
 }
 
 constexpr inline bool iCompare(const std::wstring& a, const std::wstring& b) noexcept
@@ -80,8 +80,8 @@ constexpr inline bool iCompare(const std::wstring& a, const std::wstring& b) noe
     return std::equal(a.begin(), a.end(),
         b.begin(), b.end(),
         [](wchar_t a, wchar_t b) {
-        return tolower(a) == tolower(b);
-    });
+            return tolower(a) == tolower(b);
+        });
 }
 
 inline [[nodiscard]] std::wstring utf8_to_wstr(const char* str8) noexcept {
@@ -203,11 +203,28 @@ public:
     }
     RxAutoOutStr(RxAutoOutStr const&) = delete;
     RxAutoOutStr& operator=(RxAutoOutStr const&) = delete;
-public: 
+public:
     TCHAR* buf = nullptr;
 };
 
+#if defined ( MSC_PLATFORM_TOOLSET_v142 )
+template <>
+struct std::hash<std::filesystem::path>
+{
+    std::size_t operator()(const std::filesystem::path& val) const
+    {
+        return std::hash<std::wstring>{}(val.wstring());
+    }
+};
+#endif
 
-
-
-
+#if defined ( _ARXTARGET ) && ( _ARXTARGET < 250 ) || ( _BRXTARGET )  || ( _GRXTARGET ) || ( _ZRXTARGET )
+template <>
+struct std::hash<AcString>
+{
+    std::size_t operator()(const AcString& val) const
+    {
+        return std::hash<std::wstring_view>{}(std::wstring_view(val, val.length()));
+    }
+};
+#endif

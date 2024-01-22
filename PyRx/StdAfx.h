@@ -88,6 +88,8 @@
 #include <set>
 #include <array>
 #include <mutex>
+#include <unordered_map>
+#include <unordered_set>
 
 //-----------------------------------------------------------------------------
 #include <afxwin.h>				//- MFC core and standard components
