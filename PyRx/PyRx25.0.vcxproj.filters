@@ -328,6 +328,12 @@
     <ClCompile Include="PyDbSpatialFilter.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyRxModule.cpp">
+      <Filter>Source Files\PyRx</Filter>
+    </ClCompile>
+    <ClCompile Include="PyRxModuleLoader.cpp">
+      <Filter>Source Files\PyRx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -659,6 +665,12 @@
     </ClInclude>
     <ClInclude Include="PyDbSpatialFilter.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxModule.h">
+      <Filter>Header Files\PyRx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxModuleLoader.h">
+      <Filter>Header Files\PyRx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
