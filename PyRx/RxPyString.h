@@ -211,7 +211,7 @@ public:
 template <>
 struct std::hash<std::filesystem::path>
 {
-    std::size_t operator()(const std::filesystem::path& val) const
+    std::size_t operator()(const std::filesystem::path& val) const noexcept
     {
         return std::hash<std::wstring>{}(val.wstring());
     }
@@ -222,7 +222,7 @@ struct std::hash<std::filesystem::path>
 template <>
 struct std::hash<AcString>
 {
-    std::size_t operator()(const AcString& val) const
+    std::size_t operator()(const AcString& val) const noexcept
     {
         return std::hash<std::wstring_view>{}(std::wstring_view(val, val.length()));
     }
