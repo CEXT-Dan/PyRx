@@ -102,7 +102,7 @@ AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbSymbolTableRecord*>(m_pyImp.get());
 }
 
@@ -1150,7 +1150,7 @@ AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbDimStyleTableRecord*>(m_pyImp.get());
 }
 
@@ -1559,7 +1559,7 @@ AcDbAbstractViewTableRecord* PyDbAbstractViewTableRecord::impObj(const std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbAbstractViewTableRecord*>(m_pyImp.get());
 }
 
@@ -1982,7 +1982,7 @@ AcDbViewportTableRecord* PyDbViewportTableRecord::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbViewportTableRecord*>(m_pyImp.get());
 }
 
@@ -2233,7 +2233,7 @@ AcDbViewTableRecord* PyDbViewTableRecord::impObj(const std::source_location& src
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbViewTableRecord*>(m_pyImp.get());
 }
 
@@ -2640,7 +2640,7 @@ AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbBlockTableRecord*>(m_pyImp.get());
 }
 
@@ -2693,7 +2693,7 @@ void makePyDbLayerTableRecordWrapper()
         .def("setDescription", &PyDbLayerTableRecord::setDescription)
         .def("setIsHidden", &PyDbLayerTableRecord::setIsHidden)
         .def("isHidden", &PyDbLayerTableRecord::isHidden, DS.ARGS())
-        .def("getIsHidden", &PyDbLayerTableRecord::isHiddenS, DS.SARGS({ "val : PyDb.ObjectId" })).staticmethod("getIsHidden")
+        .def("isHiddenS", &PyDbLayerTableRecord::isHiddenS, DS.SARGS({ "val : PyDb.ObjectId" })).staticmethod("isHiddenS")
         .def("removeColorOverride", &PyDbLayerTableRecord::removeColorOverride)
         .def("removeLinetypeOverride", &PyDbLayerTableRecord::removeLinetypeOverride)
         .def("removeLineWeightOverride", &PyDbLayerTableRecord::removeLineWeightOverride)
@@ -2704,7 +2704,7 @@ void makePyDbLayerTableRecordWrapper()
         .def("hasOverrides", &PyDbLayerTableRecord::hasOverrides)
         .def("hasAnyOverrides", &PyDbLayerTableRecord::hasAnyOverrides)
         .def("isReconciled", &PyDbLayerTableRecord::isReconciled, DS.ARGS())
-        .def("getIsReconciled", &PyDbLayerTableRecord::isReconciledS, DS.SARGS({ "val : PyDb.ObjectId" })).staticmethod("getIsReconciled")
+        .def("isReconciledS", &PyDbLayerTableRecord::isReconciledS, DS.SARGS({ "val : PyDb.ObjectId" })).staticmethod("isReconciledS")
         .def("className", &PyDbLayerTableRecord::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbLayerTableRecord::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbLayerTableRecord::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -3023,7 +3023,6 @@ PyDbLayerTableRecord PyDbLayerTableRecord::cloneFrom(const PyRxObject& src)
     if (!src.impObj()->isKindOf(AcDbLayerTableRecord::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbLayerTableRecord(static_cast<AcDbLayerTableRecord*>(src.impObj()->clone()), true);
-
 }
 
 PyDbLayerTableRecord PyDbLayerTableRecord::cast(const PyRxObject& src)
@@ -3038,7 +3037,7 @@ AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& s
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbLayerTableRecord*>(m_pyImp.get());
 }
 
@@ -3252,7 +3251,7 @@ AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbTextStyleTableRecord*>(m_pyImp.get());
 }
 
@@ -3377,7 +3376,7 @@ AcDbUCSTableRecord* PyDbUCSTableRecord::impObj(const std::source_location& src /
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbUCSTableRecord*>(m_pyImp.get());
 }
 
@@ -3446,7 +3445,7 @@ AcDbRegAppTableRecord* PyDbRegAppTableRecord::impObj(const std::source_location&
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbRegAppTableRecord*>(m_pyImp.get());
 }
 
@@ -3675,6 +3674,6 @@ AcDbLinetypeTableRecord* PyDbLinetypeTableRecord::impObj(const std::source_locat
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbLinetypeTableRecord*>(m_pyImp.get());
 }

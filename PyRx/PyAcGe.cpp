@@ -1180,10 +1180,10 @@ void makePyGeMatrix3dWrapper()
         .def("setToTranslation", &AcGeMatrix3d::setToTranslation, DS.ARGS({ "val: PyGe.Vector3d" }), return_self<>())
 
         .def("setToRotation", &AcGeMatrix3d::setToRotation,
-            DS.ARGS({ "angle: real", "axis: PyGe.Vector3d","center :PyGe.Point3d=kOrigin" }), return_self<>(), arg("AcGePoint3d") = AcGePoint3dkOrigin())
+            DS.ARGS({ "angle: float", "axis: PyGe.Vector3d","center :PyGe.Point3d=kOrigin" }), return_self<>(), arg("AcGePoint3d") = AcGePoint3dkOrigin())
 
         .def("setToScaling", &AcGeMatrix3d::setToScaling,
-            DS.ARGS({ "val: real","center: PyGe.Point3d=kOrigin" }), return_self<>(), arg("AcGePoint3d") = AcGePoint3dkOrigin())
+            DS.ARGS({ "val: float","center: PyGe.Point3d=kOrigin" }), return_self<>(), arg("AcGePoint3d") = AcGePoint3dkOrigin())
 
         .def("setToMirroring", &AcGeMatrix3dsetToMirroring)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeLine3d&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, return_self<>())
@@ -1217,9 +1217,9 @@ void makePyGeMatrix3dWrapper()
         .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeMatrix3d&) const>("__mul__", &AcGeMatrix3d::operator*)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeMatrix3d&)>("__imul__", &AcGeMatrix3d::operator*=, return_self<>())
         .def<double(AcGeMatrix3d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix3d::operator())
-        .def("toString", &AcGeMatrix3dToString)
-        .def("toList", &AcGeMatrix3dToList)
-        .def("toTuple", &AcGeMatrix3dToTuple)
+        .def("toString", &AcGeMatrix3dToString, DS.ARGS())
+        .def("toList", &AcGeMatrix3dToList, DS.ARGS())
+        .def("toTuple", &AcGeMatrix3dToTuple, DS.ARGS())
         .def("__str__", &AcGeMatrix3dToString)
         .def("__repr__", &AcGeMatrix3dToStringRepr)
         ;

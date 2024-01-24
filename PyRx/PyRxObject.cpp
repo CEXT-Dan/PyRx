@@ -17,6 +17,7 @@ void makePyRxObjectWrapper()
         .def("dispose", &PyRxObject::dispose, DS.ARGS())
         .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs:PyRx.RxClass" }))
         .def("copyFrom", &PyRxObject::copyFrom, DS.ARGS({ "other:PyRx.RxObject" }))
+        .def("comparedTo", &PyRxObject::comparedTo, DS.ARGS({ "other:PyRx.RxObject" }))
         .def("__eq__", &PyRxObject::operator==, DS.ARGS({ "rhs:PyRx.RxObject" }))
         .def("__ne__", &PyRxObject::operator!=, DS.ARGS({ "rhs:PyRx.RxObject" }))
         .def("className", &PyRxObject::className, DS.SARGS()).staticmethod("className")
@@ -133,6 +134,11 @@ PyRxObject PyRxObject::queryX(const PyRxClass& protocolClass) const
     return PyRxObject(ptr, false, false);
 }
 
+AcRx::Ordering PyRxObject::comparedTo(const PyRxObject& other) const
+{
+    return impObj()->comparedTo(other.impObj());
+}
+
 PyRxClass PyRxObject::desc()
 {
     return PyRxClass(AcRxObject::desc(), false);
@@ -161,6 +167,7 @@ void makePyRxClassWrapper()
         .def("appName", &PyRxClass::appName, DS.ARGS())
         .def("dxfName", &PyRxClass::dxfName, DS.ARGS())
         .def("name", &PyRxClass::name, DS.ARGS())
+        .def("myParent", &PyRxClass::myParent, DS.ARGS())
         .def("queryX", &PyRxObject::queryX, DS.ARGS({ "rhs :  PyRx.RxClass" }))
         .def("desc", &PyRxClass::desc, DS.SARGS()).staticmethod("desc")
         .def("className", &PyRxClass::className, DS.SARGS()).staticmethod("className")
@@ -198,6 +205,11 @@ PyRxObject PyRxClass::queryX(const PyRxClass& protocolClass) const
     if (ptr == nullptr)
         throw PyAcadErrorStatus(eInvalidInput);
     return PyRxObject(ptr, false, false);
+}
+
+PyRxClass PyRxClass::myParent() const
+{
+    return PyRxClass(impObj()->myParent(), false);
 }
 
 PyRxClass PyRxClass::desc()

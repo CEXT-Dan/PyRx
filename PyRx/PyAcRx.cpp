@@ -113,6 +113,14 @@ BOOST_PYTHON_MODULE(PyRx)
         .value("kVoid", LispType::kVoid)
         .export_values()
         ;
+
+    enum_<AcRx::Ordering>("Ordering")
+        .value("kLessThan", AcRx::kLessThan)
+        .value("kEqual", AcRx::kEqual)
+        .value("kGreaterThan", AcRx::kGreaterThan)
+        .value("kNotOrderable", AcRx::kNotOrderable)
+        .export_values()
+        ;
 };
 
 void initPyRxModule()

@@ -21,6 +21,7 @@ public:
     int                 implRefCount();
     void                copyFrom(PyRxObject& obj);
     PyRxObject          queryX(const PyRxClass& protocolClass) const;
+    AcRx::Ordering      comparedTo(const PyRxObject& other) const;
     static PyRxClass    desc();
     static std::string  className();
 public:
@@ -45,6 +46,7 @@ public:
     std::string         appName() const;
     std::string         dxfName() const;
     PyRxObject          queryX(const PyRxClass& protocolClass) const;
+    PyRxClass           myParent() const;
     static PyRxClass    desc();
     static std::string  className();
 
