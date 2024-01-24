@@ -973,6 +973,9 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     C++ signature :
         enum AcApDocument::SaveFormat defaultFormatForSave(class PyApDocManager {lvalue})'''
     ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
     def disableDocumentActivation (self, *args, **kwargs)-> None :
       '''disableDocumentActivation( (DocManager)arg1) -> None :
 
@@ -1197,6 +1200,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def database (self: Document)-> PyDb.Database :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
     def dispose (self: RxObject)-> None :

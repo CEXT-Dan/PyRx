@@ -460,6 +460,9 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
     def dispose (self: RxObject)-> None :
       '''                             '''
     ...

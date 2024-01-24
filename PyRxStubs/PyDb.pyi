@@ -729,7 +729,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBackClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setBackClipDistance (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setBackClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -738,13 +738,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setBackground (self: PyDbAbstractViewTableRecord,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setBrightness (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setBrightness (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setCenterPoint (self: PyDbAbstractViewTableRecord,val : PyGe.Point2d)-> None :
       '''                             '''
     ...
-    def setContrast (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setContrast (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDefaultLightingOn (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -756,7 +756,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDefaultLightingType(class PyDbAbstractViewTableRecord {lvalue},enum AcGiViewportTraits::DefaultLightingType)'''
     ...
-    def setElevation (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setElevation (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -765,16 +765,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setFrontClipAtEye (self: PyDbAbstractViewTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setFrontClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setFrontClipDistance (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setFrontClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setHeight (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setHeight (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
-    def setLensLength (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setLensLength (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setName (self: SymbolTableRecord,name: str)-> None :
@@ -822,13 +822,13 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     C++ signature :
         void setViewDirection(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)'''
     ...
-    def setViewTwist (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setViewTwist (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setVisualStyle (self: PyDbAbstractViewTableRecord,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setWidth (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setWidth (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -1665,7 +1665,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setDynamicDimension (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : real)-> None :
+    def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -1674,7 +1674,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : real)-> None :
+    def setHorizontalRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setInspection (self: Dimension,val : bool)-> None :
@@ -1774,10 +1774,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : real,height : real)-> None :
+    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : real)-> None :
+    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
@@ -1786,7 +1786,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : real)-> None :
+    def setTextRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
@@ -3473,7 +3473,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setDynamicDimension (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : real)-> None :
+    def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -3488,7 +3488,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : real)-> None :
+    def setHorizontalRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setInspection (self: Dimension,val : bool)-> None :
@@ -3588,10 +3588,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : real,height : real)-> None :
+    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : real)-> None :
+    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
@@ -3600,7 +3600,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : real)-> None :
+    def setTextRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
@@ -10283,7 +10283,7 @@ class Core:
     def assignGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,dbCurve:PyDb.Curve,norm:PyGe.Vector3d=kZAxis,tol:PyGe.Tol=tol)-> None :
       '''                             '''
     ...
-    def attachPointCloudExEntity (self: Core,path: str,pos: PyGe.Point3d,scale: real,rotation: real,db: PyDb.Database)-> PyDb.ObjectId :
+    def attachPointCloudExEntity (self: Core,path: str,pos: PyGe.Point3d,scale: float,rotation: float,db: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
     def attachXref (self, *args, **kwargs)-> None :
@@ -11430,6 +11430,9 @@ class Database:
       '''                             '''
     ...
     def deepCloneObjects (self: Database,ids:list[PyDb.ObjectId],owner:PyDb.ObjectId,idmap:PyDb.IdMapping,deferXlation:bool=False)-> None :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
     def detailViewStyle (self: Database)-> PyDb.ObjectId :
@@ -12841,6 +12844,9 @@ deleteCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
     C++ signature :
         void deleteCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
     def dispose (self: RxObject)-> None :
       '''                             '''
     ...
@@ -14225,7 +14231,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setDynamicDimension (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : real)-> None :
+    def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setExtArcEndAngle (self, *args, **kwargs)-> None :
@@ -14252,7 +14258,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : real)-> None :
+    def setHorizontalRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setInspection (self: Dimension,val : bool)-> None :
@@ -14340,10 +14346,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : real,height : real)-> None :
+    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : real)-> None :
+    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
@@ -14352,7 +14358,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : real)-> None :
+    def setTextRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
@@ -16522,16 +16528,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimaltd (self: DimStyleTableRecord,val : int)-> None :
       '''                             '''
     ...
-    def setDimaltf (self: DimStyleTableRecord,val : real)-> None :
+    def setDimaltf (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
-    def setDimaltmzf (self: DimStyleTableRecord,val : real)-> None :
+    def setDimaltmzf (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimaltmzs (self: DimStyleTableRecord,val : str)-> None :
       '''                             '''
     ...
-    def setDimaltrnd (self: DimStyleTableRecord,val : real)-> None :
+    def setDimaltrnd (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimalttd (self: DimStyleTableRecord,val : int)-> None :
@@ -16552,7 +16558,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimarcsym (self: DimStyleTableRecord,val : int)-> None :
       '''                             '''
     ...
-    def setDimasz (self: DimStyleTableRecord,val : real)-> None :
+    def setDimasz (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimatfit (self: DimStyleTableRecord,val : int)-> None :
@@ -16573,7 +16579,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimblk2 (self: DimStyleTableRecord,val : str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimcen (self: DimStyleTableRecord,val : real)-> None :
+    def setDimcen (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimclrd (self: DimStyleTableRecord,val : PyDb.AcCmColor)-> None :
@@ -16588,34 +16594,34 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimdec (self: DimStyleTableRecord,val : int)-> None :
       '''                             '''
     ...
-    def setDimdle (self: DimStyleTableRecord,val : real)-> None :
+    def setDimdle (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
-    def setDimdli (self: DimStyleTableRecord,val : real)-> None :
+    def setDimdli (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimdsep (self: DimStyleTableRecord,val : char)-> None :
       '''                             '''
     ...
-    def setDimexe (self: DimStyleTableRecord,val : real)-> None :
+    def setDimexe (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
-    def setDimexo (self: DimStyleTableRecord,val : real)-> None :
+    def setDimexo (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimfrac (self: DimStyleTableRecord,val : int)-> None :
       '''                             '''
     ...
-    def setDimfxlen (self: DimStyleTableRecord,val : real)-> None :
+    def setDimfxlen (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimfxlenOn (self: DimStyleTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setDimgap (self: DimStyleTableRecord,val : real)-> None :
+    def setDimgap (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
-    def setDimjogang (self: DimStyleTableRecord,val : real)-> None :
+    def setDimjogang (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimjust (self: DimStyleTableRecord,val : int)-> None :
@@ -16624,7 +16630,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimldrblk (self: DimStyleTableRecord,val : str|PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setDimlfac (self: DimStyleTableRecord,val : real)-> None :
+    def setDimlfac (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimlim (self: DimStyleTableRecord,val : bool)-> None :
@@ -16648,7 +16654,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimlwe (self: DimStyleTableRecord,val :PyDb::LineWeight)-> None :
       '''                             '''
     ...
-    def setDimmzf (self: DimStyleTableRecord,val : real)-> None :
+    def setDimmzf (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimmzs (self: DimStyleTableRecord,val : str)-> None :
@@ -16657,13 +16663,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimpost (self: DimStyleTableRecord,val : str)-> None :
       '''                             '''
     ...
-    def setDimrnd (self: DimStyleTableRecord,val : real)-> None :
+    def setDimrnd (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimsah (self: DimStyleTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setDimscale (self: DimStyleTableRecord,val : real)-> None :
+    def setDimscale (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimsd1 (self: DimStyleTableRecord,val : bool)-> None :
@@ -16687,7 +16693,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimtdec (self: DimStyleTableRecord,val : int)-> None :
       '''                             '''
     ...
-    def setDimtfac (self: DimStyleTableRecord,val : real)-> None :
+    def setDimtfac (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimtfill (self: DimStyleTableRecord,val : int)-> None :
@@ -16702,7 +16708,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimtix (self: DimStyleTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setDimtm (self: DimStyleTableRecord,val : real)-> None :
+    def setDimtm (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimtmove (self: DimStyleTableRecord,val : int)-> None :
@@ -16720,13 +16726,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimtolj (self: DimStyleTableRecord,val : int)-> None :
       '''                             '''
     ...
-    def setDimtp (self: DimStyleTableRecord,val : real)-> None :
+    def setDimtp (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
-    def setDimtsz (self: DimStyleTableRecord,val : real)-> None :
+    def setDimtsz (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
-    def setDimtvp (self: DimStyleTableRecord,val : real)-> None :
+    def setDimtvp (self: DimStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDimtxsty (self: DimStyleTableRecord,val : PyDb.ObjectId)-> None :
@@ -17357,7 +17363,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setDynamicDimension (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : real)-> None :
+    def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -17366,7 +17372,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : real)-> None :
+    def setHorizontalRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setInspection (self: Dimension,val : bool)-> None :
@@ -17448,10 +17454,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : real,height : real)-> None :
+    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : real)-> None :
+    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
@@ -17460,7 +17466,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : real)-> None :
+    def setTextRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
@@ -19058,7 +19064,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     C++ signature :
         void addSubentPaths(class PyDbEntity {lvalue},class boost::python::list)'''
     ...
-    def angleAtParam (self: Ellipse,val : real)-> float :
+    def angleAtParam (self: Ellipse,val : float)-> float :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -19467,7 +19473,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def paramAtAngle (self: Ellipse,val : real)-> float :
+    def paramAtAngle (self: Ellipse,val : float)-> float :
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
@@ -19535,10 +19541,10 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setEndAngle (self: Ellipse,val : real)-> None :
+    def setEndAngle (self: Ellipse,val : float)-> None :
       '''                             '''
     ...
-    def setEndParam (self: Ellipse,val : real)-> None :
+    def setEndParam (self: Ellipse,val : float)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -19559,13 +19565,13 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMajorRadius (self: Ellipse,val : real)-> None :
+    def setMajorRadius (self: Ellipse,val : float)-> None :
       '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMinorRadius (self: Ellipse,val : real)-> None :
+    def setMinorRadius (self: Ellipse,val : float)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -19590,16 +19596,16 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setRadiusRatio (self: Ellipse,val : real)-> None :
+    def setRadiusRatio (self: Ellipse,val : float)-> None :
       '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setStartAngle (self: Ellipse,val : real)-> None :
+    def setStartAngle (self: Ellipse,val : float)-> None :
       '''                             '''
     ...
-    def setStartParam (self: Ellipse,val : real)-> None :
+    def setStartParam (self: Ellipse,val : float)-> None :
       '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
@@ -27759,7 +27765,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setElevation (self: Hatch,val : real)-> None :
+    def setElevation (self: Hatch,val : float)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -27771,7 +27777,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setGradient(class PyDbHatch {lvalue},enum AcDbHatch::GradientPatternType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setGradientAngle (self: Hatch,val : real)-> None :
+    def setGradientAngle (self: Hatch,val : float)-> None :
       '''                             '''
     ...
     def setGradientColors (self: Hatch,colors : list,values : list)-> None :
@@ -27780,7 +27786,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setGradientOneColorMode (self: Hatch,val : bool)-> None :
       '''                             '''
     ...
-    def setGradientShift (self: Hatch,val : real)-> None :
+    def setGradientShift (self: Hatch,val : float)-> None :
       '''                             '''
     ...
     def setHatchObjectType (self, *args, **kwargs)-> None :
@@ -27828,16 +27834,16 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setPattern(class PyDbHatch {lvalue},enum AcDbHatch::HatchPatternType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPatternAngle (self: Hatch,val : real)-> None :
+    def setPatternAngle (self: Hatch,val : float)-> None :
       '''                             '''
     ...
     def setPatternDouble (self: Hatch,val : bool)-> None :
       '''                             '''
     ...
-    def setPatternScale (self: Hatch,val : real)-> None :
+    def setPatternScale (self: Hatch,val : float)-> None :
       '''                             '''
     ...
-    def setPatternSpace (self: Hatch,val : real)-> None :
+    def setPatternSpace (self: Hatch,val : float)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -27862,7 +27868,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setShadeTintValue (self: Hatch,val : real)-> None :
+    def setShadeTintValue (self: Hatch,val : float)-> None :
       '''                             '''
     ...
     def setShadeTintValueAndColor2 (self, *args, **kwargs)-> None :
@@ -29067,7 +29073,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def insertFitPointAt (self: Spline,idx:int,pnt:PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def insertKnot (self: Spline,val : real)-> None :
+    def insertKnot (self: Spline,val : float)-> None :
       '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list :
@@ -29268,7 +29274,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setAxisVector (self: Helix,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setBaseRadius (self: Helix,val : real)-> None :
+    def setBaseRadius (self: Helix,val : float)-> None :
       '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
@@ -29325,13 +29331,13 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setFitTangents (self: Spline,start : PyGe.Vector3d,end : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setFitTol (self: Spline,val : real)-> None :
+    def setFitTol (self: Spline,val : float)-> None :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
       '''                             '''
     ...
-    def setHeight (self: Helix,val : real)-> None :
+    def setHeight (self: Helix,val : float)-> None :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -29388,13 +29394,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setStartPoint (self: Helix,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTopRadius (self: Helix,val : real)-> None :
+    def setTopRadius (self: Helix,val : float)-> None :
       '''                             '''
     ...
-    def setTurnHeight (self: Helix,val : real)-> None :
+    def setTurnHeight (self: Helix,val : float)-> None :
       '''                             '''
     ...
-    def setTurns (self: Helix,val : real)-> None :
+    def setTurns (self: Helix,val : float)-> None :
       '''                             '''
     ...
     def setTwist (self: Helix,val : bool)-> None :
@@ -34833,7 +34839,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setDynamicDimension (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : real)-> None :
+    def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setExtArcOn (self, *args, **kwargs)-> None :
@@ -34848,7 +34854,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : real)-> None :
+    def setHorizontalRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setInspection (self: Dimension,val : bool)-> None :
@@ -34930,10 +34936,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : real,height : real)-> None :
+    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : real)-> None :
+    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
@@ -34942,7 +34948,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : real)-> None :
+    def setTextRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
@@ -41200,7 +41206,7 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def includesTouchingLoops (self: MPolygon,val : real)-> bool :
+    def includesTouchingLoops (self: MPolygon,val : float)-> bool :
       '''                             '''
     ...
     def insertMPolygonLoopAt (self, *args, **kwargs)-> None :
@@ -41281,10 +41287,10 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isPlanar (self: Entity)-> bool :
       '''                             '''
     ...
-    def isPointInsideMPolygon (self: MPolygon,val : PyGe.Point3d,tol : real)-> list :
+    def isPointInsideMPolygon (self: MPolygon,val : PyGe.Point3d,tol : float)-> list :
       '''                             '''
     ...
-    def isPointOnLoopBoundary (self: MPolygon,val : PyGe.Point3d,loop : int,tol : real)-> bool :
+    def isPointOnLoopBoundary (self: MPolygon,val : PyGe.Point3d,loop : int,tol : float)-> bool :
       '''                             '''
     ...
     def isReadEnabled (self: DbObject)-> bool :
@@ -41434,7 +41440,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setElevation (self: MPolygon,val : real)-> None :
+    def setElevation (self: MPolygon,val : float)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -41446,7 +41452,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setGradient(class PyDbMPolygon {lvalue},enum AcDbHatch::GradientPatternType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setGradientAngle (self: MPolygon,val : real)-> None :
+    def setGradientAngle (self: MPolygon,val : float)-> None :
       '''                             '''
     ...
     def setGradientColors (self, *args, **kwargs)-> None :
@@ -41458,7 +41464,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setGradientOneColorMode (self: MPolygon,val : bool)-> None :
       '''                             '''
     ...
-    def setGradientShift (self: MPolygon,val : real)-> None :
+    def setGradientShift (self: MPolygon,val : float)-> None :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -41491,7 +41497,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setPattern (self: MPolygon,val : PyDb.HatchPatternType,name : str)-> None :
       '''                             '''
     ...
-    def setPatternAngle (self: MPolygon,val : real)-> None :
+    def setPatternAngle (self: MPolygon,val : float)-> None :
       '''                             '''
     ...
     def setPatternColor (self, *args, **kwargs)-> None :
@@ -41500,13 +41506,13 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setPatternColor(class PyDbMPolygon {lvalue},class AcCmColor)'''
     ...
-    def setPatternDouble (self: MPolygon,val : real)-> None :
+    def setPatternDouble (self: MPolygon,val : float)-> None :
       '''                             '''
     ...
-    def setPatternScale (self: MPolygon,val : real)-> None :
+    def setPatternScale (self: MPolygon,val : float)-> None :
       '''                             '''
     ...
-    def setPatternSpace (self: MPolygon,val : real)-> None :
+    def setPatternSpace (self: MPolygon,val : float)-> None :
       '''                             '''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
@@ -42149,7 +42155,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setBackgroundFillColor (self: MText,val : PyDb.AcCmColor)-> None :
       '''                             '''
     ...
-    def setBackgroundScaleFactor (self: MText,val : real)-> None :
+    def setBackgroundScaleFactor (self: MText,val : float)-> None :
       '''                             '''
     ...
     def setBackgroundTransparency (self: MText,val : PyDb.AcCmTransparency)-> None :
@@ -42173,16 +42179,16 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setColumnFlowReversed (self: MText,val : bool)-> None :
       '''                             '''
     ...
-    def setColumnGutterWidth (self: MText,val : real)-> None :
+    def setColumnGutterWidth (self: MText,val : float)-> None :
       '''                             '''
     ...
-    def setColumnHeight (self: MText,idx : int,val : real)-> None :
+    def setColumnHeight (self: MText,idx : int,val : float)-> None :
       '''                             '''
     ...
     def setColumnType (self: MText,val : PyDb.MTextColumnType)-> None :
       '''                             '''
     ...
-    def setColumnWidth (self: MText,val : real)-> None :
+    def setColumnWidth (self: MText,val : float)-> None :
       '''                             '''
     ...
     def setContents (self: MText,val : str)-> int :
@@ -42197,7 +42203,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDirection (self: MText,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setDynamicColumns (self: MText,width : real,gutter : real,autoHeight : bool)-> None :
+    def setDynamicColumns (self: MText,width : float,gutter : float,autoHeight : bool)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -42206,13 +42212,13 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setFlowDirection (self: MText,val : PyDb.MTextFlowDirection)-> None :
       '''                             '''
     ...
-    def setHeight (self: MText,val : real)-> None :
+    def setHeight (self: MText,val : float)-> None :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineSpacingFactor (self: MText,val : real)-> None :
+    def setLineSpacingFactor (self: MText,val : float)-> None :
       '''                             '''
     ...
     def setLineSpacingStyle (self: MText,val : PyDb.LineSpacingStyle)-> None :
@@ -42261,13 +42267,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self: MText,val : real)-> None :
+    def setRotation (self: MText,val : float)-> None :
       '''                             '''
     ...
-    def setStaticColumns (self: MText,width : real,gutter : real,count : int)-> None :
+    def setStaticColumns (self: MText,width : float,gutter : float,count : int)-> None :
       '''                             '''
     ...
-    def setTextHeight (self: MText,val : real)-> None :
+    def setTextHeight (self: MText,val : float)-> None :
       '''                             '''
     ...
     def setTextStyle (self: MText,val : PyDb.ObjectId)-> None :
@@ -42279,7 +42285,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidth (self: MText,val : real)-> None :
+    def setWidth (self: MText,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -43694,7 +43700,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setScale (self: Mline,val : real)-> None :
+    def setScale (self: Mline,val : float)-> None :
       '''                             '''
     ...
     def setStyle (self: Mline,val : PyDb.ObjectId)-> None :
@@ -45831,7 +45837,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setDynamicDimension (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : real)-> None :
+    def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -45840,7 +45846,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : real)-> None :
+    def setHorizontalRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setInspection (self: Dimension,val : bool)-> None :
@@ -45934,10 +45940,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : real,height : real)-> None :
+    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : real)-> None :
+    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
@@ -45946,7 +45952,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : real)-> None :
+    def setTextRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
@@ -47559,7 +47565,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHeight (self: UnderlayReference,val : real)-> None :
+    def setHeight (self: UnderlayReference,val : float)-> None :
       '''                             '''
     ...
     def setIsAdjustedForBackground (self: UnderlayReference,val : bool)-> None :
@@ -47620,7 +47626,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self: UnderlayReference,val : real)-> None :
+    def setRotation (self: UnderlayReference,val : float)-> None :
       '''                             '''
     ...
     def setScaleFactors (self: UnderlayReference,val : PyGe.Scale3d)-> None :
@@ -47635,7 +47641,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidth (self: UnderlayReference,val : real)-> None :
+    def setWidth (self: UnderlayReference,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -50712,7 +50718,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setDynamicDimension (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : real)-> None :
+    def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setExtArcOn (self, *args, **kwargs)-> None :
@@ -50727,7 +50733,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : real)-> None :
+    def setHorizontalRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setInspection (self: Dimension,val : bool)-> None :
@@ -50809,10 +50815,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : real,height : real)-> None :
+    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : real)-> None :
+    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
@@ -50821,7 +50827,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : real)-> None :
+    def setTextRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
@@ -52162,7 +52168,7 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def attachPointCloud (self: PointCloudEx,path: str,pos: PyGe.Point3d,scale: real,rotation: real,db: PyDb.Database)-> PyDb.ObjectId :
+    def attachPointCloud (self: PointCloudEx,path: str,pos: PyGe.Point3d,scale: float,rotation: float,db: PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
     def blockId (self: Entity)-> PyDb.ObjectId :
@@ -57950,7 +57956,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setDynamicDimension (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : real)-> None :
+    def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setExtArcEndAngle (self, *args, **kwargs)-> None :
@@ -57971,7 +57977,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : real)-> None :
+    def setHorizontalRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setInspection (self: Dimension,val : bool)-> None :
@@ -58059,10 +58065,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : real,height : real)-> None :
+    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : real)-> None :
+    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
@@ -58071,7 +58077,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : real)-> None :
+    def setTextRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
@@ -58847,7 +58853,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setDynamicDimension (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : real)-> None :
+    def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setExtArcEndAngle (self, *args, **kwargs)-> None :
@@ -58868,7 +58874,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : real)-> None :
+    def setHorizontalRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setInspection (self: Dimension,val : bool)-> None :
@@ -58980,10 +58986,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : real,height : real)-> None :
+    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : real)-> None :
+    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
@@ -58998,7 +59004,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setTextPositionPP(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
     ...
-    def setTextRotation (self: Dimension,val : real)-> None :
+    def setTextRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
@@ -63258,7 +63264,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setDynamicDimension (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setElevation (self: Dimension,val : real)-> None :
+    def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -63267,7 +63273,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
       '''                             '''
     ...
-    def setHorizontalRotation (self: Dimension,val : real)-> None :
+    def setHorizontalRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setInspection (self: Dimension,val : bool)-> None :
@@ -63373,10 +63379,10 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextAttachment (self: Dimension,val : PyDb.MTextAttachmentPoint)-> None :
       '''                             '''
     ...
-    def setTextDefinedSize (self: Dimension,width : real,height : real)-> None :
+    def setTextDefinedSize (self: Dimension,width : float,height : float)-> None :
       '''                             '''
     ...
-    def setTextLineSpacingFactor (self: Dimension,val : real)-> None :
+    def setTextLineSpacingFactor (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setTextLineSpacingStyle (self: Dimension,val : PyDb.LineSpacingStyle)-> None :
@@ -63385,7 +63391,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setTextPosition (self: Dimension,val : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setTextRotation (self: Dimension,val : real)-> None :
+    def setTextRotation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
     def setToleranceSuppressLeadingZeros (self: Dimension,val : bool)-> None :
@@ -65820,7 +65826,7 @@ class SpatialFilter:
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setDefinition (self: SpatialFilter,pnt2d: List[PyGe.Point2d],normal: PyGe.Vector3d,elev: real,frontclip: real,backclip: real,enabled: bool)-> None :
+    def setDefinition (self: SpatialFilter,pnt2d: List[PyGe.Point2d],normal: PyGe.Vector3d,elev: float,frontclip: float,backclip: float,enabled: bool)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -66278,7 +66284,7 @@ insertControlPointAt( (Spline)arg1, (float)arg2, (Point3d)arg3, (float)arg4) -> 
     def insertFitPointAt (self: Spline,idx:int,pnt:PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def insertKnot (self: Spline,val : real)-> None :
+    def insertKnot (self: Spline,val : float)-> None :
       '''                             '''
     ...
     def intersectWith (self, *args, **kwargs)-> list :
@@ -66524,7 +66530,7 @@ setFitDataKnot( (Spline)arg1, (list)arg2, (bool)arg3, (AcGeKnotParameterization)
     def setFitTangents (self: Spline,start : PyGe.Vector3d,end : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setFitTol (self: Spline,val : real)-> None :
+    def setFitTol (self: Spline,val : float)-> None :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
@@ -70672,7 +70678,7 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     def highlight (self: Entity,path: PyDb.FullSubentPath = None,highlightAll : bool = False)-> None :
       '''                             '''
     ...
-    def hitTest (self: Table,wpt: PyGe.Point3d,viewvec: PyGe.Vector3d,wx: real=0.0,wy: real=0.0)-> tuple :
+    def hitTest (self: Table,wpt: PyGe.Point3d,viewvec: PyGe.Vector3d,wx: float=0.0,wy: float=0.0)-> tuple :
       '''                             '''
     ...
     def horzCellMargin (self: Table)-> float :
@@ -70684,13 +70690,13 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def insertColumns (self: Table,row: int,width : real,nCols: int)-> None :
+    def insertColumns (self: Table,row: int,width : float,nCols: int)-> None :
       '''                             '''
     ...
     def insertColumnsAndInherit (self: Table,nIndex: int,nInheritFrom: int,nNumCols: int)-> None :
       '''                             '''
     ...
-    def insertRows (self: Table,row: int,height : real,nRows: int)-> None :
+    def insertRows (self: Table,row: int,height : float,nRows: int)-> None :
       '''                             '''
     ...
     def insertRowsAndInherit (self: Table,nIndex: int,nInheritFrom: int,nNumRows: int)-> None :
@@ -71044,10 +71050,10 @@ setBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     C++ signature :
         void setBlockAttributeValue(class PyDbTable {lvalue},int,int,int,class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setBlockRotation (self: Table,row: int,col: int,rotAng : real)-> None :
+    def setBlockRotation (self: Table,row: int,col: int,rotAng : float)-> None :
       '''                             '''
     ...
-    def setBlockScale (self: Table,row: int,col: int,scale : real)-> None :
+    def setBlockScale (self: Table,row: int,col: int,scale : float)-> None :
       '''                             '''
     ...
     def setBlockTableRecord (self: BlockReference,val : ObjectId)-> None :
@@ -71073,7 +71079,7 @@ setBlockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)a
     C++ signature :
         void setBreakFlowDirection(class PyDbTable {lvalue},enum AcDb::TableBreakFlowDirection)'''
     ...
-    def setBreakHeight (self: Table,val : int,height : real)-> None :
+    def setBreakHeight (self: Table,val : int,height : float)-> None :
       '''                             '''
     ...
     def setBreakOffset (self, *args, **kwargs)-> None :
@@ -71088,7 +71094,7 @@ setBlockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)a
     C++ signature :
         void setBreakOption(class PyDbTable {lvalue},enum AcDb::TableBreakOption)'''
     ...
-    def setBreakSpacing (self: Table,val : real)-> None :
+    def setBreakSpacing (self: Table,val : float)-> None :
       '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
@@ -71290,10 +71296,10 @@ setGridProperty( (Table)arg1, (CellRange)arg2, (GridLineType)arg3, (object)arg4)
     C++ signature :
         void setGridVisibility3(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType,enum AcDb::Visibility)'''
     ...
-    def setHeight (self: Table,val : real)-> None :
+    def setHeight (self: Table,val : float)-> None :
       '''                             '''
     ...
-    def setHorzCellMargin (self: Table,val : real)-> None :
+    def setHorzCellMargin (self: Table,val : float)-> None :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -71308,7 +71314,7 @@ setGridProperty( (Table)arg1, (CellRange)arg2, (GridLineType)arg3, (object)arg4)
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMargin (self: Table,row: int,col: int,nMargin: PyDb.CellMargin,val : real)-> None :
+    def setMargin (self: Table,row: int,col: int,nMargin: PyDb.CellMargin,val : float)-> None :
       '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
@@ -71373,7 +71379,7 @@ setRowHeight( (Table)arg1, (float)arg2) -> None :
     C++ signature :
         void setRowHeight(class PyDbTable {lvalue},double)'''
     ...
-    def setScale (self: Table,row: int,col: int,content: int,val : real)-> None :
+    def setScale (self: Table,row: int,col: int,content: int,val : float)-> None :
       '''                             '''
     ...
     def setScaleFactors (self: BlockReference,val : PyGe.Scale3d)-> None :
@@ -71442,13 +71448,13 @@ setTextStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5) -> N
     C++ signature :
         void setTextStyle(class PyDbTable {lvalue},int,int,int,class PyDbObjectId)'''
     ...
-    def setVertCellMargin (self: Table,val : real)-> None :
+    def setVertCellMargin (self: Table,val : float)-> None :
       '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidth (self: Table,val : real)-> None :
+    def setWidth (self: Table,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -74521,7 +74527,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setName (self: SymbolTableRecord,name: str)-> None :
       '''                             '''
     ...
-    def setObliquingAngle (self: TextStyleTableRecord,val : real)-> None :
+    def setObliquingAngle (self: TextStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -74530,13 +74536,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setPriorSize (self: TextStyleTableRecord,val : int)-> None :
       '''                             '''
     ...
-    def setTextSize (self: TextStyleTableRecord,val : real)-> None :
+    def setTextSize (self: TextStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def setXScale (self: TextStyleTableRecord,val : real)-> None :
+    def setXScale (self: TextStyleTableRecord,val : float)-> None :
       '''                             '''
     ...
     def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
@@ -76571,7 +76577,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setHeight (self: UnderlayReference,val : real)-> None :
+    def setHeight (self: UnderlayReference,val : float)-> None :
       '''                             '''
     ...
     def setIsAdjustedForBackground (self: UnderlayReference,val : bool)-> None :
@@ -76632,7 +76638,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self: UnderlayReference,val : real)-> None :
+    def setRotation (self: UnderlayReference,val : float)-> None :
       '''                             '''
     ...
     def setScaleFactors (self: UnderlayReference,val : PyGe.Scale3d)-> None :
@@ -76647,7 +76653,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidth (self: UnderlayReference,val : real)-> None :
+    def setWidth (self: UnderlayReference,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -78595,7 +78601,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBackClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setBackClipDistance (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setBackClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -78604,7 +78610,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setBackground (self: PyDbAbstractViewTableRecord,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setBrightness (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setBrightness (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setCamera (self: ViewTableRecord,val : PyDb.ObjectId)-> None :
@@ -78616,7 +78622,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCenterPoint (self: PyDbAbstractViewTableRecord,val : PyGe.Point2d)-> None :
       '''                             '''
     ...
-    def setContrast (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setContrast (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDefaultLightingOn (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -78628,7 +78634,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDefaultLightingType(class PyDbAbstractViewTableRecord {lvalue},enum AcGiViewportTraits::DefaultLightingType)'''
     ...
-    def setElevation (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setElevation (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
@@ -78637,13 +78643,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setFrontClipAtEye (self: PyDbAbstractViewTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setFrontClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setFrontClipDistance (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setFrontClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setHeight (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setHeight (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setIsCameraPlottable (self: ViewTableRecord,val : bool)-> None :
@@ -78658,7 +78664,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setLayout (self: ViewTableRecord,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setLensLength (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setLensLength (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setLiveSection (self: ViewTableRecord,val : PyDb.ObjectId)-> None :
@@ -78718,13 +78724,13 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     C++ signature :
         void setViewDirection(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)'''
     ...
-    def setViewTwist (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setViewTwist (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setVisualStyle (self: PyDbAbstractViewTableRecord,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setWidth (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setWidth (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -79364,7 +79370,7 @@ setBackClipOn( (Viewport)arg1, (bool)arg2) -> None :
     def setBackground (self: Viewport,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setBrightness (self: Viewport,val : real)-> None :
+    def setBrightness (self: Viewport,val : float)-> None :
       '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
@@ -79382,7 +79388,7 @@ setBackClipOn( (Viewport)arg1, (bool)arg2) -> None :
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setContrast (self: Viewport,val : real)-> None :
+    def setContrast (self: Viewport,val : float)-> None :
       '''                             '''
     ...
     def setCustomScale (self, *args, **kwargs)-> None :
@@ -79492,7 +79498,7 @@ setGridOn( (Viewport)arg1, (bool)arg2) -> None :
     def setGridSubdivisionRestricted (self: Viewport,val : bool)-> None :
       '''                             '''
     ...
-    def setHeight (self: Viewport,val : real)-> None :
+    def setHeight (self: Viewport,val : float)-> None :
       '''                             '''
     ...
     def setIsOn (self: Viewport,val : bool)-> None :
@@ -79504,7 +79510,7 @@ setGridOn( (Viewport)arg1, (bool)arg2) -> None :
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLensLength (self: Viewport,val : real)-> None :
+    def setLensLength (self: Viewport,val : float)-> None :
       '''                             '''
     ...
     def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
@@ -79640,7 +79646,7 @@ setShadePlot( (Viewport)arg1, (VpShadePlotType)arg2, (ObjectId)arg3) -> None :
     def setSheetView (self: Viewport,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setSnapAngle (self: Viewport,val : real)-> None :
+    def setSnapAngle (self: Viewport,val : float)-> None :
       '''                             '''
     ...
     def setSnapBasePoint (self: Viewport,val : PyGe.Point2d)-> None :
@@ -79708,7 +79714,7 @@ setTransparent( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setTransparent(class PyDbViewport {lvalue},bool)'''
     ...
-    def setTwistAngle (self: Viewport,val : real)-> None :
+    def setTwistAngle (self: Viewport,val : float)-> None :
       '''                             '''
     ...
     def setUcs (self, *args, **kwargs)-> None :
@@ -79798,7 +79804,7 @@ setViewDirection( (Viewport)arg1, (OrthographicView)arg2) -> None :
     C++ signature :
         void setViewDirection(class PyDbViewport {lvalue},enum AcDb::OrthographicView)'''
     ...
-    def setViewHeight (self: Viewport,val : real)-> None :
+    def setViewHeight (self: Viewport,val : float)-> None :
       '''                             '''
     ...
     def setViewTarget (self: Viewport,val : PyGe.Point3d)-> None :
@@ -79810,7 +79816,7 @@ setViewDirection( (Viewport)arg1, (OrthographicView)arg2) -> None :
     def setVisualStyle (self: Viewport,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setWidth (self: Viewport,val : real)-> None :
+    def setWidth (self: Viewport,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -80273,7 +80279,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBackClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setBackClipDistance (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setBackClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -80282,7 +80288,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def setBackground (self: ViewportTableRecord,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setBrightness (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setBrightness (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setCenterPoint (self: PyDbAbstractViewTableRecord,val : PyGe.Point2d)-> None :
@@ -80291,7 +80297,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def setCircleSides (self: ViewportTableRecord,val : int)-> None :
       '''                             '''
     ...
-    def setContrast (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setContrast (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setDefaultLightingOn (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -80303,7 +80309,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     C++ signature :
         void setDefaultLightingType(class PyDbAbstractViewTableRecord {lvalue},enum AcGiViewportTraits::DefaultLightingType)'''
     ...
-    def setElevation (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setElevation (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setFastZoomsEnabled (self: ViewportTableRecord,val : bool)-> None :
@@ -80315,7 +80321,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def setFrontClipAtEye (self: PyDbAbstractViewTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setFrontClipDistance (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setFrontClipDistance (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setFrontClipEnabled (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -80342,7 +80348,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def setGridSubdivisionRestricted (self: ViewportTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setHeight (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setHeight (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setIconAtOrigin (self: ViewportTableRecord,val : bool)-> None :
@@ -80354,7 +80360,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def setIsometricSnapEnabled (self: ViewportTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setLensLength (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setLensLength (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setLowerLeftCorner (self: ViewportTableRecord,val : PyGe.Point2d)-> None :
@@ -80380,7 +80386,7 @@ setPreviousBackground( (ViewportTableRecord)arg1, (ObjectId)arg2, (GiDrawableTyp
     C++ signature :
         void setPreviousBackground(class PyDbViewportTableRecord {lvalue},class PyDbObjectId {lvalue},enum AcGiDrawable::DrawableType,bool)'''
     ...
-    def setSnapAngle (self: ViewportTableRecord,val : real)-> None :
+    def setSnapAngle (self: ViewportTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setSnapBase (self: ViewportTableRecord,val : PyGe.Point2d)-> None :
@@ -80440,13 +80446,13 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     C++ signature :
         void setViewDirection(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)'''
     ...
-    def setViewTwist (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setViewTwist (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setVisualStyle (self: PyDbAbstractViewTableRecord,val : PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setWidth (self: PyDbAbstractViewTableRecord,val : real)-> None :
+    def setWidth (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
