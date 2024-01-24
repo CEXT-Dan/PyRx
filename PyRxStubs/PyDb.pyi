@@ -213,6 +213,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -508,6 +511,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self: PyDbAbstractViewTableRecord)-> float :
@@ -1165,6 +1171,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -2080,6 +2089,9 @@ __init__( (object)arg1) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > collectionName(class PyDbObjectContext {lvalue})'''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self, *args, **kwargs)-> None :
       '''copyFrom( (AnnotationScale)arg1, (RxObject)arg2) -> None :
 
@@ -2261,6 +2273,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -2940,6 +2955,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -3948,6 +3966,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def convertFieldToText (self: Text)-> None :
       '''                             '''
     ...
@@ -4573,6 +4594,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def convertFieldToText (self: Text)-> None :
       '''                             '''
     ...
@@ -5185,6 +5209,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -5634,6 +5661,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -6103,6 +6133,9 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -6691,6 +6724,9 @@ class BlockTable:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -6981,6 +7017,9 @@ class BlockTableRecord:
       '''                             '''
     ...
     def comments (self: BlockTableRecord)-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -7370,6 +7409,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -9260,6 +9302,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -10774,6 +10819,9 @@ class Curve:
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -11361,6 +11409,9 @@ class Database:
       '''                             '''
     ...
     def colorDictionaryId (self: Database)-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def continuousLinetype (self: Database)-> PyDb.ObjectId :
@@ -12692,6 +12743,9 @@ __init__( (object)arg1) -> None :
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -12768,6 +12822,9 @@ This class cannot be instantiated from Python'''
         class boost::python::dict asDict(class PyDbDatabaseSummaryInfo {lvalue})'''
     ...
     def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -12971,6 +13028,9 @@ class DbObject:
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -13224,6 +13284,9 @@ class DbObjectOverrule:
     def close (self: DbObjectOverrule,object: PyDb.DbObject)-> PyDb.ErrorStatus :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -13310,6 +13373,9 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copied (self: DbObjectReactor,obj: PyDb.DbObject,newObj: PyDb.DbObject)-> None :
@@ -13665,6 +13731,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -14646,6 +14715,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -14968,6 +15040,9 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -15726,6 +15801,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -16019,6 +16097,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -16815,6 +16896,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -19022,6 +19106,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -19753,6 +19840,9 @@ class Entity:
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -20280,6 +20370,9 @@ __init__( (object)arg1) -> None :
       '''                             '''
     ...
     def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copied (self: EntityReactor,obj: PyDb.DbObject,newObj: PyDb.DbObject)-> None :
@@ -22055,6 +22148,9 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         void clear(class PyDbEvalVariant {lvalue})'''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self, *args, **kwargs)-> None :
       '''copyFrom( (EvalVariant)arg1, (RxObject)arg2) -> None :
 
@@ -22416,6 +22512,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -22980,6 +23079,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -23449,6 +23551,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -23916,6 +24021,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -24453,6 +24561,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbField cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def convertToTextField (self, *args, **kwargs)-> None :
@@ -26489,6 +26600,9 @@ append( (Group)arg1, (list)arg2) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -27215,6 +27329,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -28686,6 +28803,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def constrain (self: Helix)-> PyDb.HelixConstrainType :
       '''                             '''
     ...
@@ -29726,6 +29846,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -30717,6 +30840,9 @@ class LayerFilter:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -30992,6 +31118,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbLayerTable cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -31297,6 +31426,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     C++ signature :
         class AcCmColor color(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -31346,12 +31478,6 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> PyDb.Handle :
-      '''                             '''
-    ...
-    def getIsHidden (val : PyDb.ObjectId)-> bool :
-      '''                             '''
-    ...
-    def getIsReconciled (val : PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def getName (self: SymbolTableRecord)-> str :
@@ -31414,6 +31540,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def isHidden (self: LayerTableRecord)-> bool :
       '''                             '''
     ...
+    def isHiddenS (val : PyDb.ObjectId)-> bool :
+      '''                             '''
+    ...
     def isInUse (self: LayerTableRecord)-> bool :
       '''                             '''
     ...
@@ -31460,6 +31589,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''                             '''
     ...
     def isReconciled (self: LayerTableRecord)-> bool :
+      '''                             '''
+    ...
+    def isReconciledS (val : PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def isRenamable (self: SymbolTableRecord)-> bool :
@@ -31842,6 +31974,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbLayout cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -32431,6 +32566,9 @@ cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)
     C++ signature :
         void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -32721,6 +32859,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copied (self, *args, **kwargs)-> None :
@@ -33575,6 +33716,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -34213,6 +34357,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -35352,6 +35499,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -35642,6 +35792,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def comments (self: LinetypeTableRecord)-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -36085,6 +36238,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -36650,6 +36806,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def columns (self: MInsertBlock)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -37246,6 +37405,9 @@ addLeaderLine( (MLeader)arg1, (Point3d)arg2) -> int :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def connectionPoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -39559,6 +39721,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def contentType (self, *args, **kwargs)-> PyDb.MLeaderContentType :
       '''contentType( (MLeaderStyle)arg1) -> MLeaderContentType :
 
@@ -40865,6 +41030,9 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -41608,6 +41776,9 @@ class MText:
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contents (self: MText)-> str :
@@ -43139,6 +43310,9 @@ class Mline:
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -43797,6 +43971,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -44284,6 +44461,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -44767,6 +44947,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > collectionName(class PyDbObjectContext {lvalue})'''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -45148,6 +45331,9 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -46393,6 +46579,9 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -46671,6 +46860,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbUnderlayDefinition cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -46991,6 +47183,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self: UnderlayReference)-> int :
@@ -47706,6 +47901,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -48506,6 +48704,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbPlotSettings cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -49483,6 +49684,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -50026,6 +50230,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -50887,6 +51094,9 @@ class PointCloudColorMap:
     C++ signature :
         class boost::python::list colorSchemeGUIDs(class PyDbPointCloudColorMap {lvalue})'''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -51514,6 +51724,9 @@ class PointCloudDefEx:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def coordinateSystemName (self: PointCloudDefEx)-> str :
       '''                             '''
     ...
@@ -51992,6 +52205,9 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -53239,6 +53455,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -53605,6 +53824,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -54065,6 +54287,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -54536,6 +54761,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -55216,6 +55444,9 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def constantWidth (self, *args, **kwargs)-> float :
@@ -55974,6 +56205,9 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def convertToPolyType (self, *args, **kwargs)-> None :
       '''convertToPolyType( (Polyline3d)arg1, (Poly3dType)arg2) -> None :
 
@@ -56617,6 +56851,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -57024,6 +57261,9 @@ __init__( (object)arg1, (object)arg2) -> None :
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -57216,6 +57456,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -58100,6 +58343,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -58979,6 +59225,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def contrast (self, *args, **kwargs)-> int :
       '''contrast( (RasterImage)arg1) -> int :
 
@@ -59646,6 +59895,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -60040,6 +60292,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -60309,6 +60564,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class PyDbRegAppTable cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -60598,6 +60856,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -60900,6 +61161,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -61763,6 +62027,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -62491,6 +62758,9 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -63740,6 +64010,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -64639,6 +64912,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyEdge (self, *args, **kwargs)-> PyDb.Entity :
       '''copyEdge( (Solid3d)arg1, (SubentId)arg2) -> Entity :
 
@@ -65358,6 +65634,9 @@ class SpatialFilter:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -65742,6 +66021,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -67217,6 +67499,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -68518,6 +68803,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -69315,6 +69603,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -69584,6 +69875,9 @@ class SymbolTableRecord:
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -70005,6 +70299,9 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
       '''                             '''
     ...
     def columnWidth (self: Table,col : int)-> float :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contentColor (self, *args, **kwargs)-> PyDb.Color :
@@ -72095,6 +72392,9 @@ color( (TableStyle)arg1, (str)arg2) -> Color :
     C++ signature :
         class AcCmColor color(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyCellStyle (self, *args, **kwargs)-> None :
       '''copyCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> None :
 
@@ -72860,6 +73160,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def convertFieldToText (self: Text)-> None :
@@ -73698,6 +74001,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -73988,6 +74294,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -74628,6 +74937,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -74698,6 +75010,9 @@ class TransactionManager:
       '''                             '''
     ...
     def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -74991,6 +75306,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -75280,6 +75598,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -75564,6 +75885,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -75874,6 +76198,9 @@ class UnderlayReference:
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self: UnderlayReference)-> int :
@@ -76920,6 +77247,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -77380,6 +77710,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def colorIndex (self: Entity)-> int :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -78013,6 +78346,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def contrast (self: PyDbAbstractViewTableRecord)-> float :
       '''                             '''
     ...
@@ -78528,6 +78864,9 @@ class Viewport:
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def contrast (self: Viewport)-> float :
       '''                             '''
     ...
@@ -78668,11 +79007,8 @@ getSubentPathsAtGsMarker( (Entity)arg1, (SubentType)arg2, (int)arg3, (Point3d)ar
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> PyDb.Entity :
       '''                             '''
     ...
-    def getUcs (self, *args, **kwargs)-> None :
-      '''getUcs( (Viewport)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void getUcs(class PyDbViewport {lvalue},class AcGePoint3d {lvalue},class AcGeVector3d {lvalue},class AcGeVector3d {lvalue})'''
+    def getUcs (self: Viewport)-> tuple :
+      '''                             '''
     ...
     def gridIncrement (self: Viewport)-> PyGe.Vector2d :
       '''                             '''
@@ -79663,6 +79999,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self: PyDbAbstractViewTableRecord)-> float :
@@ -80683,6 +81022,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def contrast (self, *args, **kwargs)-> int :
       '''contrast( (RasterImage)arg1) -> int :
 
@@ -81318,6 +81660,9 @@ class Xrecord:
       '''                             '''
     ...
     def close (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :

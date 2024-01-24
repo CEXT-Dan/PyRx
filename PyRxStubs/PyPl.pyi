@@ -210,6 +210,9 @@ class DSDData:
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -575,6 +578,9 @@ class DSDEntry:
         void __init__(struct _object * __ptr64)'''
     ...
     def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -965,6 +971,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -1129,6 +1138,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -1259,6 +1271,9 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (DeviceType)arg4) -> None :
         void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,enum DeviceType)'''
     ...
     def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -1492,6 +1507,9 @@ class PlotInfo:
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self, *args, **kwargs)-> None :
       '''copyFrom( (PlotInfo)arg1, (RxObject)arg2) -> None :
 
@@ -1609,6 +1627,9 @@ class PlotInfoValidator:
         void __init__(struct _object * __ptr64)'''
     ...
     def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -1949,6 +1970,9 @@ class PlotPageInfo:
         void __init__(struct _object * __ptr64)'''
     ...
     def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -2330,6 +2354,9 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         int colorResolution(class PyPlPrecisionEntry {lvalue})'''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''

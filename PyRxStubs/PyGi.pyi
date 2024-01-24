@@ -1197,6 +1197,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -1406,6 +1409,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -1500,6 +1506,9 @@ class DrawableOverrule:
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
@@ -1602,6 +1611,9 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         unsigned short color(class PyGiSubEntityTraits {lvalue})'''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
@@ -1878,6 +1890,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
@@ -2568,6 +2583,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         unsigned short color(class PyGiSubEntityTraits {lvalue})'''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -2999,6 +3017,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -3080,6 +3101,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
     ...
     def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
@@ -3172,6 +3196,9 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
@@ -3253,6 +3280,9 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
     ...
     def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :

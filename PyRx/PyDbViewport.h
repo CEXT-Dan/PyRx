@@ -179,7 +179,7 @@ public:
     void                modified(const PyDbObject& obj);
     void                copied(const PyDbObject& pDbObj, const PyDbObject& pNewObj);
     void                subObjModified(const PyDbObject& pDbObj, const PyDbObject& pSubObj);
-    void                getUcs(AcGePoint3d& origin, AcGeVector3d& xAxis, AcGeVector3d& yAxis) const;
+    boost::python::tuple getUcs() const;
     boost::python::tuple isUcsOrthographic() const;
     PyDbObjectId        ucsName() const;
     double              elevation() const;

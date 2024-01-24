@@ -2834,7 +2834,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def add (self: SelectionSet,id:PyDb.ObjectId)-> None :
+    def add (self: SelectionSet,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def adsname (self: SelectionSet)-> PyDb.AdsName :
@@ -2843,28 +2843,28 @@ __init__( (object)arg1) -> None :
     def clear (self: SelectionSet)-> None :
       '''                             '''
     ...
-    def hasMember (self: SelectionSet,id:PyDb.ObjectId)-> bool :
+    def hasMember (self: SelectionSet,id: PyDb.ObjectId)-> bool :
       '''                             '''
     ...
     def isInitialized (self: SelectionSet)-> bool :
       '''                             '''
     ...
-    def objectIds (self: SelectionSet,desc:PyRx.RxClass=AcDbEntity)-> list :
+    def objectIds (self: SelectionSet,desc: PyRx.RxClass=AcDbEntity)-> list :
       '''                             '''
     ...
-    def remove (self: SelectionSet,id:PyDb.ObjectId)-> None :
+    def remove (self: SelectionSet,id: PyDb.ObjectId)-> None :
       '''                             '''
     ...
     def size (self: SelectionSet)-> int :
       '''                             '''
     ...
-    def ssNameX (self: SelectionSet,val:int = 0)-> list :
+    def ssNameX (self: SelectionSet,val: int = 0)-> list :
       '''                             '''
     ...
     def ssSetFirst (self: SelectionSet)-> bool :
       '''                             '''
     ...
-    def ssXform (self: SelectionSet,xform:PyGe.Matrix3d)-> PyEd.PromptStatus :
+    def ssXform (self: SelectionSet,xform: PyGe.Matrix3d)-> PyEd.PromptStatus :
       '''                             '''
     ...
     def toList (self: SelectionSet)-> list :

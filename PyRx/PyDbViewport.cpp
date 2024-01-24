@@ -12,7 +12,7 @@ void makePyDbViewportWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode,bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: PyDb.ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
         .def("annotationScale", &PyDbViewport::annotationScale, DS.ARGS())
         .def("setAnnotationScale", &PyDbViewport::setAnnotationScale)
         .def("setModelView", &PyDbViewport::setModelView)
@@ -176,7 +176,7 @@ void makePyDbViewportWrapper()
         .def("modified", &PyDbViewport::modified)
         .def("copied", &PyDbViewport::copied)
         .def("subObjModified", &PyDbViewport::subObjModified)
-        .def("getUcs", &PyDbViewport::getUcs)//TODO:
+        .def("getUcs", &PyDbViewport::getUcs, DS.ARGS())
         .def("isUcsOrthographic", &PyDbViewport::isUcsOrthographic, DS.ARGS())
         .def("ucsName", &PyDbViewport::ucsName, DS.ARGS())
         .def("elevation", &PyDbViewport::elevation, DS.ARGS())
@@ -1345,9 +1345,14 @@ void PyDbViewport::subObjModified(const PyDbObject& pDbObj, const PyDbObject& pS
     return impObj()->subObjModified(pDbObj.impObj(), pSubObj.impObj());
 }
 
-void PyDbViewport::getUcs(AcGePoint3d& origin, AcGeVector3d& xAxis, AcGeVector3d& yAxis) const
+boost::python::tuple PyDbViewport::getUcs() const
 {
-    return PyThrowBadEs(impObj()->getUcs(origin, xAxis, yAxis));
+    PyAutoLockGIL lock;
+    AcGePoint3d origin; 
+    AcGeVector3d xAxis; 
+    AcGeVector3d yAxis;
+    PyThrowBadEs(impObj()->getUcs(origin, xAxis, yAxis));
+    return boost::python::make_tuple(origin, xAxis, yAxis);
 }
 
 boost::python::tuple PyDbViewport::isUcsOrthographic() const
@@ -1430,6 +1435,6 @@ AcDbViewport* PyDbViewport::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbViewport*>(m_pyImp.get());
 }
