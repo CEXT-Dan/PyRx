@@ -1,4 +1,5 @@
 import UnitTestPyAcGe
+import UnitTestPyRxObject
 import UnitTestPyDatabase
 import UnitTestPyDbObject
 import UnitTestPyDbObjectId
@@ -13,6 +14,7 @@ print("testname = pytestall")
 def PyRxCmd_pytestall():
     try:
       UnitTestPyAcGe.PyRxCmd_pyge()
+      UnitTestPyRxObject.PyRxCmd_pyrxobject()
       UnitTestPyDatabase.PyRxCmd_pydbtest()
       UnitTestPyDbObject.PyRxCmd_pydbobject()
       UnitTestPyDbObjectId.PyRxCmd_pydbobjectid()

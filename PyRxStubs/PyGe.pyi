@@ -13527,7 +13527,10 @@ setToPlaneToWorld( (Matrix3d)arg1, (Vector3d)arg2) -> Matrix3d :
       '''                             '''
     ...
     def setToScaling (self: Matrix3d,val: float,center: PyGe.Point3d=kOrigin)-> PyGe.Matrix3d :
-      '''                             '''
+      '''Sets this matrix to the matrix of the uniform scaling by scale factor scaleAll with respect to the point center. 
+
+          Returns the reference to this matrix. 
+      '''
     ...
     def setToTranslation (self: Matrix3d,val: PyGe.Vector3d)-> PyGe.Matrix3d :
       '''                             '''
