@@ -112,8 +112,8 @@ void makePyEdCoreWrapper()
         .def("cmdUndefine", &EdCore::cmdUndefine).staticmethod("cmdUndefine")
         .def("getCommands", &EdCore::getCommands, DS.SARGS()).staticmethod("getCommands")
         .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld1)
-        .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld2).staticmethod("coordFromPixelToWorld")
-        .def("coordFromWorldToPixel", &EdCore::coordFromWorldToPixel).staticmethod("coordFromWorldToPixel")
+        .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld2, DS.SARGS({ "windnum: int = None","pt: tuple" })).staticmethod("coordFromPixelToWorld")
+        .def("coordFromWorldToPixel", &EdCore::coordFromWorldToPixel, DS.SARGS({ "windnum: int ","pt: AcGe.Point3d" })).staticmethod("coordFromWorldToPixel")
         .def("createInternetShortcut", &EdCore::createInternetShortcut).staticmethod("createInternetShortcut")
         .def("createViewportByView", &EdCore::createViewportByView).staticmethod("createViewportByView")
         .def("cmdS", &EdCore::cmdS).staticmethod("cmdS")
@@ -346,40 +346,45 @@ boost::python::dict EdCore::getCommands()
     return Pydict;
 }
 
-bool EdCore::coordFromPixelToWorld1(const boost::python::list& tin, AcGePoint3d& pnt)
+AcGePoint3d EdCore::coordFromPixelToWorld1(const boost::python::tuple& tin)
 {
     PyAutoLockGIL lock;
     const size_t listSize = boost::python::len(tin);
     if (listSize != 2)
-        return false;
+        PyThrowBadEs(eInvalidInput);
+
     int x = extract<int>(tin[0]);
     int y = extract<int>(tin[1]);
+
+    AcGePoint3d pnt;
+
     CPoint cpnt(x, y);
     acedCoordFromPixelToWorld(cpnt, asDblArray(pnt));
-    return true;
+    return pnt;
 }
 
-bool EdCore::coordFromPixelToWorld2(int windnum, const boost::python::list& tin, AcGePoint3d& pnt)
+AcGePoint3d EdCore::coordFromPixelToWorld2(int windnum, const boost::python::tuple& tin)
 {
     PyAutoLockGIL lock;
     const size_t listSize = boost::python::len(tin);
     if (listSize != 2)
-        return false;
+        PyThrowBadEs(eInvalidInput);
     int x = extract<int>(tin[0]);
     int y = extract<int>(tin[1]);
     CPoint cpnt(x, y);
-    return acedCoordFromPixelToWorld(windnum, cpnt, asDblArray(pnt));
+    AcGePoint3d pnt;
+    if(acedCoordFromPixelToWorld(windnum, cpnt, asDblArray(pnt)) == false)
+        PyThrowBadEs(eInvalidInput);
+    return pnt;
 }
 
-bool EdCore::coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt, boost::python::list& tin)
+boost::python::tuple EdCore::coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt)
 {
     CPoint cpnt;
-    if (!acedCoordFromWorldToPixel(windnum, asDblArray(pnt), cpnt))
-        return false;
+    if (acedCoordFromWorldToPixel(windnum, asDblArray(pnt), cpnt) == false)
+        PyThrowBadEs(eInvalidInput);
     PyAutoLockGIL lock;
-    tin.append(cpnt.x);
-    tin.append(cpnt.y);
-    return true;
+    return boost::python::make_tuple(cpnt.x, cpnt.y);
 }
 
 bool EdCore::createInternetShortcut(const std::string& szURL, const std::string& szShortcutPath)

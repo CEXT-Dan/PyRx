@@ -43,9 +43,9 @@ public:
     static bool                 cmdCWasCancelled();
     static int                  cmdUndefine(const std::string& name, int undefIt);
     static boost::python::dict  getCommands();
-    static bool                 coordFromPixelToWorld1(const boost::python::list& tin, AcGePoint3d& pnt);
-    static bool                 coordFromPixelToWorld2(int windnum, const boost::python::list& tin, AcGePoint3d& pnt);
-    static bool                 coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt, boost::python::list& tin);
+    static AcGePoint3d          coordFromPixelToWorld1(const boost::python::tuple& tin);
+    static AcGePoint3d          coordFromPixelToWorld2(int windnum, const boost::python::tuple& tin);
+    static boost::python::tuple coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt);
     static bool                 createInternetShortcut(const std::string& szURL, const std::string& szShortcutPath);
     static PyDbObjectId         createViewportByView(PyDbDatabase& db, PyDbObjectId& view, const AcGePoint2d& location, double scale);
     static bool                 cmdS(const boost::python::list& lst);
