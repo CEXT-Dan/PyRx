@@ -31,13 +31,20 @@ AcApDataManager<CDocData> DocVars;
 
 //-----------------------------------------------------------------------------
 //----- Implementation of the document data class.
-CDocData::CDocData() {
+CDocData::CDocData()
+{
+
 }
 
 //-----------------------------------------------------------------------------
-CDocData::CDocData(const CDocData& data) {
+CDocData::CDocData(const CDocData& data)
+{
+
 }
 
 //-----------------------------------------------------------------------------
-CDocData::~CDocData() {
+CDocData::~CDocData()
+{
+    PyAutoLockGIL lock;
+    m_dict = boost::python::object();
 }
