@@ -395,10 +395,10 @@ class Core:
     C++ signature :
         int cmdUndefine(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
-    def coordFromPixelToWorld (windnum: int = None,pt: tuple)-> PyGe.Point3d :
+    def coordFromPixelToWorld (windnum: int = None,pt: tuple[int,int])-> PyGe.Point3d :
       '''                             '''
     ...
-    def coordFromWorldToPixel (windnum: int ,pt: AcGe.Point3d)-> tuple :
+    def coordFromWorldToPixel (windnum: int ,pnt: PyGe.Point3d)-> tuple :
       '''                             '''
     ...
     def createInternetShortcut (self, *args, **kwargs)-> bool :
