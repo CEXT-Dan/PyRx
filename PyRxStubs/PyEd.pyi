@@ -395,22 +395,11 @@ class Core:
     C++ signature :
         int cmdUndefine(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
-    def coordFromPixelToWorld (self, *args, **kwargs)-> bool :
-      '''coordFromPixelToWorld( (list)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool coordFromPixelToWorld(class boost::python::list,class AcGePoint3d {lvalue})
-
-coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool coordFromPixelToWorld(int,class boost::python::list,class AcGePoint3d {lvalue})'''
+    def coordFromPixelToWorld (windnum: int = None,pt: tuple)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def coordFromWorldToPixel (self, *args, **kwargs)-> bool :
-      '''coordFromWorldToPixel( (int)arg1, (Point3d)arg2, (list)arg3) -> bool :
-
-    C++ signature :
-        bool coordFromWorldToPixel(int,class AcGePoint3d,class boost::python::list {lvalue})'''
+    def coordFromWorldToPixel (windnum: int ,pt: AcGe.Point3d)-> tuple :
+      '''                             '''
     ...
     def createInternetShortcut (self, *args, **kwargs)-> bool :
       '''createInternetShortcut( (str)arg1, (str)arg2) -> bool :
