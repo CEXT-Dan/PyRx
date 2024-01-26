@@ -30,14 +30,13 @@
 //----- Here you can store the document / database related data.
 class CDocData {
 
-	//----- TODO: here you can add your variables
+    //----- TODO: here you can add your variables
 
 public:
-	boost::python::dict m_dict;
+    boost::python::object m_dict;
 
 public:
-	CDocData () ;
-	CDocData (const CDocData &data) ;
-	~CDocData () ;
-
-} ;
+    CDocData();
+    CDocData(const CDocData& data);
+    ~CDocData();
+};

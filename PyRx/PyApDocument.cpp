@@ -32,7 +32,6 @@ void makePyApDocumentWrapper()
         .def("downgradeDocOpen", &PyApDocument::downgradeDocOpen, DS.ARGS({ "promptForSave : bool" }))
         .def("transactionManager", &PyApDocument::transactionManager, DS.ARGS())
         .def("inputPointManager", &PyApDocument::inputPointManager, DS.ARGS())
-        .def("inputPointManager", &PyApDocument::inputPointManager, DS.ARGS())
         .def("getUserData", &PyApDocument::getUserData, DS.ARGS())
         .def("setUserData", &PyApDocument::setUserData, DS.ARGS({"data : dict[]"}))
         //static
@@ -187,7 +186,7 @@ PyEdInputPointManager PyApDocument::inputPointManager()
     return PyEdInputPointManager(impObj()->inputPointManager());
 }
 
-boost::python::dict PyApDocument::getUserData()
+boost::python::object PyApDocument::getUserData()
 {
     return DocVars.docData().m_dict;
 }
