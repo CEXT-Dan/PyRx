@@ -33,7 +33,7 @@ void makePyApDocumentWrapper()
         .def("transactionManager", &PyApDocument::transactionManager, DS.ARGS())
         .def("inputPointManager", &PyApDocument::inputPointManager, DS.ARGS())
         .def("getUserData", &PyApDocument::getUserData, DS.ARGS())
-        .def("setUserData", &PyApDocument::setUserData, DS.ARGS({"data : dict[]"}))
+        .def("setUserData", &PyApDocument::setUserData, DS.ARGS({"data : any"}))
         //static
         .def("docWnd", &PyApDocument::docWnd, DS.SARGS()).staticmethod("docWnd")
         .def("className", &PyApDocument::className, DS.SARGS()).staticmethod("className")
@@ -188,12 +188,12 @@ PyEdInputPointManager PyApDocument::inputPointManager()
 
 boost::python::object PyApDocument::getUserData()
 {
-    return DocVars.docData().m_dict;
+    return DocVars.docData().m_data;
 }
 
 void PyApDocument::setUserData(const boost::python::object& data)
 {
-    DocVars.docData().m_dict = data;
+    DocVars.docData().m_data = data;
 }
 
 UINT_PTR PyApDocument::docWnd()
