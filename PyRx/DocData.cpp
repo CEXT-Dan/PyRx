@@ -33,13 +33,11 @@ AcApDataManager<CDocData> DocVars;
 //----- Implementation of the document data class.
 CDocData::CDocData()
 {
-
 }
 
 //-----------------------------------------------------------------------------
 CDocData::CDocData(const CDocData& data)
 {
-
 }
 
 //-----------------------------------------------------------------------------
