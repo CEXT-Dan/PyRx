@@ -191,7 +191,7 @@ boost::python::object PyApDocument::getUserData()
     return DocVars.docData().m_dict;
 }
 
-void PyApDocument::setUserData(const boost::python::dict& data)
+void PyApDocument::setUserData(const boost::python::object& data)
 {
     DocVars.docData().m_dict = data;
 }

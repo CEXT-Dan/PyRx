@@ -36,7 +36,7 @@ public:
     PyTransactionManager transactionManager();
     PyEdInputPointManager inputPointManager();
     boost::python::object getUserData();
-    void                  setUserData(const boost::python::dict& data);
+    void                  setUserData(const boost::python::object& data);
 
     static UINT_PTR     docWnd();
     static std::string  className();
