@@ -389,22 +389,23 @@ void PyApDocManagerReactor::removeReactor()
 //PyApDocManager Wrapper
 void makePyApDocManagerWrapper()
 {
+    PyDocString DS("DocManager");
     class_<PyApDocManager, bases<PyRxObject>>("DocManager")
-        .def("curDocument", &PyApDocManager::curDocument)
-        .def("mdiActiveDocument", &PyApDocManager::mdiActiveDocument)
-        .def("isApplicationContext", &PyApDocManager::isApplicationContext)
-        .def("document", &PyApDocManager::document)
+        .def("curDocument", &PyApDocManager::curDocument, DS.ARGS())
+        .def("mdiActiveDocument", &PyApDocManager::mdiActiveDocument, DS.ARGS())
+        .def("isApplicationContext", &PyApDocManager::isApplicationContext, DS.ARGS())
+        .def("document", &PyApDocManager::document, DS.ARGS({ "db: PyDb.Database" }))
         .def("lockDocument", &PyApDocManager::lockDocument1)
         .def("lockDocument", &PyApDocManager::lockDocument2)
-        .def("lockDocument", &PyApDocManager::lockDocument3)
-        .def("unlockDocument", &PyApDocManager::unlockDocument)
-        .def("documents", &PyApDocManager::newAcApDocumentIterator)
-        .def("setDefaultFormatForSave", &PyApDocManager::setDefaultFormatForSave)
-        .def("defaultFormatForSave", &PyApDocManager::defaultFormatForSave)
+        .def("lockDocument", &PyApDocManager::lockDocument3, DS.ARGS({ "doc: PyAp.Document", "mode: PyAp.DocLockMode = kWrite","gcmd: str = None","lcmd: str = None","prmt: bool = True" }))
+        .def("unlockDocument", &PyApDocManager::unlockDocument, DS.ARGS({ "doc: PyAp.Document" }))
+        .def("documents", &PyApDocManager::newAcApDocumentIterator, DS.ARGS())
+        .def("setDefaultFormatForSave", &PyApDocManager::setDefaultFormatForSave, DS.ARGS({"fmt : PyAp.SaveFormat"}))
+        .def("defaultFormatForSave", &PyApDocManager::defaultFormatForSave, DS.ARGS())
         .def("setCurDocument", &PyApDocManager::setCurDocument1)
-        .def("setCurDocument", &PyApDocManager::setCurDocument2)
+        .def("setCurDocument", &PyApDocManager::setCurDocument2, DS.ARGS({ "doc: PyAp.Document", "mode: PyAp.DocLockMode = kNone","activate: bool = False" }))
         .def("activateDocument", &PyApDocManager::activateDocument1)
-        .def("activateDocument", &PyApDocManager::activateDocument2)
+        .def("activateDocument", &PyApDocManager::activateDocument2, DS.ARGS({ "doc: PyAp.Document","bPassScript: bool = False" }))
         .def("sendStringToExecute", &PyApDocManager::sendStringToExecute1)
         .def("sendStringToExecute", &PyApDocManager::sendStringToExecute2)
         .def("appContextNewDocument", &PyApDocManager::appContextNewDocument)
@@ -633,7 +634,7 @@ AcApDocManager* PyApDocManager::impObj(const std::source_location& src /*= std::
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcApDocManager*>(m_pyImp.get());
 }
 
