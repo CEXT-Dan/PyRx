@@ -44,5 +44,5 @@ CDocData::CDocData(const CDocData& data)
 CDocData::~CDocData()
 {
     PyAutoLockGIL lock;
-    m_dict = boost::python::object();
+    m_data = boost::python::object();
 }
