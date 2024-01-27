@@ -896,16 +896,8 @@ class DocManager:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def activateDocument (self, *args, **kwargs)-> None :
-      '''activateDocument( (DocManager)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void activateDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
-
-activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void activateDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},bool)'''
+    def activateDocument (self: DocManager,doc: PyAp.Document,bPassScript: bool = False)-> None :
+      '''                             '''
     ...
     def appContextCloseDocument (self, *args, **kwargs)-> None :
       '''appContextCloseDocument( (DocManager)arg1, (Document)arg2) -> None :
@@ -961,17 +953,11 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
       '''                             '''
     ...
-    def curDocument (self, *args, **kwargs)-> PyAp.Document :
-      '''curDocument( (DocManager)arg1) -> Document :
-
-    C++ signature :
-        class PyApDocument curDocument(class PyApDocManager {lvalue})'''
+    def curDocument (self: DocManager)-> PyAp.Document :
+      '''                             '''
     ...
-    def defaultFormatForSave (self, *args, **kwargs)-> PyAp.SaveFormat :
-      '''defaultFormatForSave( (DocManager)arg1) -> SaveFormat :
-
-    C++ signature :
-        enum AcApDocument::SaveFormat defaultFormatForSave(class PyApDocManager {lvalue})'''
+    def defaultFormatForSave (self: DocManager)-> PyAp.SaveFormat :
+      '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
       '''                             '''
@@ -985,11 +971,8 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     def dispose (self: RxObject)-> None :
       '''                             '''
     ...
-    def document (self, *args, **kwargs)-> PyAp.Document :
-      '''document( (DocManager)arg1, (Database)arg2) -> Document :
-
-    C++ signature :
-        class PyApDocument document(class PyApDocManager {lvalue},class PyDbDatabase)'''
+    def document (self: DocManager,db: PyDb.Database)-> PyAp.Document :
+      '''                             '''
     ...
     def documentCount (self, *args, **kwargs)-> int :
       '''documentCount( (DocManager)arg1) -> int :
@@ -997,11 +980,8 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     C++ signature :
         int documentCount(class PyApDocManager {lvalue})'''
     ...
-    def documents (self, *args, **kwargs)-> list :
-      '''documents( (DocManager)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list documents(class PyApDocManager {lvalue})'''
+    def documents (self: DocManager)-> list :
+      '''                             '''
     ...
     def enableDocumentActivation (self, *args, **kwargs)-> None :
       '''enableDocumentActivation( (DocManager)arg1) -> None :
@@ -1021,11 +1001,8 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isApplicationContext (self, *args, **kwargs)-> bool :
-      '''isApplicationContext( (DocManager)arg1) -> bool :
-
-    C++ signature :
-        bool isApplicationContext(class PyApDocManager {lvalue})'''
+    def isApplicationContext (self: DocManager)-> bool :
+      '''                             '''
     ...
     def isDocumentActivationEnabled (self, *args, **kwargs)-> bool :
       '''isDocumentActivationEnabled( (DocManager)arg1) -> bool :
@@ -1042,27 +1019,11 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     def keepAlive (self: RxObject,flag:bool)-> None :
       '''                             '''
     ...
-    def lockDocument (self, *args, **kwargs)-> None :
-      '''lockDocument( (DocManager)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
-
-lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3) -> None :
-
-    C++ signature :
-        void lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode)
-
-lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (str)arg5, (bool)arg6) -> None :
-
-    C++ signature :
-        void lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    def lockDocument (self: DocManager,doc: PyAp.Document,mode: PyAp.DocLockMode = kWrite,gcmd: str = None,lcmd: str = None,prmt: bool = True)-> None :
+      '''                             '''
     ...
-    def mdiActiveDocument (self, *args, **kwargs)-> PyAp.Document :
-      '''mdiActiveDocument( (DocManager)arg1) -> Document :
-
-    C++ signature :
-        class PyApDocument mdiActiveDocument(class PyApDocManager {lvalue})'''
+    def mdiActiveDocument (self: DocManager)-> PyAp.Document :
+      '''                             '''
     ...
     def newDocument (self, *args, **kwargs)-> None :
       '''newDocument( (DocManager)arg1) -> None :
@@ -1108,28 +1069,14 @@ sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3, (bool)arg4, (b
     C++ signature :
         void sendStringToExecute(class PyApDocManager {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,bool)'''
     ...
-    def setCurDocument (self, *args, **kwargs)-> None :
-      '''setCurDocument( (DocManager)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void setCurDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
-
-setCurDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (bool)arg4) -> None :
-
-    C++ signature :
-        void setCurDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,bool)'''
+    def setCurDocument (self: DocManager,doc: PyAp.Document,mode: PyAp.DocLockMode = kNone,activate: bool = False)-> None :
+      '''                             '''
     ...
-    def setDefaultFormatForSave (self, *args, **kwargs)-> None :
-      '''setDefaultFormatForSave( (DocManager)arg1, (SaveFormat)arg2) -> None :
-
-    C++ signature :
-        void setDefaultFormatForSave(class PyApDocManager {lvalue},enum AcApDocument::SaveFormat)'''
+    def setDefaultFormatForSave (self: DocManager,fmt : PyAp.SaveFormat)-> None :
+      '''                             '''
     ...
-    def unlockDocument (self, *args, **kwargs)-> None :
-      '''unlockDocument( (DocManager)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void unlockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
+    def unlockDocument (self: DocManager,doc: PyAp.Document)-> None :
+      '''                             '''
     ...
 
 class DocManagerReactor:
