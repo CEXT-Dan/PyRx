@@ -1881,7 +1881,7 @@
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.155"
+        "ProductVersion" = "8:1.1.156"
         "Manufacturer" = "8:Daniel Marcotte"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
