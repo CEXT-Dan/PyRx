@@ -627,7 +627,6 @@ static void executePyFunc(const boost::python::object& func, const boost::python
 {
     try
     { 
-        PyAutoLockGIL lock;
         if (PyCallable_Check(func.ptr()))
         {
             PyErr_Clear();
@@ -642,6 +641,7 @@ static void executePyFunc(const boost::python::object& func, const boost::python
 
 static void executeFunc(void* ptr)
 {
+    PyAutoLockGIL lock;
     if (PyApDocManager::mpData)
     {
         executePyFunc(PyApDocManager::mpData->first, PyApDocManager::mpData->second);
