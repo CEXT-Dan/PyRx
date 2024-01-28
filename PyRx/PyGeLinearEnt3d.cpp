@@ -8,11 +8,12 @@ using namespace boost::python;
 //PyGeLinearEnt3d
 void makePyGeLinearEnt3dWrapper()
 {
+    PyDocString DS("LinearEnt3d");
     class_<PyGeLinearEnt3d, bases<PyGeCurve3d>>("LinearEnt3d", boost::python::no_init)
         .def("intersectWith", &PyGeLinearEnt3d::intersectWith1)
         .def("intersectWith", &PyGeLinearEnt3d::intersectWith2)
         .def("intersectWith", &PyGeLinearEnt3d::intersectWith3)
-        .def("intersectWith", &PyGeLinearEnt3d::intersectWith4)
+        .def("intersectWith", &PyGeLinearEnt3d::intersectWith4,  DS.ARGS({ "other : PyGe.LinearEnt3d | PyGe.PlanarEnt", "tol : PyGe.Tol=default" }))
         .def("projIntersectWith", &PyGeLinearEnt3d::projIntersectWith1)
         .def("projIntersectWith", &PyGeLinearEnt3d::projIntersectWith2)
         .def("overlap", &PyGeLinearEnt3d::overlap1)

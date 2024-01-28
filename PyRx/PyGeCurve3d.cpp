@@ -20,69 +20,69 @@ void makePyGeCurve3dWrapper()
         .def("getEndPoint", &PyGeCurve3d::getEndPoint, DS.ARGS())
         .def("reverseParam", &PyGeCurve3d::reverseParam, DS.ARGS())
         .def("setInterval", &PyGeCurve3d::setInterval1)
-        .def("setInterval", &PyGeCurve3d::setInterval2)
+        .def("setInterval", &PyGeCurve3d::setInterval2, DS.ARGS({ "val : PyGe.Interval = None" }))
         .def("distanceTo", &PyGeCurve3d::distanceTo1)
         .def("distanceTo", &PyGeCurve3d::distanceTo2)
         .def("distanceTo", &PyGeCurve3d::distanceTo3)
-        .def("distanceTo", &PyGeCurve3d::distanceTo4)
+        .def("distanceTo", &PyGeCurve3d::distanceTo4, DS.ARGS({ "pt : float | PyGe.Point3d","tol : PyGe.Tol=default" }))
         .def("closestPointTo", &PyGeCurve3d::closestPointTo1)
         .def("closestPointTo", &PyGeCurve3d::closestPointTo2)
         .def("closestPointTo", &PyGeCurve3d::closestPointTo3)
-        .def("closestPointTo", &PyGeCurve3d::closestPointTo4)
+        .def("closestPointTo", &PyGeCurve3d::closestPointTo4, DS.ARGS({ "other : PyGe.Point3d | PyGe.Curve3d","tol : PyGe.Tol=default" }))
         .def("getClosestPointTo", &PyGeCurve3d::getClosestPointTo1)
-        .def("getClosestPointTo", &PyGeCurve3d::getClosestPointTo2)
+        .def("getClosestPointTo", &PyGeCurve3d::getClosestPointTo2, DS.ARGS({ "other : PyGe.Point3d","tol : PyGe.Tol=default" }))
         .def("getClosestPointsTo", &PyGeCurve3d::getClosestPointsTo1)
-        .def("getClosestPointsTo", &PyGeCurve3d::getClosestPointsTo2)
+        .def("getClosestPointsTo", &PyGeCurve3d::getClosestPointsTo2, DS.ARGS({ "other : PyGe.Curve3d","tol : PyGe.Tol=default" }))
         .def("projClosestPointTo", &PyGeCurve3d::projClosestPointTo1)
-        .def("projClosestPointTo", &PyGeCurve3d::projClosestPointTo2)
+        .def("projClosestPointTo", &PyGeCurve3d::projClosestPointTo2, DS.ARGS({ "pt : PyGe.Point3d","projDir : PyGe.Vector3d","tol : PyGe.Tol=default" }))
         .def("projClosestPointsTo", &PyGeCurve3d::projClosestPointsTo1)
-        .def("projClosestPointsTo", &PyGeCurve3d::projClosestPointsTo2)
+        .def("projClosestPointsTo", &PyGeCurve3d::projClosestPointsTo2, DS.ARGS({ "pt : PyGe.Curve3d","projDir : PyGe.Vector3d","tol : PyGe.Tol=default" }))
         .def("getProjClosestPointTo", &PyGeCurve3d::getProjClosestPointTo1)
-        .def("getProjClosestPointTo", &PyGeCurve3d::getProjClosestPointTo2)
+        .def("getProjClosestPointTo", &PyGeCurve3d::getProjClosestPointTo2, DS.ARGS({ "pt : PyGe.Point3d","projDir : PyGe.Vector3d","tol : PyGe.Tol=default" }))
         .def("getProjClosestPointsTo", &PyGeCurve3d::getProjClosestPointsTo1)
-        .def("getProjClosestPointsTo", &PyGeCurve3d::getProjClosestPointsTo2)
+        .def("getProjClosestPointsTo", &PyGeCurve3d::getProjClosestPointsTo2, DS.ARGS({ "pt : PyGe.Curve3d","projDir : PyGe.Vector3d","tol : PyGe.Tol=default" }))
         .def("getNormalPoint", &PyGeCurve3d::getNormalPoint1)
-        .def("getNormalPoint", &PyGeCurve3d::getNormalPoint2)
+        .def("getNormalPoint", &PyGeCurve3d::getNormalPoint2, DS.ARGS({ "pnt : PyGe.Point3d","tol : PyGe.Tol=default" }))
         .def("boundBlock", &PyGeCurve3d::boundBlock1)
-        .def("boundBlock", &PyGeCurve3d::boundBlock2)
+        .def("boundBlock", &PyGeCurve3d::boundBlock2, DS.ARGS({ "range : PyGe.Interval = None" }))
         .def("orthoBoundBlock", &PyGeCurve3d::orthoBoundBlock1)
-        .def("orthoBoundBlock", &PyGeCurve3d::orthoBoundBlock2)
+        .def("orthoBoundBlock", &PyGeCurve3d::orthoBoundBlock2, DS.ARGS({ "range : PyGe.Interval = None" }))
         .def("project", &PyGeCurve3d::project1)
-        .def("project", &PyGeCurve3d::project2)
+        .def("project", &PyGeCurve3d::project2, DS.ARGS({ "projectionPlane : PyGe.Plane","projDir : PyGe.Vector3d","tol : PyGe.Tol=default" }))
         .def("orthoProject", &PyGeCurve3d::orthoProject1)
-        .def("orthoProject", &PyGeCurve3d::orthoProject2)
+        .def("orthoProject", &PyGeCurve3d::orthoProject2, DS.ARGS({ "projectionPlane : PyGe.Plane","tol : PyGe.Tol=default" }))
         .def("isOn", &PyGeCurve3d::isOn1)
         .def("isOn", &PyGeCurve3d::isOn2)
         .def("isOn", &PyGeCurve3d::isOn3)
-        .def("isOn", &PyGeCurve3d::isOn4)
+        .def("isOn", &PyGeCurve3d::isOn4, DS.ARGS({ "pt : float | PyGe.Point3d","tol : PyGe.Tol=default" }))
         .def("paramOf", &PyGeCurve3d::paramOf1)
-        .def("paramOf", &PyGeCurve3d::paramOf2)
+        .def("paramOf", &PyGeCurve3d::paramOf2, DS.ARGS({ "pt : PyGe.Point3d","tol : PyGe.Tol=default" }))
         .def("getTrimmedOffset", &PyGeCurve3d::getTrimmedOffset1)
-        .def("getTrimmedOffset", &PyGeCurve3d::getTrimmedOffset2)
+        .def("getTrimmedOffset", &PyGeCurve3d::getTrimmedOffset2, DS.ARGS({ "dist : float", "planeNormal : PyGe.Vector3d","extensionType : PyGe.OffsetCrvExtType","tol : PyGe.Tol=default" }))
         .def("isClosed", &PyGeCurve3d::isClosed1)
-        .def("isClosed", &PyGeCurve3d::isClosed2)
+        .def("isClosed", &PyGeCurve3d::isClosed2, DS.ARGS({ "tol : PyGe.Tol=default" }))
         .def("isPlanar", &PyGeCurve3d::isPlanar1)
-        .def("isPlanar", &PyGeCurve3d::isPlanar2)
+        .def("isPlanar", &PyGeCurve3d::isPlanar2, DS.ARGS({ "tol : PyGe.Tol=default" }))
         .def("isLinear", &PyGeCurve3d::isLinear1)
-        .def("isLinear", &PyGeCurve3d::isLinear2)
+        .def("isLinear", &PyGeCurve3d::isLinear2, DS.ARGS({ "tol : PyGe.Tol=default" }))
         .def("isCoplanarWith", &PyGeCurve3d::isCoplanarWith1)
-        .def("isCoplanarWith", &PyGeCurve3d::isCoplanarWith2)
+        .def("isCoplanarWith", &PyGeCurve3d::isCoplanarWith2, DS.ARGS({ "curve : PyGe.Curve3d","tol : PyGe.Tol=default" }))
         .def("isPeriodic", &PyGeCurve3d::isPeriodic, DS.ARGS())
         .def("length", &PyGeCurve3d::length1)
-        .def("length", &PyGeCurve3d::length2)
+        .def("length", &PyGeCurve3d::length2, DS.ARGS({ "from : float", "to : float", "tol : float = default" }))
         .def("paramAtLength", &PyGeCurve3d::paramAtLength1)
-        .def("paramAtLength", &PyGeCurve3d::paramAtLength2)
+        .def("paramAtLength", &PyGeCurve3d::paramAtLength2, DS.ARGS({ "datumParam : float", "length : float","posParamDir : bool=True" "tol : float = default" }))
         .def("area", &PyGeCurve3d::area1)
-        .def("area", &PyGeCurve3d::area2)
+        .def("area", &PyGeCurve3d::area2, DS.ARGS({ "startParam : float", "endParam : float", "tol : float = default" }))
         .def("isDegenerate", &PyGeCurve3d::isDegenerate1)
-        .def("isDegenerate", &PyGeCurve3d::isDegenerate2)
+        .def("isDegenerate", &PyGeCurve3d::isDegenerate2, DS.ARGS({ "tol : PyGe.Tol=default" }))
         .def("getSplitCurves", &PyGeCurve3d::getSplitCurves, DS.ARGS({ "param : float" }))
         .def("explode", &PyGeCurve3d::explode1)
-        .def("explode", &PyGeCurve3d::explode2)
+        .def("explode", &PyGeCurve3d::explode2, DS.ARGS({ "val : PyGe.Interval = None" }))
         .def("hasStartPoint", &PyGeCurve3d::hasStartPoint, DS.ARGS())
         .def("hasEndPoint", &PyGeCurve3d::hasEndPoint, DS.ARGS())
         .def("evalPoint", &PyGeCurve3d::evalPoint1)
-        .def("evalPoint", &PyGeCurve3d::evalPoint2)
+        .def("evalPoint", &PyGeCurve3d::evalPoint2, DS.ARGS({ "param : float","numDeriv : int = 1" }))
         .def("getSamplePoints", &PyGeCurve3d::getSamplePoints1)
         .def("getSamplePoints", &PyGeCurve3d::getSamplePoints2)
         .def("cast", &PyGeCurve3d::cast, DS.SARGS({ "otherObject: PyGe.Curve3d" })).staticmethod("cast")
@@ -169,19 +169,19 @@ AcGePoint3d PyGeCurve3d::closestPointTo2(const AcGePoint3d& pnt, const AcGeTol& 
     return impObj()->closestPointTo(pnt, tol);
 }
 
-boost::python::tuple PyGeCurve3d::closestPointTo3(const PyGeCurve3d& curve2d) const
+boost::python::tuple PyGeCurve3d::closestPointTo3(const PyGeCurve3d& curve3d) const
 {
     PyAutoLockGIL lock;
     AcGePoint3d pntOnOtherCrv;
-    auto pnt = impObj()->closestPointTo(*curve2d.impObj(), pntOnOtherCrv);
+    auto pnt = impObj()->closestPointTo(*curve3d.impObj(), pntOnOtherCrv);
     return make_tuple(pnt, pntOnOtherCrv);
 }
 
-boost::python::tuple PyGeCurve3d::closestPointTo4(const PyGeCurve3d& curve2d, const AcGeTol& tol) const
+boost::python::tuple PyGeCurve3d::closestPointTo4(const PyGeCurve3d& curve3d, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     AcGePoint3d pntOnOtherCrv;
-    auto pnt = impObj()->closestPointTo(*curve2d.impObj(), pntOnOtherCrv, tol);
+    auto pnt = impObj()->closestPointTo(*curve3d.impObj(), pntOnOtherCrv, tol);
     return make_tuple(pnt, pntOnOtherCrv);
 }
 
@@ -624,7 +624,7 @@ AcGeCurve3d* PyGeCurve3d::impObj(const std::source_location& src /*= std::source
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeCurve3d*>(m_imp.get());
 }
 
@@ -946,7 +946,7 @@ AcGeCircArc3d* PyGeCircArc3d::impObj(const std::source_location& src /*= std::so
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeCircArc3d*>(m_imp.get());
 }
 
@@ -1048,7 +1048,7 @@ AcGeCompositeCurve3d* PyGeCompositeCurve3d::impObj(const std::source_location& s
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeCompositeCurve3d*>(m_imp.get());
 }
 
@@ -1344,7 +1344,7 @@ AcGeEllipArc3d* PyGeEllipArc3d::impObj(const std::source_location& src /*= std::
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeEllipArc3d*>(m_imp.get());
 }
 
@@ -1423,7 +1423,7 @@ PyGeOffsetCurve3d::PyGeOffsetCurve3d(AcGeEntity3d* pEnt)
 
 PyGeCurve3d PyGeOffsetCurve3d::curve() const
 {
-   return PyGeCurve3d(impObj()->curve());
+    return PyGeCurve3d(impObj()->curve());
 }
 
 AcGeVector3d PyGeOffsetCurve3d::normal() const
@@ -1484,6 +1484,6 @@ AcGeOffsetCurve3d* PyGeOffsetCurve3d::impObj(const std::source_location& src /*=
 {
     if (m_imp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcGeOffsetCurve3d*>(m_imp.get());
 }
