@@ -899,53 +899,29 @@ class DocManager:
     def activateDocument (self: DocManager,doc: PyAp.Document,bPassScript: bool = False)-> None :
       '''                             '''
     ...
-    def appContextCloseDocument (self, *args, **kwargs)-> None :
-      '''appContextCloseDocument( (DocManager)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void appContextCloseDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
+    def appContextCloseDocument (self: DocManager,doc: PyAp.Document)-> None :
+      '''                             '''
     ...
-    def appContextNewDocument (self, *args, **kwargs)-> None :
-      '''appContextNewDocument( (DocManager)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void appContextNewDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def appContextNewDocument (self: DocManager,templateName : str)-> None :
+      '''                             '''
     ...
-    def appContextOpenDocument (self, *args, **kwargs)-> None :
-      '''appContextOpenDocument( (DocManager)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void appContextOpenDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def appContextOpenDocument (self: DocManager,dwgName : str)-> None :
+      '''                             '''
     ...
-    def appContextPromptOpenDocument (self, *args, **kwargs)-> None :
-      '''appContextPromptOpenDocument( (DocManager)arg1) -> None :
-
-    C++ signature :
-        void appContextPromptOpenDocument(class PyApDocManager {lvalue})'''
+    def appContextPromptOpenDocument (self: DocManager)-> None :
+      '''                             '''
     ...
-    def appContextRecoverDocument (self, *args, **kwargs)-> None :
-      '''appContextRecoverDocument( (DocManager)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void appContextRecoverDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def appContextRecoverDocument (self: DocManager,dwgName : str)-> None :
+      '''                             '''
     ...
-    def autoLock (self, *args, **kwargs)-> PyAp.AutoDocLock :
-      '''autoLock() -> AutoDocLock :
-
-    C++ signature :
-        class PyAutoDocLock autoLock()'''
+    def autoLock ()-> PyAp.AutoDocLock :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def closeDocument (self, *args, **kwargs)-> None :
-      '''closeDocument( (DocManager)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void closeDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
+    def closeDocument (self: DocManager,doc: PyAp.Document)-> None :
+      '''                             '''
     ...
     def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
@@ -962,11 +938,8 @@ class DocManager:
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def disableDocumentActivation (self, *args, **kwargs)-> None :
-      '''disableDocumentActivation( (DocManager)arg1) -> None :
-
-    C++ signature :
-        void disableDocumentActivation(class PyApDocManager {lvalue})'''
+    def disableDocumentActivation (self: DocManager)-> None :
+      '''                             '''
     ...
     def dispose (self: RxObject)-> None :
       '''                             '''
@@ -974,29 +947,20 @@ class DocManager:
     def document (self: DocManager,db: PyDb.Database)-> PyAp.Document :
       '''                             '''
     ...
-    def documentCount (self, *args, **kwargs)-> int :
-      '''documentCount( (DocManager)arg1) -> int :
-
-    C++ signature :
-        int documentCount(class PyApDocManager {lvalue})'''
+    def documentCount (self: DocManager)-> int :
+      '''                             '''
     ...
     def documents (self: DocManager)-> list :
       '''                             '''
     ...
-    def enableDocumentActivation (self, *args, **kwargs)-> None :
-      '''enableDocumentActivation( (DocManager)arg1) -> None :
-
-    C++ signature :
-        void enableDocumentActivation(class PyApDocManager {lvalue})'''
+    def enableDocumentActivation (self: DocManager)-> None :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def inputPending (self, *args, **kwargs)-> int :
-      '''inputPending( (DocManager)arg1, (Document)arg2) -> int :
-
-    C++ signature :
-        int inputPending(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
+    def inputPending (self: DocManager,doc: PyAp.Document)-> int :
+      '''                             '''
     ...
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
@@ -1004,11 +968,8 @@ class DocManager:
     def isApplicationContext (self: DocManager)-> bool :
       '''                             '''
     ...
-    def isDocumentActivationEnabled (self, *args, **kwargs)-> bool :
-      '''isDocumentActivationEnabled( (DocManager)arg1) -> bool :
-
-    C++ signature :
-        bool isDocumentActivationEnabled(class PyApDocManager {lvalue})'''
+    def isDocumentActivationEnabled (self: DocManager)-> bool :
+      '''                             '''
     ...
     def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
       '''                             '''
@@ -1025,49 +986,26 @@ class DocManager:
     def mdiActiveDocument (self: DocManager)-> PyAp.Document :
       '''                             '''
     ...
-    def newDocument (self, *args, **kwargs)-> None :
-      '''newDocument( (DocManager)arg1) -> None :
-
-    C++ signature :
-        void newDocument(class PyApDocManager {lvalue})'''
+    def newDocument (self: DocManager)-> None :
+      '''                             '''
     ...
-    def openDocument (self, *args, **kwargs)-> None :
-      '''openDocument( (DocManager)arg1) -> None :
-
-    C++ signature :
-        void openDocument(class PyApDocManager {lvalue})'''
+    def openDocument (self: DocManager)-> None :
+      '''                             '''
     ...
-    def popResourceHandle (self, *args, **kwargs)-> None :
-      '''popResourceHandle( (DocManager)arg1) -> None :
-
-    C++ signature :
-        void popResourceHandle(class PyApDocManager {lvalue})'''
+    def popResourceHandle (self: DocManager)-> None :
+      '''                             '''
     ...
-    def pushAcadResourceHandle (self, *args, **kwargs)-> None :
-      '''pushAcadResourceHandle( (DocManager)arg1) -> None :
-
-    C++ signature :
-        void pushAcadResourceHandle(class PyApDocManager {lvalue})'''
+    def pushAcadResourceHandle (self: DocManager)-> None :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def sendModelessInterrupt (self, *args, **kwargs)-> None :
-      '''sendModelessInterrupt( (DocManager)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void sendModelessInterrupt(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
+    def sendModelessInterrupt (self: DocManager,doc: PyAp.Document)-> None :
+      '''                             '''
     ...
-    def sendStringToExecute (self, *args, **kwargs)-> None :
-      '''sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void sendStringToExecute(class PyApDocManager {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3, (bool)arg4, (bool)arg5, (bool)arg6) -> None :
-
-    C++ signature :
-        void sendStringToExecute(class PyApDocManager {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,bool)'''
+    def sendStringToExecute (self: DocManager,doc: PyAp.Document,script: str,bActivate: bool = True,bWrapUpInactiveDoc: bool = False,bEchoString: bool = True)-> None :
+      '''                             '''
     ...
     def setCurDocument (self: DocManager,doc: PyAp.Document,mode: PyAp.DocLockMode = kNone,activate: bool = False)-> None :
       '''                             '''
