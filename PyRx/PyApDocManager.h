@@ -141,6 +141,10 @@ public:
     void                popResourceHandle();
     void                sendModelessInterrupt(PyApDocument& pAcTargetDocument);
 
+    //virtual void      executeInApplicationContext(void (*procAddr)(void*), void* pData) const = 0;
+    //Acad::ErrorStatus beginExecuteInCommandContext(void (*procAddr)(void*), void* pData);
+    //Acad::ErrorStatus beginExecuteInApplicationContext(void(*procAddr)(void*), void* pData);
+
     static PyAutoDocLock autoLock();
     static std::string  className();
 

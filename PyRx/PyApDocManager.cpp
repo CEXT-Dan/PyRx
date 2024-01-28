@@ -642,8 +642,9 @@ AcApDocManager* PyApDocManager::impObj(const std::source_location& src /*= std::
 //PyAutoDocLock
 void makePyAutoDocLockWrapper()
 {
+    PyDocString DS("AutoDocLock");
     class_<PyAutoDocLock>("AutoDocLock")
-        .def("className", &PyAutoDocLock::className).staticmethod("className")
+        .def("className", &PyAutoDocLock::className, DS.SARGS()).staticmethod("className")
         ;
 }
 
