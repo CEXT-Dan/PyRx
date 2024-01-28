@@ -400,7 +400,7 @@ void makePyApDocManagerWrapper()
         .def("lockDocument", &PyApDocManager::lockDocument3, DS.ARGS({ "doc: PyAp.Document", "mode: PyAp.DocLockMode = kWrite","gcmd: str = None","lcmd: str = None","prmt: bool = True" }))
         .def("unlockDocument", &PyApDocManager::unlockDocument, DS.ARGS({ "doc: PyAp.Document" }))
         .def("documents", &PyApDocManager::newAcApDocumentIterator, DS.ARGS())
-        .def("setDefaultFormatForSave", &PyApDocManager::setDefaultFormatForSave, DS.ARGS({"fmt : PyAp.SaveFormat"}))
+        .def("setDefaultFormatForSave", &PyApDocManager::setDefaultFormatForSave, DS.ARGS({ "fmt : PyAp.SaveFormat" }))
         .def("defaultFormatForSave", &PyApDocManager::defaultFormatForSave, DS.ARGS())
         .def("setCurDocument", &PyApDocManager::setCurDocument1)
         .def("setCurDocument", &PyApDocManager::setCurDocument2, DS.ARGS({ "doc: PyAp.Document", "mode: PyAp.DocLockMode = kNone","activate: bool = False" }))
@@ -626,7 +626,7 @@ void PyApDocManager::sendModelessInterrupt(PyApDocument& pAcTargetDocument)
 static void executePyFunc(const boost::python::object& func, const boost::python::object& data)
 {
     try
-    { 
+    {
         if (PyCallable_Check(func.ptr()))
         {
             PyErr_Clear();
@@ -651,12 +651,8 @@ static void executeFunc(void* ptr)
 
 void PyApDocManager::executeInApplicationContext(const boost::python::object& func, const boost::python::object& data)
 {
-#if defined(_BRXTARGET) && _BRXTARGET <= 240
-    throw PyNotimplementedByHost();
-#else
     mpData.reset(new ExecData{ func, data });
-    return impObj()->executeInApplicationContext(executeFunc,nullptr);
-    #endif
+    return impObj()->executeInApplicationContext(executeFunc, nullptr);
 }
 
 Acad::ErrorStatus PyApDocManager::beginExecuteInCommandContext(const boost::python::object& func, const boost::python::object& data)
