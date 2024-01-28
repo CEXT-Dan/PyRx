@@ -174,11 +174,8 @@ class AutoDocLock:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
 
 class CmdFlags:
