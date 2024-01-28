@@ -141,12 +141,15 @@ public:
     void                popResourceHandle();
     void                sendModelessInterrupt(PyApDocument& pAcTargetDocument);
 
-    //virtual void      executeInApplicationContext(void (*procAddr)(void*), void* pData) const = 0;
-    //Acad::ErrorStatus beginExecuteInCommandContext(void (*procAddr)(void*), void* pData);
-    //Acad::ErrorStatus beginExecuteInApplicationContext(void(*procAddr)(void*), void* pData);
+    void                executeInApplicationContext(const boost::python::object& func, const boost::python::object& data);
+    Acad::ErrorStatus   beginExecuteInCommandContext(const boost::python::object& func, const boost::python::object& data);
+    Acad::ErrorStatus   beginExecuteInApplicationContext(const boost::python::object& func, const boost::python::object& data);
 
     static PyAutoDocLock autoLock();
     static std::string  className();
+
+    using ExecData = std::pair<const boost::python::object, const boost::python::object>;
+    inline static std::unique_ptr<ExecData> mpData;
 
 public:
     AcApDocManager* impObj(const std::source_location& src = std::source_location::current()) const;
