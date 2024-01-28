@@ -27,8 +27,8 @@ public:
     double                  distanceTo4(const PyGeCurve3d&, const AcGeTol& tol) const;
     AcGePoint3d             closestPointTo1(const AcGePoint3d& pnt) const;
     AcGePoint3d             closestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
-    boost::python::tuple    closestPointTo3(const PyGeCurve3d& curve2d) const;
-    boost::python::tuple    closestPointTo4(const PyGeCurve3d& curve2d, const AcGeTol& tol) const;
+    boost::python::tuple    closestPointTo3(const PyGeCurve3d& curve3d) const;
+    boost::python::tuple    closestPointTo4(const PyGeCurve3d& curve3d, const AcGeTol& tol) const;
     PyGePointOnCurve3d      getClosestPointTo1(const AcGePoint3d& pnt);
     PyGePointOnCurve3d      getClosestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol);
     boost::python::tuple    getClosestPointsTo1(const PyGeCurve3d& curve);
