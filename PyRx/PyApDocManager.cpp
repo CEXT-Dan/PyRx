@@ -424,6 +424,9 @@ void makePyApDocManagerWrapper()
         .def("pushAcadResourceHandle", &PyApDocManager::pushAcadResourceHandle, DS.ARGS())
         .def("popResourceHandle", &PyApDocManager::popResourceHandle, DS.ARGS())
         .def("sendModelessInterrupt", &PyApDocManager::sendModelessInterrupt, DS.ARGS({ "doc: PyAp.Document" }))
+        .def("executeInApplicationContext", &PyApDocManager::executeInApplicationContext, DS.ARGS({ "func: Any","data: Any" }))
+        .def("beginExecuteInCommandContext", &PyApDocManager::beginExecuteInCommandContext, DS.ARGS({ "func: Any","data: Any" }))
+        .def("beginExecuteInApplicationContext", &PyApDocManager::beginExecuteInApplicationContext, DS.ARGS({ "func: Any","data: Any" }))
         .def("autoLock", &PyApDocManager::autoLock, DS.SARGS()).staticmethod("autoLock")
         .def("className", &PyApDocManager::className, DS.SARGS()).staticmethod("className")
         ;
@@ -618,6 +621,62 @@ void PyApDocManager::popResourceHandle()
 void PyApDocManager::sendModelessInterrupt(PyApDocument& pAcTargetDocument)
 {
     return PyThrowBadEs(impObj()->sendModelessInterrupt(pAcTargetDocument.impObj()));
+}
+
+static void executePyFunc(const boost::python::object& func, const boost::python::object& data)
+{
+    try
+    { 
+        PyAutoLockGIL lock;
+        if (PyCallable_Check(func.ptr()))
+        {
+            PyErr_Clear();
+            boost::python::call<void>(func.ptr(), data);
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nexecuteFunc failed"));
+    }
+}
+
+static void executeFunc(void* ptr)
+{
+    if (PyApDocManager::mpData)
+    {
+        executePyFunc(PyApDocManager::mpData->first, PyApDocManager::mpData->second);
+        PyApDocManager::mpData.reset();
+    }
+}
+
+void PyApDocManager::executeInApplicationContext(const boost::python::object& func, const boost::python::object& data)
+{
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    mpData.reset(new ExecData{ func, data });
+    return impObj()->executeInApplicationContext(executeFunc,nullptr);
+    #endif
+}
+
+Acad::ErrorStatus PyApDocManager::beginExecuteInCommandContext(const boost::python::object& func, const boost::python::object& data)
+{
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    mpData.reset(new ExecData{ func, data });
+    return impObj()->beginExecuteInCommandContext(executeFunc, mpData.get());
+#endif
+}
+
+Acad::ErrorStatus PyApDocManager::beginExecuteInApplicationContext(const boost::python::object& func, const boost::python::object& data)
+{
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
+    mpData.reset(new ExecData{ func, data });
+    return impObj()->beginExecuteInApplicationContext(executeFunc, mpData.get());
+#endif
 }
 
 PyAutoDocLock PyApDocManager::autoLock()
