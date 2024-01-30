@@ -109,7 +109,12 @@ std::string PyApApplication::hostAPIVER()
 void PyApApplication::registerOnIdleWinMsg(const boost::python::object& obj)
 {
     PyAutoLockGIL lock;
-    onidleFuncs[obj.ptr()] = obj;
+    if (PyCallable_Check(obj.ptr()))
+    {
+        onidleFuncs[obj.ptr()] = obj;
+        return;
+    }
+    acutPrintf(_T("parameter must be callable:"));
 }
 
 void PyApApplication::removeOnIdleWinMsg(const boost::python::object& obj)
@@ -122,12 +127,9 @@ static bool executePyOnIdleFunc(const boost::python::object& func)
 {
     try
     {
-        if (PyCallable_Check(func.ptr()))
-        {
-            PyErr_Clear();
-            boost::python::call<void>(func.ptr());
-            return true;
-        }
+        PyErr_Clear();
+        boost::python::call<void>(func.ptr());
+        return true;
     }
     catch (...)
     {
