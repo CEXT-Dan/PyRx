@@ -20,6 +20,8 @@ void makePyApApplictionWrapper()
         .def("wxApp", &PyApApplication::getwxApp, DS.SARGS()).staticmethod("wxApp")
         .def("hostAPI", &PyApApplication::hostAPI, DS.SARGS()).staticmethod("hostAPI")
         .def("hostAPIVER", &PyApApplication::hostAPIVER, DS.SARGS()).staticmethod("hostAPIVER")
+        .def("registerOnIdleWinMsg", &PyApApplication::registerOnIdleWinMsg, DS.ARGS({ "func: Any" })).staticmethod("registerOnIdleWinMsg")
+        .def("removeOnIdleWinMsg", &PyApApplication::removeOnIdleWinMsg, DS.ARGS({ "func: Any" })).staticmethod("removeOnIdleWinMsg")
         .def("className", &PyApApplication::className, DS.SARGS()).staticmethod("className")
         ;
 }
@@ -102,6 +104,49 @@ std::string PyApApplication::hostAPI()
 std::string PyApApplication::hostAPIVER()
 {
     return std::format("{}{}", wstr_to_utf8(getappname()), acdbHostApplicationServices()->releaseMajorVersion());
+}
+
+void PyApApplication::registerOnIdleWinMsg(const boost::python::object& obj)
+{
+    PyAutoLockGIL lock;
+    onidleFuncs[obj.ptr()] = obj;
+}
+
+void PyApApplication::removeOnIdleWinMsg(const boost::python::object& obj)
+{
+    PyAutoLockGIL lock;
+    onidleFuncs.erase(obj.ptr());
+}
+
+static bool executePyOnIdleFunc(const boost::python::object& func)
+{
+    try
+    {
+        if (PyCallable_Check(func.ptr()))
+        {
+            PyErr_Clear();
+            boost::python::call<void>(func.ptr());
+            return true;
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nException in %ls:"), __FUNCTIONW__);
+    }
+    return false;
+}
+
+void PyApApplication::PyOnIdleMsgFn()
+{
+    PyAutoLockGIL lock;
+    for (const auto& func : onidleFuncs)
+    {
+        if (!executePyOnIdleFunc(func.second))
+        {
+            onidleFuncs.erase(func.first);
+            return;
+        }
+    }
 }
 
 //-----------------------------------------------------------------------------------------

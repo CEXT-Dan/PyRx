@@ -30,6 +30,8 @@
 #include "rxvar.h"
 #include "PyRxModule.h"
 
+#include "PyApApplication.h"
+
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
@@ -54,11 +56,7 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acdbModelerStart();
-#if _GRXTARGET240
-        acedRegisterOnIdleWinMsg(GRXOnIdleMsgFnOnce);
-#else
-        acedRegisterOnIdleWinMsg(AcedOnIdleMsgFnOnce);
-#endif
+        acedRegisterOnIdleWinMsg(PyRxOnIdleMsgFn);
         acrxLockApplication(pkt);
         PyRxApp::instance().appPkt = pkt;
         return (retCode);
@@ -135,16 +133,7 @@ public:
     {
     }
 
-    //wxPython barfs if it's loaded while the open file dialog is open
-    static void AcedOnIdleMsgFnOnce()
-    {
-        PRINTVER();
-        if (!PyRxApp::instance().init())
-            acutPrintf(_T("\nPyInit Failed"));
-        acedRemoveOnIdleWinMsg(AcedOnIdleMsgFnOnce);
-    }
-
-    static void GRXOnIdleMsgFnOnce()
+    static void PyRxOnIdleMsgFn()
     {
         static bool doneOnce = false;
         if (!doneOnce)
@@ -154,6 +143,7 @@ public:
                 acutPrintf(_T("\nPyInit Failed"));
             doneOnce = true;
         }
+        PyApApplication::PyOnIdleMsgFn();
     }
 
     static AcString GETVER()
