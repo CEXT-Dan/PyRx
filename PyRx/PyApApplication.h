@@ -20,6 +20,12 @@ public:
     static PyObject* getwxApp();
     static std::string hostAPI();
     static std::string hostAPIVER();
+    static void registerOnIdleWinMsg(const boost::python::object& obj);
+    static void removeOnIdleWinMsg(const boost::python::object& obj);
+    static void PyOnIdleMsgFn();
+
+public:
+    inline static std::map<PyObject*, boost::python::object> onidleFuncs;
 };
 
 //-----------------------------------------------------------------------------------------

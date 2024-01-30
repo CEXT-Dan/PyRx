@@ -631,12 +631,13 @@ static void executePyFunc(const boost::python::object& func, const boost::python
         {
             PyErr_Clear();
             boost::python::call<void>(func.ptr(), data);
+            return;
         }
     }
     catch (...)
     {
-        acutPrintf(_T("\nexecuteFunc failed"));
     }
+    acutPrintf(_T("\nexecuteFunc failed"));
 }
 
 static void executeFunc(void* ptr)
