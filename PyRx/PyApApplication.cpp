@@ -128,8 +128,11 @@ static bool executePyOnIdleFunc(const boost::python::object& func)
     try
     {
         PyErr_Clear();
-        boost::python::call<void>(func.ptr());
-        return true;
+        if (func.ptr() != nullptr)
+        {
+            boost::python::call<void>(func.ptr());
+            return true;
+        }
     }
     catch (...)
     {
