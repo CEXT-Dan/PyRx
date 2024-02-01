@@ -22,7 +22,8 @@ class TestDatabase(unittest.TestCase):
 
     def test_dbcore_entmake(self):
         flag = Db.Core.entMake(
-            [(0, "LINE"), (10, Ge.Point3d(0, 0, 0)), (11, Ge.Point3d(100, 100, 0))])
+            [(0, "LINE"), (10, Ge.Point3d(0, 0, 0)), (11, Ge.Point3d(100, 100, 0))]
+        )
 
         self.assertEqual(flag, True)
         lastid = Db.Core.entLast()
@@ -68,19 +69,16 @@ class TestDatabase(unittest.TestCase):
         db.setAngbase(angbase)
         self.assertEqual(db.angbase(), angbase)
         self.assertEqual(
-            db.byBlockLinetype().objectClass().name(), "AcDbLinetypeTableRecord")
+            db.byBlockLinetype().objectClass().name(), "AcDbLinetypeTableRecord"
+        )
+        self.assertEqual(db.byBlockMaterial().objectClass().name(), "AcDbMaterial")
         self.assertEqual(
-            db.byBlockMaterial().objectClass().name(), "AcDbMaterial")
-        self.assertEqual(
-            db.byLayerLinetype().objectClass().name(), "AcDbLinetypeTableRecord")
-        self.assertEqual(
-            db.byLayerMaterial().objectClass().name(), "AcDbMaterial")
-        self.assertEqual(
-            db.clayer().objectClass().name(), "AcDbLayerTableRecord")
-        self.assertEqual(
-            db.cmlstyleID().objectClass().name(), "AcDbMlineStyle")
-        self.assertEqual(
-            db.colorDictionaryId().objectClass().name(), "AcDbDictionary")
+            db.byLayerLinetype().objectClass().name(), "AcDbLinetypeTableRecord"
+        )
+        self.assertEqual(db.byLayerMaterial().objectClass().name(), "AcDbMaterial")
+        self.assertEqual(db.clayer().objectClass().name(), "AcDbLayerTableRecord")
+        self.assertEqual(db.cmlstyleID().objectClass().name(), "AcDbMlineStyle")
+        self.assertEqual(db.colorDictionaryId().objectClass().name(), "AcDbDictionary")
 
     def test_SymUtilServices(self):
         db = Db.HostApplicationServices().workingDatabase()
@@ -163,7 +161,7 @@ class TestDatabase(unittest.TestCase):
         line = Db.Line(objId)
         self.assertEqual(line.isKindOf(Db.Line.desc()), True)
         self.assertEqual(line.layer(), "1_1_WALLS")
-        
+
     def test_dbpolylineforread(self):
         objHnd = Db.Handle("201ee")
         objId = self.db06457.getObjectId(False, objHnd)
@@ -173,8 +171,8 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(pline.isKindOf(Db.Polyline.desc()), True)
         self.assertEqual(pline.layer(), "1_CRP_WALLS")
         self.assertEqual(pline.numVerts(), 5)
-        self.assertAlmostEqual(pline.getArea(),7222764.7277,4)
-        
+        self.assertAlmostEqual(pline.getArea(), 7222764.7277, 4)
+
     def test_dbsplineforread(self):
         objHnd = Db.Handle("2c62a1")
         objId = self.db06457.getObjectId(False, objHnd)
@@ -183,11 +181,23 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(spline.isKindOf(Db.Curve.desc()), True)
         self.assertEqual(spline.isKindOf(Db.Spline.desc()), True)
         self.assertEqual(spline.numFitPoints(), 3)
+
+    def test_addToModelspaced(self):
+        db = self.db06457
+        line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
+        id = db.addToModelspace(line)
+        self.assertTrue(id.isValid())
         
+    def test_addToBlock(self):
+        db = self.db06457
+        line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
+        id = db.addToBlock(db.modelSpaceId(), line)
+        self.assertTrue(id.isValid())
+
 def PyRxCmd_pydbtest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDatabase)
-        print('TestDatabase')
+        print("TestDatabase")
         print(unittest.TextTestRunner(verbosity=0).run(suite))
     except Exception as err:
         print(err)
