@@ -529,11 +529,11 @@ PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb, bool autoDelete)
 
 PyDbObjectId PyDbDatabase::addToBlock1(const PyDbObjectId& id, PyDbEntity& ent)
 {
-    PyDbObjectId outid;
     AcDbBlockTableRecordPointer btr(id.m_id, AcDb::kForWrite);
     PyThrowBadEs(btr.openStatus());
+    PyDbObjectId outid;
     PyThrowBadEs(btr->appendAcDbEntity(outid.m_id, ent.impObj()));
-    return id;
+    return outid;
 }
 
 boost::python::list PyDbDatabase::addToBlock2(const PyDbObjectId& id, const boost::python::list& ents)

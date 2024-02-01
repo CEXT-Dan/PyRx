@@ -187,12 +187,14 @@ class TestDatabase(unittest.TestCase):
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         id = db.addToModelspace(line)
         self.assertTrue(id.isValid())
+        self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
         
     def test_addToBlock(self):
         db = self.db06457
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         id = db.addToBlock(db.modelSpaceId(), line)
         self.assertTrue(id.isValid())
+        self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
 
 def PyRxCmd_pydbtest():
     try:
