@@ -11312,6 +11312,12 @@ class Database:
     def addReactor (self: Database,reactor : PyDb.DatabaseReactor)-> None :
       '''                             '''
     ...
+    def addToBlock (self: Database,btrid : PyDb.ObjectId,entity : PyDb.Entity | list[PyDb.Entity])-> PyDb.ObjectId :
+      '''                             '''
+    ...
+    def addToModelspace (self: Database,entity : PyDb.Entity | list[PyDb.Entity])-> PyDb.ObjectId :
+      '''                             '''
+    ...
     def angbase (self: Database)-> float :
       '''                             '''
     ...
@@ -11916,7 +11922,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def readDwgFile (self: Database,fileName:str,mode:int=kForReadAndReadShare,bAllowCPConversion:bool=False,password:str=empty)-> None :
       '''                             '''
     ...
-    def reclaimMemoryFromErasedObjects (self: Database,ids : list[ObjectId])-> None :
+    def reclaimMemoryFromErasedObjects (self: Database,ids : list[PyDb.ObjectId])-> None :
       '''                             '''
     ...
     def regAppTableId (self: Database)-> PyDb.ObjectId :
