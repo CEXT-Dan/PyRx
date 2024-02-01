@@ -2,6 +2,7 @@
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
 #include "PyDbObject.h"
+#include "PyDbEntity.h"
 #include "PyDbTransactionManager.h"
 #include "PyDbObjectContext.h"
 #include "PyDbSymbolTableRecord.h"
@@ -17,6 +18,10 @@ void makePyDbDatabaseWrapper()
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())
         .def(init<bool, bool>(DS.ARGS({ "buildDefaultDrawing : bool=True", "noDocument: bool=False" })))
+        .def("addToBlock", &PyDbDatabase::addToBlock1)
+        .def("addToBlock", &PyDbDatabase::addToBlock2, DS.ARGS({ "btrid : PyDb.ObjectId", "entity : PyDb.Entity | list[PyDb.Entity]" }))
+        .def("addToModelspace", &PyDbDatabase::addToModelspace1)
+        .def("addToModelspace", &PyDbDatabase::addToModelspace2, DS.ARGS({ "entity : PyDb.Entity | list[PyDb.Entity]" }))
         .def("addObject", &PyDbDatabase::addAcDbObject, DS.ARGS({ "object : PyDb.DbObject" }))
         .def("addReactor", &PyDbDatabase::addReactor, DS.ARGS({ "reactor : PyDb.DatabaseReactor" }))
         .def("angbase", &PyDbDatabase::angbase, DS.ARGS())
@@ -206,7 +211,7 @@ void makePyDbDatabaseWrapper()
         .def("pucsxdir", &PyDbDatabase::pucsxdir, DS.ARGS())
         .def("pucsydir", &PyDbDatabase::pucsydir, DS.ARGS())
         .def("qtextmode", &PyDbDatabase::qtextmode, DS.ARGS())
-        .def("reclaimMemoryFromErasedObjects", &PyDbDatabase::reclaimMemoryFromErasedObjects, DS.ARGS({ "ids : list[ObjectId]" }))
+        .def("reclaimMemoryFromErasedObjects", &PyDbDatabase::reclaimMemoryFromErasedObjects, DS.ARGS({ "ids : list[PyDb.ObjectId]" }))
         .def("regAppTableId", &PyDbDatabase::regAppTableId, DS.ARGS())
         .def("regenmode", &PyDbDatabase::regenmode, DS.ARGS())
         .def("registerApp", &PyDbDatabase::registerApp, DS.ARGS({ "appName : str" }))
@@ -473,11 +478,11 @@ void makePyDbDatabaseWrapper()
         .def("wblock", &PyDbDatabase::wblock2)
         .def("wblock", &PyDbDatabase::wblock3)
         .def("wblock", &PyDbDatabase::wblock4)
-        .def("abortDeepClone", &PyDbDatabase::abortDeepClone,DS.ARGS({ "idmap:PyDb.IdMapping" }))
+        .def("abortDeepClone", &PyDbDatabase::abortDeepClone, DS.ARGS({ "idmap:PyDb.IdMapping" }))
 
         .def("deepCloneObjects", &PyDbDatabase::deepCloneObjects1)
         .def("deepCloneObjects", &PyDbDatabase::deepCloneObjects2,
-                DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap:PyDb.IdMapping","deferXlation:bool=False" }))
+            DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap:PyDb.IdMapping","deferXlation:bool=False" }))
 
         .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects1)
         .def("wblockCloneObjects", &PyDbDatabase::wblockCloneObjects2,
@@ -520,6 +525,44 @@ PyDbDatabase::PyDbDatabase(bool buildDefaultDrawing, bool noDocument)
 PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb, bool autoDelete)
     : PyRxObject(_pDb, autoDelete, false)
 {
+}
+
+PyDbObjectId PyDbDatabase::addToBlock1(const PyDbObjectId& id, PyDbEntity& ent)
+{
+    PyDbObjectId outid;
+    AcDbBlockTableRecordPointer btr(id.m_id, AcDb::kForWrite);
+    PyThrowBadEs(btr.openStatus());
+    PyThrowBadEs(btr->appendAcDbEntity(outid.m_id, ent.impObj()));
+    return id;
+}
+
+boost::python::list PyDbDatabase::addToBlock2(const PyDbObjectId& id, const boost::python::list& ents)
+{
+    PyAutoLockGIL lock;
+    boost::python::list ids;
+    auto vec = std::vector<PyDbEntity>(boost::python::stl_input_iterator<PyDbEntity>(ents),
+        boost::python::stl_input_iterator<PyDbEntity>());
+
+    AcDbBlockTableRecordPointer btr(id.m_id, AcDb::kForWrite);
+    PyThrowBadEs(btr.openStatus());
+
+    for (const auto& ent : vec)
+    {
+        PyDbObjectId outid;
+        PyThrowBadEs(btr->appendAcDbEntity(outid.m_id, ent.impObj()));
+        ids.append(outid);
+    }
+    return ids;
+}
+
+PyDbObjectId PyDbDatabase::addToModelspace1(PyDbEntity& ent)
+{
+    return addToBlock1(PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj())), ent);
+}
+
+boost::python::list PyDbDatabase::addToModelspace2(const boost::python::list& ents)
+{
+    return addToBlock2(PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj())), ents);
 }
 
 PyDbObjectId PyDbDatabase::addAcDbObject(PyDbObject& obj)
@@ -2094,7 +2137,7 @@ void PyDbDatabase::setGeoMarkerVisibility(bool value)
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
 #else
-    return PyThrowBadEs(impObj()->setGeoMarkerVisibility(value)); 
+    return PyThrowBadEs(impObj()->setGeoMarkerVisibility(value));
 #endif
 }
 
@@ -3332,7 +3375,7 @@ AcDbDatabase* PyDbDatabase::impObj(const std::source_location& src /*= std::sour
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbDatabase*>(m_pyImp.get());
 }
 
