@@ -195,7 +195,14 @@ class TestDatabase(unittest.TestCase):
         id = db.addToBlock(db.modelSpaceId(), line)
         self.assertTrue(id.isValid())
         self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
-
+        
+    def test_inrecord(self):
+        db = self.db06457
+        lt = Db.LayerTable(db.layerTableId())
+        self.assertTrue('0' in lt)
+        self.assertTrue(db.layerZero() in lt)
+        self.assertEqual(db.layerZero(),lt['0'])
+        
 def PyRxCmd_pydbtest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDatabase)
