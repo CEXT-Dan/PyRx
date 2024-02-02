@@ -54,7 +54,7 @@ void PyRxModule::callPyFunction()
     acutPrintf(_T("\npyfunc failed: "));
 }
 
-void PyRxModule::regCommand(const AcString& moduleName,const AcString& name, int context)
+void PyRxModule::regCommand(const AcString& moduleName, const AcString& name, int context)
 {
     acedRegCmds->addCommand(moduleName, name, name, context, callPyFunction);
 }
