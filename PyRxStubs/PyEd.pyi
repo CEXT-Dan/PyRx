@@ -1701,7 +1701,7 @@ class Editor:
     def duplicateSelectionsAllowed (doc: PyAp.Document)-> bool :
       '''                             '''
     ...
-    def entSel (prompt: str,desc: PyRx.RxClass=AcDbEntity)-> tuple :
+    def entSel (prompt: str,desc: PyRx.RxClass=Entity)-> tuple :
       '''                             '''
     ...
     def getAngle (basePt: PyGe.Point3d,prompt: str)-> tuple :
