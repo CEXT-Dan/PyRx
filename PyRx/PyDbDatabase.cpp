@@ -489,7 +489,7 @@ void makePyDbDatabaseWrapper()
             DS.ARGS({ "ids:list[PyDb.ObjectId]","owner:PyDb.ObjectId","idmap:PyDb.IdMapping","drc:DuplicateRecordCloning","deferXlation:bool=False" }))
 
         .def("getFilename", &PyDbDatabase::getFilename, DS.ARGS())
-        .def("readDwgFile", &PyDbDatabase::readDwgFile)
+        .def("readDwgFile", &PyDbDatabase::readDwgFile1)
         .def("readDwgFile", &PyDbDatabase::readDwgFile2,
             DS.ARGS({ "fileName:str", "mode:int=kForReadAndReadShare", "bAllowCPConversion:bool=False","password:str=empty" }))
 
@@ -2096,7 +2096,7 @@ void PyDbDatabase::setFullSaveRequired()
 #endif
 }
 
-void PyDbDatabase::readDwgFile(const char* fileName)
+void PyDbDatabase::readDwgFile1(const char* fileName)
 {
     std::wstring wsfileName{ utf8_to_wstr(fileName) };
     return PyThrowBadEs(impObj()->readDwgFile(wsfileName.c_str()));

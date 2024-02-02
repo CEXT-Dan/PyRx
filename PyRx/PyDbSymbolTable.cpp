@@ -24,6 +24,8 @@ void makePyDbSymbolTableWrapper()
         .def("className", &PyDbSymbolTable::className).staticmethod("className")
         .def("cloneFrom", &PyDbSymbolTable::cloneFrom).staticmethod("cloneFrom")
         .def("__getitem__", &PyDbSymbolTable::getAt)
+        .def("__contains__", &PyDbSymbolTable::has1)
+        .def("__contains__", &PyDbSymbolTable::has2)
         ;
 }
 
