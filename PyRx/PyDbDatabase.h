@@ -285,7 +285,7 @@ public:
     void	            saveAs(const std::string& fileName);  //TODO: enum
     void	            setFingerprintGuid(const std::string& newGuid);
     void				setFullSaveRequired();
-    void	            readDwgFile(const char* fileName);
+    void	            readDwgFile1(const char* fileName);
     void	            readDwgFile2(const char* fileName, int mode, bool bAllowCPConversion, const std::string& password);
     std::string			getFilename();
     PyDbObjectId		currentSpaceId() const;

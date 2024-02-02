@@ -28,6 +28,9 @@ void makePyDbDictionaryWrapper()
         .def("desc", &PyDbDictionary::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbDictionary::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
         .def("cast", &PyDbDictionary::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def("__getitem__", &PyDbDictionary::getAt)
+        .def("__contains__", &PyDbDictionary::has1)
+        .def("__contains__", &PyDbDictionary::has2)
         ;
 }
 
