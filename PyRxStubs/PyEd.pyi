@@ -601,6 +601,9 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     def graphScr ()-> None :
       '''                             '''
     ...
+    def hatchPalletteDialog (pattern:str,custom : bool)-> str :
+      '''                             '''
+    ...
     def initDialog (self, *args, **kwargs)-> bool :
       '''initDialog( (bool)arg1) -> bool :
 
