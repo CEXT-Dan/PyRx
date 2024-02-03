@@ -93,6 +93,7 @@ public:
     static int                  grDraw2(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
     static AcGePoint3d          getMousePositionUCS();
     static AcGePoint3d          getMousePositionWCS();
+    static std::string          hatchPalletteDialog(const std::string& pattern, bool showCustom);
     static boost::python::list  invoke(const boost::python::list& args);
     static Adesk::Boolean       initDialog(Adesk::Boolean useDialog);
     static int                  isDragging();

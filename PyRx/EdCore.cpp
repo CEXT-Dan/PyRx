@@ -23,14 +23,17 @@ void                            ads_regen(void);
 
 #ifdef ZRXAPP
 int                             zcedEvaluateLisp(ACHAR const* str, resbuf*& result);
+extern Adesk::Boolean           zcedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
 #endif
 
 #ifdef GRXAPP
 int                             gcedEvaluateLisp(ACHAR const* str, resbuf*& result);
+extern Adesk::Boolean           gcedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
 #endif
 
 #ifdef BRXAPP
 int                             acedEvaluateLisp(ACHAR const* str, resbuf*& result);
+extern  bool                    acedHatchPalletteDialog(const wchar_t*, bool, wchar_t*&);
 #endif
 
 
@@ -45,6 +48,7 @@ EXTERN_C void                   acedDropOpenFile(const ACHAR*);
 extern void                     acedGetLastCommandLines(AcStringArray&, int, bool);
 extern Adesk::Boolean           acedPostCommand(const ACHAR*);
 bool                            acedLoadMainMenu(const ACHAR*);
+extern Adesk::Boolean           acedHatchPalletteDialog(wchar_t const*, Adesk::Boolean, wchar_t*&);
 
 //acedLinetypeDialog()
 //acedLineWeightDialog()
@@ -163,6 +167,7 @@ void makePyEdCoreWrapper()
         .def("getMousePositionWCS", &EdCore::getMousePositionWCS, DS.SARGS()).staticmethod("getMousePositionWCS")
         .def("getDpiScalingValue", &EdCore::getDpiScalingValue, DS.SARGS()).staticmethod("getDpiScalingValue")
         .def("getUserFavoritesDir", &EdCore::getUserFavoritesDir, DS.SARGS()).staticmethod("getUserFavoritesDir")
+        .def("hatchPalletteDialog", &EdCore::hatchPalletteDialog, DS.SARGS({ "pattern:str","custom : bool" })).staticmethod("hatchPalletteDialog")
         .def("invoke", &EdCore::invoke).staticmethod("invoke")
         .def("initDialog", &EdCore::initDialog).staticmethod("initDialog")
         .def("isDragging", &EdCore::isDragging, DS.SARGS()).staticmethod("isDragging")
@@ -1174,6 +1179,24 @@ AcGePoint3d EdCore::getMousePositionWCS()
     AcGePoint3d hitPoint;
     acedTrans(cpt, &fromrb, &torb, FALSE, asDblArray(hitPoint));
     return hitPoint;
+}
+
+std::string EdCore::hatchPalletteDialog(const std::string& pattern, bool showCustom)
+{
+    RxAutoOutStr outstr;
+#ifdef _ZRXTARGET 
+    zcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom , outstr.buf);
+#endif
+#ifdef _GRXTARGET 
+    gcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom , outstr.buf);
+#endif
+#ifdef _BRXTARGET 
+    acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom ? TRUE : FALSE, outstr.buf);
+#endif
+#ifdef _ARXTARGET 
+    acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom , outstr.buf);
+#endif
+    return outstr.str();
 }
 
 AcGePoint3d EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)
