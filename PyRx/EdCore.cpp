@@ -1189,7 +1189,7 @@ std::string EdCore::hatchPalletteDialog(const std::string& pattern, bool showCus
     gcedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom , outstr.buf);
 #endif
 #ifdef _BRXTARGET 
-    acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom ? TRUE : FALSE, outstr.buf);
+    acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom , outstr.buf);
 #endif
 #ifdef _ARXTARGET 
     acedHatchPalletteDialog(utf8_to_wstr(pattern).c_str(), showCustom , outstr.buf);
