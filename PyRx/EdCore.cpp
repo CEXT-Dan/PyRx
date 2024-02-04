@@ -17,8 +17,6 @@
 
 using namespace boost::python;
 
-
-
 void                            ads_regen(void);
 
 #ifdef ZRXAPP
