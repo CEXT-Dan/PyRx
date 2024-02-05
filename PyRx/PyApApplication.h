@@ -9,7 +9,7 @@ void makePyApApplictionWrapper();
 class PyApApplication
 {
 public:
-    PyApDocManager docManager();
+    static PyApDocManager docManager();
 public:
 
     static void applyHostIcon(UINT_PTR hwnd);
