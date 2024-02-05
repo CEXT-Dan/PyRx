@@ -1472,12 +1472,22 @@ boost::python::list PyDbTable::getIterator1()
 
 boost::python::list PyDbTable::getIterator2(AcDb::TableIteratorOption nOption) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    PyAutoLockGIL lock;
+    boost::python::list l;
+    const auto range = cellRange();
+    std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&range, nOption));
+    for (iter->start(); !iter->done(); iter->step())
+        l.append(iter->getCell());
+    return l;
+#else
     PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(nullptr, nOption));
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
+#endif
 }
 
 boost::python::list PyDbTable::getIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
