@@ -8,7 +8,7 @@
 using namespace boost::python;
 void makePyDbJoinEntityPEWrapper()
 {
-#if _ZRXTARGET > 240 || _GRXTARGET > 240
+#if defined (_ARXTARGET) || defined (_BRXTARGET)
     PyDocString DS("JoinEntityPE");
     class_<PyDbJoinEntityPE, bases<PyRxObject>>("JoinEntityPE", boost::python::no_init)
         .def(init<const PyRxObject&>())
@@ -22,7 +22,7 @@ void makePyDbJoinEntityPEWrapper()
 #endif
 }
 
-#if _ZRXTARGET > 240 || _GRXTARGET > 240
+#if defined (_ARXTARGET) || defined (_BRXTARGET)
 PyDbJoinEntityPE::PyDbJoinEntityPE(const PyRxObject& PE)
     :PyDbJoinEntityPE((AcDbJoinEntityPE*)PE.impObj(), false)
 {
@@ -40,7 +40,11 @@ bool PyDbJoinEntityPE::joinEntity1(PyDbEntity& pPrimaryEntity, PyDbEntity& pSeco
 
 bool PyDbJoinEntityPE::joinEntity2(PyDbEntity& pPrimaryEntity, PyDbEntity& pSecondaryEntity, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && _BRXTARGET <= 240
+    throw PyNotimplementedByHost();
+#else
     return impObj()->joinEntity(pPrimaryEntity.impObj(), pSecondaryEntity.impObj(), tol) == eOk;
+#endif
 }
 
 boost::python::list PyDbJoinEntityPE::joinEntities1(PyDbEntity& pPrimaryEntity, const boost::python::list& otherEntities) const
