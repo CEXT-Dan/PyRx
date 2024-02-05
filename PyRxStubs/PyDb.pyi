@@ -30681,6 +30681,53 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class JoinEntityPE:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (RxObject)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyRxObject)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+      '''                             '''
+    ...
+    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+      '''                             '''
+    ...
+    def desc ()-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def dispose (self: RxObject)-> None :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> PyRx.RxClass :
+      '''                             '''
+    ...
+    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def joinEntities (self: JoinEntityPE,primaryEntity : PyDb.Entity,secondaryEntities : list[PyDb.Entity],tol : PyGe.Tol=default)-> list :
+      '''                             '''
+    ...
+    def joinEntity (self: JoinEntityPE,primaryEntity : PyDb.Entity,secondaryEntity : PyDb.Entity,tol : PyGe.Tol=default)-> bool :
+      '''                             '''
+    ...
+    def keepAlive (self: RxObject,flag:bool)-> None :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+      '''                             '''
+    ...
+
 class JoinStyle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
