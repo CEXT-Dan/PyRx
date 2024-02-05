@@ -217,13 +217,16 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                     }
                 }
                 break;
-#ifdef NEVER
                 case RTRESBUF:
                 {
-                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rbinary.buf));
+#ifdef NEVER
+                    pTail->rbnext = acutNewRb(code);
+                    pTail->resval.rbinary.buf  = reinterpret_cast<char*>(listToResbuf(bpl));
+                    pTail->resval.rbinary.clen = strlen(pTail->resval.rbinary.buf);
+#endif
+                    break;
                 }
                 break;
-#endif
                 }
             }
         }
@@ -327,13 +330,14 @@ boost::python::list resbufToList(resbuf* pRb)
                     list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
             }
             break;
-#ifdef NEVER
             case RTRESBUF:
             {
-                list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rbinary.buf));
+#ifdef NEVER
+                list.append(boost::python::make_tuple(pTail->restype, resbufToList(reinterpret_cast<resbuf*>(pTail->resval.rbinary.buf))));
+#endif
+                break;
             }
             break;
-#endif
             }
         }
     }
