@@ -41,7 +41,8 @@ void makePyDbObjectWrapper()
         .def("swapIdWith", &PyDbObject::swapIdWith, DS.ARGS({ "otherId: PyDb.DbObject", "swapXdata: bool", "swapExtDict: bool" }))
         .def("hasXData", &PyDbObject::hasXData, DS.ARGS({ "appname: str" }))
         .def("setXData", &PyDbObject::setXData, DS.ARGS({ "xdata: list" }))
-        .def("xData", &PyDbObject::xData, DS.ARGS({ "appname: str" }))
+        .def("xData", &PyDbObject::xData1, DS.ARGS({ "appname: str" }))
+        .def("xData", &PyDbObject::xData2, DS.ARGS({ "appname: str = None" }))
         .def("xDataTransformBy", &PyDbObject::xDataTransformBy, DS.ARGS({ "xform: PyGe.Matrix3d" }))
         .def("isEraseStatusToggled", &PyDbObject::isEraseStatusToggled, DS.ARGS())
         .def("isErased", &PyDbObject::isErased, DS.ARGS())
@@ -213,7 +214,13 @@ void PyDbObject::setXData(const boost::python::list& xdata)
     PyThrowBadEs(impObj()->setXData(pData.get()));
 }
 
-boost::python::list PyDbObject::xData(const std::string& regappName) const
+boost::python::list PyDbObject::xData1() const
+{
+    AcResBufPtr pData(impObj()->xData());
+    return resbufToList(pData.get());
+}
+
+boost::python::list PyDbObject::xData2(const std::string& regappName) const
 {
     AcResBufPtr pData(impObj()->xData(utf8_to_wstr(regappName).c_str()));
     return resbufToList(pData.get());
