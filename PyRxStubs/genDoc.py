@@ -33,6 +33,12 @@ def include_attr(name):
             return True
         elif name.startswith('__'):
             return False
+        elif name == 'names':
+            return False
+        elif name == 'as_integer_ratio':
+            return False
+        elif name == 'values':
+            return False
         return True
     except:
         return True

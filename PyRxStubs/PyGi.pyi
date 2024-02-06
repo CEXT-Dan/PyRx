@@ -11,18 +11,6 @@ class AcGiArcType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
 
@@ -82,20 +70,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -120,36 +94,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class AcGiFillType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -207,20 +155,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -245,36 +179,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class AcGiOrientationTransformBehavior:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -335,20 +243,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -373,36 +267,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class AcGiOrientationType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -463,20 +331,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -501,36 +355,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class AcGiPositionTransformBehavior:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -597,20 +425,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -635,36 +449,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class AcGiRegenType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -734,20 +522,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -772,36 +546,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class AcGiScaleTransformBehavior:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -868,20 +616,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -906,36 +640,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class AcGiTransientDrawingMode:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -1008,20 +716,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -1046,36 +740,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class AcGiVisibility:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -1136,20 +804,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -1173,20 +827,6 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
-    ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class CommonDraw:
@@ -1243,18 +883,6 @@ This class cannot be instantiated from Python'''
 class DrawFlags:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -1345,20 +973,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -1382,20 +996,6 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
-    ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class Drawable:
@@ -1983,18 +1583,6 @@ class GiAttributesFlags:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
 
@@ -2099,20 +1687,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -2137,36 +1711,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class GiDrawableType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -2257,20 +1805,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -2295,36 +1829,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class SelectionFlags:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -2382,20 +1890,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -2420,36 +1914,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class ShadowFlags:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
     ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
@@ -2513,20 +1981,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -2550,20 +2004,6 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
-    ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class SubEntityTraits:
@@ -2885,18 +2325,6 @@ class TransparencyMode:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def as_integer_ratio (self, /) :
-      '''Return a pair of integers, whose ratio is equal to the original int.
-
-The ratio is in lowest terms and has a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
     def bit_count (self, /) :
       '''Number of ones in the binary representation of the absolute value of self.
 
@@ -2956,20 +2384,6 @@ Also known as the population count.
     def name (self, *args, **kwargs)-> None :
       '''None'''
     ...
-    def names (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
     def numerator (self, *args, **kwargs)-> None :
       '''the numerator of a rational number in lowest terms'''
     ...
@@ -2993,20 +2407,6 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     Determines whether two's complement is used to represent the integer.
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
-    ...
-    def values (self, *args, **kwargs)-> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via :
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class ViewportDraw:
