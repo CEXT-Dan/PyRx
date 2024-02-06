@@ -202,7 +202,7 @@ void makePyEdInputPointMonitorWrapper()
 {
     PyDocString DS("InputPointMonitor");
     class_<PyEdInputPointMonitor>("InputPointMonitor")
-        .def("monitorInputPoint", &PyEdInputPointMonitor::monitorInputPoint,DS.ARGS({ "input : PyEd.InputPoint","input : PyEd.InputPointMonitorResult" }))
+        .def("monitorInputPoint", &PyEdInputPointMonitor::monitorInputPoint,DS.ARGS({ "input : PyEd.InputPoint","output : PyEd.InputPointMonitorResult" }))
         ;
 }
 

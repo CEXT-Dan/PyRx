@@ -237,8 +237,8 @@ void makePyDbDimStyleTableRecordWrapper()
         .def("setDimltex2", &PyDbDimStyleTableRecord::setDimltex2, DS.ARGS({ "val : PyDb.ObjectId" }))
         .def("setDimltype", &PyDbDimStyleTableRecord::setDimltype, DS.ARGS({ "val : PyDb.ObjectId" }))
         .def("setDimlunit", &PyDbDimStyleTableRecord::setDimlunit, DS.ARGS({ "val : int" }))
-        .def("setDimlwd", &PyDbDimStyleTableRecord::setDimlwd, DS.ARGS({ "val :PyDb::LineWeight" }))
-        .def("setDimlwe", &PyDbDimStyleTableRecord::setDimlwe, DS.ARGS({ "val :PyDb::LineWeight" }))
+        .def("setDimlwd", &PyDbDimStyleTableRecord::setDimlwd, DS.ARGS({ "val :PyDb:LineWeight" }))
+        .def("setDimlwe", &PyDbDimStyleTableRecord::setDimlwe, DS.ARGS({ "val :PyDb:LineWeight" }))
         .def("setDimmzf", &PyDbDimStyleTableRecord::setDimmzf, DS.ARGS({ "val : float" }))
         .def("setDimmzs", &PyDbDimStyleTableRecord::setDimmzs, DS.ARGS({ "val : str" }))
         .def("setDimpost", &PyDbDimStyleTableRecord::setDimpost, DS.ARGS({ "val : str" }))
@@ -1158,7 +1158,7 @@ AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_locat
 // PyDbAbstractViewTableRecord
 void makePyDbAbstractViewTableRecordWrapper()
 {
-    PyDocString DS("PyDbAbstractViewTableRecord");
+    PyDocString DS("AbstractViewTableRecord");
     class_<PyDbAbstractViewTableRecord, bases<PyDbSymbolTableRecord>>("AbstractViewTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
