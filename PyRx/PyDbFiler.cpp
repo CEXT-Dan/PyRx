@@ -341,8 +341,8 @@ Acad::ErrorStatus PyDbSnoopDwgFiler::readBytes(void* pDest, Adesk::UIntPtr nByte
 Acad::ErrorStatus PyDbSnoopDwgFiler::writeBytes(const void* pSrc, Adesk::UIntPtr nBytes)
 {
     PyAutoLockGIL lock;
-    PyObject* py_buf = PyMemoryView_FromMemory((char*)pSrc, (size_t)nBytes, PyBUF_WRITE);
-    m_list.append(boost::python::make_tuple("ByteArray", boost::python::object(boost::python::handle<>(py_buf))));
+    boost::python::object memoryView(boost::python::handle<>(PyMemoryView_FromMemory((char*)pSrc, (size_t)nBytes, PyBUF_READ)));
+    m_list.append(boost::python::make_tuple("ByteArray", memoryView));
     return eOk;
 }
 
@@ -354,7 +354,7 @@ Acad::ErrorStatus PyDbSnoopDwgFiler::readAddress(void** pVal)
 Acad::ErrorStatus PyDbSnoopDwgFiler::writeAddress(const void* pVal)
 {
     PyAutoLockGIL m_lock;
-    m_list.append(boost::python::make_tuple("AcGeScale3d", INT_PTR(pVal)));
+    m_list.append(boost::python::make_tuple("Address", INT_PTR(pVal)));
     return eOk;
 }
 
