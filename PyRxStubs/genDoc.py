@@ -39,10 +39,15 @@ def include_attr(name):
             return False
         elif name == 'values':
             return False
+        elif name == 'bit_count':
+            return False
+        elif name == 'bit_length':
+            return False
+        elif name == 'to_bytes':
+            return False
         return True
     except:
         return True
-
 
 def removeArgStr(sig):
     try:
@@ -98,6 +103,8 @@ def generate_pyi(moduleName, module):
 
         for name, obj in inspect.getmembers(module):
             if inspect.isclass(obj):
+                if name == '__loader__':
+                    continue
                 f.write('\n')
                 f.write(f'class {name}:\n')
 
