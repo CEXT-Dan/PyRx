@@ -11,24 +11,6 @@ class LispType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -121,46 +103,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class Ordering:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -211,24 +157,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Overrule:
@@ -403,57 +331,6 @@ This class cannot be instantiated from Python'''
     ...
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
-    ...
-
-class __loader__:
-    def _ORIGIN (self, *args, **kwargs)-> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict' :
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def create_module (spec) :
-      '''Create a built-in module'''
-    ...
-    def exec_module (module) :
-      '''Exec a built-in module'''
-    ...
-    def find_spec (fullname, path=None, target=None) :
-      '''None'''
-    ...
-    def get_code (fullname) :
-      '''Return None as built-in modules do not have code objects.'''
-    ...
-    def get_source (fullname) :
-      '''Return None as built-in modules do not have source code.'''
-    ...
-    def is_package (fullname) :
-      '''Return False as built-in modules are never packages.'''
-    ...
-    def load_module (fullname) :
-      '''Load the specified module into sys.modules and return it.
-
-    This method is deprecated.  Use loader.exec_module() instead.
-
-    '''
     ...
 
 class stderr:

@@ -11,24 +11,6 @@ class ACIcolorMethod:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -93,24 +75,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class AbstractViewTable:
@@ -853,24 +817,6 @@ class AcCmDialogTabs:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -917,24 +863,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class AdsName:
@@ -1858,24 +1786,6 @@ class AnnoType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -1925,24 +1835,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class AnnotationScale:
@@ -3632,24 +3524,6 @@ class AssocFlags:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -3699,24 +3573,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class AttributeDefinition:
@@ -6403,24 +6259,6 @@ class BlockScaling:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -6464,24 +6302,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class BlockTable:
@@ -7594,24 +7414,6 @@ class BoolOperType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -7659,24 +7461,6 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class Cell:
     def __init__ (self: Cell,row : int=-1,column : int=-1)-> None :
@@ -7692,24 +7476,6 @@ class Cell:
 class CellAlignment:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -7776,46 +7542,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class CellContentLayout:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -7864,46 +7594,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class CellContentType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -7955,46 +7649,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class CellEdgeMask:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -8046,46 +7704,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class CellMargin:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -8143,46 +7765,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class CellProperty:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -8294,24 +7880,6 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class CellRange:
     def __init__ (self: CellRange,topRow : int=-1,leftColumn : int=-1,bottomRow : int=-1,rightColumn : int=-1)-> None :
@@ -8333,24 +7901,6 @@ class CellRange:
 class CellState:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -8417,46 +7967,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class CellType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -8508,46 +8022,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class CenterMarkType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -8595,24 +8073,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Circle:
@@ -9213,24 +8673,6 @@ class ClipBoundaryType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -9278,46 +8720,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class CollisionType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -9362,24 +8768,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Color:
@@ -9441,24 +8829,6 @@ class Color:
 class ColorMethod:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -9524,24 +8894,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Core:
@@ -11082,7 +10434,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def numberOfSaves (self: Database)-> int :
       '''                             '''
     ...
-    def objectIds (self: Database,desc:PyRx.RxClass=DbObject)-> list :
+    def objectIds (self: Database,desc:PyRx.RxClass=PyDb.DbObject)-> list :
       '''                             '''
     ...
     def obscuredColor (self: Database)-> int :
@@ -12735,24 +12087,6 @@ class DeepCloneType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -12823,24 +12157,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class DiametricDimension:
@@ -14690,24 +14006,6 @@ class DimAssocPointType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -14797,46 +14095,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class DimInspect:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -14893,24 +14155,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class DimStyleTable:
@@ -16760,24 +16004,6 @@ class DrawLeaderOrderType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -16822,46 +16048,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class DrawMLeaderOrderType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -16907,46 +16097,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class DuplicateRecordCloning:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -17004,46 +16158,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class DwgDataType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -17128,46 +16246,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class DxfCode:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -17714,24 +16796,6 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class DynBlockReference:
     def __init__ (self: DynBlockReference,val : ObjectId)-> None :
@@ -17854,24 +16918,6 @@ class DynUnitsType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -17921,24 +16967,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Ellipse:
@@ -18587,24 +17615,6 @@ class EndCaps:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -18654,24 +17664,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Entity:
@@ -19343,24 +18335,6 @@ class ErrorStatus:
     ...
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -20929,24 +19903,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class EvalVariant:
@@ -23735,24 +22691,6 @@ class FieldCodeFlag:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -23830,46 +22768,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class FieldEvalContext:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -23933,46 +22835,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class FieldEvalOption:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -24036,46 +22902,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class FieldEvalStatus:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -24136,46 +22966,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class FieldState:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -24233,46 +23027,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class FilerType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -24342,46 +23100,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class FindFileHint:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -24463,46 +23185,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class FormatOption:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -24557,24 +23243,6 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class FullSubentPath:
     def __init__ (self, *args, **kwargs)-> None :
@@ -24628,24 +23296,6 @@ class GridLineStyle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -24690,46 +23340,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class GridLineType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -24805,46 +23419,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class GridProperty:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -24907,24 +23485,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Group:
@@ -26336,24 +24896,6 @@ class HatchEdgeType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -26404,46 +24946,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class HatchGradientPatternType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -26489,46 +24995,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class HatchLoopType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -26613,46 +25083,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class HatchObjectType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -26698,46 +25132,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class HatchPatternType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -26786,46 +25184,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class HatchStyle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -26873,24 +25235,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Helix:
@@ -27664,24 +26008,6 @@ class HelixConstrainType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -27728,24 +26054,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class HostApplicationServices:
@@ -28364,24 +26672,6 @@ class ImageDisplayOpt:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -28432,46 +26722,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class ImageUnits:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -28574,46 +26828,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class Intersect:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -28664,24 +26882,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class JoinEntityPE:
@@ -28735,24 +26935,6 @@ class JoinStyle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -28802,24 +26984,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class LayerFilter:
@@ -33140,24 +31304,6 @@ class LineSpacingStyle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -33202,46 +31348,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class LineWeight:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -33361,24 +31471,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class LinetypeTable:
@@ -36401,24 +34493,6 @@ class MLeaderBlockConnectionType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -36463,46 +34537,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MLeaderContentType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -36554,46 +34592,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MLeaderGsMarkType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -36660,46 +34662,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MLeaderLeaderDirectionType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -36754,46 +34720,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MLeaderLeaderType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -36842,46 +34772,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MLeaderMoveType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -36930,46 +34824,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MLeaderPropertyOverrideType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -37105,46 +34963,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MLeaderSegmentAngleType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -37204,24 +35026,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class MLeaderStyle:
@@ -38019,24 +35823,6 @@ class MLeaderTextAlignmentType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -38084,46 +35870,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MLeaderTextAngleType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -38172,46 +35922,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MLeaderTextAttachmentDirection:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -38257,46 +35971,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MLeaderTextAttachmentType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -38368,24 +36046,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class MPolygon:
@@ -39043,24 +36703,6 @@ class MPolygonloopDir:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -39107,24 +36749,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class MText:
@@ -39766,24 +37390,6 @@ class MTextAttachmentPoint:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -39894,46 +37500,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MTextColumnType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -39982,46 +37552,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MTextFlowDirection:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -40076,46 +37610,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MTextFragmentType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -40227,46 +37725,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MeasurementValue:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -40312,46 +37774,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class MergeCellStyleOption:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -40405,24 +37831,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Mline:
@@ -40950,24 +38358,6 @@ class MlineJustification:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -41023,24 +38413,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class MlineStyle:
@@ -42215,24 +39587,6 @@ class OpenMode:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -42279,24 +39633,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class OrdinateDimension:
@@ -43200,24 +40536,6 @@ class OrthographicView:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -43277,46 +40595,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class OsnapMask:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -43413,46 +40695,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class OsnapMode:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -43521,24 +40767,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class OsnapPointRef:
@@ -43626,24 +40854,6 @@ class OsnapType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -43720,24 +40930,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class PdfDefinition:
@@ -44636,24 +41828,6 @@ class Planarity:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -44700,24 +41874,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class PlaneSurface:
@@ -45278,24 +42434,6 @@ class PlotPaperUnits:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -45343,46 +42481,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class PlotRotation:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -45433,24 +42535,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class PlotSettings:
@@ -46161,24 +43245,6 @@ class PlotStyleNameType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -46229,46 +43295,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class PlotType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -46325,24 +43355,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Point:
@@ -48296,24 +45308,6 @@ class PointCloudCropType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -48363,24 +45357,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class PointCloudDefEx:
@@ -48698,24 +45674,6 @@ class PointCloudDispOptionOutOfRange:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -48762,24 +45720,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class PointCloudEx:
@@ -49568,24 +46508,6 @@ class PointCloudOSnapMode:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -49648,46 +46570,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class PointCloudProperty:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -49745,46 +46631,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class PointCloudPropertyState:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -49833,46 +46683,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class PointCloudStylizationType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -49930,24 +46744,6 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class PointRef:
     def __init__ (self, *args, **kwargs)-> None :
@@ -49991,24 +46787,6 @@ This class cannot be instantiated from Python'''
 class Poly2dType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -50060,46 +46838,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class Poly3dType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -50147,24 +46889,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class PolyFaceMeshVertex:
@@ -57980,24 +54704,6 @@ class RemapFileContext:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -58048,46 +54754,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class ReservedStringEnumType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -58204,24 +54874,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class RevolveOptions:
@@ -58842,24 +55494,6 @@ class RotatedDimType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -58906,24 +55540,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class RotatedDimension:
@@ -59839,24 +56455,6 @@ class RotationAngle:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -59910,46 +56508,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class RowType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -60004,46 +56566,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class SegType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -60097,24 +56623,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class SequenceEnd:
@@ -60575,24 +57083,6 @@ class ShadePlotResLevel:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -60649,46 +57139,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class ShadePlotType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -60745,24 +57199,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class SnoopDwgFiler:
@@ -62751,24 +59187,6 @@ class SplineType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -62813,46 +59231,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class StandardScaleType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -62997,46 +59379,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class StdScaleType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -63181,24 +59527,6 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class SubentId:
     def __init__ (self, *args, **kwargs)-> None :
@@ -63256,24 +59584,6 @@ __init__( (object)arg1, (RxClass)arg2, (int)arg3) -> None :
 class SubentType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -63336,24 +59646,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Surface:
@@ -63914,24 +60206,6 @@ class SurfaceEdgeExtensionType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -63976,46 +60250,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class SurfaceWireframeType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -64061,46 +60299,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class SweepAlignOption:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -64152,46 +60354,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class SweepMiterOption:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -64245,24 +60411,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class SweepOptions:
@@ -67394,24 +63542,6 @@ class TableBreakFlowDirection:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -67459,46 +63589,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class TableBreakOption:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -67556,46 +63650,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class TableFlowDirection:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -67641,46 +63699,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class TableHitItem:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -67735,46 +63757,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class TableIteratorOption:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -67840,24 +63826,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class TableStyle:
@@ -69226,24 +65194,6 @@ class TextAlignment:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -69327,46 +65277,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class TextHorzMode:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -69423,24 +65337,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class TextStyleTable:
@@ -70085,24 +65981,6 @@ class TimeZone:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -70369,24 +66247,6 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class Transaction:
     def __init__ (self, *args, **kwargs)-> None :
@@ -70581,24 +66441,6 @@ class TransparencyMethod:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -70648,24 +66490,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class UCSTable:
@@ -72128,24 +67952,6 @@ class UnitsValue:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -72262,46 +68068,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class UpdateDirection:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -72347,46 +68117,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class UpdateOption:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -72458,24 +68192,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Vertex:
@@ -73442,24 +69158,6 @@ class Vertex2dType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -73509,24 +69207,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class ViewTableRecord:
@@ -75794,24 +71474,6 @@ class Visibility:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -75856,46 +71518,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class VpFreezeOps:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -75944,46 +71570,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class VpShadePlotType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -76040,24 +71630,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class Wipeout:
@@ -77098,24 +72670,6 @@ class XrefStatus:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -77171,75 +72725,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-
-class __loader__:
-    def _ORIGIN (self, *args, **kwargs)-> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict' :
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def create_module (spec) :
-      '''Create a built-in module'''
-    ...
-    def exec_module (module) :
-      '''Exec a built-in module'''
-    ...
-    def find_spec (fullname, path=None, target=None) :
-      '''None'''
-    ...
-    def get_code (fullname) :
-      '''Return None as built-in modules do not have code objects.'''
-    ...
-    def get_source (fullname) :
-      '''Return None as built-in modules do not have source code.'''
-    ...
-    def is_package (fullname) :
-      '''Return False as built-in modules are never packages.'''
-    ...
-    def load_module (fullname) :
-      '''Load the specified module into sys.modules and return it.
-
-    This method is deprecated.  Use loader.exec_module() instead.
-
-    '''
     ...
 
 function curDb:

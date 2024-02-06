@@ -14,7 +14,7 @@ void makePySysVarWrapper()
 {
     PyDocString DS("AutoSysVar");
     class_<PySysVar>("AutoSysVar", no_init)
-        .def(init<const std::string&, const boost::python::object& >(DS.ARGS({ "varname:str","value : Any" })))
+        .def(init<const std::string&, const boost::python::object& >(DS.ARGS({ "varname:str","value" })))
         .def("detach", &PySysVar::detach)
         ;
 }
@@ -91,7 +91,7 @@ void makePyEdUserInteractionWrapper()
     PyDocString DS("UserInteraction");
     class_<PyEdUserInteraction>("UserInteraction")
         .def(init<>())
-        .def(init<PyApDocument&, bool>(DS.ARGS({ "doc:PyAp.Document=current","isPrompting:bool=True" })))
+        .def(init<PyApDocument&, bool>(DS.ARGS({ "doc:PyAp.Document='current'","isPrompting:bool=True" })))
         ;
 }
 

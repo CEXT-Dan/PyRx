@@ -11,24 +11,6 @@ class AcEdDrawOrderCmdType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -82,46 +64,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class AcEdPointHistory:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -236,27 +182,9 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class AutoSysVar:
-    def __init__ (self: AutoSysVar,varname:str,value : Any)-> None :
+    def __init__ (self: AutoSysVar,varname:str,value)-> None :
       '''                             '''
     ...
     def detach (self, *args, **kwargs)-> None :
@@ -315,7 +243,7 @@ class Core:
     C++ signature :
         int cmdUndefine(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
-    def coordFromPixelToWorld (windnum: int = None,pt: tuple[int,int])-> PyGe.Point3d :
+    def coordFromPixelToWorld (windnum: int = 'None',pt: tuple[int,int])-> PyGe.Point3d :
       '''                             '''
     ...
     def coordFromWorldToPixel (windnum: int ,pnt: PyGe.Point3d)-> tuple :
@@ -954,24 +882,6 @@ class CursorType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -1052,46 +962,10 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class DragStatus:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -1182,24 +1056,6 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class DragStyle:
     def __init__ (self, *args, **kwargs)-> None :
@@ -1246,24 +1102,6 @@ __init__( (object)arg1, (DragStyleType)arg2, (DragStyleType)arg3) -> None :
 class DragStyleType:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -1323,24 +1161,6 @@ Also known as the population count.
     ...
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
     ...
 
 class DrawJig:
@@ -1504,7 +1324,7 @@ class Editor:
     def duplicateSelectionsAllowed (doc: PyAp.Document)-> bool :
       '''                             '''
     ...
-    def entSel (prompt: str,desc: PyRx.RxClass='Entity')-> tuple :
+    def entSel (prompt: str,desc: PyRx.RxClass=PyDb.Entity)-> tuple :
       '''                             '''
     ...
     def getAngle (basePt: PyGe.Point3d,prompt: str)-> tuple :
@@ -1519,7 +1339,7 @@ class Editor:
     def getCurrentUCS ()-> PyGe.Matrix3d :
       '''                             '''
     ...
-    def getDist (basePt: PyGe.Point3d=None,prompt: str)-> tuple :
+    def getDist (basePt: PyGe.Point3d='None',prompt: str)-> tuple :
       '''                             '''
     ...
     def getDouble (prompt: str)-> tuple :
@@ -1531,7 +1351,7 @@ class Editor:
     def getKword (keyword: str)-> tuple :
       '''                             '''
     ...
-    def getPoint (basePt: PyGe.Point3d=None,prompt: str)-> tuple :
+    def getPoint (basePt: PyGe.Point3d='None',prompt: str)-> tuple :
       '''                             '''
     ...
     def getReal (prompt: str)-> tuple :
@@ -1546,37 +1366,37 @@ class Editor:
     def initGet (val: int,keyword: str)-> PyEd.PromptStatus :
       '''                             '''
     ...
-    def nEntSelP (prompt: str,selpt: PyGe.Point3d=None)-> tuple :
+    def nEntSelP (prompt: str,selpt: PyGe.Point3d='None')-> tuple :
       '''                             '''
     ...
-    def nEntSelPEx (prompt: str,selpt: PyGe.Point3d=None,flags: int)-> tuple :
+    def nEntSelPEx (prompt: str,selpt: PyGe.Point3d='None',flags: int)-> tuple :
       '''                             '''
     ...
     def regen ()-> None :
       '''                             '''
     ...
-    def select (filer: list=None)-> tuple :
+    def select (filer: list='None')-> tuple :
       '''                             '''
     ...
-    def selectAll (filer: list=None)-> tuple :
+    def selectAll (filer: list='None')-> tuple :
       '''                             '''
     ...
-    def selectFence (points: list[PyGe.Point3d],filer: list=None)-> tuple :
+    def selectFence (points: list[PyGe.Point3d],filer: list='None')-> tuple :
       '''                             '''
     ...
-    def selectLast (filer: list=None)-> tuple :
+    def selectLast (filer: list='None')-> tuple :
       '''                             '''
     ...
-    def selectPrevious (filer: list=None)-> tuple :
+    def selectPrevious (filer: list='None')-> tuple :
       '''                             '''
     ...
-    def selectPrompt (addPromt: str,remPromt: str,filer: list=None)-> tuple :
+    def selectPrompt (addPromt: str,remPromt: str,filer: list='None')-> tuple :
       '''                             '''
     ...
-    def selectWindow (pt1: PyGe.Point3d,pt2: PyGe.Point3d,filer: list=None)-> tuple :
+    def selectWindow (pt1: PyGe.Point3d,pt2: PyGe.Point3d,filer: list='None')-> tuple :
       '''                             '''
     ...
-    def selectWindowPolygon (points: list[PyGe.Point3d],filer: list=None)-> tuple :
+    def selectWindowPolygon (points: list[PyGe.Point3d],filer: list='None')-> tuple :
       '''                             '''
     ...
     def setAllowDuplicateSelection (doc: PyAp.Document,flag: bool)-> None :
@@ -1585,7 +1405,7 @@ class Editor:
     def setCurrentUCS (ucs: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def ssget (mode: str,arg1: any,arg2: any,filer: list=None)-> tuple :
+    def ssget (mode: str,arg1: any,arg2: any,filer: list='None')-> tuple :
       '''                             '''
     ...
     def traceBoundary (point: PyGe.Point3d,detectIslands: bool)-> list :
@@ -2466,24 +2286,6 @@ class PromptStatus:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
     ...
@@ -2555,24 +2357,6 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class SelectionSet:
     def __init__ (self, *args, **kwargs)-> None :
@@ -2601,7 +2385,7 @@ __init__( (object)arg1) -> None :
     def isInitialized (self: SelectionSet)-> bool :
       '''                             '''
     ...
-    def objectIds (self: SelectionSet,desc: PyRx.RxClass=AcDbEntity)-> list :
+    def objectIds (self: SelectionSet,desc: PyRx.RxClass=PyDb.Entity)-> list :
       '''                             '''
     ...
     def remove (self: SelectionSet,id: PyDb.ObjectId)-> None :
@@ -2687,24 +2471,6 @@ addDefaultContextMenu( (UIContext)arg1, (str)arg2) -> bool :
 class UserInputControls:
     def __init__ (self, /, *args, **kwargs) :
       '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def bit_count (self, /) :
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /) :
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
     ...
     def conjugate (self, *args, **kwargs)-> None :
       '''Returns self, the complex conjugate of any int.'''
@@ -2795,27 +2561,9 @@ Also known as the population count.
     def real (self, *args, **kwargs)-> None :
       '''the real part of a complex number'''
     ...
-    def to_bytes (self, /, length=1, byteorder='big', *, signed=False) :
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.  Default
-    is length 1.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
 
 class UserInteraction:
-    def __init__ (self: UserInteraction,doc:PyAp.Document=current,isPrompting:bool=True)-> None :
+    def __init__ (self: UserInteraction,doc:PyAp.Document='current',isPrompting:bool=True)-> None :
       '''                             '''
     ...
 
@@ -2840,57 +2588,6 @@ class Util:
     ...
     def wcMatch (string: str,pattern: str,ignoreCase: bool)-> bool :
       '''                             '''
-    ...
-
-class __loader__:
-    def _ORIGIN (self, *args, **kwargs)-> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict' :
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __init__ (self, /, *args, **kwargs) :
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def create_module (spec) :
-      '''Create a built-in module'''
-    ...
-    def exec_module (module) :
-      '''Exec a built-in module'''
-    ...
-    def find_spec (fullname, path=None, target=None) :
-      '''None'''
-    ...
-    def get_code (fullname) :
-      '''Return None as built-in modules do not have code objects.'''
-    ...
-    def get_source (fullname) :
-      '''Return None as built-in modules do not have source code.'''
-    ...
-    def is_package (fullname) :
-      '''Return False as built-in modules are never packages.'''
-    ...
-    def load_module (fullname) :
-      '''Load the specified module into sys.modules and return it.
-
-    This method is deprecated.  Use loader.exec_module() instead.
-
-    '''
     ...
 
 function print:
