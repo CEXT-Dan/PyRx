@@ -17,23 +17,6 @@ class ACIcolorMethod:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -822,23 +805,6 @@ class AcCmDialogTabs:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -1791,23 +1757,6 @@ class AnnoType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -3529,23 +3478,6 @@ class AssocFlags:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -6265,23 +6197,6 @@ class BlockScaling:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -7420,23 +7335,6 @@ class BoolOperType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -7482,23 +7380,6 @@ class CellAlignment:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -7553,23 +7434,6 @@ class CellContentLayout:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -7604,23 +7468,6 @@ class CellContentType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -7660,23 +7507,6 @@ class CellEdgeMask:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -7714,23 +7544,6 @@ class CellMargin:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -7775,23 +7588,6 @@ class CellProperty:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -7908,23 +7704,6 @@ class CellState:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -7978,23 +7757,6 @@ class CellType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -8032,23 +7794,6 @@ class CenterMarkType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -8679,23 +8424,6 @@ class ClipBoundaryType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -8730,23 +8458,6 @@ class CollisionType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -8835,23 +8546,6 @@ class ColorMethod:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -12093,23 +11787,6 @@ class DeepCloneType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -14012,23 +13689,6 @@ class DimAssocPointType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -14105,23 +13765,6 @@ class DimInspect:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -16010,23 +15653,6 @@ class DrawLeaderOrderType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -16059,23 +15685,6 @@ class DrawMLeaderOrderType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -16107,23 +15716,6 @@ class DuplicateRecordCloning:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -16168,23 +15760,6 @@ class DwgDataType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -16256,23 +15831,6 @@ class DxfCode:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -16923,23 +16481,6 @@ class DynUnitsType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -17620,23 +17161,6 @@ class EndCaps:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -19871,23 +19395,6 @@ class ErrorStatus:
     ...
     def eXrefReloaded (self, *args, **kwargs)-> None :
       '''None'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -22697,23 +22204,6 @@ class FieldCodeFlag:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -22779,23 +22269,6 @@ class FieldEvalContext:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -22845,23 +22318,6 @@ class FieldEvalOption:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -22913,23 +22369,6 @@ class FieldEvalStatus:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -22977,23 +22416,6 @@ class FieldState:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -23037,23 +22459,6 @@ class FilerType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -23110,23 +22515,6 @@ class FindFileHint:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -23195,23 +22583,6 @@ class FormatOption:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -23302,23 +22673,6 @@ class GridLineStyle:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -23350,23 +22704,6 @@ class GridLineType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -23429,23 +22766,6 @@ class GridProperty:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -24902,23 +24222,6 @@ class HatchEdgeType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -24957,23 +24260,6 @@ class HatchGradientPatternType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -25005,23 +24291,6 @@ class HatchLoopType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -25094,23 +24363,6 @@ class HatchObjectType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -25142,23 +24394,6 @@ class HatchPatternType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -25194,23 +24429,6 @@ class HatchStyle:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -26014,23 +25232,6 @@ class HelixConstrainType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -26678,23 +25879,6 @@ class ImageDisplayOpt:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -26732,23 +25916,6 @@ class ImageUnits:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -26839,23 +26006,6 @@ class Intersect:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -26940,23 +26090,6 @@ class JoinStyle:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -31310,23 +30443,6 @@ class LineSpacingStyle:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -31358,23 +30474,6 @@ class LineWeight:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -34499,23 +33598,6 @@ class MLeaderBlockConnectionType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -34547,23 +33629,6 @@ class MLeaderContentType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -34602,23 +33667,6 @@ class MLeaderGsMarkType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -34673,23 +33721,6 @@ class MLeaderLeaderDirectionType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -34731,23 +33762,6 @@ class MLeaderLeaderType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -34783,23 +33797,6 @@ class MLeaderMoveType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -34834,23 +33831,6 @@ class MLeaderPropertyOverrideType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -34973,23 +33953,6 @@ class MLeaderSegmentAngleType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -35829,23 +34792,6 @@ class MLeaderTextAlignmentType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -35880,23 +34826,6 @@ class MLeaderTextAngleType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -35933,23 +34862,6 @@ class MLeaderTextAttachmentDirection:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -35981,23 +34893,6 @@ class MLeaderTextAttachmentType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -36709,23 +35604,6 @@ class MPolygonloopDir:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -37396,23 +36274,6 @@ class MTextAttachmentPoint:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -37511,23 +36372,6 @@ class MTextColumnType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -37562,23 +36406,6 @@ class MTextFlowDirection:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -37620,23 +36447,6 @@ class MTextFragmentType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -37736,23 +36546,6 @@ class MeasurementValue:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -37784,23 +36577,6 @@ class MergeCellStyleOption:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -38363,23 +37139,6 @@ class MlineJustification:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -39593,23 +38352,6 @@ class OpenMode:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -40542,23 +39284,6 @@ class OrthographicView:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -40605,23 +39330,6 @@ class OsnapMask:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -40705,23 +39413,6 @@ class OsnapMode:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -40859,23 +39550,6 @@ class OsnapType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -41834,23 +40508,6 @@ class Planarity:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -42440,23 +41097,6 @@ class PlotPaperUnits:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -42491,23 +41131,6 @@ class PlotRotation:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -43251,23 +41874,6 @@ class PlotStyleNameType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -43305,23 +41911,6 @@ class PlotType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -45314,23 +43903,6 @@ class PointCloudCropType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -45679,23 +44251,6 @@ class PointCloudDispOptionOutOfRange:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -46514,23 +45069,6 @@ class PointCloudOSnapMode:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -46581,23 +45119,6 @@ class PointCloudProperty:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -46642,23 +45163,6 @@ class PointCloudPropertyState:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -46693,23 +45197,6 @@ class PointCloudStylizationType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -46794,23 +45281,6 @@ class Poly2dType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -46848,23 +45318,6 @@ class Poly3dType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -54710,23 +53163,6 @@ class RemapFileContext:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -54764,23 +53200,6 @@ class ReservedStringEnumType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -55499,23 +53918,6 @@ class RotatedDimType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -56461,23 +54863,6 @@ class RotationAngle:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -56519,23 +54904,6 @@ class RowType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -56576,23 +54944,6 @@ class SegType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -57089,23 +55440,6 @@ class ShadePlotResLevel:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -57149,23 +55483,6 @@ class ShadePlotType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -59193,23 +57510,6 @@ class SplineType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -59241,23 +57541,6 @@ class StandardScaleType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -59389,23 +57672,6 @@ class StdScaleType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -59590,23 +57856,6 @@ class SubentType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -60212,23 +58461,6 @@ class SurfaceEdgeExtensionType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -60261,23 +58493,6 @@ class SurfaceWireframeType:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -60309,23 +58524,6 @@ class SweepAlignOption:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -60364,23 +58562,6 @@ class SweepMiterOption:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -63548,23 +61729,6 @@ class TableBreakFlowDirection:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -63599,23 +61763,6 @@ class TableBreakOption:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -63661,23 +61808,6 @@ class TableFlowDirection:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -63709,23 +61839,6 @@ class TableHitItem:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -63767,23 +61880,6 @@ class TableIteratorOption:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -65200,23 +63296,6 @@ class TextAlignment:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -65287,23 +63366,6 @@ class TextHorzMode:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -65987,23 +64049,6 @@ class TimeZone:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -66446,23 +64491,6 @@ class TransparencyMethod:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -67958,23 +65986,6 @@ class UnitsValue:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -68079,23 +66090,6 @@ class UpdateDirection:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -68127,23 +66121,6 @@ class UpdateOption:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -69163,23 +67140,6 @@ class Vertex2dType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -71480,23 +69440,6 @@ class Visibility:
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
     ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
     ...
@@ -71528,23 +69471,6 @@ class VpFreezeOps:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -71580,23 +69506,6 @@ class VpShadePlotType:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
@@ -72675,23 +70584,6 @@ class XrefStatus:
     ...
     def denominator (self, *args, **kwargs)-> None :
       '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder='big', *, signed=False) :
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.  Default is to use 'big'.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
     ...
     def imag (self, *args, **kwargs)-> None :
       '''the imaginary part of a complex number'''
