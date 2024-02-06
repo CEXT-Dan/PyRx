@@ -40,7 +40,8 @@ public:
     void                swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict);
     bool                hasXData(const std::string& regappName);
     void                setXData(const boost::python::list& xdata);
-    virtual boost::python::list xData(const std::string& regappName) const;
+    virtual boost::python::list xData1() const;
+    virtual boost::python::list xData2(const std::string& regappName) const;
     void                xDataTransformBy(const AcGeMatrix3d& xform);
     Adesk::Boolean      isEraseStatusToggled() const;
     Adesk::Boolean      isErased() const;
