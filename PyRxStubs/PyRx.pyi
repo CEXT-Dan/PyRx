@@ -334,10 +334,10 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -361,7 +361,7 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
@@ -373,10 +373,10 @@ This class cannot be instantiated from Python'''
     C++ signature :
         bool isOverruling()'''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def removeOverrule (self, *args, **kwargs)-> None :
@@ -403,10 +403,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -427,13 +427,13 @@ This class cannot be instantiated from Python'''
     def isDerivedFrom (self: RxClass,other : PyRx.RxClass)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def myParent (self: RxClass)-> PyRx.RxClass :
@@ -454,10 +454,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -472,16 +472,16 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
 

@@ -213,10 +213,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -317,7 +317,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -362,7 +362,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -371,7 +371,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -401,7 +401,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -513,13 +513,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self: PyDbAbstractViewTableRecord)-> float :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -630,7 +630,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -687,7 +687,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def lensLength (self: PyDbAbstractViewTableRecord)-> float :
@@ -702,7 +702,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def perspectiveEnabled (self: PyDbAbstractViewTableRecord)-> bool :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -759,7 +759,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setElevation (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFrontClipAtEye (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -1173,10 +1173,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -1417,7 +1417,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -1480,7 +1480,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class AcGePoint3d jogSymbolPosition(class PyDbAlignedDimension {lvalue})'''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -1534,7 +1534,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -1668,7 +1668,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
@@ -2089,7 +2089,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > collectionName(class PyDbObjectContext {lvalue})'''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self, *args, **kwargs)-> None :
@@ -2143,13 +2143,13 @@ __init__( (object)arg1) -> None :
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def matchScaleId (self, *args, **kwargs)-> bool :
@@ -2158,7 +2158,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         bool matchScaleId(class PyDbAnnotationScale {lvalue},__int64)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setDrawingUnits (self, *args, **kwargs)-> None :
@@ -2275,10 +2275,10 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -2528,7 +2528,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -2579,7 +2579,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -2624,7 +2624,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def radius (self: Arc)-> float :
@@ -2678,7 +2678,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setEndAngle (self: Arc,val:float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
@@ -2957,10 +2957,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -3201,7 +3201,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -3258,7 +3258,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -3318,7 +3318,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -3476,7 +3476,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHasLeader (self, *args, **kwargs)-> None :
@@ -3966,7 +3966,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def convertFieldToText (self: Text)-> None :
@@ -3975,7 +3975,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def convertIntoMTextAttributeDefinition (self: AttributeDefinition,val : bool)-> None :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def correctSpelling (self: Text)-> int :
@@ -4160,7 +4160,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isInvisible (self: AttributeDefinition)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isMTextAttributeDefinition (self: AttributeDefinition)-> bool :
@@ -4226,7 +4226,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def justification (self: Text)-> PyDb.TextAlignment :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -4286,7 +4286,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prompt (self: AttributeDefinition)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -4337,7 +4337,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFieldLength (self: AttributeDefinition,val : int)-> None :
@@ -4594,7 +4594,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def convertFieldToText (self: Text)-> None :
@@ -4603,7 +4603,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def convertIntoMTextAttribute (self: AttributeReference,val : bool)-> None :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def correctSpelling (self: Text)-> int :
@@ -4788,7 +4788,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isInvisible (self: AttributeReference)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isMTextAttribute (self: AttributeReference)-> bool :
@@ -4857,7 +4857,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def justification (self: Text)-> PyDb.TextAlignment :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -4914,7 +4914,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Text)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -4973,7 +4973,7 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFieldLength (self: AttributeReference,val : int)-> None :
@@ -5209,10 +5209,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -5370,7 +5370,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -5418,7 +5418,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -5457,7 +5457,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -5499,7 +5499,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -5663,10 +5663,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -5824,7 +5824,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -5872,7 +5872,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -5911,7 +5911,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -5953,7 +5953,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -6135,10 +6135,10 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -6302,7 +6302,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -6350,7 +6350,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -6401,7 +6401,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: BlockReference)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -6455,7 +6455,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -6724,10 +6724,10 @@ class BlockTable:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -6825,7 +6825,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -6870,7 +6870,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -6879,7 +6879,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -6909,7 +6909,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -7019,10 +7019,10 @@ class BlockTableRecord:
     def comments (self: BlockTableRecord)-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -7139,7 +7139,7 @@ class BlockTableRecord:
     def isFromOverlayReference (self: BlockTableRecord)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isLayout (self: BlockTableRecord)-> bool :
@@ -7196,7 +7196,7 @@ class BlockTableRecord:
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -7223,7 +7223,7 @@ class BlockTableRecord:
     def postProcessAnnotativeBTR (self: BlockTableRecord,bqueryOnly  : bool = False,bScale : bool = True)-> int :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -7259,7 +7259,7 @@ class BlockTableRecord:
     def setExplodable (self: BlockTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setIsFromOverlayReference (self: BlockTableRecord,val : bool)-> None :
@@ -7411,10 +7411,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -7572,7 +7572,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -7620,7 +7620,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -7659,7 +7659,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -7701,7 +7701,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -9302,10 +9302,10 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -9555,7 +9555,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -9606,7 +9606,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -9648,7 +9648,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def radius (self: Circle)-> float :
@@ -9705,7 +9705,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDiameter (self: Circle,val:float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
@@ -10819,10 +10819,10 @@ class Curve:
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -11069,7 +11069,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -11120,7 +11120,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -11159,7 +11159,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -11204,7 +11204,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
@@ -11417,7 +11417,7 @@ class Database:
     def colorDictionaryId (self: Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def continuousLinetype (self: Database)-> PyDb.ObjectId :
@@ -11426,7 +11426,7 @@ class Database:
     def coords (self: Database)-> int :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def countEmptyObjects (self: Database,flag : int)-> int :
@@ -11637,7 +11637,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def isEMR (self: Database)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
@@ -11664,7 +11664,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def joinStyle (self: Database)-> PyDb.JoinStyle :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def lastSavedAsMaintenanceVersion (self: Database)-> int :
@@ -11916,7 +11916,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def qtextmode (self: Database)-> bool :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def readDwgFile (self: Database,fileName:str,mode:int=kForReadAndReadShare,bAllowCPConversion:bool=False,password:str=empty)-> None :
@@ -12752,10 +12752,10 @@ __init__( (object)arg1) -> None :
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -12779,13 +12779,13 @@ __init__( (object)arg1) -> None :
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectAppended (self: DatabaseReactor,db: PyDb.Database,obj: PyDb.DbObject)-> None :
@@ -12809,7 +12809,7 @@ __init__( (object)arg1) -> None :
     def proxyResurrectionCompleted (self: DatabaseReactor,db: PyDb.Database,name: str,ids: list[PyDb.ObjectId])-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
 
@@ -12833,10 +12833,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def deleteCustomSummaryInfo (self, *args, **kwargs)-> None :
@@ -12921,13 +12921,13 @@ getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> tuple :
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def numCustomInfo (self, *args, **kwargs)-> int :
@@ -12936,7 +12936,7 @@ getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> tuple :
     C++ signature :
         int numCustomInfo(class PyDbDatabaseSummaryInfo {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setAuthor (self, *args, **kwargs)-> None :
@@ -13042,10 +13042,10 @@ class DbObject:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -13126,7 +13126,7 @@ class DbObject:
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -13171,7 +13171,7 @@ class DbObject:
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -13180,7 +13180,7 @@ class DbObject:
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -13204,7 +13204,7 @@ class DbObject:
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -13296,10 +13296,10 @@ class DbObjectOverrule:
     def close (self: DbObjectOverrule,object: PyDb.DbObject)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def deepClone (self: DbObjectOverrule,subject: PyDb.DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary : bool)-> PyDb.DbObject :
@@ -13332,7 +13332,7 @@ class DbObjectOverrule:
     def isApplicable (self: DbObjectOverrule,object: PyRx.RxObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
@@ -13344,13 +13344,13 @@ class DbObjectOverrule:
     C++ signature :
         bool isOverruling()'''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def open (self: DbObjectOverrule,object: PyDb.DbObject,mode: OpenMode)-> PyDb.ErrorStatus :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def removeOverrule (self, *args, **kwargs)-> None :
@@ -13387,13 +13387,13 @@ __init__( (object)arg1) -> None :
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copied (self: DbObjectReactor,obj: PyDb.DbObject,newObj: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -13414,13 +13414,13 @@ __init__( (object)arg1) -> None :
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def modified (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
@@ -13438,7 +13438,7 @@ __init__( (object)arg1) -> None :
     def openedForModify (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def reappended (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
@@ -13745,10 +13745,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -14001,7 +14001,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -14052,7 +14052,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -14106,7 +14106,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -14258,7 +14258,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setFarChordPoint(class PyDbDiametricDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
@@ -14727,10 +14727,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -14817,7 +14817,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -14862,7 +14862,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def nameAt (self: Dictionary,val : PyDb.ObjectId)-> str :
@@ -14877,7 +14877,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -14920,7 +14920,7 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setName (self: Dictionary,old : str,new : str)-> bool :
@@ -15054,10 +15054,10 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -15162,7 +15162,7 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -15213,7 +15213,7 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -15245,7 +15245,7 @@ post( (DimAssoc)arg1, (ObjectId)arg2, (bool)arg3) -> ObjectId :
     C++ signature :
         class PyDbObjectId post(class PyDbDimAssoc {lvalue},class PyDbObjectId,bool)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -15316,7 +15316,7 @@ removeAssociativity( (DimAssoc)arg1, (bool)arg2) -> None :
     C++ signature :
         void setDimObjId(class PyDbDimAssoc {lvalue},class PyDbObjectId)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -15813,10 +15813,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -15917,7 +15917,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -15962,7 +15962,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -15971,7 +15971,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -16001,7 +16001,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -16111,10 +16111,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -16435,7 +16435,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -16492,7 +16492,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -16501,7 +16501,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -16762,7 +16762,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDimzin (self: DimStyleTableRecord,val : int)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setName (self: SymbolTableRecord,name: str)-> None :
@@ -16910,10 +16910,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -17145,7 +17145,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -17196,7 +17196,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -17244,7 +17244,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -17372,7 +17372,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
@@ -19118,10 +19118,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -19374,7 +19374,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -19428,7 +19428,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -19485,7 +19485,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def radiusRatio (self: Ellipse)-> float :
@@ -19553,7 +19553,7 @@ set( (Ellipse)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, 
     def setEndParam (self: Ellipse,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
@@ -19852,10 +19852,10 @@ class Entity:
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -20010,7 +20010,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -20058,7 +20058,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -20097,7 +20097,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -20139,7 +20139,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -20384,13 +20384,13 @@ __init__( (object)arg1) -> None :
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copied (self: EntityReactor,obj: PyDb.DbObject,newObj: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -20414,13 +20414,13 @@ __init__( (object)arg1) -> None :
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def modified (self: EntityReactor,obj: PyDb.DbObject)-> None :
@@ -20441,7 +20441,7 @@ __init__( (object)arg1) -> None :
     def openedForModify (self: EntityReactor,obj: PyDb.DbObject)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def reappended (self: EntityReactor,obj: PyDb.DbObject)-> None :
@@ -22160,7 +22160,7 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         void clear(class PyDbEvalVariant {lvalue})'''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyFrom (self, *args, **kwargs)-> None :
@@ -22232,16 +22232,16 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setDouble (self, *args, **kwargs)-> None :
@@ -22526,10 +22526,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -22729,7 +22729,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -22777,7 +22777,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -22828,7 +22828,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def rayTest (self, *args, **kwargs)-> tuple :
@@ -22876,7 +22876,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -23091,10 +23091,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -23255,7 +23255,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -23303,7 +23303,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -23348,7 +23348,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -23390,7 +23390,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -23563,10 +23563,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -23727,7 +23727,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -23775,7 +23775,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -23820,7 +23820,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -23862,7 +23862,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -24035,10 +24035,10 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -24226,7 +24226,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -24274,7 +24274,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -24319,7 +24319,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -24391,7 +24391,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDimtxt (self: Fcf,val:float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -24575,7 +24575,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def convertToTextField (self, *args, **kwargs)-> None :
@@ -24584,7 +24584,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void convertToTextField(class PyDbField {lvalue})'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -24725,7 +24725,7 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -24776,7 +24776,7 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -24791,7 +24791,7 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     C++ signature :
         void postInDatabase(class PyDbField {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -24827,7 +24827,7 @@ getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> s
     C++ signature :
         void setEvaluatorId(class PyDbField {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFormat (self, *args, **kwargs)-> None :
@@ -26612,10 +26612,10 @@ append( (Group)arg1, (list)arg2) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -26737,7 +26737,7 @@ insertAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -26794,7 +26794,7 @@ insertAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def numEntities (self, *args, **kwargs)-> int :
@@ -26826,7 +26826,7 @@ prepend( (Group)arg1, (list)arg2) -> None :
     C++ signature :
         void prepend(class PyDbGroup {lvalue},class boost::python::list)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -26908,7 +26908,7 @@ removeAt( (Group)arg1, (SubentType)arg2, (list)arg3) -> None :
     C++ signature :
         void setDescription(class PyDbGroup {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHighlight (self, *args, **kwargs)-> None :
@@ -27343,10 +27343,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -27588,7 +27588,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHatch (self: Hatch)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -27639,7 +27639,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -27714,7 +27714,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -27774,7 +27774,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setElevation (self: Hatch,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setGradient (self, *args, **kwargs)-> None :
@@ -28815,13 +28815,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def constrain (self: Helix)-> PyDb.HelixConstrainType :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -29124,7 +29124,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -29181,7 +29181,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -29229,7 +29229,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def purgeFitData (self: Spline)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def rebuild (self, *args, **kwargs)-> None :
@@ -29301,7 +29301,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFitData (self, *args, **kwargs)-> None :
@@ -29858,10 +29858,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -30019,7 +30019,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -30067,7 +30067,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -30106,7 +30106,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -30148,7 +30148,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -30691,10 +30691,10 @@ class JoinEntityPE:
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -30709,22 +30709,22 @@ class JoinEntityPE:
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def joinEntities (self: JoinEntityPE,primaryEntity : PyDb.Entity,secondaryEntities : list[PyDb.Entity],tol : PyGe.Tol=default)-> list :
+    def joinEntities (self: JoinEntityPE,primaryEntity : PyDb.Entity,secondaryEntities : list[PyDb.Entity],tol : PyGe.Tol=None)-> list :
       '''                             '''
     ...
-    def joinEntity (self: JoinEntityPE,primaryEntity : PyDb.Entity,secondaryEntity : PyDb.Entity,tol : PyGe.Tol=default)-> bool :
+    def joinEntity (self: JoinEntityPE,primaryEntity : PyDb.Entity,secondaryEntity : PyDb.Entity,tol : PyGe.Tol=None)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
 
@@ -30899,10 +30899,10 @@ class LayerFilter:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -30989,7 +30989,7 @@ class LayerFilter:
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -31037,7 +31037,7 @@ class LayerFilter:
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layerCount (self: LayerFilter)-> int :
@@ -31049,7 +31049,7 @@ class LayerFilter:
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -31076,7 +31076,7 @@ class LayerFilter:
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -31179,10 +31179,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -31283,7 +31283,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -31328,7 +31328,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -31337,7 +31337,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -31367,7 +31367,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -31485,10 +31485,10 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     C++ signature :
         class AcCmColor color(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -31605,7 +31605,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def isInUse (self: LayerTableRecord)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isLocked (self: LayerTableRecord)-> bool :
@@ -31671,7 +31671,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def lineWeight (self, *args, **kwargs)-> PyDb.LineWeight :
@@ -31722,7 +31722,7 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId plotStyleNameId(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -31805,7 +31805,7 @@ setColor( (LayerTableRecord)arg1, (Color)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         void setDescription(class PyDbLayerTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setIsFrozen (self, *args, **kwargs)-> None :
@@ -32035,10 +32035,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -32247,7 +32247,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -32292,7 +32292,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def modelType (self, *args, **kwargs)-> bool :
@@ -32373,7 +32373,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         bool printLineweights(class PyDbPlotSettings {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -32421,7 +32421,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setDrawViewportsFirst(class PyDbPlotSettings {lvalue},bool)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayoutName (self, *args, **kwargs)-> None :
@@ -32625,10 +32625,10 @@ cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)
     C++ signature :
         void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def copyLayout (self, *args, **kwargs)-> None :
@@ -32729,7 +32729,7 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
@@ -32746,7 +32746,7 @@ isVpnumClipped( (LayoutManager)arg1, (int)arg2, (Database)arg3) -> bool :
     C++ signature :
         bool isVpnumClipped(class PyDbLayoutManager {lvalue},int,class PyDbDatabase)'''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layoutExists (self, *args, **kwargs)-> bool :
@@ -32760,7 +32760,7 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
     C++ signature :
         bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def renameLayout (self, *args, **kwargs)-> None :
@@ -32920,7 +32920,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copied (self, *args, **kwargs)-> None :
@@ -32929,7 +32929,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void copied(class PyDbLeader {lvalue},class PyDbObject,class PyDbObject)'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -33292,7 +33292,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -33349,7 +33349,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def lastVertex (self, *args, **kwargs)-> PyGe.Point3d :
@@ -33412,7 +33412,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -33560,7 +33560,7 @@ setDimldrblk( (Leader)arg1, (str)arg2) -> None :
     C++ signature :
         void setDimtxt(class PyDbLeader {lvalue},double)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
@@ -33775,10 +33775,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -34028,7 +34028,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -34079,7 +34079,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -34121,7 +34121,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -34169,7 +34169,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setEndPoint (self: Line,val:PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
@@ -34418,10 +34418,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -34662,7 +34662,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -34713,7 +34713,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -34761,7 +34761,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -34901,7 +34901,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcOn(class PyDb2LineAngularDimension {lvalue},bool)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
@@ -35558,10 +35558,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -35662,7 +35662,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -35707,7 +35707,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -35716,7 +35716,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -35746,7 +35746,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -35853,10 +35853,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def comments (self: LinetypeTableRecord)-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -35949,7 +35949,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -36003,7 +36003,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def numDashes (self: LinetypeTableRecord)-> int :
@@ -36018,7 +36018,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def patternLength (self: LinetypeTableRecord)-> float :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -36054,7 +36054,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDashLengthAt(class PyDbLinetypeTableRecord {lvalue},int,double)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setIsScaledToFit (self, *args, **kwargs)-> None :
@@ -36299,10 +36299,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -36502,7 +36502,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -36550,7 +36550,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -36601,7 +36601,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def rayTest (self, *args, **kwargs)-> tuple :
@@ -36649,7 +36649,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -36867,10 +36867,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def columns (self: MInsertBlock)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -37034,7 +37034,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -37082,7 +37082,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -37133,7 +37133,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: BlockReference)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -37199,7 +37199,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -37466,7 +37466,7 @@ addLeaderLine( (MLeader)arg1, (Point3d)arg2) -> int :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def connectionPoint (self, *args, **kwargs)-> PyGe.Point3d :
@@ -37486,7 +37486,7 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
     C++ signature :
         enum AcDbMLeaderStyle::ContentType contentType(class PyDbMLeader {lvalue})'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -37816,7 +37816,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -37870,7 +37870,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def landingGap (self, *args, **kwargs)-> float :
@@ -38004,7 +38004,7 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
     C++ signature :
         void postMLeaderToDb(class PyDbMLeader {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -38210,7 +38210,7 @@ setDoglegLength( (MLeader)arg1, (int)arg2, (float)arg3) -> None :
     C++ signature :
         void setExtendLeaderToText(class PyDbMLeader {lvalue},bool)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFirstVertex (self, *args, **kwargs)-> None :
@@ -39780,7 +39780,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contentType (self, *args, **kwargs)-> PyDb.MLeaderContentType :
@@ -39789,7 +39789,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum AcDbMLeaderStyle::ContentType contentType(class PyDbMLeaderStyle {lvalue})'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -39956,7 +39956,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -40007,7 +40007,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def landingGap (self, *args, **kwargs)-> float :
@@ -40064,7 +40064,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     C++ signature :
         class PyDbObjectId postMLeaderStyleToDb(class PyDbMLeaderStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -40253,7 +40253,7 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
     C++ signature :
         void setExtendLeaderToText(class PyDbMLeaderStyle {lvalue},bool)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFirstSegmentAngleConstraint (self, *args, **kwargs)-> None :
@@ -41089,10 +41089,10 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -41310,7 +41310,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -41364,7 +41364,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -41442,7 +41442,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -41496,7 +41496,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setElevation (self: MPolygon,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setGradient (self, *args, **kwargs)-> None :
@@ -41837,7 +41837,7 @@ class MText:
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contents (self: MText)-> str :
@@ -41849,7 +41849,7 @@ class MText:
     def convertFieldToText (self: MText)-> None :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def correctSpelling (self: MText)-> int :
@@ -42061,7 +42061,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -42109,7 +42109,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -42160,7 +42160,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -42259,7 +42259,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDynamicColumns (self: MText,width : float,gutter : float,autoHeight : bool)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFlowDirection (self: MText,val : PyDb.MTextFlowDirection)-> None :
@@ -43369,10 +43369,10 @@ class Mline:
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -43551,7 +43551,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -43602,7 +43602,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def justification (self: Mline)-> int :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -43653,7 +43653,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -43704,7 +43704,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setJustification (self: Mline,val : MlineJustification)-> None :
@@ -44030,10 +44030,10 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -44171,7 +44171,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -44216,7 +44216,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def name (self, *args, **kwargs)-> str :
@@ -44237,7 +44237,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -44314,7 +44314,7 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
     C++ signature :
         void setEndSquareCap(class PyDbMlineStyle {lvalue},bool)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFillColor (self, *args, **kwargs)-> None :
@@ -44520,10 +44520,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -44723,7 +44723,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -44771,7 +44771,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -44822,7 +44822,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def rayTest (self, *args, **kwargs)-> tuple :
@@ -44870,7 +44870,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -45006,10 +45006,10 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > collectionName(class PyDbObjectContext {lvalue})'''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -45033,16 +45033,16 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setName (self, *args, **kwargs)-> None :
@@ -45392,10 +45392,10 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -45636,7 +45636,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -45699,7 +45699,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -45759,7 +45759,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -45893,7 +45893,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
@@ -46638,10 +46638,10 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -46656,13 +46656,13 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def osnapType (self, *args, **kwargs)-> PyDb.OsnapType :
@@ -46677,7 +46677,7 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         class AcGePoint3d point(class PyDbOsnapPointRef {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def setIdPath (self, *args, **kwargs)-> None :
@@ -46921,10 +46921,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -47020,7 +47020,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isLoaded (self: UnderlayDefinition)-> bool :
@@ -47068,7 +47068,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def load (self: UnderlayDefinition,pass : str=None)-> None :
@@ -47080,7 +47080,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -47104,7 +47104,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setItemName (self: UnderlayDefinition,item : str)-> None :
@@ -47244,7 +47244,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self: UnderlayReference)-> int :
@@ -47256,7 +47256,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def contrastLowerLimit ()-> int :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -47453,7 +47453,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isFrameVisible (self: UnderlayReference)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -47507,7 +47507,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -47552,7 +47552,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: UnderlayReference)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -47615,7 +47615,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setFade (self: UnderlayReference,val : int)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHeight (self: UnderlayReference,val : float)-> None :
@@ -47962,10 +47962,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -48165,7 +48165,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -48213,7 +48213,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -48264,7 +48264,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def rayTest (self, *args, **kwargs)-> tuple :
@@ -48312,7 +48312,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -48765,10 +48765,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -48924,7 +48924,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -48969,7 +48969,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def modelType (self, *args, **kwargs)-> bool :
@@ -49050,7 +49050,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool printLineweights(class PyDbPlotSettings {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -49086,7 +49086,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDrawViewportsFirst(class PyDbPlotSettings {lvalue},bool)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -49743,10 +49743,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -49904,7 +49904,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -49952,7 +49952,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -49997,7 +49997,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Point)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -50042,7 +50042,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setEcsRotation (self: Point,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -50291,10 +50291,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -50535,7 +50535,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -50586,7 +50586,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -50634,7 +50634,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -50780,7 +50780,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcOn(class PyDb3PointAngularDimension {lvalue},bool)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
@@ -51153,10 +51153,10 @@ class PointCloudColorMap:
     C++ signature :
         class boost::python::list colorSchemeGUIDs(class PyDbPointCloudColorMap {lvalue})'''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -51294,7 +51294,7 @@ class PointCloudColorMap:
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -51339,7 +51339,7 @@ class PointCloudColorMap:
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -51348,7 +51348,7 @@ class PointCloudColorMap:
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -51402,7 +51402,7 @@ class PointCloudColorMap:
     C++ signature :
         bool setDefaultIntensityColorScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -51783,13 +51783,13 @@ class PointCloudDefEx:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def coordinateSystemName (self: PointCloudDefEx)-> str :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -51900,7 +51900,7 @@ class PointCloudDefEx:
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isLoaded (self: PointCloudDefEx)-> bool :
@@ -51948,7 +51948,7 @@ class PointCloudDefEx:
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def load (self: PointCloudDefEx)-> None :
@@ -51963,7 +51963,7 @@ class PointCloudDefEx:
     def pointCloudExDictionary (val : PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -51990,7 +51990,7 @@ class PointCloudDefEx:
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -52266,10 +52266,10 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -52520,7 +52520,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -52568,7 +52568,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -52631,7 +52631,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def pointCloudDefExId (self: PointCloudEx)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def reactorId (self: PointCloudEx)-> PyDb.ObjectId :
@@ -52764,7 +52764,7 @@ setAllRegionsVisibility( (PointCloudEx)arg1, (bool)arg2, (bool)arg3) -> None :
     C++ signature :
         void setElevationOutOfRangeBehavior(class PyDbPointCloudEx {lvalue},enum AcDbPointCloudEx::DispOptionOutOfRange)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHighlightLimitboxBoundary (self, *args, **kwargs)-> None :
@@ -53514,10 +53514,10 @@ This class cannot be instantiated from Python'''
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -53532,16 +53532,16 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
 
@@ -53885,10 +53885,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -54043,7 +54043,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -54091,7 +54091,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -54133,7 +54133,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: PolyFaceMeshVertex)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -54175,7 +54175,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -54348,10 +54348,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -54506,7 +54506,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -54554,7 +54554,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -54596,7 +54596,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: PolygonMeshVertex)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -54638,7 +54638,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -54822,10 +54822,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -55117,7 +55117,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -55171,7 +55171,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -55228,7 +55228,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -55294,7 +55294,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setElevation (self: Polyline,elev:float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
@@ -55505,7 +55505,7 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def constantWidth (self, *args, **kwargs)-> float :
@@ -55520,7 +55520,7 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     C++ signature :
         void convertToPolyType(class PyDb2dPolyline {lvalue},enum AcDb::Poly2dType)'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -55796,7 +55796,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isLinetypeGenerationOn (self, *args, **kwargs)-> bool :
@@ -55853,7 +55853,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -55940,7 +55940,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         enum AcDb::Poly2dType polyType(class PyDb2dPolyline {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -56015,7 +56015,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setElevation(class PyDb2dPolyline {lvalue},double)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
@@ -56264,7 +56264,7 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def convertToPolyType (self, *args, **kwargs)-> None :
@@ -56273,7 +56273,7 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     C++ signature :
         void convertToPolyType(class PyDb3dPolyline {lvalue},enum AcDb::Poly3dType)'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -56531,7 +56531,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -56582,7 +56582,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -56657,7 +56657,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         enum AcDb::Poly3dType polyType(class PyDb3dPolyline {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -56708,7 +56708,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
@@ -56910,10 +56910,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -57068,7 +57068,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -57116,7 +57116,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -57158,7 +57158,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Polyline3dVertex)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -57200,7 +57200,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -57320,10 +57320,10 @@ __init__( (object)arg1, (object)arg2) -> None :
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -57347,7 +57347,7 @@ __init__( (object)arg1, (object)arg2) -> None :
     def isFace (self: Profile3d)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
@@ -57362,10 +57362,10 @@ __init__( (object)arg1, (object)arg2) -> None :
     def isValid (self: Profile3d)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
 
@@ -57517,10 +57517,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -57767,7 +57767,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -57818,7 +57818,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -57872,7 +57872,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -58024,7 +58024,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcStartAngle(class PyDbRadialDimension {lvalue},double)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
@@ -58402,10 +58402,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -58652,7 +58652,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -58715,7 +58715,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class AcGePoint3d jogPoint(class PyDbRadialDimensionLarge {lvalue})'''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -58769,7 +58769,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -58921,7 +58921,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcStartAngle(class PyDbRadialDimensionLarge {lvalue},double)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
@@ -59284,7 +59284,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self, *args, **kwargs)-> int :
@@ -59293,7 +59293,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         signed char contrast(class PyDbRasterImage {lvalue})'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -59534,7 +59534,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isImageTransparent(class PyDbRasterImage {lvalue})'''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -59594,7 +59594,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -59639,7 +59639,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class AcGePoint3d position(class PyDbRasterImage {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def reactorId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -59735,7 +59735,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setFade(class PyDbRasterImage {lvalue},signed char)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHeight (self, *args, **kwargs)-> None :
@@ -59954,10 +59954,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -60077,7 +60077,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isLoaded (self, *args, **kwargs)-> bool :
@@ -60128,7 +60128,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def load (self, *args, **kwargs)-> None :
@@ -60143,7 +60143,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -60191,7 +60191,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -60351,10 +60351,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -60438,7 +60438,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -60483,7 +60483,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -60492,7 +60492,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -60522,7 +60522,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setEnable(bool)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -60625,10 +60625,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -60729,7 +60729,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -60774,7 +60774,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -60783,7 +60783,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -60813,7 +60813,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -60917,10 +60917,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -61007,7 +61007,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -61058,7 +61058,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -61067,7 +61067,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -61091,7 +61091,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setName (self: SymbolTableRecord,name: str)-> None :
@@ -61222,10 +61222,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -61389,7 +61389,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -61443,7 +61443,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -61482,7 +61482,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -61524,7 +61524,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -62086,10 +62086,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -62289,7 +62289,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -62337,7 +62337,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -62388,7 +62388,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def rayTest (self, *args, **kwargs)-> tuple :
@@ -62436,7 +62436,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -62819,10 +62819,10 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -63063,7 +63063,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isHorizontalRefTextRotation (self: Dimension)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -63126,7 +63126,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class AcGePoint3d jogSymbolPosition(class PyDbRotatedDimension {lvalue})'''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -63180,7 +63180,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def prefix (self: Dimension)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -63320,7 +63320,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     def setElevation (self: Dimension,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self: Dimension,val : bool)-> None :
@@ -64069,10 +64069,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -64230,7 +64230,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -64278,7 +64278,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -64317,7 +64317,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -64359,7 +64359,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -64971,7 +64971,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyEdge (self, *args, **kwargs)-> PyDb.Entity :
@@ -64986,7 +64986,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbEntity copyFace(class PyDb3dSolid {lvalue},class PyDbSubentId)'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createBox (self, *args, **kwargs)-> None :
@@ -65322,7 +65322,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -65376,7 +65376,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -65439,7 +65439,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSolid(class PyDb3dSolid {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -65499,7 +65499,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -65693,10 +65693,10 @@ class SpatialFilter:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -65798,7 +65798,7 @@ class SpatialFilter:
     def isInverted (self: SpatialFilter)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -65843,7 +65843,7 @@ class SpatialFilter:
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -65855,7 +65855,7 @@ class SpatialFilter:
     def queryBounds (self: SpatialFilter,ref : PyDbBlockReference=None)-> PyDb.Extents :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -65882,7 +65882,7 @@ class SpatialFilter:
     def setDefinition (self: SpatialFilter,pnt2d: List[PyGe.Point2d],normal: PyGe.Vector3d,elev: float,frontclip: float,backclip: float,enabled: bool)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setInverted (self: SpatialFilter,val : bool)-> None :
@@ -66082,10 +66082,10 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -66382,7 +66382,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -66439,7 +66439,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -66487,7 +66487,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def purgeFitData (self: Spline)-> None :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def rebuild (self, *args, **kwargs)-> None :
@@ -66547,7 +66547,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFitData (self, *args, **kwargs)-> None :
@@ -67558,10 +67558,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -67761,7 +67761,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -67809,7 +67809,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -67860,7 +67860,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def rayTest (self, *args, **kwargs)-> tuple :
@@ -67908,7 +67908,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -68862,10 +68862,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -69065,7 +69065,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -69113,7 +69113,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -69164,7 +69164,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list projectOnToSurface(class PyDbSurface {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def rayTest (self, *args, **kwargs)-> tuple :
@@ -69212,7 +69212,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -69662,10 +69662,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -69766,7 +69766,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -69811,7 +69811,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -69820,7 +69820,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -69850,7 +69850,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -69936,10 +69936,10 @@ class SymbolTableRecord:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -70026,7 +70026,7 @@ class SymbolTableRecord:
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -70077,7 +70077,7 @@ class SymbolTableRecord:
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -70086,7 +70086,7 @@ class SymbolTableRecord:
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -70110,7 +70110,7 @@ class SymbolTableRecord:
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setName (self: SymbolTableRecord,name: str)-> None :
@@ -70360,7 +70360,7 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     def columnWidth (self: Table,col : int)-> float :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contentColor (self, *args, **kwargs)-> PyDb.Color :
@@ -70393,7 +70393,7 @@ contentType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> CellContentType :
     C++ signature :
         enum AcDb::CellContentType contentType(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createContent (self: Table,row: int,col: int,idx: int)-> int :
@@ -70831,7 +70831,7 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def isHeaderSuppressed (self: Table)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isLinked (self: Table,row: int,col: int)-> bool :
@@ -70894,7 +70894,7 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -70975,7 +70975,7 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def position (self: BlockReference)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -71245,7 +71245,7 @@ setDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (object)arg5, (object
     def setDirection (self: Table,val : PyGe.Vector3d)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFieldId (self, *args, **kwargs)-> None :
@@ -72451,7 +72451,7 @@ color( (TableStyle)arg1, (str)arg2) -> Color :
     C++ signature :
         class AcCmColor color(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def copyCellStyle (self, *args, **kwargs)-> None :
@@ -72460,7 +72460,7 @@ color( (TableStyle)arg1, (str)arg2) -> Color :
     C++ signature :
         void copyCellStyle(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createCellStyle (self, *args, **kwargs)-> str :
@@ -72710,7 +72710,7 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     C++ signature :
         bool isHeaderSuppressed(class PyDbTableStyle {lvalue})'''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isMergeAllEnabled (self, *args, **kwargs)-> bool :
@@ -72767,7 +72767,7 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def margin (self, *args, **kwargs)-> float :
@@ -72794,7 +72794,7 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     C++ signature :
         class PyDbObjectId postTableStyleToDb(class PyDbTableStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -72909,7 +72909,7 @@ setDataType( (TableStyle)arg1, (object)arg2, (object)arg3, (str)arg4) -> None :
     C++ signature :
         void setDescription(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFlowDirection (self, *args, **kwargs)-> None :
@@ -73221,13 +73221,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def convertFieldToText (self: Text)-> None :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def correctSpelling (self: Text)-> int :
@@ -73400,7 +73400,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isMirroredInX (self: Text)-> bool :
@@ -73457,7 +73457,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def justification (self: Text)-> PyDb.TextAlignment :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -73511,7 +73511,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Text)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -73559,7 +73559,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHeight (self: Text,val : float)-> None :
@@ -74060,10 +74060,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -74164,7 +74164,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -74209,7 +74209,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -74218,7 +74218,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -74248,7 +74248,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -74355,10 +74355,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -74454,7 +74454,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -74511,7 +74511,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -74526,7 +74526,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def priorSize (self: TextStyleTableRecord)-> float :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -74553,7 +74553,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setBigFontFileName (self: TextStyleTableRecord,val : str)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFileName (self: TextStyleTableRecord,val : str)-> None :
@@ -74996,10 +74996,10 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc (self, *args, **kwargs)-> PyRx.RxClass :
@@ -75039,13 +75039,13 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def numOpenedObjects (self, *args, **kwargs)-> int :
@@ -75054,7 +75054,7 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
     C++ signature :
         int numOpenedObjects(class PyDbTransactionManager {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
 
@@ -75071,10 +75071,10 @@ class TransactionManager:
     def className ()-> str :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def desc ()-> PyRx.RxClass :
@@ -75098,13 +75098,13 @@ class TransactionManager:
     def isA (self: RxObject)-> PyRx.RxClass :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def numActiveTransactions (self: TransactionManager)-> int :
@@ -75113,7 +75113,7 @@ class TransactionManager:
     def numOpenedObjects (self: TransactionManager)-> int :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def queueForGraphicsFlush (self: TransactionManager)-> None :
@@ -75365,10 +75365,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -75469,7 +75469,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -75514,7 +75514,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -75523,7 +75523,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -75553,7 +75553,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
@@ -75657,10 +75657,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -75747,7 +75747,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -75798,7 +75798,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
@@ -75810,7 +75810,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -75834,7 +75834,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setName (self: SymbolTableRecord,name: str)-> None :
@@ -75946,10 +75946,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -76042,7 +76042,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isLoaded (self: UnderlayDefinition)-> bool :
@@ -76090,7 +76090,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def load (self: UnderlayDefinition,pass : str=None)-> None :
@@ -76102,7 +76102,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -76126,7 +76126,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setItemName (self: UnderlayDefinition,item : str)-> None :
@@ -76259,7 +76259,7 @@ class UnderlayReference:
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self: UnderlayReference)-> int :
@@ -76271,7 +76271,7 @@ class UnderlayReference:
     def contrastLowerLimit ()-> int :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -76465,7 +76465,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isFrameVisible (self: UnderlayReference)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -76519,7 +76519,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -76564,7 +76564,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: UnderlayReference)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -76627,7 +76627,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setFade (self: UnderlayReference,val : int)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setHeight (self: UnderlayReference,val : float)-> None :
@@ -77306,10 +77306,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -77464,7 +77464,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -77512,7 +77512,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -77551,7 +77551,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -77593,7 +77593,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -77771,10 +77771,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -77935,7 +77935,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -77986,7 +77986,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -78028,7 +78028,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Vertex2d)-> PyGe.Point3d :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -78076,7 +78076,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setEndWidth (self: Vertex2d,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
@@ -78405,13 +78405,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self: PyDbAbstractViewTableRecord)-> float :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -78537,7 +78537,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -78603,7 +78603,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def lensLength (self: PyDbAbstractViewTableRecord)-> float :
@@ -78621,7 +78621,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def perspectiveEnabled (self: PyDbAbstractViewTableRecord)-> bool :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -78690,7 +78690,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setElevation (self: PyDbAbstractViewTableRecord,val : float)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFrontClipAtEye (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -78923,7 +78923,7 @@ class Viewport:
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self: Viewport)-> float :
@@ -78935,7 +78935,7 @@ class Viewport:
     C++ signature :
         void copied(class PyDbViewport {lvalue},class PyDbObject,class PyDbObject)'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -79171,7 +79171,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isGridSubdivisionRestricted (self: Viewport)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isLayerFrozenInViewport (self: Viewport,val : PyDb.ObjectId)-> bool :
@@ -79261,7 +79261,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -79338,7 +79338,7 @@ previousBackground( (Viewport)arg1, (GiDrawableType)arg2) -> ObjectId :
     def previousBackgroundForcedSwitch (self: Viewport)-> bool :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -79482,7 +79482,7 @@ setFastZoomOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setFastZoomOn(class PyDbViewport {lvalue},bool)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFrontClipAtEyeOff (self: Viewport)-> None :
@@ -80060,13 +80060,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self: PyDbAbstractViewTableRecord)-> float :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -80207,7 +80207,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isGridSubdivisionRestricted (self: ViewportTableRecord)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -80270,7 +80270,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isometricSnapEnabled (self: ViewportTableRecord)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def lensLength (self: PyDbAbstractViewTableRecord)-> float :
@@ -80305,7 +80305,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def previousBackgroundForcedSwitch (self: ViewportTableRecord)-> bool :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -80368,7 +80368,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def setFastZoomsEnabled (self: ViewportTableRecord,val : bool)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFrontClipAtEye (self: PyDbAbstractViewTableRecord,val : bool)-> None :
@@ -81081,7 +81081,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
     def contrast (self, *args, **kwargs)-> int :
@@ -81090,7 +81090,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     C++ signature :
         signed char contrast(class PyDbRasterImage {lvalue})'''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -81331,7 +81331,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isImageTransparent(class PyDbRasterImage {lvalue})'''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -81391,7 +81391,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def layer (self: Entity)-> str :
@@ -81436,7 +81436,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class AcGePoint3d position(class PyDbRasterImage {lvalue})'''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def reactorId (self, *args, **kwargs)-> PyDb.ObjectId :
@@ -81532,7 +81532,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setFade(class PyDbRasterImage {lvalue},signed char)'''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFrom (self: Wipeout,points : list[PyGe.Point2d],normal : PyGe.Vector3d)-> None :
@@ -81721,10 +81721,10 @@ class Xrecord:
     def close (self: DbObject)-> None :
       '''                             '''
     ...
-    def comparedTo (self: RxObject,other:PyRx.RxObject)-> PyRx.Ordering :
+    def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def copyFrom (self: RxObject,other:PyRx.RxObject)-> None :
+    def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
@@ -81805,7 +81805,7 @@ class Xrecord:
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isKindOf (self: RxObject,rhs:PyRx.RxClass)-> bool :
+    def isKindOf (self: RxObject,rhs: PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
@@ -81853,7 +81853,7 @@ class Xrecord:
     def isXlateReferences (self: Xrecord)-> bool :
       '''                             '''
     ...
-    def keepAlive (self: RxObject,flag:bool)-> None :
+    def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
     def mergeStyle (self: Xrecord)-> PyDb.DuplicateRecordCloning :
@@ -81865,7 +81865,7 @@ class Xrecord:
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def queryX (self: RxObject,rhs:PyRx.RxClass)-> PyRx.RxObject :
+    def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
     def rbChain (self: Xrecord,auxDb : PyDb.Database = None )-> list :
@@ -81892,7 +81892,7 @@ class Xrecord:
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> PyDb.ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
     def setFromRbChain (self: Xrecord,resbuf : list,auxDb : PyDb.Database = None )-> None :
