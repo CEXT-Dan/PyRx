@@ -45,6 +45,8 @@ def include_attr(name):
             return False
         elif name == 'to_bytes':
             return False
+        elif name == 'from_bytes':
+            return False
         return True
     except:
         return True
