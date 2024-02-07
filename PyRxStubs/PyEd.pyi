@@ -167,33 +167,53 @@ class Core:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def alert (msg: str)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def arxLoad (path: str)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def arxLoaded ()-> list :
       '''                             '''
     ...
+
+    @staticmethod
     def arxUnload (app: str)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def audit (db: PyDb.Database,fix: bool,echo: bool=False)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def autoSetVar (name:str,value)-> PyEd.AutoSysVar :
       '''                             '''
     ...
+
+    @staticmethod
     def callBackOnCancel ()-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def clearOLELock (handle: int)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def clipFormatName ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cmdCWasCancelled ()-> bool :
       '''                             '''
     ...
@@ -209,9 +229,13 @@ class Core:
     C++ signature :
         int cmdUndefine(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
+
+    @staticmethod
     def coordFromPixelToWorld (windnum: int = 'None',pt: tuple[int,int])-> PyGe.Point3d :
       '''                             '''
     ...
+
+    @staticmethod
     def coordFromWorldToPixel (windnum: int ,pnt: PyGe.Point3d)-> tuple :
       '''                             '''
     ...
@@ -245,6 +269,8 @@ class Core:
     C++ signature :
         void disableDefaultARXExceptionHandler(bool)'''
     ...
+
+    @staticmethod
     def disableUsrbrk ()-> None :
       '''                             '''
     ...
@@ -260,6 +286,8 @@ class Core:
     C++ signature :
         void drawOrderInherit(class PyDbObjectId {lvalue},class boost::python::list,enum AcEdDrawOrderCmdType)'''
     ...
+
+    @staticmethod
     def drawingStatusBarsVisible ()-> bool :
       '''                             '''
     ...
@@ -269,6 +297,8 @@ class Core:
     C++ signature :
         void dropOpenFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+
+    @staticmethod
     def eatCommandThroat ()-> int :
       '''                             '''
     ...
@@ -278,12 +308,18 @@ class Core:
     C++ signature :
         int editMTextInteractive(class PyDbMText {lvalue},bool,bool)'''
     ...
+
+    @staticmethod
     def enableUsrbrk ()-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def evaluateDiesel (statement : str)-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def evaluateLisp (statement : str)-> list :
       '''                             '''
     ...
@@ -299,9 +335,13 @@ class Core:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+
+    @staticmethod
     def getAcadDockCmdLine ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def getAcadTextCmdLine ()-> int :
       '''                             '''
     ...
@@ -329,18 +369,28 @@ class Core:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCommandPromptString()'''
     ...
+
+    @staticmethod
     def getCommands ()-> dict :
       '''                             '''
     ...
+
+    @staticmethod
     def getCurVportPixelToDisplay ()-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getCurVportScreenToDisplay ()-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getCurrentSelectionSet ()-> list :
       '''                             '''
     ...
+
+    @staticmethod
     def getDpiScalingValue ()-> float :
       '''                             '''
     ...
@@ -368,12 +418,18 @@ class Core:
     C++ signature :
         class boost::python::list getLastCommandLines(int,bool)'''
     ...
+
+    @staticmethod
     def getMousePositionUCS ()-> PyGe.Point3d :
       '''                             '''
     ...
+
+    @staticmethod
     def getMousePositionWCS ()-> PyGe.Point3d :
       '''                             '''
     ...
+
+    @staticmethod
     def getPredefinedHatchPatterns ()-> list :
       '''                             '''
     ...
@@ -386,12 +442,18 @@ class Core:
     C++ signature :
         class boost::python::list getSym(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+
+    @staticmethod
     def getSysVars ()-> dict :
       '''                             '''
     ...
+
+    @staticmethod
     def getUserFavoritesDir ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def getVar (name:str)-> object :
       '''                             '''
     ...
@@ -412,9 +474,13 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     C++ signature :
         int grDraw(class AcGePoint3d,class AcGePoint3d,int,int)'''
     ...
+
+    @staticmethod
     def graphScr ()-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def hatchPalletteDialog (pattern:str,custom : bool)-> str :
       '''                             '''
     ...
@@ -430,12 +496,18 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     C++ signature :
         class boost::python::list invoke(class boost::python::list)'''
     ...
+
+    @staticmethod
     def isDragging ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def isInBackgroundMode ()-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def isInputPending ()-> bool :
       '''                             '''
     ...
@@ -445,12 +517,18 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     C++ signature :
         bool isMenuGroupLoaded(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+
+    @staticmethod
     def isOsnapOverride ()-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def isUpdateDisplayPaused ()-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def isUsrbrkDisabled ()-> bool :
       '''                             '''
     ...
@@ -472,6 +550,8 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     C++ signature :
         bool loadPartialMenu(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+
+    @staticmethod
     def mSpace ()-> None :
       '''                             '''
     ...
@@ -487,6 +567,8 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     C++ signature :
         class AcGePoint3d osnap(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+
+    @staticmethod
     def pSpace ()-> None :
       '''                             '''
     ...
@@ -496,6 +578,8 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     C++ signature :
         void postCommand(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+
+    @staticmethod
     def postCommandPrompt ()-> None :
       '''                             '''
     ...
@@ -517,6 +601,8 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     C++ signature :
         int redraw(class PyDbObjectId,int)'''
     ...
+
+    @staticmethod
     def regen ()-> None :
       '''                             '''
     ...
@@ -532,9 +618,13 @@ grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
     C++ signature :
         void restoreCurrentView(class PyDbObjectId)'''
     ...
+
+    @staticmethod
     def restorePreviousUCS ()-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def restoreStatusBar ()-> None :
       '''                             '''
     ...
@@ -621,6 +711,8 @@ setColorDialogTrueColor( (Color)arg1, (bool)arg2, (Color)arg3, (AcCmDialogTabs)a
     C++ signature :
         void setUndoMark(bool)'''
     ...
+
+    @staticmethod
     def setVar (name:str,value)-> bool :
       '''                             '''
     ...
@@ -664,9 +756,13 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     C++ signature :
         class boost::python::tuple textBox(class boost::python::list)'''
     ...
+
+    @staticmethod
     def textPage ()-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def textScr ()-> None :
       '''                             '''
     ...
@@ -694,6 +790,8 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     C++ signature :
         int update(int,class AcGePoint2d,class AcGePoint2d)'''
     ...
+
+    @staticmethod
     def updateDisplay ()-> None :
       '''                             '''
     ...
@@ -703,6 +801,8 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     C++ signature :
         void updateDisplayPause(bool)'''
     ...
+
+    @staticmethod
     def usrBrk ()-> bool :
       '''                             '''
     ...
@@ -724,6 +824,8 @@ showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
     C++ signature :
         void vportTableRecords2Vports()'''
     ...
+
+    @staticmethod
     def vports ()-> list :
       '''                             '''
     ...
@@ -1227,6 +1329,8 @@ class Editor:
     C++ signature :
         class PyDbObjectId activeViewportId()'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1236,102 +1340,168 @@ class Editor:
     C++ signature :
         class PyDbObjectId curViewportObjectId()'''
     ...
+
+    @staticmethod
     def duplicateSelectionsAllowed (doc: PyAp.Document)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def entSel (prompt: str,desc: PyRx.RxClass=PyDb.Entity)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getAngle (basePt: PyGe.Point3d,prompt: str)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getCorner (basePt: PyGe.Point3d,prompt: str)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getCurrentSelectionSet ()-> list :
       '''                             '''
     ...
+
+    @staticmethod
     def getCurrentUCS ()-> PyGe.Matrix3d :
       '''                             '''
     ...
+
+    @staticmethod
     def getDist (basePt: PyGe.Point3d='None',prompt: str)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getDouble (prompt: str)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getInteger (prompt: str)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getKword (keyword: str)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getPoint (basePt: PyGe.Point3d='None',prompt: str)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getReal (prompt: str)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getString (cronly: int,prompt: str)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def getViewportNumber (ptx: int,pty: int)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def initGet (val: int,keyword: str)-> PyEd.PromptStatus :
       '''                             '''
     ...
+
+    @staticmethod
     def nEntSelP (prompt: str,selpt: PyGe.Point3d='None')-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def nEntSelPEx (prompt: str,selpt: PyGe.Point3d='None',flags: int)-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def regen ()-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def select (filer: list='None')-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def selectAll (filer: list='None')-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def selectFence (points: list[PyGe.Point3d],filer: list='None')-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def selectLast (filer: list='None')-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def selectPrevious (filer: list='None')-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def selectPrompt (addPromt: str,remPromt: str,filer: list='None')-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def selectWindow (pt1: PyGe.Point3d,pt2: PyGe.Point3d,filer: list='None')-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def selectWindowPolygon (points: list[PyGe.Point3d],filer: list='None')-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def setAllowDuplicateSelection (doc: PyAp.Document,flag: bool)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def setCurrentUCS (ucs: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def ssget (mode: str,arg1: any,arg2: any,filer: list='None')-> tuple :
       '''                             '''
     ...
+
+    @staticmethod
     def traceBoundary (point: PyGe.Point3d,detectIslands: bool)-> list :
       '''                             '''
     ...
+
+    @staticmethod
     def ucsNormalVector ()-> PyGe.Vector3d :
       '''                             '''
     ...
+
+    @staticmethod
     def ucsXDir ()-> PyGe.Vector3d :
       '''                             '''
     ...
+
+    @staticmethod
     def ucsYDir ()-> PyGe.Vector3d :
       '''                             '''
     ...
@@ -2455,23 +2625,32 @@ class Util:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def angle (pt1: PyGe.Point3d,pt2: PyGe.Point3d)-> float :
       '''                             '''
     ...
+
+    @staticmethod
     def cvUnit (val: float,oldunit: str,newunit: str)-> float :
       '''                             '''
     ...
+
+    @staticmethod
     def distance (pt1: PyGe.Point3d,pt2: PyGe.Point3d)-> float :
       '''                             '''
     ...
+
+    @staticmethod
     def polar (pt1: PyGe.Point3d,angle: float,dist: float)-> PyGe.Point3d :
       '''                             '''
     ...
+
+    @staticmethod
     def wcMatch (string: str,pattern: str,ignoreCase: bool)-> bool :
       '''                             '''
     ...
 
-function print:
     def print (*args, **kwargs)-> None :
       '''print( (object)arg1) -> None :
 

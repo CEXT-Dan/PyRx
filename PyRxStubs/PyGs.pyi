@@ -11,6 +11,8 @@ class GsManager:
     def __init__ (self: GsManager)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...

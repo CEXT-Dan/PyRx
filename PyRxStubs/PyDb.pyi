@@ -405,15 +405,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTableRecord :
       '''                             '''
     ...
     def centerPoint (self: AbstractViewTableRecord)-> PyGe.Point2d :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.AbstractViewTableRecord :
       '''                             '''
     ...
@@ -441,6 +447,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def defaultLightingType (self: AbstractViewTableRecord)-> object :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -1969,6 +1977,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Arc :
       '''                             '''
     ...
@@ -1978,9 +1988,13 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def center (self: Arc)-> PyGe.Point3d :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Arc :
       '''                             '''
     ...
@@ -2005,6 +2019,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -2014,6 +2030,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -3570,15 +3588,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.AttributeDefinition :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.AttributeDefinition :
       '''                             '''
     ...
@@ -3618,6 +3642,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -4198,15 +4224,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.AttributeReference :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.AttributeReference :
       '''                             '''
     ...
@@ -4246,6 +4278,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -5739,15 +5773,21 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.BlockReference :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.BlockReference :
       '''                             '''
     ...
@@ -5778,6 +5818,8 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -6247,12 +6289,18 @@ class BlockTable:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.BlockTable :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.BlockTable :
       '''                             '''
     ...
@@ -6274,6 +6322,8 @@ class BlockTable:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -6536,15 +6586,21 @@ class BlockTableRecord:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.BlockTableRecord :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
     def clearPreviewIcon (self: BlockTableRecord)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.BlockTableRecord :
       '''                             '''
     ...
@@ -6569,6 +6625,8 @@ class BlockTableRecord:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -7877,6 +7935,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Circle :
       '''                             '''
     ...
@@ -7889,9 +7949,13 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def circumference (self: Circle)-> float :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Circle :
       '''                             '''
     ...
@@ -7916,6 +7980,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -7925,6 +7991,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -8597,15 +8665,23 @@ class Core:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def activeDatabaseArray ()-> list :
       '''                             '''
     ...
+
+    @staticmethod
     def angToF (value:str,unit:int)-> float :
       '''                             '''
     ...
+
+    @staticmethod
     def angToS (value:float,unit:int,prec:int)-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def assignGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,dbCurve:PyDb.Curve,norm:PyGe.Vector3d=kZAxis,tol:PyGe.Tol=tol)-> None :
       '''                             '''
     ...
@@ -8641,9 +8717,13 @@ bindXrefs( (Database)arg1, (list)arg2, (bool)arg3, (bool)arg4, (bool)arg5) -> No
     C++ signature :
         void clearSetupForLayouts(unsigned __int64)'''
     ...
+
+    @staticmethod
     def convertAcDbCurveToGelibCurve (geCurve:PyGe.Curve2d,tol:PyGe.Tol=tol)-> PyGe.Curve3d :
       '''                             '''
     ...
+
+    @staticmethod
     def convertGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,norm:PyGe.Vector3d=kZAxis,tol:PyGe.Tol=tol)-> PyDb.Curve :
       '''                             '''
     ...
@@ -8742,30 +8822,48 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         bool ecs2Wcs(class AcGeVector3d,class AcGeVector3d,class AcGeVector3d {lvalue})'''
     ...
+
+    @staticmethod
     def entDel (id : PyDb.ObjectId)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def entGet (id : PyDb.ObjectId)-> list :
       '''                             '''
     ...
+
+    @staticmethod
     def entGetX (id : PyDb.ObjectId,xdata : list)-> list :
       '''                             '''
     ...
+
+    @staticmethod
     def entLast ()-> PyDb.ObjectId :
       '''                             '''
     ...
+
+    @staticmethod
     def entMake (resultBuffer : list)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def entMakeX (resultBuffer : list)-> PyDb.ObjectId :
       '''                             '''
     ...
+
+    @staticmethod
     def entMod (resultBuffer : list)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def entNext (id : PyDb.ObjectId)-> PyDb.ObjectId :
       '''                             '''
     ...
+
+    @staticmethod
     def entUpd (id : PyDb.ObjectId)-> bool :
       '''                             '''
     ...
@@ -8901,6 +8999,8 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class PyDbObjectId namedObjDict()'''
     ...
+
+    @staticmethod
     def openDbEntities (ids: list[PyDb.ObjectId],mode: OpenMode=kForRead,erased: bool=False)-> list :
       '''                             '''
     ...
@@ -8916,6 +9016,8 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class PyDbObject openDbObject(class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
+
+    @staticmethod
     def openDbObjects (ids: list[PyDb.ObjectId],mode: OpenMode=kForRead,erased: bool=False)-> list :
       '''                             '''
     ...
@@ -9121,15 +9223,21 @@ class Curve:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.Curve :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Curve :
       '''                             '''
     ...
@@ -9154,6 +9262,8 @@ class Curve:
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -9163,6 +9273,8 @@ class Curve:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -9719,6 +9831,8 @@ class Database:
     def classDxfName (self: Database,pClass : PyRx.RxClass)-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -9764,6 +9878,8 @@ class Database:
     def deepCloneObjects (self: Database,ids:list[PyDb.ObjectId],owner:PyDb.ObjectId,idmap:PyDb.IdMapping,deferXlation:bool=False)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -9884,6 +10000,8 @@ class Database:
     def getFilename (self: Database)-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def getNearestLineWeight (weight : int)-> PyDb.LineWeight :
       '''                             '''
     ...
@@ -9969,6 +10087,8 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def isObjectNonPersistent (id : ObjectId)-> bool :
       '''                             '''
     ...
@@ -9981,6 +10101,8 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def isUcsOrthographic (self: Database,orthoView : OrthographicView)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def isValidLineWeight (weight : int)-> bool :
       '''                             '''
     ...
@@ -10083,6 +10205,8 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def maintenanceReleaseVersion (self: Database)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def markObjectNonPersistent (id : ObjectId,value : bool)-> None :
       '''                             '''
     ...
@@ -11075,6 +11199,8 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -11084,6 +11210,8 @@ __init__( (object)arg1) -> None :
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -11156,6 +11284,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class boost::python::dict asDict(class PyDbDatabaseSummaryInfo {lvalue})'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -11176,6 +11306,8 @@ deleteCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
     C++ signature :
         void deleteCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -11356,12 +11488,18 @@ class DbObject:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.DbObject :
       '''                             '''
     ...
@@ -11383,6 +11521,8 @@ class DbObject:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -11710,6 +11850,8 @@ __init__( (object)arg1) -> None :
     def cancelled (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -11722,6 +11864,8 @@ __init__( (object)arg1) -> None :
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -12948,12 +13092,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.Dictionary :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Dictionary :
       '''                             '''
     ...
@@ -12975,6 +13125,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -13275,12 +13427,18 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.DimAssoc :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.DimAssoc :
       '''                             '''
     ...
@@ -13302,6 +13460,8 @@ assocFlag( (DimAssoc)arg1, (int)arg2) -> bool :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -14146,12 +14306,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.DimStyleTableRecord :
       '''                             '''
     ...
@@ -14173,6 +14339,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -14930,6 +15098,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.Dimension :
       '''                             '''
     ...
@@ -14939,9 +15109,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def centerMarkSize (self: Dimension)-> float :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Dimension :
       '''                             '''
     ...
@@ -14972,6 +15146,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -16365,6 +16541,8 @@ class DynBlockReference:
     def blockId (self: DynBlockReference)-> PyDb.ObjectId :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -16377,6 +16555,8 @@ class DynBlockReference:
     def getBlockProperties (self: DynBlockReference)-> list :
       '''                             '''
     ...
+
+    @staticmethod
     def getIsDynamicBlock (otherObject: ObjectId)-> bool :
       '''                             '''
     ...
@@ -16580,6 +16760,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.Ellipse :
       '''                             '''
     ...
@@ -16589,9 +16771,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def center (self: Ellipse)-> PyGe.Point3d :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Ellipse :
       '''                             '''
     ...
@@ -16616,6 +16802,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -16625,6 +16813,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -17224,15 +17414,21 @@ class Entity:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Entity :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Entity :
       '''                             '''
     ...
@@ -17263,6 +17459,8 @@ class Entity:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -17637,6 +17835,8 @@ class EntityColor:
     def Foreground (self: EntityColor)-> PyDb.EntityColor :
       '''                             '''
     ...
+
+    @staticmethod
     def None ()-> PyDb.EntityColor :
       '''                             '''
     ...
@@ -17780,6 +17980,8 @@ __init__( (object)arg1) -> None :
     def cancelled (self: EntityReactor,obj: PyDb.DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -17792,6 +17994,8 @@ __init__( (object)arg1) -> None :
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -20373,15 +20577,21 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Face :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Face :
       '''                             '''
     ...
@@ -20412,6 +20622,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -20845,15 +21057,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.FaceRecord :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.FaceRecord :
       '''                             '''
     ...
@@ -20884,6 +21102,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -21317,15 +21537,21 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Fcf :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Fcf :
       '''                             '''
     ...
@@ -21356,6 +21582,8 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -22877,9 +23105,13 @@ append( (Group)arg1, (list)arg2) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.Group :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -22889,6 +23121,8 @@ append( (Group)arg1, (list)arg2) -> None :
     C++ signature :
         void clear(class PyDbGroup {lvalue})'''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Group :
       '''                             '''
     ...
@@ -22910,6 +23144,8 @@ append( (Group)arg1, (list)arg2) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -23602,15 +23838,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.Hatch :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Hatch :
       '''                             '''
     ...
@@ -23641,6 +23883,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -24516,15 +24760,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Helix :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Helix :
       '''                             '''
     ...
@@ -24552,6 +24802,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -24567,6 +24819,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def degree (self: Spline)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -26041,6 +26295,8 @@ class JoinEntityPE:
     C++ signature :
         void __init__(struct _object * __ptr64,class PyRxObject)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -26050,6 +26306,8 @@ class JoinEntityPE:
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -26147,12 +26405,18 @@ class LayerFilter:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyAp.LayerFilter :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyAp.LayerFilter :
       '''                             '''
     ...
@@ -26174,6 +26438,8 @@ class LayerFilter:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -26722,12 +26988,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.LayerTableRecord :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.LayerTableRecord :
       '''                             '''
     ...
@@ -26760,6 +27032,8 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -26859,6 +27133,8 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def isHidden (self: LayerTableRecord)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def isHiddenS (val : PyDb.ObjectId)-> bool :
       '''                             '''
     ...
@@ -26910,6 +27186,8 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def isReconciled (self: LayerTableRecord)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def isReconciledS (val : PyDb.ObjectId)-> bool :
       '''                             '''
     ...
@@ -28195,6 +28473,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -29011,15 +29291,21 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Line :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Line :
       '''                             '''
     ...
@@ -29044,6 +29330,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -29053,6 +29341,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -30912,12 +31202,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.LinetypeTableRecord :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.LinetypeTableRecord :
       '''                             '''
     ...
@@ -30948,6 +31244,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -31911,15 +32209,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.MInsertBlock :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.MInsertBlock :
       '''                             '''
     ...
@@ -31956,6 +32260,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -34095,6 +34401,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.DbObject :
       '''                             '''
     ...
@@ -34104,6 +34412,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.DbObject :
       '''                             '''
     ...
@@ -35023,15 +35333,21 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.MPolygon :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.MPolygon :
       '''                             '''
     ...
@@ -35068,6 +35384,8 @@ appendLoopFromBoundary( (MPolygon)arg1, (Polyline2d)arg2, (bool)arg3, (float)arg
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -35346,6 +35664,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def loadModule ()-> bool :
       '''                             '''
     ...
@@ -35678,15 +35998,21 @@ class MText:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.MText :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.MText :
       '''                             '''
     ...
@@ -35729,6 +36055,8 @@ class MText:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -36649,15 +36977,21 @@ class Mline:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.Mline :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Mline :
       '''                             '''
     ...
@@ -36691,6 +37025,8 @@ class Mline:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -39477,6 +39813,8 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -39486,6 +39824,8 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -39691,6 +40031,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyRxClass desc()'''
     ...
+
+    @staticmethod
     def dictionaryKey (underlayDefinitionType: PyRx.RxClass)-> str :
       '''                             '''
     ...
@@ -39999,9 +40341,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def contrast (self: UnderlayReference)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def contrastDefault ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def contrastLowerLimit ()-> int :
       '''                             '''
     ...
@@ -40059,12 +40405,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def fade (self: UnderlayReference)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def fadeDefault ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def fadeLowerLimit ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def fadeUpperLimit ()-> int :
       '''                             '''
     ...
@@ -41725,6 +42077,8 @@ class PlotSettingsValidator:
     C++ signature :
         class boost::python::list canonicalMediaNameList(class PyDbPlotSettingsValidator {lvalue},class PyDbPlotSettings {lvalue})'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -42003,15 +42357,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Point :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Point :
       '''                             '''
     ...
@@ -42042,6 +42402,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -43324,6 +43686,8 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -43401,9 +43765,13 @@ class PointCloudColorMap:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.PointCloudColorMap :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -43419,6 +43787,8 @@ class PointCloudColorMap:
     C++ signature :
         class boost::python::list classificationSchemeGUIDs(class PyDbPointCloudColorMap {lvalue})'''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PointCloudColorMap :
       '''                             '''
     ...
@@ -43482,6 +43852,8 @@ class PointCloudColorMap:
     C++ signature :
         bool deleteColorScheme(class PyDbPointCloudColorMap {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -43512,6 +43884,8 @@ class PointCloudColorMap:
     C++ signature :
         class boost::python::list getClassificationColorSchemeInUse(class PyDbPointCloudColorMap {lvalue})'''
     ...
+
+    @staticmethod
     def getColorMap (val : PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -43741,6 +44115,8 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -43811,6 +44187,8 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -43959,15 +44337,23 @@ class PointCloudDefEx:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.PointCloudDefEx :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def classVersion ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PointCloudDefEx :
       '''                             '''
     ...
@@ -43986,6 +44372,8 @@ class PointCloudDefEx:
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createPointCloudExDictionary (val : PyDb.Database,id : PyDb.ObjectId)-> None :
       '''                             '''
     ...
@@ -44004,6 +44392,8 @@ class PointCloudDefEx:
     def defaultWidth (self: PointCloudDefEx)-> float :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -44151,6 +44541,8 @@ class PointCloudDefEx:
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
+
+    @staticmethod
     def pointCloudExDictionary (val : PyDb.Database)-> PyDb.ObjectId :
       '''                             '''
     ...
@@ -44331,12 +44723,16 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.PointCloudEx :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -44349,6 +44745,8 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def clearSpatialFilters (self: PointCloudEx)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.PointCloudEx :
       '''                             '''
     ...
@@ -44379,6 +44777,8 @@ applyGeoLocation( (PointCloudEx)arg1, (bool)arg2, (str)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -45237,6 +45637,8 @@ class PointRef:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -45246,6 +45648,8 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -45401,15 +45805,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.PolyFaceMeshVertex :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.PolyFaceMeshVertex :
       '''                             '''
     ...
@@ -45440,6 +45850,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -45864,15 +46276,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.PolygonMeshVertex :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.PolygonMeshVertex :
       '''                             '''
     ...
@@ -45903,6 +46321,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -46338,15 +46758,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Polyline :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Polyline :
       '''                             '''
     ...
@@ -46371,6 +46797,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -46380,6 +46808,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -47021,15 +47451,21 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Polyline2d :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Polyline2d :
       '''                             '''
     ...
@@ -47066,6 +47502,8 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -47087,6 +47525,8 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     C++ signature :
         double defaultStartWidth(class PyDb2dPolyline {lvalue})'''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -47780,15 +48220,21 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Polyline3d :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Polyline3d :
       '''                             '''
     ...
@@ -47819,6 +48265,8 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -47828,6 +48276,8 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -48426,15 +48876,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Polyline3dVertex :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Polyline3dVertex :
       '''                             '''
     ...
@@ -48465,6 +48921,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -48857,6 +49315,8 @@ __init__( (object)arg1, (object)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcDb3dProfile)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -48866,6 +49326,8 @@ __init__( (object)arg1, (object)arg2) -> None :
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -52445,12 +52907,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.RegAppTableRecord :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.RegAppTableRecord :
       '''                             '''
     ...
@@ -52472,6 +52940,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -56474,15 +56944,21 @@ class SpatialFilter:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.SpatialFilter :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
     def clipVolumeIntersectsExtents (self: SpatialFilter,val : PyDb.Extents)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.SpatialFilter :
       '''                             '''
     ...
@@ -56504,6 +56980,8 @@ class SpatialFilter:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -56854,15 +57332,21 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Spline :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Spline :
       '''                             '''
     ...
@@ -56887,6 +57371,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def createFromAcGeCurve (curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> PyDb.Curve :
       '''                             '''
     ...
@@ -56899,6 +57385,8 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)ar
     def degree (self: Spline)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -59976,12 +60464,18 @@ class SymbolTableRecord:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.SymbolTableRecord :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.SymbolTableRecord :
       '''                             '''
     ...
@@ -60003,6 +60497,8 @@ class SymbolTableRecord:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -60349,6 +60845,8 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.Table :
       '''                             '''
     ...
@@ -60376,6 +60874,8 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         enum AcDb::CellType cellType(class PyDbTable {lvalue},int,int)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -60394,6 +60894,8 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         void clearTableStyleOverrides(class PyDbTable {lvalue})'''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Table :
       '''                             '''
     ...
@@ -60499,6 +61001,8 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> None :
     def deleteRows (self: Table,row: int,nRows: int)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -62784,15 +63288,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Text :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Text :
       '''                             '''
     ...
@@ -62829,6 +63339,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -63744,12 +64256,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.TextStyleTableRecord :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.TextStyleTableRecord :
       '''                             '''
     ...
@@ -63771,6 +64289,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -64376,6 +64896,8 @@ class TransactionManager:
     def addNewlyCreatedDBRObject (self: TransactionManager,obj: DbObject,add: bool=True)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -64385,6 +64907,8 @@ class TransactionManager:
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -64860,12 +65384,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.UCSTableRecord :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.UCSTableRecord :
       '''                             '''
     ...
@@ -64887,6 +65417,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -65149,12 +65681,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.UnderlayDefinition :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.UnderlayDefinition :
       '''                             '''
     ...
@@ -65176,9 +65714,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
+
+    @staticmethod
     def dictionaryKey (underlayDefinitionType: PyRx.RxClass)-> str :
       '''                             '''
     ...
@@ -65447,18 +65989,24 @@ class UnderlayReference:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.UnderlayReference :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
     def clipBoundary (self: UnderlayReference)-> list :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.UnderlayReference :
       '''                             '''
     ...
@@ -65480,9 +66028,13 @@ class UnderlayReference:
     def contrast (self: UnderlayReference)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def contrastDefault ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def contrastLowerLimit ()-> int :
       '''                             '''
     ...
@@ -65501,6 +66053,8 @@ class UnderlayReference:
     def definitionId (self: UnderlayReference)-> PyDb.ObjectId :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -65537,12 +66091,18 @@ class UnderlayReference:
     def fade (self: UnderlayReference)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def fadeDefault ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def fadeLowerLimit ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def fadeUpperLimit ()-> int :
       '''                             '''
     ...
@@ -66218,15 +66778,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Vertex :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Vertex :
       '''                             '''
     ...
@@ -66257,6 +66823,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -66683,15 +67251,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: RxObject)-> PyDb.Vertex2d :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: RxObject)-> PyDb.Vertex2d :
       '''                             '''
     ...
@@ -66722,6 +67296,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -67233,15 +67809,21 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.ViewTableRecord :
       '''                             '''
     ...
     def centerPoint (self: AbstractViewTableRecord)-> PyGe.Point2d :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.ViewTableRecord :
       '''                             '''
     ...
@@ -67269,6 +67851,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def defaultLightingType (self: AbstractViewTableRecord)-> object :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -67736,6 +68320,8 @@ class Viewport:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.Viewport :
       '''                             '''
     ...
@@ -67748,9 +68334,13 @@ class Viewport:
     def circleSides (self: Viewport)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Viewport :
       '''                             '''
     ...
@@ -67796,6 +68386,8 @@ class Viewport:
     def defaultLightingType (self: Viewport)-> object :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -68885,6 +69477,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.ViewportTableRecord :
       '''                             '''
     ...
@@ -68894,9 +69488,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def circleSides (self: ViewportTableRecord)-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.ViewportTableRecord :
       '''                             '''
     ...
@@ -68924,6 +69522,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def defaultLightingType (self: AbstractViewTableRecord)-> object :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -69609,12 +70209,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.Wipeout :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -69630,6 +70234,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     C++ signature :
         enum AcDbRasterImage::ClipBoundaryType clipBoundaryType(class PyDbRasterImage {lvalue})'''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.Wipeout :
       '''                             '''
     ...
@@ -69666,6 +70272,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> None :
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -70273,12 +70881,18 @@ class Xrecord:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def cast (otherObject: PyRx.RxObject)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def cloneFrom (otherObject: PyRx.RxObject)-> PyDb.DbObject :
       '''                             '''
     ...
@@ -70300,6 +70914,8 @@ class Xrecord:
     def deepClone (self: DbObject,owner: PyDb.DbObject,mapping: PyDb.IdMapping,isPrimary:bool=True)-> PyDb.DbObject :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -70619,7 +71235,6 @@ class XrefStatus:
       '''the real part of a complex number'''
     ...
 
-function curDb:
     def curDb (*args, **kwargs)-> PyDb.Database :
       '''curDb() -> Database :
 

@@ -3,6 +3,7 @@ import inspect
 import io
 import pydoc
 import enum
+from collections import OrderedDict
 
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
@@ -27,7 +28,8 @@ all_modules_names = ["PyRx", "PyGe", "PyGi", "PyGs", "PyDb", "PyAp", "PyEd", "Py
 # just some ideas on getting help, work in progress
 
 
-def include_attr(name):
+
+def include_attr(name) -> bool:
     try:
         if name == '__init__':
             return True
@@ -94,6 +96,12 @@ def buildClassDict(moduleName, module):
     for name, obj in inspect.getmembers(module):
         if inspect.isclass(obj):
             class_types[name] = moduleName
+            
+def isStatic(ags : str) -> bool:
+    try:
+        return 'self' not in str(ags)
+    except:
+        return False
 
 # todo: boost generates a doc string that has the function signature
 # it should be able to parse this, or add something in the doc user string
@@ -113,16 +121,19 @@ def generate_pyi(moduleName, module):
                 for func_name, func in inspect.getmembers(obj):
                     if include_attr(func_name):
                         sig = "{0}".format(func.__doc__)
+                        
                         args = findArgs(sig)
                         returnType = findReturnType(sig)
                         newDocString = removeArgStr(sig)
-
+                        
                         try:
                             f.write(
                                 f'    def {func_name} {inspect.signature(func)} :\n')
                             f.write(f"      '''{newDocString}'''")
                         except:
                             if len(args) != 0:
+                                if isStatic(args):
+                                    f.write('\n    @staticmethod\n')
                                 f.write(
                                     f'    def {func_name} {args}{returnType} :\n')
                                 f.write(
@@ -136,7 +147,7 @@ def generate_pyi(moduleName, module):
 
             elif inspect.isbuiltin(obj):
                 f.write('\n')
-                f.write(f'function {name}:\n')
+                # f.write(f'function {name}:\n')
                 try:
                     sig = "{0}".format(obj.__doc__)
                     returnType = findReturnType(sig)

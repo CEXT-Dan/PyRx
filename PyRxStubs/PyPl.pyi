@@ -14,6 +14,8 @@ class Core:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -114,6 +116,8 @@ class DSDData:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > categoryName(class PyPlDSDData {lvalue})'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -129,6 +133,8 @@ class DSDData:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > currentPrecision(class PyPlDSDData {lvalue})'''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -484,6 +490,8 @@ class DSDEntry:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -493,6 +501,8 @@ class DSDEntry:
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -689,6 +699,8 @@ class PlObject:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -698,6 +710,8 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -766,6 +780,8 @@ class PlotConfig:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -775,6 +791,8 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -901,6 +919,8 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (DeviceType)arg4) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,enum DeviceType)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -910,6 +930,8 @@ __init__( (object)arg1, (str)arg2, (str)arg3, (DeviceType)arg4) -> None :
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -990,6 +1012,8 @@ class PlotConfigManager:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1064,6 +1088,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         void beginPlot(class PyPlPlotEngine {lvalue},class PyPlPlotProgressDialog {lvalue})'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1109,15 +1135,23 @@ class PlotFactory:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def createPreviewEngine (flags : int = default)-> PyPl.PlotEngine :
       '''                             '''
     ...
+
+    @staticmethod
     def createPublishEngine ()-> PyPl.PlotEngine :
       '''                             '''
     ...
+
+    @staticmethod
     def processPlotState ()-> PyPl.ProcessPlotState :
       '''                             '''
     ...
@@ -1135,6 +1169,8 @@ class PlotInfo:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1147,6 +1183,8 @@ class PlotInfo:
     C++ signature :
         void copyFrom(class PyPlPlotInfo {lvalue},class PyRxObject)'''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -1257,6 +1295,8 @@ class PlotInfoValidator:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1266,6 +1306,8 @@ class PlotInfoValidator:
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -1507,6 +1549,8 @@ class PlotPageInfo:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1516,15 +1560,21 @@ class PlotPageInfo:
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
     def dispose (self: RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def entityCount ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def gradientCount ()-> int :
       '''                             '''
     ...
@@ -1543,15 +1593,21 @@ class PlotPageInfo:
     def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def oleObjectCount ()-> int :
       '''                             '''
     ...
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
+
+    @staticmethod
     def rasterCount ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def shadedViewportType ()-> int :
       '''                             '''
     ...
@@ -1578,6 +1634,8 @@ __init__( (object)arg1, (int)arg2, (bool)arg3, (int)arg4, (bool)arg5) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,unsigned __int64,bool,int,bool)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1791,6 +1849,8 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1806,6 +1866,8 @@ __init__( (object)arg1) -> None :
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...

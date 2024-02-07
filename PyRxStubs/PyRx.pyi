@@ -214,6 +214,8 @@ This class cannot be instantiated from Python'''
     def appName (self: RxClass)-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -223,6 +225,8 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -265,6 +269,8 @@ class RxObject:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -274,6 +280,8 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...

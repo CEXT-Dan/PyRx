@@ -46,24 +46,38 @@ class Application:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def acadGetIDispatch ()-> int :
       '''                             '''
     ...
+
+    @staticmethod
     def applyHostIcon (wnd : int)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def docManager ()-> PyAp.DocManager :
       '''                             '''
     ...
+
+    @staticmethod
     def hostAPI ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def hostAPIVER ()-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def mainWnd ()-> int :
       '''                             '''
     ...
@@ -73,9 +87,13 @@ class Application:
     def removeOnIdleWinMsg (self: Application,func: Any)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def setTitleThemeDark (wnd : int)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def wxApp ()-> object :
       '''                             '''
     ...
@@ -87,6 +105,8 @@ class AutoDocLock:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -731,6 +751,8 @@ class DocManager:
     def appContextRecoverDocument (self: DocManager,dwgName : str)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def autoLock ()-> PyAp.AutoDocLock :
       '''                             '''
     ...
@@ -740,6 +762,8 @@ class DocManager:
     def beginExecuteInCommandContext (self: DocManager,func: Any,data: Any)-> PyDb.ErrorStatus :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -758,6 +782,8 @@ class DocManager:
     def defaultFormatForSave (self: DocManager)-> PyAp.SaveFormat :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -901,6 +927,8 @@ class Document:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -913,6 +941,8 @@ This class cannot be instantiated from Python'''
     def database (self: Document)-> PyDb.Database :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -922,6 +952,8 @@ This class cannot be instantiated from Python'''
     def docTitle (self: Document)-> str :
       '''                             '''
     ...
+
+    @staticmethod
     def docWnd ()-> int :
       '''                             '''
     ...
@@ -1022,6 +1054,8 @@ __init__( (object)arg1) -> None :
     def allowRename (self: LayerFilter)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1034,6 +1068,8 @@ __init__( (object)arg1) -> None :
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -1163,6 +1199,8 @@ __init__( (object)arg1) -> None :
     def allowRename (self: LayerFilter)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1175,6 +1213,8 @@ __init__( (object)arg1) -> None :
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -1258,6 +1298,8 @@ class LayoutManager:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1334,6 +1376,8 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     C++ signature :
         void deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -1852,7 +1896,6 @@ class TransactionManager:
       '''                             '''
     ...
 
-function curDoc:
     def curDoc (*args, **kwargs)-> PyAp.Document :
       '''curDoc() -> Document :
 

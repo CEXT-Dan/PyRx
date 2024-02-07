@@ -357,6 +357,8 @@ class CommonDraw:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -366,6 +368,8 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -476,6 +480,8 @@ This class cannot be instantiated from Python'''
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
       '''                             '''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -485,6 +491,8 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -1619,6 +1627,8 @@ class ViewportDraw:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1628,6 +1638,8 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -1705,6 +1717,8 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1714,6 +1728,8 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -1798,6 +1814,8 @@ class WorldDraw:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1807,6 +1825,8 @@ This class cannot be instantiated from Python'''
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
@@ -1884,6 +1904,8 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
     ...
+
+    @staticmethod
     def className ()-> str :
       '''                             '''
     ...
@@ -1893,6 +1915,8 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
     ...
+
+    @staticmethod
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
