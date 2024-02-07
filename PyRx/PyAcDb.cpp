@@ -42,6 +42,7 @@
 #include "PyDbOverrule.h"
 #include "PyDbPointCloudEx.h"
 #include "PyDbSpatialFilter.h"
+#include "PyDbGeo.h"
 
 using namespace boost::python;
 
@@ -315,6 +316,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbPointCloudExWrapper();
     makePyDbPointCloudColorMapWrapper();
 #endif
+    makePyDbGeoDataWrapper();
+    makePyDbGeoPositionMarkerWrapper();
 
     makeDbCoreWrapper();//LAST?
 
