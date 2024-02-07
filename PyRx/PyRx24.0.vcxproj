@@ -139,6 +139,7 @@
     <ClCompile Include="PyDbDatabaseReactor.cpp" />
     <ClCompile Include="PyDbDimAssoc.cpp" />
     <ClCompile Include="PyDbEllipse.cpp" />
+    <ClCompile Include="PyDbGeo.cpp" />
     <ClCompile Include="PyDbOverrule.cpp" />
     <ClCompile Include="PyDbPointCloudEx.cpp" />
     <ClCompile Include="PyDbPointRef.cpp" />
@@ -253,6 +254,7 @@
     <ClInclude Include="PyDbDatabaseReactor.h" />
     <ClInclude Include="PyDbDimAssoc.h" />
     <ClInclude Include="PyDbEllipse.h" />
+    <ClInclude Include="PyDbGeo.h" />
     <ClInclude Include="PyDbOverrule.h" />
     <ClInclude Include="PyDbPointCloudEx.h" />
     <ClInclude Include="PyDbPointRef.h" />
