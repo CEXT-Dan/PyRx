@@ -136,8 +136,8 @@ Acad::ErrorStatus PyDbSnoopDwgFiler::readBChunk(ads_binary* pVal)
 Acad::ErrorStatus PyDbSnoopDwgFiler::writeBChunk(const ads_binary& adsval)
 {
     PyAutoLockGIL lock;
-    PyObject* py_buf = PyMemoryView_FromMemory(adsval.buf, (size_t)adsval.clen, PyBUF_WRITE);
-    m_list.append(boost::python::make_tuple("ads_binary", boost::python::object(boost::python::handle<>(py_buf))));
+    boost::python::object memoryView(boost::python::handle<>(PyMemoryView_FromMemory(adsval.buf, adsval.clen, PyBUF_READ)));
+    m_list.append(boost::python::make_tuple("ads_binary", memoryView));
     return eOk;
 }
 
