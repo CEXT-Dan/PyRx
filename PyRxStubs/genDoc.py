@@ -35,9 +35,9 @@ def include_attr(name):
             return False
         elif name == 'names':
             return False
-        elif name == 'as_integer_ratio':
+        elif name == 'values': #these emit a ton of junk with enums
             return False
-        elif name == 'values':
+        elif name == 'as_integer_ratio':
             return False
         elif name == 'bit_count':
             return False
