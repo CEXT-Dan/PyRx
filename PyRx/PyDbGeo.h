@@ -3,6 +3,8 @@
 #include "dbGeoData.h"
 #include "AcDbGeoPositionMarker.h"
 
+class PyDbMText;
+
 //----------------------------------------------------------------------------------------
 //PyDbGeoData
 void makePyDbGeoDataWrapper();
@@ -26,7 +28,6 @@ public:
     inline AcDbGeoData* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //----------------------------------------------------------------------------------------
 //PyDbGeoPositionMarker
 void makePyDbGeoPositionMarkerWrapper();
@@ -40,6 +41,18 @@ public:
     PyDbGeoPositionMarker(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbGeoPositionMarker(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
     inline virtual ~PyDbGeoPositionMarker() override = default;
+
+    AcGePoint3d         position() const;
+    void                setPosition(const AcGePoint3d& position);
+
+    double              radius() const;
+    void                setRadius(double radius);
+
+    AcString            text() const;
+    void                setText(const AcString& text);
+
+    PyDbMText           mtext() const;
+    void                setMText(const PyDbMText& pMText);
 
 public:
     static PyRxClass                desc();

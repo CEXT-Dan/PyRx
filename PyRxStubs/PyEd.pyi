@@ -2651,8 +2651,8 @@ class Util:
       '''                             '''
     ...
 
-    def print (*args, **kwargs)-> None :
-      '''print( (object)arg1) -> None :
+def print (*args, **kwargs)-> None :
+    '''print( (object)arg1) -> None :
 
     C++ signature :
         void print(class boost::python::api::object)'''

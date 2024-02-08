@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyDbGeo.h"
 #include "PyDbObjectId.h"
+#include "PyDbMText.h"
 
 using namespace boost::python;
 
@@ -126,6 +127,46 @@ PyDbGeoPositionMarker::PyDbGeoPositionMarker(const PyDbObjectId& id, AcDb::OpenM
 PyDbGeoPositionMarker::PyDbGeoPositionMarker(AcDbGeoPositionMarker* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
+}
+
+AcGePoint3d PyDbGeoPositionMarker::position() const
+{
+    return impObj()->position();
+}
+
+void PyDbGeoPositionMarker::setPosition(const AcGePoint3d& position)
+{
+    PyThrowBadEs(impObj()->setPosition(position));
+}
+
+double PyDbGeoPositionMarker::radius() const
+{
+    return impObj()->radius();
+}
+
+void PyDbGeoPositionMarker::setRadius(double radius)
+{
+    PyThrowBadEs(impObj()->setRadius(radius));
+}
+
+AcString PyDbGeoPositionMarker::text() const
+{
+    return impObj()->text();
+}
+
+void PyDbGeoPositionMarker::setText(const AcString& text)
+{
+    PyThrowBadEs(impObj()->setText(text));
+}
+
+PyDbMText PyDbGeoPositionMarker::mtext() const
+{
+    return PyDbMText(impObj()->mtext(),true);
+}
+
+void PyDbGeoPositionMarker::setMText(const PyDbMText& pMText)
+{
+    PyThrowBadEs(impObj()->setMText(pMText.impObj()));
 }
 
 PyRxClass PyDbGeoPositionMarker::desc()

@@ -1896,8 +1896,8 @@ class TransactionManager:
       '''                             '''
     ...
 
-    def curDoc (*args, **kwargs)-> PyAp.Document :
-      '''curDoc() -> Document :
+def curDoc (*args, **kwargs)-> PyAp.Document :
+    '''curDoc() -> Document :
 
     C++ signature :
         class PyApDocument curDoc()'''
