@@ -77,10 +77,10 @@ public:
     boost::python::tuple getMeshFace(int faceIndex) const;
     void                 addMeshFace(int faceIndex, int p0, int p1, int p2);
     void                 updateTransformationMatrix();
-    AcGePoint3d          transformToLonLatAlt(const AcGePoint3d& dwgPt) const;
-    boost::python::tuple transformToLonLatAlt(double x, double y, double z) const;
-    AcGePoint3d          transformFromLonLatAlt(const AcGePoint3d& geoPt) const;
-    boost::python::tuple transformFromLonLatAlt(double lon, double lat, double alt) const;
+    AcGePoint3d          transformToLonLatAlt1(const AcGePoint3d& dwgPt) const;
+    boost::python::tuple transformToLonLatAlt2(double x, double y, double z) const;
+    AcGePoint3d          transformFromLonLatAlt1(const AcGePoint3d& geoPt) const;
+    boost::python::tuple transformFromLonLatAlt2(double lon, double lat, double alt) const;
 
 #ifdef NEVER //TODO
     static  Acad::ErrorStatus setTransformCallbacks(const ACHAR* zoneDescription, ACDBGEODATA_GEOGRAPHICTODWG pFuncGeoToDwg, ACDBGEODATA_DWGTOGEOGRAPHIC pFuncDwgToGeo);

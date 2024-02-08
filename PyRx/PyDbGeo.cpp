@@ -15,6 +15,63 @@ void makePyDbGeoDataWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def("blockTableRecordId", &PyDbGeoData::blockTableRecordId)
+        .def("setBlockTableRecordId", &PyDbGeoData::setBlockTableRecordId)
+        .def("postToDb", &PyDbGeoData::postToDb)
+        .def("eraseFromDb", &PyDbGeoData::eraseFromDb)
+        .def("coordinateType", &PyDbGeoData::coordinateType)
+        .def("setCoordinateType", &PyDbGeoData::setCoordinateType)
+        .def("designPoint", &PyDbGeoData::designPoint)
+        .def("setDesignPoint", &PyDbGeoData::setDesignPoint)
+        .def("referencePoint", &PyDbGeoData::referencePoint)
+        .def("setReferencePoint", &PyDbGeoData::setReferencePoint)
+        .def("horizontalUnitScale", &PyDbGeoData::horizontalUnitScale)
+        .def("horizontalUnits", &PyDbGeoData::horizontalUnits)
+        .def("setHorizontalUnitScale", &PyDbGeoData::setHorizontalUnitScale)
+        .def("setHorizontalUnits", &PyDbGeoData::setHorizontalUnits)
+        .def("verticalUnitScale", &PyDbGeoData::verticalUnitScale)
+        .def("verticalUnits", &PyDbGeoData::verticalUnits)
+        .def("setVerticalUnitScale", &PyDbGeoData::setVerticalUnitScale)
+        .def("setVerticalUnits", &PyDbGeoData::setVerticalUnits)
+        .def("coordinateSystem", &PyDbGeoData::coordinateSystem)
+        .def("setCoordinateSystem", &PyDbGeoData::setCoordinateSystem)
+        .def("upDirection", &PyDbGeoData::upDirection)
+        .def("setUpDirection", &PyDbGeoData::setUpDirection)
+        .def("northDirection", &PyDbGeoData::northDirection)
+        .def("northDirectionVector", &PyDbGeoData::northDirectionVector)
+        .def("setNorthDirectionVector", &PyDbGeoData::setNorthDirectionVector)
+        .def("scaleEstimationMethod", &PyDbGeoData::scaleEstimationMethod)
+        .def("setScaleEstimationMethod", &PyDbGeoData::setScaleEstimationMethod)
+        .def("scaleFactor", &PyDbGeoData::scaleFactor)
+        .def("setScaleFactor", &PyDbGeoData::setScaleFactor)
+        .def("doSeaLevelCorrection", &PyDbGeoData::doSeaLevelCorrection)
+        .def("setDoSeaLevelCorrection", &PyDbGeoData::setDoSeaLevelCorrection)
+        .def("seaLevelElevation", &PyDbGeoData::seaLevelElevation)
+        .def("setSeaLevelElevation", &PyDbGeoData::setSeaLevelElevation)
+        .def("coordinateProjectionRadius", &PyDbGeoData::coordinateProjectionRadius)
+        .def("setCoordinateProjectionRadius", &PyDbGeoData::setCoordinateProjectionRadius)
+        .def("geoRSSTag", &PyDbGeoData::geoRSSTag)
+        .def("setGeoRSSTag", &PyDbGeoData::setGeoRSSTag)
+        .def("observationFrom", &PyDbGeoData::observationFrom)
+        .def("setObservationFrom", &PyDbGeoData::setObservationFrom)
+        .def("observationTo", &PyDbGeoData::observationTo)
+        .def("setObservationTo", &PyDbGeoData::setObservationTo)
+        .def("observationCoverage", &PyDbGeoData::observationCoverage)
+        .def("setObservationCoverage", &PyDbGeoData::setObservationCoverage)
+        .def("numMeshPoints", &PyDbGeoData::numMeshPoints)
+        .def("getMeshPointMap", &PyDbGeoData::getMeshPointMap)
+        .def("getMeshPointMaps", &PyDbGeoData::getMeshPointMaps)
+        .def("addMeshPointMap", &PyDbGeoData::addMeshPointMap)
+        .def("setMeshPointMaps", &PyDbGeoData::setMeshPointMaps)
+        .def("resetMeshPointMaps", &PyDbGeoData::resetMeshPointMaps)
+        .def("numMeshFaces", &PyDbGeoData::numMeshFaces)
+        .def("getMeshFace", &PyDbGeoData::getMeshFace)
+        .def("addMeshFace", &PyDbGeoData::addMeshFace)
+        .def("updateTransformationMatrix", &PyDbGeoData::updateTransformationMatrix)
+        .def("transformToLonLatAlt", &PyDbGeoData::transformToLonLatAlt1)
+        .def("transformToLonLatAlt", &PyDbGeoData::transformToLonLatAlt2)
+        .def("transformToLonLatAlt", &PyDbGeoData::transformFromLonLatAlt1)
+        .def("transformToLonLatAlt", &PyDbGeoData::transformFromLonLatAlt2)
         .def("className", &PyDbGeoData::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbGeoData::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbGeoData::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -328,14 +385,14 @@ void PyDbGeoData::updateTransformationMatrix()
     PyThrowBadEs(impObj()->updateTransformationMatrix());
 }
 
-AcGePoint3d PyDbGeoData::transformToLonLatAlt(const AcGePoint3d& dwgPt) const
+AcGePoint3d PyDbGeoData::transformToLonLatAlt1(const AcGePoint3d& dwgPt) const
 {
     AcGePoint3d geoPt;
     PyThrowBadEs(impObj()->transformToLonLatAlt(dwgPt, geoPt));
     return geoPt;
 }
 
-boost::python::tuple PyDbGeoData::transformToLonLatAlt(double x, double y, double z) const
+boost::python::tuple PyDbGeoData::transformToLonLatAlt2(double x, double y, double z) const
 {
     PyAutoLockGIL lock;
     double lon = 0;
@@ -345,14 +402,14 @@ boost::python::tuple PyDbGeoData::transformToLonLatAlt(double x, double y, doubl
     return boost::python::make_tuple(lon, lat, alt);
 }
 
-AcGePoint3d PyDbGeoData::transformFromLonLatAlt(const AcGePoint3d& geoPt) const
+AcGePoint3d PyDbGeoData::transformFromLonLatAlt1(const AcGePoint3d& geoPt) const
 {
     AcGePoint3d dwgPt;
     PyThrowBadEs(impObj()->transformFromLonLatAlt(geoPt, dwgPt));
     return dwgPt;
 }
 
-boost::python::tuple PyDbGeoData::transformFromLonLatAlt(double lon, double lat, double alt) const
+boost::python::tuple PyDbGeoData::transformFromLonLatAlt2(double lon, double lat, double alt) const
 {
     PyAutoLockGIL lock;
     double x = 0;
