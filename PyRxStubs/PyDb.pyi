@@ -23216,7 +23216,7 @@ class GeoData:
     def setHorizontalUnits (self: GeoData,val : PyDb.UnitsValue)-> None :
       '''                             '''
     ...
-    def setMeshPointMaps (self: GeoData,src : Iterable[PyGe.Point2d],dest : Iterable[PyGe.Point2d])-> None :
+    def setMeshPointMaps (self: GeoData,src : list[PyGe.Point2d],dest : list[PyGe.Point2d])-> None :
       '''                             '''
     ...
     def setNorthDirectionVector (self: GeoData,vec : PyGe.Vector2d)-> None :
