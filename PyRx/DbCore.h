@@ -67,6 +67,7 @@ public:
     static boost::python::list  getDimAssocIds(const PyDbObjectId& id);
     static PyDbObjectId         getDimStyleId(PyDbDatabase& db, const std::string& styleName, const std::string& lockName);
     static PyDbObjectId         getDynDimStyleId(PyDbDatabase& db);
+    static PyDbObjectId         getGeoDataObjId(PyDbDatabase& db);
     static boost::python::tuple getProxyInfo(const PyDbObject& obj);
     static std::string          getMappedFontName(const std::string& fontName);
     static std::string          getReservedString(AcDb::reservedStringEnumType reservedType, bool bGetLocalized);

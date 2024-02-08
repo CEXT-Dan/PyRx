@@ -11,6 +11,7 @@
 #include "PyDbTransactionManager.h"
 #include "PyDbDimAssoc.h"
 #include "AcPointCloud.h"
+#include "dbGeoData.h"
 
 using namespace boost::python;
 
@@ -75,7 +76,8 @@ void makeDbCoreWrapper()
         .def("getDimAssocId", &DbCore::getDimAssocId).staticmethod("getDimAssocId")
         .def("getDimAssocIds", &DbCore::getDimAssocIds).staticmethod("getDimAssocIds")
         .def("getDimStyleId", &DbCore::getDimStyleId).staticmethod("getDimStyleId")
-        .def("getDynDimStyleId", &DbCore::getDynDimStyleId).staticmethod("getDynDimStyleId")
+        .def("getDynDimStyleId", &DbCore::getDynDimStyleId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getDynDimStyleId")
+        .def("getGeoDataObjId", &DbCore::getGeoDataObjId, DS.SARGS({ "db: PyDb.Database" })).staticmethod("getGeoDataObjId")
         .def("getProxyInfo", &DbCore::getProxyInfo).staticmethod("getProxyInfo")
         .def("getMappedFontName", &DbCore::getMappedFontName).staticmethod("getMappedFontName")
         .def("getReservedString", &DbCore::getReservedString).staticmethod("getReservedString")
@@ -531,6 +533,13 @@ PyDbObjectId DbCore::getDynDimStyleId(PyDbDatabase& db)
 #else
     return PyDbObjectId(acdbGetDynDimStyleId(db.impObj()));
 #endif
+}
+
+PyDbObjectId DbCore::getGeoDataObjId(PyDbDatabase& db)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(acdbGetGeoDataObjId(db.impObj(), id.m_id));
+    return id;
 }
 
 boost::python::tuple DbCore::getProxyInfo(const PyDbObject& obj)
