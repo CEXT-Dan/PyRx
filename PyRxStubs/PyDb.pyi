@@ -23264,7 +23264,7 @@ class GeoData:
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformToLonLatAlt (self: GeoData,pt : PyGe.Point3d | xyz)-> PyGe.Point3d :
+    def transformToLonLatAlt (self: GeoData,pt : PyGe.Point3d | float)-> PyGe.Point3d :
       '''                             '''
     ...
     def upDirection (self: GeoData)-> PyGe.Vector3d :
