@@ -43,8 +43,323 @@ PyDbGeoData::PyDbGeoData(const PyDbObjectId& id, AcDb::OpenMode mode)
 }
 
 PyDbGeoData::PyDbGeoData(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased)
-    : PyDbObject(openAcDbObject<AcDbGeoData>(id, mode, erased),false)
+    : PyDbObject(openAcDbObject<AcDbGeoData>(id, mode, erased), false)
 {
+}
+
+PyDbObjectId PyDbGeoData::blockTableRecordId() const
+{
+    return PyDbObjectId(impObj()->blockTableRecordId());
+}
+
+void PyDbGeoData::setBlockTableRecordId(const PyDbObjectId& Id)
+{
+    PyThrowBadEs(impObj()->setBlockTableRecordId(Id.m_id));
+}
+
+PyDbObjectId PyDbGeoData::postToDb()
+{
+    PyDbObjectId id;
+    PyThrowBadEs(impObj()->postToDb(id.m_id));
+    return id;
+}
+
+void PyDbGeoData::eraseFromDb()
+{
+    PyThrowBadEs(impObj()->eraseFromDb());
+}
+
+AcDbGeoData::TypeOfCoordinates PyDbGeoData::coordinateType() const
+{
+    return impObj()->coordinateType();
+}
+
+void PyDbGeoData::setCoordinateType(AcDbGeoData::TypeOfCoordinates designCoordinateType)
+{
+    PyThrowBadEs(impObj()->setCoordinateType(designCoordinateType));
+}
+
+AcGePoint3d PyDbGeoData::designPoint() const
+{
+    return impObj()->designPoint();
+}
+
+void PyDbGeoData::setDesignPoint(const AcGePoint3d& point)
+{
+    PyThrowBadEs(impObj()->setDesignPoint(point));
+}
+
+AcGePoint3d PyDbGeoData::referencePoint() const
+{
+    return impObj()->referencePoint();
+}
+
+void PyDbGeoData::setReferencePoint(const AcGePoint3d& point)
+{
+    PyThrowBadEs(impObj()->setReferencePoint(point));
+}
+
+double PyDbGeoData::horizontalUnitScale() const
+{
+    return impObj()->horizontalUnitScale();
+}
+
+AcDb::UnitsValue PyDbGeoData::horizontalUnits() const
+{
+    return impObj()->horizontalUnits();
+}
+
+void PyDbGeoData::setHorizontalUnitScale(double horzUnitScale)
+{
+    PyThrowBadEs(impObj()->setHorizontalUnitScale(horzUnitScale));
+}
+
+void PyDbGeoData::setHorizontalUnits(AcDb::UnitsValue horizUnits)
+{
+    PyThrowBadEs(impObj()->setHorizontalUnits(horizUnits));
+}
+
+double PyDbGeoData::verticalUnitScale() const
+{
+    return impObj()->verticalUnitScale();
+}
+
+AcDb::UnitsValue PyDbGeoData::verticalUnits() const
+{
+    return impObj()->verticalUnits();
+}
+
+void PyDbGeoData::setVerticalUnitScale(double vertUnitScale)
+{
+    PyThrowBadEs(impObj()->setVerticalUnitScale(vertUnitScale));
+}
+
+void PyDbGeoData::setVerticalUnits(AcDb::UnitsValue vertUnits)
+{
+    PyThrowBadEs(impObj()->setVerticalUnits(vertUnits));
+}
+
+std::string PyDbGeoData::coordinateSystem() const
+{
+    return wstr_to_utf8(impObj()->coordinateSystem());
+}
+
+void PyDbGeoData::setCoordinateSystem(const std::string& coordinateSystem)
+{
+    PyThrowBadEs(impObj()->setCoordinateSystem(utf8_to_wstr(coordinateSystem).c_str()));
+}
+
+AcGeVector3d PyDbGeoData::upDirection() const
+{
+    return impObj()->upDirection();
+}
+
+void PyDbGeoData::setUpDirection(const AcGeVector3d& vec)
+{
+    PyThrowBadEs(impObj()->setUpDirection(vec));
+}
+
+double PyDbGeoData::northDirection() const
+{
+    return impObj()->northDirection();
+}
+
+AcGeVector2d PyDbGeoData::northDirectionVector() const
+{
+    return impObj()->northDirectionVector();
+}
+
+void PyDbGeoData::setNorthDirectionVector(const AcGeVector2d& north)
+{
+    PyThrowBadEs(impObj()->setNorthDirectionVector(north));
+}
+
+AcDbGeoData::ScaleEstimationMethod PyDbGeoData::scaleEstimationMethod() const
+{
+    return impObj()->scaleEstimationMethod();
+}
+
+void PyDbGeoData::setScaleEstimationMethod(AcDbGeoData::ScaleEstimationMethod value)
+{
+    PyThrowBadEs(impObj()->setScaleEstimationMethod(value));
+}
+
+double PyDbGeoData::scaleFactor() const
+{
+    return impObj()->scaleFactor();
+}
+
+void PyDbGeoData::setScaleFactor(double value)
+{
+    PyThrowBadEs(impObj()->setScaleFactor(value));
+}
+
+bool PyDbGeoData::doSeaLevelCorrection() const
+{
+    return impObj()->doSeaLevelCorrection();
+}
+
+void PyDbGeoData::setDoSeaLevelCorrection(bool seaLevelCorrectionOn)
+{
+    PyThrowBadEs(impObj()->setDoSeaLevelCorrection(seaLevelCorrectionOn));
+}
+
+double PyDbGeoData::seaLevelElevation() const
+{
+    return impObj()->seaLevelElevation();
+}
+
+void PyDbGeoData::setSeaLevelElevation(double value)
+{
+    PyThrowBadEs(impObj()->setSeaLevelElevation(value));
+}
+
+double PyDbGeoData::coordinateProjectionRadius() const
+{
+    return impObj()->coordinateProjectionRadius();
+}
+
+void PyDbGeoData::setCoordinateProjectionRadius(double value)
+{
+    PyThrowBadEs(impObj()->setCoordinateProjectionRadius(value));
+}
+
+std::string PyDbGeoData::geoRSSTag() const
+{
+    return wstr_to_utf8(impObj()->geoRSSTag());
+}
+
+void PyDbGeoData::setGeoRSSTag(const std::string& rssTag)
+{
+    PyThrowBadEs(impObj()->setGeoRSSTag(utf8_to_wstr(rssTag).c_str()));
+}
+
+std::string PyDbGeoData::observationFrom() const
+{
+    return wstr_to_utf8(impObj()->observationFrom());
+}
+
+void PyDbGeoData::setObservationFrom(const std::string& from)
+{
+    PyThrowBadEs(impObj()->setObservationFrom(utf8_to_wstr(from).c_str()));
+}
+
+std::string PyDbGeoData::observationTo() const
+{
+    return wstr_to_utf8(impObj()->observationTo());
+}
+
+void PyDbGeoData::setObservationTo(const std::string& to)
+{
+    PyThrowBadEs(impObj()->setObservationTo(utf8_to_wstr(to).c_str()));
+}
+
+std::string PyDbGeoData::observationCoverage() const
+{
+    return wstr_to_utf8(impObj()->observationCoverage());
+}
+
+void PyDbGeoData::setObservationCoverage(const std::string& coverage)
+{
+    PyThrowBadEs(impObj()->setObservationCoverage(utf8_to_wstr(coverage).c_str()));
+}
+
+int PyDbGeoData::numMeshPoints() const
+{
+    return impObj()->numMeshPoints();
+}
+
+boost::python::tuple PyDbGeoData::getMeshPointMap(int index) const
+{
+    PyAutoLockGIL lock;
+    AcGePoint2d sourcePt;
+    AcGePoint2d destPt;
+    PyThrowBadEs(impObj()->getMeshPointMap(index, sourcePt, destPt));
+    return boost::python::make_tuple(sourcePt, destPt);
+}
+
+boost::python::tuple PyDbGeoData::getMeshPointMaps() const
+{
+    PyAutoLockGIL lock;
+    AcGePoint2dArray sourcePts;
+    AcGePoint2dArray destPts;
+    PyThrowBadEs(impObj()->getMeshPointMaps(sourcePts, destPts));
+    return boost::python::make_tuple(Point2dArrayToPyList(sourcePts), Point2dArrayToPyList(destPts));
+}
+
+void PyDbGeoData::addMeshPointMap(int index, const AcGePoint2d& sourcePt, const AcGePoint2d& destPt)
+{
+    PyThrowBadEs(impObj()->addMeshPointMap(index, sourcePt, destPt));
+}
+
+void PyDbGeoData::setMeshPointMaps(const boost::python::object& sourcePts, const boost::python::object& destPts)
+{
+    PyAutoLockGIL lock;
+    PyThrowBadEs(impObj()->setMeshPointMaps(PyListToPoint2dArray(sourcePts), PyListToPoint2dArray(destPts)));
+}
+
+void PyDbGeoData::resetMeshPointMaps()
+{
+    PyThrowBadEs(impObj()->resetMeshPointMaps());
+}
+
+int PyDbGeoData::numMeshFaces() const
+{
+    return impObj()->numMeshFaces();
+}
+
+boost::python::tuple PyDbGeoData::getMeshFace(int faceIndex) const
+{
+    PyAutoLockGIL lock;
+    int p0 = 0;
+    int p1 = 0;
+    int p2 = 0;
+    PyThrowBadEs(impObj()->getMeshFace(faceIndex, p0, p1, p2));
+    return boost::python::make_tuple(p0, p1, p2);
+}
+
+void PyDbGeoData::addMeshFace(int faceIndex, int p0, int p1, int p2)
+{
+    PyThrowBadEs(impObj()->addMeshFace(faceIndex, p0, p1, p2));
+}
+
+void PyDbGeoData::updateTransformationMatrix()
+{
+    PyThrowBadEs(impObj()->updateTransformationMatrix());
+}
+
+AcGePoint3d PyDbGeoData::transformToLonLatAlt(const AcGePoint3d& dwgPt) const
+{
+    AcGePoint3d geoPt;
+    PyThrowBadEs(impObj()->transformToLonLatAlt(dwgPt, geoPt));
+    return geoPt;
+}
+
+boost::python::tuple PyDbGeoData::transformToLonLatAlt(double x, double y, double z) const
+{
+    PyAutoLockGIL lock;
+    double lon = 0;
+    double lat = 0;
+    double alt = 0;
+    PyThrowBadEs(impObj()->transformToLonLatAlt(x, y, z, lon, lat, alt));
+    return boost::python::make_tuple(lon, lat, alt);
+}
+
+AcGePoint3d PyDbGeoData::transformFromLonLatAlt(const AcGePoint3d& geoPt) const
+{
+    AcGePoint3d dwgPt;
+    PyThrowBadEs(impObj()->transformFromLonLatAlt(geoPt, dwgPt));
+    return dwgPt;
+}
+
+boost::python::tuple PyDbGeoData::transformFromLonLatAlt(double lon, double lat, double alt) const
+{
+    PyAutoLockGIL lock;
+    double x = 0;
+    double y = 0;
+    double z = 0;
+    PyThrowBadEs(impObj()->transformFromLonLatAlt(lon, lat, alt, x, y, z));
+    return boost::python::make_tuple(x, y, z);
 }
 
 PyRxClass PyDbGeoData::desc()
@@ -185,7 +500,7 @@ void PyDbGeoPositionMarker::setText(const std::string& text)
 
 PyDbMText PyDbGeoPositionMarker::mtext() const
 {
-    return PyDbMText(impObj()->mtext(),true);
+    return PyDbMText(impObj()->mtext(), true);
 }
 
 void PyDbGeoPositionMarker::setMText(const PyDbMText& pMText)
@@ -255,10 +570,10 @@ void PyDbGeoPositionMarker::setGeoPosition(const AcGePoint3d& position)
 
 boost::python::tuple PyDbGeoPositionMarker::latLonAlt() const
 {
-    double lat = 0; 
-    double lon = 0; 
-    double alt = 0;
     PyAutoLockGIL lock;
+    double lat = 0;
+    double lon = 0;
+    double alt = 0;
     PyThrowBadEs(impObj()->latLonAlt(lat, lon, alt));
     return boost::python::make_tuple(lat, lon, alt);
 }
