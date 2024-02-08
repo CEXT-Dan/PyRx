@@ -324,6 +324,20 @@ BOOST_PYTHON_MODULE(PyDb)
     def("curDb", curPyDb);
 
     //enums
+    enum_<AcDbGeoData::TypeOfCoordinates>("GeoTypeOfCoordinates")
+        .value("kCoordTypUnknown", AcDbGeoData::TypeOfCoordinates::kCoordTypUnknown)
+        .value("kCoordTypLocal", AcDbGeoData::TypeOfCoordinates::kCoordTypLocal)
+        .value("kCoordTypGrid", AcDbGeoData::TypeOfCoordinates::kCoordTypGrid)
+        .value("kCoordTypGeographic", AcDbGeoData::TypeOfCoordinates::kCoordTypGeographic)
+        .export_values()
+        ;
+    enum_<AcDbGeoData::ScaleEstimationMethod>("GeoScaleEstimationMethod")
+        .value("kScaleEstMethodUnity", AcDbGeoData::ScaleEstimationMethod::kScaleEstMethodUnity)
+        .value("kScaleEstMethodUserDefined", AcDbGeoData::ScaleEstimationMethod::kScaleEstMethodUserDefined)
+        .value("kScaleEstMethodReferencePoint", AcDbGeoData::ScaleEstimationMethod::kScaleEstMethodReferencePoint)
+        .value("kScaleEstMethodPrismoidal", AcDbGeoData::ScaleEstimationMethod::kScaleEstMethodPrismoidal)
+        .export_values()
+        ;
     enum_<AcDbGeoPositionMarker::TextAlignmentType>("GeoTextAlignmentType")
         .value("kLeftAlignment", AcDbGeoPositionMarker::TextAlignmentType::kLeftAlignment)
         .value("kCenterAlignment", AcDbGeoPositionMarker::TextAlignmentType::kCenterAlignment)
