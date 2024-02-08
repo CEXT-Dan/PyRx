@@ -324,6 +324,12 @@ BOOST_PYTHON_MODULE(PyDb)
     def("curDb", curPyDb);
 
     //enums
+    enum_<AcDbGeoPositionMarker::TextAlignmentType>("GeoTextAlignmentType")
+        .value("kLeftAlignment", AcDbGeoPositionMarker::TextAlignmentType::kLeftAlignment)
+        .value("kCenterAlignment", AcDbGeoPositionMarker::TextAlignmentType::kCenterAlignment)
+        .value("kRightAlignment", AcDbGeoPositionMarker::TextAlignmentType::kRightAlignment)
+        .export_values()
+        ;
     enum_<AcDbPointRef::OsnapType>("OsnapType")
         .value("kOsnapNone", AcDbPointRef::OsnapType::kOsnapNone)
         .value("kOsnapEnd", AcDbPointRef::OsnapType::kOsnapEnd)

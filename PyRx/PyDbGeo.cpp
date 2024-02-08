@@ -92,6 +92,30 @@ void makePyDbGeoPositionMarkerWrapper()
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode, bool>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead", "erased: bool=False" })))
+        .def("position", &PyDbGeoPositionMarker::position, DS.ARGS())
+        .def("setPosition", &PyDbGeoPositionMarker::setPosition, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("radius", &PyDbGeoPositionMarker::radius, DS.ARGS())
+        .def("setRadius", &PyDbGeoPositionMarker::setRadius, DS.ARGS({ "val : float" }))
+        .def("text", &PyDbGeoPositionMarker::text, DS.ARGS())
+        .def("setText", &PyDbGeoPositionMarker::setText, DS.ARGS({ "val : str" }))
+        .def("mtext", &PyDbGeoPositionMarker::mtext, DS.ARGS())
+        .def("setMText", &PyDbGeoPositionMarker::setMText, DS.ARGS({ "val : PyDb.MText.M" }))
+        .def("mtextVisible", &PyDbGeoPositionMarker::mtextVisible, DS.ARGS())
+        .def("setMTextVisible", &PyDbGeoPositionMarker::setMTextVisible, DS.ARGS({ "val : bool" }))
+        .def("landingGap", &PyDbGeoPositionMarker::landingGap, DS.ARGS())
+        .def("setLandingGap", &PyDbGeoPositionMarker::setLandingGap, DS.ARGS({ "val : float" }))
+        .def("enableFrameText", &PyDbGeoPositionMarker::enableFrameText, DS.ARGS())
+        .def("setEnableFrameText", &PyDbGeoPositionMarker::setEnableFrameText, DS.ARGS({ "val : bool" }))
+        .def("textAlignmentType", &PyDbGeoPositionMarker::textAlignmentType, DS.ARGS())
+        .def("setTextAlignmentType", &PyDbGeoPositionMarker::setTextAlignmentType, DS.ARGS({ "val : PyDb.GeoTextAlignmentType" }))
+        .def("notes", &PyDbGeoPositionMarker::notes, DS.ARGS())
+        .def("setNotes", &PyDbGeoPositionMarker::setNotes, DS.ARGS({ "val : str" }))
+        .def("geoPosition", &PyDbGeoPositionMarker::geoPosition, DS.ARGS())
+        .def("setGeoPosition", &PyDbGeoPositionMarker::setGeoPosition, DS.ARGS({ "pt : PyGe.Point3d" }))
+        .def("latLonAlt", &PyDbGeoPositionMarker::latLonAlt, DS.ARGS())
+        .def("setLatLonAlt", &PyDbGeoPositionMarker::setLatLonAlt, DS.ARGS({ "lat : float","lon : float", "alt : float" }))
+        .def("normal", &PyDbGeoPositionMarker::normal, DS.ARGS())
+        .def("textStyle", &PyDbGeoPositionMarker::textStyle, DS.ARGS())
         .def("className", &PyDbGeoPositionMarker::className, DS.SARGS()).staticmethod("className")
         .def("desc", &PyDbGeoPositionMarker::desc, DS.SARGS()).staticmethod("desc")
         .def("cloneFrom", &PyDbGeoPositionMarker::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -149,14 +173,14 @@ void PyDbGeoPositionMarker::setRadius(double radius)
     PyThrowBadEs(impObj()->setRadius(radius));
 }
 
-AcString PyDbGeoPositionMarker::text() const
+std::string PyDbGeoPositionMarker::text() const
 {
-    return impObj()->text();
+    return wstr_to_utf8(impObj()->text());
 }
 
-void PyDbGeoPositionMarker::setText(const AcString& text)
+void PyDbGeoPositionMarker::setText(const std::string& text)
 {
-    PyThrowBadEs(impObj()->setText(text));
+    PyThrowBadEs(impObj()->setText(utf8_to_wstr(text).c_str()));
 }
 
 PyDbMText PyDbGeoPositionMarker::mtext() const
@@ -167,6 +191,91 @@ PyDbMText PyDbGeoPositionMarker::mtext() const
 void PyDbGeoPositionMarker::setMText(const PyDbMText& pMText)
 {
     PyThrowBadEs(impObj()->setMText(pMText.impObj()));
+}
+
+bool PyDbGeoPositionMarker::mtextVisible() const
+{
+    return impObj()->mtextVisible();
+}
+
+void PyDbGeoPositionMarker::setMTextVisible(bool visible)
+{
+    PyThrowBadEs(impObj()->setMTextVisible(visible));
+}
+
+double PyDbGeoPositionMarker::landingGap() const
+{
+    return impObj()->landingGap();
+}
+
+void PyDbGeoPositionMarker::setLandingGap(double landingGap)
+{
+    PyThrowBadEs(impObj()->setLandingGap(landingGap));
+}
+
+bool PyDbGeoPositionMarker::enableFrameText() const
+{
+    return impObj()->enableFrameText();
+}
+
+void PyDbGeoPositionMarker::setEnableFrameText(bool enableFrameText)
+{
+    PyThrowBadEs(impObj()->setEnableFrameText(enableFrameText));
+}
+
+AcDbGeoPositionMarker::TextAlignmentType PyDbGeoPositionMarker::textAlignmentType() const
+{
+    return impObj()->textAlignmentType();
+}
+
+void PyDbGeoPositionMarker::setTextAlignmentType(AcDbGeoPositionMarker::TextAlignmentType textAlignmentType)
+{
+    PyThrowBadEs(impObj()->setTextAlignmentType(textAlignmentType));
+}
+
+std::string PyDbGeoPositionMarker::notes() const
+{
+    return wstr_to_utf8(impObj()->notes());
+}
+
+void PyDbGeoPositionMarker::setNotes(const std::string& notes)
+{
+    PyThrowBadEs(impObj()->setNotes(utf8_to_wstr(notes).c_str()));
+}
+
+AcGePoint3d PyDbGeoPositionMarker::geoPosition() const
+{
+    return impObj()->geoPosition();
+}
+
+void PyDbGeoPositionMarker::setGeoPosition(const AcGePoint3d& position)
+{
+    PyThrowBadEs(impObj()->setGeoPosition(position));
+}
+
+boost::python::tuple PyDbGeoPositionMarker::latLonAlt() const
+{
+    double lat = 0; 
+    double lon = 0; 
+    double alt = 0;
+    PyAutoLockGIL lock;
+    PyThrowBadEs(impObj()->latLonAlt(lat, lon, alt));
+    return boost::python::make_tuple(lat, lon, alt);
+}
+
+void PyDbGeoPositionMarker::setLatLonAlt(double lat, double lon, double alt)
+{
+    PyThrowBadEs(impObj()->setLatLonAlt(lat, lon, alt));
+}
+
+AcGeVector3d PyDbGeoPositionMarker::normal() const
+{
+    return impObj()->normal();
+}
+
+PyDbObjectId PyDbGeoPositionMarker::textStyle() const
+{
+    return PyDbObjectId(impObj()->textStyle());
 }
 
 PyRxClass PyDbGeoPositionMarker::desc()
