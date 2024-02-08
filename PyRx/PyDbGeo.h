@@ -41,7 +41,7 @@ public:
     std::string         coordinateSystem() const;
     void                setCoordinateSystem(const std::string& coordinateSystem);
 #ifdef NEVER //TODO
-    static Acad::ErrorStatus setValidateCoordinateSystemCallback(ACDBGEODATA_VALIDATE_CS pFuncValidateCs);
+    static Acad::ErrorStatus       setValidateCoordinateSystemCallback(ACDBGEODATA_VALIDATE_CS pFuncValidateCs);
     static ACDBGEODATA_VALIDATE_CS getValidateCoordinateSystemCallback();
 #endif
     AcGeVector3d        upDirection() const;
@@ -84,7 +84,7 @@ public:
 
 #ifdef NEVER //TODO
     static  Acad::ErrorStatus setTransformCallbacks(const ACHAR* zoneDescription, ACDBGEODATA_GEOGRAPHICTODWG pFuncGeoToDwg, ACDBGEODATA_DWGTOGEOGRAPHIC pFuncDwgToGeo);
-    static  const ACHAR* getTransformCallbacks(ACDBGEODATA_GEOGRAPHICTODWG& pFuncGeoToDwg, ACDBGEODATA_DWGTOGEOGRAPHIC& pFuncDwgToGeo);
+    static  const ACHAR*      getTransformCallbacks(ACDBGEODATA_GEOGRAPHICTODWG& pFuncGeoToDwg, ACDBGEODATA_DWGTOGEOGRAPHIC& pFuncDwgToGeo);
 #endif
 
 public:
@@ -96,15 +96,11 @@ public:
     inline AcDbGeoData* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 #ifdef NEVER //TODO
-Acad::ErrorStatus acdbGetGeoDataObjId(AcDbDatabase* pDb, AcDbObjectId& objId);
 Acad::ErrorStatus acdbGetGeoDataTransform(AcDbDatabase* pDbSource, AcDbDatabase* pDbTarget, AcGePoint3d& insertionPt, double& rotation, double& scale);
-
 Acad::ErrorStatus acdbRegisterGeoDataReactor(AcDbGeoDataReactor* reactor);
 void              acdbRemoveGeoDataReactor(AcDbGeoDataReactor* reactor);
 #endif
-
 
 //----------------------------------------------------------------------------------------
 //PyDbGeoPositionMarker
