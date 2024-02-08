@@ -22899,17 +22899,11 @@ class GeoData:
     def __init__ (self: GeoData,id: ObjectId,mode: OpenMode=kForRead,erased: bool=False)-> None :
       '''                             '''
     ...
-    def addMeshFace (self, *args, **kwargs)-> None :
-      '''addMeshFace( (GeoData)arg1, (int)arg2, (int)arg3, (int)arg4, (int)arg5) -> None :
-
-    C++ signature :
-        void addMeshFace(class PyDbGeoData {lvalue},int,int,int,int)'''
+    def addMeshFace (self: GeoData,idx : int,p0 : int,p1 : int,p2 : int)-> None :
+      '''                             '''
     ...
-    def addMeshPointMap (self, *args, **kwargs)-> None :
-      '''addMeshPointMap( (GeoData)arg1, (int)arg2, (Point2d)arg3, (Point2d)arg4) -> None :
-
-    C++ signature :
-        void addMeshPointMap(class PyDbGeoData {lvalue},int,class AcGePoint2d,class AcGePoint2d)'''
+    def addMeshPointMap (self: GeoData,idx : intsrc : PyGe.Point2d,dest : PyGe.Point2d)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: PyDb.ObjectId)-> None :
       '''                             '''
@@ -22926,11 +22920,8 @@ class GeoData:
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def blockTableRecordId (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''blockTableRecordId( (GeoData)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId blockTableRecordId(class PyDbGeoData {lvalue})'''
+    def blockTableRecordId (self: GeoData)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
       '''                             '''
@@ -22959,23 +22950,14 @@ class GeoData:
     def comparedTo (self: RxObject,other: PyRx.RxObject)-> PyRx.Ordering :
       '''                             '''
     ...
-    def coordinateProjectionRadius (self, *args, **kwargs)-> float :
-      '''coordinateProjectionRadius( (GeoData)arg1) -> float :
-
-    C++ signature :
-        double coordinateProjectionRadius(class PyDbGeoData {lvalue})'''
+    def coordinateProjectionRadius (self: GeoData)-> float :
+      '''                             '''
     ...
-    def coordinateSystem (self, *args, **kwargs)-> str :
-      '''coordinateSystem( (GeoData)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > coordinateSystem(class PyDbGeoData {lvalue})'''
+    def coordinateSystem (self: GeoData)-> str :
+      '''                             '''
     ...
-    def coordinateType (self, *args, **kwargs)-> PyDb.GeoTypeOfCoordinates :
-      '''coordinateType( (GeoData)arg1) -> GeoTypeOfCoordinates :
-
-    C++ signature :
-        enum AcDbGeoData::TypeOfCoordinates coordinateType(class PyDbGeoData {lvalue})'''
+    def coordinateType (self: GeoData)-> PyDb.GeoTypeOfCoordinates :
+      '''                             '''
     ...
     def copyFrom (self: RxObject,other: PyRx.RxObject)-> None :
       '''                             '''
@@ -22994,11 +22976,8 @@ class GeoData:
     def desc ()-> PyRx.RxClass :
       '''                             '''
     ...
-    def designPoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''designPoint( (GeoData)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d designPoint(class PyDbGeoData {lvalue})'''
+    def designPoint (self: GeoData)-> PyGe.Point3d :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -23006,11 +22985,8 @@ class GeoData:
     def dispose (self: RxObject)-> None :
       '''                             '''
     ...
-    def doSeaLevelCorrection (self, *args, **kwargs)-> bool :
-      '''doSeaLevelCorrection( (GeoData)arg1) -> bool :
-
-    C++ signature :
-        bool doSeaLevelCorrection(class PyDbGeoData {lvalue})'''
+    def doSeaLevelCorrection (self: GeoData)-> bool :
+      '''                             '''
     ...
     def downgradeOpen (self: DbObject)-> None :
       '''                             '''
@@ -23024,20 +23000,14 @@ class GeoData:
     def erase (self: DbObject,erasing : bool=True)-> None :
       '''                             '''
     ...
-    def eraseFromDb (self, *args, **kwargs)-> None :
-      '''eraseFromDb( (GeoData)arg1) -> None :
-
-    C++ signature :
-        void eraseFromDb(class PyDbGeoData {lvalue})'''
+    def eraseFromDb (self: GeoData)-> None :
+      '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def geoRSSTag (self, *args, **kwargs)-> str :
-      '''geoRSSTag( (GeoData)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > geoRSSTag(class PyDbGeoData {lvalue})'''
+    def geoRSSTag (self: GeoData)-> str :
+      '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> PyDb.ObjectId :
       '''                             '''
@@ -23048,23 +23018,14 @@ class GeoData:
     def getHandle (self: DbObject)-> PyDb.Handle :
       '''                             '''
     ...
-    def getMeshFace (self, *args, **kwargs)-> tuple :
-      '''getMeshFace( (GeoData)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getMeshFace(class PyDbGeoData {lvalue},int)'''
+    def getMeshFace (self: GeoData,idx : int)-> tuple :
+      '''                             '''
     ...
-    def getMeshPointMap (self, *args, **kwargs)-> tuple :
-      '''getMeshPointMap( (GeoData)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getMeshPointMap(class PyDbGeoData {lvalue},int)'''
+    def getMeshPointMap (self: GeoData,idx : int)-> tuple :
+      '''                             '''
     ...
-    def getMeshPointMaps (self, *args, **kwargs)-> tuple :
-      '''getMeshPointMaps( (GeoData)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getMeshPointMaps(class PyDbGeoData {lvalue})'''
+    def getMeshPointMaps (self: GeoData)-> tuple :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: PyDb.DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -23078,17 +23039,11 @@ class GeoData:
     def hasXData (self: DbObject,appname: str)-> bool :
       '''                             '''
     ...
-    def horizontalUnitScale (self, *args, **kwargs)-> float :
-      '''horizontalUnitScale( (GeoData)arg1) -> float :
-
-    C++ signature :
-        double horizontalUnitScale(class PyDbGeoData {lvalue})'''
+    def horizontalUnitScale (self: GeoData)-> float :
+      '''                             '''
     ...
-    def horizontalUnits (self, *args, **kwargs)-> PyDb.UnitsValue :
-      '''horizontalUnits( (GeoData)arg1) -> UnitsValue :
-
-    C++ signature :
-        enum AcDb::UnitsValue horizontalUnits(class PyDbGeoData {lvalue})'''
+    def horizontalUnits (self: GeoData)-> PyDb.UnitsValue :
+      '''                             '''
     ...
     def id (self: Drawable)-> PyDb.ObjectId :
       '''                             '''
@@ -23162,68 +23117,41 @@ class GeoData:
     def keepAlive (self: RxObject,flag: bool)-> None :
       '''                             '''
     ...
-    def northDirection (self, *args, **kwargs)-> float :
-      '''northDirection( (GeoData)arg1) -> float :
-
-    C++ signature :
-        double northDirection(class PyDbGeoData {lvalue})'''
+    def northDirection (self: GeoData)-> float :
+      '''                             '''
     ...
-    def northDirectionVector (self, *args, **kwargs)-> PyGe.Vector2d :
-      '''northDirectionVector( (GeoData)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d northDirectionVector(class PyDbGeoData {lvalue})'''
+    def northDirectionVector (self: GeoData)-> PyGe.Vector2d :
+      '''                             '''
     ...
-    def numMeshFaces (self, *args, **kwargs)-> int :
-      '''numMeshFaces( (GeoData)arg1) -> int :
-
-    C++ signature :
-        int numMeshFaces(class PyDbGeoData {lvalue})'''
+    def numMeshFaces (self: GeoData)-> int :
+      '''                             '''
     ...
-    def numMeshPoints (self, *args, **kwargs)-> int :
-      '''numMeshPoints( (GeoData)arg1) -> int :
-
-    C++ signature :
-        int numMeshPoints(class PyDbGeoData {lvalue})'''
+    def numMeshPoints (self: GeoData)-> int :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def observationCoverage (self, *args, **kwargs)-> str :
-      '''observationCoverage( (GeoData)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > observationCoverage(class PyDbGeoData {lvalue})'''
+    def observationCoverage (self: GeoData)-> str :
+      '''                             '''
     ...
-    def observationFrom (self, *args, **kwargs)-> str :
-      '''observationFrom( (GeoData)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > observationFrom(class PyDbGeoData {lvalue})'''
+    def observationFrom (self: GeoData)-> str :
+      '''                             '''
     ...
-    def observationTo (self, *args, **kwargs)-> str :
-      '''observationTo( (GeoData)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > observationTo(class PyDbGeoData {lvalue})'''
+    def observationTo (self: GeoData)-> str :
+      '''                             '''
     ...
     def ownerId (self: DbObject)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def postToDb (self, *args, **kwargs)-> PyDb.ObjectId :
-      '''postToDb( (GeoData)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId postToDb(class PyDbGeoData {lvalue})'''
+    def postToDb (self: GeoData)-> PyDb.ObjectId :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs: PyRx.RxClass)-> PyRx.RxObject :
       '''                             '''
     ...
-    def referencePoint (self, *args, **kwargs)-> PyGe.Point3d :
-      '''referencePoint( (GeoData)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d referencePoint(class PyDbGeoData {lvalue})'''
+    def referencePoint (self: GeoData)-> PyGe.Point3d :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -23237,32 +23165,20 @@ class GeoData:
     def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
       '''                             '''
     ...
-    def resetMeshPointMaps (self, *args, **kwargs)-> None :
-      '''resetMeshPointMaps( (GeoData)arg1) -> None :
-
-    C++ signature :
-        void resetMeshPointMaps(class PyDbGeoData {lvalue})'''
+    def resetMeshPointMaps (self: GeoData)-> None :
+      '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def scaleEstimationMethod (self, *args, **kwargs)-> PyDb.GeoScaleEstimationMethod :
-      '''scaleEstimationMethod( (GeoData)arg1) -> GeoScaleEstimationMethod :
-
-    C++ signature :
-        enum AcDbGeoData::ScaleEstimationMethod scaleEstimationMethod(class PyDbGeoData {lvalue})'''
+    def scaleEstimationMethod (self: GeoData)-> PyDb.GeoScaleEstimationMethod :
+      '''                             '''
     ...
-    def scaleFactor (self, *args, **kwargs)-> float :
-      '''scaleFactor( (GeoData)arg1) -> float :
-
-    C++ signature :
-        double scaleFactor(class PyDbGeoData {lvalue})'''
+    def scaleFactor (self: GeoData)-> float :
+      '''                             '''
     ...
-    def seaLevelElevation (self, *args, **kwargs)-> float :
-      '''seaLevelElevation( (GeoData)arg1) -> float :
-
-    C++ signature :
-        double seaLevelElevation(class PyDbGeoData {lvalue})'''
+    def seaLevelElevation (self: GeoData)-> float :
+      '''                             '''
     ...
     def setAcDbObjectIdsInFlux (self: DbObject)-> None :
       '''                             '''
@@ -23270,137 +23186,74 @@ class GeoData:
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBlockTableRecordId (self, *args, **kwargs)-> None :
-      '''setBlockTableRecordId( (GeoData)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setBlockTableRecordId(class PyDbGeoData {lvalue},class PyDbObjectId)'''
+    def setBlockTableRecordId (self: GeoData,id : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setCoordinateProjectionRadius (self, *args, **kwargs)-> None :
-      '''setCoordinateProjectionRadius( (GeoData)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setCoordinateProjectionRadius(class PyDbGeoData {lvalue},double)'''
+    def setCoordinateProjectionRadius (self: GeoData,val : float)-> None :
+      '''                             '''
     ...
-    def setCoordinateSystem (self, *args, **kwargs)-> None :
-      '''setCoordinateSystem( (GeoData)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setCoordinateSystem(class PyDbGeoData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setCoordinateSystem (self: GeoData,val : str)-> None :
+      '''                             '''
     ...
-    def setCoordinateType (self, *args, **kwargs)-> None :
-      '''setCoordinateType( (GeoData)arg1, (GeoTypeOfCoordinates)arg2) -> None :
-
-    C++ signature :
-        void setCoordinateType(class PyDbGeoData {lvalue},enum AcDbGeoData::TypeOfCoordinates)'''
+    def setCoordinateType (self: GeoData,val : PyDb.GeoTypeOfCoordinates)-> None :
+      '''                             '''
     ...
-    def setDesignPoint (self, *args, **kwargs)-> None :
-      '''setDesignPoint( (GeoData)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setDesignPoint(class PyDbGeoData {lvalue},class AcGePoint3d)'''
+    def setDesignPoint (self: GeoData,pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setDoSeaLevelCorrection (self, *args, **kwargs)-> None :
-      '''setDoSeaLevelCorrection( (GeoData)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDoSeaLevelCorrection(class PyDbGeoData {lvalue},bool)'''
+    def setDoSeaLevelCorrection (self: GeoData,val : bool)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,fld: PyDb.Field)-> PyDb.ObjectId :
       '''                             '''
     ...
-    def setGeoRSSTag (self, *args, **kwargs)-> None :
-      '''setGeoRSSTag( (GeoData)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setGeoRSSTag(class PyDbGeoData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setGeoRSSTag (self: GeoData,val : str)-> None :
+      '''                             '''
     ...
-    def setHorizontalUnitScale (self, *args, **kwargs)-> None :
-      '''setHorizontalUnitScale( (GeoData)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHorizontalUnitScale(class PyDbGeoData {lvalue},double)'''
+    def setHorizontalUnitScale (self: GeoData,val : float)-> None :
+      '''                             '''
     ...
-    def setHorizontalUnits (self, *args, **kwargs)-> None :
-      '''setHorizontalUnits( (GeoData)arg1, (UnitsValue)arg2) -> None :
-
-    C++ signature :
-        void setHorizontalUnits(class PyDbGeoData {lvalue},enum AcDb::UnitsValue)'''
+    def setHorizontalUnits (self: GeoData,val : PyDb.UnitsValue)-> None :
+      '''                             '''
     ...
-    def setMeshPointMaps (self, *args, **kwargs)-> None :
-      '''setMeshPointMaps( (GeoData)arg1, (object)arg2, (object)arg3) -> None :
-
-    C++ signature :
-        void setMeshPointMaps(class PyDbGeoData {lvalue},class boost::python::api::object,class boost::python::api::object)'''
+    def setMeshPointMaps (self: GeoData,src : Iterable[PyGe.Point2d],dest : Iterable[PyGe.Point2d])-> None :
+      '''                             '''
     ...
-    def setNorthDirectionVector (self, *args, **kwargs)-> None :
-      '''setNorthDirectionVector( (GeoData)arg1, (Vector2d)arg2) -> None :
-
-    C++ signature :
-        void setNorthDirectionVector(class PyDbGeoData {lvalue},class AcGeVector2d)'''
+    def setNorthDirectionVector (self: GeoData,vec : PyGe.Vector2d)-> None :
+      '''                             '''
     ...
-    def setObservationCoverage (self, *args, **kwargs)-> None :
-      '''setObservationCoverage( (GeoData)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setObservationCoverage(class PyDbGeoData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setObservationCoverage (self: GeoData,val : str)-> None :
+      '''                             '''
     ...
-    def setObservationFrom (self, *args, **kwargs)-> None :
-      '''setObservationFrom( (GeoData)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setObservationFrom(class PyDbGeoData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setObservationFrom (self: GeoData,val : str)-> None :
+      '''                             '''
     ...
-    def setObservationTo (self, *args, **kwargs)-> None :
-      '''setObservationTo( (GeoData)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setObservationTo(class PyDbGeoData {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setObservationTo (self: GeoData,val : str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: PyDb.ObjectId)-> None :
       '''                             '''
     ...
-    def setReferencePoint (self, *args, **kwargs)-> None :
-      '''setReferencePoint( (GeoData)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setReferencePoint(class PyDbGeoData {lvalue},class AcGePoint3d)'''
+    def setReferencePoint (self: GeoData,pt : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setScaleEstimationMethod (self, *args, **kwargs)-> None :
-      '''setScaleEstimationMethod( (GeoData)arg1, (GeoScaleEstimationMethod)arg2) -> None :
-
-    C++ signature :
-        void setScaleEstimationMethod(class PyDbGeoData {lvalue},enum AcDbGeoData::ScaleEstimationMethod)'''
+    def setScaleEstimationMethod (self: GeoData,val : PyDb.GeoScaleEstimationMethod)-> None :
+      '''                             '''
     ...
-    def setScaleFactor (self, *args, **kwargs)-> None :
-      '''setScaleFactor( (GeoData)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setScaleFactor(class PyDbGeoData {lvalue},double)'''
+    def setScaleFactor (self: GeoData,val : float)-> None :
+      '''                             '''
     ...
-    def setSeaLevelElevation (self, *args, **kwargs)-> None :
-      '''setSeaLevelElevation( (GeoData)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setSeaLevelElevation(class PyDbGeoData {lvalue},double)'''
+    def setSeaLevelElevation (self: GeoData,val : float)-> None :
+      '''                             '''
     ...
-    def setUpDirection (self, *args, **kwargs)-> None :
-      '''setUpDirection( (GeoData)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setUpDirection(class PyDbGeoData {lvalue},class AcGeVector3d)'''
+    def setUpDirection (self: GeoData,vec : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def setVerticalUnitScale (self, *args, **kwargs)-> None :
-      '''setVerticalUnitScale( (GeoData)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setVerticalUnitScale(class PyDbGeoData {lvalue},double)'''
+    def setVerticalUnitScale (self: GeoData,val : float)-> None :
+      '''                             '''
     ...
-    def setVerticalUnits (self, *args, **kwargs)-> None :
-      '''setVerticalUnits( (GeoData)arg1, (UnitsValue)arg2) -> None :
-
-    C++ signature :
-        void setVerticalUnits(class PyDbGeoData {lvalue},enum AcDb::UnitsValue)'''
+    def setVerticalUnits (self: GeoData,val : PyDb.UnitsValue)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -23411,38 +23264,14 @@ class GeoData:
     def swapIdWith (self: DbObject,otherId: PyDb.DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformToLonLatAlt (self, *args, **kwargs)-> PyGe.Point3d :
-      '''transformToLonLatAlt( (GeoData)arg1, (Point3d)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d transformToLonLatAlt(class PyDbGeoData {lvalue},class AcGePoint3d)
-
-transformToLonLatAlt( (GeoData)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple transformToLonLatAlt(class PyDbGeoData {lvalue},double,double,double)
-
-transformToLonLatAlt( (GeoData)arg1, (Point3d)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d transformToLonLatAlt(class PyDbGeoData {lvalue},class AcGePoint3d)
-
-transformToLonLatAlt( (GeoData)arg1, (float)arg2, (float)arg3, (float)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple transformToLonLatAlt(class PyDbGeoData {lvalue},double,double,double)'''
+    def transformToLonLatAlt (self: GeoData,pt : PyGe.Point3d | xyz)-> PyGe.Point3d :
+      '''                             '''
     ...
-    def upDirection (self, *args, **kwargs)-> PyGe.Vector3d :
-      '''upDirection( (GeoData)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d upDirection(class PyDbGeoData {lvalue})'''
+    def upDirection (self: GeoData)-> PyGe.Vector3d :
+      '''                             '''
     ...
-    def updateTransformationMatrix (self, *args, **kwargs)-> None :
-      '''updateTransformationMatrix( (GeoData)arg1) -> None :
-
-    C++ signature :
-        void updateTransformationMatrix(class PyDbGeoData {lvalue})'''
+    def updateTransformationMatrix (self: GeoData)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -23450,17 +23279,11 @@ transformToLonLatAlt( (GeoData)arg1, (float)arg2, (float)arg3, (float)arg4) -> t
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
     ...
-    def verticalUnitScale (self, *args, **kwargs)-> float :
-      '''verticalUnitScale( (GeoData)arg1) -> float :
-
-    C++ signature :
-        double verticalUnitScale(class PyDbGeoData {lvalue})'''
+    def verticalUnitScale (self: GeoData)-> float :
+      '''                             '''
     ...
-    def verticalUnits (self, *args, **kwargs)-> PyDb.UnitsValue :
-      '''verticalUnits( (GeoData)arg1) -> UnitsValue :
-
-    C++ signature :
-        enum AcDb::UnitsValue verticalUnits(class PyDbGeoData {lvalue})'''
+    def verticalUnits (self: GeoData)-> PyDb.UnitsValue :
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
