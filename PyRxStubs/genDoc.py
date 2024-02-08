@@ -152,8 +152,8 @@ def generate_pyi(moduleName, module):
                     sig = "{0}".format(obj.__doc__)
                     returnType = findReturnType(sig)
                     newDocString = removeArgStr(sig)
-                    f.write(f'    def {name} (*args, **kwargs){returnType} :\n')
-                    f.write(f"      '''{newDocString}'''")
+                    f.write(f'def {name} (*args, **kwargs){returnType} :\n')
+                    f.write(f"    '''{newDocString}'''")
                     f.write('\n    ...\n')
                 except Exception as err:
                     print(err)
