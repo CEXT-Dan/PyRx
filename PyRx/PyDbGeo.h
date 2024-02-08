@@ -48,11 +48,35 @@ public:
     double              radius() const;
     void                setRadius(double radius);
 
-    AcString            text() const;
-    void                setText(const AcString& text);
+    std::string         text() const;
+    void                setText(const std::string& text);
 
     PyDbMText           mtext() const;
     void                setMText(const PyDbMText& pMText);
+
+    bool                mtextVisible() const;
+    void                setMTextVisible(bool visible);
+
+    double              landingGap() const;
+    void                setLandingGap(double landingGap);
+
+    bool                enableFrameText() const;
+    void                setEnableFrameText(bool enableFrameText);
+
+    AcDbGeoPositionMarker::TextAlignmentType textAlignmentType() const;
+    void                setTextAlignmentType(AcDbGeoPositionMarker::TextAlignmentType textAlignmentType);
+
+    std::string         notes() const;
+    void                setNotes(const std::string& notes);
+
+    AcGePoint3d         geoPosition() const;
+    void                setGeoPosition(const AcGePoint3d& position);
+
+    boost::python::tuple latLonAlt() const;
+    void                setLatLonAlt(double lat, double lon, double alt);
+
+    AcGeVector3d        normal() const;
+    PyDbObjectId        textStyle() const;
 
 public:
     static PyRxClass                desc();
