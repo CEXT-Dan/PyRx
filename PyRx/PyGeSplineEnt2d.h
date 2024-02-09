@@ -50,9 +50,9 @@ class PyGeCubicSplineCurve2d : public PyGeSplineEnt2d
 public:
     PyGeCubicSplineCurve2d();
     PyGeCubicSplineCurve2d(const PyGeCurve2d& curve, double epsilon);
-    PyGeCubicSplineCurve2d(const boost::python::list& fitPnts, const AcGeTol& tol);
-    PyGeCubicSplineCurve2d(const boost::python::list& fitPnts, const AcGeVector2d& startDeriv, const AcGeVector2d& endDeriv, const AcGeTol& tol);
-    PyGeCubicSplineCurve2d(const PyGeKnotVector& knots, const boost::python::list& fitPnts, const boost::python::list& firstDerivs, Adesk::Boolean isPeriodic);
+    PyGeCubicSplineCurve2d(const boost::python::object& fitPnts, const AcGeTol& tol);
+    PyGeCubicSplineCurve2d(const boost::python::object& fitPnts, const AcGeVector2d& startDeriv, const AcGeVector2d& endDeriv, const AcGeTol& tol);
+    PyGeCubicSplineCurve2d(const PyGeKnotVector& knots, const boost::python::object& fitPnts, const boost::python::object& firstDerivs, Adesk::Boolean isPeriodic);
     PyGeCubicSplineCurve2d(AcGeEntity2d* pEnt);
 
     int                     numFitPoints() const;
@@ -81,15 +81,15 @@ public:
     PyGeNurbCurve2d(const PyGeLineSeg2d& linSeg);
     PyGeNurbCurve2d(const PyGeEllipArc2d& ellipse);
     PyGeNurbCurve2d(const PyGeCurve2d& curve, double epsilon);
-    PyGeNurbCurve2d(const boost::python::list& fitPoints, const AcGeTol& fitTolerance);
+    PyGeNurbCurve2d(const boost::python::object& fitPoints, const AcGeTol& fitTolerance);
     PyGeNurbCurve2d(int degree, const PyGePolyline2d& fitPolyline, Adesk::Boolean isPeriodic);
-    PyGeNurbCurve2d(int degree, const PyGeKnotVector& knots, const boost::python::list& cntrlPnts, Adesk::Boolean isPeriodic);
-    PyGeNurbCurve2d(const boost::python::list& fitPoints, const boost::python::list& fitTangents, const AcGeTol& fitTolerance, Adesk::Boolean isPeriodic);
+    PyGeNurbCurve2d(int degree, const PyGeKnotVector& knots, const boost::python::object& cntrlPnts, Adesk::Boolean isPeriodic);
+    PyGeNurbCurve2d(const boost::python::object& fitPoints, const boost::python::object& fitTangents, const AcGeTol& fitTolerance, Adesk::Boolean isPeriodic);
 
-    PyGeNurbCurve2d(const boost::python::list& fitPoints, const AcGeVector2d& startTangent, const AcGeVector2d& endTangent,
+    PyGeNurbCurve2d(const boost::python::object& fitPoints, const AcGeVector2d& startTangent, const AcGeVector2d& endTangent,
         Adesk::Boolean startTangentDefined, Adesk::Boolean endTangentDefined, AcGe::KnotParameterization knotParam, const AcGeTol& fitTolerance);
 
-    PyGeNurbCurve2d(const boost::python::list& fitPoints, const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, Adesk::Boolean startTangentDefined, 
+    PyGeNurbCurve2d(const boost::python::object& fitPoints, const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, Adesk::Boolean startTangentDefined, 
         Adesk::Boolean endTangentDefined, const AcGeTol& fitTolerance);
 
     PyGeNurbCurve2d(AcGeEntity2d* pEnt);
@@ -114,16 +114,16 @@ public:
     Adesk::Boolean          setFitTangents(const AcGeVector2d& startTangent, const AcGeVector2d& endTangent);
     Adesk::Boolean          setFitKnotParameterization(KnotParameterization knotParam);
 
-    void                    setFitData1(const boost::python::list& fitPoints,
+    void                    setFitData1(const boost::python::object& fitPoints,
         const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, const AcGeTol& fitTol);
 
-    void                    setFitData2(const boost::python::list& fitPoints,
+    void                    setFitData2(const boost::python::object& fitPoints,
         const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, KnotParameterization knotParam, const AcGeTol& fitTol);
 
-    void                    setFitData3(const PyGeKnotVector& fitKnots, const boost::python::list& fitPoints,
+    void                    setFitData3(const PyGeKnotVector& fitKnots, const boost::python::object& fitPoints,
         const AcGeVector2d& startTangent, const AcGeVector2d& endTangent, const AcGeTol& fitTol, Adesk::Boolean isPeriodic);
 
-    void                    setFitData4(int degree, const boost::python::list& fitPoints, const AcGeTol& fitTol);
+    void                    setFitData4(int degree, const boost::python::object& fitPoints, const AcGeTol& fitTol);
 
     Adesk::Boolean          purgeFitData();
     Adesk::Boolean          buildFitData1();
@@ -161,8 +161,8 @@ class PyGePolyline2d : public PyGeSplineEnt2d
 public:
     PyGePolyline2d();
     PyGePolyline2d(const AcGePolyline2d& src);
-    PyGePolyline2d(const boost::python::list& points);
-    PyGePolyline2d(const PyGeKnotVector& knots, const boost::python::list& points);
+    PyGePolyline2d(const boost::python::object& points);
+    PyGePolyline2d(const PyGeKnotVector& knots, const boost::python::object& points);
     PyGePolyline2d(const PyGeCurve2d& crv, double apprEps);
     PyGePolyline2d(AcGeEntity2d* pEnt);
     int              numFitPoints() const;

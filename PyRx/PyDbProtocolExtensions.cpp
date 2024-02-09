@@ -47,12 +47,12 @@ bool PyDbJoinEntityPE::joinEntity2(PyDbEntity& pPrimaryEntity, PyDbEntity& pSeco
 #endif
 }
 
-boost::python::list PyDbJoinEntityPE::joinEntities1(PyDbEntity& pPrimaryEntity, const boost::python::list& otherEntities) const
+boost::python::list PyDbJoinEntityPE::joinEntities1(PyDbEntity& pPrimaryEntity, const boost::python::object& otherEntities) const
 {
     return this->joinEntities2(pPrimaryEntity, otherEntities, AcGeContext::gTol);
 }
 
-boost::python::list PyDbJoinEntityPE::joinEntities2(PyDbEntity& pPrimaryEntity, const boost::python::list& otherEntities, const AcGeTol& tol) const
+boost::python::list PyDbJoinEntityPE::joinEntities2(PyDbEntity& pPrimaryEntity, const boost::python::object& otherEntities, const AcGeTol& tol) const
 {
     PyAutoLockGIL lock;
     AcArray<AcDbEntity*> _otherEntities;

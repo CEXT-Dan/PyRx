@@ -101,7 +101,7 @@ int PyDbPointCloudCrop::length() const
     return impObj()->length();
 }
 
-void PyDbPointCloudCrop::set(const boost::python::list& points)
+void PyDbPointCloudCrop::set(const boost::python::object& points)
 {
     impObj()->set(PyListToPoint3dArray(points));
 }

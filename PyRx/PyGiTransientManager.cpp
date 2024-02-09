@@ -29,22 +29,22 @@ PyGiTransientManager::PyGiTransientManager(AcGiTransientManager* ptr)
 {
 }
 
-bool PyGiTransientManager::addTransient(PyGiDrawable& pDrawable, AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::list& viewportNumbers)
+bool PyGiTransientManager::addTransient(PyGiDrawable& pDrawable, AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::object& viewportNumbers)
 {
     return impObj()->addTransient(pDrawable.impObj(), mode, subDrawingMode, PyListToIntArray(viewportNumbers));
 }
 
-bool PyGiTransientManager::eraseTransient(PyGiDrawable& pDrawable, const boost::python::list& viewportNumbers)
+bool PyGiTransientManager::eraseTransient(PyGiDrawable& pDrawable, const boost::python::object& viewportNumbers)
 {
     return impObj()->eraseTransient(pDrawable.impObj(), PyListToIntArray(viewportNumbers));
 }
 
-bool PyGiTransientManager::eraseTransients(AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::list& viewportNumbers)
+bool PyGiTransientManager::eraseTransients(AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::object& viewportNumbers)
 {
     return impObj()->eraseTransients(mode, subDrawingMode, PyListToIntArray(viewportNumbers));
 }
 
-void PyGiTransientManager::updateTransient(PyGiDrawable& pDrawable, const boost::python::list& viewportNumbers)
+void PyGiTransientManager::updateTransient(PyGiDrawable& pDrawable, const boost::python::object& viewportNumbers)
 {
     return impObj()->updateTransient(pDrawable.impObj(), PyListToIntArray(viewportNumbers));
 }
@@ -64,7 +64,7 @@ void PyGiTransientManager::updateChildTransient(PyGiDrawable& pDrawable, PyGiDra
     return impObj()->updateChildTransient(pDrawable.impObj(), pParentDrawable.impObj());
 }
 
-boost::python::tuple PyGiTransientManager::getFreeSubDrawingMode(AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::list& viewportNumbers)
+boost::python::tuple PyGiTransientManager::getFreeSubDrawingMode(AcGiTransientDrawingMode mode, int subDrawingMode, const boost::python::object& viewportNumbers)
 {
     PyAutoLockGIL lock;
     int _subDrawingMode = subDrawingMode;

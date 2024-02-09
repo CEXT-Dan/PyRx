@@ -56,8 +56,8 @@ public:
     boost::python::list     getDimAssocGeomIds() const;
     bool                    isAllGeomErased() const;
     void                    swapReferences(const PyDbIdMapping& idMap);
-    void                    updateFillet(const boost::python::list& ids);
-    void                    updateAssociativity(const boost::python::list& ids);
+    void                    updateFillet(const boost::python::object& ids);
+    void                    updateAssociativity(const boost::python::object& ids);
     void                    updateXrefSubentPath();
     void                    updateSubentPath(PyDbIdMapping& idMap);
     void                    updateDueToMirror(bool wasInMirror);

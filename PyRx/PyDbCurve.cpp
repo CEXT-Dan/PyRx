@@ -233,7 +233,7 @@ boost::python::list PyDbCurve::getOffsetCurvesGivenPlaneNormal(const AcGeVector3
     return curves;
 }
 
-boost::python::list PyDbCurve::getSplitCurves(const boost::python::list& params) const
+boost::python::list PyDbCurve::getSplitCurves(const boost::python::object& params) const
 {
     PyAutoLockGIL lock;
     if (boost::python::len(params) == 0)
@@ -260,7 +260,7 @@ boost::python::list PyDbCurve::getSplitCurvesAtParam(double param) const
     return curves;
 }
 
-boost::python::list PyDbCurve::getSplitCurvesAtParams(const boost::python::list& params) const
+boost::python::list PyDbCurve::getSplitCurvesAtParams(const boost::python::object& params) const
 {
     PyAutoLockGIL lock;
     const auto doublesVector = py_list_to_std_vector<double>(params);
@@ -288,7 +288,7 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoint(const AcGePoint3d& givenPnt
     return curves;
 }
 
-boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::list& params) const
+boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::object& params) const
 {
     PyAutoLockGIL lock;
     const auto pointsVector = py_list_to_std_vector<AcGePoint3d>(params);

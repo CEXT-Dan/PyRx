@@ -355,7 +355,7 @@ boost::python::list PyDbUnderlayReference::clipBoundary() const
     return Point2dArrayToPyList(impObj()->clipBoundary());
 }
 
-void PyDbUnderlayReference::setClipBoundary(const boost::python::list& clip)
+void PyDbUnderlayReference::setClipBoundary(const boost::python::object& clip)
 {
     return PyThrowBadEs(impObj()->setClipBoundary(PyListToPoint2dArray(clip)));
 }

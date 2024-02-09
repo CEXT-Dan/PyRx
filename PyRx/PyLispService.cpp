@@ -20,7 +20,7 @@ int PyLispService::execLispFunc()
             if (PyCallable_Check(method))
             {
                 PyErr_Clear();
-                const boost::python::list& args = resbufToList(acedGetArgs());
+                const boost::python::object& args = resbufToList(acedGetArgs());
                 PyObjectPtr pResult(PyObject_CallOneArg(method, args.ptr()));
                 if (pResult == nullptr)
                 {

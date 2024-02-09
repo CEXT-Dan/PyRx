@@ -1955,7 +1955,7 @@ void PyEditorReactor::dwgViewResizedWr(Adesk::LongPtr hwndDwgView)
     }
 }
 
-void PyEditorReactor::fullRegenEndedWr(PyDbDatabase& pDb, const boost::python::list& regenedViewports)
+void PyEditorReactor::fullRegenEndedWr(PyDbDatabase& pDb, const boost::python::object& regenedViewports)
 {
     try
     {
@@ -2099,7 +2099,7 @@ void PyEditorReactor::partialOpenNoticeWr(PyDbDatabase& pDb)
     }
 }
 
-void PyEditorReactor::objectsLazyLoadedWr(const boost::python::list& idArray)
+void PyEditorReactor::objectsLazyLoadedWr(const boost::python::object& idArray)
 {
     try
     {

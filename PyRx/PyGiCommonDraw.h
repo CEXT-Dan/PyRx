@@ -91,10 +91,10 @@ public:
         const AcGeVector3d& startVector, const double sweepAngle, const AcGiArcType arcType) const;
     Adesk::Boolean      circularArc3(const AcGePoint3d& start, const AcGePoint3d& point, const AcGePoint3d& end) const;
     Adesk::Boolean      circularArc4(const AcGePoint3d& start, const AcGePoint3d& point, const AcGePoint3d& end, const AcGiArcType arcType) const;
-    Adesk::Boolean      polyline1(const boost::python::list& vertexList);
-    Adesk::Boolean      polyline2(const boost::python::list& vertexList, const AcGeVector3d& normal);
-    Adesk::Boolean      polyline3(const boost::python::list& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker);
-    Adesk::Boolean      polygon(const boost::python::list& vertexList) const;
+    Adesk::Boolean      polyline1(const boost::python::object& vertexList);
+    Adesk::Boolean      polyline2(const boost::python::object& vertexList, const AcGeVector3d& normal);
+    Adesk::Boolean      polyline3(const boost::python::object& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker);
+    Adesk::Boolean      polygon(const boost::python::object& vertexList) const;
     Adesk::Boolean      text1(const AcGePoint3d& position, const AcGeVector3d& normal, const AcGeVector3d& direction, const double height,
         const double width, const double oblique, const std::string& pMsg) const;
     Adesk::Boolean      xline(const AcGePoint3d& p1, const AcGePoint3d& p2) const;
@@ -107,7 +107,7 @@ public:
     Adesk::Boolean      ellipticalArc2(const AcGePoint3d& center, const AcGeVector3d& normal, double majorAxisLength, double minorAxisLength,
         double startDegreeInRads, double endDegreeInRads, double tiltDegreeInRads, AcGiArcType arcType);
     Adesk::Boolean      worldLine(const AcGePoint3d pnt1, const AcGePoint3d pnt2);
-    Adesk::Boolean      edge(const boost::python::list& edges) const;
+    Adesk::Boolean      edge(const boost::python::object& edges) const;
     Adesk::Boolean		draw(PyGiDrawable& drawable);
     static std::string	className();
     static PyRxClass	desc();

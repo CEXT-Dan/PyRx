@@ -2323,7 +2323,7 @@ PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
     return id;
 }
 
-boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python::list& entities)
+boost::python::list PyDbBlockTableRecord::appendAcDbEntities(const boost::python::object& entities)
 {
     if (!impObj()->isWriteEnabled())
         PyThrowBadEs(eNotOpenForWrite);
@@ -2562,7 +2562,7 @@ AcDb::XrefStatus PyDbBlockTableRecord::xrefStatus() const
     return impObj()->xrefStatus();
 }
 
-void PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::list& entitiesToMove)
+void PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::object& entitiesToMove)
 {
     PyAutoLockGIL lock;
     AcDbObjectIdArray ids = PyListToObjectIdArray(entitiesToMove);
