@@ -92,7 +92,7 @@ public:
     void                    setPassword(const std::string& pVal);
     void                    getUnrecognizedData(boost::python::list& sectionArray, boost::python::list& dataArray) const;
     void                    setUnrecognizedData1(const std::string& pSectionName, const std::string& pSectionData);
-    void                    setUnrecognizedData2(const boost::python::list& sectionArray, const  boost::python::list& dataArray);
+    void                    setUnrecognizedData2(const boost::python::list& sectionArray, const boost::python::list& dataArray);
     unsigned int            majorVersion() const;
     void                    setMajorVersion(unsigned int majorVersion);
     unsigned int            minorVersion() const;
