@@ -182,19 +182,38 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(spline.isKindOf(Db.Spline.desc()), True)
         self.assertEqual(spline.numFitPoints(), 3)
 
-    def test_addToModelspaced(self):
+    def test_addToModelspaced1(self):
         db = self.db06457
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         id = db.addToModelspace(line)
         self.assertTrue(id.isValid())
         self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
         
-    def test_addToBlock(self):
+    def test_addToModelspaced2(self):
+        db = self.db06457
+        lines = [Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0)),
+         Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))]
+        ids = db.addToBlock(db.modelSpaceId(), lines)
+        for id in ids:
+            self.assertTrue(id.isValid())
+            self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
+        
+    def test_addToBlock1(self):
         db = self.db06457
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         id = db.addToBlock(db.modelSpaceId(), line)
         self.assertTrue(id.isValid())
         self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
+        
+    def test_addToBlock2(self):
+        db = self.db06457
+        lines = [Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0)),
+         Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))]
+        
+        ids = db.addToBlock(db.modelSpaceId(), lines)
+        for id in ids:
+            self.assertTrue(id.isValid())
+            self.assertTrue(id.isDerivedFrom(Db.Line.desc()))
         
     def test_inrecord(self):
         db = self.db06457
