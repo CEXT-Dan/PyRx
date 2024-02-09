@@ -10,7 +10,7 @@ void makePyGeClipBoundary2dWrapper()
     class_<PyGeClipBoundary2d, bases<PyGeEntity2d>>("ClipBoundary2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
-        .def(init<const boost::python::object&>())
+        .def(init<const boost::python::list&>())
         .def("cast", &PyGeClipBoundary2d::cast).staticmethod("cast")
         .def("copycast", &PyGeClipBoundary2d::copycast).staticmethod("copycast")
         .def("className", &PyGeClipBoundary2d::className).staticmethod("className")
@@ -34,7 +34,7 @@ PyGeClipBoundary2d::PyGeClipBoundary2d(const AcGePoint2d& cornerA, const AcGePoi
 {
 }
 
-PyGeClipBoundary2d::PyGeClipBoundary2d(const boost::python::object& clipBoundary)
+PyGeClipBoundary2d::PyGeClipBoundary2d(const boost::python::list& clipBoundary)
     : PyGeEntity2d()
 {
     PyAutoLockGIL lock;

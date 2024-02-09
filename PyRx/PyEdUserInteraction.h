@@ -67,7 +67,7 @@ public:
     virtual void  OnUpdateMenu();
     AcGePoint3d   hitPoint() const;
 
-    boost::python::object getMenuContextWr(const PyRxClass& pyclass, const boost::python::object& pyids);
+    boost::python::object getMenuContextWr(const PyRxClass& pyclass, const boost::python::list& pyids);
     void    onCommandWr(Adesk::UInt32);
     void    OnUpdateMenuWr();
     void    calcHitPoint();

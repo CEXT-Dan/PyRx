@@ -534,7 +534,7 @@ void PyDbEntity::getGripPoints1(boost::python::list& gripPoints, boost::python::
         geomIds.append(item);
 }
 
-void PyDbEntity::addSubentPaths(const boost::python::object& newPaths)
+void PyDbEntity::addSubentPaths(const boost::python::list& newPaths)
 {
     PyThrowBadEs(impObj()->addSubentPaths(PyListToPyDbFullSubentPathArray(newPaths)));
 }
@@ -899,7 +899,7 @@ void makePyDbFullSubentPathWrapper()
         .def(init<AcDb::SubentType, Adesk::GsMarker>())
         .def(init<const PyDbObjectId&, AcDb::SubentType, Adesk::GsMarker>())
         .def(init<const PyDbObjectId&, const PyDbSubentId&>())
-        .def(init<const boost::python::object&, const PyDbSubentId&>())
+        .def(init<const boost::python::list&, const PyDbSubentId&>())
         .def("setObjectIds", &PyDbFullSubentPath::setObjectIds)
         .def("objectIds", &PyDbFullSubentPath::objectIds, DS.ARGS())
         .def("setSubentId", &PyDbFullSubentPath::setSubentId)
@@ -935,7 +935,7 @@ PyDbFullSubentPath::PyDbFullSubentPath(const PyDbObjectId& entId, const PyDbSube
 {
 }
 
-PyDbFullSubentPath::PyDbFullSubentPath(const boost::python::object& objectIds, const PyDbSubentId& subId)
+PyDbFullSubentPath::PyDbFullSubentPath(const boost::python::list& objectIds, const PyDbSubentId& subId)
     : m_pyImp(PyListToObjectIdArray(objectIds), *subId.impObj())
 {
 }
@@ -950,7 +950,7 @@ bool PyDbFullSubentPath::operator!=(const PyDbFullSubentPath& id) const
     return m_pyImp != m_pyImp;
 }
 
-void PyDbFullSubentPath::setObjectIds(const boost::python::object& objectIds)
+void PyDbFullSubentPath::setObjectIds(const boost::python::list& objectIds)
 {
 #if defined (_ZRXTARGET240) || defined (_BRXTARGET240)
     throw PyNotimplementedByHost();

@@ -48,14 +48,14 @@ public:
     static boost::python::tuple coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt);
     static bool                 createInternetShortcut(const std::string& szURL, const std::string& szShortcutPath);
     static PyDbObjectId         createViewportByView(PyDbDatabase& db, PyDbObjectId& view, const AcGePoint2d& location, double scale);
-    static bool                 cmdS(const boost::python::object& lst);
+    static bool                 cmdS(const boost::python::list& lst);
     static int                  defun(const std::string& pszName, int nFuncNum);
     static int                  defunEx(const std::string& pszGlobalName, const std::string& pszLocalName,int nFuncNum);
     static void                 disableDefaultARXExceptionHandler(bool flag);
     static void                 disableUsrbrk();
     static bool                 displayBorder(bool flag);
     static bool                 drawingStatusBarsVisible();
-    static void                 drawOrderInherit(PyDbObjectId& parent,const boost::python::object& childArray,AcEdDrawOrderCmdType cmd);
+    static void                 drawOrderInherit(PyDbObjectId& parent,const boost::python::list& childArray,AcEdDrawOrderCmdType cmd);
     static void                 dropOpenFile(const std::string& value);
     static int                  eatCommandThroat();
     static int                  editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs);
@@ -94,7 +94,7 @@ public:
     static AcGePoint3d          getMousePositionUCS();
     static AcGePoint3d          getMousePositionWCS();
     static std::string          hatchPalletteDialog(const std::string& pattern, bool showCustom);
-    static boost::python::list  invoke(const boost::python::object& args);
+    static boost::python::list  invoke(const boost::python::list& args);
     static Adesk::Boolean       initDialog(Adesk::Boolean useDialog);
     static int                  isDragging();
     static bool                 isInBackgroundMode();
@@ -138,7 +138,7 @@ public:
     static void                 skipXrefNotification(PyDbDatabase& db, const std::string& xrefName);
     static void                 setFieldUpdateEnabled(PyApDocument& doc, bool enabled);
     static int                  setFunHelp(const std::string& pszFunctionName, const std::string& pszHelpfile, const std::string& pszTopic, int iCmd);
-    static boost::python::tuple textBox(const boost::python::object& pyargs);
+    static boost::python::tuple textBox(const boost::python::list& pyargs);
     static void                 textPage();
     static void                 textScr();
     static AcGePoint3d          trans(const AcGePoint3d& pt, const boost::python::object& from, const boost::python::object& to, bool disp);
@@ -149,7 +149,7 @@ public:
     static void                 updateDisplayPause(bool bEnable);
     static bool                 usrBrk();
     static PyDbObjectId         viewportIdFromNumber(int val);
-    static void                 vpLayer(const PyDbObjectId& vpId, const boost::python::object& layerIds, AcDb::VpFreezeOps operation);
+    static void                 vpLayer(const PyDbObjectId& vpId, const boost::python::list& layerIds, AcDb::VpFreezeOps operation);
     static boost::python::list  vports();
     static void                 vports2VportTableRecords();
     static void                 vportTableRecords2Vports();
@@ -167,8 +167,8 @@ public:
     static void                 xrefOverlay2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid, AcGePoint3d& pt,
         AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd);
 
-    static void                 xrefReload1(const boost::python::object& symbolIds);
-    static void                 xrefReload2(const boost::python::object& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
+    static void                 xrefReload1(const boost::python::list& symbolIds);
+    static void                 xrefReload2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
     static void                 xrefReload3(const std::string& name);
     static void                 xrefReload4(const std::string& name, bool bQuiet, PyDbDatabase& pHostDb);
     static void                 xrefResolve1(PyDbDatabase& pHostDb);
@@ -177,6 +177,6 @@ public:
     static void                 xrefUnload2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb);
     static void                 xrefBind1(const std::string& XrefBlockname);
     static void                 xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool bQuiet, PyDbDatabase& pHostDb);
-    static void                 xrefXBind1(const boost::python::object& symbolIds);
-    static void                 xrefXBind2(const boost::python::object& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
+    static void                 xrefXBind1(const boost::python::list& symbolIds);
+    static void                 xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
 };

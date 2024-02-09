@@ -182,7 +182,7 @@ public:
     virtual void layoutSwitchedWr(const std::string& newLayoutName);
     virtual void layoutToBeSwitchedWr(const std::string& oldLayoutName, const std::string& newLayoutName);
     virtual void dwgViewResizedWr(Adesk::LongPtr hwndDwgView);
-    virtual void fullRegenEndedWr(PyDbDatabase& pDb, const boost::python::object& regenedViewports);
+    virtual void fullRegenEndedWr(PyDbDatabase& pDb, const boost::python::list& regenedViewports);
     virtual void docFrameMovedOrResizedWr(Adesk::LongPtr hwndDocFrame, bool bMoved);
     virtual void mainFrameMovedOrResizedWr(Adesk::LongPtr hwndMainFrame, bool bMoved);
     virtual void beginDoubleClickWr(const AcGePoint3d& clickPoint);
@@ -191,7 +191,7 @@ public:
     virtual void toolbarBitmapSizeChangedWr(bool bLarge);
     virtual void beginWblockObjectsWr(PyDbDatabase& pFrom, PyDbIdMapping& mapping);
     virtual void partialOpenNoticeWr(PyDbDatabase& pDb);
-    virtual void objectsLazyLoadedWr(const boost::python::object& idArray);
+    virtual void objectsLazyLoadedWr(const boost::python::list& idArray);
     virtual void beginDocCloseWr(PyDbDatabase& pDwg);
     virtual void docCloseAbortedWr(PyDbDatabase& pDwg);
     virtual void docCloseWillStartWr(PyDbDatabase& pDwg);

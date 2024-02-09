@@ -299,7 +299,7 @@ boost::python::list PyPlDSDData::getDSDEntries() const
     return pyList;
 }
 
-void PyPlDSDData::setDSDEntries(const boost::python::object& val)
+void PyPlDSDData::setDSDEntries(const boost::python::list& val)
 {
     AcPlDSDEntries arr;
     const auto& vec = py_list_to_std_vector<PyPlDSDEntry>(val);
@@ -319,7 +319,7 @@ boost::python::list PyPlDSDData::getPrecisionEntries() const
     return pyList;
 }
 
-void PyPlDSDData::setPrecisionEntries(const boost::python::object& val)
+void PyPlDSDData::setPrecisionEntries(const boost::python::list& val)
 {
     AcPlPrecisionEntries entries;
     const auto& vec = py_list_to_std_vector<PyPlPrecisionEntry>(val);
@@ -374,7 +374,7 @@ void PyPlDSDData::setUnrecognizedData1(const std::string& pSectionName, const st
     impObj()->setUnrecognizedData(utf8_to_wstr(pSectionName).c_str(), utf8_to_wstr(pSectionData).c_str());
 }
 
-void PyPlDSDData::setUnrecognizedData2(const boost::python::object& sectionArray, const boost::python::object& dataArray)
+void PyPlDSDData::setUnrecognizedData2(const boost::python::list& sectionArray, const boost::python::list& dataArray)
 {
     impObj()->setUnrecognizedData(PyListAcStringArray(sectionArray), PyListAcStringArray(dataArray));
 }

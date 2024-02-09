@@ -206,7 +206,7 @@ bool PyDbObject::hasXData(const std::string& regappName)
     return pData.get() != nullptr;
 }
 
-void PyDbObject::setXData(const boost::python::object& xdata)
+void PyDbObject::setXData(const boost::python::list& xdata)
 {
     AcResBufPtr pData(listToResbuf(xdata));
     if (!impObj()->isWriteEnabled())

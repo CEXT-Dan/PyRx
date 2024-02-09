@@ -29,13 +29,13 @@ public:
     int					numLoops() const;
     boost::python::tuple getLoopEdgesAt(int loopIndex);
     boost::python::tuple getLoopBulgesAt(int loopIndex);
-    void                appendLoopEdges(Adesk::Int32 loopType, const boost::python::object& edgePtrs, const boost::python::object& edgeTypes);
-    void                appendLoopBulges(Adesk::Int32 loopType, const boost::python::object& vertices, const boost::python::object& bulges);
+    void                appendLoopEdges(Adesk::Int32 loopType, const boost::python::list& edgePtrs, const boost::python::list& edgeTypes);
+    void                appendLoopBulges(Adesk::Int32 loopType, const boost::python::list& vertices, const boost::python::list& bulges);
     void	            removeLoopAt(int loopIndex);
     bool				associative() const;
     void	            setAssociative(bool isAssociative);
-    void	            appendLoop(Adesk::Int32 loopType, const boost::python::object& dbObjIds);
-    void	            insertLoopAt(int loopIndex, Adesk::Int32 loopType, const boost::python::object& dbObjIds);
+    void	            appendLoop(Adesk::Int32 loopType, const boost::python::list& dbObjIds);
+    void	            insertLoopAt(int loopIndex, Adesk::Int32 loopType, const boost::python::list& dbObjIds);
     boost::python::list	getAssocObjIdsAt(int loopIndex) const;
     boost::python::list	getAssocObjIds() const;
     void                removeAssocObjIds();
@@ -49,7 +49,7 @@ public:
     double				gradientAngle() const;
     void	            setGradientAngle(double angle);
     boost::python::tuple getGradientColors();
-    void	            setGradientColors(const boost::python::object& colors, const boost::python::object& values);
+    void	            setGradientColors(const boost::python::list& colors, const boost::python::list& values);
     Adesk::Boolean		getGradientOneColorMode() const;
     void	            setGradientOneColorMode(Adesk::Boolean oneColorMode);
     float				getShadeTintValue() const;
@@ -131,7 +131,7 @@ public:
     void                    setGradientAngle(double angle);
     void                    setGradientShift(float shiftValue);
     void                    setGradientOneColorMode(Adesk::Boolean oneColorMode);
-    void	                setGradientColors(const boost::python::object& colors, const boost::python::object& values);
+    void	                setGradientColors(const boost::python::list& colors, const boost::python::list& values);
     void                    setGradient(AcDbHatch::GradientPatternType gradType, const std::string& gradName);
     AcCmColor               patternColor() const;
     void                    setPatternColor(const AcCmColor& pc);
@@ -146,8 +146,8 @@ public:
     void                    appendLoopFromBoundary3(const PyDb2dPolyline& pPoly, bool excludeCrossing, double tol);
     int                     numMPolygonLoops() const;
     boost::python::tuple    getMPolygonLoopAt(int loopIndex) const;
-    void                    insertMPolygonLoopAt(int loopIndex, const boost::python::object& vertices, const boost::python::object& bulges,bool excludeCrossing, double tol);
-    void                    appendMPolygonLoop(const boost::python::object& vertices, const boost::python::object& bulges, bool excludeCrossing, double tol);
+    void                    insertMPolygonLoopAt(int loopIndex, const boost::python::list& vertices, const boost::python::list& bulges,bool excludeCrossing, double tol);
+    void                    appendMPolygonLoop(const boost::python::list& vertices, const boost::python::list& bulges, bool excludeCrossing, double tol);
     void                    removeMPolygonLoopAt(int loopIndex);
     void                    balanceTree();
     void                    balanceDisplay();
@@ -159,8 +159,8 @@ public:
     int                     getClosestLoopTo(const AcGePoint3d& worldPt) const;
     boost::python::list     isPointInsideMPolygon(const AcGePoint3d& worldPt, double tol) const;
     bool                    isPointOnLoopBoundary(const AcGePoint3d& worldPt, int loop, double tol) const;
-    bool                    loopCrossesItself(const boost::python::object& vertexPts, const boost::python::object& vertexBulges, double tol) const;
-    bool                    selfCrosses(const boost::python::object& vertexPts, const boost::python::object& vertexBulges, double tol) const;
+    bool                    loopCrossesItself(const boost::python::list& vertexPts, const boost::python::list& vertexBulges, double tol) const;
+    bool                    selfCrosses(const boost::python::list& vertexPts, const boost::python::list& vertexBulges, double tol) const;
     bool                    includesTouchingLoops(double tol) const;
     boost::python::list     createLoopsFromBoundaries(const AcDbObjectIdArray& ids, bool excludeCrossing, double tol);
     static std::string      className();

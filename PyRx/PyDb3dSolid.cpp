@@ -283,7 +283,7 @@ PyDbEntity PyDb3dSolid::copyFace(const PyDbSubentId& subentId)
     return PyDbEntity(newEntity, true);
 }
 
-void PyDb3dSolid::extrudeFaces(const boost::python::object& faceSubentIds, double height, double taper)
+void PyDb3dSolid::extrudeFaces(const boost::python::list& faceSubentIds, double height, double taper)
 {
     return PyThrowBadEs(impObj()->extrudeFaces(PyListToPyDbSubentIdPtrArray(faceSubentIds), height, taper));
 }
@@ -308,12 +308,12 @@ void PyDb3dSolid::offsetBody(double offsetDistance)
     return PyThrowBadEs(impObj()->offsetBody(offsetDistance));
 }
 
-void PyDb3dSolid::offsetFaces(const boost::python::object& faceSubentIds, double offsetDistance)
+void PyDb3dSolid::offsetFaces(const boost::python::list& faceSubentIds, double offsetDistance)
 {
     return PyThrowBadEs(impObj()->offsetFaces(PyListToPyDbSubentIdPtrArray(faceSubentIds), offsetDistance));
 }
 
-void PyDb3dSolid::removeFaces(const boost::python::object& faceSubentIds)
+void PyDb3dSolid::removeFaces(const boost::python::list& faceSubentIds)
 {
     return PyThrowBadEs(impObj()->removeFaces(PyListToPyDbSubentIdPtrArray(faceSubentIds)));
 }
@@ -329,17 +329,17 @@ boost::python::list PyDb3dSolid::separateBody()
     return pyList;
 }
 
-void PyDb3dSolid::shellBody(const boost::python::object& faceSubentIds, double offsetDistance)
+void PyDb3dSolid::shellBody(const boost::python::list& faceSubentIds, double offsetDistance)
 {
     PyThrowBadEs(impObj()->shellBody(PyListToPyDbSubentIdPtrArray(faceSubentIds), offsetDistance));
 }
 
-void PyDb3dSolid::taperFaces(const boost::python::object& faceSubentIds, const AcGePoint3d& basePoint, const AcGeVector3d& draftVector, double draftAngle)
+void PyDb3dSolid::taperFaces(const boost::python::list& faceSubentIds, const AcGePoint3d& basePoint, const AcGeVector3d& draftVector, double draftAngle)
 {
     PyThrowBadEs(impObj()->taperFaces(PyListToPyDbSubentIdPtrArray(faceSubentIds), basePoint, draftVector, draftAngle));
 }
 
-void PyDb3dSolid::transformFaces(const boost::python::object& faceSubentIds, const AcGeMatrix3d& matrix)
+void PyDb3dSolid::transformFaces(const boost::python::list& faceSubentIds, const AcGeMatrix3d& matrix)
 {
     PyThrowBadEs(impObj()->transformFaces(PyListToPyDbSubentIdPtrArray(faceSubentIds), matrix));
 }
@@ -388,12 +388,12 @@ void PyDb3dSolid::setShowHistory(bool bShow)
     return PyThrowBadEs(impObj()->setShowHistory(bShow));
 }
 
-void PyDb3dSolid::chamferEdges(const boost::python::object& edgeSubentIds, const PyDbSubentId& baseFaceSubentId, double baseDist, double otherDist)
+void PyDb3dSolid::chamferEdges(const boost::python::list& edgeSubentIds, const PyDbSubentId& baseFaceSubentId, double baseDist, double otherDist)
 {
     return PyThrowBadEs(impObj()->chamferEdges(PyListToPyDbSubentIdPtrArray(edgeSubentIds), *baseFaceSubentId.impObj(), baseDist, otherDist));
 }
 
-void PyDb3dSolid::filletEdges(const boost::python::object& edgeSubentIds, boost::python::list& radius, boost::python::list& startSetback, boost::python::list& endSetback)
+void PyDb3dSolid::filletEdges(const boost::python::list& edgeSubentIds, boost::python::list& radius, boost::python::list& startSetback, boost::python::list& endSetback)
 {
     const auto& _edgeSubentIds = PyListToPyDbSubentIdPtrArray(edgeSubentIds);
     const AcGeDoubleArray& _radius = PyListToDoubleArray(radius);
@@ -411,7 +411,7 @@ bool PyDb3dSolid::usesGraphicsCache()
 #endif
 }
 
-void PyDb3dSolid::createSculptedSolid(const boost::python::object& limitingBodies, const boost::python::object& limitingFlags)
+void PyDb3dSolid::createSculptedSolid(const boost::python::list& limitingBodies, const boost::python::list& limitingFlags)
 {
     const auto& _limitingBodies = PyListToPyDbEntityPtrArray(limitingBodies);
     const AcGeIntArray& _limitingFlags = PyListToIntArray(limitingFlags);
@@ -509,7 +509,7 @@ Adesk::Boolean PyDbRegion::isNull() const
     return impObj()->isNull();
 }
 
-boost::python::list PyDbRegion::createFromCurves(const boost::python::object& curveSegments)
+boost::python::list PyDbRegion::createFromCurves(const boost::python::list& curveSegments)
 {
     PyAutoLockGIL lock;
     boost::python::list pyRegions;

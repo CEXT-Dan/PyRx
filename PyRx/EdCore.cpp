@@ -452,7 +452,7 @@ bool EdCore::drawingStatusBarsVisible()
     return acedDrawingStatusBarsVisible();
 }
 
-void EdCore::drawOrderInherit(PyDbObjectId& parent, const boost::python::object& childArray, AcEdDrawOrderCmdType cmd)
+void EdCore::drawOrderInherit(PyDbObjectId& parent, const boost::python::list& childArray, AcEdDrawOrderCmdType cmd)
 {
     auto ids = PyListToObjectIdArray(childArray);
     PyThrowBadEs(acedDrawOrderInherit(parent.m_id, ids, cmd));
@@ -543,7 +543,7 @@ std::string EdCore::evaluateDiesel(const std::string& str)
 #endif
 }
 
-bool EdCore::cmdS(const boost::python::object& lst)
+bool EdCore::cmdS(const boost::python::list& lst)
 {
     AcResBufPtr pcmd(listToResbuf(lst));
     return acedCmdS(pcmd.get()) == RTNORM;
@@ -866,7 +866,7 @@ int EdCore::menuCmd(const std::string& mnu)
     return acedMenuCmd(utf8_to_wstr(mnu).c_str());
 }
 
-boost::python::list EdCore::invoke(const boost::python::object& args)
+boost::python::list EdCore::invoke(const boost::python::list& args)
 {
     PyAutoLockGIL lock;
     AcResBufPtr pArgs(listToResbuf(args));
@@ -1293,7 +1293,7 @@ int EdCore::setFunHelp(const std::string& pszFunctionName, const std::string& ps
     return acedSetFunHelp(utf8_to_wstr(pszFunctionName).c_str(), utf8_to_wstr(pszHelpfile).c_str(), utf8_to_wstr(pszTopic).c_str(), iCmd);
 }
 
-boost::python::tuple EdCore::textBox(const boost::python::object& pyargs)
+boost::python::tuple EdCore::textBox(const boost::python::list& pyargs)
 {
     AcResBufPtr ptr(listToResbuf(pyargs));
     AcGePoint3d ll, ur;
@@ -1337,7 +1337,7 @@ static resbuf* transArgToResfBuf(const boost::python::object& arg)
     }
     else if (PyList_Check(arg.ptr()))
     {
-        const boost::python::object& pylist = extract<boost::python::list>(arg);
+        const boost::python::list& pylist = extract<boost::python::list>(arg);
         return listToResbuf(pylist);
     }
     else
@@ -1396,7 +1396,7 @@ PyDbObjectId EdCore::viewportIdFromNumber(int val)
     return PyDbObjectId(acedViewportIdFromNumber(val));
 }
 
-void EdCore::vpLayer(const PyDbObjectId& vpId, const boost::python::object& layerIds, AcDb::VpFreezeOps operation)
+void EdCore::vpLayer(const PyDbObjectId& vpId, const boost::python::list& layerIds, AcDb::VpFreezeOps operation)
 {
     return PyThrowBadEs(acedVPLayer(vpId.m_id, PyListToObjectIdArray(layerIds), operation));
 }
@@ -1495,13 +1495,13 @@ void EdCore::xrefOverlay2(const std::string& path, const std::string& name, PyDb
         utf8_to_wstr(passwd).c_str()));
 }
 
-void EdCore::xrefReload1(const boost::python::object& symbolIds)
+void EdCore::xrefReload1(const boost::python::list& symbolIds)
 {
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
     return PyThrowBadEs(acedXrefReload(ids));
 }
 
-void EdCore::xrefReload2(const boost::python::object& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
+void EdCore::xrefReload2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
 {
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
     return PyThrowBadEs(acedXrefReload(ids, bQuiet, pHostDb.impObj()));
@@ -1547,7 +1547,7 @@ void EdCore::xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool 
     return PyThrowBadEs(acedXrefBind(utf8_to_wstr(XrefBlockname).c_str(), bInsertBind, bQuiet, pHostDb.impObj()));
 }
 
-void EdCore::xrefXBind1(const boost::python::object& symbolIds)
+void EdCore::xrefXBind1(const boost::python::list& symbolIds)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
@@ -1557,7 +1557,7 @@ void EdCore::xrefXBind1(const boost::python::object& symbolIds)
 #endif
 }
 
-void EdCore::xrefXBind2(const boost::python::object& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
+void EdCore::xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();

@@ -226,7 +226,7 @@ AcGePoint3d PyEdUIContext::hitPoint() const
     return m_hitPoint;
 }
 
-boost::python::object PyEdUIContext::getMenuContextWr(const PyRxClass& pyclass, const boost::python::object& pyids)
+boost::python::object PyEdUIContext::getMenuContextWr(const PyRxClass& pyclass, const boost::python::list& pyids)
 {
     PyAutoLockGIL lock;
     boost::python::object val;

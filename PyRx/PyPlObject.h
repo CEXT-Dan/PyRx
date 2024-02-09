@@ -81,9 +81,9 @@ public:
     std::string             destinationName() const;
     void                    setDestinationName(const std::string& pVal);
     boost::python::list     getDSDEntries() const;
-    void                    setDSDEntries(const boost::python::object& val);
+    void                    setDSDEntries(const boost::python::list& val);
     boost::python::list     getPrecisionEntries() const;
-    void                    setPrecisionEntries(const boost::python::object& val);
+    void                    setPrecisionEntries(const boost::python::list& val);
     int                     numberOfDSDEntries() const;
     PyPlDSDEntry            DSDEntryAt(int idx);
     AcPlDSDEntry::SheetType sheetType() const;
@@ -92,7 +92,7 @@ public:
     void                    setPassword(const std::string& pVal);
     void                    getUnrecognizedData(boost::python::list& sectionArray, boost::python::list& dataArray) const;
     void                    setUnrecognizedData1(const std::string& pSectionName, const std::string& pSectionData);
-    void                    setUnrecognizedData2(const boost::python::object& sectionArray, const boost::python::object& dataArray);
+    void                    setUnrecognizedData2(const boost::python::list& sectionArray, const  boost::python::list& dataArray);
     unsigned int            majorVersion() const;
     void                    setMajorVersion(unsigned int majorVersion);
     unsigned int            minorVersion() const;

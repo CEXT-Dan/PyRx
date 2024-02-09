@@ -123,8 +123,8 @@ public:
     void                showHiddenLines();
     void                removeHiddenLines1();
     void                removeHiddenLines2(bool val);
-    void                freezeLayersInViewport(const boost::python::object& ids);
-    void                thawLayersInViewport(const boost::python::object& pyids);
+    void                freezeLayersInViewport(const boost::python::list& ids);
+    void                thawLayersInViewport(const boost::python::list& pyids);
     void                thawAllLayersInViewport();
     bool                isLayerFrozenInViewport(const PyDbObjectId& layerId) const;
     boost::python::list getFrozenLayerList() const;
