@@ -19,7 +19,11 @@ class TestDatabase(unittest.TestCase):
         self.db06457 = Db.Database(False, True)
         self.db06457.readDwgFile("./testmedia/06457.dwg")
         self.db06457.closeInput(True)
-
+        
+        self.geodb = Db.Database(False, True)
+        self.geodb.readDwgFile("./testmedia/geomarker.dwg")
+        self.geodb.closeInput(True)
+        
     def test_dbcore_entmake(self):
         flag = Db.Core.entMake(
             [(0, "LINE"), (10, Ge.Point3d(0, 0, 0)), (11, Ge.Point3d(100, 100, 0))]
@@ -221,6 +225,29 @@ class TestDatabase(unittest.TestCase):
         self.assertTrue('0' in lt)
         self.assertTrue(db.layerZero() in lt)
         self.assertEqual(db.layerZero(),lt['0'])
+        
+    def test_GeoPositionMarker(self):
+        db = self.geodb
+        model = Db.BlockTableRecord(db.modelSpaceId())
+        
+        geoPosDesc = Db.GeoPositionMarker.desc()
+        markers = [Db.GeoPositionMarker(id) for id in model.objectIds(geoPosDesc)]
+
+        for marker in markers:
+            self.assertIsNotNone(marker.latLonAlt())
+
+        for marker in markers:
+            self.assertIsNotNone(marker.position())
+
+        for marker in markers:
+            self.assertIsNotNone(marker.geoPosition())
+            
+    def test_GeoData(self):
+        db = self.geodb
+        geoDataId = Db.Core.getGeoDataObjId(db)
+        self.assertTrue(geoDataId.isValid())
+        geoData = Db.GeoData(geoDataId)
+        self.assertIsNotNone(geoData.coordinateSystem())
         
 def PyRxCmd_pydbtest():
     try:
