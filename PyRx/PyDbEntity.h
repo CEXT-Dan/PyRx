@@ -91,7 +91,7 @@ public:
     void                removeReactor(PyDbEntityReactor& pReactor) const;
     boost::python::list getStretchPoints() const;
     void                getGripPoints1(boost::python::list& gripPoints, boost::python::list& osnapModes, boost::python::list& geomIds)const;
-    void                addSubentPaths(const boost::python::object& newPaths);
+    void                addSubentPaths(const boost::python::list& newPaths);
     boost::python::list getSubentPathsAtGsMarker1(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform);
     boost::python::list getSubentPathsAtGsMarker2(AcDb::SubentType type, Adesk::GsMarker gsMark, const AcGePoint3d& pickPoint, const AcGeMatrix3d& viewXform, int numInserts, PyDbObjectId& entAndInsertStack);
 
@@ -227,12 +227,12 @@ public:
     PyDbFullSubentPath(AcDb::SubentType type, Adesk::GsMarker index);
     PyDbFullSubentPath(const PyDbObjectId& entId, AcDb::SubentType type, Adesk::GsMarker index);
     PyDbFullSubentPath(const PyDbObjectId& entId, const PyDbSubentId& subId);
-    PyDbFullSubentPath(const boost::python::object& objectIds, const PyDbSubentId& subId);
+    PyDbFullSubentPath(const boost::python::list& objectIds, const PyDbSubentId& subId);
 
     bool        operator ==(const PyDbFullSubentPath& id) const;
     bool        operator !=(const PyDbFullSubentPath& id) const;
 
-    void                setObjectIds(const boost::python::object& objectIds);
+    void                setObjectIds(const boost::python::list& objectIds);
     boost::python::list objectIds() const;
     void                setSubentId(const PyDbSubentId& subentId);
     PyDbSubentId        subentId() const;

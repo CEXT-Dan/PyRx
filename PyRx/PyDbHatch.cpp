@@ -222,7 +222,7 @@ boost::python::tuple PyDbHatch::getLoopBulgesAt(int loopIndex)
     return boost::python::make_tuple(loopType, Point2dArrayToPyList(vertices), DoubleArrayToPyList(bulges));
 }
 
-void PyDbHatch::appendLoopEdges(Adesk::Int32 loopType, const boost::python::object& edgePtrs, const boost::python::object& edgeTypes)
+void PyDbHatch::appendLoopEdges(Adesk::Int32 loopType, const boost::python::list& edgePtrs, const boost::python::list& edgeTypes)
 {
     AcGeVoidPointerArray _edgePtrs;
     const auto& curves = py_list_to_std_vector<PyGeCurve2d>(edgePtrs);
@@ -232,7 +232,7 @@ void PyDbHatch::appendLoopEdges(Adesk::Int32 loopType, const boost::python::obje
     return PyThrowBadEs(impObj()->appendLoop(loopType, _edgePtrs, _edgeTypes));
 }
 
-void PyDbHatch::appendLoopBulges(Adesk::Int32 loopType, const boost::python::object& vertices, const boost::python::object& bulges)
+void PyDbHatch::appendLoopBulges(Adesk::Int32 loopType, const boost::python::list& vertices, const boost::python::list& bulges)
 {
     const auto& _vertices = PyListToPoint2dArray(vertices);
     const auto& _bulges = PyListToDoubleArray(bulges);
@@ -254,12 +254,12 @@ void PyDbHatch::setAssociative(bool isAssociative)
     return PyThrowBadEs(impObj()->setAssociative(isAssociative));
 }
 
-void PyDbHatch::appendLoop(Adesk::Int32 loopType, const boost::python::object& dbObjIds)
+void PyDbHatch::appendLoop(Adesk::Int32 loopType, const boost::python::list& dbObjIds)
 {
     return PyThrowBadEs(impObj()->appendLoop(loopType, PyListToObjectIdArray(dbObjIds)));
 }
 
-void PyDbHatch::insertLoopAt(int loopIndex, Adesk::Int32 loopType, const boost::python::object& dbObjIds)
+void PyDbHatch::insertLoopAt(int loopIndex, Adesk::Int32 loopType, const boost::python::list& dbObjIds)
 {
     return PyThrowBadEs(impObj()->insertLoopAt(loopIndex, loopType, PyListToObjectIdArray(dbObjIds)));
 }
@@ -345,7 +345,7 @@ boost::python::tuple PyDbHatch::getGradientColors()
     return boost::python::make_tuple(colorList, valueList);
 }
 
-void PyDbHatch::setGradientColors(const boost::python::object& colors, const boost::python::object& values)
+void PyDbHatch::setGradientColors(const boost::python::list& colors, const boost::python::list& values)
 {
     PyAutoLockGIL lock;
     auto _colors = py_list_to_std_vector<AcCmColor>(colors);
@@ -840,7 +840,7 @@ void PyDbMPolygon::setGradientOneColorMode(Adesk::Boolean oneColorMode)
     PyThrowBadEs(impObj()->setGradientOneColorMode(oneColorMode));
 }
 
-void PyDbMPolygon::setGradientColors(const boost::python::object& colors, const boost::python::object& values)
+void PyDbMPolygon::setGradientColors(const boost::python::list& colors, const boost::python::list& values)
 {
     PyAutoLockGIL lock;
     auto _colors = py_list_to_std_vector<AcCmColor>(colors);
@@ -914,12 +914,12 @@ boost::python::tuple PyDbMPolygon::getMPolygonLoopAt(int loopIndex) const
     return boost::python::make_tuple(Point2dArrayToPyList(vertices), DoubleArrayToPyList(bulges));
 }
 
-void PyDbMPolygon::insertMPolygonLoopAt(int loopIndex, const boost::python::object& vertices, const boost::python::object& bulges, bool excludeCrossing, double tol)
+void PyDbMPolygon::insertMPolygonLoopAt(int loopIndex, const boost::python::list& vertices, const boost::python::list& bulges, bool excludeCrossing, double tol)
 {
     PyThrowBadEs(impObj()->insertMPolygonLoopAt(loopIndex, PyListToPoint2dArray(vertices), PyListToDoubleArray(bulges), excludeCrossing, tol));
 }
 
-void PyDbMPolygon::appendMPolygonLoop(const boost::python::object& vertices, const boost::python::object& bulges, bool excludeCrossing, double tol)
+void PyDbMPolygon::appendMPolygonLoop(const boost::python::list& vertices, const boost::python::list& bulges, bool excludeCrossing, double tol)
 {
     PyThrowBadEs(impObj()->appendMPolygonLoop(PyListToPoint2dArray(vertices), PyListToDoubleArray(bulges), excludeCrossing, tol));
 }
@@ -987,12 +987,12 @@ bool PyDbMPolygon::isPointOnLoopBoundary(const AcGePoint3d& worldPt, int loop, d
     return impObj()->isPointOnLoopBoundary(worldPt, loop, tol);
 }
 
-bool PyDbMPolygon::loopCrossesItself(const boost::python::object& vertexPts, const boost::python::object& vertexBulges, double tol) const
+bool PyDbMPolygon::loopCrossesItself(const boost::python::list& vertexPts, const boost::python::list& vertexBulges, double tol) const
 {
     return impObj()->loopCrossesItself(PyListToPoint2dArray(vertexPts),PyListToDoubleArray(vertexBulges), tol);
 }
 
-bool PyDbMPolygon::selfCrosses(const boost::python::object& vertexPts, const boost::python::object& vertexBulges, double tol) const
+bool PyDbMPolygon::selfCrosses(const boost::python::list& vertexPts, const boost::python::list& vertexBulges, double tol) const
 {
     return impObj()->selfCrosses(PyListToPoint2dArray(vertexPts), PyListToDoubleArray(vertexBulges), tol);
 }

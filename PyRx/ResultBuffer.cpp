@@ -3,7 +3,7 @@
 #include "PyDbObjectId.h"
 using namespace boost::python;
 
-resbuf* listToResbuf(const boost::python::object& bpl)
+resbuf* listToResbuf(const boost::python::list& bpl)
 {
     PyAutoLockGIL lock;
     try

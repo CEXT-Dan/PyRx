@@ -184,13 +184,13 @@ void DbCore::attachXref(PyDbDatabase& pHostDb, const std::string& pFilename, con
     return PyThrowBadEs(acdbAttachXref(pHostDb.impObj(), utf8_to_wstr(pFilename).c_str(), utf8_to_wstr(pBlockName).c_str(), xrefBlkId.m_id));
 }
 
-void DbCore::bindXrefs1(PyDbDatabase& pHostDb, const boost::python::object& xrefBlkIds, const bool bInsertBind)
+void DbCore::bindXrefs1(PyDbDatabase& pHostDb, const boost::python::list& xrefBlkIds, const bool bInsertBind)
 {
     auto ids = PyListToObjectIdArray(xrefBlkIds);
     return PyThrowBadEs(acdbBindXrefs(pHostDb.impObj(), ids, bInsertBind));
 }
 
-void DbCore::bindXrefs2(PyDbDatabase& pHostDb, const boost::python::object& xrefBlkIds, const bool bInsertBind, const bool bAllowUnresolved, const bool bQuiet)
+void DbCore::bindXrefs2(PyDbDatabase& pHostDb, const boost::python::list& xrefBlkIds, const bool bInsertBind, const bool bAllowUnresolved, const bool bQuiet)
 {
     auto ids = PyListToObjectIdArray(xrefBlkIds);
     return PyThrowBadEs(acdbBindXrefs(pHostDb.impObj(), ids, bInsertBind, bAllowUnresolved, bQuiet));
@@ -356,13 +356,13 @@ void DbCore::dxfOutAsR12(PyDbDatabase& pDb, const std::string& fileName, int pre
     return  PyThrowBadEs(acdbDxfOutAsR12(pDb.impObj(), utf8_to_wstr(fileName).c_str(), precision));
 }
 
-bool DbCore::entMake(const boost::python::object& rb)
+bool DbCore::entMake(const boost::python::list& rb)
 {
     AcResBufPtr pBuf(listToResbuf(rb));
     return acdbEntMake(pBuf.get()) == RTNORM;
 }
 
-PyDbObjectId DbCore::entMakeX(const boost::python::object& rb)
+PyDbObjectId DbCore::entMakeX(const boost::python::list& rb)
 {
     ads_name name = { 0 };
     AcResBufPtr pBuf(listToResbuf(rb));
@@ -402,7 +402,7 @@ boost::python::list DbCore::entGetX1(const PyDbObjectId& id)
     return resbufToList(ptr.get());
 }
 
-boost::python::list DbCore::entGetX2(const PyDbObjectId& id, const boost::python::object& rb)
+boost::python::list DbCore::entGetX2(const PyDbObjectId& id, const boost::python::list& rb)
 {
     ads_name name = { 0L };
     PyThrowBadEs(acdbGetAdsName(name, id.m_id));
@@ -422,7 +422,7 @@ PyDbObjectId DbCore::entLast()
     return id;
 }
 
-bool DbCore::entMod(const boost::python::object& list)
+bool DbCore::entMod(const boost::python::list& list)
 {
     AcResBufPtr ptr(listToResbuf(list));
     return acdbEntMod(ptr.get()) == RTNORM;
@@ -464,7 +464,7 @@ boost::python::tuple DbCore::findField(const std::string& pszText, int iSearchFr
 #endif
 }
 
-void DbCore::forceTextAdjust(const boost::python::object& ids)
+void DbCore::forceTextAdjust(const boost::python::list& ids)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
@@ -635,17 +635,17 @@ PyDbObject DbCore::openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode, boo
     return PyDbObject{ pObj, true };
 }
 
-boost::python::list DbCore::openDbObjects1(const boost::python::object& ids)
+boost::python::list DbCore::openDbObjects1(const boost::python::list& ids)
 {
     return openDbObjects3(ids, AcDb::kForRead, false);
 }
 
-boost::python::list DbCore::openDbObjects2(const boost::python::object& ids, AcDb::OpenMode mode)
+boost::python::list DbCore::openDbObjects2(const boost::python::list& ids, AcDb::OpenMode mode)
 {
     return openDbObjects3(ids, mode, false);
 }
 
-boost::python::list DbCore::openDbObjects3(const boost::python::object& ids, AcDb::OpenMode mode, bool erased)
+boost::python::list DbCore::openDbObjects3(const boost::python::list& ids, AcDb::OpenMode mode, bool erased)
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -669,17 +669,17 @@ PyDbEntity DbCore::openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode, boo
     throw PyNotThatKindOfClass();
 }
 
-boost::python::list DbCore::openDbEntities1(const boost::python::object& ids)
+boost::python::list DbCore::openDbEntities1(const boost::python::list& ids)
 {
     return openDbEntities3(ids, AcDb::kForRead, false);
 }
 
-boost::python::list DbCore::openDbEntities2(const boost::python::object& ids, AcDb::OpenMode mode)
+boost::python::list DbCore::openDbEntities2(const boost::python::list& ids, AcDb::OpenMode mode)
 {
     return openDbEntities3(ids, mode, false);
 }
 
-boost::python::list DbCore::openDbEntities3(const boost::python::object& ids, AcDb::OpenMode mode, bool erased)
+boost::python::list DbCore::openDbEntities3(const boost::python::list& ids, AcDb::OpenMode mode, bool erased)
 {
     PyAutoLockGIL lock;
     boost::python::list pyList;
@@ -715,7 +715,7 @@ void DbCore::queueAnnotationEntitiesForRegen(PyDbDatabase& db)
 #endif
 }
 
-int DbCore::queueForRegen(const boost::python::object& pyids)
+int DbCore::queueForRegen(const boost::python::list& pyids)
 {
     auto ids = PyListToObjectIdArray(pyids);
     return acdbQueueForRegen(ids.asArrayPtr(), ids.length());
@@ -738,17 +738,17 @@ void DbCore::updateDimension(const PyDbObjectId& id)
     return PyThrowBadEs(acdbUpdateDimension(id.m_id));
 }
 
-void DbCore::reloadXrefs1(PyDbDatabase& db, const boost::python::object& ids)
+void DbCore::reloadXrefs1(PyDbDatabase& db, const boost::python::list& ids)
 {
     PyThrowBadEs(acdbReloadXrefs(db.impObj(), PyListToObjectIdArray(ids)));
 }
 
-void DbCore::reloadXrefs2(PyDbDatabase& db, const boost::python::object& ids, bool bQuiet)
+void DbCore::reloadXrefs2(PyDbDatabase& db, const boost::python::list& ids, bool bQuiet)
 {
     PyThrowBadEs(acdbReloadXrefs(db.impObj(), PyListToObjectIdArray(ids), bQuiet));
 }
 
-boost::python::list DbCore::resbufTest(const boost::python::object& list)
+boost::python::list DbCore::resbufTest(const boost::python::list& list)
 {
     AcResBufPtr ptr(listToResbuf(list));
     return resbufToList(ptr.get());
@@ -796,7 +796,7 @@ boost::python::list DbCore::textFind1(PyDbDatabase& db, const std::string& findS
 #endif
 }
 
-boost::python::list DbCore::textFind2(PyDbDatabase& db, const std::string& findString, const std::string& replaceString, Adesk::UInt8 searchOptions, const boost::python::object& selSet)
+boost::python::list DbCore::textFind2(PyDbDatabase& db, const std::string& findString, const std::string& replaceString, Adesk::UInt8 searchOptions, const boost::python::list& selSet)
 {
 #if defined(_BRXTARGET) && _BRXTARGET <= 240
     throw PyNotimplementedByHost();
@@ -821,12 +821,12 @@ AcGeMatrix3d DbCore::ucsMatrix(PyDbDatabase& db)
     return mat;
 }
 
-void DbCore::unloadXrefs1(PyDbDatabase& db, const boost::python::object& xrefBlkIds)
+void DbCore::unloadXrefs1(PyDbDatabase& db, const boost::python::list& xrefBlkIds)
 {
     unloadXrefs2(db, xrefBlkIds, true);
 }
 
-void DbCore::unloadXrefs2(PyDbDatabase& db, const boost::python::object& xrefBlkIds, bool bQuiet)
+void DbCore::unloadXrefs2(PyDbDatabase& db, const boost::python::list& xrefBlkIds, bool bQuiet)
 {
     auto ids = PyListToObjectIdArray(xrefBlkIds);
     PyThrowBadEs(acdbUnloadXrefs(db.impObj(), ids, bQuiet));

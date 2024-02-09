@@ -50,17 +50,17 @@ public:
     Adesk::UInt32       numChanges() const;
     PyDbEntity          copyEdge(const PyDbSubentId& subentId);
     PyDbEntity          copyFace(const PyDbSubentId& subentId);
-    void                extrudeFaces(const boost::python::object& faceSubentIds, double height, double taper);
+    void                extrudeFaces(const boost::python::list& faceSubentIds, double height, double taper);
     void                extrudeFacesAlongPath(boost::python::list& faceSubentIds, const PyDbCurve& path);
     void                imprintEntity(const PyDbEntity& pEntity);
     void                cleanBody();
     void                offsetBody(double offsetDistance);
-    void                offsetFaces(const boost::python::object& faceSubentIds, double offsetDistance);
-    void                removeFaces(const boost::python::object& faceSubentIds);
+    void                offsetFaces(const boost::python::list& faceSubentIds, double offsetDistance);
+    void                removeFaces(const boost::python::list& faceSubentIds);
     boost::python::list separateBody();
-    void                shellBody(const boost::python::object& faceSubentIds, double offsetDistance);
-    void                taperFaces(const boost::python::object& faceSubentIds, const AcGePoint3d& basePoint, const AcGeVector3d& draftVector, double draftAngle);
-    void                transformFaces(const boost::python::object& faceSubentIds, const AcGeMatrix3d& matrix);
+    void                shellBody(const boost::python::list& faceSubentIds, double offsetDistance);
+    void                taperFaces(const boost::python::list& faceSubentIds, const AcGePoint3d& basePoint, const AcGeVector3d& draftVector, double draftAngle);
+    void                transformFaces(const boost::python::list& faceSubentIds, const AcGeMatrix3d& matrix);
     void                setSubentColor(const PyDbSubentId& subentId, const AcCmColor& color);
     AcCmColor           getSubentColor(const PyDbSubentId& subentId) const;
     void                setSubentMaterial(const PyDbSubentId& subentId, PyDbObjectId& matId);
@@ -69,10 +69,10 @@ public:
     void                setRecordHistory(bool bRecord);
     bool                showHistory() const;
     void                setShowHistory(bool bShow);
-    void                chamferEdges(const boost::python::object& edgeSubentIds, const PyDbSubentId& baseFaceSubentId, double baseDist, double otherDist);
-    void                filletEdges(const boost::python::object& edgeSubentIds, boost::python::list& radius, boost::python::list& startSetback, boost::python::list& endSetback);
+    void                chamferEdges(const boost::python::list& edgeSubentIds, const PyDbSubentId& baseFaceSubentId, double baseDist, double otherDist);
+    void                filletEdges(const boost::python::list& edgeSubentIds, boost::python::list& radius, boost::python::list& startSetback, boost::python::list& endSetback);
     bool                usesGraphicsCache();
-    void                createSculptedSolid(const boost::python::object& limitingBodies, const boost::python::object& limitingFlags);
+    void                createSculptedSolid(const boost::python::list& limitingBodies, const boost::python::list& limitingFlags);
     boost::python::list projectOnToSolid(const PyDbEntity& pEntityToProject, const AcGeVector3d& projectionDirection) const;
     static std::string  className();
     static PyRxClass    desc();
@@ -97,7 +97,7 @@ public:
     Adesk::Boolean    isNull() const;
 
 
-    static boost::python::list createFromCurves(const boost::python::object& curveSegments);
+    static boost::python::list createFromCurves(const boost::python::list& curveSegments);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbRegion   cloneFrom(const PyRxObject& src);

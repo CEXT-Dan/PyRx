@@ -956,8 +956,8 @@ void makePyGeCompositeCurve3dWrapper()
 {
     class_<PyGeCompositeCurve3d, bases<PyGeCurve3d>>("CompositeCurve3d")
         .def(init<>())
-        .def(init<const boost::python::object&>())
-        .def(init<const boost::python::object&, const boost::python::object&>())
+        .def(init<const boost::python::list&>())
+        .def(init<const boost::python::list&, const boost::python::list&>())
         .def("getCurveList", &PyGeCompositeCurve3d::getCurveList)
         .def("setCurveList", &PyGeCompositeCurve3d::setCurveList1)
         .def("setCurveList", &PyGeCompositeCurve3d::setCurveList2)
@@ -979,12 +979,12 @@ PyGeCompositeCurve3d::PyGeCompositeCurve3d(AcGeEntity3d* pEnt)
 {
 }
 
-PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::object& curveList)
+PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::list& curveList)
     :PyGeCurve3d(new AcGeCompositeCurve3d(PyListToGe3dVoidPointerArray(curveList)))
 {
 }
 
-PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::object& curveList, const boost::python::object& isOwnerOfCurves)
+PyGeCompositeCurve3d::PyGeCompositeCurve3d(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
     :PyGeCurve3d(new AcGeCompositeCurve3d(PyListToGe3dVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves)))
 {
 }
@@ -1002,12 +1002,12 @@ boost::python::list PyGeCompositeCurve3d::getCurveList() const
     return pylist;
 }
 
-void PyGeCompositeCurve3d::setCurveList1(const boost::python::object& curveList)
+void PyGeCompositeCurve3d::setCurveList1(const boost::python::list& curveList)
 {
     impObj()->setCurveList(PyListToGe3dVoidPointerArray(curveList));
 }
 
-void PyGeCompositeCurve3d::setCurveList2(const boost::python::object& curveList, const boost::python::object& isOwnerOfCurves)
+void PyGeCompositeCurve3d::setCurveList2(const boost::python::list& curveList, const boost::python::list& isOwnerOfCurves)
 {
     impObj()->setCurveList(PyListToGe3dVoidPointerArray(curveList), PyListToIntArray(isOwnerOfCurves));
 }

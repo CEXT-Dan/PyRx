@@ -71,7 +71,7 @@ boost::python::list PyDbXrecord::rbChain2(PyDbDatabase& auxDb) const
     return resbufToList(pRb);
 }
 
-void PyDbXrecord::setFromRbChain1(const boost::python::object& pRb)
+void PyDbXrecord::setFromRbChain1(const boost::python::list& pRb)
 {
     AcResBufPtr ptr(listToResbuf(pRb));
     if (ptr == nullptr)
@@ -79,7 +79,7 @@ void PyDbXrecord::setFromRbChain1(const boost::python::object& pRb)
     return PyThrowBadEs(impObj()->setFromRbChain(*ptr.get()));
 }
 
-void PyDbXrecord::setFromRbChain2(const boost::python::object& pRb, PyDbDatabase& auxDb)
+void PyDbXrecord::setFromRbChain2(const boost::python::list& pRb, PyDbDatabase& auxDb)
 {
     AcResBufPtr ptr(listToResbuf(pRb));
     if (ptr == nullptr)

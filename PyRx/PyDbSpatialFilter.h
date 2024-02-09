@@ -17,7 +17,7 @@ public:
     PyDbSpatialFilter(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
 
 #ifdef NEVER
-    PyDbSpatialFilter(const boost::python::object& pts,
+    PyDbSpatialFilter(const boost::python::list& pts,
         const AcGeVector3d& normal,
         double                  elevation,
         double                  frontClip,
@@ -34,7 +34,7 @@ public:
     AcDbExtents                 queryBounds2(const PyDbBlockReference& pRefBlkRef) const;
 
     boost::python::tuple        getVolume() const;
-    void                        setDefinition(const boost::python::object& pts,
+    void                        setDefinition(const boost::python::list& pts,
         const AcGeVector3d& normal,
         double                  elevation,
         double                  frontClip,

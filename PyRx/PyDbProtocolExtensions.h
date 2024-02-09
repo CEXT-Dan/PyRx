@@ -17,8 +17,8 @@ public:
     virtual ~PyDbJoinEntityPE() override = default;
     bool joinEntity1(PyDbEntity& pPrimaryEntity, PyDbEntity& pSecondaryEntity) const;
     bool joinEntity2(PyDbEntity& pPrimaryEntity, PyDbEntity& pSecondaryEntity, const AcGeTol& tol) const;
-    boost::python::list joinEntities1(PyDbEntity& pPrimaryEntity, const boost::python::object& otherEntities) const;
-    boost::python::list joinEntities2(PyDbEntity& pPrimaryEntity, const boost::python::object& otherEntities, const AcGeTol& tol) const;
+    boost::python::list joinEntities1(PyDbEntity& pPrimaryEntity, const boost::python::list& otherEntities) const;
+    boost::python::list joinEntities2(PyDbEntity& pPrimaryEntity, const boost::python::list& otherEntities, const AcGeTol& tol) const;
     static PyRxClass    desc();
     static std::string  className();
 

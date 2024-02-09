@@ -17,24 +17,24 @@ public:
     PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbSpline(const PyDbObjectId& id, AcDb::OpenMode mode, bool erased);
 
-    PyDbSpline(const boost::python::object& fitPoints);
-    PyDbSpline(const boost::python::object& fitPoints, int order, double  fitTolerance);
+    PyDbSpline(const boost::python::list& fitPoints);
+    PyDbSpline(const boost::python::list& fitPoints, int order, double  fitTolerance);
 
-    PyDbSpline(const boost::python::object& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
-    PyDbSpline(const boost::python::object& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, int order, double fitTolerance);
+    PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
+    PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, int order, double fitTolerance);
 
-    PyDbSpline(const boost::python::object& fitPoints, bool periodic);
-    PyDbSpline(const boost::python::object& fitPoints, bool periodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
-    PyDbSpline(const boost::python::object& fitPoints, AcGe::KnotParameterization knotParam);
-    PyDbSpline(const boost::python::object& fitPoints, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
-    PyDbSpline(const boost::python::object& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam);
+    PyDbSpline(const boost::python::list& fitPoints, bool periodic);
+    PyDbSpline(const boost::python::list& fitPoints, bool periodic, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
+    PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam);
+    PyDbSpline(const boost::python::list& fitPoints, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
+    PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam);
 
-    PyDbSpline(const boost::python::object& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
-    PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic, const boost::python::object& controlPoints,
-        const boost::python::object& knots, const boost::python::object& weights);
+    PyDbSpline(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization knotParam, int degree, double fitTolerance);
+    PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic, const boost::python::list& controlPoints,
+        const boost::python::list& knots, const boost::python::list& weights);
 
-    PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic, const boost::python::object& controlPoints,
-        const boost::python::object& knots, const boost::python::object& weights, double controlPtTol, double knotTol);
+    PyDbSpline(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic, const boost::python::list& controlPoints,
+        const boost::python::list& knots, const boost::python::list& weights, double controlPtTol, double knotTol);
 
     PyDbSpline(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio);
     PyDbSpline(const AcGePoint3d& center, const AcGeVector3d& unitNormal, const AcGeVector3d& majorAxis, double radiusRatio, double startAngle, double endAngle);
@@ -58,19 +58,19 @@ public:
     void                setFitTangents(const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
     Adesk::Boolean      hasFitData() const;
     boost::python::tuple getFitData() const;
-    void                setFitData(const boost::python::object& fitPoints, int degree, double fitTolerance, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
+    void                setFitData(const boost::python::list& fitPoints, int degree, double fitTolerance, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent);
     boost::python::tuple getFitDataKnot() const;
-    void                setFitDataKnot1(const boost::python::object& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization  knotParam);
-    void                setFitDataKnot2(const boost::python::object& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization  knotParam, int degree, double fitTolerance);
-    void                setFitDataKnot3(const boost::python::object& fitPoints, bool isPeriodic, AcGe::KnotParameterization  knotParam);
-    void                setFitDataKnot4(const boost::python::object& fitPoints, bool isPeriodic, AcGe::KnotParameterization  knotParam, int degree, double fitTolerance);
+    void                setFitDataKnot1(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization  knotParam);
+    void                setFitDataKnot2(const boost::python::list& fitPoints, const AcGeVector3d& startTangent, const AcGeVector3d& endTangent, AcGe::KnotParameterization  knotParam, int degree, double fitTolerance);
+    void                setFitDataKnot3(const boost::python::list& fitPoints, bool isPeriodic, AcGe::KnotParameterization  knotParam);
+    void                setFitDataKnot4(const boost::python::list& fitPoints, bool isPeriodic, AcGe::KnotParameterization  knotParam, int degree, double fitTolerance);
     void                purgeFitData();
     void                updateFitData();
     boost::python::tuple getNurbsData();
     void                setNurbsData1(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic,
-        const boost::python::object& controlPoints, const  boost::python::object& knots, const  boost::python::object& weights);
+        const  boost::python::list& controlPoints, const  boost::python::list& knots, const  boost::python::list& weights);
     void                setNurbsData2(int degree, Adesk::Boolean rational, Adesk::Boolean closed, Adesk::Boolean periodic,
-        const boost::python::object& controlPoints, const  boost::python::object& knots, const  boost::python::object& weights, double controlPtTol, double knotTol);
+        const  boost::python::list& controlPoints, const  boost::python::list& knots, const  boost::python::list& weights, double controlPtTol, double knotTol);
     double              weightAt(int index) const;
     void                setWeightAt(int index, double weight);
     void                insertKnot(double param);

@@ -433,7 +433,7 @@ public:
     PyDb2dPolyline(AcDb2dPolyline* ptr, bool autoDelete);
     PyDb2dPolyline(const PyDbObjectId& id);
     PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::object& vertices, Adesk::Boolean closed);
+    PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed);
     AcDb::Poly2dType    polyType() const;
     void                setPolyType(AcDb::Poly2dType val);
     void                convertToPolyType(AcDb::Poly2dType val);
@@ -486,7 +486,7 @@ public:
     PyDb3dPolyline(AcDb3dPolyline* ptr, bool autoDelete);
     PyDb3dPolyline(const PyDbObjectId& id);
     PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDb3dPolyline(AcDb::Poly3dType, const boost::python::object& vertices, Adesk::Boolean closed);
+    PyDb3dPolyline(AcDb::Poly3dType, const boost::python::list& vertices, Adesk::Boolean closed);
     virtual ~PyDb3dPolyline() override = default;
     double              length() const;
     void                setClosed(Adesk::Boolean val);
@@ -622,7 +622,7 @@ class PyDbPolyline : public PyDbCurve
 public:
     PyDbPolyline();
     PyDbPolyline(unsigned int num_verts);
-    PyDbPolyline(const boost::python::object& pnts);
+    PyDbPolyline(const boost::python::list& pnts);
     PyDbPolyline(AcDbPolyline* ptr, bool autoDelete);
     PyDbPolyline(const PyDbObjectId& id);
     PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
