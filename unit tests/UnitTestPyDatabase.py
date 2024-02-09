@@ -24,6 +24,10 @@ class TestDatabase(unittest.TestCase):
         self.geodb.readDwgFile("./testmedia/geomarker.dwg")
         self.geodb.closeInput(True)
         
+    def __del__(self):
+        del(self.db06457)
+        del(self.geodb)
+        
     def test_dbcore_entmake(self):
         flag = Db.Core.entMake(
             [(0, "LINE"), (10, Ge.Point3d(0, 0, 0)), (11, Ge.Point3d(100, 100, 0))]

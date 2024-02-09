@@ -1889,8 +1889,8 @@ AcCellRange PyDbTable::cellRange() const
     auto range = AcCellRange{};
     range.mnTopRow = 0;
     range.mnLeftColumn = 0;
-	range.mnBottomRow = impObj()->numRows()-1;
-	range.mnRightColumn = impObj()->numColumns() - 1;
+    range.mnBottomRow = impObj()->numRows() - 1;
+    range.mnRightColumn = impObj()->numColumns() - 1;
     return range;
 #else
     return impObj()->cellRange();
@@ -1926,7 +1926,7 @@ AcDbTable* PyDbTable::impObj(const std::source_location& src /*= std::source_loc
 {
     if (m_pyImp == nullptr) [[unlikely]] {
         throw PyNullObject(src);
-    }
+        }
     return static_cast<AcDbTable*>(m_pyImp.get());
 }
 
